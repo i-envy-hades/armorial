@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Encyclopédie du blason</title>
+
+<!--
+  ============================================================================
+  L'ARMORIAL — encyclopédie ouverte de l'héraldique
+  ============================================================================
+  Fichier autonome (aucune dépendance en dehors des polices Google).
+
+  COMMENT L'ÉTENDRE QUAND ON TROUVE UN NOUVEAU LIVRE
+  --------------------------------------------------
+  Tout le contenu vit dans l'objet DATA plus bas. Rien d'autre à toucher.
+
+  1) Ajouter le livre dans DATA.sources :
+        mabague1998: {
+          auteur: "…", titre: "…", editeur: "…", annee: "…",
+          isbn: "…", type: "Ouvrage d'initiation" | "Référence savante" | …,
+          note: "…"
+        }
+
+  2) Enrichir un article existant ou en créer un dans DATA.sections[].articles :
+        { titre: "…", html: "<p>…</p>", sources: ["joubert1977", "mabague1998"] }
+     -> le tag « Sources » de l'article s'actualise tout seul.
+
+  3) Ajouter des entrées de glossaire dans DATA.glossaire :
+        { terme: "…", def: "…", sources: ["mabague1998"] }
+
+  4) (optionnel) ajouter une figure héraldique dans DATA.tinctures,
+     DATA.partitions ou DATA.pieces — elle sera dessinée automatiquement.
+
+  RÈGLE : on reformule toujours le savoir avec ses propres mots et on cite le
+  livre. On ne copie jamais le texte ni les illustrations d'un ouvrage protégé.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --vellum:#e9e1cd;
+  --vellum-2:#f3eee0;
+  --vellum-3:#efe8d6;
+  --ink:#22201b;
+  --ink-soft:#5c5446;
+  --gules:#8e1b18;
+  --azure:#20406e;
+  --or:#a9812e;
+  --sable:#1a1712;
+  --rule:#cabf9f;
+  --rule-soft:#d8cfb4;
+  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
+  --maxw:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%),
+    var(--vellum);
+  color:var(--ink);
+  font-family:"EB Garamond",Georgia,serif;
+  font-size:19px;
+  line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%}
+a{color:var(--gules);text-decoration-thickness:.5px;text-underline-offset:2px}
+
+/* ---------- typographic roles ---------- */
+.eyebrow{
+  font-family:"Marcellus SC",serif;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  color:var(--or);
+  margin:0 0 .5rem;
+}
+h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
+.display{font-family:"Marcellus",serif;line-height:1.02}
+.serif-head{font-family:"EB Garamond",serif}
+
+/* ---------- masthead ---------- */
+.mast{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:1rem;
+  padding:.55rem clamp(1rem,4vw,2.2rem);
+  background:rgba(233,225,205,.86);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.mast .brand{
+  font-family:"Marcellus SC",serif;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.86rem;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:.6rem;
+}
+.mast .brand .cross{width:12px;height:12px;color:var(--gules)}
+.mast .search{margin-left:auto;position:relative;flex:0 1 340px;min-width:150px}
+.mast .search input{
+  width:100%;padding:.5rem .8rem .5rem 2rem;
+  font-family:"EB Garamond",serif;font-size:.95rem;color:var(--ink);
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:2px;
+}
+.mast .search input:focus{outline:2px solid var(--azure);outline-offset:1px;border-color:transparent}
+.mast .search svg{position:absolute;left:.55rem;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--ink-soft);opacity:.7}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(2.4rem,7vw,5rem) clamp(1rem,4vw,2rem) clamp(2rem,5vw,3.4rem);
+  text-align:center;
+  border-bottom:1px solid var(--rule);
+}
+.hero .frame{max-width:900px;margin:0 auto}
+.hero h1{
+  font-family:"Marcellus",serif;
+  font-size:clamp(2.6rem,8vw,5.4rem);
+  letter-spacing:.01em;margin:.2rem 0 .1rem;
+}
+.hero h1 .amp{color:var(--gules)}
+.hero .sub{
+  font-size:clamp(1.05rem,2.4vw,1.35rem);
+  color:var(--ink-soft);font-style:italic;max-width:44ch;margin:.6rem auto 0;
+}
+.hero-shield{width:130px;height:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
+.hero .counts{
+  display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
+  margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--rule-soft);
+}
+.hero .counts .c{min-width:90px}
+.hero .counts .n{font-family:"Marcellus",serif;font-size:2rem;color:var(--gules);display:block;line-height:1}
+.hero .counts .l{font-family:"Marcellus SC",serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ---------- layout shell ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2rem);display:grid;grid-template-columns:230px 1fr;gap:clamp(1.5rem,4vw,3.2rem);align-items:start}
+@media (max-width:860px){.shell{grid-template-columns:1fr}}
+
+/* ---------- index rail ---------- */
+.rail{position:sticky;top:70px;padding:1.8rem 0}
+@media (max-width:860px){
+  .rail{position:static;padding:1rem 0 0;border-bottom:1px solid var(--rule)}
+  .rail ol{display:flex;overflow-x:auto;gap:.4rem;padding-bottom:.6rem}
+  .rail li{white-space:nowrap}
+}
+.rail .eyebrow{margin-bottom:1rem}
+.rail ol{list-style:none;margin:0;padding:0;counter-reset:sec}
+.rail li{counter-increment:sec}
+.rail a{
+  display:block;text-decoration:none;color:var(--ink-soft);
+  font-size:.98rem;padding:.32rem 0;border-left:2px solid transparent;padding-left:.9rem;
+  transition:color .2s,border-color .2s;position:relative;
+}
+.rail a::before{content:counter(sec,decimal-leading-zero);font-family:"Marcellus SC",serif;font-size:.62rem;color:var(--or);position:absolute;left:-.1rem;top:.62rem;opacity:0}
+.rail a:hover{color:var(--ink)}
+.rail a.active{color:var(--gules);border-color:var(--gules)}
+@media (max-width:860px){.rail a{border-left:none;border-bottom:2px solid transparent;padding:.3rem .5rem}.rail a.active{border-color:var(--gules)}}
+
+/* ---------- main ---------- */
+main{padding:2rem 0 4rem;min-width:0}
+.section{padding:2.4rem 0;border-bottom:1px solid var(--rule-soft);scroll-margin-top:70px}
+.section:last-child{border-bottom:none}
+.section > .eyebrow{margin-bottom:.3rem}
+.section > h2{font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.4rem}
+.section .lede{font-size:1.12rem;color:var(--ink-soft);font-style:italic;max-width:60ch;margin:0 0 1.6rem}
+
+.article{margin:1.6rem 0}
+.article h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.28rem;margin:0 0 .35rem;color:var(--ink)}
+.article p{margin:.55rem 0}
+.article ul{margin:.5rem 0 .5rem 1.1rem;padding:0}
+.article li{margin:.28rem 0}
+.src-tag{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;
+  font-family:"Marcellus SC",serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.src-tag b{color:var(--azure);font-weight:400}
+
+/* callout: état des connaissances */
+.note{
+  border-left:3px solid var(--azure);
+  background:linear-gradient(90deg,rgba(32,64,110,.06),transparent);
+  padding:.9rem 1.1rem;margin:1.3rem 0;border-radius:0 3px 3px 0;
+}
+.note .k{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azure);display:block;margin-bottom:.2rem}
+.note p{margin:.2rem 0;font-size:.98rem}
+
+/* ---------- figure galleries ---------- */
+.gal{display:grid;gap:1rem;margin:1.4rem 0}
+.gal.tinct{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.gal.figs{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.fig{
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;
+  padding:.9rem;text-align:center;box-shadow:var(--shadow);
+}
+.fig svg{display:block;margin:0 auto}
+.tinct .fig{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;align-items:center;text-align:left;padding:.7rem .8rem}
+.tinct .fig .meta{grid-column:1/-1;border-top:1px solid var(--rule-soft);padding-top:.5rem;margin-top:.2rem}
+.fig .nom{font-family:"Marcellus",serif;font-size:1.02rem;color:var(--ink)}
+.fig .en{font-size:.82rem;color:var(--ink-soft);font-style:italic}
+.fig .cat{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.figs .fig .nom{font-size:.9rem;margin-top:.4rem}
+.figs .fig .en{font-size:.74rem}
+.swlabel{font-family:"Marcellus SC",serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:.25rem}
+
+/* ---------- points de l'écu diagram ---------- */
+.ecu-diagram{background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.2rem;box-shadow:var(--shadow);text-align:center;margin:1.4rem 0}
+
+/* ---------- glossary ---------- */
+.glossary{margin-top:1rem}
+.gloss-count{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:.2rem 0 1rem}
+.gloss-item{padding:.7rem 0;border-bottom:1px solid var(--rule-soft)}
+.gloss-item dt{font-family:"EB Garamond",serif;font-weight:600;font-size:1.08rem;color:var(--gules)}
+.gloss-item dd{margin:.15rem 0 0;color:var(--ink);font-size:1rem}
+.gloss-empty{color:var(--ink-soft);font-style:italic;padding:1rem 0}
+mark{background:rgba(169,129,46,.28);color:inherit;padding:0 .1em;border-radius:2px}
+
+/* ---------- bibliography ---------- */
+.biblio{display:grid;gap:1rem;margin-top:1rem}
+.book{
+  display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.1rem 1.2rem;box-shadow:var(--shadow);
+}
+.book .spine{width:34px;height:52px;border-radius:2px 3px 3px 2px;background:linear-gradient(90deg,var(--gules),#6d1512);box-shadow:inset -3px 0 5px rgba(0,0,0,.25);position:relative}
+.book .spine::after{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--or);opacity:.7}
+.book h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.12rem;font-style:italic}
+.book .by{color:var(--ink-soft)}
+.book .facts{font-size:.9rem;color:var(--ink-soft);margin-top:.25rem}
+.book .kind{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-top:.35rem}
+.book .note{margin:.5rem 0 0;border-left-color:var(--or);background:linear-gradient(90deg,rgba(169,129,46,.08),transparent)}
+.book .note p{font-size:.92rem}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding:2.4rem clamp(1rem,4vw,2rem);text-align:center;color:var(--ink-soft)}
+footer .cross{width:16px;color:var(--gules);margin:0 auto .6rem;display:block}
+footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
+footer .fine{font-size:.78rem;opacity:.85}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <span class="brand"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</span>
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
+    <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off">
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="frame">
+    <svg class="hero-shield" viewBox="0 0 200 240" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
+    <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
+    <h1 class="display">L'Art du Blason</h1>
+    <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
+    <div class="counts" id="counts"></div>
+  </div>
+</section>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+  <nav class="rail" aria-label="Sommaire">
+    <p class="eyebrow">Sommaire</p>
+    <ol id="rail-list"></ol>
+  </nav>
+  <main id="main"></main>
+</div>
+
+<footer>
+  <svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>
+  <p><b>Méthode.</b> Toutes les figures sont dessinées à neuf en SVG. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
+  <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
+</footer>
+
+<script>
+/* ============================================================================
+   DATA — tout le contenu du site. Voir le commentaire en tête de fichier.
+   ============================================================================ */
+
+const DATA = {
+
+  /* -------- SOURCES / bibliothèque -------- */
+  sources: {
+    joubert1977: {
+      auteur:"Pierre Joubert",
+      titre:"Les Armes, initiation à l'Héraldique",
+      editeur:"Éditions Ouest-France, Rennes",
+      annee:"1977",
+      isbn:"2-85882-022-8",
+      type:"Ouvrage d'initiation",
+      note:"Album illustré grand public (92 p.), réédité sous les titres « Nouveau Guide de l'héraldique » (1984) puis « L'Héraldique » (1992). Excellent pour le vocabulaire et les figures ; sur les origines, sa lecture « héraldique née des croisades » est aujourd'hui nuancée par la recherche universitaire."
+    },
+    pastoureau: {
+      auteur:"Michel Pastoureau",
+      titre:"Traité d'héraldique",
+      editeur:"Picard, Paris",
+      annee:"1979 (rééd. augmentées)",
+      isbn:"—",
+      type:"Référence savante",
+      note:"Ouvrage de référence de l'historien qui a renouvelé la discipline. Cité ici pour l'état des connaissances sur la datation et l'origine du système (XIIe siècle, tournoi et sceaux), là où l'ouvrage d'initiation reste allusif."
+    }
+  },
+
+  /* -------- ÉMAUX (dessinés automatiquement) --------
+     hatch : 'dots'|'none'|'vert'|'horiz'|'cross'|'bend'|'bendsin'|'ermine'|'vair' */
+  tinctures:[
+    {nom:"Or",     type:"Métal",   color:"#c9a63a", hatch:"dots",  en:"or (gold)",      note:"Le jaune héraldique."},
+    {nom:"Argent", type:"Métal",   color:"#f4efe2", hatch:"none",  en:"argent (silver)",note:"Le blanc héraldique ; champ laissé nu en gravure."},
+    {nom:"Gueules",type:"Couleur", color:"#8e1b18", hatch:"vert",  en:"gules (red)",    note:"Rouge. Hachures verticales."},
+    {nom:"Azur",   type:"Couleur", color:"#20406e", hatch:"horiz", en:"azure (blue)",   note:"Bleu. Hachures horizontales."},
+    {nom:"Sable",  type:"Couleur", color:"#211c17", hatch:"cross", en:"sable (black)",  note:"Noir. Hachures croisées."},
+    {nom:"Sinople",type:"Couleur", color:"#2f5a34", hatch:"bend",  en:"vert (green)",   note:"Vert. Diagonales du chef dextre à la pointe senestre."},
+    {nom:"Pourpre",type:"Couleur", color:"#5c3566", hatch:"bendsin",en:"purpure (purple)",note:"Pourpre. Diagonales du chef senestre à la pointe dextre."},
+    {nom:"Hermine",type:"Fourrure",color:"#f4efe2", hatch:"ermine",en:"ermine",         note:"Fond blanc semé de mouchetures noires."},
+    {nom:"Vair",   type:"Fourrure",color:"#20406e", hatch:"vair",  en:"vair",           note:"Clochettes alternées d'argent et d'azur."}
+  ],
+
+  /* -------- PARTITIONS (dessinées automatiquement) -------- */
+  partitions:[
+    {nom:"Parti",   en:"per pale",        kind:"parti",   t:["Azur","Or"]},
+    {nom:"Coupé",   en:"per fess",        kind:"coupe",   t:["Or","Gueules"]},
+    {nom:"Tranché", en:"per bend",        kind:"tranche", t:["Argent","Sable"]},
+    {nom:"Taillé",  en:"per bend sinister",kind:"taille", t:["Gueules","Argent"]},
+    {nom:"Écartelé",en:"quarterly",       kind:"ecartele",t:["Gueules","Or"]},
+    {nom:"Écartelé en sautoir",en:"per saltire",kind:"sautoirpart",t:["Azur","Argent"]}
+  ],
+
+  /* -------- PIÈCES HONORABLES (dessinées automatiquement) -------- */
+  pieces:[
+    {nom:"Chef",    en:"chief",        kind:"chef",    champ:"Azur",  piece:"Or"},
+    {nom:"Fasce",   en:"fess",         kind:"fasce",   champ:"Gueules",piece:"Argent"},
+    {nom:"Pal",     en:"pale",         kind:"pal",     champ:"Or",    piece:"Gueules"},
+    {nom:"Bande",   en:"bend",         kind:"bande",   champ:"Azur",  piece:"Or"},
+    {nom:"Barre",   en:"bend sinister",kind:"barre",   champ:"Argent",piece:"Sable"},
+    {nom:"Croix",   en:"cross",        kind:"croix",   champ:"Argent",piece:"Gueules"},
+    {nom:"Sautoir", en:"saltire",      kind:"sautoir", champ:"Gueules",piece:"Or"},
+    {nom:"Chevron", en:"chevron",      kind:"chevron", champ:"Or",    piece:"Azur"},
+    {nom:"Bordure", en:"bordure",      kind:"bordure", champ:"Argent",piece:"Gueules"},
+    {nom:"Orle",    en:"orle",         kind:"orle",    champ:"Or",    piece:"Azur"}
+  ],
+
+  /* -------- SECTIONS RÉDIGÉES -------- */
+  sections:[
+    {
+      id:"origines", label:"Origines", eyebrow:"Chapitre premier",
+      title:"D'où vient le blason",
+      lede:"Une invention médiévale née d'un besoin très concret : reconnaître un homme cuirassé de la tête aux pieds.",
+      figure:null,
+      articles:[
+        {titre:"Un signe pour reconnaître le chevalier", sources:["joubert1977","pastoureau"], html:`
+          <p>L'héraldique est le système de figures colorées, portées d'abord sur l'écu, qui identifient une personne, une famille ou une communauté et se transmettent selon des règles fixes. Elle apparaît en Europe occidentale au <b>XII<sup>e</sup> siècle</b>, dans la zone comprise entre la Loire et le Rhin ainsi qu'en Angleterre.</p>
+          <p>La cause matérielle la mieux établie est l'évolution de l'armement : le heaume se ferme et couvre le visage, la cotte de mailles uniformise les silhouettes. Sur le champ de bataille comme au tournoi, un chevalier n'est plus reconnaissable. On peint alors sur le bouclier un motif stable, répété sur la bannière — l'ancêtre de l'emblème transmis de génération en génération.</p>`},
+        {titre:"Tournoi, sceau, croisade : ce qui a créé, ce qui a diffusé", sources:["pastoureau"], html:`
+          <p>Le tournoi, sport guerrier codifié à partir des années 1120-1130, généralise le besoin d'emblèmes lisibles à distance. Le sceau, apposé sur les actes, fixe et publie ces figures. Ces deux usages — l'un militaire et sportif, l'autre juridique — expliquent mieux la naissance du système que la seule guerre sainte.</p>`},
+        {titre:"Ce que nous savons, ce que nous supposons", sources:[], note:true, html:`
+          <div class="note">
+            <span class="k">État des connaissances</span>
+            <p><b>Établi :</b> l'héraldique se répand largement en Europe entre 1120 et 1160 ; ses premières figures datées apparaissent sur les sceaux et dans les récits de tournoi de cette période.</p>
+            <p><b>Discuté :</b> l'idée courante d'une héraldique « inventée par les croisades » est aujourd'hui nuancée. Les croisades ont surtout <i>diffusé</i> et internationalisé un système déjà en formation en Occident. Les récits qui font remonter tel blason à un croisé précis relèvent le plus souvent de la légende familiale, non de la preuve.</p>
+          </div>`}
+      ]
+    },
+
+    {
+      id:"ecu", label:"L'écu", eyebrow:"Chapitre II",
+      title:"L'écu et ses points",
+      lede:"Le blason se lit toujours du point de vue de celui qui porte l'écu — donc à l'inverse du nôtre.",
+      figure:null,
+      articles:[
+        {titre:"La forme du bouclier", sources:["joubert1977"], html:`
+          <p>Le support des armoiries est l'<b>écu</b>. Sa forme est indifférente au blasonnement : elle suit la mode et le pays — écu triangulaire ancien, écu français « moderne » à pointe, écu en losange traditionnellement réservé aux femmes, targe échancrée, cartouche ovale ecclésiastique. Le dessin peut varier ; les armes, elles, restent les mêmes.</p>`},
+        {titre:"Dextre et senestre : le piège du vocabulaire", sources:["joubert1977"], html:`
+          <p>Toutes les positions se nomment <b>du point de vue du porteur</b>, non du spectateur. La <b>dextre</b> (droite du chevalier) est donc à <i>notre gauche</i> quand nous regardons l'écu ; la <b>senestre</b> à notre droite. Le haut se dit <b>chef</b>, le bas <b>pointe</b>, le centre <b>cœur</b> (le point exact du centre, l'<b>abîme</b>). Confondre les deux côtés est l'erreur la plus commune du débutant.</p>`,
+          diagram:"ecu"}
+      ]
+    },
+
+    {
+      id:"emaux", label:"Les émaux", eyebrow:"Chapitre III",
+      title:"Les émaux : métaux, couleurs, fourrures",
+      lede:"Deux métaux, cinq couleurs, deux fourrures — et une règle qui gouverne presque tout.",
+      figure:"tinctures",
+      articles:[
+        {titre:"Les neuf émaux classiques", sources:["joubert1977"], html:`
+          <p>On nomme <b>émaux</b> les teintes du blason. Ils se répartissent en trois familles : les <b>métaux</b> (or et argent), les <b>couleurs</b> (gueules, azur, sable, sinople, pourpre) et les <b>fourrures</b> (hermine et vair, ainsi que leurs variantes). Chaque case ci-dessous montre l'émail en couleur, puis sa traduction en <i>gravure</i> — le système de hachures qui permet d'indiquer une couleur en noir et blanc.</p>`},
+        {titre:"Le système de hachures", sources:[], html:`
+          <p>Ce code de hachures a été fixé au XVII<sup>e</sup> siècle (on l'attribue au jésuite Silvestre de Petra Sancta, vers 1638) pour graver les armoiries sans perdre l'information de couleur : or pointillé, argent laissé nu, gueules haché de traits verticaux, azur de traits horizontaux, sable de traits croisés, sinople et pourpre par des diagonales opposées. Il est purement conventionnel — c'est une notation, pas une œuvre protégée.</p>`},
+        {titre:"La règle des émaux", sources:["joubert1977"], html:`
+          <p>Règle fondamentale, la <b>règle de contrariété des couleurs</b> interdit de superposer métal sur métal ou couleur sur couleur : on ne pose pas de l'or sur de l'argent, ni du gueules sur de l'azur. Une figure de couleur doit reposer sur un champ de métal, et inversement. Sa raison d'être est la lisibilité à distance — l'objet même du blason.</p>
+          <p>Les exceptions existent et sont si voyantes qu'on les appelle <b>armes à enquerre</b> (« armes à s'enquérir ») : le manquement délibéré à la règle signale des armes particulières. L'exemple classique est le royaume de Jérusalem, <i>d'argent à la croix potencée d'or</i> — métal sur métal assumé.</p>`}
+      ]
+    },
+
+    {
+      id:"partitions", label:"Partitions", eyebrow:"Chapitre IV",
+      title:"Les partitions du champ",
+      lede:"Diviser le champ par des traits simples — la première façon de composer des armes.",
+      figure:"partitions",
+      articles:[
+        {titre:"Diviser plutôt que charger", sources:["joubert1977"], html:`
+          <p>Avant de poser des figures, on peut <b>partir</b> le champ, c'est-à-dire le diviser par un ou plusieurs traits droits. Les partitions simples tiennent leur nom de la ligne qui les crée : le <b>parti</b> (trait vertical), le <b>coupé</b> (horizontal), le <b>tranché</b> et le <b>taillé</b> (les deux diagonales). Les combiner donne l'<b>écartelé</b> (quatre quartiers) ou l'écartelé en sautoir.</p>
+          <p>La règle des émaux s'assouplit sur une ligne de partition : deux couleurs peuvent s'y toucher, car elles se <i>juxtaposent</i> au lieu de se <i>superposer</i>.</p>`}
+      ]
+    },
+
+    {
+      id:"pieces", label:"Pièces", eyebrow:"Chapitre V",
+      title:"Les pièces honorables",
+      lede:"Les figures géométriques nées des renforts du bouclier — le squelette du blason.",
+      figure:"pieces",
+      articles:[
+        {titre:"Des renforts devenus emblèmes", sources:["joubert1977"], html:`
+          <p>Les <b>pièces honorables</b> sont les grandes figures géométriques qui traversent l'écu. Beaucoup dériveraient des <i>renforts</i> peints ou métalliques du bouclier primitif — la <b>fasce</b> (bande horizontale), le <b>pal</b> (vertical), le <b>chevron</b>, la <b>bande</b> et la <b>barre</b> (les diagonales), le <b>chef</b> (tiers supérieur), la <b>croix</b>, le <b>sautoir</b>, la <b>bordure</b> et l'<b>orle</b>.</p>
+          <p>Réduites en largeur, elles donnent des <b>rebattements</b> : la fasce amincie devient <i>burelle</i>, le pal <i>vergette</i>, la bande <i>cotice</i>. Multipliées, elles rythment le champ.</p>`}
+      ]
+    },
+
+    {
+      id:"meubles", label:"Meubles", eyebrow:"Chapitre VI",
+      title:"Les meubles",
+      lede:"Tout ce qui peuple le champ : bêtes, plantes, objets, êtres imaginaires.",
+      figure:null,
+      articles:[
+        {titre:"Naturels, artificiels, chimériques", sources:["joubert1977"], html:`
+          <p>On appelle <b>meubles</b> toutes les figures posées sur le champ en dehors des pièces honorables. On les classe volontiers en meubles <b>naturels</b> (lion, aigle, poisson, rose, chêne, astres), <b>artificiels</b> (tour, épée, clé, roue) et <b>chimériques</b> (dragon, griffon, licorne, aigle bicéphale).</p>`},
+        {titre:"Lion ou léopard : une affaire de posture", sources:["joubert1977"], html:`
+          <p>Le félin le plus fréquent est décrit par son attitude, non par son espèce. Dressé de profil sur une patte, il est <b>lion rampant</b>. Marchant, la tête tournée vers le spectateur, le même animal se blasonne <b>léopard</b>. Un lion « passant » ou « léopardé » n'est donc pas un autre animal : c'est le même, dans une autre pose. La posture prime sur la zoologie — principe général de l'héraldique.</p>`}
+      ]
+    },
+
+    {
+      id:"blasonnement", label:"Blasonnement", eyebrow:"Chapitre VII",
+      title:"Le blasonnement : la langue du blason",
+      lede:"Décrire des armes en mots, dans un ordre strict, pour qu'un autre puisse les redessiner sans les avoir vues.",
+      figure:null,
+      articles:[
+        {titre:"Un ordre de lecture immuable", sources:["joubert1977"], html:`
+          <p><b>Blasonner</b>, c'est décrire des armoiries dans la langue technique du blason. La description suit toujours le même ordre : d'abord le <b>champ</b> (le fond) avec son émail ; puis la <b>pièce ou le meuble principal</b> avec son émail ; enfin les figures secondaires. En français, l'émail se place <i>après</i> le nom de la figure.</p>
+          <ul>
+            <li><i>D'azur à trois fleurs de lis d'or</i> — champ d'azur, chargé de trois fleurs de lis d'or (les armes de France ancienne).</li>
+            <li><i>D'argent à la croix de gueules</i> — champ d'argent, croix rouge (Saint Georges, Gênes, l'Angleterre).</li>
+          </ul>
+          <p>Bien fait, le blasonnement est sans ambiguïté : deux dessinateurs qui ne se sont jamais parlé produiront les mêmes armes à partir de la même phrase. C'est un langage formel avant la lettre.</p>`}
+      ]
+    },
+
+    {
+      id:"ornements", label:"Ornements", eyebrow:"Chapitre VIII",
+      title:"Les ornements extérieurs",
+      lede:"Tout ce qui entoure l'écu et dit le rang du porteur.",
+      figure:null,
+      articles:[
+        {titre:"Autour de l'écu", sources:["joubert1977"], html:`
+          <p>L'écu peut être <b>timbré</b> et accompagné d'ornements qui, eux, ne se transmettent pas comme les armes mais marquent le rang et la fonction :</p>
+          <ul>
+            <li>le <b>heaume</b> (casque), dont la position et le métal indiquaient jadis la qualité ;</li>
+            <li>le <b>cimier</b>, figure posée au sommet du heaume ;</li>
+            <li>les <b>lambrequins</b>, feuillages découpés qui encadrent l'écu, souvenir du voile protégeant la nuque ;</li>
+            <li>la <b>couronne</b> ou le chapeau, indices de titre ou de dignité ecclésiastique ;</li>
+            <li>les <b>tenants</b> et <b>supports</b>, figures qui soutiennent l'écu ;</li>
+            <li>la <b>devise</b> et le <b>cri</b>, mots inscrits sur un listel.</li>
+          </ul>`}
+      ]
+    },
+
+    {
+      id:"brisures", label:"Brisures", eyebrow:"Chapitre IX",
+      title:"Les brisures",
+      lede:"Comment les cadets se distinguent de l'aîné sans changer d'armes.",
+      figure:null,
+      articles:[
+        {titre:"Différencier sans renier", sources:["joubert1977"], html:`
+          <p>Au sein d'une même famille, les armes pleines reviennent au chef de nom et d'armes ; les autres membres les <b>brisent</b>, c'est-à-dire les modifient légèrement pour se distinguer sans rompre l'appartenance. Le procédé le plus connu est le <b>lambel</b>, petite barre à pendants placée en chef, marque du fils aîné vivant du père.</p>
+          <p>Les systèmes de brisure diffèrent selon les pays et les époques : le système anglais des marques de cadence (lambel, croissant, molette…) est plus rigide que la pratique française, plus libre. À manier avec prudence : présenter un usage local comme une règle universelle est une erreur fréquente.</p>`}
+      ]
+    }
+  ],
+
+  /* -------- GLOSSAIRE (recherchable) -------- */
+  glossaire:[
+    {terme:"Abîme",     def:"Le point exact du centre de l'écu ; une figure isolée y siégeant est dite « en abîme ».", sources:["joubert1977"]},
+    {terme:"Argent",    def:"Émail métal représentant le blanc ; laissé nu en gravure.", sources:["joubert1977"]},
+    {terme:"Armes à enquerre", def:"Armoiries enfreignant volontairement la règle des émaux, ce qui invite à « s'enquérir » de leur histoire.", sources:["joubert1977"]},
+    {terme:"Azur",      def:"Émail couleur, le bleu ; hachures horizontales en gravure.", sources:["joubert1977"]},
+    {terme:"Bande",     def:"Pièce honorable en diagonale, du chef dextre à la pointe senestre.", sources:["joubert1977"]},
+    {terme:"Barre",     def:"Pièce honorable en diagonale opposée à la bande, du chef senestre à la pointe dextre.", sources:["joubert1977"]},
+    {terme:"Blasonner", def:"Décrire des armoiries dans la langue technique et l'ordre convenu du blason.", sources:["joubert1977"]},
+    {terme:"Bordure",   def:"Bande suivant le contour intérieur de l'écu.", sources:["joubert1977"]},
+    {terme:"Brisure",   def:"Modification légère d'armes pour distinguer une branche ou un cadet d'une famille.", sources:["joubert1977"]},
+    {terme:"Champ",     def:"Le fond de l'écu, sur lequel se posent pièces et meubles.", sources:["joubert1977"]},
+    {terme:"Chef",      def:"Tiers supérieur de l'écu, ou simplement sa partie haute.", sources:["joubert1977"]},
+    {terme:"Chevron",   def:"Pièce en forme de compas ouvert, pointe vers le chef.", sources:["joubert1977"]},
+    {terme:"Cimier",    def:"Figure placée au sommet du heaume, au-dessus de l'écu.", sources:["joubert1977"]},
+    {terme:"Cœur",      def:"Le centre de l'écu (voir Abîme).", sources:["joubert1977"]},
+    {terme:"Coupé",     def:"Écu divisé horizontalement en deux parties égales.", sources:["joubert1977"]},
+    {terme:"Croix",     def:"Pièce honorable formée par la rencontre du pal et de la fasce.", sources:["joubert1977"]},
+    {terme:"Dextre",    def:"Le côté droit du porteur — donc la gauche du spectateur.", sources:["joubert1977"]},
+    {terme:"Écartelé",  def:"Écu divisé en quatre quartiers par un trait vertical et un horizontal.", sources:["joubert1977"]},
+    {terme:"Écu",       def:"Le bouclier, support des armoiries ; sa forme n'entre pas dans le blasonnement.", sources:["joubert1977"]},
+    {terme:"Émail",     def:"Nom générique des teintes du blason : métaux, couleurs et fourrures.", sources:["joubert1977"]},
+    {terme:"Fasce",     def:"Pièce honorable horizontale occupant le milieu de l'écu.", sources:["joubert1977"]},
+    {terme:"Fourrure",  def:"Émail figuré par un semis conventionnel : hermine, vair et leurs variantes.", sources:["joubert1977"]},
+    {terme:"Gueules",   def:"Émail couleur, le rouge ; hachures verticales en gravure.", sources:["joubert1977"]},
+    {terme:"Hermine",   def:"Fourrure d'argent semée de mouchetures de sable.", sources:["joubert1977"]},
+    {terme:"Lambel",    def:"Brisure en forme de barre à pendants, marque du fils aîné du vivant du père.", sources:["joubert1977"]},
+    {terme:"Lambrequins",def:"Découpures feuillagées encadrant l'écu, dérivées du voile du heaume.", sources:["joubert1977"]},
+    {terme:"Léopard",   def:"Lion représenté passant, la tête de face — question de posture, non d'espèce.", sources:["joubert1977"]},
+    {terme:"Meuble",    def:"Toute figure posée sur le champ hors des pièces honorables.", sources:["joubert1977"]},
+    {terme:"Or",        def:"Émail métal représentant le jaune ; pointillé en gravure.", sources:["joubert1977"]},
+    {terme:"Orle",      def:"Bordure amincie détachée du bord de l'écu.", sources:["joubert1977"]},
+    {terme:"Pal",       def:"Pièce honorable verticale au milieu de l'écu.", sources:["joubert1977"]},
+    {terme:"Parti",     def:"Écu divisé verticalement en deux parties égales.", sources:["joubert1977"]},
+    {terme:"Pièce honorable", def:"Grande figure géométrique traversant l'écu (fasce, pal, chevron, croix…).", sources:["joubert1977"]},
+    {terme:"Pointe",    def:"Partie basse de l'écu.", sources:["joubert1977"]},
+    {terme:"Pourpre",   def:"Émail couleur, le violet ; diagonales du chef senestre à la pointe dextre.", sources:["joubert1977"]},
+    {terme:"Rampant",   def:"Se dit d'un animal dressé de profil sur une patte, en posture d'attaque.", sources:["joubert1977"]},
+    {terme:"Rebattement",def:"Diminutif d'une pièce honorable amincie (burelle, vergette, cotice…).", sources:["joubert1977"]},
+    {terme:"Règle des émaux", def:"Interdiction de poser métal sur métal ou couleur sur couleur, pour la lisibilité.", sources:["joubert1977"]},
+    {terme:"Sable",     def:"Émail couleur, le noir ; hachures croisées en gravure.", sources:["joubert1977"]},
+    {terme:"Sautoir",   def:"Croix posée en X, formée des deux diagonales.", sources:["joubert1977"]},
+    {terme:"Senestre",  def:"Le côté gauche du porteur — donc la droite du spectateur.", sources:["joubert1977"]},
+    {terme:"Sinople",   def:"Émail couleur, le vert ; diagonales du chef dextre à la pointe senestre.", sources:["joubert1977"]},
+    {terme:"Supports",  def:"Figures (animaux, êtres) soutenant l'écu de part et d'autre ; « tenants » s'ils sont humains.", sources:["joubert1977"]},
+    {terme:"Taillé",    def:"Écu divisé par la diagonale du chef senestre à la pointe dextre.", sources:["joubert1977"]},
+    {terme:"Timbre",    def:"Ce qui surmonte l'écu (heaume, couronne, mitre…) marquant le rang.", sources:["joubert1977"]},
+    {terme:"Tranché",   def:"Écu divisé par la diagonale du chef dextre à la pointe senestre.", sources:["joubert1977"]},
+    {terme:"Vair",      def:"Fourrure figurée par des clochettes alternées d'argent et d'azur.", sources:["joubert1977"]}
+  ]
+};
+
+/* ============================================================================
+   RENDU HÉRALDIQUE — figures SVG dessinées à partir des données
+   ============================================================================ */
+
+const SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z";
+const VB = "0 0 200 252";
+let uid = 0;
+
+/* trouve la couleur d'un émail par son nom */
+function tinctColor(nom){
+  const t = DATA.tinctures.find(x=>x.nom===nom);
+  return t ? t.color : "#888";
+}
+
+/* patrons de hachure / fourrure ; renvoie {def, fill} pour un id donné */
+function hatchDefs(id){
+  return `
+  <pattern id="h-dots-${id}" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1" fill="#1a1712"/></pattern>
+  <pattern id="h-vert-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-horiz-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-cross-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bend-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 L8,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bendsin-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8,0 L0,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-ermine-${id}" width="26" height="26" patternUnits="userSpaceOnUse">
+    <rect width="26" height="26" fill="#f4efe2"/>
+    ${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
+  </pattern>
+  <pattern id="h-vair-${id}" width="28" height="26" patternUnits="userSpaceOnUse">
+    <rect width="28" height="26" fill="#f4efe2"/>
+    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
+    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
+    <path d="M-3,13 L11,13 L8,26 L0,26 Z M0,26" fill="#20406e"/>
+    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
+    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
+  </pattern>`;
+}
+function ermineSpot(cx,cy){
+  return `<g transform="translate(${cx},${cy})" fill="#1a1712">
+    <path d="M0,-4 C-1.6,-1.6 -1.6,-1.6 -2.4,0.4 L2.4,0.4 C1.6,-1.6 1.6,-1.6 0,-4 Z"/>
+    <circle cx="-2.4" cy="1.4" r=".7"/><circle cx="0" cy="1.6" r=".7"/><circle cx="2.4" cy="1.4" r=".7"/>
+  </g>`;
+}
+/* renvoie la valeur de remplissage pour un émail, en mode 'couleur' ou 'gravure' */
+function tinctFill(nom, mode, id){
+  const t = DATA.tinctures.find(x=>x.nom===nom) || {color:"#888",hatch:"none"};
+  if(mode==="couleur"){
+    if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
+    if(t.hatch==="vair") return `url(#h-vair-${id})`;
+    return t.color;
+  }
+  // gravure : fond parchemin clair + hachure noire
+  const base = "#f4efe2";
+  const map = {dots:"h-dots",vert:"h-vert",horiz:"h-horiz",cross:"h-cross",bend:"h-bend",bendsin:"h-bendsin"};
+  if(t.hatch==="none") return base;
+  if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
+  if(t.hatch==="vair") return `url(#h-vair-${id})`;
+  return `url(#${map[t.hatch]}-${id})`;
+}
+
+/* un écu simple rempli d'un émail (mode couleur ou gravure) */
+function shieldSwatch(nom, mode, w=90){
+  const id = ++uid;
+  return `<svg viewBox="${VB}" width="${w}" role="img" aria-label="${nom} — ${mode}">
+    <defs>${hatchDefs(id)}</defs>
+    ${mode==="gravure"?`<path d="${SHIELD_D}" fill="#f4efe2"/>`:""}
+    <path d="${SHIELD_D}" fill="${tinctFill(nom,mode,id)}"/>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.2"/>
+  </svg>`;
+}
+
+/* écu partitionné */
+function shieldPartition(kind, tinc){
+  const id = ++uid;
+  const cid = "clip"+id;
+  const [a,b] = [tinctColor(tinc[0]), tinctColor(tinc[1])];
+  let inner = "";
+  switch(kind){
+    case "parti": inner = `<rect x="0" y="0" width="100" height="252" fill="${a}"/><rect x="100" y="0" width="100" height="252" fill="${b}"/>`; break;
+    case "coupe": inner = `<rect x="0" y="0" width="200" height="126" fill="${a}"/><rect x="0" y="126" width="200" height="126" fill="${b}"/>`; break;
+    case "tranche": inner = `<rect width="200" height="252" fill="${b}"/><path d="M0,0 L200,0 L0,252 Z" fill="${a}"/>`; break;
+    case "taille": inner = `<rect width="200" height="252" fill="${b}"/><path d="M200,0 L200,252 L0,252 Z" fill="${a}"/>`; break;
+    case "ecartele": inner = `<rect x="0" y="0" width="100" height="126" fill="${a}"/><rect x="100" y="0" width="100" height="126" fill="${b}"/><rect x="0" y="126" width="100" height="126" fill="${b}"/><rect x="100" y="126" width="100" height="126" fill="${a}"/>`; break;
+    case "sautoirpart": inner = `<rect width="200" height="252" fill="${b}"/><path d="M100,126 L0,0 L200,0 Z" fill="${a}"/><path d="M100,126 L0,252 L200,252 Z" fill="${a}"/>`; break;
+  }
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* écu chargé d'une pièce honorable */
+function shieldPiece(kind, champ, piece){
+  const id = ++uid;
+  const cid = "clipp"+id;
+  const cf = tinctColor(champ), pf = tinctColor(piece);
+  let inner = "";
+  const sw = {stroke:pf};
+  switch(kind){
+    case "chef": inner = `<rect x="0" y="16" width="200" height="62" fill="${pf}"/>`; break;
+    case "fasce": inner = `<rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
+    case "pal": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/>`; break;
+    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "croix": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/><rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
+    case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
+    case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
+    case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
+    case "orle": inner = `<path d="M40,38 L160,38 L160,116 C160,158 132,188 100,206 C68,188 40,158 40,116 Z" fill="none" stroke="${pf}" stroke-width="12"/>`; break;
+  }
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="${cf}"/>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* écu du hero : parti d'azur et de gueules à la fleur de lis d'or.
+   Renvoie le contenu INTERNE du <svg> (le <svg> existe déjà dans le HTML). */
+function heroShieldInner(){
+  const id = ++uid; const cid="clhero"+id;
+  const orC = tinctColor('Or');
+  return `
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <g clip-path="url(#${cid})">
+      <rect x="0" y="0" width="100" height="252" fill="${tinctColor('Azur')}"/>
+      <rect x="100" y="0" width="100" height="252" fill="${tinctColor('Gueules')}"/>
+    </g>
+    <g fill="${orC}" stroke="#7a5c1e" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
+      <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
+      <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
+      <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
+      <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+    </g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="3"/>`;
+}
+
+/* diagramme des points de l'écu */
+function ecuPoints(){
+  const id=++uid, cid="clpts"+id;
+  const gx=[59,100,141], gy=[46,126,200];
+  const labels=[
+    ["Canton\ndextre","Chef","Canton\nsenestre"],
+    ["Flanc\ndextre","Cœur","Flanc\nsenestre"],
+    ["Canton\ndextre","Pointe","Canton\nsenestre"]
+  ];
+  let pts="";
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+    const t=labels[r][c].split("\n");
+    pts+=`<circle cx="${gx[c]}" cy="${gy[r]}" r="3.4" fill="#8e1b18"/>`+
+      t.map((ln,i)=>`<text x="${gx[c]}" y="${gy[r]+16+i*11}" text-anchor="middle" font-family="EB Garamond,serif" font-size="10" fill="#5c5446">${ln}</text>`).join("");
+  }
+  return `<svg viewBox="0 0 200 300" width="230" role="img" aria-label="Les points de l'écu">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="#f3eee0"/>
+    <g clip-path="url(#${cid})" stroke="#d8cfb4" stroke-width="1">
+      <line x1="0" y1="86" x2="200" y2="86"/><line x1="0" y1="166" x2="200" y2="166"/>
+      <line x1="72" y1="0" x2="72" y2="252"/><line x1="128" y1="0" x2="128" y2="252"/>
+    </g>
+    ${pts}
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    <text x="30" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">← Dextre</text>
+    <text x="170" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">Senestre →</text>
+    <text x="100" y="280" text-anchor="middle" font-family="EB Garamond,serif" font-style="italic" font-size="10.5" fill="#5c5446">côtés vus du porteur, non du spectateur</text>
+  </svg>`;
+}
+
+/* ============================================================================
+   CONSTRUCTION DE LA PAGE
+   ============================================================================ */
+
+function srcTag(ids){
+  if(!ids || !ids.length) return "";
+  const names = ids.map(i=>{
+    const s=DATA.sources[i]; if(!s) return i;
+    return `${s.auteur.split(" ").slice(-1)[0]} (${s.annee})`;
+  });
+  return `<div class="src-tag">Source : <b>${names.join(" · ")}</b></div>`;
+}
+
+function figureGallery(kind){
+  if(kind==="tinctures"){
+    const cards = DATA.tinctures.map(t=>`
+      <div class="fig">
+        <div><div>${shieldSwatch(t.nom,"couleur",84)}</div><div class="swlabel">Couleur</div></div>
+        <div><div>${shieldSwatch(t.nom,"gravure",84)}</div><div class="swlabel">Gravure</div></div>
+        <div class="meta"><div class="cat">${t.type}</div><div class="nom">${t.nom}</div><div class="en">${t.en}</div></div>
+      </div>`).join("");
+    return `<div class="gal tinct">${cards}</div>`;
+  }
+  if(kind==="partitions"){
+    const cards = DATA.partitions.map(p=>`
+      <div class="fig">${shieldPartition(p.kind,p.t)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="pieces"){
+    const cards = DATA.pieces.map(p=>`
+      <div class="fig">${shieldPiece(p.kind,p.champ,p.piece)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  return "";
+}
+
+function buildMain(){
+  const main = document.getElementById("main");
+  let html = "";
+
+  DATA.sections.forEach(sec=>{
+    let arts = "";
+    sec.articles.forEach(a=>{
+      if(a.note){ arts += `<div class="article reveal">${a.html}</div>`; return; }
+      let extra = "";
+      if(a.diagram==="ecu") extra = `<div class="ecu-diagram">${ecuPoints()}</div>`;
+      arts += `<div class="article reveal"><h3>${a.titre}</h3>${a.html}${extra}${srcTag(a.sources)}</div>`;
+    });
+    let gallery = sec.figure ? `<div class="reveal">${figureGallery(sec.figure)}</div>` : "";
+    // place la galerie juste après le premier article
+    html += `<section class="section" id="${sec.id}">
+      <p class="eyebrow">${sec.eyebrow}</p>
+      <h2 class="display">${sec.title}</h2>
+      <p class="lede">${sec.lede}</p>
+      ${arts}
+      ${gallery}
+    </section>`;
+  });
+
+  // ---- glossaire ----
+  html += `<section class="section" id="glossaire">
+    <p class="eyebrow">Répertoire</p>
+    <h2 class="display">Glossaire du blason</h2>
+    <p class="lede">Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.</p>
+    <p class="gloss-count" id="gcount"></p>
+    <dl class="glossary" id="glist"></dl>
+  </section>`;
+
+  // ---- bibliothèque ----
+  const books = Object.values(DATA.sources).map(s=>`
+    <div class="book reveal">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>${s.titre}</h3>
+        <div class="by">${s.auteur}</div>
+        <div class="facts">${s.editeur}, ${s.annee}${s.isbn && s.isbn!=="—" ? " · ISBN "+s.isbn : ""}</div>
+        <div class="kind">${s.type}</div>
+        <div class="note"><p>${s.note}</p></div>
+      </div>
+    </div>`).join("");
+  html += `<section class="section" id="bibliotheque">
+    <p class="eyebrow">La bibliothèque</p>
+    <h2 class="display">Les sources</h2>
+    <p class="lede">Chaque ouvrage trouvé enrichit l'encyclopédie et rejoint cette étagère. C'est le cœur du projet : le savoir grandit livre après livre.</p>
+    <div class="biblio">${books}</div>
+  </section>`;
+
+  main.innerHTML = html;
+}
+
+function buildRail(){
+  const list = document.getElementById("rail-list");
+  const items = DATA.sections.map(s=>`<li><a href="#${s.id}">${s.label}</a></li>`).join("")
+    + `<li><a href="#glossaire">Glossaire</a></li>`
+    + `<li><a href="#bibliotheque">Sources</a></li>`;
+  list.innerHTML = items;
+}
+
+function buildCounts(){
+  const el = document.getElementById("counts");
+  const nSrc = Object.keys(DATA.sources).length;
+  const nTerms = DATA.glossaire.length;
+  const nFig = DATA.tinctures.length + DATA.partitions.length + DATA.pieces.length;
+  el.innerHTML = `
+    <div class="c"><span class="n">${nSrc}</span><span class="l">Sources</span></div>
+    <div class="c"><span class="n">${nTerms}</span><span class="l">Termes</span></div>
+    <div class="c"><span class="n">${nFig}</span><span class="l">Figures</span></div>`;
+}
+
+/* ---- glossaire + recherche ---- */
+function renderGlossary(filter=""){
+  const list = document.getElementById("glist");
+  const count = document.getElementById("gcount");
+  const f = filter.trim().toLowerCase();
+  const items = DATA.glossaire
+    .slice()
+    .sort((a,b)=>a.terme.localeCompare(b.terme,"fr"))
+    .filter(g=> !f || g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
+  const hl = (txt)=> f ? txt.replace(new RegExp("("+f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") : txt;
+  if(!items.length){
+    list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${filter} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
+  } else {
+    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}</dd></div>`).join("");
+  }
+  count.textContent = `${items.length} terme${items.length>1?"s":""}${f?" trouvé"+(items.length>1?"s":""):" répertoriés"}`;
+}
+
+/* ---- scroll spy ---- */
+function initSpy(){
+  const links = [...document.querySelectorAll(".rail a")];
+  const map = new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove("active"));
+        const a = map.get(e.target.id); if(a) a.classList.add("active");
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px",threshold:0});
+  document.querySelectorAll(".section").forEach(s=>obs.observe(s));
+}
+
+/* ---- reveal on scroll ---- */
+function initReveal(){
+  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if(reduce){document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in"));return;}
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -8% 0px",threshold:.08});
+  document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
+}
+
+/* ---- boot ---- */
+const heroSvg = document.querySelector(".hero-shield");
+heroSvg.setAttribute("viewBox", VB);
+heroSvg.innerHTML = heroShieldInner();
+
+buildCounts();
+buildRail();
+buildMain();
+renderGlossary();
+initSpy();
+initReveal();
+
+document.getElementById("q").addEventListener("input",(e)=>{
+  renderGlossary(e.target.value);
+  if(e.target.value.trim().length && !matchMedia("(max-width:860px)").matches){
+    // ne saute pas brutalement ; l'utilisateur voit le compteur se mettre à jour
+  }
+});
+</script>
+</body>
+</html>
