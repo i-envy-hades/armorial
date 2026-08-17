@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Blasons réels</title>
+<!--
+  L'ARMORIAL — page « Blasons réels » (États, royaumes, ordres, maisons)
+  Les écus sont de VRAIES images issues de Wikimedia Commons, retenues
+  uniquement sous licence libre (CC BY-SA / CC BY) et créditées un par un
+  (auteur si connu + licence + lien vers la page Commons du fichier, qui fait
+  foi pour l'auteur et la licence exacte). Le blasonnement est de domaine public.
+  CONSÉQUENCE : page NON autonome (images hébergées par Wikimedia, via l'URL
+  stable Special:FilePath).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vellum:#e9e1cd; --vellum-2:#f3eee0; --vellum-3:#efe8d6;
+  --ink:#22201b; --ink-soft:#5c5446;
+  --gules:#8e1b18; --azure:#20406e; --or:#a9812e; --sable:#1a1712;
+  --rule:#cabf9f; --rule-soft:#d8cfb4;
+  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
+  --maxw:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%), var(--vellum);color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gules);text-decoration:none}
+a:hover{text-decoration:underline}
+.mast{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1rem;padding:.7rem clamp(1rem,4vw,2.4rem);background:rgba(233,225,205,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.brand{display:inline-flex;align-items:center;gap:.5rem;font-family:"Marcellus SC",serif;font-size:1.15rem;letter-spacing:1.5px;color:var(--ink)}
+.brand .cross{width:20px;height:20px;color:var(--gules)}
+.mast nav{margin-left:auto;display:flex;gap:1.3rem;font-family:"Marcellus SC",serif;font-size:.8rem;letter-spacing:1px;text-transform:uppercase}
+.mast nav a{color:var(--ink-soft)}
+.mast nav a.here{color:var(--gules)}
+.hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
+.eyebrow{font-family:"Marcellus SC",serif;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;color:var(--or)}
+.hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
+.hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
+.note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
+.note .box{background:var(--vellum-2);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:8px;padding:1rem 1.2rem}
+.note .k{display:block;font-family:"Marcellus SC",serif;letter-spacing:1.5px;text-transform:uppercase;font-size:.72rem;color:var(--or);margin-bottom:.35rem}
+.note p{margin:.3rem 0;font-size:.98rem;color:var(--ink)}
+.tools{max-width:var(--maxw);margin:1.6rem auto .4rem;padding:0 clamp(1rem,4vw,2.4rem);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.tools .lab{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;color:var(--ink-soft);margin-right:.3rem}
+.chip{font:inherit;font-size:.82rem;cursor:pointer;border:1px solid var(--rule);background:var(--vellum-2);color:var(--ink-soft);border-radius:999px;padding:.28rem .8rem}
+.chip:hover{border-color:var(--or)}
+.chip.on{background:var(--gules);border-color:var(--gules);color:#f4efe2}
+.count{margin-left:auto;font-size:.82rem;color:var(--ink-soft)}
+.grid{max-width:var(--maxw);margin:1rem auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+.ar{background:var(--vellum-2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1rem 1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
+.ar .shield{height:190px;display:flex;align-items:center;justify-content:center;margin:.2rem auto .7rem}
+.ar .shield img{max-height:190px;max-width:100%;width:auto;height:auto;display:block;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
+.ar .cat{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.66rem;color:var(--or);margin-bottom:.2rem}
+.ar h3{font-family:"Marcellus",serif;font-weight:400;font-size:1.12rem;margin:.1rem 0 .1rem;color:var(--ink)}
+.ar .bl{font-style:italic;font-size:.93rem;color:var(--ink);margin:.2rem 0 .35rem}
+.ar .po{font-size:.83rem;color:var(--ink-soft);margin:.05rem 0 .5rem}
+.ar .src{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.4rem 0 0;width:100%}
+.ar .src a{color:var(--ink-soft);text-decoration:underline}
+footer{border-top:1px solid var(--rule);background:var(--vellum-3)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="mast">
+  <a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>
+  <nav>
+    <a href="index.html">L'encyclopédie</a>
+    <a href="blasons.html" class="here">Blasons réels</a>
+    <a href="personnages.html">Personnages</a>
+  </nav>
+</header>
+<section class="hero">
+  <p class="eyebrow">Armorial illustré</p>
+  <h1>Blasons réels</h1>
+  <p>Les armoiries d'États, royaumes, ordres et maisons — de vraies images, chacune créditée à son auteur et à sa licence. Choisissez une catégorie pour filtrer.</p>
+</section>
+<div class="note"><div class="box">
+  <span class="k">Méthode &amp; sources</span>
+  <p>Les écus de cette page sont de <b>vraies images</b> tirées de <b>Wikimedia Commons</b>, retenues uniquement sous <b>licence libre</b> (CC BY-SA ou CC BY). Chaque illustration est créditée sous elle : nom du fichier, auteur (quand il est identifié), licence, et lien vers la <b>page Commons du fichier</b> — qui fait foi pour l'auteur et la licence exacte. Le <b>blasonnement</b> reste un fait de domaine public.</p>
+  <p>Conséquence assumée : cette page <b>n'est pas autonome</b> — les images sont chargées depuis Wikimedia. Deux États (Hongrie et Bourgogne anciennes) manquent encore : je n'ai pas pu vérifier proprement leur fichier, je préfère les ajouter plus tard plutôt que d'attribuer à l'aveugle.</p>
+</div></div>
+<div class="tools" id="tools"></div>
+<main class="grid" id="grid"></main>
+<footer><div class="foot">
+  <p><b>L'Armorial</b> — page « Blasons réels ». Illustrations : Wikimedia Commons, sous licence libre, créditées individuellement. Blasonnements : domaine public. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+</div></footer>
+<script>
+const FP = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+const PAGE = "https://commons.wikimedia.org/wiki/File:";
+function src(file){ return FP + encodeURIComponent(file) + "?width=320"; }
+function page(file){ return PAGE + encodeURIComponent(file); }
+
+const ARMS = [
+  { nom:"Royaume de France (moderne)", cat:"Royaumes", porteur:"Rois de France, à partir de la fin du XIVᵉ s.",
+    blason:"D'azur à trois fleurs de lis d'or",
+    file:"Arms of the Kingdom of France (Moderne).svg", auteur:"Sodacan", lic:"CC BY-SA 3.0", licurl:"https://creativecommons.org/licenses/by-sa/3.0" },
+  { nom:"Royaume de France (ancien)", cat:"Royaumes", porteur:"Capétiens, avant la réduction à trois lis",
+    blason:"D'azur semé de fleurs de lis d'or",
+    file:"Arms of the Kingdom of France (Ancien).svg", auteur:"Sodacan", lic:"CC BY-SA 3.0", licurl:"https://creativecommons.org/licenses/by-sa/3.0" },
+  { nom:"Royaume d'Angleterre", cat:"Royaumes", porteur:"Plantagenêts, à partir de la fin du XIIᵉ s.",
+    blason:"De gueules à trois léopards d'or",
+    file:"Royal arms of England.svg", auteur:"Sodacan", lic:"CC BY-SA 4.0", licurl:"https://creativecommons.org/licenses/by-sa/4.0" },
+  { nom:"Couronne d'Aragon", cat:"Royaumes", porteur:"Rois d'Aragon et comtes de Barcelone",
+    blason:"D'or à quatre pals de gueules",
+    file:"Royal arms of Aragon (Crowned).svg", auteur:"", lic:"CC BY-SA 3.0", licurl:"https://creativecommons.org/licenses/by-sa/3.0" },
+  { nom:"Saint-Empire romain germanique", cat:"Empires", porteur:"Aigle bicéphale de l'Empire (après 1433)",
+    blason:"D'or à l'aigle bicéphale de sable",
+    file:"Armoiries modernes Saint-Empire bicéphale.svg", auteur:"Odejea", lic:"CC BY-SA 3.0", licurl:"https://creativecommons.org/licenses/by-sa/3.0" },
+  { nom:"Archiduché d'Autriche", cat:"Provinces", porteur:"Babenberg puis Habsbourg (Bindenschild)",
+    blason:"De gueules à la fasce d'argent",
+    file:"Austria coat of arms simple.svg", auteur:"Cornelis ; conversion SVG David Liuzzo", lic:"CC BY-SA 2.5", licurl:"https://creativecommons.org/licenses/by-sa/2.5" },
+  { nom:"Comté de Foix", cat:"Provinces", porteur:"Comtes de Foix",
+    blason:"D'or à trois pals de gueules",
+    file:"Blason du comté de Foix.svg", auteur:"Peter Potrowl", lic:"CC BY 3.0", licurl:"https://creativecommons.org/licenses/by/3.0" },
+  { nom:"Duché de Bretagne", cat:"Provinces", porteur:"Ducs de Bretagne, à partir de 1316",
+    blason:"D'hermine plain",
+    file:"Armoiries Bretagne - Arms of Brittany.svg", auteur:"", lic:"", licurl:"" },
+  { nom:"Duché de Savoie", cat:"Maisons", porteur:"Maison de Savoie",
+    blason:"De gueules à la croix d'argent",
+    file:"Blason duché fr Savoie.svg", auteur:"", lic:"", licurl:"" },
+  { nom:"Maison de Médicis", cat:"Maisons", porteur:"Médicis de Florence (les « palle »)",
+    blason:"D'or à cinq tourteaux de gueules et, en chef, un tourteau d'azur",
+    file:"Coat of arms of the House of Medici.svg", auteur:"", lic:"", licurl:"" },
+  { nom:"République de Gênes", cat:"Villes & États", porteur:"Croix de saint Georges",
+    blason:"D'argent à la croix de gueules",
+    file:"Coat of arms of Republic of Genoa (early).svg", auteur:"", lic:"CC BY-SA 4.0", licurl:"https://creativecommons.org/licenses/by-sa/4.0" },
+  { nom:"Ordre Teutonique", cat:"Ordres", porteur:"Chevaliers teutoniques",
+    blason:"D'argent à la croix de sable",
+    file:"Insignia Germany Order Teutonic.svg", auteur:"", lic:"CC BY-SA 4.0", licurl:"https://creativecommons.org/licenses/by-sa/4.0" },
+  { nom:"Ordre de Saint-Jean (Hospitaliers)", cat:"Ordres", porteur:"Ordre de l'Hôpital ; croix pleine",
+    blason:"De gueules à la croix d'argent",
+    file:"Coat of arms of the Knights Hospitaller.svg", auteur:"", lic:"CC BY-SA 4.0", licurl:"https://creativecommons.org/licenses/by-sa/4.0" }
+];
+
+function srcLine(a){
+  const fileLink = `<a href="${page(a.file)}" target="_blank" rel="noopener">« ${a.file} »</a>`;
+  const who = a.auteur ? `${a.auteur}, ` : "";
+  const licPart = a.lic
+    ? `<a href="${a.licurl}" target="_blank" rel="noopener">${a.lic}</a>`
+    : `licence libre — voir la page du fichier`;
+  return `Illustration : ${fileLink} — ${who}${licPart}, via Wikimedia Commons. Blasonnement : domaine public.`;
+}
+function card(a){
+  return `<article class="ar" data-cat="${a.cat}">
+    <div class="shield"><img loading="lazy" src="${src(a.file)}" alt="Armoiries — ${a.nom} : ${a.blason}"></div>
+    <div class="cat">${a.cat}</div>
+    <h3>${a.nom}</h3>
+    <p class="bl">${a.blason}</p>
+    <p class="po">${a.porteur}</p>
+    <p class="src">${srcLine(a)}</p>
+  </article>`;
+}
+let CURRENT="Tous";
+function render(){
+  const list = CURRENT==="Tous" ? ARMS : ARMS.filter(a=>a.cat===CURRENT);
+  document.getElementById("grid").innerHTML = list.map(card).join("");
+  const c=document.getElementById("count");
+  if(c) c.textContent = `${list.length} blason${list.length>1?"s":""}`;
+}
+function buildTools(){
+  const cats=["Tous",...[...new Set(ARMS.map(a=>a.cat))]];
+  const tools=document.getElementById("tools");
+  tools.innerHTML = `<span class="lab">Filtrer</span>`+
+    cats.map(c=>`<button class="chip${c==="Tous"?" on":""}" data-c="${c}">${c}</button>`).join("")+
+    `<span class="count" id="count"></span>`;
+  tools.addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    CURRENT=b.dataset.c;
+    [...tools.querySelectorAll(".chip")].forEach(x=>x.classList.toggle("on",x===b));
+    render();
+  });
+}
+buildTools();
+render();
+</script>
+</body>
+</html>
