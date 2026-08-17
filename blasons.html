@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Blasons réels</title>
+<!--
+  L'ARMORIAL — page « Blasons réels » (jumeau autonome de index.html)
+  MÉTHODE : chaque écu est DESSINÉ À NEUF en SVG d'après son blasonnement
+  (fait de domaine public). Aucune image d'ouvrage ou de site n'est reproduite.
+  La source du blasonnement est citée sous chaque écu. La collection grandit
+  par lots : on n'affiche que ce qui est rendu fidèlement.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vellum:#e9e1cd; --vellum-2:#f3eee0; --vellum-3:#efe8d6;
+  --ink:#22201b; --ink-soft:#5c5446;
+  --gules:#8e1b18; --azure:#20406e; --or:#a9812e; --sable:#1a1712;
+  --rule:#cabf9f; --rule-soft:#d8cfb4;
+  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
+  --maxw:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%), var(--vellum);color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gules);text-decoration:none}
+a:hover{text-decoration:underline}
+.mast{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1rem;padding:.7rem clamp(1rem,4vw,2.4rem);background:rgba(233,225,205,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.brand{display:inline-flex;align-items:center;gap:.5rem;font-family:"Marcellus SC",serif;font-size:1.15rem;letter-spacing:1.5px;color:var(--ink)}
+.brand .cross{width:20px;height:20px;color:var(--gules)}
+.mast nav{margin-left:auto;display:flex;gap:1.4rem;font-family:"Marcellus SC",serif;font-size:.82rem;letter-spacing:1px;text-transform:uppercase}
+.mast nav a{color:var(--ink-soft)}
+.mast nav a.here{color:var(--gules)}
+.hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
+.eyebrow{font-family:"Marcellus SC",serif;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;color:var(--or)}
+.hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
+.hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
+.note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
+.note .box{background:var(--vellum-2);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:8px;padding:1rem 1.2rem}
+.note .k{display:block;font-family:"Marcellus SC",serif;letter-spacing:1.5px;text-transform:uppercase;font-size:.72rem;color:var(--or);margin-bottom:.35rem}
+.note p{margin:.3rem 0;font-size:.98rem;color:var(--ink)}
+.tools{max-width:var(--maxw);margin:1.6rem auto .4rem;padding:0 clamp(1rem,4vw,2.4rem);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.tools .lab{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;color:var(--ink-soft);margin-right:.3rem}
+.chip{font:inherit;font-size:.82rem;cursor:pointer;border:1px solid var(--rule);background:var(--vellum-2);color:var(--ink-soft);border-radius:999px;padding:.28rem .8rem}
+.chip:hover{border-color:var(--or)}
+.chip.on{background:var(--gules);border-color:var(--gules);color:#f4efe2}
+.count{margin-left:auto;font-size:.82rem;color:var(--ink-soft)}
+.grid{max-width:var(--maxw);margin:1rem auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:1.4rem}
+.ar{background:var(--vellum-2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1rem 1.2rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
+.ar .shield{width:150px;margin:.2rem auto .7rem}
+.ar .shield svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 12px rgba(26,23,18,.20))}
+.ar h3{font-family:"Marcellus",serif;font-weight:400;font-size:1.12rem;margin:.1rem 0 .25rem;color:var(--ink)}
+.ar .bl{font-style:italic;font-size:.95rem;color:var(--ink);margin:.1rem 0 .4rem}
+.ar .po{font-size:.86rem;color:var(--ink-soft);margin:.05rem 0 .5rem}
+.ar .cat{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.66rem;color:var(--or);margin-bottom:.3rem}
+.ar .src{font-size:.76rem;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.4rem 0 0;width:100%}
+footer{border-top:1px solid var(--rule);background:var(--vellum-3)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="mast">
+  <a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>
+  <nav>
+    <a href="index.html">L'encyclopédie</a>
+    <a href="blasons.html" class="here">Blasons réels</a>
+  </nav>
+</header>
+<section class="hero">
+  <p class="eyebrow">Armorial illustré</p>
+  <h1>Blasons réels</h1>
+  <p>Des armoiries authentiques — royaumes, provinces, ordres et maisons — chacune redessinée à partir de son blasonnement. Choisissez une catégorie pour filtrer.</p>
+</section>
+<div class="note"><div class="box">
+  <span class="k">Méthode &amp; sources</span>
+  <p>Chaque écu est <b>dessiné à neuf</b> d'après son <b>blasonnement</b> — la description héraldique, qui est un fait de domaine public. Aucune image d'ouvrage ou de site n'est reproduite. La source du blasonnement est indiquée sous chaque écu.</p>
+  <p>Cette collection s'agrandit <b>par lots</b>. Les armoiries exigeant des meubles encore à dessiner (lion rampant, tours, clés, navires, coquilles…) rejoindront la page au fur et à mesure : on n'affiche que ce qui est rendu fidèlement, jamais un à-peu-près.</p>
+</div></div>
+<div class="tools" id="tools"></div>
+<main class="grid" id="grid"></main>
+<footer><div class="foot">
+  <p><b>L'Armorial</b> — page « Blasons réels ». Figures originales dessinées à neuf d'après des blasonnements de domaine public ; aucune illustration d'un ouvrage protégé n'est reproduite. Curateur : Arthur Benard. Texte et figures sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+</div></footer>
+<script>
+/* ===== MOTEUR HÉRALDIQUE (embarqué, jumeau de index.html) ===== */
+const SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z";
+const VB = "0 0 200 252";
+let uid = 0;
+const TINCT = {
+  Or:{color:"#c9a63a",hatch:"dots"}, Argent:{color:"#f4efe2",hatch:"none"},
+  Gueules:{color:"#8e1b18",hatch:"vert"}, Azur:{color:"#20406e",hatch:"horiz"},
+  Sable:{color:"#211c17",hatch:"cross"}, Sinople:{color:"#2f5a34",hatch:"bend"},
+  Pourpre:{color:"#5c3566",hatch:"bendsin"}, Hermine:{color:"#f4efe2",hatch:"ermine"},
+  Vair:{color:"#20406e",hatch:"vair"}
+};
+function tinctColor(n){ return (TINCT[n]||{color:"#888"}).color; }
+function chgStroke(t){
+  const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440",Hermine:"#8a8a8a"};
+  return m[t]||"#1a1712";
+}
+function ermineSpot(cx,cy){
+  return `<g transform="translate(${cx},${cy})" fill="#1a1712">
+    <path d="M0,-4 C-1.6,-1.6 -1.6,-1.6 -2.4,0.4 L2.4,0.4 C1.6,-1.6 1.6,-1.6 0,-4 Z"/>
+    <circle cx="-2.4" cy="1.4" r=".7"/><circle cx="0" cy="1.6" r=".7"/><circle cx="2.4" cy="1.4" r=".7"/>
+  </g>`;
+}
+function hatchDefs(id){
+  return `
+  <pattern id="h-ermine-${id}" width="26" height="26" patternUnits="userSpaceOnUse">
+    <rect width="26" height="26" fill="#f4efe2"/>${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
+  </pattern>
+  <pattern id="h-vair-${id}" width="28" height="26" patternUnits="userSpaceOnUse">
+    <rect width="28" height="26" fill="#f4efe2"/>
+    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
+    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
+    <path d="M-3,13 L11,13 L8,26 L0,26 Z" fill="#20406e"/>
+    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
+    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
+  </pattern>`;
+}
+function fieldFill(nom,id){
+  const t=TINCT[nom]||{color:"#888",hatch:"none"};
+  if(t.hatch==="ermine")return `url(#h-ermine-${id})`;
+  if(t.hatch==="vair")return `url(#h-vair-${id})`;
+  return t.color;
+}
+/* ---- meubles : mêmes figures que l'encyclopédie ---- */
+function chargeInner(kind, fill, stroke, field){
+  switch(kind){
+    case "lion": return `
+      <g transform="translate(8,20)" fill="${fill}" stroke="${stroke}" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M40,96 C40,86 52,82 66,82 L120,82 C130,82 138,78 146,72 C150,68 156,66 160,70 C162,74 158,80 152,84 C148,92 148,104 146,112 C144,120 138,122 134,116 C132,110 132,102 132,96 L70,96 C66,108 64,120 64,130 L58,130 C58,118 58,106 56,96 C48,96 42,100 40,96 Z"/>
+        <path d="M146,72 C154,66 166,64 172,70 C176,74 174,80 168,82 C172,84 172,90 166,92 C160,94 152,90 150,84 C148,80 148,76 146,72 Z"/>
+        <path d="M138,112 C138,132 138,152 140,168 C136,168 132,168 132,164 C132,148 132,128 132,112 Z"/>
+        <path d="M112,108 C112,130 112,150 114,166 C110,166 106,166 106,162 C106,146 106,124 106,108 Z"/>
+        <path d="M74,110 C72,130 72,150 74,166 C70,166 66,166 66,162 C66,146 68,126 68,110 Z"/>
+        <path d="M50,100 C46,116 46,134 48,150 C44,150 40,150 40,146 C40,130 42,112 44,100 Z"/>
+        <path d="M42,98 C30,92 24,78 30,66 C34,74 42,78 50,76 C42,84 44,94 52,96 Z"/>
+      </g>
+      <circle cx="167" cy="90" r="2.1" fill="#3a2a0e"/>`;
+    case "aigle": return `
+      <g transform="translate(8,18)" fill="${fill}" stroke="${stroke}" stroke-width="0.6" stroke-linejoin="round">
+        <path d="M90,38 C83,38 77,44 77,51 C77,57 82,63 90,63 C93,63 96,62 98,60 L88,58 L98,55 C99,53 100,52 100,51 C100,44 96,38 90,38 Z"/>
+        <path d="M90,60 C85,64 83,74 84,88 L96,88 C97,74 95,64 90,60 Z"/>
+        <path d="M84,88 C84,108 87,130 90,146 C93,130 96,108 96,88 Z"/>
+        <path d="M85,144 C79,150 75,160 76,170 C81,164 84,163 88,164 L88,146 Z"/>
+        <path d="M95,144 C101,150 105,160 104,170 C99,164 96,163 92,164 L92,146 Z"/>
+        <path d="M83,146 L97,146 L104,196 L96,187 L90,200 L84,187 L76,196 Z"/>
+        <path d="M96,92 C104,84 114,74 126,64 C138,54 150,48 158,46 C152,54 150,62 152,70 C144,66 138,70 135,78 C142,78 147,82 149,90 C141,86 134,90 132,98 C138,100 142,104 143,111 C135,106 127,110 124,118 C120,108 108,100 96,102 Z"/>
+        <g transform="translate(180,0) scale(-1,1)">
+          <path d="M96,92 C104,84 114,74 126,64 C138,54 150,48 158,46 C152,54 150,62 152,70 C144,66 138,70 135,78 C142,78 147,82 149,90 C141,86 134,90 132,98 C138,100 142,104 143,111 C135,106 127,110 124,118 C120,108 108,100 96,102 Z"/>
+        </g>
+      </g>`;
+    case "fleurdelis": return `
+      <g transform="translate(0,24)" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
+        <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
+        <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
+        <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
+        <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+      </g>`;
+    case "roundel": return `<circle cx="100" cy="116" r="40" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "rose": return `
+      <g transform="translate(100,116)">
+        <g fill="${fill}" stroke="${stroke}" stroke-width="1.2">
+          <path transform="rotate(0)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(72)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(144)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(216)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(288)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+        </g>
+        <circle r="12" fill="#c79a3a" stroke="#7a5c1e" stroke-width="1.2"/>
+      </g>`;
+  }
+  return "";
+}
+function glyphAt(kind,cx,cy,s,fill,stroke,field){
+  return `<g transform="translate(${cx},${cy}) scale(${s})"><g transform="translate(-100,-116)">${chargeInner(kind,fill,stroke,field)}</g></g>`;
+}
+/* ---- champs composés ---- */
+function semeField(of, col, stroke){
+  const cols=[38,100,162], rows=[42,96,150,204]; let s="";
+  rows.forEach((y,ri)=>{ const off = ri%2 ? 31 : 0;
+    cols.forEach(x=>{ s+=glyphAt(of, x+off-15, y, 0.26, col, stroke); });
+  });
+  return s;
+}
+function palyField(n, col){
+  const x0=18, w=164, bands=2*n+1, bw=w/bands; let s="";
+  for(let i=1;i<bands;i+=2){ s+=`<rect x="${(x0+i*bw).toFixed(2)}" y="0" width="${bw.toFixed(2)}" height="252" fill="${col}"/>`; }
+  return s;
+}
+function barryField(n, c1, c2){
+  const h=252/n; let s="";
+  for(let i=0;i<n;i++){ s+=`<rect x="0" y="${(i*h).toFixed(2)}" width="200" height="${h.toFixed(2)}" fill="${i%2?c2:c1}"/>`; }
+  return s;
+}
+function bendyField(n, c1, c2){
+  const bw=64, len=520; let s=`<g transform="rotate(45 100 126)">`;
+  for(let i=0;i<n+2;i++){ s+=`<rect x="-160" y="${(-180+i*bw).toFixed(0)}" width="${len}" height="${bw}" fill="${i%2?c2:c1}"/>`; }
+  s+=`</g>`; return s;
+}
+function ordinary(kind, col){
+  switch(kind){
+    case "chef":    return `<rect x="0" y="16" width="200" height="62" fill="${col}"/>`;
+    case "fasce":   return `<rect x="0" y="104" width="200" height="52" fill="${col}"/>`;
+    case "pal":     return `<rect x="74" y="0" width="52" height="252" fill="${col}"/>`;
+    case "bande":   return `<line x1="6" y1="6" x2="200" y2="252" stroke="${col}" stroke-width="46"/>`;
+    case "barre":   return `<line x1="194" y1="6" x2="0" y2="252" stroke="${col}" stroke-width="46"/>`;
+    case "croix":   return `<rect x="74" y="0" width="52" height="252" fill="${col}"/><rect x="0" y="104" width="200" height="52" fill="${col}"/>`;
+    case "sautoir": return `<line x1="14" y1="16" x2="186" y2="230" stroke="${col}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${col}" stroke-width="40"/>`;
+    case "chevron": return `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${col}" stroke-width="34"/>`;
+  }
+  return "";
+}
+function chargeSet(C){
+  const fill=tinctColor(C.tinct), st=chgStroke(C.tinct), field=C.field?tinctColor(C.field):"#e9e1cd";
+  switch(C.arr){
+    case "1":   return chargeInner(C.kind, fill, st, field);
+    case "2+1": return glyphAt(C.kind,66,74,0.46,fill,st,field)+glyphAt(C.kind,134,74,0.46,fill,st,field)+glyphAt(C.kind,100,152,0.46,fill,st,field);
+    case "3pale":return glyphAt(C.kind,100,60,0.5,fill,st,field)+glyphAt(C.kind,100,118,0.5,fill,st,field)+glyphAt(C.kind,100,176,0.5,fill,st,field);
+    case "medici":{
+      const g=tinctColor("Gueules"), a=tinctColor("Azur");
+      const pts=[[100,58,a],[64,94,g],[136,94,g],[74,148,g],[128,148,g],[100,184,g]];
+      return pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="17" fill="${p[2]}" stroke="#5a1210" stroke-width="1.2"/>`).join("");
+    }
+  }
+  return "";
+}
+function arms(spec){
+  const id=++uid, cid="cl"+id;
+  const F=spec.field||{type:"plain",tinct:"Argent"};
+  const base = fieldFill(F.tinct, id);
+  let clipped="";
+  if(F.type==="seme")  clipped += semeField(F.of||"fleurdelis", tinctColor(F.tinct2||"Or"), chgStroke(F.tinct2||"Or"));
+  else if(F.type==="paly")  clipped += palyField(F.n||3, tinctColor(F.tinct2));
+  else if(F.type==="barry") clipped += barryField(F.n||6, tinctColor(F.tinct), tinctColor(F.tinct2));
+  else if(F.type==="bendy") clipped += bendyField(F.n||6, tinctColor(F.tinct), tinctColor(F.tinct2));
+  if(spec.ordinary) clipped += ordinary(spec.ordinary.kind, tinctColor(spec.ordinary.tinct));
+  if(spec.charges){ const C=Object.assign({field:F.tinct}, spec.charges); clipped += chargeSet(C); }
+  if(F.bordure) clipped += `<path d="${SHIELD_D}" fill="none" stroke="${tinctColor(F.bordure)}" stroke-width="26"/>`;
+  return `<svg viewBox="${VB}" role="img" aria-label="${(spec.blasonAria||'écu').replace(/"/g,'')}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath>${hatchDefs(id)}</defs>
+    <path d="${SHIELD_D}" fill="${base}"/>
+    <g clip-path="url(#${cid})">${clipped}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.6"/>
+  </svg>`;
+}
+/* ===== LES BLASONS — lot 1 (blasonnements de domaine public) ===== */
+const SRC_PD = "Blasonnement d'usage courant (domaine public) ; attesté par Joubert 1977 et Wenzler 2015.";
+const ARMS = [
+  { nom:"Royaume de France (moderne)", cat:"Royaumes", porteur:"Rois de France, à partir de la fin du XIVᵉ s.",
+    blason:"D'azur à trois fleurs de lis d'or", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Azur"}, charges:{kind:"fleurdelis",tinct:"Or",arr:"2+1"} } },
+  { nom:"Royaume de France (ancien)", cat:"Royaumes", porteur:"Capétiens, avant la réduction à trois lis",
+    blason:"D'azur semé de fleurs de lis d'or", source:SRC_PD,
+    spec:{ field:{type:"seme",tinct:"Azur",of:"fleurdelis",tinct2:"Or"} } },
+  { nom:"Royaume d'Angleterre", cat:"Royaumes", porteur:"Plantagenêts, à partir de la fin du XIIᵉ s.",
+    blason:"De gueules à trois léopards d'or, l'un sur l'autre", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Gueules"}, charges:{kind:"lion",tinct:"Or",arr:"3pale"} } },
+  { nom:"Couronne d'Aragon", cat:"Royaumes", porteur:"Rois d'Aragon et comtes de Barcelone",
+    blason:"D'or à quatre pals de gueules", source:SRC_PD,
+    spec:{ field:{type:"paly",tinct:"Or",tinct2:"Gueules",n:4} } },
+  { nom:"Royaume de Hongrie (ancien)", cat:"Royaumes", porteur:"Dynastie des Árpád",
+    blason:"Burelé d'argent et de gueules de huit pièces", source:SRC_PD,
+    spec:{ field:{type:"barry",tinct:"Argent",tinct2:"Gueules",n:8} } },
+  { nom:"Saint-Empire romain", cat:"Empires", porteur:"Aigle impériale monocéphale, avant le XVᵉ s.",
+    blason:"D'or à l'aigle de sable", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Or"}, charges:{kind:"aigle",tinct:"Sable",arr:"1"} } },
+  { nom:"Duché de Bretagne", cat:"Provinces", porteur:"Ducs de Bretagne, à partir de 1316",
+    blason:"D'hermine plain", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Hermine"} } },
+  { nom:"Comté de Foix", cat:"Provinces", porteur:"Comtes de Foix",
+    blason:"D'or à trois pals de gueules", source:SRC_PD,
+    spec:{ field:{type:"paly",tinct:"Or",tinct2:"Gueules",n:3} } },
+  { nom:"Duché d'Autriche", cat:"Provinces", porteur:"Babenberg puis Habsbourg (Bindenschild)",
+    blason:"De gueules à la fasce d'argent", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Gueules"}, ordinary:{kind:"fasce",tinct:"Argent"} } },
+  { nom:"Duché de Bourgogne (ancien)", cat:"Provinces", porteur:"Ducs de la première maison de Bourgogne",
+    blason:"Bandé d'or et d'azur de six pièces, à la bordure de gueules", source:SRC_PD,
+    spec:{ field:{type:"bendy",tinct:"Or",tinct2:"Azur",n:6,bordure:"Gueules"} } },
+  { nom:"Duché de Savoie", cat:"Maisons", porteur:"Maison de Savoie",
+    blason:"De gueules à la croix d'argent", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Gueules"}, ordinary:{kind:"croix",tinct:"Argent"} } },
+  { nom:"Ordre de Saint-Jean (Hospitaliers)", cat:"Ordres", porteur:"Ordre de l'Hôpital ; croix pleine (le huit-pointes est un insigne postérieur)",
+    blason:"De gueules à la croix d'argent", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Gueules"}, ordinary:{kind:"croix",tinct:"Argent"} } },
+  { nom:"République de Gênes", cat:"Villes & États", porteur:"Croix de saint Georges",
+    blason:"D'argent à la croix de gueules", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Argent"}, ordinary:{kind:"croix",tinct:"Gueules"} } },
+  { nom:"Ordre Teutonique", cat:"Ordres", porteur:"Chevaliers teutoniques",
+    blason:"D'argent à la croix de sable", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Argent"}, ordinary:{kind:"croix",tinct:"Sable"} } },
+  { nom:"Maison de Médicis", cat:"Maisons", porteur:"Médicis de Florence (les « palle »)",
+    blason:"D'or à six tourteaux, celui du chef d'azur, les autres de gueules", source:SRC_PD,
+    spec:{ field:{type:"plain",tinct:"Or"}, charges:{arr:"medici"} } }
+];
+/* ===== RENDU ===== */
+function cardHTML(a){
+  return `<article class="ar" data-cat="${a.cat}">
+    <div class="shield">${arms(Object.assign({blasonAria:a.blason}, a.spec))}</div>
+    <div class="cat">${a.cat}</div>
+    <h3>${a.nom}</h3>
+    <p class="bl">${a.blason}</p>
+    <p class="po">${a.porteur}</p>
+    <p class="src">Source : ${a.source}</p>
+  </article>`;
+}
+let CURRENT="Tous";
+function render(){
+  const grid=document.getElementById("grid");
+  const list = CURRENT==="Tous" ? ARMS : ARMS.filter(a=>a.cat===CURRENT);
+  grid.innerHTML = list.map(cardHTML).join("");
+  const c=document.getElementById("count");
+  if(c) c.textContent = `${list.length} blason${list.length>1?"s":""}`;
+}
+function buildTools(){
+  const cats=["Tous",...[...new Set(ARMS.map(a=>a.cat))]];
+  const tools=document.getElementById("tools");
+  tools.innerHTML = `<span class="lab">Filtrer</span>`+
+    cats.map(c=>`<button class="chip${c==="Tous"?" on":""}" data-c="${c}">${c}</button>`).join("")+
+    `<span class="count" id="count"></span>`;
+  tools.addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    CURRENT=b.dataset.c;
+    [...tools.querySelectorAll(".chip")].forEach(x=>x.classList.toggle("on",x===b));
+    render();
+  });
+}
+buildTools();
+render();
+</script>
+</body>
+</html>
