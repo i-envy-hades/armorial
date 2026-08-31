@@ -1,0 +1,1461 @@
+{
+  "sources": {
+    "joubert1977": {
+      "auteur": "Pierre Joubert",
+      "titre": "Les Armes, initiation à l'Héraldique",
+      "editeur": "Éditions Ouest-France, Rennes",
+      "annee": "1977",
+      "isbn": "2-85882-022-8",
+      "type": "Ouvrage d'initiation",
+      "note": "Album illustré grand public (92 p.), réédité sous les titres « Nouveau Guide de l'héraldique » (1984) puis « L'Héraldique » (1992). Excellent pour le vocabulaire et les figures ; sur les origines, sa lecture « héraldique née des croisades » est aujourd'hui nuancée par la recherche universitaire."
+    },
+    "pastoureau": {
+      "auteur": "Michel Pastoureau",
+      "titre": "Traité d'héraldique",
+      "editeur": "Picard, Paris",
+      "annee": "1979 (rééd. augmentées)",
+      "isbn": "—",
+      "type": "Référence savante",
+      "note": "Ouvrage de référence de l'historien qui a renouvelé la discipline. Cité ici pour l'état des connaissances sur la datation et l'origine du système (XIIe siècle, tournoi et sceaux), là où l'ouvrage d'initiation reste allusif."
+    },
+    "wenzler2015": {
+      "auteur": "Claude Wenzler",
+      "titre": "Le guide de l'héraldique — Histoire, analyse et lecture des blasons",
+      "editeur": "Éditions Ouest-France, Rennes",
+      "annee": "2015",
+      "isbn": "978-2-7373-6618-5",
+      "type": "Guide pratique illustré",
+      "note": "Guide pédagogique (224 p., ~650 dessins de blasons en couleurs), édition de 2015 d'un ouvrage d'abord paru en 2002. Sert ici de source de faits complémentaire, recoupée avec Joubert et Pastoureau ; ses illustrations, protégées, ne sont pas reproduites."
+    }
+  },
+  "tinctures": [
+    {
+      "nom": "Or",
+      "type": "Métal",
+      "color": "#c9a63a",
+      "hatch": "dots",
+      "en": "or (gold)",
+      "note": "Le jaune héraldique."
+    },
+    {
+      "nom": "Argent",
+      "type": "Métal",
+      "color": "#f4efe2",
+      "hatch": "none",
+      "en": "argent (silver)",
+      "note": "Le blanc héraldique ; champ laissé nu en gravure."
+    },
+    {
+      "nom": "Gueules",
+      "type": "Couleur",
+      "color": "#8e1b18",
+      "hatch": "vert",
+      "en": "gules (red)",
+      "note": "Rouge. Hachures verticales."
+    },
+    {
+      "nom": "Azur",
+      "type": "Couleur",
+      "color": "#20406e",
+      "hatch": "horiz",
+      "en": "azure (blue)",
+      "note": "Bleu. Hachures horizontales."
+    },
+    {
+      "nom": "Sable",
+      "type": "Couleur",
+      "color": "#211c17",
+      "hatch": "cross",
+      "en": "sable (black)",
+      "note": "Noir. Hachures croisées."
+    },
+    {
+      "nom": "Sinople",
+      "type": "Couleur",
+      "color": "#2f5a34",
+      "hatch": "bend",
+      "en": "vert (green)",
+      "note": "Vert. Diagonales du chef dextre à la pointe senestre."
+    },
+    {
+      "nom": "Pourpre",
+      "type": "Couleur",
+      "color": "#5c3566",
+      "hatch": "bendsin",
+      "en": "purpure (purple)",
+      "note": "Pourpre. Diagonales du chef senestre à la pointe dextre."
+    },
+    {
+      "nom": "Hermine",
+      "type": "Fourrure",
+      "color": "#f4efe2",
+      "hatch": "ermine",
+      "en": "ermine",
+      "note": "Fond blanc semé de mouchetures noires."
+    },
+    {
+      "nom": "Vair",
+      "type": "Fourrure",
+      "color": "#20406e",
+      "hatch": "vair",
+      "en": "vair",
+      "note": "Clochettes alternées d'argent et d'azur."
+    }
+  ],
+  "partitions": [
+    {
+      "nom": "Parti",
+      "en": "per pale",
+      "kind": "parti",
+      "t": [
+        "Azur",
+        "Or"
+      ]
+    },
+    {
+      "nom": "Coupé",
+      "en": "per fess",
+      "kind": "coupe",
+      "t": [
+        "Or",
+        "Gueules"
+      ]
+    },
+    {
+      "nom": "Tranché",
+      "en": "per bend",
+      "kind": "tranche",
+      "t": [
+        "Argent",
+        "Sable"
+      ]
+    },
+    {
+      "nom": "Taillé",
+      "en": "per bend sinister",
+      "kind": "taille",
+      "t": [
+        "Gueules",
+        "Argent"
+      ]
+    },
+    {
+      "nom": "Écartelé",
+      "en": "quarterly",
+      "kind": "ecartele",
+      "t": [
+        "Gueules",
+        "Or"
+      ]
+    },
+    {
+      "nom": "Écartelé en sautoir",
+      "en": "per saltire",
+      "kind": "sautoirpart",
+      "t": [
+        "Azur",
+        "Argent"
+      ]
+    },
+    {
+      "nom": "Coupé ondé",
+      "en": "per fess wavy",
+      "kind": "coupe-onde",
+      "t": [
+        "Argent",
+        "Azur"
+      ]
+    },
+    {
+      "nom": "Coupé crénelé",
+      "en": "per fess embattled",
+      "kind": "coupe-crenele",
+      "t": [
+        "Or",
+        "Gueules"
+      ]
+    },
+    {
+      "nom": "Coupé denché",
+      "en": "per fess indented",
+      "kind": "coupe-denche",
+      "t": [
+        "Argent",
+        "Gueules"
+      ]
+    },
+    {
+      "nom": "Coupé engrêlé",
+      "en": "per fess engrailed",
+      "kind": "coupe-engrele",
+      "t": [
+        "Or",
+        "Azur"
+      ]
+    },
+    {
+      "nom": "Coupé cannelé",
+      "en": "per fess invected",
+      "kind": "coupe-cannele",
+      "t": [
+        "Argent",
+        "Sinople"
+      ]
+    },
+    {
+      "nom": "Tiercé en pal",
+      "en": "tierced per pale",
+      "kind": "tierce-pal",
+      "t": [
+        "Gueules",
+        "Argent",
+        "Azur"
+      ]
+    },
+    {
+      "nom": "Tiercé en fasce",
+      "en": "tierced per fess",
+      "kind": "tierce-fasce",
+      "t": [
+        "Azur",
+        "Argent",
+        "Gueules"
+      ]
+    },
+    {
+      "nom": "Gironné",
+      "en": "gyronny of eight",
+      "kind": "gironne",
+      "t": [
+        "Or",
+        "Azur"
+      ]
+    }
+  ],
+  "regles": {
+    "traits": [
+      {
+        "nom": "Trait de parti",
+        "en": "pale line — vertical",
+        "dir": "v"
+      },
+      {
+        "nom": "Trait de coupé",
+        "en": "fess line — horizontal",
+        "dir": "h"
+      },
+      {
+        "nom": "Trait de tranché",
+        "en": "bend line",
+        "dir": "d1"
+      },
+      {
+        "nom": "Trait de taillé",
+        "en": "bend sinister line",
+        "dir": "d2"
+      }
+    ],
+    "recoupements": [
+      {
+        "nom": "Coupé (1 trait, 2 pièces)",
+        "en": "per fess",
+        "kind": "barry",
+        "n": 2
+      },
+      {
+        "nom": "Tiercé en fasce (2 traits, 3 pièces)",
+        "en": "tierced per fess",
+        "kind": "barry",
+        "n": 3
+      },
+      {
+        "nom": "Burelé (traits multipliés)",
+        "en": "barry of eight",
+        "kind": "barry",
+        "n": 8
+      },
+      {
+        "nom": "Parti (1 trait, 2 pièces)",
+        "en": "per pale",
+        "kind": "paly",
+        "n": 2
+      },
+      {
+        "nom": "Tiercé en pal (2 traits, 3 pièces)",
+        "en": "tierced per pale",
+        "kind": "paly",
+        "n": 3
+      },
+      {
+        "nom": "Palé (traits multipliés)",
+        "en": "paly of six",
+        "kind": "paly",
+        "n": 6
+      },
+      {
+        "nom": "Tranché (1 trait)",
+        "en": "per bend",
+        "kind": "bendy",
+        "n": 2
+      },
+      {
+        "nom": "Bandé (traits multipliés)",
+        "en": "bendy of six",
+        "kind": "bendy",
+        "n": 6
+      },
+      {
+        "nom": "Taillé (1 trait)",
+        "en": "per bend sinister",
+        "kind": "bendysin",
+        "n": 2
+      },
+      {
+        "nom": "Barré (traits multipliés)",
+        "en": "bendy sinister of six",
+        "kind": "bendysin",
+        "n": 6
+      },
+      {
+        "nom": "Écartelé (parti et coupé recoupés)",
+        "en": "quarterly",
+        "kind": "quarterly"
+      },
+      {
+        "nom": "Gironné (les quatre traits recoupés)",
+        "en": "gyronny of eight",
+        "kind": "gyronny"
+      }
+    ],
+    "courbes": [
+      {
+        "nom": "Ondé",
+        "kind": "coupe-onde"
+      },
+      {
+        "nom": "Engrêlé",
+        "kind": "coupe-engrele"
+      },
+      {
+        "nom": "Cannelé (invecté)",
+        "kind": "coupe-cannele"
+      },
+      {
+        "nom": "Denché",
+        "kind": "coupe-denche"
+      },
+      {
+        "nom": "Dancetté",
+        "kind": "coupe-dancette"
+      },
+      {
+        "nom": "Crénelé",
+        "kind": "coupe-crenele"
+      },
+      {
+        "nom": "Nébulé",
+        "kind": "coupe-nebule"
+      },
+      {
+        "nom": "Vivré",
+        "kind": "coupe-vivre"
+      }
+    ],
+    "alesees": [
+      {
+        "nom": "Croix au vif de l'écu",
+        "kind": "croix",
+        "alesee": false
+      },
+      {
+        "nom": "Croix alésée",
+        "kind": "croix",
+        "alesee": true
+      },
+      {
+        "nom": "Sautoir au vif de l'écu",
+        "kind": "sautoir",
+        "alesee": false
+      },
+      {
+        "nom": "Sautoir alésé",
+        "kind": "sautoir",
+        "alesee": true
+      },
+      {
+        "nom": "Bande au vif de l'écu",
+        "kind": "bande",
+        "alesee": false
+      },
+      {
+        "nom": "Bande alésée",
+        "kind": "bande",
+        "alesee": true
+      }
+    ]
+  },
+  "pieces": [
+    {
+      "nom": "Chef",
+      "en": "chief",
+      "kind": "chef",
+      "champ": "Azur",
+      "piece": "Or"
+    },
+    {
+      "nom": "Fasce",
+      "en": "fess",
+      "kind": "fasce",
+      "champ": "Gueules",
+      "piece": "Argent"
+    },
+    {
+      "nom": "Pal",
+      "en": "pale",
+      "kind": "pal",
+      "champ": "Or",
+      "piece": "Gueules"
+    },
+    {
+      "nom": "Bande",
+      "en": "bend",
+      "kind": "bande",
+      "champ": "Azur",
+      "piece": "Or"
+    },
+    {
+      "nom": "Barre",
+      "en": "bend sinister",
+      "kind": "barre",
+      "champ": "Argent",
+      "piece": "Sable"
+    },
+    {
+      "nom": "Croix",
+      "en": "cross",
+      "kind": "croix",
+      "champ": "Argent",
+      "piece": "Gueules"
+    },
+    {
+      "nom": "Sautoir",
+      "en": "saltire",
+      "kind": "sautoir",
+      "champ": "Gueules",
+      "piece": "Or"
+    },
+    {
+      "nom": "Chevron",
+      "en": "chevron",
+      "kind": "chevron",
+      "champ": "Or",
+      "piece": "Azur"
+    },
+    {
+      "nom": "Bordure",
+      "en": "bordure",
+      "kind": "bordure",
+      "champ": "Argent",
+      "piece": "Gueules"
+    },
+    {
+      "nom": "Orle",
+      "en": "orle",
+      "kind": "orle",
+      "champ": "Or",
+      "piece": "Azur"
+    }
+  ],
+  "meubles": [
+    {
+      "kind": "lion",
+      "nom": "Lion passant",
+      "en": "lion passant",
+      "champ": "Gueules",
+      "charge": "Or"
+    },
+    {
+      "kind": "aigle",
+      "nom": "Aigle éployée",
+      "en": "eagle displayed",
+      "champ": "Or",
+      "charge": "Sable"
+    },
+    {
+      "kind": "croix",
+      "nom": "Croix",
+      "en": "cross",
+      "champ": "Azur",
+      "charge": "Argent"
+    },
+    {
+      "kind": "fleurdelis",
+      "nom": "Fleur de lis",
+      "en": "fleur-de-lis",
+      "champ": "Azur",
+      "charge": "Or"
+    },
+    {
+      "kind": "croissant",
+      "nom": "Croissant",
+      "en": "crescent",
+      "champ": "Gueules",
+      "charge": "Argent"
+    },
+    {
+      "kind": "etoile",
+      "nom": "Étoile",
+      "en": "estoile / mullet",
+      "champ": "Azur",
+      "charge": "Or"
+    },
+    {
+      "kind": "molette",
+      "nom": "Molette",
+      "en": "spur rowel",
+      "champ": "Sable",
+      "charge": "Or"
+    },
+    {
+      "kind": "roundel",
+      "nom": "Besant",
+      "en": "bezant (metal)",
+      "champ": "Gueules",
+      "charge": "Or"
+    },
+    {
+      "kind": "roundel",
+      "nom": "Tourteau",
+      "en": "torteau (colour)",
+      "champ": "Or",
+      "charge": "Gueules"
+    },
+    {
+      "kind": "rose",
+      "nom": "Rose",
+      "en": "heraldic rose",
+      "champ": "Or",
+      "charge": "Gueules"
+    }
+  ],
+  "sections": [
+    {
+      "id": "origines",
+      "label": "Origines",
+      "eyebrow": "Chapitre premier",
+      "title": "D'où vient le blason",
+      "lede": "Une invention médiévale née d'un besoin très concret : reconnaître un homme cuirassé de la tête aux pieds.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Un signe pour reconnaître le chevalier",
+          "sources": [
+            "joubert1977",
+            "pastoureau"
+          ],
+          "html": "\n          <p>L'héraldique est le système de figures colorées, portées d'abord sur l'écu, qui identifient une personne, une famille ou une communauté et se transmettent selon des règles fixes. Elle apparaît en Europe occidentale au <b>XII<sup>e</sup> siècle</b>, dans la zone comprise entre la Loire et le Rhin ainsi qu'en Angleterre.</p>\n          <p>La cause matérielle la mieux établie est l'évolution de l'armement : le heaume se ferme et couvre le visage, la cotte de mailles uniformise les silhouettes. Sur le champ de bataille comme au tournoi, un chevalier n'est plus reconnaissable. On peint alors sur le bouclier un motif stable, répété sur la bannière — l'ancêtre de l'emblème transmis de génération en génération.</p>"
+        },
+        {
+          "titre": "Tournoi, sceau, croisade : ce qui a créé, ce qui a diffusé",
+          "sources": [
+            "pastoureau"
+          ],
+          "html": "\n          <p>Le tournoi, sport guerrier codifié à partir des années 1120-1130, généralise le besoin d'emblèmes lisibles à distance. Le sceau, apposé sur les actes, fixe et publie ces figures. Ces deux usages — l'un militaire et sportif, l'autre juridique — expliquent mieux la naissance du système que la seule guerre sainte.</p>"
+        },
+        {
+          "titre": "Ce que nous savons, ce que nous supposons",
+          "sources": [],
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Établi :</b> l'héraldique se répand largement en Europe entre 1120 et 1160 ; ses premières figures datées apparaissent sur les sceaux et dans les récits de tournoi de cette période.</p>\n            <p><b>Discuté :</b> l'idée courante d'une héraldique « inventée par les croisades » est aujourd'hui nuancée. Les croisades ont surtout <i>diffusé</i> et internationalisé un système déjà en formation en Occident. Les récits qui font remonter tel blason à un croisé précis relèvent le plus souvent de la légende familiale, non de la preuve.</p>\n          </div>"
+        }
+      ]
+    },
+    {
+      "id": "ecu",
+      "label": "L'écu",
+      "eyebrow": "Chapitre II",
+      "title": "L'écu et ses points",
+      "lede": "Le blason se lit toujours du point de vue de celui qui porte l'écu — donc à l'inverse du nôtre.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "La forme du bouclier",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Le support des armoiries est l'<b>écu</b>. Sa forme est indifférente au blasonnement : elle suit la mode et le pays — écu triangulaire ancien, écu français « moderne » à pointe, écu en losange traditionnellement réservé aux femmes, targe échancrée, cartouche ovale ecclésiastique. Le dessin peut varier ; les armes, elles, restent les mêmes.</p>"
+        },
+        {
+          "titre": "Dextre et senestre : le piège du vocabulaire",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Toutes les positions se nomment <b>du point de vue du porteur</b>, non du spectateur. La <b>dextre</b> (droite du chevalier) est donc à <i>notre gauche</i> quand nous regardons l'écu ; la <b>senestre</b> à notre droite. Le haut se dit <b>chef</b>, le bas <b>pointe</b>, le centre <b>cœur</b> (le point exact du centre, l'<b>abîme</b>). Confondre les deux côtés est l'erreur la plus commune du débutant.</p>",
+          "diagram": "ecu"
+        }
+      ]
+    },
+    {
+      "id": "emaux",
+      "label": "Les émaux",
+      "eyebrow": "Chapitre III",
+      "title": "Les émaux : métaux, couleurs, fourrures",
+      "lede": "Deux métaux, cinq couleurs, deux fourrures — et une règle qui gouverne presque tout.",
+      "figure": "tinctures",
+      "articles": [
+        {
+          "titre": "Les neuf émaux classiques",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>On nomme <b>émaux</b> les teintes du blason. Ils se répartissent en trois familles : les <b>métaux</b> (or et argent), les <b>couleurs</b> (gueules, azur, sable, sinople, pourpre) et les <b>fourrures</b> (hermine et vair, ainsi que leurs variantes). Chaque case ci-dessous montre l'émail en couleur, puis sa traduction en <i>gravure</i> — le système de hachures qui permet d'indiquer une couleur en noir et blanc.</p>"
+        },
+        {
+          "titre": "Le système de hachures",
+          "sources": [],
+          "html": "\n          <p>Ce code de hachures a été fixé au XVII<sup>e</sup> siècle (on l'attribue au jésuite Silvestre de Petra Sancta, vers 1638) pour graver les armoiries sans perdre l'information de couleur : or pointillé, argent laissé nu, gueules haché de traits verticaux, azur de traits horizontaux, sable de traits croisés, sinople et pourpre par des diagonales opposées. Il est purement conventionnel — c'est une notation, pas une œuvre protégée.</p>"
+        },
+        {
+          "titre": "La règle des émaux",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Règle fondamentale, la <b>règle de contrariété des couleurs</b> interdit de superposer métal sur métal ou couleur sur couleur : on ne pose pas de l'or sur de l'argent, ni du gueules sur de l'azur. Une figure de couleur doit reposer sur un champ de métal, et inversement. Sa raison d'être est la lisibilité à distance — l'objet même du blason.</p>\n          <p>Les exceptions existent et sont si voyantes qu'on les appelle <b>armes à enquerre</b> (« armes à s'enquérir ») : le manquement délibéré à la règle signale des armes particulières. L'exemple classique est le royaume de Jérusalem, <i>d'argent à la croix potencée d'or</i> — métal sur métal assumé.</p>"
+        }
+      ]
+    },
+    {
+      "id": "partitions",
+      "label": "Partitions",
+      "eyebrow": "Chapitre IV",
+      "title": "Les partitions du champ",
+      "lede": "Diviser le champ par des traits — leur direction, leur forme et leur nombre font tout un langage.",
+      "figure": "partitions",
+      "articles": [
+        {
+          "titre": "Diviser plutôt que charger",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Avant de poser des figures, on peut <b>partir</b> le champ, c'est-à-dire le diviser par un ou plusieurs traits. Les partitions simples tiennent leur nom de la ligne qui les crée : le <b>parti</b> (trait vertical), le <b>coupé</b> (horizontal), le <b>tranché</b> et le <b>taillé</b> (les deux diagonales). Les combiner donne l'<b>écartelé</b> (quatre quartiers) ou l'<b>écartelé en sautoir</b>.</p>\n          <p>La règle des émaux s'assouplit sur une ligne de partition : deux couleurs peuvent s'y toucher, car elles se <i>juxtaposent</i> au lieu de se <i>superposer</i>.</p>"
+        },
+        {
+          "titre": "Les traits : la forme de la ligne",
+          "sources": [
+            "joubert1977",
+            "wenzler2015"
+          ],
+          "html": "\n          <p>Une ligne de partition n'est pas forcément droite. Sa <b>forme</b> se blasonne, et chaque profil porte un nom qui multiplie d'autant le vocabulaire — un trait tracé autrement suffit à distinguer deux familles. Les principaux :</p>\n          <p><b>Ondé</b> : en vagues douces. <b>Crénelé</b> : à créneaux carrés, comme le sommet d'une muraille. <b>Denché</b> : en grandes dents triangulaires (le <b>dancetté</b> n'en compte que trois ou quatre, très saillantes). <b>Engrêlé</b> : bordé de petits arcs dont les pointes mordent vers l'extérieur ; <b>cannelé</b> (ou <i>invecté</i>) : les mêmes arcs, mais retournés. <b>Nébulé</b> : en festons arrondis évoquant des nuages. <b>Vivré</b> : en zigzag aigu.</p>\n          <p>Le même adjectif s'applique aux bords des pièces : on dira une <b>fasce ondée</b>, une <b>bande engrêlée</b>, une <b>croix denchée</b>. La ligne, à elle seule, devient un trait d'identité.</p>"
+        },
+        {
+          "titre": "Partitions multiples et recoupements",
+          "sources": [
+            "joubert1977",
+            "wenzler2015"
+          ],
+          "html": "\n          <p>Au-delà des divisions en deux, on partage le champ en davantage de quartiers. Le <b>tiercé</b> le coupe en trois parts égales de trois émaux — <b>en pal</b> (verticalement), <b>en fasce</b> (horizontalement) ou <b>en bande</b> (en diagonale). Le <b>gironné</b> rassemble des triangles (le plus souvent huit, dits <b>girons</b>) qui se rejoignent au cœur de l'écu.</p>\n          <p>Surtout, les partitions se <b>recoupent</b> : un champ déjà coupé peut voir chacune de ses parties <i>repartie</i>, un parti être <i>recoupé</i>. « Coupé et parti » revient à l'<b>écartelé</b> ; « parti, coupé de deux traits » donne six quartiers ; on va ainsi jusqu'aux grands écus <b>écartelés</b> qui juxtaposent les armes de plusieurs maisons alliées. C'est par ce jeu de recoupements que les armoiries composées disent une généalogie.</p>"
+        }
+      ]
+    },
+    {
+      "id": "regles",
+      "label": "Règles du blason",
+      "eyebrow": "Chapitre V",
+      "title": "Les règles de l'héraldique",
+      "lede": "Le blason n'est pas décoratif au hasard : c'est une grammaire de traits, de recoupements et de contours dont chaque variante porte un nom. Joubert en fait le cœur de son initiation — voici ses règles, sur des écus vierges.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Trois règles avant toute chose",
+          "sources": [
+            "joubert1977",
+            "pastoureau"
+          ],
+          "html": "\n          <p>Avant même de partitionner ou de charger un champ, l'héraldique obéit à trois règles simples que Joubert place au fondement de son initiation :</p>\n          <ul>\n            <li><b>La règle de contrariété des émaux</b> (voir chapitre III) : jamais métal sur métal, jamais couleur sur couleur. Elle gouverne aussi bien les meubles que les partitions, à l'exception des lignes de partition elles-mêmes, où deux couleurs peuvent se juxtaposer.</li>\n            <li><b>Le sens du blasonnement</b> (voir chapitre II) : tout se décrit du point de vue du porteur de l'écu — dextre et senestre sont inversés par rapport au spectateur.</li>\n            <li><b>L'ordre de description</b> (voir chapitre VIII) : le champ, puis la pièce ou le meuble principal, puis les figures secondaires — toujours dans cet ordre, jamais improvisé.</li>\n          </ul>\n          <p>Ce chapitre s'attarde sur une quatrième famille de règles, moins souvent résumée en un seul endroit : celle du <b>tracé du trait</b> — la ligne qui divise le champ ou qui borde une pièce — et de ses combinaisons.</p>"
+        },
+        {
+          "titre": "Le trait simple : une seule ligne, quatre directions",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Un <b>trait</b> est la ligne qui partage le champ en deux. Sa direction, et elle seule, donne son nom à la partition : verticale pour le <b>parti</b>, horizontale pour le <b>coupé</b>, diagonale du chef dextre à la pointe senestre pour le <b>tranché</b>, diagonale opposée — du chef senestre à la pointe dextre — pour le <b>taillé</b>. Les quatre écus ci-dessous sont volontairement <b>vierges</b> de tout émail : seule la ligne rouge y figure, pour isoler la règle du trait de la question de la couleur.</p>",
+          "gallery": "traits"
+        },
+        {
+          "titre": "Recouper le trait : de la partition simple au grand écartelé",
+          "sources": [
+            "joubert1977",
+            "wenzler2015"
+          ],
+          "html": "\n          <p>Un trait peut être <b>multiplié</b> ou <b>recoupé</b>. Multiplier un trait horizontal au-delà d'un seul donne le <b>tiercé en fasce</b> (deux traits, trois pièces), puis, poussé à un nombre pair de bandes égales, le <b>burelé</b>. La même logique verticale mène du <b>parti</b> au <b>tiercé en pal</b> puis au <b>palé</b> ; en diagonale, du <b>tranché</b> au <b>bandé</b>, du <b>taillé</b> au <b>barré</b>.</p>\n          <p><b>Recouper</b>, au sens strict, c'est superposer deux traits de directions différentes : coupé <i>et</i> parti ensemble donnent l'<b>écartelé</b> (quatre quartiers) ; les quatre traits — parti, coupé, tranché, taillé — recoupés au même point donnent le <b>gironné</b>, dont les huit triangles (<b>girons</b>) se rejoignent au cœur de l'écu. C'est en recoupant toujours davantage que les grands écus de famille additionnent leurs alliances, quartier après quartier.</p>",
+          "gallery": "recoupements"
+        },
+        {
+          "titre": "La forme du trait : traits courbes et traits dentés",
+          "sources": [
+            "joubert1977",
+            "wenzler2015"
+          ],
+          "html": "\n          <p>Indépendamment de sa direction, un trait peut cesser d'être droit : sa <b>forme</b> se blasonne alors comme un adjectif, et s'applique aussi bien à une ligne de partition qu'au bord d'une pièce (une fasce, une bande, une croix). Joubert en donne la série que voici, ici toutes portées sur un simple <b>coupé</b> pour comparer un même trait dans huit tracés :</p>\n          <ul>\n            <li><b>Ondé</b> — en vagues continues et arrondies.</li>\n            <li><b>Engrêlé</b> — bordé de petites pointes rondes, les creux tournés vers l'extérieur.</li>\n            <li><b>Cannelé</b> (ou <i>invecté</i>) — le même arc que l'engrêlé, mais retourné : les pointes rentrent dans le champ.</li>\n            <li><b>Denché</b> — en dents triangulaires nombreuses et régulières, comme une lame de scie.</li>\n            <li><b>Dancetté</b> — la même dent, mais large et peu nombreuse (trois ou quatre saillies bien marquées).</li>\n            <li><b>Crénelé</b> — à créneaux carrés, comme le couronnement d'une muraille.</li>\n            <li><b>Nébulé</b> — en festons arrondis qui alternent bosse et creux, à la manière des nuages conventionnels du dessin médiéval.</li>\n            <li><b>Vivré</b> — en zigzag aigu, à angles rentrants et saillants.</li>\n          </ul>",
+          "gallery": "courbes"
+        },
+        {
+          "titre": "Alésé : quand la pièce ne touche plus le bord",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Une pièce honorable — croix, sautoir, bande, pal, fasce — se dessine par défaut « au vif de l'écu » : elle court jusqu'au bord et se laisse couper par le contour de l'écu, comme le fait le trait de partition. Quand elle est au contraire raccourcie et flotte au centre du champ, sans toucher les bords, on la dit <b>alésée</b>. La distinction n'est pas cosmétique : elle change le blasonnement (« croix alésée » n'est pas « croix ») et donc l'identité des armes.</p>\n          <p>Deux notions voisines, pour ne pas les confondre : une pièce <b>issante</b> ne montre que sa partie supérieure, comme surgissant d'une ligne ; une pièce dite <b>mouvante</b> d'un point de l'écu (du chef, d'un flanc) y prend naissance sans en occuper toute la longueur. L'alésure, elle, raccourcit la pièce aux <em>deux</em> bouts, en la détachant de tous les bords.</p>",
+          "gallery": "alesees"
+        },
+        {
+          "sources": [],
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p>Les noms de traits (ondé, denché, engrêlé…) et la notion de pièce alésée appartiennent au vocabulaire technique standard, stable depuis les traités classiques. Deux points restent sujets à variation : la frontière entre <b>denché</b> et <b>dancetté</b> (une affaire de proportion, non de nature, et les ouvrages ne fixent pas tous le même seuil) et le nombre exact de traits à partir duquel une multiplication de bandes devient un <b>burelé</b>/<b>palé</b>/<b>bandé</b> plutôt qu'un tiercé nommé — l'usage courant place la limite autour de six à huit pièces, sans règle absolue.</p>\n          </div>"
+        }
+      ]
+    },
+    {
+      "id": "pieces",
+      "label": "Pièces",
+      "eyebrow": "Chapitre VI",
+      "title": "Les pièces honorables",
+      "lede": "Les figures géométriques nées des renforts du bouclier — le squelette du blason.",
+      "figure": "pieces",
+      "articles": [
+        {
+          "titre": "Des renforts devenus emblèmes",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Les <b>pièces honorables</b> sont les grandes figures géométriques qui traversent l'écu. Beaucoup dériveraient des <i>renforts</i> peints ou métalliques du bouclier primitif — la <b>fasce</b> (bande horizontale), le <b>pal</b> (vertical), le <b>chevron</b>, la <b>bande</b> et la <b>barre</b> (les diagonales), le <b>chef</b> (tiers supérieur), la <b>croix</b>, le <b>sautoir</b>, la <b>bordure</b> et l'<b>orle</b>.</p>\n          <p>Réduites en largeur, elles donnent des <b>rebattements</b> : la fasce amincie devient <i>burelle</i>, le pal <i>vergette</i>, la bande <i>cotice</i>. Multipliées, elles rythment le champ.</p>"
+        }
+      ]
+    },
+    {
+      "id": "meubles",
+      "label": "Meubles",
+      "eyebrow": "Chapitre VII",
+      "title": "Les meubles",
+      "lede": "Tout ce qui peuple le champ : bêtes, plantes, objets, êtres imaginaires. C'est le domaine le plus vaste du blason — en voici les grandes familles.",
+      "figure": "meubles",
+      "articles": [
+        {
+          "titre": "Naturels, artificiels, chimériques",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>On appelle <b>meubles</b> toutes les figures posées sur le champ en dehors des pièces honorables. On les range en trois familles : les meubles <b>naturels</b> (lion, aigle, poisson, rose, chêne, astres), <b>artificiels</b> (tour, épée, clé, roue, navire) et <b>chimériques</b> (dragon, griffon, licorne, aigle bicéphale). Un même meuble se décline en d'innombrables variantes : sa position, ses parties d'une autre couleur, ses attributs — tout se dit, rien ne se sous-entend. C'est ce vocabulaire de la posture et du détail qui fait la richesse du blason.</p>"
+        },
+        {
+          "titre": "Le lion : l'attitude fait le blason",
+          "sources": [
+            "joubert1977",
+            "pastoureau"
+          ],
+          "html": "\n          <p>Le lion est le meuble le plus répandu de toute l'héraldique européenne — l'animal du courage et de la souveraineté. On le décrit par son <b>attitude</b>, non par son espèce. Dressé de profil sur une patte arrière, une antérieure levée, il est <b>rampant</b> : c'est sa position par défaut, si courante qu'on ne la précise même pas toujours. Marchant à l'horizontale, il est <b>passant</b> ; s'il marche <em>et</em> tourne la tête vers le spectateur, il devient <b>léopard</b> — non pas un autre animal, mais le même dans une autre pose.</p>\n          <p>Les détails se blasonnent séparément : le lion est <b>armé</b> quand ses griffes sont d'un émail distinct, <b>lampassé</b> quand c'est sa langue, <b>couronné</b>, <b>vilené</b>. Sa queue enfin se lit à part — relevée, <b>fourchée</b> (double), <b>nouée</b> ou passée entre les jambes. Deux lions superposés se disent <b>léopards</b> chez les uns, <b>lions passants</b> chez les autres selon les traditions : c'est un point où les écoles anglaise et française divergent, et où l'on doit rester prudent.</p>"
+        },
+        {
+          "titre": "L'aigle : l'oiseau du pouvoir",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Après le lion vient l'<b>aigle</b>, emblème d'empire hérité de Rome. Sa position ordinaire est <b>éployée</b> (les ailes déployées de part et d'autre, tête de profil vers dextre) — si constante qu'on la sous-entend souvent. Les ailes peuvent être <b>abaissées</b> ou levées, les plumes comptées. Comme le lion, l'aigle se pare de détails d'un autre émail : <b>becquée</b>, <b>membrée</b> (les pattes), <b>languée</b>.</p>\n          <p>Deux têtes affrontées donnent l'<b>aigle bicéphale</b>, signe des empires prétendant à un double héritage (Saint-Empire, Russie, Byzance). Une petite aigle se nomme <b>aiglette</b> ; semées en grand nombre, les <b>alérions</b> — aiglettes sans bec ni pattes — peuplent parfois tout le champ. L'oiseau garde partout la même charge symbolique : la hauteur, la vigilance, la domination.</p>"
+        },
+        {
+          "titre": "Le reste du bestiaire",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Au-delà du lion et de l'aigle, l'arche héraldique est vaste. Parmi les quadrupèdes : l'<b>ours</b>, le <b>cerf</b> (dit <b>ramé</b> pour ses bois, <b>élancé</b> quand il bondit), le <b>sanglier</b>, le <b>loup</b>, le <b>cheval</b> (<b>gai</b> s'il est sans harnais, <b>effrayé</b> s'il se cabre), le <b>chien</b>. Ils empruntent les mêmes attitudes que le lion : passant, rampant, saillant, courant.</p>\n          <p>Chez les oiseaux, la <b>merlette</b> — merle stylisé sans bec ni pattes — sert souvent de marque de cadence ; le <b>coq</b> (<b>hardi</b>, <b>crêté</b>, <b>barbé</b>) devient tardivement emblème national français ; la <b>colombe</b>, le <b>corbeau</b>, le <b>cygne</b> complètent la volière. Les eaux fournissent le <b>dauphin</b> (courbé, emblème du Dauphiné) et diverses poissons ; le monde des petits, l'<b>abeille</b> et le <b>papillon</b>. Chaque bête traîne un cortège de sens hérités du bestiaire médiéval.</p>"
+        },
+        {
+          "titre": "Les créatures chimériques",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>L'imaginaire médiéval a peuplé les écus de bêtes qui n'existent pas. Le <b>griffon</b> mêle l'avant de l'aigle et l'arrière du lion — les deux souverains en un. Le <b>dragon</b> (ailé, quatre pattes) et sa variante la <b>guivre</b> ou <b>wyverne</b> (deux pattes, queue de serpent) gardent trésors et portes. La <b>licorne</b>, cheval à corne unique, dit la pureté ; la <b>mélusine</b>, femme-serpent, hante les armes de certaines maisons. Ces figures se blasonnent comme les autres : par leur posture et par les émaux de leurs parties.</p>"
+        },
+        {
+          "titre": "La grande famille de la croix",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>La croix est à la fois pièce honorable (quand elle touche les bords) et meuble (quand elle flotte dans le champ), et elle se démultiplie en des dizaines de variantes selon la forme de ses branches. Les plus courantes : la <b>croix pattée</b> (branches évasées aux extrémités), l'<b>ancrée</b> (terminée en pattes d'ancre), la <b>potencée</b> (en T), la <b>fleurdelisée</b> (fleurs de lis aux bouts), la <b>recroisettée</b> (petites croix aux extrémités), sans oublier la <b>croix de Toulouse</b> (cléchée, vidée et pommetée) ou la <b>croix de Lorraine</b> (à double traverse). Nommer précisément la croix, c'est déjà situer des armes dans une région et une histoire.</p>"
+        },
+        {
+          "titre": "Astres et pièces rondes",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Le ciel fournit ses figures. Le <b>soleil</b> rayonnant, la <b>lune</b> — pleine ou en <b>croissant</b>. Le croissant a ses positions : cornes en haut par défaut (<b>montant</b>), tournées à dextre (<b>tourné</b>), à senestre (<b>contourné</b>), ou en bas (<b>versé</b>). On distingue l'<b>étoile</b> (à cinq rais en France, six en Angleterre) de la <b>molette</b> d'éperon, qui lui ressemble mais est <b>percée</b> en son centre.</p>\n          <p>Les figures rondes pleines se lisent selon leur émail : de métal, c'est un <b>besant</b> (souvenir des monnaies rapportées d'Orient par les croisés) ; de couleur, un <b>tourteau</b>. Un rond vidé devient un <b>annelet</b>. Ces distinctions minuscules — métal ou couleur, plein ou percé — sont typiques de la précision têtue du blason.</p>"
+        },
+        {
+          "titre": "Le règne végétal",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Reine des meubles végétaux, la <b>fleur de lis</b> — lis stylisé à trois pétales liés d'une bande — fut l'emblème des rois de France avant de se répandre dans toute l'Europe. La <b>rose</b> héraldique s'ouvre à cinq pétales, avec ses <b>barbes</b> (sépales, souvent de sinople) et ses <b>graines</b> au cœur. Viennent encore le <b>trèfle</b>, la <b>quintefeuille</b> et la <b>quartefeuille</b> (fleurs à cinq ou quatre pétales), le <b>chêne</b> et son <b>gland</b>, l'<b>épi</b> de blé, la <b>quintefeuille</b>. Chaque plante porte sa symbolique : constance de la feuille, pureté du lis, force du chêne.</p>"
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p>Cette page présente le <b>canon héraldique de domaine public</b> — un savoir vieux de huit siècles — reformulé dans nos mots et illustré de figures dessinées à neuf. L'ouvrage d'initiation qui sert d'ancrage n'est pas un armorial exhaustif : les centaines de variantes d'attitude, les meubles régionaux et les usages locaux dépassent son cadre. Ce sont précisément les prochains ouvrages spécialisés qui permettront de les détailler et de les sourcer un à un.</p>\n          </div>"
+        }
+      ]
+    },
+    {
+      "id": "blasonnement",
+      "label": "Blasonnement",
+      "eyebrow": "Chapitre VIII",
+      "title": "Le blasonnement : la langue du blason",
+      "lede": "Décrire des armes en mots, dans un ordre strict, pour qu'un autre puisse les redessiner sans les avoir vues.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Un ordre de lecture immuable",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p><b>Blasonner</b>, c'est décrire des armoiries dans la langue technique du blason. La description suit toujours le même ordre : d'abord le <b>champ</b> (le fond) avec son émail ; puis la <b>pièce ou le meuble principal</b> avec son émail ; enfin les figures secondaires. En français, l'émail se place <i>après</i> le nom de la figure.</p>\n          <ul>\n            <li><i>D'azur à trois fleurs de lis d'or</i> — champ d'azur, chargé de trois fleurs de lis d'or (les armes de France ancienne).</li>\n            <li><i>D'argent à la croix de gueules</i> — champ d'argent, croix rouge (Saint Georges, Gênes, l'Angleterre).</li>\n          </ul>\n          <p>Bien fait, le blasonnement est sans ambiguïté : deux dessinateurs qui ne se sont jamais parlé produiront les mêmes armes à partir de la même phrase. C'est un langage formel avant la lettre.</p>"
+        }
+      ]
+    },
+    {
+      "id": "ornements",
+      "label": "Ornements",
+      "eyebrow": "Chapitre IX",
+      "title": "Les ornements extérieurs",
+      "lede": "Tout ce qui entoure l'écu et dit le rang du porteur.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Autour de l'écu",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>L'écu peut être <b>timbré</b> et accompagné d'ornements qui, eux, ne se transmettent pas comme les armes mais marquent le rang et la fonction :</p>\n          <ul>\n            <li>le <b>heaume</b> (casque), dont la position et le métal indiquaient jadis la qualité ;</li>\n            <li>le <b>cimier</b>, figure posée au sommet du heaume ;</li>\n            <li>les <b>lambrequins</b>, feuillages découpés qui encadrent l'écu, souvenir du voile protégeant la nuque ;</li>\n            <li>la <b>couronne</b> ou le chapeau, indices de titre ou de dignité ecclésiastique ;</li>\n            <li>les <b>tenants</b> et <b>supports</b>, figures qui soutiennent l'écu ;</li>\n            <li>la <b>devise</b> et le <b>cri</b>, mots inscrits sur un listel.</li>\n          </ul>"
+        }
+      ]
+    },
+    {
+      "id": "brisures",
+      "label": "Brisures",
+      "eyebrow": "Chapitre X",
+      "title": "Les brisures",
+      "lede": "Comment les cadets se distinguent de l'aîné sans changer d'armes.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Différencier sans renier",
+          "sources": [
+            "joubert1977"
+          ],
+          "html": "\n          <p>Au sein d'une même famille, les armes pleines reviennent au chef de nom et d'armes ; les autres membres les <b>brisent</b>, c'est-à-dire les modifient légèrement pour se distinguer sans rompre l'appartenance. Le procédé le plus connu est le <b>lambel</b>, petite barre à pendants placée en chef, marque du fils aîné vivant du père.</p>\n          <p>Les systèmes de brisure diffèrent selon les pays et les époques : le système anglais des marques de cadence (lambel, croissant, molette…) est plus rigide que la pratique française, plus libre. À manier avec prudence : présenter un usage local comme une règle universelle est une erreur fréquente.</p>"
+        }
+      ]
+    }
+  ],
+  "glossaire": [
+    {
+      "terme": "Abîme",
+      "def": "Le point exact du centre de l'écu ; une figure isolée y siégeant est dite « en abîme ».",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Argent",
+      "def": "Émail métal représentant le blanc ; laissé nu en gravure.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Armes à enquerre",
+      "def": "Armoiries enfreignant volontairement la règle des émaux, ce qui invite à « s'enquérir » de leur histoire.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Azur",
+      "def": "Émail couleur, le bleu ; hachures horizontales en gravure.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Bande",
+      "def": "Pièce honorable en diagonale, du chef dextre à la pointe senestre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Barre",
+      "def": "Pièce honorable en diagonale opposée à la bande, du chef senestre à la pointe dextre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Blasonner",
+      "def": "Décrire des armoiries dans la langue technique et l'ordre convenu du blason.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Bordure",
+      "def": "Bande suivant le contour intérieur de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Brisure",
+      "def": "Modification légère d'armes pour distinguer une branche ou un cadet d'une famille.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Champ",
+      "def": "Le fond de l'écu, sur lequel se posent pièces et meubles.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Chef",
+      "def": "Tiers supérieur de l'écu, ou simplement sa partie haute.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Chevron",
+      "def": "Pièce en forme de compas ouvert, pointe vers le chef.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Cimier",
+      "def": "Figure placée au sommet du heaume, au-dessus de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Cœur",
+      "def": "Le centre de l'écu (voir Abîme).",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Coupé",
+      "def": "Écu divisé horizontalement en deux parties égales.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Croix",
+      "def": "Pièce honorable formée par la rencontre du pal et de la fasce.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Dextre",
+      "def": "Le côté droit du porteur — donc la gauche du spectateur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Écartelé",
+      "def": "Écu divisé en quatre quartiers par un trait vertical et un horizontal.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Écu",
+      "def": "Le bouclier, support des armoiries ; sa forme n'entre pas dans le blasonnement.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Émail",
+      "def": "Nom générique des teintes du blason : métaux, couleurs et fourrures.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Fasce",
+      "def": "Pièce honorable horizontale occupant le milieu de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Fourrure",
+      "def": "Émail figuré par un semis conventionnel : hermine, vair et leurs variantes.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Gueules",
+      "def": "Émail couleur, le rouge ; hachures verticales en gravure.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Hermine",
+      "def": "Fourrure d'argent semée de mouchetures de sable.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Lambel",
+      "def": "Brisure en forme de barre à pendants, marque du fils aîné du vivant du père.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Lambrequins",
+      "def": "Découpures feuillagées encadrant l'écu, dérivées du voile du heaume.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Léopard",
+      "def": "Lion représenté passant, la tête de face — question de posture, non d'espèce.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Meuble",
+      "def": "Toute figure posée sur le champ hors des pièces honorables.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Or",
+      "def": "Émail métal représentant le jaune ; pointillé en gravure.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Orle",
+      "def": "Bordure amincie détachée du bord de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Pal",
+      "def": "Pièce honorable verticale au milieu de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Parti",
+      "def": "Écu divisé verticalement en deux parties égales.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Pièce honorable",
+      "def": "Grande figure géométrique traversant l'écu (fasce, pal, chevron, croix…).",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Pointe",
+      "def": "Partie basse de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Pourpre",
+      "def": "Émail couleur, le violet ; diagonales du chef senestre à la pointe dextre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Rampant",
+      "def": "Se dit d'un animal dressé de profil sur une patte, en posture d'attaque.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Rebattement",
+      "def": "Diminutif d'une pièce honorable amincie (burelle, vergette, cotice…).",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Règle des émaux",
+      "def": "Interdiction de poser métal sur métal ou couleur sur couleur, pour la lisibilité.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Sable",
+      "def": "Émail couleur, le noir ; hachures croisées en gravure.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Sautoir",
+      "def": "Croix posée en X, formée des deux diagonales.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Senestre",
+      "def": "Le côté gauche du porteur — donc la droite du spectateur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Sinople",
+      "def": "Émail couleur, le vert ; diagonales du chef dextre à la pointe senestre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Supports",
+      "def": "Figures (animaux, êtres) soutenant l'écu de part et d'autre ; « tenants » s'ils sont humains.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Taillé",
+      "def": "Écu divisé par la diagonale du chef senestre à la pointe dextre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Timbre",
+      "def": "Ce qui surmonte l'écu (heaume, couronne, mitre…) marquant le rang.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Tranché",
+      "def": "Écu divisé par la diagonale du chef dextre à la pointe senestre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Vair",
+      "def": "Fourrure figurée par des clochettes alternées d'argent et d'azur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Passant",
+      "def": "Attitude d'un animal marchant à l'horizontale, les pattes posées.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Issant",
+      "def": "Se dit d'un animal dont on ne voit que la partie supérieure, comme sortant d'une pièce.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Armé",
+      "def": "Se dit d'un animal dont les griffes, cornes ou dents sont d'un émail distinct.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Lampassé",
+      "def": "Se dit d'un animal dont la langue est d'un émail distinct.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Éployée",
+      "def": "Position ordinaire de l'aigle, ailes déployées de part et d'autre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Membré",
+      "def": "Se dit d'un oiseau dont les pattes sont d'un émail distinct ; becqué pour le bec.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Bicéphale",
+      "def": "À deux têtes ; se dit surtout de l'aigle impériale.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Merlette",
+      "def": "Merle stylisé sans bec ni pattes, souvent employé comme marque de cadence.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Griffon",
+      "def": "Créature chimérique mêlant l'avant de l'aigle et l'arrière du lion.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Croix pattée",
+      "def": "Croix dont les branches s'évasent aux extrémités.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Croix ancrée",
+      "def": "Croix dont les branches se terminent en pattes d'ancre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Croissant",
+      "def": "Figure de lune ; cornes en haut par défaut, tournées, contournées ou versées selon leur sens.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Étoile",
+      "def": "Figure rayonnante, à cinq rais dans l'usage français, six dans l'usage anglais.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Molette",
+      "def": "Molette d'éperon : semblable à l'étoile mais percée en son centre.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Besant",
+      "def": "Figure ronde et pleine, de métal (or ou argent) ; souvenir des monnaies d'Orient.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Tourteau",
+      "def": "Figure ronde et pleine, de couleur — le pendant du besant, qui est de métal.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Rose",
+      "def": "Fleur à cinq pétales, avec ses barbes (sépales) et ses graines au cœur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Quintefeuille",
+      "def": "Fleur héraldique à cinq pétales, sans tige ni barbes.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Fleur de lis",
+      "def": "Lis stylisé à trois pétales liés d'une bande ; emblème des rois de France.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Chimérique",
+      "def": "Se dit d'un meuble représentant une créature imaginaire (dragon, griffon, licorne).",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Trait",
+      "def": "Ligne qui divise le champ ; sa direction (parti, coupé…) et sa forme (ondé, engrêlé…) se blasonnent.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Ondé",
+      "def": "Se dit d'un trait ou d'un bord tracé en vagues douces.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Crénelé",
+      "def": "En créneaux carrés, à la manière du sommet d'une muraille.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Denché",
+      "def": "En grandes dents triangulaires ; le dancetté n'en compte que trois ou quatre, très saillantes.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Engrêlé",
+      "def": "Bordé de petits arcs dont les pointes mordent vers l'extérieur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Cannelé",
+      "def": "Comme l'engrêlé, mais les petits arcs sont retournés (aussi dit invecté).",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Nébulé",
+      "def": "En festons arrondis évoquant des nuages.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Dancetté",
+      "def": "Trait en zigzag à grandes dents peu nombreuses.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Tiercé",
+      "def": "Champ divisé en trois parts égales de trois émaux (en pal, en fasce ou en bande).",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Gironné",
+      "def": "Champ divisé en girons — triangles, le plus souvent huit, se rejoignant au centre.",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Recouper",
+      "def": "Diviser à nouveau une partition existante ; c'est par recoupements que se composent les grands écus.",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Vivré",
+      "def": "Trait en zigzag aigu, à angles rentrants et saillants.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Alésé",
+      "def": "Se dit d'une pièce honorable raccourcie qui ne touche plus les bords de l'écu.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Issant",
+      "def": "Voir plus haut : ne montre que sa partie supérieure, comme surgissant d'une pièce.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Mouvant",
+      "def": "Se dit d'une figure qui prend naissance à un point ou un bord de l'écu (chef, flanc…) sans en occuper toute la longueur.",
+      "sources": [
+        "joubert1977"
+      ]
+    },
+    {
+      "terme": "Burelé",
+      "def": "Champ couvert d'un nombre pair de bandes horizontales égales et alternées (multiplication du coupé).",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Palé",
+      "def": "Champ couvert de pals alternés (multiplication du parti).",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Bandé",
+      "def": "Champ couvert de bandes parallèles alternées (multiplication du tranché).",
+      "sources": [
+        "wenzler2015"
+      ]
+    },
+    {
+      "terme": "Barré",
+      "def": "Champ couvert de barres parallèles alternées (multiplication du taillé).",
+      "sources": [
+        "wenzler2015"
+      ]
+    }
+  ]
+}
