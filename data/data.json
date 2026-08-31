@@ -26,6 +26,60 @@
       "isbn": "978-2-7373-6618-5",
       "type": "Guide pratique illustré",
       "note": "Guide pédagogique (224 p., ~650 dessins de blasons en couleurs), édition de 2015 d'un ouvrage d'abord paru en 2002. Sert ici de source de faits complémentaire, recoupée avec Joubert et Pastoureau ; ses illustrations, protégées, ne sont pas reproduites."
+    },
+    "wiki_ornements": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Ornement extérieur de l'écu",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Ornement_extérieur_de_l'écu",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Vue d'ensemble des ornements extérieurs (heaume, cimier, lambrequins, couronnes, tenants, devise), recoupée avec la « Grammaire du blason » de Boncourt (miroir wiesel.lu)."
+    },
+    "wiki_couronnes": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Couronne (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Couronne_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Sert de base à la description des couronnes de rang françaises et de comparaison avec la pairie britannique."
+    },
+    "web_couronnes_complement": {
+      "auteur": "Guy Joly ; « Tout sur l'héraldique » (blog)",
+      "titre": "Pages de référence sur les couronnes de rang (recoupement)",
+      "editeur": "guy.joly1.free.fr/heraldique_ornements_couronne.html ; toutsurlheraldique.blogspot.com",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressources en ligne (recoupement)",
+      "note": "Deux pages personnelles utilisées pour vérifier le nombre de fleurons et de perles par rang. Elles ne s'accordent pas exactement entre elles ni avec Wikipédia (huit perles rangées contre seize perles dont neuf visibles pour le comte, par exemple) : le désaccord lui-même est signalé dans l'article plutôt que résolu arbitrairement."
+    },
+    "wiki_titres": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Titre de noblesse",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Titre_de_noblesse",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Hiérarchie des titres et des fiefs sous l'Ancien Régime (citant un traité de 1764) et rupture apportée par le système napoléonien puis la Restauration."
+    },
+    "wiki_manteau": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Manteau (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Manteau_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Distinction entre manteau (souverains, princes, ducs, pairs) et pavillon (souverain seul)."
+    },
+    "aleteia_galero": {
+      "auteur": "Aleteia (rédaction)",
+      "titre": "D'où vient le grand chapeau sur les armoiries des évêques ?",
+      "editeur": "fr.aleteia.org, 11 novembre 2023",
+      "annee": "2023",
+      "isbn": "—",
+      "type": "Article en ligne",
+      "note": "Couleur et nombre de houppes du galéro (chapeau ecclésiastique) selon le rang : cardinal, primat/patriarche, archevêque, évêque."
     }
   },
   "tinctures": [
@@ -833,6 +887,31 @@
             "joubert1977"
           ],
           "html": "\n          <p>L'écu peut être <b>timbré</b> et accompagné d'ornements qui, eux, ne se transmettent pas comme les armes mais marquent le rang et la fonction :</p>\n          <ul>\n            <li>le <b>heaume</b> (casque), dont la position et le métal indiquaient jadis la qualité ;</li>\n            <li>le <b>cimier</b>, figure posée au sommet du heaume ;</li>\n            <li>les <b>lambrequins</b>, feuillages découpés qui encadrent l'écu, souvenir du voile protégeant la nuque ;</li>\n            <li>la <b>couronne</b> ou le chapeau, indices de titre ou de dignité ecclésiastique ;</li>\n            <li>les <b>tenants</b> et <b>supports</b>, figures qui soutiennent l'écu ;</li>\n            <li>la <b>devise</b> et le <b>cri</b>, mots inscrits sur un listel.</li>\n          </ul>"
+        },
+        {
+          "titre": "La hiérarchie des couronnes de rang",
+          "sources": [
+            "wiki_ornements",
+            "wiki_couronnes",
+            "web_couronnes_complement"
+          ],
+          "html": "\n          <p>Posée sur le heaume — ou, une fois le casque tombé en désuétude, directement au sommet de l'écu — la <b>couronne</b> est l'ornement qui dit le plus vite le rang de son porteur. Le système s'est fixé assez tard, pour l'essentiel aux XVIe-XVIIe siècles, puis a été repris et codifié par les héraldistes du XIXe siècle. <b>Il n'a jamais existé de norme unique et officielle</b> : les sources varient, parfois sensiblement, sur le nombre exact de perles ou de fleurons attribué à chaque rang — signe qu'on est ici moins dans le droit que dans l'usage.</p>\n          <p>La série la plus souvent citée pour la noblesse française, du haut vers le bas :</p>\n          <ul>\n            <li><b>Couronne royale</b> — cercle d'or sommé de huit fleurs de lys, fermé par des diadèmes perlés qui se rejoignent au sommet en une fleur de lys double : une couronne <em>fermée</em>, seul privilège du souverain.</li>\n            <li><b>Couronne ducale</b> — cercle d'or rehaussé de huit fleurons, sans perle, laissé <em>ouvert</em>.</li>\n            <li><b>Couronne de marquis</b> — cercle orné de quatre fleurons alternés avec des groupes de perles (les sources parlent tantôt de « trèfles » de trois perles, tantôt de perles isolées).</li>\n            <li><b>Couronne de comte</b> — plus de fleurons du tout : un cercle rehaussé de perles seules, dont le nombre varie selon les auteurs (huit perles rangées pour les uns, seize perles dont neuf visibles pour d'autres).</li>\n            <li><b>Couronne de vicomte</b> — un petit nombre de grosses perles, quatre le plus souvent, dont trois seulement apparaissent de face selon certains auteurs.</li>\n            <li><b>Couronne de baron</b> — un cercle simple, sans pointe, entouré d'un rang ou d'un chapelet de petites perles ; certains auteurs ne lui donnent qu'un bourrelet, sans couronne propre.</li>\n            <li><b>Chevalier et simple gentilhomme</b> — pas de couronne : le heaume ne porte pour ornement de rang qu'un <b>bourrelet</b> ou <b>torque</b>, ruban tortillé aux couleurs de l'écu.</li>\n          </ul>\n          <p>La comparaison avec la pairie britannique montre que ces grammaires sont nationales plutôt qu'universelles : chez les Anglais, le duc porte huit feuilles de fraisier, le marquis quatre feuilles et quatre perles, le comte (<i>earl</i>) huit feuilles et huit perles sur tige, le vicomte seize perles, le baron six — un principe voisin (plus on monte, plus les fleurons l'emportent sur les perles) mais un détail différent.</p>\n          <p>Deux couronnes échappent à cette échelle nobiliaire : la <b>couronne murale</b>, à tours crénelées, réservée aux armoiries de villes et de communes, et la <b>tiare</b> pontificale, triple couronne surmontée d'une croix sur un globe, propre au pape.</p>"
+        },
+        {
+          "titre": "La hiérarchie des fiefs : du duché à la seigneurie",
+          "sources": [
+            "wiki_titres"
+          ],
+          "html": "\n          <p>Le titre porté (duc, comte, baron…) et le fief qui allait avec ne se recouvrent pas toujours : dès la fin de l'Ancien Régime, un titre pouvait rester purement honorifique, détaché de toute terre réelle. Il existait néanmoins, sur le papier, une hiérarchie des fiefs eux-mêmes, indexée à leur composition : un traité de 1764 veut que le duché et le marquisat réunissent au moins trois baronnies et trois châtellenies, et la baronnie au moins trois châtellenies. En descendant l'échelle :</p>\n          <ul>\n            <li><b>Duché</b> — le plus étendu ; seul titre à jouir, sous l'Ancien Régime, d'une préséance vraiment reconnue. Le <b>duché-pairie</b> donnait en outre un rang et un siège au Parlement.</li>\n            <li><b>Marquisat</b> — théoriquement de même ampleur territoriale que le duché, mais d'une préséance moindre.</li>\n            <li><b>Comté</b></li>\n            <li><b>Vicomté</b> — à l'origine le ressort d'un <em>vicomte</em>, lieutenant du comte.</li>\n            <li><b>Baronnie</b></li>\n            <li><b>Seigneurie</b> — l'échelon le plus courant, sans titre de courtoisie attaché.</li>\n            <li><b>Châtellenie</b> — la circonscription de base, celle qu'on additionne pour former les échelons supérieurs.</li>\n          </ul>\n          <p>Cette échelle est à prendre avec précaution : en dehors du rang du duc, il n'existait pas, sous l'Ancien Régime, de hiérarchie officielle et contraignante entre les titres — l'ancienneté de la maison et les alliances comptaient au moins autant que l'intitulé porté. Le système ne se rigidifie qu'à partir de 1808, sous une logique nouvelle : celle de la noblesse d'Empire puis de la Restauration, où le baron récompense un haut fonctionnaire, le comte un ministre, le duc et le prince des faits d'armes militaires — une noblesse de fonction, non plus de terre.</p>"
+        },
+        {
+          "titre": "Ornements communs et ornements spécifiques",
+          "sources": [
+            "wiki_ornements",
+            "wiki_manteau",
+            "aleteia_galero"
+          ],
+          "html": "\n          <p>Tous les ornements qui entourent l'écu ne se valent pas : certains sont, en principe, à la disposition de quiconque porte des armes ; d'autres sont réservés — par tradition plus que par loi, en France — à un rang, une fonction ou une dignité précise.</p>\n          <p><b>Ornements communs</b>, ouverts à tout armigère :</p>\n          <ul>\n            <li>le <b>heaume</b>, dont seuls le métal et l'ouverture de la visière restent, eux, un indice de rang (or et grand ouvert pour le souverain, argent ou acier à grille plus fermée en descendant l'échelle) ;</li>\n            <li>le <b>cimier</b>, posé au sommet du casque ;</li>\n            <li>les <b>lambrequins</b>, qui en descendent en feuillages découpés, souvenir du tissu protégeant la nuque du combattant ;</li>\n            <li>le <b>bourrelet</b> ou <b>torque</b>, qui tient lieu de couronne à qui n'y a pas droit ;</li>\n            <li>la <b>devise</b>, sentence brève inscrite sur un listel sous l'écu (le « Preny ! Preny ! » des ducs de Lorraine), et le <b>cri</b>, plus ancien, qui se criait au combat et se place au contraire au-dessus.</li>\n          </ul>\n          <p><b>Ornements spécifiques</b>, réservés à un rang ou une fonction :</p>\n          <ul>\n            <li>les <b>couronnes de rang</b> (voir l'article précédent), de la couronne murale des villes à la couronne fermée du souverain ;</li>\n            <li>le <b>manteau</b>, draperie le plus souvent doublée d'hermine (de vair chez les ducs d'Empire) qui enveloppe l'écu — l'apanage des souverains, des princes et des ducs ; les pairs de France portaient un manteau azur particulier ;</li>\n            <li>le <b>pavillon</b>, qui coiffe le manteau et le distingue encore : réservé au seul souverain, il marque le sommet de la hiérarchie ;</li>\n            <li>les <b>tenants</b> (figures humaines) et <b>supports</b> (animaux) qui flanquent l'écu — d'un usage plus libre en France que dans certaines traditions étrangères, où leur port est strictement réglementé par le droit héraldique ;</li>\n            <li>le <b>chapeau ecclésiastique</b> ou <b>galéro</b>, dont la couleur et le nombre de houppes disent la dignité dans l'Église : rouge à trente houppes pour un cardinal, vert à vingt pour un archevêque, vert à douze pour un évêque — nombre où l'on a voulu voir un écho de celui des apôtres ;</li>\n            <li>les <b>colliers d'ordres de chevalerie</b> (Saint-Esprit, Toison d'or, Légion d'honneur…), passés autour de l'écu et réservés aux titulaires effectifs de l'ordre.</li>\n          </ul>\n          <p>La distinction reste d'usage plus que de règlement : en dehors des ordres de chevalerie et, dans une moindre mesure, des couronnes, rien n'empêchait juridiquement, en France, d'orner ses armes de tenants ou d'un manteau sans en avoir le rang — d'où la prudence avec laquelle on lit aujourd'hui les armoriaux anciens.</p>"
         }
       ]
     },
