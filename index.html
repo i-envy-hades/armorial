@@ -457,6 +457,63 @@ function shieldTraitDemo(dir){
   if(dir==="d2") line = `<line x1="200" y1="0" x2="0" y2="252"/>`;   // taillé : chef senestre → pointe dextre
   return shieldBlank(`<g stroke="#8e1b18" stroke-width="4" stroke-linecap="round">${line}</g>`, "trait "+dir);
 }
+/* ---- blasons vierges timbrés d'une couronne de rang ---- */
+function crownGraphic(kind){
+  const gold="#a9812e", ink="#1a1712", pearl="#f3eee0", pearlStroke="#8a7a52", stone="#8a8a8a";
+  function band(fill){ return `<path d="M54,20 L146,20 L140,2 L60,2 Z" fill="${fill||gold}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>`; }
+  function fleur(cx,cyBase,s,fill){
+    const tx=(cx-100*s).toFixed(2), ty=(cyBase-158*s).toFixed(2);
+    return `<g transform="translate(${tx},${ty}) scale(${s})" fill="${fill||gold}" stroke="${ink}" stroke-width="1.3" stroke-linejoin="round">
+      <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
+      <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
+      <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
+      <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
+      <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+    </g>`;
+  }
+  function pearlDot(cx,cy,r){ return `<circle cx="${cx}" cy="${cy}" r="${r||4.4}" fill="${pearl}" stroke="${pearlStroke}" stroke-width="1.1"/>`; }
+  switch(kind){
+    case "roi": return `
+      ${band()}${fleur(71,2,0.6)}${fleur(100,2,1.0)}${fleur(129,2,0.6)}
+      <path d="M71,-30 C80,-46 92,-50 100,-52 C108,-50 120,-46 129,-30" fill="none" stroke="${gold}" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M71,-24 C82,-38 90,-42 100,-44 C110,-42 118,-38 129,-24" fill="none" stroke="${gold}" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="100" cy="-56" r="6.4" fill="${gold}" stroke="${ink}" stroke-width="1.3"/>
+      <path d="M100,-68 L100,-56 M94,-62 L106,-62" stroke="${gold}" stroke-width="3" stroke-linecap="round"/>`;
+    case "duc": return `${band()}${fleur(71,2,0.82)}${fleur(100,2,0.82)}${fleur(129,2,0.82)}`;
+    case "marquis": return `${band()}${fleur(72,2,0.68)}${fleur(128,2,0.68)}
+      ${pearlDot(92,-6,3.4)}${pearlDot(100,-11,3.4)}${pearlDot(108,-6,3.4)}`;
+    case "comte": return `${band()}
+      ${[68,84,100,116,132].map(x=>`<line x1="${x}" y1="2" x2="${x}" y2="-9" stroke="${gold}" stroke-width="2"/>${pearlDot(x,-11,4)}`).join("")}`;
+    case "vicomte": return `${band()}${pearlDot(76,-2,6.4)}${pearlDot(100,-4,6.4)}${pearlDot(124,-2,6.4)}`;
+    case "baron": return `<path d="M54,20 L146,20 L142,6 L58,6 Z" fill="${gold}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>
+      ${[62,74,86,100,114,126,138].map(x=>pearlDot(x,13,2.6)).join("")}`;
+    case "chevalier": {
+      const cols=["#8e1b18","#f3eee0"]; let s="";
+      for(let i=0;i<9;i++){ const x=54+i*(92/8); s+=`<ellipse cx="${x.toFixed(1)}" cy="11" rx="7" ry="9" fill="${cols[i%2]}" stroke="${ink}" stroke-width="1.1"/>`; }
+      return s;
+    }
+    case "murale": return `<path d="M54,20 L146,20 L146,6 L136,6 L136,12 L124,12 L124,6 L112,6 L112,12 L100,12 L100,6 L88,6 L88,12 L76,12 L76,6 L64,6 L64,12 L54,12 Z" fill="${stone}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>
+      <rect x="82" y="13" width="8" height="7" fill="${ink}" opacity=".35"/><rect x="110" y="13" width="8" height="7" fill="${ink}" opacity=".35"/>`;
+    case "tiare": return `
+      <path d="M76,20 C74,4 78,-40 100,-44 C122,-40 126,4 124,20 Z" fill="#f3eee0" stroke="${ink}" stroke-width="1.6"/>
+      <path d="M74,10 L126,10" stroke="${gold}" stroke-width="3"/>
+      <path d="M78,-6 L122,-6" stroke="${gold}" stroke-width="3"/>
+      <path d="M84,-24 L116,-24" stroke="${gold}" stroke-width="3"/>
+      <path d="M100,-52 L100,-44 M95,-48 L105,-48" stroke="${gold}" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="100" cy="-44" r="4" fill="${gold}" stroke="${ink}" stroke-width="1"/>
+      <path d="M84,20 C80,32 78,44 80,54" fill="none" stroke="${gold}" stroke-width="2.4"/>
+      <path d="M116,20 C120,32 122,44 120,54" fill="none" stroke="${gold}" stroke-width="2.4"/>`;
+  }
+  return "";
+}
+function shieldCrowned(kind, label){
+  return `<svg viewBox="0 -74 200 326" width="120" role="img" aria-label="blason vierge timbré d'une ${label}">
+    ${crownGraphic(kind)}
+    <path d="${SHIELD_D}" fill="#f4efe2"/>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
 function stripesH(n,a,b){ let s=""; const h=252/n; for(let i=0;i<n;i++) s+=`<rect x="0" y="${(i*h).toFixed(2)}" width="200" height="${(h+0.6).toFixed(2)}" fill="${i%2?b:a}"/>`; return s; }
 function stripesV(n,a,b){ let s=""; const w=200/n; for(let i=0;i<n;i++) s+=`<rect x="${(i*w).toFixed(2)}" y="0" width="${(w+0.6).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; return s; }
@@ -714,6 +771,11 @@ function figureGallery(kind){
   if(kind==="meubles"){
     const cards = DATA.meubles.map(m=>`
       <div class="fig">${shieldCharge(m.kind,m.champ,m.charge)}<div class="nom">${m.nom}</div><div class="en">${m.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="couronnes"){
+    const cards = DATA.couronnes.map(c=>`
+      <div class="fig">${shieldCrowned(c.kind,c.nom)}<div class="nom">${c.nom}</div><div class="en">${c.en}</div></div>`).join("");
     return `<div class="gal figs">${cards}</div>`;
   }
   return "";
