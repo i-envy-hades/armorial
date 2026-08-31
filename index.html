@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Encyclopédie du blason</title>
+
+<!--
+  ============================================================================
+  L'ARMORIAL — encyclopédie ouverte de l'héraldique
+  ============================================================================
+  Fichier autonome (aucune dépendance en dehors des polices Google).
+
+  COMMENT L'ÉTENDRE QUAND ON TROUVE UN NOUVEAU LIVRE
+  --------------------------------------------------
+  Tout le contenu vit dans l'objet DATA plus bas. Rien d'autre à toucher.
+
+  1) Ajouter le livre dans DATA.sources :
+        mabague1998: {
+          auteur: "…", titre: "…", editeur: "…", annee: "…",
+          isbn: "…", type: "Ouvrage d'initiation" | "Référence savante" | …,
+          note: "…"
+        }
+
+  2) Enrichir un article existant ou en créer un dans DATA.sections[].articles :
+        { titre: "…", html: "<p>…</p>", sources: ["joubert1977", "mabague1998"] }
+     -> le tag « Sources » de l'article s'actualise tout seul.
+
+  3) Ajouter des entrées de glossaire dans DATA.glossaire :
+        { terme: "…", def: "…", sources: ["mabague1998"] }
+
+  4) (optionnel) ajouter une figure héraldique dans DATA.tinctures,
+     DATA.partitions ou DATA.pieces — elle sera dessinée automatiquement.
+
+  RÈGLE : on reformule toujours le savoir avec ses propres mots et on cite le
+  livre. On ne copie jamais le texte ni les illustrations d'un ouvrage protégé.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --vellum:#e9e1cd;
+  --vellum-2:#f3eee0;
+  --vellum-3:#efe8d6;
+  --ink:#22201b;
+  --ink-soft:#5c5446;
+  --gules:#8e1b18;
+  --azure:#20406e;
+  --or:#a9812e;
+  --sable:#1a1712;
+  --rule:#cabf9f;
+  --rule-soft:#d8cfb4;
+  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
+  --maxw:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%),
+    var(--vellum);
+  color:var(--ink);
+  font-family:"EB Garamond",Georgia,serif;
+  font-size:19px;
+  line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%}
+a{color:var(--gules);text-decoration-thickness:.5px;text-underline-offset:2px}
+
+/* ---------- typographic roles ---------- */
+.eyebrow{
+  font-family:"Marcellus SC",serif;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  color:var(--or);
+  margin:0 0 .5rem;
+}
+h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
+.display{font-family:"Marcellus",serif;line-height:1.02}
+.serif-head{font-family:"EB Garamond",serif}
+
+/* ---------- masthead ---------- */
+.mast{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:1rem;
+  padding:.55rem clamp(1rem,4vw,2.2rem);
+  background:rgba(233,225,205,.86);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.mast .brand{
+  font-family:"Marcellus SC",serif;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.86rem;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:.6rem;
+}
+.mast .brand .cross{width:12px;height:12px;color:var(--gules)}
+.mast .search{margin-left:auto;position:relative;flex:0 1 340px;min-width:150px}
+.mast .mastlink{font-family:"Marcellus SC",serif;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-left:1.3rem;white-space:nowrap}
+.mast .mastlink:hover{color:var(--gules)}
+.mast .search input{
+  width:100%;padding:.5rem .8rem .5rem 2rem;
+  font-family:"EB Garamond",serif;font-size:.95rem;color:var(--ink);
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:2px;
+}
+.mast .search input:focus{outline:2px solid var(--azure);outline-offset:1px;border-color:transparent}
+.mast .search svg{position:absolute;left:.55rem;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--ink-soft);opacity:.7;pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fbf8f0;border:1px solid var(--rule);border-radius:10px;box-shadow:0 18px 40px rgba(26,23,18,.22);max-height:min(60vh,420px);overflow-y:auto;z-index:60;padding:.3rem}
+.search-results .sr{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:.5rem .6rem;border-radius:7px;font:inherit;color:var(--ink)}
+.search-results .sr:hover,.search-results .sr.on{background:#efe8d6}
+.search-results .sr .t{font-family:"Marcellus SC",serif;letter-spacing:.3px;color:var(--gules);font-size:.9rem}
+.search-results .sr .d{display:block;font-size:.82rem;color:var(--ink-soft);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-results .sr mark{background:#f4e2b0;color:inherit;border-radius:2px;padding:0 1px}
+.search-results .sr-empty{padding:.6rem .7rem;font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(2.4rem,7vw,5rem) clamp(1rem,4vw,2rem) clamp(2rem,5vw,3.4rem);
+  text-align:center;
+  border-bottom:1px solid var(--rule);
+}
+.hero .frame{max-width:900px;margin:0 auto}
+.hero h1{
+  font-family:"Marcellus",serif;
+  font-size:clamp(2.6rem,8vw,5.4rem);
+  letter-spacing:.01em;margin:.2rem 0 .1rem;
+}
+.hero h1 .amp{color:var(--gules)}
+.hero .sub{
+  font-size:clamp(1.05rem,2.4vw,1.35rem);
+  color:var(--ink-soft);font-style:italic;max-width:44ch;margin:.6rem auto 0;
+}
+.hero-shield{width:130px;height:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
+.hero .counts{
+  display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
+  margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--rule-soft);
+}
+.hero .counts .c{min-width:90px}
+.hero .counts .n{font-family:"Marcellus",serif;font-size:2rem;color:var(--gules);display:block;line-height:1}
+.hero .counts .l{font-family:"Marcellus SC",serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ---------- layout shell ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2rem);display:grid;grid-template-columns:230px 1fr;gap:clamp(1.5rem,4vw,3.2rem);align-items:start}
+@media (max-width:860px){.shell{grid-template-columns:1fr}}
+
+/* ---------- index rail ---------- */
+.rail{position:sticky;top:70px;padding:1.8rem 0}
+@media (max-width:860px){
+  .rail{position:static;padding:1rem 0 0;border-bottom:1px solid var(--rule)}
+  .rail ol{display:flex;overflow-x:auto;gap:.4rem;padding-bottom:.6rem}
+  .rail li{white-space:nowrap}
+}
+.rail .eyebrow{margin-bottom:1rem}
+.rail ol{list-style:none;margin:0;padding:0;counter-reset:sec}
+.rail li{counter-increment:sec}
+.rail a{
+  display:block;text-decoration:none;color:var(--ink-soft);
+  font-size:.98rem;padding:.32rem 0;border-left:2px solid transparent;padding-left:.9rem;
+  transition:color .2s,border-color .2s;position:relative;
+}
+.rail a::before{content:counter(sec,decimal-leading-zero);font-family:"Marcellus SC",serif;font-size:.62rem;color:var(--or);position:absolute;left:-.1rem;top:.62rem;opacity:0}
+.rail a:hover{color:var(--ink)}
+.rail a.active{color:var(--gules);border-color:var(--gules)}
+@media (max-width:860px){.rail a{border-left:none;border-bottom:2px solid transparent;padding:.3rem .5rem}.rail a.active{border-color:var(--gules)}}
+
+/* ---------- main ---------- */
+main{padding:2rem 0 4rem;min-width:0}
+.section{padding:2.4rem 0;border-bottom:1px solid var(--rule-soft);scroll-margin-top:70px}
+.section:last-child{border-bottom:none}
+.section > .eyebrow{margin-bottom:.3rem}
+.section > h2{font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.4rem}
+.section .lede{font-size:1.12rem;color:var(--ink-soft);font-style:italic;max-width:60ch;margin:0 0 1.6rem}
+
+.article{margin:1.6rem 0}
+.article h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.28rem;margin:0 0 .35rem;color:var(--ink)}
+.article p{margin:.55rem 0}
+.article ul{margin:.5rem 0 .5rem 1.1rem;padding:0}
+.article li{margin:.28rem 0}
+.src-tag{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;
+  font-family:"Marcellus SC",serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.src-tag b{color:var(--azure);font-weight:400}
+
+/* callout: état des connaissances */
+.note{
+  border-left:3px solid var(--azure);
+  background:linear-gradient(90deg,rgba(32,64,110,.06),transparent);
+  padding:.9rem 1.1rem;margin:1.3rem 0;border-radius:0 3px 3px 0;
+}
+.note .k{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azure);display:block;margin-bottom:.2rem}
+.note p{margin:.2rem 0;font-size:.98rem}
+
+/* ---------- figure galleries ---------- */
+.gal{display:grid;gap:1rem;margin:1.4rem 0}
+.gal.tinct{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.gal.figs{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.fig{
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;
+  padding:.9rem;text-align:center;box-shadow:var(--shadow);
+}
+.fig svg{display:block;margin:0 auto}
+.tinct .fig{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;align-items:center;text-align:left;padding:.7rem .8rem}
+.tinct .fig .meta{grid-column:1/-1;border-top:1px solid var(--rule-soft);padding-top:.5rem;margin-top:.2rem}
+.fig .nom{font-family:"Marcellus",serif;font-size:1.02rem;color:var(--ink)}
+.fig .en{font-size:.82rem;color:var(--ink-soft);font-style:italic}
+.fig .cat{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.figs .fig .nom{font-size:.9rem;margin-top:.4rem}
+.figs .fig .en{font-size:.74rem}
+.swlabel{font-family:"Marcellus SC",serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:.25rem}
+
+/* ---------- points de l'écu diagram ---------- */
+.ecu-diagram{background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.2rem;box-shadow:var(--shadow);text-align:center;margin:1.4rem 0}
+
+/* ---------- glossary ---------- */
+.glossary{margin-top:1rem}
+.gloss-count{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:.2rem 0 1rem}
+.gloss-item{padding:.7rem 0;border-bottom:1px solid var(--rule-soft);border-radius:6px;transition:background-color .5s ease}
+.gloss-item.flash{background:#f6ecc9}
+.gloss-item dt{font-family:"EB Garamond",serif;font-weight:600;font-size:1.08rem;color:var(--gules)}
+.gloss-item dd{margin:.15rem 0 0;color:var(--ink);font-size:1rem}
+.gloss-empty{color:var(--ink-soft);font-style:italic;padding:1rem 0}
+mark{background:rgba(169,129,46,.28);color:inherit;padding:0 .1em;border-radius:2px}
+
+/* ---------- bibliography ---------- */
+.biblio{display:grid;gap:1rem;margin-top:1rem}
+.book{
+  display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.1rem 1.2rem;box-shadow:var(--shadow);
+}
+.book .spine{width:34px;height:52px;border-radius:2px 3px 3px 2px;background:linear-gradient(90deg,var(--gules),#6d1512);box-shadow:inset -3px 0 5px rgba(0,0,0,.25);position:relative}
+.book .spine::after{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--or);opacity:.7}
+.book h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.12rem;font-style:italic}
+.book .by{color:var(--ink-soft)}
+.book .facts{font-size:.9rem;color:var(--ink-soft);margin-top:.25rem}
+.book .kind{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-top:.35rem}
+.book .note{margin:.5rem 0 0;border-left-color:var(--or);background:linear-gradient(90deg,rgba(169,129,46,.08),transparent)}
+.book .note p{font-size:.92rem}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding:2.4rem clamp(1rem,4vw,2rem);text-align:center;color:var(--ink-soft)}
+footer .cross{width:16px;color:var(--gules);margin:0 auto .6rem;display:block}
+footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
+footer .fine{font-size:.78rem;opacity:.85}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <span class="brand"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</span>
+  <a class="mastlink" href="blasons.html">Blasons réels</a>
+  <a class="mastlink" href="personnages.html">Personnages</a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
+    <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sresults">
+    <div class="search-results" id="sresults" role="listbox" hidden></div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="frame">
+    <svg class="hero-shield" viewBox="0 0 200 240" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
+    <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
+    <h1 class="display">L'Art du Blason</h1>
+    <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
+    <div class="counts" id="counts"></div>
+  </div>
+</section>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+  <nav class="rail" aria-label="Sommaire">
+    <p class="eyebrow">Sommaire</p>
+    <ol id="rail-list"></ol>
+  </nav>
+  <main id="main"></main>
+</div>
+
+<footer>
+  <svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>
+  <p><b>Méthode.</b> Toutes les figures sont dessinées à neuf en SVG. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
+  <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
+</footer>
+
+<script>
+/* ============================================================================
+   DATA — tout le contenu du site. Voir le commentaire en tête de fichier.
+   ============================================================================ */
+
+let DATA;
+
+/* ============================================================================
+   RENDU HÉRALDIQUE — figures SVG dessinées à partir des données
+   ============================================================================ */
+
+const SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z";
+const VB = "0 0 200 252";
+let uid = 0;
+
+/* trouve la couleur d'un émail par son nom */
+function tinctColor(nom){
+  const t = DATA.tinctures.find(x=>x.nom===nom);
+  return t ? t.color : "#888";
+}
+
+/* patrons de hachure / fourrure ; renvoie {def, fill} pour un id donné */
+function hatchDefs(id){
+  return `
+  <pattern id="h-dots-${id}" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1" fill="#1a1712"/></pattern>
+  <pattern id="h-vert-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-horiz-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-cross-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bend-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 L8,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bendsin-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8,0 L0,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-ermine-${id}" width="26" height="26" patternUnits="userSpaceOnUse">
+    <rect width="26" height="26" fill="#f4efe2"/>
+    ${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
+  </pattern>
+  <pattern id="h-vair-${id}" width="28" height="26" patternUnits="userSpaceOnUse">
+    <rect width="28" height="26" fill="#f4efe2"/>
+    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
+    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
+    <path d="M-3,13 L11,13 L8,26 L0,26 Z M0,26" fill="#20406e"/>
+    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
+    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
+  </pattern>`;
+}
+function ermineSpot(cx,cy){
+  return `<g transform="translate(${cx},${cy})" fill="#1a1712">
+    <path d="M0,-4 C-1.6,-1.6 -1.6,-1.6 -2.4,0.4 L2.4,0.4 C1.6,-1.6 1.6,-1.6 0,-4 Z"/>
+    <circle cx="-2.4" cy="1.4" r=".7"/><circle cx="0" cy="1.6" r=".7"/><circle cx="2.4" cy="1.4" r=".7"/>
+  </g>`;
+}
+/* renvoie la valeur de remplissage pour un émail, en mode 'couleur' ou 'gravure' */
+function tinctFill(nom, mode, id){
+  const t = DATA.tinctures.find(x=>x.nom===nom) || {color:"#888",hatch:"none"};
+  if(mode==="couleur"){
+    if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
+    if(t.hatch==="vair") return `url(#h-vair-${id})`;
+    return t.color;
+  }
+  // gravure : fond parchemin clair + hachure noire
+  const base = "#f4efe2";
+  const map = {dots:"h-dots",vert:"h-vert",horiz:"h-horiz",cross:"h-cross",bend:"h-bend",bendsin:"h-bendsin"};
+  if(t.hatch==="none") return base;
+  if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
+  if(t.hatch==="vair") return `url(#h-vair-${id})`;
+  return `url(#${map[t.hatch]}-${id})`;
+}
+
+/* un écu simple rempli d'un émail (mode couleur ou gravure) */
+function shieldSwatch(nom, mode, w=90){
+  const id = ++uid;
+  return `<svg viewBox="${VB}" width="${w}" role="img" aria-label="${nom} — ${mode}">
+    <defs>${hatchDefs(id)}</defs>
+    ${mode==="gravure"?`<path d="${SHIELD_D}" fill="#f4efe2"/>`:""}
+    <path d="${SHIELD_D}" fill="${tinctFill(nom,mode,id)}"/>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.2"/>
+  </svg>`;
+}
+
+/* écu partitionné */
+/* ---- traits : styles de la ligne de partition ---- */
+function traitLineRel(style){
+  switch(style){
+    case "onde":    {let s="";for(let i=0;i<8;i++)s+=(i%2?"q12.5,9 25,0":"q12.5,-9 25,0");return s;}
+    case "crenele": {let s="";for(let i=0;i<5;i++)s+="l0,-12 l20,0 l0,12 l20,0";return s;}
+    case "denche":  {let s="";for(let i=0;i<4;i++)s+="l25,-12 l25,12";return s;}
+    case "engrele": {let s="";for(let i=0;i<8;i++)s+="a12.5,9 0 0 1 25,0";return s;}
+    case "cannele": {let s="";for(let i=0;i<8;i++)s+="a12.5,9 0 0 0 25,0";return s;}
+    case "dancette":{let s="";for(let i=0;i<3;i++)s+="l33.34,-18 l33.33,18";return s;}
+    case "nebule":  {let s="";for(let i=0;i<8;i++)s+=(i%2?"a12.5,10 0 0 1 25,0":"a12.5,10 0 0 0 25,0");return s;}
+    case "vivre":   {let s="";for(let i=0;i<10;i++)s+=(i%2?"l10,10 l10,-10":"l10,-10 l10,10");return s;}
+    default:        return "L200,126";
+  }
+}
+function coupeTrait(style,a,b){
+  const line = traitLineRel(style);
+  return `<rect width="200" height="252" fill="${b}"/>`+
+         `<path d="M0,0 L0,126 ${line} L200,0 Z" fill="${a}"/>`+
+         `<path d="M0,126 ${line}" fill="none" stroke="#1a1712" stroke-width="1.2"/>`;
+}
+function gironne(a,b){
+  const cx=100,cy=126;
+  const pts=[[100,0],[200,0],[200,126],[200,252],[100,252],[0,252],[0,126],[0,0]];
+  let s="";
+  for(let i=0;i<8;i++){ const p1=pts[i], p2=pts[(i+1)%8];
+    s+=`<path d="M${cx},${cy} L${p1[0]},${p1[1]} L${p2[0]},${p2[1]} Z" fill="${i%2?b:a}"/>`; }
+  return s;
+}
+function shieldPartition(kind, tinc){
+  const id = ++uid;
+  const cid = "clip"+id;
+  const a = tinctColor(tinc[0]), b = tinctColor(tinc[1]), c = tinc[2]?tinctColor(tinc[2]):a;
+  let inner = "";
+  switch(kind){
+    case "parti": inner = `<rect x="0" y="0" width="100" height="252" fill="${a}"/><rect x="100" y="0" width="100" height="252" fill="${b}"/>`; break;
+    case "coupe": inner = `<rect x="0" y="0" width="200" height="126" fill="${a}"/><rect x="0" y="126" width="200" height="126" fill="${b}"/>`; break;
+    case "tranche": inner = `<rect width="200" height="252" fill="${b}"/><path d="M0,0 L200,0 L200,252 Z" fill="${a}"/>`; break;
+    case "taille": inner = `<rect width="200" height="252" fill="${b}"/><path d="M200,0 L200,252 L0,252 Z" fill="${a}"/>`; break;
+    case "ecartele": inner = `<rect x="0" y="0" width="100" height="126" fill="${a}"/><rect x="100" y="0" width="100" height="126" fill="${b}"/><rect x="0" y="126" width="100" height="126" fill="${b}"/><rect x="100" y="126" width="100" height="126" fill="${a}"/>`; break;
+    case "sautoirpart": inner = `<rect width="200" height="252" fill="${b}"/><path d="M100,126 L0,0 L200,0 Z" fill="${a}"/><path d="M100,126 L0,252 L200,252 Z" fill="${a}"/>`; break;
+    case "coupe-onde":    inner = coupeTrait("onde",a,b); break;
+    case "coupe-crenele": inner = coupeTrait("crenele",a,b); break;
+    case "coupe-denche":  inner = coupeTrait("denche",a,b); break;
+    case "coupe-engrele": inner = coupeTrait("engrele",a,b); break;
+    case "coupe-cannele": inner = coupeTrait("cannele",a,b); break;
+    case "coupe-dancette": inner = coupeTrait("dancette",a,b); break;
+    case "coupe-nebule": inner = coupeTrait("nebule",a,b); break;
+    case "coupe-vivre": inner = coupeTrait("vivre",a,b); break;
+    case "tierce-pal": inner = `<rect x="0" width="66.7" height="252" fill="${a}"/><rect x="66.7" width="66.6" height="252" fill="${b}"/><rect x="133.3" width="66.7" height="252" fill="${c}"/>`; break;
+    case "tierce-fasce": inner = `<rect y="0" width="200" height="84" fill="${a}"/><rect y="84" width="200" height="84" fill="${b}"/><rect y="168" width="200" height="84" fill="${c}"/>`; break;
+    case "gironne": inner = gironne(a,b); break;
+  }
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* ---- écus vierges des règles (trait simple, recoupement, alésure) ---- */
+function shieldBlank(inner, label){
+  const id = ++uid, cid = "clb"+id;
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${label}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="#f4efe2"/>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+/* trait simple : une seule ligne rouge sur écu vierge, pour isoler la direction du trait */
+function shieldTraitDemo(dir){
+  let line = "";
+  if(dir==="v")  line = `<line x1="100" y1="0" x2="100" y2="252"/>`;
+  if(dir==="h")  line = `<line x1="0" y1="126" x2="200" y2="126"/>`;
+  if(dir==="d1") line = `<line x1="0" y1="0" x2="200" y2="252"/>`;   // tranché : chef dextre → pointe senestre
+  if(dir==="d2") line = `<line x1="200" y1="0" x2="0" y2="252"/>`;   // taillé : chef senestre → pointe dextre
+  return shieldBlank(`<g stroke="#8e1b18" stroke-width="4" stroke-linecap="round">${line}</g>`, "trait "+dir);
+}
+/* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
+function stripesH(n,a,b){ let s=""; const h=252/n; for(let i=0;i<n;i++) s+=`<rect x="0" y="${(i*h).toFixed(2)}" width="200" height="${(h+0.6).toFixed(2)}" fill="${i%2?b:a}"/>`; return s; }
+function stripesV(n,a,b){ let s=""; const w=200/n; for(let i=0;i<n;i++) s+=`<rect x="${(i*w).toFixed(2)}" y="0" width="${(w+0.6).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; return s; }
+function stripesBendy(n,a,b,sin){
+  const id = ++uid;
+  const w = 300/n;
+  return `<defs><pattern id="bd${id}" width="${(w*1.4142).toFixed(2)}" height="${(w*1.4142).toFixed(2)}" patternTransform="rotate(${sin?-45:45})" patternUnits="userSpaceOnUse">
+    <rect width="${(w*1.4142).toFixed(2)}" height="${(w*0.7071).toFixed(2)}" fill="${a}"/>
+    <rect y="${(w*0.7071).toFixed(2)}" width="${(w*1.4142).toFixed(2)}" height="${(w*0.7071).toFixed(2)}" fill="${b}"/>
+  </pattern></defs><rect x="-60" y="-60" width="320" height="372" fill="url(#bd${id})"/>`;
+}
+function shieldRecoupement(kind, n, a, b){
+  let inner = "";
+  switch(kind){
+    case "barry":
+      inner = n===2 ? `<rect width="200" height="126" fill="${a}"/><rect y="126" width="200" height="126" fill="${b}"/>` : stripesH(n,a,b);
+      break;
+    case "paly":
+      inner = n===2 ? `<rect width="100" height="252" fill="${a}"/><rect x="100" width="100" height="252" fill="${b}"/>` : stripesV(n,a,b);
+      break;
+    case "bendy":
+      inner = n===2 ? `<rect width="200" height="252" fill="${b}"/><path d="M0,0 L200,0 L200,252 Z" fill="${a}"/>` : stripesBendy(n,a,b,false);
+      break;
+    case "bendysin":
+      inner = n===2 ? `<rect width="200" height="252" fill="${b}"/><path d="M200,0 L200,252 L0,252 Z" fill="${a}"/>` : stripesBendy(n,a,b,true);
+      break;
+    case "quarterly":
+      inner = `<rect width="100" height="126" fill="${a}"/><rect x="100" width="100" height="126" fill="${b}"/><rect y="126" width="100" height="126" fill="${b}"/><rect x="100" y="126" width="100" height="126" fill="${a}"/>`;
+      break;
+    case "gyronny":
+      inner = gironne(a,b);
+      break;
+  }
+  const id = ++uid, cid = "clr"+id;
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+/* pièce "au vif de l'écu" (touchant les bords) vs pièce alésée (raccourcie, flottante) */
+function shieldPieceAlesee(kind, champ, piece, alesee){
+  const id = ++uid, cid = "cla"+id;
+  const cf = tinctColor(champ), pf = tinctColor(piece);
+  let inner = "";
+  if(kind==="croix"){
+    inner = alesee
+      ? `<rect x="74" y="58" width="52" height="146" fill="${pf}"/><rect x="36" y="106" width="128" height="50" fill="${pf}"/>`
+      : `<rect x="74" y="0"  width="52" height="252" fill="${pf}"/><rect x="0"  y="104" width="200" height="52" fill="${pf}"/>`;
+  } else if(kind==="sautoir"){
+    inner = alesee
+      ? `<line x1="48" y1="58" x2="152" y2="194" stroke="${pf}" stroke-width="32"/><line x1="152" y1="58" x2="48" y2="194" stroke="${pf}" stroke-width="32"/>`
+      : `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`;
+  } else if(kind==="bande"){
+    inner = alesee
+      ? `<line x1="48" y1="68" x2="152" y2="184" stroke="${pf}" stroke-width="32" stroke-linecap="round"/>`
+      : `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`;
+  }
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}${alesee?' alésé':''}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="${cf}"/>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* écu chargé d'une pièce honorable */
+function shieldPiece(kind, champ, piece){
+  const id = ++uid;
+  const cid = "clipp"+id;
+  const cf = tinctColor(champ), pf = tinctColor(piece);
+  let inner = "";
+  const sw = {stroke:pf};
+  switch(kind){
+    case "chef": inner = `<rect x="0" y="16" width="200" height="62" fill="${pf}"/>`; break;
+    case "fasce": inner = `<rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
+    case "pal": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/>`; break;
+    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "croix": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/><rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
+    case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
+    case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
+    case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
+    case "orle": inner = `<path d="M40,38 L160,38 L160,116 C160,158 132,188 100,206 C68,188 40,158 40,116 Z" fill="none" stroke="${pf}" stroke-width="12"/>`; break;
+  }
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="${cf}"/>
+    <g clip-path="url(#${cid})">${inner}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* écu du hero : parti d'azur et de gueules à la fleur de lis d'or.
+   Renvoie le contenu INTERNE du <svg> (le <svg> existe déjà dans le HTML). */
+function heroShieldInner(){
+  const id = ++uid; const cid="clhero"+id;
+  const orC = tinctColor('Or');
+  return `
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <g clip-path="url(#${cid})">
+      <rect x="0" y="0" width="100" height="252" fill="${tinctColor('Azur')}"/>
+      <rect x="100" y="0" width="100" height="252" fill="${tinctColor('Gueules')}"/>
+    </g>
+    <g fill="${orC}" stroke="#7a5c1e" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
+      <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
+      <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
+      <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
+      <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+    </g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="3"/>`;
+}
+
+/* diagramme des points de l'écu */
+function ecuPoints(){
+  const id=++uid, cid="clpts"+id;
+  const gx=[59,100,141], gy=[46,126,200];
+  const labels=[
+    ["Canton\ndextre","Chef","Canton\nsenestre"],
+    ["Flanc\ndextre","Cœur","Flanc\nsenestre"],
+    ["Canton\ndextre","Pointe","Canton\nsenestre"]
+  ];
+  let pts="";
+  for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+    const t=labels[r][c].split("\n");
+    pts+=`<circle cx="${gx[c]}" cy="${gy[r]}" r="3.4" fill="#8e1b18"/>`+
+      t.map((ln,i)=>`<text x="${gx[c]}" y="${gy[r]+16+i*11}" text-anchor="middle" font-family="EB Garamond,serif" font-size="10" fill="#5c5446">${ln}</text>`).join("");
+  }
+  return `<svg viewBox="0 0 200 300" width="230" role="img" aria-label="Les points de l'écu">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="#f3eee0"/>
+    <g clip-path="url(#${cid})" stroke="#d8cfb4" stroke-width="1">
+      <line x1="0" y1="86" x2="200" y2="86"/><line x1="0" y1="166" x2="200" y2="166"/>
+      <line x1="72" y1="0" x2="72" y2="252"/><line x1="128" y1="0" x2="128" y2="252"/>
+    </g>
+    ${pts}
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    <text x="30" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">← Dextre</text>
+    <text x="170" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">Senestre →</text>
+    <text x="100" y="280" text-anchor="middle" font-family="EB Garamond,serif" font-style="italic" font-size="10.5" fill="#5c5446">côtés vus du porteur, non du spectateur</text>
+  </svg>`;
+}
+
+/* ---- meubles : figures originales dessinées à neuf ---- */
+function chgStroke(t){
+  const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440"};
+  return m[t]||"#1a1712";
+}
+function chargeInner(kind, fill, stroke, field){
+  switch(kind){
+    case "lion": return `
+      <g transform="translate(8,20)" fill="${fill}" stroke="${stroke}" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M40,96 C40,86 52,82 66,82 L120,82 C130,82 138,78 146,72 C150,68 156,66 160,70 C162,74 158,80 152,84 C148,92 148,104 146,112 C144,120 138,122 134,116 C132,110 132,102 132,96 L70,96 C66,108 64,120 64,130 L58,130 C58,118 58,106 56,96 C48,96 42,100 40,96 Z"/>
+        <path d="M146,72 C154,66 166,64 172,70 C176,74 174,80 168,82 C172,84 172,90 166,92 C160,94 152,90 150,84 C148,80 148,76 146,72 Z"/>
+        <path d="M138,112 C138,132 138,152 140,168 C136,168 132,168 132,164 C132,148 132,128 132,112 Z"/>
+        <path d="M112,108 C112,130 112,150 114,166 C110,166 106,166 106,162 C106,146 106,124 106,108 Z"/>
+        <path d="M74,110 C72,130 72,150 74,166 C70,166 66,166 66,162 C66,146 68,126 68,110 Z"/>
+        <path d="M50,100 C46,116 46,134 48,150 C44,150 40,150 40,146 C40,130 42,112 44,100 Z"/>
+        <path d="M42,98 C30,92 24,78 30,66 C34,74 42,78 50,76 C42,84 44,94 52,96 Z"/>
+      </g>
+      <circle cx="167" cy="90" r="2.1" fill="#3a2a0e"/>`;
+    case "aigle": return `
+      <g transform="translate(8,18)" fill="${fill}" stroke="${stroke}" stroke-width="0.6" stroke-linejoin="round">
+        <path d="M90,38 C83,38 77,44 77,51 C77,57 82,63 90,63 C93,63 96,62 98,60 L88,58 L98,55 C99,53 100,52 100,51 C100,44 96,38 90,38 Z"/>
+        <path d="M90,60 C85,64 83,74 84,88 L96,88 C97,74 95,64 90,60 Z"/>
+        <path d="M84,88 C84,108 87,130 90,146 C93,130 96,108 96,88 Z"/>
+        <path d="M85,144 C79,150 75,160 76,170 C81,164 84,163 88,164 L88,146 Z"/>
+        <path d="M95,144 C101,150 105,160 104,170 C99,164 96,163 92,164 L92,146 Z"/>
+        <path d="M83,146 L97,146 L104,196 L96,187 L90,200 L84,187 L76,196 Z"/>
+        <path d="M96,92 C104,84 114,74 126,64 C138,54 150,48 158,46 C152,54 150,62 152,70 C144,66 138,70 135,78 C142,78 147,82 149,90 C141,86 134,90 132,98 C138,100 142,104 143,111 C135,106 127,110 124,118 C120,108 108,100 96,102 Z"/>
+        <g transform="translate(180,0) scale(-1,1)">
+          <path d="M96,92 C104,84 114,74 126,64 C138,54 150,48 158,46 C152,54 150,62 152,70 C144,66 138,70 135,78 C142,78 147,82 149,90 C141,86 134,90 132,98 C138,100 142,104 143,111 C135,106 127,110 124,118 C120,108 108,100 96,102 Z"/>
+        </g>
+      </g>`;
+    case "croix": return `<path transform="translate(10,6)" d="M78,40 L102,40 L98,86 L146,82 L146,106 L98,110 L102,168 L78,168 L82,110 L34,106 L34,82 L82,86 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
+    case "fleurdelis": return `
+      <g transform="translate(0,24)" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
+        <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
+        <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
+        <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
+        <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+      </g>`;
+    case "croissant": return `<path d="M64,108 A42,42 0 1 0 136,108 A34,34 0 1 1 64,108 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "etoile": return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
+    case "molette": return `<g transform="translate(100,116) scale(1.7)"><path d="M0,-26 L6,-7 L26,-6 L10,5 L16,24 L0,13 L-16,24 L-10,5 L-26,-6 L-6,-7 Z" fill="${fill}" stroke="${stroke}" stroke-width="0.8"/><circle cx="0" cy="2" r="4.5" fill="${field}"/></g>`;
+    case "roundel": return `<circle cx="100" cy="116" r="40" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "rose": return `
+      <g transform="translate(100,116)">
+        <g fill="${fill}" stroke="${stroke}" stroke-width="1.2">
+          <path transform="rotate(0)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(72)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(144)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(216)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+          <path transform="rotate(288)" d="M0,-16 C18,-46 -18,-46 0,-16 Z"/>
+        </g>
+        <g fill="#2f6b3d">
+          <path transform="rotate(36)" d="M0,-30 L4,-40 L-4,-40 Z"/>
+          <path transform="rotate(108)" d="M0,-30 L4,-40 L-4,-40 Z"/>
+          <path transform="rotate(180)" d="M0,-30 L4,-40 L-4,-40 Z"/>
+          <path transform="rotate(252)" d="M0,-30 L4,-40 L-4,-40 Z"/>
+          <path transform="rotate(324)" d="M0,-30 L4,-40 L-4,-40 Z"/>
+        </g>
+        <circle r="12" fill="#c79a3a" stroke="#7a5c1e" stroke-width="1.2"/>
+        <g fill="#7a5c1e"><circle cx="0" cy="-5" r="1.6"/><circle cx="4" cy="3" r="1.6"/><circle cx="-4" cy="3" r="1.6"/></g>
+      </g>`;
+  }
+  return "";
+}
+function shieldCharge(kind, champ, chargeTinct){
+  const id=++uid, cid="clch"+id;
+  const cf=tinctColor(champ), pf=tinctColor(chargeTinct), st=chgStroke(chargeTinct);
+  return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind} de ${chargeTinct} sur champ de ${champ}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="${cf}"/>
+    <g clip-path="url(#${cid})">${chargeInner(kind,pf,st,cf)}</g>
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+  </svg>`;
+}
+
+/* ============================================================================
+   CONSTRUCTION DE LA PAGE
+   ============================================================================ */
+
+function srcTag(ids){
+  if(!ids || !ids.length) return "";
+  const names = ids.map(i=>{
+    const s=DATA.sources[i]; if(!s) return i;
+    return `${s.auteur.split(" ").slice(-1)[0]} (${s.annee})`;
+  });
+  return `<div class="src-tag">Source : <b>${names.join(" · ")}</b></div>`;
+}
+
+function figureGallery(kind){
+  if(kind==="tinctures"){
+    const cards = DATA.tinctures.map(t=>`
+      <div class="fig">
+        <div><div>${shieldSwatch(t.nom,"couleur",84)}</div><div class="swlabel">Couleur</div></div>
+        <div><div>${shieldSwatch(t.nom,"gravure",84)}</div><div class="swlabel">Gravure</div></div>
+        <div class="meta"><div class="cat">${t.type}</div><div class="nom">${t.nom}</div><div class="en">${t.en}</div></div>
+      </div>`).join("");
+    return `<div class="gal tinct">${cards}</div>`;
+  }
+  if(kind==="partitions"){
+    const cards = DATA.partitions.map(p=>`
+      <div class="fig">${shieldPartition(p.kind,p.t)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="pieces"){
+    const cards = DATA.pieces.map(p=>`
+      <div class="fig">${shieldPiece(p.kind,p.champ,p.piece)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="meubles"){
+    const cards = DATA.meubles.map(m=>`
+      <div class="fig">${shieldCharge(m.kind,m.champ,m.charge)}<div class="nom">${m.nom}</div><div class="en">${m.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  return "";
+}
+
+/* galeries du chapitre « Règles » : traits vierges, recoupements, courbes, alésures */
+function reglesGallery(kind){
+  if(kind==="traits"){
+    const cards = DATA.regles.traits.map(t=>`
+      <div class="fig">${shieldTraitDemo(t.dir)}<div class="nom">${t.nom}</div><div class="en">${t.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="recoupements"){
+    const cards = DATA.regles.recoupements.map(r=>`
+      <div class="fig">${shieldRecoupement(r.kind, r.n, tinctColor('Argent'), tinctColor('Gueules'))}<div class="nom">${r.nom}</div><div class="en">${r.en}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="courbes"){
+    const cards = DATA.regles.courbes.map(c=>`
+      <div class="fig">${shieldPartition(c.kind,["Argent","Azur"])}<div class="nom">${c.nom}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  if(kind==="alesees"){
+    const cards = DATA.regles.alesees.map(al=>`
+      <div class="fig">${shieldPieceAlesee(al.kind, "Or", al.alesee?"Sable":"Gueules", al.alesee)}<div class="nom">${al.nom}</div></div>`).join("");
+    return `<div class="gal figs">${cards}</div>`;
+  }
+  return "";
+}
+
+function buildMain(){
+  const main = document.getElementById("main");
+  let html = "";
+
+  DATA.sections.forEach(sec=>{
+    let arts = "";
+    sec.articles.forEach(a=>{
+      if(a.note){ arts += `<div class="article reveal">${a.html}</div>`; return; }
+      let extra = "";
+      if(a.diagram==="ecu") extra = `<div class="ecu-diagram">${ecuPoints()}</div>`;
+      if(a.gallery) extra += `<div class="reveal">${reglesGallery(a.gallery)}</div>`;
+      arts += `<div class="article reveal"><h3>${a.titre}</h3>${a.html}${extra}${srcTag(a.sources)}</div>`;
+    });
+    let gallery = sec.figure ? `<div class="reveal">${figureGallery(sec.figure)}</div>` : "";
+    // place la galerie juste après le premier article
+    html += `<section class="section" id="${sec.id}">
+      <p class="eyebrow">${sec.eyebrow}</p>
+      <h2 class="display">${sec.title}</h2>
+      <p class="lede">${sec.lede}</p>
+      ${arts}
+      ${gallery}
+    </section>`;
+  });
+
+  // ---- glossaire ----
+  html += `<section class="section" id="glossaire">
+    <p class="eyebrow">Répertoire</p>
+    <h2 class="display">Glossaire du blason</h2>
+    <p class="lede">Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.</p>
+    <p class="gloss-count" id="gcount"></p>
+    <dl class="glossary" id="glist"></dl>
+  </section>`;
+
+  // ---- bibliothèque ----
+  const books = Object.values(DATA.sources).map(s=>`
+    <div class="book reveal">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>${s.titre}</h3>
+        <div class="by">${s.auteur}</div>
+        <div class="facts">${s.editeur}, ${s.annee}${s.isbn && s.isbn!=="—" ? " · ISBN "+s.isbn : ""}</div>
+        <div class="kind">${s.type}</div>
+        <div class="note"><p>${s.note}</p></div>
+      </div>
+    </div>`).join("");
+  html += `<section class="section" id="bibliotheque">
+    <p class="eyebrow">La bibliothèque</p>
+    <h2 class="display">Les sources</h2>
+    <p class="lede">Chaque ouvrage trouvé enrichit l'encyclopédie et rejoint cette étagère. C'est le cœur du projet : le savoir grandit livre après livre.</p>
+    <div class="biblio">${books}</div>
+  </section>`;
+
+  main.innerHTML = html;
+}
+
+function buildRail(){
+  const list = document.getElementById("rail-list");
+  const items = DATA.sections.map(s=>`<li><a href="#${s.id}">${s.label}</a></li>`).join("")
+    + `<li><a href="#glossaire">Glossaire</a></li>`
+    + `<li><a href="#bibliotheque">Sources</a></li>`;
+  list.innerHTML = items;
+}
+
+function buildCounts(){
+  const el = document.getElementById("counts");
+  const nSrc = Object.keys(DATA.sources).length;
+  const nTerms = DATA.glossaire.length;
+  const nFig = DATA.tinctures.length + DATA.partitions.length + DATA.pieces.length + DATA.meubles.length
+    + DATA.regles.traits.length + DATA.regles.recoupements.length + DATA.regles.courbes.length + DATA.regles.alesees.length;
+  el.innerHTML = `
+    <div class="c"><span class="n">${nSrc}</span><span class="l">Sources</span></div>
+    <div class="c"><span class="n">${nTerms}</span><span class="l">Termes</span></div>
+    <div class="c"><span class="n">${nFig}</span><span class="l">Figures</span></div>`;
+}
+
+/* ---- glossaire + recherche ---- */
+function renderGlossary(filter=""){
+  const list = document.getElementById("glist");
+  const count = document.getElementById("gcount");
+  const f = filter.trim().toLowerCase();
+  const items = DATA.glossaire
+    .slice()
+    .sort((a,b)=>a.terme.localeCompare(b.terme,"fr"))
+    .filter(g=> !f || g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
+  const hl = (txt)=> f ? txt.replace(new RegExp("("+f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") : txt;
+  if(!items.length){
+    list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${filter} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
+  } else {
+    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}</dd></div>`).join("");
+  }
+  count.textContent = `${items.length} terme${items.length>1?"s":""}${f?" trouvé"+(items.length>1?"s":""):" répertoriés"}`;
+}
+
+/* ---- scroll spy ---- */
+function initSpy(){
+  const links = [...document.querySelectorAll(".rail a")];
+  const map = new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove("active"));
+        const a = map.get(e.target.id); if(a) a.classList.add("active");
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px",threshold:0});
+  document.querySelectorAll(".section").forEach(s=>obs.observe(s));
+}
+
+/* ---- reveal on scroll ---- */
+function initReveal(){
+  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if(reduce){document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in"));return;}
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -8% 0px",threshold:.08});
+  document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
+}
+
+async function init(){
+  const res = await fetch('data/data.json');
+  DATA = await res.json();
+
+  /* ---- boot ---- */
+  const heroSvg = document.querySelector(".hero-shield");
+  heroSvg.setAttribute("viewBox", VB);
+  heroSvg.innerHTML = heroShieldInner();
+
+  buildCounts();
+  buildRail();
+  buildMain();
+  renderGlossary();
+  initSpy();
+  initReveal();
+
+  /* ---- recherche : menu de résultats sous le champ ---- */
+  const qInput = document.getElementById("q");
+  const sBox = document.getElementById("sresults");
+  let sActive = -1;
+
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); }
+  function mark(txt,f){ return f ? txt.replace(new RegExp("("+escRe(f)+")","ig"),"<mark>$1</mark>") : txt; }
+
+  function runSearch(raw){
+    const f = raw.trim().toLowerCase();
+    renderGlossary(raw); // filtre aussi le glossaire complet, en bas
+    sActive = -1;
+    if(!f){ sBox.hidden = true; sBox.innerHTML = ""; qInput.setAttribute("aria-expanded","false"); return; }
+    const hits = DATA.glossaire
+      .filter(g=> g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f))
+      .sort((a,b)=>{
+        const ai=a.terme.toLowerCase().startsWith(f)?0:1, bi=b.terme.toLowerCase().startsWith(f)?0:1;
+        return ai-bi || a.terme.localeCompare(b.terme,"fr");
+      })
+      .slice(0,8);
+    if(!hits.length){
+      sBox.innerHTML = `<div class="sr-empty">Aucun terme ne correspond à « ${raw} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</div>`;
+    } else {
+      sBox.innerHTML = hits.map(g=>
+        `<button type="button" class="sr" role="option" data-term="${g.terme.replace(/"/g,'&quot;')}">
+          <span class="t">${mark(g.terme,f)}</span><span class="d">${mark(g.def,f)}</span>
+        </button>`).join("");
+    }
+    sBox.hidden = false;
+    qInput.setAttribute("aria-expanded","true");
+  }
+
+  function gotoTerm(term){
+    sBox.hidden = true;
+    qInput.setAttribute("aria-expanded","false");
+    renderGlossary(term);
+    const gl = document.getElementById("glossaire");
+    if(gl) gl.scrollIntoView({behavior:"smooth", block:"start"});
+    // met en évidence la carte correspondante
+    setTimeout(()=>{
+      const items = [...document.querySelectorAll("#glist .gloss-item")];
+      const hit = items.find(it=> it.querySelector("dt") && it.querySelector("dt").textContent.trim().toLowerCase()===term.trim().toLowerCase());
+      if(hit){ hit.classList.add("flash"); setTimeout(()=>hit.classList.remove("flash"),1600); }
+    },420);
+  }
+
+  qInput.addEventListener("input", e=> runSearch(e.target.value));
+  qInput.addEventListener("focus", e=>{ if(e.target.value.trim()) runSearch(e.target.value); });
+  qInput.addEventListener("keydown", e=>{
+    const opts = [...sBox.querySelectorAll(".sr")];
+    if(e.key==="ArrowDown" && opts.length){ e.preventDefault(); sActive=Math.min(sActive+1,opts.length-1); }
+    else if(e.key==="ArrowUp" && opts.length){ e.preventDefault(); sActive=Math.max(sActive-1,0); }
+    else if(e.key==="Enter"){ e.preventDefault(); const t=(opts[sActive]||opts[0]); if(t) gotoTerm(t.dataset.term); return; }
+    else if(e.key==="Escape"){ sBox.hidden=true; qInput.setAttribute("aria-expanded","false"); return; }
+    else return;
+    opts.forEach((o,i)=>o.classList.toggle("on", i===sActive));
+  });
+  sBox.addEventListener("mousedown", e=>{
+    const btn = e.target.closest(".sr");
+    if(btn){ e.preventDefault(); gotoTerm(btn.dataset.term); }
+  });
+  document.addEventListener("click", e=>{
+    if(!e.target.closest(".search")){ sBox.hidden=true; qInput.setAttribute("aria-expanded","false"); }
+  });
+}
+init();
+</script>
+</body>
+</html>
