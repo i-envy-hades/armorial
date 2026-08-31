@@ -1,0 +1,382 @@
+[
+  {
+    "nom": "Royaume de France (moderne)",
+    "cat": "Royaumes",
+    "porteur": "Rois de France, à partir de la fin du XIVᵉ s.",
+    "blason": "D'azur à trois fleurs de lis d'or",
+    "file": "Arms of the Kingdom of France (Moderne).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de France (ancien)",
+    "cat": "Royaumes",
+    "porteur": "Capétiens, avant la réduction à trois lis",
+    "blason": "D'azur semé de fleurs de lis d'or",
+    "file": "Arms of the Kingdom of France (Ancien).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume d'Angleterre",
+    "cat": "Royaumes",
+    "porteur": "Plantagenêts, à partir de la fin du XIIᵉ s.",
+    "blason": "De gueules à trois léopards d'or",
+    "file": "Royal arms of England.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Couronne d'Aragon",
+    "cat": "Royaumes",
+    "porteur": "Rois d'Aragon et comtes de Barcelone",
+    "blason": "D'or à quatre pals de gueules",
+    "file": "Royal arms of Aragon (Crowned).svg",
+    "auteur": "",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Saint-Empire romain germanique",
+    "cat": "Empires",
+    "porteur": "Aigle bicéphale de l'Empire (après 1433)",
+    "blason": "D'or à l'aigle bicéphale de sable",
+    "file": "Armoiries modernes Saint-Empire bicéphale.svg",
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Archiduché d'Autriche",
+    "cat": "Provinces",
+    "porteur": "Babenberg puis Habsbourg (Bindenschild)",
+    "blason": "De gueules à la fasce d'argent",
+    "file": "Austria coat of arms simple.svg",
+    "auteur": "Cornelis ; conversion SVG David Liuzzo",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5"
+  },
+  {
+    "nom": "Comté de Foix",
+    "cat": "Provinces",
+    "porteur": "Comtes de Foix",
+    "blason": "D'or à trois pals de gueules",
+    "file": "Blason du comté de Foix.svg",
+    "auteur": "Peter Potrowl",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "nom": "Duché de Bretagne",
+    "cat": "Provinces",
+    "porteur": "Ducs de Bretagne, à partir de 1316",
+    "blason": "D'hermine plain",
+    "file": "Armoiries Bretagne - Arms of Brittany.svg",
+    "auteur": "",
+    "lic": "",
+    "licurl": ""
+  },
+  {
+    "nom": "Duché de Savoie",
+    "cat": "Maisons",
+    "porteur": "Maison de Savoie",
+    "blason": "De gueules à la croix d'argent",
+    "file": "Blason duché fr Savoie.svg",
+    "auteur": "",
+    "lic": "",
+    "licurl": ""
+  },
+  {
+    "nom": "Maison de Médicis",
+    "cat": "Maisons",
+    "porteur": "Médicis de Florence (les « palle »)",
+    "blason": "D'or à cinq tourteaux de gueules et, en chef, un tourteau d'azur",
+    "file": "Coat of arms of the House of Medici.svg",
+    "auteur": "",
+    "lic": "",
+    "licurl": ""
+  },
+  {
+    "nom": "République de Gênes",
+    "cat": "Villes & États",
+    "porteur": "Croix de saint Georges",
+    "blason": "D'argent à la croix de gueules",
+    "file": "Coat of arms of Republic of Genoa (early).svg",
+    "auteur": "",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Ordre Teutonique",
+    "cat": "Ordres",
+    "porteur": "Chevaliers teutoniques",
+    "blason": "D'argent à la croix de sable",
+    "file": "Insignia Germany Order Teutonic.svg",
+    "auteur": "",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Ordre de Saint-Jean (Hospitaliers)",
+    "cat": "Ordres",
+    "porteur": "Ordre de l'Hôpital ; croix pleine",
+    "blason": "De gueules à la croix d'argent",
+    "file": "Coat of arms of the Knights Hospitaller.svg",
+    "auteur": "",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Royaume de Grenade",
+    "cat": "Royaumes",
+    "porteur": "ancien État musulman médiéval (1238-1492)",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Armoiries Nasrides.jpg",
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Valence",
+    "cat": "Royaumes",
+    "porteur": "ancien royaume de la péninsule Ibérique",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Aureum-Opus--portada.jpg",
+    "auteur": "Ramón Berenguer",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Premier Empire",
+    "cat": "",
+    "porteur": "premier des deux empires français établis au profit de la dynastie des Bonaparte, de 1804 à 1814",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Imperial Coat of Arms of France (1804-1815).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Sultanat d'Égypte",
+    "cat": "",
+    "porteur": "ancien pays",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Sultan of Egypt.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Empire colonial danois",
+    "cat": "",
+    "porteur": "colonies danoises d'outre-mer",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Royal Arms of Norway & Denmark (1699-1819).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Ahom Kingdom",
+    "cat": "",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Ahom insignia plain.svg",
+    "auteur": "Chaipau (talk)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Empire britannique",
+    "cat": "",
+    "porteur": "ensemble des territoires conquis, exploités et dominés par l'Angleterre puis le Royaume-Uni, du début du XVIIe à la fin du XXe siècle",
+    "blason": "Quarterly, First and Fourth Gules three lions passant guardant in pale Or armed and langued Azure (for England), Second quarter Or a lion rampant within a double tressure flory counter-flory Gules (for Scotland), Third quarter Azure a harp Or stringed Argent (for Ireland) — [blasonnement en anglais, non traduit ; source : fichier Commons \"Coat of arms of the United Kingdom (1901–1952).svg\", ImageDescription, citant PINCHES J.H. & R.V., The Royal Heraldry of England, 1974, Heraldry Today — https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_United_Kingdom_(1901%E2%80%931952).svg]",
+    "file": "Coat of arms of the United Kingdom (1901–1952).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Gwynedd",
+    "cat": "Royaumes",
+    "porteur": "royaume du Nord du pays de Galles, du Ve au XIIIe s.",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Arms of Llywelyn.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Galice",
+    "cat": "Royaumes",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of Galicia (Spain), 16th Century.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Dix-Sept Provinces",
+    "cat": "",
+    "porteur": "ensemble de seigneuries du XVème et XVIème siècle correspondant plus au moins au Benelux actuel",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of Philip IV of Burgundy.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume d'Islande",
+    "cat": "Royaumes",
+    "porteur": "ancien État de 1918 à 1944",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Kingdom of Iceland Coat of Arms.svg",
+    "auteur": "Fenn-O-maniC",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Tolède",
+    "cat": "Royaumes",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Kingdom of Toledo.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Cordoue",
+    "cat": "Royaumes",
+    "porteur": "province de la Castille",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Realm of Cordoba (Kingdom of Leon Arms Variant).svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Séville",
+    "cat": "Royaumes",
+    "porteur": "1248-1833",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Realm of Seville.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Grenade (couronne de Castille)",
+    "cat": "Royaumes",
+    "porteur": "province vassale de la Castille de 1492 à 1833",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Castilian Realm of Granada.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume des Pays-Bas",
+    "cat": "Royaumes",
+    "porteur": "État souverain et monarchie constitutionnelle transcontinentale",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "State coat of arms of the Netherlands.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Royaume de Bosnie",
+    "cat": "Royaumes",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of Kingdom of Bosnia.svg",
+    "auteur": "Samhanin",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "nom": "Brandebourg-Prusse",
+    "cat": "",
+    "porteur": "ancien pays (1618–1701)",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Arms of Brandenburg.svg",
+    "auteur": "Glasshouse",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Royaume d'Irak",
+    "cat": "Royaumes",
+    "porteur": "État indépendant du Moyen-Orient, de 1932 à 1958",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of the Kingdom of Iraq (1921–1958).svg",
+    "auteur": "Samhanin",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "nom": "Royaume de Karthli",
+    "cat": "Royaumes",
+    "porteur": "monarchie du Bas Moyen Âge et de l'époque moderne dans l'est de la Géorgie",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of the Kingdom of Kartli.png",
+    "auteur": "Professor Alexander Mikaberidze",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Califat chérifien",
+    "cat": "",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of Kingdom of Hejaz.svg",
+    "auteur": "Samhanin",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "nom": "Royaume de Saxe",
+    "cat": "Royaumes",
+    "porteur": "ancien royaume (1806-1918)",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of the Kingdom of Saxony 1806-1918.svg",
+    "auteur": "Glasshouse, using elements by Sodacan, Trondivers and katepanomegas",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Royaume de Galicie et de Lodomérie",
+    "cat": "Royaumes",
+    "porteur": "ancien pays, province de l'Autriche-Hongrie",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of the Kingdom of Galicia and Lodomeria.svg",
+    "auteur": "Samhanin",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "nom": "Empire serbe",
+    "cat": "",
+    "porteur": "",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of arms of the Nemanic Dynasty.svg",
+    "auteur": "MazzyBor",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Royaume albanais",
+    "cat": "Royaumes",
+    "porteur": "période de l'histoire de l'Albanie",
+    "blason": "À VÉRIFIER — blasonnement non sourcé",
+    "file": "Coat of Arms of Albania (1943-1944).svg",
+    "auteur": "Havsjö",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  }
+]
