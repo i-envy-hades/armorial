@@ -1,1 +1,1 @@
-https://i-envy-hades.github.io/armorial/index.html
+https://i-envy-hades.github.io/armorial/
