@@ -16,29 +16,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-:root{
-  --vellum:#e9e1cd; --vellum-2:#f3eee0; --vellum-3:#efe8d6;
-  --ink:#22201b; --ink-soft:#5c5446;
-  --gules:#8e1b18; --azure:#20406e; --or:#a9812e; --sable:#1a1712;
-  --rule:#cabf9f; --rule-soft:#d8cfb4;
-  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
-  --maxw:1160px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%), var(--vellum);color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--gules);text-decoration:none}
+/* CSS propre à la page « Blasons réels » ; socle commun dans assets/site.css */
+a{text-decoration:none}
 a:hover{text-decoration:underline}
-.mast{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1rem;padding:.7rem clamp(1rem,4vw,2.4rem);background:rgba(233,225,205,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.brand{display:inline-flex;align-items:center;gap:.5rem;font-family:"Marcellus SC",serif;font-size:1.15rem;letter-spacing:1.5px;color:var(--ink)}
-.brand .cross{width:20px;height:20px;color:var(--gules)}
-.mast nav{margin-left:auto;display:flex;gap:1.3rem;font-family:"Marcellus SC",serif;font-size:.8rem;letter-spacing:1px;text-transform:uppercase}
-.mast nav a{color:var(--ink-soft)}
-.mast nav a.here{color:var(--gules)}
 .hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
-.eyebrow{font-family:"Marcellus SC",serif;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;color:var(--or)}
 .hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
 .hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
 .note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
@@ -61,7 +44,7 @@ a:hover{text-decoration:underline}
 .ar .po{font-size:.83rem;color:var(--ink-soft);margin:.05rem 0 .5rem}
 .ar .src{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.4rem 0 0;width:100%}
 .ar .src a{color:var(--ink-soft);text-decoration:underline}
-footer{border-top:1px solid var(--rule);background:var(--vellum-3)}
+footer{background:var(--vellum-3)}
 .foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
 .foot b{color:var(--ink)}
 </style>
@@ -88,6 +71,18 @@ footer{border-top:1px solid var(--rule);background:var(--vellum-3)}
 <div class="tools" id="tools"></div>
 <main class="grid" id="grid"></main>
 <footer><div class="foot">
+  <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
+    <defs>
+      <radialGradient id="wax" cx="38%" cy="32%" r="72%">
+        <stop offset="0%" stop-color="#c0362f"/>
+        <stop offset="58%" stop-color="#8e1b18"/>
+        <stop offset="100%" stop-color="#5d0f0d"/>
+      </radialGradient>
+    </defs>
+    <path fill="url(#wax)" d="M50,4 C62,4 70,10 78,14 C88,19 96,26 95,38 C94,49 88,55 88,64 C88,74 92,84 82,90 C72,96 63,92 52,93 C41,94 31,99 22,92 C13,85 16,74 13,64 C10,54 3,47 6,36 C9,25 20,20 28,14 C36,8 40,4 50,4 Z"/>
+    <path fill="none" stroke="#4a0c0a" stroke-width="1.2" opacity=".5" d="M50,12 C72,12 88,28 88,50 C88,72 72,88 50,88 C28,88 12,72 12,50 C12,28 28,12 50,12 Z"/>
+    <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
+  </svg>
   <p><b>L'Armorial</b> — page « Blasons réels ». Illustrations : Wikimedia Commons, sous licence libre, créditées individuellement. Blasonnements : domaine public. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
 </div></footer>
 <script>
@@ -107,12 +102,13 @@ function srcLine(a){
   return `Illustration : ${fileLink} — ${who}${licPart}, via Wikimedia Commons. Blasonnement : domaine public.`;
 }
 function card(a){
-  return `<article class="ar" data-cat="${a.cat}">
-    <div class="shield"><img loading="lazy" src="${src(a.file)}" alt="Armoiries — ${a.nom} : ${a.blason}"></div>
-    <div class="cat">${a.cat}</div>
+  const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`;
+  return `<article class="ar" data-cat="${a.cat||''}">
+    <div class="shield"><img loading="lazy" src="${src(a.file)}" alt="${alt}"></div>
+    ${a.cat ? `<div class="cat">${a.cat}</div>` : ""}
     <h3>${a.nom}</h3>
-    <p class="bl">${a.blason}</p>
-    <p class="po">${a.porteur}</p>
+    ${a.blason ? `<p class="bl">${a.blason}</p>` : ""}
+    ${a.porteur ? `<p class="po">${a.porteur}</p>` : ""}
     <p class="src">${srcLine(a)}</p>
   </article>`;
 }
@@ -124,7 +120,7 @@ function render(){
   if(c) c.textContent = `${list.length} blason${list.length>1?"s":""}`;
 }
 function buildTools(){
-  const cats=["Tous",...[...new Set(ARMS.map(a=>a.cat))]];
+  const cats=["Tous",...new Set(ARMS.map(a=>a.cat).filter(Boolean))];
   const tools=document.getElementById("tools");
   tools.innerHTML = `<span class="lab">Filtrer</span>`+
     cats.map(c=>`<button class="chip${c==="Tous"?" on":""}" data-c="${c}">${c}</button>`).join("")+
@@ -137,8 +133,15 @@ function buildTools(){
   });
 }
 async function init(){
-  const res = await fetch('data/blasons.json');
-  ARMS = await res.json();
+  try{
+    const res = await fetch('data/blasons.json');
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    ARMS = await res.json();
+  }catch(err){
+    document.getElementById("grid").innerHTML =
+      `<p>Les données n'ont pas pu être chargées (${err.message||err}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;
+    return;
+  }
   buildTools();
   render();
 }

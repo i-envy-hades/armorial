@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
 <title>L'Armorial — Encyclopédie du blason</title>
 
 <!--
   ============================================================================
   L'ARMORIAL — encyclopédie ouverte de l'héraldique
   ============================================================================
-  Fichier autonome (aucune dépendance en dehors des polices Google).
+  Dépendances : assets/site.css, data/data.json, polices Google.
+  La page doit être servie par HTTP (fetch), pas ouverte depuis le disque.
 
   COMMENT L'ÉTENDRE QUAND ON TROUVE UN NOUVEAU LIVRE
   --------------------------------------------------
@@ -40,71 +42,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 
 <style>
-:root{
-  --vellum:#e9e1cd;
-  --vellum-2:#f3eee0;
-  --vellum-3:#efe8d6;
-  --ink:#22201b;
-  --ink-soft:#5c5446;
-  --gules:#8e1b18;
-  --azure:#20406e;
-  --or:#a9812e;
-  --sable:#1a1712;
-  --rule:#cabf9f;
-  --rule-soft:#d8cfb4;
-  --shadow:0 1px 0 rgba(255,255,255,.5),0 18px 40px -28px rgba(26,23,18,.55);
-  --maxw:1160px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  margin:0;
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgba(169,129,46,.10), transparent 60%),
-    var(--vellum);
-  color:var(--ink);
-  font-family:"EB Garamond",Georgia,serif;
-  font-size:19px;
-  line-height:1.66;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-img,svg{max-width:100%}
-a{color:var(--gules);text-decoration-thickness:.5px;text-underline-offset:2px}
-
-/* ---------- typographic roles ---------- */
-.eyebrow{
-  font-family:"Marcellus SC",serif;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  font-size:.72rem;
-  color:var(--or);
-  margin:0 0 .5rem;
-}
-h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
-.display{font-family:"Marcellus",serif;line-height:1.02}
-.serif-head{font-family:"EB Garamond",serif}
-
-/* ---------- masthead ---------- */
-.mast{
-  position:sticky;top:0;z-index:40;
-  display:flex;align-items:center;gap:1rem;
-  padding:.55rem clamp(1rem,4vw,2.2rem);
-  background:rgba(233,225,205,.86);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--rule);
-}
-.mast .brand{
-  font-family:"Marcellus SC",serif;letter-spacing:.22em;text-transform:uppercase;
-  font-size:.86rem;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:.6rem;
-}
-.mast .brand .cross{width:12px;height:12px;color:var(--gules)}
-.mast .search{margin-left:auto;position:relative;flex:0 1 340px;min-width:150px}
-.mast .mastlink{font-family:"Marcellus SC",serif;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;margin-left:1.3rem;white-space:nowrap}
-.mast .mastlink:hover{color:var(--gules)}
+/* CSS propre à l'encyclopédie ; le socle commun est dans assets/site.css */
+.mast .search{margin-left:1.2rem;position:relative;flex:0 1 340px;min-width:150px}
 .mast .search input{
   width:100%;padding:.5rem .8rem .5rem 2rem;
   font-family:"EB Garamond",serif;font-size:.95rem;color:var(--ink);
@@ -116,6 +58,7 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 .search-results .sr{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:.5rem .6rem;border-radius:7px;font:inherit;color:var(--ink)}
 .search-results .sr:hover,.search-results .sr.on{background:#efe8d6}
 .search-results .sr .t{font-family:"Marcellus SC",serif;letter-spacing:.3px;color:var(--gules);font-size:.9rem}
+.search-results .sr .o{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);opacity:.75;margin-left:.5rem}
 .search-results .sr .d{display:block;font-size:.82rem;color:var(--ink-soft);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .search-results .sr mark{background:#f4e2b0;color:inherit;border-radius:2px;padding:0 1px}
 .search-results .sr-empty{padding:.6rem .7rem;font-size:.85rem;color:var(--ink-soft)}
@@ -141,9 +84,9 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 .hero-shield{width:130px;height:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
 .hero .counts{
   display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
-  margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--rule-soft);
+  margin-top:2rem;padding-top:1.6rem;
 }
-.hero .counts .c{min-width:90px}
+.hero .counts .c{min-width:96px;padding-top:.65rem;border-top:2px solid var(--or)}
 .hero .counts .n{font-family:"Marcellus",serif;font-size:2rem;color:var(--gules);display:block;line-height:1}
 .hero .counts .l{font-family:"Marcellus SC",serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
 
@@ -173,8 +116,7 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 
 /* ---------- main ---------- */
 main{padding:2rem 0 4rem;min-width:0}
-.section{padding:2.4rem 0;border-bottom:1px solid var(--rule-soft);scroll-margin-top:70px}
-.section:last-child{border-bottom:none}
+.section{padding:2.4rem 0;scroll-margin-top:70px}
 .section > .eyebrow{margin-bottom:.3rem}
 .section > h2{font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.4rem}
 .section .lede{font-size:1.12rem;color:var(--ink-soft);font-style:italic;max-width:60ch;margin:0 0 1.6rem}
@@ -216,10 +158,27 @@ main{padding:2rem 0 4rem;min-width:0}
 .fig .cat{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
 .figs .fig .nom{font-size:.9rem;margin-top:.4rem}
 .figs .fig .en{font-size:.74rem}
+.figimg{height:148px;display:flex;align-items:center;justify-content:center}
+.figimg img{max-height:148px;max-width:100%;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
+.fig .credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);border-top:1px solid var(--rule-soft);margin-top:.55rem;padding-top:.4rem;word-break:break-word}
+.fig .credit a{color:var(--ink-soft);text-decoration:underline}
 .swlabel{font-family:"Marcellus SC",serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:.25rem}
 
 /* ---------- points de l'écu diagram ---------- */
 .ecu-diagram{background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.2rem;box-shadow:var(--shadow);text-align:center;margin:1.4rem 0}
+
+/* ---------- diagrammes comparatifs (droit du blason) ---------- */
+.galcat{font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gules);margin:2rem 0 .2rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.galcat:first-child{margin-top:.6rem}
+.diagram-row{display:flex;flex-wrap:wrap;gap:clamp(1rem,3vw,2.4rem);justify-content:center;align-items:flex-end}
+.diagram-row figure{margin:0;max-width:220px}
+.diagram-row figcaption{margin-top:.5rem;line-height:1.35}
+.diagram-row figcaption b{display:block;font-family:"Marcellus SC",serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gules)}
+.diagram-row figcaption span{display:block;font-size:.86rem;font-style:italic;color:var(--ink-soft)}
+.diagram-row .figimg{height:190px}
+.diagram-row .figimg img{max-height:190px}
+.diagram-row .credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);border-top:1px solid var(--rule-soft);margin-top:.55rem;padding-top:.4rem;word-break:break-word;text-align:left}
+.diagram-row .credit a{color:var(--ink-soft);text-decoration:underline}
 
 /* ---------- glossary ---------- */
 .glossary{margin-top:1rem}
@@ -247,26 +206,20 @@ mark{background:rgba(169,129,46,.28);color:inherit;padding:0 .1em;border-radius:
 .book .note p{font-size:.92rem}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--rule);padding:2.4rem clamp(1rem,4vw,2rem);text-align:center;color:var(--ink-soft)}
-footer .cross{width:16px;color:var(--gules);margin:0 auto .6rem;display:block}
+footer{padding:2.4rem clamp(1rem,4vw,2rem);text-align:center;color:var(--ink-soft)}
 footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
-footer .fine{font-size:.78rem;opacity:.85}
-
-/* reveal */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
 </style>
 </head>
 <body>
 
 <!-- ============ MASTHEAD ============ -->
 <header class="mast">
-  <span class="brand"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</span>
-  <a class="mastlink" href="blasons.html">Blasons réels</a>
-  <a class="mastlink" href="personnages.html">Personnages</a>
+  <a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>
+  <nav>
+    <a href="index.html" class="here">L'encyclopédie</a>
+    <a href="blasons.html">Blasons réels</a>
+    <a href="personnages.html">Personnages</a>
+  </nav>
   <div class="search" role="search">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
     <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sresults">
@@ -277,7 +230,7 @@ footer .fine{font-size:.78rem;opacity:.85}
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="frame">
-    <svg class="hero-shield" viewBox="0 0 200 240" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
+    <svg class="hero-shield" viewBox="0 0 200 252" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
     <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
     <h1 class="display">L'Art du Blason</h1>
     <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
@@ -295,8 +248,19 @@ footer .fine{font-size:.78rem;opacity:.85}
 </div>
 
 <footer>
-  <svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>
-  <p><b>Méthode.</b> Toutes les figures sont dessinées à neuf en SVG. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
+    <defs>
+      <radialGradient id="wax" cx="38%" cy="32%" r="72%">
+        <stop offset="0%" stop-color="#c0362f"/>
+        <stop offset="58%" stop-color="#8e1b18"/>
+        <stop offset="100%" stop-color="#5d0f0d"/>
+      </radialGradient>
+    </defs>
+    <path fill="url(#wax)" d="M50,4 C62,4 70,10 78,14 C88,19 96,26 95,38 C94,49 88,55 88,64 C88,74 92,84 82,90 C72,96 63,92 52,93 C41,94 31,99 22,92 C13,85 16,74 13,64 C10,54 3,47 6,36 C9,25 20,20 28,14 C36,8 40,4 50,4 Z"/>
+    <path fill="none" stroke="#4a0c0a" stroke-width="1.2" opacity=".5" d="M50,12 C72,12 88,28 88,50 C88,72 72,88 50,88 C28,88 12,72 12,50 C12,28 28,12 50,12 Z"/>
+    <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
+  </svg>
+  <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
   <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
   <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
 </footer>
@@ -316,65 +280,111 @@ const SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,17
 const VB = "0 0 200 252";
 let uid = 0;
 
-/* trouve la couleur d'un émail par son nom */
+/* trouve la couleur brute d'un émail par son nom */
 function tinctColor(nom){
   const t = DATA.tinctures.find(x=>x.nom===nom);
-  return t ? t.color : "#888";
+  if(!t){ console.warn(`[armorial] émail inconnu : « ${nom} »`); return "#888"; }
+  return t.color;
 }
 
-/* patrons de hachure / fourrure ; renvoie {def, fill} pour un id donné */
-function hatchDefs(id){
-  return `
-  <pattern id="h-dots-${id}" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1" fill="#1a1712"/></pattern>
-  <pattern id="h-vert-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-horiz-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-cross-${id}" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-bend-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 L8,8" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-bendsin-${id}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8,0 L0,8" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-ermine-${id}" width="26" height="26" patternUnits="userSpaceOnUse">
-    <rect width="26" height="26" fill="#f4efe2"/>
-    ${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
-  </pattern>
-  <pattern id="h-vair-${id}" width="28" height="26" patternUnits="userSpaceOnUse">
-    <rect width="28" height="26" fill="#f4efe2"/>
-    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
-    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
-    <path d="M-3,13 L11,13 L8,26 L0,26 Z M0,26" fill="#20406e"/>
-    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
-    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
-  </pattern>`;
+/* remplissage « peint » : métaux en dégradé, fourrures en semis, couleurs à plat */
+function tinctPaint(nom){
+  const t = DATA.tinctures.find(x=>x.nom===nom);
+  if(!t){ console.warn(`[armorial] émail inconnu : « ${nom} »`); return "#888"; }
+  if(t.hatch==="ermine") return "url(#h-ermine)";
+  if(t.hatch==="vair")   return "url(#h-vair)";
+  if(nom==="Or")     return "url(#m-or)";
+  if(nom==="Argent") return "url(#m-argent)";
+  return t.color;
 }
+
 function ermineSpot(cx,cy){
   return `<g transform="translate(${cx},${cy})" fill="#1a1712">
     <path d="M0,-4 C-1.6,-1.6 -1.6,-1.6 -2.4,0.4 L2.4,0.4 C1.6,-1.6 1.6,-1.6 0,-4 Z"/>
     <circle cx="-2.4" cy="1.4" r=".7"/><circle cx="0" cy="1.6" r=".7"/><circle cx="2.4" cy="1.4" r=".7"/>
   </g>`;
 }
+
+/* hachures de gravure et fourrures ; ids globaux, émis une seule fois */
+function hatchPatterns(){
+  return `
+  <pattern id="h-dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1" fill="#1a1712"/></pattern>
+  <pattern id="h-vert" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-horiz" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-cross" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bend" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 L8,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-bendsin" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8,0 L0,8" stroke="#1a1712" stroke-width=".8"/></pattern>
+  <pattern id="h-ermine" width="26" height="26" patternUnits="userSpaceOnUse">
+    <rect width="26" height="26" fill="#f4efe2"/>
+    ${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
+  </pattern>
+  <pattern id="h-vair" width="28" height="26" patternUnits="userSpaceOnUse">
+    <rect width="28" height="26" fill="#f4efe2"/>
+    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
+    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
+    <path d="M-3,13 L11,13 L8,26 L0,26 Z" fill="#20406e"/>
+    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
+    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
+  </pattern>`;
+}
+
+/* défs partagées par tous les écus ; insérées une seule fois dans le document */
+function globalDefs(){
+  return `<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
+    <linearGradient id="m-or" x1="0" y1="0" x2=".4" y2="1">
+      <stop offset="0%" stop-color="#e9d191"/><stop offset="36%" stop-color="#c49c40"/>
+      <stop offset="64%" stop-color="#a9812e"/><stop offset="100%" stop-color="#dcba6b"/>
+    </linearGradient>
+    <linearGradient id="m-argent" x1="0" y1="0" x2=".4" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#e6e2d8"/>
+      <stop offset="68%" stop-color="#cac5b6"/><stop offset="100%" stop-color="#f2efe7"/>
+    </linearGradient>
+    <radialGradient id="relief" cx="38%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".26"/>
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity=".32"/>
+    </radialGradient>
+    <pattern id="diaper" width="36" height="36" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#1a1712" stroke-width="1" stroke-linecap="round">
+        <path d="M18,2 L34,18 L18,34 L2,18 Z"/>
+        <path d="M18,10 C22,14 22,22 18,26 C14,22 14,14 18,10 Z"/>
+        <path d="M0,0 L5,5 M36,0 L31,5 M0,36 L5,31 M36,36 L31,31"/>
+      </g>
+      <circle cx="18" cy="18" r="1.7" fill="#1a1712"/>
+    </pattern>
+    ${hatchPatterns()}
+  </defs></svg>`;
+}
+
+/* finition commune : diaprure, relief, filet d'or intérieur, puis trait de contour.
+   `plain` sert aux écus de gravure, qui doivent rester en noir et blanc. */
+function shieldFinish(sw=2.4, plain=false){
+  const painted = plain ? "" : `
+    <path d="${SHIELD_D}" fill="url(#diaper)" opacity=".07"/>
+    <path d="${SHIELD_D}" fill="url(#relief)"/>
+    <path d="${SHIELD_D}" fill="none" stroke="url(#m-or)" stroke-width="1.1" opacity=".5" transform="translate(100,126) scale(.974) translate(-100,-126)"/>`;
+  return `${painted}
+    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="${sw}"/>`;
+}
+
 /* renvoie la valeur de remplissage pour un émail, en mode 'couleur' ou 'gravure' */
-function tinctFill(nom, mode, id){
+function tinctFill(nom, mode){
   const t = DATA.tinctures.find(x=>x.nom===nom) || {color:"#888",hatch:"none"};
-  if(mode==="couleur"){
-    if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
-    if(t.hatch==="vair") return `url(#h-vair-${id})`;
-    return t.color;
-  }
+  if(mode==="couleur") return tinctPaint(nom);
   // gravure : fond parchemin clair + hachure noire
-  const base = "#f4efe2";
   const map = {dots:"h-dots",vert:"h-vert",horiz:"h-horiz",cross:"h-cross",bend:"h-bend",bendsin:"h-bendsin"};
-  if(t.hatch==="none") return base;
-  if(t.hatch==="ermine") return `url(#h-ermine-${id})`;
-  if(t.hatch==="vair") return `url(#h-vair-${id})`;
-  return `url(#${map[t.hatch]}-${id})`;
+  if(t.hatch==="none")   return "#f4efe2";
+  if(t.hatch==="ermine") return "url(#h-ermine)";
+  if(t.hatch==="vair")   return "url(#h-vair)";
+  return `url(#${map[t.hatch]})`;
 }
 
 /* un écu simple rempli d'un émail (mode couleur ou gravure) */
 function shieldSwatch(nom, mode, w=90){
-  const id = ++uid;
   return `<svg viewBox="${VB}" width="${w}" role="img" aria-label="${nom} — ${mode}">
-    <defs>${hatchDefs(id)}</defs>
     ${mode==="gravure"?`<path d="${SHIELD_D}" fill="#f4efe2"/>`:""}
-    <path d="${SHIELD_D}" fill="${tinctFill(nom,mode,id)}"/>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.2"/>
+    <path d="${SHIELD_D}" fill="${tinctFill(nom,mode)}"/>
+    ${shieldFinish(2.2, mode==="gravure")}
   </svg>`;
 }
 
@@ -410,7 +420,7 @@ function gironne(a,b){
 function shieldPartition(kind, tinc){
   const id = ++uid;
   const cid = "clip"+id;
-  const a = tinctColor(tinc[0]), b = tinctColor(tinc[1]), c = tinc[2]?tinctColor(tinc[2]):a;
+  const a = tinctPaint(tinc[0]), b = tinctPaint(tinc[1]), c = tinc[2]?tinctPaint(tinc[2]):a;
   let inner = "";
   switch(kind){
     case "parti": inner = `<rect x="0" y="0" width="100" height="252" fill="${a}"/><rect x="100" y="0" width="100" height="252" fill="${b}"/>`; break;
@@ -434,7 +444,7 @@ function shieldPartition(kind, tinc){
   return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <g clip-path="url(#${cid})">${inner}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 
@@ -445,7 +455,7 @@ function shieldBlank(inner, label){
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="#f4efe2"/>
     <g clip-path="url(#${cid})">${inner}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 /* trait simple : une seule ligne rouge sur écu vierge, pour isoler la direction du trait */
@@ -457,61 +467,113 @@ function shieldTraitDemo(dir){
   if(dir==="d2") line = `<line x1="200" y1="0" x2="0" y2="252"/>`;   // taillé : chef senestre → pointe dextre
   return shieldBlank(`<g stroke="#8e1b18" stroke-width="4" stroke-linecap="round">${line}</g>`, "trait "+dir);
 }
-/* ---- blasons vierges timbrés d'une couronne de rang ---- */
-function crownGraphic(kind){
-  const gold="#a9812e", ink="#1a1712", pearl="#f3eee0", pearlStroke="#8a7a52", stone="#8a8a8a";
-  function band(fill){ return `<path d="M54,20 L146,20 L140,2 L60,2 Z" fill="${fill||gold}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>`; }
-  function fleur(cx,cyBase,s,fill){
-    const tx=(cx-100*s).toFixed(2), ty=(cyBase-158*s).toFixed(2);
-    return `<g transform="translate(${tx},${ty}) scale(${s})" fill="${fill||gold}" stroke="${ink}" stroke-width="1.3" stroke-linejoin="round">
-      <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
-      <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
-      <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
-      <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
-      <rect x="79" y="112" width="42" height="8" rx="2.5"/>
-    </g>`;
-  }
-  function pearlDot(cx,cy,r){ return `<circle cx="${cx}" cy="${cy}" r="${r||4.4}" fill="${pearl}" stroke="${pearlStroke}" stroke-width="1.1"/>`; }
-  switch(kind){
-    case "roi": return `
-      ${band()}${fleur(71,2,0.6)}${fleur(100,2,1.0)}${fleur(129,2,0.6)}
-      <path d="M71,-30 C80,-46 92,-50 100,-52 C108,-50 120,-46 129,-30" fill="none" stroke="${gold}" stroke-width="3.6" stroke-linecap="round"/>
-      <path d="M71,-24 C82,-38 90,-42 100,-44 C110,-42 118,-38 129,-24" fill="none" stroke="${gold}" stroke-width="3.6" stroke-linecap="round"/>
-      <circle cx="100" cy="-56" r="6.4" fill="${gold}" stroke="${ink}" stroke-width="1.3"/>
-      <path d="M100,-68 L100,-56 M94,-62 L106,-62" stroke="${gold}" stroke-width="3" stroke-linecap="round"/>`;
-    case "duc": return `${band()}${fleur(71,2,0.82)}${fleur(100,2,0.82)}${fleur(129,2,0.82)}`;
-    case "marquis": return `${band()}${fleur(72,2,0.68)}${fleur(128,2,0.68)}
-      ${pearlDot(92,-6,3.4)}${pearlDot(100,-11,3.4)}${pearlDot(108,-6,3.4)}`;
-    case "comte": return `${band()}
-      ${[68,84,100,116,132].map(x=>`<line x1="${x}" y1="2" x2="${x}" y2="-9" stroke="${gold}" stroke-width="2"/>${pearlDot(x,-11,4)}`).join("")}`;
-    case "vicomte": return `${band()}${pearlDot(76,-2,6.4)}${pearlDot(100,-4,6.4)}${pearlDot(124,-2,6.4)}`;
-    case "baron": return `<path d="M54,20 L146,20 L142,6 L58,6 Z" fill="${gold}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>
-      ${[62,74,86,100,114,126,138].map(x=>pearlDot(x,13,2.6)).join("")}`;
-    case "chevalier": {
-      const cols=["#8e1b18","#f3eee0"]; let s="";
-      for(let i=0;i<9;i++){ const x=54+i*(92/8); s+=`<ellipse cx="${x.toFixed(1)}" cy="11" rx="7" ry="9" fill="${cols[i%2]}" stroke="${ink}" stroke-width="1.1"/>`; }
-      return s;
-    }
-    case "murale": return `<path d="M54,20 L146,20 L146,6 L136,6 L136,12 L124,12 L124,6 L112,6 L112,12 L100,12 L100,6 L88,6 L88,12 L76,12 L76,6 L64,6 L64,12 L54,12 Z" fill="${stone}" stroke="${ink}" stroke-width="1.6" stroke-linejoin="round"/>
-      <rect x="82" y="13" width="8" height="7" fill="${ink}" opacity=".35"/><rect x="110" y="13" width="8" height="7" fill="${ink}" opacity=".35"/>`;
-    case "tiare": return `
-      <path d="M76,20 C74,4 78,-40 100,-44 C122,-40 126,4 124,20 Z" fill="#f3eee0" stroke="${ink}" stroke-width="1.6"/>
-      <path d="M74,10 L126,10" stroke="${gold}" stroke-width="3"/>
-      <path d="M78,-6 L122,-6" stroke="${gold}" stroke-width="3"/>
-      <path d="M84,-24 L116,-24" stroke="${gold}" stroke-width="3"/>
-      <path d="M100,-52 L100,-44 M95,-48 L105,-48" stroke="${gold}" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="100" cy="-44" r="4" fill="${gold}" stroke="${ink}" stroke-width="1"/>
-      <path d="M84,20 C80,32 78,44 80,54" fill="none" stroke="${gold}" stroke-width="2.4"/>
-      <path d="M116,20 C120,32 122,44 120,54" fill="none" stroke="${gold}" stroke-width="2.4"/>`;
-  }
-  return "";
+/* ---- fleur de lis héraldique ----
+   Tracés dans le repère de l'écu, centrée sur x=100, du sommet (y=36) au pied (y=190).
+   Partagée par le hero, le meuble et les fleurons des couronnes. */
+function fleurDeLisPaths(){
+  return `
+    <path d="M100,34 C91,60 83,92 82,122 L118,122 C117,92 109,60 100,34 Z"/>
+    <path d="M86,122 C62,122 40,112 32,95 C26,81 32,64 48,54 C47,75 57,95 74,106 C82,112 86,116 86,122 Z"/>
+    <path d="M114,122 C138,122 160,112 168,95 C174,81 168,64 152,54 C153,75 143,95 126,106 C118,112 114,116 114,122 Z"/>
+    <path d="M82,142 C80,164 73,182 58,194 C78,191 93,183 100,172 C107,183 122,191 142,194 C127,182 120,164 118,142 Z"/>
+    <rect x="62" y="121" width="76" height="22" rx="6"/>`;
 }
-function shieldCrowned(kind, label){
-  return `<svg viewBox="0 -74 200 326" width="120" role="img" aria-label="blason vierge timbré d'une ${label}">
-    ${crownGraphic(kind)}
-    <path d="${SHIELD_D}" fill="#f4efe2"/>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+
+/* ---- blasons vierges timbrés d'une couronne de rang ---- */
+/* ============================================================================
+   DIAGRAMMES DU CHAPITRE « DROIT DU BLASON »
+   ============================================================================ */
+
+/* Les ornements ecclésiastiques complets (mitre, crosse, galero à houppes) demandent
+   un tracé que nos essais ne rendaient pas correctement : on emprunte ici deux figures
+   libres du Projet:Blasons, créditées sous elles, comme pour le lion et l'aigle. */
+const ECCL_FIGURES = [
+  {
+    titre: "Rome, depuis 1969",
+    desc: "chapeau vert à six houppes de chaque côté et croix de procession — ni mitre ni crosse",
+    file: "Template-Bishop.svg",
+    auteur: "Alejandro Rojas (SajoR)",
+    lic: "CC BY-SA 2.5",
+    licurl: "https://creativecommons.org/licenses/by-sa/2.5/deed.fr"
+  },
+  {
+    titre: "Cantorbéry, non concernée",
+    desc: "l'Église d'Angleterre a gardé la mitre que l'instruction retirait à Rome",
+    file: "External Ornaments of an Anglican Bishop.svg",
+    auteur: "Tom Lemmens",
+    lic: "CC BY-SA 3.0",
+    licurl: "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    note: "Le fichier est nommé « Bishop » mais sa page Commons le décrit comme les ornements d'un archevêque anglican."
+  }
+];
+function ecclDiagram(){
+  return `<div class="diagram-row">${ECCL_FIGURES.map(f => `
+    <figure>
+      <div class="figimg"><img loading="lazy" src="${commonsSrc(f.file)}" alt="Ornements extérieurs — ${f.titre}"></div>
+      <figcaption><b>${f.titre}</b><span>${f.desc}</span></figcaption>
+      <div class="credit"><a href="${commonsPage(f.file)}" target="_blank" rel="noopener">« ${f.file} »</a> — ${f.auteur}, <a href="${f.licurl}" target="_blank" rel="noopener">${f.lic}</a>, via Wikimedia Commons${f.note ? " · " + f.note : ""}</div>
+    </figure>`).join("")}</div>`;
+}
+
+/* ---- meubles de l'héraldique d'Empire ---- */
+function abeille(x, y, s){
+  return `<g transform="translate(${x},${y}) scale(${s})" stroke="#7a5c1e" stroke-linejoin="round">
+    <g fill="url(#m-or)" stroke-width="${(1.3 / s).toFixed(2)}">
+      <path d="M-5,-3 C-15,-12 -20,-2 -10,4 Z"/><path d="M5,-3 C15,-12 20,-2 10,4 Z"/>
+      <ellipse cx="0" cy="5" rx="5.4" ry="8.6"/><circle cx="0" cy="-6" r="3.6"/>
+    </g>
+    <path d="M-4.4,3 H4.4 M-4,8 H4" fill="none" stroke-width="${(1.5 / s).toFixed(2)}"/>
+  </g>`;
+}
+function etoilePetite(x, y, s, fill, stroke){
+  return `<g transform="translate(${x},${y}) scale(${s})" fill="${fill}" stroke="${stroke}" stroke-width="${(0.9 / s).toFixed(2)}">
+    <path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
+}
+function epeeGraphic(x, y, s, fill, stroke){
+  return `<g transform="translate(${x},${y}) scale(${s})" fill="${fill}" stroke="${stroke}" stroke-width="${(1.1 / s).toFixed(2)}" stroke-linejoin="round">
+    <path d="M0,-36 L4,-27 L4,9 L-4,9 L-4,-27 Z"/>
+    <rect x="-13" y="9" width="26" height="4.6" rx="2.2"/>
+    <rect x="-2.6" y="13.6" width="5.2" height="12" rx="2.2"/>
+    <circle cx="0" cy="29" r="4.2"/></g>`;
+}
+
+/* les quatre marques de rang que 1808 fait entrer DANS l'écu */
+function empireShield(kind){
+  const id = ++uid, cid = "clemp" + id;
+  const semeAt = [[36, 17], [78, 17], [120, 17], [162, 17], [57, 42], [99, 42], [141, 42]];
+  let ins = "", lab = "";
+  if(kind === "prince"){
+    lab = "chef d'azur semé d'abeilles d'or";
+    ins = `<rect x="0" y="0" width="200" height="58" fill="${tinctPaint('Azur')}"/>`
+      + semeAt.map(([x, y]) => abeille(x, y, 0.62)).join("");
+  }
+  if(kind === "duc"){
+    lab = "chef de gueules semé d'étoiles d'argent";
+    ins = `<rect x="0" y="0" width="200" height="58" fill="${tinctPaint('Gueules')}"/>`
+      + semeAt.map(([x, y]) => etoilePetite(x, y, 0.42, tinctPaint('Argent'), chgStroke('Argent'))).join("");
+  }
+  if(kind === "comte" || kind === "baron"){
+    const t = kind === "comte" ? "Azur" : "Gueules";
+    lab = `franc-quartier ${kind === "comte" ? "d'azur" : "de gueules"} à l'épée d'argent`;
+    ins = `<rect x="0" y="0" width="84" height="74" fill="${tinctPaint(t)}"/>`
+      + epeeGraphic(42, 37, 0.82, tinctPaint('Argent'), chgStroke('Argent'));
+  }
+  return `<svg viewBox="${VB}" width="108" role="img" aria-label="Écu d'or au ${lab}">
+    <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+    <path d="${SHIELD_D}" fill="${tinctPaint('Or')}"/>
+    <g clip-path="url(#${cid})">${ins}</g>
+    ${shieldFinish()}
   </svg>`;
+}
+function empireDiagram(){
+  const rows = [
+    ["prince", "Prince", "chef d'azur semé d'abeilles d'or"],
+    ["duc", "Duc", "chef de gueules semé d'étoiles d'argent"],
+    ["comte", "Comte militaire", "franc-quartier d'azur à l'épée d'argent"],
+    ["baron", "Baron militaire", "franc-quartier de gueules à l'épée d'argent"]
+  ];
+  return `<div class="diagram-row">${rows.map(([k, t, d]) =>
+    `<figure>${empireShield(k)}<figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join("")}</div>`;
 }
 
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
@@ -551,13 +613,13 @@ function shieldRecoupement(kind, n, a, b){
   return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <g clip-path="url(#${cid})">${inner}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 /* pièce "au vif de l'écu" (touchant les bords) vs pièce alésée (raccourcie, flottante) */
 function shieldPieceAlesee(kind, champ, piece, alesee){
   const id = ++uid, cid = "cla"+id;
-  const cf = tinctColor(champ), pf = tinctColor(piece);
+  const cf = tinctPaint(champ), pf = tinctPaint(piece);
   let inner = "";
   if(kind==="croix"){
     inner = alesee
@@ -576,7 +638,7 @@ function shieldPieceAlesee(kind, champ, piece, alesee){
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="${cf}"/>
     <g clip-path="url(#${cid})">${inner}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 
@@ -584,9 +646,8 @@ function shieldPieceAlesee(kind, champ, piece, alesee){
 function shieldPiece(kind, champ, piece){
   const id = ++uid;
   const cid = "clipp"+id;
-  const cf = tinctColor(champ), pf = tinctColor(piece);
+  const cf = tinctPaint(champ), pf = tinctPaint(piece);
   let inner = "";
-  const sw = {stroke:pf};
   switch(kind){
     case "chef": inner = `<rect x="0" y="16" width="200" height="62" fill="${pf}"/>`; break;
     case "fasce": inner = `<rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
@@ -603,29 +664,26 @@ function shieldPiece(kind, champ, piece){
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="${cf}"/>
     <g clip-path="url(#${cid})">${inner}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 
 /* écu du hero : parti d'azur et de gueules à la fleur de lis d'or.
    Renvoie le contenu INTERNE du <svg> (le <svg> existe déjà dans le HTML). */
 function heroShieldInner(){
-  const id = ++uid; const cid="clhero"+id;
-  const orC = tinctColor('Or');
+  const cid = "clhero"+(++uid);
   return `
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
-    <g clip-path="url(#${cid})">
-      <rect x="0" y="0" width="100" height="252" fill="${tinctColor('Azur')}"/>
-      <rect x="100" y="0" width="100" height="252" fill="${tinctColor('Gueules')}"/>
+    <g class="field" clip-path="url(#${cid})">
+      <rect x="0" y="0" width="100" height="252" fill="${tinctPaint('Azur')}"/>
+      <rect x="100" y="0" width="100" height="252" fill="${tinctPaint('Gueules')}"/>
+      <path d="${SHIELD_D}" fill="url(#diaper)" opacity=".09"/>
     </g>
-    <g fill="${orC}" stroke="#7a5c1e" stroke-width="1.4" stroke-linejoin="round">
-      <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
-      <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
-      <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
-      <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
-      <rect x="79" y="112" width="42" height="8" rx="2.5"/>
+    <g class="charge" fill="${tinctPaint('Or')}" stroke="#7a5c1e" stroke-width="1.6" stroke-linejoin="round">
+      ${fleurDeLisPaths()}
     </g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="3"/>`;
+    <path class="field" d="${SHIELD_D}" fill="url(#relief)"/>
+    <path class="draw" pathLength="1" d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="3"/>`;
 }
 
 /* diagramme des points de l'écu */
@@ -666,16 +724,20 @@ function chgStroke(t){
 function chargeInner(kind, fill, stroke, field){
   switch(kind){
     case "lion": return `
-      <g transform="translate(8,20)" fill="${fill}" stroke="${stroke}" stroke-width="1.6" stroke-linejoin="round">
-        <path d="M40,96 C40,86 52,82 66,82 L120,82 C130,82 138,78 146,72 C150,68 156,66 160,70 C162,74 158,80 152,84 C148,92 148,104 146,112 C144,120 138,122 134,116 C132,110 132,102 132,96 L70,96 C66,108 64,120 64,130 L58,130 C58,118 58,106 56,96 C48,96 42,100 40,96 Z"/>
-        <path d="M146,72 C154,66 166,64 172,70 C176,74 174,80 168,82 C172,84 172,90 166,92 C160,94 152,90 150,84 C148,80 148,76 146,72 Z"/>
-        <path d="M138,112 C138,132 138,152 140,168 C136,168 132,168 132,164 C132,148 132,128 132,112 Z"/>
-        <path d="M112,108 C112,130 112,150 114,166 C110,166 106,166 106,162 C106,146 106,124 106,108 Z"/>
-        <path d="M74,110 C72,130 72,150 74,166 C70,166 66,166 66,162 C66,146 68,126 68,110 Z"/>
-        <path d="M50,100 C46,116 46,134 48,150 C44,150 40,150 40,146 C40,130 42,112 44,100 Z"/>
-        <path d="M42,98 C30,92 24,78 30,66 C34,74 42,78 50,76 C42,84 44,94 52,96 Z"/>
+      <g fill="${fill}" stroke="${stroke}" stroke-width="1.7" stroke-linejoin="round">
+        <path d="M150,112 C166,105 177,88 173,71 C170,59 161,53 152,56 C160,63 163,74 157,85 C152,93 147,101 146,109 Z"/>
+        <path d="M173,71 C179,63 187,61 192,66 C185,66 180,70 176,77 Z"/>
+        <path d="M124,105 C140,103 153,113 153,128 C153,141 144,150 131,150 C120,150 113,141 113,128 C113,115 117,107 124,105 Z"/>
+        <path d="M58,106 C71,98 93,94 117,95 C138,96 152,103 158,113 C162,122 160,134 151,141 C138,149 115,153 92,151 C72,149 58,141 54,128 C52,119 53,111 58,106 Z"/>
+        <path d="M72,104 L62,109 L67,119 L56,118 L54,129 L46,121 L38,129 L36,118 L25,119 L30,109 L20,104 L30,99 L25,89 L36,90 L38,79 L46,87 L54,79 L56,90 L67,89 L62,99 Z"/>
+        <path d="M33,92 C22,92 12,99 10,108 C9,115 15,121 26,121 C35,121 41,116 41,107 C41,99 39,92 33,92 Z"/>
+        <path d="M116,147 C114,159 113,171 112,183 C109,185 108,190 111,192 L127,192 C130,190 129,185 126,183 C126,171 127,158 129,145 Z"/>
+        <path d="M139,148 C137,160 135,172 134,184 C131,186 130,191 133,193 L149,193 C152,191 151,186 148,184 C148,172 149,159 151,146 Z"/>
+        <path d="M67,143 C64,158 62,173 61,184 C58,186 57,191 60,193 L76,193 C79,191 78,186 75,184 C75,172 76,157 78,145 Z"/>
+        <path d="M82,141 C88,151 94,159 94,167 C94,175 87,179 80,176 C85,171 85,163 79,153 C76,148 76,143 78,140 Z"/>
       </g>
-      <circle cx="167" cy="90" r="2.1" fill="#3a2a0e"/>`;
+      <circle cx="24" cy="104" r="2.4" fill="#2a1c08"/>
+      <circle cx="12" cy="110" r="2" fill="#2a1c08"/>`;
     case "aigle": return `
       <g transform="translate(8,18)" fill="${fill}" stroke="${stroke}" stroke-width="0.6" stroke-linejoin="round">
         <path d="M90,38 C83,38 77,44 77,51 C77,57 82,63 90,63 C93,63 96,62 98,60 L88,58 L98,55 C99,53 100,52 100,51 C100,44 96,38 90,38 Z"/>
@@ -688,15 +750,6 @@ function chargeInner(kind, fill, stroke, field){
         <g transform="translate(180,0) scale(-1,1)">
           <path d="M96,92 C104,84 114,74 126,64 C138,54 150,48 158,46 C152,54 150,62 152,70 C144,66 138,70 135,78 C142,78 147,82 149,90 C141,86 134,90 132,98 C138,100 142,104 143,111 C135,106 127,110 124,118 C120,108 108,100 96,102 Z"/>
         </g>
-      </g>`;
-    case "croix": return `<path transform="translate(10,6)" d="M78,40 L102,40 L98,86 L146,82 L146,106 L98,110 L102,168 L78,168 L82,110 L34,106 L34,82 L82,86 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
-    case "fleurdelis": return `
-      <g transform="translate(0,24)" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
-        <path d="M100,54 C94,70 95,82 100,96 C105,82 106,70 100,54 Z"/>
-        <path d="M99,90 C89,85 76,90 72,102 C68,113 72,124 81,127 C79,118 84,111 92,109 C97,108 99,105 99,100 Z"/>
-        <path d="M101,90 C111,85 124,90 128,102 C132,113 128,124 119,127 C121,118 116,111 108,109 C103,108 101,105 101,100 Z"/>
-        <path d="M91,99 C91,122 92,142 100,158 C108,142 109,122 109,99 C106,106 94,106 91,99 Z"/>
-        <rect x="79" y="112" width="42" height="8" rx="2.5"/>
       </g>`;
     case "croissant": return `<path d="M64,108 A42,42 0 1 0 136,108 A34,34 0 1 1 64,108 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "etoile": return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
@@ -721,17 +774,153 @@ function chargeInner(kind, fill, stroke, field){
         <circle r="12" fill="#c79a3a" stroke="#7a5c1e" stroke-width="1.2"/>
         <g fill="#7a5c1e"><circle cx="0" cy="-5" r="1.6"/><circle cx="4" cy="3" r="1.6"/><circle cx="-4" cy="3" r="1.6"/></g>
       </g>`;
+
+    /* ---------- meubles propres au blason ---------- */
+    case "macle": return `<path fill-rule="evenodd" d="M100,44 L148,116 L100,188 L52,116 Z M100,74 L128,116 L100,158 L72,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "rustre": return `<path fill-rule="evenodd" d="M100,44 L148,116 L100,188 L52,116 Z M124,116 A24,24 0 1 0 76,116 A24,24 0 1 0 124,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "losange": return `<path d="M100,44 L148,116 L100,188 L52,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "fusee": return `<path d="M100,30 L136,116 L100,202 L64,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "billette": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.3">
+      <rect x="52" y="60" width="32" height="48" rx="2"/><rect x="116" y="60" width="32" height="48" rx="2"/>
+      <rect x="84" y="132" width="32" height="48" rx="2"/></g>`;
+    case "annelet": return `<path fill-rule="evenodd" d="M142,116 A42,42 0 1 0 58,116 A42,42 0 1 0 142,116 Z M130,116 A30,30 0 1 0 70,116 A30,30 0 1 0 130,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
+    case "vire": return `<g fill="none" stroke="${fill}" stroke-width="9"><circle cx="100" cy="116" r="46"/><circle cx="100" cy="116" r="30"/><circle cx="100" cy="116" r="14"/></g>`;
+    case "escarboucle": {
+      const rais = [0, 45, 90, 135, 180, 225, 270, 315].map(a =>
+        `<g transform="rotate(${a} 100 116)"><path d="M95,116 L95,52 L105,52 L105,116 Z"/>
+          <path d="M100,34 C90,42 86,52 91,60 L109,60 C114,52 110,42 100,34 Z"/></g>`).join("");
+      return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round">${rais}<circle cx="100" cy="116" r="14"/></g>`;
+    }
+    case "flanchis": return `<path d="M74,84 L100,110 L126,84 L142,100 L116,126 L142,152 L126,168 L100,142 L74,168 L58,152 L84,126 L58,100 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
+    case "frette": return `<g fill="none" stroke="${fill}" stroke-width="11" stroke-linecap="square">
+      <path d="M42,58 L158,174"/><path d="M158,58 L42,174"/><path d="M100,50 L154,116 L100,182 L46,116 Z"/></g>`;
+    case "lambel": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round">
+      <rect x="32" y="50" width="136" height="17" rx="2"/>
+      <path d="M50,67 L78,67 L74,112 L54,112 Z"/><path d="M86,67 L114,67 L110,112 L90,112 Z"/><path d="M122,67 L150,67 L146,112 L126,112 Z"/></g>`;
+    case "trescheur": return `<g fill="none" stroke="${fill}" stroke-linejoin="round">
+      <path d="${SHIELD_D}" transform="translate(100,126) scale(.84) translate(-100,-126)" stroke-width="9"/>
+      <path d="${SHIELD_D}" transform="translate(100,126) scale(.71) translate(-100,-126)" stroke-width="5"/></g>`;
+    case "croisette": return `<path d="M88,60 L112,60 L112,104 L156,104 L156,128 L112,128 L112,172 L88,172 L88,128 L44,128 L44,104 L88,104 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
+    case "goutte": return `<path d="M100,54 C114,88 132,108 132,130 A32,32 0 1 1 68,130 C68,108 86,88 100,54 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    case "coupeaux": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M14,240 C14,198 38,168 66,168 C94,168 118,198 118,240 Z"/>
+      <path d="M82,240 C82,198 106,168 134,168 C162,168 186,198 186,240 Z"/>
+      <path d="M48,240 C48,182 74,144 100,144 C126,144 152,182 152,240 Z"/></g>`;
+    case "vivre": return `<path d="M14,94 L58,66 L100,94 L142,66 L186,94 L186,122 L142,94 L100,122 L58,94 L14,122 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+    case "quartefeuille": return `<path d="M100,116 m-52,0 a26,26 0 0 1 26,-26 a26,26 0 0 1 26,-26 a26,26 0 0 1 26,26 a26,26 0 0 1 26,26 a26,26 0 0 1 -26,26 a26,26 0 0 1 -26,26 a26,26 0 0 1 -26,-26 a26,26 0 0 1 -26,-26 z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>
+      <circle cx="100" cy="116" r="13" fill="${field}"/>`;
+    case "quintefeuille": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
+      ${[0, 72, 144, 216, 288].map(a => `<path transform="rotate(${a} 100 116)" d="M100,114 C80,100 76,70 100,50 C124,70 120,100 100,114 Z"/>`).join("")}</g>
+      <circle cx="100" cy="116" r="11" fill="${field}"/>`;
+    case "tiercefeuille": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
+      ${[0, 120, 240].map(a => `<path transform="rotate(${a} 100 116)" d="M100,114 C78,98 74,66 100,46 C126,66 122,98 100,114 Z"/>`).join("")}</g>`;
+    case "trefle": return `<g fill="${fill}">
+      <circle cx="100" cy="76" r="26"/><circle cx="70" cy="114" r="26"/><circle cx="130" cy="114" r="26"/>
+      <path d="M93,124 C93,152 90,172 78,192 C94,182 106,182 122,192 C110,172 107,152 107,124 Z"/></g>`;
+    case "otelle": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
+      ${[45, 135, 225, 315].map(a => `<path transform="rotate(${a} 100 116)" d="M100,108 C116,84 116,48 100,26 C84,48 84,84 100,108 Z"/>`).join("")}</g>`;
+    case "moucheture": return `<g transform="translate(100,122) scale(9)" fill="${fill}" stroke="${stroke}" stroke-width=".12" stroke-linejoin="round">
+      <path d="M0,-5 C-2.2,-1.4 -3.6,1.6 -3.6,3.4 L3.6,3.4 C3.6,1.6 2.2,-1.4 0,-5 Z"/>
+      <circle cx="-3.3" cy="-4.4" r="1.15"/><circle cx="0" cy="-6.5" r="1.15"/><circle cx="3.3" cy="-4.4" r="1.15"/></g>`;
+    case "fontaine": {
+      const cf = "clfont" + (++uid);
+      return `<defs><clipPath id="${cf}"><circle cx="100" cy="116" r="44"/></clipPath></defs>
+        <circle cx="100" cy="116" r="44" fill="${tinctPaint('Argent')}"/>
+        <g clip-path="url(#${cf})" fill="none" stroke="${fill}" stroke-width="10">
+          <path d="M52,96 Q66,86 80,96 T108,96 T136,96 T164,96"/>
+          <path d="M52,120 Q66,110 80,120 T108,120 T136,120 T164,120"/>
+          <path d="M52,144 Q66,134 80,144 T108,144 T136,144 T164,144"/></g>
+        <circle cx="100" cy="116" r="44" fill="none" stroke="${stroke}" stroke-width="1.6"/>`;
+    }
+    case "chaussetrappe": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
+      ${[0, 120, 180, 240].map(a => `<path transform="rotate(${a} 100 116)" d="M91,116 L109,116 L100,38 Z"/>`).join("")}
+      <circle cx="100" cy="116" r="12"/></g>`;
+    case "crampon": return `<path d="M46,48 L154,48 L154,74 L92,74 L154,186 L154,208 L46,208 L46,182 L108,182 L46,70 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+    case "tau": return `<path d="M34,50 L166,50 L166,84 L117,84 L117,198 L83,198 L83,84 L34,84 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
+
+    /* ---------- la famille de la croix ---------- */
+    case "croix-pattee": return `<path d="M82,32 L118,32 L110,96 L174,88 L174,144 L110,136 L118,200 L82,200 L90,136 L26,144 L26,88 L90,96 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+    case "croix-potencee": return `<path d="M62,34 L138,34 L138,48 L114,48 L114,102 L170,102 L170,82 L184,82 L184,150 L170,150 L170,130 L114,130 L114,184 L138,184 L138,198 L62,198 L62,184 L86,184 L86,130 L30,130 L30,150 L16,150 L16,82 L30,82 L30,102 L86,102 L86,48 L62,48 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+    case "croix-recroisettee": return `<g fill="${fill}">
+      <path d="M88,52 L112,52 L112,104 L164,104 L164,128 L112,128 L112,180 L88,180 L88,128 L36,128 L36,104 L88,104 Z"/>
+      <rect x="64" y="40" width="72" height="12"/><rect x="64" y="180" width="72" height="12"/>
+      <rect x="24" y="80" width="12" height="72"/><rect x="164" y="80" width="12" height="72"/>
+      <rect x="94" y="28" width="12" height="12"/><rect x="94" y="192" width="12" height="12"/>
+      <rect x="12" y="110" width="12" height="12"/><rect x="176" y="110" width="12" height="12"/></g>`;
+    case "croix-lorraine": return `<path d="M88,32 L112,32 L112,72 L150,72 L150,94 L112,94 L112,134 L164,134 L164,156 L112,156 L112,202 L88,202 L88,156 L36,156 L36,134 L88,134 L88,94 L50,94 L50,72 L88,72 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
+
+    /* ---------- astres et éléments ---------- */
+    case "soleil": {
+      let r = "";
+      for(let i = 0; i < 16; i++){
+        const a = i * 22.5;
+        r += i % 2
+          ? `<path transform="rotate(${a} 100 116)" d="M100,64 C106,54 94,44 100,30" fill="none" stroke="${fill}" stroke-width="6" stroke-linecap="round"/>`
+          : `<path transform="rotate(${a} 100 116)" d="M93,66 L100,24 L107,66 Z"/>`;
+      }
+      return `<g fill="${fill}" stroke="${stroke}" stroke-width=".9" stroke-linejoin="round">${r}<circle cx="100" cy="116" r="36"/></g>`;
+    }
+    case "eclair": return `<path d="M118,34 L68,124 L96,124 L80,200 L134,106 L104,106 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+
+    /* ---------- objets et bâtiments ---------- */
+    case "coquille": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M74,62 C64,56 50,58 46,68 C53,66 62,68 68,74 Z"/><path d="M126,62 C136,56 150,58 154,68 C147,66 138,68 132,74 Z"/>
+      <path d="M100,52 C88,52 78,56 74,62 L44,150 C58,168 78,178 100,178 C122,178 142,168 156,150 L126,62 C122,56 112,52 100,52 Z"/></g>
+      <g fill="none" stroke="${stroke}" stroke-width="1.5" opacity=".45">
+      <path d="M100,60 L100,176"/><path d="M84,62 L66,168"/><path d="M116,62 L134,168"/><path d="M76,72 L50,152"/><path d="M124,72 L150,152"/></g>`;
+    case "cloche": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <rect x="92" y="44" width="16" height="14" rx="5"/>
+      <path d="M100,58 C74,58 60,80 58,110 C56,140 48,158 38,168 L162,168 C152,158 144,140 142,110 C140,80 126,58 100,58 Z"/>
+      <rect x="34" y="168" width="132" height="14" rx="4"/>
+      <rect x="95" y="182" width="10" height="10"/><circle cx="100" cy="198" r="11"/></g>`;
+    case "clef": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path fill-rule="evenodd" d="M128,174 A28,28 0 1 0 72,174 A28,28 0 1 0 128,174 Z M112,174 A12,12 0 1 0 88,174 A12,12 0 1 0 112,174 Z"/>
+      <rect x="93" y="42" width="14" height="106"/>
+      <rect x="65" y="50" width="28" height="13"/><rect x="71" y="78" width="22" height="13"/></g>`;
+    case "epee": return epeeGraphic(100, 110, 2.15, fill, stroke);
+    case "ancre": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path fill-rule="evenodd" d="M117,46 A17,17 0 1 0 83,46 A17,17 0 1 0 117,46 Z M107,46 A7,7 0 1 0 93,46 A7,7 0 1 0 107,46 Z"/>
+      <rect x="92" y="60" width="16" height="122"/><rect x="50" y="74" width="100" height="13" rx="6"/>
+      <path d="M100,188 C72,188 46,168 40,138 C38,131 45,127 49,133 C58,150 74,162 100,162 C126,162 142,150 151,133 C155,127 162,131 160,138 C154,168 128,188 100,188 Z"/>
+      <path d="M34,118 L54,140 L32,148 Z"/><path d="M166,118 L146,140 L168,148 Z"/></g>`;
+    case "tour": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M50,76 L50,50 L72,50 L72,64 L89,64 L89,50 L111,50 L111,64 L128,64 L128,50 L150,50 L150,76 Z"/>
+      <path d="M58,76 L142,76 L142,200 L58,200 Z"/></g>
+      <g fill="${field}"><path d="M80,200 L80,164 A20,20 0 0 1 120,164 L120,200 Z"/>
+      <rect x="71" y="96" width="16" height="22" rx="3"/><rect x="113" y="96" width="16" height="22" rx="3"/></g>
+      <g fill="none" stroke="${stroke}" stroke-width="1" opacity=".35"><path d="M58,132 L142,132 M58,160 L142,160 M100,76 L100,96 M85,132 L85,160 M115,132 L115,160"/></g>`;
+    case "chateau": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M74,88 L74,62 L90,62 L90,74 L110,74 L110,62 L126,62 L126,88 Z"/><rect x="79" y="88" width="42" height="112"/>
+      <path d="M30,126 L30,104 L44,104 L44,114 L58,114 L58,104 L72,104 L72,126 Z"/><rect x="35" y="126" width="32" height="74"/>
+      <path d="M128,126 L128,104 L142,104 L142,114 L156,114 L156,104 L170,104 L170,126 Z"/><rect x="133" y="126" width="32" height="74"/>
+      <rect x="60" y="152" width="80" height="48"/></g>
+      <g fill="${field}"><path d="M86,200 L86,172 A14,14 0 0 1 114,172 L114,200 Z"/>
+      <rect x="44" y="144" width="14" height="18" rx="3"/><rect x="142" y="144" width="14" height="18" rx="3"/></g>`;
+    case "roue": return `<g fill="none" stroke="${fill}" stroke-width="11"><circle cx="100" cy="116" r="50"/>
+      <path d="M100,66 L100,166 M57,91 L143,141 M57,141 L143,91"/></g><circle cx="100" cy="116" r="13" fill="${fill}"/>`;
+
+    /* ---------- règne végétal ---------- */
+    case "gland": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M95,62 C95,54 100,46 100,46 C100,46 105,54 105,62 Z"/>
+      <path d="M66,102 C66,84 81,72 100,72 C119,72 134,84 134,102 C134,109 127,114 100,114 C73,114 66,109 66,102 Z"/>
+      <path d="M72,114 C72,150 83,182 100,194 C117,182 128,150 128,114 Z"/></g>`;
+    case "gerbe": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
+      ${[-30, -18, -6, 6, 18, 30].map(a => `<path transform="rotate(${a} 100 188)" d="M91,188 L91,62 C91,52 100,42 100,42 C100,42 109,52 109,62 L109,188 Z"/>`).join("")}
+      <rect x="56" y="130" width="88" height="22" rx="7"/></g>`;
+
+    /* ---------- corps humain ---------- */
+    case "coeur": return `<path d="M100,194 C58,158 38,134 38,106 C38,83 55,66 76,66 C88,66 97,72 100,82 C103,72 112,66 124,66 C145,66 162,83 162,106 C162,134 142,158 100,194 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
   }
   return "";
 }
 function shieldCharge(kind, champ, chargeTinct){
   const id=++uid, cid="clch"+id;
-  const cf=tinctColor(champ), pf=tinctColor(chargeTinct), st=chgStroke(chargeTinct);
+  const cf=tinctPaint(champ), pf=tinctPaint(chargeTinct), st=chgStroke(chargeTinct);
   return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind} de ${chargeTinct} sur champ de ${champ}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="${cf}"/>
     <g clip-path="url(#${cid})">${chargeInner(kind,pf,st,cf)}</g>
-    <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
+    ${shieldFinish()}
   </svg>`;
 }
 
@@ -739,12 +928,35 @@ function shieldCharge(kind, champ, chargeTinct){
    CONSTRUCTION DE LA PAGE
    ============================================================================ */
 
+const escHtml = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const commonsSrc  = f => "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(f) + "?width=300";
+const commonsPage = f => "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(f);
+
+/* Figure empruntée : la licence oblige à citer fichier, auteur et licence sous l'image. */
+function citedFig(im, alt, nom, en){
+  return `<div class="fig">
+    <div class="figimg"><img loading="lazy" src="${commonsSrc(im.file)}" alt="${alt}"></div>
+    <div class="nom">${nom}</div><div class="en">${en}</div>
+    <div class="credit"><a href="${commonsPage(im.file)}" target="_blank" rel="noopener">« ${im.file} »</a> — ${im.auteur}, <a href="${im.licurl}" target="_blank" rel="noopener">${im.lic}</a>, via Wikimedia Commons${im.note ? " · " + im.note : ""}</div>
+  </div>`;
+}
+
+/* « Pierre Joubert » -> Joubert ; « Wikipédia (contributeurs) » -> Wikipédia */
+function srcLabel(s){
+  const base = s.auteur.split(/[;(]/)[0].trim() || s.auteur.trim();
+  const words = base.split(/\s+/);
+  const who = (words.length > 1 && words.length <= 3) ? words[words.length-1] : base;
+  const an = (String(s.annee).match(/\d{4}/) || [s.annee])[0];
+  return `${who} (${an})`;
+}
+
 function srcTag(ids){
   if(!ids || !ids.length) return "";
-  const names = ids.map(i=>{
-    const s=DATA.sources[i]; if(!s) return i;
-    return `${s.auteur.split(" ").slice(-1)[0]} (${s.annee})`;
-  });
+  const names = [...new Set(ids.map(i=>{
+    const s = DATA.sources[i];
+    return s ? srcLabel(s) : i;
+  }))];
   return `<div class="src-tag">Source : <b>${names.join(" · ")}</b></div>`;
 }
 
@@ -769,13 +981,17 @@ function figureGallery(kind){
     return `<div class="gal figs">${cards}</div>`;
   }
   if(kind==="meubles"){
-    const cards = DATA.meubles.map(m=>`
-      <div class="fig">${shieldCharge(m.kind,m.champ,m.charge)}<div class="nom">${m.nom}</div><div class="en">${m.en}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
+    // un meuble porte `image` quand notre tracé ne le rendait pas : on cite alors une figure libre
+    const card = m => m.image
+      ? citedFig(m.image, `Meuble héraldique — ${m.nom}`, m.nom, m.en)
+      : `<div class="fig">${shieldCharge(m.kind,m.champ,m.charge)}<div class="nom">${m.nom}</div><div class="en">${m.en}</div></div>`;
+    const familles = [...new Set(DATA.meubles.map(m => m.cat))];
+    return familles.map(f =>
+      `<h4 class="galcat">${f}</h4><div class="gal figs">${DATA.meubles.filter(m => m.cat === f).map(card).join("")}</div>`
+    ).join("");
   }
   if(kind==="couronnes"){
-    const cards = DATA.couronnes.map(c=>`
-      <div class="fig">${shieldCrowned(c.kind,c.nom)}<div class="nom">${c.nom}</div><div class="en">${c.en}</div></div>`).join("");
+    const cards = DATA.couronnes.map(c => citedFig(c.image, `Couronne héraldique — ${c.nom}`, c.nom, c.en)).join("");
     return `<div class="gal figs">${cards}</div>`;
   }
   return "";
@@ -790,7 +1006,7 @@ function reglesGallery(kind){
   }
   if(kind==="recoupements"){
     const cards = DATA.regles.recoupements.map(r=>`
-      <div class="fig">${shieldRecoupement(r.kind, r.n, tinctColor('Argent'), tinctColor('Gueules'))}<div class="nom">${r.nom}</div><div class="en">${r.en}</div></div>`).join("");
+      <div class="fig">${shieldRecoupement(r.kind, r.n, tinctPaint('Argent'), tinctPaint('Gueules'))}<div class="nom">${r.nom}</div><div class="en">${r.en}</div></div>`).join("");
     return `<div class="gal figs">${cards}</div>`;
   }
   if(kind==="courbes"){
@@ -803,7 +1019,36 @@ function reglesGallery(kind){
       <div class="fig">${shieldPieceAlesee(al.kind, "Or", al.alesee?"Sable":"Gueules", al.alesee)}<div class="nom">${al.nom}</div></div>`).join("");
     return `<div class="gal figs">${cards}</div>`;
   }
+  if(kind==="attributs" || kind==="positions"){
+    return `<dl class="glossary">${DATA[kind].map(t=>
+      `<div class="gloss-item"><dt>${t.terme}</dt><dd>${t.def}</dd></div>`).join("")}</dl>`;
+  }
+  if(kind==="repertoire"){
+    const fams = [...new Set(DATA.repertoire.map(r => r.cat))];
+    return fams.map(f => `<h4 class="galcat">${f}</h4><dl class="glossary">${
+      DATA.repertoire.filter(r => r.cat === f).map(r =>
+        `<div class="gloss-item"><dt>${r.terme}</dt><dd>${r.def}</dd></div>`).join("")}</dl>`).join("");
+  }
   return "";
+}
+
+/* diagrammes appelés depuis un article par sa clé `diagram` */
+const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram };
+
+/* la recherche couvre le glossaire, le répertoire et les deux tables de vocabulaire ;
+   en cas d'homonymie, la définition du glossaire l'emporte */
+function searchPool(){
+  const pool = DATA.glossaire.map(g => ({ terme: g.terme, def: g.def, src: "Glossaire" }));
+  const vus = new Set(pool.map(p => p.terme.toLowerCase()));
+  const ajoute = (liste, src) => liste.forEach(t => {
+    if(vus.has(t.terme.toLowerCase())) return;
+    vus.add(t.terme.toLowerCase());
+    pool.push({ terme: t.terme, def: t.def, src: src || t.cat });
+  });
+  ajoute(DATA.attributs, "Attributs");
+  ajoute(DATA.positions, "Positions");
+  ajoute(DATA.repertoire, null);
+  return pool;
 }
 
 function buildMain(){
@@ -815,19 +1060,19 @@ function buildMain(){
     sec.articles.forEach(a=>{
       if(a.note){ arts += `<div class="article reveal">${a.html}</div>`; return; }
       let extra = "";
-      if(a.diagram==="ecu") extra = `<div class="ecu-diagram">${ecuPoints()}</div>`;
+      if(a.diagram && DIAGRAMS[a.diagram]) extra = `<div class="ecu-diagram">${DIAGRAMS[a.diagram]()}</div>`;
       if(a.gallery) extra += `<div class="reveal">${reglesGallery(a.gallery)}</div>`;
       arts += `<div class="article reveal"><h3>${a.titre}</h3>${a.html}${extra}${srcTag(a.sources)}</div>`;
     });
     let gallery = sec.figure ? `<div class="reveal">${figureGallery(sec.figure)}</div>` : "";
-    // place la galerie juste après le premier article
     html += `<section class="section" id="${sec.id}">
       <p class="eyebrow">${sec.eyebrow}</p>
       <h2 class="display">${sec.title}</h2>
       <p class="lede">${sec.lede}</p>
       ${arts}
       ${gallery}
-    </section>`;
+    </section>
+    <hr class="ornament">`;
   });
 
   // ---- glossaire ----
@@ -837,7 +1082,8 @@ function buildMain(){
     <p class="lede">Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.</p>
     <p class="gloss-count" id="gcount"></p>
     <dl class="glossary" id="glist"></dl>
-  </section>`;
+  </section>
+  <hr class="ornament">`;
 
   // ---- bibliothèque ----
   const books = Object.values(DATA.sources).map(s=>`
@@ -872,7 +1118,7 @@ function buildRail(){
 function buildCounts(){
   const el = document.getElementById("counts");
   const nSrc = Object.keys(DATA.sources).length;
-  const nTerms = DATA.glossaire.length;
+  const nTerms = DATA.glossaire.length + DATA.attributs.length + DATA.positions.length + DATA.repertoire.length;
   const nFig = DATA.tinctures.length + DATA.partitions.length + DATA.pieces.length + DATA.meubles.length
     + DATA.regles.traits.length + DATA.regles.recoupements.length + DATA.regles.courbes.length + DATA.regles.alesees.length;
   el.innerHTML = `
@@ -892,7 +1138,7 @@ function renderGlossary(filter=""){
     .filter(g=> !f || g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
   const hl = (txt)=> f ? txt.replace(new RegExp("("+f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") : txt;
   if(!items.length){
-    list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${filter} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
+    list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${escHtml(filter)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
   } else {
     list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}</dd></div>`).join("");
   }
@@ -917,20 +1163,38 @@ function initSpy(){
 /* ---- reveal on scroll ---- */
 function initReveal(){
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  if(reduce){document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in"));return;}
+  const show = r => r.classList.add("in");
+  if(reduce){document.querySelectorAll(".reveal").forEach(show);return;}
   const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target);} });
-  },{rootMargin:"0px 0px -8% 0px",threshold:.08});
-  document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
+    entries.forEach(e=>{ if(e.isIntersecting){ show(e.target); obs.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -8% 0px",threshold:0});
+  document.querySelectorAll(".reveal").forEach(r=>{
+    // Un bloc plus haut que l'écran ne peut pas s'animer utilement : on l'affiche d'emblée.
+    // C'est aussi ce qui le met à l'abri du piège du seuil — son ratio d'intersection
+    // plafonne à hauteur d'écran / hauteur du bloc et resterait sous tout seuil non nul.
+    if(r.getBoundingClientRect().height > innerHeight) show(r);
+    else obs.observe(r);
+  });
 }
 
 async function init(){
-  const res = await fetch('data/data.json');
-  DATA = await res.json();
+  try{
+    const res = await fetch('data/data.json');
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    DATA = await res.json();
+  }catch(err){
+    document.getElementById("main").innerHTML =
+      `<section class="section"><p class="eyebrow">Erreur</p>
+       <h2 class="display">Données indisponibles</h2>
+       <p class="lede">Le fichier <code>data/data.json</code> n'a pas pu être chargé (${escHtml(err.message||err)}).</p>
+       <p>Si cette page est ouverte directement depuis le disque, servez-la par HTTP — par exemple <code>python -m http.server</code> — car <code>fetch</code> est bloqué sur <code>file://</code>.</p></section>`;
+    return;
+  }
+
+  document.body.insertAdjacentHTML("afterbegin", globalDefs());
 
   /* ---- boot ---- */
   const heroSvg = document.querySelector(".hero-shield");
-  heroSvg.setAttribute("viewBox", VB);
   heroSvg.innerHTML = heroShieldInner();
 
   buildCounts();
@@ -953,7 +1217,7 @@ async function init(){
     renderGlossary(raw); // filtre aussi le glossaire complet, en bas
     sActive = -1;
     if(!f){ sBox.hidden = true; sBox.innerHTML = ""; qInput.setAttribute("aria-expanded","false"); return; }
-    const hits = DATA.glossaire
+    const hits = searchPool()
       .filter(g=> g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f))
       .sort((a,b)=>{
         const ai=a.terme.toLowerCase().startsWith(f)?0:1, bi=b.terme.toLowerCase().startsWith(f)?0:1;
@@ -961,11 +1225,11 @@ async function init(){
       })
       .slice(0,8);
     if(!hits.length){
-      sBox.innerHTML = `<div class="sr-empty">Aucun terme ne correspond à « ${raw} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</div>`;
+      sBox.innerHTML = `<div class="sr-empty">Aucun terme ne correspond à « ${escHtml(raw)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</div>`;
     } else {
       sBox.innerHTML = hits.map(g=>
-        `<button type="button" class="sr" role="option" data-term="${g.terme.replace(/"/g,'&quot;')}">
-          <span class="t">${mark(g.terme,f)}</span><span class="d">${mark(g.def,f)}</span>
+        `<button type="button" class="sr" role="option" data-term="${escHtml(g.terme)}">
+          <span class="t">${mark(g.terme,f)}</span><span class="o">${g.src}</span><span class="d">${mark(g.def,f)}</span>
         </button>`).join("");
     }
     sBox.hidden = false;
@@ -976,14 +1240,14 @@ async function init(){
     sBox.hidden = true;
     qInput.setAttribute("aria-expanded","false");
     renderGlossary(term);
-    const gl = document.getElementById("glossaire");
-    if(gl) gl.scrollIntoView({behavior:"smooth", block:"start"});
-    // met en évidence la carte correspondante
+    // le terme peut vivre dans le glossaire, dans le répertoire ou dans une table de vocabulaire
     setTimeout(()=>{
-      const items = [...document.querySelectorAll("#glist .gloss-item")];
+      const items = [...document.querySelectorAll(".gloss-item")];
       const hit = items.find(it=> it.querySelector("dt") && it.querySelector("dt").textContent.trim().toLowerCase()===term.trim().toLowerCase());
+      const cible = hit || document.getElementById("glossaire");
+      if(cible) cible.scrollIntoView({behavior:"smooth", block: hit ? "center" : "start"});
       if(hit){ hit.classList.add("flash"); setTimeout(()=>hit.classList.remove("flash"),1600); }
-    },420);
+    },120);
   }
 
   qInput.addEventListener("input", e=> runSearch(e.target.value));
