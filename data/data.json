@@ -97,7 +97,34 @@
       "annee": "consulté en 2026",
       "isbn": "—",
       "type": "Ressource en ligne",
-      "note": "Principe général du chapeau à houppes (« le nombre de houppes est d'autant plus grand que la dignité est importante ») ; l'article ne détaille pas de compte exact pour les dignités inférieures au rang d'évêque, ce qui est signalé comme tel dans le texte."
+      "note": "Principe général du chapeau à houppes (« le nombre de houppes est d'autant plus grand que la dignité est importante ») ; l'article ne détaille pas de compte exact pour les dignités inférieures au rang d'évêque, ce qui est signalé comme tel dans le texte. Fournit également la chaîne des textes qui ont retiré des ornements aux armes épiscopales, de l'ordonnance du 20 novembre 1611 à l'instruction « Ut sive sollicite » du 31 mars 1969, ainsi que le code héraldique de l'Église d'Angleterre."
+    },
+    "wiki_armorial1696": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armorial général de France",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armorial_général_de_France",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Édit de novembre 1696 : champ d'application, tarif, article 12 sur l'usurpation, arrêt du 22 juillet 1698 sur les fleurs de lys, armes d'office et système de composition mécanique de l'arrêt du 16 septembre 1701. L'article porte un bandeau « ne cite pas suffisamment ses sources » : les chiffres et les exemples repris ici sont ceux qui y sont référencés (Borel d'Hauterive, Ciaudo, Loskoutoff)."
+    },
+    "wiki_napoleon": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Héraldique napoléonienne",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Héraldique_napoléonienne",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Décrets du 1er mars 1808 : passage des marques de rang des ornements extérieurs vers l'intérieur de l'écu, toques substituées aux couronnes, chefs et francs-quartiers par titre, marques de fonction. Utile aussi pour la distinction entre règles de droit héraldique et règles du blason, et pour le droit coutumier d'antériorité."
+    },
+    "wiki_meubles": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Liste des meubles héraldiques",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Liste_des_meubles_héraldiques",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Répertoire alphabétique d'environ deux cents entrées, avec blasonnements d'exemple. Source des définitions du répertoire des meubles et du classement en trois catégories (meubles propres au blason, meubles très codifiés, meubles ordinaires mais fréquents). Les figures qui l'illustrent relèvent du Projet:Blasons et sont créditées une à une lorsqu'elles sont reprises."
     }
   },
   "tinctures": [
@@ -541,73 +568,245 @@
   "meubles": [
     {
       "kind": "lion",
-      "nom": "Lion passant",
-      "en": "lion passant",
+      "nom": "Lion rampant",
+      "en": "lion rampant",
       "champ": "Gueules",
-      "charge": "Or"
+      "charge": "Or",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Lion.svg",
+        "auteur": "Syryatsu",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+        "note": "Meuble dessiné pour le Projet:Blasons de Wikipédia en français."
+      }
     },
     {
       "kind": "aigle",
       "nom": "Aigle éployée",
       "en": "eagle displayed",
       "champ": "Or",
-      "charge": "Sable"
+      "charge": "Sable",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Aigle 2.svg",
+        "auteur": "HeraldLanguage",
+        "lic": "CC BY 4.0",
+        "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
     },
     {
       "kind": "croix",
       "nom": "Croix",
       "en": "cross",
       "champ": "Azur",
-      "charge": "Argent"
+      "charge": "Argent",
+      "cat": "La famille de la croix",
+      "image": {
+        "file": "Coa Illustration Cross Greek in Red.svg",
+        "auteur": "Smasongarrison",
+        "lic": "CC BY-SA 4.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+        "note": "Le Projet:Blasons traite la croix en pièce, dessinée sur un écu ; celle-ci la montre seule et alésée."
+      }
     },
     {
       "kind": "fleurdelis",
       "nom": "Fleur de lis",
       "en": "fleur-de-lis",
       "champ": "Azur",
-      "charge": "Or"
+      "charge": "Or",
+      "cat": "Le règne végétal",
+      "image": {
+        "file": "Meuble héraldique Fleur de lys.svg",
+        "auteur": "Yorick",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Forme classique : trois pétales, les latéraux recourbés, une traverse et un pied court — sans stylisation moderne."
+      }
     },
     {
       "kind": "croissant",
       "nom": "Croissant",
       "en": "crescent",
       "champ": "Gueules",
-      "charge": "Argent"
+      "charge": "Argent",
+      "cat": "Astres et éléments"
     },
     {
       "kind": "etoile",
       "nom": "Étoile",
       "en": "estoile / mullet",
       "champ": "Azur",
-      "charge": "Or"
+      "charge": "Or",
+      "cat": "Astres et éléments"
     },
     {
       "kind": "molette",
       "nom": "Molette",
       "en": "spur rowel",
       "champ": "Sable",
-      "charge": "Or"
+      "charge": "Or",
+      "cat": "Astres et éléments"
     },
     {
       "kind": "roundel",
       "nom": "Besant",
       "en": "bezant (metal)",
       "champ": "Gueules",
-      "charge": "Or"
+      "charge": "Or",
+      "cat": "Propres au blason"
     },
     {
       "kind": "roundel",
       "nom": "Tourteau",
       "en": "torteau (colour)",
       "champ": "Or",
-      "charge": "Gueules"
+      "charge": "Gueules",
+      "cat": "Propres au blason"
     },
     {
       "kind": "rose",
       "nom": "Rose",
       "en": "heraldic rose",
       "champ": "Or",
-      "charge": "Gueules"
+      "charge": "Gueules",
+      "cat": "Le règne végétal"
+    },
+
+    { "kind": "macle", "nom": "Macle", "en": "mascle", "champ": "Gueules", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "rustre", "nom": "Rustre", "en": "rustre", "champ": "Azur", "charge": "Argent", "cat": "Propres au blason" },
+    { "kind": "losange", "nom": "Losange", "en": "lozenge", "champ": "Sable", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "fusee", "nom": "Fusée", "en": "fusil", "champ": "Azur", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "billette", "nom": "Billettes", "en": "billets", "champ": "Gueules", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "annelet", "nom": "Annelet", "en": "annulet", "champ": "Sinople", "charge": "Argent", "cat": "Propres au blason" },
+    { "kind": "vire", "nom": "Vire", "en": "gurges / concentric annulets", "champ": "Azur", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "escarboucle", "nom": "Rais d'escarboucle", "en": "escarbuncle", "champ": "Sable", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "flanchis", "nom": "Flanchis", "en": "saltorel", "champ": "Or", "charge": "Azur", "cat": "Propres au blason" },
+    { "kind": "frette", "nom": "Frette", "en": "fret", "champ": "Argent", "charge": "Gueules", "cat": "Propres au blason" },
+    { "kind": "lambel", "nom": "Lambel", "en": "label of three points", "champ": "Or", "charge": "Gueules", "cat": "Propres au blason" },
+    { "kind": "trescheur", "nom": "Double trescheur", "en": "double tressure", "champ": "Or", "charge": "Gueules", "cat": "Propres au blason" },
+    { "kind": "croisette", "nom": "Croisette", "en": "crosslet", "champ": "Argent", "charge": "Sable", "cat": "Propres au blason" },
+    { "kind": "goutte", "nom": "Goutte", "en": "goutte", "champ": "Argent", "charge": "Gueules", "cat": "Propres au blason" },
+    { "kind": "coupeaux", "nom": "Mont de trois coupeaux", "en": "mount of three hillocks", "champ": "Azur", "charge": "Argent", "cat": "Propres au blason" },
+    { "kind": "vivre", "nom": "Vivre", "en": "dancetty fess", "champ": "Or", "charge": "Sable", "cat": "Propres au blason" },
+    { "kind": "quartefeuille", "nom": "Quartefeuille", "en": "quatrefoil", "champ": "Gueules", "charge": "Argent", "cat": "Propres au blason" },
+    { "kind": "quintefeuille", "nom": "Quintefeuille", "en": "cinquefoil", "champ": "Or", "charge": "Azur", "cat": "Propres au blason" },
+    { "kind": "tiercefeuille", "nom": "Tiercefeuille", "en": "trefoil slipped-less", "champ": "Azur", "charge": "Or", "cat": "Propres au blason" },
+    { "kind": "trefle", "nom": "Trèfle", "en": "trefoil", "champ": "Or", "charge": "Sinople", "cat": "Propres au blason" },
+    {
+      "kind": "fer-moulin", "nom": "Fer-de-moulin", "en": "millrind", "champ": "Azur", "charge": "Or", "cat": "Propres au blason",
+      "image": { "file": "Meuble héraldique Fer de moulin.svg", "auteur": "ℍenry Salomé", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Deux C adossés réunis par une barre et percés au centre — d'où la confusion constante avec l'anille." }
+    },
+    {
+      "kind": "roc", "nom": "Roc d'échiquier", "en": "chess rook", "champ": "Sinople", "charge": "Or", "cat": "Propres au blason",
+      "image": { "file": "Meuble heraldique roc.svg", "auteur": "S@m", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Le sommet s'ouvre en deux cornes recourbées vers l'extérieur : c'est ce qui sépare le roc de la tour." }
+    },
+    {
+      "kind": "fermail", "nom": "Fermail", "en": "buckle", "champ": "Azur", "charge": "Or", "cat": "Propres au blason",
+      "image": { "file": "Meuble héraldique Fermail.svg", "auteur": "Blanchoyeur", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Boucle ronde à ardillon ; le fermail se rencontre aussi rectangulaire ou en losange." }
+    },
+    { "kind": "otelle", "nom": "Otelles en sautoir", "en": "otelles in saltire", "champ": "Gueules", "charge": "Argent", "cat": "Propres au blason" },
+    { "kind": "moucheture", "nom": "Moucheture d'hermine", "en": "ermine spot", "champ": "Argent", "charge": "Sable", "cat": "Propres au blason" },
+    {
+      "kind": "merlette", "nom": "Merlette", "en": "martlet", "champ": "Azur", "charge": "Or", "cat": "Propres au blason",
+      "image": { "file": "Héraldique meuble Merlette.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Tracé au trait : on y vérifie l'absence de bec et de pattes qui définit la merlette." }
+    },
+    { "kind": "fontaine", "nom": "Fontaine héraldique", "en": "fountain", "champ": "Gueules", "charge": "Azur", "cat": "Propres au blason" },
+    { "kind": "chaussetrappe", "nom": "Chausse-trappe", "en": "caltrap", "champ": "Or", "charge": "Sable", "cat": "Propres au blason" },
+    { "kind": "crampon", "nom": "Crampon", "en": "cramp", "champ": "Argent", "charge": "Gueules", "cat": "Propres au blason" },
+    { "kind": "tau", "nom": "Tau", "en": "tau cross", "champ": "Gueules", "charge": "Or", "cat": "Propres au blason" },
+
+    { "kind": "croix-pattee", "nom": "Croix pattée", "en": "cross patty", "champ": "Argent", "charge": "Gueules", "cat": "La famille de la croix" },
+    { "kind": "croix-potencee", "nom": "Croix potencée", "en": "cross potent", "champ": "Argent", "charge": "Or", "cat": "La famille de la croix" },
+    { "kind": "croix-recroisettee", "nom": "Croix recroisettée", "en": "cross crosslet", "champ": "Or", "charge": "Sable", "cat": "La famille de la croix" },
+    {
+      "kind": "croix-ancree", "nom": "Croix ancrée", "en": "cross anchory", "champ": "Gueules", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Meuble héraldique Croisette ancrée.svg", "auteur": "Alain Thebault", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Le fichier dit « croisette » — une croix alésée de petite taille ; les branches en crocs d'ancre sont bien celles de l'ancrée." }
+    },
+    { "kind": "croix-lorraine", "nom": "Croix de Lorraine", "en": "patriarchal cross", "champ": "Azur", "charge": "Or", "cat": "La famille de la croix" },
+
+    { "kind": "soleil", "nom": "Soleil non figuré", "en": "sun in splendour", "champ": "Azur", "charge": "Or", "cat": "Astres et éléments" },
+    {
+      "kind": "comete", "nom": "Comète", "en": "comet", "champ": "Azur", "charge": "Or", "cat": "Astres et éléments",
+      "image": { "file": "Meuble comets.svg", "auteur": "Chatsam", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Étoile à rais suivie de sa queue ondoyante." }
+    },
+    { "kind": "eclair", "nom": "Éclair", "en": "lightning bolt", "champ": "Or", "charge": "Gueules", "cat": "Astres et éléments" },
+
+    { "kind": "coquille", "nom": "Coquille", "en": "escallop", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments" },
+    {
+      "kind": "fercheval", "nom": "Fer à cheval", "en": "horseshoe", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Héraldique meuble Fer à cheval.svg", "auteur": "Regl!sse et ℍenry Salomé", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Fer cloué, l'ouverture tournée vers la pointe de l'écu." }
+    },
+    { "kind": "cloche", "nom": "Cloche", "en": "bell", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments" },
+    { "kind": "clef", "nom": "Clef", "en": "key", "champ": "Gueules", "charge": "Or", "cat": "Objets et bâtiments" },
+    { "kind": "epee", "nom": "Épée", "en": "sword", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments" },
+    { "kind": "ancre", "nom": "Ancre", "en": "anchor", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments" },
+    { "kind": "tour", "nom": "Tour", "en": "tower", "champ": "Gueules", "charge": "Or", "cat": "Objets et bâtiments" },
+    { "kind": "chateau", "nom": "Château donjonné", "en": "castle triple-towered", "champ": "Gueules", "charge": "Or", "cat": "Objets et bâtiments" },
+    {
+      "kind": "cor", "nom": "Cor", "en": "hunting horn", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Héraldique meuble cor.svg", "auteur": "Odejea", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Embouchure, pavillon, deux viroles et la guiche — tout ce qui se blasonne séparément." }
+    },
+    { "kind": "roue", "nom": "Roue de Mayence", "en": "wheel of Mainz", "champ": "Gueules", "charge": "Argent", "cat": "Objets et bâtiments" },
+
+    {
+      "kind": "feuille-ortie", "nom": "Feuille d'ortie", "en": "nettle leaf", "champ": "Gueules", "charge": "Argent", "cat": "Le règne végétal",
+      "image": { "file": "Héraldique meuble Feuille d'ortie.svg", "auteur": "ZigeunerAlt", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Large forme de Holstein, à trois lobes dentelés et trois clous détachés : rien à voir avec une feuille d'ortie réelle, et c'est précisément pour cela qu'elle figure au deuxième étage des meubles." }
+    },
+    { "kind": "gland", "nom": "Gland", "en": "acorn", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal" },
+    {
+      "kind": "epi", "nom": "Épi", "en": "ear of wheat", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
+      "image": { "file": "Meuble héraldique Epi.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 2.5", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr", "note": "Sa page Commons dit « épi de céréales » sans nommer le blé, et la tige y est légèrement inclinée." }
+    },
+    { "kind": "gerbe", "nom": "Gerbe", "en": "garb", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal" },
+
+    { "kind": "coeur", "nom": "Cœur", "en": "heart", "champ": "Argent", "charge": "Gueules", "cat": "Corps et cœur" },
+    {
+      "kind": "main", "nom": "Main appaumée", "en": "hand apaumy", "champ": "Argent", "charge": "Gueules", "cat": "Corps et cœur",
+      "image": { "file": "Meuble héraldique Main.svg", "auteur": "ZigeunerAlt", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Main dextre coupée au poignet, doigts en haut : c'est la main rouge d'Ulster." }
+    },
+
+    {
+      "kind": "griffon", "nom": "Griffon", "en": "griffin", "champ": "Gueules", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Griffon passant.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Griffon passant, et non rampant comme le veut sa position par défaut." }
+    },
+    {
+      "kind": "dragon", "nom": "Dragon", "en": "dragon", "champ": "Or", "charge": "Sinople", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Dragon.svg", "auteur": "Jpgibert", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Extrait du blason de Saint-Hilaire-sur-Benaize." }
+    },
+    {
+      "kind": "licorne", "nom": "Licorne", "en": "unicorn", "champ": "Gueules", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Licorne saillante.svg", "auteur": "Jpgibert", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "La page Commons la dit rampante là où le nom du fichier la dit saillante." }
+    },
+    {
+      "kind": "panthere", "nom": "Panthère héraldique", "en": "heraldic panther", "champ": "Sinople", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Panthère.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Bien le monstre crachant des flammes, non le félin réel." }
+    },
+    {
+      "kind": "sirene", "nom": "Sirène", "en": "mermaid", "champ": "Gueules", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Sirène.svg", "auteur": "Jpgibert", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Extraite du blason de la famille Séré." }
+    },
+    {
+      "kind": "melusine", "nom": "Mélusine", "en": "mermaid with two tails", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble Sirene2queues.svg", "auteur": "Ssire", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Nommée « sirène à deux queues » sur Commons, rangée parmi les mélusines." }
+    },
+    {
+      "kind": "basilic", "nom": "Basilic", "en": "basilisk", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Basilic.svg", "auteur": "Jacques63", "lic": "CC0", "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr", "note": "Dragon à tête de coq, aux ailes emplumées." }
+    },
+    {
+      "kind": "phenix", "nom": "Phénix", "en": "phoenix", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Phénix sur son bûcher.svg", "auteur": "Jpgibert", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Le phénix sur son immortalité — le bûcher d'où il renaît." }
+    },
+    {
+      "kind": "salamandre", "nom": "Salamandre", "en": "salamander", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Salamandre crachant.svg", "auteur": "Etxeko", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Extraite du blason de Villers-Cotterêts, l'emblème de François Ier." }
+    },
+    {
+      "kind": "guivre", "nom": "Guivre", "en": "wyvern / biscione", "champ": "Argent", "charge": "Azur", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Guivre.svg", "auteur": "Etxeko", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Celle des Visconti, engoulant un enfant ; le logo d'Alfa Romeo en descend." }
     }
   ],
   "sections": [
@@ -808,7 +1007,7 @@
       "label": "Meubles",
       "eyebrow": "Chapitre VII",
       "title": "Les meubles",
-      "lede": "Tout ce qui peuple le champ : bêtes, plantes, objets, êtres imaginaires. C'est le domaine le plus vaste du blason — en voici les grandes familles.",
+      "lede": "Tout ce qui peuple le champ : bêtes, plantes, objets, êtres imaginaires. C'est le domaine le plus vaste du blason — et le seul qui ne finisse jamais, puisque n'importe quel objet peut y entrer.",
       "figure": "meubles",
       "articles": [
         {
@@ -817,6 +1016,13 @@
             "joubert1977"
           ],
           "html": "\n          <p>On appelle <b>meubles</b> toutes les figures posées sur le champ en dehors des pièces honorables. On les range en trois familles : les meubles <b>naturels</b> (lion, aigle, poisson, rose, chêne, astres), <b>artificiels</b> (tour, épée, clé, roue, navire) et <b>chimériques</b> (dragon, griffon, licorne, aigle bicéphale). Un même meuble se décline en d'innombrables variantes : sa position, ses parties d'une autre couleur, ses attributs — tout se dit, rien ne se sous-entend. C'est ce vocabulaire de la posture et du détail qui fait la richesse du blason.</p>"
+        },
+        {
+          "titre": "Trois étages de meubles",
+          "sources": [
+            "wiki_meubles"
+          ],
+          "html": "\n          <p>Comme n'importe quel objet peut devenir un meuble, une liste exhaustive tendrait vers l'infini. La liste de référence francophone s'en tire par un critère qu'il vaut la peine de reprendre, parce qu'il dit quelque chose de la nature du blason. Elle ne retient que trois sortes de figures :</p>\n          <ul>\n            <li>celles qui <b>n'existent pas hors du blason</b> — le roc d'échiquier, la macle, le rais d'escarboucle, la merlette. Inventions pures de l'héraldique, elles n'ont d'autre référent qu'elles-mêmes ;</li>\n            <li>celles dont la représentation est <b>si codifiée</b> qu'elle s'est détachée de son modèle — le léopard, la feuille d'ortie, la panthère à tête de cheval qui crache des flammes ;</li>\n            <li>celles qui sont <b>parfaitement reconnaissables</b> mais d'un usage si fréquent qu'on ne peut les omettre — la tour, l'épée, la clef.</li>\n          </ul>\n          <p>Le premier étage est le plus intéressant et le moins connu : ce sont des figures qu'on ne peut aller voir nulle part, puisqu'elles ne représentent rien. C'est par elles que commence la galerie.</p>"
         },
         {
           "titre": "Le lion : l'attitude fait le blason",
@@ -869,8 +1075,34 @@
           "html": "\n          <p>Reine des meubles végétaux, la <b>fleur de lis</b> — lis stylisé à trois pétales liés d'une bande — fut l'emblème des rois de France avant de se répandre dans toute l'Europe. La <b>rose</b> héraldique s'ouvre à cinq pétales, avec ses <b>barbes</b> (sépales, souvent de sinople) et ses <b>graines</b> au cœur. Viennent encore le <b>trèfle</b>, la <b>quintefeuille</b> et la <b>quartefeuille</b> (fleurs à cinq ou quatre pétales), le <b>chêne</b> et son <b>gland</b>, l'<b>épi</b> de blé, la <b>quintefeuille</b>. Chaque plante porte sa symbolique : constance de la feuille, pureté du lis, force du chêne.</p>"
         },
         {
+          "titre": "Les attributs : nommer les parties",
+          "sources": [
+            "joubert1977",
+            "wiki_meubles"
+          ],
+          "gallery": "attributs",
+          "html": "\n          <p>Un meuble n'est presque jamais d'un seul émail. Dès qu'une partie — une griffe, une langue, un œil, un toit, une anse — prend une autre couleur, le blason a un mot pour le dire, et ce mot est <b>obligatoire</b> : ce qui n'est pas blasonné est censé être de l'émail principal.</p>\n          <p>C'est ce vocabulaire, plus que la liste des meubles, qui fait la précision du blason. Un lion <em>armé, lampassé et couronné</em> n'est pas une description poétique : c'est l'indication exacte de trois parties d'un autre émail. Voici les attributs les plus courants.</p>"
+        },
+        {
+          "titre": "Les positions : nommer l'attitude",
+          "sources": [
+            "joubert1977",
+            "wiki_meubles"
+          ],
+          "gallery": "positions",
+          "html": "\n          <p>Chaque meuble a une <b>position par défaut</b> qu'on ne blasonne pas : le lion est rampant, l'aigle éployée, l'épée en pal la pointe en haut, la clef le panneton en chef, le croissant les cornes vers le haut. On ne nomme que l'écart.</p>\n          <p>Le corollaire est qu'une même bête change de nom en changeant de pose : le lion qui marche la tête de face devient un <b>léopard</b>. Et l'écart le plus fréquent est le plus simple — <b>contourné</b>, c'est-à-dire tourné vers senestre, alors que tout, par défaut, regarde à dextre.</p>"
+        },
+        {
+          "titre": "Répertoire des meubles",
+          "sources": [
+            "wiki_meubles"
+          ],
+          "gallery": "repertoire",
+          "html": "\n          <p>Ce qui suit est la longue traîne : les meubles qu'on rencontre sans les connaître, et qu'aucune galerie raisonnable ne peut illustrer un à un. Ils sont donnés ici en clair, avec ce qu'il faut savoir pour les reconnaître dans un blasonnement — la position par défaut, le piège d'usage, le faux ami.</p>\n          <p>On y trouvera les instruments disparus dont plus personne ne connaît l'objet réel : la <em>broye</em> à briser le chanvre, la <em>hie</em> à enfoncer les pavés, les <em>morailles</em> à pincer les naseaux du cheval, la <em>bouterolle</em> au bout du fourreau. Le blason les a conservés intacts cinq siècles après que l'usage les a perdus.</p>"
+        },
+        {
           "note": true,
-          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p>Cette page présente le <b>canon héraldique de domaine public</b> — un savoir vieux de huit siècles — reformulé dans nos mots et illustré de figures dessinées à neuf. L'ouvrage d'initiation qui sert d'ancrage n'est pas un armorial exhaustif : les centaines de variantes d'attitude, les meubles régionaux et les usages locaux dépassent son cadre. Ce sont précisément les prochains ouvrages spécialisés qui permettront de les détailler et de les sourcer un à un.</p>\n          </div>"
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Ce qui est dessiné ici :</b> les meubles géométriques, tracés à neuf en SVG. Ce sont eux qui supportent le mieux le dessin vectoriel, et ce sont aussi ceux qu'on ne peut voir nulle part ailleurs.</p>\n            <p><b>Ce qui est emprunté :</b> tout ce qui porte un crédit sous la figure. Les bêtes et les chimères d'abord, mais aussi, au fil des relectures, les meubles dont notre tracé ne rendait pas le caractère — la fleur de lis, la merlette, le cor, la croix ancrée, l'épi, la feuille d'ortie et quelques autres. La règle qu'on s'est donnée est simple : deux essais, et si la figure ne se lit toujours pas, on en cite une bonne, sous licence libre, créditée sous elle. Le crédit sous l'image fait foi, pas cette liste.</p>\n            <p><b>Ce qui reste en clair :</b> le répertoire. Cent soixante-dix-neuf entrées sans figure, parce qu'un dessin approximatif renseignerait moins qu'une phrase juste.</p>\n            <p><b>Réserve :</b> la liste des meubles n'est close par personne. Celle-ci suit le classement et les définitions de la liste de référence francophone, reformulés ; les variantes régionales et les usages locaux la débordent largement.</p>\n          </div>"
         }
       ]
     },
@@ -913,7 +1145,7 @@
             "wiki_couronnes",
             "web_couronnes_complement"
           ],
-          "html": "\n          <p>Posée sur le heaume — ou, une fois le casque tombé en désuétude, directement au sommet de l'écu — la <b>couronne</b> est l'ornement qui dit le plus vite le rang de son porteur. Le système s'est fixé assez tard, pour l'essentiel aux XVIe-XVIIe siècles, puis a été repris et codifié par les héraldistes du XIXe siècle. <b>Il n'a jamais existé de norme unique et officielle</b> : les sources varient, parfois sensiblement, sur le nombre exact de perles ou de fleurons attribué à chaque rang — signe qu'on est ici moins dans le droit que dans l'usage.</p>\n          <p>La série la plus souvent citée pour la noblesse française, du haut vers le bas :</p>\n          <ul>\n            <li><b>Couronne royale</b> — cercle d'or sommé de huit fleurs de lys, fermé par des diadèmes perlés qui se rejoignent au sommet en une fleur de lys double : une couronne <em>fermée</em>, seul privilège du souverain.</li>\n            <li><b>Couronne ducale</b> — cercle d'or rehaussé de huit fleurons, sans perle, laissé <em>ouvert</em>.</li>\n            <li><b>Couronne de marquis</b> — cercle orné de quatre fleurons alternés avec des groupes de perles (les sources parlent tantôt de « trèfles » de trois perles, tantôt de perles isolées).</li>\n            <li><b>Couronne de comte</b> — plus de fleurons du tout : un cercle rehaussé de perles seules, dont le nombre varie selon les auteurs (huit perles rangées pour les uns, seize perles dont neuf visibles pour d'autres).</li>\n            <li><b>Couronne de vicomte</b> — un petit nombre de grosses perles, quatre le plus souvent, dont trois seulement apparaissent de face selon certains auteurs.</li>\n            <li><b>Couronne de baron</b> — un cercle simple, sans pointe, entouré d'un rang ou d'un chapelet de petites perles ; certains auteurs ne lui donnent qu'un bourrelet, sans couronne propre.</li>\n            <li><b>Chevalier et simple gentilhomme</b> — pas de couronne : le heaume ne porte pour ornement de rang qu'un <b>bourrelet</b> ou <b>torque</b>, ruban tortillé aux couleurs de l'écu.</li>\n          </ul>\n          <p>La comparaison avec la pairie britannique montre que ces grammaires sont nationales plutôt qu'universelles : chez les Anglais, le duc porte huit feuilles de fraisier, le marquis quatre feuilles et quatre perles, le comte (<i>earl</i>) huit feuilles et huit perles sur tige, le vicomte seize perles, le baron six — un principe voisin (plus on monte, plus les fleurons l'emportent sur les perles) mais un détail différent.</p>\n          <p>Deux couronnes échappent à cette échelle nobiliaire : la <b>couronne murale</b>, à tours crénelées, réservée aux armoiries de villes et de communes, et la <b>tiare</b> pontificale, triple couronne surmontée d'une croix sur un globe, propre au pape.</p>\n          <p>Le principe se voit mieux qu'il ne se décrit : un écu de gueules tout uni, sans autre indication, se lit comme les armes d'un simple gentilhomme ; le même écu, timbré d'un cercle d'or à huit fleurons, devient aussitôt un blason ducal. Le champ ne change pas — seule la couronne parle du rang. Les blasons vierges ci-dessous rassemblent, à plat et selon la convention la plus répandue, l'échelle complète : du bourrelet du chevalier à la couronne fermée du souverain, avec en écart la couronne murale des villes et la tiare pontificale, hors échelle nobiliaire l'une et l'autre.</p>"
+          "html": "\n          <p>Posée sur le heaume — ou, une fois le casque tombé en désuétude, directement au sommet de l'écu — la <b>couronne</b> est l'ornement qui dit le plus vite le rang de son porteur. Le système s'est fixé assez tard, pour l'essentiel aux XVIe-XVIIe siècles, puis a été repris et codifié par les héraldistes du XIXe siècle. <b>Il n'a jamais existé de norme unique et officielle</b> : les sources varient, parfois sensiblement, sur le nombre exact de perles ou de fleurons attribué à chaque rang — signe qu'on est ici moins dans le droit que dans l'usage.</p>\n          <p>La série la plus souvent citée pour la noblesse française, du haut vers le bas :</p>\n          <ul>\n            <li><b>Couronne royale</b> — cercle d'or sommé de huit fleurs de lys, fermé par des diadèmes perlés qui se rejoignent au sommet en une fleur de lys double : une couronne <em>fermée</em>, seul privilège du souverain.</li>\n            <li><b>Couronne ducale</b> — cercle d'or rehaussé de huit fleurons, sans perle, laissé <em>ouvert</em>.</li>\n            <li><b>Couronne de marquis</b> — cercle orné de quatre fleurons alternés avec des groupes de perles (les sources parlent tantôt de « trèfles » de trois perles, tantôt de perles isolées).</li>\n            <li><b>Couronne de comte</b> — plus de fleurons du tout : un cercle rehaussé de perles seules, dont le nombre varie selon les auteurs (huit perles rangées pour les uns, seize perles dont neuf visibles pour d'autres).</li>\n            <li><b>Couronne de vicomte</b> — un petit nombre de grosses perles, quatre le plus souvent, dont trois seulement apparaissent de face selon certains auteurs.</li>\n            <li><b>Couronne de baron</b> — un cercle simple, sans pointe, entouré d'un rang ou d'un chapelet de petites perles ; certains auteurs ne lui donnent qu'un bourrelet, sans couronne propre.</li>\n            <li><b>Chevalier et simple gentilhomme</b> — pas de couronne : le heaume ne porte pour ornement de rang qu'un <b>bourrelet</b> ou <b>torque</b>, ruban tortillé aux couleurs de l'écu.</li>\n          </ul>\n          <p>La comparaison avec la pairie britannique montre que ces grammaires sont nationales plutôt qu'universelles : chez les Anglais, le duc porte huit feuilles de fraisier, le marquis quatre feuilles et quatre perles, le comte (<i>earl</i>) huit feuilles et huit perles sur tige, le vicomte seize perles, le baron six — un principe voisin (plus on monte, plus les fleurons l'emportent sur les perles) mais un détail différent.</p>\n          <p>Deux couronnes échappent à cette échelle nobiliaire : la <b>couronne murale</b>, à tours crénelées, réservée aux armoiries de villes et de communes, et la <b>tiare</b> pontificale, triple couronne surmontée d'une croix sur un globe, propre au pape.</p>\n          <p>Le principe se voit mieux qu'il ne se décrit : un écu de gueules tout uni, sans autre indication, se lit comme les armes d'un simple gentilhomme ; le même écu, timbré d'un cercle d'or à fleurons, devient aussitôt un blason ducal. Le champ ne change pas — seule la couronne parle du rang. L'échelle complète est donnée ci-dessous, du bourrelet du chevalier à la couronne fermée du souverain, avec en écart la couronne murale des villes et la tiare pontificale, hors échelle nobiliaire l'une et l'autre. Sept de ces neuf figures viennent d'une même série, ce qui permet de les comparer à dessin égal.</p>\n          <p>On y vérifiera d'ailleurs le désaccord annoncé plus haut, et c'est tout l'intérêt de montrer une figure réelle plutôt qu'un schéma de commande : le duc y porte une perle entre chaque fleuron, là où les armoriaux classiques n'en mettent aucune ; le vicomte y compte cinq grosses perles apparentes quand la règle française usuelle en donne quatre dont trois visibles ; le comte en montre neuf sur seize. La convention n'est pas fixée : une figure ne saurait donc trancher — elle donne une leçon, pas la leçon.</p>"
         },
         {
           "titre": "La hiérarchie des fiefs : du duché à la seigneurie",
@@ -936,9 +1168,56 @@
       ]
     },
     {
+      "id": "droit",
+      "label": "Le droit",
+      "eyebrow": "Chapitre X",
+      "title": "Le droit du blason",
+      "lede": "Le blason n'est pas qu'un art : c'est aussi, par moments, une matière de droit. Trois textes ont changé non pas le goût des armoiries, mais la façon dont il fallait les dessiner.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Qui peut porter des armes ?",
+          "sources": [
+            "wiki_eccl",
+            "wiki_armorial1696",
+            "wiki_napoleon"
+          ],
+          "html": "\n          <p>C'est l'idée reçue la plus tenace : les armoiries seraient un privilège de noblesse. Elles ne l'ont jamais été. En France, l'usage des armoiries est resté <b>libre et gratuit</b> pendant tout l'Ancien Régime : bourgeois, artisans, communautés de métier, paroisses, corporations en portaient couramment. Le droit canonique dit la même chose avec une netteté qu'on n'attendrait pas de Rome — le droit de porter des signes quelconques y est tenu pour « un droit naturel de toute personnalité humaine », qui « n'est pas limité à des classes privilégiées ».</p>\n          <p>Il n'existe, au fond, qu'une seule règle de droit vraiment universelle : <b>on ne prend pas les armes d'autrui</b>. Tout le reste est libre. L'édit de 1696 ne dit rien d'autre : son article 12 défend d'usurper les armoiries d'un autre — ce qui suppose que, cette réserve faite, chacun est libre de prendre celles qu'il veut.</p>\n          <p>Le corollaire coutumier de cette règle s'appelle le <b>droit d'antériorité</b> : en cas de conflit, celui qui porte les armes depuis le plus longtemps l'emporte. Formé sous l'Ancien Régime, il vaut encore aujourd'hui. Pour trancher ces litiges, Louis XIII avait créé en 1615 un office de <b>Juge général d'Armes de France</b>, tenu par la famille d'Hozier.</p>\n          <p>Un dernier détail, qui vaut mise en garde contre toute une littérature généalogique : les brevets d'armoiries délivrés en 1696 précisaient eux-mêmes, à l'article 17, qu'ils ne pouvaient « en aucun cas tirer à conséquence pour preuves de noblesse ». Avoir des armes n'a jamais prouvé qu'on était noble. Cela prouvait qu'on avait payé.</p>"
+        },
+        {
+          "titre": "1696 — l'édit qui taxa les blasons",
+          "sources": [
+            "wiki_armorial1696"
+          ],
+          "html": "\n          <p>En novembre 1696, le trésor de Louis XIV est exsangue : la guerre de la Ligue d'Augsbourg dure depuis sept ans. Le contrôleur général Pontchartrain, qui vient d'inventer la capitation, propose au roi de recenser toutes les armoiries du royaume — et de faire payer l'enregistrement. L'<b>édit de novembre 1696</b> crée l'<b>Armorial général de France</b>.</p>\n          <p>Sur le papier, la mesure est double : donner enfin un registre public qui rende la propriété des armes opposable, et remplir les caisses. Elle institue une « maîtrise générale des armoiries » de trente-sept officiers et vingt-huit maîtrises de province. Personne, ou presque, n'achète ces charges : elles sont supprimées dès août 1700. C'est <b>Charles René d'Hozier</b>, nommé garde de l'Armorial par arrêt du Conseil du 18 décembre 1696, qui tiendra seul l'entreprise.</p>\n          <p>Le tarif est de <b>vingt livres</b> par personne — une misère pour un noble, une somme pour un artisan. Et la contrainte est réelle : deux mois après la clôture, user d'armoiries non enregistrées expose à 300 livres d'amende, dont un tiers pour le dénonciateur, et à la confiscation des meubles, de l'argenterie et des carrosses armoriés. Dans la foulée, un arrêt du 22 juillet 1698 soumet à autorisation « les fleurs de lys d'or en champ d'azur » : les porteurs qui ne peuvent les justifier voient leurs lys remplacés par des besants, des rocs ou des étoiles. Ces dossiers forment les registres dits des <b>armoiries sursises</b>.</p>\n          <h4>Les armes d'office</h4>\n          <p>Le refus est massif. Les nobles de cour s'estiment au-dessus de la formalité, les moines se considèrent morts civilement, les bourgeois refusent par avarice ou par esprit de fronde ; en Auvergne et en Béarn, l'opposition atteint 80 %. Le roi autorise alors les intendants à dresser des rôles d'imposition (3 décembre 1697), puis d'Hozier à attribuer d'office des armoiries à ceux qui payaient sans rien déclarer (22 mai 1699).</p>\n          <p>Les commis composent d'abord des <b>armes parlantes</b>, c'est-à-dire le nom traduit en rébus : Revellois reçoit un coq réveillant quatre oies, Pinguet un pin et un geai, Clarentin une cloche et du thym, Bouache un bouc et deux haches. Puis, pendant deux ans, ils s'amusent aux dépens des récalcitrants. Le sieur Malaunay est affublé d'« un visage d'homme avec un bouton sur le nez » ; les avocats de Quimper reçoivent « un âne bâté d'argent », les huissiers de Nantes « un diable », un apothicaire une seringue et trois pots de chambre, le curé Raudot « une bombe de sable », la famille Plotton de Lyon « un hérisson de gueules » — c'est-à-dire ensanglanté.</p>\n          <h4>1701 : l'État produit des blasons à la chaîne</h4>\n          <p>La plaisanterie cesse avec l'arrêt du <b>16 septembre 1701</b>, qui met en place un système de <b>composition mécanique</b> des armoiries. Le principe est purement combinatoire : deux métaux (or, argent) associés chacun à quatre émaux (azur, gueules, sinople, sable) donnent huit combinaisons ; on inverse ensuite champ et pièce, ce qui achève une série de seize. On épuise le dentelé sur quinze séries, puis l'engrêlé, puis le cannelé, en faisant varier la pièce — fasce, bande, barre, chevron — puis leur nombre. En 1703 le système se complique : la pièce est chargée d'un meuble, et chaque meuble offre alors quarante-huit possibilités au lieu de seize. Dans la généralité de Lyon, tous les récalcitrants reçoivent <em>un chevron chargé d'un meuble</em> : seize meubles, quarante-huit combinaisons chacun, 768 blasons possibles — <b>725 furent effectivement utilisés</b>.</p>\n          <p>L'Armorial se referme discrètement vers juin 1710. Il contient <b>125 807 blasons peints</b>. Près de la moitié — environ 48 % — n'avaient jamais été portés par personne : ils avaient été inventés par l'administration pour percevoir un impôt. C'est le plus grand armorial d'Europe, et la raison pour laquelle il faut s'en servir avec prudence.</p>"
+        },
+        {
+          "titre": "1808 — le rang entre dans l'écu",
+          "sources": [
+            "wiki_napoleon"
+          ],
+          "diagram": "empire1808",
+          "html": "\n          <p>Par les <b>décrets du 1<sup>er</sup> mars 1808</b>, Napoléon crée les titres d'Empire et leur donne aussitôt un règlement héraldique. Le renversement est complet, et c'est le seul cas où une loi française a changé le dessin même des armoiries.</p>\n          <p>Jusqu'en 1789, le rang se lisait <b>autour</b> de l'écu : couronne, heaume, manteau, supports. À partir de 1808, il se lit <b>dedans</b>. Les couronnes sont supprimées pour tout le monde sauf la famille impériale et les princes souverains ; à leur place, une <b>toque</b> de velours noir à panache, différente selon qu'on est grand dignitaire, duc, comte, baron ou chevalier. Et le titre lui-même devient une pièce de l'écu :</p>\n          <ul>\n            <li><b>Princes</b> — un chef d'azur semé d'abeilles d'or, l'abeille étant l'emblème dynastique ;</li>\n            <li><b>Ducs</b> — un chef de gueules semé d'étoiles d'argent ;</li>\n            <li><b>Comtes</b> — un franc-quartier d'azur ;</li>\n            <li><b>Barons</b> — un franc-quartier de gueules.</li>\n          </ul>\n          <p>Ce quartier ne dit pas que le rang : il est lui-même chargé d'une marque de <b>fonction</b>. Les militaires y portent une épée d'argent garnie d'or, les sénateurs un serpent d'argent entourant un miroir d'or. Les maréchaux ajoutent derrière l'écu <em>deux bâtons d'azur semés d'aigles d'or passés en sautoir</em>. Une héraldique de fonction, là où l'Ancien Régime avait une héraldique de naissance.</p>\n          <p>Un mot sur le vocabulaire : on dit « franc-quartier » par convention, mais le nom est impropre, puisque la pièce n'occupe pas le quart de l'écu — ses dimensions s'adaptent aux figures pour ne pas gêner la lecture.</p>\n          <p>Il faut voir ce que ces règles sont exactement : du <b>droit héraldique</b>, pas de la grammaire. Elles disent qui doit porter quoi selon son rang ; elles ne touchent presque pas aux règles du blason elles-mêmes. Et elles n'ont pas survécu à leur régime : au lendemain de Waterloo, la plupart des familles font simplement effacer le franc-quartier impérial, et il ne subsiste plus dans les armoiries que quelques chefs étoilés, quartiers d'azur et cantons de gueules.</p>"
+        },
+        {
+          "titre": "1969 — Rome interdit la mitre et la crosse",
+          "sources": [
+            "wiki_eccl"
+          ],
+          "diagram": "eccl1969",
+          "html": "\n          <p>L'Église a son propre droit héraldique, et il repose sur un principe inverse de celui de la noblesse : ce n'est pas la naissance qui fonde le droit aux ornements, c'est <b>la charge et la consécration</b>. Un fils de paysan devenu évêque a droit à tout ce à quoi un évêque a droit. Conséquence logique : ces insignes ne sont ni héréditaires, ni cessibles.</p>\n          <p>Second principe, décisif pour comprendre 1969 : Rome ne légifère <b>jamais sur l'écu</b>. Ce que contient le champ relève du droit personnel du clerc, acquis avant son entrée dans l'état ecclésiastique. L'objet du droit héraldique de l'Église, c'est exclusivement « tout ce qui s'ajoute à l'extérieur de l'écu ».</p>\n          <p>D'où une longue série de textes qui, siècle après siècle, retirent des ornements :</p>\n          <ul>\n            <li><b>20 novembre 1611</b> — une ordonnance de la Congrégation des Évêques et Réguliers interdit aux chapitres d'orner arbitrairement leurs armes de la mitre et de la crosse ;</li>\n            <li><b>16 décembre 1644</b> — <em>Militantis Ecclesiæ Regimini</em>, d'Innocent X ;</li>\n            <li><b>15 janvier 1915</b> — un décret de la Congrégation consistoriale interdit aux patriarches, archevêques et évêques de faire figurer dans leurs sceaux et leurs armes titres nobiliaires, couronnes et marques séculières, sauf si une dignité séculière est attachée au siège, et sauf les ordres de Malte et du Saint-Sépulcre ;</li>\n            <li><b>12 mai 1951</b> — sous Pie XII, un nouveau décret supprime même cette exception : plus aucune couronne nobiliaire sur des armes épiscopales ;</li>\n            <li><b>31 mars 1969</b> — l'instruction <em>Ut sive sollicite</em> ;</li>\n            <li><b>9 novembre 1989</b> — le décret <em>Domus Ecclesiae</em> étend aux basiliques mineures l'usage du pavillon et des clefs.</li>\n          </ul>\n          <h4>Ce que fait l'instruction de 1969</h4>\n          <p>Signée par le cardinal <b>Amleto Cicognani</b> pour la Secrétairerie d'État et publiée aux <em>Acta Apostolicae Sedis</em> (vol. 61, p. 334), l'instruction <em>Ut sive sollicite</em> du <b>31 mars 1969</b> interdit sur les armes épiscopales deux figures qui y étaient depuis le XIII<sup>e</sup> siècle : la <b>mitre</b> et la <b>crosse</b>. Elles étaient pourtant les tout premiers insignes pontificaux que l'art héraldique ait adoptés comme marques de dignité.</p>\n          <p>Ce qui subsiste, et qui suffit désormais à lire un blason ecclésiastique :</p>\n          <ul>\n            <li>la <b>croix de procession</b> posée en pal derrière l'écu — une traverse pour l'évêque, deux pour l'archevêque, le primat et le patriarche. C'est le seul signe que les évêques seuls ont le droit de porter ;</li>\n            <li>le <b>chapeau</b> (<em>galero</em>) et sa <b>cordelière</b>, dont la couleur marque la nature de la charge et dont le nombre de <b>houppes</b> croît avec la dignité ;</li>\n            <li>pour les archevêques métropolitains, le <b>pallium</b>, bande de laine blanche chargée de croix noires, le plus souvent posé en pointe de l'écu.</li>\n          </ul>\n          <h4>Une précision qui compte</h4>\n          <p>On dit volontiers que « Vatican II a changé l'héraldique ». C'est vrai de l'esprit, faux de la lettre : <em>Ut sive sollicite</em> n'est pas un document conciliaire. Le concile s'est clos en 1965 ; le texte héraldique est une <b>instruction post-conciliaire</b> de la Secrétairerie d'État, prise sous Paul VI quatre ans plus tard. Et comme toute règle disciplinaire, elle est diversement suivie : dans la pratique, la mitre reparaît encore çà et là dans les armes d'évêques ou d'abbés mitrés.</p>\n          <p>Le contraste le plus instructif est ailleurs. L'instruction de 1969 n'oblige que Rome. L'<b>Église d'Angleterre</b> n'étant pas concernée, ses évêques et archevêques ont continué de timbrer leurs armes de la mitre — et ont développé leur propre code : chapeaux de sable à tous les rangs, cordelières de pourpre pour les archidiacres et les diacres, de sable pour les chanoines, d'argent pour les prêtres ; six houppes pour l'archidiacre, deux pour le prêtre. Deux Églises, une même tradition héraldique, séparées par un texte administratif de 1969.</p>"
+        },
+        {
+          "sources": [],
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Établi :</b> les trois textes présentés ici — l'édit de novembre 1696, les décrets du 1<sup>er</sup> mars 1808 et l'instruction du 31 mars 1969 — sont datés, nommés et attribuables. Leurs effets sur le dessin des armoiries sont décrits d'après les sources citées en bas de chaque article.</p>\n            <p><b>Non traité :</b> le droit comparé. Il existe des pays où l'héraldique est une matière juridique vivante, avec un tribunal et des sanctions — l'Écosse au premier chef —, et d'autres où le port d'armes a été purement et simplement aboli. Ces cas demandent d'être vérifiés texte par texte avant d'être exposés ici ; ils feront l'objet d'un chapitre distinct.</p>\n            <p><b>Réserve :</b> sur le nombre exact de houppes attaché à chaque dignité inférieure au rang d'évêque, la source retenue donne le principe (« le nombre de houppes est d'autant plus grand que la dignité est importante ») sans fixer de compte. Le chiffre n'est donc pas avancé ici.</p>\n          </div>"
+        }
+      ]
+    },
+    {
       "id": "brisures",
       "label": "Brisures",
-      "eyebrow": "Chapitre X",
+      "eyebrow": "Chapitre XI",
       "title": "Les brisures",
       "lede": "Comment les cadets se distinguent de l'aîné sans changer d'armes.",
       "figure": null,
@@ -1515,13 +1794,6 @@
       ]
     },
     {
-      "terme": "Issant",
-      "def": "Voir plus haut : ne montre que sa partie supérieure, comme surgissant d'une pièce.",
-      "sources": [
-        "joubert1977"
-      ]
-    },
-    {
       "terme": "Mouvant",
       "def": "Se dit d'une figure qui prend naissance à un point ou un bord de l'écu (chef, flanc…) sans en occuper toute la longueur.",
       "sources": [
@@ -1555,53 +1827,461 @@
       "sources": [
         "wenzler2015"
       ]
+    },
+    {
+      "terme": "Usurpation",
+      "def": "Fait de prendre les armes d'autrui — la seule interdiction vraiment générale du droit héraldique ; tout le reste est libre.",
+      "sources": [
+        "wiki_armorial1696"
+      ]
+    },
+    {
+      "terme": "Droit d'antériorité",
+      "def": "Règle coutumière qui tranche les conflits d'armes en faveur du porteur le plus ancien ; formée sous l'Ancien Régime, elle vaut encore.",
+      "sources": [
+        "wiki_napoleon"
+      ]
+    },
+    {
+      "terme": "Armes d'office",
+      "def": "Armoiries inventées par l'administration royale entre 1697 et 1710 pour imposer ceux qui refusaient de déclarer les leurs ; près de la moitié de l'Armorial général.",
+      "sources": [
+        "wiki_armorial1696"
+      ]
+    },
+    {
+      "terme": "Armes parlantes",
+      "def": "Armoiries dont les meubles traduisent le nom du porteur en rébus — Pinguet : un pin et un geai.",
+      "sources": [
+        "wiki_armorial1696"
+      ]
+    },
+    {
+      "terme": "Armoiries sursises",
+      "def": "Armes retenues pour vérification en 1696, notamment celles portant des fleurs de lys d'or sur champ d'azur, soumises à autorisation depuis l'arrêt du 22 juillet 1698.",
+      "sources": [
+        "wiki_armorial1696"
+      ]
+    },
+    {
+      "terme": "Franc-quartier",
+      "def": "Quartier posé au canton dextre du chef ; sous l'Empire il porte la marque du rang (azur pour les comtes, gueules pour les barons) et de la fonction.",
+      "sources": [
+        "wiki_napoleon"
+      ]
+    },
+    {
+      "terme": "Toque",
+      "def": "Coiffure de velours noir à panache qui, dans l'héraldique d'Empire, remplace la couronne de rang pour tous sauf la famille impériale.",
+      "sources": [
+        "wiki_napoleon"
+      ]
+    },
+    {
+      "terme": "Galero",
+      "def": "Chapeau ecclésiastique à large bord qui timbre les armes du clergé ; sa couleur dit la nature de la charge, ses houppes la dignité.",
+      "sources": [
+        "wiki_eccl",
+        "aleteia_galero"
+      ]
+    },
+    {
+      "terme": "Houppe",
+      "def": "Gland qui termine la cordelière du chapeau ecclésiastique ; plus la dignité est haute, plus les houppes sont nombreuses.",
+      "sources": [
+        "wiki_eccl"
+      ]
+    },
+    {
+      "terme": "Mitre",
+      "def": "Coiffure à deux pointes des évêques et des abbés mitrés ; retirée des armes épiscopales catholiques par l'instruction du 31 mars 1969, conservée dans l'Église d'Angleterre.",
+      "sources": [
+        "wiki_eccl"
+      ]
+    },
+    {
+      "terme": "Crosse",
+      "def": "Bâton pastoral à volute, symbole du Bon Pasteur et de la juridiction ; son usage héraldique a été interdit sur les armes épiscopales en 1969.",
+      "sources": [
+        "wiki_eccl"
+      ]
+    },
+    {
+      "terme": "Croix de procession",
+      "def": "Croix à hampe posée en pal derrière l'écu — une traverse pour l'évêque, deux pour l'archevêque, le primat et le patriarche.",
+      "sources": [
+        "wiki_eccl"
+      ]
+    },
+    {
+      "terme": "Pallium",
+      "def": "Bande circulaire de laine blanche chargée de croix noires, qui caractérise les armes des archevêques métropolitains.",
+      "sources": [
+        "wiki_eccl"
+      ]
     }
   ],
   "couronnes": [
     {
       "kind": "roi",
       "nom": "Couronne royale",
-      "en": "Royal crown"
+      "en": "Royal crown",
+      "image": {
+        "file": "Royal Crown of France.svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Seule couronne fermée de la série : huit demi-cercles perlés convergent sous une fleur de lis."
+      }
     },
     {
       "kind": "duc",
       "nom": "Couronne ducale",
-      "en": "Duke's crown"
+      "en": "Duke's crown",
+      "image": {
+        "file": "Crown of a Duke of France (variant).svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Ce tracé intercale une perle entre les fleurons, là où les armoriaux français classiques n'en mettent aucune."
+      }
     },
     {
       "kind": "marquis",
       "nom": "Couronne de marquis",
-      "en": "Marquess's crown"
+      "en": "Marquess's crown",
+      "image": {
+        "file": "Crown of a Marquis of France (variant).svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Cinq fleurons apparents alternés de quatre trèfles de trois perles."
+      }
     },
     {
       "kind": "comte",
       "nom": "Couronne de comte",
-      "en": "Count's crown"
+      "en": "Count's crown",
+      "image": {
+        "file": "Crown of a Count of France (variant).svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Perles seules montées sur pointes, aucun fleuron ; neuf apparentes sur seize — l'une des deux leçons en concurrence."
+      }
     },
     {
       "kind": "vicomte",
       "nom": "Couronne de vicomte",
-      "en": "Viscount's crown"
+      "en": "Viscount's crown",
+      "image": {
+        "file": "Crown of a Viscount of France (variant).svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Cinq grosses perles apparentes ici, quatre dont trois visibles dans la règle française usuelle."
+      }
     },
     {
       "kind": "baron",
       "nom": "Couronne de baron",
-      "en": "Baron's crown"
+      "en": "Baron's crown",
+      "image": {
+        "file": "Crown of a Baron of France.svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Cercle uni tortillé d'un rang de perles enroulé en écharpe — ni fleuron ni perle dressée."
+      }
     },
     {
       "kind": "chevalier",
       "nom": "Bourrelet de chevalier",
-      "en": "Knight's torse"
+      "en": "Knight's torse",
+      "image": {
+        "file": "Torse of a Chevalier of France.svg",
+        "auteur": "Sodacan",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Pas une couronne : le ruban tortillé qui en tient lieu. La même figure sert au chevalier britannique et à la noblesse autrichienne sans titre."
+      }
     },
     {
       "kind": "murale",
       "nom": "Couronne murale",
-      "en": "Mural crown"
+      "en": "Mural crown",
+      "image": {
+        "file": "Mural Crown of a French Commune.svg",
+        "auteur": "Heralder",
+        "lic": "CC BY-SA 4.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+        "note": "Trois tours = commune ; quatre pour un chef-lieu de département, cinq pour une capitale."
+      }
     },
     {
       "kind": "tiare",
       "nom": "Tiare pontificale",
-      "en": "Papal tiara"
+      "en": "Papal tiara",
+      "image": {
+        "file": "Heraldic Papal Tiara.svg",
+        "auteur": "Fry1989",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Triple couronne sommée d'un globe croisété, les deux fanons pendants."
+      }
     }
+  ],
+  "attributs": [
+    { "terme": "Armé", "def": "Griffes, serres, cornes ou dents d'un autre émail que le corps." },
+    { "terme": "Lampassé", "def": "La langue d'un autre émail ; on dit aussi langué." },
+    { "terme": "Allumé", "def": "L'œil d'un autre émail ; se dit aussi d'une flamme ou d'une grenade." },
+    { "terme": "Becqué", "def": "Le bec d'un autre émail." },
+    { "terme": "Membré", "def": "Les pattes d'un oiseau d'un autre émail." },
+    { "terme": "Onglé", "def": "Les sabots fourchus d'un autre émail — cerf, taureau, biche, licorne." },
+    { "terme": "Accorné", "def": "Les cornes d'un autre émail." },
+    { "terme": "Colleté", "def": "Porte un collier ; bouclé si le collier a sa boucle. Le lévrier l'est toujours." },
+    { "terme": "Clariné", "def": "Porte une clarine, la clochette du bétail." },
+    { "terme": "Couronné", "def": "Porte une couronne, le plus souvent d'un autre émail." },
+    { "terme": "Vilené", "def": "Le sexe apparent et d'un autre émail." },
+    { "terme": "Crêté, barbé", "def": "La crête et la barbe du coq d'un autre émail." },
+    { "terme": "Miraillé", "def": "Les ocelles de la queue du paon d'un autre émail." },
+    { "terme": "Gorgé", "def": "La base du cou d'un autre émail — rare." },
+    { "terme": "Lorré, peautré, oreillé", "def": "Les nageoires, la queue et les ouïes du dauphin." },
+    { "terme": "Englanté", "def": "Les glands du chêne d'un autre émail ; on dit aussi englandé." },
+    { "terme": "Tigé, feuillé, fruité", "def": "La tige, les feuilles ou les fruits d'une plante d'un autre émail." },
+    { "terme": "Boutonné, barbé", "def": "Le cœur et les sépales d'une rose d'un autre émail." },
+    { "terme": "Futé", "def": "Le tronc de l'arbre d'un émail particulier." },
+    { "terme": "Maçonné", "def": "Les joints de pierre d'un bâtiment apparents et d'un autre émail." },
+    { "terme": "Ajouré, ouvert", "def": "Les fenêtres et la porte d'un autre émail — donc vides." },
+    { "terme": "Couvert, essoré", "def": "Le toit du même émail, ou d'un émail différent." },
+    { "terme": "Donjonné", "def": "Surmonté d'une ou plusieurs tourelles ; le nombre se blasonne." },
+    { "terme": "Hersé, coulissé", "def": "La porte munie d'une herse, ouverte ou baissée." },
+    { "terme": "Girouetté", "def": "Surmonté d'une girouette en forme de pennon ou de bannière." },
+    { "terme": "Virolé, enguiché, pavillonné, lié", "def": "Les anneaux, l'embouchure, le pavillon ou l'attache d'un cor." },
+    { "terme": "Bataillé", "def": "Le battant de la cloche d'un autre émail." },
+    { "terme": "Empenné, ferré, fûté", "def": "Les plumes, le fer et la hampe de la flèche." },
+    { "terme": "Nimbé, auréolé", "def": "Entouré d'un nimbe — saints, anges, agneau pascal." },
+    { "terme": "Jaillissant", "def": "L'eau d'une fontaine d'un autre émail ; le nombre de jets se blasonne." }
+  ],
+  "positions": [
+    { "terme": "Rampant", "def": "Dressé de profil sur une patte arrière, une antérieure levée — la position par défaut du lion." },
+    { "terme": "Passant", "def": "Marchant à l'horizontale, les pattes posées." },
+    { "terme": "Léopardé", "def": "Passant et la tête tournée vers le spectateur — ce qui fait du lion un léopard." },
+    { "terme": "Lionné", "def": "Inverse du précédent : un léopard dressé à la manière du lion." },
+    { "terme": "Issant", "def": "On n'en voit que la partie supérieure, comme sortant d'une pièce ou du bord." },
+    { "terme": "Naissant", "def": "Sortant du milieu du champ ou d'une ligne de partition." },
+    { "terme": "Saillant", "def": "Dressé sur ses pattes arrière — se dit surtout du bouc et du bélier." },
+    { "terme": "Effaré, effrayé, cabré", "def": "Le cheval dressé sur ses postérieurs." },
+    { "terme": "Furieux", "def": "Le taureau dressé, la queue relevée au-dessus du dos." },
+    { "terme": "Effarouché", "def": "Le chat ou le taureau représenté rampant." },
+    { "terme": "Ravissant", "def": "Le loup ou le renard levé comme un lion." },
+    { "terme": "Hérissonné", "def": "Le chat faisant le gros dos, les pattes ramassées." },
+    { "terme": "Élancé", "def": "Le cerf courant, les antérieurs ne touchant plus le sol." },
+    { "terme": "Arrêté, posé", "def": "Les quatre pattes à terre — position ordinaire de l'éléphant." },
+    { "terme": "En pied", "def": "Le corps presque à la verticale ; se dit de l'ours." },
+    { "terme": "Acculé", "def": "Assis — position non naturelle, employée pour le cheval et la licorne." },
+    { "terme": "Contourné", "def": "Tourné vers senestre alors que la position par défaut regarde à dextre." },
+    { "terme": "Affronté", "def": "Deux figures face à face." },
+    { "terme": "Adossé", "def": "Deux figures dos à dos." },
+    { "terme": "Éployée", "def": "Les ailes ouvertes et étendues — l'aigle à partir du XVIe siècle." },
+    { "terme": "Dressé, ouvert, élevé", "def": "Les ailes ouvertes et coudées — l'aigle médiévale." },
+    { "terme": "Essorant, essoré", "def": "Prenant son envol, ou déjà en train de voler ; descendant vers la pointe, fondant s'il pique." },
+    { "terme": "Empiétant", "def": "Le rapace tenant quelque chose entre ses serres." },
+    { "terme": "Rouant", "def": "Le paon de face, faisant la roue." },
+    { "terme": "Nageant", "def": "Le poisson posé en fasce ; couché, versé, pâmé selon le cas." },
+    { "terme": "Pâmé", "def": "La gueule béante — un dauphin ou un poisson sans dents ni langue apparentes." },
+    { "terme": "Morné", "def": "Privé de bec, de pattes, de griffes ou de langue — la merlette l'est par définition." },
+    { "terme": "Mouvant", "def": "Prenant naissance à un bord ou à un point de l'écu sans l'occuper entièrement." },
+    { "terme": "Brochant", "def": "Passant par-dessus d'autres figures, qu'il recouvre en partie." }
+  ],
+  "repertoire": [
+    { "cat": "Bêtes", "terme": "Agneau pascal", "def": "Agneau passant, la tête contournée, tenant une bannière à la croix ; souvent nimbé." },
+    { "cat": "Bêtes", "terme": "Bélier", "def": "Mouton aux cornes en spirale ; dressé, il est saillant." },
+    { "cat": "Bêtes", "terme": "Brebis", "def": "Mouton sans corne, normalement paissant." },
+    { "cat": "Bêtes", "terme": "Biche", "def": "Debout ou assise, souvent d'or ou d'argent, parfois percée d'une flèche." },
+    { "cat": "Bêtes", "terme": "Bœuf", "def": "Passant, de profil, la queue pendante entre les jambes." },
+    { "cat": "Bêtes", "terme": "Taureau", "def": "Représenté entier et dans des positions dressées, la queue relevée." },
+    { "cat": "Bêtes", "terme": "Vache", "def": "Reconnaissable à ses pis, la queue étendue le long du flanc." },
+    { "cat": "Bêtes", "terme": "Bouquetin", "def": "Chèvre alpine à très grandes cornes ; le chamois les a minces, en spatules." },
+    { "cat": "Bêtes", "terme": "Cerf", "def": "Ramé, chevillé ou sommé de N cors, répartis symétriquement ; élancé quand il court." },
+    { "cat": "Bêtes", "terme": "Daim", "def": "Se distingue du cerf par des bois plus larges et aplatis." },
+    { "cat": "Bêtes", "terme": "Ramure", "def": "Le bois du cerf ; demi-ramure pour un seul des deux." },
+    { "cat": "Bêtes", "terme": "Massacre", "def": "Crâne de cerf vu de face avec ses bois — à ne pas confondre avec un rencontre." },
+    { "cat": "Bêtes", "terme": "Rencontre", "def": "Tête d'un quadrupède vue de face ; ni le lion ni le léopard n'en ont, par définition." },
+    { "cat": "Bêtes", "terme": "Hure", "def": "Tête de sanglier — également de dauphin ou de saumon — vue de profil." },
+    { "cat": "Bêtes", "terme": "Chat", "def": "Toujours la tête de face ; hérissonné quand il fait le gros dos." },
+    { "cat": "Bêtes", "terme": "Cheval", "def": "Gai quand il est sans harnais ; sellé, bridé, caparaçonné, cabré ou ruant sinon." },
+    { "cat": "Bêtes", "terme": "Chèvre", "def": "Reconnaissable à sa barbiche et à ses cornes droites ; le bouc dressé est saillant." },
+    { "cat": "Bêtes", "terme": "Chien", "def": "La race se blasonne si elle est reconnaissable : lévrier, mâtin, braque." },
+    { "cat": "Bêtes", "terme": "Lévrier", "def": "Toujours colleté ; le levron est sans collier, la levrette est la femelle." },
+    { "cat": "Bêtes", "terme": "Écureuil", "def": "De profil, souvent mangeant, la queue remontant au-dessus de la tête." },
+    { "cat": "Bêtes", "terme": "Éléphant", "def": "Arrêté sur ses quatre pattes ; défendu quand ses défenses sont d'un autre émail." },
+    { "cat": "Bêtes", "terme": "Hermine", "def": "Le petit carnassier lui-même, d'argent et passant ; de sable, c'est la zibeline." },
+    { "cat": "Bêtes", "terme": "Lionceau", "def": "Nom que prend le lion dès qu'il figure en nombre dans l'écu." },
+    { "cat": "Bêtes", "terme": "Loup", "def": "Passant, la queue pendante ; ravissant quand il est levé comme un lion." },
+    { "cat": "Bêtes", "terme": "Renard", "def": "Comme le loup, mais la queue dressée — c'est ce qui les distingue." },
+    { "cat": "Bêtes", "terme": "Lynx, loup-cervier", "def": "Deux figures distinctes ; le lynx passe ou paraît de front, symbole de perspicacité." },
+    { "cat": "Bêtes", "terme": "Ours", "def": "Tête plate, queue courte, griffes fortes ; emmuselé quand il porte une muselière." },
+    { "cat": "Bêtes", "terme": "Sanglier", "def": "De profil, la queue recercelée ; flamboyant si des flammes sortent de ses yeux." },
+    { "cat": "Bêtes", "terme": "Écrevisse", "def": "Posée en pal et vue de dos." },
+    { "cat": "Bêtes", "terme": "Anguille", "def": "Poisson serpentiforme au corps toujours ondulé." },
+    { "cat": "Bêtes", "terme": "Bar", "def": "Ancien nom du barbeau ; allongé, en pal et courbé, souvent par paire et adossé." },
+    { "cat": "Bêtes", "terme": "Chabot", "def": "Poisson à grosse tête, en pal, vu de dos, deux nageoires de chaque côté." },
+    { "cat": "Bêtes", "terme": "Dauphin", "def": "Compté parmi les poissons ; arqué, hure et queue à dextre ; pâmé gueule béante." },
+    { "cat": "Bêtes", "terme": "Saumon", "def": "Poisson dont la tête isolée se nomme hure." },
+    { "cat": "Bêtes", "terme": "Abeille", "def": "Montante, vue de dos, pattes étendues, ailes entrouvertes ; volante si elle est ouverte." },
+    { "cat": "Bêtes", "terme": "Doublet", "def": "Nom héraldique de la libellule, de profil et volant en bande." },
+    { "cat": "Bêtes", "terme": "Limaçon", "def": "Escargot de profil issant de sa coquille, cornes visibles." },
+    { "cat": "Bêtes", "terme": "Conque", "def": "Coquille d'escargot vide." },
+    { "cat": "Bêtes", "terme": "Chauve-souris", "def": "Posée de front, les ailes étendues ; fréquente en cimier aragonais." },
+
+    { "cat": "Oiseaux", "terme": "Aiglette", "def": "Petite aigle, presque toujours employée en nombre." },
+    { "cat": "Oiseaux", "terme": "Alérion", "def": "Aiglon stylisé sans bec ni serres, le poitrail visible, les ailes étendues." },
+    { "cat": "Oiseaux", "terme": "Alcyon", "def": "Oiseau de mer représenté dans son nid flottant sur les ondes." },
+    { "cat": "Oiseaux", "terme": "Canard", "def": "De profil, les ailes serrées, tourné vers dextre." },
+    { "cat": "Oiseaux", "terme": "Canette", "def": "Petit oiseau au jabot proéminent ; armé, à la différence de la merlette qui est mornée." },
+    { "cat": "Oiseaux", "terme": "Chouette", "def": "De profil, la tête de face ; sans aigrettes, ce qui la distingue du hibou." },
+    { "cat": "Oiseaux", "terme": "Hibou", "def": "Rapace nocturne dont la tête porte des aigrettes ; variantes duc et grand-duc." },
+    { "cat": "Oiseaux", "terme": "Coq", "def": "Crête, barbe et plumes du col ; hardi une patte levée, chantant le bec ouvert." },
+    { "cat": "Oiseaux", "terme": "Corbeau", "def": "Se distingue de l'aigle par son bec droit et sa position non héraldique." },
+    { "cat": "Oiseaux", "terme": "Cygne", "def": "Le plus souvent nageant sur des ondes." },
+    { "cat": "Oiseaux", "terme": "Faucon", "def": "Chaperonné s'il est capuchonné, longé par ses jets, grilleté par ses sonnettes." },
+    { "cat": "Oiseaux", "terme": "Paon", "def": "Rouant quand il fait la roue de face ; miraillé si ses ocelles diffèrent." },
+    { "cat": "Oiseaux", "terme": "Pélican", "def": "Dans son aire, se perçant la poitrine pour nourrir ses petits : c'est sa « piété »." },
+    { "cat": "Oiseaux", "terme": "Perdrix", "def": "Plutôt grasse et au bec court." },
+    { "cat": "Oiseaux", "terme": "Aire", "def": "Le nid de certains oiseaux — pélican, cygne, aigle." },
+    { "cat": "Oiseaux", "terme": "Vol", "def": "Paire d'ailes jointes à l'articulation ; une seule aile est un demi-vol." },
+
+    { "cat": "Chimères", "terme": "Alphyn", "def": "Créature composite proche du griffon, presque uniquement dans les armes anglaises." },
+    { "cat": "Chimères", "terme": "Amphisbène", "def": "Dragon dont la queue en volute se termine par une seconde tête de serpent." },
+    { "cat": "Chimères", "terme": "Amphistère", "def": "Serpent ailé." },
+    { "cat": "Chimères", "terme": "Centaure", "def": "Armé d'une massue par défaut ; le centaure-sagittaire tire à l'arc." },
+    { "cat": "Chimères", "terme": "Cerbère", "def": "Chien à trois têtes, gardien des enfers." },
+    { "cat": "Chimères", "terme": "Céraste", "def": "Serpent accorné." },
+    { "cat": "Chimères", "terme": "Chimère", "def": "Tronc de femme, serres d'aigle en guise de bras, corps de chèvre, queue de serpent." },
+    { "cat": "Chimères", "terme": "Bisse", "def": "Serpent dont le corps forme plusieurs volutes." },
+    { "cat": "Chimères", "terme": "Harpie", "def": "Figure composite rattachée à la famille de l'aigle." },
+    { "cat": "Chimères", "terme": "Hydre", "def": "Serpent à plusieurs têtes." },
+    { "cat": "Chimères", "terme": "Argus", "def": "Tête de carnation semée d'yeux — l'homme que rien n'abuse." },
+
+    { "cat": "Végétaux", "terme": "Arbre", "def": "Touffu et laissant voir ses racines ; arraché, terrassé, futé, étagé, écoté ou tronqué." },
+    { "cat": "Végétaux", "terme": "Chêne", "def": "Feuilles et glands dessinés un à un ; englanté si les glands diffèrent." },
+    { "cat": "Végétaux", "terme": "Créquier", "def": "Arbre stylisé à sept branches terminées en fer de pique, sur quelques racines." },
+    { "cat": "Végétaux", "terme": "Sapin", "def": "Ramure symétrique, les extrémités recourbées vers le chef." },
+    { "cat": "Végétaux", "terme": "Saule", "def": "Tronc large et branches multiples, fines et feuillues." },
+    { "cat": "Végétaux", "terme": "Écot", "def": "Tronc d'arbre dont les branches ont été coupées." },
+    { "cat": "Végétaux", "terme": "Chicot", "def": "Bâton noueux, à distinguer de l'écot qui figure un tronc." },
+    { "cat": "Végétaux", "terme": "Angemme", "def": "Fleur imaginaire de quatre à dix pétales, percée au centre, ni tigée ni feuillée." },
+    { "cat": "Végétaux", "terme": "Panelle", "def": "Feuille de peuplier prise isolément." },
+    { "cat": "Végétaux", "terme": "Coquerelle", "def": "Trois noisettes réunies par leurs cupules, une vers le chef." },
+    { "cat": "Végétaux", "terme": "Grenade", "def": "Fruit ouvert laissant voir ses grains, le pédoncule vers le bas." },
+    { "cat": "Végétaux", "terme": "Lys", "def": "Le lis de jardin, bien distinct de la fleur de lis héraldique." },
+    { "cat": "Végétaux", "terme": "Vigne, pampre", "def": "Sarment feuillé et fruité de grappes ; le cep se représente avec son échalas." },
+
+    { "cat": "Astres, éléments, terrain", "terme": "Arc-en-ciel", "def": "En fasce ou en bande, burelé d'or, de gueules, de sinople et d'argent, mouvant des bords." },
+    { "cat": "Astres, éléments, terrain", "terme": "Aquilon", "def": "Tête d'enfant joufflu soufflant le vent du nord, les jets du même émail." },
+    { "cat": "Astres, éléments, terrain", "terme": "Flamme", "def": "Arrondie par le bas, terminée en jets ondoyants ; le plus souvent de gueules." },
+    { "cat": "Astres, éléments, terrain", "terme": "Foudre", "def": "Masculin en héraldique : deux faisceaux de flammes opposés et des dards passés en sautoir." },
+    { "cat": "Astres, éléments, terrain", "terme": "Lune", "def": "Rarement pleine ; en croissant ou en décours, figurée d'un profil humain." },
+    { "cat": "Astres, éléments, terrain", "terme": "Soleil", "def": "Figuré quand il porte un visage ; non figuré, éteint, éclipsé, levant ou couchant." },
+    { "cat": "Astres, éléments, terrain", "terme": "Rai", "def": "Rayon du soleil, pointe d'étoile ou de molette, rayon de roue, pointe de couronne antique." },
+    { "cat": "Astres, éléments, terrain", "terme": "Mer", "def": "Toujours mouvante de la pointe, occupant le tiers inférieur du champ." },
+    { "cat": "Astres, éléments, terrain", "terme": "Onde", "def": "Terme discuté, tenu pour un synonyme de rivière et à employer avec prudence." },
+    { "cat": "Astres, éléments, terrain", "terme": "Source", "def": "Chacune des fasces ondées qui traversent une fontaine héraldique." },
+    { "cat": "Astres, éléments, terrain", "terme": "Mont, montagne", "def": "Uni par défaut, mais le plus souvent en coupeaux dont le nombre se blasonne." },
+    { "cat": "Astres, éléments, terrain", "terme": "Coupeau", "def": "Un des mamelons du mont, arrondi en pain de sucre ; ne s'emploie jamais seul." },
+    { "cat": "Astres, éléments, terrain", "terme": "Terrasse", "def": "Sol mouvant de la pointe ; isolée si elle ne touche pas le bord." },
+    { "cat": "Astres, éléments, terrain", "terme": "Tertre", "def": "Terrasse de taille réduite." },
+
+    { "cat": "Armes et outils", "terme": "Arbalète", "def": "Posée en pal, le manche vers le bas ; elle lance des carreaux." },
+    { "cat": "Armes et outils", "terme": "Arc", "def": "En pal, la corde à dextre ; couché quand il est en fasce, cordé si la corde diffère." },
+    { "cat": "Armes et outils", "terme": "Flèche", "def": "Armée par son fer, empennée par ses plumes, fûtée par son bois ; versée, encochée." },
+    { "cat": "Armes et outils", "terme": "Badelaire", "def": "Cimeterre à lame courte et large, recourbée vers la pointe." },
+    { "cat": "Armes et outils", "terme": "Glaive", "def": "Synonyme d'épée ; l'épée est en pal, pointe en haut, dégarnie sans sa garde." },
+    { "cat": "Armes et outils", "terme": "Lance", "def": "Hampe élargie à la base pour protéger la main ; brisée, émoussée, fûtée, armée." },
+    { "cat": "Armes et outils", "terme": "Pique", "def": "Arme d'hast à hampe cylindrique, ce qui la distingue de la lance." },
+    { "cat": "Armes et outils", "terme": "Otelle", "def": "Bout de fer de pique, dit aussi amande pelée ; quatre en sautoir font la croix de Comminges." },
+    { "cat": "Armes et outils", "terme": "Bouterolle", "def": "Garniture métallique de l'extrémité d'un fourreau d'épée." },
+    { "cat": "Armes et outils", "terme": "Canon", "def": "Pièce d'artillerie, affûtée d'un autre émail ; couleuvrine au Moyen Âge." },
+    { "cat": "Armes et outils", "terme": "Grenade de guerre", "def": "Bombe sphérique à mèche, allumée de gueules ; éclatante quand elle explose." },
+    { "cat": "Armes et outils", "terme": "Échelle d'assaut", "def": "Poteau garni de barreaux et terminé par un crochet." },
+    { "cat": "Armes et outils", "terme": "Balance", "def": "Toujours à deux plateaux." },
+    { "cat": "Armes et outils", "terme": "Caducée", "def": "Bâton ailé entouré de deux serpents entrelacés ; symbole de la médecine." },
+    { "cat": "Armes et outils", "terme": "Ciseaux", "def": "Normalement ouverts en sautoir ; meuble surtout bourgeois et artisan." },
+    { "cat": "Armes et outils", "terme": "Forces", "def": "Paire de lames reliées par un ressort, pour tondre ; renversées pointe en bas." },
+    { "cat": "Armes et outils", "terme": "Doloire", "def": "Hachette à manche court et lame en demi-lune, le manche posé en bande." },
+    { "cat": "Armes et outils", "terme": "Faucille", "def": "Présentée le fer en haut, pointant à dextre." },
+    { "cat": "Armes et outils", "terme": "Faux", "def": "Même présentation que la faucille ; outil tardif, apparu au XVIe siècle." },
+    { "cat": "Armes et outils", "terme": "Anille", "def": "Deux courbes en C adossées, liées par des traverses ; souvent confondue avec le fer-de-moulin." },
+    { "cat": "Armes et outils", "terme": "Broyes", "def": "Couteau de bois à briser la tige du chanvre et du lin, souvent par paire." },
+    { "cat": "Armes et outils", "terme": "Morailles", "def": "Pince à maîtriser les chevaux par les naseaux ; se confond avec les broyes." },
+    { "cat": "Armes et outils", "terme": "Herse", "def": "De labour, tronconique ; sarrasine quand il s'agit de la grille d'une porte." },
+    { "cat": "Armes et outils", "terme": "Hie", "def": "Instrument à enfoncer les pavés, en fusée allongée à deux annelets ; rare." },
+    { "cat": "Armes et outils", "terme": "Couple", "def": "Poignée de bois à deux cordes, qui servait à attacher les chiens de chasse par paire." },
+    { "cat": "Armes et outils", "terme": "Bourdon", "def": "Bâton de pèlerin à pommeau ; insigne des dignitaires n'ayant pas droit à la crosse." },
+
+    { "cat": "Bâtiments et navires", "terme": "Bâtiment", "def": "Se blasonne ajouré, ouvert, maçonné, couvert, essoré, girouetté, hersé ou coulissé." },
+    { "cat": "Bâtiments et navires", "terme": "Château", "def": "Forteresse à plusieurs tours ; donjonné quand des tourelles le surmontent." },
+    { "cat": "Bâtiments et navires", "terme": "Donjon", "def": "Tour qui porte elle-même des tourelles." },
+    { "cat": "Bâtiments et navires", "terme": "Avant-mur", "def": "Portion de muraille flanquant une tour, mouvant d'un flanc de l'écu." },
+    { "cat": "Bâtiments et navires", "terme": "Pont", "def": "Voûté, d'une ou plusieurs arches ; gardé quand des tourelles en occupent les bouts." },
+    { "cat": "Bâtiments et navires", "terme": "Aqueduc", "def": "Pont à nombreuses arches, soumis aux mêmes règles que le pont." },
+    { "cat": "Bâtiments et navires", "terme": "Colonne", "def": "Colonne grecque d'ordre ionique, au trait simplifié." },
+    { "cat": "Bâtiments et navires", "terme": "Navire", "def": "Coque, mât et voile ; équipé, habillé, les voiles gonflées ou carguées." },
+    { "cat": "Bâtiments et navires", "terme": "Nef", "def": "Navire équipé et habillé, comme dans les armes de Paris." },
+    { "cat": "Bâtiments et navires", "terme": "Galère", "def": "Navire antique aux voiles toujours ferlées, très usité dans les armes anglaises." },
+
+    { "cat": "Objets", "terme": "Boule", "def": "Disque ombré, ce qui la distingue du besant et du tourteau, tous deux plats." },
+    { "cat": "Objets", "terme": "Bourse", "def": "Petit sac à coulisse ; liée quand le fil est d'un autre émail." },
+    { "cat": "Objets", "terme": "Briquet", "def": "Pièce à battre le silex ; celui de Constantinople se confond avec un B majuscule." },
+    { "cat": "Objets", "terme": "Calice", "def": "Coupe eucharistique, souvent surmontée d'une hostie." },
+    { "cat": "Objets", "terme": "Carreau", "def": "Carré posé sur un côté ; huppé aux angles, il vaut mieux le blasonner coussin." },
+    { "cat": "Objets", "terme": "Channe", "def": "Marmite à trois pieds et une anse, dite aussi marmite à cornière." },
+    { "cat": "Objets", "terme": "Pot à feu", "def": "Marmite à trois pieds, sans anse." },
+    { "cat": "Objets", "terme": "Cloche de vair", "def": "La partie d'azur de la fourrure, évasée vers le bas ; le reste est le pot d'argent." },
+    { "cat": "Objets", "terme": "Clef", "def": "En pal, l'anneau en pointe et le panneton en chef tourné vers dextre ; entretenues, liées." },
+    { "cat": "Objets", "terme": "Collier", "def": "Meuble à part entière, ornement extérieur d'un ordre, ou attribut d'un animal colleté." },
+    { "cat": "Objets", "terme": "Huchet", "def": "Petit cor de chasse dépourvu d'attache — c'est ce qui le distingue du cor." },
+    { "cat": "Objets", "terme": "Grêlier, olifant", "def": "Grand cor de chasse, celui du chevalier ; l'olifant de Roland." },
+    { "cat": "Objets", "terme": "Couronne", "def": "Employée comme meuble, souvent très stylisée ; un fragment en bande est un crancelin." },
+    { "cat": "Objets", "terme": "Crancelin", "def": "Fragment de couronne à fleurons posé en bande, des armes de Saxe." },
+    { "cat": "Objets", "terme": "Cyclamor", "def": "Anneau unique posé dans l'écu ; terme désuet." },
+    { "cat": "Objets", "terme": "Écusson", "def": "Petit écu posé sur le champ ; sur le tout quand il broche en cœur d'un écartelé." },
+    { "cat": "Objets", "terme": "Flambeau", "def": "Bâton surmonté d'une flamme ; allumé quand la flamme est d'un autre émail." },
+    { "cat": "Objets", "terme": "Fontaine", "def": "Eau coulant dans des vasques ; jaillissante si l'eau est d'un autre émail." },
+    { "cat": "Objets", "terme": "Lacs d'amour", "def": "Nœud de corde dont la forme varie tant qu'il vaut mieux nommer le nœud." },
+    { "cat": "Objets", "terme": "Livre", "def": "Ouvert ou fermé, parfois chargé de lettres comme l'alpha et l'oméga." },
+    { "cat": "Objets", "terme": "Monde, globe", "def": "Boule cintrée d'une bande et croisettée d'une croix — la souveraineté universelle." },
+    { "cat": "Objets", "terme": "Potence", "def": "Gibet ; jugée trop sinistre, elle a parfois été remplacée par un tau." },
+    { "cat": "Objets", "terme": "Roue", "def": "Roue de Mayence à six rayons, roue de moulin, ou roue à aubes." },
+    { "cat": "Objets", "terme": "Sceptre", "def": "Attribut de souveraineté ; le diadème en est le pendant pour la tête." },
+    { "cat": "Objets", "terme": "Tonneau", "def": "Cerclé quand ses cercles sont d'un autre émail." },
+    { "cat": "Objets", "terme": "Chantepleure", "def": "Double bourse de cuir servant à porter l'eau ; dite aussi bouse, bouge ou bougette." },
+
+    { "cat": "Corps et personnages", "terme": "Ange, archange", "def": "Figuré en jeune fille vêtue d'une dalmatique, les ailes presque toujours abaissées." },
+    { "cat": "Corps et personnages", "terme": "Angelot", "def": "Ange aux traits d'enfant ; le chérubin n'est qu'une tête entourée d'ailes." },
+    { "cat": "Corps et personnages", "terme": "Amour", "def": "Cupidon en enfant ailé, muni d'un arc et d'un carquois." },
+    { "cat": "Corps et personnages", "terme": "Bras", "def": "Dextrochère ou senestrochère ; nu par défaut, paré de vêtements ou armé." },
+    { "cat": "Corps et personnages", "terme": "Buste", "def": "Tête, cou et poitrine posés de front, sans les bras." },
+    { "cat": "Corps et personnages", "terme": "Foi", "def": "Deux mains dextres qui se serrent, en fasce par défaut ; l'allégeance." },
+    { "cat": "Corps et personnages", "terme": "Main", "def": "Appaumée quand elle montre sa paume, contre-appaumée sinon, bénissante à deux doigts." },
+    { "cat": "Corps et personnages", "terme": "Tête de Maure", "def": "De profil, en principe de sable, tortillée d'un bandeau." },
+    { "cat": "Corps et personnages", "terme": "Chevalier", "def": "Nécessairement en armure et portant un écu ; à cheval, c'est le pogonia lituanien." },
+    { "cat": "Corps et personnages", "terme": "Hercule", "def": "Torse nu et pagne en peau de lion ; ses colonnes bornent le détroit de Gibraltar." },
+    { "cat": "Corps et personnages", "terme": "Saints", "def": "Reconnaissables à leur nimbe et à leurs attributs — la clef pour Pierre, l'épée pour Michel." },
+    { "cat": "Corps et personnages", "terme": "Triquètre", "def": "Trois jambes fléchies réunies en cœur par la hanche ; l'île de Man, la Sicile." },
+    { "cat": "Corps et personnages", "terme": "Protomé", "def": "Terme rare pour la tête et le col, réservé au cerf." },
+
+    { "cat": "Figures propres au blason", "terme": "Essonier", "def": "Ancien nom du double trescheur." },
+    { "cat": "Figures propres au blason", "terme": "Fil", "def": "La traverse du lambel ; par abus, le lambel lui-même." },
+    { "cat": "Figures propres au blason", "terme": "Pendant", "def": "Les languettes du lambel, aussi appelées gouttes ou denticules." },
+    { "cat": "Figures propres au blason", "terme": "Escarboucle", "def": "Pierre projetant huit rais, fleurdelisés par défaut ; pommetée, fleuronnée, allumée, percée." },
+    { "cat": "Figures propres au blason", "terme": "Goutté", "def": "Champ semé de gouttes ; les gouttes peuvent être de tout émail, les larmes sont d'argent." },
+    { "cat": "Figures propres au blason", "terme": "Moucheture", "def": "Se blasonne d'un seul mot : il n'y a de moucheture que d'hermine. Jamais « hermine » seule." },
+    { "cat": "Figures propres au blason", "terme": "Vivré", "def": "L'adjectif correspondant à la vivre, ligne en zigzag aigu." },
+    { "cat": "Figures propres au blason", "terme": "Pièce", "def": "Mot passe-partout du blasonnement : « donjonné de trois pièces » évite de répéter « donjons »." },
+    { "cat": "Figures propres au blason", "terme": "Flanquis", "def": "Autre nom du flanchis, le petit sautoir alésé." },
+    { "cat": "Figures propres au blason", "terme": "Sceau de Salomon", "def": "Étoile à six branches, dite aussi didelta." },
+    { "cat": "Figures propres au blason", "terme": "Fontaine héraldique", "def": "Meuble d'origine anglaise : un besant rempli d'azur et traversé de sources d'argent." }
   ]
 }
