@@ -25,5 +25,6 @@ EXCLUSIONS
    éditeurs. Seuls les faits héraldiques, de domaine public, ont été repris ; le
    texte de ce dépôt est une reformulation originale.
 
-3. Les polices Marcellus, Marcellus SC et EB Garamond sont chargées depuis Google
-   Fonts et distribuées sous SIL Open Font License.
+3. Les polices Marcellus, Marcellus SC et EB Garamond sont hébergées dans
+   assets/fonts/ et distribuées sous SIL Open Font License 1.1 ; le texte de la
+   licence et les mentions de copyright y figurent (fichiers OFL-*.txt).

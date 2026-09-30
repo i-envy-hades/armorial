@@ -13,9 +13,6 @@
   CONSÉQUENCE : page NON autonome (images hébergées par Wikimedia, via l'URL
   stable Special:FilePath).
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* CSS propre à la page « Blasons réels » ; socle commun dans assets/site.css */
@@ -56,6 +53,7 @@ footer{background:var(--vellum-3)}
     <a href="index.html">L'encyclopédie</a>
     <a href="blasons.html" class="here">Blasons réels</a>
     <a href="personnages.html">Personnages</a>
+    <a href="lignees.html">Lignées</a>
   </nav>
 </header>
 <section class="hero">
@@ -99,7 +97,13 @@ function srcLine(a){
   const licPart = a.lic
     ? `<a href="${a.licurl}" target="_blank" rel="noopener">${a.lic}</a>`
     : `licence libre — voir la page du fichier`;
-  return `Illustration : ${fileLink} — ${who}${licPart}, via Wikimedia Commons. Blasonnement : domaine public.`;
+  return `Illustration : ${fileLink} — ${who}${licPart}, via Wikimedia Commons. ${blLine(a)}`;
+}
+function blLine(a){
+  const s = a.blasonSrc;
+  if (!a.blason) return "";
+  if (!s) return "Blasonnement : domaine public.";
+  return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
 }
 function card(a){
   const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`;

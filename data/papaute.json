@@ -1,0 +1,6443 @@
+{
+ "sources": {
+  "liste_papes": {
+   "label": "Liste des papes — Wikipédia",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_papes"
+  },
+  "armoiries_papales": {
+   "label": "Armoiries papales — Wikipédia",
+   "url": "https://fr.wikipedia.org/wiki/Armoiries_papales"
+  },
+  "bouye2003": {
+   "label": "É. Bouyé, « Les armoiries pontificales à la fin du XIIIᵉ siècle », Médiévales 44 (2003)",
+   "url": "https://journals.openedition.org/medievales/938"
+  },
+  "tiare": {
+   "label": "Tiare pontificale — Wikipédia",
+   "url": "https://fr.wikipedia.org/wiki/Tiare_pontificale"
+  },
+  "bulle": {
+   "label": "Bulle pontificale — Wikipédia",
+   "url": "https://fr.wikipedia.org/wiki/Bulle_pontificale"
+  },
+  "histoire_papaute": {
+   "label": "History of the papacy — Wikipedia (en)",
+   "url": "https://en.wikipedia.org/wiki/History_of_the_papacy"
+  },
+  "paul_vi": {
+   "label": "Paul VI — Wikipédia",
+   "url": "https://fr.wikipedia.org/wiki/Paul_VI"
+  },
+  "heraldique_europeenne": {
+   "label": "Héraldique européenne — Papes",
+   "url": "http://www.heraldique-europeenne.org/Regions/Italie/Papes_1.htm"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Pas d'armoiries",
+   "draw": "aucune",
+   "blason": null,
+   "note": "L'héraldique n'existe pas encore. Des armes seront prêtées à ces papes bien plus tard : les premiers recueils d'héraldique imaginaire des papes paraissent vers le temps du concile de Trente, et Pierre Palliot en crée encore au XVIIᵉ siècle. Faute de figure libre de droits pour ces armes inventées, la frise n'en dessine pas.",
+   "sources": [
+    "bouye2003",
+    "armoiries_papales"
+   ]
+  },
+  "sede-vacante": {
+   "nom": "Emblème de la sede vacante",
+   "blason": null,
+   "file": "Sede vacante.svg",
+   "auteur": "SajoR",
+   "lic": "CC BY-SA 2.5",
+   "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+   "note": "Pendant la vacance du Siège, l'emblème du Saint-Siège remplace les armes du pape : le pavillon (ombrellino) au-dessus des clés en sautoir.",
+   "sources": [
+    "armoiries_papales"
+   ]
+  },
+  "grav-gregorius-i": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Phantasiewappen Gregor I.jpg",
+   "auteur": "auteur inconnu (gravure ancienne)",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne d'armes de fantaisie (« Phantasiewappen ») prêtées à Grégoire le Grand, mort cinq siècles avant la naissance de l'héraldique.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-gregorius-vi": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Gregory VI-coats.jpg",
+   "auteur": "gravure ancienne, auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-clemens-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Clemens II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-damasus-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Damasus II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-leo-ix": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Leo IX. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-victor-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Victor II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-stephanus-ix": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Stephanus IX. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-nicolaus-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Nicolaus II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-alexander-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Alexander II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-gregorius-vii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Gregorius VII. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-victor-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Victor III. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-urbanus-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Urbanus II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-paschalis-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Paschalis II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-gelasius-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Gelasius II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-callistus-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Callistus II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-honorius-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Honorius II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-innocentius-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Innocentius II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-caelestinus-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Caelestinus II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-lucius-ii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Lucius II. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-eugenius-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Eugenius III. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-anastasius-iv": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Anastasius IV. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-hadrianus-iv": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Hadrianus IV. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-alexander-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Aleksander III. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-lucius-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Obrazek Lucius III..png",
+   "auteur": "Legnavsky, d'après une gravure ancienne",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-urbanus-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Urbanus III. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-gregorius-viii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Gregorius VIII. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "grav-clemens-iii": {
+   "nom": "Armes attribuées (gravure)",
+   "blason": null,
+   "gravure": true,
+   "apost": true,
+   "file": "Clemens III. coat.jpg",
+   "auteur": "gravure ancienne (XIXᵉ s. ou avant), auteur inconnu",
+   "lic": "Domaine public",
+   "licurl": "",
+   "note": "Gravure ancienne (XIXᵉ siècle ou avant) : ces armes ont été prêtées au pape après coup. Aucun témoin de son vivant ne les montre.",
+   "sources": [
+    "bouye2003"
+   ]
+  },
+  "popes-conti-di-segni": {
+   "nom": "Armes des Conti di Segni",
+   "blason": "De gueules à l'aigle éployé échiqueté de sable et d'or, becqué et griffé d'or.",
+   "file": "C o a popes Conti di Segni.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ],
+   "apost": true
+  },
+  "savelli-popes": {
+   "nom": "Armes des Savelli",
+   "blason": "Bandé d'or et de gueules, au chef d'argent aux deux lions affrontés de gueules tenant une rose de même sur laquelle est posée un oiselet de même.",
+   "file": "C o a Savelli Popes.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "gueules"
+   ],
+   "part": "bande",
+   "apost": true
+  },
+  "celestinus-iv": {
+   "nom": "Armes de Célestin IV",
+   "blason": "De gueules au lion d'or tenant dans sa patte senestre une tour d'or maçonnée et ajourée de sable.",
+   "file": "C o a Celestinus IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ],
+   "apost": true
+  },
+  "fieschi-popes": {
+   "nom": "Armes des Fieschi",
+   "blason": "Bandé d'argent et d'azur.",
+   "file": "C o a Fieschi Popes.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent",
+    "azur"
+   ],
+   "part": "bande",
+   "apost": true
+  },
+  "urbanus-iv": {
+   "nom": "Armes d'Urbain IV",
+   "blason": "Écartelé en 1 et 4 d'azur à la fleur de lys d'or et en 2 et 3 d'argent à la rose de gueules.",
+   "file": "C o a Urbanus IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur",
+    "argent"
+   ],
+   "part": "ecartele",
+   "apost": true
+  },
+  "clemens-iv": {
+   "nom": "Armes de Clément IV",
+   "blason": "D'argent à l'aigle de gueules terrassant un dragon de sinople.",
+   "file": "C o a Clemens IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ],
+   "apost": true
+  },
+  "gregorius-x": {
+   "nom": "Armes de Grégoire X",
+   "blason": "D'or au chef crénelé d'azur.",
+   "file": "C o a Gregorius X.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ],
+   "apost": true
+  },
+  "innocentius-v": {
+   "nom": "Armes d'Innocent V",
+   "blason": "D'or aux deux pals l'azur accompagnés de neuf fleurs de lys de même posées 3, 3 et 3.",
+   "file": "C o a Innocentius V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "ou d'argent chapé de sable (qui sont les armoiries anciennes de l'Ordre des Dominicains).",
+   "champ": [
+    "or"
+   ],
+   "apost": true
+  },
+  "johannes-xxi": {
+   "nom": "Armes de Jean XXI",
+   "blason": "Écartelé en 1 et 4 d'argent aux trois lunes mal ordonnées de gueules et au 2 et 3 de sable aux deux pals d'argent.",
+   "file": "C o a Johannes XXI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent",
+    "sable"
+   ],
+   "part": "ecartele",
+   "apost": true
+  },
+  "nicolaus-iii": {
+   "nom": "Armes de Nicolas III",
+   "blason": "Bandé de gueules et d'argent, au chef du second, chargé d'une rose de gueules, et soutenu d'une divise d'or, chargé d'un anguille ondoyante en fasce d'azur.",
+   "file": "C o a Nicolaus III.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "argent"
+   ],
+   "part": "bande"
+  },
+  "martinus-iv": {
+   "nom": "Armes de Martin IV",
+   "blason": "D'argent à la bande vairée d'or et de gueules.",
+   "file": "C o a Martinus IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ],
+   "apost": true
+  },
+  "nicolaus-iv": {
+   "nom": "Armes de Nicolas IV",
+   "blason": "D'argent à la bande d'azur accompagnée de deux étoiles de même une en chef et une en pointe, au chef d'azur à trois fleurs de lys d'or.",
+   "file": "C o a Nicolaus IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ],
+   "apost": true
+  },
+  "celestinus-v": {
+   "nom": "Armes de Célestin V",
+   "blason": "D'or au lion d'azur et à la bande de gueules.",
+   "file": "C o a Celestinus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ],
+   "apost": true
+  },
+  "bonifacius-viii": {
+   "nom": "Armes de Boniface VIII",
+   "blason": "D'or, à une jumelle ondée d'azur, posée en bande",
+   "file": "C o a Bonifacius VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "benedictus-xi": {
+   "nom": "Armes de Benoît XI",
+   "blason": "Parti d'argent et de sable qui sont les armes primitives de l'Ordre Dominicain.",
+   "file": "C o a Benedictus XI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent",
+    "sable"
+   ],
+   "part": "parti"
+  },
+  "clemens-v": {
+   "nom": "Armes de Clément V",
+   "blason": "D'or aux trois fasces de gueules.",
+   "file": "C o a Clemens V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "johannes-xxii": {
+   "nom": "Armes de Jean XXII",
+   "blason": "Écartelé au 1 et 4 d'or au lion d'azur accompagné de douze besants de gueules disposés en orle et au 2 et 3 de gueules aux deux fasces d'or.",
+   "file": "C o a Johannes XXII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "gueules"
+   ],
+   "part": "ecartele"
+  },
+  "benedictus-xii": {
+   "nom": "Armes de Benoît XII",
+   "blason": "D'argent à la bordure de gueules",
+   "file": "C o a Benedictus XII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ]
+  },
+  "beaufort-popes": {
+   "nom": "Armes des Roger de Beaufort",
+   "blason": "D'argent à la bande d'azur accompagnée de six roses de gueules boutonnées d'or, trois en chef et trois en pointe.",
+   "file": "C o a Beaufort Popes.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ],
+   "desaccord": "Commons classe ce dessin parmi les armoiries contestées : les roses y sont boutonnées, lecture jugée erronée."
+  },
+  "inocentius-vi": {
+   "nom": "Armes d'Innocent VI",
+   "blason": "De gueules au lion d'or armé et lampassé d'azur à la bande d'azur au chef de gueules chargé de trois coquilles d'argent soutenu d'une divise d'azur.",
+   "file": "C o a Inocentius VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "urbanus-v": {
+   "nom": "Armes d'Urbain V",
+   "blason": "De gueules, au chef émanché de quatre pièces d'or.",
+   "file": "C o a Urbanus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "urbanus-vi": {
+   "nom": "Armes d'Urbain VI",
+   "blason": "D'or à l'aigle d'azur.",
+   "file": "C o a Urbanus VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "bonifatius-ix": {
+   "nom": "Armes de Boniface IX",
+   "blason": "De gueules à la bordure échiquetée d'argent et d'azur.",
+   "file": "C o a Bonifatius IX.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "inocentius-vii": {
+   "nom": "Armes d'Innocent VII",
+   "blason": "D'or à la bande d'azur chargée d'une comète d'or et accompagnée de deux cotices d'azur.",
+   "file": "C o a Inocentius VII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "gregorius-xii": {
+   "nom": "Armes de Grégoire XII",
+   "blason": "Coupé d'argent et d'azur au losange de l'un en l'autre.",
+   "file": "C o a Gregorius XII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent",
+    "azur"
+   ],
+   "part": "coupe"
+  },
+  "martinus-v": {
+   "nom": "Armes de Martin V",
+   "blason": "De gueules à la colonne d'argent couronnée d'or.",
+   "file": "C o a Martinus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "eugenius-iv": {
+   "nom": "Armes d'Eugène IV",
+   "blason": "D'azur à la bande d'argent.",
+   "file": "C o a Eugenius IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "nicolaus-v": {
+   "nom": "Armes de Nicolas V",
+   "blason": "De gueules à la clef d'argent posée en bande et à la clef d'or posée en barre toutes deux liées d'un cordon d'azur.",
+   "file": "C o a Nicolaus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "callistus-iii": {
+   "nom": "Armes de Calixte III",
+   "blason": "D'or au bœuf de gueules sur une campagne de sinople à la bordure d'or chargée de huit bouquets d'herbe de sinople.",
+   "file": "C o a Callistus III.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "piccolomini-popes": {
+   "nom": "Armes des Piccolomini",
+   "blason": "D'argent à la croix d'azur chargée de cinq croissants d'or.",
+   "file": "C o a Piccolomini Popes.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ]
+  },
+  "paulus-ii": {
+   "nom": "Armes de Paul II",
+   "blason": "D'azur au lion d'argent à la cotice d'or brochant sur le tout.",
+   "file": "C o a Paulus II.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "popes-della-rovere": {
+   "nom": "Armes des Della Rovere",
+   "blason": "D'azur au chêne rouvre d'or aux rameaux passés en sautoir.",
+   "file": "C o a popes Della Rovere.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "inocentius-viii": {
+   "nom": "Armes d'Innocent VIII",
+   "blason": "D'argent à la bande échiqueté d'azur et d'argent au chef d'argent à la croix de gueules.",
+   "file": "C o a Inocentius VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ]
+  },
+  "alexander-vi": {
+   "nom": "Armes d'Alexandre VI",
+   "blason": "Parti en 1 d'or au bœuf de gueules sur une campagne de sinople à la bordure d'or chargée de huit bouquets d'herbe de sinople et en 2 fascé d'or et de sable de six pièces.",
+   "file": "C o a Alexander VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "gueules"
+   ],
+   "part": "parti"
+  },
+  "medici-popes": {
+   "nom": "Armes des Médicis",
+   "blason": "D'or à six tourteaux mis en orle, cinq de gueules, celui en chef d'azur chargé de trois fleurs de lis d'or.",
+   "file": "C o a Medici popes.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "hadrianus-vi": {
+   "nom": "Armes d'Adrien VI",
+   "blason": "Écartelé en 1 et 4 d'or aux trois pièges à loup de sinople et au 2 et 3 d'argent au lion de sable couronné d'or.",
+   "file": "C o a Hadrianus VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "argent"
+   ],
+   "part": "ecartele"
+  },
+  "paulus-iii": {
+   "nom": "Armes de Paul III",
+   "blason": "D'or à six fleurs de lis d'azur posées 3, 2 et 1.",
+   "file": "C o a Paulus III.svg",
+   "auteur": "John Woodward, d'après Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "iulius-iii": {
+   "nom": "Armes de Jules III",
+   "blason": "D'azur à la bande de gueules bordés de deux cotices chargée d'or de trois monts à trois cimes de même accompagnée de deux guirlandes d'or, une en chef et une en pointe.",
+   "file": "C o a Iulius III.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "marcelus-ii": {
+   "nom": "Armes de Marcel II",
+   "blason": "D'azur au cerf couché sur une plaine de sinople accompagné de neuf épis de blé d'or disposés en éventail.",
+   "file": "C o a Marcelus II.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Armes parlantes : entre la famille Cervini et le cerf.",
+   "champ": [
+    "azur"
+   ]
+  },
+  "paulus-iv": {
+   "nom": "Armes de Paul IV",
+   "blason": "De gueules aux trois fasces d'argent.",
+   "file": "C o a Paulus IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "pius-iv": {
+   "nom": "Armes de Pie IV",
+   "blason": "D'or à six tourteaux mis en orle, touts de gueules.",
+   "file": "C o a Pius IV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "pius-v": {
+   "nom": "Armes de Pie V",
+   "blason": "Bandé d'or et de gueules.",
+   "file": "C o a Pius V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "gueules"
+   ],
+   "part": "bande"
+  },
+  "gregorius-xiii": {
+   "nom": "Armes de Grégoire XIII",
+   "blason": "De gueules au dragon d'or.",
+   "file": "C o a Gregorius XIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "sixtus-v": {
+   "nom": "Armes de Sixte V",
+   "blason": "D'azur au lion d'or armé et lampassé de gueules tenant un rameau d'or à la bande de gueules chargée en chef d'une étoile d'or et en pointe d'un mont à trois cimes d'argent.",
+   "file": "C o a Sixtus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "urbanus-vii": {
+   "nom": "Armes d'Urbain VII",
+   "blason": "Bandé de gueules et d'argent, au chef de gueules, chargé d'une feuille de châtaignier d'or, et soutenu d'une divise d'or.",
+   "file": "C o a Urbanus VII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Armes parlantes : entre la famille Castagna et le châtaignier. Bandé de gueules et d'or, au chef de gueules, chargé d'une feuille de châtaignier d'or, et soutenu d'une fasce d'argent.",
+   "champ": [
+    "gueules",
+    "argent"
+   ],
+   "part": "bande"
+  },
+  "gregorius-xiv": {
+   "nom": "Armes de Grégoire XIV",
+   "blason": "Écartelé, au 1 et 4 d'or à la bande crénelée d'azur chargée d'une cotice d'argent et accompagnée de deux étoiles d'azur, une en chef et une en pointe, et au 2 et 3 d'argent au pin de sinople sur une terrasse de même.",
+   "file": "C o a Gregorius XIV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "argent"
+   ],
+   "part": "ecartele"
+  },
+  "inocentius-ix": {
+   "nom": "Armes d'Innocent IX",
+   "blason": "D'argent au noyer arraché au naturel.",
+   "file": "C o a Inocentius IX.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ]
+  },
+  "clementem-viii": {
+   "nom": "Armes de Clément VIII",
+   "blason": "D'azur à la bande crénelée d'or accompagne en chef de trois étoiles d'or posées en bande et en pointe de trois étoiles d'or posées en bande.\n|}",
+   "file": "C o a Clementem VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "paulus-v": {
+   "nom": "Armes de Paul V",
+   "blason": "D'azur au dragon d'or au chef d'or à l'aigle de sable couronné d'or.",
+   "file": "C o a Paulus V.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "gregorius-xv": {
+   "nom": "Armes de Grégoire XV",
+   "blason": "Coupé de gueules aux trois bandes d'or et de gueules.",
+   "file": "C o a Gregorius XV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "or"
+   ],
+   "part": "coupe"
+  },
+  "urbanus-viii": {
+   "nom": "Armes d'Urbain VIII",
+   "blason": "D'azur à trois abeilles d'or posées 2 et 1.",
+   "file": "C o a Urbanus VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "inocentius-x": {
+   "nom": "Armes d'Innocent X",
+   "blason": "De gueules à la colombe d'argent tenant en son bec un rameau d'olivier de sinople au chef d'azur à trois fleurs de lys d'or séparés par des pals de gueules.",
+   "file": "C o a Inocentius X.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "alexander-vii": {
+   "nom": "Armes d'Alexandre VII",
+   "blason": "Écartelé au 1 et 4 d'azur au rouvre d'or aux rameaux passés en sautoir et au 2 et 3 de gueules au mont à trois cimes d'or accompagné en chef d'une étoile de même.",
+   "file": "C o a Alexander VII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur",
+    "gueules"
+   ],
+   "part": "ecartele"
+  },
+  "clementem-ix": {
+   "nom": "Armes de Clément IX",
+   "blason": "Écartelé au 1 et 4 d'or au losange d'azur et au 2 et 3 d'azur au losange d'or.",
+   "file": "C o a Clementem IX.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "azur"
+   ],
+   "part": "ecartele"
+  },
+  "clementem-x": {
+   "nom": "Armes de Clément X",
+   "blason": "D'azur aux six étoiles d'argent posées 3, 2 et 1 à la bordure endentée d'azur et d'argent.",
+   "file": "C o a Clementem X.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "inocentius-xi": {
+   "nom": "Armes d'Innocent XI",
+   "blason": "D'argent au trois burelles de gueules accompagné d'un lion léopardé de même et de six coupes posées 3, 2 et 1, au chef d'or à l'aigle de sable couronne d'or.",
+   "file": "C o a Inocentius XI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent"
+   ]
+  },
+  "alexander-viii": {
+   "nom": "Armes d'Alexandre VIII",
+   "blason": "Coupé, au 1 d'or à l'aigle bicéphale de sable armé et lampassé de gueules couronné d'or et au 2 tranché d'azur et de sinople à la bande d'argent brochant sur le tout.",
+   "file": "C o a Alexander VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "sable"
+   ],
+   "part": "coupe"
+  },
+  "inocentius-xii": {
+   "nom": "Armes d'Innocent XII",
+   "blason": "D'or aux trois pots de sable.",
+   "file": "C o a Inocentius XII.svg",
+   "auteur": "Echando una mano, d'après Xavigivax",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "clementem-xi": {
+   "nom": "Armes de Clément XI",
+   "blason": "D'azur à la fasce d'or accompagnée en chef d'une étoile d'or et en pointe d'un mont à trois cimes d'or.",
+   "file": "C o a Clementem XI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "inocentius-xiii": {
+   "nom": "Armes d'Innocent XIII",
+   "blason": "De gueules à l'aigle éployé échiqueté de sable et d'or, becqué, griffé et couronné d'or.",
+   "file": "C o a Inocentius XIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "benedictus-xiii": {
+   "nom": "Armes de Benoît XIII",
+   "blason": "Parti, en 1 bandé de gueules et d'argent, au chef du second, chargé d'une rose de gueules, et soutenu d'une divise d'or, chargé d'un anguille ondoyante en fasce d'azur et en 2 d'azur à la tour d'argent maçonnée de sable sur une plaine de sinople, au chef de sable au mont d'argent, à l'ours rampant d'argent, colleté et couronné d'or brochant sur le tout accompagné en chef d'une étoile d'argent.",
+   "file": "C o a Benedictus XIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "argent"
+   ],
+   "part": "parti"
+  },
+  "clementem-xii": {
+   "nom": "Armes de Clément XII",
+   "blason": "Bandé d'argent et de gueules à la fasce d'azur brochant sur le tout.",
+   "file": "C o a Clementem XII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "argent",
+    "gueules"
+   ],
+   "part": "bande"
+  },
+  "benedictus-xiv": {
+   "nom": "Armes de Benoît XIV",
+   "blason": "D'or à trois pal de gueules.",
+   "file": "C o a Benedictus XIV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or"
+   ]
+  },
+  "clementem-xiii": {
+   "nom": "Armes de Clément XIII",
+   "blason": "Écartelé au 1 de gueules à la croix d'argent, au 2 et 3 d'azur à la tour d'argent à trois créneaux surmonté d'une tourelle d'argent, au 4 barré de gueules et d'argent, sur le tout d'or à l'aigle bicéphale de sable membré et becqué d'argent et couronné d'or, l'écu également couronné d'or.",
+   "file": "C o a Clementem XIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "azur"
+   ],
+   "part": "ecartele"
+  },
+  "clementem-xiv": {
+   "nom": "Armes de Clément XIV",
+   "blason": "D'azur à la fasce de gueules accompagné en chef de trois étoiles d'or posées en fasce et en pointe d'un mont à trois cimes d'or et au chef des Franciscains : d’azur aux deux bras de carnation posées en sautoir surmonté d'une croix de sable.",
+   "file": "C o a Clementem XIV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "pius-vi": {
+   "nom": "Armes de Pie VI",
+   "blason": "De gueules au Zéphyr d'argent soufflant sur un bouquet de lys au naturel posé sur une plaine de sinople, au chef d'argent à trois étoiles d'or.",
+   "file": "C o a Pius VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "pius-vii": {
+   "nom": "Armes de Pie VII",
+   "blason": "Parti en 1 d'azur à la croix patriarcale d'or posées sur un mont de même avec les trois lettres PAX de même brochant sur le tout et en 2 tranché d'or et d'azur à la bande d'argent chargée de trois têtes de maure animée de sable et tortillée aussi d’argent au chef d'azur aux trois étoiles d'or mal ordonnées.",
+   "file": "C o a Pius VII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Variante : \nParti en 1 d'argent à la croix patriarcale de sable posées sur un mont de sinople avec les trois lettres PAX de sable brochant sur le tout et en 2 tranché d'or et d'azur à la bande d'argent chargée de trois têtes de maure animée de sable et tortillée aussi d’argent au chef d'azur aux trois étoiles d'or mal ordonnées.",
+   "champ": [
+    "azur",
+    "or"
+   ],
+   "part": "parti"
+  },
+  "leon-xii": {
+   "nom": "Armes de Léon XII",
+   "blason": "D'azur à l'aigle éployé d'or et couronné de même.",
+   "file": "C o a Leon XII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "pius-viii": {
+   "nom": "Armes de Pie VIII",
+   "blason": "De gueules au lion d'argent tenant dans sa patte senestre une tour d'or maçonnée et ajourée de sable.",
+   "file": "C o a Pius VIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  },
+  "gregorius-xvi": {
+   "nom": "Armes de Grégoire XVI",
+   "blason": "Parti, en 1 d'azur au calice d'or surmonté d'une comète ondoyante de même et accompagnée de deux colombes affrontée d'argent et en 2 coupé d'azur au chapeau d'ecclésiastique de sable et d'argent à la fasce de gueules chargée de trois étoiles d'or.",
+   "file": "C o a Gregorius XVI.svg",
+   "auteur": "Echando una mano (chapeau : SajoR)",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur",
+    "or"
+   ],
+   "part": "parti"
+  },
+  "pius-ix": {
+   "nom": "Armes de Pie IX",
+   "blason": "Écartelé en 1 et 4 d'azur au lion couronné d'or empiétant sur un besant du même et en 2 et 3 d'argent aux deux bandes de gueules.",
+   "file": "C o a Pius IX.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur",
+    "argent"
+   ],
+   "part": "ecartele"
+  },
+  "leon-xiii": {
+   "nom": "Armes de Léon XIII",
+   "blason": "D'azur au cyprès de sinople planté sur une plaine de même accompagné au francs quartier d'une comète d'or et en pointe de deux fleurs de lys d'argent, à la fasce d'argent brochant sur le tout.",
+   "file": "C o a Leon XIII.svg",
+   "auteur": "John Woodward, d'après Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "pius-x": {
+   "nom": "Armes de Pie X",
+   "blason": "D'azur à l'ancre de sable posée sur une mer d'argent et d'azur accompagnée en chef d'une étoile d'or, au chef d'argent au léopard ailé d'or auréolé du même, tenant un évangile ouvert de même portant le texte \"PAX TIBI MARCE EVANGELISTA MEUS\" en lettres de sable.",
+   "file": "C o a Pius X.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "benedictus-xv": {
+   "nom": "Armes de Benoît XV",
+   "blason": "Tranché d'azur et d'or à l'église d'argent couverte de gueules brochant sur le tout, au chef d'or à l'aigle issant de sable lampassée de gueules.",
+   "file": "C o a Benedictus XV.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Armes parlantes : En italien, chiesa signifie église.",
+   "champ": [
+    "azur",
+    "or"
+   ],
+   "part": "tranche"
+  },
+  "pius-xi": {
+   "nom": "Armes de Pie XI",
+   "blason": "Coupé en 1 d'or à l'aigle de sable et en 2 d'argent à trois tourteaux de gueules.",
+   "file": "C o a Pius XI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "or",
+    "sable"
+   ],
+   "part": "coupe"
+  },
+  "pius-xii": {
+   "nom": "Armes de Pie XII",
+   "blason": "D'azur à la colombe à la tête contournée d'argent becquée et membrée de gueules tenant en son bec un rameau d'olivier de sinople se tenant sur une cime d'argent posée sur une terrasse de sinople surmontant une mer ondoyante au naturel.",
+   "file": "C o a Pius XII.svg",
+   "auteur": "Echando una mano et Stv26",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Armes parlantes : entre la colombe de la paix et Pacelli (pace signifie paix en italien).",
+   "champ": [
+    "azur"
+   ]
+  },
+  "johannes-xxiii": {
+   "nom": "Armes de Jean XXIII",
+   "blason": "De gueules à la fasce d'argent et à la tour brochante d'argent maçonnée et ouverte de sable accompagnée en chef de deux étoiles de même, au chef d'argent au léopard ailé d'or auréolé du même, tenant un évangile ouvert de même portant le texte \"PAX TIBI MARCE EVANGELISTA MEUS\" en lettres de sable.",
+   "file": "C o a Johannes XXIII.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Écu non plus « en calice » mais à « tête de cheval ».",
+   "champ": [
+    "gueules"
+   ]
+  },
+  "paulus-vi": {
+   "nom": "Armes de Paul VI",
+   "blason": "De gueules au mont d'argent à six cimes et aux trois fleurs de lys de même mal ordonnées.",
+   "file": "C o a Paulus VI.svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Armes parlantes : entre monte (mont en italien) et Montini.",
+   "champ": [
+    "gueules"
+   ]
+  },
+  "johannes-paulus-i": {
+   "nom": "Armes de Jean-Paul Iᵉʳ",
+   "blason": "D'azur au mont d'argent à six cimes et aux trois étoiles mal ordonnées, au chef d'argent au léopard ailé d'or auréolé du même, tenant un évangile ouvert de même portant le texte \"PAX TIBI MARCE EVANGELISTA MEUS\" en lettres de sable.",
+   "file": "C o a Johannes Paulus I.svg",
+   "auteur": "Echando una mano, d'après SajoR",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "coat-of-arms-of-ioannes-paulus-ii": {
+   "nom": "Armes de Jean-Paul II",
+   "blason": "D'azur à la croix d'or décentrée à dextre, accompagnée dans le canton en pointe senestre du « M » marial d'or.",
+   "file": "Coat of arms of Ioannes Paulus II.svg",
+   "auteur": "Magul",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "coat-of-arms-of-benedictus-xvi": {
+   "nom": "Armes de Benoît XVI",
+   "blason": "De gueules, chapé d'or, à la coquille du même ; la chape dextre à la tête de maure au naturel, à la couronne et au collier de gueules; la chape senestre à l'ours au naturel, lampassé et chargé d'un bât de gueules croisé de sable.",
+   "file": "Coat of arms of Benedictus XVI.svg",
+   "auteur": "Piom, repris par Tom-L",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Le blason est de type « écu à calice », chapé et affaissé Ces trois symboles (coquille, ours, tête de maure) sont des symboles de la Bavière et de l'archidiocèse de Munich et figuraient déjà dans le blason épiscopal de Joseph Ratzinger lorsqu'il était archevêque de Munich. Les deux chapes sont le symbole de la spiritualité monastique (en l'occurrence pour Joseph Ratzinger de la spiritualité bénédi",
+   "champ": [
+    "gueules",
+    "or"
+   ],
+   "part": "chape"
+  },
+  "coat-of-arms-of-franciscus": {
+   "nom": "Armes de François",
+   "blason": "D'azur à un soleil non figuré de 32 rais d'or, chargé du monogramme IHS surmonté d'une croix pattée au pied fiché dans la barre horizontale du H, le tout de gueules, soutenu de trois clous de sable appointés en bande, pal et barre, le tout accompagné en pointe d'une étoile d'or à dextre et d'une fleur de nard de même, versée et posée en bande, à senestre .",
+   "file": "Coat of arms of Franciscus.svg",
+   "auteur": "SajoR",
+   "lic": "CC BY-SA 2.5",
+   "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Le meuble assez complexe qui figure en chef est le sceau de l'ordre des jésuites. Contrairement aux blasons des autres papes de l'ère moderne, François a fait figurer explicitement sa devise dessous.",
+   "champ": [
+    "azur"
+   ]
+  },
+  "insigne-leonis-xiv": {
+   "nom": "Armes de Léon XIV",
+   "blason": "Taillé en 1, d'azur à la fleur de lis d'argent ; en 2, de blanc au cœur enflammé de gueules et transpercé d'une flèche du même posée en barre la pointe en bas, le tout posé sur un livre [Évangile] au naturel'.",
+   "file": "Insigne Leonis XIV.svg",
+   "auteur": "Poznaniak",
+   "lic": "CC BY-SA 2.5",
+   "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "Le meuble qui figure en senestre est inspiré des symboles de l'ordre de Saint-Augustin. Léon XIV a choisi de faire figurer sa devise sous l'écu, comme François.\n|}",
+   "champ": [
+    "azur",
+    "argent"
+   ],
+   "part": "taille"
+  },
+  "clemente-vii-antipapa": {
+   "nom": "Armes de Clément VII (antipape)",
+   "blason": "D'or à la croix d'azur ajourée du champ",
+   "file": "C o a Clemente VII (antipapa).svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales",
+    "bouye2003"
+   ],
+   "champ": [
+    "or"
+   ],
+   "desaccord": "L'article « Armoiries papales » blasonne une croix d'azur ajourée ; Bouyé reconnaît sur un dessin de son pontificat les « cinq points équipollés » de Genève, sa maison."
+  },
+  "benedictus-xiii-antipapa": {
+   "nom": "Armes de Benoît XIII (antipape)",
+   "blason": "Coupé de gueules à la lune d'argent et d'argent",
+   "file": "C o a Benedictus XIII (antipapa).svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "argent"
+   ],
+   "part": "coupe",
+   "note": "Armes parlantes : la lune pour Pedro de Luna."
+  },
+  "clemente-viii-antipapa": {
+   "nom": "Armes de Clément VIII (antipape)",
+   "blason": null,
+   "file": "C o a Clemente VIII (antipapa).svg",
+   "auteur": "Wereszczyński",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "note": "L'article « Armoiries papales » ne blasonne pas ces armes ; la figure seule est reprise."
+  },
+  "alexander-v-antipapa": {
+   "nom": "Armes d'Alexandre V (antipape)",
+   "blason": "D'azur au soleil à sept rayons d'or entouré de sept étoiles de même",
+   "file": "C o a Alexander V (antipapa).svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "azur"
+   ]
+  },
+  "johannes-xxiii-antipapa": {
+   "nom": "Armes de Jean XXIII (antipape)",
+   "blason": "Coupé de gueules à la jambe de carnation et bandé de pourpre et d'argent à la bordure endentée d'or",
+   "file": "C o a Johannes XXIII (antipapa).svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules",
+    "pourpre"
+   ],
+   "part": "coupe"
+  },
+  "felix-v-antipapa": {
+   "nom": "Armes de Félix V (antipape)",
+   "blason": "De gueules à la croix d'argent",
+   "file": "C o a Felix V (antipapa).svg",
+   "auteur": "Echando una mano",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sources": [
+    "armoiries_papales"
+   ],
+   "champ": [
+    "gueules"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "papaute",
+   "nom": "Papauté",
+   "titre": "Les armes des papes",
+   "lede": "Deux mille ans de pontificats. Les premiers papes n'ont pas d'armoiries : l'héraldique naît au XIIᵉ siècle, et les écus qu'on leur prête ont été inventés après coup. Ceux-là sont marqués « a posteriori ». Les vraies armes pontificales — l'écu d'une famille sous les clés et la tiare — n'apparaissent qu'à la fin du XIIIᵉ siècle.",
+   "debut": 30,
+   "fin": 2027,
+   "depart": 1255,
+   "zoom": 6,
+   "theme": "papaute",
+   "viewer": "img",
+   "ordinal": true,
+   "kin": true,
+   "mots": {
+    "regne": "pontificat",
+    "regnes": "pontificats",
+    "sans": "Siège vacant",
+    "bande": "Champ de l'écu",
+    "maisons": "Époques",
+    "devises": "Devises",
+    "rivaux": "Antipapes",
+    "souverain": "pape",
+    "armesDe": "Armes du pape"
+   },
+   "videAuto": {
+    "nom": "Sede vacante",
+    "armes": "sede-vacante",
+    "note": "Entre deux pontificats, le Siège est vacant : l'emblème du Saint-Siège — le pavillon sur les clés en sautoir — remplace les armes du pape.",
+    "sources": [
+     "armoiries_papales"
+    ]
+   },
+   "sceau": {
+    "file": "Bulle pape Urbain V.jpg",
+    "auteur": "Defranoux",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "legende": "Bulle de plomb d'Urbain V (1362-1370).",
+    "texte": "Avant les armoiries, les actes pontificaux sont authentifiés par une bulle de plomb au nom du pape.",
+    "sources": [
+     "bulle"
+    ]
+   },
+   "methode": [
+    "Dates des pontificats : « Liste des papes » de Wikipédia. Pour les premiers siècles, ce sont des dates traditionnelles, souvent incertaines ; la frise les montre telles que la liste les donne. Les papes « éphémères » et les antipapes sont rangés à part, avec leurs armes quand elles existent.",
+    "Armoiries attestées ou non : l'article d'Édouard Bouyé (2003), lu en entier, sert de fil. Avant Nicolas III (1277) et pour les quatre pontificats qui le suivent, les armes montrées sont rétrospectives : elles sont marquées « a posteriori ». Avant 1045, aucune figure libre de ces armes inventées n'a été trouvée : la frise n'en dessine pas.",
+    "Blasonnements : article « Armoiries papales » de Wikipédia, qui renvoie à Héraldique vaticane et à Neubecker. Époques : sections de l'article anglais « History of the papacy ». Quand les sources divergent — premier pape armorié, deuxième et troisième couronnes de la tiare, armes de Clément VII d'Avignon, devise de Paul VI — la frise donne les versions en présence."
+   ],
+   "maisons": [
+    {
+     "id": "premiers",
+     "nom": "Premiers siècles",
+     "couleur": "#9b8d74",
+     "debut": 30,
+     "fin": 312
+    },
+    {
+     "id": "constantin",
+     "nom": "De Constantin à 493",
+     "couleur": "#b8925a",
+     "debut": 312,
+     "fin": 493
+    },
+    {
+     "id": "ostrogoths",
+     "nom": "Papauté ostrogothique",
+     "couleur": "#8b6bb0",
+     "debut": 493,
+     "fin": 537
+    },
+    {
+     "id": "byzance",
+     "nom": "Papauté byzantine",
+     "couleur": "#4c86c6",
+     "debut": 537,
+     "fin": 752
+    },
+    {
+     "id": "francs",
+     "nom": "Papauté franque",
+     "couleur": "#3fa383",
+     "debut": 756,
+     "fin": 857
+    },
+    {
+     "id": "familles",
+     "nom": "Grandes familles romaines",
+     "couleur": "#c0503f",
+     "debut": 904,
+     "fin": 1048
+    },
+    {
+     "id": "empereurs",
+     "nom": "Papes et empereurs",
+     "couleur": "#d2a64c",
+     "debut": 1048,
+     "fin": 1257
+    },
+    {
+     "id": "itinerants",
+     "nom": "Papes itinérants",
+     "couleur": "#93ab52",
+     "debut": 1257,
+     "fin": 1309
+    },
+    {
+     "id": "avignon",
+     "nom": "Papauté d'Avignon",
+     "couleur": "#6378d6",
+     "debut": 1309,
+     "fin": 1377
+    },
+    {
+     "id": "schisme",
+     "nom": "Grand Schisme",
+     "couleur": "#d85b45",
+     "debut": 1378,
+     "fin": 1417
+    },
+    {
+     "id": "renaissance",
+     "nom": "Renaissance",
+     "couleur": "#e8b84f",
+     "debut": 1417,
+     "fin": 1534
+    },
+    {
+     "id": "reforme",
+     "nom": "Réforme et Contre-Réforme",
+     "couleur": "#a863c0",
+     "debut": 1517,
+     "fin": 1580
+    },
+    {
+     "id": "baroque",
+     "nom": "Papauté baroque",
+     "couleur": "#cf6fa5",
+     "debut": 1585,
+     "fin": 1689
+    },
+    {
+     "id": "revolutions",
+     "nom": "Âge des révolutions",
+     "couleur": "#dc5d59",
+     "debut": 1775,
+     "fin": 1848
+    },
+    {
+     "id": "question",
+     "nom": "Question romaine",
+     "couleur": "#7d9fb2",
+     "debut": 1870,
+     "fin": 1929
+    },
+    {
+     "id": "vatican",
+     "nom": "Cité du Vatican",
+     "couleur": "#efdcaa",
+     "debut": 1929,
+     "fin": 2100
+    },
+    {
+     "id": "hors",
+     "nom": "",
+     "couleur": "#6b5a5e"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Pierre",
+     "court": "Pierre",
+     "debut": 32,
+     "fin": 66,
+     "wiki": "Pierre (apôtre)",
+     "approx": "30 ou 33 – 64/68",
+     "naissance": "Shimon Bar Yonah",
+     "num": 1,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Lin",
+     "court": "Lin",
+     "debut": 66,
+     "fin": 78,
+     "wiki": "Lin (pape)",
+     "approx": "64/67 – 76/79",
+     "num": 2,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anaclet ou Clet",
+     "court": "Anaclet",
+     "debut": 78,
+     "fin": 90,
+     "wiki": "Anaclet",
+     "approx": "76/79 – 88/92",
+     "num": 3,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément Ier",
+     "court": "Clément Ier",
+     "debut": 90,
+     "fin": 98,
+     "wiki": "Clément Ier",
+     "approx": "88/92 – 98",
+     "num": 4,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Évariste",
+     "court": "Évariste",
+     "debut": 98,
+     "fin": 105,
+     "wiki": "Évariste (pape)",
+     "approx": "98 – 105",
+     "num": 5,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre Ier",
+     "court": "Alexandre Ier",
+     "debut": 105,
+     "fin": 115,
+     "wiki": "Alexandre Ier (pape)",
+     "approx": "105 – 115",
+     "num": 6,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sixte Ier",
+     "court": "Sixte Ier",
+     "debut": 115,
+     "fin": 125,
+     "wiki": "Sixte Ier",
+     "approx": "115 – 125",
+     "num": 7,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Télesphore",
+     "court": "Télesphore",
+     "debut": 125,
+     "fin": 137,
+     "wiki": "Télesphore (pape)",
+     "approx": "125 – 136/138",
+     "num": 8,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Hygin",
+     "court": "Hygin",
+     "debut": 137,
+     "fin": 141,
+     "wiki": "Hygin (pape)",
+     "approx": "136/138 – 140/142",
+     "num": 9,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie Ier",
+     "court": "Pie Ier",
+     "debut": 141,
+     "fin": 155,
+     "wiki": "Pie Ier",
+     "approx": "140/142 – 155",
+     "num": 10,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anicet",
+     "court": "Anicet",
+     "debut": 155,
+     "fin": 166,
+     "wiki": "Anicet (pape)",
+     "approx": "155 – 166",
+     "num": 11,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sôter",
+     "court": "Sôter",
+     "debut": 166,
+     "fin": 175,
+     "wiki": "Sôter (pape)",
+     "approx": "vers 166 – 174/175",
+     "num": 12,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Éleuthère",
+     "court": "Éleuthère",
+     "debut": 175,
+     "fin": 189,
+     "wiki": "Éleuthère (pape)",
+     "approx": "174/175 – 189",
+     "num": 13,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Victor Ier",
+     "court": "Victor Ier",
+     "debut": 189,
+     "fin": 199,
+     "wiki": "Victor Ier",
+     "approx": "189 – 198/199",
+     "num": 14,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Zéphyrin",
+     "court": "Zéphyrin",
+     "debut": 199,
+     "fin": 217,
+     "wiki": "Zéphyrin",
+     "approx": "199 – 217",
+     "num": 15,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Calixte Ier",
+     "court": "Calixte Ier",
+     "debut": 217,
+     "fin": 222,
+     "wiki": "Calixte Ier",
+     "approx": "vers 217 – 222",
+     "num": 16,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain Ier",
+     "court": "Urbain Ier",
+     "debut": 222,
+     "fin": 230,
+     "wiki": "Urbain Ier",
+     "approx": "222 – 230",
+     "num": 17,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pontien",
+     "court": "Pontien",
+     "debut": "0230-07-21",
+     "fin": "0235-09-28",
+     "wiki": "Pontien",
+     "num": 18,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Antère",
+     "court": "Antère",
+     "debut": "0235-11-21",
+     "fin": "0236-01-03",
+     "wiki": "Antère",
+     "num": 19,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Fabien",
+     "court": "Fabien",
+     "debut": "0236-01-10",
+     "fin": "0250-01-20",
+     "wiki": "Fabien (pape)",
+     "num": 20,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Corneille",
+     "court": "Corneille",
+     "debut": "0251-03-13",
+     "fin": "0253-06-01",
+     "wiki": "Corneille (pape)",
+     "approx": "6 mars ou 13 mars 251 – juin 253",
+     "num": 21,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Lucius Ier",
+     "court": "Lucius Ier",
+     "debut": "0253-06-25",
+     "fin": "0254-03-05",
+     "wiki": "Lucius Ier",
+     "num": 22,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne Ier",
+     "court": "Étienne Ier",
+     "debut": "0254-05-12",
+     "fin": "0257-08-02",
+     "wiki": "Étienne Ier (pape)",
+     "num": 23,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sixte II",
+     "court": "Sixte II",
+     "debut": "0257-08-30",
+     "fin": "0258-08-06",
+     "wiki": "Sixte II",
+     "num": 24,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Denys",
+     "court": "Denys",
+     "debut": "0259-07-22",
+     "fin": "0268-12-26",
+     "wiki": "Denys (pape)",
+     "num": 25,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Félix Ier",
+     "court": "Félix Ier",
+     "debut": "0269-01-05",
+     "fin": "0274-12-30",
+     "wiki": "Félix Ier",
+     "num": 26,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eutychien",
+     "court": "Eutychien",
+     "debut": "0275-01-04",
+     "fin": "0283-12-07",
+     "wiki": "Eutychien",
+     "num": 27,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Caïus",
+     "court": "Caïus",
+     "debut": "0283-12-17",
+     "fin": "0296-04-22",
+     "wiki": "Caïus (pape)",
+     "num": 28,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marcellin",
+     "court": "Marcellin",
+     "debut": "0296-06-30",
+     "fin": "0304-10-25",
+     "wiki": "Marcellin (pape)",
+     "num": 29,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marcel Ier",
+     "court": "Marcel Ier",
+     "debut": "0308-05-27",
+     "fin": "0309-01-16",
+     "wiki": "Marcel Ier",
+     "num": 30,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eusèbe",
+     "court": "Eusèbe",
+     "debut": "0309-04-18",
+     "fin": "0309-08-17",
+     "wiki": "Eusèbe (pape)",
+     "approx": "18 avril – 17 août 309 ou 310",
+     "num": 31,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Miltiade ou Melchiade",
+     "court": "Miltiade",
+     "debut": "0311-07-02",
+     "fin": "0314-01-10",
+     "wiki": "Miltiade (pape)",
+     "num": 32,
+     "maison": "premiers",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sylvestre Ier",
+     "court": "Sylvestre Ier",
+     "debut": "0314-01-31",
+     "fin": "0335-12-31",
+     "wiki": "Sylvestre Ier",
+     "num": 33,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marc",
+     "court": "Marc",
+     "debut": "0336-01-18",
+     "fin": "0336-10-07",
+     "wiki": "Marc (pape)",
+     "num": 34,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jules Ier",
+     "court": "Jules Ier",
+     "debut": "0337-02-06",
+     "fin": "0352-04-12",
+     "wiki": "Jules Ier",
+     "num": 35,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Libère",
+     "court": "Libère",
+     "debut": "0352-05-17",
+     "fin": "0366-09-24",
+     "wiki": "Libère",
+     "num": 36,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Damase Ier",
+     "court": "Damase Ier",
+     "debut": "0366-10-01",
+     "fin": "0384-12-11",
+     "wiki": "Damase Ier",
+     "num": 37,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sirice",
+     "court": "Sirice",
+     "debut": "0384-12-11",
+     "fin": "0399-11-26",
+     "wiki": "Sirice",
+     "num": 38,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anastase Ier",
+     "court": "Anastase Ier",
+     "debut": "0399-11-27",
+     "fin": "0401-12-19",
+     "wiki": "Anastase Ier (pape)",
+     "num": 39,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent Ier",
+     "court": "Innocent Ier",
+     "debut": "0401-12-22",
+     "fin": "0417-03-12",
+     "wiki": "Innocent Ier",
+     "num": 40,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Zosime",
+     "court": "Zosime",
+     "debut": "0417-03-18",
+     "fin": "0418-12-26",
+     "wiki": "Zosime (pape)",
+     "num": 41,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface Ier",
+     "court": "Boniface Ier",
+     "debut": "0418-12-28",
+     "fin": "0422-09-04",
+     "wiki": "Boniface Ier",
+     "num": 42,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Célestin Ier",
+     "court": "Célestin Ier",
+     "debut": "0422-09-10",
+     "fin": "0432-07-27",
+     "wiki": "Célestin Ier",
+     "num": 43,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sixte III",
+     "court": "Sixte III",
+     "debut": "0432-07-31",
+     "fin": "0440-08-19",
+     "wiki": "Sixte III",
+     "num": 44,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon Ier",
+     "court": "Léon Ier",
+     "debut": "0440-09-29",
+     "fin": "0461-11-10",
+     "wiki": "Léon Ier (pape)",
+     "num": 45,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Hilaire",
+     "court": "Hilaire",
+     "debut": "0461-11-19",
+     "fin": "0468-02-29",
+     "wiki": "Hilaire (pape)",
+     "num": 46,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Simplice",
+     "court": "Simplice",
+     "debut": "0468-03-03",
+     "fin": "0483-03-10",
+     "wiki": "Simplice (pape)",
+     "num": 47,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Félix III (II)",
+     "court": "Félix III",
+     "debut": "0483-03-13",
+     "fin": "0492-03-01",
+     "wiki": "Félix III",
+     "num": 48,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Gélase Ier",
+     "court": "Gélase Ier",
+     "debut": "0492-03-01",
+     "fin": "0496-11-21",
+     "wiki": "Gélase Ier",
+     "num": 49,
+     "maison": "constantin",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anastase II",
+     "court": "Anastase II",
+     "debut": "0496-11-24",
+     "fin": "0498-11-19",
+     "wiki": "Anastase II (pape)",
+     "num": 50,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Symmaque",
+     "court": "Symmaque",
+     "debut": "0498-11-22",
+     "fin": "0514-07-19",
+     "wiki": "Symmaque (pape)",
+     "num": 51,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Hormisdas",
+     "court": "Hormisdas",
+     "debut": "0514-07-20",
+     "fin": "0523-08-06",
+     "wiki": "Hormisdas",
+     "num": 52,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean Ier",
+     "court": "Jean Ier",
+     "debut": "0523-08-13",
+     "fin": "0526-05-18",
+     "wiki": "Jean Ier (pape)",
+     "num": 53,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Félix IV (III)",
+     "court": "Félix IV",
+     "debut": "0526-07-12",
+     "fin": "0530-09-22",
+     "wiki": "Félix IV",
+     "num": 54,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface II",
+     "court": "Boniface II",
+     "debut": "0530-09-22",
+     "fin": "0532-10-17",
+     "wiki": "Boniface II",
+     "num": 55,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean II",
+     "court": "Jean II",
+     "debut": "0533-01-02",
+     "fin": "0535-05-08",
+     "wiki": "Jean II (pape)",
+     "num": 56,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Agapet Ier",
+     "court": "Agapet Ier",
+     "debut": "0535-05-13",
+     "fin": "0536-04-22",
+     "wiki": "Agapet Ier",
+     "num": 57,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Silvère",
+     "court": "Silvère",
+     "debut": "0536-06-08",
+     "fin": "0537-03-11",
+     "wiki": "Silvère",
+     "num": 58,
+     "maison": "ostrogoths",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Vigile",
+     "court": "Vigile",
+     "debut": "0537-03-29",
+     "fin": "0555-06-07",
+     "wiki": "Vigile (pape)",
+     "num": 59,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pélage Ier",
+     "court": "Pélage Ier",
+     "debut": "0556-04-16",
+     "fin": "0561-03-04",
+     "wiki": "Pélage Ier",
+     "num": 60,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean III",
+     "court": "Jean III",
+     "debut": "0561-07-17",
+     "fin": "0574-07-13",
+     "wiki": "Jean III (pape)",
+     "num": 61,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît Ier",
+     "court": "Benoît Ier",
+     "debut": "0575-06-02",
+     "fin": "0579-07-30",
+     "wiki": "Benoît Ier",
+     "num": 62,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pélage II",
+     "court": "Pélage II",
+     "debut": "0579-11-26",
+     "fin": "0590-02-07",
+     "wiki": "Pélage II",
+     "num": 63,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire Ier",
+     "court": "Grégoire Ier",
+     "debut": "0590-09-03",
+     "fin": "0604-03-12",
+     "wiki": "Grégoire Ier",
+     "num": 64,
+     "maison": "byzance",
+     "armes": "grav-gregorius-i",
+     "note": "Aucune armoirie de son temps : la gravure montrée ici lui prête après coup des « armes de fantaisie ».",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Sabinien",
+     "court": "Sabinien",
+     "debut": "0604-09-13",
+     "fin": "0606-02-22",
+     "wiki": "Sabinien",
+     "num": 65,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface III",
+     "court": "Boniface III",
+     "debut": "0607-02-19",
+     "fin": "0607-11-12",
+     "wiki": "Boniface III",
+     "num": 66,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface IV",
+     "court": "Boniface IV",
+     "debut": "0608-09-15",
+     "fin": "0615-05-08",
+     "wiki": "Boniface IV",
+     "num": 67,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adéodat Ier ou Deusdedit",
+     "court": "Adéodat Ier",
+     "debut": "0615-10-19",
+     "fin": "0618-11-08",
+     "wiki": "Adéodat Ier",
+     "num": 68,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface V",
+     "court": "Boniface V",
+     "debut": "0619-12-23",
+     "fin": "0625-10-25",
+     "wiki": "Boniface V",
+     "num": 69,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Honorius Ier",
+     "court": "Honorius Ier",
+     "debut": "0625-10-27",
+     "fin": "0638-10-12",
+     "wiki": "Honorius Ier",
+     "num": 70,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Séverin",
+     "court": "Séverin",
+     "debut": "0640-05-28",
+     "fin": "0640-08-02",
+     "wiki": "Séverin (pape)",
+     "num": 71,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean IV",
+     "court": "Jean IV",
+     "debut": "0640-12-24",
+     "fin": "0642-10-12",
+     "wiki": "Jean IV (pape)",
+     "num": 72,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Théodore Ier",
+     "court": "Théodore Ier",
+     "debut": "0642-11-24",
+     "fin": "0649-05-14",
+     "wiki": "Théodore Ier (pape)",
+     "num": 73,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Martin Ier",
+     "court": "Martin Ier",
+     "debut": "0649-07-05",
+     "fin": "0653-06-17",
+     "wiki": "Martin Ier (pape)",
+     "num": 74,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eugène Ier",
+     "court": "Eugène Ier",
+     "debut": "0654-08-10",
+     "fin": "0657-06-02",
+     "wiki": "Eugène Ier",
+     "num": 75,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Vitalien",
+     "court": "Vitalien",
+     "debut": "0657-07-30",
+     "fin": "0672-01-27",
+     "wiki": "Vitalien (pape)",
+     "num": 76,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adéodat II",
+     "court": "Adéodat II",
+     "debut": "0672-04-11",
+     "fin": "0676-06-17",
+     "wiki": "Adéodat II",
+     "num": 77,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Donus",
+     "court": "Donus",
+     "debut": "0676-11-02",
+     "fin": "0678-04-11",
+     "wiki": "Donus",
+     "num": 78,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Agathon",
+     "court": "Agathon",
+     "debut": "0678-06-27",
+     "fin": "0681-01-10",
+     "wiki": "Agathon (pape)",
+     "num": 79,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon II",
+     "court": "Léon II",
+     "debut": "0682-08-17",
+     "fin": "0683-07-03",
+     "wiki": "Léon II (pape)",
+     "num": 80,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît II",
+     "court": "Benoît II",
+     "debut": "0684-06-26",
+     "fin": "0685-05-08",
+     "wiki": "Benoît II",
+     "num": 81,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean V",
+     "court": "Jean V",
+     "debut": "0685-07-23",
+     "fin": "0686-08-02",
+     "wiki": "Jean V (pape)",
+     "num": 82,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Conon",
+     "court": "Conon",
+     "debut": "0686-10-21",
+     "fin": "0687-09-21",
+     "wiki": "Conon (pape)",
+     "num": 83,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Serge Ier",
+     "court": "Serge Ier",
+     "debut": "0687-12-15",
+     "fin": "0701-09-08",
+     "wiki": "Serge Ier (pape)",
+     "num": 84,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean VI",
+     "court": "Jean VI",
+     "debut": "0701-10-30",
+     "fin": "0705-01-11",
+     "wiki": "Jean VI (pape)",
+     "num": 85,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean VII",
+     "court": "Jean VII",
+     "debut": "0705-03-01",
+     "fin": "0707-10-18",
+     "wiki": "Jean VII (pape)",
+     "num": 86,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sisinnius",
+     "court": "Sisinnius",
+     "debut": "0708-01-15",
+     "fin": "0708-02-04",
+     "wiki": "Sisinnius",
+     "num": 87,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Constantin",
+     "court": "Constantin",
+     "debut": "0708-03-25",
+     "fin": "0715-04-09",
+     "wiki": "Constantin (pape)",
+     "num": 88,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire II",
+     "court": "Grégoire II",
+     "debut": "0715-05-19",
+     "fin": "0731-02-11",
+     "wiki": "Grégoire II",
+     "num": 89,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire III",
+     "court": "Grégoire III",
+     "debut": "0731-03-18",
+     "fin": "0741-11-28",
+     "wiki": "Grégoire III",
+     "num": 90,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Zacharie",
+     "court": "Zacharie",
+     "debut": "0741-12-10",
+     "fin": "0752-03-22",
+     "wiki": "Zacharie (pape)",
+     "num": 91,
+     "maison": "byzance",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne II (III)",
+     "court": "Étienne II",
+     "debut": "0752-03-26",
+     "fin": "0757-04-26",
+     "wiki": "Étienne II (pape)",
+     "num": 92,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul Ier",
+     "court": "Paul Ier",
+     "debut": "0757-05-29",
+     "fin": "0767-06-28",
+     "wiki": "Paul Ier (pape)",
+     "num": 93,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne III (IV)",
+     "court": "Étienne III",
+     "debut": "0768-08-01",
+     "fin": "0772-01-24",
+     "wiki": "Étienne III (pape)",
+     "num": 94,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien Ier",
+     "court": "Adrien Ier",
+     "debut": "0772-02-01",
+     "fin": "0795-12-25",
+     "wiki": "Adrien Ier",
+     "num": 95,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon III",
+     "court": "Léon III",
+     "debut": "0795-12-26",
+     "fin": "0816-06-12",
+     "wiki": "Léon III (pape)",
+     "num": 96,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne IV (V)",
+     "court": "Étienne IV",
+     "debut": "0816-06-22",
+     "fin": "0817-01-24",
+     "wiki": "Étienne IV (pape)",
+     "num": 97,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pascal Ier",
+     "court": "Pascal Ier",
+     "debut": "0817-01-25",
+     "fin": "0824-02-11",
+     "wiki": "Pascal Ier",
+     "num": 98,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eugène II",
+     "court": "Eugène II",
+     "debut": "0824-06-06",
+     "fin": "0827-08-27",
+     "wiki": "Eugène II",
+     "num": 99,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Valentin",
+     "court": "Valentin",
+     "debut": "0827-08-31",
+     "fin": "0827-10-10",
+     "wiki": "Valentin (pape)",
+     "num": 100,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire IV",
+     "court": "Grégoire IV",
+     "debut": "0827-12-20",
+     "fin": "0844-01-25",
+     "wiki": "Grégoire IV",
+     "num": 101,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Serge II",
+     "court": "Serge II",
+     "debut": "0844-01-01",
+     "fin": "0847-01-27",
+     "wiki": "Serge II",
+     "approx": "janvier 844 – 27 janvier 847",
+     "num": 102,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon IV",
+     "court": "Léon IV",
+     "debut": "0847-04-10",
+     "fin": "0855-07-17",
+     "wiki": "Léon IV (pape)",
+     "num": 103,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît III",
+     "court": "Benoît III",
+     "debut": "0855-09-29",
+     "fin": "0858-04-17",
+     "wiki": "Benoît III",
+     "num": 104,
+     "maison": "francs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Nicolas Ier",
+     "court": "Nicolas Ier",
+     "debut": "0858-04-24",
+     "fin": "0867-11-13",
+     "wiki": "Nicolas Ier (pape)",
+     "naissance": "v. 800 à Rome",
+     "num": 105,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien II",
+     "court": "Adrien II",
+     "debut": "0867-12-14",
+     "fin": "0872-12-14",
+     "wiki": "Adrien II",
+     "num": 106,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean VIII",
+     "court": "Jean VIII",
+     "debut": "0872-12-14",
+     "fin": "0882-12-16",
+     "wiki": "Jean VIII (pape)",
+     "num": 107,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marin Ier (ou Martin II)",
+     "court": "Marin Ier",
+     "debut": "0882-12-16",
+     "fin": "0884-05-15",
+     "wiki": "Marin Ier",
+     "num": 108,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien III",
+     "court": "Adrien III",
+     "debut": "0884-05-17",
+     "fin": "0885-09-01",
+     "wiki": "Adrien III",
+     "approx": "17 mai 884 – septembre 885",
+     "num": 109,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne V (VI)",
+     "court": "Étienne V",
+     "debut": "0885-09-01",
+     "fin": "0891-09-14",
+     "wiki": "Étienne V (pape)",
+     "approx": "septembre 885 – 14 septembre 891",
+     "num": 110,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Formose",
+     "court": "Formose",
+     "debut": "0891-10-06",
+     "fin": "0896-04-04",
+     "wiki": "Formose (pape)",
+     "num": 111,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface VI",
+     "court": "Boniface VI",
+     "debut": "0896-04-11",
+     "fin": "0896-04-26",
+     "wiki": "Boniface VI",
+     "num": 112,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne VI (VII)",
+     "court": "Étienne VI",
+     "debut": "0896-05-01",
+     "fin": "0897-08-01",
+     "wiki": "Étienne VI (pape)",
+     "approx": "mai 896 – août 897",
+     "num": 113,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Romain",
+     "court": "Romain",
+     "debut": "0897-08-01",
+     "fin": "0897-11-01",
+     "wiki": "Romain (pape)",
+     "approx": "août 897 – novembre 897",
+     "num": 114,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Théodore II",
+     "court": "Théodore II",
+     "debut": "0897-12-01",
+     "fin": "0897-12-01",
+     "wiki": "Théodore II (pape)",
+     "approx": "décembre 897 - décembre 897",
+     "num": 115,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean IX",
+     "court": "Jean IX",
+     "debut": "0898-01-01",
+     "fin": "0900-03-26",
+     "wiki": "Jean IX",
+     "approx": "janvier 898 – 26 mars 900",
+     "num": 116,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît IV",
+     "court": "Benoît IV",
+     "debut": "0900-02-01",
+     "fin": "0903-07-30",
+     "wiki": "Benoît IV",
+     "num": 117,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon V",
+     "court": "Léon V",
+     "debut": "0903-07-30",
+     "fin": "0903-08-25",
+     "wiki": "Léon V (pape)",
+     "approx": "vers le 30 juillet 903 – fin août 903",
+     "naissance": "Leone",
+     "num": 118,
+     "maison": "hors",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Serge III",
+     "court": "Serge III",
+     "debut": "0904-01-29",
+     "fin": "0911-04-14",
+     "wiki": "Serge III",
+     "naissance": "Sergio",
+     "num": 119,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anastase III",
+     "court": "Anastase III",
+     "debut": "0911-09-01",
+     "fin": "0913-09-01",
+     "wiki": "Anastase III",
+     "approx": "14 avril 911 ou septembre 911 – juin 913 ou septembre 913",
+     "naissance": "Anastasio",
+     "num": 120,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Landon",
+     "court": "Landon",
+     "debut": "0913-11-01",
+     "fin": "0914-03-01",
+     "wiki": "Landon (pape)",
+     "approx": "novembre 913 – mars 914",
+     "naissance": "Lando",
+     "num": 121,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean X",
+     "court": "Jean X",
+     "debut": "0914-03-01",
+     "fin": "0928-05-01",
+     "wiki": "Jean X",
+     "approx": "début mars 914 – mai 928",
+     "naissance": "Giovanni",
+     "num": 122,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon VI",
+     "court": "Léon VI",
+     "debut": "0928-06-15",
+     "fin": "0929-01-01",
+     "wiki": "Léon VI (pape)",
+     "approx": "mi-juin 928 – début 01 929",
+     "naissance": "Leone",
+     "num": 123,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne VII (VIII)",
+     "court": "Étienne VII",
+     "debut": "0929-01-15",
+     "fin": "0931-02-25",
+     "wiki": "Étienne VII",
+     "approx": "mi-janvier 929 – fin février 931",
+     "naissance": "Stefano",
+     "num": 124,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XI",
+     "court": "Jean XI",
+     "debut": "0931-03-01",
+     "fin": "0936-01-01",
+     "wiki": "Jean XI",
+     "approx": "début mars 931 – début janvier 936",
+     "naissance": "Giovanni",
+     "num": 125,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon VII",
+     "court": "Léon VII",
+     "debut": "0936-01-01",
+     "fin": "0939-07-01",
+     "wiki": "Léon VII",
+     "approx": "début janvier 936 – début juillet 939",
+     "naissance": "Leone",
+     "num": 126,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne VIII (IX)",
+     "court": "Étienne VIII",
+     "debut": "0939-07-01",
+     "fin": "0942-10-25",
+     "wiki": "Étienne VIII",
+     "approx": "début juillet 939 – fin octobre 942",
+     "naissance": "Stefano",
+     "num": 127,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marin II (ou Martin III)",
+     "court": "Marin II",
+     "debut": "0942-10-25",
+     "fin": "0946-05-01",
+     "wiki": "Marin II",
+     "approx": "fin octobre 942 – mai 946",
+     "naissance": "Marino",
+     "num": 128,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Agapet II",
+     "court": "Agapet II",
+     "debut": "0946-05-10",
+     "fin": "0955-12-01",
+     "wiki": "Agapet II",
+     "approx": "10 mai 946 – début décembre 955",
+     "naissance": "Agapeto",
+     "num": 129,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XII",
+     "court": "Jean XII",
+     "debut": "0955-12-16",
+     "fin": "0963-12-04",
+     "wiki": "Jean XII",
+     "naissance": "Ottaviano",
+     "num": 130,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon VIII",
+     "court": "Léon VIII",
+     "debut": "0963-12-04",
+     "fin": "0965-03-01",
+     "wiki": "Léon VIII",
+     "naissance": "Leone",
+     "num": 131,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît V",
+     "court": "Benoît V",
+     "debut": "0964-05-25",
+     "fin": "0964-06-25",
+     "wiki": "Benoît V",
+     "approx": "Fin mai 964 – Fin juin 964",
+     "naissance": "Benedetto",
+     "num": 132,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XIII",
+     "court": "Jean XIII",
+     "debut": "0965-10-01",
+     "fin": "0972-09-06",
+     "wiki": "Jean XIII",
+     "naissance": "Giovanni Crescenzi",
+     "num": 133,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît VI",
+     "court": "Benoît VI",
+     "debut": "0973-01-19",
+     "fin": "0974-07-01",
+     "wiki": "Benoît VI",
+     "approx": "19 janvier 973 – juillet 974",
+     "naissance": "Benedetto",
+     "num": 134,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît VII",
+     "court": "Benoît VII",
+     "debut": "0974-10-01",
+     "fin": "0983-07-10",
+     "wiki": "Benoît VII",
+     "approx": "octobre 974 – 10 juillet 983",
+     "naissance": "Benedetto",
+     "num": 135,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XIV",
+     "court": "Jean XIV",
+     "debut": "0983-09-01",
+     "fin": "0984-08-20",
+     "wiki": "Jean XIV",
+     "approx": "septembre 983 – 20 août 984",
+     "naissance": "Pietro Canepanova",
+     "num": 136,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XV",
+     "court": "Jean XV",
+     "debut": "0985-08-01",
+     "fin": "0996-03-01",
+     "wiki": "Jean XV",
+     "approx": "août 985 – mars 996",
+     "naissance": "Giovanni di Gallina Alba",
+     "num": 137,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire V",
+     "court": "Grégoire V",
+     "debut": "0996-05-03",
+     "fin": "0999-02-18",
+     "wiki": "Grégoire V",
+     "naissance": "Brunon de Carinthie",
+     "num": 138,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sylvestre II",
+     "court": "Sylvestre II",
+     "debut": "0999-04-02",
+     "fin": "1003-05-12",
+     "wiki": "Sylvestre II",
+     "naissance": "Gerbert d'Aurillac",
+     "num": 139,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XVII (XVIII)",
+     "court": "Jean XVII",
+     "debut": "1003-05-16",
+     "fin": "1003-11-06",
+     "wiki": "Jean XVII",
+     "naissance": "Giovanni Sicco",
+     "num": 140,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XVIII (XIX)",
+     "court": "Jean XVIII",
+     "debut": "1003-12-25",
+     "fin": "1009-06-25",
+     "wiki": "Jean XVIII",
+     "approx": "25 décembre 1003 – fin juin 1009",
+     "naissance": "Giovanni Fasano",
+     "num": 141,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Serge IV",
+     "court": "Serge IV",
+     "debut": "1009-07-31",
+     "fin": "1012-05-12",
+     "wiki": "Serge IV",
+     "naissance": "Pietro Buccaporci",
+     "num": 142,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît VIII",
+     "court": "Benoît VIII",
+     "debut": "1012-05-21",
+     "fin": "1024-04-09",
+     "wiki": "Benoît VIII",
+     "naissance": "Teofilatto dei conti di Tuscolo",
+     "num": 143,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XIX (XX)",
+     "court": "Jean XIX",
+     "debut": "1024-04-19",
+     "fin": "1032-10-20",
+     "wiki": "Jean XIX",
+     "naissance": "Romano dei conti di Tuscolo",
+     "num": 144,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît IX",
+     "court": "Benoît IX",
+     "debut": "1032-10-21",
+     "fin": "1044-09-01",
+     "wiki": "Benoît IX",
+     "approx": "21 octobre 1032 – septembre 1044",
+     "naissance": "Teofilatto dei conti di Tuscolo",
+     "num": 145,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sylvestre III",
+     "court": "Sylvestre III",
+     "debut": "1045-01-20",
+     "fin": "1045-03-10",
+     "wiki": "Sylvestre III",
+     "naissance": "Giovanni de Crescenzi Ottaviani",
+     "num": 146,
+     "maison": "familles",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît IX (2)",
+     "court": "Benoît IX",
+     "debut": "1045-03-10",
+     "fin": "1045-05-01",
+     "wiki": "Benoît IX",
+     "naissance": "Teofilatto dei conti di Tuscolo",
+     "num": 147,
+     "maison": "familles",
+     "suite": true,
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire VI",
+     "court": "Grégoire VI",
+     "debut": "1045-05-01",
+     "fin": "1046-12-20",
+     "wiki": "Grégoire VI",
+     "naissance": "Giovanni Graziano",
+     "num": 148,
+     "maison": "familles",
+     "armes": "grav-gregorius-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément II",
+     "court": "Clément II",
+     "debut": "1046-12-24",
+     "fin": "1047-10-09",
+     "wiki": "Clément II",
+     "naissance": "Suidger von Morsleben und Hornbur",
+     "num": 149,
+     "maison": "familles",
+     "armes": "grav-clemens-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît IX (3)",
+     "court": "Benoît IX",
+     "debut": "1047-11-08",
+     "fin": "1048-07-16",
+     "wiki": "Benoît IX",
+     "naissance": "Teofilatto dei conti di Tuscolo",
+     "num": 150,
+     "maison": "familles",
+     "suite": true,
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Damase II",
+     "court": "Damase II",
+     "debut": "1048-07-17",
+     "fin": "1048-08-09",
+     "wiki": "Damase II",
+     "naissance": "Poppo von Brixen",
+     "num": 151,
+     "maison": "empereurs",
+     "armes": "grav-damasus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon IX",
+     "court": "Léon IX",
+     "debut": "1049-02-12",
+     "fin": "1054-04-19",
+     "wiki": "Léon IX",
+     "naissance": "Bruno von Eguisheim-Dagsburg",
+     "num": 152,
+     "maison": "empereurs",
+     "armes": "grav-leo-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Victor II",
+     "court": "Victor II",
+     "debut": "1055-04-13",
+     "fin": "1057-07-28",
+     "wiki": "Victor II",
+     "naissance": "Gebhard von Calw-Dollnstein-Hirschberg",
+     "num": 153,
+     "maison": "empereurs",
+     "armes": "grav-victor-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Étienne IX (X)",
+     "court": "Étienne IX",
+     "debut": "1057-08-02",
+     "fin": "1058-03-29",
+     "wiki": "Étienne IX",
+     "naissance": "Friedrich von Lothringen (Frédéric de Lorraine ou d'Ardenne)",
+     "num": 154,
+     "maison": "empereurs",
+     "armes": "grav-stephanus-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Nicolas II",
+     "court": "Nicolas II",
+     "debut": "1058-12-06",
+     "fin": "1061-07-19",
+     "wiki": "Nicolas II (pape)",
+     "naissance": "Gérard de Bourgogne",
+     "num": 155,
+     "maison": "empereurs",
+     "armes": "grav-nicolaus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre II",
+     "court": "Alexandre II",
+     "debut": "1061-09-30",
+     "fin": "1073-04-21",
+     "wiki": "Alexandre II (pape)",
+     "naissance": "Anselmo de Baggio",
+     "num": 156,
+     "maison": "empereurs",
+     "armes": "grav-alexander-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire VII",
+     "court": "Grégoire VII",
+     "debut": "1073-04-22",
+     "fin": "1085-05-25",
+     "wiki": "Grégoire VII",
+     "naissance": "Ildebrando di Soana",
+     "num": 157,
+     "maison": "empereurs",
+     "armes": "grav-gregorius-vii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Victor III",
+     "court": "Victor III",
+     "debut": "1086-05-24",
+     "fin": "1087-09-16",
+     "wiki": "Victor III",
+     "naissance": "Dauferio Del Zotto",
+     "num": 158,
+     "maison": "empereurs",
+     "armes": "grav-victor-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain II",
+     "court": "Urbain II",
+     "debut": "1088-03-12",
+     "fin": "1099-07-29",
+     "wiki": "Urbain II",
+     "naissance": "Eudes (ou Odon) de Lagery (ou de Châtillon)",
+     "num": 159,
+     "maison": "empereurs",
+     "armes": "grav-urbanus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pascal II",
+     "court": "Pascal II",
+     "debut": "1099-08-14",
+     "fin": "1118-01-21",
+     "wiki": "Pascal II",
+     "naissance": "Rainero di Bieda",
+     "num": 160,
+     "maison": "empereurs",
+     "armes": "grav-paschalis-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Gélase II",
+     "court": "Gélase II",
+     "debut": "1118-01-24",
+     "fin": "1119-01-29",
+     "wiki": "Gélase II",
+     "naissance": "Giovanni di Gaeta",
+     "num": 161,
+     "maison": "empereurs",
+     "armes": "grav-gelasius-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Calixte II",
+     "court": "Calixte II",
+     "debut": "1119-02-02",
+     "fin": "1124-12-13",
+     "wiki": "Calixte II",
+     "naissance": "Guy de Bourgogne",
+     "num": 162,
+     "maison": "empereurs",
+     "armes": "grav-callistus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Honorius II",
+     "court": "Honorius II",
+     "debut": "1124-12-21",
+     "fin": "1130-02-13",
+     "wiki": "Honorius II",
+     "naissance": "Lamberto Scannabecchi",
+     "num": 163,
+     "maison": "empereurs",
+     "armes": "grav-honorius-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent II",
+     "court": "Innocent II",
+     "debut": "1130-02-23",
+     "fin": "1143-09-24",
+     "wiki": "Innocent II",
+     "naissance": "Gregorio Papareschi",
+     "num": 164,
+     "maison": "empereurs",
+     "armes": "grav-innocentius-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Célestin II",
+     "court": "Célestin II",
+     "debut": "1143-09-26",
+     "fin": "1144-03-08",
+     "wiki": "Célestin II",
+     "naissance": "Guido di Castello",
+     "num": 165,
+     "maison": "empereurs",
+     "armes": "grav-caelestinus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Lucius II",
+     "court": "Lucius II",
+     "debut": "1144-03-12",
+     "fin": "1145-02-15",
+     "wiki": "Lucius II",
+     "naissance": "Gherardo Caccianemici dell'Orso",
+     "num": 166,
+     "maison": "empereurs",
+     "armes": "grav-lucius-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eugène III",
+     "court": "Eugène III",
+     "debut": "1145-02-18",
+     "fin": "1153-07-08",
+     "wiki": "Eugène III",
+     "naissance": "Bernardo Paganelli di Montemagno",
+     "num": 167,
+     "maison": "empereurs",
+     "armes": "grav-eugenius-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Anastase IV",
+     "court": "Anastase IV",
+     "debut": "1153-07-12",
+     "fin": "1154-12-03",
+     "wiki": "Anastase IV",
+     "naissance": "Corrado della Suburra",
+     "num": 168,
+     "maison": "empereurs",
+     "armes": "grav-anastasius-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien IV",
+     "court": "Adrien IV",
+     "debut": "1154-12-04",
+     "fin": "1159-09-01",
+     "wiki": "Adrien IV",
+     "naissance": "Nicholas Breakspear",
+     "num": 169,
+     "maison": "empereurs",
+     "armes": "grav-hadrianus-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre III",
+     "court": "Alexandre III",
+     "debut": "1159-09-07",
+     "fin": "1181-08-30",
+     "wiki": "Alexandre III (pape)",
+     "naissance": "Rolando Bandinelli",
+     "num": 170,
+     "maison": "empereurs",
+     "armes": "grav-alexander-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Lucius III",
+     "court": "Lucius III",
+     "debut": "1181-09-01",
+     "fin": "1185-11-25",
+     "wiki": "Lucius III",
+     "naissance": "Ubaldo Allucingoli",
+     "num": 171,
+     "maison": "empereurs",
+     "armes": "grav-lucius-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain III",
+     "court": "Urbain III",
+     "debut": "1185-11-25",
+     "fin": "1187-10-20",
+     "wiki": "Urbain III",
+     "naissance": "Uberto Crivelli",
+     "num": 172,
+     "maison": "empereurs",
+     "armes": "grav-urbanus-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire VIII",
+     "court": "Grégoire VIII",
+     "debut": "1187-10-21",
+     "fin": "1187-12-17",
+     "wiki": "Grégoire VIII",
+     "naissance": "Alberto di Morra",
+     "num": 173,
+     "maison": "empereurs",
+     "armes": "grav-gregorius-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément III",
+     "court": "Clément III",
+     "debut": "1187-12-19",
+     "fin": "1191-03-27",
+     "wiki": "Clément III",
+     "naissance": "Paolo Scolari",
+     "num": 174,
+     "maison": "empereurs",
+     "armes": "grav-clemens-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Célestin III",
+     "court": "Célestin III",
+     "debut": "1191-03-30",
+     "fin": "1198-01-08",
+     "wiki": "Célestin III",
+     "naissance": "Giacinto Bobone",
+     "num": 175,
+     "maison": "empereurs",
+     "armes": "aucune",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent III",
+     "court": "Innocent III",
+     "debut": "1198-01-08",
+     "fin": "1216-07-16",
+     "wiki": "Innocent III",
+     "naissance": "Lotario dei conti di Segni",
+     "num": 176,
+     "maison": "empereurs",
+     "armes": "popes-conti-di-segni",
+     "note": "Sous son pontificat, les clés de saint Pierre se détachent de l'effigie de l'apôtre et deviennent l'emblème de l'Église, sur sa bannière. Les armes Conti ne lui sont prêtées qu'ensuite.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Honorius III",
+     "court": "Honorius III",
+     "debut": "1216-07-18",
+     "fin": "1227-03-18",
+     "wiki": "Honorius III",
+     "naissance": "Cencio Savelli",
+     "num": 177,
+     "maison": "empereurs",
+     "armes": "savelli-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire IX",
+     "court": "Grégoire IX",
+     "debut": "1227-03-19",
+     "fin": "1241-08-22",
+     "wiki": "Grégoire IX",
+     "naissance": "Ugolino di Anagni dei conti di Segni",
+     "num": 178,
+     "maison": "empereurs",
+     "armes": "popes-conti-di-segni",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Célestin IV",
+     "court": "Célestin IV",
+     "debut": "1241-10-25",
+     "fin": "1241-11-10",
+     "wiki": "Célestin IV",
+     "naissance": "Goffredo da Castiglione",
+     "num": 179,
+     "maison": "empereurs",
+     "armes": "celestinus-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent IV",
+     "court": "Innocent IV",
+     "debut": "1243-06-25",
+     "fin": "1254-12-07",
+     "wiki": "Innocent IV",
+     "naissance": "Sinibaldo Fieschi",
+     "num": 180,
+     "maison": "empereurs",
+     "armes": "fieschi-popes",
+     "note": "Désaccord : l'article « Armoiries papales » en fait peut-être le premier pape à armoiries personnelles ; Bouyé n'y voit que des écus de fantaisie dessinés dans les marges d'un de ses livres, et conclut que rien ne prouve un usage personnel.",
+     "sources": [
+      "armoiries_papales",
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Alexandre IV",
+     "court": "Alexandre IV",
+     "debut": "1254-12-12",
+     "fin": "1261-05-25",
+     "wiki": "Alexandre IV (pape)",
+     "naissance": "Rinaldo dei signori di Jenne",
+     "num": 181,
+     "maison": "empereurs",
+     "armes": "popes-conti-di-segni",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain IV",
+     "court": "Urbain IV",
+     "debut": "1261-08-29",
+     "fin": "1264-10-02",
+     "wiki": "Urbain IV",
+     "naissance": "Jacques Pantaléon",
+     "num": 182,
+     "maison": "itinerants",
+     "armes": "urbanus-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément IV",
+     "court": "Clément IV",
+     "debut": "1265-02-05",
+     "fin": "1268-11-29",
+     "wiki": "Clément IV",
+     "naissance": "Gui Foucois",
+     "num": 183,
+     "maison": "itinerants",
+     "armes": "clemens-iv",
+     "note": "Un chroniqueur florentin des années 1340, Villani, rapporte qu'il concéda ses armes à ses partisans guelfes : témoignage tardif, sans monument de son vivant.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Grégoire X",
+     "court": "Grégoire X",
+     "debut": "1271-09-01",
+     "fin": "1276-01-10",
+     "wiki": "Grégoire X",
+     "naissance": "Teobaldo Visconti",
+     "num": 184,
+     "maison": "itinerants",
+     "armes": "gregorius-x",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent V",
+     "court": "Innocent V",
+     "debut": "1276-01-21",
+     "fin": "1276-06-22",
+     "wiki": "Innocent V",
+     "naissance": "Pierre de Tarentaise",
+     "num": 185,
+     "maison": "itinerants",
+     "armes": "innocentius-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien V",
+     "court": "Adrien V",
+     "debut": "1276-07-11",
+     "fin": "1276-08-18",
+     "wiki": "Adrien V",
+     "naissance": "Ottobono Fieschi",
+     "num": 186,
+     "maison": "itinerants",
+     "armes": "fieschi-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XXI",
+     "court": "Jean XXI",
+     "debut": "1276-09-08",
+     "fin": "1277-05-20",
+     "wiki": "Jean XXI",
+     "naissance": "Pedro Julião",
+     "num": 187,
+     "maison": "itinerants",
+     "armes": "johannes-xxi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Nicolas III",
+     "court": "Nicolas III",
+     "debut": "1277-11-25",
+     "fin": "1280-08-22",
+     "wiki": "Nicolas III",
+     "naissance": "Giovanni Gaetano Orsini",
+     "num": 188,
+     "maison": "itinerants",
+     "armes": "nicolaus-iii",
+     "note": "Premier pape attesté à faire usage des armes de sa famille (palais de Viterbe, frise du Capitole, fresque de Cimabue à Assise) : un écu nu, sans clés ni tiare.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Martin IV",
+     "court": "Martin IV",
+     "debut": "1281-02-22",
+     "fin": "1285-03-28",
+     "wiki": "Martin IV",
+     "naissance": "Simon de Brie ou de Brion",
+     "num": 189,
+     "maison": "itinerants",
+     "armes": "martinus-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Honorius IV",
+     "court": "Honorius IV",
+     "debut": "1285-04-02",
+     "fin": "1287-04-03",
+     "wiki": "Honorius IV",
+     "naissance": "Giacomo Savelli",
+     "num": 190,
+     "maison": "itinerants",
+     "armes": "savelli-popes",
+     "note": "Son tombeau armorié de l'Ara Coeli, longtemps pris pour une preuve, a été aménagé après 1297 par son frère Pandolfo.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Nicolas IV",
+     "court": "Nicolas IV",
+     "debut": "1288-02-22",
+     "fin": "1292-04-04",
+     "wiki": "Nicolas IV",
+     "naissance": "Girolamo Masci",
+     "num": 191,
+     "maison": "itinerants",
+     "armes": "nicolaus-iv",
+     "note": "Des armes ne lui sont attribuées qu'à partir du XVᵉ siècle.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Célestin V",
+     "court": "Célestin V",
+     "debut": "1294-07-05",
+     "fin": "1294-12-13",
+     "wiki": "Célestin V",
+     "naissance": "Pietro de Morrone",
+     "num": 192,
+     "maison": "itinerants",
+     "armes": "celestinus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface VIII",
+     "court": "Boniface VIII",
+     "debut": "1294-12-24",
+     "fin": "1303-10-11",
+     "wiki": "Boniface VIII",
+     "naissance": "Benedetto Caetani",
+     "num": 193,
+     "maison": "itinerants",
+     "armes": "bonifacius-viii",
+     "note": "Premier usage systématique : son tombeau, consacré en 1296 de son vivant, porte trois écus d'or à deux bandes ondées d'azur ; il rapproche le premier son écu des clés, de la tiare et du pavillon.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Benoît XI",
+     "court": "Benoît XI",
+     "debut": "1303-10-22",
+     "fin": "1304-07-07",
+     "wiki": "Benoît XI",
+     "naissance": "Niccolò Boccasini",
+     "num": 194,
+     "maison": "itinerants",
+     "armes": "benedictus-xi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément V",
+     "court": "Clément V",
+     "debut": "1305-06-05",
+     "fin": "1314-04-20",
+     "wiki": "Clément V",
+     "naissance": "Bertrand de Got",
+     "num": 195,
+     "maison": "itinerants",
+     "armes": "clemens-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XXII",
+     "court": "Jean XXII",
+     "debut": "1316-08-07",
+     "fin": "1334-12-04",
+     "wiki": "Jean XXII",
+     "naissance": "Jacques Duèze ou Duèse",
+     "num": 196,
+     "maison": "avignon",
+     "armes": "johannes-xxii",
+     "note": "La formule héraldique esquissée sous Boniface VIII se fixe sous son pontificat.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "nom": "Benoît XII",
+     "court": "Benoît XII",
+     "debut": "1334-12-20",
+     "fin": "1342-04-25",
+     "wiki": "Benoît XII",
+     "naissance": "Jacques Fournier",
+     "num": 197,
+     "maison": "avignon",
+     "armes": "benedictus-xii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément VI",
+     "court": "Clément VI",
+     "debut": "1342-05-07",
+     "fin": "1352-12-06",
+     "wiki": "Clément VI",
+     "naissance": "Pierre Roger",
+     "num": 198,
+     "maison": "avignon",
+     "armes": "beaufort-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent VI",
+     "court": "Innocent VI",
+     "debut": "1352-12-18",
+     "fin": "1362-09-12",
+     "wiki": "Innocent VI",
+     "naissance": "Étienne Aubert",
+     "num": 199,
+     "maison": "avignon",
+     "armes": "inocentius-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain V",
+     "court": "Urbain V",
+     "debut": "1362-09-28",
+     "fin": "1370-12-19",
+     "wiki": "Urbain V",
+     "naissance": "Guillaume de Grimoard",
+     "num": 200,
+     "maison": "avignon",
+     "armes": "urbanus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XI",
+     "court": "Grégoire XI",
+     "debut": "1370-12-30",
+     "fin": "1378-03-27",
+     "wiki": "Grégoire XI",
+     "naissance": "Pierre Roger de Beaufort",
+     "num": 201,
+     "maison": "avignon",
+     "armes": "beaufort-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain VI",
+     "court": "Urbain VI",
+     "debut": "1378-04-08",
+     "fin": "1389-10-15",
+     "wiki": "Urbain VI",
+     "naissance": "Bartolomeo Prignano",
+     "num": 202,
+     "maison": "schisme",
+     "armes": "urbanus-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Boniface IX",
+     "court": "Boniface IX",
+     "debut": "1389-11-02",
+     "fin": "1404-10-01",
+     "wiki": "Boniface IX",
+     "naissance": "Piero Tomacelli",
+     "num": 203,
+     "maison": "schisme",
+     "armes": "bonifatius-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent VII",
+     "court": "Innocent VII",
+     "debut": "1404-10-17",
+     "fin": "1406-11-06",
+     "wiki": "Innocent VII",
+     "naissance": "Cosimo de' Migliorati",
+     "num": 204,
+     "maison": "schisme",
+     "armes": "inocentius-vii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XII",
+     "court": "Grégoire XII",
+     "debut": "1406-11-30",
+     "fin": "1415-07-04",
+     "wiki": "Grégoire XII",
+     "naissance": "Angelo Correr",
+     "num": 205,
+     "maison": "schisme",
+     "armes": "gregorius-xii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Martin V",
+     "court": "Martin V",
+     "debut": "1417-11-11",
+     "fin": "1431-02-20",
+     "wiki": "Martin V",
+     "naissance": "Oddone Colonna",
+     "num": 206,
+     "maison": "renaissance",
+     "armes": "martinus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Eugène IV",
+     "court": "Eugène IV",
+     "debut": "1431-03-03",
+     "fin": "1447-02-23",
+     "wiki": "Eugène IV",
+     "naissance": "Gabriele Condulmer",
+     "num": 207,
+     "maison": "renaissance",
+     "armes": "eugenius-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Nicolas V",
+     "court": "Nicolas V",
+     "debut": "1447-03-06",
+     "fin": "1455-03-24",
+     "wiki": "Nicolas V",
+     "naissance": "Tommaso Parentucelli",
+     "num": 208,
+     "maison": "renaissance",
+     "armes": "nicolaus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Calixte III",
+     "court": "Calixte III",
+     "debut": "1455-04-08",
+     "fin": "1458-08-06",
+     "wiki": "Calixte III",
+     "naissance": "Alfons de Borja i de Llançol (Borgia en italien)",
+     "num": 209,
+     "maison": "renaissance",
+     "armes": "callistus-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie II",
+     "court": "Pie II",
+     "debut": "1458-08-19",
+     "fin": "1464-08-15",
+     "wiki": "Pie II",
+     "naissance": "Enea Silvio Piccolomini",
+     "num": 210,
+     "maison": "renaissance",
+     "armes": "piccolomini-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul II",
+     "court": "Paul II",
+     "debut": "1464-08-30",
+     "fin": "1471-07-26",
+     "wiki": "Paul II",
+     "naissance": "Pietro Barbo",
+     "num": 211,
+     "maison": "renaissance",
+     "armes": "paulus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sixte IV",
+     "court": "Sixte IV",
+     "debut": "1471-08-09",
+     "fin": "1484-08-12",
+     "wiki": "Sixte IV",
+     "naissance": "Francesco della Rovere",
+     "num": 212,
+     "maison": "renaissance",
+     "armes": "popes-della-rovere",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent VIII",
+     "court": "Innocent VIII",
+     "debut": "1484-08-29",
+     "fin": "1492-07-25",
+     "wiki": "Innocent VIII",
+     "naissance": "Giovanni Battista Cibo",
+     "num": 213,
+     "maison": "renaissance",
+     "armes": "inocentius-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre VI",
+     "court": "Alexandre VI",
+     "debut": "1492-08-11",
+     "fin": "1503-08-18",
+     "wiki": "Alexandre VI",
+     "naissance": "Roderic Llançol i de Borja (Borgia en italien)",
+     "num": 214,
+     "maison": "renaissance",
+     "armes": "alexander-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie III",
+     "court": "Pie III",
+     "debut": "1503-09-22",
+     "fin": "1503-10-18",
+     "wiki": "Pie III",
+     "naissance": "Francesco Todeschini Piccolomini",
+     "num": 215,
+     "maison": "renaissance",
+     "armes": "piccolomini-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jules II",
+     "court": "Jules II",
+     "debut": "1503-11-01",
+     "fin": "1513-02-21",
+     "wiki": "Jules II",
+     "naissance": "Giuliano della Rovere",
+     "num": 216,
+     "maison": "renaissance",
+     "armes": "popes-della-rovere",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon X",
+     "court": "Léon X",
+     "debut": "1513-03-09",
+     "fin": "1521-12-01",
+     "wiki": "Léon X",
+     "naissance": "Giovanni di Lorenzo de' Medici",
+     "num": 217,
+     "maison": "renaissance",
+     "armes": "medici-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Adrien VI",
+     "court": "Adrien VI",
+     "debut": "1522-01-09",
+     "fin": "1523-09-14",
+     "wiki": "Adrien VI",
+     "naissance": "Adriaan Floriszoon Boeyens",
+     "num": 218,
+     "maison": "renaissance",
+     "armes": "hadrianus-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément VII",
+     "court": "Clément VII",
+     "debut": "1523-11-19",
+     "fin": "1534-09-25",
+     "wiki": "Clément VII (pape)",
+     "naissance": "Giulio di Giuliano de' Medici",
+     "num": 219,
+     "maison": "renaissance",
+     "armes": "medici-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul III",
+     "court": "Paul III",
+     "debut": "1534-10-13",
+     "fin": "1549-11-10",
+     "wiki": "Paul III",
+     "naissance": "Alessandro Farnese",
+     "num": 220,
+     "maison": "reforme",
+     "armes": "paulus-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jules III",
+     "court": "Jules III",
+     "debut": "1550-02-07",
+     "fin": "1555-03-23",
+     "wiki": "Jules III",
+     "naissance": "Giovanni Maria Ciocchi del Monte",
+     "num": 221,
+     "maison": "reforme",
+     "armes": "iulius-iii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Marcel II",
+     "court": "Marcel II",
+     "debut": "1555-04-09",
+     "fin": "1555-04-30",
+     "wiki": "Marcel II",
+     "naissance": "Marcello Cervini",
+     "num": 222,
+     "maison": "reforme",
+     "armes": "marcelus-ii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul IV",
+     "court": "Paul IV",
+     "debut": "1555-05-23",
+     "fin": "1559-08-18",
+     "wiki": "Paul IV",
+     "naissance": "Gian Pietro Carafa",
+     "num": 223,
+     "maison": "reforme",
+     "armes": "paulus-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie IV",
+     "court": "Pie IV",
+     "debut": "1559-12-25",
+     "fin": "1565-12-09",
+     "wiki": "Pie IV",
+     "naissance": "Giovanni Angelo Medici",
+     "num": 224,
+     "maison": "reforme",
+     "armes": "pius-iv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie V",
+     "court": "Pie V",
+     "debut": "1566-01-07",
+     "fin": "1572-05-01",
+     "wiki": "Pie V",
+     "naissance": "Antonio ou Michele Ghislieri",
+     "num": 225,
+     "maison": "reforme",
+     "armes": "pius-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XIII",
+     "court": "Grégoire XIII",
+     "debut": "1572-05-13",
+     "fin": "1585-04-10",
+     "wiki": "Grégoire XIII",
+     "naissance": "Ugo Boncompagni",
+     "num": 226,
+     "maison": "reforme",
+     "armes": "gregorius-xiii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sixte V ou Sixte Quint",
+     "court": "Sixte V",
+     "debut": "1585-04-24",
+     "fin": "1590-08-27",
+     "wiki": "Sixte V",
+     "naissance": "Felice Peretti Montalto",
+     "num": 227,
+     "maison": "baroque",
+     "armes": "sixtus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain VII",
+     "court": "Urbain VII",
+     "debut": "1590-09-15",
+     "fin": "1590-09-27",
+     "wiki": "Urbain VII",
+     "naissance": "Giambattista Castagna",
+     "num": 228,
+     "maison": "baroque",
+     "armes": "urbanus-vii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XIV",
+     "court": "Grégoire XIV",
+     "debut": "1590-12-05",
+     "fin": "1591-10-16",
+     "wiki": "Grégoire XIV",
+     "naissance": "Niccolò Sfondrati",
+     "num": 229,
+     "maison": "baroque",
+     "armes": "gregorius-xiv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent IX",
+     "court": "Innocent IX",
+     "debut": "1591-10-29",
+     "fin": "1591-12-30",
+     "wiki": "Innocent IX",
+     "naissance": "Gian Antonio Facchinetti de Nuce",
+     "num": 230,
+     "maison": "baroque",
+     "armes": "inocentius-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément VIII",
+     "court": "Clément VIII",
+     "debut": "1592-01-30",
+     "fin": "1605-03-03",
+     "wiki": "Clément VIII",
+     "naissance": "Ippolito Aldobrandini",
+     "num": 231,
+     "maison": "baroque",
+     "armes": "clementem-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon XI",
+     "court": "Léon XI",
+     "debut": "1605-04-01",
+     "fin": "1605-04-27",
+     "wiki": "Léon XI",
+     "naissance": "Alessandro Ottaviano de' Medici",
+     "num": 232,
+     "maison": "baroque",
+     "armes": "medici-popes",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul V",
+     "court": "Paul V",
+     "debut": "1605-05-16",
+     "fin": "1621-01-28",
+     "wiki": "Paul V",
+     "naissance": "Camillo Borghese",
+     "num": 233,
+     "maison": "baroque",
+     "armes": "paulus-v",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XV",
+     "court": "Grégoire XV",
+     "debut": "1621-02-09",
+     "fin": "1623-07-08",
+     "wiki": "Grégoire XV",
+     "naissance": "Alessandro Ludovisi",
+     "num": 234,
+     "maison": "baroque",
+     "armes": "gregorius-xv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Urbain VIII",
+     "court": "Urbain VIII",
+     "debut": "1623-08-06",
+     "fin": "1644-07-29",
+     "wiki": "Urbain VIII",
+     "naissance": "Maffeo Barberini",
+     "num": 235,
+     "maison": "baroque",
+     "armes": "urbanus-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent X",
+     "court": "Innocent X",
+     "debut": "1644-09-15",
+     "fin": "1655-01-07",
+     "wiki": "Innocent X",
+     "naissance": "Giovanni Battista Pamphili",
+     "num": 236,
+     "maison": "baroque",
+     "armes": "inocentius-x",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre VII",
+     "court": "Alexandre VII",
+     "debut": "1655-04-07",
+     "fin": "1667-05-22",
+     "wiki": "Alexandre VII",
+     "naissance": "Fabio Chigi",
+     "num": 237,
+     "maison": "baroque",
+     "armes": "alexander-vii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément IX",
+     "court": "Clément IX",
+     "debut": "1667-06-20",
+     "fin": "1669-12-09",
+     "wiki": "Clément IX",
+     "naissance": "Giulio Rospigliosi",
+     "num": 238,
+     "maison": "baroque",
+     "armes": "clementem-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément X",
+     "court": "Clément X",
+     "debut": "1670-04-29",
+     "fin": "1676-07-22",
+     "wiki": "Clément X",
+     "naissance": "Emilio Bonaventura Altieri",
+     "num": 239,
+     "maison": "baroque",
+     "armes": "clementem-x",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent XI",
+     "court": "Innocent XI",
+     "debut": "1676-09-21",
+     "fin": "1689-08-12",
+     "wiki": "Innocent XI",
+     "naissance": "Benedetto Odescalchi",
+     "num": 240,
+     "maison": "baroque",
+     "armes": "inocentius-xi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Alexandre VIII",
+     "court": "Alexandre VIII",
+     "debut": "1689-10-06",
+     "fin": "1691-02-01",
+     "wiki": "Alexandre VIII",
+     "naissance": "Pietro Vito Ottoboni",
+     "num": 241,
+     "maison": "hors",
+     "armes": "alexander-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent XII",
+     "court": "Innocent XII",
+     "debut": "1691-07-12",
+     "fin": "1700-09-27",
+     "wiki": "Innocent XII",
+     "naissance": "Antonio Pignatelli del Rastrello",
+     "num": 242,
+     "maison": "hors",
+     "armes": "inocentius-xii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément XI",
+     "court": "Clément XI",
+     "debut": "1700-11-23",
+     "fin": "1721-03-19",
+     "wiki": "Clément XI",
+     "naissance": "Giovanni Francesco Albani",
+     "num": 243,
+     "maison": "hors",
+     "armes": "clementem-xi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Innocent XIII",
+     "court": "Innocent XIII",
+     "debut": "1721-05-08",
+     "fin": "1724-03-07",
+     "wiki": "Innocent XIII",
+     "naissance": "Michelangelo dei Conti",
+     "num": 244,
+     "maison": "hors",
+     "armes": "inocentius-xiii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît XIII",
+     "court": "Benoît XIII",
+     "debut": "1724-05-29",
+     "fin": "1730-02-21",
+     "wiki": "Benoît XIII (pape)",
+     "naissance": "Pietro Francesco Orsini",
+     "num": 245,
+     "maison": "hors",
+     "armes": "benedictus-xiii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément XII",
+     "court": "Clément XII",
+     "debut": "1730-07-12",
+     "fin": "1740-02-06",
+     "wiki": "Clément XII",
+     "naissance": "Lorenzo Corsini",
+     "num": 246,
+     "maison": "hors",
+     "armes": "clementem-xii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît XIV",
+     "court": "Benoît XIV",
+     "debut": "1740-08-17",
+     "fin": "1758-05-03",
+     "wiki": "Benoît XIV",
+     "naissance": "Prospero Lorenzo Lambertini",
+     "num": 247,
+     "maison": "hors",
+     "armes": "benedictus-xiv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément XIII",
+     "court": "Clément XIII",
+     "debut": "1758-07-06",
+     "fin": "1769-02-02",
+     "wiki": "Clément XIII",
+     "naissance": "Carlo della Torre Rezzonico",
+     "num": 248,
+     "maison": "hors",
+     "armes": "clementem-xiii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Clément XIV",
+     "court": "Clément XIV",
+     "debut": "1769-05-19",
+     "fin": "1774-09-22",
+     "wiki": "Clément XIV",
+     "naissance": "Giovanni Vincenzo Antonio Ganganelli",
+     "num": 249,
+     "maison": "hors",
+     "armes": "clementem-xiv",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie VI",
+     "court": "Pie VI",
+     "debut": "1775-02-15",
+     "fin": "1799-08-29",
+     "wiki": "Pie VI",
+     "naissance": "Giovanni Angelo Braschi",
+     "num": 250,
+     "maison": "revolutions",
+     "armes": "pius-vi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie VII",
+     "court": "Pie VII",
+     "debut": "1800-03-14",
+     "fin": "1823-08-20",
+     "wiki": "Pie VII",
+     "naissance": "Barnaba Chiaramonti",
+     "num": 251,
+     "maison": "revolutions",
+     "armes": "pius-vii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon XII",
+     "court": "Léon XII",
+     "debut": "1823-09-28",
+     "fin": "1829-02-10",
+     "wiki": "Léon XII",
+     "naissance": "Annibale della Genga",
+     "num": 252,
+     "maison": "revolutions",
+     "armes": "leon-xii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie VIII",
+     "court": "Pie VIII",
+     "debut": "1829-03-31",
+     "fin": "1830-11-30",
+     "wiki": "Pie VIII",
+     "naissance": "Francesco Saverio Castiglioni",
+     "num": 253,
+     "maison": "revolutions",
+     "armes": "pius-viii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Grégoire XVI",
+     "court": "Grégoire XVI",
+     "debut": "1831-02-02",
+     "fin": "1846-06-01",
+     "wiki": "Grégoire XVI",
+     "naissance": "Bartolomeo Alberto Cappellari",
+     "num": 254,
+     "maison": "revolutions",
+     "armes": "gregorius-xvi",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie IX",
+     "court": "Pie IX",
+     "debut": "1846-06-16",
+     "fin": "1878-02-07",
+     "wiki": "Pie IX",
+     "naissance": "Giovanni Maria Mastai Ferretti",
+     "num": 255,
+     "maison": "revolutions",
+     "armes": "pius-ix",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Léon XIII",
+     "court": "Léon XIII",
+     "debut": "1878-02-20",
+     "fin": "1903-07-20",
+     "wiki": "Léon XIII",
+     "naissance": "Vincenzo Gioacchino Pecci",
+     "num": 256,
+     "maison": "question",
+     "armes": "leon-xiii",
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie X",
+     "court": "Pie X",
+     "debut": "1903-08-04",
+     "fin": "1914-08-20",
+     "wiki": "Pie X",
+     "naissance": "Giuseppe Melchiorre Sarto",
+     "num": 257,
+     "maison": "question",
+     "armes": "pius-x",
+     "devise": {
+      "mot": "Instaurare omnia in Christo",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît XV",
+     "court": "Benoît XV",
+     "debut": "1914-09-03",
+     "fin": "1922-01-22",
+     "wiki": "Benoît XV",
+     "naissance": "Giacomo della Chiesa",
+     "num": 258,
+     "maison": "question",
+     "armes": "benedictus-xv",
+     "devise": {
+      "mot": "In Te, Domine, speravi ; non confundar in aeternum",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie XI",
+     "court": "Pie XI",
+     "debut": "1922-02-06",
+     "fin": "1939-02-10",
+     "wiki": "Pie XI",
+     "naissance": "Achille Ratti",
+     "num": 259,
+     "maison": "question",
+     "armes": "pius-xi",
+     "devise": {
+      "mot": "Pax Christi in Regno Christi",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Pie XII",
+     "court": "Pie XII",
+     "debut": "1939-03-02",
+     "fin": "1958-10-09",
+     "wiki": "Pie XII",
+     "naissance": "Eugenio Pacelli",
+     "num": 260,
+     "maison": "vatican",
+     "armes": "pius-xii",
+     "devise": {
+      "mot": "Opus justitiae pax",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean XXIII",
+     "court": "Jean XXIII",
+     "debut": "1958-10-28",
+     "fin": "1963-06-03",
+     "wiki": "Jean XXIII",
+     "naissance": "Angelo Giuseppe Roncalli",
+     "num": 261,
+     "maison": "vatican",
+     "armes": "johannes-xxiii",
+     "devise": {
+      "mot": "Obedientia et pax",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Paul VI",
+     "court": "Paul VI",
+     "debut": "1963-06-21",
+     "fin": "1978-08-06",
+     "wiki": "Paul VI",
+     "naissance": "Giovanni Battista Montini",
+     "num": 262,
+     "maison": "vatican",
+     "armes": "paulus-vi",
+     "devise": {
+      "mot": "In nomine Domini",
+      "trad": "Au nom du Seigneur",
+      "desaccord": "La « Liste des papes » donne « Cum ipso in monte » ; l'article « Paul VI » donne « In nomine Domini ».",
+      "sources": [
+       "paul_vi",
+       "liste_papes"
+      ]
+     },
+     "note": "Dernier pape couronné de la tiare, à laquelle il renonce le 13 novembre 1964 ; elle reste dans les armes du Saint-Siège.",
+     "sources": [
+      "tiare"
+     ]
+    },
+    {
+     "nom": "Jean-Paul Iᵉʳ",
+     "court": "Jean-Paul Iᵉʳ",
+     "debut": "1978-08-26",
+     "fin": "1978-09-28",
+     "wiki": "Jean-Paul Ier",
+     "naissance": "Albino Luciani",
+     "num": 263,
+     "maison": "vatican",
+     "armes": "johannes-paulus-i",
+     "devise": {
+      "mot": "Humilitas",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Jean-Paul II",
+     "court": "Jean-Paul II",
+     "debut": "1978-10-16",
+     "fin": "2005-04-02",
+     "wiki": "Jean-Paul II",
+     "naissance": "Karol Józef Wojtyła",
+     "num": 264,
+     "maison": "vatican",
+     "armes": "coat-of-arms-of-ioannes-paulus-ii",
+     "devise": {
+      "mot": "Totus tuus",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "sources": [
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Benoît XVI",
+     "court": "Benoît XVI",
+     "debut": "2005-04-19",
+     "fin": "2013-02-28",
+     "wiki": "Benoît XVI",
+     "naissance": "Joseph Aloisius Ratzinger",
+     "num": 265,
+     "maison": "vatican",
+     "armes": "coat-of-arms-of-benedictus-xvi",
+     "devise": {
+      "mot": "Cooperatores veritatis",
+      "sources": [
+       "liste_papes"
+      ]
+     },
+     "note": "Premier pape à remplacer la tiare par une mitre dans ses armes (trois bandes d'or rappelant les trois couronnes) et à placer le pallium sous l'écu. Une version à tiare apparaît aussi sur sa bannière à partir d'octobre 2010.",
+     "sources": [
+      "armoiries_papales",
+      "tiare"
+     ]
+    },
+    {
+     "nom": "François",
+     "court": "François",
+     "debut": "2013-03-13",
+     "fin": "2025-04-21",
+     "wiki": "François (pape)",
+     "naissance": "Jorge Mario Bergoglio",
+     "num": 266,
+     "maison": "vatican",
+     "armes": "coat-of-arms-of-franciscus",
+     "devise": {
+      "mot": "Miserando atque eligendo",
+      "sources": [
+       "liste_papes",
+       "armoiries_papales"
+      ],
+      "texte": "Inscrite sous l'écu pontifical."
+     },
+     "note": "Garde la mitre de son prédécesseur et inscrit sa devise sous l'écu.",
+     "sources": [
+      "armoiries_papales",
+      "tiare"
+     ]
+    },
+    {
+     "nom": "Léon XIV",
+     "court": "Léon XIV",
+     "debut": "2025-05-08",
+     "fin": null,
+     "wiki": "Léon XIV",
+     "encours": true,
+     "naissance": "Robert Francis Prevost",
+     "num": 267,
+     "maison": "vatican",
+     "armes": "insigne-leonis-xiv",
+     "devise": {
+      "mot": "In illo Uno unum",
+      "sources": [
+       "liste_papes",
+       "armoiries_papales"
+      ],
+      "texte": "Inscrite sous l'écu, comme chez François."
+     },
+     "note": "Garde la mitre à trois bandes et, comme François, inscrit sa devise sous l'écu.",
+     "sources": [
+      "armoiries_papales",
+      "tiare"
+     ]
+    }
+   ],
+   "rivaux": [
+    {
+     "nom": "Hippolyte",
+     "court": "Hippolyte",
+     "debut": 217,
+     "fin": 235,
+     "wiki": "Hippolyte de Rome",
+     "approx": "vers 217 – 235",
+     "type": "antipape"
+    },
+    {
+     "nom": "Novatien",
+     "court": "Novatien",
+     "debut": "0251-03-01",
+     "fin": 253,
+     "wiki": "Novatien",
+     "approx": "mars 251 – 253",
+     "type": "antipape"
+    },
+    {
+     "nom": "Félix II",
+     "court": "Félix II",
+     "debut": 355,
+     "fin": "0365-11-22",
+     "wiki": "Félix II",
+     "approx": "Fin 355 – 22 novembre 365",
+     "type": "antipape"
+    },
+    {
+     "nom": "Ursin",
+     "court": "Ursin",
+     "debut": "0366-09-24",
+     "fin": "0367-11-01",
+     "wiki": "Ursin (antipape)",
+     "approx": "24 septembre 366 – novembre 367",
+     "type": "antipape"
+    },
+    {
+     "nom": "Eulalius",
+     "court": "Eulalius",
+     "debut": "0418-12-27",
+     "fin": "0419-04-03",
+     "wiki": "Eulalius",
+     "type": "antipape"
+    },
+    {
+     "nom": "Laurent",
+     "court": "Laurent",
+     "debut": "0498-11-22",
+     "fin": 506,
+     "wiki": "Laurent (antipape)",
+     "approx": "22 novembre 498 – 506",
+     "type": "antipape"
+    },
+    {
+     "nom": "Dioscore",
+     "court": "Dioscore",
+     "debut": "0530-09-22",
+     "fin": "0530-10-14",
+     "wiki": "Dioscore (antipape)",
+     "type": "antipape"
+    },
+    {
+     "nom": "Théodore II",
+     "court": "Théodore II",
+     "debut": "0687-09-01",
+     "fin": "0687-12-01",
+     "wiki": "Théodore II (antipape)",
+     "approx": "septembre 687 – décembre 687",
+     "type": "antipape"
+    },
+    {
+     "nom": "Pascal",
+     "court": "Pascal",
+     "debut": "0687-09-01",
+     "fin": "0687-12-01",
+     "wiki": "Pascal (antipape)",
+     "approx": "septembre 687 – décembre 687",
+     "type": "antipape"
+    },
+    {
+     "nom": "Étienne (II)",
+     "court": "Étienne",
+     "debut": "0752-03-23",
+     "fin": "0752-03-26",
+     "wiki": "Étienne (pape éphémère)",
+     "type": "éphémère"
+    },
+    {
+     "nom": "Constantin II",
+     "court": "Constantin II",
+     "debut": "0767-06-28",
+     "fin": "0768-08-06",
+     "wiki": "Constantin II (antipape)",
+     "type": "antipape"
+    },
+    {
+     "nom": "Philippe",
+     "court": "Philippe",
+     "debut": "0768-07-31",
+     "fin": "0768-07-31",
+     "wiki": "Philippe (antipape)",
+     "approx": "31 juillet 768",
+     "type": "antipape"
+    },
+    {
+     "nom": "Jean VIII",
+     "court": "Jean VIII",
+     "debut": "0844-01-01",
+     "fin": "0844-01-01",
+     "wiki": "Jean VIII (antipape)",
+     "approx": "janvier 844",
+     "type": "antipape"
+    },
+    {
+     "nom": "Anastase III",
+     "court": "Anastase III",
+     "debut": "0855-09-01",
+     "fin": "0855-09-01",
+     "wiki": "Anastase le Bibliothécaire",
+     "approx": "Septembre 855",
+     "type": "antipape"
+    },
+    {
+     "nom": "Christophore (ou Christophe)",
+     "court": "Christophore",
+     "debut": "0903-09-01",
+     "fin": "0904-01-01",
+     "wiki": "Christophore (antipape)",
+     "approx": "septembre 903 – janvier 904",
+     "naissance": "Cristoforo",
+     "type": "antipape"
+    },
+    {
+     "nom": "Boniface VII",
+     "court": "Boniface VII",
+     "debut": "0974-06-01",
+     "fin": "0974-07-01",
+     "wiki": "Boniface VII",
+     "approx": "juin 974 – juillet 974",
+     "naissance": "Francon",
+     "type": "antipape"
+    },
+    {
+     "nom": "Boniface VII (2)",
+     "court": "Boniface VII",
+     "debut": "0984-04-25",
+     "fin": "0985-07-20",
+     "wiki": "Boniface VII",
+     "approx": "fin avril 984 – 20 juillet 985",
+     "naissance": "Francon",
+     "type": "antipape"
+    },
+    {
+     "nom": "Jean XVI",
+     "court": "Jean XVI",
+     "debut": "0997-02-01",
+     "fin": "0998-05-01",
+     "wiki": "Jean XVI",
+     "approx": "février 997 – mai 998",
+     "naissance": "Giovanni Philàgathos",
+     "type": "antipape"
+    },
+    {
+     "nom": "Grégoire VI",
+     "court": "Grégoire VI",
+     "debut": "1012-05-25",
+     "fin": "1013-04-01",
+     "wiki": "Grégoire VI (antipape)",
+     "approx": "fin mai 1012 – vers avril 1013",
+     "naissance": "Giovenni Graziano",
+     "type": "antipape"
+    },
+    {
+     "nom": "Benoît X",
+     "court": "Benoît X",
+     "debut": "1058-04-05",
+     "fin": 1059,
+     "wiki": "Benoît X",
+     "approx": "5 avril 1058 – 1059",
+     "naissance": "Giovanni Mincio",
+     "type": "antipape"
+    },
+    {
+     "nom": "Honorius II",
+     "court": "Honorius II",
+     "debut": "1061-10-28",
+     "fin": "1064-05-31",
+     "wiki": "Honorius II (antipape)",
+     "naissance": "Pietro Cadalo",
+     "type": "antipape"
+    },
+    {
+     "nom": "Clément III",
+     "court": "Clément III",
+     "debut": "1080-06-25",
+     "fin": "1100-09-08",
+     "wiki": "Clément III (antipape)",
+     "naissance": "Guiberto di Ravenna",
+     "type": "antipape"
+    },
+    {
+     "nom": "Thierry",
+     "court": "Thierry",
+     "debut": "1100-09-01",
+     "fin": "1101-01-01",
+     "wiki": "Thierry (antipape)",
+     "approx": "septembre 1100 – janvier 1101",
+     "naissance": "Teodorico",
+     "type": "antipape"
+    },
+    {
+     "nom": "Albert",
+     "court": "Albert",
+     "debut": "1101-02-01",
+     "fin": "1101-02-01",
+     "wiki": "Albert (antipape)",
+     "approx": "janvier ou février 1101 –",
+     "naissance": "Alberto",
+     "type": "antipape"
+    },
+    {
+     "nom": "Sylvestre IV",
+     "court": "Sylvestre IV",
+     "debut": "1105-11-18",
+     "fin": "1111-04-13",
+     "wiki": "Sylvestre IV",
+     "naissance": "Maginulfo",
+     "type": "antipape"
+    },
+    {
+     "nom": "Grégoire VIII",
+     "court": "Grégoire VIII",
+     "debut": "1118-03-08",
+     "fin": "1121-04-01",
+     "wiki": "Grégoire VIII (antipape)",
+     "approx": "8 mars 1118 – avril 1121",
+     "naissance": "Maurice Bourdin",
+     "type": "antipape"
+    },
+    {
+     "nom": "Célestin II",
+     "court": "Célestin II",
+     "debut": "1124-12-16",
+     "fin": "1124-12-17",
+     "wiki": "Célestin II (pape éphémère)",
+     "naissance": "Teobaldo Boccapecora",
+     "type": "éphémère"
+    },
+    {
+     "nom": "Anaclet II",
+     "court": "Anaclet II",
+     "debut": "1130-02-14",
+     "fin": "1138-01-25",
+     "wiki": "Anaclet II",
+     "naissance": "Piero Pierleoni",
+     "type": "antipape"
+    },
+    {
+     "nom": "Victor IV",
+     "court": "Victor IV",
+     "debut": "1138-03-15",
+     "fin": "1138-05-29",
+     "wiki": "Victor IV (antipape, 1138)",
+     "approx": "mi-mars 1138 – 29 mars ou 29 mai 1138",
+     "naissance": "Gregorio Conti",
+     "type": "antipape"
+    },
+    {
+     "nom": "Victor IV",
+     "court": "Victor IV",
+     "debut": "1159-09-07",
+     "fin": "1164-04-20",
+     "wiki": "Victor IV (antipape, 1159-1164)",
+     "naissance": "Ottaviano de' Monticelli",
+     "type": "antipape"
+    },
+    {
+     "nom": "Pascal III",
+     "court": "Pascal III",
+     "debut": "1164-04-22",
+     "fin": "1168-09-20",
+     "wiki": "Pascal III",
+     "naissance": "Guido da Crema",
+     "type": "antipape"
+    },
+    {
+     "nom": "Calixte III",
+     "court": "Calixte III",
+     "debut": "1168-09-25",
+     "fin": "1178-08-20",
+     "wiki": "Calixte III (antipape)",
+     "approx": "fin septembre 1168 – 20 août 1178",
+     "naissance": "Giovanni de Struma",
+     "type": "antipape"
+    },
+    {
+     "nom": "Innocent III",
+     "court": "Innocent III",
+     "debut": "1179-03-29",
+     "fin": "1180-06-01",
+     "wiki": "Innocent III (antipape)",
+     "approx": "29 mars 1179 – juin 1180",
+     "naissance": "Lando di Sezze",
+     "type": "antipape"
+    },
+    {
+     "nom": "Nicolas V",
+     "court": "Nicolas V",
+     "debut": "1328-05-12",
+     "fin": "1330-08-25",
+     "wiki": "Nicolas V (antipape)",
+     "naissance": "Pietro Rainalducci",
+     "type": "antipape"
+    },
+    {
+     "nom": "Clément VII",
+     "court": "Clément VII",
+     "debut": "1378-09-20",
+     "fin": "1394-09-16",
+     "wiki": "Clément VII (antipape)",
+     "naissance": "Robert de Genève",
+     "type": "antipape",
+     "armes": "clemente-vii-antipapa",
+     "obedience": "Avignon"
+    },
+    {
+     "nom": "Benoît XIII",
+     "court": "Benoît XIII",
+     "debut": "1394-09-28",
+     "fin": "1422-11-27",
+     "wiki": "Benoît XIII (antipape)",
+     "naissance": "Pedro Martínez de Luna y Gotor",
+     "type": "antipape",
+     "armes": "benedictus-xiii-antipapa",
+     "obedience": "Avignon"
+    },
+    {
+     "nom": "Clément VIII",
+     "court": "Clément VIII",
+     "debut": "1423-06-10",
+     "fin": "1429-07-26",
+     "wiki": "Clément VIII (antipape)",
+     "naissance": "Gil Sánchez Muñoz y Carbón",
+     "type": "antipape",
+     "armes": "clemente-viii-antipapa"
+    },
+    {
+     "nom": "Alexandre V",
+     "court": "Alexandre V",
+     "debut": "1409-06-26",
+     "fin": "1410-05-04",
+     "wiki": "Alexandre V (antipape)",
+     "naissance": "Pietro Filargo",
+     "type": "antipape",
+     "armes": "alexander-v-antipapa",
+     "obedience": "Pise"
+    },
+    {
+     "nom": "Jean XXIII",
+     "court": "Jean XXIII",
+     "debut": "1410-05-17",
+     "fin": "1415-05-29",
+     "wiki": "Jean XXIII (antipape)",
+     "naissance": "Baldassarre Cossa",
+     "type": "antipape",
+     "armes": "johannes-xxiii-antipapa",
+     "obedience": "Pise"
+    },
+    {
+     "nom": "Félix V",
+     "court": "Félix V",
+     "debut": "1439-11-05",
+     "fin": "1449-04-07",
+     "wiki": "Amédée VIII de Savoie",
+     "naissance": "Amédée de Savoie",
+     "type": "antipape",
+     "armes": "felix-v-antipapa",
+     "note": "Amédée VIII, duc de Savoie, élu par le concile de Bâle ; il renonce en 1449."
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Sede vacante",
+     "debut": "1268-11-29",
+     "fin": "1271-09-01",
+     "armes": "sede-vacante",
+     "note": "Près de trois ans sans pape : l'article « Armoiries papales » marque cette vacance par l'emblème de la sede vacante.",
+     "sources": [
+      "armoiries_papales",
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sede vacante",
+     "debut": "1292-04-04",
+     "fin": "1294-07-05",
+     "armes": "sede-vacante",
+     "note": "Plus de deux ans de vacance, close par l'élection de Célestin V.",
+     "sources": [
+      "armoiries_papales",
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sede vacante",
+     "debut": "1314-04-20",
+     "fin": "1316-08-07",
+     "armes": "sede-vacante",
+     "note": "Plus de deux ans de vacance entre Clément V et Jean XXII.",
+     "sources": [
+      "armoiries_papales",
+      "liste_papes"
+     ]
+    },
+    {
+     "nom": "Sede vacante",
+     "debut": "1415-07-04",
+     "fin": "1417-11-11",
+     "armes": "sede-vacante",
+     "note": "Après la renonciation de Grégoire XII et la déposition de l'antipape Jean XXIII, le concile de Constance élit Martin V en novembre 1417 et met fin au Grand Schisme.",
+     "sources": [
+      "histoire_papaute",
+      "liste_papes"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 550,
+     "label": "VIᵉ s.",
+     "titre": "Le sceau de plomb",
+     "texte": "La chancellerie pontificale scelle ses actes d'une bulle de plomb au nom du pape — l'identité du pape passe par le sceau, pas par un écu.",
+     "desaccord": "Le même article cite, d'après un dictionnaire de 1930, des bulles plus anciennes, dès Léon Iᵉʳ (440-461).",
+     "sources": [
+      "bulle"
+     ]
+    },
+    {
+     "annee": 756,
+     "titre": "Donation de Pépin",
+     "texte": "Pépin le Bref remet au pape de larges territoires d'Italie centrale : naissance des États pontificaux, qui durent jusqu'en 1870.",
+     "sources": [
+      "histoire_papaute"
+     ]
+    },
+    {
+     "annee": "1198-01-08",
+     "label": "1198",
+     "titre": "Les clés deviennent un emblème",
+     "texte": "Sous Innocent III, les clés quittent la main de saint Pierre pour devenir l'emblème de l'Église, sur sa bannière — pas encore les armes d'un pape.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "annee": "1277-11-25",
+     "label": "1277",
+     "titre": "Le premier écu d'un pape",
+     "texte": "Nicolas III Orsini est le premier pape attesté à faire usage des armes de sa famille, sur un écu nu.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "annee": 1296,
+     "titre": "Écu, clés et tiare",
+     "texte": "Boniface VIII fait graver ses armes sur son tombeau de son vivant et les associe aux clés, à la tiare et au pavillon : la formule des armoiries pontificales est née.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "annee": 1301,
+     "titre": "Deuxième couronne",
+     "texte": "La plupart des historiens attribuent à Boniface VIII l'ajout d'une deuxième couronne à la tiare.",
+     "desaccord": "D'autres en doutent, jugeant l'idée d'un double pouvoir contraire à sa doctrine.",
+     "sources": [
+      "tiare"
+     ]
+    },
+    {
+     "annee": 1309,
+     "titre": "Avignon",
+     "texte": "Les papes s'installent à Avignon, où sept papes français résident jusqu'en 1377.",
+     "sources": [
+      "histoire_papaute"
+     ]
+    },
+    {
+     "annee": 1342,
+     "titre": "Le trirègne",
+     "texte": "Benoît XII fait ajouter une troisième couronne à la tiare, peu avant sa mort.",
+     "desaccord": "Selon d'autres historiens, ce serait Jean XXII, ou encore Urbain V.",
+     "sources": [
+      "tiare"
+     ]
+    },
+    {
+     "annee": "1378-09-20",
+     "label": "1378",
+     "titre": "Grand Schisme",
+     "texte": "Des cardinaux élisent Robert de Genève (Clément VII) contre Urbain VI : deux, puis trois obédiences rivales, chacune avec ses armes.",
+     "sources": [
+      "histoire_papaute",
+      "armoiries_papales"
+     ]
+    },
+    {
+     "annee": "1417-11-11",
+     "label": "1417",
+     "titre": "Fin du schisme",
+     "texte": "Le concile de Constance élit Martin V (Colonna).",
+     "sources": [
+      "histoire_papaute"
+     ]
+    },
+    {
+     "annee": 1545,
+     "label": "v. 1550",
+     "titre": "L'héraldique imaginaire des papes",
+     "texte": "Vers le concile de Trente paraissent les premiers recueils d'armes inventées pour les papes antérieurs à l'héraldique ; cette tradition pèse encore sur les publications récentes.",
+     "sources": [
+      "bouye2003"
+     ]
+    },
+    {
+     "annee": 1650,
+     "label": "XVIIᵉ s.",
+     "titre": "Palliot",
+     "texte": "Le généalogiste Pierre Palliot codifie le blason papal et crée des armes pour les papes qui n'en portaient pas, notamment avant Innocent III.",
+     "sources": [
+      "armoiries_papales"
+     ]
+    },
+    {
+     "annee": "1870-09-20",
+     "label": "1870",
+     "titre": "Question romaine",
+     "texte": "Rome est prise par l'Italie ; les États pontificaux disparaissent et le pape se tient pour prisonnier au Vatican.",
+     "sources": [
+      "histoire_papaute"
+     ]
+    },
+    {
+     "annee": "1929-02-11",
+     "label": "1929",
+     "titre": "Cité du Vatican",
+     "texte": "Les accords du Latran créent l'État de la Cité du Vatican.",
+     "sources": [
+      "histoire_papaute"
+     ]
+    },
+    {
+     "annee": "1964-11-13",
+     "label": "1964",
+     "titre": "Adieu à la tiare",
+     "texte": "Paul VI renonce à porter la tiare ; elle demeure dans les armes du Saint-Siège.",
+     "sources": [
+      "tiare"
+     ]
+    },
+    {
+     "annee": "2005-04-19",
+     "label": "2005",
+     "titre": "La mitre remplace la tiare",
+     "texte": "Benoît XVI met une mitre à trois bandes au-dessus de son écu et le pallium en dessous.",
+     "sources": [
+      "armoiries_papales",
+      "tiare"
+     ]
+    },
+    {
+     "annee": "2013-03-13",
+     "label": "2013",
+     "titre": "La devise sous l'écu",
+     "texte": "François inscrit sa devise sous ses armes ; Léon XIV fait de même en 2025.",
+     "sources": [
+      "armoiries_papales"
+     ]
+    }
+   ],
+   "ornements": [
+    {
+     "id": "ecu",
+     "nom": "Écu du pape",
+     "segs": [
+      {
+       "debut": 30,
+       "fin": "1198-01-08",
+       "type": "aucune",
+       "label": "Pas d'armoiries",
+       "texte": "L'héraldique n'existe pas encore. Les armes qu'on montrera pour ces papes seront inventées après coup, à partir du XVIᵉ siècle.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1198-01-08",
+       "fin": "1277-11-25",
+       "type": "eglise",
+       "label": "Les clés, pas d'écu du pape",
+       "texte": "L'Église se dote d'armes — les clés — mais les papes n'affichent pas encore les armes de leur famille : celles qu'on leur donne sont rétrospectives.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1277-11-25",
+       "fin": "1280-08-22",
+       "type": "nu",
+       "label": "Écu nu",
+       "texte": "Nicolas III use des armes Orsini, sans ornement extérieur.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1281-02-22",
+       "fin": "1294-12-24",
+       "type": "sanstrace",
+       "label": "Sans trace",
+       "texte": "Les quatre pontificats suivants n'ont laissé aucun témoin héraldique de leur temps.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1294-12-24",
+       "fin": 2027,
+       "type": "pontificales",
+       "label": "Armes pontificales",
+       "texte": "L'écu familial du pape, sous les clés et la tiare : Boniface VIII en fait le premier un usage systématique, la formule se fixe sous Jean XXII.",
+       "sources": [
+        "bouye2003"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cles",
+     "nom": "Clés",
+     "segs": [
+      {
+       "debut": 30,
+       "fin": "1198-01-08",
+       "type": "attribut",
+       "label": "Attribut de saint Pierre",
+       "flou": true,
+       "texte": "Les clés sont l'attribut de saint Pierre, qu'il tient à la main ; elles ne sont pas encore un emblème de l'Église.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1198-01-08",
+       "fin": "1294-12-24",
+       "type": "eglise",
+       "label": "Emblème de l'Église",
+       "texte": "Détachées de l'apôtre, les clés deviennent l'emblème puis les armes de l'Église, sur la bannière pontificale.",
+       "sources": [
+        "bouye2003"
+       ]
+      },
+      {
+       "debut": "1294-12-24",
+       "fin": 2027,
+       "type": "sautoir",
+       "label": "En sautoir, avec l'écu",
+       "texte": "Posées en sautoir, liées d'un cordon de gueules : celle en bande est d'or, celle en barre d'argent.",
+       "sources": [
+        "bouye2003",
+        "armoiries_papales"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tiare",
+     "nom": "Tiare",
+     "segs": [
+      {
+       "debut": "1294-12-24",
+       "fin": 1342,
+       "type": "tiare-2",
+       "label": "Tiare au-dessus de l'écu",
+       "flou": true,
+       "texte": "Boniface VIII place la tiare au-dessus de ses armes ; la deuxième couronne lui est attribuée vers 1301, sans certitude.",
+       "sources": [
+        "bouye2003",
+        "tiare"
+       ]
+      },
+      {
+       "debut": 1342,
+       "fin": "2005-04-19",
+       "type": "tiare-3",
+       "label": "Trirègne",
+       "flou": true,
+       "texte": "Trois couronnes à partir de 1342 selon l'hypothèse la plus répandue (Benoît XII) ; d'autres la datent de Jean XXII ou d'Urbain V.",
+       "sources": [
+        "tiare"
+       ]
+      },
+      {
+       "debut": "2005-04-19",
+       "fin": 2027,
+       "type": "mitre",
+       "label": "Mitre à trois bandes",
+       "texte": "Benoît XVI remplace la tiare par la mitre ; François puis Léon XIV la gardent.",
+       "sources": [
+        "armoiries_papales",
+        "tiare"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "sous",
+     "nom": "Sous l'écu",
+     "segs": [
+      {
+       "debut": "2005-04-19",
+       "fin": "2013-02-28",
+       "type": "pallium",
+       "label": "Pallium",
+       "texte": "Benoît XVI place sous son blason le pallium, insigne de collégialité avec les archevêques et les évêques.",
+       "sources": [
+        "armoiries_papales"
+       ]
+      },
+      {
+       "debut": "2013-03-13",
+       "fin": 2027,
+       "type": "devise",
+       "label": "Devise",
+       "texte": "François puis Léon XIV inscrivent leur devise sous l'écu.",
+       "sources": [
+        "armoiries_papales"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

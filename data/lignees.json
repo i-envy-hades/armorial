@@ -1,0 +1,1937 @@
+{
+ "sources": {
+  "armoiries_fr": {
+   "label": "Wikipédia, « Armoiries de la France »",
+   "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_France"
+  },
+  "fleur_de_lys": {
+   "label": "Wikipédia, « Fleur de lys »",
+   "url": "https://fr.wikipedia.org/wiki/Fleur_de_lys"
+  },
+  "france_her": {
+   "label": "Wikipédia, « France (héraldique) »",
+   "url": "https://fr.wikipedia.org/wiki/France_(h%C3%A9raldique)"
+  },
+  "armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  },
+  "liste_monarques": {
+   "label": "Wikipédia, « Liste des monarques de France »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_de_France"
+  },
+  "heraldique": {
+   "label": "Wikipédia, « Héraldique »",
+   "url": "https://fr.wikipedia.org/wiki/H%C3%A9raldique"
+  },
+  "heraldique_fr": {
+   "label": "Wikipédia, « Héraldique française »",
+   "url": "https://fr.wikipedia.org/wiki/H%C3%A9raldique_fran%C3%A7aise"
+  },
+  "monarchie_juillet": {
+   "label": "Wikipédia, « Monarchie de Juillet »",
+   "url": "https://fr.wikipedia.org/wiki/Monarchie_de_Juillet"
+  },
+  "armorial_bonaparte": {
+   "label": "Wikipédia, « Armorial de la maison Bonaparte »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_Bonaparte"
+  },
+  "commons_fn": {
+   "label": "page Commons du parti France-Navarre",
+   "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_France_and_Navarre_(1589-1789).svg"
+  },
+  "cerf_culture": {
+   "label": "Wikipédia, « Cerf dans la culture »",
+   "url": "https://fr.wikipedia.org/wiki/Cerf_dans_la_culture"
+  },
+  "devises_royales": {
+   "label": "Wikipédia, « Liste de devises royales »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_de_devises_royales"
+  },
+  "dauphins": {
+   "label": "Wikipédia, « Liste des dauphins de France »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_dauphins_de_France"
+  },
+  "abeille": {
+   "label": "Wikipédia, « Abeille impériale »",
+   "url": "https://fr.wikipedia.org/wiki/Abeille_imp%C3%A9riale"
+  },
+  "w_charles8": {
+   "label": "Wikipédia, « Charles VIII »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_VIII_(roi_de_France)"
+  },
+  "w_louis12": {
+   "label": "Wikipédia, « Louis XII »",
+   "url": "https://fr.wikipedia.org/wiki/Louis_XII"
+  },
+  "w_francois1": {
+   "label": "Wikipédia, « François Iᵉʳ »",
+   "url": "https://fr.wikipedia.org/wiki/Fran%C3%A7ois_Ier_(roi_de_France)"
+  },
+  "w_henri2": {
+   "label": "Wikipédia, « Henri II »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_II_(roi_de_France)"
+  },
+  "w_henri3": {
+   "label": "Wikipédia, « Henri III »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_III_(roi_de_France)"
+  },
+  "w_henri4": {
+   "label": "Wikipédia, « Henri IV »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_IV_(roi_de_France)"
+  },
+  "w_louis13": {
+   "label": "Wikipédia, « Louis XIII »",
+   "url": "https://fr.wikipedia.org/wiki/Louis_XIII"
+  },
+  "w_louis14": {
+   "label": "Wikipédia, « Louis XIV »",
+   "url": "https://fr.wikipedia.org/wiki/Louis_XIV"
+  }
+ },
+ "lis": {
+  "file": "Meuble héraldique Fleur de lys.svg",
+  "auteur": "Yorick",
+  "lic": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Avant les armoiries",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Les armoiries naissent en Europe occidentale entre les années 1130 et 1170 environ ; les écus prêtés aux premiers Capétiens leur ont été attribués après coup. La page « Héraldique française » fait toutefois remonter cette histoire au XIᵉ siècle.",
+   "sources": [
+    "heraldique",
+    "heraldique_fr",
+    "armorial_cap"
+   ]
+  },
+  "inconnue": {
+   "nom": "Armoiries non documentées",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Aucune des pages consultées ne lui attribue d'armoiries.",
+   "sources": [
+    "armorial_cap"
+   ]
+  },
+  "embleme": {
+   "nom": "Le lis, emblème avant l'écu",
+   "draw": "embleme",
+   "blason": "",
+   "note": "Sous Louis VII, le lis devient un signe propre de la royauté : son sceau le montre couronné de trois lis. Plusieurs indices font penser qu'il portait des armes fleurdelisées dès la deuxième croisade (1147), mais la seule image connue des armes de France au XIIᵉ siècle est un étendard peint en marge d'un manuscrit de Saint-Victor.",
+   "sources": [
+    "fleur_de_lys",
+    "france_her"
+   ]
+  },
+  "ancien": {
+   "nom": "France ancien",
+   "draw": "ancien",
+   "blason": "D'azur semé de fleurs de lis d'or",
+   "note": "Le semé est attesté au début du XIIIᵉ siècle ; selon la page, le premier écu semé date de 1209, 1211 ou 1223.",
+   "sources": [
+    "armorial_cap",
+    "armoiries_fr",
+    "fleur_de_lys",
+    "france_her"
+   ]
+  },
+  "mi-parti-navarre": {
+   "nom": "France et Navarre, mi-parti",
+   "draw": "navarre-ancien",
+   "blason": "Mi-parti : au 1, d'azur semé de fleurs de lis d'or ; au 2, de gueules à l'escarboucle fermée et pommetée d'or, allumée en cœur de sinople",
+   "note": "Blasonnement relevé sur les sceaux royaux (corpus de Martine Dalas, cité par l'Armorial). L'Armorial en donne aussi une lecture « moderne », avec les chaînes de Navarre ; la page « Armoiries de la France » précise qu'au XIVᵉ siècle la Navarre n'est pas encore figurée par des chaînes.",
+   "sources": [
+    "armorial_cap",
+    "armoiries_fr"
+   ]
+  },
+  "moderne": {
+   "nom": "France moderne",
+   "draw": "moderne",
+   "blason": "D'azur à trois fleurs de lis d'or",
+   "note": "Le passage à trois lis est daté de 1376 et rapporté à Charles V, qui plaçait le royaume sous l'invocation de la Trinité. Un autre passage donne 1375 ; la page « France (héraldique) » relève des écus à trois lis bien plus tôt et fait de Charles VI, après 1380, le premier à les porter sur son grand sceau.",
+   "sources": [
+    "armorial_cap",
+    "armoiries_fr",
+    "fleur_de_lys",
+    "france_her"
+   ]
+  },
+  "france-navarre": {
+   "nom": "France et Navarre",
+   "file": "Coat of arms of France and Navarre (1589-1789).svg",
+   "auteur": "SanchoPanzaXXI",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+   "blason": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, de gueules aux chaînes d'or posées en orle, en croix et en sautoir, chargées en cœur d'une émeraude au naturel",
+   "note": "",
+   "sources": [
+    "armorial_cap"
+   ]
+  },
+  "orleans": {
+   "nom": "Orléans : France au lambel",
+   "draw": "orleans",
+   "blason": "D'azur à trois fleurs de lis d'or, au lambel d'argent",
+   "note": "Le 13 août 1830, le roi fait graver les armes de sa maison sur le sceau de l'État.",
+   "sources": [
+    "monarchie_juillet"
+   ]
+  },
+  "charte": {
+   "nom": "La Charte",
+   "file": "Blason fr monarchie de juillet.svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+   "blason": "D'azur aux tables de la Loi d'or, inscrites « Charte constitutionnelle 1830 »",
+   "note": "Les pages ne décrivent pas la charge de la même façon : tables de la Loi pour l'Armorial des Capétiens, livre ouvert portant « Charte de 1830 » pour la page Monarchie de Juillet, simplement « la Charte d'or » pour la page Armoiries de la France.",
+   "sources": [
+    "armorial_cap",
+    "monarchie_juillet",
+    "armoiries_fr"
+   ]
+  },
+  "empire": {
+   "nom": "L'aigle impériale",
+   "file": "Blason FR Empire français.svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+   "blason": "D'azur à l'aigle impériale d'or, empiétant un foudre du même",
+   "note": "Même blasonnement pour Napoléon Iᵉʳ et pour Napoléon III dans l'Armorial de la maison Bonaparte. La page « Armoiries de la France » blasonne autrement : une aigle essorante, la tête contournée — et précise que le blasonnement officiel ne mentionne pas la tête contournée.",
+   "sources": [
+    "armorial_bonaparte",
+    "armoiries_fr"
+   ]
+  },
+  "pologne": {
+   "nom": "Pologne, France sur le tout",
+   "file": "Blason Henri Ier de Pologne.svg",
+   "auteur": "Jimmy44",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0/deed.fr",
+   "blason": "Écartelé : aux 1 et 4, de gueules à l'aigle d'argent, becquée, lampassée, membrée, liée et couronnée d'or ; aux 2 et 3, de gueules au chevalier d'argent portant un écu d'azur à la croix patriarcale d'or ; sur le tout, d'azur à trois fleurs de lis d'or",
+   "note": "Armes d'Henri comme roi de Pologne, de 1573 à 1575 ; ensuite, les trois lis seuls.",
+   "sources": [
+    "armorial_cap"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "france",
+   "nom": "Royaume de France",
+   "titre": "Mille ans d'armes royales",
+   "lede": "D'Hugues Capet à Napoléon III, l'écu du souverain change de visage : semé de lis, trois lis, Navarre, aigle, Charte. Faites glisser la frise — l'écu central suit le règne placé sous la ligne d'or ; autour de lui, chaque roi ajoute sa couronne, ses tenants, ses colliers, ses armes de prince et sa devise.",
+   "debut": 975,
+   "fin": 1885,
+   "maisons": [
+    {
+     "id": "capetiens",
+     "nom": "Capétiens directs",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "valois",
+     "nom": "Valois",
+     "couleur": "#8fb3e8"
+    },
+    {
+     "id": "bourbons",
+     "nom": "Bourbons",
+     "couleur": "#f1ece0"
+    },
+    {
+     "id": "bonaparte",
+     "nom": "Bonaparte",
+     "couleur": "#7fcf9b"
+    },
+    {
+     "id": "orleans",
+     "nom": "Orléans",
+     "couleur": "#e79a8f"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Hugues Capet",
+     "court": "Hugues Capet",
+     "maison": "capetiens",
+     "debut": 987,
+     "fin": 996,
+     "armes": "aucune",
+     "wiki": "Hugues Capet",
+     "note": "Son sceau montre déjà une couronne ornée de trois lis — un emblème, pas encore des armoiries.",
+     "sources": [
+      "fleur_de_lys"
+     ]
+    },
+    {
+     "nom": "Robert II le Pieux",
+     "court": "Robert II",
+     "maison": "capetiens",
+     "debut": 996,
+     "fin": 1031,
+     "armes": "aucune",
+     "wiki": "Robert II le Pieux"
+    },
+    {
+     "nom": "Henri Iᵉʳ",
+     "court": "Henri Iᵉʳ",
+     "maison": "capetiens",
+     "debut": 1031,
+     "fin": 1060,
+     "armes": "aucune",
+     "wiki": "Henri Ier (roi des Francs)"
+    },
+    {
+     "nom": "Philippe Iᵉʳ",
+     "court": "Philippe Iᵉʳ",
+     "maison": "capetiens",
+     "debut": 1060,
+     "fin": 1108,
+     "armes": "aucune",
+     "wiki": "Philippe Ier (roi des Francs)"
+    },
+    {
+     "nom": "Louis VI le Gros",
+     "court": "Louis VI",
+     "maison": "capetiens",
+     "debut": 1108,
+     "fin": 1137,
+     "armes": "aucune",
+     "wiki": "Louis VI le Gros",
+     "note": "Les armes qu'on lui prête comme comte de Vexin — un semé de lis au lambel d'hermine — ont très probablement été composées bien après lui.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Louis VII le Jeune",
+     "court": "Louis VII",
+     "maison": "capetiens",
+     "debut": 1137,
+     "fin": 1180,
+     "armes": "embleme",
+     "wiki": "Louis VII le Jeune"
+    },
+    {
+     "nom": "Philippe II Auguste",
+     "court": "Philippe II",
+     "maison": "capetiens",
+     "debut": 1180,
+     "fin": 1223,
+     "armes": "ancien",
+     "wiki": "Philippe II Auguste",
+     "note": "Il use d'une bannière bleue fleurdelisée d'or dès 1191 ; le premier écu semé attesté est celui de son fils Louis, sur un sceau de 1211.",
+     "sources": [
+      "fleur_de_lys"
+     ]
+    },
+    {
+     "nom": "Louis VIII le Lion",
+     "court": "Louis VIII",
+     "maison": "capetiens",
+     "debut": 1223,
+     "fin": 1226,
+     "armes": "ancien",
+     "wiki": "Louis VIII le Lion"
+    },
+    {
+     "nom": "Louis IX, saint Louis",
+     "court": "Louis IX",
+     "maison": "capetiens",
+     "debut": 1226,
+     "fin": 1270,
+     "armes": "ancien",
+     "wiki": "Louis IX"
+    },
+    {
+     "nom": "Philippe III le Hardi",
+     "court": "Philippe III",
+     "maison": "capetiens",
+     "debut": 1270,
+     "fin": 1285,
+     "armes": "ancien",
+     "wiki": "Philippe III le Hardi"
+    },
+    {
+     "nom": "Philippe IV le Bel",
+     "court": "Philippe IV",
+     "maison": "capetiens",
+     "debut": 1285,
+     "fin": 1314,
+     "armes": "ancien",
+     "wiki": "Philippe IV le Bel",
+     "note": "La Liste des monarques de France lui donne déjà le mi-parti France-Navarre ; l'Armorial des Capétiens ne décrit ce mi-parti qu'à partir de Louis X.",
+     "sources": [
+      "liste_monarques",
+      "armorial_cap"
+     ],
+     "avant": [
+      {
+       "titre": "Prince, second fils de Philippe III",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure de gueules",
+       "file": "Blason comte fr Valois.svg",
+       "auteur": "Syryatsu",
+       "lic": "domaine public",
+       "licurl": "",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Louis X le Hutin",
+     "court": "Louis X",
+     "maison": "capetiens",
+     "debut": 1314,
+     "fin": 1316,
+     "armes": "mi-parti-navarre",
+     "wiki": "Louis X"
+    },
+    {
+     "nom": "Jean Iᵉʳ le Posthume",
+     "court": "Jean Iᵉʳ",
+     "maison": "capetiens",
+     "debut": "1316-11-14",
+     "fin": "1316-11-19",
+     "armes": "inconnue",
+     "wiki": "Jean Ier le Posthume",
+     "note": "Roi à sa naissance, il ne règne que cinq jours.",
+     "sources": [
+      "liste_monarques"
+     ]
+    },
+    {
+     "nom": "Philippe V le Long",
+     "court": "Philippe V",
+     "maison": "capetiens",
+     "debut": "1316-11-19",
+     "fin": 1322,
+     "armes": "mi-parti-navarre",
+     "wiki": "Philippe V le Long",
+     "avant": [
+      {
+       "titre": "Comte de Poitiers",
+       "dates": "avant 1316",
+       "blason": "D'azur semé de fleurs de lis d'or, au lambel componé de gueules et d'argent",
+       "file": "Armoiries Philippe d'Orléans-Valois.svg",
+       "auteur": "Odejea",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Charles IV le Bel",
+     "court": "Charles IV",
+     "maison": "capetiens",
+     "debut": 1322,
+     "fin": 1328,
+     "armes": "mi-parti-navarre",
+     "wiki": "Charles IV le Bel",
+     "avant": [
+      {
+       "titre": "Comte de la Marche",
+       "dates": "avant 1322",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure componée de gueules et d'argent",
+       "file": "Arms of Charles le Bel.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Philippe VI de Valois",
+     "court": "Philippe VI",
+     "maison": "valois",
+     "debut": 1328,
+     "fin": 1350,
+     "armes": "ancien",
+     "wiki": "Philippe VI de Valois",
+     "avant": [
+      {
+       "titre": "Comte d'Alençon, de Chartres et du Maine",
+       "dates": "avant 1326",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure engrêlée de gueules",
+       "file": "Blason duche fr Berry (ancien).svg",
+       "auteur": "Syryatsu",
+       "lic": "domaine public",
+       "licurl": "",
+       "sources": [
+        "armorial_cap"
+       ]
+      },
+      {
+       "titre": "Comte de Valois",
+       "dates": "1326-1328",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure de gueules",
+       "file": "Blason comte fr Valois.svg",
+       "auteur": "Syryatsu",
+       "lic": "domaine public",
+       "licurl": "",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Jean II le Bon",
+     "court": "Jean II",
+     "maison": "valois",
+     "debut": 1350,
+     "fin": 1364,
+     "armes": "ancien",
+     "wiki": "Jean II le Bon",
+     "avant": [
+      {
+       "titre": "Duc de Normandie et de Guyenne",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure d'argent, alias de gueules",
+       "file": "Blason comte fr Valois.svg",
+       "auteur": "Syryatsu",
+       "lic": "domaine public",
+       "licurl": "",
+       "note": "L'image montre la variante à la bordure de gueules.",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Charles V le Sage",
+     "court": "Charles V",
+     "maison": "valois",
+     "debut": 1364,
+     "fin": 1380,
+     "wiki": "Charles V le Sage",
+     "phases": [
+      {
+       "debut": 1364,
+       "fin": 1376,
+       "armes": "ancien"
+      },
+      {
+       "debut": 1376,
+       "fin": 1380,
+       "armes": "moderne"
+      }
+     ],
+     "avant": [
+      {
+       "titre": "Dauphin et duc de Normandie",
+       "dates": "1349-1364",
+       "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or à la bordure de gueules (Valois) ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules (Viennois)",
+       "file": "Arms of the dauphin Charles.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Charles VI",
+     "court": "Charles VI",
+     "maison": "valois",
+     "debut": 1380,
+     "fin": 1422,
+     "armes": "moderne",
+     "wiki": "Charles VI (roi de France)",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1368-1376",
+       "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Blason fr Dauphin de Viennois (France ancien) - Alternate design.svg",
+       "auteur": "Thom.Lanaud",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      },
+      {
+       "titre": "Dauphin",
+       "dates": "1376-1380",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "le cerf ailé",
+      "texte": "Charles VI fait du cerf ailé son emblème de prédilection, selon le Songe du vieil pèlerin de Philippe de Mézières.",
+      "file": "Tapisserie cerfs ailes.png",
+      "auteur": "Katepanomegas",
+      "lic": "domaine public",
+      "licurl": "",
+      "legende": "Tapisserie des Cerfs ailés, fin du XVᵉ siècle",
+      "sources": [
+       "cerf_culture"
+      ]
+     }
+    },
+    {
+     "nom": "Charles VII",
+     "court": "Charles VII",
+     "maison": "valois",
+     "debut": 1422,
+     "fin": 1461,
+     "armes": "moderne",
+     "wiki": "Charles VII (roi de France)",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1417-1422",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "le cerf ailé, en support",
+      "texte": "Il reprend le cerf ailé de son père comme support de ses armes, et leur donne deux anges pour tenants.",
+      "sources": [
+       "cerf_culture",
+       "armoiries_fr"
+      ]
+     }
+    },
+    {
+     "nom": "Louis XI",
+     "court": "Louis XI",
+     "maison": "valois",
+     "debut": 1461,
+     "fin": 1483,
+     "armes": "moderne",
+     "wiki": "Louis XI",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1423-1461",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Charles VIII",
+     "court": "Charles VIII",
+     "maison": "valois",
+     "debut": 1483,
+     "fin": 1498,
+     "armes": "moderne",
+     "wiki": "Charles VIII (roi de France)",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1470-1483",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "mot": "Plus qu'aultre",
+      "texte": "Devise prise en 1492.",
+      "sources": [
+       "w_charles8"
+      ]
+     }
+    },
+    {
+     "nom": "Louis XII",
+     "court": "Louis XII",
+     "maison": "valois",
+     "branche": "Valois-Orléans",
+     "debut": 1498,
+     "fin": 1515,
+     "armes": "moderne",
+     "wiki": "Louis XII",
+     "avant": [
+      {
+       "titre": "Duc d'Orléans",
+       "dates": "avant 1498",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or au lambel d'argent ; aux 2 et 3, d'argent à la guivre d'azur couronnée d'or, issante de carnation",
+       "file": "Arms of Charles dOrleans (Milan).svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "note": "L'Armorial le range parmi les porteurs de cet écartelé d'Orléans et de Milan, marqué « référence nécessaire ».",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "le porc-épic",
+      "mot": "Cominus et eminus",
+      "trad": "De près comme de loin",
+      "file": "Impresa Del porcospino di Luigi XII.svg",
+      "auteur": "Il vecchio principe",
+      "lic": "CC BY-SA 4.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+      "texte": "Il use aussi de l'abeille et de la ruche, avec « Non utitur aculeo rex cui paremus », et du cerf ailé en support.",
+      "sources": [
+       "w_louis12",
+       "devises_royales",
+       "abeille",
+       "cerf_culture"
+      ]
+     }
+    },
+    {
+     "nom": "François Iᵉʳ",
+     "court": "François Iᵉʳ",
+     "maison": "valois",
+     "branche": "Valois-Angoulême",
+     "debut": 1515,
+     "fin": 1547,
+     "armes": "moderne",
+     "wiki": "François Ier (roi de France)",
+     "devise": {
+      "embleme": "la salamandre",
+      "mot": "Nutrisco et extinguo",
+      "trad": "Je nourris et j'éteins",
+      "file": "Salamander royal badge of Francis I of France.svg",
+      "auteur": "Mlkh1234, d'après Sodacan",
+      "lic": "CC BY-SA 4.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+      "texte": "Animal réputé se nourrir du feu. Les graphies de la devise varient selon les supports.",
+      "sources": [
+       "w_francois1",
+       "devises_royales"
+      ]
+     }
+    },
+    {
+     "nom": "Henri II",
+     "court": "Henri II",
+     "maison": "valois",
+     "branche": "Valois-Angoulême",
+     "debut": 1547,
+     "fin": 1559,
+     "armes": "moderne",
+     "wiki": "Henri II (roi de France)",
+     "avant": [
+      {
+       "titre": "Duc d'Orléans",
+       "dates": "avant 1536",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or au lambel d'argent ; aux 2 et 3, d'argent à la guivre d'azur couronnée d'or, issante de carnation",
+       "file": "Arms of Charles dOrleans (Milan).svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "note": "Blasonnement marqué « référence nécessaire » dans l'Armorial.",
+       "sources": [
+        "armorial_cap"
+       ]
+      },
+      {
+       "titre": "Dauphin et duc de Bretagne",
+       "dates": "1536-1547",
+       "blason": "Écartelé : aux 1 et 4, contre-écartelé de France et de Dauphiné ; aux 2 et 3, contre-écartelé de France et d'hermine (Bretagne)",
+       "file": "Blason dauphine fr Bretagne.svg",
+       "auteur": "Odejea",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "le croissant, souvent triple et entrelacé",
+      "mot": "Donec totum impleat orbem",
+      "trad": "Jusqu'à ce qu'il emplisse le monde entier",
+      "file": "Crescents badge of the king Henry II of France.png",
+      "auteur": "auteur inconnu",
+      "lic": "domaine public",
+      "licurl": "",
+      "texte": "Le croissant est aussi l'emblème de Diane chasseresse, qu'utilisait Diane de Poitiers.",
+      "sources": [
+       "w_henri2",
+       "devises_royales"
+      ]
+     }
+    },
+    {
+     "nom": "François II",
+     "court": "François II",
+     "maison": "valois",
+     "branche": "Valois-Angoulême",
+     "debut": 1559,
+     "fin": 1560,
+     "armes": "moderne",
+     "wiki": "François II (roi de France)",
+     "avant": [
+      {
+       "titre": "Dauphin, roi d'Écosse par son mariage",
+       "dates": "1558-1559",
+       "blason": "Écartelé : aux 1 et 4, contre-écartelé de France et de Dauphiné ; aux 2 et 3, d'or au lion de gueules enclos dans un double trescheur fleurdelisé et contre-fleurdelisé du même (Écosse)",
+       "file": "Arms of Francis, Dauphin of France and King consort of Scots.svg",
+       "auteur": "Sodacan",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "note": "Il épouse Marie Stuart le 24 avril 1558.",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "mot": "Spectanda fides",
+      "trad": "C'est ainsi qu'on doit respecter la foi",
+      "texte": "La même liste lui donne aussi « Lumen rectis » (la lumière est dans la droiture).",
+      "sources": [
+       "devises_royales"
+      ]
+     }
+    },
+    {
+     "nom": "Charles IX",
+     "court": "Charles IX",
+     "maison": "valois",
+     "branche": "Valois-Angoulême",
+     "debut": 1560,
+     "fin": 1574,
+     "armes": "moderne",
+     "wiki": "Charles IX (roi de France)"
+    },
+    {
+     "nom": "Henri III",
+     "court": "Henri III",
+     "maison": "valois",
+     "branche": "Valois-Angoulême",
+     "debut": 1574,
+     "fin": 1589,
+     "wiki": "Henri III (roi de France)",
+     "note": "Roi de Pologne quand il hérite de la France, il garde un temps les armes de Pologne, France sur le tout.",
+     "sources": [
+      "armorial_cap"
+     ],
+     "avant": [
+      {
+       "titre": "Duc d'Anjou",
+       "dates": "avant 1573",
+       "blason": "D'azur à trois fleurs de lis d'or, au lambel de gueules à trois pendants",
+       "file": "Arms of Alexandre d'Anjou.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      },
+      {
+       "titre": "Roi de Pologne",
+       "dates": "1573-1575",
+       "blason": "Écartelé : aux 1 et 4, de gueules à l'aigle d'argent, becquée, lampassée, membrée, liée et couronnée d'or ; aux 2 et 3, de gueules au chevalier d'argent portant un écu d'azur à la croix patriarcale d'or ; sur le tout, d'azur à trois fleurs de lis d'or",
+       "file": "Blason Henri Ier de Pologne.svg",
+       "auteur": "Jimmy44",
+       "lic": "CC BY 3.0",
+       "licurl": "https://creativecommons.org/licenses/by/3.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "trois couronnes",
+      "mot": "Manet ultima caelo",
+      "trad": "La dernière est au ciel",
+      "texte": "La Liste de devises royales en donne une forme longue : « Manet ultima coelo donec totum compleat orbem ».",
+      "sources": [
+       "w_henri3",
+       "devises_royales"
+      ]
+     },
+     "phases": [
+      {
+       "debut": 1574,
+       "fin": 1575,
+       "armes": "pologne"
+      },
+      {
+       "debut": 1575,
+       "fin": 1589,
+       "armes": "moderne"
+      }
+     ]
+    },
+    {
+     "nom": "Henri IV",
+     "court": "Henri IV",
+     "maison": "bourbons",
+     "debut": 1589,
+     "fin": 1610,
+     "armes": "france-navarre",
+     "wiki": "Henri IV (roi de France)",
+     "avant": [
+      {
+       "titre": "Roi de Navarre",
+       "dates": "avant 1589",
+       "blason": "Grandes armes : parti de trois, coupé d'un — Navarre, Bourbon, France et Albret, Aragon, Foix et Béarn, Armagnac et Rodez, Évreux, Castille et Léon ; sur le tout, Bigorre",
+       "file": "Henri de Bourbon Roi de Navarre.svg",
+       "auteur": "Fauntleroy",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+       "note": "Ses armes simples : écartelé de Navarre et de Bourbon (d'azur à trois fleurs de lis d'or à la bande de gueules).",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ],
+     "devise": {
+      "mot": "Duo prætendit unus",
+      "trad": "L'une protège l'autre (la France et la Navarre)",
+      "texte": "La Liste de devises royales traduit : « L'une protège les deux autres ».",
+      "sources": [
+       "w_henri4",
+       "devises_royales"
+      ]
+     }
+    },
+    {
+     "nom": "Louis XIII",
+     "court": "Louis XIII",
+     "maison": "bourbons",
+     "debut": 1610,
+     "fin": 1643,
+     "armes": "france-navarre",
+     "wiki": "Louis XIII",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1601-1610",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "la massue d'Hercule",
+      "mot": "Erit haec quoque cognita monstris",
+      "trad": "Les monstres aussi la connaîtront",
+      "texte": "Les traductions varient d'une page à l'autre.",
+      "sources": [
+       "w_louis13"
+      ]
+     }
+    },
+    {
+     "nom": "Louis XIV",
+     "court": "Louis XIV",
+     "maison": "bourbons",
+     "debut": 1643,
+     "fin": 1715,
+     "armes": "france-navarre",
+     "wiki": "Louis XIV",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1638-1643",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ],
+     "devise": {
+      "embleme": "le soleil",
+      "mot": "Nec pluribus impar",
+      "trad": "Supérieur à tous",
+      "texte": "Autres traductions : « à nul autre pareil », « seul contre tous ». Le surnom de « Roi-Soleil » est tardif : il remonte à la monarchie de Juillet.",
+      "sources": [
+       "w_louis14",
+       "devises_royales"
+      ]
+     }
+    },
+    {
+     "nom": "Louis XV",
+     "court": "Louis XV",
+     "maison": "bourbons",
+     "debut": 1715,
+     "fin": 1774,
+     "armes": "france-navarre",
+     "wiki": "Louis XV",
+     "avant": [
+      {
+       "titre": "Dauphin",
+       "dates": "1712-1715",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Louis XVI",
+     "court": "Louis XVI",
+     "maison": "bourbons",
+     "debut": 1774,
+     "fin": "1792-09-21",
+     "armes": "france-navarre",
+     "wiki": "Louis XVI",
+     "note": "Suspendu le 10 août 1792, il perd la couronne le 21 septembre.",
+     "sources": [
+      "liste_monarques"
+     ],
+     "avant": [
+      {
+       "titre": "Duc de Berry",
+       "dates": "avant 1765",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or (France) ; aux 2 et 3, d'azur à trois fleurs de lis d'or à la bordure engrêlée de gueules (Berry) ; à la bordure de gueules",
+       "file": "Blason FR duc de Berry (Bourbon).svg",
+       "auteur": "Biplanjaune",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      },
+      {
+       "titre": "Dauphin",
+       "dates": "1765-1774",
+       "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, d'or au dauphin d'azur, crêté, barbé, loré, peautré et oreillé de gueules",
+       "file": "Arms of the capetian dauphins du Viennois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap",
+        "dauphins"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Louis XVIII",
+     "court": "Louis XVIII",
+     "maison": "bourbons",
+     "debut": "1814-04-06",
+     "fin": "1815-03-20",
+     "armes": "moderne",
+     "wiki": "Louis XVIII",
+     "note": "Il fuit Paris dans la nuit du 20 mars 1815, au retour de Napoléon. L'Armorial des Capétiens donne encore aux rois de la Restauration le parti France-Navarre, porté « occasionnellement » selon la page Commons de ce parti ; d'autres pages ne parlent que des lis.",
+     "sources": [
+      "liste_monarques",
+      "armorial_cap",
+      "commons_fn",
+      "armoiries_fr"
+     ],
+     "avant": [
+      {
+       "titre": "Comte de Provence",
+       "blason": "D'azur à trois fleurs de lis d'or, à la bordure dentelée de gueules",
+       "file": "Arms of Louis de Provence.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "note": "Michel Popoff, cité par l'Armorial, blasonne autrement : écartelé de France et de Provence (d'azur à une fleur de lis d'or).",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Louis XVIII",
+     "court": "Louis XVIII",
+     "suite": true,
+     "maison": "bourbons",
+     "debut": "1815-07-08",
+     "fin": "1824-09-16",
+     "armes": "moderne",
+     "wiki": "Louis XVIII",
+     "note": "Il rentre à Paris le 8 juillet 1815.",
+     "sources": [
+      "liste_monarques"
+     ]
+    },
+    {
+     "nom": "Charles X",
+     "court": "Charles X",
+     "maison": "bourbons",
+     "debut": "1824-09-16",
+     "fin": 1830,
+     "armes": "moderne",
+     "wiki": "Charles X",
+     "note": "L'Armorial des Capétiens lui donne aussi le parti France-Navarre ; d'autres pages ne parlent que des lis.",
+     "sources": [
+      "armorial_cap",
+      "armoiries_fr"
+     ],
+     "avant": [
+      {
+       "titre": "Comte d'Artois",
+       "blason": "D'azur à trois fleurs de lis d'or, à la bordure crénelée de gueules",
+       "file": "Arms of Charles dArtois.svg",
+       "auteur": "Carlodangio",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Napoléon Iᵉʳ",
+     "court": "Napoléon Iᵉʳ",
+     "maison": "bonaparte",
+     "debut": "1804-05-18",
+     "fin": "1814-04-06",
+     "armes": "empire",
+     "wiki": "Napoléon Ier",
+     "devise": {
+      "embleme": "l'abeille",
+      "texte": "L'aigle est l'emblème impérial ; l'abeille, proposée par Vivant Denon et Cambacérès, devient son symbole personnel et paraît au sacre du 2 décembre 1804.",
+      "sources": [
+       "abeille"
+      ]
+     }
+    },
+    {
+     "nom": "Napoléon Iᵉʳ, les Cent-Jours",
+     "court": "Cent-Jours",
+     "suite": true,
+     "maison": "bonaparte",
+     "debut": "1815-03-20",
+     "fin": "1815-06-22",
+     "armes": "empire",
+     "wiki": "Napoléon Ier",
+     "note": "Rentré à Paris le 20 mars 1815, il abdique le 22 juin, quatre jours après Waterloo.",
+     "sources": [
+      "liste_monarques"
+     ]
+    },
+    {
+     "nom": "Napoléon II",
+     "court": "Napoléon II",
+     "maison": "bonaparte",
+     "debut": "1815-06-22",
+     "fin": "1815-07-07",
+     "armes": "empire",
+     "wiki": "Napoléon II",
+     "note": "Désigné par l'abdication de son père, il n'est jamais proclamé ni reconnu.",
+     "sources": [
+      "liste_monarques",
+      "armorial_bonaparte"
+     ]
+    },
+    {
+     "nom": "Napoléon III",
+     "court": "Napoléon III",
+     "maison": "bonaparte",
+     "debut": 1852,
+     "fin": "1870-09-04",
+     "armes": "empire",
+     "wiki": "Napoléon III",
+     "devise": {
+      "embleme": "l'abeille",
+      "texte": "Il rétablit l'abeille impériale, dans sa forme traditionnelle aux ailes repliées.",
+      "sources": [
+       "abeille"
+      ]
+     }
+    },
+    {
+     "nom": "Louis-Philippe Iᵉʳ",
+     "court": "Louis-Philippe",
+     "maison": "orleans",
+     "debut": 1830,
+     "fin": 1848,
+     "wiki": "Louis-Philippe Ier",
+     "phases": [
+      {
+       "debut": 1830,
+       "fin": "1831-02-16",
+       "armes": "orleans"
+      },
+      {
+       "debut": "1831-02-16",
+       "fin": 1848,
+       "armes": "charte"
+      }
+     ],
+     "avant": [
+      {
+       "titre": "Duc d'Orléans",
+       "dates": "avant 1830",
+       "blason": "D'azur à trois fleurs de lis d'or, au lambel d'argent",
+       "file": "Blason duché fr Orléans (moderne).svg",
+       "auteur": "Syryatsu",
+       "lic": "domaine public",
+       "licurl": "",
+       "note": "Devenu roi, il garde d'abord ces armes sous la couronne royale.",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Première République",
+     "debut": "1792-09-21",
+     "fin": "1804-05-18",
+     "wiki": "Première République (France)",
+     "note": "Des décrets de la Convention abolissent les armoiries royales.",
+     "sources": [
+      "heraldique_fr"
+     ]
+    },
+    {
+     "nom": "Deuxième République",
+     "debut": 1848,
+     "fin": 1852,
+     "wiki": "Deuxième République (France)"
+    },
+    {
+     "nom": "Troisième République",
+     "debut": "1870-09-04",
+     "fin": 1885,
+     "wiki": "Troisième République (France)"
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 987,
+     "titre": "Une couronne à trois lis",
+     "texte": "Le sceau d'Hugues Capet montre une couronne ornée de trois lis : le lis est déjà un signe royal, mais pas encore une armoirie.",
+     "sources": [
+      "fleur_de_lys"
+     ]
+    },
+    {
+     "annee": 1150,
+     "label": "v. 1150",
+     "titre": "Naissance des armoiries",
+     "texte": "Les armoiries apparaissent en Europe occidentale entre les années 1130 et 1170 environ. Tout écu prêté à un roi plus ancien est une attribution tardive.",
+     "desaccord": "La page « Héraldique française » fait remonter cette histoire au XIᵉ siècle.",
+     "sources": [
+      "heraldique",
+      "heraldique_fr"
+     ]
+    },
+    {
+     "annee": 1179,
+     "titre": "Le manteau semé de lis",
+     "texte": "Au sacre de Philippe Auguste, le manteau royal est probablement déjà bleu semé de lis d'or ; la composition est assurée vers 1200.",
+     "sources": [
+      "fleur_de_lys"
+     ]
+    },
+    {
+     "annee": 1211,
+     "titre": "Le premier écu semé",
+     "texte": "Un sceau du prince Louis, futur Louis VIII, porte le premier écu semé de lis attesté.",
+     "desaccord": "D'autres pages donnent 1209, ou 1223 avec un sceau de Louis VIII devenu roi.",
+     "sources": [
+      "fleur_de_lys",
+      "france_her"
+     ]
+    },
+    {
+     "annee": 1314,
+     "titre": "La Navarre entre dans l'écu",
+     "texte": "Rois de France et de Navarre, Louis X puis ses frères mi-partissent le semé de France avec l'escarboucle de Navarre.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1328,
+     "titre": "Retour au semé seul",
+     "texte": "Avec Philippe VI, premier Valois, l'écu royal redevient le seul semé de France.",
+     "sources": [
+      "liste_monarques"
+     ]
+    },
+    {
+     "annee": 1376,
+     "titre": "Trois fleurs de lis",
+     "texte": "Charles V réduit le semé à trois lis, pour placer le royaume sous l'invocation de la Trinité.",
+     "desaccord": "Un autre passage dit 1375 ; la page « France (héraldique) » trouve des écus à trois lis dès Louis VIII et voit Charles VI, après 1380, les porter le premier sur son grand sceau.",
+     "sources": [
+      "armoiries_fr",
+      "fleur_de_lys",
+      "france_her"
+     ]
+    },
+    {
+     "annee": 1469,
+     "titre": "Le collier de Saint-Michel",
+     "texte": "Louis XI fonde l'ordre de Saint-Michel : son collier entoure désormais l'écu royal, que tiennent deux anges depuis Charles VII.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "annee": 1515,
+     "titre": "La couronne se ferme",
+     "texte": "Introduite par Louis XII, la couronne fermée devient la règle avec François Iᵉʳ.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "annee": 1578,
+     "titre": "Le collier du Saint-Esprit",
+     "texte": "Henri III crée l'ordre du Saint-Esprit ; les rois font très souvent paraître les deux colliers autour de leurs armes.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "annee": 1589,
+     "titre": "France et Navarre",
+     "texte": "Roi de Navarre devenu roi de France, Henri IV partit les trois lis avec les chaînes de Navarre ; ses successeurs gardent ce parti.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1790,
+     "titre": "Les armoiries abolies",
+     "texte": "Le 19 juin 1790, l'Assemblée constituante supprime la noblesse et ses signes ; les armoiries, tenues pour des signes de féodalité, tombent avec elle. Des décrets de la Convention abolissent ensuite les armoiries royales.",
+     "desaccord": "D'autres pages datent la suppression de 1789, ou font courir les armes royales jusqu'en 1792.",
+     "sources": [
+      "heraldique_fr",
+      "france_her",
+      "armoiries_fr"
+     ]
+    },
+    {
+     "annee": 1804,
+     "titre": "L'aigle impériale",
+     "texte": "Napoléon prend pour armes une aigle d'or sur champ d'azur, inspirée de l'aigle romaine.",
+     "sources": [
+      "armoiries_fr",
+      "armorial_bonaparte"
+     ]
+    },
+    {
+     "annee": 1814,
+     "titre": "Le retour des lis",
+     "texte": "La Restauration ramène les fleurs de lis.",
+     "sources": [
+      "armoiries_fr",
+      "fleur_de_lys"
+     ]
+    },
+    {
+     "annee": "1830-08-13",
+     "label": "1830",
+     "titre": "Le lambel d'Orléans",
+     "texte": "Le 13 août 1830, Louis-Philippe fait mettre les armes de sa maison — France au lambel d'argent — sur le sceau de l'État.",
+     "sources": [
+      "monarchie_juillet"
+     ]
+    },
+    {
+     "annee": "1831-02-16",
+     "label": "1831",
+     "titre": "La Charte remplace les lis",
+     "texte": "Après les émeutes de février 1831, une ordonnance du 16 février substitue aux armes d'Orléans un écu portant la Charte de 1830.",
+     "sources": [
+      "monarchie_juillet"
+     ]
+    },
+    {
+     "annee": 1852,
+     "titre": "L'aigle revient",
+     "texte": "Le Second Empire reprend l'aigle de Napoléon Iᵉʳ, sous le même blasonnement.",
+     "sources": [
+      "armorial_bonaparte",
+      "armoiries_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1211,
+     "fin": 1314,
+     "file": "Arms of the Kingdom of France (Ancien).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Le semé sous la couronne ouverte",
+     "ornements": [
+      "couronne royale fleurdelisée ouverte"
+     ],
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1314,
+     "fin": 1328,
+     "file": "Arms of the Kingdom of France & Navarre (Ancien).svg",
+     "auteur": "Sodacan (travail dérivé)",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "France et Navarre sous la couronne ouverte",
+     "ornements": [
+      "couronne royale fleurdelisée ouverte"
+     ],
+     "note": "La page date ce mi-parti de 1305, quand le futur Louis X devient roi de Navarre.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1328,
+     "fin": 1376,
+     "file": "Arms of the Kingdom of France (Ancien).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Le semé sous la couronne ouverte",
+     "ornements": [
+      "couronne royale fleurdelisée ouverte"
+     ],
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1376,
+     "fin": 1469,
+     "file": "Arms of the Kingdom of France (Moderne).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Les trois lis sous la couronne ouverte",
+     "ornements": [
+      "couronne royale fleurdelisée ouverte"
+     ],
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1469,
+     "fin": 1515,
+     "file": "Royal Coat of Arms of Valois France.svg",
+     "auteur": "Sodacan (travail dérivé)",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Anges tenants et collier de Saint-Michel",
+     "ornements": [
+      "couronne royale fleurdelisée ouverte",
+      "collier de l'ordre de Saint-Michel",
+      "deux anges tenants, vêtus d'argent"
+     ],
+     "note": "Charles VII donne aux armes deux anges pour tenants, au titre de fille aînée de l'Église ; son fils Louis XI fonde l'ordre de Saint-Michel en 1469.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1515,
+     "fin": 1578,
+     "file": "Coat of arms of France 1515-1578.svg",
+     "auteur": "Mlkh1234",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+     "titre": "La couronne se ferme",
+     "ornements": [
+      "couronne royale fleurdelisée fermée",
+      "collier de l'ordre de Saint-Michel",
+      "deux anges tenants"
+     ],
+     "note": "Louis XII introduit la couronne fermée au début du XVIᵉ siècle ; François Iᵉʳ en fait l'usage ordinaire.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1578,
+     "fin": 1589,
+     "file": "Royal Coat of Arms of France.svg",
+     "auteur": "Sodacan (travail dérivé)",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Deux colliers",
+     "ornements": [
+      "couronne royale fleurdelisée fermée",
+      "colliers des ordres de Saint-Michel et du Saint-Esprit",
+      "deux anges tenants"
+     ],
+     "note": "Henri III crée l'ordre du Saint-Esprit en 1578 ; ses successeurs montrent très souvent les deux colliers.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1589,
+     "fin": "1792-09-21",
+     "file": "Grand Royal Coat of Arms of France & Navarre.svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Les grandes armes de France et de Navarre",
+     "ornements": [
+      "écus de France et de Navarre accolés",
+      "heaume d'or doublé de gueules, lambrequins d'azur et d'or",
+      "couronne royale fermée",
+      "colliers de Saint-Michel et du Saint-Esprit",
+      "deux anges aux dalmatiques de France et de Navarre, tenant chacun une bannière",
+      "manteau d'azur fleurdelisé doublé d'hermine, sous un pavillon",
+      "cri « Montjoie Saint-Denis », oriflamme, devise « Lilia non laborant neque nent »"
+     ],
+     "note": "Manteau, pavillon, oriflamme, cri et devise s'ajoutent aux XVIIᵉ et XVIIIᵉ siècles. Les deux écus accolés valent un parti.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": "1804-05-18",
+     "fin": "1814-04-06",
+     "file": "Imperial Coat of Arms of France (1804-1815).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "L'aigle sous la couronne impériale",
+     "ornements": [
+      "couronne impériale fermée",
+      "grand collier de la Légion d'honneur",
+      "manteau semé d'abeilles"
+     ],
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": "1814-04-06",
+     "fin": "1815-03-20",
+     "file": "Coat of Arms of the Bourbon Restoration (1815-30) (1).svg",
+     "auteur": "Sodacan et Louis de Lauban",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+     "titre": "Les lis restaurés",
+     "ornements": [
+      "couronne royale fleurdelisée fermée",
+      "colliers de Saint-Michel et du Saint-Esprit"
+     ],
+     "note": "La tendance est aux seules armes de France, mais les Bourbons reprennent aussi celles de Navarre.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": "1815-03-20",
+     "fin": "1815-07-07",
+     "file": "Imperial Coat of Arms of France (1804-1815).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "L'aigle sous la couronne impériale",
+     "ornements": [
+      "couronne impériale fermée",
+      "grand collier de la Légion d'honneur",
+      "manteau semé d'abeilles"
+     ],
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": "1815-07-08",
+     "fin": 1830,
+     "file": "Coat of Arms of the Bourbon Restoration (1815-30) (1).svg",
+     "auteur": "Sodacan et Louis de Lauban",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+     "titre": "Les lis restaurés",
+     "ornements": [
+      "couronne royale fleurdelisée fermée",
+      "colliers de Saint-Michel et du Saint-Esprit"
+     ],
+     "note": "La tendance est aux seules armes de France, mais les Bourbons reprennent aussi celles de Navarre.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": 1830,
+     "fin": "1831-02-16",
+     "file": "Coat of Arms of the July Monarchy (1830-31) (variant).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "Orléans, sceptre et drapeaux tricolores",
+     "ornements": [
+      "couronne royale fermée",
+      "cordon de la Légion d'honneur",
+      "sceptre et main de justice en sautoir",
+      "drapeaux tricolores derrière l'écu"
+     ],
+     "note": "L'ordonnance du 13 août 1830 fixe ainsi le sceau de l'État.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    },
+    {
+     "debut": "1831-02-16",
+     "fin": 1848,
+     "file": "Coat of Arms of the July Monarchy (1831-48) (variant).svg",
+     "auteur": "Sodacan (travail dérivé)",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "La Charte, sceptre et drapeaux tricolores",
+     "ornements": [
+      "couronne royale fermée, sans fleurs de lis",
+      "cordon de la Légion d'honneur",
+      "sceptre et main de justice en sautoir",
+      "drapeaux tricolores derrière l'écu"
+     ],
+     "note": "Les fleurs de lis disparaissent aussi de la couronne, selon l'Armorial des Capétiens.",
+     "sources": [
+      "armoiries_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "debut": 1852,
+     "fin": "1870-09-04",
+     "file": "Coat of Arms Second French Empire (1852–1870)-2.svg",
+     "auteur": "Spedona",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+     "titre": "L'aigle du Second Empire",
+     "ornements": [
+      "couronne impériale fermée",
+      "grand collier de la Légion d'honneur"
+     ],
+     "note": "Mêmes armes qu'au Premier Empire ; seuls les ornements extérieurs changent.",
+     "sources": [
+      "armoiries_fr"
+     ]
+    }
+   ],
+   "ornements": [
+    {
+     "id": "couronne",
+     "nom": "Couronne",
+     "segs": [
+      {
+       "debut": 1211,
+       "fin": 1515,
+       "type": "ouverte",
+       "label": "ouverte",
+       "texte": "Couronne royale fleurdelisée ouverte.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": 1515,
+       "fin": "1792-09-21",
+       "type": "fermee",
+       "label": "fermée",
+       "texte": "Couronne royale fleurdelisée fermée, introduite par Louis XII, généralisée par François Iᵉʳ.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1804-05-18",
+       "fin": "1814-04-06",
+       "type": "imperiale",
+       "label": "impériale",
+       "texte": "Couronne impériale fermée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1814-04-06",
+       "fin": "1815-03-20",
+       "type": "fermee",
+       "label": "fermée",
+       "texte": "Couronne royale fermée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1815-03-20",
+       "fin": "1815-07-07",
+       "type": "imperiale",
+       "label": "impériale",
+       "texte": "Couronne impériale fermée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1815-07-08",
+       "fin": "1831-02-16",
+       "type": "fermee",
+       "label": "fermée",
+       "texte": "Couronne royale fermée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1831-02-16",
+       "fin": 1848,
+       "type": "fermee-sans-lis",
+       "label": "sans lis",
+       "texte": "Couronne royale fermée, d'où les fleurs de lis disparaissent.",
+       "sources": [
+        "armoiries_fr",
+        "armorial_cap"
+       ]
+      },
+      {
+       "debut": 1852,
+       "fin": "1870-09-04",
+       "type": "imperiale",
+       "label": "impériale",
+       "texte": "Couronne impériale fermée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tenants",
+     "nom": "Tenants",
+     "segs": [
+      {
+       "debut": 1422,
+       "fin": "1792-09-21",
+       "flou": true,
+       "type": "anges",
+       "label": "deux anges",
+       "texte": "Charles VII donne aux armes deux anges pour tenants, au titre de fille aînée de l'Église ; ils restent sur les grandes armes jusqu'à la Révolution. La date exacte de leur apparition n'est pas donnée.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": 1422,
+       "fin": 1461,
+       "type": "cerfs",
+       "label": "cerfs ailés",
+       "texte": "Le cerf ailé, emblème de prédilection de Charles VI, est choisi comme support des armes par Charles VII.",
+       "sources": [
+        "cerf_culture"
+       ]
+      },
+      {
+       "debut": 1498,
+       "fin": 1515,
+       "type": "cerfs",
+       "label": "cerfs ailés",
+       "texte": "Louis XII reprend à son tour le cerf ailé comme support de ses armes.",
+       "sources": [
+        "cerf_culture"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "colliers",
+     "nom": "Colliers",
+     "segs": [
+      {
+       "debut": 1469,
+       "fin": 1578,
+       "type": "sm",
+       "label": "Saint-Michel",
+       "texte": "Collier de l'ordre de Saint-Michel, fondé par Louis XI en 1469.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": 1578,
+       "fin": "1792-09-21",
+       "type": "sm-se",
+       "label": "Saint-Michel et Saint-Esprit",
+       "texte": "Colliers des ordres de Saint-Michel et du Saint-Esprit ; l'ordre du Saint-Esprit est créé par Henri III en 1578.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1804-05-18",
+       "fin": "1814-04-06",
+       "type": "lh",
+       "label": "Légion d'honneur",
+       "texte": "Grand collier de la Légion d'honneur.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1814-04-06",
+       "fin": "1815-03-20",
+       "type": "sm-se",
+       "label": "Saint-Michel et Saint-Esprit",
+       "texte": "Colliers des ordres de Saint-Michel et du Saint-Esprit.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1815-03-20",
+       "fin": "1815-07-07",
+       "type": "lh",
+       "label": "Légion d'honneur",
+       "texte": "Grand collier de la Légion d'honneur.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1815-07-08",
+       "fin": 1830,
+       "type": "sm-se",
+       "label": "Saint-Michel et Saint-Esprit",
+       "texte": "Colliers des ordres de Saint-Michel et du Saint-Esprit.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": 1830,
+       "fin": 1848,
+       "type": "lh",
+       "label": "Légion d'honneur",
+       "texte": "Cordon de la Légion d'honneur.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": 1852,
+       "fin": "1870-09-04",
+       "type": "lh",
+       "label": "Légion d'honneur",
+       "texte": "Grand collier de la Légion d'honneur.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "manteau",
+     "nom": "Manteau",
+     "segs": [
+      {
+       "debut": 1600,
+       "fin": "1792-09-21",
+       "flou": true,
+       "type": "fleurdelise",
+       "label": "manteau, pavillon, cri, devise",
+       "texte": "Manteau d'azur fleurdelisé doublé d'hermine, pavillon, oriflamme, cri « Montjoie Saint-Denis » et devise « Lilia non laborant neque nent » : ajoutés aux XVIIᵉ et XVIIIᵉ siècles, sans date plus précise.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1804-05-18",
+       "fin": "1814-04-06",
+       "type": "abeilles",
+       "label": "manteau semé d'abeilles",
+       "texte": "Manteau semé d'abeilles.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      },
+      {
+       "debut": "1815-03-20",
+       "fin": "1815-07-07",
+       "type": "abeilles",
+       "label": "manteau semé d'abeilles",
+       "texte": "Manteau semé d'abeilles.",
+       "sources": [
+        "armoiries_fr"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

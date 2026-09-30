@@ -68,19 +68,23 @@
   {
     "nom": "Edmond FitzAlan (2e comte d'Arundel)",
     "meta": "1285–1326 · aristocrate anglais",
-    "blason": "",
-    "desc": "",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "blason": "De gueules au lion d'or",
+    "desc": "Armes des FitzAlan, comtes d'Arundel. Les rôles d'armes lus les enregistrent pour Richard FitzAlan (1300), non pour lui en personne.",
+    "file": "FitzAlan arms.svg",
+    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
+    "auteur": "Newm30",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
+    }
   },
   {
     "nom": "Henri II (roi d'Angleterre)",
     "meta": "1133–1189 · roi d'Angleterre de 1154 à 1189",
     "blason": "",
-    "desc": "",
+    "desc": "Attribution incertaine. La page Commons signale ces armes comme non sourcées ; Wikipédia (fr) prête à Henri II un écu à deux léopards, tandis que l'article anglais, d'après Ailes (1982), admet un ou deux lions, faute de témoignage direct.",
     "file": "Royal Arms of England (1154-1189).svg",
     "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
     "auteur": "Sodacan",
@@ -91,7 +95,7 @@
     "nom": "Henri le Jeune",
     "meta": "1155–1183 · prince anglais de la dynastie des Plantagenêts",
     "blason": "",
-    "desc": "",
+    "desc": "Le fichier représente les armes royales d'Angleterre de 1154 à 1189 ; la page Commons signale cette attribution comme non sourcée.",
     "file": "Royal Arms of England (1154-1189).svg",
     "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
     "auteur": "Sodacan",
@@ -102,7 +106,7 @@
     "nom": "Jeanne d'Angleterre (1165-1199)",
     "meta": "1165–1199 · fille d'Henri II d'Angleterre, reine de Sicile, puis comtesse de Toulouse",
     "blason": "",
-    "desc": "",
+    "desc": "Le fichier représente les armes royales d'Angleterre de 1154 à 1189 ; la page Commons signale cette attribution comme non sourcée.",
     "file": "Royal Arms of England (1154-1189).svg",
     "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
     "auteur": "Sodacan",
@@ -112,46 +116,63 @@
   {
     "nom": "John FitzAlan",
     "meta": "1246–1272 · noble anglais",
-    "blason": "",
-    "desc": "",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "blason": "De gueules au lion d'or",
+    "desc": "Armes des FitzAlan, comtes d'Arundel. Les rôles d'armes lus les enregistrent pour Richard FitzAlan (1300), non pour lui en personne.",
+    "file": "FitzAlan arms.svg",
+    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
+    "auteur": "Newm30",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
+    }
   },
   {
     "nom": "Richard FitzAlan",
     "meta": "1267–1302 · 8e comte Arundel",
-    "blason": "",
-    "desc": "",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "blason": "De gueules au lion d'or",
+    "desc": "Le Falkirk Roll, le Glover's Roll et le poème de Caerlaverock (1300) lui donnent ces armes, qui figurent aussi sur son sceau de la lettre des barons (1301). Les FitzAlan les tenaient des d'Aubigny, comtes d'Arundel avant eux.",
+    "file": "FitzAlan arms.svg",
+    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
+    "auteur": "Newm30",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
+    }
   },
   {
     "nom": "Paul IV",
     "meta": "1476–1559 · 223e pape de l'Église catholique, de 1555 à 1559",
-    "blason": "",
+    "blason": "De gueules à trois fasces d'argent",
     "desc": "",
     "file": "C o a Paulus IV.svg",
     "page": "https://commons.wikimedia.org/wiki/File:C_o_a_Paulus_IV.svg",
     "auteur": "Echando una mano",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:C_o_a_Paulus_IV.svg",
+      "note": "armes des Carafa"
+    }
   },
   {
     "nom": "Pie II",
     "meta": "1405–1464 · 210e pape de l'Église catholique, de 1458 à 1464",
-    "blason": "D'argent à la croix d'azur chargée de cinq croissants d'or. [Source du blasonnement : fichier Commons \"C o a Pio II.svg\", ImageDescription, citant http://www.araldicavaticana.com/ppio02.htm — https://commons.wikimedia.org/wiki/File:C_o_a_Pio_II.svg]",
+    "blason": "D'argent à la croix d'azur chargée de cinq croissants d'or",
     "desc": "",
     "file": "C o a Pio II.svg",
     "page": "https://commons.wikimedia.org/wiki/File:C_o_a_Pio_II.svg",
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier, citant Araldica Vaticana",
+      "url": "https://commons.wikimedia.org/wiki/File:C_o_a_Pio_II.svg"
+    }
   },
   {
     "nom": "Margrethe II",
@@ -167,13 +188,18 @@
   {
     "nom": "Frederik X",
     "meta": "n. 1968 · roi de Danemark depuis 2024",
-    "blason": "",
+    "blason": "Écartelé par une croix pattée d'argent bordée de gueules (Dannebrog) : au 1, d'or semé de neuf cœurs de gueules à trois lions léopardés d'azur, couronnés et armés d'or, lampassés de gueules (Danemark) ; au 2, d'azur au bélier passant d'argent, armé d'or et lampassé de gueules (Féroé) ; au 3, d'azur à l'ours polaire dressé d'argent, armé d'or (Groenland) ; au 4, d'or à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; sur le tout, d'or à deux fasces de gueules (Oldenbourg)",
     "desc": "",
     "file": "Royal coat of arms of Denmark (2024).svg",
     "page": "https://commons.wikimedia.org/wiki/File:Royal_coat_of_arms_of_Denmark_(2024).svg",
     "auteur": "Di (they-them)",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries du Danemark »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_du_Danemark",
+      "note": "armes fixées en 2024"
+    }
   },
   {
     "nom": "Marguerite de Foix-Candale (1473-1536)",
@@ -200,24 +226,29 @@
   {
     "nom": "Giacomo Carafa",
     "meta": "aristocrate et militaire italien",
-    "blason": "",
+    "blason": "De gueules à trois fasces d'argent, à une branche d'épine de sinople posée en bande, brochant sur le tout",
     "desc": "",
     "file": "Coa fam ITA carafa2.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Coa_fam_ITA_carafa2.jpg",
     "auteur": "Massimop",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (it), « Carafa »",
+      "url": "https://it.wikipedia.org/wiki/Carafa",
+      "note": "branche des Carafa della Spina"
+    }
   },
   {
     "nom": "Ahmad Shah Zaher",
     "meta": "1934–2024 · chef de la famille royale et prétendant au trône d'Afghanistan",
     "blason": "",
-    "desc": "",
-    "file": "Emblem of Afghanistan (2013–2021) (variant).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Emblem_of_Afghanistan_(2013–2021)_(variant).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "desc": "Emblème du royaume d'Afghanistan (1931-1973), non des armes blasonnées ; la page Commons hésite sur la date de fin, 1973 ou 1974.",
+    "file": "Emblem of Afghanistan (1931–1973).svg",
+    "page": "https://commons.wikimedia.org/wiki/File:Emblem_of_Afghanistan_(1931%E2%80%931973).svg",
+    "auteur": "Orange Tuesday d'après Andrew Dunhan, version 2021 de Yeemuha",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Afghanistan"
   },
   {
     "nom": "Ferenc Fuchs",
@@ -266,46 +297,63 @@
   {
     "nom": "Jan Lubrański",
     "meta": "1456–1520 · évêque polonais",
-    "blason": "",
+    "blason": "De gueules au pin au naturel, à trois branches et cinq racines",
     "desc": "",
     "file": "POL COA Godziemba.svg",
     "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Godziemba.svg",
     "auteur": "Avalokitesvara",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (pl), « Godziemba (herb szlachecki) »",
+      "url": "https://pl.wikipedia.org/wiki/Godziemba_(herb_szlachecki)"
+    }
   },
   {
     "nom": "Nanker",
     "meta": "1270–1341 · évêque catholique polonais, ordinaire de Cracovie puis de Wrocław",
-    "blason": "",
+    "blason": "De gueules à la hache d'armes d'argent, le fer à dextre",
     "desc": "",
     "file": "POL COA Oksza.svg",
     "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Oksza.svg",
     "auteur": "Bastianowa (Bastiana)",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
+      "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
+    }
   },
   {
     "nom": "Zofia Radziwiłł (1716-1748)",
     "meta": "1716–1748",
-    "blason": "",
+    "blason": "De gueules à la hache d'armes d'argent, le fer à dextre",
     "desc": "",
     "file": "POL COA Oksza.svg",
     "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Oksza.svg",
     "auteur": "Bastianowa (Bastiana)",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
+      "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
+    }
   },
   {
     "nom": "Vladislovas Tiškevičius",
     "meta": "1894–1972",
-    "blason": "",
+    "blason": "D'azur à l'étoile à six rais d'or surmontant un croissant du même, à la bordure d'or",
     "desc": "",
     "file": "POL COA Tyszkiewicz.svg",
     "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Tyszkiewicz.svg",
     "auteur": "Avalokitesvara et al.",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (pl), « Tyszkiewicz Hrabia »",
+      "url": "https://pl.wikipedia.org/wiki/Tyszkiewicz_Hrabia",
+      "note": "version de Gajl ; d'autres versions sont sans bordure"
+    }
   },
   {
     "nom": "Gregers Matsson",
@@ -365,24 +413,34 @@
   {
     "nom": "Baroness Sigrid Gyllenstierna",
     "meta": "1639–1700",
-    "blason": "",
+    "blason": "D'azur à l'étoile à sept rais d'or",
     "desc": "",
     "file": "COA-family-sv-Gyllenstierna.png",
     "page": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Gyllenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (da), « Gyldenstierne »",
+      "url": "https://da.wikipedia.org/wiki/Gyldenstierne",
+      "note": "branche danoise ; la même page dit l'étoile d'argent à l'origine"
+    }
   },
   {
     "nom": "Erik Eriksson",
     "meta": "1450–1502 · homme politique suédois (1450-1502)",
-    "blason": "",
+    "blason": "D'azur à l'étoile à sept rais d'or",
     "desc": "",
     "file": "COA-family-sv-Gyllenstierna.png",
     "page": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Gyllenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (da), « Gyldenstierne »",
+      "url": "https://da.wikipedia.org/wiki/Gyldenstierne",
+      "note": "branche danoise ; la même page dit l'étoile d'argent à l'origine"
+    }
   },
   {
     "nom": "Margareta Thuresdotter",
