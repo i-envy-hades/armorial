@@ -798,9 +798,12 @@ function stateAt(R, Y){
   for(const o of [...R.regnes, ...R.vides]) if(o.s <= Y && Y < o.eAct && (!best || o.s > best.s)) best = o;
   if(!best) return null;
   if(best.vide) return { item: best, armes: best.armes || null, ph: null };
-  let ph = best.ph[0];
-  for(const p of best.ph) if(p.s <= Y) ph = p;
-  return { item: best, armes: ph.armes, ph };
+  return stateOf(best, Y);
+}
+function stateOf(r, Y){
+  let ph = r.ph[0];
+  for(const p of r.ph) if(p.s <= Y) ph = p;
+  return { item: r, armes: ph.armes, ph };
 }
 /* périodes sans chevauchement : grandes armes, ornements */
 const within = (list, Y) => (list || []).find(o => o.s <= Y && Y < o.e) || null;
@@ -1138,23 +1141,44 @@ const centerYear = T => (T.track.scrollLeft + T.track.clientWidth / 2 - T.padL) 
 function jumpTo(T, Y){ T.track.scrollLeft = T.X(Y) - T.track.clientWidth / 2; }
 function glideTo(T, Y, ms = 750){
   cancelAnimationFrame(T.glide);
+  if(T.pin?.y !== Y) T.pin = null;
   const from = T.track.scrollLeft, to = clamp(T.X(Y) - T.track.clientWidth / 2, 0, T.track.scrollWidth - T.track.clientWidth);
-  if(REDUCE || Math.abs(to - from) < 2){ T.track.scrollLeft = to; return; }
+  const land = () => { if(T.pin){ T.pin.sl = T.track.scrollLeft; schedule(T); } };
+  if(REDUCE || Math.abs(to - from) < 2){ T.track.scrollLeft = to; land(); return; }
   const t0 = performance.now();
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   const step = now => {
     const t = Math.min(1, (now - t0) / ms);
     T.track.scrollLeft = from + (to - from) * ease(t);
-    if(t < 1) T.glide = requestAnimationFrame(step);
+    if(t < 1) T.glide = requestAnimationFrame(step); else land();
   };
   T.glide = requestAnimationFrame(step);
+}
+/* un pixel vaut des semaines : le règne cliqué reste épinglé tant que la frise ne bouge pas */
+function goReign(T, r){
+  const y = (r.s + Math.min(r.e, T.R.fin)) / 2;
+  setPlay(T, false);
+  T.pin = { r, y, sl: NaN };
+  glideTo(T, y);
+}
+const pinned = T => T.pin && Math.abs(T.track.scrollLeft - T.pin.sl) <= 1;
+function readState(T, Y){
+  if(pinned(T)) return stateOf(T.pin.r, T.pin.y);
+  const st = stateAt(T.R, Y);
+  if(!st?.item.vide || !T.R.videAuto) return st;
+  /* une vacance plus courte qu'un pixel ne doit pas masquer le pontificat qu'elle touche */
+  const h = .5 / T.ppy;
+  let best = null;
+  for(const r of T.R.regnes)
+    if(r.s < Y + h && r.eAct > Y - h && (!best || Math.abs(r.s + r.e - 2 * Y) < Math.abs(best.s + best.e - 2 * Y))) best = r;
+  return best ? stateOf(best, clamp(Y, best.s, best.e)) : st;
 }
 const schedule = T => { if(!T.raf) T.raf = requestAnimationFrame(() => { T.raf = 0; update(T); }); };
 
 function update(T, force){
   const R = T.R, Y = centerYear(T);
   T.year.textContent = Math.floor(clamp(Y, R.debut, R.fin));
-  const st = stateAt(R, Y);
+  const st = readState(T, Y);
   const ga = st && !st.item.vide ? gaAt(R, Y) : null;
   const gk = ga ? ga.file + "@" + ga.s : "";
   if(gk !== T.gaKey){ T.gaKey = gk; setGA(T, ga); }
@@ -1359,11 +1383,13 @@ function setPlay(T, on){
 /* ---------- zoom ---------- */
 function zoomTo(T, ppy, clientX){
   const rect = T.track.getBoundingClientRect();
+  const pin = clientX == null && pinned(T) ? T.pin : null;
   const ax = clientX == null ? rect.width / 2 : clientX - rect.left;
-  const Ya = (T.track.scrollLeft + ax - T.padL) / T.ppy + T.R.debut;
+  const Ya = pin ? pin.y : (T.track.scrollLeft + ax - T.padL) / T.ppy + T.R.debut;
   T.ppy = clamp(ppy, ZOOMS[0], ZOOMS[ZOOMS.length - 1]);
   layout(T);
   T.track.scrollLeft = T.padL + (Ya - T.R.debut) * T.ppy - ax;
+  if(pin) pin.sl = T.track.scrollLeft;
   T.key = ""; T.nearK = undefined;
   update(T, true);
 }
@@ -1372,13 +1398,13 @@ const zoomStep = (T, dir) => {
   zoomTo(T, ZOOMS[clamp((i < 0 ? ZOOMS.length - 1 : i) + dir, 0, ZOOMS.length - 1)]);
 };
 function neighbour(T, dir){
-  const Y = centerYear(T), st = stateAt(T.R, Y);
+  const Y = centerYear(T), st = readState(T, Y);
   const cur = st && !st.item.vide ? st.item : null;
   const list = T.R.order;
   let target;
   if(dir > 0) target = list.find(r => cur ? r.s > cur.s : r.s > Y);
   else target = [...list].reverse().find(r => cur ? r.s < cur.s : r.s < Y);
-  if(target) glideTo(T, (target.s + target.e) / 2);
+  if(target) goReign(T, target);
 }
 
 /* ---------- interactions ---------- */
@@ -1435,14 +1461,14 @@ function wire(T){
   /* écu : centrer ; bande et jalons : centrer aussi */
   T.canvas.addEventListener("click", e => {
     const rb = e.target.closest(".rb");
-    if(rb){ const r = T.R.regnes[+rb.parentElement.dataset.i]; setPlay(T, false); glideTo(T, (r.s + r.e) / 2);
+    if(rb){ const r = T.R.regnes[+rb.parentElement.dataset.i]; goReign(T, r);
       if(matchMedia("(hover: none)").matches){ showTip(tipReign(T.R, r), rb); tipTimer = setTimeout(hideTip, 2600); } return; }
     const jm = e.target.closest(".jm");
     if(jm){ setPlay(T, false); glideTo(T, T.R.jalons[+jm.dataset.j].y); return; }
     const bar = e.target.closest(".bar");
-    if(bar){ const r = T.R.regnes[+bar.dataset.i]; setPlay(T, false); glideTo(T, (r.s + r.e) / 2); return; }
+    if(bar){ goReign(T, T.R.regnes[+bar.dataset.i]); return; }
     const dm = e.target.closest(".dm");
-    if(dm){ const r = T.R.regnes[+dm.dataset.i]; setPlay(T, false); glideTo(T, (r.s + r.e) / 2); return; }
+    if(dm){ goReign(T, T.R.regnes[+dm.dataset.i]); return; }
     const os = e.target.closest(".os");
     if(os){ const s = T.R.ornements[+os.dataset.r].segs[+os.dataset.s]; setPlay(T, false); glideTo(T, (s.s + Math.min(s.e, T.R.fin)) / 2); return; }
     const rv = e.target.closest(".rv");
@@ -1518,7 +1544,12 @@ function wire(T){
   T.mm.addEventListener("pointercancel", () => { mmDrag = false; });
 
   let rs = 0;
-  addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(() => { const Y = centerYear(T); layout(T); jumpTo(T, Y); update(T, true); }, 120); }, { signal: T.ac.signal });
+  addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(() => {
+    const pin = pinned(T) ? T.pin : null, Y = pin ? pin.y : centerYear(T);
+    layout(T); jumpTo(T, Y);
+    if(pin) pin.sl = T.track.scrollLeft;
+    update(T, true);
+  }, 120); }, { signal: T.ac.signal });
 }
 
 /* ---------- méthode et crédits ---------- */
