@@ -125,6 +125,132 @@
       "isbn": "—",
       "type": "Ressource en ligne",
       "note": "Répertoire alphabétique d'environ deux cents entrées, avec blasonnements d'exemple. Source des définitions du répertoire des meubles et du classement en trois catégories (meubles propres au blason, meubles très codifiés, meubles ordinaires mais fréquents). Les figures qui l'illustrent relèvent du Projet:Blasons et sont créditées une à une lorsqu'elles sont reprises."
+    },
+    "leg_lyon": {
+      "auteur": "Écosse (Parlement du royaume)",
+      "titre": "Lyon King of Arms Act 1592 (1592 c. 29) et Lyon King of Arms Act 1672 (1672 c. 47)",
+      "editeur": "legislation.gov.uk — texte révisé, The National Archives",
+      "annee": "1592 et 1672 (textes consultés en 2026)",
+      "isbn": "—",
+      "type": "Textes de loi",
+      "note": "Textes originaux en scots, lus dans leur version révisée. Le premier donne au Lord Lyon le pouvoir de visiter, brisurer et immatriculer les armes, avec confiscation et amende pour l'usurpation ; le second le ratifie, crée le registre public des armes d'Écosse et fixe l'amende à cent livres par infraction. Parties abrogées en 1906, quelques mots en 1987 et 1995 ; les deux actes restent en vigueur."
+    },
+    "lyon_court": {
+      "auteur": "Court of the Lord Lyon",
+      "titre": "About us ; Frequently asked questions",
+      "editeur": "courtofthelordlyon.scot",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Site institutionnel",
+      "note": "Organisation de la cour héraldique écossaise : procurateur fiscal indépendant, concession (acte administratif) et immatriculation (acte juridictionnel, avec appel). La page de questions fréquentes pose qu'il n'existe pas d'« armes de famille » en Écosse et que les clans n'ont pas d'armes."
+    },
+    "brookelittle1955": {
+      "auteur": "J. P. Brooke-Little",
+      "titre": "A Brief Account of the Proceedings in the High Court of Chivalry on 21st December, 1954",
+      "editeur": "The Coat of Arms, n° 21 ; republié sur theheraldrysociety.com",
+      "annee": "1955",
+      "isbn": "—",
+      "type": "Compte rendu d'audience",
+      "note": "Compte rendu contemporain de l'affaire Manchester Corporation v Manchester Palace of Varieties : faits, thèses des deux parties, décision prononcée à l'audience. Le jugement motivé de Lord Goddard, rendu plus tard, n'y figure pas et n'a pas été lu ici."
+    },
+    "wiki_chivalry": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "High Court of Chivalry",
+      "editeur": "Wikipédia en anglais — en.wikipedia.org/wiki/High_Court_of_Chivalry",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Origine de la cour du connétable et du maréchal, interruption après 1737, reprise de 1954. Recoupé avec le compte rendu de Brooke-Little."
+    },
+    "gg_cha": {
+      "auteur": "Canada (Gouverneur général)",
+      "titre": "Autorité héraldique du Canada",
+      "editeur": "gg.ca — site du Gouverneur général du Canada",
+      "annee": "1988 (page consultée en 2026)",
+      "isbn": "—",
+      "type": "Site institutionnel",
+      "note": "Création en 1988 par lettres patentes, missions de l'Autorité (concession d'armes, enregistrement des emblèmes historiques et de ceux des Premières Nations, approbation des insignes des Forces armées)."
+    },
+    "wiki_cha": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Canadian Heraldic Authority",
+      "editeur": "Wikipédia en anglais — en.wikipedia.org/wiki/Canadian_Heraldic_Authority",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Article labellisé « bon article ». Date du 4 juin 1988, texte des lettres patentes, conditions d'éligibilité, frais, égalité des femmes dans la transmission, protection des armes comme marque de commerce."
+    },
+    "ris_adel1919": {
+      "auteur": "Autriche (Staatsgesetzblatt)",
+      "titre": "Vollzugsanweisung du 18 avril 1919 sur l'abolition de la noblesse (StGBl. 237/1919), § 2",
+      "editeur": "RIS — Rechtsinformationssystem des Bundes, ris.bka.gv.at",
+      "annee": "1919 (texte consulté en 2026)",
+      "isbn": "—",
+      "type": "Texte réglementaire",
+      "note": "Ordonnance d'application de la loi du 3 avril 1919 (StGBl. 211/1919). Son § 2, ch. 5, supprime le droit de porter des armes de famille, « notamment aussi celles qu'on appelle à tort bourgeoises »."
+    },
+    "wiki_adel1919": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Adelsaufhebungsgesetz",
+      "editeur": "Wikipédia en allemand — de.wikipedia.org/wiki/Adelsaufhebungsgesetz",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Vote unanime, rang constitutionnel, sanctions et leur extinction : arrêt de la Cour constitutionnelle du 9 octobre 2019 (E 1851/2019), cité mais non lu ici."
+    },
+    "bgb12": {
+      "auteur": "Allemagne (Bürgerliches Gesetzbuch)",
+      "titre": "§ 12 BGB — Namensrecht (droit au nom)",
+      "editeur": "gesetze-im-internet.de, Office fédéral de la justice",
+      "annee": "1896 (texte en vigueur consulté en 2026)",
+      "isbn": "—",
+      "type": "Texte de loi",
+      "note": "Le texte ne parle que du nom. Son extension aux armoiries est jurisprudentielle et rapportée d'après l'article « Wappenrecht »."
+    },
+    "wiki_wappenrecht": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Wappenrecht",
+      "editeur": "Wikipédia en allemand — de.wikipedia.org/wiki/Wappenrecht",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Droit des armoiries en Allemagne, en Autriche et en Suisse : adoption libre, rôles d'armes associatifs, protection analogue au nom (§ 12 BGB, art. 28 CC suisse), arrêt autrichien 6 Ob 649/93 de 1994. Les décisions sont citées d'après l'article, non lues."
+    },
+    "lpap2013": {
+      "auteur": "Suisse (Assemblée fédérale)",
+      "titre": "Loi du 21 juin 2013 sur la protection des armoiries de la Suisse et des autres signes publics (LPAP), RS 232.21",
+      "editeur": "Fedlex, plateforme de publication du droit fédéral",
+      "annee": "2013 (en vigueur depuis le 1er janvier 2017 ; état au 1er juillet 2025)",
+      "isbn": "—",
+      "type": "Texte de loi",
+      "note": "Définit la croix suisse (art. 1) et fixe le rouge en annexe ; réserve les armoiries publiques à la collectivité concernée et admet leur emploi dans les ouvrages de référence (art. 8) ; sanctions pénales (art. 28). Remplace la loi du 5 juin 1931."
+    },
+    "wiki_cousu": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Cousu",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Cousu",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition, puis la position d'une vingtaine d'auteurs de Palliot (1664) à Fernon (2019), qui ne s'accordent ni sur l'étendue du terme ni sur sa légitimité. L'article porte des bandeaux « sources à lier » (décembre 2024) ; seules les positions qu'il attribue nommément sont reprises ici."
+    },
+    "wiki_unenlautre": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "De l'un en l'autre",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/De_l'un_en_l'autre",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition retenue par le Projet:Blasons, avec un relevé des auteurs qui distinguent ou non « de l'un en l'autre » et « de l'un à l'autre » : l'article constate qu'il n'y a pas de consensus."
+    },
+    "wiki_couleur": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Couleur (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Couleur_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Couleurs dites naturelles : « au naturel », avec ses deux cas particuliers, la carnation et le tanné, réservées aux meubles réalistes."
     }
   },
   "tinctures": [
@@ -1210,14 +1336,72 @@
         {
           "sources": [],
           "note": true,
-          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Établi :</b> les trois textes présentés ici — l'édit de novembre 1696, les décrets du 1<sup>er</sup> mars 1808 et l'instruction du 31 mars 1969 — sont datés, nommés et attribuables. Leurs effets sur le dessin des armoiries sont décrits d'après les sources citées en bas de chaque article.</p>\n            <p><b>Non traité :</b> le droit comparé. Il existe des pays où l'héraldique est une matière juridique vivante, avec un tribunal et des sanctions — l'Écosse au premier chef —, et d'autres où le port d'armes a été purement et simplement aboli. Ces cas demandent d'être vérifiés texte par texte avant d'être exposés ici ; ils feront l'objet d'un chapitre distinct.</p>\n            <p><b>Réserve :</b> sur le nombre exact de houppes attaché à chaque dignité inférieure au rang d'évêque, la source retenue donne le principe (« le nombre de houppes est d'autant plus grand que la dignité est importante ») sans fixer de compte. Le chiffre n'est donc pas avancé ici.</p>\n          </div>"
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Établi :</b> les trois textes présentés ici — l'édit de novembre 1696, les décrets du 1<sup>er</sup> mars 1808 et l'instruction du 31 mars 1969 — sont datés, nommés et attribuables. Leurs effets sur le dessin des armoiries sont décrits d'après les sources citées en bas de chaque article.</p>\n            <p><b>Traité à part :</b> le droit comparé — l'Écosse et son tribunal, l'Angleterre, le Canada, l'abolition autrichienne, la protection allemande et suisse — fait l'objet du chapitre suivant, vérifié texte par texte.</p>\n            <p><b>Réserve :</b> sur le nombre exact de houppes attaché à chaque dignité inférieure au rang d'évêque, la source retenue donne le principe (« le nombre de houppes est d'autant plus grand que la dignité est importante ») sans fixer de compte. Le chiffre n'est donc pas avancé ici.</p>\n          </div>"
+        }
+      ]
+    },
+    {
+      "id": "droit-compare",
+      "label": "Ailleurs",
+      "eyebrow": "Chapitre XI",
+      "title": "Le droit du blason ailleurs",
+      "lede": "La France a laissé les armoiries libres. D'autres pays en ont fait une affaire de tribunal, une distinction d'État, un attribut du nom — ou les ont abolies. Cinq régimes, lus texte par texte.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Écosse — un tribunal, un procureur, un registre",
+          "sources": [
+            "leg_lyon",
+            "lyon_court"
+          ],
+          "html": "\n          <p>Nulle part le blason n'est plus juridique qu'en Écosse. En <b>1592</b>, le Parlement du royaume constate que beaucoup de sujets s'attribuent des armes qui ne leur appartiennent pas, au point qu'on ne distingue plus par les armes les gentilshommes de naissance. Il donne au <b>Lord Lyon King of Arms</b> et à ses hérauts le pouvoir de visiter toutes les armes du royaume, de les distinguer par des brisures convenables, de les <b>immatriculer</b> dans leurs registres — et d'interdire d'en porter aux gens du commun que « la loi des armes » n'en juge pas dignes. La sanction est matérielle : confiscation, au profit du roi, des biens sur lesquels les armes sont gravées ou peintes, et cent livres d'amende au profit du Lyon.</p>\n          <p>En <b>1672</b>, un second acte constate que les « irrégularités de ces derniers temps » ont multiplié les armes prises sans droit, et ratifie le premier. Nobles, barons et gentilshommes doivent déclarer dans l'année les armes qu'ils portent, pièces à l'appui ; le Lyon les distingue et les immatricule ; et le registre ainsi constitué, le <b>Public Register of All Arms and Bearings in Scotland</b>, est déclaré « règle vraie et irrévocable » de toutes les armes du pays. Passé un an et un jour, porter d'autres armes coûte cent livres à chaque infraction, avec confiscation des biens armoriés.</p>\n          <p>Les deux actes sont toujours en vigueur, amputés à la marge (en 1906, 1987 et 1995). Et la cour fonctionne : un <b>procurateur fiscal</b>, nommé par les ministres écossais, décide s'il y a lieu de poursuivre devant le Lord Lyon l'usage illégal d'armoiries. Le Lyon exerce deux fonctions de nature différente : la <b>concession</b> d'armes nouvelles, acte administratif qu'on ne peut contester que par un recours en contrôle juridictionnel, et l'<b>immatriculation</b>, c'est-à-dire le réenregistrement d'armes existantes, acte juridictionnel dont on fait appel devant la Court of Session puis la Cour suprême.</p>\n          <p>La conséquence la plus déroutante pour un lecteur français : il n'existe pas, en Écosse, d'« armes de famille ». Des armes n'appartiennent qu'à <b>une seule personne à la fois</b> ; l'héritier lui-même doit les porter brisées. Un clan n'a pas d'armes non plus — seul son chef en a ; les membres portent un insigne fait du cimier du chef, dans une ceinture bouclée qui porte sa devise.</p>"
+        },
+        {
+          "titre": "Angleterre — la cour qui ne siégeait plus",
+          "sources": [
+            "brookelittle1955",
+            "wiki_chivalry"
+          ],
+          "html": "\n          <p>L'Angleterre a sa propre juridiction, la <b>High Court of Chivalry</b> : cour du connétable et du maréchal, apparue au XIV<sup>e</sup> siècle, compétente pour les affaires militaires et, par extension, pour l'usage des armoiries. Rognée par les cours de common law, elle cesse d'être réunie après 1737. On la tint pour éteinte pendant deux siècles.</p>\n          <p>Le <b>21 décembre 1954</b>, elle siège de nouveau. La ville de Manchester reproche à un théâtre, le Manchester Palace of Varieties, d'afficher ses armes dans la salle depuis plus de vingt ans et sur son sceau depuis plus de soixante. Le duc de Norfolk, comte-maréchal héréditaire, a délégué son siège au lord chief justice, <b>Lord Goddard</b> ; l'audience se tient aux Royal Courts of Justice, la salle du College of Arms étant trop petite.</p>\n          <p>L'enjeu dépassait le théâtre : il fallait d'abord savoir si la cour existait encore. La défense plaide qu'un statut de Richard II ne lui donne compétence que pour les « faits d'armes », au sens guerrier, et qu'un usage décoratif n'est pas un port d'armes. Goddard déclare la cour compétente et condamne le théâtre aux frais convenus, 300 livres ; la ville obtient gain de cause.</p>\n          <p>La portée de l'affaire est discutée dès 1955. Le chroniqueur de la Heraldry Society, J. P. Brooke-Little, y voit surtout le rappel qu'il existe une loi des armes susceptible d'exécution — tout en prévoyant que le port d'armes resterait réglé, en Angleterre, par la coutume et les bonnes manières. La cour n'a plus été réunie depuis.</p>"
+        },
+        {
+          "titre": "Canada — les armes comme distinction d'État",
+          "sources": [
+            "gg_cha",
+            "wiki_cha"
+          ],
+          "html": "\n          <p>Jusqu'en 1988, un Canadien qui voulait des armes régulièrement concédées devait s'adresser à Londres ou à Édimbourg. Par des <b>lettres patentes de 1988</b>, la reine du Canada autorise le gouverneur général à exercer « tous les pouvoirs » de la Couronne en matière de concession d'armoiries au Canada ; l'<b>Autorité héraldique du Canada</b> naît le 4 juin 1988. Le Canada devient ainsi le premier royaume du Commonwealth, hors du Royaume-Uni, à disposer de sa propre autorité héraldique.</p>\n          <p>Le modèle n'est ni français ni écossais : les armes y sont une <b>distinction</b> conférée au nom de la Couronne. Tout citoyen et toute personne morale canadienne peut en faire la demande, que le chef des hérauts accepte ou rejette ; on paie les hérauts et les artistes, non les armes, qui sont réputées données. L'Autorité enregistre aussi les emblèmes historiques et ceux des Premières Nations, et approuve les insignes et drapeaux des Forces armées.</p>\n          <p>Deux traits encore : les femmes y héritent et transmettent les armes à égalité avec les hommes, et le titulaire peut protéger ses armes comme une <b>marque de commerce</b>, au titre de la loi sur les marques de commerce.</p>"
+        },
+        {
+          "titre": "Autriche — l'abolition, jusqu'aux armes bourgeoises",
+          "sources": [
+            "ris_adel1919",
+            "wiki_adel1919",
+            "wiki_wappenrecht"
+          ],
+          "html": "\n          <p>À l'opposé de l'Écosse, l'Autriche républicaine a tout supprimé. La loi du <b>3 avril 1919</b>, votée à l'unanimité par l'Assemblée nationale constituante, abolit la noblesse, ses prérogatives honorifiques et une série de titres ; elle a aujourd'hui rang constitutionnel. L'ordonnance d'application du <b>18 avril 1919</b> énumère ce qui disparaît, et son § 2 va plus loin qu'on ne l'imagine : après la particule <em>von</em>, les prédicats et les titres, il supprime « le droit de porter des <b>armes de famille</b>, notamment aussi celles qu'on appelle à tort “bourgeoises” ».</p>\n          <p>Des cinq pays présentés ici, c'est le seul où le droit aux armes est retiré à tous, roturiers compris. L'ordonnance ménage une exception pratique : se servir d'objets qui portent déjà une marque de noblesse abolie n'est pas punissable.</p>\n          <p>La sanction, elle, s'est éteinte d'elle-même. La loi prévoyait jusqu'à 20 000 couronnes d'amende ou six mois d'arrêt ; la couronne a disparu, et le montant, inscrit dans un texte constitutionnel, n'a jamais été converti. Saisie en 2019 d'une condamnation de Karl Habsburg-Lothringen pour la particule affichée dans l'adresse de son site Internet, la Cour constitutionnelle a jugé qu'aucune amende ne pouvait plus être prononcée ; elle a laissé ouverte la question de l'arrêt.</p>\n          <p>Reste une nuance, qui montre qu'une abolition n'efface pas tout. En 1994, la Cour suprême autrichienne a eu à connaître de l'usage, par un hôtelier, des armes de famille d'un Allemand, concédées à un ancêtre en 1631. Elle a jugé que l'existence de ces armes relevait du droit allemand, statut personnel du demandeur, et comblé la lacune du droit autrichien en appliquant par analogie la protection du nom — avant de rejeter tout de même le recours.</p>"
+        },
+        {
+          "titre": "Allemagne et Suisse — des armes protégées comme un nom",
+          "sources": [
+            "bgb12",
+            "wiki_wappenrecht",
+            "lpap2013"
+          ],
+          "diagram": "suisse2013",
+          "html": "\n          <p>L'Allemagne a pris un troisième chemin. Depuis la fin de la monarchie, en 1918, l'État ne concède, ne modifie ni ne confirme plus aucune armoirie de famille. Toute personne peut en adopter une par simple déclaration, sans formalité. Des sociétés héraldiques tiennent des « rôles d'armes » où l'on peut la faire inscrire contre paiement, ce qui facilite la preuve de l'antériorité ; les doctrines que ces sociétés ont élaborées n'ont, elles, aucune force juridique.</p>\n          <p>La protection vient du <b>§ 12 du Code civil</b> (BGB), qui permet au titulaire d'un nom d'exiger la cessation d'un usage non autorisé et d'agir en interdiction si le trouble risque de se répéter. Le texte ne dit pas un mot des armoiries : c'est la jurisprudence qui l'étend à elles par analogie, à condition qu'elles soient assez distinctives pour désigner quelqu'un. L'extension est aujourd'hui tenue pour acquise, mais une opinion minoritaire refuse encore de protéger ce qu'elle appelle un « fossile historique ». Fait notable, à en croire la même source : les tribunaux de la République fédérale n'ont encore jamais eu à trancher entre deux familles revendiquant les mêmes armes. Les armes de l'État et des Länder relèvent d'un autre régime ; leur usage non autorisé y est une infraction administrative.</p>\n          <p>La Suisse combine les deux logiques. Pour les armes privées, aucune loi particulière : chacun peut en prendre, et elles sont protégées comme un attribut de la personnalité, au même titre que le nom (art. 28 du Code civil). Pour les armes publiques, au contraire, le texte est serré. La <b>loi sur la protection des armoiries</b> du 21 juin 2013, en vigueur depuis le 1<sup>er</sup> janvier 2017, réserve les armes de la Confédération, des cantons et des communes à la collectivité concernée, interdit de les céder ou de les concéder en licence, et punit leur emploi illicite — sur des produits, des enseignes, des sites Internet — d'une peine privative de liberté d'un an au plus ou d'une peine pécuniaire.</p>\n          <p>Deux articles de cette loi intéressent directement l'héraldiste. Le premier <b>blasonne</b>, avec une précision qu'aucun armorial ne se donne : la croix suisse est « une croix blanche, verticale et alésée, placée sur un fond rouge », dont les branches, égales entre elles, sont « d'un sixième plus longues que larges » — et l'annexe fixe le rouge au code près, là où le blason ne connaît que <em>gueules</em>. Le huitième admet l'emploi de ces armes « à titre d'illustration dans un dictionnaire, un ouvrage de référence, un ouvrage scientifique » : c'est à ce titre qu'une encyclopédie comme celle-ci peut les montrer.</p>"
+        },
+        {
+          "sources": [],
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Lu à la source :</b> les deux actes écossais (legislation.gov.uk), l'ordonnance autrichienne du 18 avril 1919 (RIS), le § 12 BGB, la loi suisse de 2013 (Fedlex) ; les institutions écossaise et canadienne d'après leurs propres pages ; l'affaire de 1954 d'après un compte rendu d'audience publié en janvier 1955.</p>\n            <p><b>De seconde main :</b> l'extension du § 12 BGB aux armoiries, la protection des armes privées suisses par l'art. 28 CC, l'exception autrichienne des objets déjà marqués (§ 5 de l'ordonnance), l'arrêt autrichien de 1994 et celui de 2019 sont rapportés d'après Wikipédia en allemand, qui cite les décisions sans que nous les ayons lues. Le jugement motivé de Lord Goddard n'a pas été lu : on s'en tient à ce qui a été dit à l'audience.</p>\n            <p><b>Désaccord non arbitré :</b> pour l'Autriche, la même source affirme que les armes non officielles n'ont plus « aucune protection » depuis 1919, puis rapporte l'arrêt de 1994 qui en protège une par analogie avec le nom. Les deux affirmations sont exposées côte à côte ; la seconde concernait des armes étrangères.</p>\n            <p><b>Non traité :</b> d'autres pays ont leur propre autorité héraldique — l'Irlande, l'Afrique du Sud, la Belgique, que cite l'article consacré à l'autorité canadienne. Leurs textes n'ont pas été lus ; ils ne sont donc pas exposés ici.</p>\n          </div>"
         }
       ]
     },
     {
       "id": "brisures",
       "label": "Brisures",
-      "eyebrow": "Chapitre XI",
+      "eyebrow": "Chapitre XII",
       "title": "Les brisures",
       "lede": "Comment les cadets se distinguent de l'aîné sans changer d'armes.",
       "figure": null,
@@ -1918,6 +2102,43 @@
       "def": "Bande circulaire de laine blanche chargée de croix noires, qui caractérise les armes des archevêques métropolitains.",
       "sources": [
         "wiki_eccl"
+      ]
+    },
+    {
+      "terme": "Immatriculation",
+      "def": "En Écosse, inscription d'armes existantes au registre public, après les avoir distinguées au besoin par une brisure ; c'est un acte juridictionnel du Lord Lyon, susceptible d'appel.",
+      "sources": [
+        "leg_lyon",
+        "lyon_court"
+      ]
+    },
+    {
+      "terme": "Lord Lyon",
+      "def": "Lord Lyon King of Arms, roi d'armes d'Écosse : il concède les armes nouvelles, immatricule les anciennes et juge, sur poursuite d'un procurateur fiscal, l'usage illégal d'armoiries.",
+      "sources": [
+        "leg_lyon",
+        "lyon_court"
+      ]
+    },
+    {
+      "terme": "Cousu",
+      "def": "Se dit d'une pièce — le chef surtout — de métal sur métal ou d'émail sur émail, qu'on tient pour cousue au champ plutôt que posée dessus, afin d'échapper à la règle des émaux. Les auteurs divergent : Palliot (1664) étend le mot aux autres pièces honorables, Rietstap (1887) le juge inutile, la faute se voyant d'elle-même.",
+      "sources": [
+        "wiki_cousu"
+      ]
+    },
+    {
+      "terme": "De l'un en l'autre",
+      "def": "Se dit d'une figure brochant sur un champ partagé entre deux émaux alternés : chaque partie de la figure prend l'émail opposé à celui du fond qu'elle couvre. C'est la définition retenue par Wikipédia faute de consensus : les auteurs qui la distinguent de « de l'un à l'autre » ne s'accordent pas sur le sens de chacune, et Galbreath et Jéquier tiennent la distinction pour une « chinoiserie ».",
+      "sources": [
+        "wiki_unenlautre"
+      ]
+    },
+    {
+      "terme": "Au naturel",
+      "def": "Se dit d'un meuble figuré dans sa couleur réelle, hors des émaux du blason ; deux cas particuliers ont leur nom, la carnation pour la chair et le tanné pour le brun du cuir. Réservé aux meubles réalistes — jamais au champ, aux pièces ni aux meubles géométriques.",
+      "sources": [
+        "wiki_couleur"
       ]
     }
   ],

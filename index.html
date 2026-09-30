@@ -10,7 +10,7 @@
   ============================================================================
   L'ARMORIAL — encyclopédie ouverte de l'héraldique
   ============================================================================
-  Dépendances : assets/site.css, data/data.json, polices Google.
+  Dépendances : assets/site.css (polices dans assets/fonts/), data/data.json.
   La page doit être servie par HTTP (fetch), pas ouverte depuis le disque.
 
   COMMENT L'ÉTENDRE QUAND ON TROUVE UN NOUVEAU LIVRE
@@ -39,9 +39,6 @@
   ============================================================================
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 
 <style>
@@ -81,7 +78,9 @@
   font-size:clamp(1.05rem,2.4vw,1.35rem);
   color:var(--ink-soft);font-style:italic;max-width:44ch;margin:.6rem auto 0;
 }
-.hero-shield{width:130px;height:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
+.hero-shield{width:130px;height:auto;margin:0 auto .35rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
+.hero-credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);opacity:.8;margin:0 auto 1.1rem;max-width:38ch}
+.hero-credit a{color:inherit}
 .hero .counts{
   display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
   margin-top:2rem;padding-top:1.6rem;
@@ -219,6 +218,7 @@ footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
     <a href="index.html" class="here">L'encyclopédie</a>
     <a href="blasons.html">Blasons réels</a>
     <a href="personnages.html">Personnages</a>
+    <a href="lignees.html">Lignées</a>
   </nav>
   <div class="search" role="search">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
@@ -231,6 +231,7 @@ footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
 <section class="hero">
   <div class="frame">
     <svg class="hero-shield" viewBox="0 0 200 252" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
+    <p class="hero-credit">Fleur de lis : <a href="https://commons.wikimedia.org/wiki/File:Meuble_h%C3%A9raldique_Fleur_de_lys.svg" target="_blank" rel="noopener">« Meuble héraldique Fleur de lys.svg »</a> — Yorick, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 3.0</a>, via Wikimedia Commons · couleurs et trait adaptés</p>
     <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
     <h1 class="display">L'Art du Blason</h1>
     <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
@@ -260,7 +261,7 @@ footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
     <path fill="none" stroke="#4a0c0a" stroke-width="1.2" opacity=".5" d="M50,12 C72,12 88,28 88,50 C88,72 72,88 50,88 C28,88 12,72 12,50 C12,28 28,12 50,12 Z"/>
     <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
   </svg>
-  <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, la fleur de lis — celle de l'écu du bandeau comprise —, plusieurs croix et meubles d'objet, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
   <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
   <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
 </footer>
@@ -467,16 +468,21 @@ function shieldTraitDemo(dir){
   if(dir==="d2") line = `<line x1="200" y1="0" x2="0" y2="252"/>`;   // taillé : chef senestre → pointe dextre
   return shieldBlank(`<g stroke="#8e1b18" stroke-width="4" stroke-linecap="round">${line}</g>`, "trait "+dir);
 }
-/* ---- fleur de lis héraldique ----
-   Tracés dans le repère de l'écu, centrée sur x=100, du sommet (y=36) au pied (y=190).
-   Partagée par le hero, le meuble et les fleurons des couronnes. */
+/* ---- fleur de lis du bandeau ----
+   Tracés de « Meuble héraldique Fleur de lys.svg » (Yorick, Projet:Blasons, CC BY-SA 3.0),
+   repris tels quels et ramenés dans le repère de l'écu ; seules les couleurs changent.
+   Crédit affiché sous l'écu du bandeau. Le groupe interne porte la transformation :
+   l'animation CSS de .charge écraserait un attribut transform posé sur le même élément. */
 function fleurDeLisPaths(){
-  return `
-    <path d="M100,34 C91,60 83,92 82,122 L118,122 C117,92 109,60 100,34 Z"/>
-    <path d="M86,122 C62,122 40,112 32,95 C26,81 32,64 48,54 C47,75 57,95 74,106 C82,112 86,116 86,122 Z"/>
-    <path d="M114,122 C138,122 160,112 168,95 C174,81 168,64 152,54 C153,75 143,95 126,106 C118,112 114,116 114,122 Z"/>
-    <path d="M82,142 C80,164 73,182 58,194 C78,191 93,183 100,172 C107,183 122,191 142,194 C127,182 120,164 118,142 Z"/>
-    <rect x="62" y="121" width="76" height="22" rx="6"/>`;
+  return `<g transform="translate(38.84,36.95) scale(.172) translate(-3.914,-4)" stroke-width="9">
+    <path fill-rule="evenodd" d="M 407.02914,608.69929 C 408.45371,546.74328 423.7803,489.15982 452.31871,434.59069 C 527.03313,277.40489 755.23905,281.15895 704.93393,473.402 C 686.39707,544.24137 623.42532,585.87586 548.61507,593.01701 C 554.01466,574.35164 583.71536,508.36456 559.73954,495.45545 C 521.40138,496.90385 473.7952,563.16055 462.34672,594.75617 C 460.69402,599.29227 461.15631,604.53418 459.31088,608.99624"/>
+    <g transform="translate(-38.53215,-44.5769)">
+      <path fill-rule="evenodd" d="M 350.52292,657.37224 C 349.09835,595.41623 333.77176,537.83277 305.23335,483.26364 C 230.51893,326.07784 2.3130139,329.8319 52.618133,522.07495 C 71.154997,592.91432 134.12674,634.54881 208.93699,641.68996 C 203.5374,623.02459 173.8367,557.03751 197.81252,544.1284 C 236.15068,545.5768 283.75686,611.8335 295.20534,643.42912 C 296.85804,647.96522 296.39575,653.20713 298.24118,657.66919"/>
+      <path d="M 393.6259,57.12017 C 314.9116,141.96961 262.06129,240.08175 284.84465,355.15142 C 297.41422,418.63533 327.88647,477.43115 349.3759,538.58892 C 362.81238,576.95877 366.24813,617.04065 364.65715,657.37017 L 431.4384,657.37017 C 428.24189,616.744 435.24511,577.37193 446.71965,538.58892 C 467.19384,477.05062 498.34544,418.68339 511.2509,355.15142 C 535.37892,236.37223 478.74399,146.7919 402.8134,57.49517 L 398.17297,51.576902 L 393.6259,57.12017 z"/>
+      <path fill-rule="evenodd" d="M 331.34465,704.40142 C 317.38299,743.53144 260.45647,815.19349 230.21965,835.62017 C 222.37748,840.91802 267.70602,832.5686 288.0009,828.12017 C 314.61991,822.28553 349.21835,793.92258 348.40715,803.93267 C 348.33151,849.77093 361.21819,926.25691 394.8134,961.40142 L 397.99548,964.78902 L 401.28215,961.40142 C 434.85984,922.23047 447.51976,853.35944 447.6884,803.93267 C 446.8772,793.92258 481.47565,822.28553 508.09465,828.12017 C 528.38953,832.5686 573.71807,840.91802 565.8759,835.62017 C 535.63908,815.19349 478.74383,743.53144 464.78215,704.40142 L 331.34465,704.40142 z"/>
+      <rect x="239.3521" y="655.37946" width="317.88773" height="51.503345"/>
+    </g>
+  </g>`;
 }
 
 /* ---- blasons vierges timbrés d'une couronne de rang ---- */
@@ -574,6 +580,36 @@ function empireDiagram(){
   ];
   return `<div class="diagram-row">${rows.map(([k, t, d]) =>
     `<figure>${empireShield(k)}<figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join("")}</div>`;
+}
+
+/* ---- la croix suisse de l'art. 1 LPAP : branches de 6 de large sur 7 de long ---- */
+function swissCross(){
+  const w = 36, a = 42, x0 = 100 - w / 2, y0 = 116 - w / 2 - a;
+  return `M${x0},${y0} h${w} v${a} h${a} v${w} h${-a} v${a} h${-w} v${-a} h${-a} v${-w} h${a} Z`;
+}
+function suisseDiagram(){
+  const lab = (x, y, s) => `<text x="${x}" y="${y}" text-anchor="middle" font-family="Marcellus SC,serif" font-size="17" fill="#8e1b18">${s}</text>`;
+  const legal = `<svg viewBox="${VB}" width="120" role="img" aria-label="Croix blanche alésée sur fond rouge #FF0000">
+    <path d="${SHIELD_D}" fill="#FF0000"/>
+    <path d="${swissCross()}" fill="#fff"/>
+    ${shieldFinish(2.4, true)}
+  </svg>`;
+  const ratio = `<svg viewBox="${VB}" width="120" role="img" aria-label="Proportions de la croix : branches de 7 pour 6 de large">
+    <path d="${SHIELD_D}" fill="#f3eee0"/>
+    <path d="${swissCross()}" fill="#fff" stroke="#1a1712" stroke-width="1.4"/>
+    <g stroke="#cabf9f" stroke-width="1" stroke-dasharray="3 3">
+      <line x1="82" y1="98" x2="82" y2="134"/><line x1="118" y1="98" x2="118" y2="134"/>
+      <line x1="82" y1="98" x2="118" y2="98"/><line x1="82" y1="134" x2="118" y2="134"/>
+    </g>
+    <path d="M82,43 v6 M82,46 H118 M118,43 v6" fill="none" stroke="#8e1b18" stroke-width="1.4"/>
+    ${lab(100, 38, "6")}${lab(100, 83, "7")}${lab(139, 122, "7")}${lab(61, 122, "7")}${lab(100, 161, "7")}${lab(100, 122, "6")}
+    ${shieldFinish(2.4, true)}
+  </svg>`;
+  return `<div class="diagram-row">
+    <figure>${legal}<figcaption><b>Art. 1 et annexe 1</b><span>croix blanche alésée sur fond rouge ; le rouge est fixé à #FF0000</span></figcaption>
+      <div class="credit">Dessin de l'encyclopédie d'après le texte de l'art. 1 ; la forme de l'écu est la nôtre, non celle de l'annexe 1.</div></figure>
+    <figure>${ratio}<figcaption><b>La proportion</b><span>branches égales, « d'un sixième plus longues que larges » : 7 pour 6</span></figcaption></figure>
+  </div>`;
 }
 
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
@@ -1001,7 +1037,7 @@ function figureGallery(kind){
 function reglesGallery(kind){
   if(kind==="traits"){
     const cards = DATA.regles.traits.map(t=>`
-      <div class="fig">${shieldTraitDemo(t.dir)}<div class="nom">${t.nom}</div><div class="en">${t.en}</div></div>`).join("");
+      <div class="fig">${shieldTraitDemo(t.dir)}<div class="nom">${t.nom}</div><div, suisse2013: suisseDiagram class="en">${t.en}</div></div>`).join("");
     return `<div class="gal figs">${cards}</div>`;
   }
   if(kind==="recoupements"){
@@ -1033,7 +1069,7 @@ function reglesGallery(kind){
 }
 
 /* diagrammes appelés depuis un article par sa clé `diagram` */
-const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram };
+const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram, suisse2013: suisseDiagram };
 
 /* la recherche couvre le glossaire, le répertoire et les deux tables de vocabulaire ;
    en cas d'homonymie, la définition du glossaire l'emporte */

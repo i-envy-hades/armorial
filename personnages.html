@@ -15,9 +15,6 @@
   Wikimedia (via l'URL stable Special:FilePath) ; si un fichier bouge, l'image
   peut manquer.
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* CSS propre à la page « Personnages » ; socle commun dans assets/site.css */
@@ -52,6 +49,7 @@ footer{background:var(--vellum-3)}
     <a href="index.html">L'encyclopédie</a>
     <a href="blasons.html">Blasons réels</a>
     <a href="personnages.html" class="here">Personnages</a>
+    <a href="lignees.html">Lignées</a>
   </nav>
 </header>
 <section class="hero">
@@ -96,8 +94,14 @@ function card(p){
     <p class="meta">${p.meta}</p>
     ${p.blason ? `<p class="bl">${p.blason}</p>` : ""}
     ${p.desc ? `<p class="desc">${p.desc}</p>` : ""}
-    <p class="src">Illustration : <a href="${page(p.file)}" target="_blank" rel="noopener">« ${p.file} »</a> — ${p.auteur}, <a href="${p.licurl}" target="_blank" rel="noopener">${p.lic}</a>, via Wikimedia Commons. Blasonnement : domaine public.</p>
+    <p class="src">Illustration : <a href="${page(p.file)}" target="_blank" rel="noopener">« ${p.file} »</a> — ${p.auteur}, <a href="${p.licurl}" target="_blank" rel="noopener">${p.lic}</a>, via Wikimedia Commons. ${blLine(p)}</p>
   </article>`;
+}
+function blLine(p){
+  const s = p.blasonSrc;
+  if (!p.blason) return "";
+  if (!s) return "Blasonnement : domaine public.";
+  return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
 }
 async function init(){
   try{
