@@ -1,0 +1,1383 @@
+{
+ "sources": {
+  "liste_fr": {
+   "label": "Wikipédia, « Liste des comtes et ducs de Savoie »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_comtes_et_ducs_de_Savoie"
+  },
+  "sardaigne_fr": {
+   "label": "Wikipédia, « Liste des rois de Sardaigne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_de_Sardaigne"
+  },
+  "rois_italie_fr": {
+   "label": "Wikipédia, « Liste des rois d'Italie »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_d%27Italie"
+  },
+  "humbert2_fr": {
+   "label": "Wikipédia, « Humbert II (roi d'Italie) »",
+   "url": "https://fr.wikipedia.org/wiki/Humbert_II_%28roi_d%27Italie%29"
+  },
+  "charles2_fr": {
+   "label": "Wikipédia, « Charles II (duc de Savoie) »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_II_%28duc_de_Savoie%29"
+  },
+  "armorial_fr": {
+   "label": "Wikipédia, « Armorial de la maison de Savoie »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Savoie"
+  },
+  "annonciade_fr": {
+   "label": "Wikipédia, « Ordre suprême de la Très Sainte Annonciade »",
+   "url": "https://fr.wikipedia.org/wiki/Ordre_supr%C3%AAme_de_la_Tr%C3%A8s_Sainte_Annonciade"
+  },
+  "simboli_it": {
+   "label": "Wikipedia (it), « Simboli degli Stati sabaudi »",
+   "url": "https://it.wikipedia.org/wiki/Simboli_degli_Stati_sabaudi"
+  },
+  "stemma_it": {
+   "label": "Wikipedia (it), « Stemma del Regno d'Italia »",
+   "url": "https://it.wikipedia.org/wiki/Stemma_del_Regno_d%27Italia"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Pas d'armoiries connues",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Jusque vers 1200, les rares documents ne mentionnent ni bannière ni insigne propre aux descendants d'Humbert : à cette époque, l'usage des armoiries n'est pas encore fixé.",
+   "sources": [
+    "simboli_it"
+   ]
+  },
+  "aigle": {
+   "nom": "L'aigle",
+   "blason": "D'or à l'aigle de sable",
+   "file": "Armoiries Savoie Ancien.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "Première insigne documentée, prise en 1217 par Thomas Ier : une aigle noire à une tête, ailes éployées, vol abaissé, « sans doute » sur champ d'or. C'est l'emblème de l'Empire, dont le comte est vicaire.",
+   "sources": [
+    "simboli_it",
+    "armorial_fr"
+   ]
+  },
+  "croix": {
+   "nom": "La croix de Savoie",
+   "blason": "De gueules à la croix d'argent",
+   "file": "Blason duché fr Savoie.svg",
+   "auteur": "Syryatsu",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+   "note": "La croix blanche sur champ rouge : le seul élément qui traverse toutes les armes savoyardes depuis le Moyen Âge.",
+   "sources": [
+    "armorial_fr",
+    "simboli_it"
+   ]
+  },
+  "aigle2": {
+   "nom": "L'aigle bicéphale",
+   "draw": "aucune",
+   "blason": "D'argent à l'aigle bicéphale de sable, au vol éployé",
+   "note": "Philippe Ier revient à l'aigle noire, désormais à deux têtes et sur champ d'argent, comme l'emblème impérial de son temps. Aucune figure libre de ces armes n'a été trouvée : l'écu reste vide.",
+   "sources": [
+    "simboli_it"
+   ]
+  },
+  "savoie1563": {
+   "nom": "L'écartelé saxon",
+   "blason": "Écartelé : aux 1 et 4, parti, au 1 de gueules au cheval effaré d'argent, au 2 fascé d'or et de sable de huit pièces au crancelin de sinople posé en bande brochant sur le tout, enté en pointe d'argent à trois bouterolles de gueules malordonnées ; au 2, d'argent semé de billettes de sable au lion du même brochant ; au 3, de sable au lion d'argent ; sur le tout, de gueules à la croix d'argent",
+   "file": "Armoiries Savoie 1563.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Emmanuel-Philibert écartèle la croix avec Saxe, Westphalie et Angrie — au nom d'une origine saxonne légendaire de sa maison — et avec le Chablais et Aoste.",
+   "sources": [
+    "armorial_fr",
+    "simboli_it"
+   ]
+  },
+  "savoie1632": {
+   "nom": "Chypre et Jérusalem",
+   "blason": "Écartelé : au I, contre-écartelé, au 1 d'argent à la croix potencée d'or cantonnée de quatre croisettes du même, au 2 burelé d'azur et d'argent de dix pièces au lion de gueules armé, lampassé et couronné d'or brochant, au 3 d'or au lion de gueules armé, lampassé et couronné d'azur, au 4 d'argent au lion de gueules armé, lampassé et couronné d'or ; au II, parti, au 1 de gueules au cheval effaré d'argent, au 2 fascé d'or et de sable de huit pièces au crancelin de sinople posé en bande brochant sur le tout, enté en pointe d'argent à trois bouterolles de gueules malordonnées ; au III, parti d'argent semé de billettes de sable au lion du même brochant, et de sable au lion d'argent ; au IV, parti de cinq points d'or équipollés à quatre d'azur, et d'argent au chef de gueules ; sur le tout, de gueules à la croix d'argent",
+   "file": "Armoiries Savoie 1630.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Victor-Amédée Ier revendique les couronnes de Chypre et de Jérusalem : leurs armes (avec Lusignan) entrent dans l'écu, ainsi que Genève et Montferrat.",
+   "sources": [
+    "armorial_fr",
+    "simboli_it"
+   ]
+  },
+  "sicile1713": {
+   "nom": "Roi de Sicile",
+   "blason": "Les armes de 1632, avec Nice en pointe et Saluces ; sur le tout, au lieu de Savoie, d'argent à l'aigle de sable chargée en cœur d'un écusson de Savoie",
+   "file": "Coat of arms of the Kingdom of Sicily (1713).svg",
+   "auteur": "FootKalos1597",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "note": "Description d'après l'article italien, qui ne donne pas de blasonnement complet. L'aigle sur argent représente le nouveau royaume de Sicile.",
+   "sources": [
+    "simboli_it"
+   ]
+  },
+  "sardaigne1720": {
+   "nom": "Roi de Sardaigne",
+   "blason": "Écartelé : au I, contre-écartelé, au 1 d'argent à la croix potencée d'or cantonnée de quatre croisettes du même, au 2 burelé d'azur et d'argent de dix pièces au lion de gueules armé, lampassé et couronné d'or brochant, au 3 d'or au lion de gueules armé, lampassé et couronné d'azur, au 4 d'argent au lion de gueules armé, lampassé et couronné d'or ; au II, parti, au 1 de gueules au cheval effaré d'argent, au 2 fascé d'or et de sable de huit pièces au crancelin de sinople posé en bande brochant sur le tout, enté en pointe d'argent à trois bouterolles de gueules malordonnées ; au III, parti d'argent semé de billettes de sable au lion du même brochant, et de sable au lion d'argent ; au IV, parti de cinq points d'or équipollés à quatre d'azur, et d'argent au chef de gueules ; sur le tout, d'argent à la croix de gueules cantonnée de quatre têtes de Maure de sable tortillées d'argent ; sur le tout du tout, de gueules à la croix d'argent",
+   "file": "Coat of arms of the Kingdom of Sardinia (1720-1815).svg",
+   "auteur": "FDRMRZUSA",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Kingdom_of_Sardinia_(1720-1815).svg",
+   "free": true,
+   "note": "La Sicile échangée contre la Sardaigne, les armes de Sardaigne — la croix cantonnée de quatre têtes de Maure — entrent dans l'écu.",
+   "sources": [
+    "armorial_fr",
+    "simboli_it"
+   ]
+  },
+  "sardaigne1815": {
+   "nom": "Gênes",
+   "blason": "Écartelé : au 1, d'argent à la croix de gueules cantonnée de quatre têtes de Maure de sable tortillées d'argent ; au 2, parti burelé d'azur et d'argent de dix pièces au lion de gueules armé, lampassé et couronné d'or brochant, et d'argent à la croix potencée d'or cantonnée de quatre croisettes du même ; au 3, d'argent à la croix de gueules ; au 4, de gueules à la croix d'argent au lambel d'azur ; sur le tout, d'or à l'aigle de sable ; sur le tout du tout, de gueules à la croix d'argent",
+   "file": "Armoiries Sardaigne 1815.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Victor-Emmanuel Ier reçoit Gênes en 1815 et en profite pour simplifier ses armes : la croix rouge de Gênes y entre.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "sardaigne1831": {
+   "nom": "Les armes de Charles-Albert",
+   "blason": "Les armes de 1720, augmentées de Gênes, Nice, Piémont et Saluces ; sur le tout, d'or à l'aigle de sable ; sur le tout du tout, de gueules à la croix d'argent ; en chef sur le tout, d'argent à la croix de gueules cantonnée de quatre têtes de Maure de sable tortillées d'argent",
+   "file": "Coat of arms of Sardinia (1831).svg",
+   "auteur": "FDRMRZUSA",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Sardinia_(1831).svg",
+   "free": true,
+   "note": "L'article français donne le blasonnement complet, quartier par quartier ; il est résumé ici. Charles-Albert lui préfère en usage le petit écu à la seule croix.",
+   "sources": [
+    "armorial_fr",
+    "simboli_it"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "savoie",
+   "nom": "Maison de Savoie",
+   "titre": "Neuf siècles d'armes savoyardes",
+   "lede": "Des comtes de Maurienne aux rois d'Italie, l'écu passe de l'aigle à la croix, se charge de prétentions — Saxe, Chypre, Jérusalem, Sicile, Sardaigne — puis revient en 1848 à la seule croix d'argent sur gueules.",
+   "debut": 1000,
+   "fin": 1960,
+   "depart": 1416,
+   "theme": "savoie",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Branches",
+    "sans": "Sans souverain"
+   },
+   "methode": [
+    "Dates des règnes : « Liste des comtes et ducs de Savoie », « Liste des rois de Sardaigne » et « Liste des rois d'Italie », sur Wikipédia. Les dates des premiers comtes sont traditionnelles et souvent approximatives ; la frise les montre telles que la liste les donne. Les noms renvoient à l'article Wikipédia du souverain.",
+    "Armoiries : « Armorial de la maison de Savoie » pour les blasonnements, l'article italien « Simboli degli Stati sabaudi » (d'après Gerbaix de Sonnaz, 1896) pour les débuts et les ornements, l'article italien « Stemma del Regno d'Italia », qui cite les textes de 1870, 1890 et 1929, pour le royaume d'Italie.",
+    "Quand les sources divergent — date de la première croix, fondation de l'ordre du Collier, année de l'écu de Chypre et Jérusalem, numérotation des Charles, fin du règne d'Humbert II — la frise donne les versions en présence sans trancher."
+   ],
+   "figures": "Couronne et collier des jetons sont dessinés par l'encyclopédie ; l'aigle bicéphale de Philippe Ier, faute de figure libre, reste un écu vide. Écus, grandes armes et armes d'avant le trône viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "savoie",
+     "nom": "Maison de Savoie",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "carignan",
+     "nom": "Savoie-Carignan",
+     "couleur": "#d9694f"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Humbert Ier aux Blanches Mains",
+     "court": "Humbert Ier",
+     "maison": "savoie",
+     "debut": 1027,
+     "fin": 1042,
+     "wiki": "Humbert (comte de Savoie)",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "v. 1027 – 1042 ou 1048 (tradition)",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée Ier la Queue",
+     "court": "Amédée Ier",
+     "maison": "savoie",
+     "debut": 1042,
+     "fin": 1051,
+     "wiki": "Amédée Ier de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "v. 1042 – v. 1051",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Othon Ier",
+     "court": "Othon Ier",
+     "maison": "savoie",
+     "debut": 1051,
+     "fin": 1057,
+     "wiki": "Othon Ier de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "1051 – v. 1057/1060",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Pierre Ier",
+     "court": "Pierre Ier",
+     "maison": "savoie",
+     "debut": 1057,
+     "fin": 1078,
+     "wiki": "Pierre Ier de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "v. 1057/1060 – v. 1078",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée II",
+     "court": "Amédée II",
+     "maison": "savoie",
+     "debut": 1078,
+     "fin": 1080,
+     "wiki": "Amédée II de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "v. 1078 – v. 1080",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Humbert II le Renforcé",
+     "court": "Humbert II",
+     "maison": "savoie",
+     "debut": 1080,
+     "fin": 1103,
+     "wiki": "Humbert II de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "approx": "v. 1080 – 1103",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée III",
+     "court": "Amédée III",
+     "maison": "savoie",
+     "debut": 1103,
+     "fin": 1148,
+     "wiki": "Amédée III de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Humbert III le Saint",
+     "court": "Humbert III",
+     "maison": "savoie",
+     "debut": 1148,
+     "fin": 1189,
+     "wiki": "Humbert III de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Thomas Ier",
+     "court": "Thomas Ier",
+     "maison": "savoie",
+     "debut": 1189,
+     "fin": 1233,
+     "wiki": "Thomas Ier de Savoie",
+     "branche": "comte de Savoie",
+     "phases": [
+      {
+       "debut": 1189,
+       "fin": 1217,
+       "armes": "aucune"
+      },
+      {
+       "debut": 1217,
+       "fin": 1233,
+       "armes": "aigle"
+      }
+     ],
+     "armes": "aucune",
+     "sources": [
+      "liste_fr",
+      "simboli_it"
+     ]
+    },
+    {
+     "nom": "Amédée IV",
+     "court": "Amédée IV",
+     "maison": "savoie",
+     "debut": 1233,
+     "fin": 1253,
+     "wiki": "Amédée IV (comte de Savoie)",
+     "branche": "comte de Savoie",
+     "armes": "aigle",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Boniface le Roland",
+     "court": "Boniface",
+     "maison": "savoie",
+     "debut": 1253,
+     "fin": 1263,
+     "wiki": "Boniface de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aigle",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Pierre II le Petit Charlemagne",
+     "court": "Pierre II",
+     "maison": "savoie",
+     "debut": 1263,
+     "fin": 1268,
+     "wiki": "Pierre II de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "note": "Il use encore de l'aigle, mais l'alterne désormais avec la croix blanche sur gueules.",
+     "sources": [
+      "liste_fr",
+      "simboli_it"
+     ]
+    },
+    {
+     "nom": "Philippe Ier",
+     "court": "Philippe Ier",
+     "maison": "savoie",
+     "debut": 1268,
+     "fin": 1285,
+     "wiki": "Philippe Ier de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "aigle2",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée V le Grand",
+     "court": "Amédée V",
+     "maison": "savoie",
+     "debut": 1285,
+     "fin": 1323,
+     "wiki": "Amédée V de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "note": "Avec lui, l'usage de la croix devient définitif.",
+     "sources": [
+      "liste_fr",
+      "armorial_fr"
+     ]
+    },
+    {
+     "nom": "Édouard le Libéral",
+     "court": "Édouard",
+     "maison": "savoie",
+     "debut": 1323,
+     "fin": 1329,
+     "wiki": "Édouard de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Aymon le Pacifique",
+     "court": "Aymon",
+     "maison": "savoie",
+     "debut": 1329,
+     "fin": 1343,
+     "wiki": "Aymon de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée VI le Comte vert",
+     "court": "Amédée VI",
+     "maison": "savoie",
+     "debut": 1343,
+     "fin": 1383,
+     "wiki": "Amédée VI de Savoie",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée VII le Comte rouge",
+     "court": "Amédée VII",
+     "maison": "savoie",
+     "debut": 1383,
+     "fin": 1391,
+     "wiki": "Amédée VII",
+     "branche": "comte de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée VIII le Pacifique",
+     "court": "Amédée VIII",
+     "maison": "savoie",
+     "debut": 1391,
+     "fin": 1440,
+     "wiki": "Amédée VIII",
+     "branche": "comte, puis premier duc de Savoie",
+     "armes": "croix",
+     "note": "Élu pape par le concile de Bâle sous le nom de Félix V, il garde comme pape la croix de Savoie.",
+     "sources": [
+      "liste_fr",
+      "armorial_fr"
+     ]
+    },
+    {
+     "nom": "Louis Ier",
+     "court": "Louis Ier",
+     "maison": "savoie",
+     "debut": 1440,
+     "fin": 1465,
+     "wiki": "Louis Ier (duc de Savoie)",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Amédée IX le Bienheureux",
+     "court": "Amédée IX",
+     "maison": "savoie",
+     "debut": 1465,
+     "fin": 1472,
+     "wiki": "Amédée IX",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Philibert Ier le Chasseur",
+     "court": "Philibert Ier",
+     "maison": "savoie",
+     "debut": 1472,
+     "fin": 1482,
+     "wiki": "Philibert Ier",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles Ier le Guerrier",
+     "court": "Charles Ier",
+     "maison": "savoie",
+     "debut": 1482,
+     "fin": 1490,
+     "wiki": "Charles Ier (duc de Savoie)",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Jean-Amédée",
+     "court": "Charles-Jean-Amédée",
+     "maison": "savoie",
+     "debut": 1490,
+     "fin": 1496,
+     "wiki": "Charles-Jean-Amédée",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Philippe II sans Terre",
+     "court": "Philippe II",
+     "maison": "savoie",
+     "debut": 1496,
+     "fin": 1497,
+     "wiki": "Philippe II (duc de Savoie)",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Philibert II le Beau",
+     "court": "Philibert II",
+     "maison": "savoie",
+     "debut": 1497,
+     "fin": 1504,
+     "wiki": "Philibert II",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles II le Bon",
+     "court": "Charles II",
+     "maison": "savoie",
+     "debut": 1504,
+     "fin": 1553,
+     "wiki": "Charles II (duc de Savoie)",
+     "branche": "duc de Savoie",
+     "armes": "croix",
+     "note": "La liste des ducs l'appelle Charles III ; son article le nomme Charles II, la numérotation variant selon qu'on compte ou non Charles-Jean-Amédée.",
+     "sources": [
+      "liste_fr",
+      "charles2_fr"
+     ]
+    },
+    {
+     "nom": "Emmanuel-Philibert Tête de Fer",
+     "court": "Emmanuel-Philibert",
+     "maison": "savoie",
+     "debut": 1553,
+     "fin": 1580,
+     "wiki": "Emmanuel-Philibert (duc de Savoie)",
+     "branche": "duc de Savoie",
+     "phases": [
+      {
+       "debut": 1553,
+       "fin": 1563,
+       "armes": "croix"
+      },
+      {
+       "debut": 1563,
+       "fin": 1580,
+       "armes": "savoie1563"
+      }
+     ],
+     "armes": "croix",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Emmanuel Ier le Grand",
+     "court": "Charles-Emmanuel Ier",
+     "maison": "savoie",
+     "debut": 1580,
+     "fin": 1630,
+     "wiki": "Charles-Emmanuel Ier",
+     "branche": "duc de Savoie",
+     "armes": "savoie1563",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Victor-Amédée Ier",
+     "court": "Victor-Amédée Ier",
+     "maison": "savoie",
+     "debut": 1630,
+     "fin": 1637,
+     "wiki": "Victor-Amédée Ier",
+     "branche": "duc de Savoie",
+     "phases": [
+      {
+       "debut": 1630,
+       "fin": 1632,
+       "armes": "savoie1563"
+      },
+      {
+       "debut": 1632,
+       "fin": 1637,
+       "armes": "savoie1632"
+      }
+     ],
+     "armes": "savoie1563",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "François-Hyacinthe",
+     "court": "François-Hyacinthe",
+     "maison": "savoie",
+     "debut": 1637,
+     "fin": 1638,
+     "wiki": "François-Hyacinthe",
+     "branche": "duc de Savoie",
+     "armes": "savoie1632",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Emmanuel II",
+     "court": "Charles-Emmanuel II",
+     "maison": "savoie",
+     "debut": 1638,
+     "fin": 1675,
+     "wiki": "Charles-Emmanuel II",
+     "branche": "duc de Savoie",
+     "armes": "savoie1632",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Victor-Amédée II",
+     "court": "Victor-Amédée II",
+     "maison": "savoie",
+     "debut": 1675,
+     "fin": 1730,
+     "wiki": "Victor-Amédée II",
+     "branche": "duc de Savoie, roi de Sicile, puis de Sardaigne",
+     "phases": [
+      {
+       "debut": 1675,
+       "fin": 1713,
+       "armes": "savoie1632"
+      },
+      {
+       "debut": 1713,
+       "fin": 1720,
+       "armes": "sicile1713"
+      },
+      {
+       "debut": 1720,
+       "fin": 1730,
+       "armes": "sardaigne1720"
+      }
+     ],
+     "armes": "savoie1632",
+     "sources": [
+      "liste_fr",
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Emmanuel III",
+     "court": "Charles-Emmanuel III",
+     "maison": "savoie",
+     "debut": 1730,
+     "fin": 1773,
+     "wiki": "Charles-Emmanuel III",
+     "branche": "roi de Sardaigne",
+     "armes": "sardaigne1720",
+     "sources": [
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Victor-Amédée III",
+     "court": "Victor-Amédée III",
+     "maison": "savoie",
+     "debut": 1773,
+     "fin": 1796,
+     "wiki": "Victor-Amédée III",
+     "branche": "roi de Sardaigne",
+     "armes": "sardaigne1720",
+     "sources": [
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Emmanuel IV",
+     "court": "Charles-Emmanuel IV",
+     "maison": "savoie",
+     "debut": 1796,
+     "fin": 1802,
+     "wiki": "Charles-Emmanuel IV",
+     "branche": "roi de Sardaigne",
+     "armes": "sardaigne1720",
+     "sources": [
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Victor-Emmanuel Ier",
+     "court": "Victor-Emmanuel Ier",
+     "maison": "savoie",
+     "debut": 1802,
+     "fin": 1821,
+     "wiki": "Victor-Emmanuel Ier",
+     "branche": "roi de Sardaigne",
+     "phases": [
+      {
+       "debut": 1802,
+       "fin": 1815,
+       "armes": "sardaigne1720"
+      },
+      {
+       "debut": 1815,
+       "fin": 1821,
+       "armes": "sardaigne1815"
+      }
+     ],
+     "armes": "sardaigne1720",
+     "sources": [
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Félix",
+     "court": "Charles-Félix",
+     "maison": "savoie",
+     "debut": 1821,
+     "fin": 1831,
+     "wiki": "Charles-Félix (roi de Sardaigne)",
+     "branche": "roi de Sardaigne",
+     "armes": "sardaigne1815",
+     "sources": [
+      "sardaigne_fr"
+     ]
+    },
+    {
+     "nom": "Charles-Albert",
+     "court": "Charles-Albert",
+     "maison": "carignan",
+     "debut": 1831,
+     "fin": 1849,
+     "wiki": "Charles-Albert (roi de Sardaigne)",
+     "branche": "roi de Sardaigne",
+     "phases": [
+      {
+       "debut": 1831,
+       "fin": 1848,
+       "armes": "sardaigne1831"
+      },
+      {
+       "debut": 1848,
+       "fin": 1849,
+       "armes": "croix"
+      }
+     ],
+     "armes": "sardaigne1831",
+     "sources": [
+      "sardaigne_fr",
+      "armorial_fr"
+     ],
+     "avant": [
+      {
+       "titre": "Comte de l'Empire",
+       "dates": "1814",
+       "blason": "De gueules au cheval effaré d'argent, au canton des comtes propriétaires brochant",
+       "file": "Blason Charles-Albert de Savoie (1798-1849) comte de l’Empire.svg",
+       "auteur": "Jimmy44",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+       "note": "L'usage des armes de Savoie lui étant défendu, le Conseil du sceau des titres lui en attribue d'autres ; le cheval effaré reprend celui de Basse-Saxe.",
+       "sources": [
+        "armorial_fr"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Victor-Emmanuel II",
+     "court": "Victor-Emmanuel II",
+     "maison": "carignan",
+     "debut": 1849,
+     "fin": 1878,
+     "wiki": "Victor-Emmanuel II",
+     "branche": "roi de Sardaigne, puis d'Italie",
+     "armes": "croix",
+     "sources": [
+      "sardaigne_fr",
+      "rois_italie_fr"
+     ]
+    },
+    {
+     "nom": "Humbert Ier",
+     "court": "Humbert Ier",
+     "maison": "carignan",
+     "debut": 1878,
+     "fin": "1900-07-29",
+     "wiki": "Humbert Ier (roi d'Italie)",
+     "branche": "roi d'Italie",
+     "armes": "croix",
+     "sources": [
+      "rois_italie_fr"
+     ]
+    },
+    {
+     "nom": "Victor-Emmanuel III",
+     "court": "Victor-Emmanuel III",
+     "maison": "carignan",
+     "debut": "1900-07-29",
+     "fin": "1946-05-09",
+     "wiki": "Victor-Emmanuel III",
+     "branche": "roi d'Italie",
+     "armes": "croix",
+     "sources": [
+      "rois_italie_fr"
+     ]
+    },
+    {
+     "nom": "Humbert II",
+     "court": "Humbert II",
+     "maison": "carignan",
+     "debut": "1946-05-09",
+     "fin": "1946-06-18",
+     "wiki": "Humbert II (roi d'Italie)",
+     "branche": "roi d'Italie",
+     "armes": "croix",
+     "note": "Son article donne le 18 juin 1946 comme fin du règne ; le même article le dit roi jusqu'au 12 juin.",
+     "sources": [
+      "humbert2_fr"
+     ]
+    }
+   ],
+   "vides": [],
+   "jalons": [
+    {
+     "annee": 1217,
+     "titre": "Première insigne : l'aigle",
+     "texte": "Thomas Ier arbore une aigle noire à une tête, emblème de l'Empire, dont il est vicaire en Italie.",
+     "desaccord": "Pour l'article français, d'après Bernard Demotz, la croix paraît dès 1143 sur le pennon d'un sceau d'Amédée III ; l'article italien range cette date parmi les thèses des chroniqueurs anciens.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1263,
+     "titre": "La croix blanche sur gueules",
+     "texte": "Pierre II, devenu comte, alterne l'aigle et la croix. Elle viendrait de l'emblème des croisés anglais, avec qui il avait pris la croix en 1250-1251.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1268,
+     "titre": "L'aigle à deux têtes",
+     "texte": "Philippe Ier reprend l'aigle noire, désormais bicéphale et sur champ d'argent.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1300,
+     "label": "XIVᵉ s.",
+     "titre": "La croix pour de bon",
+     "texte": "Sous Amédée V, au XIVᵉ siècle, l'usage de la croix devient définitif.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1327,
+     "titre": "Le lion ailé",
+     "texte": "Le comte Édouard adopte le cimier au mufle de lion ailé, que les ducs garderont.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1364,
+     "titre": "L'ordre du Collier",
+     "texte": "Amédée VI, le comte Vert, fonde l'ordre du Collier.",
+     "desaccord": "La liste des comtes date la fondation de 1362 ; l'article consacré à l'ordre retient 1364 et tient 1362 pour une erreur.",
+     "sources": [
+      "annonciade_fr",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1416,
+     "titre": "Duc de Savoie",
+     "texte": "L'empereur Sigismond érige le comté en duché. Les ducs gardent la croix, mais taillent leur bannière « en flamme » pour la distinguer de celles de leurs vassaux.",
+     "sources": [
+      "liste_fr",
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1439,
+     "titre": "Un duc pape",
+     "texte": "Élu pape par le concile de Bâle sous le nom de Félix V, Amédée VIII garde comme pape la croix de Savoie.",
+     "sources": [
+      "liste_fr",
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1518,
+     "titre": "L'Annonciade",
+     "texte": "Charles le Bon ajoute au collier l'image de l'Annonciation : l'ordre devient l'ordre suprême de la Très Sainte Annonciade.",
+     "sources": [
+      "annonciade_fr"
+     ]
+    },
+    {
+     "annee": 1563,
+     "label": "v. 1563",
+     "titre": "L'écartelé saxon",
+     "texte": "Ses États recouvrés, Emmanuel-Philibert écartèle la croix avec Saxe, Westphalie, Angrie, Chablais et Aoste, et entoure l'écu du collier de l'ordre.",
+     "sources": [
+      "simboli_it",
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1632,
+     "titre": "Chypre et Jérusalem",
+     "texte": "Victor-Amédée Ier, qui prétend aux couronnes de Chypre et de Jérusalem, en fait entrer les armes dans l'écu, avec Genève et Montferrat, et le place sous un pavillon.",
+     "desaccord": "L'article français date ce changement de 1630, l'article italien de la fin de 1632.",
+     "sources": [
+      "simboli_it",
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1713,
+     "titre": "Roi de Sicile",
+     "texte": "Par les traités d'Utrecht, Victor-Amédée II devient roi de Sicile : Nice et Saluces entrent dans l'écu, et l'aigle de Sicile, chargée de Savoie, en prend le centre.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1720,
+     "titre": "Roi de Sardaigne",
+     "texte": "La Sicile échangée contre la Sardaigne, l'aigle passe sur champ d'or et l'écu de Sardaigne aux quatre têtes de Maure s'y ajoute.",
+     "sources": [
+      "simboli_it",
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1815,
+     "titre": "Gênes",
+     "texte": "Victor-Emmanuel Ier reçoit Gênes et simplifie ses armes ; la croix rouge de Gênes y entre.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1831,
+     "titre": "Carignan",
+     "texte": "Charles-Albert, de la branche de Carignan, reprend les armes de 1720 en y ajoutant Gênes, Nice, Piémont et Saluces, mais préfère en usage le petit écu à la seule croix.",
+     "sources": [
+      "armorial_fr",
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1848,
+     "titre": "Le tricolore",
+     "texte": "Charles-Albert place l'écu de Savoie, bordé d'azur, sur le drapeau tricolore ; l'emblème de l'État devient l'écu couronné, entouré du collier, avec un trophée de drapeaux.",
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "annee": 1861,
+     "titre": "Roi d'Italie",
+     "texte": "Le nouveau royaume garde les armes d'origine : de gueules à la croix d'argent.",
+     "sources": [
+      "armorial_fr",
+      "stemma_it"
+     ]
+    },
+    {
+     "annee": 1870.34,
+     "label": "1870",
+     "titre": "Premier règlement",
+     "texte": "Une délibération de la Consulta araldica fixe les ornements de l'écu : heaume couronné, ordres, lions tenant des guidons, manteau et pavillon.",
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "annee": 1890.9,
+     "label": "1890",
+     "titre": "La Couronne de fer",
+     "texte": "Le décret du 27 novembre 1890 supprime manteau et lances, porte la couronne royale sur le pavillon et pose la Couronne de fer sur le heaume.",
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "annee": 1929.3,
+     "label": "1929",
+     "titre": "Les faisceaux",
+     "texte": "Le décret du 11 avril 1929 remplace les lions par deux faisceaux de licteur ; la devise FERT figure trois fois.",
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "annee": 1946.42,
+     "label": "1946",
+     "titre": "Fin de la monarchie",
+     "texte": "Le référendum du 2 juin 1946 abolit la monarchie ; l'emblème de la République remplacera l'écu de Savoie en 1948.",
+     "sources": [
+      "stemma_it"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1416,
+     "fin": 1563,
+     "file": "Stemma dei Duchi di Savoia (~1416-1563).svg",
+     "auteur": "ZuppaDiCarlo",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Les ducs : la croix sous le lion ailé",
+     "ornements": [
+      "Cimier : un mufle de lion ailé, en usage depuis le comte Édouard (1327)"
+     ],
+     "sources": [
+      "simboli_it"
+     ],
+     "note": "Le fichier date ces armes de « ~1416 », sans précision."
+    },
+    {
+     "debut": 1563,
+     "fin": 1632,
+     "file": "Coat of arms of the Duchy of Savoy (1563-1630).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Emmanuel-Philibert : l'écartelé saxon",
+     "ornements": [
+      "Collier de l'ordre suprême (Annonciade)",
+      "Supports : deux lions d'or",
+      "Trois heaumes : couronne ducale au lion ailé, cimiers de Misnie et de Saxe"
+     ],
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "debut": 1632,
+     "fin": 1713,
+     "file": "Coat of arms of the Duchy of Savoy (1630-1713).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Victor-Amédée Ier : l'écu sous le pavillon",
+     "ornements": [
+      "Pavillon, d'où sort le fer d'une lance de tournoi portant la bannière de gueules à la croix d'argent"
+     ],
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "debut": 1713,
+     "fin": 1720,
+     "file": "Crowned coat of arms of the Kingdom of Sicily (1713).svg",
+     "auteur": "FootKalos1597",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Roi de Sicile",
+     "ornements": [],
+     "sources": [
+      "simboli_it"
+     ]
+    },
+    {
+     "debut": 1720,
+     "fin": 1815,
+     "file": "CoA Savoy monarch (1720-1815).svg",
+     "auteur": "Flopao",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Roi de Sardaigne",
+     "ornements": [],
+     "sources": [
+      "simboli_it",
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": 1815,
+     "fin": 1831,
+     "file": "Greater coat of arms of the Kingdom of Sardinia (1815-1831).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Les armes simplifiées de 1815",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": 1831,
+     "fin": 1848,
+     "file": "Greater coat of arms of the Kingdom of Sardinia (1833-1848).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Charles-Albert",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": 1848,
+     "fin": "1870-05-04",
+     "file": "Coat of arms of the Kingdom of Italy variant (1848-1870).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "L'écu de Savoie couronné",
+     "ornements": [
+      "Couronne royale",
+      "Collier de l'ordre suprême",
+      "Trophée de drapeaux tricolores"
+     ],
+     "sources": [
+      "simboli_it",
+      "stemma_it"
+     ],
+     "note": "Emblème de l'État sarde dès 1848, gardé par le royaume d'Italie jusqu'en 1870."
+    },
+    {
+     "debut": "1870-05-04",
+     "fin": "1890-12-26",
+     "file": "Greater coat of arms of the Kingdom of Italy (1870-1890).svg",
+     "auteur": "Facquis",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "La délibération de 1870",
+     "ornements": [
+      "Heaume royal couronné",
+      "Colliers et grand-croix des ordres",
+      "Supports : deux lions tenant des guidons",
+      "Manteau de pourpre semé de roses et de nœuds de Savoie",
+      "Pavillon d'azur sommé d'une étoile d'argent"
+     ],
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "debut": "1890-12-26",
+     "fin": "1927-07-28",
+     "file": "Coat of arms of the Kingdom of Italy (1890).svg",
+     "auteur": "Sodacan, Katepanomegas et ZuppaDiCarlo",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Le décret de 1890",
+     "ornements": [
+      "Heaume royal sommé de la Couronne de fer",
+      "Supports : deux lions, d'or ou au naturel",
+      "Grandes insignes des ordres équestres italiens",
+      "Pavillon royal sommé de la couronne royale",
+      "Gonfalon d'Italie à l'aigle d'or couronnée"
+     ],
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "debut": "1927-07-28",
+     "fin": "1929-05-04",
+     "file": "Coats of arms of Kingdom of Italy (1927-1929) Greater Arms.svg",
+     "auteur": "Ddurbmonnejg",
+     "lic": "CC BY-SA 4.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "titre": "Les faisceaux à côté de l'écu",
+     "ornements": [],
+     "sources": [
+      "stemma_it"
+     ],
+     "note": "En 1927, le faisceau de licteur est accolé aux armes de 1890."
+    },
+    {
+     "debut": "1929-05-04",
+     "fin": "1944-11-22",
+     "file": "Greater coat of arms of the Kingdom of Italy (1929-1944).svg",
+     "auteur": "Katepanomegas, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Le décret de 1929",
+     "ornements": [
+      "Heaume royal d'or sommé de la Couronne de fer",
+      "Supports : deux faisceaux de licteur liés en nœuds de Savoie",
+      "Grand collier de l'Annonciade et grandes fasces des ordres",
+      "Devise FERT, trois fois",
+      "Pavillon de pourpre sommé de la couronne royale"
+     ],
+     "sources": [
+      "stemma_it"
+     ]
+    },
+    {
+     "debut": "1944-11-22",
+     "fin": "1946-06-18",
+     "file": "Coat of arms of the Kingdom of Italy (1890).svg",
+     "auteur": "Sodacan, Katepanomegas et ZuppaDiCarlo",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Retour aux armes de 1890",
+     "ornements": [
+      "Heaume royal sommé de la Couronne de fer",
+      "Supports : deux lions, d'or ou au naturel",
+      "Grandes insignes des ordres équestres italiens",
+      "Pavillon royal sommé de la couronne royale",
+      "Gonfalon d'Italie à l'aigle d'or couronnée"
+     ],
+     "sources": [
+      "stemma_it"
+     ]
+    }
+   ],
+   "ornements": [
+    {
+     "id": "couronne",
+     "nom": "Couronne",
+     "segs": [
+      {
+       "debut": 1848,
+       "fin": "1946-06-18",
+       "type": "fermee-sans-lis",
+       "label": "royale",
+       "texte": "Dès 1848, l'écu de Savoie est sommé de la couronne royale ; en 1870 elle coiffe le heaume, en 1890 elle passe sur le pavillon.",
+       "sources": [
+        "simboli_it",
+        "stemma_it"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "colliers",
+     "nom": "Collier",
+     "segs": [
+      {
+       "debut": 1563,
+       "fin": "1946-06-18",
+       "type": "annonciade",
+       "label": "de l'Annonciade",
+       "texte": "Emmanuel-Philibert entoure l'écu du collier de l'ordre suprême ; il y reste jusqu'aux décrets de 1870, 1890 et 1929.",
+       "sources": [
+        "simboli_it",
+        "stemma_it"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": 1563,
+       "fin": 1632,
+       "type": "lions",
+       "label": "deux lions d'or",
+       "texte": "Emmanuel-Philibert fait soutenir l'écu par deux lions d'or ; les sources lues ne disent pas jusqu'à quand.",
+       "sources": [
+        "simboli_it"
+       ]
+      },
+      {
+       "debut": "1870-05-04",
+       "fin": "1929-05-04",
+       "type": "lions",
+       "label": "deux lions",
+       "texte": "1870 : deux lions tenant des guidons ; 1890 : deux lions, d'or ou au naturel.",
+       "sources": [
+        "stemma_it"
+       ]
+      },
+      {
+       "debut": "1929-05-04",
+       "fin": "1944-11-22",
+       "type": "faisceaux",
+       "label": "deux faisceaux",
+       "texte": "Le décret du 11 avril 1929 remplace les lions par deux faisceaux de licteur.",
+       "sources": [
+        "stemma_it"
+       ]
+      },
+      {
+       "debut": "1944-11-22",
+       "fin": "1946-06-18",
+       "type": "lions",
+       "label": "deux lions",
+       "texte": "Les armes de 1890 sont rétablies.",
+       "sources": [
+        "stemma_it"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "manteau",
+     "nom": "Pavillon",
+     "segs": [
+      {
+       "debut": 1632,
+       "fin": 1713,
+       "type": "pavillon",
+       "label": "pavillon",
+       "texte": "Victor-Amédée Ier place l'écu sous un pavillon ; les sources lues ne disent pas jusqu'à quand.",
+       "sources": [
+        "simboli_it"
+       ]
+      },
+      {
+       "debut": "1870-05-04",
+       "fin": "1946-06-18",
+       "type": "pavillon",
+       "label": "pavillon royal",
+       "texte": "1870 : manteau de pourpre et pavillon d'azur ; 1890 : le manteau disparaît, le pavillon porte la couronne ; 1929 : pavillon de pourpre.",
+       "sources": [
+        "stemma_it"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

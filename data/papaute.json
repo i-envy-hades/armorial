@@ -31,6 +31,10 @@
   "heraldique_europeenne": {
    "label": "Héraldique européenne — Papes",
    "url": "http://www.heraldique-europeenne.org/Regions/Italie/Papes_1.htm"
+  },
+  "histoire_papaute_fr": {
+   "label": "Wikipédia, « Histoire de la papauté »",
+   "url": "https://fr.wikipedia.org/wiki/Histoire_de_la_papaut%C3%A9"
   }
  },
  "armes": {
@@ -1717,7 +1721,7 @@
    "sources": [
     "armoiries_papales"
    ],
-   "note": "L'article « Armoiries papales » ne blasonne pas ces armes ; la figure seule est reprise."
+   "note": "Ni l'article « Armoiries papales », ni les articles espagnol, catalan, italien et anglais sur l'antipape, ni la page Commons du fichier ne blasonnent ces armes : la figure seule est reprise."
   },
   "alexander-v-antipapa": {
    "nom": "Armes d'Alexandre V (antipape)",
@@ -1811,7 +1815,7 @@
    "methode": [
     "Dates des pontificats : « Liste des papes » de Wikipédia. Pour les premiers siècles, ce sont des dates traditionnelles, souvent incertaines ; la frise les montre telles que la liste les donne. Les papes « éphémères » et les antipapes sont rangés à part, avec leurs armes quand elles existent.",
     "Armoiries attestées ou non : l'article d'Édouard Bouyé (2003), lu en entier, sert de fil. Avant Nicolas III (1277) et pour les quatre pontificats qui le suivent, les armes montrées sont rétrospectives : elles sont marquées « a posteriori ». Avant 1045, aucune figure libre de ces armes inventées n'a été trouvée : la frise n'en dessine pas.",
-    "Blasonnements : article « Armoiries papales » de Wikipédia, qui renvoie à Héraldique vaticane et à Neubecker. Époques : sections de l'article anglais « History of the papacy ». Quand les sources divergent — premier pape armorié, deuxième et troisième couronnes de la tiare, armes de Clément VII d'Avignon, devise de Paul VI — la frise donne les versions en présence."
+    "Blasonnements : article « Armoiries papales » de Wikipédia, qui renvoie à Héraldique vaticane et à Neubecker. Époques : sections de l'article anglais « History of the papacy » ; ses intervalles sans nom (752-756, 857-904, 1689-1775) sont comblés d'après le découpage de l'article français « Histoire de la papauté » (papauté franque jusqu'en 867, barons romains à partir de 867, papauté baroque jusqu'en 1700, siècle des Lumières). Quand les sources divergent — premier pape armorié, deuxième et troisième couronnes de la tiare, armes de Clément VII d'Avignon, devise de Paul VI — la frise donne les versions en présence."
    ],
    "maisons": [
     {
@@ -1846,14 +1850,14 @@
      "id": "francs",
      "nom": "Papauté franque",
      "couleur": "#3fa383",
-     "debut": 756,
-     "fin": 857
+     "debut": 752,
+     "fin": 867
     },
     {
      "id": "familles",
      "nom": "Grandes familles romaines",
      "couleur": "#c0503f",
-     "debut": 904,
+     "debut": 867,
      "fin": 1048
     },
     {
@@ -1903,7 +1907,14 @@
      "nom": "Papauté baroque",
      "couleur": "#cf6fa5",
      "debut": 1585,
-     "fin": 1689
+     "fin": 1700
+    },
+    {
+     "id": "lumieres",
+     "nom": "Siècle des Lumières",
+     "couleur": "#5fb3a8",
+     "debut": 1700,
+     "fin": 1775
     },
     {
      "id": "revolutions",
@@ -1925,11 +1936,6 @@
      "couleur": "#efdcaa",
      "debut": 1929,
      "fin": 2100
-    },
-    {
-     "id": "hors",
-     "nom": "",
-     "couleur": "#6b5a5e"
     }
    ],
    "regnes": [
@@ -3144,10 +3150,11 @@
      "fin": "0757-04-26",
      "wiki": "Étienne II (pape)",
      "num": 92,
-     "maison": "hors",
+     "maison": "francs",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3315,10 +3322,11 @@
      "wiki": "Nicolas Ier (pape)",
      "naissance": "v. 800 à Rome",
      "num": 105,
-     "maison": "hors",
+     "maison": "francs",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3328,10 +3336,11 @@
      "fin": "0872-12-14",
      "wiki": "Adrien II",
      "num": 106,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3341,10 +3350,11 @@
      "fin": "0882-12-16",
      "wiki": "Jean VIII (pape)",
      "num": 107,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3354,10 +3364,11 @@
      "fin": "0884-05-15",
      "wiki": "Marin Ier",
      "num": 108,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3368,10 +3379,11 @@
      "wiki": "Adrien III",
      "approx": "17 mai 884 – septembre 885",
      "num": 109,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3382,10 +3394,11 @@
      "wiki": "Étienne V (pape)",
      "approx": "septembre 885 – 14 septembre 891",
      "num": 110,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3395,10 +3408,11 @@
      "fin": "0896-04-04",
      "wiki": "Formose (pape)",
      "num": 111,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3408,10 +3422,11 @@
      "fin": "0896-04-26",
      "wiki": "Boniface VI",
      "num": 112,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3422,10 +3437,11 @@
      "wiki": "Étienne VI (pape)",
      "approx": "mai 896 – août 897",
      "num": 113,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3436,10 +3452,11 @@
      "wiki": "Romain (pape)",
      "approx": "août 897 – novembre 897",
      "num": 114,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3450,10 +3467,11 @@
      "wiki": "Théodore II (pape)",
      "approx": "décembre 897 - décembre 897",
      "num": 115,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3464,10 +3482,11 @@
      "wiki": "Jean IX",
      "approx": "janvier 898 – 26 mars 900",
      "num": 116,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3477,10 +3496,11 @@
      "fin": "0903-07-30",
      "wiki": "Benoît IV",
      "num": 117,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -3492,10 +3512,11 @@
      "approx": "vers le 30 juillet 903 – fin août 903",
      "naissance": "Leone",
      "num": 118,
-     "maison": "hors",
+     "maison": "familles",
      "armes": "aucune",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5242,10 +5263,11 @@
      "wiki": "Alexandre VIII",
      "naissance": "Pietro Vito Ottoboni",
      "num": 241,
-     "maison": "hors",
+     "maison": "baroque",
      "armes": "alexander-viii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5256,10 +5278,11 @@
      "wiki": "Innocent XII",
      "naissance": "Antonio Pignatelli del Rastrello",
      "num": 242,
-     "maison": "hors",
+     "maison": "baroque",
      "armes": "inocentius-xii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5270,10 +5293,11 @@
      "wiki": "Clément XI",
      "naissance": "Giovanni Francesco Albani",
      "num": 243,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "clementem-xi",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5284,10 +5308,11 @@
      "wiki": "Innocent XIII",
      "naissance": "Michelangelo dei Conti",
      "num": 244,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "inocentius-xiii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5298,10 +5323,11 @@
      "wiki": "Benoît XIII (pape)",
      "naissance": "Pietro Francesco Orsini",
      "num": 245,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "benedictus-xiii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5312,10 +5338,11 @@
      "wiki": "Clément XII",
      "naissance": "Lorenzo Corsini",
      "num": 246,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "clementem-xii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5326,10 +5353,11 @@
      "wiki": "Benoît XIV",
      "naissance": "Prospero Lorenzo Lambertini",
      "num": 247,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "benedictus-xiv",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5340,10 +5368,11 @@
      "wiki": "Clément XIII",
      "naissance": "Carlo della Torre Rezzonico",
      "num": 248,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "clementem-xiii",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {
@@ -5354,10 +5383,11 @@
      "wiki": "Clément XIV",
      "naissance": "Giovanni Vincenzo Antonio Ganganelli",
      "num": 249,
-     "maison": "hors",
+     "maison": "lumieres",
      "armes": "clementem-xiv",
      "sources": [
-      "liste_papes"
+      "liste_papes",
+      "histoire_papaute_fr"
      ]
     },
     {

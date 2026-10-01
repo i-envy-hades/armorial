@@ -27,10 +27,39 @@
 }
 /* thème de la papauté : porphyre et or, semis de clés */
 .stage.theme-papaute{--night:#1d0a11;--night-2:#3d1322;--night-3:#5c1b2e;--bg:29,10,17;--glow:rgba(196,58,82,.3);--medal:radial-gradient(circle at 40% 35%,#6e2136,#23080f)}
-.lswitch{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.3rem}
-.lswitch a{font-family:"Marcellus SC",serif;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--ink-soft);border:1px solid var(--rule);border-radius:999px;padding:.45rem 1.1rem;background:var(--vellum-2);transition:background .2s,color .2s,border-color .2s}
-.lswitch a:hover{text-decoration:none;border-color:var(--or);color:var(--ink)}
-.lswitch a.on{background:var(--gules);border-color:var(--gules);color:#fbf5e4}
+/* thème de Savoie : gueules et or, semis de croix */
+.stage.theme-savoie{--night:#170807;--night-2:#45130e;--night-3:#6b1d14;--bg:23,8,7;--glow:rgba(235,90,60,.28);--medal:radial-gradient(circle at 40% 35%,#7d2618,#250906)}
+.stage.theme-savoie .big .b-field{fill:url(#g-gules)}
+/* thème Habsbourg : sable et or impériaux, semis de Bindenschild */
+.stage.theme-habsbourg{--night:#0d0c0a;--night-2:#26211a;--night-3:#3d3426;--bg:13,12,10;--glow:rgba(227,197,121,.26);--medal:radial-gradient(circle at 40% 35%,#4a3f2c,#120f0a)}
+.stage.theme-habsbourg .big .b-field{fill:url(#g-or)}
+/* thème Angleterre : pourpre royal et or, semis de roses Tudor */
+.stage.theme-angleterre{--night:#12070d;--night-2:#36101f;--night-3:#561a31;--bg:18,7,13;--glow:rgba(214,70,96,.26);--medal:radial-gradient(circle at 40% 35%,#6a1d34,#1e0811)}
+.stage.theme-angleterre .big .b-field{fill:url(#g-gules)}
+/* sélecteur de lignées : bouton + panneau groupé par pays, avec recherche */
+.lpick{position:relative;display:inline-block;margin-top:1.3rem;text-align:left}
+.lp-btn{display:flex;align-items:center;gap:.8rem;min-width:min(22rem,90vw);padding:.5rem 1rem .5rem .6rem;border:1px solid var(--rule);border-radius:14px;background:var(--vellum-2);color:var(--ink);cursor:pointer;font:inherit;transition:border-color .2s,box-shadow .2s}
+.lp-btn:hover,.lp-btn[aria-expanded="true"]{border-color:var(--or);box-shadow:0 6px 18px -10px rgba(60,40,10,.45)}
+.lp-btn .lp-chev{margin-left:auto;width:14px;height:14px;transition:transform .2s;color:var(--ink-soft)}
+.lp-btn[aria-expanded="true"] .lp-chev{transform:rotate(180deg)}
+.lp-em{width:34px;height:40px;object-fit:contain;flex:none}
+.lp-t{display:flex;flex-direction:column;line-height:1.15}
+.lp-t small{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gules)}
+.lp-t b{font-family:"Marcellus",serif;font-weight:400;font-size:1.12rem}
+.lp-t em{font-size:.82rem;color:var(--ink-soft)}
+.lp-panel{position:absolute;z-index:40;top:calc(100% + .4rem);left:50%;transform:translateX(-50%);width:min(26rem,94vw);max-height:min(70vh,32rem);display:flex;flex-direction:column;border:1px solid var(--or);border-radius:14px;background:var(--vellum);box-shadow:0 22px 50px -18px rgba(40,25,5,.55);overflow:hidden}
+.lp-panel[hidden]{display:none}
+.lp-q{margin:.6rem;padding:.5rem .75rem;border:1px solid var(--rule);border-radius:9px;background:var(--vellum-2);font:inherit;color:var(--ink)}
+.lp-q:focus{outline:2px solid var(--or);outline-offset:1px}
+.lp-list{overflow:auto;padding:0 .4rem .5rem}
+.lp-g{margin:.6rem .5rem .25rem;font-family:"Marcellus SC",serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:.2rem}
+.lp-it{display:flex;align-items:center;gap:.7rem;padding:.4rem .5rem;border-radius:9px;color:var(--ink)}
+.lp-it:hover,.lp-it:focus{background:var(--vellum-2);text-decoration:none;outline:none;box-shadow:inset 0 0 0 1px var(--or)}
+.lp-it.on{background:var(--gules);color:#fbf5e4}
+.lp-it.on .lp-t em{color:#f1dcc0}
+.lp-it .lp-em{width:26px;height:30px}
+.lp-it .lp-t b{font-size:1rem}
+.lp-none{margin:.8rem;color:var(--ink-soft);font-style:italic}
 a{text-decoration:none}
 a:hover{text-decoration:underline}
 
@@ -92,6 +121,8 @@ a:hover{text-decoration:underline}
 .big.lambel-on .b-lambel{transform:translateY(0);opacity:1}
 .big .b-img{opacity:0;transition:opacity .9s ease}
 .big .b-img.on{opacity:1}
+.big[data-state="free"] .b-field,.big[data-state="free"] .b-relief,.big[data-state="free"] .b-outline{opacity:0}
+.big[data-state="free"] .b-shine{display:none}
 .big .b-outline{fill:none;stroke:var(--gold);stroke-width:9;transition:stroke-dasharray .4s}
 .big[data-state="aucune"] .b-outline,
 .big[data-state="embleme"] .b-outline,
@@ -155,6 +186,7 @@ a:hover{text-decoration:underline}
 .panel .p-arms{display:inline-flex;align-items:center;gap:.5rem;font-family:"Marcellus SC",serif;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;color:var(--night);background:linear-gradient(180deg,#f3dc9a,#c9a24a);border-radius:999px;padding:.22rem .8rem;margin:0 0 .6rem;box-shadow:0 6px 18px -8px rgba(227,197,121,.7)}
 .panel .p-bl{font-style:italic;font-size:clamp(1.12rem,2.2vw,1.35rem);line-height:1.45;color:#fbf5e4;margin:0 0 .7rem;max-width:52ch}
 .panel .p-bl.dim{color:var(--parch-soft);font-size:1.02rem}
+.panel .p-bl.long{font-size:1.02rem;line-height:1.5;max-width:62ch}
 .panel .p-note{font-size:.9rem;line-height:1.5;color:var(--parch-soft);margin:.35rem 0;max-width:62ch}
 .panel .p-note .src,.toast .src{display:block;font-size:.76rem;margin-top:.15rem}
 .panel .p-note a,.toast a,.panel .p-credit a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(227,197,121,.4)}
@@ -235,7 +267,7 @@ a:hover{text-decoration:underline}
 .orn{position:relative;padding:3px 0;border-bottom:1px solid rgba(227,197,121,.2);background:rgba(0,0,0,.12)}
 .orow{position:relative;height:17px}
 .orow .row-label{font-size:.54rem;letter-spacing:.16em;color:var(--parch-soft)}
-.os{position:absolute;top:3px;height:11px;border-radius:6px;overflow:clip;display:flex;align-items:center;padding:0 .4rem;cursor:help;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.35)}
+.os{position:absolute;top:3px;height:11px;border-radius:6px;overflow:clip;display:flex;align-items:center;padding:0 .4rem;cursor:help;background:linear-gradient(#e6dcc0,#b9ae93);box-shadow:inset 0 0 0 1px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.35)}
 .os:hover{filter:brightness(1.25)}
 .os span{position:sticky;left:170px;font-family:"Marcellus SC",serif;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:#1a1408}
 .os.flou{-webkit-mask-image:linear-gradient(90deg,transparent,#000 90px);mask-image:linear-gradient(90deg,transparent,#000 90px)}
@@ -252,6 +284,21 @@ a:hover{text-decoration:underline}
 .os[data-t="sm"] span,.os[data-t="sm-se"] span,.os[data-t="fleurdelise"] span,.os[data-t="abeilles"] span{background:rgba(var(--bg),.82);color:#f3e6c0;text-shadow:none;padding:0 .35rem;border-radius:4px;line-height:11px}
 .os[data-t="fleurdelise"]{background:radial-gradient(circle,#f2d98c 1.4px,transparent 2px) 0 0/10px 10px,linear-gradient(#3063b3,#1a3b77)}
 .os[data-t="abeilles"]{background:radial-gradient(ellipse 2px 1.4px,#f2d98c 90%,transparent) 0 0/9px 9px,linear-gradient(#2d4f8c,#14295a)}
+.os[data-t="annonciade"]{background:radial-gradient(circle,#fff0bf 2px,transparent 2.6px) 0 50%/12px 100%,linear-gradient(90deg,#d9b556 0 60%,#c23a2c 60% 100%) 0 0/12px 100%}
+.os[data-t="lions"]{background:linear-gradient(#f0cf6d,#b98e32)}
+.os[data-t="faisceaux"]{background:repeating-linear-gradient(90deg,#b48a5a 0 3px,#7a5634 3px 5px)}
+.os[data-t="pavillon"]{background:linear-gradient(#7d4f9a,#4a2a62)}
+.os[data-t="toison"]{background:radial-gradient(circle,#fff0bf 1.6px,transparent 2.2px) 0 50%/8px 100%,linear-gradient(#e2bd58,#9c7527)}
+.os[data-t="toison"] span{background:rgba(var(--bg),.82);color:#f3e6c0;padding:0 .35rem;border-radius:4px;line-height:11px}
+.os[data-t="jarretiere"]{background:linear-gradient(#d9b556 0 2px,#2c55b0 2px 9px,#d9b556 9px)}
+.os[data-t="anglaise"],.os[data-t="anglaise-ouverte"]{background:linear-gradient(#f0cf6d,#b98e32)}
+.os[data-t="tudor"]{background:linear-gradient(90deg,#c0312a 0 50%,#f1ede3 50%)}
+.os[data-t="lion-dragon"]{background:linear-gradient(90deg,#e2bd58 0 50%,#c0312a 50%)}
+.os[data-t="aigle-lion"]{background:linear-gradient(90deg,#26221d 0 50%,#e2bd58 50%)}
+.os[data-t="licorne"]{background:linear-gradient(90deg,#e2bd58 0 50%,#f1ede3 50%)}
+.os[data-t="jarretiere"] span,.os[data-t="tudor"] span,.os[data-t="lion-dragon"] span,.os[data-t="aigle-lion"] span,.os[data-t="licorne"] span{background:rgba(var(--bg),.82);color:#f3e6c0;padding:0 .35rem;border-radius:4px;line-height:11px}
+.os[data-t="annonciade"] span,.os[data-t="faisceaux"] span{background:rgba(var(--bg),.82);color:#f3e6c0;padding:0 .35rem;border-radius:4px;line-height:11px}
+.os[data-t="pavillon"] span{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7)}
 .devrow{position:relative;height:42px;border-top:1px solid rgba(255,255,255,.05)}
 .dm{position:absolute;top:6px;width:30px;height:30px;margin-left:-15px;padding:0;border-radius:50%;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.85rem;background:var(--medal);border:1px solid rgba(227,197,121,.6);box-shadow:0 0 10px rgba(227,197,121,.25);transition:transform .2s,box-shadow .2s}
 .dm img{width:100%;height:100%;object-fit:contain;padding:3px}
@@ -322,6 +369,7 @@ a:hover{text-decoration:underline}
 .tip .t-dates{font-size:.84rem;color:var(--ink-soft);margin-bottom:.35rem}
 .tip .t-arms{font-family:"Marcellus SC",serif;letter-spacing:.12em;text-transform:uppercase;font-size:.66rem;color:var(--or);margin-top:.35rem}
 .tip .t-bl{font-style:italic;font-size:1rem}
+.tip .t-bl.long{font-size:.84rem;line-height:1.4}
 .tip .t-bl.dim{color:var(--ink-soft);font-size:.9rem}
 .tip .t-note{font-size:.82rem;color:var(--ink-soft);margin-top:.4rem;border-top:1px solid var(--rule-soft);padding-top:.35rem}
 .tip .t-note b{color:var(--gules);font-weight:500}
@@ -439,7 +487,13 @@ footer{background:var(--vellum-3)}
   <p class="eyebrow">Frises héraldiques</p>
   <h1>Lignées</h1>
   <p>Les armes des souverains et des papes, règne après règne : ce qui change dans l'écu, et quand. Chaque blasonnement est tiré d'une source citée ; quand les sources divergent, la frise le dit.</p>
-  <nav class="lswitch" id="lswitch" aria-label="Choisir une lignée"></nav>
+  <div class="lpick" id="lpick">
+    <button class="lp-btn" id="lp-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lp-panel"></button>
+    <div class="lp-panel" id="lp-panel" hidden>
+      <input class="lp-q" id="lp-q" type="search" placeholder="Chercher une lignée, un pays…" aria-label="Chercher une lignée" autocomplete="off">
+      <nav class="lp-list" id="lp-list" aria-label="Choisir une lignée"></nav>
+    </div>
+  </div>
   <div class="how"><span><b>Glisser</b> la frise</span><span><b>Survoler</b> un écu : son blasonnement</span><span><b>Cliquer</b> un nom : Wikipédia</span><span><b>Ctrl + molette</b> : zoom</span></div>
 </section>
 
@@ -479,10 +533,15 @@ const ZOOMS = [1.3, 2.2, 3, 4.2, 6, 8.5, 12, 17, 24, 34, 48];
 const MOIS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
 const TW = 78, TIER_H = 72, RULER_H = 42, BAND_H = 34, OROW_H = 17;
 /* les frises disponibles : une par fichier de données */
+/* les frises disponibles : une par fichier de données ; l'emblème est un fichier Commons déjà crédité dans la lignée */
 const LIGNEES = [
-  { id: "france", nom: "Rois de France", file: "data/lignees.json" },
-  { id: "papaute", nom: "Papauté", file: "data/papaute.json" },
+  { id: "france", nom: "Rois de France", groupe: "France", dates: "987 – 1848", file: "data/lignees.json", embleme: "Meuble héraldique Fleur de lys.svg" },
+  { id: "angleterre", nom: "Rois d'Angleterre", groupe: "Îles Britanniques", dates: "1066 – aujourd'hui", file: "data/angleterre.json", embleme: "Royal Arms of England (1198-1340).svg", mots: "Royaume-Uni Grande-Bretagne Plantagenêt Tudor Stuart Hanovre Windsor" },
+  { id: "savoie", nom: "Maison de Savoie", groupe: "Italie", dates: "1027 – 1946", file: "data/savoie.json", embleme: "Blason duché fr Savoie.svg", mots: "Sardaigne Piémont" },
+  { id: "habsbourg", nom: "Habsbourg", groupe: "Saint-Empire et Espagne", dates: "1273 – 1918", file: "data/habsbourg.json", embleme: "Arms of the Archduchy of Austria.svg", mots: "Autriche Espagne Empire Hongrie Bohême Lorraine" },
+  { id: "papaute", nom: "Papauté", groupe: "Église", dates: "Iᵉʳ siècle – aujourd'hui", file: "data/papaute.json", embleme: "Sede vacante.svg", mots: "papes antipapes Rome Vatican" },
 ];
+const GROUPES = ["France", "Îles Britanniques", "Italie", "Saint-Empire et Espagne", "Église"];
 /* vocabulaire par défaut ; une lignée le surcharge par R.mots */
 const MOTS = { regne: "règne", sans: "Sans souverain", bande: "Armes du royaume", maisons: "Maisons", devises: "Devises", rivaux: "Rivaux", souverain: "souverain", armesDe: "Armes du royaume" };
 const W = (R, k) => R.mots?.[k] ?? MOTS[k];
@@ -525,7 +584,7 @@ let DATA;
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 /* texte affiché : échappé, et « Iᵉʳ », « XIIIᵉ » en vrais exposants (les lettres modificatrices manquent aux polices) */
-const txt = s => esc(s).replace(/ᵉʳ/g, "<sup>er</sup>").replace(/ᵉ/g, "<sup>e</sup>");
+const txt = s => esc(s).replace(/ᵉʳ/g, "<sup>er</sup>").replace(/ʳᵉ/g, "<sup>re</sup>").replace(/ᵉ/g, "<sup>e</sup>");
 const wikiUrl = t => WIKI + encodeURIComponent(t.replace(/ /g, "_"));
 const commonsImg = (f, w) => FP + encodeURIComponent(f) + "?width=" + w;
 const commonsPage = f => CPAGE + encodeURIComponent(f.replace(/ /g, "_"));
@@ -622,6 +681,8 @@ const GHOST = `<path d="${SHIELD}" fill="rgba(227,197,121,.07)" stroke="rgba(227
 /* écu figé, pour les jetons de la frise */
 function armsStatic(id){
   const a = DATA.armes[id];
+  /* écu Commons d'un autre contour : montré entier, sans découpe ni filet */
+  if(a.free) return `<image href="${commonsImg(a.file, 160)}" width="600" height="660" preserveAspectRatio="xMidYMid meet"/>`;
   let inner = "";
   if(a.file){
     inner = `<image href="${commonsImg(a.file, 160)}" width="600" height="660" preserveAspectRatio="none"/>`;
@@ -655,9 +716,14 @@ const LIS_PATHS = `<g stroke-width="9">
 function buildDefs(){
   const R0 = DATA.royaumes[0];
   const key = `<g transform="rotate(45)"><circle cy="-8" r="4.2"/><path d="M0,-3.8 V10 M0,5 h3.4 M0,8.4 h3.4"/></g><g transform="rotate(-45)"><circle cy="-8" r="4.2"/><path d="M0,-3.8 V10 M0,5 h-3.4 M0,8.4 h-3.4"/></g>`;
-  const semis = R0.theme === "papaute"
-    ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76"><g fill="none" stroke="#e3c579" stroke-width="1.8" stroke-linecap="round"><g transform="translate(16,19)">${key}</g><g transform="translate(48,57)">${key}</g></g></svg>`
-    : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76"><defs><symbol id="l" viewBox="10 4 698 920">${LIS_PATHS}</symbol></defs><g fill="#e3c579"><use href="#l" x="7" y="7" width="18" height="24"/><use href="#l" x="39" y="45" width="18" height="24"/></g></svg>`;
+  const at = (x, y, s) => `<g transform="translate(${x},${y})">${s}</g>`;
+  const SEMIS = {
+    papaute: `<g fill="none" stroke="#e3c579" stroke-width="1.8" stroke-linecap="round">${at(16, 19, key)}${at(48, 57, key)}</g>`,
+    habsbourg: [[16, 19], [48, 57]].map(([x, y]) => at(x, y, `<path d="M-8,-10h16v9c0,6-4,10-8,12c-4,-2-8,-6-8,-12z" fill="#b3261e" stroke="#e3c579" stroke-width="1.2"/><rect x="-8" y="-4.6" width="16" height="4.4" fill="#e9e5da"/>`)).join(""),
+    angleterre: [[16, 19], [48, 57]].map(([x, y]) => at(x, y, [0, 72, 144, 216, 288].map(a => `<circle cx="${(6.4 * Math.cos((a - 90) * Math.PI / 180)).toFixed(2)}" cy="${(6.4 * Math.sin((a - 90) * Math.PI / 180)).toFixed(2)}" r="5" fill="#b3261e"/>`).join("") + `<circle r="5.4" fill="#efe6cf"/><circle r="2.2" fill="#e3c579"/>`)).join(""),
+    savoie: `<g fill="#e3c579">${[[16, 19], [48, 57]].map(([x, y]) => at(x, y, `<path d="M-2.6,-9h5.2v6.4h6.4v5.2h-6.4v6.4h-5.2v-6.4h-6.4v-5.2h6.4z"/>`)).join("")}</g>`,
+  };
+  const semis = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76">${SEMIS[R0.theme] ?? `<defs><symbol id="l" viewBox="10 4 698 920">${LIS_PATHS}</symbol></defs><g fill="#e3c579"><use href="#l" x="7" y="7" width="18" height="24"/><use href="#l" x="39" y="45" width="18" height="24"/></g>`}</svg>`;
   document.documentElement.style.setProperty("--semis", `url("data:image/svg+xml,${encodeURIComponent(semis)}")`);
   const grads = `
     <linearGradient id="g-azur" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#3a70c2"/><stop offset=".55" stop-color="#21498f"/><stop offset="1" stop-color="#173a78"/></linearGradient>
@@ -686,11 +752,15 @@ function ornDefs(){
   const cross = `<path d="${crossD}" stroke="#3a2608" stroke-width="16" stroke-linecap="round"/><path d="${crossD}" stroke="#e2bd58" stroke-width="8" stroke-linecap="round"/>`;
   const topLis = `<g fill="url(#g-or)" stroke="#3a2608">${lisUse(300, -336, .6)}</g>`;
   const cap = `<path d="M108,-64 C122,-236 478,-236 492,-64 Z" fill="#8e1b18"/>`;
+  const pattee = (x, y, s) => `<path d="M${x - 7 * s},${y - 22 * s} h${14 * s} l${-4 * s},${15 * s} l${15 * s},${-4 * s} v${14 * s} l${-15 * s},${-4 * s} l${4 * s},${15 * s} h${-14 * s} l${4 * s},${-15 * s} l${-15 * s},${4 * s} v${-14 * s} l${15 * s},${4 * s} z" ${gold}/>`;
+  const croixLis = [112, 300, 488].map(x => pattee(x, -100, 1.5)).join("") + `<g fill="url(#g-or)" stroke="#3a2608">${lisUse(206, -96, .7)}${lisUse(394, -96, .7)}</g>`;
   const crowns = {
     "ouverte": band + pearls + lisF,
     "fermee": arches + band + pearls + lisF + orb + topLis,
     "imperiale": cap + arches + band + pearlF + orb + cross,
     "fermee-sans-lis": arches + band + pearlF + orb + cross,
+    "anglaise-ouverte": band + croixLis,
+    "anglaise": cap + arches + band + croixLis + orb + cross,
   };
   const ell = (rx, ry, n) => Array.from({ length: n }, (_, k) => { const t = Math.PI * k / (n - 1); return [300 + rx * Math.cos(t), 190 + ry * Math.sin(t)]; });
   const beads = (pts, r, fill) => pts.map(([x, y], k) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${typeof fill === "function" ? fill(k) : fill}" stroke="#3a2608" stroke-width="4"/>`).join("");
@@ -698,7 +768,19 @@ function ornDefs(){
   const se = beads(ell(392, 595, 21), 15, k => k % 2 ? "#4a78c8" : "url(#g-or)") + `<circle cx="300" cy="808" r="26" fill="#f4f1ea" stroke="#3a2608" stroke-width="5"/><circle cx="300" cy="808" r="9" fill="#4a78c8"/>`;
   const star = Array.from({ length: 10 }, (_, k) => { const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? 15 : 36; return `${(300 + rr * Math.cos(a)).toFixed(1)},${(792 + rr * Math.sin(a)).toFixed(1)}`; }).join(" ");
   const lh = `<path d="M645,190 A345,560 0 0 1 -45,190" fill="none" stroke="#6d1410" stroke-width="30"/><path d="M645,190 A345,560 0 0 1 -45,190" fill="none" stroke="#d63a2c" stroke-width="20"/><polygon points="${star}" fill="#f4f1ea" stroke="#3a2608" stroke-width="5"/><circle cx="300" cy="792" r="9" ${gold}/>`;
-  const collars = { "sm": sm, "sm-se": sm + se, "lh": lh };
+  /* Annonciade : roses et lacs d'amour alternés, médaillon ovale */
+  const an = ell(345, 552, 19).map(([x, y], k) => k % 2
+    ? `<g fill="url(#g-or)" stroke="#3a2608" stroke-width="4"><circle cx="${(x - 8).toFixed(1)}" cy="${y.toFixed(1)}" r="9"/><circle cx="${(x + 8).toFixed(1)}" cy="${y.toFixed(1)}" r="9"/></g>`
+    : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14" ${gold}/>`).join("")
+    + `<ellipse cx="300" cy="782" rx="28" ry="36" ${gold}/><ellipse cx="300" cy="782" rx="17" ry="25" fill="#f4f1ea" stroke="#3a2608" stroke-width="3"/>`;
+  /* Toison d'or : briquets et pierres à feu alternés, bélier suspendu */
+  const to = ell(345, 552, 23).map(([x, y], k) => k % 2
+    ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="#c23a2c" stroke="#3a2608" stroke-width="4"/>`
+    : `<rect x="${(x - 12).toFixed(1)}" y="${(y - 8).toFixed(1)}" width="24" height="16" rx="6" ${gold}/>`).join("")
+    + `<path d="M262,790 C262,770 338,770 338,790 L330,806 L270,806 Z M286,806 V826 M314,806 V826" ${gold}/><circle cx="300" cy="770" r="10" ${gold}/>`;
+  const collars = { "sm": sm, "sm-se": sm + se, "lh": lh, "annonciade": an, "toison": to,
+    /* Jarretière : courroie d'azur bordée d'or autour de l'écu, boucle en pointe */
+    "jarretiere": `<ellipse cx="300" cy="345" rx="352" ry="380" fill="none" stroke="#3a2608" stroke-width="58"/><ellipse cx="300" cy="345" rx="352" ry="380" fill="none" stroke="#d9b556" stroke-width="50"/><ellipse cx="300" cy="345" rx="352" ry="380" fill="none" stroke="#1f3f8f" stroke-width="40"/><ellipse cx="300" cy="345" rx="352" ry="380" fill="none" stroke="#d9b556" stroke-width="3" stroke-dasharray="4 22"/><rect x="268" y="700" width="64" height="52" rx="8" fill="none" stroke="#d9b556" stroke-width="12"/><path d="M300,752 L286,830 H314 Z" fill="#1f3f8f" stroke="#d9b556" stroke-width="6"/>` };
   return Object.entries(crowns).map(([k, v]) => `<g id="crown-${k}">${v}</g>`).join("") +
          Object.entries(collars).map(([k, v]) => `<g id="collar-${k}">${v}</g>`).join("");
 }
@@ -716,8 +798,10 @@ function tokenIcon(R, id, y, r){
 /* écu central, animé */
 function bigSvg(){
   const semis = SEME.map((p, i) => `<g class="lis" data-i="${i}">${lisUse(0, 0)}</g>`).join("");
-  const imgs = Object.entries(DATA.armes).filter(([, a]) => a.file)
-    .map(([id, a]) => `<image class="b-img" data-k="${id}" href="${commonsImg(a.file, 600)}" width="600" height="660" preserveAspectRatio="none"/>`).join("");
+  const files = Object.entries(DATA.armes).filter(([, a]) => a.file);
+  const image = ([id, a]) => `<image class="b-img" data-k="${id}" href="${commonsImg(a.file, 600)}" width="600" height="660" preserveAspectRatio="${a.free ? "xMidYMid meet" : "none"}"/>`;
+  const imgs = files.filter(([, a]) => !a.free).map(image).join("");
+  const free = files.filter(([, a]) => a.free).map(image).join("");
   return `<svg class="big" viewBox="-14 -14 628 688" role="img" aria-label="Armoiries du règne sous la ligne de lecture">
     <g clip-path="url(#clip-shield)">
       <rect class="b-field" width="600" height="660"/>
@@ -729,11 +813,12 @@ function bigSvg(){
       <rect class="b-shine" x="-280" y="-60" width="170" height="800" fill="url(#g-shine)"/>
     </g>
     <path class="b-outline" d="${SHIELD}"/>
+    ${free}
   </svg>`;
 }
 function setBig(svg, armsId){
   const a = armsId ? DATA.armes[armsId] : null;
-  const st = !a ? "vide" : a.file ? "img" : a.draw;
+  const st = !a ? "vide" : a.file ? (a.free ? "free" : "img") : a.draw;
   svg.dataset.state = st;
   const hidden = s => SEME.map(([x, y]) => ({ x, y, s, o: 0 }));
   let tg;
@@ -744,7 +829,7 @@ function setBig(svg, armsId){
     MAP3.forEach((i, k) => { tg[i] = { x: P.pts[k][0], y: P.pts[k][1], s: P.s, o: 1 }; });
   }
   else if(st === "embleme"){ tg = hidden(.25); tg[CENTER_I] = { x: 300, y: 318, s: 3.1, o: 1 }; }
-  else tg = hidden(st === "img" ? 1 : .25);
+  else tg = hidden(st === "img" || st === "free" ? 1 : .25);
   svg.querySelectorAll(".lis").forEach((g, i) => {
     const t = tg[i];
     g.style.transform = `translate(${t.x}px,${t.y}px) scale(${t.s})`;
@@ -858,7 +943,7 @@ function tipReign(R, r){
     const a = DATA.armes[p.armes];
     const when = r.ph.length > 1 ? `${spanTxt(p)} · ` : "";
     return `<div class="t-arms">${when}${txt(a.nom)}${a.apost ? " · a posteriori" : ""}</div>` +
-      (a.blason ? `<div class="t-bl">« ${txt(a.blason)} »</div>` : `<div class="t-bl dim">${a.apost ? "Armes inventées après coup, non blasonnées par les sources lues" : "Pas d'armoiries attestées"}</div>`);
+      (a.blason ? `<div class="t-bl${a.blason.length > 180 ? " long" : ""}">« ${txt(a.blason)} »</div>` : `<div class="t-bl dim">${a.apost ? "Armes inventées après coup, non blasonnées par les sources lues" : "Pas d'armoiries attestées"}</div>`);
   }).join("");
   const mid = (r.s + r.e) / 2;
   const orn = isImg(R)
@@ -909,7 +994,7 @@ function tipSeg(R, seg){
 }
 function tipRival(r){
   const a = r.armes ? DATA.armes[r.armes] : null;
-  return `<div class="t-house">${r.type === "éphémère" ? "Pape éphémère" : "Antipape"}${r.obedience ? " · obédience " + txt(deOf(r.obedience)) : ""}</div>
+  return `<div class="t-house">${txt(r.label || (r.type === "éphémère" ? "Pape éphémère" : "Antipape"))}${r.obedience ? " · obédience " + txt(deOf(r.obedience)) : ""}</div>
     <div class="t-name">${txt(r.nom)}</div><div class="t-dates">${txt(spanLong(r))}</div>
     ${a ? `<div class="t-arms">${txt(a.nom)}</div>${a.blason ? `<div class="t-bl">« ${txt(a.blason)} »</div>` : ""}${a.desaccord ? `<div class="t-note"><b>Désaccord :</b> ${txt(a.desaccord)}</div>` : ""}` : ""}
     ${r.type === "éphémère" ? `<div class="t-note">Élu mais jamais consacré : la liste ne le compte pas parmi les papes.</div>` : ""}
@@ -1085,10 +1170,10 @@ function layout(T){
   /* devises et emblèmes personnels : un médaillon par roi qui en a une de sourcée */
   const dms = R.regnes.filter(r => r.devise && !r.suite).map(r => {
     const d = r.devise, cx = (X(r.s) + X(r.e)) / 2;
-    const aria = `Devise de ${r.nom}${d.mot ? " : " + d.mot : ""}${d.embleme ? ", emblème " + d.embleme : ""}`;
+    const aria = `Devise ${deOf(r.nom)}${d.mot ? " : " + d.mot : ""}${d.embleme ? ", emblème " + d.embleme : ""}`;
     return `<button class="dm" type="button" data-i="${r.i}" style="left:${cx}px" aria-label="${esc(aria)}">${d.file ? `<img src="${commonsImg(d.file, 80)}" alt="" loading="lazy" draggable="false">` : "✦"}</button>`;
   }).join("");
-  h += `<div class="devrow"><div class="row-label">${txt(W(R, "devises"))}</div>${dms}</div>`;
+  if(dms) h += `<div class="devrow"><div class="row-label">${txt(W(R, "devises"))}</div>${dms}</div>`;
 
   /* bande des maisons : chaque passage d'une maison à l'autre */
   const runs = [];
@@ -1245,7 +1330,7 @@ function renderPanel(T, st, ga){
       <p class="p-dates"><b>${txt(spanLong(it))}</b>${trad} · ${duree(it)} de ${txt(W(R, "regne"))}${it.encours ? " (en cours)" : ""}</p>
       ${img && it.naissance ? `<p class="p-born">Né <i>${txt(it.naissance)}</i></p>` : ""}
       <p class="p-arms">${txt(a.nom)}${phaseTxt}${img && a.apost ? ` <span class="ap">a posteriori</span>` : ""}</p>
-      ${a.blason ? `<p class="p-bl">« ${txt(a.blason)} »</p>` : `<p class="p-bl dim">${a.apost ? "Armes inventées après coup ; les sources lues ne les blasonnent pas." : "Pas d'armoiries attestées."}</p>`}
+      ${a.blason ? `<p class="p-bl${a.blason.length > 180 ? " long" : ""}">« ${txt(a.blason)} »</p>` : `<p class="p-bl dim">${a.apost ? "Armes inventées après coup ; les sources lues ne les blasonnent pas." : "Pas d'armoiries attestées."}</p>`}
       ${img && a.apost && !a.gravure ? `<p class="p-note">${txt(APOST)}</p>` : ""}
       ${it.note ? `<p class="p-note">${txt(it.note)}<span class="src">${srcLinks(it.sources)}</span></p>` : ""}
       ${aNote ? `<p class="p-note">${txt(a.note)}<span class="src">${srcLinks(a.sources)}</span></p>` : `<p class="p-note"><span class="src">${a.blason ? "Blasonnement d'après " : ""}${srcLinks(a.sources)}</span></p>`}
@@ -1562,7 +1647,7 @@ function buildMethod(){
     $("#method").innerHTML = `
       <div class="box"><span class="k">Méthode</span>${R0.methode.map(p => `<p>${txt(p)}</p>`).join("")}</div>
       <div class="box"><span class="k">Figures</span>
-        <p>Les sceaux de plomb numérotés et les bandes d'émaux sont dessinés par l'encyclopédie. Écus, gravures, emblème de la sede vacante et bulle viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :</p>
+        <p>${txt(R0.figures || "Les sceaux de plomb numérotés et les bandes d'émaux sont dessinés par l'encyclopédie. Écus, gravures, emblème de la sede vacante et bulle viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :")}</p>
         <ul>${uniq.map(a => `<li>${credit(a)}</li>`).join("")}</ul>
       </div>
       <div class="box"><span class="k">Sources</span>
@@ -1586,9 +1671,48 @@ function buildMethod(){
 
 /* une lignée à la fois : le sélecteur change l'ancre (#france, #papaute) et la page reconstruit la scène */
 let LIVE = [], GEN = 0;
+const fold = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const lpLabel = (l, tag) => `<img class="lp-em" src="${commonsImg(l.embleme, 80)}" alt="" loading="lazy"><span class="lp-t">${tag ? `<small>${tag}</small>` : ""}<b>${txt(l.nom)}</b><em>${txt(l.dates)}</em></span>`;
+function renderPicker(L){
+  $("#lp-btn").innerHTML = lpLabel(L, "Lignée") + `<svg class="lp-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
+  $("#lp-btn").setAttribute("aria-label", `Lignée affichée : ${L.nom}. Changer de lignée`);
+  $("#lp-list").innerHTML = GROUPES.map(g => {
+    const ls = LIGNEES.filter(l => l.groupe === g);
+    return ls.length ? `<p class="lp-g">${txt(g)}</p>` + ls.map(l => `<a class="lp-it${l === L ? " on" : ""}" href="#${l.id}" data-k="${esc(fold([l.nom, l.groupe, l.dates, l.mots || ""].join(" ")))}"${l === L ? ` aria-current="page"` : ""}>${lpLabel(l)}</a>`).join("") : "";
+  }).join("") + `<p class="lp-none" hidden>Aucune lignée ne correspond.</p>`;
+}
+function pickerOpen(open){
+  const btn = $("#lp-btn"), panel = $("#lp-panel");
+  btn.setAttribute("aria-expanded", open);
+  panel.hidden = !open;
+  if(open){ $("#lp-q").value = ""; filterPicker(""); $("#lp-q").focus(); }
+}
+function filterPicker(q){
+  const k = fold(q.trim());
+  let n = 0;
+  $("#lp-list").querySelectorAll(".lp-it").forEach(a => { const ok = !k || a.dataset.k.includes(k); a.hidden = !ok; n += ok; });
+  $("#lp-list").querySelectorAll(".lp-g").forEach(g => {
+    let el = g.nextElementSibling, any = false;
+    while(el && el.classList.contains("lp-it")){ any ||= !el.hidden; el = el.nextElementSibling; }
+    g.hidden = !any;
+  });
+  $("#lp-list .lp-none").hidden = n > 0;
+}
+$("#lp-btn").addEventListener("click", () => pickerOpen($("#lp-panel").hidden));
+$("#lp-q").addEventListener("input", e => filterPicker(e.target.value));
+$("#lpick").addEventListener("keydown", e => {
+  const items = [...$("#lp-list").querySelectorAll(".lp-it:not([hidden])")];
+  const i = items.indexOf(document.activeElement);
+  if(e.key === "Escape" && !$("#lp-panel").hidden){ e.preventDefault(); pickerOpen(false); $("#lp-btn").focus(); }
+  else if(e.key === "ArrowDown" && items.length && !$("#lp-panel").hidden){ e.preventDefault(); items[Math.min(i + 1, items.length - 1)].focus(); }
+  else if(e.key === "ArrowUp" && i >= 0){ e.preventDefault(); i ? items[i - 1].focus() : $("#lp-q").focus(); }
+  else if(e.key === "Enter" && e.target.id === "lp-q" && items[0]){ e.preventDefault(); items[0].click(); }
+});
+$("#lp-list").addEventListener("click", e => { if(e.target.closest(".lp-it")) pickerOpen(false); });
+document.addEventListener("pointerdown", e => { if(!$("#lp-panel").hidden && !e.target.closest("#lpick")) pickerOpen(false); });
 async function load(id){
   const L = LIGNEES.find(l => l.id === id) || LIGNEES[0], g = ++GEN;
-  $("#lswitch").innerHTML = LIGNEES.map(l => `<a href="#${l.id}"${l === L ? ` class="on" aria-current="page"` : ""}>${txt(l.nom)}</a>`).join("");
+  renderPicker(L);
   LIVE.forEach(T => { T.ac.abort(); T.io?.disconnect(); cancelAnimationFrame(T.play); cancelAnimationFrame(T.glide); cancelAnimationFrame(T.raf); });
   LIVE = []; hideTip();
   let data;
