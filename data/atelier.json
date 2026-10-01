@@ -1,0 +1,1241 @@
+{
+ "meubles": [
+  {
+   "kind": "lion",
+   "nom": "Lion rampant",
+   "sing": "lion",
+   "plur": "lions",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/lion.svg",
+    "commons": "Meuble héraldique Lion.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
+   "kind": "aigle",
+   "nom": "Aigle",
+   "sing": "aigle",
+   "plur": "aigles",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/aigle.svg",
+    "commons": "Meuble héraldique Aigle éployée.svg",
+    "auteur": "Syryatsu et Thom.lanaud",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ],
+   "accent": [
+    "#fcef3c",
+    "#fff03c"
+   ],
+   "accentMot": "becqué, membré et couronné"
+  },
+  {
+   "kind": "croix",
+   "nom": "Croix alésée",
+   "sing": "croix alésée",
+   "plur": "croix alésées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix.svg",
+    "commons": "Coa Illustration Cross Greek in Red.svg",
+    "auteur": "Smasongarrison",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ff0000"
+   ]
+  },
+  {
+   "kind": "fleurdelis",
+   "nom": "Fleur de lis",
+   "sing": "fleur de lis",
+   "plur": "fleurs de lis",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "draw": "lis",
+   "credit": {
+    "commons": "Meuble héraldique Fleur de lys.svg",
+    "auteur": "Yorick",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   }
+  },
+  {
+   "kind": "croissant",
+   "nom": "Croissant",
+   "sing": "croissant",
+   "plur": "croissants",
+   "g": "m",
+   "cat": "Astres et éléments",
+   "draw": "croissant"
+  },
+  {
+   "kind": "etoile",
+   "nom": "Étoile",
+   "sing": "étoile",
+   "plur": "étoiles",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile"
+  },
+  {
+   "kind": "molette",
+   "nom": "Molette",
+   "sing": "molette",
+   "plur": "molettes",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "molette"
+  },
+  {
+   "kind": "roundel",
+   "nom": "Besant / tourteau",
+   "sing": "besant",
+   "plur": "besants",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "roundel"
+  },
+  {
+   "kind": "rose",
+   "nom": "Rose",
+   "sing": "rose",
+   "plur": "roses",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "draw": "rose"
+  },
+  {
+   "kind": "macle",
+   "nom": "Macle",
+   "sing": "macle",
+   "plur": "macles",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "macle"
+  },
+  {
+   "kind": "rustre",
+   "nom": "Rustre",
+   "sing": "rustre",
+   "plur": "rustres",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "rustre"
+  },
+  {
+   "kind": "losange",
+   "nom": "Losange",
+   "sing": "losange",
+   "plur": "losanges",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "losange"
+  },
+  {
+   "kind": "fusee",
+   "nom": "Fusée",
+   "sing": "fusée",
+   "plur": "fusées",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "fusee"
+  },
+  {
+   "kind": "billette",
+   "nom": "Billettes",
+   "sing": "billette",
+   "plur": "billettes",
+   "g": "f",
+   "cat": "Propres au blason",
+   "custom": "billette",
+   "semeAdj": "billeté"
+  },
+  {
+   "kind": "annelet",
+   "nom": "Annelet",
+   "sing": "annelet",
+   "plur": "annelets",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "annelet"
+  },
+  {
+   "kind": "vire",
+   "nom": "Vire",
+   "sing": "vire",
+   "plur": "vires",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "vire"
+  },
+  {
+   "kind": "escarboucle",
+   "nom": "Rais d'escarboucle",
+   "sing": "rais d'escarboucle",
+   "plur": "rais d'escarboucle",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "escarboucle"
+  },
+  {
+   "kind": "flanchis",
+   "nom": "Flanchis",
+   "sing": "flanchis",
+   "plur": "flanchis",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "flanchis"
+  },
+  {
+   "kind": "lambel",
+   "nom": "Lambel",
+   "sing": "lambel",
+   "plur": "lambels",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "lambel",
+   "seul": true
+  },
+  {
+   "kind": "croisette",
+   "nom": "Croisette",
+   "sing": "croisette",
+   "plur": "croisettes",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "croisette"
+  },
+  {
+   "kind": "goutte",
+   "nom": "Goutte",
+   "sing": "goutte",
+   "plur": "gouttes",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "goutte",
+   "semeAdj": "goutté"
+  },
+  {
+   "kind": "quartefeuille",
+   "nom": "Quartefeuille",
+   "sing": "quartefeuille",
+   "plur": "quartefeuilles",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "quartefeuille"
+  },
+  {
+   "kind": "quintefeuille",
+   "nom": "Quintefeuille",
+   "sing": "quintefeuille",
+   "plur": "quintefeuilles",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "quintefeuille"
+  },
+  {
+   "kind": "tiercefeuille",
+   "nom": "Tiercefeuille",
+   "sing": "tiercefeuille",
+   "plur": "tiercefeuilles",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "tiercefeuille"
+  },
+  {
+   "kind": "trefle",
+   "nom": "Trèfle",
+   "sing": "trèfle",
+   "plur": "trèfles",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "trefle"
+  },
+  {
+   "kind": "fer-moulin",
+   "nom": "Fer-de-moulin",
+   "sing": "fer de moulin",
+   "plur": "fers de moulin",
+   "g": "m",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/fer-moulin.svg",
+    "commons": "Meuble héraldique Fer de moulin.svg",
+    "auteur": "ℍenry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "roc",
+   "nom": "Roc d'échiquier",
+   "sing": "roc d'échiquier",
+   "plur": "rocs d'échiquier",
+   "g": "m",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/roc.svg",
+    "commons": "Meuble heraldique roc.svg",
+    "auteur": "S@m",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "fermail",
+   "nom": "Fermail",
+   "sing": "fermail",
+   "plur": "fermaux",
+   "g": "m",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/fermail.svg",
+    "commons": "Meuble héraldique Fermail.svg",
+    "auteur": "Blanchoyeur",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "moucheture",
+   "nom": "Moucheture d'hermine",
+   "sing": "moucheture d'hermine",
+   "plur": "mouchetures d'hermine",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "moucheture"
+  },
+  {
+   "kind": "merlette",
+   "nom": "Merlette",
+   "sing": "merlette",
+   "plur": "merlettes",
+   "g": "f",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/merlette.svg",
+    "commons": "Héraldique meuble Merlette.svg",
+    "auteur": "Bruno Vallette",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "chaussetrappe",
+   "nom": "Chausse-trappe",
+   "sing": "chausse-trappe",
+   "plur": "chausse-trappes",
+   "g": "f",
+   "cat": "Propres au blason",
+   "draw": "chaussetrappe"
+  },
+  {
+   "kind": "crampon",
+   "nom": "Crampon",
+   "sing": "crampon",
+   "plur": "crampons",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "crampon"
+  },
+  {
+   "kind": "tau",
+   "nom": "Tau",
+   "sing": "tau",
+   "plur": "taus",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "tau"
+  },
+  {
+   "kind": "croix-pattee",
+   "nom": "Croix pattée",
+   "sing": "croix pattée",
+   "plur": "croix pattées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-pattee.svg",
+    "commons": "Meuble héraldique Croix pattée.svg",
+    "auteur": "Etxeko, AnonMoos",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "croix-potencee",
+   "nom": "Croix potencée",
+   "sing": "croix potencée",
+   "plur": "croix potencées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-potencee.svg",
+    "commons": "Croix-potencee.svg",
+    "auteur": "PercevalBxl, Fred the Oyster",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#990000"
+   ]
+  },
+  {
+   "kind": "croix-recroisettee",
+   "nom": "Croix recroisettée",
+   "sing": "croix recroisettée",
+   "plur": "croix recroisettées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-recroisettee.svg",
+    "commons": "Croix-recroisettee.svg",
+    "auteur": "PercevalBxl, AnonMoos, Fred the Oyster",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#990000"
+   ]
+  },
+  {
+   "kind": "croix-ancree",
+   "nom": "Croix ancrée",
+   "sing": "croix ancrée",
+   "plur": "croix ancrées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-ancree.svg",
+    "commons": "Meuble héraldique Croisette ancrée.svg",
+    "auteur": "Alain Thebault",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "croix-lorraine",
+   "nom": "Croix de Lorraine",
+   "sing": "croix de Lorraine",
+   "plur": "croix de Lorraine",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-lorraine.svg",
+    "commons": "Croix de Lorraine.svg",
+    "auteur": "Cerveaugenie",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "soleil",
+   "nom": "Soleil non figuré",
+   "sing": "soleil",
+   "plur": "soleils",
+   "g": "m",
+   "cat": "Astres et éléments",
+   "draw": "soleil"
+  },
+  {
+   "kind": "comete",
+   "nom": "Comète",
+   "sing": "comète",
+   "plur": "comètes",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "file": {
+    "path": "assets/meubles/comete.svg",
+    "commons": "Meuble comets.svg",
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "eclair",
+   "nom": "Éclair",
+   "sing": "éclair",
+   "plur": "éclairs",
+   "g": "m",
+   "cat": "Astres et éléments",
+   "draw": "eclair"
+  },
+  {
+   "kind": "coquille",
+   "nom": "Coquille",
+   "sing": "coquille",
+   "plur": "coquilles",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "coquille"
+  },
+  {
+   "kind": "fercheval",
+   "nom": "Fer à cheval",
+   "sing": "fer à cheval",
+   "plur": "fers à cheval",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/fercheval.svg",
+    "commons": "Héraldique meuble Fer à cheval.svg",
+    "auteur": "Regl!sse et ℍenry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffff00"
+   ]
+  },
+  {
+   "kind": "cloche",
+   "nom": "Cloche",
+   "sing": "cloche",
+   "plur": "cloches",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "cloche"
+  },
+  {
+   "kind": "clef",
+   "nom": "Clef",
+   "sing": "clef",
+   "plur": "clefs",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "clef"
+  },
+  {
+   "kind": "epee",
+   "nom": "Épée",
+   "sing": "épée",
+   "plur": "épées",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "epee"
+  },
+  {
+   "kind": "ancre",
+   "nom": "Ancre",
+   "sing": "ancre",
+   "plur": "ancres",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "ancre"
+  },
+  {
+   "kind": "tour",
+   "nom": "Tour",
+   "sing": "tour",
+   "plur": "tours",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "tour"
+  },
+  {
+   "kind": "chateau",
+   "nom": "Château donjonné",
+   "sing": "château donjonné",
+   "plur": "châteaux donjonnés",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "draw": "chateau"
+  },
+  {
+   "kind": "cor",
+   "nom": "Cor",
+   "sing": "cor",
+   "plur": "cors",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/cor.svg",
+    "commons": "Héraldique meuble cor.svg",
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
+   ],
+   "accent": [
+    "#e6e6e6"
+   ],
+   "accentMot": "virolé"
+  },
+  {
+   "kind": "roue",
+   "nom": "Roue de Mayence",
+   "sing": "roue",
+   "plur": "roues",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "roue"
+  },
+  {
+   "kind": "feuille-ortie",
+   "nom": "Feuille d'ortie",
+   "sing": "feuille d'ortie",
+   "plur": "feuilles d'ortie",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/feuille-ortie.svg",
+    "commons": "Héraldique meuble Feuille d'ortie.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "gland",
+   "nom": "Gland",
+   "sing": "gland",
+   "plur": "glands",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "draw": "gland"
+  },
+  {
+   "kind": "epi",
+   "nom": "Épi",
+   "sing": "épi",
+   "plur": "épis",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/epi.svg",
+    "commons": "Meuble héraldique Epi.svg",
+    "auteur": "Bruno Vallette",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "gerbe",
+   "nom": "Gerbe",
+   "sing": "gerbe",
+   "plur": "gerbes",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "draw": "gerbe"
+  },
+  {
+   "kind": "coeur",
+   "nom": "Cœur",
+   "sing": "cœur",
+   "plur": "cœurs",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "draw": "coeur"
+  },
+  {
+   "kind": "main",
+   "nom": "Main appaumée",
+   "sing": "main appaumée",
+   "plur": "mains appaumées",
+   "g": "f",
+   "cat": "Corps et cœur",
+   "file": {
+    "path": "assets/meubles/main.svg",
+    "commons": "Meuble héraldique Main.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
+   ]
+  },
+  {
+   "kind": "griffon",
+   "nom": "Griffon",
+   "sing": "griffon",
+   "plur": "griffons",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/griffon.svg",
+    "commons": "Meuble héraldique Griffon passant.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
+   "kind": "dragon",
+   "nom": "Dragon",
+   "sing": "dragon",
+   "plur": "dragons",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/dragon.svg",
+    "commons": "Meuble héraldique Dragon.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
+   "kind": "licorne",
+   "nom": "Licorne",
+   "sing": "licorne",
+   "plur": "licornes",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/licorne.svg",
+    "commons": "Meuble héraldique Licorne saillante.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "panthere",
+   "nom": "Panthère héraldique",
+   "sing": "panthère",
+   "plur": "panthères",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/panthere.svg",
+    "commons": "Meuble héraldique Panthère.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé, lampassé et incensé"
+  },
+  {
+   "kind": "sirene",
+   "nom": "Sirène",
+   "sing": "sirène",
+   "plur": "sirènes",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/sirene.svg",
+    "commons": "Meuble héraldique Sirène.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#5ab532",
+    "#2b5df2"
+   ]
+  },
+  {
+   "kind": "melusine",
+   "nom": "Mélusine",
+   "sing": "mélusine",
+   "plur": "mélusines",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/melusine.svg",
+    "commons": "Meuble Sirene2queues.svg",
+    "auteur": "Ssire",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "basilic",
+   "nom": "Basilic",
+   "sing": "basilic",
+   "plur": "basilics",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/basilic.svg",
+    "commons": "Basilic.svg",
+    "auteur": "Jacques63",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "phenix",
+   "nom": "Phénix",
+   "sing": "phénix",
+   "plur": "phénix",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/phenix.svg",
+    "commons": "Meuble héraldique Phénix sur son bûcher.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "sur son immortalité",
+   "accentFixe": true,
+   "accentLabel": "Immortalité"
+  },
+  {
+   "kind": "salamandre",
+   "nom": "Salamandre",
+   "sing": "salamandre",
+   "plur": "salamandres",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/salamandre.svg",
+    "commons": "Meuble héraldique Salamandre crachant.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "dans des flammes",
+   "accentFixe": true,
+   "accentLabel": "Flammes"
+  },
+  {
+   "kind": "guivre",
+   "nom": "Guivre",
+   "sing": "guivre",
+   "plur": "guivres",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/guivre.svg",
+    "commons": "Meuble héraldique Guivre.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ]
+  }
+ ],
+ "ornements": {
+  "couronnes": [
+   {
+    "kind": "roi",
+    "nom": "Couronne royale",
+    "png": "assets/ornements/couronne-roi.png",
+    "wh": [
+     500,
+     436
+    ],
+    "commons": "Royal Crown of France.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "duc",
+    "nom": "Couronne ducale",
+    "png": "assets/ornements/couronne-duc.png",
+    "wh": [
+     500,
+     238
+    ],
+    "commons": "Crown of a Duke of France (variant).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "marquis",
+    "nom": "Couronne de marquis",
+    "png": "assets/ornements/couronne-marquis.png",
+    "wh": [
+     500,
+     238
+    ],
+    "commons": "Crown of a Marquis of France (variant).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "comte",
+    "nom": "Couronne de comte",
+    "png": "assets/ornements/couronne-comte.png",
+    "wh": [
+     500,
+     242
+    ],
+    "commons": "Crown of a Count of France (variant).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "vicomte",
+    "nom": "Couronne de vicomte",
+    "png": "assets/ornements/couronne-vicomte.png",
+    "wh": [
+     500,
+     242
+    ],
+    "commons": "Crown of a Viscount of France (variant).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "baron",
+    "nom": "Couronne de baron",
+    "png": "assets/ornements/couronne-baron.png",
+    "wh": [
+     500,
+     140
+    ],
+    "commons": "Crown of a Baron of France.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "murale",
+    "nom": "Couronne murale",
+    "png": "assets/ornements/couronne-murale.png",
+    "wh": [
+     500,
+     201
+    ],
+    "commons": "Mural Crown of a French Commune.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   }
+  ],
+  "heaume": {
+   "nom": "Heaume",
+   "path": "assets/ornements/heaume.svg",
+   "note": "le fichier représente le heaume d'un comte ou d'un vicomte : d'argent, de trois quarts, à sept grilles",
+   "commons": "Meuble héraldique Heaume comte.svg",
+   "auteur": "ZigeunerAlt",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+  },
+  "lambrequins": {
+   "nom": "Lambrequins",
+   "path": "assets/ornements/lambrequins.svg",
+   "main": [
+    "#e30100"
+   ],
+   "accent": [
+    "#fdef39"
+   ],
+   "commons": "Meuble héraldique Lambrequin.svg",
+   "auteur": "HeraldLanguage",
+   "lic": "CC BY 4.0",
+   "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+  },
+  "plume": {
+   "nom": "Panache",
+   "path": "assets/ornements/plume.svg",
+   "main": [
+    "#f5f5f5"
+   ],
+   "commons": "Ostrich feather a.svg",
+   "auteur": "Wereszczyński",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+  },
+  "colliers": [
+   {
+    "kind": "toison",
+    "nom": "Collier de l'ordre de la Toison d'or",
+    "path": "assets/ornements/toison.svg",
+    "commons": "Golden Fleece collar.svg",
+    "auteur": "Ipankonin",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "saint-michel",
+    "nom": "Collier de l'ordre de Saint-Michel",
+    "path": "assets/ornements/saint-michel.svg",
+    "commons": "Collier Saint Michel.svg",
+    "auteur": "Bluebear2",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   }
+  ],
+  "supports": [
+   {
+    "kind": "lion",
+    "mot": "Supports"
+   },
+   {
+    "kind": "licorne",
+    "mot": "Supports"
+   },
+   {
+    "kind": "dragon",
+    "mot": "Supports"
+   },
+   {
+    "kind": "panthere",
+    "mot": "Supports"
+   }
+  ]
+ }
+}

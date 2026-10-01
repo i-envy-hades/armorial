@@ -1,0 +1,38 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg4784"
+   width="143.60335"
+   height="202.76045"
+   version="1.0"
+  >
+  <defs
+     id="defs4787" />
+  <g
+     id="layer4"
+     style="opacity:1"
+     transform="translate(-97.79913,-81.31742)">
+    <path
+       style="color:black;fill:#fcef3c;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       d="M 143.41897,207.51141 L 195.11131,207.84588 C 205.41236,200.42499 194.59496,184.061 190.9443,170.91575 L 191.41899,136.26953 C 197.31871,114.3933 208.76792,99.762908 240.42601,111.51882 C 229.33853,88.355428 202.97513,65.42868 169.26514,103.1571 C 125.45465,56.926765 105.46067,100.45132 98.775599,110.84988 C 109.19783,106.93963 139.47915,98.344751 146.43995,136.93846 L 146.77562,170.38537 C 143.42279,183.28448 132.89489,197.86583 143.41897,207.51141 z "
+       id="path4796"
+       />
+    <rect
+       style="fill:#fcef3c;fill-opacity:1;stroke:black;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4798"
+       width="79.21682"
+       height="19.064732"
+       x="129.65674"
+       y="207.82411" />
+    <path
+       style="color:black;fill:#fcef3c;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       d="M 146.77562,226.71469 L 192.09032,226.91062 C 192.41786,249.08043 198.60846,267.16072 207.86656,283.1014 L 130.32805,282.76693 C 140.14995,266.51954 145.9031,248.31259 146.77562,226.71469 z "
+       id="path4800"
+       />
+  </g>
+</svg>
