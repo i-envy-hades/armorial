@@ -184,26 +184,6 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
-    "nom": "Empire colonial danois",
-    "cat": "Empires",
-    "porteur": "colonies danoises d'outre-mer",
-    "blason": "",
-    "file": "Royal Arms of Norway & Denmark (1699-1819).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
-    "nom": "Royaume ahom",
-    "cat": "Royaumes",
-    "porteur": "",
-    "blason": "",
-    "file": "Ahom insignia plain.svg",
-    "auteur": "Chaipau (talk)",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
     "nom": "Empire britannique",
     "cat": "Empires",
     "porteur": "ensemble des territoires conquis, exploités et dominés par l'Angleterre puis le Royaume-Uni, du début du XVIIe à la fin du XXe siècle",
@@ -246,16 +226,6 @@
       "url": "https://es.wikipedia.org/wiki/Escudo_de_Galicia",
       "note": "d'après une description du XVIIIᵉ siècle"
     }
-  },
-  {
-    "nom": "Dix-Sept Provinces",
-    "cat": "Provinces",
-    "porteur": "ensemble de seigneuries du XVème et XVIème siècle correspondant plus au moins au Benelux actuel",
-    "blason": "",
-    "file": "Coat of Arms of Philip IV of Burgundy.svg",
-    "auteur": "Heralder",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Royaume d'Islande",
@@ -341,14 +311,19 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0"
   },
   {
-    "nom": "Brandebourg-Prusse",
-    "cat": "Villes & États",
-    "porteur": "ancien pays (1618–1701)",
-    "blason": "",
+    "nom": "Province de Brandebourg",
+    "cat": "Provinces",
+    "porteur": "province du royaume de Prusse (armes de 1880)",
+    "blason": "D'argent à l'aigle de gueules coiffée du bonnet d'électeur, tenant un sceptre et une épée, chargée sur la poitrine d'un écusson d'azur au sceptre d'or",
     "file": "Arms of Brandenburg.svg",
     "auteur": "Glasshouse",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (de), « Brandenburgischer Adler »",
+      "url": "https://de.wikipedia.org/wiki/Brandenburgischer_Adler",
+      "note": "section sur la province (1880-1918) ; l'or du sceptre d'après l'article anglais « Coat of arms of Brandenburg »"
+    }
   },
   {
     "nom": "Royaume d'Irak",
@@ -369,16 +344,6 @@
     "auteur": "Professor Alexander Mikaberidze",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
-    "nom": "Califat chérifien",
-    "cat": "Royaumes",
-    "porteur": "",
-    "blason": "",
-    "file": "Coat of arms of Kingdom of Hejaz.svg",
-    "auteur": "Samhanin",
-    "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
   },
   {
     "nom": "Royaume de Saxe",
@@ -419,5 +384,78 @@
     "auteur": "Havsjö",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "nom": "Maison d'Este",
+    "cat": "Maisons",
+    "porteur": "Seigneurs de Ferrare, avant la concession française de 1431",
+    "blason": "D'azur à l'aigle d'argent, becquée, membrée et couronnée d'or",
+    "file": "Arms of the house of Este (1).svg",
+    "auteur": "MostEpic",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison d'Este »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_d'Este",
+      "note": "en 1431, Charles VII leur concède un écartelé aux lis de France ; le fichier montre les armes d'avant"
+    }
+  },
+  {
+    "nom": "Maison Farnèse",
+    "cat": "Maisons",
+    "porteur": "Ducs de Parme et de Plaisance",
+    "blason": "D'or à six fleurs de lis d'azur, posées 3, 2 et 1",
+    "file": "Blason famille it Farnese01.svg",
+    "auteur": "Henry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison Farnèse »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_Farnèse",
+      "note": "la disposition 3, 2 et 1 d'après la page Commons du fichier"
+    }
+  },
+  {
+    "nom": "Maison Grimaldi",
+    "cat": "Maisons",
+    "porteur": "Princes de Monaco",
+    "blason": "Fuselé d'argent et de gueules",
+    "file": "Blason Monaco.svg",
+    "auteur": "Henry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Famille Grimaldi »",
+      "url": "https://fr.wikipedia.org/wiki/Famille_Grimaldi"
+    }
+  },
+  {
+    "nom": "Marquisat de Saluces",
+    "cat": "Provinces",
+    "porteur": "Marquis de Saluces, en Piémont",
+    "blason": "D'argent au chef d'azur",
+    "file": "Blason marquisat it Saluces.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Marquisat de Saluces »",
+      "url": "https://fr.wikipedia.org/wiki/Marquisat_de_Saluces"
+    }
+  },
+  {
+    "nom": "Comté de Toulouse",
+    "cat": "Provinces",
+    "porteur": "Comtes de Toulouse (778-1271), puis province de Languedoc",
+    "blason": "De gueules à la croix vidée, cléchée et pommetée d'or",
+    "file": "Blason Languedoc.svg",
+    "auteur": "Fhiv",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Comté de Toulouse »",
+      "url": "https://fr.wikipedia.org/wiki/Comté_de_Toulouse",
+      "note": "c'est la « croix de Toulouse »"
+    }
   }
 ]

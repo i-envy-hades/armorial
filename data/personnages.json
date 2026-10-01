@@ -5,7 +5,6 @@
     "blason": "De gueules à trois léopards d'or",
     "desc": "Sous Richard Ier se fixent les trois léopards (lions passants) des Plantagenêts, qui deviendront les armes de l'Angleterre.",
     "file": "Royal arms of England.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_arms_of_England.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -16,7 +15,6 @@
     "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or (France ancien) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
     "desc": "En revendiquant la couronne de France en 1340, Édouard III écartèle ses armes de celles de France — d'abord « ancien » (semé de lis).",
     "file": "Coat of Arms of Edward III of England (1327-1377).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Edward_III_of_England_(1327-1377).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -27,7 +25,6 @@
     "blason": "Écartelé de France ancien et d'Angleterre, au lambel à trois pendants d'argent",
     "desc": "Le lambel d'argent est la brisure de l'héritier : ce sont ses « armes de paix », distinctes de celles du roi son père.",
     "file": "Coat of Arms of the Prince of Wales (France ancient).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Prince_of_Wales_(France_ancient).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -38,7 +35,6 @@
     "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or (France moderne) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
     "desc": "Proclamé « roi de France et d'Angleterre », Henri VI porte la France « moderne » (trois lis), qui a remplacé le semé vers 1406.",
     "file": "Coat of Arms of Henry VI of England (1422-1471).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Henry_VI_of_England_(1422-1471).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -49,7 +45,6 @@
     "blason": "Écartelé de France moderne et d'Angleterre ; pour supports, deux sangliers d'argent",
     "desc": "Le sanglier blanc (« white boar ») était l'emblème personnel de Richard III, dernier roi de la maison d'York.",
     "file": "Coat of Arms of Richard III of England (1483-1485).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Richard_III_of_England_(1483-1485).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -60,7 +55,6 @@
     "blason": "D'argent à l'aigle de sable, becquée et membrée de gueules, à la cotice de gueules brochant sur le tout",
     "desc": "Grand capitaine de la guerre de Cent Ans ; ses armes figurent à l'armorial de Gelre. La cotice est ici une brisure.",
     "file": "Blason famille fr du Guesclin 2.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_du_Guesclin_2.svg",
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -71,7 +65,6 @@
     "blason": "De gueules au lion d'or",
     "desc": "Armes des FitzAlan, comtes d'Arundel. Les rôles d'armes lus les enregistrent pour Richard FitzAlan (1300), non pour lui en personne.",
     "file": "FitzAlan arms.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
     "auteur": "Newm30",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -81,45 +74,11 @@
     }
   },
   {
-    "nom": "Henri II (roi d'Angleterre)",
-    "meta": "1133–1189 · roi d'Angleterre de 1154 à 1189",
-    "blason": "",
-    "desc": "Attribution incertaine. La page Commons signale ces armes comme non sourcées ; Wikipédia (fr) prête à Henri II un écu à deux léopards, tandis que l'article anglais, d'après Ailes (1982), admet un ou deux lions, faute de témoignage direct.",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
-    "nom": "Henri le Jeune",
-    "meta": "1155–1183 · prince anglais de la dynastie des Plantagenêts",
-    "blason": "",
-    "desc": "Le fichier représente les armes royales d'Angleterre de 1154 à 1189 ; la page Commons signale cette attribution comme non sourcée.",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
-    "nom": "Jeanne d'Angleterre (1165-1199)",
-    "meta": "1165–1199 · fille d'Henri II d'Angleterre, reine de Sicile, puis comtesse de Toulouse",
-    "blason": "",
-    "desc": "Le fichier représente les armes royales d'Angleterre de 1154 à 1189 ; la page Commons signale cette attribution comme non sourcée.",
-    "file": "Royal Arms of England (1154-1189).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_Arms_of_England_(1154-1189).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
-  },
-  {
     "nom": "John FitzAlan",
     "meta": "1246–1272 · noble anglais",
     "blason": "De gueules au lion d'or",
     "desc": "Armes des FitzAlan, comtes d'Arundel. Les rôles d'armes lus les enregistrent pour Richard FitzAlan (1300), non pour lui en personne.",
     "file": "FitzAlan arms.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
     "auteur": "Newm30",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -134,7 +93,6 @@
     "blason": "De gueules au lion d'or",
     "desc": "Le Falkirk Roll, le Glover's Roll et le poème de Caerlaverock (1300) lui donnent ces armes, qui figurent aussi sur son sceau de la lettre des barons (1301). Les FitzAlan les tenaient des d'Aubigny, comtes d'Arundel avant eux.",
     "file": "FitzAlan arms.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg",
     "auteur": "Newm30",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -149,7 +107,6 @@
     "blason": "De gueules à trois fasces d'argent",
     "desc": "",
     "file": "C o a Paulus IV.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:C_o_a_Paulus_IV.svg",
     "auteur": "Echando una mano",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -165,7 +122,6 @@
     "blason": "D'argent à la croix d'azur chargée de cinq croissants d'or",
     "desc": "",
     "file": "C o a Pio II.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:C_o_a_Pio_II.svg",
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -177,13 +133,17 @@
   {
     "nom": "Margrethe II",
     "meta": "n. 1940 · reine de Danemark de 1972 à 2024",
-    "blason": "",
-    "desc": "",
+    "blason": "Écartelé par une croix d'argent bordée de gueules : aux 1 et 4, d'or à trois lions léopardés d'azur couronnés d'or et lampassés de gueules, accompagnés de neuf cœurs de gueules (Danemark) ; au 2, d'or à deux lions léopardés d'azur lampassés de gueules (Schleswig) ; au 3, d'azur à trois couronnes d'or en chef (Union de Kalmar), à un bélier (Féroé) et à un ours polaire (Groenland) d'argent en pointe ; sur le tout, d'or à deux fasces de gueules (Oldenbourg)",
+    "desc": "En 1972, la reine simplifie les armes royales : elle en retire les quartiers des Vendes et des Goths, de Holstein, Stormarn, Dithmarse, Lauenbourg et Delmenhorst, et redresse les bras de la croix.",
     "file": "Royal coat of arms of Denmark (1972–2024).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_coat_of_arms_of_Denmark_(1972–2024).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (da), « Danmarks rigsvåben »",
+      "url": "https://da.wikipedia.org/wiki/Danmarks_rigsv%C3%A5ben",
+      "note": "section « Kongevåben », version 1972-2024 ; tenants, colliers et manteau non repris"
+    }
   },
   {
     "nom": "Frederik X",
@@ -191,7 +151,6 @@
     "blason": "Écartelé par une croix pattée d'argent bordée de gueules (Dannebrog) : au 1, d'or semé de neuf cœurs de gueules à trois lions léopardés d'azur, couronnés et armés d'or, lampassés de gueules (Danemark) ; au 2, d'azur au bélier passant d'argent, armé d'or et lampassé de gueules (Féroé) ; au 3, d'azur à l'ours polaire dressé d'argent, armé d'or (Groenland) ; au 4, d'or à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; sur le tout, d'or à deux fasces de gueules (Oldenbourg)",
     "desc": "",
     "file": "Royal coat of arms of Denmark (2024).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Royal_coat_of_arms_of_Denmark_(2024).svg",
     "auteur": "Di (they-them)",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -207,7 +166,6 @@
     "blason": "",
     "desc": "",
     "file": "Arms of Margaret of Foix-Candale.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Arms_of_Margaret_of_Foix-Candale.svg",
     "auteur": "MostEpic",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -218,7 +176,6 @@
     "blason": "",
     "desc": "",
     "file": "Stemma d avalos.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Stemma_d_avalos.jpg",
     "auteur": "DionisusDafne",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -229,7 +186,6 @@
     "blason": "De gueules à trois fasces d'argent, à une branche d'épine de sinople posée en bande, brochant sur le tout",
     "desc": "",
     "file": "Coa fam ITA carafa2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Coa_fam_ITA_carafa2.jpg",
     "auteur": "Massimop",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -245,7 +201,6 @@
     "blason": "",
     "desc": "Emblème du royaume d'Afghanistan (1931-1973), non des armes blasonnées ; la page Commons hésite sur la date de fin, 1973 ou 1974.",
     "file": "Emblem of Afghanistan (1931–1973).svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Emblem_of_Afghanistan_(1931%E2%80%931973).svg",
     "auteur": "Orange Tuesday d'après Andrew Dunhan, version 2021 de Yeemuha",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Afghanistan"
@@ -256,7 +211,6 @@
     "blason": "",
     "desc": "",
     "file": "COA archbishop HU Fuchs Ferenc Xaver3.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA_archbishop_HU_Fuchs_Ferenc_Xaver3.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -267,7 +221,6 @@
     "blason": "",
     "desc": "",
     "file": "COA bishop SK Fabry Ignac2.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA_bishop_SK_Fabry_Ignac2.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -278,7 +231,6 @@
     "blason": "",
     "desc": "",
     "file": "Escudo de Justo Rodríguez Gallego.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:Escudo_de_Justo_Rodríguez_Gallego.svg",
     "auteur": "Macucal",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
@@ -286,13 +238,17 @@
   {
     "nom": "Stanisław Kiszka",
     "meta": "1584–1626 · évêque catholique",
-    "blason": "",
+    "blason": "D'azur au fer à cheval d'argent sommé d'une croix pattée d'or ; deux croix semblables fichées aux bouts du fer, et deux autres posées en biais près de ses crampons. Cimier : une aile d'aigle de sable percée d'une flèche d'argent",
     "desc": "",
     "file": "POL COA Dąbrowa.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Dąbrowa.svg",
     "auteur": "Voytek S",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (pl), « Dąbrowa (herb szlachecki) »",
+      "url": "https://pl.wikipedia.org/wiki/D%C4%85browa_(herb_szlachecki)",
+      "note": "« krzyż kawalerski » rendu par croix pattée"
+    }
   },
   {
     "nom": "Jan Lubrański",
@@ -300,7 +256,6 @@
     "blason": "De gueules au pin au naturel, à trois branches et cinq racines",
     "desc": "",
     "file": "POL COA Godziemba.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Godziemba.svg",
     "auteur": "Avalokitesvara",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -315,7 +270,6 @@
     "blason": "De gueules à la hache d'armes d'argent, le fer à dextre",
     "desc": "",
     "file": "POL COA Oksza.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Oksza.svg",
     "auteur": "Bastianowa (Bastiana)",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
@@ -330,7 +284,6 @@
     "blason": "De gueules à la hache d'armes d'argent, le fer à dextre",
     "desc": "",
     "file": "POL COA Oksza.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Oksza.svg",
     "auteur": "Bastianowa (Bastiana)",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
@@ -345,7 +298,6 @@
     "blason": "D'azur à l'étoile à six rais d'or surmontant un croissant du même, à la bordure d'or",
     "desc": "",
     "file": "POL COA Tyszkiewicz.svg",
-    "page": "https://commons.wikimedia.org/wiki/File:POL_COA_Tyszkiewicz.svg",
     "auteur": "Avalokitesvara et al.",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -356,23 +308,11 @@
     }
   },
   {
-    "nom": "Gregers Matsson",
-    "meta": "1420–1494",
-    "blason": "",
-    "desc": "",
-    "file": "COA family sv Lillie af Greger Mattssons att.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA_family_sv_Lillie_af_Greger_Mattssons_att.png",
-    "auteur": "Dan Koehl",
-    "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
-  },
-  {
     "nom": "Krister Gabrielsson Oxenstierna",
     "meta": "1545–1592 · personnalité politique suédoise",
     "blason": "",
     "desc": "",
     "file": "COA family sv Oxenstierna.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA_family_sv_Oxenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0"
@@ -383,7 +323,6 @@
     "blason": "",
     "desc": "",
     "file": "COA-family-Fleming.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0"
@@ -394,7 +333,6 @@
     "blason": "",
     "desc": "",
     "file": "COA-family-Fleming.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0"
@@ -405,7 +343,6 @@
     "blason": "",
     "desc": "",
     "file": "COA-family-Fleming.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0"
@@ -416,7 +353,6 @@
     "blason": "D'azur à l'étoile à sept rais d'or",
     "desc": "",
     "file": "COA-family-sv-Gyllenstierna.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Gyllenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -432,7 +368,6 @@
     "blason": "D'azur à l'étoile à sept rais d'or",
     "desc": "",
     "file": "COA-family-sv-Gyllenstierna.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Gyllenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -448,9 +383,50 @@
     "blason": "",
     "desc": "",
     "file": "COA-family-sv-Svarte skaning.png",
-    "page": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Svarte_skaning.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "nom": "Jean-Baptiste Colbert",
+    "meta": "1619–1683 · contrôleur général des finances de Louis XIV",
+    "blason": "D'or à la couleuvre ondoyante en pal d'azur",
+    "desc": "Armes parlantes : la couleuvre se dit coluber en latin. Devise : « Pro rege saepe, pro patria semper » (pour le roi souvent, pour la patrie toujours).",
+    "file": "Blason Colbert.svg",
+    "auteur": "Bluebear2",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Jean-Baptiste Colbert »",
+      "url": "https://fr.wikipedia.org/wiki/Jean-Baptiste_Colbert"
+    }
+  },
+  {
+    "nom": "Jules Mazarin",
+    "meta": "1602–1661 · cardinal, principal ministre",
+    "blason": "D'azur au faisceau de licteur d'or lié d'argent, la hache du même, à la fasce de gueules brochant sur le tout, chargée de trois étoiles d'or",
+    "desc": "Le faisceau de licteur, emblème du Sénat romain, rattache le cardinal aux grandes figures de l'Antiquité.",
+    "file": "Blason Jules Mazarini (alias Mazarin) (1602-1661).svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Jules Mazarin »",
+      "url": "https://fr.wikipedia.org/wiki/Jules_Mazarin"
+    }
+  },
+  {
+    "nom": "Jacques Cœur",
+    "meta": "m. 1456 · argentier de Charles VII",
+    "blason": "D'azur à la fasce d'or chargée de trois coquilles de sable, accompagnée de trois cœurs de gueules",
+    "desc": "Armes parlantes, prises à l'anoblissement : les coquilles pour saint Jacques, les cœurs pour le nom. Devise : « A vaillans cuers riens impossible ».",
+    "file": "Ecu Jacques Coeur.svg",
+    "auteur": "Tarcisius08",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Jacques Cœur »",
+      "url": "https://fr.wikipedia.org/wiki/Jacques_Cœur"
+    }
   }
 ]

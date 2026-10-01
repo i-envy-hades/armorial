@@ -1,0 +1,1423 @@
+{
+ "sources": {
+  "armorial_fr": {
+   "label": "Wikipédia, « Armorial des Habsbourg »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Habsbourg"
+  },
+  "autriche_fr": {
+   "label": "Wikipédia, « Liste des souverains d'Autriche »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_souverains_d%27Autriche"
+  },
+  "empire_fr": {
+   "label": "Wikipédia, « Liste des souverains du Saint-Empire »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_souverains_du_Saint-Empire"
+  },
+  "espagne_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27Espagne"
+  },
+  "bindenschild_de": {
+   "label": "Wikipedia (de), « Österreichischer Bindenschild »",
+   "url": "https://de.wikipedia.org/wiki/%C3%96sterreichischer_Bindenschild"
+  },
+  "wappen_de": {
+   "label": "Wikipedia (de), « Wappen Österreichs »",
+   "url": "https://de.wikipedia.org/wiki/Wappen_%C3%96sterreichs"
+  },
+  "empire_en": {
+   "label": "Wikipedia (en), « Coat of arms of the Austrian Empire »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_the_Austrian_Empire"
+  },
+  "charlesv_en": {
+   "label": "Wikipedia (en), « Coat of arms of Charles V, Holy Roman Emperor »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Charles_V%2C_Holy_Roman_Emperor"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Pas de figure",
+   "draw": "aucune",
+   "blason": "",
+   "note": "",
+   "sources": []
+  },
+  "habsbourg": {
+   "nom": "Comtes de Habsbourg",
+   "blason": "D'or au lion de gueules armé, lampassé et couronné d'azur",
+   "file": "Arms of Counts of Habsbourg.svg",
+   "auteur": "Sodacan et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le lion du berceau argovien, que la maison gardera jusqu'au XXᵉ siècle au cœur de ses armes.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "rodolphe": {
+   "nom": "Roi des Romains",
+   "draw": "aucune",
+   "blason": "De l'Empire ; sur le tout, de Habsbourg",
+   "note": "La seule figure trouvée sur Commons est rangée parmi les armes « attribuées » : l'écu reste vide.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "autriche": {
+   "nom": "Le Bindenschild",
+   "blason": "De gueules à la fasce d'argent",
+   "file": "Arms of the Archduchy of Austria.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes des ducs d'Autriche, reprises des Babenberg : la « bande » blanche sur rouge.",
+   "sources": [
+    "armorial_fr",
+    "bindenschild_de"
+   ]
+  },
+  "albert1": {
+   "nom": "Roi des Romains",
+   "draw": "aucune",
+   "blason": "De l'Empire ; sur le tout, d'Autriche",
+   "note": "La seule figure trouvée sur Commons est rangée parmi les armes « attribuées » : l'écu reste vide.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "albert5": {
+   "nom": "Bohême et Hongrie",
+   "blason": "Parti de Bohême et de Hongrie ; sur le tout, d'Autriche",
+   "file": "Armoiries Albert II de Habsbourg.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "albert2emp": {
+   "nom": "Albert II, roi des Romains",
+   "blason": "De l'Empire ; sur le tout, parti de Hongrie et de Bohême ; sur le tout du tout, de Habsbourg",
+   "file": "Armoiries empereur Albert II.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "frederic3": {
+   "nom": "L'aigle à deux têtes",
+   "blason": "D'or à l'aigle bicéphale de sable armée, becquée, languée et nimbée de gueules",
+   "file": "Coat of Arms of the Holy Roman Emperor (c.1433-c.1450).svg",
+   "auteur": "Adelbrecht et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Frédéric V d'Autriche, empereur sous le nom de Frédéric III, porte l'aigle impériale bicéphale.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "maxemp": {
+   "nom": "Maximilien, empereur",
+   "blason": "De l'Empire ; sur le tout, parti d'Autriche et de Bourgogne",
+   "file": "Arms of Maximilian I, Holy Roman Emperor.svg",
+   "auteur": "Adelbrecht et Heralder, écusson de Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles_rr": {
+   "nom": "Charles, roi des Romains",
+   "blason": "De l'Empire ; sur le tout, les armes de ses royaumes d'Espagne et de ses terres bourguignonnes et autrichiennes",
+   "file": "Coat of Arms of Charles V as King of the Romans.svg",
+   "auteur": "Tom Lemmens et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "L'armorial résume ces armes par « De l'Empire, sur le tout : (aux armes précédentes) ».",
+   "sources": [
+    "armorial_fr",
+    "charlesv_en"
+   ]
+  },
+  "ferd1a": {
+   "nom": "Ferdinand, roi de Bohême et de Hongrie",
+   "blason": "Écartelé de Bohême et de Hongrie ; sur le tout, parti d'Autriche et de Bourgogne ancien",
+   "file": "Armoiries Ferdinand de Habsbourg.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "Les armes de Ferdinand avant 1558.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "ferd1b": {
+   "nom": "Ferdinand Iᵉʳ, empereur",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, écartelé de Bohême et de Hongrie ; sur le tout du tout, parti d'Autriche et de Bourgogne ancien",
+   "file": "Armoiries empereur Ferdinand Ier.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "Selon l'armorial, Maximilien II puis Joseph Iᵉʳ portent les mêmes armes.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "rod2": {
+   "nom": "Rodolphe II",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, écartelé de Bohême, de Hongrie, d'Autriche parti de Bourgogne ancien, et de Castille écartelée de Léon",
+   "file": "Armoiries empereur Rodolphe II.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "Selon l'armorial, Matthias, Ferdinand II et Léopold Iᵉʳ portent les mêmes armes.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "ferd3": {
+   "nom": "Ferdinand III",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, écartelé de Bohême, de Hongrie, de Castille écartelée de Léon, et de Bourgogne ancien parti de Tyrol et de Flandre ; sur le tout du tout, d'Autriche",
+   "file": "Armoiries empereur Ferdinand III.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles6a": {
+   "nom": "Le prétendant d'Espagne",
+   "blason": "Écartelé de Castille, de Hongrie, d'Aragon parti d'Aragon-Sicile, et d'Autriche parti de Bourgogne ancien ; sur le tout, de Bohême",
+   "file": "Armoiries Charles VI de Habsbourg.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "note": "Les armes de l'archiduc Charles avant 1711, quand il dispute l'Espagne au petit-fils de Louis XIV.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles6": {
+   "nom": "Charles VI, empereur",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, les armes du prétendant : Castille, Hongrie, Aragon, Autriche et Bourgogne ancien, et Bohême en cœur",
+   "file": "Arms of Charles VI, Holy Roman Emperor-Or shield variant.svg",
+   "auteur": "Adelbrecht et Heralder, éléments de Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "mt": {
+   "nom": "Marie-Thérèse",
+   "blason": "Écartelé de Castille, de Hongrie, d'Aragon parti d'Aragon-Sicile, et d'Autriche parti de Bourgogne ancien ; sur le tout, de Bohême",
+   "file": "Middle Arms of Maria Theresa, Holy Roman Empress.svg",
+   "auteur": "Adelbrecht et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le blasonnement de l'armorial ne porte pas l'aigle ; les figures de Commons, titrées « impératrice », la montrent. La figure de l'écu donne ses armes moyennes, plus chargées que ce blasonnement.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "jos2": {
+   "nom": "Joseph II",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, écartelé de Hongrie, de Bohême, de Bourgogne et de Toscane ; sur le tout du tout, parti d'Autriche et de Lorraine",
+   "file": "Middle Arms of Joseph II, Holy Roman Emperor.svg",
+   "auteur": "Adelbrecht et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le premier Habsbourg-Lorraine : les alérions de son père entrent en cœur.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "leo2": {
+   "nom": "Léopold II et François II",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, écartelé de Hongrie, de Bohême, de Bourgogne et de Bar ; sur le tout du tout, tiercé de Lorraine, d'Autriche et de Toscane",
+   "file": "Middle Arms of Leopold II and Francis II, Holy Roman Emperors.svg",
+   "auteur": "Adelbrecht et Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "emp1804": {
+   "nom": "L'empire d'Autriche",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, parti tiercé en pal d'or au lion de gueules armé, lampassé et couronné d'azur (Habsbourg), de gueules à la fasce d'argent (Autriche) et d'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+   "file": "Imperial Coat of Arms of the Empire of Austria (1815).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le blasonnement est celui que l'armorial donne aux « petites armes » des empereurs d'Autriche ; la figure, des armes de l'État, ajoute couronne et colliers.",
+   "sources": [
+    "armorial_fr",
+    "empire_en"
+   ]
+  },
+  "emp1867": {
+   "nom": "Autriche-Hongrie",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, parti tiercé en pal d'or au lion de gueules armé, lampassé et couronné d'azur (Habsbourg), de gueules à la fasce d'argent (Autriche) et d'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+   "file": "Imperial Coat of Arms of the Empire of Austria.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Armes moyennes de l'empire, en usage jusqu'en 1915 aussi pour l'Autriche-Hongrie, selon la description du fichier.",
+   "sources": [
+    "armorial_fr",
+    "empire_en"
+   ]
+  },
+  "emp1915": {
+   "nom": "Les armes de 1915",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée, membrée et liée de gueules ; sur le tout, parti tiercé en pal d'or au lion de gueules armé, lampassé et couronné d'azur (Habsbourg), de gueules à la fasce d'argent (Autriche) et d'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+   "file": "Imperial Coat of Arms of Austria.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "En 1915, le Bindenschild redevient l'emblème de l'Autriche.",
+   "sources": [
+    "armorial_fr",
+    "wappen_de"
+   ]
+  },
+  "philippe1": {
+   "nom": "Philippe le Beau, roi de Castille",
+   "blason": "Écartelé : aux 1 et 4, le contre-écartelé de Castille et de Léon, avec Aragon et Aragon-Sicile, enté en pointe de Grenade ; aux 2 et 3, écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant ; sur le tout, parti de Flandre et de Tyrol",
+   "file": "Coat of Arms of Philip I of Castile.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles1516": {
+   "nom": "Charles, roi des Espagnes",
+   "blason": "Écartelé : le contre-écartelé de Castille et de Léon, avec Aragon et Sicile, enté en pointe de Grenade, et l'écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol",
+   "file": "Coat of Arms of Charles V, Holy Roman Emperor as Heir of Philip the Handsome.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles1530": {
+   "nom": "Charles Quint, empereur",
+   "blason": "De l'Empire ; sur le tout, coupé : le contre-écartelé de Castille et de Léon, avec Aragon et Sicile, enté en pointe de Grenade, et l'écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol",
+   "file": "Arms of Charles I of Spain, Charles V as Holy Roman Emperor-Or shield variant (1530-1556).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "La version de 1530, que l'armorial présente comme une simplification des précédentes.",
+   "sources": [
+    "armorial_fr",
+    "charlesv_en"
+   ]
+  },
+  "philippe2a": {
+   "nom": "Roi consort d'Angleterre",
+   "blason": "Parti : au 1, coupé : le contre-écartelé de Castille et de Léon, avec Aragon et Sicile, enté en pointe de Grenade, et l'écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol ; au 2, écartelé de France et d'Angleterre",
+   "file": "Arms of Philip II of Spain, English King Consort-Spanish Variant (1556-1558).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes de Philippe époux de Marie Tudor.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "philippe2b": {
+   "nom": "Philippe II, roi des Espagnes",
+   "blason": "Coupé : au 1, Castille et Léon, Aragon et Sicile, Jérusalem et Navarre, Hongrie ancien, enté en pointe de Grenade ; au 2, écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol",
+   "file": "Arms of Philip II of Spain (1558-1580).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "espagne1580": {
+   "nom": "Espagne et Portugal",
+   "blason": "Coupé : le contre-écartelé de Castille et de Léon, avec Aragon et Sicile, enté en pointe de Grenade, et l'écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol ; l'écu de Portugal sur le tout des quartiers espagnols",
+   "file": "Royal Arms of Spain (1580-1668).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "charles2": {
+   "nom": "Charles II",
+   "blason": "Coupé : le contre-écartelé de Castille et de Léon, avec Aragon et Sicile, enté en pointe de Grenade, et l'écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, sur le tout parti de Flandre et de Tyrol",
+   "file": "Arms of Charles II of Spain (1668-1700).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes de 1580 sans l'écu de Portugal.",
+   "sources": [
+    "armorial_fr"
+   ]
+  },
+  "maxarch": {
+   "nom": "Archiduc d'Autriche",
+   "blason": "Coupé : au 1, parti d'Autriche ancien et d'Autriche moderne ; au 2, tiercé en pal de Styrie, de Carinthie et de Carniole ; sur le tout, de Tyrol",
+   "file": "Coat of arms of Maximilan of Hapsburg as archduke of Austria.svg",
+   "auteur": "Geraldiker",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "note": "",
+   "sources": [
+    "armorial_fr"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "debut": 1250,
+   "fin": 1930,
+   "theme": "habsbourg",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Interrègne"
+   },
+   "methode": [
+    "Dates : « Liste des souverains d'Autriche » et « Liste des monarques d'Espagne », sur Wikipédia. Les co-ducs et les branches léopoldine et albertine ne sont pas représentés : la frise suit la ligne principale de la liste.",
+    "Armoiries : « Armorial des Habsbourg » pour les blasonnements, ici abrégés en nommant les quartiers (Bohême, Hongrie, Castille…) ; articles allemands et anglais pour l'Autriche moderne.",
+    "Quand les sources divergent, la frise donne les versions en présence sans trancher."
+   ],
+   "figures": "Les écus viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page. Les fichiers rangés par Commons parmi les armes « contestées » ou « attribuées » ont été écartés : leurs écus restent vides. Le collier du jeton est dessiné par l'encyclopédie :",
+   "id": "autriche",
+   "nom": "Autriche",
+   "titre": "Habsbourg d'Autriche",
+   "depart": 1493,
+   "lede": "Du lion des comtes argoviens à l'aigle bicéphale, six siècles d'armes : le Bindenschild au cœur, les royaumes autour.",
+   "maisons": [
+    {
+     "id": "habsbourg",
+     "nom": "Habsbourg",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "lorraine",
+     "nom": "Habsbourg-Lorraine",
+     "couleur": "#d9694f"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Rodolphe Iᵉʳ",
+     "court": "Rodolphe Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1273-09-01",
+     "fin": "1291-07-15",
+     "wiki": "Rodolphe Ier du Saint-Empire",
+     "branche": "roi des Romains",
+     "armes": "rodolphe",
+     "sources": [
+      "empire_fr",
+      "armorial_fr"
+     ],
+     "avant": [
+      {
+       "titre": "Comte de Habsbourg",
+       "dates": "avant 1273",
+       "blason": "D'or au lion de gueules armé, lampassé et couronné d'azur",
+       "file": "Arms of Counts of Habsbourg.svg",
+       "auteur": "Sodacan et Heralder",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+       "sources": [
+        "armorial_fr"
+       ]
+      }
+     ]
+    },
+    {
+     "nom": "Albert Iᵉʳ",
+     "court": "Albert Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1291-07-15",
+     "fin": "1308-05-01",
+     "wiki": "Albert Ier du Saint-Empire",
+     "branche": "duc d'Autriche, puis roi des Romains",
+     "phases": [
+      {
+       "debut": "1291-07-15",
+       "fin": "1298-06-23",
+       "armes": "autriche"
+      },
+      {
+       "debut": "1298-06-23",
+       "fin": "1308-05-01",
+       "armes": "albert1"
+      }
+     ],
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Frédéric le Bel",
+     "court": "Frédéric le Bel",
+     "maison": "habsbourg",
+     "debut": "1308-05-01",
+     "fin": "1330-01-13",
+     "wiki": "Frédéric le Bel",
+     "branche": "duc d'Autriche",
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Albert II le Sage",
+     "court": "Albert II",
+     "maison": "habsbourg",
+     "debut": "1330-01-13",
+     "fin": "1358-08-16",
+     "wiki": "Albert II d'Autriche",
+     "branche": "duc d'Autriche",
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Rodolphe IV le Fondateur",
+     "court": "Rodolphe IV",
+     "maison": "habsbourg",
+     "debut": "1358-08-16",
+     "fin": "1365-07-27",
+     "wiki": "Rodolphe IV d'Autriche",
+     "branche": "duc d'Autriche",
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Albert III à la Tresse",
+     "court": "Albert III",
+     "maison": "habsbourg",
+     "debut": "1365-07-27",
+     "fin": "1395-08-29",
+     "wiki": "Albert III d'Autriche",
+     "branche": "duc d'Autriche",
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Albert IV le Patient",
+     "court": "Albert IV",
+     "maison": "habsbourg",
+     "debut": "1395-08-29",
+     "fin": "1404-09-14",
+     "wiki": "Albert IV d'Autriche",
+     "branche": "duc d'Autriche",
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Albert V l'Illustre",
+     "court": "Albert V",
+     "maison": "habsbourg",
+     "debut": "1404-09-14",
+     "fin": "1439-10-27",
+     "wiki": "Albert II du Saint-Empire",
+     "branche": "duc d'Autriche, roi de Bohême et de Hongrie, roi des Romains (Albert II)",
+     "phases": [
+      {
+       "debut": "1404-09-14",
+       "fin": 1437,
+       "armes": "autriche"
+      },
+      {
+       "debut": 1437,
+       "fin": "1438-03-18",
+       "armes": "albert5"
+      },
+      {
+       "debut": "1438-03-18",
+       "fin": "1439-10-27",
+       "armes": "albert2emp"
+      }
+     ],
+     "armes": "autriche",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Frédéric V",
+     "court": "Frédéric V",
+     "maison": "habsbourg",
+     "debut": 1440,
+     "fin": "1493-08-19",
+     "wiki": "Frédéric III du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur (Frédéric III)",
+     "armes": "frederic3",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Maximilien Iᵉʳ",
+     "court": "Maximilien Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1493-08-19",
+     "fin": "1519-01-12",
+     "wiki": "Maximilien Ier du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "maxemp",
+     "avant": [
+      {
+       "titre": "Archiduc d'Autriche",
+       "dates": "avant 1477",
+       "blason": "Coupé : au 1, parti d'Autriche ancien et d'Autriche moderne ; au 2, tiercé en pal de Styrie, de Carinthie et de Carniole ; sur le tout, de Tyrol",
+       "file": "Coat of arms of Maximilan of Hapsburg as archduke of Austria.svg",
+       "auteur": "Geraldiker",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+       "sources": [
+        "armorial_fr"
+       ]
+      },
+      {
+       "titre": "Époux de Marie de Bourgogne",
+       "dates": "1477",
+       "blason": "Parti : au 1, ses armes d'archiduc ; au 2, écartelé de Bourgogne moderne, de Bourgogne ancien parti de Brabant, et de Bourgogne ancien parti de Limbourg ; sur le tout, parti de Flandre et de Tyrol",
+       "file": "Coat of arms of Maximilan of Hapsburg as consort to Mary of Burgundy.svg",
+       "auteur": "Geraldiker",
+       "lic": "CC BY-SA 4.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+       "sources": [
+        "armorial_fr"
+       ]
+      }
+     ],
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Charles Quint",
+     "court": "Charles Quint",
+     "maison": "habsbourg",
+     "debut": "1519-01-12",
+     "fin": "1521-04-28",
+     "wiki": "Charles Quint",
+     "branche": "archiduc d'Autriche, roi des Romains",
+     "armes": "charles_rr",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Ferdinand Iᵉʳ",
+     "court": "Ferdinand Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1521-04-28",
+     "fin": "1564-07-25",
+     "wiki": "Ferdinand Ier du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu en 1558",
+     "phases": [
+      {
+       "debut": "1521-04-28",
+       "fin": 1558,
+       "armes": "ferd1a"
+      },
+      {
+       "debut": 1558,
+       "fin": "1564-07-25",
+       "armes": "ferd1b"
+      }
+     ],
+     "armes": "ferd1a",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Maximilien II",
+     "court": "Maximilien II",
+     "maison": "habsbourg",
+     "debut": "1564-07-25",
+     "fin": "1576-10-12",
+     "wiki": "Maximilien II du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "ferd1b",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Rodolphe II",
+     "court": "Rodolphe II",
+     "maison": "habsbourg",
+     "debut": "1576-10-12",
+     "fin": "1608-06-25",
+     "wiki": "Rodolphe II du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "rod2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Matthias",
+     "court": "Matthias",
+     "maison": "habsbourg",
+     "debut": "1608-06-25",
+     "fin": "1619-03-20",
+     "wiki": "Matthias Ier du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "rod2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Ferdinand II",
+     "court": "Ferdinand II",
+     "maison": "habsbourg",
+     "debut": "1619-08-28",
+     "fin": "1637-02-15",
+     "wiki": "Ferdinand II du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "rod2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Ferdinand III",
+     "court": "Ferdinand III",
+     "maison": "habsbourg",
+     "debut": "1637-02-15",
+     "fin": "1657-04-02",
+     "wiki": "Ferdinand III du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "ferd3",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Léopold Iᵉʳ",
+     "court": "Léopold Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1657-04-02",
+     "fin": "1705-05-05",
+     "wiki": "Léopold Ier du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "rod2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Joseph Iᵉʳ",
+     "court": "Joseph Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1705-05-05",
+     "fin": "1711-04-17",
+     "wiki": "Joseph Ier du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "ferd1b",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Charles VI",
+     "court": "Charles VI",
+     "maison": "habsbourg",
+     "debut": "1711-04-17",
+     "fin": "1740-10-20",
+     "wiki": "Charles VI du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "charles6",
+     "avant": [
+      {
+       "titre": "Prétendant au trône d'Espagne",
+       "dates": "avant 1711",
+       "blason": "Écartelé de Castille, de Hongrie, d'Aragon parti d'Aragon-Sicile, et d'Autriche parti de Bourgogne ancien ; sur le tout, de Bohême",
+       "file": "Armoiries Charles VI de Habsbourg.svg",
+       "auteur": "Odejea",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+       "sources": [
+        "armorial_fr"
+       ]
+      }
+     ],
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Marie-Thérèse",
+     "court": "Marie-Thérèse",
+     "maison": "habsbourg",
+     "debut": "1740-10-20",
+     "fin": "1780-11-29",
+     "wiki": "Marie-Thérèse d'Autriche (1717-1780)",
+     "branche": "archiduchesse d'Autriche, reine de Bohême et de Hongrie",
+     "armes": "mt",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Joseph II",
+     "court": "Joseph II",
+     "maison": "lorraine",
+     "debut": "1780-11-29",
+     "fin": "1790-02-20",
+     "wiki": "Joseph II du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "jos2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Léopold II",
+     "court": "Léopold II",
+     "maison": "lorraine",
+     "debut": "1790-02-20",
+     "fin": "1792-03-01",
+     "wiki": "Léopold II du Saint-Empire",
+     "branche": "archiduc d'Autriche, empereur élu",
+     "armes": "leo2",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "François II / Iᵉʳ",
+     "court": "François Iᵉʳ",
+     "maison": "lorraine",
+     "debut": "1792-03-01",
+     "fin": "1835-03-02",
+     "wiki": "François Ier d'Autriche",
+     "branche": "empereur élu, puis empereur d'Autriche en 1804",
+     "phases": [
+      {
+       "debut": "1792-03-01",
+       "fin": "1804-08-11",
+       "armes": "leo2"
+      },
+      {
+       "debut": "1804-08-11",
+       "fin": "1835-03-02",
+       "armes": "emp1804"
+      }
+     ],
+     "armes": "leo2",
+     "sources": [
+      "autriche_fr",
+      "empire_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand Iᵉʳ d'Autriche",
+     "court": "Ferdinand",
+     "maison": "lorraine",
+     "debut": "1835-03-02",
+     "fin": "1848-12-02",
+     "wiki": "Ferdinand Ier d'Autriche",
+     "branche": "empereur d'Autriche",
+     "armes": "emp1804",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "François-Joseph",
+     "court": "François-Joseph",
+     "maison": "lorraine",
+     "debut": "1848-12-02",
+     "fin": "1916-11-21",
+     "wiki": "François-Joseph Ier d'Autriche",
+     "branche": "empereur d'Autriche, roi de Hongrie",
+     "phases": [
+      {
+       "debut": "1848-12-02",
+       "fin": 1867,
+       "armes": "emp1804"
+      },
+      {
+       "debut": 1867,
+       "fin": 1915,
+       "armes": "emp1867"
+      },
+      {
+       "debut": 1915,
+       "fin": "1916-11-21",
+       "armes": "emp1915"
+      }
+     ],
+     "armes": "emp1804",
+     "sources": [
+      "autriche_fr",
+      "empire_en",
+      "wappen_de"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ",
+     "court": "Charles Iᵉʳ",
+     "maison": "lorraine",
+     "debut": "1916-11-21",
+     "fin": "1918-11-12",
+     "wiki": "Charles Ier d'Autriche",
+     "branche": "empereur d'Autriche, roi de Hongrie",
+     "armes": "emp1915",
+     "sources": [
+      "autriche_fr"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Interrègne",
+     "debut": "1439-10-27",
+     "fin": 1440,
+     "wiki": "Liste des souverains d'Autriche",
+     "note": "Ladislas, fils posthume d'Albert V, naît en 1440 ; la liste fait régner Frédéric V à partir de cette année.",
+     "sources": [
+      "autriche_fr"
+     ]
+    },
+    {
+     "nom": "Interrègne",
+     "debut": "1619-03-20",
+     "fin": "1619-08-28",
+     "wiki": "Liste des souverains d'Autriche",
+     "note": "",
+     "sources": [
+      "autriche_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1282,
+     "titre": "Le Bindenschild",
+     "texte": "Rodolphe Iᵉʳ investit ses fils du duché d'Autriche : les Habsbourg reprennent le Bindenschild, attesté depuis un sceau de 1230.",
+     "sources": [
+      "bindenschild_de"
+     ]
+    },
+    {
+     "annee": 1438.2,
+     "label": "1438",
+     "titre": "L'Empire",
+     "texte": "Albert V, élu roi des Romains, place les armes de ses royaumes sur l'aigle de l'Empire.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1477,
+     "titre": "Bourgogne",
+     "texte": "Maximilien épouse Marie de Bourgogne : les quartiers bourguignons entrent dans ses armes.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1558,
+     "titre": "Ferdinand empereur",
+     "texte": "Ferdinand Iᵉʳ passe de l'écartelé de Bohême et de Hongrie à l'aigle bicéphale.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1711.3,
+     "label": "1711",
+     "titre": "Le prétendant devenu empereur",
+     "texte": "L'archiduc Charles, qui disputait l'Espagne, devient empereur et pose ses armes sur l'aigle.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1780.9,
+     "label": "1780",
+     "titre": "Lorraine",
+     "texte": "Avec Joseph II, fils de François de Lorraine, les alérions de Lorraine entrent en cœur.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1804.6,
+     "label": "1804",
+     "titre": "Empire d'Autriche",
+     "texte": "François II fonde l'empire d'Autriche et en prend l'aigle bicéphale.",
+     "sources": [
+      "empire_en"
+     ]
+    },
+    {
+     "annee": 1806.6,
+     "label": "1806",
+     "titre": "Fin du Saint-Empire",
+     "texte": "Le Saint-Empire est dissous ; l'aigle reste celle de l'Autriche.",
+     "sources": [
+      "empire_en"
+     ]
+    },
+    {
+     "annee": 1867,
+     "titre": "Autriche-Hongrie",
+     "texte": "L'aigle bicéphale représente l'Autriche dans les armes de la double monarchie, jusqu'en 1918.",
+     "sources": [
+      "empire_en"
+     ]
+    },
+    {
+     "annee": 1915,
+     "titre": "Retour du Bindenschild",
+     "texte": "Le Bindenschild redevient l'emblème de l'Autriche.",
+     "sources": [
+      "wappen_de"
+     ]
+    },
+    {
+     "annee": 1918.9,
+     "label": "1918",
+     "titre": "Fin de la monarchie",
+     "texte": "La république adopte en 1919 une aigle à une tête chargée du Bindenschild.",
+     "sources": [
+      "wappen_de"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": "1564-07-25",
+     "fin": "1576-10-12",
+     "file": "Greater Arms of Maximilian II, Holy Roman Emperor.svg",
+     "auteur": "Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Grandes armes de Maximilien II",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1576-10-12",
+     "fin": "1637-02-15",
+     "file": "Greater Arms of Rudolf II, Matthias and Ferdinand II, Holy Roman Emperors.svg",
+     "auteur": "Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Grandes armes de Rodolphe II, Matthias et Ferdinand II",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1637-02-15",
+     "fin": "1657-04-02",
+     "file": "Arms of Ferdinand III, Holy Roman Emperor.svg",
+     "auteur": "Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Armes de Ferdinand III",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1657-04-02",
+     "fin": "1705-05-05",
+     "file": "Greater Arms of Leopold I, Holy Roman Emperor.svg",
+     "auteur": "Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Grandes armes de Léopold Iᵉʳ",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1705-05-05",
+     "fin": "1711-04-17",
+     "file": "Arms of Joseph I, Holy Roman Emperor.svg",
+     "auteur": "Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Armes de Joseph Iᵉʳ",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1740-10-20",
+     "fin": "1780-11-29",
+     "file": "Ornamented Coat of Arms of Maria Theresa, Holy Roman Empress.svg",
+     "auteur": "Tom Lemmens et Heralder, éléments de Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Marie-Thérèse, armes ornées",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1780-11-29",
+     "fin": "1790-02-20",
+     "file": "Greater Arms of Joseph II, Holy Roman Emperor.svg",
+     "auteur": "Adelbrecht et Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Grandes armes de Joseph II",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1790-02-20",
+     "fin": "1804-08-11",
+     "file": "Greater Arms of Leopold II and Francis II, Holy Roman Emperors.svg",
+     "auteur": "Adelbrecht et Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Grandes armes de Léopold II et François II",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "debut": "1804-08-11",
+     "fin": 1806,
+     "file": "Grand Coat of Arms of Francis II, Holy Roman Emperor (1804-1806).svg",
+     "auteur": "Tom Lemmens et Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "François II, empereur élu et empereur d'Autriche",
+     "ornements": [],
+     "sources": [
+      "armorial_fr"
+     ]
+    }
+   ],
+   "ornements": []
+  },
+  {
+   "debut": 1490,
+   "fin": 1715,
+   "theme": "habsbourg",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Interrègne"
+   },
+   "methode": [
+    "Dates : « Liste des souverains d'Autriche » et « Liste des monarques d'Espagne », sur Wikipédia. Les co-ducs et les branches léopoldine et albertine ne sont pas représentés : la frise suit la ligne principale de la liste.",
+    "Armoiries : « Armorial des Habsbourg » pour les blasonnements, ici abrégés en nommant les quartiers (Bohême, Hongrie, Castille…) ; articles allemands et anglais pour l'Autriche moderne.",
+    "Quand les sources divergent, la frise donne les versions en présence sans trancher."
+   ],
+   "figures": "Les écus viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page. Les fichiers rangés par Commons parmi les armes « contestées » ou « attribuées » ont été écartés : leurs écus restent vides. Le collier du jeton est dessiné par l'encyclopédie :",
+   "id": "espagne",
+   "nom": "Espagne",
+   "titre": "Habsbourg d'Espagne",
+   "depart": 1516,
+   "lede": "Castille, Aragon, Grenade, Bourgogne, Autriche, puis Portugal : l'écu des rois d'Espagne de la maison d'Autriche.",
+   "maisons": [
+    {
+     "id": "habsbourg",
+     "nom": "Habsbourg",
+     "couleur": "#e3c579"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Philippe Iᵉʳ le Beau",
+     "court": "Philippe Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": 1504,
+     "fin": 1506,
+     "wiki": "Philippe Ier le Beau",
+     "branche": "roi de Castille par mariage",
+     "armes": "philippe1",
+     "sources": [
+      "espagne_fr"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ (Charles Quint)",
+     "court": "Charles Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": 1516,
+     "fin": 1556,
+     "wiki": "Charles Quint",
+     "branche": "roi des Espagnes, empereur",
+     "phases": [
+      {
+       "debut": 1516,
+       "fin": 1530,
+       "armes": "charles1516"
+      },
+      {
+       "debut": 1530,
+       "fin": 1556,
+       "armes": "charles1530"
+      }
+     ],
+     "armes": "charles1516",
+     "sources": [
+      "espagne_fr"
+     ],
+     "devise": {
+      "embleme": "les colonnes d'Hercule",
+      "mot": "Plus Oultre",
+      "texte": "Devise personnelle du souverain, en français ; elle s'enroule autour des colonnes, rendue en latin par « Plus ultra ».",
+      "file": "Spain Arms Pillars.svg",
+      "auteur": "Ipankonin",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "legende": "les colonnes d'Hercule",
+      "sources": [
+       "charlesv_en"
+      ]
+     }
+    },
+    {
+     "nom": "Philippe II",
+     "court": "Philippe II",
+     "maison": "habsbourg",
+     "debut": 1556,
+     "fin": 1598,
+     "wiki": "Philippe II (roi d'Espagne)",
+     "branche": "roi des Espagnes, roi de Portugal en 1580",
+     "phases": [
+      {
+       "debut": 1556,
+       "fin": 1558,
+       "armes": "philippe2a"
+      },
+      {
+       "debut": 1558,
+       "fin": 1580,
+       "armes": "philippe2b"
+      },
+      {
+       "debut": 1580,
+       "fin": 1598,
+       "armes": "espagne1580"
+      }
+     ],
+     "armes": "philippe2a",
+     "sources": [
+      "espagne_fr"
+     ]
+    },
+    {
+     "nom": "Philippe III",
+     "court": "Philippe III",
+     "maison": "habsbourg",
+     "debut": 1598,
+     "fin": 1621,
+     "wiki": "Philippe III (roi d'Espagne)",
+     "branche": "roi des Espagnes et de Portugal",
+     "armes": "espagne1580",
+     "sources": [
+      "espagne_fr"
+     ]
+    },
+    {
+     "nom": "Philippe IV",
+     "court": "Philippe IV",
+     "maison": "habsbourg",
+     "debut": 1621,
+     "fin": 1665,
+     "wiki": "Philippe IV (roi d'Espagne)",
+     "branche": "roi des Espagnes",
+     "armes": "espagne1580",
+     "sources": [
+      "espagne_fr"
+     ],
+     "note": "Roi de Portugal jusqu'en 1640, date à laquelle l'armorial lui ôte l'écu de Portugal ; le fichier Commons le garde jusqu'en 1668."
+    },
+    {
+     "nom": "Charles II",
+     "court": "Charles II",
+     "maison": "habsbourg",
+     "debut": 1665,
+     "fin": 1700,
+     "wiki": "Charles II (roi d'Espagne)",
+     "branche": "roi des Espagnes",
+     "phases": [
+      {
+       "debut": 1665,
+       "fin": 1668,
+       "armes": "espagne1580"
+      },
+      {
+       "debut": 1668,
+       "fin": 1700,
+       "armes": "charles2"
+      }
+     ],
+     "armes": "espagne1580",
+     "sources": [
+      "espagne_fr"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Jeanne de Castille",
+     "debut": 1506,
+     "fin": 1516,
+     "wiki": "Jeanne Ire de Castille",
+     "note": "La reine Jeanne, veuve de Philippe le Beau, n'est pas une Habsbourg ; Charles règne après elle, avec elle en Castille jusqu'à sa mort en 1555.",
+     "sources": [
+      "espagne_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1516,
+     "titre": "Roi des Espagnes",
+     "texte": "Charles réunit les quartiers d'Espagne et ceux de son héritage bourguignon et autrichien.",
+     "sources": [
+      "armorial_fr"
+     ]
+    },
+    {
+     "annee": 1530,
+     "titre": "L'aigle impériale",
+     "texte": "Couronné empereur, Charles pose ses armes d'Espagne sur l'aigle, entre les colonnes d'Hercule.",
+     "sources": [
+      "armorial_fr",
+      "charlesv_en"
+     ]
+    },
+    {
+     "annee": 1580,
+     "titre": "Portugal",
+     "texte": "Philippe II devient roi de Portugal ; l'écu de Portugal entre sur le tout des quartiers espagnols.",
+     "sources": [
+      "armorial_fr",
+      "espagne_fr"
+     ]
+    },
+    {
+     "annee": 1640,
+     "titre": "Perte du Portugal",
+     "texte": "Le Portugal se soulève et se donne un roi.",
+     "desaccord": "L'armorial retire l'écu de Portugal dès 1640 ; les fichiers Commons le gardent jusqu'en 1668.",
+     "sources": [
+      "espagne_fr"
+     ]
+    },
+    {
+     "annee": 1700.8,
+     "label": "1700",
+     "titre": "Fin des Habsbourg d'Espagne",
+     "texte": "Charles II meurt sans enfant ; la guerre de Succession d'Espagne s'ouvre.",
+     "sources": [
+      "espagne_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1530,
+     "fin": 1556,
+     "file": "Greater Coat of Arms of Charles I of Spain, Charles V as Holy Roman Emperor (1530-1556).svg",
+     "auteur": "Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "titre": "Charles Quint : l'aigle, les colonnes et la Toison d'or",
+     "ornements": [],
+     "sources": [
+      "armorial_fr",
+      "charlesv_en"
+     ]
+    }
+   ],
+   "ornements": [
+    {
+     "id": "colliers",
+     "nom": "Collier",
+     "segs": [
+      {
+       "debut": 1516,
+       "fin": 1556,
+       "type": "toison",
+       "label": "de la Toison d'or",
+       "texte": "Les armes de Charles Quint s'entourent du collier de l'ordre de la Toison d'or.",
+       "sources": [
+        "charlesv_en"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

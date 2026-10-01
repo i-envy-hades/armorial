@@ -1,0 +1,1781 @@
+{
+ "sources": {
+  "liste_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Angleterre »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27Angleterre"
+  },
+  "brit_en": {
+   "label": "Wikipedia (en), « List of British monarchs »",
+   "url": "https://en.wikipedia.org/wiki/List_of_British_monarchs"
+  },
+  "arms_en": {
+   "label": "Wikipedia (en), « Royal arms of England »",
+   "url": "https://en.wikipedia.org/wiki/Royal_arms_of_England"
+  },
+  "gb_en": {
+   "label": "Wikipedia (en), « Coat of arms of Great Britain »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Great_Britain"
+  },
+  "uk_en": {
+   "label": "Wikipedia (en), « Royal coat of arms of the United Kingdom »",
+   "url": "https://en.wikipedia.org/wiki/Royal_coat_of_arms_of_the_United_Kingdom"
+  },
+  "claims_en": {
+   "label": "Wikipedia (en), « English claims to the French throne »",
+   "url": "https://en.wikipedia.org/wiki/English_claims_to_the_French_throne"
+  },
+  "supporters_en": {
+   "label": "Wikipedia (en), « Royal supporters of England »",
+   "url": "https://en.wikipedia.org/wiki/Royal_supporters_of_England"
+  },
+  "badges_en": {
+   "label": "Wikipedia (en), « Royal badges of England »",
+   "url": "https://en.wikipedia.org/wiki/Royal_badges_of_England"
+  },
+  "dieu_en": {
+   "label": "Wikipedia (en), « Dieu et mon droit »",
+   "url": "https://en.wikipedia.org/wiki/Dieu_et_mon_droit"
+  },
+  "garter_en": {
+   "label": "Wikipedia (en), « Order of the Garter »",
+   "url": "https://en.wikipedia.org/wiki/Order_of_the_Garter"
+  }
+ },
+ "armes": {
+  "normands": {
+   "nom": "Avant les armoiries",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Les trois léopards qu'on prête aux rois normands et aux premiers Plantagenêts leur ont été attribués après coup — par Matthieu Paris dès les années 1250. Le système héraldique n'est pas encore fixé : l'écu reste vide.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "sceau1189": {
+   "nom": "Le premier grand sceau",
+   "blason": "",
+   "file": "Richard_I_1st_seal.png",
+   "auteur": "Charles Boutell, éd. A. C. Fox-Davies, ill. R. B. Utting",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Richard_I_1st_seal.png",
+   "free": true,
+   "note": "Seul le premier grand sceau de Richard Iᵉʳ montre ses armes d'avant 1198 ; on n'en connaît pas les émaux.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "angleterre": {
+   "nom": "Les trois léopards",
+   "blason": "De gueules à trois léopards d'or, armés et lampassés d'azur",
+   "file": "Royal Arms of England (1198-1340).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Sur le second grand sceau de Richard Iᵉʳ (1198). Jean les reprend : le dessin ne changera plus. Les héraldistes anglais disent « lions passant guardant ».",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "france_ancien": {
+   "nom": "France et Angleterre",
+   "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or (France ancien) ; aux 2 et 3, de gueules à trois léopards d'or, armés et lampassés d'azur",
+   "file": "Royal Arms of England (1340-1367).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Édouard III revendique la couronne de France : les lis prennent la place d'honneur, aux 1ᵉʳ et 4ᵉ quartiers, reconnaissant la préséance du royaume de France.",
+   "sources": [
+    "arms_en",
+    "claims_en"
+   ]
+  },
+  "confesseur": {
+   "nom": "Saint Édouard",
+   "blason": "Parti : au 1, des armes attribuées à saint Édouard le Confesseur ; au 2, écartelé de France ancien et d'Angleterre",
+   "file": "Royal Arms of England (1395-1399).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Richard II accole les armes prêtées à Édouard le Confesseur, en signe d'union mystique ; Henri IV les abandonne.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "france_moderne": {
+   "nom": "Les trois lis",
+   "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or (France moderne) ; aux 2 et 3, de gueules à trois léopards d'or, armés et lampassés d'azur",
+   "file": "Royal Arms of England (1399-1603).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Henri IV réduit le semé à trois lis, à l'imitation de Charles V de France.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "marie": {
+   "nom": "Marie et Philippe",
+   "blason": "Parti : au 1, des armes de Philippe d'Espagne ; au 2, écartelé de France moderne et d'Angleterre",
+   "file": "Royal Arms of England (1554-1558).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Marie Iʳᵉ et son époux Philippe accolent leurs armes.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "stuart": {
+   "nom": "L'union des couronnes",
+   "blason": "Écartelé : aux 1 et 4, contre-écartelé de France moderne et d'Angleterre ; au 2, d'or au lion de gueules, armé et lampassé d'azur, dans un double trescheur fleuronné et contre-fleuronné du même (Écosse) ; au 3, d'azur à la harpe d'or cordée d'argent (Irlande)",
+   "file": "Royal Arms of England (1603-1707).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Jacques VI d'Écosse devient Jacques Iᵉʳ d'Angleterre : l'Écosse entre dans l'écu, et l'Irlande avec sa harpe. Ce sont les dernières armes du royaume d'Angleterre.",
+   "sources": [
+    "arms_en",
+    "uk_en"
+   ]
+  },
+  "guillaume_marie": {
+   "nom": "Guillaume et Marie",
+   "blason": "Parti : au 1, les armes de 1603 chargées en cœur d'un écusson de Nassau (d'azur billeté d'or au lion du même, armé et lampassé de gueules) ; au 2, les armes de 1603",
+   "file": "Royal Arms of England (1689-1694).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Souverains conjoints, ils accolent leurs armes, l'époux à dextre ; Guillaume y ajoute l'écusson de sa maison de Nassau.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "guillaume": {
+   "nom": "Guillaume seul",
+   "blason": "Les armes de 1603, chargées en cœur de l'écusson de Nassau",
+   "file": "Royal Arms of England (1694-1702).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Après la mort de Marie, Guillaume III garde ses seules armes.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "gb1707": {
+   "nom": "Grande-Bretagne",
+   "blason": "Écartelé : aux 1 et 4, parti d'Angleterre et d'Écosse ; au 2, d'azur à trois fleurs de lis d'or (France) ; au 3, d'azur à la harpe d'or cordée d'argent (Irlande)",
+   "file": "Royal Arms of Great Britain (1707-1714).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les Actes d'Union : l'Angleterre et l'Écosse, unies, partagent les 1ᵉʳ et 4ᵉ quartiers ; la France garde le 2ᵉ.",
+   "sources": [
+    "gb_en",
+    "uk_en"
+   ]
+  },
+  "gb1714": {
+   "nom": "Hanovre",
+   "blason": "Écartelé : au 1, parti d'Angleterre et d'Écosse ; au 2, d'azur à trois fleurs de lis d'or (France) ; au 3, d'azur à la harpe d'or cordée d'argent (Irlande) ; au 4, de Hanovre : Brunswick, Lunebourg et Westphalie, avec la couronne impériale de l'archi-trésorier",
+   "file": "Royal Arms of Great Britain (1714-1801).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "George Iᵉʳ, électeur de Hanovre, fait entrer ses terres allemandes au 4ᵉ quartier.",
+   "sources": [
+    "gb_en"
+   ]
+  },
+  "uk1801": {
+   "nom": "La fin des lis",
+   "blason": "Écartelé : aux 1 et 4, d'Angleterre ; au 2, d'Écosse ; au 3, d'Irlande ; sur le tout, de Hanovre sommé du bonnet électoral",
+   "file": "Royal Arms of United Kingdom (1801-1816).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Proclamation du 1ᵉʳ janvier 1801 : les lis de France quittent l'écu, qu'ils occupaient depuis 1340. L'Irlande, unie à la Grande-Bretagne, prend rang avec l'Angleterre et l'Écosse ; le Hanovre passe en écusson.",
+   "sources": [
+    "uk_en",
+    "arms_en",
+    "claims_en"
+   ]
+  },
+  "uk1816": {
+   "nom": "Le royaume de Hanovre",
+   "blason": "Écartelé : aux 1 et 4, d'Angleterre ; au 2, d'Écosse ; au 3, d'Irlande ; sur le tout, de Hanovre sommé d'une couronne royale",
+   "file": "Royal Arms of United Kingdom (1816-1837).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le Hanovre devenu royaume, la couronne remplace le bonnet électoral sur l'écusson.",
+   "sources": [
+    "uk_en"
+   ]
+  },
+  "uk1837": {
+   "nom": "Le Royaume-Uni",
+   "blason": "Écartelé : aux 1 et 4, de gueules à trois léopards d'or, armés et lampassés d'azur (Angleterre) ; au 2, d'or au lion de gueules, armé et lampassé d'azur, dans un double trescheur fleuronné et contre-fleuronné du même (Écosse) ; au 3, d'azur à la harpe d'or cordée d'argent (Irlande)",
+   "file": "Arms of the United Kingdom.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Victoria ne peut régner sur le Hanovre, soumis à la loi salique : l'écusson disparaît. Le blasonnement n'a plus changé depuis ; en Écosse, l'Écosse passe aux 1ᵉʳ et 4ᵉ quartiers.",
+   "sources": [
+    "uk_en"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "angleterre",
+   "nom": "Angleterre",
+   "titre": "Rois d'Angleterre, puis du Royaume-Uni",
+   "lede": "Des rois normands sans armoiries aux trois léopards, puis quatre siècles et demi de lis de France — jusqu'à leur départ en 1801 — avant l'écu à trois royaumes qui n'a plus changé depuis Victoria.",
+   "debut": 1050,
+   "fin": 2030,
+   "depart": 1340,
+   "theme": "angleterre",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Sans souverain",
+    "rivaux": "En marge"
+   },
+   "methode": [
+    "Dates des règnes : « Liste des monarques d'Angleterre » (Wikipédia) jusqu'en 1707, « List of British monarchs » ensuite. Les noms renvoient à l'article Wikipédia du souverain ; les rois et reines que la liste tient en marge (Mathilde, Henri le Jeune, Louis de France, Jeanne Grey) ont leur propre rangée.",
+    "Armoiries : « Royal arms of England », « Coat of arms of Great Britain » et « Royal coat of arms of the United Kingdom » pour les écus ; « English claims to the French throne » pour les lis de France ; « Royal supporters of England », « Royal badges of England » et « Dieu et mon droit » pour les supports, insignes et devises.",
+    "Les supports prêtés aux rois d'avant les Tudor ont été, pour beaucoup, inventés à l'époque Tudor : la frise ne les montre qu'à partir de 1485. Pour la même raison, les armes attribuées aux rois normands ne sont pas montrées."
+   ],
+   "figures": "Couronnes, jarretière et rangée des lis sont dessinées par l'encyclopédie. Écus, grandes armes et insignes viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "normandie",
+     "nom": "Normandie",
+     "couleur": "#b9b09a"
+    },
+    {
+     "id": "blois",
+     "nom": "Blois",
+     "couleur": "#8fa3c9"
+    },
+    {
+     "id": "plantagenet",
+     "nom": "Plantagenêt",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "lancastre",
+     "nom": "Lancastre",
+     "couleur": "#d9694f"
+    },
+    {
+     "id": "york",
+     "nom": "York",
+     "couleur": "#f1ede3"
+    },
+    {
+     "id": "tudor",
+     "nom": "Tudor",
+     "couleur": "#c0312a"
+    },
+    {
+     "id": "stuart",
+     "nom": "Stuart",
+     "couleur": "#6f8fd8"
+    },
+    {
+     "id": "orange",
+     "nom": "Orange-Nassau",
+     "couleur": "#e8913a"
+    },
+    {
+     "id": "hanovre",
+     "nom": "Hanovre",
+     "couleur": "#9ccf8a"
+    },
+    {
+     "id": "saxe",
+     "nom": "Saxe-Cobourg",
+     "couleur": "#b48ad6"
+    },
+    {
+     "id": "windsor",
+     "nom": "Windsor",
+     "couleur": "#7fc4c9"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Guillaume Iᵉʳ le Conquérant",
+     "court": "Guillaume Iᵉʳ",
+     "maison": "normandie",
+     "debut": "1066-12-25",
+     "fin": "1087-09-09",
+     "wiki": "Guillaume le Conquérant",
+     "branche": "roi d'Angleterre",
+     "armes": "normands",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Guillaume II le Roux",
+     "court": "Guillaume II",
+     "maison": "normandie",
+     "debut": "1087-09-26",
+     "fin": "1100-08-02",
+     "wiki": "Guillaume le Roux",
+     "branche": "roi d'Angleterre",
+     "armes": "normands",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri Iᵉʳ Beauclerc",
+     "court": "Henri Iᵉʳ",
+     "maison": "normandie",
+     "debut": "1100-08-05",
+     "fin": "1135-12-01",
+     "wiki": "Henri Ier Beauclerc",
+     "branche": "roi d'Angleterre",
+     "armes": "normands",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Étienne de Blois",
+     "court": "Étienne",
+     "maison": "blois",
+     "debut": "1135-12-22",
+     "fin": "1154-10-25",
+     "wiki": "Étienne de Blois",
+     "branche": "roi d'Angleterre",
+     "armes": "normands",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri II",
+     "court": "Henri II",
+     "maison": "plantagenet",
+     "debut": "1154-12-19",
+     "fin": "1189-07-06",
+     "wiki": "Henri II d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "normands",
+     "devise": {
+      "embleme": "le genêt (planta genista)",
+      "texte": "Le brin de genêt — planta genista en latin médiéval — a donné son nom à la dynastie.",
+      "legende": "le genêt (planta genista)",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Planta genista Badge of the Plantagenets.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Richard Iᵉʳ Cœur de Lion",
+     "court": "Richard Iᵉʳ",
+     "maison": "plantagenet",
+     "debut": "1189-09-03",
+     "fin": "1199-04-06",
+     "wiki": "Richard Ier d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "phases": [
+      {
+       "debut": "1189-09-03",
+       "fin": 1198,
+       "armes": "sceau1189"
+      },
+      {
+       "debut": 1198,
+       "fin": "1199-04-06",
+       "armes": "angleterre"
+      }
+     ],
+     "armes": "sceau1189",
+     "devise": {
+      "embleme": "l'étoile et le croissant",
+      "legende": "l'étoile et le croissant",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Star and Crescent Badge.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean sans Terre",
+     "court": "Jean",
+     "maison": "plantagenet",
+     "debut": "1199-05-27",
+     "fin": "1216-10-19",
+     "wiki": "Jean d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "angleterre",
+     "devise": {
+      "embleme": "l'étoile et le croissant",
+      "legende": "l'étoile et le croissant",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Star and Crescent Badge.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri III",
+     "court": "Henri III",
+     "maison": "plantagenet",
+     "debut": "1216-10-28",
+     "fin": "1272-11-16",
+     "wiki": "Henri III d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "angleterre",
+     "devise": {
+      "embleme": "le genêt (planta genista)",
+      "texte": "Le brin de genêt — planta genista en latin médiéval — a donné son nom à la dynastie.",
+      "legende": "le genêt (planta genista)",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Planta genista Badge of the Plantagenets.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard Iᵉʳ",
+     "court": "Édouard Iᵉʳ",
+     "maison": "plantagenet",
+     "debut": "1272-11-16",
+     "fin": "1307-07-07",
+     "wiki": "Édouard Ier d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "angleterre",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard II",
+     "court": "Édouard II",
+     "maison": "plantagenet",
+     "debut": "1307-07-07",
+     "fin": "1327-01-25",
+     "wiki": "Édouard II d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "angleterre",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard III",
+     "court": "Édouard III",
+     "maison": "plantagenet",
+     "debut": "1327-01-25",
+     "fin": "1377-06-21",
+     "wiki": "Édouard III d'Angleterre",
+     "branche": "roi d'Angleterre, et « de France » à partir de 1340",
+     "phases": [
+      {
+       "debut": "1327-01-25",
+       "fin": 1340,
+       "armes": "angleterre"
+      },
+      {
+       "debut": 1340,
+       "fin": 1360,
+       "armes": "france_ancien"
+      },
+      {
+       "debut": 1360,
+       "fin": 1369,
+       "armes": "angleterre"
+      },
+      {
+       "debut": 1369,
+       "fin": "1377-06-21",
+       "armes": "france_ancien"
+      }
+     ],
+     "armes": "angleterre",
+     "sources": [
+      "liste_fr",
+      "arms_en",
+      "claims_en"
+     ]
+    },
+    {
+     "nom": "Richard II",
+     "court": "Richard II",
+     "maison": "plantagenet",
+     "debut": "1377-06-21",
+     "fin": "1399-09-30",
+     "wiki": "Richard II d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "phases": [
+      {
+       "debut": "1377-06-21",
+       "fin": 1395,
+       "armes": "france_ancien"
+      },
+      {
+       "debut": 1395,
+       "fin": "1399-09-30",
+       "armes": "confesseur"
+      }
+     ],
+     "armes": "france_ancien",
+     "devise": {
+      "embleme": "le cerf blanc",
+      "texte": "Couché, colleté et enchaîné d'or ; il le tient de sa mère, Jeanne de Kent.",
+      "legende": "le cerf blanc",
+      "sources": [
+       "badges_en",
+       "supporters_en"
+      ],
+      "file": "White Hart Badge of Richard II.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri IV",
+     "court": "Henri IV",
+     "maison": "lancastre",
+     "debut": "1399-09-30",
+     "fin": "1413-03-20",
+     "wiki": "Henri IV d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "phases": [
+      {
+       "debut": "1399-09-30",
+       "fin": 1406,
+       "armes": "france_ancien"
+      },
+      {
+       "debut": 1406,
+       "fin": "1413-03-20",
+       "armes": "france_moderne"
+      }
+     ],
+     "armes": "france_ancien",
+     "devise": {
+      "embleme": "le monogramme SS",
+      "mot": "Sovereyne",
+      "texte": "« Souverain » : la plus ancienne devise connue sous les armes royales.",
+      "legende": "le monogramme SS",
+      "sources": [
+       "arms_en",
+       "badges_en"
+      ],
+      "file": "Monogram SS Badge of Henry IV.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri V",
+     "court": "Henri V",
+     "maison": "lancastre",
+     "debut": "1413-03-20",
+     "fin": "1422-08-31",
+     "wiki": "Henri V d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "devise": {
+      "embleme": "l'antilope enchaînée",
+      "mot": "Dieu et mon droit",
+      "texte": "Il fait de ce cri de guerre la devise royale ; elle ne se fixe qu'en 1714.",
+      "legende": "l'antilope enchaînée",
+      "sources": [
+       "dieu_en",
+       "arms_en",
+       "badges_en"
+      ],
+      "file": "Chained Antelope Badge of Henry V & VI.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri VI",
+     "court": "Henri VI",
+     "maison": "lancastre",
+     "debut": "1422-08-31",
+     "fin": "1461-03-04",
+     "wiki": "Henri VI d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "devise": {
+      "embleme": "l'antilope enchaînée",
+      "legende": "l'antilope enchaînée",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Chained Antelope Badge of Henry V & VI.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard IV",
+     "court": "Édouard IV",
+     "maison": "york",
+     "debut": "1461-03-04",
+     "fin": "1470-10-03",
+     "wiki": "Édouard IV d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri VI, rétabli",
+     "court": "Henri VI",
+     "maison": "lancastre",
+     "debut": "1470-10-03",
+     "fin": "1471-04-11",
+     "wiki": "Henri VI d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "suite": true,
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard IV, rétabli",
+     "court": "Édouard IV",
+     "maison": "york",
+     "debut": "1471-04-11",
+     "fin": "1483-04-09",
+     "wiki": "Édouard IV d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "suite": true,
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard V",
+     "court": "Édouard V",
+     "maison": "york",
+     "debut": "1483-04-09",
+     "fin": "1483-06-26",
+     "wiki": "Édouard V d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Richard III",
+     "court": "Richard III",
+     "maison": "york",
+     "debut": "1483-06-26",
+     "fin": "1485-08-22",
+     "wiki": "Richard III d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "devise": {
+      "embleme": "le sanglier blanc",
+      "texte": "Armé et soies d'or ; c'était déjà son insigne avant le trône.",
+      "legende": "le sanglier blanc",
+      "sources": [
+       "badges_en",
+       "supporters_en"
+      ],
+      "file": "White Boar Badge of Richard III.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri VII",
+     "court": "Henri VII",
+     "maison": "tudor",
+     "debut": "1485-08-22",
+     "fin": "1509-04-21",
+     "wiki": "Henri VII d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "devise": {
+      "embleme": "la rose Tudor couronnée",
+      "legende": "la rose Tudor couronnée",
+      "sources": [
+       "badges_en"
+      ],
+      "file": "Tudor Rose, royally crowned.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri VIII",
+     "court": "Henri VIII",
+     "maison": "tudor",
+     "debut": "1509-04-21",
+     "fin": "1547-01-28",
+     "wiki": "Henri VIII d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Édouard VI",
+     "court": "Édouard VI",
+     "maison": "tudor",
+     "debut": "1547-01-28",
+     "fin": "1553-07-06",
+     "wiki": "Édouard VI d'Angleterre",
+     "branche": "roi d'Angleterre",
+     "armes": "france_moderne",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Marie Iʳᵉ",
+     "court": "Marie Iʳᵉ",
+     "maison": "tudor",
+     "debut": "1553-07-19",
+     "fin": "1558-11-17",
+     "wiki": "Marie Ire d'Angleterre",
+     "branche": "reine d'Angleterre",
+     "phases": [
+      {
+       "debut": "1553-07-19",
+       "fin": 1554,
+       "armes": "france_moderne"
+      },
+      {
+       "debut": 1554,
+       "fin": "1558-11-17",
+       "armes": "marie"
+      }
+     ],
+     "armes": "france_moderne",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Élisabeth Iʳᵉ",
+     "court": "Élisabeth Iʳᵉ",
+     "maison": "tudor",
+     "debut": "1558-11-17",
+     "fin": "1603-03-24",
+     "wiki": "Élisabeth Ire d'Angleterre",
+     "branche": "reine d'Angleterre",
+     "armes": "france_moderne",
+     "devise": {
+      "mot": "Semper eadem",
+      "trad": "Toujours la même",
+      "texte": "Devise personnelle, montrée sous les armes royales.",
+      "sources": [
+       "dieu_en"
+      ]
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jacques Iᵉʳ",
+     "court": "Jacques Iᵉʳ",
+     "maison": "stuart",
+     "debut": "1603-03-24",
+     "fin": "1625-03-27",
+     "wiki": "Jacques VI et Ier",
+     "branche": "roi d'Angleterre et d'Écosse",
+     "armes": "stuart",
+     "devise": {
+      "embleme": "la rose et le chardon",
+      "mot": "Beati pacifici",
+      "trad": "Bienheureux les artisans de paix",
+      "legende": "la rose et le chardon",
+      "sources": [
+       "dieu_en",
+       "badges_en"
+      ],
+      "file": "Union of the Crowns Royal Badge.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     },
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ",
+     "court": "Charles Iᵉʳ",
+     "maison": "stuart",
+     "debut": "1625-03-27",
+     "fin": "1649-01-30",
+     "wiki": "Charles Ier (roi d'Angleterre)",
+     "branche": "roi d'Angleterre et d'Écosse",
+     "armes": "stuart",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Charles II",
+     "court": "Charles II",
+     "maison": "stuart",
+     "debut": "1660-05-08",
+     "fin": "1685-02-06",
+     "wiki": "Charles II (roi d'Angleterre)",
+     "branche": "roi d'Angleterre et d'Écosse",
+     "armes": "stuart",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jacques II",
+     "court": "Jacques II",
+     "maison": "stuart",
+     "debut": "1685-02-06",
+     "fin": "1688-12-11",
+     "wiki": "Jacques II (roi d'Angleterre)",
+     "branche": "roi d'Angleterre et d'Écosse",
+     "armes": "stuart",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Guillaume III et Marie II",
+     "court": "Guillaume et Marie",
+     "maison": "orange",
+     "debut": "1689-02-13",
+     "fin": "1694-12-28",
+     "wiki": "Guillaume III d'Orange-Nassau",
+     "branche": "souverains conjoints d'Angleterre et d'Écosse",
+     "armes": "guillaume_marie",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Guillaume III",
+     "court": "Guillaume III",
+     "maison": "orange",
+     "debut": "1694-12-28",
+     "fin": "1702-03-08",
+     "wiki": "Guillaume III d'Orange-Nassau",
+     "branche": "roi d'Angleterre et d'Écosse",
+     "armes": "guillaume",
+     "suite": true,
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Anne",
+     "court": "Anne",
+     "maison": "stuart",
+     "debut": "1702-03-08",
+     "fin": "1714-08-01",
+     "wiki": "Anne (reine de Grande-Bretagne)",
+     "branche": "reine d'Angleterre et d'Écosse, puis de Grande-Bretagne",
+     "phases": [
+      {
+       "debut": "1702-03-08",
+       "fin": "1707-05-01",
+       "armes": "stuart"
+      },
+      {
+       "debut": "1707-05-01",
+       "fin": "1714-08-01",
+       "armes": "gb1707"
+      }
+     ],
+     "armes": "stuart",
+     "sources": [
+      "liste_fr",
+      "brit_en"
+     ],
+     "devise": {
+      "embleme": "la rose et le chardon sur une même tige",
+      "mot": "Semper eadem",
+      "trad": "Toujours la même",
+      "legende": "la rose et le chardon sur une même tige",
+      "sources": [
+       "dieu_en",
+       "badges_en"
+      ],
+      "file": "Floral Badge of Great Britain.svg",
+      "auteur": "Sodacan",
+      "lic": "CC BY-SA 3.0",
+      "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+     }
+    },
+    {
+     "nom": "George Iᵉʳ",
+     "court": "George Iᵉʳ",
+     "maison": "hanovre",
+     "debut": "1714-08-01",
+     "fin": "1727-06-11",
+     "wiki": "George Ier (roi de Grande-Bretagne)",
+     "branche": "roi de Grande-Bretagne",
+     "armes": "gb1714",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "George II",
+     "court": "George II",
+     "maison": "hanovre",
+     "debut": "1727-06-11",
+     "fin": "1760-10-25",
+     "wiki": "George II (roi de Grande-Bretagne)",
+     "branche": "roi de Grande-Bretagne",
+     "armes": "gb1714",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "George III",
+     "court": "George III",
+     "maison": "hanovre",
+     "debut": "1760-10-25",
+     "fin": "1820-01-29",
+     "wiki": "George III (roi du Royaume-Uni)",
+     "branche": "roi de Grande-Bretagne, puis du Royaume-Uni",
+     "phases": [
+      {
+       "debut": "1760-10-25",
+       "fin": "1801-01-01",
+       "armes": "gb1714"
+      },
+      {
+       "debut": "1801-01-01",
+       "fin": 1816,
+       "armes": "uk1801"
+      },
+      {
+       "debut": 1816,
+       "fin": "1820-01-29",
+       "armes": "uk1816"
+      }
+     ],
+     "armes": "gb1714",
+     "sources": [
+      "brit_en",
+      "uk_en"
+     ]
+    },
+    {
+     "nom": "George IV",
+     "court": "George IV",
+     "maison": "hanovre",
+     "debut": "1820-01-29",
+     "fin": "1830-06-26",
+     "wiki": "George IV",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1816",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Guillaume IV",
+     "court": "Guillaume IV",
+     "maison": "hanovre",
+     "debut": "1830-06-26",
+     "fin": "1837-06-20",
+     "wiki": "Guillaume IV (roi du Royaume-Uni)",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1816",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Victoria",
+     "court": "Victoria",
+     "maison": "hanovre",
+     "debut": "1837-06-20",
+     "fin": "1901-01-22",
+     "wiki": "Victoria (reine du Royaume-Uni)",
+     "branche": "reine du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Édouard VII",
+     "court": "Édouard VII",
+     "maison": "saxe",
+     "debut": "1901-01-22",
+     "fin": "1910-05-06",
+     "wiki": "Édouard VII",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en",
+      "uk_en"
+     ],
+     "note": "Il songe à charger les armes de l'écusson de Saxe et d'une marque pour le pays de Galles ; ses conseillers l'en dissuadent."
+    },
+    {
+     "nom": "George V",
+     "court": "George V",
+     "maison": "windsor",
+     "debut": "1910-05-06",
+     "fin": "1936-01-20",
+     "wiki": "George V",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Édouard VIII",
+     "court": "Édouard VIII",
+     "maison": "windsor",
+     "debut": "1936-01-20",
+     "fin": "1936-12-11",
+     "wiki": "Édouard VIII",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "George VI",
+     "court": "George VI",
+     "maison": "windsor",
+     "debut": "1936-12-11",
+     "fin": "1952-02-06",
+     "wiki": "George VI",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Élisabeth II",
+     "court": "Élisabeth II",
+     "maison": "windsor",
+     "debut": "1952-02-06",
+     "fin": "2022-09-08",
+     "wiki": "Élisabeth II",
+     "branche": "reine du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ]
+    },
+    {
+     "nom": "Charles III",
+     "court": "Charles III",
+     "maison": "windsor",
+     "debut": "2022-09-08",
+     "fin": null,
+     "wiki": "Charles III (roi du Royaume-Uni)",
+     "branche": "roi du Royaume-Uni",
+     "armes": "uk1837",
+     "sources": [
+      "brit_en"
+     ],
+     "encours": true
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Succession disputée",
+     "debut": "1553-07-06",
+     "fin": "1553-07-19",
+     "wiki": "Jeanne Grey",
+     "note": "Entre la mort d'Édouard VI et l'avènement de Marie, Jeanne Grey est proclamée reine ; la liste ne la compte pas parmi les souverains.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Commonwealth et Protectorat",
+     "debut": "1649-01-30",
+     "fin": "1660-05-08",
+     "wiki": "Commonwealth d'Angleterre",
+     "note": "Pas de roi : les armes royales tombent. Le Protectorat (1653-1659) se donne des armes propres, visibles en « grandes armes ».",
+     "sources": [
+      "liste_fr",
+      "supporters_en"
+     ]
+    },
+    {
+     "nom": "Interrègne",
+     "debut": "1688-12-11",
+     "fin": "1689-02-13",
+     "wiki": "Glorieuse Révolution",
+     "note": "Entre la fuite de Jacques II et l'avènement conjoint de Guillaume III et Marie II.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "rivaux": [
+    {
+     "nom": "Mathilde l'Emperesse",
+     "court": "Mathilde",
+     "debut": "1141-04-07",
+     "fin": "1141-11-01",
+     "label": "Reine contestée",
+     "note": "Évincée par son cousin Étienne, elle lutte pour ses droits et prend le titre en 1141.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Henri le Jeune",
+     "court": "Henri le Jeune",
+     "debut": "1170-06-14",
+     "fin": "1183-06-11",
+     "label": "Roi associé",
+     "note": "Sacré en 1170, il règne conjointement avec son père Henri II et meurt avant lui.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Louis de France",
+     "court": "Louis",
+     "debut": "1216-06-02",
+     "fin": "1217-09-11",
+     "label": "Prétendant",
+     "note": "Le futur Louis VIII de France ; la liste le donne en marge.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jeanne Grey",
+     "court": "Jeanne Grey",
+     "debut": "1553-07-10",
+     "fin": "1553-07-19",
+     "label": "Reine contestée",
+     "note": "Proclamée quatre jours après la mort d'Édouard VI, déposée neuf jours plus tard.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1198,
+     "titre": "Les trois léopards",
+     "texte": "Le second grand sceau de Richard Iᵉʳ porte trois léopards : les armes d'Angleterre sont fixées.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1340,
+     "titre": "Roi de France",
+     "texte": "Édouard III revendique la couronne de France et écartèle ses armes des lis, à la place d'honneur.",
+     "sources": [
+      "arms_en",
+      "claims_en"
+     ]
+    },
+    {
+     "annee": 1348,
+     "titre": "La Jarretière",
+     "texte": "Édouard III fonde l'ordre de la Jarretière : « Honi soit qui mal y pense ».",
+     "sources": [
+      "garter_en"
+     ]
+    },
+    {
+     "annee": 1360,
+     "titre": "Les lis en retrait",
+     "texte": "De 1360 à 1369, l'écu revient aux seuls léopards.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1395,
+     "titre": "Saint Édouard",
+     "texte": "Richard II accole à ses armes celles prêtées à Édouard le Confesseur.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1406,
+     "titre": "Trois lis",
+     "texte": "Henri IV réduit le semé de France à trois lis.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1413.3,
+     "label": "Henri V",
+     "titre": "Dieu et mon droit",
+     "texte": "Henri V fait du cri de guerre la devise royale.",
+     "sources": [
+      "dieu_en"
+     ]
+    },
+    {
+     "annee": 1485.65,
+     "label": "1485",
+     "titre": "Les Tudor",
+     "texte": "Le dragon rouge et le lévrier blanc soutiennent l'écu.",
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "annee": 1554,
+     "titre": "Philippe et Marie",
+     "texte": "Marie Iʳᵉ accole les armes de son époux espagnol.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1603.2,
+     "label": "1603",
+     "titre": "L'union des couronnes",
+     "texte": "Jacques VI d'Écosse devient roi d'Angleterre : Écosse et Irlande entrent dans l'écu, la licorne remplace le dragon.",
+     "sources": [
+      "arms_en",
+      "supporters_en"
+     ]
+    },
+    {
+     "annee": 1649.1,
+     "label": "1649",
+     "titre": "Sans roi",
+     "texte": "La monarchie abolie, les armes royales tombent ; le Protectorat aura les siennes.",
+     "sources": [
+      "liste_fr",
+      "supporters_en"
+     ]
+    },
+    {
+     "annee": 1689.1,
+     "label": "1689",
+     "titre": "Nassau",
+     "texte": "Guillaume III charge les armes de l'écusson de sa maison.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1707.35,
+     "label": "1707",
+     "titre": "Grande-Bretagne",
+     "texte": "Les Actes d'Union : Angleterre et Écosse partagent les mêmes quartiers.",
+     "sources": [
+      "gb_en"
+     ]
+    },
+    {
+     "annee": 1714.6,
+     "label": "1714",
+     "titre": "Hanovre",
+     "texte": "George Iᵉʳ fait entrer le Hanovre au 4ᵉ quartier ; « Dieu et mon droit » devient la devise fixe.",
+     "sources": [
+      "gb_en",
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1792.7,
+     "label": "1792",
+     "titre": "Une prétention sans objet",
+     "texte": "La France devient une république : la prétention au trône de France n'a plus d'objet, mais les lis restent dans l'écu.",
+     "sources": [
+      "arms_en",
+      "claims_en"
+     ]
+    },
+    {
+     "annee": 1801.0,
+     "label": "1ᵉʳ janv. 1801",
+     "titre": "Les lis quittent l'écu",
+     "texte": "Proclamation du 1ᵉʳ janvier 1801 : le roi ne se dit plus roi de France, les lis disparaissent des armes après plus de quatre siècles et demi ; la prétention est abandonnée l'année suivante.",
+     "sources": [
+      "claims_en",
+      "uk_en",
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1816,
+     "titre": "La couronne de Hanovre",
+     "texte": "Le Hanovre devenu royaume, une couronne remplace le bonnet électoral.",
+     "sources": [
+      "uk_en"
+     ]
+    },
+    {
+     "annee": 1837.5,
+     "label": "1837",
+     "titre": "Victoria",
+     "texte": "Exclue du trône de Hanovre par la loi salique, Victoria en retire l'écusson : les armes prennent leur forme actuelle.",
+     "sources": [
+      "uk_en"
+     ]
+    },
+    {
+     "annee": 1921,
+     "titre": "La harpe demeure",
+     "texte": "La partition de l'Irlande ne change rien aux armes : la harpe reste au 3ᵉ quartier.",
+     "sources": [
+      "uk_en"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": "1485-08-22",
+     "fin": "1509-04-21",
+     "file": "Coat of Arms of Henry VII of England (1485-1509).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Henri VII, premier Tudor",
+     "ornements": [
+      "Supports : un dragon rouge et un lévrier blanc colleté de gueules"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1603-03-24",
+     "fin": "1649-01-30",
+     "file": "Coat of Arms of England (1603-1649).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Jacques Iᵉʳ et Charles Iᵉʳ",
+     "ornements": [
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1653-12-16",
+     "fin": "1659-05-25",
+     "file": "Coat of Arms of the Protectorate (1653–1659).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Le Protectorat de Cromwell",
+     "ornements": [
+      "Supports : le lion couronné et le dragon rouge, la licorne des Stuart écartée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1660-05-08",
+     "fin": "1689-02-13",
+     "file": "Coat of Arms of England (1660-1689).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "La Restauration",
+     "ornements": [
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1689-02-13",
+     "fin": "1694-12-28",
+     "file": "Coat of arms of England (1689–1694).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Guillaume et Marie",
+     "ornements": [
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1694-12-28",
+     "fin": "1702-03-08",
+     "file": "Coat of arms of England (1694–1702).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Guillaume III",
+     "ornements": [
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1702-03-08",
+     "fin": "1707-05-01",
+     "file": "Coat of Arms of England (1702-1707).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Anne, reine d'Angleterre",
+     "ornements": [
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée"
+     ],
+     "sources": [
+      "supporters_en"
+     ]
+    },
+    {
+     "debut": "1707-05-01",
+     "fin": "1714-08-01",
+     "file": "Coat of Arms of Great Britain (1707-1714).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Anne, reine de Grande-Bretagne",
+     "ornements": [],
+     "sources": [
+      "gb_en"
+     ]
+    },
+    {
+     "debut": "1714-08-01",
+     "fin": "1801-01-01",
+     "file": "Coat of Arms of Great Britain (1714-1801).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Les Hanovre, rois de Grande-Bretagne",
+     "ornements": [],
+     "sources": [
+      "gb_en"
+     ]
+    },
+    {
+     "debut": "1801-01-01",
+     "fin": 1816,
+     "file": "Coat of Arms of the United Kingdom (1801-1816).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Le Royaume-Uni, sans les lis",
+     "ornements": [],
+     "sources": [
+      "uk_en"
+     ]
+    },
+    {
+     "debut": 1816,
+     "fin": "1837-06-20",
+     "file": "Coat of Arms of the United Kingdom (1816-1837).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "La couronne de Hanovre",
+     "ornements": [],
+     "sources": [
+      "uk_en"
+     ]
+    },
+    {
+     "debut": "1837-06-20",
+     "fin": 2030,
+     "file": "Royal Coat of Arms of the United Kingdom.svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Depuis Victoria",
+     "ornements": [
+      "Jarretière autour de l'écu",
+      "Cimier : un lion couronné sur la couronne impériale, sur le heaume royal",
+      "Supports : le lion couronné d'Angleterre et la licorne d'Écosse enchaînée",
+      "Devise : Dieu et mon droit",
+      "Terrasse : roses, chardons et trèfles"
+     ],
+     "sources": [
+      "uk_en"
+     ]
+    }
+   ],
+   "ornements": [
+    {
+     "id": "france",
+     "nom": "Lis de France",
+     "segs": [
+      {
+       "debut": 1340,
+       "fin": 1360,
+       "type": "fleurdelise",
+       "label": "prétention au trône de France",
+       "texte": "Édouard III se dit roi de France et écartèle ses armes des lis, à la place d'honneur.",
+       "sources": [
+        "arms_en",
+        "claims_en"
+       ]
+      },
+      {
+       "debut": 1369,
+       "fin": "1801-01-01",
+       "type": "fleurdelise",
+       "label": "prétention au trône de France",
+       "texte": "Revenus en 1369, les lis restent dans l'écu de tous les rois, Tudor, Stuart et Hanovre compris, jusqu'à la proclamation du 1ᵉʳ janvier 1801.",
+       "sources": [
+        "arms_en",
+        "claims_en",
+        "uk_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "couronne",
+     "nom": "Couronne",
+     "segs": [
+      {
+       "debut": "1422-08-31",
+       "fin": "1461-03-04",
+       "type": "anglaise-ouverte",
+       "label": "ouverte, à croix pattées",
+       "texte": "La couronne du cimier, jusque-là cercle à fleurons, reçoit des croix pattées sous Henri VI.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": "1461-03-04",
+       "fin": "1485-08-22",
+       "type": "anglaise",
+       "label": "une arche",
+       "texte": "Édouard IV la ferme d'une arche.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": "1485-08-22",
+       "fin": 2030,
+       "type": "anglaise",
+       "label": "deux arches",
+       "texte": "Henri VII lui donne deux arches ; depuis la fin du XVIIᵉ siècle, cercle à croix pattées et lis alternés, deux arches, globe et croix.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "colliers",
+     "nom": "Ordre",
+     "segs": [
+      {
+       "debut": 1348,
+       "fin": 2030,
+       "type": "jarretiere",
+       "label": "la Jarretière",
+       "texte": "Édouard III fonde l'ordre de la Jarretière en 1348 ; sa devise, « Honi soit qui mal y pense », entoure souvent l'écu royal — depuis quand, les sources lues ne le disent pas.",
+       "sources": [
+        "garter_en",
+        "arms_en"
+       ],
+       "flou": true
+      }
+     ]
+    },
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": "1485-08-22",
+       "fin": "1509-04-21",
+       "type": "tudor",
+       "label": "dragon et lévrier",
+       "texte": "Henri VII : un dragon rouge et un lévrier blanc.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1509-04-21",
+       "fin": "1547-01-28",
+       "type": "tudor",
+       "label": "dragon et lévrier, puis lion et dragon",
+       "texte": "Henri VIII garde d'abord ceux de son père, puis prend le lion couronné d'Angleterre et le dragon rouge.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1547-01-28",
+       "fin": "1553-07-06",
+       "type": "lion-dragon",
+       "label": "lion et dragon",
+       "texte": "Édouard VI garde le lion et le dragon de son père.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": 1554,
+       "fin": "1558-11-17",
+       "type": "aigle-lion",
+       "label": "aigle et lion",
+       "texte": "Marie Iʳᵉ : l'aigle de son époux Philippe et le lion d'Angleterre.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1558-11-17",
+       "fin": "1603-03-24",
+       "type": "lion-dragon",
+       "label": "lion et dragon",
+       "texte": "Élisabeth Iʳᵉ reprend ceux de son père ; le dragon est parfois d'or.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1603-03-24",
+       "fin": "1649-01-30",
+       "type": "licorne",
+       "label": "lion et licorne",
+       "texte": "Jacques Iᵉʳ remplace le dragon par la licorne d'Écosse.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1653-12-16",
+       "fin": "1659-05-25",
+       "type": "lion-dragon",
+       "label": "lion et dragon",
+       "texte": "Le Protectorat garde le lion, reprend le dragon et écarte la licorne des Stuart.",
+       "sources": [
+        "supporters_en"
+       ]
+      },
+      {
+       "debut": "1660-05-08",
+       "fin": 2030,
+       "type": "licorne",
+       "label": "lion et licorne",
+       "texte": "Le lion et la licorne, inchangés depuis la Restauration.",
+       "sources": [
+        "supporters_en",
+        "uk_en"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
