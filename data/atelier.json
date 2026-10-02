@@ -556,6 +556,376 @@
    ]
   },
   {
+   "kind": "croix-latine",
+   "nom": "Croix latine",
+   "sing": "croix latine",
+   "plur": "croix latines",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-latine.svg",
+    "commons": "Latin Cross.svg",
+    "auteur": "Mrmw",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true,
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "croix-jerusalem",
+   "nom": "Croix de Jérusalem",
+   "sing": "croix de Jérusalem",
+   "plur": "croix de Jérusalem",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-jerusalem.svg",
+    "commons": "Cross-Jerusalem-Potent-Heraldry.svg",
+    "auteur": "AnonMoos, Melian",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-malte",
+   "nom": "Croix de Malte",
+   "sing": "croix de Malte",
+   "plur": "croix de Malte",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-malte.svg",
+    "commons": "Maltese-Cross-Heraldry.svg",
+    "auteur": "AnonMoos",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true,
+   "drop": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "croix-saint-andre",
+   "nom": "Croix de saint André",
+   "sing": "croix de saint André",
+   "plur": "croix de saint André",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-saint-andre.svg",
+    "commons": "Saint Andrew's cross black.svg",
+    "auteur": "Timo Müller",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true,
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "croix-orthodoxe",
+   "nom": "Croix orthodoxe",
+   "sing": "croix orthodoxe",
+   "plur": "croix orthodoxes",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-orthodoxe.svg",
+    "commons": "Symbol of Orthodoxy.svg",
+    "auteur": "Анатолий Деманов",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true,
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "croix-celtique",
+   "nom": "Croix celtique",
+   "sing": "croix celtique",
+   "plur": "croix celtiques",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-celtique.svg",
+    "commons": "Celtic-style crossed circle.svg",
+    "auteur": "NorthTension",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true,
+   "main": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "croix-huguenote",
+   "nom": "Croix huguenote",
+   "sing": "croix huguenote",
+   "plur": "croix huguenotes",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-huguenote.svg",
+    "commons": "Huguenot cross.svg",
+    "auteur": "Syryatsu",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "outline": true
+  },
+  {
+   "kind": "croix-toulouse",
+   "nom": "Croix de Toulouse",
+   "sing": "croix cléchée, vidée et pommetée",
+   "plur": "croix cléchées, vidées et pommetées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-toulouse.svg",
+    "commons": "Creu occitana black.svg",
+    "auteur": "Pepetps, Nemoi",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "outline": true
+  },
+  {
+   "kind": "croix-fleurdelisee",
+   "nom": "Croix fleurdelisée",
+   "sing": "croix fleurdelisée",
+   "plur": "croix fleurdelisées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-fleurdelisee.svg",
+    "commons": "Cross-Flory-Heraldry.svg",
+    "auteur": "Melian, d'après AnonMoos",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-treflee",
+   "nom": "Croix tréflée",
+   "sing": "croix tréflée",
+   "plur": "croix tréflées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-treflee.svg",
+    "commons": "Cross-Bottony-Heraldry.svg",
+    "auteur": "Melian",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-pommee",
+   "nom": "Croix pommée",
+   "sing": "croix pommée",
+   "plur": "croix pommées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-pommee.svg",
+    "commons": "Cross-Pommee-Heraldry.svg",
+    "auteur": "AnonMoos",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "outline": true
+  },
+  {
+   "kind": "croix-patonnee",
+   "nom": "Croix patonnée",
+   "sing": "croix patonnée",
+   "plur": "croix patonnées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-patonnee.svg",
+    "commons": "Cross-Patonce-Heraldry.svg",
+    "auteur": "AnonMoos",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "outline": true
+  },
+  {
+   "kind": "croix-fourchee",
+   "nom": "Croix fourchée",
+   "sing": "croix fourchée",
+   "plur": "croix fourchées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-fourchee.svg",
+    "commons": "Cross-Fourchee-Heraldry.svg",
+    "auteur": "AnonMoos",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-recroisettee-fichee",
+   "nom": "Croix recroisettée au pied fiché",
+   "sing": "croix recroisettée au pied fiché",
+   "plur": "croix recroisettées au pied fiché",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-recroisettee-fichee.svg",
+    "commons": "Croix recroisetée au pied fiché.svg",
+    "auteur": "Darkbob",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-saint-jacques",
+   "nom": "Croix de saint Jacques",
+   "sing": "croix de saint Jacques",
+   "plur": "croix de saint Jacques",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-saint-jacques.svg",
+    "commons": "St James Cross.svg",
+    "auteur": "Kaboom88",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#c00000"
+   ],
+   "outline": true
+  },
+  {
    "kind": "soleil",
    "nom": "Soleil non figuré",
    "sing": "soleil",
@@ -1221,39 +1591,70 @@
   ],
   "heaumes": [
    {
-    "kind": "34",
-    "nom": "De trois quarts",
-    "path": "assets/ornements/heaume.svg",
-    "note": "fichier titré « heaume de comte » : d'argent, de trois quarts, à sept grilles",
-    "commons": "Meuble héraldique Heaume comte.svg",
-    "auteur": "ZigeunerAlt",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
-   },
-   {
-    "kind": "face",
-    "nom": "De face",
-    "path": "assets/ornements/heaume-face.svg",
-    "note": "fichier titré « heaume de duc non souverain » : de face, grillé",
-    "commons": "Meuble Héraldique Heaume de duc non souverain.svg",
-    "auteur": "HeraldLanguage",
+    "kind": "grilles-face",
+    "type": "grilles",
+    "pos": "face",
+    "nat": "",
+    "path": "assets/ornements/heaume-grilles-face.svg",
+    "commons": "Barred helmet Argent affronté Baltisches Wappenbuch.svg",
+    "auteur": "LowlyLiaison",
     "lic": "CC BY 4.0",
     "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
    },
    {
-    "kind": "profil",
-    "nom": "De profil",
-    "path": "assets/ornements/heaume-profil.svg",
-    "main": [
-     "#fcef3c"
-    ],
-    "note": "heaume fermé de profil, rendu ici d'argent",
-    "commons": "Meuble héraldique heaume 1.svg",
-    "auteur": "Thom.lanaud",
+    "kind": "grilles-34",
+    "type": "grilles",
+    "pos": "34",
+    "nat": "s",
+    "path": "assets/ornements/heaume-grilles-34.svg",
+    "commons": "Barred helmet Argent threeQuarter Baltisches Wappenbuch.svg",
+    "auteur": "LowlyLiaison",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   {
+    "kind": "joute-face",
+    "type": "joute",
+    "pos": "face",
+    "nat": "",
+    "path": "assets/ornements/heaume-joute-face.svg",
+    "commons": "Frogmouth helm affronty argent, or bordure.svg",
+    "auteur": "LowlyLiaison",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   {
+    "kind": "joute-34",
+    "type": "joute",
+    "pos": "34",
+    "nat": "s",
+    "path": "assets/ornements/heaume-joute-34.svg",
+    "commons": "Frogmouth helm 3quarter BAbshier argent, or bordure.svg",
+    "auteur": "LowlyLiaison",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   {
+    "kind": "joute-profil",
+    "type": "joute",
+    "pos": "profil",
+    "nat": "",
+    "path": "assets/ornements/heaume-joute-profil.svg",
+    "commons": "Frogmouth helm profile argent, or bordure.svg",
+    "auteur": "LowlyLiaison",
     "lic": "CC0",
     "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
    }
   ],
+  "heaumeTypes": {
+   "grilles": "Heaume à grilles",
+   "joute": "Heaume de joute"
+  },
+  "heaumePos": {
+   "face": "De face",
+   "34": "De trois quarts",
+   "profil": "De profil"
+  },
   "lambrequins": {
    "nom": "Lambrequins",
    "path": "assets/ornements/lambrequins.svg",
