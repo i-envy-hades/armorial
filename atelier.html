@@ -397,7 +397,7 @@ function normalizeAll(St) {
   const has = (t, p) => O.heaumes.some(h => h.type === t && h.pos === p);
   if (!O.heaumeTypes[St.ht]) St.ht = "grilles";
   if (!O.heaumePos[St.hp]) St.hp = "34";
-  if (!has(St.ht, St.hp)) { const t = Object.keys(O.heaumeTypes).find(t => has(t, St.hp)); if (t) St.ht = t; else St.hp = O.heaumes.find(h => h.type === St.ht).pos; }
+  if (!has(St.ht, St.hp)) St.hp = O.heaumes.find(h => h.type === St.ht).pos;
   if (!["", "s"].includes(St.hs)) St.hs = "";
   if (!(St.sh in SHAPES)) St.sh = "";
   if (!["", "3", "5"].includes(St.pa)) St.pa = "";
@@ -612,7 +612,7 @@ function compose(St, u = "a") {
     /* le heaume est calé sur son dessin réel : centré sur l'écu, posé sur son bord supérieur ; « à senestre » = retourné */
     const t = hm.main ? recolor(TXT[hm.path], hm, "Argent", "Argent") : TXT[hm.path];
     const inner = fileInner(t, `hm-${u}`), [bx, by0, bw, bh] = bboxOf(hm.path, fileInner(TXT[hm.path], "m"));
-    const W = hm.kind === "profil" ? 100 : 112, k = W / bw, base = 26;
+    const W = hm.pos === "profil" ? 100 : 112, k = W / bw, base = 50;
     helmH = bh * k; helmTop = base - helmH;
     const flip = St.hp !== "face" && St.hs !== hm.nat;
     helm = `<g transform="translate(100,${base}) scale(${flip ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
