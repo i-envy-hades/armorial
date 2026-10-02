@@ -1692,6 +1692,12 @@
     "kind": "toison",
     "nom": "Collier de l'ordre de la Toison d'or",
     "path": "assets/ornements/toison.svg",
+    "pos": {
+     "W": 250,
+     "x": -25,
+     "y": 14
+    },
+    "devY": 300,
     "commons": "Golden Fleece collar.svg",
     "auteur": "Ipankonin",
     "lic": "CC BY-SA 3.0",
@@ -1701,8 +1707,209 @@
     "kind": "saint-michel",
     "nom": "Collier de l'ordre de Saint-Michel",
     "path": "assets/ornements/saint-michel.svg",
+    "pos": {
+     "W": 292,
+     "x": -46,
+     "y": -42
+    },
+    "devY": 306,
     "commons": "Collier Saint Michel.svg",
     "auteur": "Bluebear2",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "saint-esprit",
+    "nom": "Collier de l'ordre du Saint-Esprit",
+    "path": "assets/ornements/saint-esprit.svg",
+    "pos": {
+     "W": 293,
+     "x": -46,
+     "y": -43
+    },
+    "devY": 329,
+    "commons": "Order of the Holy Spirit (heraldry).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "jarretiere",
+    "nom": "Collier de l'ordre de la Jarretière",
+    "path": "assets/ornements/jarretiere.svg",
+    "pos": {
+     "W": 284,
+     "x": -42,
+     "y": -43
+    },
+    "devY": 322,
+    "commons": "Collar of the Order of the Garter.svg",
+    "auteur": "LoxiasMunch",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+   },
+   {
+    "kind": "chardon",
+    "nom": "Collier de l'ordre du Chardon",
+    "path": "assets/ornements/chardon.svg",
+    "pos": {
+     "W": 328,
+     "x": -63,
+     "y": -58
+    },
+    "devY": 336,
+    "commons": "Order of the Thistle in Heraldry.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "saint-patrick",
+    "nom": "Collier de l'ordre de Saint-Patrick",
+    "path": "assets/ornements/saint-patrick.svg",
+    "pos": {
+     "W": 340,
+     "x": -70,
+     "y": -69
+    },
+    "devY": 425,
+    "commons": "Order of St Patrick collar vector.svg",
+    "auteur": "95jb14",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "elephant",
+    "nom": "Collier de l'ordre de l'Éléphant",
+    "path": "assets/ornements/elephant.svg",
+    "pos": {
+     "W": 266,
+     "x": -33,
+     "y": -37
+    },
+    "devY": 317,
+    "commons": "Order of the Elephant (heraldry).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "dannebrog",
+    "nom": "Collier de l'ordre du Dannebrog",
+    "path": "assets/ornements/dannebrog.svg",
+    "pos": {
+     "W": 266,
+     "x": -33,
+     "y": -34
+    },
+    "devY": 295,
+    "commons": "Order of the Dannebrog (heraldry).svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "seraphins",
+    "nom": "Collier de l'ordre des Séraphins",
+    "path": "assets/ornements/seraphins.svg",
+    "pos": {
+     "W": 299,
+     "x": -49,
+     "y": -38
+    },
+    "devY": 319,
+    "commons": "Order of the Seraphim in heraldry.svg",
+    "auteur": "Ssolbergj",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "aigle-noir",
+    "nom": "Collier de l'ordre de l'Aigle noir",
+    "path": "assets/ornements/aigle-noir.svg",
+    "pos": {
+     "W": 308,
+     "x": -53,
+     "y": -49
+    },
+    "devY": 338,
+    "commons": "Order of the Black Eagle.svg",
+    "auteur": "Ssolbergj",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "charles-iii",
+    "nom": "Collier de l'ordre de Charles III",
+    "path": "assets/ornements/charles-iii.svg",
+    "pos": {
+     "W": 263,
+     "x": -31,
+     "y": -29
+    },
+    "devY": 296,
+    "commons": "Collar of the Order of Charles III.svg",
+    "auteur": "HansenBCN",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "saint-janvier",
+    "nom": "Collier de l'ordre de Saint-Janvier",
+    "path": "assets/ornements/saint-janvier.svg",
+    "pos": {
+     "W": 318,
+     "x": -59,
+     "y": -61
+    },
+    "devY": 348,
+    "commons": "Collar of the Order of Saint Januarius.svg",
+    "auteur": "Heralder, Sodacan",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   {
+    "kind": "annonciade",
+    "nom": "Collier de l'ordre de la Très Sainte Annonciade",
+    "path": "assets/ornements/annonciade.svg",
+    "pos": {
+     "W": 301,
+     "x": -50,
+     "y": -47
+    },
+    "devY": 323,
+    "commons": "Order of the Most Holy Annunciation.svg",
+    "auteur": "Euryrel",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   {
+    "kind": "saint-olaf",
+    "nom": "Collier de l'ordre de Saint-Olaf",
+    "path": "assets/ornements/saint-olaf.svg",
+    "pos": {
+     "W": 320,
+     "x": -60,
+     "y": -59
+    },
+    "devY": 366,
+    "commons": "Collar of the Order of Saint Olav - 1906 model.svg",
+    "auteur": "MineEdu",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+   },
+   {
+    "kind": "leopold",
+    "nom": "Collier de l'ordre de Léopold",
+    "path": "assets/ornements/leopold.svg",
+    "pos": {
+     "W": 311,
+     "x": -55,
+     "y": -51
+    },
+    "devY": 376,
+    "commons": "Order of Leopold Belgium (Heraldry).svg",
+    "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
    }

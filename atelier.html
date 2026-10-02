@@ -186,6 +186,7 @@ footer{background:var(--vellum-3)}
       <div class="row" id="r-ts"><span class="lab">Émail</span><div class="chips" data-name="ts"></div></div>
       <div class="row"><span class="lab">Collier</span><select name="co" aria-label="Collier d'ordre"></select></div>
       <div class="row"><span class="lab">Devise</span><input type="text" name="dv" maxlength="48" placeholder="Votre devise" aria-label="Devise"></div>
+      <div class="row" id="r-dt"><span class="lab">Bandeau</span><select name="dt" aria-label="Forme du bandeau de la devise"></select></div>
       <p class="note">Les ornements ne se transmettent pas comme les armes : ils marquent un rang ou une fonction (voir le chapitre <a href="index.html#ornements">Ornements</a>). <span id="hm-note"></span></p>
     </fieldset>
   </form>
@@ -345,8 +346,53 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "" };
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];
-const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "" };
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv"]);
+/* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
+const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
+const bandPaint = (f = BAND.fill, w = 1.2) => `fill="${f}" stroke="#1a1712" stroke-width="${w}" stroke-linejoin="round"`;
+const wavy = (xa, xb, Y, k, rev) => {
+  const w = xb - xa, c = n => (xa + w * n).toFixed(1);
+  return rev ? `C${c(5 / 6)},${Y + k} ${c(2 / 3)},${Y + k} ${c(.5)},${Y} C${c(1 / 3)},${Y - k} ${c(1 / 6)},${Y - k} ${xa},${Y}`
+    : `C${c(1 / 6)},${Y - k} ${c(1 / 3)},${Y - k} ${c(.5)},${Y} C${c(2 / 3)},${Y + k} ${c(5 / 6)},${Y + k} ${xb},${Y}`;
+};
+const swallowBand = (sag) => (x0, x1, y0) => {
+  const tail = (x, d) => `<path d="M${x},${y0 + 5} L${x - d * 30},${y0 + 3} L${x - d * 17},${y0 + 19} L${x - d * 30},${y0 + 36} L${x},${y0 + 34} Z" ${bandPaint(BAND.back, 1.1)}/>`;
+  return {
+    d: `M${x0 + 8},${y0 + 20} Q100,${y0 + 20 + sag * 2} ${x1 - 8},${y0 + 20}`, h: 36 + sag,
+    svg: tail(x0 + 6, 1) + tail(x1 - 6, -1) + `<path d="M${x0},${y0} Q100,${y0 + sag * 2} ${x1},${y0} L${x1},${y0 + 30} Q100,${y0 + 30 + sag * 2} ${x0},${y0 + 30} Z" ${bandPaint()}/>`
+  };
+};
+const DEVISES = {
+  "": { nom: "Ruban à queues d'aronde", build: swallowBand(12) },
+  arc: { nom: "Ruban cintré", build: swallowBand(28) },
+  ondule: { nom: "Ruban ondulé", build: (x0, x1, y0) => {
+    const k = 28 / 3;
+    return { d: `M${x0 + 8},${y0 + 20} ${wavy(x0 + 8, x1 - 8, y0 + 20, k, false)}`, h: 43,
+      svg: `<path d="M${x0},${y0} ${wavy(x0, x1, y0, k, false)} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} ${wavy(x0, x1, y0 + 30, k, true)} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>` };
+  } },
+  droit: { nom: "Bandeau droit, bouts fendus", build: (x0, x1, y0) => ({
+    d: `M${x0 + 16},${y0 + 20} L${x1 - 16},${y0 + 20}`, h: 36,
+    svg: `<path d="M${x0},${y0} L${x1},${y0} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} L${x0},${y0 + 30} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>`
+  }) },
+  plis: { nom: "Banderole à plis", build: (x0, x1, y0) => {
+    const e = 26, s = 5, L = x0 + e, R = x1 - e;
+    const tail = (xo, xi, d) => `<path d="M${xi},${y0 + 12} L${xi},${y0 + 42} L${xo},${y0 + 42} L${xo + d * 12},${y0 + 27} L${xo},${y0 + 12} Z" ${bandPaint(BAND.back, 1.1)}/>`
+      + `<path d="M${xi - d * 10},${y0 + 30} L${xi},${y0 + 30} L${xi},${y0 + 42} Z" ${bandPaint(BAND.fold, 1)}/>`;
+    return { d: `M${L + 6},${y0 + 20} Q100,${y0 + 20 + s * 2} ${R - 6},${y0 + 20}`, h: 48,
+      svg: tail(x0, L + 10, 1) + tail(x1, R - 10, -1) + `<path d="M${L},${y0} Q100,${y0 + s * 2} ${R},${y0} L${R},${y0 + 30} Q100,${y0 + 30 + s * 2} ${L},${y0 + 30} Z" ${bandPaint()}/>` };
+  } },
+  rouleau: { nom: "Parchemin enroulé", build: (x0, x1, y0) => {
+    const roll = x => `<ellipse cx="${x}" cy="${y0 + 15}" rx="9" ry="16" ${bandPaint(BAND.back)}/><ellipse cx="${x}" cy="${y0 + 15}" rx="4" ry="9" ${bandPaint(BAND.fold, .9)}/>`;
+    return { d: `M${x0 + 28},${y0 + 20} L${x1 - 28},${y0 + 20}`, h: 34,
+      svg: `<path d="M${x0 + 12},${y0 + 2} L${x1 - 12},${y0 + 2} L${x1 - 12},${y0 + 28} L${x0 + 12},${y0 + 28} Z" ${bandPaint()}/>` + roll(x0 + 12) + roll(x1 - 12) };
+  } },
+  cartouche: { nom: "Cartouche à filet", build: (x0, x1, y0) => ({
+    d: `M${x0 + 18},${y0 + 20} L${x1 - 18},${y0 + 20}`, h: 36,
+    svg: `<rect x="${x0 + 6}" y="${y0}" width="${x1 - x0 - 12}" height="30" rx="7" ${bandPaint()}/>`
+      + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
+  }) }
+};
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "" };
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt"]);
 const PFX = ["", "b_", "c_", "d_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let S = fresh(), CUR = 0, KT = "1";
@@ -404,6 +450,7 @@ function normalizeAll(St) {
   if (!O.supports.some(x => x.kind === St.su)) St.su = "";
   if (!O.colliers.some(c => c.kind === St.co)) St.co = "";
   St.dv = String(St.dv || "").slice(0, 48);
+  if (!(St.dt in DEVISES)) St.dt = "";
   St.A.forEach(normalize);
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
@@ -608,9 +655,9 @@ function compose(St, u = "a") {
     back += place(`lb-${u}`, 100 - W / 2, -66, W, sized(t, W));
   }
   if (co) {
-    const t = TXT[co.path], W = co.kind === "toison" ? 250 : 292;
+    const t = TXT[co.path], { W, x, y } = co.pos;
     defs += fileSymbol(t, `co-${u}`, "#1a1712");
-    back += place(`co-${u}`, 100 - W / 2, co.kind === "toison" ? 14 : -42, W, sized(t, W));
+    back += place(`co-${u}`, x, y, W, sized(t, W));
   }
   if (su) {
     const t = SVGTXT[su.kind], [w, h] = vbOf(t), H = 236, W = Math.min(140, H * w / h);
@@ -647,14 +694,13 @@ function compose(St, u = "a") {
   }
   front += plumes + helm + crown;
   if (dv) {
-    const y0 = co ? (co.kind === "toison" ? 300 : 306) : 262, x0 = su ? -120 : -34, x1 = su ? 320 : 234, sag = 12;
-    const tail = (x, d) => `<path d="M${x},${y0 + 5} L${x - d * 30},${y0 + 3} L${x - d * 17},${y0 + 19} L${x - d * 30},${y0 + 36} L${x},${y0 + 34} Z" fill="#d9cfb4" stroke="#1a1712" stroke-width="1.1"/>`;
+    const y0 = co ? co.devY : 262, x0 = su ? -120 : -34, x1 = su ? 320 : 234;
+    const B = DEVISES[St.dt].build(x0, x1, y0);
     const fs = Math.min(15, (x1 - x0 - 40) / (dv.length * .66));
-    defs += `<path id="dvp-${u}" d="M${x0 + 8},${y0 + 20} Q100,${y0 + 20 + sag * 2} ${x1 - 8},${y0 + 20}"/>`;
-    front += tail(x0 + 6, 1) + tail(x1 - 6, -1)
-      + `<path d="M${x0},${y0} Q100,${y0 + sag * 2} ${x1},${y0} L${x1},${y0 + 30} Q100,${y0 + 30 + sag * 2} ${x0},${y0 + 30} Z" fill="#f3ecd8" stroke="#1a1712" stroke-width="1.2"/>`
+    defs += `<path id="dvp-${u}" d="${B.d}"/>`;
+    front += B.svg
       + `<text font-family="'EB Garamond', Georgia, serif" font-size="${fs.toFixed(1)}" letter-spacing=".8" fill="#1a1712"><textPath href="#dvp-${u}" startOffset="50%" text-anchor="middle">${esc(dv.toUpperCase())}</textPath></text>`;
-    grow(x0 - 30, y0, x1 - x0 + 60, 30 + sag + 6);
+    grow(x0 - 30, y0, x1 - x0 + 60, B.h);
   }
   const pad = 8;
   return { vb: [bb[0] - pad, bb[1] - pad, bb[2] - bb[0] + 2 * pad, bb[3] - bb[1] + 2 * pad], svg: `<defs>${defs}</defs>${back}<g>${shield}</g>${front}` };
@@ -781,6 +827,7 @@ function fillSelects() {
   F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
   F.co.innerHTML = `<option value="">Aucun</option>` + O.colliers.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
+  F.dt.innerHTML = Object.entries(DEVISES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
   F.sh.innerHTML = Object.entries(SHAPES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
   F.ht.innerHTML = Object.entries(O.heaumeTypes).map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join("");
   document.querySelectorAll(".chips").forEach(chipRow);
@@ -830,6 +877,7 @@ function syncForm() {
   $("#r-pa").hidden = !S.hm;
   $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa;
   $("#r-ts").hidden = !S.su;
+  $("#r-dt").hidden = !S.dv.trim();
   $("#r-hp").hidden = !S.hm;
   $("#r-hs").hidden = S.hp === "face";
   $("#hm-note").textContent = "";
