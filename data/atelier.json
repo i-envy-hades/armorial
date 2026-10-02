@@ -139,7 +139,22 @@
    "plur": "roses",
    "g": "f",
    "cat": "Le règne végétal",
-   "draw": "rose"
+   "file": {
+    "path": "assets/meubles/rose.svg",
+    "commons": "Heraldique Rose.svg",
+    "auteur": "Ludger1961",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#dd2222"
+   ]
   },
   {
    "kind": "macle",
@@ -550,6 +565,30 @@
    "draw": "soleil"
   },
   {
+   "kind": "soleil-figure",
+   "nom": "Soleil figuré",
+   "sing": "soleil figuré",
+   "plur": "soleils figurés",
+   "g": "m",
+   "cat": "Astres et éléments",
+   "file": {
+    "path": "assets/meubles/soleil-figure.svg",
+    "commons": "Héraldique meuble Soleil avec visage.svg",
+    "auteur": "Bruno Vallette",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcdd09"
+   ]
+  },
+  {
    "kind": "comete",
    "nom": "Comète",
    "sing": "comète",
@@ -770,7 +809,22 @@
    "plur": "gerbes",
    "g": "f",
    "cat": "Le règne végétal",
-   "draw": "gerbe"
+   "file": {
+    "path": "assets/meubles/gerbe.svg",
+    "commons": "Héraldique meuble Gerbe de blé.svg",
+    "auteur": "Bruno Vallette",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
   },
   {
    "kind": "coeur",
@@ -1165,15 +1219,41 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
    }
   ],
-  "heaume": {
-   "nom": "Heaume",
-   "path": "assets/ornements/heaume.svg",
-   "note": "le fichier représente le heaume d'un comte ou d'un vicomte : d'argent, de trois quarts, à sept grilles",
-   "commons": "Meuble héraldique Heaume comte.svg",
-   "auteur": "ZigeunerAlt",
-   "lic": "CC BY-SA 3.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
-  },
+  "heaumes": [
+   {
+    "kind": "34",
+    "nom": "De trois quarts",
+    "path": "assets/ornements/heaume.svg",
+    "note": "fichier titré « heaume de comte » : d'argent, de trois quarts, à sept grilles",
+    "commons": "Meuble héraldique Heaume comte.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   {
+    "kind": "face",
+    "nom": "De face",
+    "path": "assets/ornements/heaume-face.svg",
+    "note": "fichier titré « heaume de duc non souverain » : de face, grillé",
+    "commons": "Meuble Héraldique Heaume de duc non souverain.svg",
+    "auteur": "HeraldLanguage",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   {
+    "kind": "profil",
+    "nom": "De profil",
+    "path": "assets/ornements/heaume-profil.svg",
+    "main": [
+     "#fcef3c"
+    ],
+    "note": "heaume fermé de profil, rendu ici d'argent",
+    "commons": "Meuble héraldique heaume 1.svg",
+    "auteur": "Thom.lanaud",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+   }
+  ],
   "lambrequins": {
    "nom": "Lambrequins",
    "path": "assets/ornements/lambrequins.svg",
@@ -1193,6 +1273,10 @@
    "path": "assets/ornements/plume.svg",
    "main": [
     "#f5f5f5"
+   ],
+   "tige": [
+    0.14,
+    0.97
    ],
    "commons": "Ostrich feather a.svg",
    "auteur": "Wereszczyński",

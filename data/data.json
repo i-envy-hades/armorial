@@ -798,7 +798,14 @@
       "en": "heraldic rose",
       "champ": "Or",
       "charge": "Gueules",
-      "cat": "Le règne végétal"
+      "cat": "Le règne végétal",
+      "image": {
+        "file": "Heraldique Rose.svg",
+        "auteur": "Ludger1961",
+        "lic": "CC BY-SA 3.0",
+        "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+        "note": "Rose héraldique publiée sur Wikimedia Commons, retouchée par Perhelion."
+      }
     },
 
     { "kind": "macle", "nom": "Macle", "en": "mascle", "champ": "Gueules", "charge": "Or", "cat": "Propres au blason" },
@@ -886,7 +893,7 @@
       "kind": "epi", "nom": "Épi", "en": "ear of wheat", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Epi.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 2.5", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr", "note": "Sa page Commons dit « épi de céréales » sans nommer le blé, et la tige y est légèrement inclinée." }
     },
-    { "kind": "gerbe", "nom": "Gerbe", "en": "garb", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal" },
+    { "kind": "gerbe", "nom": "Gerbe", "en": "garb", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal", "image": { "file": "Héraldique meuble Gerbe de blé.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble publié sur Wikimedia Commons." } },
 
     { "kind": "coeur", "nom": "Cœur", "en": "heart", "champ": "Argent", "charge": "Gueules", "cat": "Corps et cœur" },
     {
