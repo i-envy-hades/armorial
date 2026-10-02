@@ -117,6 +117,15 @@
       "type": "Ressource en ligne",
       "note": "Décrets du 1er mars 1808 : passage des marques de rang des ornements extérieurs vers l'intérieur de l'écu, toques substituées aux couronnes, chefs et francs-quartiers par titre, marques de fonction. Utile aussi pour la distinction entre règles de droit héraldique et règles du blason, et pour le droit coutumier d'antériorité."
     },
+    "wiki_croix": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Croix (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Croix_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définitions des croix nommées (Jérusalem, Lorraine, saint André, orthodoxe, russe, calvaire) et galerie des variantes. Les figures reprises dans la galerie des meubles viennent de Wikimedia Commons et sont créditées une à une."
+    },
     "wiki_meubles": {
       "auteur": "Wikipédia (contributeurs)",
       "titre": "Liste des meubles héraldiques",
@@ -859,6 +868,36 @@
       "image": { "file": "Meuble héraldique Croisette ancrée.svg", "auteur": "Alain Thebault", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Le fichier dit « croisette » — une croix alésée de petite taille ; les branches en crocs d'ancre sont bien celles de l'ancrée." }
     },
     { "kind": "croix-lorraine", "nom": "Croix de Lorraine", "en": "patriarchal cross", "champ": "Azur", "charge": "Or", "cat": "La famille de la croix" },
+    { "kind": "croix-latine", "nom": "Croix latine", "en": "Latin cross", "champ": "Azur", "charge": "Argent", "cat": "La famille de la croix",
+      "image": { "file": "Latin Cross.svg", "auteur": "Mrmw", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Branche du bas plus longue que les trois autres." } },
+    { "kind": "croix-jerusalem", "nom": "Croix de Jérusalem", "en": "Jerusalem cross", "champ": "Argent", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Jerusalem-Potent-Heraldry.svg", "auteur": "AnonMoos, Melian", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Croix potencée cantonnée de quatre croisettes." } },
+    { "kind": "croix-malte", "nom": "Croix de Malte", "en": "Maltese cross", "champ": "Gueules", "charge": "Argent", "cat": "La famille de la croix",
+      "image": { "file": "Maltese-Cross-Heraldry.svg", "auteur": "AnonMoos", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Quatre branches évasées, chacune fendue en deux pointes." } },
+    { "kind": "croix-saint-andre", "nom": "Croix de saint André", "en": "saltire couped", "champ": "Azur", "charge": "Argent", "cat": "La famille de la croix",
+      "image": { "file": "Saint Andrew's cross black.svg", "auteur": "Timo Müller", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Le sautoir, ici alésé : ses branches ne touchent pas les bords." } },
+    { "kind": "croix-orthodoxe", "nom": "Croix orthodoxe", "en": "Orthodox cross", "champ": "Sinople", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Symbol of Orthodoxy.svg", "auteur": "Анатолий Деманов", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Trois traverses, la plus basse versant à senestre." } },
+    { "kind": "croix-celtique", "nom": "Croix celtique", "en": "Celtic cross", "champ": "Sinople", "charge": "Argent", "cat": "La famille de la croix",
+      "image": { "file": "Celtic-style crossed circle.svg", "auteur": "NorthTension", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Croix dont les branches traversent un anneau." } },
+    { "kind": "croix-huguenote", "nom": "Croix huguenote", "en": "Huguenot cross", "champ": "Azur", "charge": "Argent", "cat": "La famille de la croix",
+      "image": { "file": "Huguenot cross.svg", "auteur": "Syryatsu", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Croix de Malte aux pointes boutonnées, une colombe pendant en dessous." } },
+    { "kind": "croix-toulouse", "nom": "Croix de Toulouse", "en": "cross of Toulouse", "champ": "Gueules", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Creu occitana black.svg", "auteur": "Pepetps, Nemoi", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Cléchée, vidée et pommetée de douze pièces." } },
+    { "kind": "croix-fleurdelisee", "nom": "Croix fleurdelisée", "en": "cross flory", "champ": "Azur", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Flory-Heraldry.svg", "auteur": "Melian, d'après AnonMoos", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Dite aussi florencée : un fleuron de lis au bout de chaque branche." } },
+    { "kind": "croix-treflee", "nom": "Croix tréflée", "en": "cross bottony", "champ": "Or", "charge": "Azur", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Bottony-Heraldry.svg", "auteur": "Melian", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Branches terminées en trèfle." } },
+    { "kind": "croix-pommee", "nom": "Croix pommée", "en": "cross pommy", "champ": "Argent", "charge": "Sable", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Pommee-Heraldry.svg", "auteur": "AnonMoos", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Branches terminées par une boule." } },
+    { "kind": "croix-patonnee", "nom": "Croix patonnée", "en": "cross patonce", "champ": "Gueules", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Patonce-Heraldry.svg", "auteur": "AnonMoos", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Branches qui s'évasent en trois pointes." } },
+    { "kind": "croix-fourchee", "nom": "Croix fourchée", "en": "cross fourchée", "champ": "Or", "charge": "Gueules", "cat": "La famille de la croix",
+      "image": { "file": "Cross-Fourchee-Heraldry.svg", "auteur": "AnonMoos", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Chaque branche se fend en fourche." } },
+    { "kind": "croix-recroisettee-fichee", "nom": "Croix recroisettée au pied fiché", "en": "cross crosslet fitchy", "champ": "Azur", "charge": "Or", "cat": "La famille de la croix",
+      "image": { "file": "Croix recroisetée au pied fiché.svg", "auteur": "Darkbob", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Recroisettée, le pied aiguisé en pointe pour être fiché en terre." } },
+    { "kind": "croix-saint-jacques", "nom": "Croix de saint Jacques", "en": "cross of Saint James", "champ": "Argent", "charge": "Gueules", "cat": "La famille de la croix",
+      "image": { "file": "St James Cross.svg", "auteur": "Kaboom88", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Croix fleurdelisée dont le pied s'achève en lame d'épée." } },
 
     { "kind": "soleil", "nom": "Soleil non figuré", "en": "sun in splendour", "champ": "Azur", "charge": "Or", "cat": "Astres et éléments" },
     {
@@ -1192,6 +1231,13 @@
             "joubert1977"
           ],
           "html": "\n          <p>La croix est à la fois pièce honorable (quand elle touche les bords) et meuble (quand elle flotte dans le champ), et elle se démultiplie en des dizaines de variantes selon la forme de ses branches. Les plus courantes : la <b>croix pattée</b> (branches évasées aux extrémités), l'<b>ancrée</b> (terminée en pattes d'ancre), la <b>potencée</b> (en T), la <b>fleurdelisée</b> (fleurs de lis aux bouts), la <b>recroisettée</b> (petites croix aux extrémités), sans oublier la <b>croix de Toulouse</b> (cléchée, vidée et pommetée) ou la <b>croix de Lorraine</b> (à double traverse). Nommer précisément la croix, c'est déjà situer des armes dans une région et une histoire.</p>"
+        },
+        {
+          "titre": "Croix nommées : Jérusalem, saint André, l'Orient",
+          "sources": [
+            "wiki_croix"
+          ],
+          "html": "\n          <p>Certaines croix ne se désignent pas par la forme de leurs branches mais par un nom propre, celui d'un lieu, d'un saint ou d'une Église. Le nom vaut alors description complète.</p>\n          <ul>\n            <li>La <b>croix de Jérusalem</b> est une croix <b>potencée</b> — chaque branche finit en T — <b>cantonnée de quatre croisettes</b>. Les armes qu'on donne au royaume de Jérusalem, d'argent à la croix potencée d'or cantonnée de quatre croisettes de même, posent l'or sur l'argent : c'est l'exemple le plus cité d'armes à enquerre.</li>\n            <li>La croix à <b>double traverse</b> se dit <b>archiépiscopale</b> ou <b>patriarcale</b> : elle signale un archevêque. Celle qu'on appelle aujourd'hui croix de Lorraine porta d'abord le nom de croix d'Anjou.</li>\n            <li>La <b>croix de saint André</b> n'est autre que le <b>sautoir</b>, deux bandes qui se croisent en diagonale.</li>\n            <li>La <b>croix orthodoxe</b> charge un pal alésé de trois traverses, la première et la troisième plus étroites, la troisième versant à senestre ; la <b>croix russe</b> n'en garde que deux, la plus basse versant à senestre.</li>\n            <li>La <b>croix de calvaire</b> n'est pas une croix mais un tableau : trois croix alésées et haussées, celle du milieu plus grande que les deux qui l'accostent.</li>\n          </ul>\n          <p>D'autres noms courants désignent des formes qu'on reconnaît d'un coup d'œil : croix <b>latine</b> (le pied plus long que les trois autres branches), <b>de Malte</b>, <b>huguenote</b>, <b>celtique</b>, <b>de saint Jacques</b>, et des branches terminées <b>en fleur de lis</b> (fleurdelisée ou florencée), <b>en trèfle</b> (tréflée), <b>en boule</b> (pommée), <b>en fourche</b> (fourchée) ou <b>en pointe</b> (fichée). La galerie des meubles les montre une à une.</p>\n          <p><i><b>État des connaissances</b> — Le sens symbolique prêté à chaque croix (vertus, événements de la Passion, ordres religieux) relève d'une autre littérature, souvent sans source vérifiable ; il n'est pas repris ici. Seuls les noms et les formes sont donnés.</i></p>"
         },
         {
           "titre": "Astres et pièces rondes",

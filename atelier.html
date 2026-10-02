@@ -171,8 +171,8 @@ footer{background:var(--vellum-3)}
       <legend>Les ornements</legend>
       <div class="row"><span class="lab">Couronne</span><select name="cr" aria-label="Couronne"></select></div>
       <div class="row"><span class="lab">Heaume</span><select name="hm" aria-label="Heaume et lambrequins"><option value="">Aucun</option><option value="h">Heaume</option><option value="hl">Heaume et lambrequins</option></select></div>
-      <div class="row" id="r-hp"><span class="lab">Position</span><select name="hp" aria-label="Position du heaume"></select>
-        <span class="seg" role="radiogroup" aria-label="Sens du heaume">
+      <div class="row" id="r-hp"><span class="lab">Modèle</span><select name="ht" aria-label="Modèle de heaume"></select><select name="hp" aria-label="Position du heaume"></select>
+        <span class="seg" id="r-hs" role="radiogroup" aria-label="Sens du heaume">
           <label><input type="radio" name="hs" value=""><span>À dextre</span></label>
           <label><input type="radio" name="hs" value="s"><span>À senestre</span></label>
         </span>
@@ -345,7 +345,7 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "" };
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];
-const ODEF = { q: "", sh: "", cr: "", hm: "", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "" };
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "" };
 const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv"]);
 const PFX = ["", "b_", "c_", "d_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
@@ -393,7 +393,11 @@ function normalizeAll(St) {
   const O = ATL.ornements;
   if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
   if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
-  if (!O.heaumes.some(h => h.kind === St.hp)) St.hp = "34";
+  /* chaque modèle n'existe que dans certaines positions : on garde la position si possible, sinon le modèle */
+  const has = (t, p) => O.heaumes.some(h => h.type === t && h.pos === p);
+  if (!O.heaumeTypes[St.ht]) St.ht = "grilles";
+  if (!O.heaumePos[St.hp]) St.hp = "34";
+  if (!has(St.ht, St.hp)) { const t = Object.keys(O.heaumeTypes).find(t => has(t, St.hp)); if (t) St.ht = t; else St.hp = O.heaumes.find(h => h.type === St.ht).pos; }
   if (!["", "s"].includes(St.hs)) St.hs = "";
   if (!(St.sh in SHAPES)) St.sh = "";
   if (!["", "3", "5"].includes(St.pa)) St.pa = "";
@@ -424,6 +428,7 @@ function recolor(txt, m, tm, ta) {
   let s = txt;
   (m.main || []).forEach(c => { s = s.replace(colorRe(c), "@@M@@"); });
   (m.accent || []).forEach(c => { s = s.replace(colorRe(c), "@@A@@"); });
+  (m.drop || []).forEach(c => { s = s.replace(colorRe(c), "none"); });
   return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta));
 }
 /* les meubles dessinés n'ont pas tous la même taille d'origine : on les mesure une fois et on les ramène à celle des figures empruntées */
@@ -451,12 +456,15 @@ function symbolFor(s, id) {
     return `<g id="${id}">${normed(m, chargeInner(m.draw, tinctPaint(tm), tm === "Sable" ? "#6b6560" : chgStroke(tm), ground))}</g>`;
   }
   if (m.custom === "billette") return `<rect id="${id}" x="76" y="62" width="48" height="108" rx="2" fill="${tinctPaint(tm)}" stroke="${chgStroke(tm)}" stroke-width="1.4"/>`;
-  return fileSymbol(recolor(SVGTXT[m.kind], m, tm, s.ta), id, line);
+  /* base : le fichier n'a pas de couleur propre, son dessin prend directement l'émail ; outline : contour fin pour les silhouettes */
+  const txt = recolor(SVGTXT[m.kind], m, tm, s.ta);
+  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null);
 }
 /* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
-function fileSymbol(txt, id, fill) {
+function fileSymbol(txt, id, fill, outline) {
   const [w, h] = vbOf(txt), vb = (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
-  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}" stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
+  const st = outline ? ` stroke="${outline.stroke}" stroke-width="${outline.width.toFixed(2)}" paint-order="stroke"` : "";
+  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}"${st} stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
 }
 function fileInner(txt, id) {
   const root = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
@@ -557,7 +565,7 @@ async function getDataUri(path) {
   const b = await r.blob();
   TXT[path] = await new Promise((ok, ko) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = ko; fr.readAsDataURL(b); });
 }
-const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su), hm: s.hm ? O.heaumes.find(h => h.kind === s.hp) || O.heaumes[0] : null }; };
+const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su), hm: s.hm ? O.heaumes.find(h => h.type === s.ht && h.pos === s.hp) || O.heaumes[0] : null }; };
 /* boîte du dessin réel d'un fichier (ses marges vides varient d'un fichier à l'autre) */
 const BBOX = {};
 function bboxOf(key, inner) {
@@ -606,7 +614,8 @@ function compose(St, u = "a") {
     const inner = fileInner(t, `hm-${u}`), [bx, by0, bw, bh] = bboxOf(hm.path, fileInner(TXT[hm.path], "m"));
     const W = hm.kind === "profil" ? 100 : 112, k = W / bw, base = 26;
     helmH = bh * k; helmTop = base - helmH;
-    helm = `<g transform="translate(100,${base}) scale(${St.hs === "s" ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
+    const flip = St.hp !== "face" && St.hs !== hm.nat;
+    helm = `<g transform="translate(100,${base}) scale(${flip ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
     grow(100 - W / 2, helmTop, W, helmH);
     top = helmTop + helmH * .32;
   }
@@ -643,7 +652,8 @@ function compose(St, u = "a") {
 function ornText(St) {
   const { cr, co, su } = ornOf(St), out = [];
   if (St.hm) {
-    let t = `Heaume ${ornOf(St).hm.nom.toLowerCase()}${St.hs === "s" ? ", tourné à senestre" : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
+    const O = ATL.ornements;
+    let t = `${O.heaumeTypes[St.ht]} ${O.heaumePos[St.hp].toLowerCase()}${St.hp !== "face" ? (St.hs === "s" ? ", tourné à senestre" : ", tourné à dextre") : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
     if (St.pa) t += `, panache de ${NB[+St.pa]} plumes d'autruche ${St.pa1 === St.pa2 ? de(St.pa1) : de(St.pa1) + " et " + de(St.pa2)}`;
     out.push(t);
   }
@@ -762,7 +772,7 @@ function fillSelects() {
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
   F.co.innerHTML = `<option value="">Aucun</option>` + O.colliers.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.sh.innerHTML = Object.entries(SHAPES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
-  F.hp.innerHTML = O.heaumes.map(h => `<option value="${esc(h.kind)}">${esc(h.nom)}</option>`).join("");
+  F.ht.innerHTML = Object.entries(O.heaumeTypes).map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join("");
   document.querySelectorAll(".chips").forEach(chipRow);
 }
 function setField(k, v) {
@@ -782,6 +792,7 @@ function syncForm() {
   F.d.innerHTML = ds.map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
   F.nb2.innerHTML = Object.keys(PLEIN).map(n => `<option value="${n}">${n}</option>`).join("");
   F.d2.innerHTML = PLEIN[a.nb2].map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
+  F.hp.innerHTML = ATL.ornements.heaumes.filter(h => h.type === S.ht).map(h => `<option value="${h.pos}">${esc(ATL.ornements.heaumePos[h.pos])}</option>`).join("");
   for (const k of Object.keys(ADEF)) setField(k, a[k]);
   for (const k of Object.keys(ODEF)) setField(k, S[k]);
   const tri = a.f === "part" && a.part.startsWith("tierce");
@@ -810,7 +821,8 @@ function syncForm() {
   $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa;
   $("#r-ts").hidden = !S.su;
   $("#r-hp").hidden = !S.hm;
-  $("#hm-note").textContent = S.hm ? `Heaume : ${ornOf(S).hm.note}.` : "";
+  $("#r-hs").hidden = S.hp === "face";
+  $("#hm-note").textContent = "";
   syncAdj();
 }
 /* la cible des curseurs : tout un groupe ("1", "2") ou un seul meuble ("1.0", "2.2"…) */
@@ -879,7 +891,7 @@ function creditsOf(St) {
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
   if (su) add("Supports", meuble(su.kind).file, true);
   if (cr) add(cr.nom, cr, false);
-  if (St.hm) add("Heaume", ornOf(St).hm, St.hp === "profil");
+  if (St.hm) add("Heaume", ornOf(St).hm, false);
   if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
   if (St.hm && St.pa) add("Panache", O.plume, true);
   if (co) add(co.nom, co, false);

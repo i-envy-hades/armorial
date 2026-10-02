@@ -30,12 +30,13 @@ function tinctPaint(nom){
 
 function ermineSpot(cx,cy){
   return `<g transform="translate(${cx},${cy})" fill="#1a1712">
-    <path d="M0,-4 C-1.6,-1.6 -1.6,-1.6 -2.4,0.4 L2.4,0.4 C1.6,-1.6 1.6,-1.6 0,-4 Z"/>
-    <circle cx="-2.4" cy="1.4" r=".7"/><circle cx="0" cy="1.6" r=".7"/><circle cx="2.4" cy="1.4" r=".7"/>
+    <circle cx="0" cy="-7" r="1.7"/><circle cx="-3.2" cy="-4.6" r="1.7"/><circle cx="3.2" cy="-4.6" r="1.7"/>
+    <path d="M0,-3.4 C-1.2,0 -3,4 -5.2,8.4 L-2.3,6.6 L0,9.6 L2.3,6.6 L5.2,8.4 C3,4 1.2,0 0,-3.4 Z"/>
   </g>`;
 }
 
-/* hachures de gravure et fourrures ; ids globaux, émis une seule fois */
+/* hachures de gravure et fourrures ; ids globaux, émis une seule fois.
+   Fourrures à l'échelle de l'écu (200 de large) : quatre mouchetures par rang, quatre cloches de vair par tire. */
 function hatchPatterns(){
   return `
   <pattern id="h-dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1" fill="#1a1712"/></pattern>
@@ -44,17 +45,15 @@ function hatchPatterns(){
   <pattern id="h-cross" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3.5" y1="0" x2="3.5" y2="7" stroke="#1a1712" stroke-width=".8"/><line x1="0" y1="3.5" x2="7" y2="3.5" stroke="#1a1712" stroke-width=".8"/></pattern>
   <pattern id="h-bend" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0,0 L8,8" stroke="#1a1712" stroke-width=".8"/></pattern>
   <pattern id="h-bendsin" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8,0 L0,8" stroke="#1a1712" stroke-width=".8"/></pattern>
-  <pattern id="h-ermine" width="26" height="26" patternUnits="userSpaceOnUse">
-    <rect width="26" height="26" fill="#f4efe2"/>
-    ${ermineSpot(6.5,7)}${ermineSpot(19.5,20)}
+  <pattern id="h-ermine" width="50" height="50" patternUnits="userSpaceOnUse" x="-7" y="2">
+    <rect width="50" height="50" fill="#f4efe2"/>
+    <g transform="scale(1.25)">${ermineSpot(10,10)}${ermineSpot(30,30)}</g>
   </pattern>
-  <pattern id="h-vair" width="28" height="26" patternUnits="userSpaceOnUse">
-    <rect width="28" height="26" fill="#f4efe2"/>
-    <path d="M0,0 L14,0 L11,13 L3,13 Z" fill="#20406e"/>
-    <path d="M14,0 L28,0 L25,13 L17,13 Z" fill="#20406e"/>
-    <path d="M-3,13 L11,13 L8,26 L0,26 Z" fill="#20406e"/>
-    <path d="M11,13 L25,13 L22,26 L14,26 Z" fill="#20406e"/>
-    <path d="M25,13 L31,13 L31,26 L22,26 Z" fill="#20406e"/>
+  <pattern id="h-vair" width="50" height="68" patternUnits="userSpaceOnUse" x="-7" y="16">
+    <rect width="50" height="68" fill="#20406e"/>
+    <path d="M0,34 L0,20 L7,12 L7,0 L25,0 L25,12 L32,20 L32,34 Z" fill="#f4efe2"/>
+    <path d="M25,68 L25,54 L32,46 L32,34 L50,34 L50,46 L57,54 L57,68 Z" fill="#f4efe2"/>
+    <path d="M-25,68 L-25,54 L-18,46 L-18,34 L0,34 L0,46 L7,54 L7,68 Z" fill="#f4efe2"/>
   </pattern>`;
 }
 
