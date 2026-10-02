@@ -5,7 +5,8 @@
    RENDU HÉRALDIQUE — figures SVG dessinées à partir des données
    ============================================================================ */
 
-const SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z";
+/* let : l'atelier change la forme de l'écu ; l'encyclopédie garde celle-ci */
+let SHIELD_D = "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z";
 const VB = "0 0 200 252";
 let uid = 0;
 
@@ -433,11 +434,11 @@ function pieceInner(kind, pf){
     case "pal": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/>`; break;
     case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
     case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
-    case "croix": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/><rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
+    case "croix": inner = `<rect x="80" y="0" width="40" height="252" fill="${pf}"/><rect x="0" y="92" width="200" height="40" fill="${pf}"/>`; break;
     case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
     case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
-    case "orle": inner = `<path d="M40,38 L160,38 L160,116 C160,158 132,188 100,206 C68,188 40,158 40,116 Z" fill="none" stroke="${pf}" stroke-width="12"/>`; break;
+    case "orle": inner = `<path d="${SHIELD_D}" transform="translate(100,122) scale(.74) translate(-100,-122)" fill="none" stroke="${pf}" stroke-width="16"/>`; break;
   }
   return inner;
 }

@@ -111,6 +111,8 @@ footer{background:var(--vellum-3)}
         </span>
       </div>
       <div class="row" id="r-cur"><span class="lab">Modifier</span><span class="seg" id="cur-seg" role="radiogroup" aria-label="Quartier modifié"></span></div>
+      <div class="row"><span class="lab">Forme</span><select name="sh" aria-label="Forme de l'écu"></select></div>
+      <p class="note">La forme de l'écu est indifférente au blasonnement : elle suit la mode et le pays (voir le chapitre <a href="index.html#ecu">L'écu</a>).</p>
       <p class="note" id="q-note" hidden>Le champ, la pièce et les meubles ci-dessous sont ceux du quartier choisi.</p>
     </fieldset>
     <fieldset>
@@ -169,6 +171,12 @@ footer{background:var(--vellum-3)}
       <legend>Les ornements</legend>
       <div class="row"><span class="lab">Couronne</span><select name="cr" aria-label="Couronne"></select></div>
       <div class="row"><span class="lab">Heaume</span><select name="hm" aria-label="Heaume et lambrequins"><option value="">Aucun</option><option value="h">Heaume</option><option value="hl">Heaume et lambrequins</option></select></div>
+      <div class="row" id="r-hp"><span class="lab">Position</span><select name="hp" aria-label="Position du heaume"></select>
+        <span class="seg" role="radiogroup" aria-label="Sens du heaume">
+          <label><input type="radio" name="hs" value=""><span>À dextre</span></label>
+          <label><input type="radio" name="hs" value="s"><span>À senestre</span></label>
+        </span>
+      </div>
       <div class="row" id="r-tl1"><span class="lab">Lambrequins</span><div class="chips" data-name="tl1"></div></div>
       <div class="row" id="r-tl2"><span class="lab">Doublés</span><div class="chips" data-name="tl2"></div></div>
       <div class="row" id="r-pa"><span class="lab">Panache</span><select name="pa" aria-label="Panache"><option value="">Aucun</option><option value="3">Trois plumes</option><option value="5">Cinq plumes</option></select></div>
@@ -284,7 +292,7 @@ const LAYOUT = {
   bande: { 2: [[146, 66, .36], [56, 178, .34]] },
   barre: { 2: [[54, 66, .36], [144, 178, .34]] },
   chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
-  croix: { 4: [[46, 60, .3], [154, 60, .3], [52, 190, .24], [148, 190, .24]] },
+  croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
   sautoir: { 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
   "sur-chef": { 1: [[100, 47, .3]], 2: [[68, 47, .28], [132, 47, .28]], 3: [[52, 47, .26], [100, 47, .26], [148, 47, .26]] },
   "sur-fasce": { 1: [[100, 130, .3]], 3: [[52, 130, .24], [100, 130, .24], [148, 130, .24]] },
@@ -292,7 +300,7 @@ const LAYOUT = {
   "sur-bande": { 1: [[100, 126, .26, -B]], 3: [[54, 67, .22, -B], [100, 126, .22, -B], [146, 184, .22, -B]] },
   "sur-barre": { 1: [[100, 126, .26, B]], 3: [[146, 67, .22, B], [100, 126, .22, B], [54, 184, .22, B]] },
   "sur-chevron": { 1: [[100, 112, .22]], 3: [[100, 112, .22], [64, 152, .2], [136, 152, .2]] },
-  "sur-croix": { 1: [[100, 130, .26]], 5: [[100, 130, .22], [100, 54, .2], [100, 204, .18], [42, 130, .2], [158, 130, .2]] },
+  "sur-croix": { 1: [[100, 112, .22]], 5: [[100, 112, .18], [100, 54, .17], [100, 180, .16], [44, 112, .17], [156, 112, .17]] },
   "sur-sautoir": { 1: [[100, 123, .24]], 5: [[100, 123, .2], [56, 68, .18], [144, 68, .18], [56, 178, .18], [144, 178, .18]] },
 };
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
@@ -337,8 +345,8 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "" };
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];
-const ODEF = { q: "", cr: "", hm: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "" };
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "cr", "hm", "pa", "su", "co", "dv"]);
+const ODEF = { q: "", sh: "", cr: "", hm: "", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "" };
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv"]);
 const PFX = ["", "b_", "c_", "d_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let S = fresh(), CUR = 0, KT = "1";
@@ -385,6 +393,9 @@ function normalizeAll(St) {
   const O = ATL.ornements;
   if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
   if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
+  if (!O.heaumes.some(h => h.kind === St.hp)) St.hp = "34";
+  if (!["", "s"].includes(St.hs)) St.hs = "";
+  if (!(St.sh in SHAPES)) St.sh = "";
   if (!["", "3", "5"].includes(St.pa)) St.pa = "";
   if (!O.supports.some(x => x.kind === St.su)) St.su = "";
   if (!O.colliers.some(c => c.kind === St.co)) St.co = "";
@@ -444,13 +455,14 @@ function symbolFor(s, id) {
 }
 /* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
 function fileSymbol(txt, id, fill) {
+  const [w, h] = vbOf(txt), vb = (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
+  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}" stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
+}
+function fileInner(txt, id) {
   const root = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
-  const [w, h] = vbOf(txt);
-  const vb = root.getAttribute("viewBox") || `0 0 ${w} ${h}`;
-  let inner = [...root.childNodes].map(n => new XMLSerializer().serializeToString(n)).join("");
-  inner = inner.replace(/\bid="([^"]+)"/g, `id="${id}-$1"`).replace(/url\(#([^)]+)\)/g, (a, x) => x.startsWith("m-") || x.startsWith("h-") ? a : `url(#${id}-${x})`)
-               .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`);
-  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}" stroke-linejoin="round">${inner}</g></symbol>`;
+  const inner = [...root.childNodes].map(n => new XMLSerializer().serializeToString(n)).join("");
+  return inner.replace(/\bid="([^"]+)"/g, `id="${id}-$1"`).replace(/url\(#([^)]+)\)/g, (a, x) => x.startsWith("m-") || x.startsWith("h-") ? a : `url(#${id}-${x})`)
+              .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`);
 }
 function vbOf(txt) {
   const r = txt.match(/<svg\b[^>]*>/)[0], vb = r.match(/viewBox="([^"]+)"/);
@@ -486,18 +498,49 @@ function draw(s, u = "a") {
   const r = drawBody(s, u);
   return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${shieldFinish()}`;
 }
-/* quartiers 1 à 4 : haut gauche, haut droite, bas gauche, bas droite ; chaque arme y est réduite de moitié */
-const QPOS = [[0, 0], [100, 0], [0, 126], [100, 126]];
+/* quartiers : la ligne horizontale passe là où l'écu a autant de surface au-dessus qu'en dessous (la pointe rétrécit le bas) ;
+   les armes de chaque quartier, réduites de moitié, sont centrées sur le barycentre de la partie visible */
+const QGEO = {};
+function quarterGeom() {
+  if (QGEO[SHIELD_D]) return QGEO[SHIELD_D];
+  const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D), pts = [];
+  for (let y = 0; y < 252; y++) for (let x = 0; x < 200; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) pts.push([x + .5, y + .5]);
+  const ys = pts.map(p => p[1]).sort((a, b) => a - b), split = Math.round(ys[Math.floor(ys.length / 2)]);
+  const acc = [0, 1, 2, 3].map(() => [0, 0, 0]);
+  for (const [x, y] of pts) { const q = (y < split ? 0 : 2) + (x < 100 ? 0 : 1); acc[q][0] += x; acc[q][1] += y; acc[q][2]++; }
+  const rects = [[0, 0, 100, split], [100, 0, 100, split], [0, split, 100, 252 - split], [100, split, 100, 252 - split]];
+  return QGEO[SHIELD_D] = { split, q: acc.map(([sx, sy, n], i) => ({ cx: sx / n, cy: sy / n, rect: rects[i] })) };
+}
 const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : [0, 1, 2, 3];
+/* deux couches par quartier : le champ et la pièce étirés pour couvrir tout le quartier, puis les armes entières
+   à demi-taille, centrées sur le barycentre de la partie visible (la pointe ne rogne plus les meubles du bas) */
+function qCover(g) {
+  const [rx, ry, rw, rh] = g.rect, s = Math.max(rw / 200, rh / 252), w = 200 * s, h = 252 * s;
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  return [clamp(g.cx - 100 * s, rx + rw - w, rx), clamp(g.cy - 112 * s, ry + rh - h, ry), s];
+}
+const qOrigin = g => [g.cx - 50, g.cy - 59, .5];
+/* formes citées au chapitre « L'écu » ; toutes tiennent dans la même boîte que l'écu français */
+const SHAPES = {
+  "": { nom: "Français moderne", d: "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z" },
+  ancien: { nom: "Triangulaire ancien", d: "M18,16 L182,16 C182,112 152,186 100,236 C48,186 18,112 18,16 Z" },
+  losange: { nom: "En losange", d: "M100,10 L190,126 L100,242 L10,126 Z" },
+  targe: { nom: "Targe échancrée", d: "M18,20 C64,10 136,10 182,20 L182,124 C182,180 146,214 100,236 C54,214 18,180 18,124 L18,92 C36,84 36,58 18,50 Z" },
+  ovale: { nom: "Cartouche ovale", d: "M100,12 A84,114 0 0 1 100,240 A84,114 0 0 1 100,12 Z" },
+};
 function drawShield(St, u) {
+  SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
   if (!St.q) return draw(St.A[0], u);
-  let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath><clipPath id="qr-${u}"><rect width="200" height="252"/></clipPath>`, body = "";
+  const G = quarterGeom();
+  let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {
-    const r = drawBody(St.A[ai], `${u}q${qi}`);
-    defs += r.defs;
-    body += `<g transform="translate(${QPOS[qi][0]},${QPOS[qi][1]}) scale(.5)"><g clip-path="url(#qr-${u})">${r.body}</g></g>`;
+    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "" }, `${u}u${qi}`), g = G.q[qi];
+    const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
+    defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
+    body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
+      + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g></g>`;
   });
-  body += `<path d="M100,0V252M0,126H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${shieldFinish()}`;
 }
 
@@ -514,12 +557,18 @@ async function getDataUri(path) {
   const b = await r.blob();
   TXT[path] = await new Promise((ok, ko) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = ko; fr.readAsDataURL(b); });
 }
-const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su) }; };
+const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su), hm: s.hm ? O.heaumes.find(h => h.kind === s.hp) || O.heaumes[0] : null }; };
+/* boîte du dessin réel d'un fichier (ses marges vides varient d'un fichier à l'autre) */
+const BBOX = {};
+function bboxOf(key, inner) {
+  if (!(key in BBOX)) { const g = $("#measure g"); g.innerHTML = inner; const b = g.getBBox(); BBOX[key] = [b.x, b.y, b.width, b.height]; g.innerHTML = ""; }
+  return BBOX[key];
+}
 async function loadAll(St) {
-  const O = ATL.ornements, { cr, co, su } = ornOf(St), jobs = [];
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
   for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
-  if (St.hm) jobs.push(getText(O.heaume.path));
+  if (hm) jobs.push(getText(hm.path));
   if (St.hm === "hl") jobs.push(getText(O.lambrequins.path));
   if (St.hm && St.pa) jobs.push(getText(O.plume.path));
   if (co) jobs.push(getText(co.path));
@@ -529,7 +578,7 @@ async function loadAll(St) {
 const suppAccent = s => s.ts === "Gueules" ? "Azur" : "Gueules";
 const PLAIN_VB = [0, 0, 200, 252];
 function compose(St, u = "a") {
-  const O = ATL.ornements, { cr, co, su } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
   if (!cr && !St.hm && !co && !su && !dv) return { vb: PLAIN_VB, svg: shield };
   let defs = "", back = "", front = "", bb = [0, 0, 200, 252];
   const grow = (x, y, w, h) => { bb = [Math.min(bb[0], x), Math.min(bb[1], y), Math.max(bb[2], x + w), Math.max(bb[3], y + h)]; };
@@ -550,29 +599,32 @@ function compose(St, u = "a") {
     defs += symbolFor({ ...ADEF, m: su.kind, tm: St.ts, ta: suppAccent(St) }, `su-${u}`);
     back += place(`su-${u}`, 10 - W, 262 - H, W, H, true) + place(`su-${u}`, 190, 262 - H, W, H, false);
   }
-  let top = 8, helm = "", crown = "", plumes = "", helmTop = 0;
-  if (St.hm) {
-    const t = TXT[O.heaume.path], W = 96, H = sized(t, W);
-    defs += fileSymbol(t, `hm-${u}`, "#1a1712");
-    /* le bas du fichier est vide : on descend le heaume pour qu'il pose sur l'écu */
-    helmTop = 36 - H;
-    helm = place(`hm-${u}`, 100 - W / 2, helmTop, W, H);
-    top = helmTop + 30;
+  let top = 8, helm = "", crown = "", plumes = "", helmTop = 0, helmH = 0;
+  if (hm) {
+    /* le heaume est calé sur son dessin réel : centré sur l'écu, posé sur son bord supérieur ; « à senestre » = retourné */
+    const t = hm.main ? recolor(TXT[hm.path], hm, "Argent", "Argent") : TXT[hm.path];
+    const inner = fileInner(t, `hm-${u}`), [bx, by0, bw, bh] = bboxOf(hm.path, fileInner(TXT[hm.path], "m"));
+    const W = hm.kind === "profil" ? 100 : 112, k = W / bw, base = 26;
+    helmH = bh * k; helmTop = base - helmH;
+    helm = `<g transform="translate(100,${base}) scale(${St.hs === "s" ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
+    grow(100 - W / 2, helmTop, W, helmH);
+    top = helmTop + helmH * .32;
   }
-  let crownY = null;
+  let crownY = null, crownH = 0;
   if (cr) {
-    const W = St.hm ? 96 : cr.kind === "roi" ? 120 : 150, H = W * cr.wh[1] / cr.wh[0], x = 100 - W / 2;
-    crownY = top - H;
+    const W = hm ? 96 : cr.kind === "roi" ? 120 : 150, H = W * cr.wh[1] / cr.wh[0], x = 100 - W / 2;
+    crownY = top - H; crownH = H;
     grow(x, crownY, W, H);
     crown = `<image href="${TXT[cr.png]}" x="${x}" y="${crownY}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid meet"/>`;
   }
-  if (St.hm && St.pa) {
-    const P = O.plume, t = TXT[P.path], W = 92, H = sized(t, W), by = crownY !== null ? crownY + 18 : helmTop + 24;
+  if (hm && St.pa) {
+    /* toutes les plumes partent d'un même point, caché par le heaume ou la couronne : on pivote sur la tige du fichier */
+    const P = O.plume, t = TXT[P.path], W = 92, H = sized(t, W), sx = W * P.tige[0], sy = H * P.tige[1];
+    const by = crownY !== null ? crownY + crownH * .55 : helmTop + helmH * .16;
     defs += fileSymbol(recolor(t, P, St.pa1, St.pa1), `pl1-${u}`, "#1a1712") + fileSymbol(recolor(t, P, St.pa2, St.pa2), `pl2-${u}`, "#1a1712");
-    const angles = St.pa === "5" ? [-52, -26, 0, 26, 52] : [-32, 0, 32];
-    /* la plume du fichier s'enroule vers la droite : celles de gauche sont retournées */
-    plumes = angles.map((a, i) => `<g transform="translate(100,${by}) rotate(${a})"><use href="#pl${i % 2 ? 2 : 1}-${u}" x="${-W / 2}" y="${-H}" width="${W}" height="${H}"${a < 0 ? ` transform="scale(-1,1)"` : ""}/></g>`).join("");
-    grow(100 - H - W, by - H - 8, 2 * (H + W), H + 8);
+    const angles = St.pa === "5" ? [-48, -24, 0, 24, 48] : [-28, 0, 28];
+    plumes = angles.map((a, i) => `<g transform="translate(100,${by.toFixed(1)}) rotate(${a}) scale(${a < 0 ? -1 : 1},1) translate(${-sx},${-sy})"><use href="#pl${i % 2 ? 2 : 1}-${u}" width="${W}" height="${H}"/></g>`).join("");
+    grow(100 - H - W / 2, by - H - 8, 2 * H + W, H + 8);
   }
   front += plumes + helm + crown;
   if (dv) {
@@ -591,7 +643,7 @@ function compose(St, u = "a") {
 function ornText(St) {
   const { cr, co, su } = ornOf(St), out = [];
   if (St.hm) {
-    let t = "Heaume" + (St.hm === "hl" ? ` et lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
+    let t = `Heaume ${ornOf(St).hm.nom.toLowerCase()}${St.hs === "s" ? ", tourné à senestre" : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
     if (St.pa) t += `, panache de ${NB[+St.pa]} plumes d'autruche ${St.pa1 === St.pa2 ? de(St.pa1) : de(St.pa1) + " et " + de(St.pa2)}`;
     out.push(t);
   }
@@ -709,6 +761,8 @@ function fillSelects() {
   F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
   F.co.innerHTML = `<option value="">Aucun</option>` + O.colliers.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
+  F.sh.innerHTML = Object.entries(SHAPES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
+  F.hp.innerHTML = O.heaumes.map(h => `<option value="${esc(h.kind)}">${esc(h.nom)}</option>`).join("");
   document.querySelectorAll(".chips").forEach(chipRow);
 }
 function setField(k, v) {
@@ -755,7 +809,8 @@ function syncForm() {
   $("#r-pa").hidden = !S.hm;
   $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa;
   $("#r-ts").hidden = !S.su;
-  $("#hm-note").textContent = S.hm ? `Heaume : ${ATL.ornements.heaume.note}.` : "";
+  $("#r-hp").hidden = !S.hm;
+  $("#hm-note").textContent = S.hm ? `Heaume : ${ornOf(S).hm.note}.` : "";
   syncAdj();
 }
 /* la cible des curseurs : tout un groupe ("1", "2") ou un seul meuble ("1.0", "2.2"…) */
@@ -824,7 +879,7 @@ function creditsOf(St) {
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
   if (su) add("Supports", meuble(su.kind).file, true);
   if (cr) add(cr.nom, cr, false);
-  if (St.hm) add("Heaume", O.heaume, false);
+  if (St.hm) add("Heaume", ornOf(St).hm, St.hp === "profil");
   if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
   if (St.hm && St.pa) add("Panache", O.plume, true);
   if (co) add(co.nom, co, false);
@@ -837,7 +892,7 @@ function marker() {
   const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
   const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
   if (!p) return "";
-  const spots = !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? [QPOS[qi][0], QPOS[qi][1], .5] : null).filter(Boolean);
+  const spots = !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
   return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
 }
 async function render() {
