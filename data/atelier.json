@@ -1596,8 +1596,8 @@
     "pos": "face",
     "nat": "",
     "path": "assets/ornements/heaume-grilles-face.svg",
-    "commons": "Barred helmet Argent affronté Baltisches Wappenbuch.svg",
-    "auteur": "LowlyLiaison",
+    "commons": "Meuble Héraldique Heaume de duc non souverain.svg",
+    "auteur": "HeraldLanguage",
     "lic": "CC BY 4.0",
     "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
    },
@@ -1605,50 +1605,53 @@
     "kind": "grilles-34",
     "type": "grilles",
     "pos": "34",
-    "nat": "s",
+    "nat": "",
     "path": "assets/ornements/heaume-grilles-34.svg",
-    "commons": "Barred helmet Argent threeQuarter Baltisches Wappenbuch.svg",
-    "auteur": "LowlyLiaison",
-    "lic": "CC BY 4.0",
-    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+    "commons": "Meuble héraldique Heaume comte.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
    },
    {
-    "kind": "joute-face",
-    "type": "joute",
+    "kind": "grand-face",
+    "type": "grand",
     "pos": "face",
     "nat": "",
-    "path": "assets/ornements/heaume-joute-face.svg",
-    "commons": "Frogmouth helm affronty argent, or bordure.svg",
-    "auteur": "LowlyLiaison",
-    "lic": "CC BY 4.0",
-    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+    "path": "assets/ornements/heaume-grand-face.svg",
+    "commons": "Helmet 2-1 SVG.svg",
+    "auteur": "Gably",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
    },
    {
-    "kind": "joute-34",
-    "type": "joute",
+    "kind": "grand-34",
+    "type": "grand",
     "pos": "34",
-    "nat": "s",
-    "path": "assets/ornements/heaume-joute-34.svg",
-    "commons": "Frogmouth helm 3quarter BAbshier argent, or bordure.svg",
-    "auteur": "LowlyLiaison",
-    "lic": "CC BY 4.0",
-    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+    "nat": "",
+    "path": "assets/ornements/heaume-grand-34.svg",
+    "commons": "Heraldic helmet (14th century).svg",
+    "auteur": "SirFranzPaul",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
    },
    {
-    "kind": "joute-profil",
-    "type": "joute",
+    "kind": "grand-profil",
+    "type": "grand",
     "pos": "profil",
     "nat": "",
-    "path": "assets/ornements/heaume-joute-profil.svg",
-    "commons": "Frogmouth helm profile argent, or bordure.svg",
-    "auteur": "LowlyLiaison",
+    "path": "assets/ornements/heaume-grand-profil.svg",
+    "main": [
+     "#fcef3c"
+    ],
+    "commons": "Meuble héraldique heaume 1.svg",
+    "auteur": "Thom.lanaud",
     "lic": "CC0",
     "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
    }
   ],
   "heaumeTypes": {
    "grilles": "Heaume à grilles",
-   "joute": "Heaume de joute"
+   "grand": "Grand heaume"
   },
   "heaumePos": {
    "face": "De face",
