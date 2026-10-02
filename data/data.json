@@ -117,6 +117,42 @@
       "type": "Ressource en ligne",
       "note": "Décrets du 1er mars 1808 : passage des marques de rang des ornements extérieurs vers l'intérieur de l'écu, toques substituées aux couronnes, chefs et francs-quartiers par titre, marques de fonction. Utile aussi pour la distinction entre règles de droit héraldique et règles du blason, et pour le droit coutumier d'antériorité."
     },
+    "wiki_ecu_fr": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Écu (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Écu_(héraldique), consulté en 2026",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Formes d'écu : tournoi ou bannière, français ancien et moderne, puis les formes dites nationales (italienne « tête de cheval », suisse, anglaise, allemande, polonaise, ibérique)."
+    },
+    "wiki_escutcheon_en": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Escutcheon (heraldry)",
+      "editeur": "Wikipédia en anglais — en.wikipedia.org/wiki/Escutcheon_(heraldry), consulté en 2026",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Chronologie des formes, de l'écu en cerf-volant au XVIIe siècle ; écu « à bouche » du tournoi ; formes polonaise (XVIe et XVIIe siècles) et italienne."
+    },
+    "wiki_pajzs_hu": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Pajzs (heraldika)",
+      "editeur": "Wikipédia en hongrois — hu.wikipedia.org/wiki/Pajzs_(heraldika), consulté en 2026",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Formes de pajzs en usage en Hongrie (rond, triangulaire, ovale, hexagonal, tárcsapajzs, doborpajzs) et mise en garde sur les appellations nationales."
+    },
+    "wiki_tarcza_pl": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Tarcza (heraldyka)",
+      "editeur": "Wikipédia en polonais — pl.wikipedia.org/wiki/Tarcza_(heraldyka), consulté en 2026",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Les tarczas dites « nationales » et leur place dans l'évolution du bouclier ; renvoie à Szymański (2001)."
+    },
     "wiki_croix": {
       "auteur": "Wikipédia (contributeurs)",
       "titre": "Croix (héraldique)",
@@ -1027,6 +1063,20 @@
             "joubert1977"
           ],
           "html": "\n          <p>Le support des armoiries est l'<b>écu</b>. Sa forme est indifférente au blasonnement : elle suit la mode et le pays — écu triangulaire ancien, écu français « moderne » à pointe, écu en losange traditionnellement réservé aux femmes, targe échancrée, cartouche ovale ecclésiastique. Le dessin peut varier ; les armes, elles, restent les mêmes.</p>"
+        },
+        {
+          "titre": "Les formes selon les pays — et la prudence qu'elles demandent",
+          "sources": [
+            "wiki_ecu_fr",
+            "wiki_escutcheon_en",
+            "wiki_pajzs_hu",
+            "wiki_tarcza_pl"
+          ],
+          "html": "\n          <p>Une même armoirie se dessine sur bien des contours. Les ouvrages les ordonnent par pays, mais ces étiquettes sont à manier avec prudence.</p>\n          <ul>\n            <li><b>Tournoi, ou « en bannière »</b> : un simple quadrilatère, de sept parties de large sur huit de haut.</li>\n            <li><b>Italien</b> : en forme de chanfrein, dit aussi <b>tête de cheval</b> (<i>testa di cavallo</i>). Un autre écu italien, ovale, servait aux ecclésiastiques et, en France, aux femmes mariées.</li>\n            <li><b>Suisse</b> : trois pointes au chef. <b>Anglais</b> : anguleux, le sommet prolongé en cornes horizontales. <b>Allemand</b> : une targe de tournoi, échancrée pour poser la lance.</li>\n            <li><b>Polonais</b> : à échancrures multiples ; l'anglais en distingue un état du XVIe siècle, à oreilles et à pointe arrondie, et un autre du XVIIe.</li>\n            <li><b>À bord inférieur arrondi</b> : Espagne, Portugal et Flandres, qui furent longtemps espagnoles.</li>\n            <li><b>Hongrois</b> : au XIVe siècle, des écus ronds, triangulaires, ovales, et un hexagonal attesté à Gelence ; la <i>tárcsapajzs</i>, rectangle allongé dont un coin porte une encoche ronde pour la lance ; le <i>doborpajzs</i>, au bas arrondi pour ne pas blesser l'encolure du cheval.</li>\n          </ul>\n          <p>Ces noms nationaux prêtent à confusion : la source hongroise note que ces formes se répandirent presque partout en Europe à la même époque, de sorte que la forme ne date une armoirie que « à partir de » telle époque — un écu baroque ne peut précéder le baroque. Rien de tout cela n'entre dans le blasonnement.</p>"
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Lu à la source :</b> les noms et les descriptions ci-dessus, d'après les quatre articles cités.</p>\n            <p><b>Dessiné ici :</b> l'Atelier propose ces formes, tracées par l'encyclopédie d'après ces descriptions et les figures de référence ; ce sont des contours approchés, ramenés à une boîte commune, non des copies. Les proportions « sept sur huit » du tournoi n'y sont donc pas respectées.</p>\n            <p><b>Non vérifié :</b> quelles formes ont servi pour les armes pontificales. La « tête de cheval » est l'écu italien ; on ne l'attribue pas ici à un pape précis.</p>\n          </div>\n        "
         },
         {
           "titre": "Dextre et senestre : le piège du vocabulaire",
