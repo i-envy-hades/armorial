@@ -18,7 +18,11 @@ const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
 const PIECES = {
   chef: { g: "m" }, fasce: { g: "f" }, pal: { g: "m" }, bande: { g: "f" }, barre: { g: "f" },
   croix: { g: "f" }, sautoir: { g: "m" }, chevron: { g: "m" }, bordure: { g: "f" }, orle: { g: "m" },
+  canton: { g: "m" }, "franc-quartier": { g: "m" }, pairle: { g: "m" },        // propres à l'Atelier : voir « pieces » dans data/atelier.json
 };
+/* le bord d'une pièce, tel qu'on le blasonne ; les tracés sont dans assets/blason.js (CONTOURS) */
+const CONTOUR_NOM = { onde: "ondé", nebule: "nébulé", dancette: "dancetté", engrele: "engrêlé", cannele: "cannelé", denche: "denché" };
+const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 /* positions des meubles [x, y, échelle, rotation] dans le repère de l'écu (200 × 252) */
 const B = 38.3;
 /* champ plein : dispositions au choix ; la première est celle qu'on ne dit pas, sauf si sa phrase est donnée.
@@ -73,6 +77,9 @@ const LAYOUT = {
   "sur-chevron": { 1: [[100, 112, .22]], 3: [[100, 112, .22], [64, 152, .2], [136, 152, .2]] },
   "sur-croix": { 1: [[100, 112, .22]], 5: [[100, 112, .18], [100, 54, .17], [100, 180, .16], [44, 112, .17], [156, 112, .17]] },
   "sur-sautoir": { 1: [[100, 123, .24]], 5: [[100, 123, .2], [56, 68, .18], [144, 68, .18], [56, 178, .18], [144, 178, .18]] },
+  pairle: { 3: [[100, 58, .3], [52, 172, .28], [148, 172, .28]] },
+  "sur-canton": { 1: [[40, 35, .2]] },
+  "sur-franc-quartier": { 1: [[51, 45, .26]] },
 };
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
 const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
@@ -108,14 +115,16 @@ function ptsFor(s, m) {
 }
 const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
 const pts2 = s => adjust(dispo2(s).pts, s, 2, "2");
-const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, pos: "autour", p: "" });
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
-/* ---------- état : les ornements, et jusqu'à quatre armes pour l'écartelé ---------- */
+/* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
-  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "" };
-const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];
+  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
+  ct: "", ct2: "", ln: "" };
+const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
+  { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 /* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
 const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
 const bandPaint = (f = BAND.fill, w = 1.2) => `fill="${f}" stroke="#1a1712" stroke-width="${w}" stroke-linejoin="round"`;
@@ -161,12 +170,12 @@ const DEVISES = {
       + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
   }) }
 };
-const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "" };
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt"]);
-const PFX = ["", "b_", "c_", "d_"];
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "" };
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln"]);
+const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let S = fresh(), CUR = 0, KT = "1";
-const active = St => !St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3];
+const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const cur = () => S.A[CUR];
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.p) : "plein"; }
@@ -180,9 +189,15 @@ function countsFor(s) {
 }
 const num = (v, lo, hi, d) => { const n = Math.round(+v); return String(Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d); };
 function normalize(s) {
-  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!MOT[s[k]]) s[k] = ADEF[k];
+  /* l'adresse de la page peut porter n'importe quoi : chaque valeur est ramenée à une valeur permise (own : pas de noms hérités, comme « constructor ») */
+  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
+  if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
+  if (!["barry", "paly", "bendy", "bendysin"].includes(s.ray)) s.ray = "barry";
+  if (!["6", "8"].includes(s.n)) s.n = ADEF.n;
+  if (s.pos !== "sur") s.pos = "autour";
+  if (!own(PLEIN, s.nb) && s.nb !== "seme") s.nb = ADEF.nb;
   if (!DATA.partitions.some(p => p.kind === s.part)) s.part = "parti";
-  if (s.p && !PIECES[s.p]) s.p = "";
+  if (s.p && !own(PIECES, s.p)) s.p = "";
   if (s.m && !meuble(s.m)) s.m = "";
   if (!s.p) s.pos = "autour";
   if (s.p && s.pos === "sur" && !LAYOUT["sur-" + s.p]) s.pos = "autour";
@@ -191,7 +206,12 @@ function normalize(s) {
   if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
   if (!dispos(s).some(d => d.id === s.d)) s.d = "";
   if (!s.m || (s.m2 && !meuble(s.m2))) s.m2 = "";
-  if (!PLEIN[s.nb2]) s.nb2 = "3";
+  /* le bord de la pièce ; le sens des meubles (seuls les meubles asymétriques se contournent) */
+  if (!s.p || !own(CONTOURS, s.ln)) s.ln = "";
+  const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
+  s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
+  s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
+  if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
   for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
   const map = adMap(s), n1 = count1(s), n2 = count2(s);
@@ -205,22 +225,23 @@ function normalize(s) {
 }
 function normalizeAll(St) {
   if (!["", "2", "4"].includes(St.q)) St.q = "";
-  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts"]) if (!MOT[St[k]]) St[k] = ODEF[k];
+  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   const O = ATL.ornements;
   if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
   if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
   /* chaque modèle n'existe que dans certaines positions : on garde la position si possible, sinon le modèle */
   const has = (t, p) => O.heaumes.some(h => h.type === t && h.pos === p);
-  if (!O.heaumeTypes[St.ht]) St.ht = "grilles";
-  if (!O.heaumePos[St.hp]) St.hp = "34";
+  if (!own(O.heaumeTypes, St.ht)) St.ht = "grilles";
+  if (!own(O.heaumePos, St.hp)) St.hp = "34";
   if (!has(St.ht, St.hp)) St.hp = O.heaumes.find(h => h.type === St.ht).pos;
   if (!["", "s"].includes(St.hs)) St.hs = "";
-  if (!(St.sh in SHAPES)) St.sh = "";
+  if (!own(SHAPES, St.sh)) St.sh = "";
+  if (!["", "1"].includes(St.ab)) St.ab = "";
   if (!["", "3", "5"].includes(St.pa)) St.pa = "";
   if (!O.supports.some(x => x.kind === St.su)) St.su = "";
   if (!O.colliers.some(c => c.kind === St.co)) St.co = "";
   St.dv = String(St.dv || "").slice(0, 48);
-  if (!(St.dt in DEVISES)) St.dt = "";
+  if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
@@ -299,7 +320,8 @@ function useFor(m, id) { return m.file ? `<use href="#${id}" x="${m.box[0]}" y="
 const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; c < 6; c++) p.push([16 + c * 36 + (r % 2 ? 18 : 0), 22 + r * 30, .17]); return p; })();
 
 /* ---------- l'écu ---------- */
-const placeAll = (pts, m, id) => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${k}) translate(-100,-116)">${useFor(m, id)}</g>`).join("");
+/* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
+const placeAll = (pts, m, id, flip) => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k},${k}` : k}) translate(-100,-116)">${useFor(m, id)}</g>`).join("");
 function drawBody(s, u) {
   let field;
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
@@ -309,19 +331,26 @@ function drawBody(s, u) {
   let defs = "", under = "", over = "";
   if (m) {
     defs += symbolFor(s, `chg-${u}`);
-    const g = placeAll(ptsFor(s, m), m, `chg-${u}`);
+    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct);
     if (s.nb === "seme") under = g; else over = g;
   }
   if (m2) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
-    over += placeAll(pts2(s), m2, `chg2-${u}`);
+    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2);
   }
-  const piece = s.p ? pieceInner(s.p, tinctPaint(s.tp)) : "";
+  const piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
   return { defs, body: field + under + piece + over };
 }
-function draw(s, u = "a") {
+function draw(s, u = "a", extra = "") {
   const r = drawBody(s, u);
-  return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${shieldFinish()}`;
+  return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${extra}${shieldFinish()}`;
+}
+/* l'écusson en abîme (« sur le tout ») : l'écu entier, réduit au rapport AB_K, centré sur le cœur de l'écu */
+const AB_K = .4;
+function abime(St, u) {
+  const r = drawBody(St.A[4], `${u}ab`);
+  return `<defs><clipPath id="ab-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs>`
+    + `<g transform="translate(100,126) scale(${AB_K}) translate(-100,-126)"><g clip-path="url(#ab-${u})">${r.body}</g>${shieldFinish(3.4)}</g>`;
 }
 /* quartiers : la ligne horizontale passe là où l'écu a autant de surface au-dessus qu'en dessous (la pointe rétrécit le bas) ;
    les armes de chaque quartier, réduites de moitié, sont centrées sur le barycentre de la partie visible */
@@ -365,7 +394,8 @@ const SHAPES = {
 };
 function drawShield(St, u) {
   SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
-  if (!St.q) return draw(St.A[0], u);
+  const ab = St.ab ? abime(St, u) : "";
+  if (!St.q) return draw(St.A[0], u, ab);
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {
@@ -376,7 +406,7 @@ function drawShield(St, u) {
       + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g></g>`;
   });
   body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
-  return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${shieldFinish()}`;
+  return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
 
 /* ---------- les ornements extérieurs ---------- */
@@ -499,13 +529,14 @@ function charges(s) {
   let nom = m.sing, nomPl = m.plur, g = m.g;
   if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
   const acc = m.accent && m.accentMot ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "";
-  return { m, n, pl, nom, nomPl, g, acc, tinct: de(s.tm) };
+  const ctr = s.ct ? " " + agree("contourné", g, pl) : "";                      // « un lion contourné d'or », « trois lions contournés d'or »
+  return { m, n, pl, nom, nomPl, g, acc, ctr, tinct: de(s.tm) };
 }
 function semePhrase(c, s) {
   const m = c.m;
   if (m.kind === "roundel") return (classe(s.tm) === "Métal" ? "besanté " : "tourteauté ") + de(s.tm);
   if (m.semeAdj) return m.semeAdj + " " + de(s.tm);
-  return `semé de ${c.nomPl} ${de(s.tm)}`;
+  return `semé de ${c.nomPl}${s.ct ? " " + agree("contourné", c.g, true) : ""} ${de(s.tm)}`;
 }
 function blazon(s) {
   let champ;
@@ -521,14 +552,14 @@ function blazon(s) {
   const c = m ? charges(s) : null;
   const seme = c && s.nb === "seme";
   if (seme) champ += " " + semePhrase(c, s);
-  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + ` ${c.tinct}${c.acc}` : "";
-  const grpObj = c && !seme ? (c.n === 1 ? `${c.g === "f" ? "d'une" : "d'un"} ${c.nom}` : `de ${NB[c.n]} ${c.nomPl}`) + ` ${c.tinct}${c.acc}` : "";
+  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
+  const grpObj = c && !seme ? (c.n === 1 ? `${c.g === "f" ? "d'une" : "d'un"} ${c.nom}` : `de ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
   /* le second meuble : « accompagné de … », « et de … », ou meuble du champ quand le premier est sur la pièce ou semé */
   let x2 = null;
   if (c && count2(s)) {
     const c2 = charges(arms2(s)), ph = agree(dispo2(s).ph, c2.g, c2.pl);
-    const obj = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + ` ${c2.tinct}${c2.acc}${ph}`;
-    const alone = (c2.n === 1 ? `${aArt(c2.nom, c2.g)}${c2.nom}` : `à ${NB[c2.n]} ${c2.nomPl}`) + ` ${c2.tinct}${c2.acc}${ph}`;
+    const obj = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
+    const alone = (c2.n === 1 ? `${aArt(c2.nom, c2.g)}${c2.nom}` : `à ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
     x2 = { obj, alone, acc: `, ${agree("accompagné", c.g, c.pl)} ${obj}` };
   }
   if (!s.p) {
@@ -537,8 +568,9 @@ function blazon(s) {
     return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${parti && c.n === 1 ? " brochant sur le tout" : ""}${x2 ? x2.acc : ""}`;
   }
   const P = PIECES[s.p], pnom = s.p;
-  const pieceTxt = `${aArt(pnom, P.g)}${pnom} ${de(s.tp)}`;
-  const broche = parti && !["chef", "bordure", "orle"].includes(s.p) ? " brochant sur le tout" : "";
+  const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
+  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${de(s.tp)}`;
+  const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
   const sep = parti || seme ? ", " : " ";
   const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
   if (c && !seme && s.pos === "sur") {
@@ -556,9 +588,10 @@ function blazon(s) {
 const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
 const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
 function blazonAll(St) {
-  if (!St.q) return blazon(St.A[0]);
   const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
-  return "Écartelé : " + active(St).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  let b = !St.q ? blazon(St.A[0]) : "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
+  return b;
 }
 
 /* ---------- la règle des émaux ---------- */function rule(s) {
@@ -571,15 +604,15 @@ function blazonAll(St) {
   if (s.p && s.f === "plein") check(s.tp, s.t1, cap(art(s.p, PIECES[s.p].g)) + s.p, "un champ");
   if (s.m) {
     const m = meuble(s.m), quoi = s.nb === "1" || m.seul ? "Le meuble" : "Les meubles";
-    if (s.p && s.pos === "sur") check(s.tm, s.tp, quoi, s.p === "chef" ? "le chef" : "la pièce");
+    if (s.p && s.pos === "sur") check(s.tm, s.tp, quoi, { chef: "le chef", canton: "le canton", "franc-quartier": "le franc-quartier" }[s.p] || "la pièce");
     else if (s.f === "plein") check(s.tm, s.t1, quoi, "un champ");
   }
   if (count2(s) && s.f === "plein") check(s.tm2, s.t1, s.nb2 === "1" ? "Le second meuble" : "Les seconds meubles", "un champ");
   return out;
 }
 function ruleAll(St) {
-  if (!St.q) return rule(St.A[0]);
-  return active(St).flatMap(i => rule(St.A[i]).map(w => `${QNAME[St.q][i]} : ${w}`));
+  const out = !St.q ? rule(St.A[0]) : active(St).filter(i => i < 4).flatMap(i => rule(St.A[i]).map(w => `${QNAME[St.q][i]} : ${w}`));
+  return St.ab ? [...out, ...rule(St.A[4]).map(w => `Écusson : ${w}`)] : out;
 }
 
 /* ---------- interface ---------- */
@@ -589,7 +622,8 @@ function chipRow(el) {
 }
 function fillSelects() {
   F.part.innerHTML = DATA.partitions.map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
-  F.p.innerHTML = `<option value="">Aucune</option>` + DATA.pieces.filter(p => PIECES[p.kind]).map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
+  F.p.innerHTML = `<option value="">Aucune</option>` + [...DATA.pieces, ...(ATL.pieces || [])].filter(p => PIECES[p.kind]).map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
+  F.ln.innerHTML = `<option value="">Droit</option>` + Object.entries(CONTOUR_NOM).map(([k, v]) => `<option value="${k}">${cap(v)}</option>`).join("");
   const cats = [...new Set(ATL.meubles.map(m => m.cat))];
   F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
   F.m2.innerHTML = F.m.innerHTML;
@@ -610,9 +644,10 @@ function setField(k, v) {
 }
 function syncForm() {
   const a = cur(), m = a.m && meuble(a.m), m2 = count2(a) && meuble(a.m2);
-  const curs = S.q ? QNAME[S.q] : [];
-  $("#cur-seg").innerHTML = curs.map((l, i) => `<label><input type="radio" name="cur" value="${i}"${i === CUR ? " checked" : ""}><span>${l}</span></label>`).join("");
-  $("#r-cur").hidden = $("#q-note").hidden = !S.q;
+  /* quelles armes se modifient : les quartiers (ou l'écu seul), et l'écusson en abîme s'il y en a un */
+  const curs = [...(S.q ? QNAME[S.q].map((l, i) => [i, l]) : S.ab ? [[0, "Écu"]] : []), ...(S.ab ? [[4, "Écusson"]] : [])];
+  $("#cur-seg").innerHTML = curs.map(([i, l]) => `<label><input type="radio" name="cur" value="${i}"${i === CUR ? " checked" : ""}><span>${l}</span></label>`).join("");
+  $("#r-cur").hidden = $("#q-note").hidden = !curs.length;
   const cs = m ? countsFor(a) : [];
   F.nb.innerHTML = cs.map(n => `<option value="${n}">${n === "seme" ? "semé" : n}</option>`).join("");
   const ds = dispos(a);
@@ -629,6 +664,9 @@ function syncForm() {
   $("#r-t3").hidden = !tri;
   $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
   $("#r-tp").hidden = !a.p;
+  $("#r-ln").hidden = !a.p;
+  $("#r-ct").hidden = !(m && m.asym);
+  $("#r-ct2").hidden = !(m2 && m2.asym);
   $("#r-nb").hidden = !m || cs.length < 2;
   $("#r-d").hidden = !m || m.seul || ds.length < 2;
   $("#r-tm").hidden = !m;
@@ -732,7 +770,8 @@ function marker() {
   const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
   const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
   if (!p) return "";
-  const spots = !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
+  const spots = CUR === 4 ? [[100 - 100 * AB_K, 126 - 126 * AB_K, AB_K]]               // dans l'écusson en abîme
+    : !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
   return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
 }
 async function render() {
@@ -829,6 +868,11 @@ const EXEMPLES = [
   ["Deux meubles", { A0: { t1: "Azur", m: "lion", nb: "1", tm: "Or", m2: "etoile", nb2: "3", d2: "chef", tm2: "Argent", sz: "85", dy: "14" } }],
   ["Écartelé", { q: "2", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or" }, A1: { t1: "Gueules", m: "", p: "croix", tp: "Argent" } }],
   ["Heaume à panache", { hm: "hl", pa: "5", tl1: "Azur", tl2: "Or", pa1: "Or", pa2: "Azur", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or" } }],
+  ["Lion contourné", { A0: { t1: "Azur", m: "lion", nb: "1", tm: "Or", ta: "Gueules", ct: "1" } }],
+  ["Fasce ondée", { A0: { t1: "Argent", m: "", p: "fasce", tp: "Azur", ln: "onde" } }],
+  ["Bordure engrêlée", { A0: { t1: "Or", m: "lion", nb: "1", tm: "Sable", ta: "Gueules", p: "bordure", tp: "Gueules", ln: "engrele" } }],
+  ["Franc-quartier", { A0: { t1: "Or", m: "epee", nb: "1", tm: "Argent", p: "franc-quartier", tp: "Azur", pos: "sur" } }],
+  ["Sur le tout", { q: "2", ab: "1", A0: { t1: "Gueules", m: "lion", nb: "1", tm: "Or", ta: "Azur" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A4: { t1: "Argent", m: "", p: "croix", tp: "Gueules" } }],
 ];
 function example(ex) {
   const St = fresh();
@@ -849,12 +893,15 @@ function randomArms() {
   s.tm = s.p && s.pos === "sur" ? pick(metalChamp ? metaux : couleurs) : pick(metalChamp ? couleurs : metaux);
   s.ta = pick(["Gueules", "Azur", "Or"].filter(t => t !== s.tm));
   s.nb = "3";
+  s.ln = s.p && Math.random() < .25 ? pick(Object.keys(CONTOUR_NOM)) : "";
+  s.ct = (ATL.meubles.find(x => x.kind === s.m) || {}).asym && Math.random() < .3 ? "1" : "";
   return s;
 }
 function random() {
   const St = fresh();
   St.A[0] = randomArms();
   if (Math.random() < .25) { St.q = "2"; St.A[1] = randomArms(); }
+  if (Math.random() < .15) { St.ab = "1"; St.A[4] = randomArms(); }
   return St;
 }
 

@@ -53,8 +53,14 @@
       </div>
       <div class="row" id="r-cur"><span class="lab">Modifier</span><span class="seg" id="cur-seg" role="radiogroup" aria-label="Quartier modifié"></span></div>
       <div class="row"><span class="lab">Forme</span><select name="sh" aria-label="Forme de l'écu"></select></div>
+      <div class="row"><span class="lab">Sur le tout</span>
+        <span class="seg" role="radiogroup" aria-label="Écusson en abîme">
+          <label><input type="radio" name="ab" value=""><span>Sans écusson</span></label>
+          <label><input type="radio" name="ab" value="1"><span>Écusson en abîme</span></label>
+        </span>
+      </div>
       <p class="note">La forme de l'écu est indifférente au blasonnement : elle suit la mode et le pays (voir le chapitre <a href="index.html#ecu">L'écu</a>).</p>
-      <p class="note" id="q-note" hidden>Le champ, la pièce et les meubles ci-dessous sont ceux du quartier choisi.</p>
+      <p class="note" id="q-note" hidden>Le champ, la pièce et les meubles ci-dessous sont ceux du quartier, ou de l'écusson, choisi.</p>
     </fieldset>
     <fieldset>
       <legend>Le champ</legend>
@@ -78,6 +84,7 @@
       <legend>La pièce honorable</legend>
       <div class="row"><span class="lab">Pièce</span><select name="p" aria-label="Pièce honorable"></select></div>
       <div class="row" id="r-tp"><span class="lab">Émail</span><div class="chips" data-name="tp"></div></div>
+      <div class="row" id="r-ln"><span class="lab">Bord</span><select name="ln" aria-label="Bord de la pièce"></select></div>
     </fieldset>
     <fieldset>
       <legend>Les meubles</legend>
@@ -90,6 +97,12 @@
           <label><input type="radio" name="pos" value="sur"><span>Sur la pièce</span></label>
         </span>
       </div>
+      <div class="row" id="r-ct"><span class="lab">Sens</span>
+        <span class="seg" role="radiogroup" aria-label="Sens du meuble">
+          <label><input type="radio" name="ct" value=""><span>À dextre</span></label>
+          <label><input type="radio" name="ct" value="1"><span>Contourné</span></label>
+        </span>
+      </div>
       <div class="row" id="r-tm"><span class="lab">Émail</span><div class="chips" data-name="tm"></div></div>
       <div class="row" id="r-ta"><span class="lab" id="l-ta">Armé</span><div class="chips" data-name="ta"></div></div>
       <p class="note" id="m-note" hidden></p>
@@ -97,6 +110,12 @@
         <div class="row"><span class="lab">Second meuble</span><select name="m2" aria-label="Second meuble"></select></div>
         <div class="row" id="r-nb2"><span class="lab">Nombre</span><select name="nb2" aria-label="Nombre de seconds meubles"></select></div>
         <div class="row" id="r-d2"><span class="lab">Disposition</span><select name="d2" aria-label="Disposition des seconds meubles"></select></div>
+        <div class="row" id="r-ct2"><span class="lab">Sens</span>
+          <span class="seg" role="radiogroup" aria-label="Sens du second meuble">
+            <label><input type="radio" name="ct2" value=""><span>À dextre</span></label>
+            <label><input type="radio" name="ct2" value="1"><span>Contourné</span></label>
+          </span>
+        </div>
         <div class="row" id="r-tm2"><span class="lab">Émail</span><div class="chips" data-name="tm2"></div></div>
         <div class="row" id="r-ta2"><span class="lab" id="l-ta2">Armé</span><div class="chips" data-name="ta2"></div></div>
       </div>
