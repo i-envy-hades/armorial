@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'Armorial — Personnages</title>
+<meta name="description" content="Les armoiries de personnes ayant réellement existé — rois, princes, capitaines — avec leur blasonnement, l'auteur et la licence de chaque image.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/personnages.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — Personnages">
+<meta property="og:description" content="Les armoiries de personnes ayant réellement existé — rois, princes, capitaines — avec leur blasonnement, l'auteur et la licence de chaque image.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/personnages.html">
+<meta name="twitter:card" content="summary">
 <!--
   L'ARMORIAL — page « Personnages »
   Blasons de personnes ayant réellement existé. Contrairement au reste du site,
@@ -16,43 +27,11 @@
   peut manquer.
 -->
 <link rel="stylesheet" href="assets/site.css">
-<style>
-/* CSS propre à la page « Personnages » ; socle commun dans assets/site.css */
-a{text-decoration:none}
-a:hover{text-decoration:underline}
-.hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
-.hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
-.hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
-.note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
-.note .box{background:var(--vellum-2);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:8px;padding:1rem 1.2rem}
-.note .k{display:block;font-family:"Marcellus SC",serif;letter-spacing:1.5px;text-transform:uppercase;font-size:.72rem;color:var(--or);margin-bottom:.35rem}
-.note p{margin:.3rem 0;font-size:.98rem;color:var(--ink)}
-.grid{max-width:var(--maxw);margin:1.4rem auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem}
-.ar{background:var(--vellum-2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1rem 1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
-.ar .shield{height:210px;display:flex;align-items:center;justify-content:center;margin:.2rem auto .7rem}
-.ar .shield img{max-height:210px;max-width:100%;width:auto;height:auto;display:block;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
-.ar h3{font-family:"Marcellus",serif;font-weight:400;font-size:1.16rem;margin:.1rem 0 .1rem;color:var(--ink)}
-.ar .meta{font-size:.82rem;color:var(--ink-soft);margin:0 0 .5rem}
-.ar .bl{font-style:italic;font-size:.94rem;color:var(--ink);margin:.2rem 0 .4rem}
-.ar .desc{font-size:.9rem;color:var(--ink);margin:.1rem 0 .5rem}
-.ar .src{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.5rem 0 0;width:100%}
-.ar .src a{color:var(--ink-soft);text-decoration:underline}
-footer{background:var(--vellum-3)}
-.foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
-.foot b{color:var(--ink)}
-</style>
+<link rel="stylesheet" href="assets/personnages.css">
 </head>
 <body>
-<header class="mast">
-  <a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>
-  <nav>
-    <a href="index.html">L'encyclopédie</a>
-    <a href="blasons.html">Blasons réels</a>
-    <a href="personnages.html" class="here">Personnages</a>
-    <a href="lignees.html">Lignées</a>
-    <a href="atelier.html">Atelier</a>
-  </nav>
-</header>
+<header class="mast" data-page="personnages"></header>
+<script src="assets/chrome.js"></script>
 <section class="hero">
   <p class="eyebrow">Armorial illustré</p>
   <h1>Personnages</h1>
@@ -63,60 +42,11 @@ footer{background:var(--vellum-3)}
   <p>À la différence du reste du site (figures dessinées à neuf), les écus de cette page sont de <b>vraies images</b> tirées de <b>Wikimedia Commons</b>, retenues uniquement lorsqu'elles sont sous <b>licence libre</b> (CC BY-SA) et dont l'<b>auteur est identifié</b>. Chaque illustration est créditée sous elle : auteur, licence et lien. Le <b>blasonnement</b> reste un fait de domaine public.</p>
   <p>Conséquence assumée : cette page <b>n'est pas autonome</b> — les images sont chargées depuis Wikimedia. Si un fichier y est déplacé, l'image peut manquer. C'est le prix du réalisme.</p>
 </div></div>
+<noscript><p class="nojs">Cette page se construit avec JavaScript : activez-le pour voir les personnages.</p></noscript>
 <main class="grid" id="grid"></main>
 <footer><div class="foot">
-  <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
-    <defs>
-      <radialGradient id="wax" cx="38%" cy="32%" r="72%">
-        <stop offset="0%" stop-color="#c0362f"/>
-        <stop offset="58%" stop-color="#8e1b18"/>
-        <stop offset="100%" stop-color="#5d0f0d"/>
-      </radialGradient>
-    </defs>
-    <path fill="url(#wax)" d="M50,4 C62,4 70,10 78,14 C88,19 96,26 95,38 C94,49 88,55 88,64 C88,74 92,84 82,90 C72,96 63,92 52,93 C41,94 31,99 22,92 C13,85 16,74 13,64 C10,54 3,47 6,36 C9,25 20,20 28,14 C36,8 40,4 50,4 Z"/>
-    <path fill="none" stroke="#4a0c0a" stroke-width="1.2" opacity=".5" d="M50,12 C72,12 88,28 88,50 C88,72 72,88 50,88 C28,88 12,72 12,50 C12,28 28,12 50,12 Z"/>
-    <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
-  </svg>
   <p><b>L'Armorial</b> — page « Personnages ». Illustrations : Wikimedia Commons, sous licence libre, créditées individuellement. Blasonnements : domaine public. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
 </div></footer>
-<script>
-const FP = "https://commons.wikimedia.org/wiki/Special:FilePath/";
-const PAGE = "https://commons.wikimedia.org/wiki/File:";
-function src(file){ return FP + encodeURIComponent(file) + "?width=440"; }
-function page(file){ return PAGE + encodeURIComponent(file); }
-
-let PEOPLE;
-
-function card(p){
-  const alt = p.blason ? `Armoiries de ${p.nom} — ${p.blason}` : `Armoiries de ${p.nom}`;
-  return `<article class="ar">
-    <div class="shield"><img loading="lazy" src="${src(p.file)}" alt="${alt}"></div>
-    <h3>${p.nom}</h3>
-    <p class="meta">${p.meta}</p>
-    ${p.blason ? `<p class="bl">${p.blason}</p>` : ""}
-    ${p.desc ? `<p class="desc">${p.desc}</p>` : ""}
-    <p class="src">Illustration : <a href="${page(p.file)}" target="_blank" rel="noopener">« ${p.file} »</a> — ${p.auteur}, <a href="${p.licurl}" target="_blank" rel="noopener">${p.lic}</a>, via Wikimedia Commons. ${blLine(p)}</p>
-  </article>`;
-}
-function blLine(p){
-  const s = p.blasonSrc;
-  if (!p.blason) return "";
-  if (!s) return "Blasonnement : domaine public.";
-  return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
-}
-async function init(){
-  try{
-    const res = await fetch('data/personnages.json');
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    PEOPLE = await res.json();
-  }catch(err){
-    document.getElementById("grid").innerHTML =
-      `<p>Les données n'ont pas pu être chargées (${err.message||err}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;
-    return;
-  }
-  document.getElementById("grid").innerHTML = PEOPLE.map(card).join("");
-}
-init();
-</script>
+<script src="assets/personnages.js"></script>
 </body>
 </html>

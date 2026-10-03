@@ -3,36 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
 <title>L'Armorial — Encyclopédie du blason</title>
+<meta name="description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — Encyclopédie du blason">
+<meta property="og:description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/">
+<meta name="twitter:card" content="summary">
 
 <!--
   ============================================================================
-  L'ARMORIAL — encyclopédie ouverte de l'héraldique
+  L'ARMORIAL — encyclopédie ouverte de l'héraldique (page d'accueil)
   ============================================================================
-  Dépendances : assets/site.css (polices dans assets/fonts/), data/data.json.
+  Fichiers : assets/index.css (mise en page), assets/index.js (construction de
+  la page), assets/blason.js (dessin des figures, partagé avec l'Atelier),
+  assets/chrome.js (menu et sceau communs), data/data.json (tout le contenu).
   La page doit être servie par HTTP (fetch), pas ouverte depuis le disque.
 
-  COMMENT L'ÉTENDRE QUAND ON TROUVE UN NOUVEAU LIVRE
-  --------------------------------------------------
-  Tout le contenu vit dans l'objet DATA plus bas. Rien d'autre à toucher.
+  POUR L'ÉTENDRE — tout le contenu vit dans data/data.json, rien à coder
+  (le détail est dans README.md) :
 
-  1) Ajouter le livre dans DATA.sources :
-        mabague1998: {
-          auteur: "…", titre: "…", editeur: "…", annee: "…",
-          isbn: "…", type: "Ouvrage d'initiation" | "Référence savante" | …,
-          note: "…"
-        }
+  1) Ajouter un livre dans « sources » :
+        mabague1998: { auteur: "…", titre: "…", editeur: "…", annee: "…",
+                       isbn: "…", type: "Ouvrage d'initiation", note: "…" }
 
-  2) Enrichir un article existant ou en créer un dans DATA.sections[].articles :
+  2) Enrichir un article, ou en créer un, dans « sections[].articles » :
         { titre: "…", html: "<p>…</p>", sources: ["joubert1977", "mabague1998"] }
-     -> le tag « Sources » de l'article s'actualise tout seul.
+     -> le tag « Source » de l'article s'actualise tout seul.
 
-  3) Ajouter des entrées de glossaire dans DATA.glossaire :
+  3) Ajouter un terme au « glossaire » :
         { terme: "…", def: "…", sources: ["mabague1998"] }
 
-  4) (optionnel) ajouter une figure héraldique dans DATA.tinctures,
-     DATA.partitions ou DATA.pieces — elle sera dessinée automatiquement.
+  4) (optionnel) Ajouter une figure dans « tinctures », « partitions »,
+     « pieces », « meubles » ou « couronnes » : elle est dessinée toute seule,
+     à condition que son « kind » existe dans assets/blason.js.
 
   RÈGLE : on reformule toujours le savoir avec ses propres mots et on cite le
   livre. On ne copie jamais le texte ni les illustrations d'un ouvrage protégé.
@@ -40,193 +49,19 @@
 -->
 
 <link rel="stylesheet" href="assets/site.css">
-
-<style>
-/* CSS propre à l'encyclopédie ; le socle commun est dans assets/site.css */
-.mast .search{margin-left:1.2rem;position:relative;flex:0 1 340px;min-width:150px}
-.mast .search input{
-  width:100%;padding:.5rem .8rem .5rem 2rem;
-  font-family:"EB Garamond",serif;font-size:.95rem;color:var(--ink);
-  background:var(--vellum-2);border:1px solid var(--rule);border-radius:2px;
-}
-.mast .search input:focus{outline:2px solid var(--azure);outline-offset:1px;border-color:transparent}
-.mast .search svg{position:absolute;left:.55rem;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--ink-soft);opacity:.7;pointer-events:none}
-.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fbf8f0;border:1px solid var(--rule);border-radius:10px;box-shadow:0 18px 40px rgba(26,23,18,.22);max-height:min(60vh,420px);overflow-y:auto;z-index:60;padding:.3rem}
-.search-results .sr{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:.5rem .6rem;border-radius:7px;font:inherit;color:var(--ink)}
-.search-results .sr:hover,.search-results .sr.on{background:#efe8d6}
-.search-results .sr .t{font-family:"Marcellus SC",serif;letter-spacing:.3px;color:var(--gules);font-size:.9rem}
-.search-results .sr .o{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);opacity:.75;margin-left:.5rem}
-.search-results .sr .d{display:block;font-size:.82rem;color:var(--ink-soft);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.search-results .sr mark{background:#f4e2b0;color:inherit;border-radius:2px;padding:0 1px}
-.search-results .sr-empty{padding:.6rem .7rem;font-size:.85rem;color:var(--ink-soft)}
-
-/* ---------- hero ---------- */
-.hero{
-  position:relative;overflow:hidden;
-  padding:clamp(2.4rem,7vw,5rem) clamp(1rem,4vw,2rem) clamp(2rem,5vw,3.4rem);
-  text-align:center;
-  border-bottom:1px solid var(--rule);
-}
-.hero .frame{max-width:900px;margin:0 auto}
-.hero h1{
-  font-family:"Marcellus",serif;
-  font-size:clamp(2.6rem,8vw,5.4rem);
-  letter-spacing:.01em;margin:.2rem 0 .1rem;
-}
-.hero h1 .amp{color:var(--gules)}
-.hero .sub{
-  font-size:clamp(1.05rem,2.4vw,1.35rem);
-  color:var(--ink-soft);font-style:italic;max-width:44ch;margin:.6rem auto 0;
-}
-.hero-shield{width:130px;height:auto;margin:0 auto .35rem;display:block;filter:drop-shadow(0 14px 22px rgba(26,23,18,.28))}
-.hero-credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);opacity:.8;margin:0 auto 1.1rem;max-width:38ch}
-.hero-credit a{color:inherit}
-.hero .counts{
-  display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
-  margin-top:2rem;padding-top:1.6rem;
-}
-.hero .counts .c{min-width:96px;padding-top:.65rem;border-top:2px solid var(--or)}
-.hero .counts .n{font-family:"Marcellus",serif;font-size:2rem;color:var(--gules);display:block;line-height:1}
-.hero .counts .l{font-family:"Marcellus SC",serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
-
-/* ---------- layout shell ---------- */
-.shell{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2rem);display:grid;grid-template-columns:230px 1fr;gap:clamp(1.5rem,4vw,3.2rem);align-items:start}
-@media (max-width:860px){.shell{grid-template-columns:1fr}}
-
-/* ---------- index rail ---------- */
-.rail{position:sticky;top:70px;padding:1.8rem 0}
-@media (max-width:860px){
-  .rail{position:static;padding:1rem 0 0;border-bottom:1px solid var(--rule)}
-  .rail ol{display:flex;overflow-x:auto;gap:.4rem;padding-bottom:.6rem}
-  .rail li{white-space:nowrap}
-}
-.rail .eyebrow{margin-bottom:1rem}
-.rail ol{list-style:none;margin:0;padding:0;counter-reset:sec}
-.rail li{counter-increment:sec}
-.rail a{
-  display:block;text-decoration:none;color:var(--ink-soft);
-  font-size:.98rem;padding:.32rem 0;border-left:2px solid transparent;padding-left:.9rem;
-  transition:color .2s,border-color .2s;position:relative;
-}
-.rail a::before{content:counter(sec,decimal-leading-zero);font-family:"Marcellus SC",serif;font-size:.62rem;color:var(--or);position:absolute;left:-.1rem;top:.62rem;opacity:0}
-.rail a:hover{color:var(--ink)}
-.rail a.active{color:var(--gules);border-color:var(--gules)}
-@media (max-width:860px){.rail a{border-left:none;border-bottom:2px solid transparent;padding:.3rem .5rem}.rail a.active{border-color:var(--gules)}}
-
-/* ---------- main ---------- */
-main{padding:2rem 0 4rem;min-width:0}
-.section{padding:2.4rem 0;scroll-margin-top:70px}
-.section > .eyebrow{margin-bottom:.3rem}
-.section > h2{font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.4rem}
-.section .lede{font-size:1.12rem;color:var(--ink-soft);font-style:italic;max-width:60ch;margin:0 0 1.6rem}
-
-.article{margin:1.6rem 0}
-.article h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.28rem;margin:0 0 .35rem;color:var(--ink)}
-.article p{margin:.55rem 0}
-.article ul{margin:.5rem 0 .5rem 1.1rem;padding:0}
-.article li{margin:.28rem 0}
-.src-tag{
-  display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;
-  font-family:"Marcellus SC",serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-soft);
-}
-.src-tag b{color:var(--azure);font-weight:400}
-
-/* callout: état des connaissances */
-.note{
-  border-left:3px solid var(--azure);
-  background:linear-gradient(90deg,rgba(32,64,110,.06),transparent);
-  padding:.9rem 1.1rem;margin:1.3rem 0;border-radius:0 3px 3px 0;
-}
-.note .k{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azure);display:block;margin-bottom:.2rem}
-.note p{margin:.2rem 0;font-size:.98rem}
-
-/* ---------- figure galleries ---------- */
-.gal{display:grid;gap:1rem;margin:1.4rem 0}
-.gal.tinct{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-.gal.figs{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.fig{
-  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;
-  padding:.9rem;text-align:center;box-shadow:var(--shadow);
-}
-.fig svg{display:block;margin:0 auto}
-.tinct .fig{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;align-items:center;text-align:left;padding:.7rem .8rem}
-.tinct .fig .meta{grid-column:1/-1;border-top:1px solid var(--rule-soft);padding-top:.5rem;margin-top:.2rem}
-.fig .nom{font-family:"Marcellus",serif;font-size:1.02rem;color:var(--ink)}
-.fig .en{font-size:.82rem;color:var(--ink-soft);font-style:italic}
-.fig .cat{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
-.figs .fig .nom{font-size:.9rem;margin-top:.4rem}
-.figs .fig .en{font-size:.74rem}
-.figimg{height:148px;display:flex;align-items:center;justify-content:center}
-.figimg img{max-height:148px;max-width:100%;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
-.fig .credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);border-top:1px solid var(--rule-soft);margin-top:.55rem;padding-top:.4rem;word-break:break-word}
-.fig .credit a{color:var(--ink-soft);text-decoration:underline}
-.swlabel{font-family:"Marcellus SC",serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:.25rem}
-
-/* ---------- points de l'écu diagram ---------- */
-.ecu-diagram{background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.2rem;box-shadow:var(--shadow);text-align:center;margin:1.4rem 0}
-
-/* ---------- diagrammes comparatifs (droit du blason) ---------- */
-.galcat{font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gules);margin:2rem 0 .2rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
-.galcat:first-child{margin-top:.6rem}
-.diagram-row{display:flex;flex-wrap:wrap;gap:clamp(1rem,3vw,2.4rem);justify-content:center;align-items:flex-end}
-.diagram-row figure{margin:0;max-width:220px}
-.diagram-row figcaption{margin-top:.5rem;line-height:1.35}
-.diagram-row figcaption b{display:block;font-family:"Marcellus SC",serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gules)}
-.diagram-row figcaption span{display:block;font-size:.86rem;font-style:italic;color:var(--ink-soft)}
-.diagram-row .figimg{height:190px}
-.diagram-row .figimg img{max-height:190px}
-.diagram-row .credit{font-size:.6rem;line-height:1.35;color:var(--ink-soft);border-top:1px solid var(--rule-soft);margin-top:.55rem;padding-top:.4rem;word-break:break-word;text-align:left}
-.diagram-row .credit a{color:var(--ink-soft);text-decoration:underline}
-
-/* ---------- glossary ---------- */
-.glossary{margin-top:1rem}
-.gloss-count{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:.2rem 0 1rem}
-.gloss-item{padding:.7rem 0;border-bottom:1px solid var(--rule-soft);border-radius:6px;transition:background-color .5s ease}
-.gloss-item.flash{background:#f6ecc9}
-.gloss-item dt{font-family:"EB Garamond",serif;font-weight:600;font-size:1.08rem;color:var(--gules)}
-.gloss-item dd{margin:.15rem 0 0;color:var(--ink);font-size:1rem}
-.gloss-empty{color:var(--ink-soft);font-style:italic;padding:1rem 0}
-mark{background:rgba(169,129,46,.28);color:inherit;padding:0 .1em;border-radius:2px}
-
-/* ---------- bibliography ---------- */
-.biblio{display:grid;gap:1rem;margin-top:1rem}
-.book{
-  display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
-  background:var(--vellum-2);border:1px solid var(--rule);border-radius:3px;padding:1.1rem 1.2rem;box-shadow:var(--shadow);
-}
-.book .spine{width:34px;height:52px;border-radius:2px 3px 3px 2px;background:linear-gradient(90deg,var(--gules),#6d1512);box-shadow:inset -3px 0 5px rgba(0,0,0,.25);position:relative}
-.book .spine::after{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--or);opacity:.7}
-.book h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.12rem;font-style:italic}
-.book .by{color:var(--ink-soft)}
-.book .facts{font-size:.9rem;color:var(--ink-soft);margin-top:.25rem}
-.book .kind{font-family:"Marcellus SC",serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-top:.35rem}
-.book .note{margin:.5rem 0 0;border-left-color:var(--or);background:linear-gradient(90deg,rgba(169,129,46,.08),transparent)}
-.book .note p{font-size:.92rem}
-
-/* ---------- footer ---------- */
-footer{padding:2.4rem clamp(1rem,4vw,2rem);text-align:center;color:var(--ink-soft)}
-footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
-</style>
+<link rel="stylesheet" href="assets/index.css">
 </head>
 <body>
 
 <!-- ============ MASTHEAD ============ -->
-<header class="mast">
-  <a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>
-  <nav>
-    <a href="index.html" class="here">L'encyclopédie</a>
-    <a href="blasons.html">Blasons réels</a>
-    <a href="personnages.html">Personnages</a>
-    <a href="lignees.html">Lignées</a>
-    <a href="atelier.html">Atelier</a>
-  </nav>
+<header class="mast" data-page="index">
   <div class="search" role="search">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
     <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sresults">
     <div class="search-results" id="sresults" role="listbox" hidden></div>
   </div>
 </header>
+<script src="assets/chrome.js"></script>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -246,381 +81,16 @@ footer p{margin:.3rem auto;max-width:60ch;font-size:.92rem}
     <p class="eyebrow">Sommaire</p>
     <ol id="rail-list"></ol>
   </nav>
-  <main id="main"></main>
+  <main id="main"><noscript><p class="nojs">Cette encyclopédie se construit avec JavaScript : activez-le pour la lire.</p></noscript></main>
 </div>
 
 <footer>
-  <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
-    <defs>
-      <radialGradient id="wax" cx="38%" cy="32%" r="72%">
-        <stop offset="0%" stop-color="#c0362f"/>
-        <stop offset="58%" stop-color="#8e1b18"/>
-        <stop offset="100%" stop-color="#5d0f0d"/>
-      </radialGradient>
-    </defs>
-    <path fill="url(#wax)" d="M50,4 C62,4 70,10 78,14 C88,19 96,26 95,38 C94,49 88,55 88,64 C88,74 92,84 82,90 C72,96 63,92 52,93 C41,94 31,99 22,92 C13,85 16,74 13,64 C10,54 3,47 6,36 C9,25 20,20 28,14 C36,8 40,4 50,4 Z"/>
-    <path fill="none" stroke="#4a0c0a" stroke-width="1.2" opacity=".5" d="M50,12 C72,12 88,28 88,50 C88,72 72,88 50,88 C28,88 12,72 12,50 C12,28 28,12 50,12 Z"/>
-    <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
-  </svg>
   <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, la fleur de lis — celle de l'écu du bandeau comprise —, plusieurs croix et meubles d'objet, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
   <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
   <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
 </footer>
 
 <script src="assets/blason.js"></script>
-<script>
-/* ============================================================================
-   DATA — tout le contenu du site. Voir le commentaire en tête de fichier.
-   ============================================================================ */
-
-let DATA;
-
-/* ============================================================================
-   CONSTRUCTION DE LA PAGE
-   ============================================================================ */
-
-const escHtml = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-
-const commonsSrc  = f => "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(f) + "?width=300";
-const commonsPage = f => "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(f);
-
-/* Figure empruntée : la licence oblige à citer fichier, auteur et licence sous l'image. */
-function citedFig(im, alt, nom, en){
-  return `<div class="fig">
-    <div class="figimg"><img loading="lazy" src="${commonsSrc(im.file)}" alt="${alt}"></div>
-    <div class="nom">${nom}</div><div class="en">${en}</div>
-    <div class="credit"><a href="${commonsPage(im.file)}" target="_blank" rel="noopener">« ${im.file} »</a> — ${im.auteur}, <a href="${im.licurl}" target="_blank" rel="noopener">${im.lic}</a>, via Wikimedia Commons${im.note ? " · " + im.note : ""}</div>
-  </div>`;
-}
-
-/* « Pierre Joubert » -> Joubert ; « Wikipédia (contributeurs) » -> Wikipédia */
-function srcLabel(s){
-  const base = s.auteur.split(/[;(]/)[0].trim() || s.auteur.trim();
-  const words = base.split(/\s+/);
-  const who = (words.length > 1 && words.length <= 3) ? words[words.length-1] : base;
-  const an = (String(s.annee).match(/\d{4}/) || [s.annee])[0];
-  return `${who} (${an})`;
-}
-
-function srcTag(ids){
-  if(!ids || !ids.length) return "";
-  const names = [...new Set(ids.map(i=>{
-    const s = DATA.sources[i];
-    return s ? srcLabel(s) : i;
-  }))];
-  return `<div class="src-tag">Source : <b>${names.join(" · ")}</b></div>`;
-}
-
-function figureGallery(kind){
-  if(kind==="tinctures"){
-    const cards = DATA.tinctures.map(t=>`
-      <div class="fig">
-        <div><div>${shieldSwatch(t.nom,"couleur",84)}</div><div class="swlabel">Couleur</div></div>
-        <div><div>${shieldSwatch(t.nom,"gravure",84)}</div><div class="swlabel">Gravure</div></div>
-        <div class="meta"><div class="cat">${t.type}</div><div class="nom">${t.nom}</div><div class="en">${t.en}</div></div>
-      </div>`).join("");
-    return `<div class="gal tinct">${cards}</div>`;
-  }
-  if(kind==="partitions"){
-    const cards = DATA.partitions.map(p=>`
-      <div class="fig">${shieldPartition(p.kind,p.t)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="pieces"){
-    const cards = DATA.pieces.map(p=>`
-      <div class="fig">${shieldPiece(p.kind,p.champ,p.piece)}<div class="nom">${p.nom}</div><div class="en">${p.en}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="meubles"){
-    // un meuble porte `image` quand notre tracé ne le rendait pas : on cite alors une figure libre
-    const card = m => m.image
-      ? citedFig(m.image, `Meuble héraldique — ${m.nom}`, m.nom, m.en)
-      : `<div class="fig">${shieldCharge(m.kind,m.champ,m.charge)}<div class="nom">${m.nom}</div><div class="en">${m.en}</div></div>`;
-    const familles = [...new Set(DATA.meubles.map(m => m.cat))];
-    return familles.map(f =>
-      `<h4 class="galcat">${f}</h4><div class="gal figs">${DATA.meubles.filter(m => m.cat === f).map(card).join("")}</div>`
-    ).join("");
-  }
-  if(kind==="couronnes"){
-    const cards = DATA.couronnes.map(c => citedFig(c.image, `Couronne héraldique — ${c.nom}`, c.nom, c.en)).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  return "";
-}
-
-/* galeries du chapitre « Règles » : traits vierges, recoupements, courbes, alésures */
-function reglesGallery(kind){
-  if(kind==="traits"){
-    const cards = DATA.regles.traits.map(t=>`
-      <div class="fig">${shieldTraitDemo(t.dir)}<div class="nom">${t.nom}</div><div, suisse2013: suisseDiagram class="en">${t.en}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="recoupements"){
-    const cards = DATA.regles.recoupements.map(r=>`
-      <div class="fig">${shieldRecoupement(r.kind, r.n, tinctPaint('Argent'), tinctPaint('Gueules'))}<div class="nom">${r.nom}</div><div class="en">${r.en}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="courbes"){
-    const cards = DATA.regles.courbes.map(c=>`
-      <div class="fig">${shieldPartition(c.kind,["Argent","Azur"])}<div class="nom">${c.nom}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="alesees"){
-    const cards = DATA.regles.alesees.map(al=>`
-      <div class="fig">${shieldPieceAlesee(al.kind, "Or", al.alesee?"Sable":"Gueules", al.alesee)}<div class="nom">${al.nom}</div></div>`).join("");
-    return `<div class="gal figs">${cards}</div>`;
-  }
-  if(kind==="attributs" || kind==="positions"){
-    return `<dl class="glossary">${DATA[kind].map(t=>
-      `<div class="gloss-item"><dt>${t.terme}</dt><dd>${t.def}</dd></div>`).join("")}</dl>`;
-  }
-  if(kind==="repertoire"){
-    const fams = [...new Set(DATA.repertoire.map(r => r.cat))];
-    return fams.map(f => `<h4 class="galcat">${f}</h4><dl class="glossary">${
-      DATA.repertoire.filter(r => r.cat === f).map(r =>
-        `<div class="gloss-item"><dt>${r.terme}</dt><dd>${r.def}</dd></div>`).join("")}</dl>`).join("");
-  }
-  return "";
-}
-
-/* diagrammes appelés depuis un article par sa clé `diagram` */
-const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram, suisse2013: suisseDiagram };
-
-/* la recherche couvre le glossaire, le répertoire et les deux tables de vocabulaire ;
-   en cas d'homonymie, la définition du glossaire l'emporte */
-function searchPool(){
-  const pool = DATA.glossaire.map(g => ({ terme: g.terme, def: g.def, src: "Glossaire" }));
-  const vus = new Set(pool.map(p => p.terme.toLowerCase()));
-  const ajoute = (liste, src) => liste.forEach(t => {
-    if(vus.has(t.terme.toLowerCase())) return;
-    vus.add(t.terme.toLowerCase());
-    pool.push({ terme: t.terme, def: t.def, src: src || t.cat });
-  });
-  ajoute(DATA.attributs, "Attributs");
-  ajoute(DATA.positions, "Positions");
-  ajoute(DATA.repertoire, null);
-  return pool;
-}
-
-function buildMain(){
-  const main = document.getElementById("main");
-  let html = "";
-
-  DATA.sections.forEach(sec=>{
-    let arts = "";
-    sec.articles.forEach(a=>{
-      if(a.note){ arts += `<div class="article reveal">${a.html}</div>`; return; }
-      let extra = "";
-      if(a.diagram && DIAGRAMS[a.diagram]) extra = `<div class="ecu-diagram">${DIAGRAMS[a.diagram]()}</div>`;
-      if(a.gallery) extra += `<div class="reveal">${reglesGallery(a.gallery)}</div>`;
-      arts += `<div class="article reveal"><h3>${a.titre}</h3>${a.html}${extra}${srcTag(a.sources)}</div>`;
-    });
-    let gallery = sec.figure ? `<div class="reveal">${figureGallery(sec.figure)}</div>` : "";
-    html += `<section class="section" id="${sec.id}">
-      <p class="eyebrow">${sec.eyebrow}</p>
-      <h2 class="display">${sec.title}</h2>
-      <p class="lede">${sec.lede}</p>
-      ${arts}
-      ${gallery}
-    </section>
-    <hr class="ornament">`;
-  });
-
-  // ---- glossaire ----
-  html += `<section class="section" id="glossaire">
-    <p class="eyebrow">Répertoire</p>
-    <h2 class="display">Glossaire du blason</h2>
-    <p class="lede">Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.</p>
-    <p class="gloss-count" id="gcount"></p>
-    <dl class="glossary" id="glist"></dl>
-  </section>
-  <hr class="ornament">`;
-
-  // ---- bibliothèque ----
-  const books = Object.values(DATA.sources).map(s=>`
-    <div class="book reveal">
-      <div class="spine" aria-hidden="true"></div>
-      <div>
-        <h3>${s.titre}</h3>
-        <div class="by">${s.auteur}</div>
-        <div class="facts">${s.editeur}, ${s.annee}${s.isbn && s.isbn!=="—" ? " · ISBN "+s.isbn : ""}</div>
-        <div class="kind">${s.type}</div>
-        <div class="note"><p>${s.note}</p></div>
-      </div>
-    </div>`).join("");
-  html += `<section class="section" id="bibliotheque">
-    <p class="eyebrow">La bibliothèque</p>
-    <h2 class="display">Les sources</h2>
-    <p class="lede">Chaque ouvrage trouvé enrichit l'encyclopédie et rejoint cette étagère. C'est le cœur du projet : le savoir grandit livre après livre.</p>
-    <div class="biblio">${books}</div>
-  </section>`;
-
-  main.innerHTML = html;
-}
-
-function buildRail(){
-  const list = document.getElementById("rail-list");
-  const items = DATA.sections.map(s=>`<li><a href="#${s.id}">${s.label}</a></li>`).join("")
-    + `<li><a href="#glossaire">Glossaire</a></li>`
-    + `<li><a href="#bibliotheque">Sources</a></li>`;
-  list.innerHTML = items;
-}
-
-function buildCounts(){
-  const el = document.getElementById("counts");
-  const nSrc = Object.keys(DATA.sources).length;
-  const nTerms = DATA.glossaire.length + DATA.attributs.length + DATA.positions.length + DATA.repertoire.length;
-  const nFig = DATA.tinctures.length + DATA.partitions.length + DATA.pieces.length + DATA.meubles.length
-    + DATA.regles.traits.length + DATA.regles.recoupements.length + DATA.regles.courbes.length + DATA.regles.alesees.length;
-  el.innerHTML = `
-    <div class="c"><span class="n">${nSrc}</span><span class="l">Sources</span></div>
-    <div class="c"><span class="n">${nTerms}</span><span class="l">Termes</span></div>
-    <div class="c"><span class="n">${nFig}</span><span class="l">Figures</span></div>`;
-}
-
-/* ---- glossaire + recherche ---- */
-function renderGlossary(filter=""){
-  const list = document.getElementById("glist");
-  const count = document.getElementById("gcount");
-  const f = filter.trim().toLowerCase();
-  const items = DATA.glossaire
-    .slice()
-    .sort((a,b)=>a.terme.localeCompare(b.terme,"fr"))
-    .filter(g=> !f || g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
-  const hl = (txt)=> f ? txt.replace(new RegExp("("+f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") : txt;
-  if(!items.length){
-    list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${escHtml(filter)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
-  } else {
-    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}</dd></div>`).join("");
-  }
-  count.textContent = `${items.length} terme${items.length>1?"s":""}${f?" trouvé"+(items.length>1?"s":""):" répertoriés"}`;
-}
-
-/* ---- scroll spy ---- */
-function initSpy(){
-  const links = [...document.querySelectorAll(".rail a")];
-  const map = new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(l=>l.classList.remove("active"));
-        const a = map.get(e.target.id); if(a) a.classList.add("active");
-      }
-    });
-  },{rootMargin:"-45% 0px -50% 0px",threshold:0});
-  document.querySelectorAll(".section").forEach(s=>obs.observe(s));
-}
-
-/* ---- reveal on scroll ---- */
-function initReveal(){
-  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  const show = r => r.classList.add("in");
-  if(reduce){document.querySelectorAll(".reveal").forEach(show);return;}
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ show(e.target); obs.unobserve(e.target);} });
-  },{rootMargin:"0px 0px -8% 0px",threshold:0});
-  document.querySelectorAll(".reveal").forEach(r=>{
-    // Un bloc plus haut que l'écran ne peut pas s'animer utilement : on l'affiche d'emblée.
-    // C'est aussi ce qui le met à l'abri du piège du seuil — son ratio d'intersection
-    // plafonne à hauteur d'écran / hauteur du bloc et resterait sous tout seuil non nul.
-    if(r.getBoundingClientRect().height > innerHeight) show(r);
-    else obs.observe(r);
-  });
-}
-
-async function init(){
-  try{
-    const res = await fetch('data/data.json');
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    DATA = await res.json();
-  }catch(err){
-    document.getElementById("main").innerHTML =
-      `<section class="section"><p class="eyebrow">Erreur</p>
-       <h2 class="display">Données indisponibles</h2>
-       <p class="lede">Le fichier <code>data/data.json</code> n'a pas pu être chargé (${escHtml(err.message||err)}).</p>
-       <p>Si cette page est ouverte directement depuis le disque, servez-la par HTTP — par exemple <code>python -m http.server</code> — car <code>fetch</code> est bloqué sur <code>file://</code>.</p></section>`;
-    return;
-  }
-
-  document.body.insertAdjacentHTML("afterbegin", globalDefs());
-
-  /* ---- boot ---- */
-  const heroSvg = document.querySelector(".hero-shield");
-  heroSvg.innerHTML = heroShieldInner();
-
-  buildCounts();
-  buildRail();
-  buildMain();
-  renderGlossary();
-  initSpy();
-  initReveal();
-
-  /* ---- recherche : menu de résultats sous le champ ---- */
-  const qInput = document.getElementById("q");
-  const sBox = document.getElementById("sresults");
-  let sActive = -1;
-
-  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); }
-  function mark(txt,f){ return f ? txt.replace(new RegExp("("+escRe(f)+")","ig"),"<mark>$1</mark>") : txt; }
-
-  function runSearch(raw){
-    const f = raw.trim().toLowerCase();
-    renderGlossary(raw); // filtre aussi le glossaire complet, en bas
-    sActive = -1;
-    if(!f){ sBox.hidden = true; sBox.innerHTML = ""; qInput.setAttribute("aria-expanded","false"); return; }
-    const hits = searchPool()
-      .filter(g=> g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f))
-      .sort((a,b)=>{
-        const ai=a.terme.toLowerCase().startsWith(f)?0:1, bi=b.terme.toLowerCase().startsWith(f)?0:1;
-        return ai-bi || a.terme.localeCompare(b.terme,"fr");
-      })
-      .slice(0,8);
-    if(!hits.length){
-      sBox.innerHTML = `<div class="sr-empty">Aucun terme ne correspond à « ${escHtml(raw)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</div>`;
-    } else {
-      sBox.innerHTML = hits.map(g=>
-        `<button type="button" class="sr" role="option" data-term="${escHtml(g.terme)}">
-          <span class="t">${mark(g.terme,f)}</span><span class="o">${g.src}</span><span class="d">${mark(g.def,f)}</span>
-        </button>`).join("");
-    }
-    sBox.hidden = false;
-    qInput.setAttribute("aria-expanded","true");
-  }
-
-  function gotoTerm(term){
-    sBox.hidden = true;
-    qInput.setAttribute("aria-expanded","false");
-    renderGlossary(term);
-    // le terme peut vivre dans le glossaire, dans le répertoire ou dans une table de vocabulaire
-    setTimeout(()=>{
-      const items = [...document.querySelectorAll(".gloss-item")];
-      const hit = items.find(it=> it.querySelector("dt") && it.querySelector("dt").textContent.trim().toLowerCase()===term.trim().toLowerCase());
-      const cible = hit || document.getElementById("glossaire");
-      if(cible) cible.scrollIntoView({behavior:"smooth", block: hit ? "center" : "start"});
-      if(hit){ hit.classList.add("flash"); setTimeout(()=>hit.classList.remove("flash"),1600); }
-    },120);
-  }
-
-  qInput.addEventListener("input", e=> runSearch(e.target.value));
-  qInput.addEventListener("focus", e=>{ if(e.target.value.trim()) runSearch(e.target.value); });
-  qInput.addEventListener("keydown", e=>{
-    const opts = [...sBox.querySelectorAll(".sr")];
-    if(e.key==="ArrowDown" && opts.length){ e.preventDefault(); sActive=Math.min(sActive+1,opts.length-1); }
-    else if(e.key==="ArrowUp" && opts.length){ e.preventDefault(); sActive=Math.max(sActive-1,0); }
-    else if(e.key==="Enter"){ e.preventDefault(); const t=(opts[sActive]||opts[0]); if(t) gotoTerm(t.dataset.term); return; }
-    else if(e.key==="Escape"){ sBox.hidden=true; qInput.setAttribute("aria-expanded","false"); return; }
-    else return;
-    opts.forEach((o,i)=>o.classList.toggle("on", i===sActive));
-  });
-  sBox.addEventListener("mousedown", e=>{
-    const btn = e.target.closest(".sr");
-    if(btn){ e.preventDefault(); gotoTerm(btn.dataset.term); }
-  });
-  document.addEventListener("click", e=>{
-    if(!e.target.closest(".search")){ sBox.hidden=true; qInput.setAttribute("aria-expanded","false"); }
-  });
-}
-init();
-</script>
+<script src="assets/index.js"></script>
 </body>
 </html>

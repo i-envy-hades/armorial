@@ -1,0 +1,23 @@
+/* CSS propre à la page « Personnages » ; socle commun dans assets/site.css */
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
+.hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
+.hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
+.note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
+.note .box{background:var(--vellum-2);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:8px;padding:1rem 1.2rem}
+.note .k{display:block;font-family:"Marcellus SC",serif;letter-spacing:1.5px;text-transform:uppercase;font-size:.72rem;color:var(--or);margin-bottom:.35rem}
+.note p{margin:.3rem 0;font-size:.98rem;color:var(--ink)}
+.grid{max-width:var(--maxw);margin:1.4rem auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem}
+.ar{background:var(--vellum-2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1rem 1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
+.ar .shield{height:210px;display:flex;align-items:center;justify-content:center;margin:.2rem auto .7rem}
+.ar .shield img{max-height:210px;max-width:100%;width:auto;height:auto;display:block;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
+.ar h3{font-family:"Marcellus",serif;font-weight:400;font-size:1.16rem;margin:.1rem 0 .1rem;color:var(--ink)}
+.ar .meta{font-size:.82rem;color:var(--ink-soft);margin:0 0 .5rem}
+.ar .bl{font-style:italic;font-size:.94rem;color:var(--ink);margin:.2rem 0 .4rem}
+.ar .desc{font-size:.9rem;color:var(--ink);margin:.1rem 0 .5rem}
+.ar .src{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.5rem 0 0;width:100%}
+.ar .src a{color:var(--ink-soft);text-decoration:underline}
+footer{background:var(--vellum-3)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
+.foot b{color:var(--ink)}

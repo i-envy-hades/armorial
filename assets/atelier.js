@@ -1,0 +1,894 @@
+let DATA, ATL;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const F = $("#panel");
+
+/* ---------- grammaire ---------- */
+const MOT = { Or: "or", Argent: "argent", Gueules: "gueules", Azur: "azur", Sable: "sable", Sinople: "sinople", Pourpre: "pourpre", Hermine: "hermine", Vair: "vair" };
+const voy = w => /^[aeiouyhéèêâîôûœ]/i.test(w);
+const de = t => (voy(MOT[t]) ? "d'" : "de ") + MOT[t];
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit"];
+const art = (w, g) => voy(w) ? "l'" : g === "f" ? "la " : "le ";
+const aArt = (w, g) => voy(w) ? "à l'" : g === "f" ? "à la " : "au ";
+/* accorde les participes en -é : « armé et lampassé » → « armées et lampassées » */
+const agree = (phrase, g, pl) => phrase.replace(/é(?=[\s,]|$)/g, "é" + (g === "f" ? "e" : "") + (pl ? "s" : ""));
+const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
+
+const PIECES = {
+  chef: { g: "m" }, fasce: { g: "f" }, pal: { g: "m" }, bande: { g: "f" }, barre: { g: "f" },
+  croix: { g: "f" }, sautoir: { g: "m" }, chevron: { g: "m" }, bordure: { g: "f" }, orle: { g: "m" },
+};
+/* positions des meubles [x, y, échelle, rotation] dans le repère de l'écu (200 × 252) */
+const B = 38.3;
+/* champ plein : dispositions au choix ; la première est celle qu'on ne dit pas, sauf si sa phrase est donnée.
+   ph = participe au masculin singulier, accordé ensuite ; plein:true = exclu avec bordure ou orle */
+const PLEIN = {
+  1: [{ id: "", lab: "Au centre", ph: "", pts: [[100, 118, 1]] },
+      { id: "chef", lab: "En chef", ph: " en chef", pts: [[100, 60, .48]] },
+      { id: "pointe", lab: "En pointe", ph: " en pointe", pts: [[100, 176, .48]] },
+      { id: "cd", lab: "Au canton dextre du chef", ph: " au canton dextre du chef", pts: [[54, 54, .38]] },
+      { id: "cs", lab: "Au canton senestre du chef", ph: " au canton senestre du chef", pts: [[146, 54, .38]] }],
+  2: [{ id: "", lab: "En fasce", ph: " posé en fasce", pts: [[62, 112, .5], [138, 112, .5]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 70, .42], [100, 170, .42]] },
+      { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[62, 74, .4], [138, 164, .4]] },
+      { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[138, 74, .4], [62, 164, .4]] },
+      { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[64, 58, .36], [136, 58, .36]] }],
+  3: [{ id: "", lab: "2 et 1", ph: "", pts: [[62, 80, .46], [138, 80, .46], [100, 168, .46]] },
+      { id: "mal", lab: "1 et 2 (mal ordonnés)", ph: " mal ordonné", pts: [[100, 66, .42], [60, 158, .42], [140, 158, .42]] },
+      { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[48, 116, .3], [100, 116, .3], [152, 116, .3]] },
+      { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[50, 56, .28], [100, 56, .28], [150, 56, .28]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 54, .3], [100, 120, .3], [100, 186, .3]] },
+      { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[52, 62, .3], [100, 118, .3], [148, 174, .3]] },
+      { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[148, 62, .3], [100, 118, .3], [52, 174, .3]] }],
+  4: [{ id: "", lab: "2 et 2", ph: " posé 2 et 2", pts: [[62, 82, .42], [138, 82, .42], [62, 162, .42], [138, 162, .42]] },
+      { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 54, .28], [48, 118, .28], [152, 118, .28], [100, 184, .28]] },
+      { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[34, 116, .22], [78, 116, .22], [122, 116, .22], [166, 116, .22]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 46, .22], [100, 102, .22], [100, 158, .22], [100, 212, .2]] }],
+  5: [{ id: "", lab: "En sautoir", ph: " posé en sautoir", pts: [[56, 64, .34], [144, 64, .34], [100, 118, .34], [64, 176, .34], [136, 176, .34]] },
+      { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 50, .26], [46, 118, .26], [100, 118, .26], [154, 118, .26], [100, 186, .26]] },
+      { id: "221", lab: "2, 2 et 1", ph: " posé 2, 2 et 1", pts: [[64, 62, .3], [136, 62, .3], [64, 128, .3], [136, 128, .3], [100, 192, .3]] }],
+  6: [{ id: "", lab: "3, 2 et 1", ph: " posé 3, 2 et 1", pts: [[48, 62, .3], [100, 62, .3], [152, 62, .3], [72, 120, .3], [128, 120, .3], [100, 180, .3]] },
+      { id: "222", lab: "2, 2 et 2", ph: " posé 2, 2 et 2", pts: [[62, 60, .3], [138, 60, .3], [62, 124, .3], [138, 124, .3], [66, 186, .26], [134, 186, .26]] },
+      { id: "33", lab: "3 et 3", ph: " posé 3 et 3", pts: [[48, 78, .28], [100, 78, .28], [152, 78, .28], [48, 154, .28], [100, 154, .28], [152, 154, .28]] },
+      { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[48, 52, .2], [152, 52, .2], [34, 122, .2], [166, 122, .2], [58, 190, .2], [142, 190, .2]] }],
+  8: [{ id: "", lab: "En orle", ph: " en orle", plein: true, pts: [[42, 46, .18], [100, 38, .18], [158, 46, .18], [34, 112, .18], [166, 112, .18], [46, 176, .18], [154, 176, .18], [100, 218, .18]] }],
+};
+const PLEINLIKE = new Set(["plein", "bordure", "orle"]);
+const LAYOUT = {
+  chef: { 1: [[100, 154, .62]], 2: [[64, 146, .42], [136, 146, .42]], 3: [[62, 120, .36], [138, 120, .36], [100, 192, .34]] },
+  fasce: { 2: [[100, 60, .4], [100, 196, .34]], 3: [[62, 60, .36], [138, 60, .36], [100, 196, .34]],
+           6: [[46, 60, .26], [100, 60, .26], [154, 60, .26], [64, 186, .24], [100, 186, .24], [136, 186, .24]] },
+  pal: { 2: [[46, 118, .34], [154, 118, .34]] },
+  bande: { 2: [[146, 66, .36], [56, 178, .34]] },
+  barre: { 2: [[54, 66, .36], [144, 178, .34]] },
+  chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
+  croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
+  sautoir: { 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
+  "sur-chef": { 1: [[100, 47, .3]], 2: [[68, 47, .28], [132, 47, .28]], 3: [[52, 47, .26], [100, 47, .26], [148, 47, .26]] },
+  "sur-fasce": { 1: [[100, 130, .3]], 3: [[52, 130, .24], [100, 130, .24], [148, 130, .24]] },
+  "sur-pal": { 1: [[100, 120, .28]], 3: [[100, 62, .24], [100, 128, .24], [100, 194, .22]] },
+  "sur-bande": { 1: [[100, 126, .26, -B]], 3: [[54, 67, .22, -B], [100, 126, .22, -B], [146, 184, .22, -B]] },
+  "sur-barre": { 1: [[100, 126, .26, B]], 3: [[146, 67, .22, B], [100, 126, .22, B], [54, 184, .22, B]] },
+  "sur-chevron": { 1: [[100, 112, .22]], 3: [[100, 112, .22], [64, 152, .2], [136, 152, .2]] },
+  "sur-croix": { 1: [[100, 112, .22]], 5: [[100, 112, .18], [100, 54, .17], [100, 180, .16], [44, 112, .17], [156, 112, .17]] },
+  "sur-sautoir": { 1: [[100, 123, .24]], 5: [[100, 123, .2], [56, 68, .18], [144, 68, .18], [56, 178, .18], [144, 178, .18]] },
+};
+/* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
+const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
+const SHRINK = { plein: 1, bordure: .84, orle: .74 };
+for (const p of ["bordure", "orle"]) LAYOUT[p] = {};
+const VERBE = { croix: "cantonné", sautoir: "cantonné", pal: "accosté" };
+function dispo(ctx, n, g) {
+  if (ctx === "fasce" && n === 2) return g === "f" ? ", l'une en chef et l'autre en pointe" : ", l'un en chef et l'autre en pointe";
+  if (ctx === "fasce" && n === 6) return ", trois en chef et trois en pointe";
+  return "";
+}
+function dispos(s) {
+  const ctx = ctxOf(s);
+  if (!PLEINLIKE.has(ctx) || s.nb === "seme") return [];
+  return (PLEIN[s.nb] || []).filter(d => ctx === "plein" || !d.plein);
+}
+const dispoOf = s => { const ds = dispos(s); return ds.find(d => d.id === s.d) || ds[0]; };
+const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) : ""; };
+/* réglages graphiques : par groupe (sz, dx, dy ; sz2…) et par meuble (ad = "1.0:120,4,-6|2.1:…") */
+const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { const [k, v] = x.split(":"); return [k, (v || "").split(",").map(Number)]; }));
+const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
+const adjust = (pts, a, grp, sfx) => {
+  const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
+  return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, r]; });
+};
+function ptsFor(s, m) {
+  if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
+  let pts;
+  if (m.seul) pts = [[100, 116, 1]];
+  else if (PLEINLIKE.has(ctxOf(s))) { const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : []; }
+  else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
+  return adjust(pts, s, 1, "");
+}
+const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
+const pts2 = s => adjust(dispo2(s).pts, s, 2, "2");
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, pos: "autour", p: "" });
+const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
+const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
+
+/* ---------- état : les ornements, et jusqu'à quatre armes pour l'écartelé ---------- */
+const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
+  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "" };
+const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];
+/* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
+const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
+const bandPaint = (f = BAND.fill, w = 1.2) => `fill="${f}" stroke="#1a1712" stroke-width="${w}" stroke-linejoin="round"`;
+const wavy = (xa, xb, Y, k, rev) => {
+  const w = xb - xa, c = n => (xa + w * n).toFixed(1);
+  return rev ? `C${c(5 / 6)},${Y + k} ${c(2 / 3)},${Y + k} ${c(.5)},${Y} C${c(1 / 3)},${Y - k} ${c(1 / 6)},${Y - k} ${xa},${Y}`
+    : `C${c(1 / 6)},${Y - k} ${c(1 / 3)},${Y - k} ${c(.5)},${Y} C${c(2 / 3)},${Y + k} ${c(5 / 6)},${Y + k} ${xb},${Y}`;
+};
+const swallowBand = (sag) => (x0, x1, y0) => {
+  const tail = (x, d) => `<path d="M${x},${y0 + 5} L${x - d * 30},${y0 + 3} L${x - d * 17},${y0 + 19} L${x - d * 30},${y0 + 36} L${x},${y0 + 34} Z" ${bandPaint(BAND.back, 1.1)}/>`;
+  return {
+    d: `M${x0 + 8},${y0 + 20} Q100,${y0 + 20 + sag * 2} ${x1 - 8},${y0 + 20}`, h: 36 + sag,
+    svg: tail(x0 + 6, 1) + tail(x1 - 6, -1) + `<path d="M${x0},${y0} Q100,${y0 + sag * 2} ${x1},${y0} L${x1},${y0 + 30} Q100,${y0 + 30 + sag * 2} ${x0},${y0 + 30} Z" ${bandPaint()}/>`
+  };
+};
+const DEVISES = {
+  "": { nom: "Ruban à queues d'aronde", build: swallowBand(12) },
+  arc: { nom: "Ruban cintré", build: swallowBand(28) },
+  ondule: { nom: "Ruban ondulé", build: (x0, x1, y0) => {
+    const k = 28 / 3;
+    return { d: `M${x0 + 8},${y0 + 20} ${wavy(x0 + 8, x1 - 8, y0 + 20, k, false)}`, h: 43,
+      svg: `<path d="M${x0},${y0} ${wavy(x0, x1, y0, k, false)} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} ${wavy(x0, x1, y0 + 30, k, true)} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>` };
+  } },
+  droit: { nom: "Bandeau droit, bouts fendus", build: (x0, x1, y0) => ({
+    d: `M${x0 + 16},${y0 + 20} L${x1 - 16},${y0 + 20}`, h: 36,
+    svg: `<path d="M${x0},${y0} L${x1},${y0} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} L${x0},${y0 + 30} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>`
+  }) },
+  plis: { nom: "Banderole à plis", build: (x0, x1, y0) => {
+    const e = 26, s = 5, L = x0 + e, R = x1 - e;
+    const tail = (xo, xi, d) => `<path d="M${xi},${y0 + 12} L${xi},${y0 + 42} L${xo},${y0 + 42} L${xo + d * 12},${y0 + 27} L${xo},${y0 + 12} Z" ${bandPaint(BAND.back, 1.1)}/>`
+      + `<path d="M${xi - d * 10},${y0 + 30} L${xi},${y0 + 30} L${xi},${y0 + 42} Z" ${bandPaint(BAND.fold, 1)}/>`;
+    return { d: `M${L + 6},${y0 + 20} Q100,${y0 + 20 + s * 2} ${R - 6},${y0 + 20}`, h: 48,
+      svg: tail(x0, L + 10, 1) + tail(x1, R - 10, -1) + `<path d="M${L},${y0} Q100,${y0 + s * 2} ${R},${y0} L${R},${y0 + 30} Q100,${y0 + 30 + s * 2} ${L},${y0 + 30} Z" ${bandPaint()}/>` };
+  } },
+  rouleau: { nom: "Parchemin enroulé", build: (x0, x1, y0) => {
+    const roll = x => `<ellipse cx="${x}" cy="${y0 + 15}" rx="9" ry="16" ${bandPaint(BAND.back)}/><ellipse cx="${x}" cy="${y0 + 15}" rx="4" ry="9" ${bandPaint(BAND.fold, .9)}/>`;
+    return { d: `M${x0 + 28},${y0 + 20} L${x1 - 28},${y0 + 20}`, h: 34,
+      svg: `<path d="M${x0 + 12},${y0 + 2} L${x1 - 12},${y0 + 2} L${x1 - 12},${y0 + 28} L${x0 + 12},${y0 + 28} Z" ${bandPaint()}/>` + roll(x0 + 12) + roll(x1 - 12) };
+  } },
+  cartouche: { nom: "Cartouche à filet", build: (x0, x1, y0) => ({
+    d: `M${x0 + 18},${y0 + 20} L${x1 - 18},${y0 + 20}`, h: 36,
+    svg: `<rect x="${x0 + 6}" y="${y0}" width="${x1 - x0 - 12}" height="30" rx="7" ${bandPaint()}/>`
+      + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
+  }) }
+};
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "" };
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt"]);
+const PFX = ["", "b_", "c_", "d_"];
+const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
+let S = fresh(), CUR = 0, KT = "1";
+const active = St => !St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3];
+const cur = () => S.A[CUR];
+const meuble = k => ATL.meubles.find(m => m.kind === k);
+function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.p) : "plein"; }
+function countsFor(s) {
+  const m = meuble(s.m);
+  if (!m) return [];
+  if (m.seul) return ["1"];
+  const ctx = ctxOf(s);
+  const ns = PLEINLIKE.has(ctx) ? Object.keys(PLEIN).filter(n => ctx === "plein" || PLEIN[n].some(d => !d.plein)) : Object.keys(LAYOUT[ctx] || {});
+  return s.f === "plein" && s.pos !== "sur" ? [...ns, "seme"] : ns;
+}
+const num = (v, lo, hi, d) => { const n = Math.round(+v); return String(Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d); };
+function normalize(s) {
+  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!MOT[s[k]]) s[k] = ADEF[k];
+  if (!DATA.partitions.some(p => p.kind === s.part)) s.part = "parti";
+  if (s.p && !PIECES[s.p]) s.p = "";
+  if (s.m && !meuble(s.m)) s.m = "";
+  if (!s.p) s.pos = "autour";
+  if (s.p && s.pos === "sur" && !LAYOUT["sur-" + s.p]) s.pos = "autour";
+  if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = "sur";
+  const cs = countsFor(s);
+  if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
+  if (!dispos(s).some(d => d.id === s.d)) s.d = "";
+  if (!s.m || (s.m2 && !meuble(s.m2))) s.m2 = "";
+  if (!PLEIN[s.nb2]) s.nb2 = "3";
+  if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
+  for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
+  const map = adMap(s), n1 = count1(s), n2 = count2(s);
+  for (const [k, v] of map) {
+    const [g, i] = k.split(".").map(Number);
+    if (!(g === 1 && i < n1 || g === 2 && i < n2) || v.length !== 3 || v.some(x => !Number.isFinite(x))) map.delete(k);
+    else map.set(k, [+num(v[0], 30, 200, 100), +num(v[1], -60, 60, 0), +num(v[2], -60, 60, 0)]);
+  }
+  s.ad = adStr(map);
+  return s;
+}
+function normalizeAll(St) {
+  if (!["", "2", "4"].includes(St.q)) St.q = "";
+  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts"]) if (!MOT[St[k]]) St[k] = ODEF[k];
+  const O = ATL.ornements;
+  if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
+  if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
+  /* chaque modèle n'existe que dans certaines positions : on garde la position si possible, sinon le modèle */
+  const has = (t, p) => O.heaumes.some(h => h.type === t && h.pos === p);
+  if (!O.heaumeTypes[St.ht]) St.ht = "grilles";
+  if (!O.heaumePos[St.hp]) St.hp = "34";
+  if (!has(St.ht, St.hp)) St.hp = O.heaumes.find(h => h.type === St.ht).pos;
+  if (!["", "s"].includes(St.hs)) St.hs = "";
+  if (!(St.sh in SHAPES)) St.sh = "";
+  if (!["", "3", "5"].includes(St.pa)) St.pa = "";
+  if (!O.supports.some(x => x.kind === St.su)) St.su = "";
+  if (!O.colliers.some(c => c.kind === St.co)) St.co = "";
+  St.dv = String(St.dv || "").slice(0, 48);
+  if (!(St.dt in DEVISES)) St.dt = "";
+  St.A.forEach(normalize);
+  if (!active(St).includes(CUR)) CUR = 0;
+  return St;
+}
+
+/* ---------- meubles : dessinés ou empruntés, en <symbol> réutilisable ---------- */
+const SVGTXT = {};
+async function loadSvg(m) {
+  if (!m.file || SVGTXT[m.kind]) return;
+  const res = await fetch(m.file.path);
+  if (!res.ok) throw new Error(`HTTP ${res.status} — ${m.file.path}`);
+  SVGTXT[m.kind] = await res.text();
+}
+const flat = t => (DATA.tinctures.find(x => x.nom === t) || {}).color || "#888";
+function colorRe(c) {
+  const h = c.slice(1).toLowerCase();
+  const short = h[0] === h[1] && h[2] === h[3] && h[4] === h[5] ? `|#${h[0]}${h[2]}${h[4]}` : "";
+  const named = { ffffff: "|white", "000000": "|black", ff0000: "|red" }[h] || "";
+  return new RegExp(`(#${h}${short}${named})(?![0-9a-z])`, "gi");
+}
+function recolor(txt, m, tm, ta) {
+  let s = txt;
+  (m.main || []).forEach(c => { s = s.replace(colorRe(c), "@@M@@"); });
+  (m.accent || []).forEach(c => { s = s.replace(colorRe(c), "@@A@@"); });
+  (m.drop || []).forEach(c => { s = s.replace(colorRe(c), "none"); });
+  return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta));
+}
+/* les meubles dessinés n'ont pas tous la même taille d'origine : on les mesure une fois et on les ramène à celle des figures empruntées */
+const NORM = {};
+function normOf(m) {
+  if (!(m.kind in NORM)) {
+    const g = $("#measure g");
+    g.innerHTML = m.draw === "lis" ? fleurDeLisPaths() : chargeInner(m.draw, "#000", "#000", "#fff");
+    const b = g.getBBox(), k = Math.min(140 / b.width, 160 / b.height);
+    NORM[m.kind] = { k, t: `translate(100,116) scale(${k.toFixed(4)}) translate(${(-(b.x + b.width / 2)).toFixed(2)},${(-(b.y + b.height / 2)).toFixed(2)})` };
+    g.innerHTML = "";
+  }
+  return NORM[m.kind];
+}
+const normed = (m, inner) => {
+  if (m.seul) return inner;
+  const n = normOf(m);
+  return `<g transform="${n.t}">${inner.replace(/stroke-width="([\d.]+)"/g, (a, w) => `stroke-width="${(w / n.k).toFixed(2)}"`)}</g>`;
+};
+function symbolFor(s, id) {
+  const m = meuble(s.m), tm = s.tm, line = tm === "Sable" ? "#6b6560" : "#1a1712";
+  if (m.draw === "lis") return `<g id="${id}" fill="${tinctPaint(tm)}" stroke="${tm === "Sable" ? "#6b6560" : chgStroke(tm)}" stroke-width="${(1.6 / normOf(m).k).toFixed(2)}" stroke-linejoin="round">${normed(m, fleurDeLisPaths())}</g>`;
+  if (m.draw) {
+    const ground = s.pos === "sur" ? tinctPaint(s.tp) : tinctPaint(s.t1);
+    return `<g id="${id}">${normed(m, chargeInner(m.draw, tinctPaint(tm), tm === "Sable" ? "#6b6560" : chgStroke(tm), ground))}</g>`;
+  }
+  if (m.custom === "billette") return `<rect id="${id}" x="76" y="62" width="48" height="108" rx="2" fill="${tinctPaint(tm)}" stroke="${chgStroke(tm)}" stroke-width="1.4"/>`;
+  /* base : le fichier n'a pas de couleur propre, son dessin prend directement l'émail ; outline : contour fin pour les silhouettes */
+  const txt = recolor(SVGTXT[m.kind], m, tm, s.ta);
+  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null);
+}
+/* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
+function fileSymbol(txt, id, fill, outline) {
+  const [w, h] = vbOf(txt), vb = (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
+  const st = outline ? ` stroke="${outline.stroke}" stroke-width="${outline.width.toFixed(2)}" paint-order="stroke"` : "";
+  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}"${st} stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
+}
+function fileInner(txt, id) {
+  const root = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
+  const inner = [...root.childNodes].map(n => new XMLSerializer().serializeToString(n)).join("");
+  return inner.replace(/\bid="([^"]+)"/g, `id="${id}-$1"`).replace(/url\(#([^)]+)\)/g, (a, x) => x.startsWith("m-") || x.startsWith("h-") ? a : `url(#${id}-${x})`)
+              .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`);
+}
+function vbOf(txt) {
+  const r = txt.match(/<svg\b[^>]*>/)[0], vb = r.match(/viewBox="([^"]+)"/);
+  if (vb) { const p = vb[1].trim().split(/[\s,]+/).map(Number); return [p[2], p[3]]; }
+  return [parseFloat(r.match(/\swidth="([\d.]+)/)[1]), parseFloat(r.match(/\sheight="([\d.]+)/)[1])];
+}
+function useFor(m, id) { return m.file ? `<use href="#${id}" x="${m.box[0]}" y="${m.box[1]}" width="${m.box[2]}" height="${m.box[3]}"/>` : `<use href="#${id}"/>`; }
+
+const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; c < 6; c++) p.push([16 + c * 36 + (r % 2 ? 18 : 0), 22 + r * 30, .17]); return p; })();
+
+/* ---------- l'écu ---------- */
+const placeAll = (pts, m, id) => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${k}) translate(-100,-116)">${useFor(m, id)}</g>`).join("");
+function drawBody(s, u) {
+  let field;
+  if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
+  else if (s.f === "ray") field = recoupementInner(s.ray, +s.n, tinctPaint(s.t1), tinctPaint(s.t2));
+  else field = `<rect width="200" height="252" fill="${tinctPaint(s.t1)}"/>`;
+  const m = s.m && meuble(s.m), m2 = count2(s) && meuble(s.m2);
+  let defs = "", under = "", over = "";
+  if (m) {
+    defs += symbolFor(s, `chg-${u}`);
+    const g = placeAll(ptsFor(s, m), m, `chg-${u}`);
+    if (s.nb === "seme") under = g; else over = g;
+  }
+  if (m2) {
+    defs += symbolFor(arms2(s), `chg2-${u}`);
+    over += placeAll(pts2(s), m2, `chg2-${u}`);
+  }
+  const piece = s.p ? pieceInner(s.p, tinctPaint(s.tp)) : "";
+  return { defs, body: field + under + piece + over };
+}
+function draw(s, u = "a") {
+  const r = drawBody(s, u);
+  return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${shieldFinish()}`;
+}
+/* quartiers : la ligne horizontale passe là où l'écu a autant de surface au-dessus qu'en dessous (la pointe rétrécit le bas) ;
+   les armes de chaque quartier, réduites de moitié, sont centrées sur le barycentre de la partie visible */
+const QGEO = {};
+function quarterGeom() {
+  if (QGEO[SHIELD_D]) return QGEO[SHIELD_D];
+  const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D), pts = [];
+  for (let y = 0; y < 252; y++) for (let x = 0; x < 200; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) pts.push([x + .5, y + .5]);
+  const ys = pts.map(p => p[1]).sort((a, b) => a - b), split = Math.round(ys[Math.floor(ys.length / 2)]);
+  const acc = [0, 1, 2, 3].map(() => [0, 0, 0]);
+  for (const [x, y] of pts) { const q = (y < split ? 0 : 2) + (x < 100 ? 0 : 1); acc[q][0] += x; acc[q][1] += y; acc[q][2]++; }
+  const rects = [[0, 0, 100, split], [100, 0, 100, split], [0, split, 100, 252 - split], [100, split, 100, 252 - split]];
+  return QGEO[SHIELD_D] = { split, q: acc.map(([sx, sy, n], i) => ({ cx: sx / n, cy: sy / n, rect: rects[i] })) };
+}
+const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : [0, 1, 2, 3];
+/* deux couches par quartier : le champ et la pièce étirés pour couvrir tout le quartier, puis les armes entières
+   à demi-taille, centrées sur le barycentre de la partie visible (la pointe ne rogne plus les meubles du bas) */
+function qCover(g) {
+  const [rx, ry, rw, rh] = g.rect, s = Math.max(rw / 200, rh / 252), w = 200 * s, h = 252 * s;
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  return [clamp(g.cx - 100 * s, rx + rw - w, rx), clamp(g.cy - 112 * s, ry + rh - h, ry), s];
+}
+const qOrigin = g => [g.cx - 50, g.cy - 59, .5];
+/* formes citées au chapitre « L'écu » ; toutes tiennent dans la même boîte que l'écu français */
+const SHAPES = {
+  "": { nom: "Français moderne", d: "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z" },
+  ancien: { nom: "Triangulaire ancien", d: "M18,16 L182,16 C182,112 152,186 100,236 C48,186 18,112 18,16 Z" },
+  losange: { nom: "En losange", d: "M100,10 L190,126 L100,242 L10,126 Z" },
+  targe: { nom: "Targe échancrée", d: "M18,20 C64,10 136,10 182,20 L182,124 C182,180 146,214 100,236 C54,214 18,180 18,124 L18,92 C36,84 36,58 18,50 Z" },
+  ovale: { nom: "Cartouche ovale", d: "M100,12 A84,114 0 0 1 100,240 A84,114 0 0 1 100,12 Z" },
+  banniere: { nom: "Bannière (tournoi)", d: "M18,16 L182,16 L182,236 L18,236 Z" },
+  anglais: { nom: "Anglais à cornes", d: "M4,12 C26,8 54,32 100,28 C146,32 174,8 196,12 C188,20 182,30 182,44 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 L18,44 C18,30 12,20 4,12 Z" },
+  suisse: { nom: "Suisse à trois pointes", d: "M18,16 C48,32 80,30 100,12 C120,30 152,32 182,16 L182,110 C182,170 140,212 100,238 C60,212 18,170 18,110 Z" },
+  italien: { nom: "Italien, tête de cheval", d: "M54,16 C80,22 120,22 146,16 L190,90 C156,132 124,190 100,242 C76,190 44,132 10,90 Z" },
+  sannitique: { nom: "Italien, sannitique", d: "M20,16 L180,16 L180,214 Q180,230 164,230 L114,230 L100,242 L86,230 L36,230 Q20,230 20,214 Z" },
+  iberique: { nom: "Talon arrondi (ibérique)", d: "M18,16 L182,16 L182,126 C182,190 144,236 100,236 C56,236 18,190 18,126 Z" },
+  hongrois: { nom: "Hongrois, talon pointu", d: "M18,16 L182,16 L182,118 C182,182 146,220 112,228 L100,242 L88,228 C54,220 18,182 18,118 Z" },
+  pl16: { nom: "Polonais, à oreilles", d: "M18,12 C40,24 68,22 100,26 C132,22 160,24 182,12 L182,126 C182,190 144,236 100,236 C56,236 18,190 18,126 Z" },
+  pl17: { nom: "Polonais, à échancrures", d: "M100,22 C84,26 48,24 22,12 C26,34 42,50 42,62 C34,70 32,84 42,94 C26,102 16,120 18,140 C20,190 62,222 100,240 C138,222 180,190 182,140 C184,120 174,102 158,94 C168,84 166,70 158,62 C158,50 174,34 178,12 C152,24 116,26 100,22 Z" },
+  pl19: { nom: "Polonais, sommet en coin", d: "M18,12 C50,28 150,28 182,12 C186,96 150,192 100,242 C50,192 14,96 18,12 Z" },
+};
+function drawShield(St, u) {
+  SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
+  if (!St.q) return draw(St.A[0], u);
+  const G = quarterGeom();
+  let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
+  quarterArms(St).forEach((ai, qi) => {
+    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "" }, `${u}u${qi}`), g = G.q[qi];
+    const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
+    defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
+    body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
+      + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g></g>`;
+  });
+  body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${shieldFinish()}`;
+}
+
+/* ---------- les ornements extérieurs ---------- */
+const TXT = {};
+async function getText(path) {
+  if (!(path in TXT)) { const r = await fetch(path); if (!r.ok) throw new Error(`HTTP ${r.status} — ${path}`); TXT[path] = await r.text(); }
+}
+/* les couronnes sont des PNG : en data URI pour qu'elles survivent à l'export */
+async function getDataUri(path) {
+  if (path in TXT) return;
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(`HTTP ${r.status} — ${path}`);
+  const b = await r.blob();
+  TXT[path] = await new Promise((ok, ko) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = ko; fr.readAsDataURL(b); });
+}
+const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su), hm: s.hm ? O.heaumes.find(h => h.type === s.ht && h.pos === s.hp) || O.heaumes[0] : null }; };
+/* boîte du dessin réel d'un fichier (ses marges vides varient d'un fichier à l'autre) */
+const BBOX = {};
+function bboxOf(key, inner) {
+  if (!(key in BBOX)) { const g = $("#measure g"); g.innerHTML = inner; const b = g.getBBox(); BBOX[key] = [b.x, b.y, b.width, b.height]; g.innerHTML = ""; }
+  return BBOX[key];
+}
+async function loadAll(St) {
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); }
+  if (su) jobs.push(loadSvg(meuble(su.kind)));
+  if (hm) jobs.push(getText(hm.path));
+  if (St.hm === "hl") jobs.push(getText(O.lambrequins.path));
+  if (St.hm && St.pa) jobs.push(getText(O.plume.path));
+  if (co) jobs.push(getText(co.path));
+  if (cr) jobs.push(getDataUri(cr.png));
+  await Promise.all(jobs);
+}
+const suppAccent = s => s.ts === "Gueules" ? "Azur" : "Gueules";
+const PLAIN_VB = [0, 0, 200, 252];
+function compose(St, u = "a") {
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
+  if (!cr && !St.hm && !co && !su && !dv) return { vb: PLAIN_VB, svg: shield };
+  let defs = "", back = "", front = "", bb = [0, 0, 200, 252];
+  const grow = (x, y, w, h) => { bb = [Math.min(bb[0], x), Math.min(bb[1], y), Math.max(bb[2], x + w), Math.max(bb[3], y + h)]; };
+  const place = (id, x, y, w, h, flip) => { grow(x, y, w, h); return `<use href="#${id}" x="${x}" y="${y}" width="${w}" height="${h}"${flip ? ` transform="matrix(-1 0 0 1 ${2 * x + w} 0)"` : ""}/>`; };
+  const sized = (txt, W) => { const [w, h] = vbOf(txt); return W * h / w; };
+  if (St.hm === "hl") {
+    const L = O.lambrequins, t = TXT[L.path], W = 330;
+    defs += fileSymbol(recolor(t, L, St.tl1, St.tl2), `lb-${u}`, "#1a1712");
+    back += place(`lb-${u}`, 100 - W / 2, -66, W, sized(t, W));
+  }
+  if (co) {
+    const t = TXT[co.path], { W, x, y } = co.pos;
+    defs += fileSymbol(t, `co-${u}`, "#1a1712");
+    back += place(`co-${u}`, x, y, W, sized(t, W));
+  }
+  if (su) {
+    const t = SVGTXT[su.kind], [w, h] = vbOf(t), H = 236, W = Math.min(140, H * w / h);
+    defs += symbolFor({ ...ADEF, m: su.kind, tm: St.ts, ta: suppAccent(St) }, `su-${u}`);
+    back += place(`su-${u}`, 10 - W, 262 - H, W, H, true) + place(`su-${u}`, 190, 262 - H, W, H, false);
+  }
+  let top = 8, helm = "", crown = "", plumes = "", helmTop = 0, helmH = 0;
+  if (hm) {
+    /* le heaume est calé sur son dessin réel : centré sur l'écu, posé sur son bord supérieur ; « à senestre » = retourné */
+    const t = hm.main ? recolor(TXT[hm.path], hm, "Argent", "Argent") : TXT[hm.path];
+    const inner = fileInner(t, `hm-${u}`), [bx, by0, bw, bh] = bboxOf(hm.path, fileInner(TXT[hm.path], "m"));
+    const W = hm.pos === "profil" ? 100 : 112, k = W / bw, base = 50;
+    helmH = bh * k; helmTop = base - helmH;
+    const flip = St.hp !== "face" && St.hs !== hm.nat;
+    helm = `<g transform="translate(100,${base}) scale(${flip ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
+    grow(100 - W / 2, helmTop, W, helmH);
+    top = helmTop + helmH * .32;
+  }
+  let crownY = null, crownH = 0;
+  if (cr) {
+    const W = hm ? 96 : cr.kind === "roi" ? 120 : 150, H = W * cr.wh[1] / cr.wh[0], x = 100 - W / 2;
+    crownY = top - H; crownH = H;
+    grow(x, crownY, W, H);
+    crown = `<image href="${TXT[cr.png]}" x="${x}" y="${crownY}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid meet"/>`;
+  }
+  if (hm && St.pa) {
+    /* toutes les plumes partent d'un même point, caché par le heaume ou la couronne : on pivote sur la tige du fichier */
+    const P = O.plume, t = TXT[P.path], W = 92, H = sized(t, W), sx = W * P.tige[0], sy = H * P.tige[1];
+    const by = crownY !== null ? crownY + crownH * .55 : helmTop + helmH * .16;
+    defs += fileSymbol(recolor(t, P, St.pa1, St.pa1), `pl1-${u}`, "#1a1712") + fileSymbol(recolor(t, P, St.pa2, St.pa2), `pl2-${u}`, "#1a1712");
+    const angles = St.pa === "5" ? [-48, -24, 0, 24, 48] : [-28, 0, 28];
+    plumes = angles.map((a, i) => `<g transform="translate(100,${by.toFixed(1)}) rotate(${a}) scale(${a < 0 ? -1 : 1},1) translate(${-sx},${-sy})"><use href="#pl${i % 2 ? 2 : 1}-${u}" width="${W}" height="${H}"/></g>`).join("");
+    grow(100 - H - W / 2, by - H - 8, 2 * H + W, H + 8);
+  }
+  front += plumes + helm + crown;
+  if (dv) {
+    const y0 = co ? co.devY : 262, x0 = su ? -120 : -34, x1 = su ? 320 : 234;
+    const B = DEVISES[St.dt].build(x0, x1, y0);
+    const fs = Math.min(15, (x1 - x0 - 40) / (dv.length * .66));
+    defs += `<path id="dvp-${u}" d="${B.d}"/>`;
+    front += B.svg
+      + `<text font-family="'EB Garamond', Georgia, serif" font-size="${fs.toFixed(1)}" letter-spacing=".8" fill="#1a1712"><textPath href="#dvp-${u}" startOffset="50%" text-anchor="middle">${esc(dv.toUpperCase())}</textPath></text>`;
+    grow(x0 - 30, y0, x1 - x0 + 60, B.h);
+  }
+  const pad = 8;
+  return { vb: [bb[0] - pad, bb[1] - pad, bb[2] - bb[0] + 2 * pad, bb[3] - bb[1] + 2 * pad], svg: `<defs>${defs}</defs>${back}<g>${shield}</g>${front}` };
+}
+function ornText(St) {
+  const { cr, co, su } = ornOf(St), out = [];
+  if (St.hm) {
+    const O = ATL.ornements;
+    let t = `${O.heaumeTypes[St.ht]} ${O.heaumePos[St.hp].toLowerCase()}${St.hp !== "face" ? (St.hs === "s" ? ", tourné à senestre" : ", tourné à dextre") : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
+    if (St.pa) t += `, panache de ${NB[+St.pa]} plumes d'autruche ${St.pa1 === St.pa2 ? de(St.pa1) : de(St.pa1) + " et " + de(St.pa2)}`;
+    out.push(t);
+  }
+  if (cr) out.push(cr.nom);
+  if (su) {
+    const m = meuble(su.kind);
+    out.push(`${su.mot} : deux ${m.plur} ${de(St.ts)}${m.accent && m.accentMot ? " " + agree(m.accentMot, m.g, true) + " " + de(suppAccent(St)) : ""}`);
+  }
+  if (co) out.push(co.nom);
+  if (St.dv.trim()) out.push(`Devise : « ${St.dv.trim()} »`);
+  return out.join(" · ");
+}
+
+/* ---------- le blasonnement ---------- */
+function charges(s) {
+  const m = meuble(s.m), n = s.nb === "seme" ? 0 : +s.nb, pl = n > 1;
+  let nom = m.sing, nomPl = m.plur, g = m.g;
+  if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
+  const acc = m.accent && m.accentMot ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "";
+  return { m, n, pl, nom, nomPl, g, acc, tinct: de(s.tm) };
+}
+function semePhrase(c, s) {
+  const m = c.m;
+  if (m.kind === "roundel") return (classe(s.tm) === "Métal" ? "besanté " : "tourteauté ") + de(s.tm);
+  if (m.semeAdj) return m.semeAdj + " " + de(s.tm);
+  return `semé de ${c.nomPl} ${de(s.tm)}`;
+}
+function blazon(s) {
+  let champ;
+  if (s.f === "part") {
+    const p = DATA.partitions.find(x => x.kind === s.part);
+    champ = s.part.startsWith("tierce") ? `${p.nom} ${de(s.t1)}, ${de(s.t2)} et ${de(s.t3)}` : `${p.nom} ${de(s.t1)} et ${de(s.t2)}`;
+  } else if (s.f === "ray") {
+    const nom = { barry: "Fascé", paly: "Palé", bendy: "Bandé", bendysin: "Barré" }[s.ray];
+    champ = `${nom} ${de(s.t1)} et ${de(s.t2)}${s.n === "8" ? " de huit pièces" : ""}`;
+  } else champ = cap(de(s.t1));
+  const parti = s.f !== "plein";
+  const m = s.m && meuble(s.m);
+  const c = m ? charges(s) : null;
+  const seme = c && s.nb === "seme";
+  if (seme) champ += " " + semePhrase(c, s);
+  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + ` ${c.tinct}${c.acc}` : "";
+  const grpObj = c && !seme ? (c.n === 1 ? `${c.g === "f" ? "d'une" : "d'un"} ${c.nom}` : `de ${NB[c.n]} ${c.nomPl}`) + ` ${c.tinct}${c.acc}` : "";
+  /* le second meuble : « accompagné de … », « et de … », ou meuble du champ quand le premier est sur la pièce ou semé */
+  let x2 = null;
+  if (c && count2(s)) {
+    const c2 = charges(arms2(s)), ph = agree(dispo2(s).ph, c2.g, c2.pl);
+    const obj = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + ` ${c2.tinct}${c2.acc}${ph}`;
+    const alone = (c2.n === 1 ? `${aArt(c2.nom, c2.g)}${c2.nom}` : `à ${NB[c2.n]} ${c2.nomPl}`) + ` ${c2.tinct}${c2.acc}${ph}`;
+    x2 = { obj, alone, acc: `, ${agree("accompagné", c.g, c.pl)} ${obj}` };
+  }
+  if (!s.p) {
+    if (!c) return champ + (parti ? "" : " plein");
+    if (seme) return champ + (x2 ? ", " + x2.alone : "");
+    return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${parti && c.n === 1 ? " brochant sur le tout" : ""}${x2 ? x2.acc : ""}`;
+  }
+  const P = PIECES[s.p], pnom = s.p;
+  const pieceTxt = `${aArt(pnom, P.g)}${pnom} ${de(s.tp)}`;
+  const broche = parti && !["chef", "bordure", "orle"].includes(s.p) ? " brochant sur le tout" : "";
+  const sep = parti || seme ? ", " : " ";
+  const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
+  if (c && !seme && s.pos === "sur") {
+    const charge = agree("chargé", P.g, false);
+    return `${champ}${lead}${pieceTxt}${broche ? broche + "," : ""} ${charge} ${grpObj}`;
+  }
+  if (c && !seme && (s.p === "chef" || s.p === "bordure" || s.p === "orle"))
+    return `${champ}${parti ? "," : ""} ${groupe}${s.p === "chef" ? "" : dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt}`;
+  if (c && !seme) {
+    const v = agree(VERBE[s.p] || "accompagné", P.g, false);
+    return `${champ}${sep}${pieceTxt}${broche ? broche + "," : ""} ${v} ${grpObj}${dispo(s.p, c.n, c.g)}${x2 ? " et " + x2.obj : ""}`;
+  }
+  return `${champ}${lead}${pieceTxt}${broche}`;
+}
+const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
+const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
+function blazonAll(St) {
+  if (!St.q) return blazon(St.A[0]);
+  const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
+  return "Écartelé : " + active(St).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+}
+
+/* ---------- la règle des émaux ---------- */function rule(s) {
+  const out = [], word = t => MOT[t];
+  const check = (fig, sur, quoi, lieu) => {
+    const a = classe(fig), b = classe(sur);
+    if (fig === sur) out.push(`${quoi} ${de(fig)} sur ${lieu} ${de(sur)} : même émail, la figure disparaît.`);
+    else if (a === b && a !== "Fourrure") out.push(`${a === "Métal" ? "Métal sur métal" : "Couleur sur couleur"} : ${quoi} ${de(fig)} sur ${lieu} ${de(sur)}.`);
+  };
+  if (s.p && s.f === "plein") check(s.tp, s.t1, cap(art(s.p, PIECES[s.p].g)) + s.p, "un champ");
+  if (s.m) {
+    const m = meuble(s.m), quoi = s.nb === "1" || m.seul ? "Le meuble" : "Les meubles";
+    if (s.p && s.pos === "sur") check(s.tm, s.tp, quoi, s.p === "chef" ? "le chef" : "la pièce");
+    else if (s.f === "plein") check(s.tm, s.t1, quoi, "un champ");
+  }
+  if (count2(s) && s.f === "plein") check(s.tm2, s.t1, s.nb2 === "1" ? "Le second meuble" : "Les seconds meubles", "un champ");
+  return out;
+}
+function ruleAll(St) {
+  if (!St.q) return rule(St.A[0]);
+  return active(St).flatMap(i => rule(St.A[i]).map(w => `${QNAME[St.q][i]} : ${w}`));
+}
+
+/* ---------- interface ---------- */
+function chipRow(el) {
+  const name = el.dataset.name;
+  el.innerHTML = DATA.tinctures.map(t => `<label class="chip" title="${esc(t.nom)} (${esc(t.type.toLowerCase())})"><input type="radio" name="${name}" value="${esc(t.nom)}"><span>${shieldSwatch(t.nom, "couleur", 26)}${esc(t.nom)}</span></label>`).join("");
+}
+function fillSelects() {
+  F.part.innerHTML = DATA.partitions.map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
+  F.p.innerHTML = `<option value="">Aucune</option>` + DATA.pieces.filter(p => PIECES[p.kind]).map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
+  const cats = [...new Set(ATL.meubles.map(m => m.cat))];
+  F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
+  F.m2.innerHTML = F.m.innerHTML;
+  const O = ATL.ornements;
+  F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
+  F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
+  F.co.innerHTML = `<option value="">Aucun</option>` + O.colliers.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
+  F.dt.innerHTML = Object.entries(DEVISES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
+  F.sh.innerHTML = Object.entries(SHAPES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("");
+  F.ht.innerHTML = Object.entries(O.heaumeTypes).map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join("");
+  document.querySelectorAll(".chips").forEach(chipRow);
+}
+function setField(k, v) {
+  const el = F.elements[k];
+  if (!el) return;
+  if (el instanceof RadioNodeList || el.length && el[0]?.type === "radio") [...el].forEach(r => r.checked = r.value === v);
+  else if (el.value !== v) el.value = v;
+}
+function syncForm() {
+  const a = cur(), m = a.m && meuble(a.m), m2 = count2(a) && meuble(a.m2);
+  const curs = S.q ? QNAME[S.q] : [];
+  $("#cur-seg").innerHTML = curs.map((l, i) => `<label><input type="radio" name="cur" value="${i}"${i === CUR ? " checked" : ""}><span>${l}</span></label>`).join("");
+  $("#r-cur").hidden = $("#q-note").hidden = !S.q;
+  const cs = m ? countsFor(a) : [];
+  F.nb.innerHTML = cs.map(n => `<option value="${n}">${n === "seme" ? "semé" : n}</option>`).join("");
+  const ds = dispos(a);
+  F.d.innerHTML = ds.map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
+  F.nb2.innerHTML = Object.keys(PLEIN).map(n => `<option value="${n}">${n}</option>`).join("");
+  F.d2.innerHTML = PLEIN[a.nb2].map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
+  F.hp.innerHTML = ATL.ornements.heaumes.filter(h => h.type === S.ht).map(h => `<option value="${h.pos}">${esc(ATL.ornements.heaumePos[h.pos])}</option>`).join("");
+  for (const k of Object.keys(ADEF)) setField(k, a[k]);
+  for (const k of Object.keys(ODEF)) setField(k, S[k]);
+  const tri = a.f === "part" && a.part.startsWith("tierce");
+  $("#r-part").hidden = a.f !== "part";
+  $("#r-ray").hidden = a.f !== "ray";
+  $("#r-t2").hidden = a.f === "plein";
+  $("#r-t3").hidden = !tri;
+  $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
+  $("#r-tp").hidden = !a.p;
+  $("#r-nb").hidden = !m || cs.length < 2;
+  $("#r-d").hidden = !m || m.seul || ds.length < 2;
+  $("#r-tm").hidden = !m;
+  const canSur = a.p && LAYOUT["sur-" + a.p], canAut = a.p && LAYOUT[a.p];
+  $("#r-pos").hidden = !m || !a.p || !(canSur && canAut);
+  $("#r-ta").hidden = !m || !m.accent;
+  if (m?.accentMot) $("#l-ta").textContent = m.accentLabel || cap(m.accentMot.split(/[ ,]/)[0]);
+  const note = $("#m-note");
+  note.hidden = !m?.file;
+  if (m?.file) note.textContent = `Figure empruntée à Wikimedia Commons, recolorée ici : ${m.file.auteur}, ${m.file.lic}.`;
+  $("#r-m2").hidden = !m;
+  $("#r-nb2").hidden = $("#r-d2").hidden = $("#r-tm2").hidden = !m2;
+  $("#r-ta2").hidden = !m2 || !m2.accent;
+  if (m2?.accentMot) $("#l-ta2").textContent = m2.accentLabel || cap(m2.accentMot.split(/[ ,]/)[0]);
+  $("#r-tl1").hidden = $("#r-tl2").hidden = S.hm !== "hl";
+  $("#r-pa").hidden = !S.hm;
+  $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa;
+  $("#r-ts").hidden = !S.su;
+  $("#r-dt").hidden = !S.dv.trim();
+  $("#r-hp").hidden = !S.hm;
+  $("#r-hs").hidden = S.hp === "face";
+  $("#hm-note").textContent = "";
+  syncAdj();
+}
+/* la cible des curseurs : tout un groupe ("1", "2") ou un seul meuble ("1.0", "2.2"…) */
+function adjTargets(a) {
+  const m = a.m && meuble(a.m), m2 = count2(a) && meuble(a.m2), n1 = count1(a), n2 = count2(a), out = [];
+  const all = (mm, n, extra) => (n === 1 ? cap(art(mm.sing, mm.g)) + mm.sing : `${mm.g === "f" ? "Toutes les" : "Tous les"} ${mm.plur}`) + extra;
+  if (m) { out.push(["1", all(m, n1, "")]); if (n1 > 1) for (let i = 0; i < n1; i++) out.push([`1.${i}`, `${cap(m.sing)} n° ${i + 1}`]); }
+  if (m2) { out.push(["2", all(m2, n2, " (second meuble)")]); if (n2 > 1) for (let i = 0; i < n2; i++) out.push([`2.${i}`, `${cap(m2.sing)} n° ${i + 1} (second)`]); }
+  return out;
+}
+function adjValues(a, t) {
+  if (t === "1" || t === "2") { const x = t === "2" ? "2" : ""; return [+a["sz" + x], +a["dx" + x], +a["dy" + x]]; }
+  return adMap(a).get(t) || [100, 0, 0];
+}
+function syncAdj() {
+  const a = cur(), ts = adjTargets(a);
+  $("#r-adj").hidden = !ts.length;
+  if (!ts.length) return;
+  if (!ts.some(([v]) => v === KT)) KT = "1";
+  $("#k-t").innerHTML = ts.map(([v, l]) => `<option value="${v}"${v === KT ? " selected" : ""}>${esc(l)}</option>`).join("");
+  const [sz, dx, dy] = adjValues(a, KT);
+  $("#k-sz").value = sz; $("#k-dx").value = dx; $("#k-dy").value = -dy;
+  $("#o-sz").textContent = sz + " %";
+  $("#o-dx").textContent = dx ? (dx > 0 ? "→ " : "← ") + Math.abs(dx) : "0";
+  $("#o-dy").textContent = dy ? (dy < 0 ? "↑ " : "↓ ") + Math.abs(dy) : "0";
+}
+function setAdj(v) {
+  const a = cur();
+  if (KT === "1" || KT === "2") { const x = KT === "2" ? "2" : ""; a["sz" + x] = String(v[0]); a["dx" + x] = String(v[1]); a["dy" + x] = String(v[2]); return; }
+  const map = adMap(a);
+  if (v[0] === 100 && !v[1] && !v[2]) map.delete(KT); else map.set(KT, v);
+  a.ad = adStr(map);
+}
+function readForm() {
+  const a = cur();
+  for (const [obj, def] of [[a, ADEF], [S, ODEF]]) for (const k of Object.keys(def)) {
+    const el = F.elements[k];
+    if (!el) continue;
+    const v = el.value ?? "";
+    obj[k] = v === "" && !OPT.has(k) ? def[k] : v;
+  }
+}
+function encode(St) {
+  const q = new URLSearchParams();
+  for (const k of Object.keys(ODEF)) if (St[k] !== ODEF[k]) q.set(k, St[k]);
+  for (const i of active(St)) for (const k of Object.keys(ADEF)) if (St.A[i][k] !== ADEFS[i][k]) q.set(PFX[i] + k, St.A[i][k]);
+  return q.toString();
+}
+function decode(h) {
+  const q = new URLSearchParams(h.replace(/^#/, "")), St = fresh();
+  for (const k of Object.keys(ODEF)) if (q.has(k)) St[k] = q.get(k);
+  St.A.forEach((a, i) => { for (const k of Object.keys(ADEF)) if (q.has(PFX[i] + k)) a[k] = q.get(PFX[i] + k); });
+  return St;
+}
+
+function creditsOf(St) {
+  const out = [], add = (label, c, adapt) => {
+    const prev = out.find(x => x.commons === c.commons);
+    if (prev) { if (!prev.label.toLowerCase().includes(label.toLowerCase())) prev.label += ", " + label.toLowerCase(); }
+    else out.push({ label, adapt, commons: c.commons, auteur: c.auteur, lic: c.lic, licurl: c.licurl });
+  };
+  for (const i of active(St)) {
+    const a = St.A[i];
+    for (const k of [a.m, count2(a) ? a.m2 : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
+  }
+  const O = ATL.ornements, { cr, co, su } = ornOf(St);
+  if (su) add("Supports", meuble(su.kind).file, true);
+  if (cr) add(cr.nom, cr, false);
+  if (St.hm) add("Heaume", ornOf(St).hm, false);
+  if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
+  if (St.hm && St.pa) add("Panache", O.plume, true);
+  if (co) add(co.nom, co, false);
+  return out;
+}
+const creditTxt = c => `${c.label} : ${c.commons} — ${c.auteur}, ${c.lic}, via Wikimedia Commons${c.adapt ? ", couleurs adaptées" : ""}`;
+/* cercle d'or autour du meuble que visent les curseurs (aperçu seulement, pas dans les exports) */
+function marker() {
+  if (!/^[12]\.\d$/.test(KT)) return "";
+  const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
+  const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
+  if (!p) return "";
+  const spots = !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
+  return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
+}
+async function render() {
+  const tok = render.n = (render.n || 0) + 1;
+  S = normalizeAll(S);
+  try { await loadAll(S); }
+  catch (e) { $("#blz").textContent = "Une figure n'a pas pu être chargée (" + e.message + ")."; return; }
+  if (tok !== render.n) return;
+  syncForm();
+  const c = compose(S), sh = $("#shield");
+  sh.setAttribute("viewBox", c.vb.join(" "));
+  sh.classList.toggle("orn", c.vb !== PLAIN_VB);
+  sh.innerHTML = c.svg + marker();
+  const b = blazonAll(S);
+  $("#blz").textContent = b;
+  sh.setAttribute("aria-label", b);
+  const o = ornText(S);
+  $("#orn").hidden = !o;
+  $("#orn").textContent = o;
+  const w = ruleAll(S);
+  $("#warn").hidden = !w.length;
+  $("#warn").innerHTML = w.length ? w.map(esc).join("<br>") + ` La <a href="index.html#emaux">règle des émaux</a> l'interdit, sauf armes à enquerre${active(S).some(i => S.A[i].p === "chef") ? " — ou chef dit « cousu »" : ""}.` : "";
+  const cr = creditsOf(S);
+  $("#credits").innerHTML = cr.length ? cr.map(c => `${esc(c.label)} : <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">« ${esc(c.commons)} »</a> — ${esc(c.auteur)}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(c.lic)}</a>, via Wikimedia Commons${c.adapt ? " · couleurs adaptées" : ""}`).join("<br>") : "Toutes les figures de cet écu sont dessinées par l'encyclopédie.";
+  const h = encode(S);
+  history.replaceState(null, "", h ? "#" + h : location.pathname);
+}
+
+/* ---------- exports ---------- */
+function standalone(St, scale = 3) {
+  const defs = (globalDefs().match(/<defs>([\s\S]*)<\/defs>/) || ["", ""])[1];
+  const b = blazonAll(St), o = ornText(St), c = compose(St, "x");
+  const credit = creditsOf(St).map(creditTxt).join(" ; ");
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${c.vb.join(" ")}" width="${Math.round(c.vb[2] * scale)}" height="${Math.round(c.vb[3] * scale)}">
+  <title>${esc(b)}</title>
+  <desc>${esc("Composé dans l'Atelier de L'Armorial (CC BY-SA 4.0)." + (o ? " " + o + "." : "") + (credit ? " Figures : " + credit + "." : ""))}</desc>
+  <defs>${defs}</defs>
+  ${c.svg}
+</svg>`;
+}
+function download(name, blob) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+const slug = St => blazonAll(St).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "armes";
+function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 1800); }
+function wrapText(ctx, text, maxW) {
+  const words = text.split(" "), lines = [];
+  let line = "";
+  for (const w of words) { const t = line ? line + " " + w : w; if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; }
+  if (line) lines.push(line);
+  return lines;
+}
+async function exportPng(s) {
+  const svg = standalone(s, 3), vb = compose(s, "y").vb;
+  const img = new Image();
+  const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
+  await new Promise((ok, ko) => { img.onload = ok; img.onerror = ko; img.src = url; });
+  let iw = Math.min(780, vb[2] * 3), ih = iw * vb[3] / vb[2];
+  if (ih > 900) { iw *= 900 / ih; ih = 900; }
+  const W = 900, cv = document.createElement("canvas"), ctx = cv.getContext("2d");
+  ctx.font = "italic 30px 'EB Garamond', Georgia, serif";
+  const lines = wrapText(ctx, "« " + blazonAll(s) + " »", W - 120);
+  ctx.font = "italic 20px 'EB Garamond', Georgia, serif";
+  const oLines = ornText(s) ? wrapText(ctx, ornText(s), W - 120) : [];
+  ctx.font = "16px Georgia, serif";
+  const crLines = creditsOf(s).flatMap(c => wrapText(ctx, creditTxt(c), W - 120));
+  const H = 50 + ih + 40 + lines.length * 40 + oLines.length * 28 + 24 + crLines.length * 22 + 50;
+  cv.width = W; cv.height = H;
+  ctx.fillStyle = "#f3eee0"; ctx.fillRect(0, 0, W, H);
+  ctx.drawImage(img, (W - iw) / 2, 50, iw, ih);
+  URL.revokeObjectURL(url);
+  ctx.fillStyle = "#22201b"; ctx.textAlign = "center";
+  ctx.font = "italic 30px 'EB Garamond', Georgia, serif";
+  let y = 50 + ih + 56;
+  for (const l of lines) { ctx.fillText(l, W / 2, y); y += 40; }
+  ctx.font = "italic 20px 'EB Garamond', Georgia, serif"; ctx.fillStyle = "#4a4335";
+  for (const l of oLines) { ctx.fillText(l, W / 2, y); y += 28; }
+  ctx.font = "16px Georgia, serif"; ctx.fillStyle = "#5c5446"; y += 6;
+  for (const l of crLines) { ctx.fillText(l, W / 2, y); y += 22; }
+  ctx.fillText("L'Armorial — atelier · CC BY-SA 4.0", W / 2, H - 22);
+  cv.toBlob(b => download(slug(s) + ".png", b), "image/png");
+}
+
+/* ---------- hasard et exemples ---------- */
+const EXEMPLES = [
+  ["France moderne", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or" } }],
+  ["Savoie", { A0: { t1: "Gueules", p: "croix", tp: "Argent", m: "" } }],
+  ["Bretagne", { A0: { t1: "Hermine", m: "" } }],
+  ["Un semé", { A0: { t1: "Azur", m: "fleurdelis", nb: "seme", tm: "Or", p: "bande", tp: "Gueules" } }],
+  ["Chef chargé", { A0: { t1: "Argent", p: "chef", tp: "Azur", m: "etoile", nb: "3", pos: "sur", tm: "Or" } }],
+  ["Deux meubles", { A0: { t1: "Azur", m: "lion", nb: "1", tm: "Or", m2: "etoile", nb2: "3", d2: "chef", tm2: "Argent", sz: "85", dy: "14" } }],
+  ["Écartelé", { q: "2", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or" }, A1: { t1: "Gueules", m: "", p: "croix", tp: "Argent" } }],
+  ["Heaume à panache", { hm: "hl", pa: "5", tl1: "Azur", tl2: "Or", pa1: "Or", pa2: "Azur", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or" } }],
+];
+function example(ex) {
+  const St = fresh();
+  for (const [k, v] of Object.entries(ex)) { if (/^A\d$/.test(k)) Object.assign(St.A[+k[1]], v); else St[k] = v; }
+  return St;
+}
+function randomArms() {
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const metaux = ["Or", "Argent"], couleurs = ["Gueules", "Azur", "Sable", "Sinople"];
+  const metalChamp = Math.random() < .5;
+  const champ = pick(metalChamp ? metaux : couleurs), contre = list => pick(list.filter(t => t !== champ));
+  const s = { ...ADEF, f: Math.random() < .2 ? "part" : "plein", t1: champ, t2: contre(metalChamp ? couleurs : metaux) };
+  s.part = pick(["parti", "coupe", "tranche", "ecartele"]);
+  s.p = Math.random() < .6 ? pick(Object.keys(PIECES)) : "";
+  s.tp = pick(metalChamp ? couleurs : metaux);
+  s.m = Math.random() < .8 ? pick(ATL.meubles).kind : "";
+  s.pos = Math.random() < .4 ? "sur" : "autour";
+  s.tm = s.p && s.pos === "sur" ? pick(metalChamp ? metaux : couleurs) : pick(metalChamp ? couleurs : metaux);
+  s.ta = pick(["Gueules", "Azur", "Or"].filter(t => t !== s.tm));
+  s.nb = "3";
+  return s;
+}
+function random() {
+  const St = fresh();
+  St.A[0] = randomArms();
+  if (Math.random() < .25) { St.q = "2"; St.A[1] = randomArms(); }
+  return St;
+}
+
+/* ---------- démarrage ---------- */
+(async function init() {
+  try {
+    const [r1, r2] = await Promise.all([fetch("data/data.json"), fetch("data/atelier.json")]);
+    if (!r1.ok || !r2.ok) throw new Error(`HTTP ${r1.ok ? r2.status : r1.status}`);
+    DATA = await r1.json(); ATL = await r2.json();
+  } catch (e) {
+    $("#wrap").innerHTML = `<p class="err">Les données n'ont pas pu être chargées (${esc(e.message)}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.</p>`;
+    return;
+  }
+  $("#gdefs").innerHTML = globalDefs();
+  fillSelects();
+  $("#examples").innerHTML = EXEMPLES.map(([n], i) => `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
+  $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); CUR = 0; KT = "1"; render(); });
+  S = decode(location.hash);
+  const onInput = e => {
+    const t = e.target;
+    if (t.name === "cur") { CUR = +t.value; KT = "1"; syncForm(); render(); return; }
+    if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
+    if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
+    readForm(); render();
+  };
+  F.addEventListener("input", onInput);
+  F.addEventListener("change", onInput);
+  $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0]); render(); });
+  $("#b-link").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(location.href); toast("Lien copié"); } catch { toast("Copiez l'adresse de la page"); }
+  });
+  $("#b-svg").addEventListener("click", () => download(slug(S) + ".svg", new Blob([standalone(S)], { type: "image/svg+xml" })));
+  $("#b-png").addEventListener("click", () => exportPng(S).catch(e => toast("Export impossible : " + e.message)));
+  $("#b-rand").addEventListener("click", () => { S = random(); render(); });
+  addEventListener("hashchange", () => { S = decode(location.hash); render(); });
+  render();
+})();

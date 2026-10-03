@@ -1,0 +1,29 @@
+/* CSS propre à la page « Blasons réels » ; socle commun dans assets/site.css */
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{max-width:var(--maxw);margin:0 auto;padding:clamp(2.4rem,6vw,4rem) clamp(1rem,4vw,2.4rem) 1rem;text-align:center}
+.hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .6rem;color:var(--ink)}
+.hero p{max-width:64ch;margin:.4rem auto;color:var(--ink-soft);font-style:italic;font-size:1.06rem}
+.note{max-width:var(--maxw);margin:1.4rem auto;padding:0 clamp(1rem,4vw,2.4rem)}
+.note .box{background:var(--vellum-2);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:8px;padding:1rem 1.2rem}
+.note .k{display:block;font-family:"Marcellus SC",serif;letter-spacing:1.5px;text-transform:uppercase;font-size:.72rem;color:var(--or);margin-bottom:.35rem}
+.note p{margin:.3rem 0;font-size:.98rem;color:var(--ink)}
+.tools{max-width:var(--maxw);margin:1.6rem auto .4rem;padding:0 clamp(1rem,4vw,2.4rem);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.tools .lab{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;color:var(--ink-soft);margin-right:.3rem}
+.chip{font:inherit;font-size:.82rem;cursor:pointer;border:1px solid var(--rule);background:var(--vellum-2);color:var(--ink-soft);border-radius:999px;padding:.28rem .8rem}
+.chip:hover{border-color:var(--or)}
+.chip.on{background:var(--gules);border-color:var(--gules);color:#f4efe2}
+.count{margin-left:auto;font-size:.82rem;color:var(--ink-soft)}
+.grid{max-width:var(--maxw);margin:1rem auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+.ar{background:var(--vellum-2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1rem 1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
+.ar .shield{height:190px;display:flex;align-items:center;justify-content:center;margin:.2rem auto .7rem}
+.ar .shield img{max-height:190px;max-width:100%;width:auto;height:auto;display:block;filter:drop-shadow(0 8px 12px rgba(26,23,18,.22))}
+.ar .cat{font-family:"Marcellus SC",serif;letter-spacing:1px;text-transform:uppercase;font-size:.66rem;color:var(--or);margin-bottom:.2rem}
+.ar h3{font-family:"Marcellus",serif;font-weight:400;font-size:1.12rem;margin:.1rem 0 .1rem;color:var(--ink)}
+.ar .bl{font-style:italic;font-size:.93rem;color:var(--ink);margin:.2rem 0 .35rem}
+.ar .po{font-size:.83rem;color:var(--ink-soft);margin:.05rem 0 .5rem}
+.ar .src{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin:.4rem 0 0;width:100%}
+.ar .src a{color:var(--ink-soft);text-decoration:underline}
+footer{background:var(--vellum-3)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
+.foot b{color:var(--ink)}

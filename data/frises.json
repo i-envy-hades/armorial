@@ -1,0 +1,16 @@
+{
+  "groupes": [
+    "France",
+    "Îles Britanniques",
+    "Italie",
+    "Saint-Empire et Espagne",
+    "Église"
+  ],
+  "frises": [
+    {"id": "france", "nom": "Rois de France", "groupe": "France", "dates": "987 – 1870", "file": "data/lignees.json", "embleme": "Meuble héraldique Fleur de lys.svg"},
+    {"id": "angleterre", "nom": "Rois d'Angleterre", "groupe": "Îles Britanniques", "dates": "1066 – aujourd'hui", "file": "data/angleterre.json", "embleme": "Royal arms of England.svg", "mots": "Royaume-Uni Grande-Bretagne Plantagenêt Tudor Stuart Hanovre Windsor"},
+    {"id": "savoie", "nom": "Maison de Savoie", "groupe": "Italie", "dates": "1027 – 1946", "file": "data/savoie.json", "embleme": "Blason duché fr Savoie.svg", "mots": "Sardaigne Piémont"},
+    {"id": "habsbourg", "nom": "Habsbourg", "groupe": "Saint-Empire et Espagne", "dates": "1273 – 1918", "file": "data/habsbourg.json", "embleme": "Arms of the Archduchy of Austria.svg", "mots": "Autriche Espagne Empire Hongrie Bohême Lorraine"},
+    {"id": "papaute", "nom": "Papauté", "groupe": "Église", "dates": "Iᵉʳ siècle – aujourd'hui", "file": "data/papaute.json", "embleme": "Sede vacante.svg", "mots": "papes antipapes Rome Vatican"}
+  ]
+}
