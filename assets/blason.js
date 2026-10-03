@@ -425,7 +425,206 @@ function shieldPiece(kind, champ, piece){
     ${shieldFinish()}
   </svg>`;
 }
-function pieceInner(kind, pf){
+/* ---- contours des pièces : bords ondés, nébulés, dancettés, engrêlés, cannelés, denchés ----
+   Une pièce peut border son champ autrement qu'en ligne droite : « une fasce ondée, une bande engrêlée,
+   une croix denchée ». On dessine alors son contour à la main : chaque côté long est remplacé par une suite
+   de motifs, de sommet à sommet, si bien que les angles de la pièce ne bougent pas.
+   par : le motif est symétrique par rapport à son centre, de sorte que les deux bords d'une pièce courent
+         parallèlement (ondé, nébulé, dancetté) ; sinon il est tourné vers le dehors de la pièce
+         (engrêlé : arcs rentrants et pointes dehors ; cannelé : l'inverse ; denché : dents dehors).
+   h, l : hauteur et longueur d'un motif, en multiples d'une unité tirée de la largeur de la pièce. */
+const CONTOURS = {
+  onde:     { par: true,  h: 1,   l: 5.5 },
+  nebule:   { par: true,  h: 1,   l: 5.5 },
+  dancette: { par: true,  h: 1.7, l: 6.3 },
+  engrele:  { par: false, h: 1,   l: 2.8 },
+  cannele:  { par: false, h: 1,   l: 2.8 },
+  denche:   { par: false, h: 1,   l: 2.2 },
+};
+
+/* De A à B (le stylo est déjà en A) : n motifs du style `style`, de hauteur a.
+   cote vaut +1 si le dehors de la pièce est à gauche de la marche (contour parcouru dans le sens des aiguilles
+   d'une montre, comme tous les nôtres), -1 s'il est à droite (bord intérieur d'un anneau).
+   Un arc d'ellipse « sweep = 1 » bombe à gauche de la marche. */
+function bordDecore(A, B, n, style, a, cote){
+  const dx = (B[0] - A[0]) / n, dy = (B[1] - A[1]) / n, c = Math.hypot(dx, dy);
+  if(!c) return "";
+  const nx = cote * dy / c, ny = -cote * dx / c;                 // le dehors, de longueur 1
+  const rot = (Math.atan2(dy, dx) * 180 / Math.PI).toFixed(2);
+  const f = v => +v.toFixed(2);
+  let d = "";
+  for(let i = 0; i < n; i++){
+    const px = A[0] + dx * i, py = A[1] + dy * i;
+    const at = (s, h) => f(px + dx * s + nx * h) + "," + f(py + dy * s + ny * h);   // s : place le long du motif (0 à 1), h : écart vers le dehors
+    switch(style){
+      case "onde":     d += `Q${at(.25, a)} ${at(.5, 0)}Q${at(.75, -a)} ${at(1, 0)}`; break;
+      case "dancette": d += `L${at(.25, a / 2)}L${at(.75, -a / 2)}L${at(1, 0)}`; break;
+      case "denche":   d += `L${at(.5, a)}L${at(1, 0)}`; break;
+      case "nebule":   d += `A${f(c / 4)},${f(a)} ${rot} 0 ${cote > 0 ? 1 : 0} ${at(.5, 0)}A${f(c / 4)},${f(a)} ${rot} 0 ${cote > 0 ? 0 : 1} ${at(1, 0)}`; break;
+      case "engrele":  d += `A${f(c / 2)},${f(a)} ${rot} 0 ${cote > 0 ? 0 : 1} ${at(1, 0)}`; break;
+      case "cannele":  d += `A${f(c / 2)},${f(a)} ${rot} 0 ${cote > 0 ? 1 : 0} ${at(1, 0)}`; break;
+    }
+  }
+  return d;
+}
+
+/* contour fermé de sommets V ; flags[i] dit si le côté qui part du sommet i porte le motif */
+function polyDecore(V, flags, style, a, per){
+  const f = v => +v.toFixed(2);
+  let d = `M${f(V[0][0])},${f(V[0][1])}`;
+  V.forEach((A, i) => {
+    const B = V[(i + 1) % V.length];
+    d += flags[i] ? bordDecore(A, B, Math.max(1, Math.round(Math.hypot(B[0] - A[0], B[1] - A[1]) / per)), style, a, 1) : `L${f(B[0])},${f(B[1])}`;
+  });
+  return d + "Z";
+}
+
+/* bande droite de demi-largeur hw, de P0 à P1, prolongée de ext aux deux bouts (hors de l'écu) */
+function bandePoly(P0, P1, hw, ext = 0){
+  const l = Math.hypot(P1[0] - P0[0], P1[1] - P0[1]), u = [(P1[0] - P0[0]) / l, (P1[1] - P0[1]) / l], r = [-u[1], u[0]];
+  const A = [P0[0] - ext * u[0], P0[1] - ext * u[1]], B = [P1[0] + ext * u[0], P1[1] + ext * u[1]];
+  return { V: [[A[0] - hw * r[0], A[1] - hw * r[1]], [B[0] - hw * r[0], B[1] - hw * r[1]], [B[0] + hw * r[0], B[1] + hw * r[1]], [A[0] + hw * r[0], A[1] + hw * r[1]]],
+           flags: [true, false, true, false] };
+}
+
+/* pièce en branches (croix, sautoir, pairle, chevron) : des bandes de demi-largeur hw partent du point c dans les
+   directions dirs (rangées dans le sens des aiguilles d'une montre) et se prolongent sur la longueur ext, hors de
+   l'écu. Renvoie les sommets du contour et, pour chaque côté, s'il faut le décorer (les côtés longs, pas les bouts). */
+function branchesPoly(c, dirs, hw, ext){
+  const U = dirs.map(([x, y]) => { const l = Math.hypot(x, y); return [x / l, y / l]; }), m = U.length, V = [], flags = [];
+  const R = u => [-u[1], u[0]];                                  // à droite de la direction u (écran : y vers le bas)
+  const croise = (p, u, q, w) => { const det = u[0] * w[1] - u[1] * w[0], s = ((q[0] - p[0]) * w[1] - (q[1] - p[1]) * w[0]) / det; return [p[0] + s * u[0], p[1] + s * u[1]]; };
+  for(let i = 0; i < m; i++){
+    const u = U[i], w = U[(i + 1) % m], r = R(u), r2 = R(w), bout = [c[0] + ext * u[0], c[1] + ext * u[1]];
+    V.push([bout[0] - hw * r[0], bout[1] - hw * r[1]], [bout[0] + hw * r[0], bout[1] + hw * r[1]],
+           croise([c[0] + hw * r[0], c[1] + hw * r[1]], u, [c[0] - hw * r2[0], c[1] - hw * r2[1]], w));
+    flags.push(false, true, true);
+  }
+  return { V, flags };
+}
+const poly = V => "M" + V.map(p => p[0].toFixed(2) + "," + p[1].toFixed(2)).join("L") + "Z";
+const SAUTOIR_DIRS = [[172, -214], [172, 214], [-172, 214], [-172, -214]];     // des bouts du sautoir : coin chef senestre, pointe senestre…
+const PAIRLE_DIRS = [[82, -110], [0, 1], [-82, -110]];                            // du cœur vers les deux angles du chef et vers la pointe
+
+/* le contour de l'écu, mesuré sur un tracé caché dans la page (getTotalLength ne marche que sur ce qui est dans le document) */
+let MESURE_PATH = null;
+function contourMesure(){
+  if(!MESURE_PATH){
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "0"); svg.setAttribute("height", "0"); svg.setAttribute("aria-hidden", "true");
+    svg.style.cssText = "position:absolute;visibility:hidden";
+    MESURE_PATH = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    svg.appendChild(MESURE_PATH); document.body.appendChild(svg);
+  }
+  MESURE_PATH.setAttribute("d", SHIELD_D);
+  return MESURE_PATH;
+}
+/* Le contour de l'écu (réduit de k autour du point (100, cy)), décalé de `ecart` vers le dedans (négatif : vers le dehors),
+   parcouru dans le sens des aiguilles d'une montre et rendu en morceaux, d'un angle vif à l'autre. Chaque morceau est une
+   polyligne dont les deux bouts sont les coins nets du décalage (le « miter » : le coin reste vif), et dont les points
+   intermédiaires ne reculent jamais sur ces coins — c'est ce qui évite les boucles que le décalage d'un angle laisse d'ordinaire. */
+function contourDecale(ecart, k = 1, cy = 122){
+  const p = contourMesure(), L = p.getTotalLength(), pas = 1.5, N = Math.max(90, Math.ceil(L / pas));
+  const at = s => { const P = p.getPointAtLength(((s % L) + L) % L); return [100 + (P.x - 100) * k, cy + (P.y - cy) * k]; };
+  let aire = 0;                                                    // sens du tracé : les formes d'écu ne l'ont pas toutes dans le même
+  for(let i = 0; i < 64; i++){ const A = at(L * i / 64), B = at(L * (i + 1) / 64); aire += A[0] * B[1] - B[0] * A[1]; }
+  const sens = aire >= 0 ? 1 : -1, S = i => sens * L * i / N;
+  const dir = (A, B) => { const l = Math.hypot(B[0] - A[0], B[1] - A[1]) || 1; return [(B[0] - A[0]) / l, (B[1] - A[1]) / l]; };
+  const angle = (a, b) => Math.atan2(a[0] * b[1] - a[1] * b[0], a[0] * b[0] + a[1] * b[1]);        // de a vers b : > 0 à droite
+  const virage = Array.from({ length: N }, (_, i) => angle(dir(at(S(i) - sens * 4), at(S(i))), dir(at(S(i)), at(S(i) + sens * 4))));
+  const coins = [];                                                // les angles vifs : maxima locaux de plus de 30°, un par angle
+  for(let i = 0; i < N; i++){
+    const w = Math.abs(virage[i]);
+    if(w < Math.PI / 6) continue;
+    let max = true;
+    for(let j = 1; j <= 5 && max; j++) if(Math.abs(virage[(i - j + N) % N]) >= w || Math.abs(virage[(i + j) % N]) > w) max = false;
+    if(max) coins.push(i);
+  }
+  /* le coin net du décalage au sommet i, et de combien le décalage recule le long des côtés (négatif : il les prolonge) */
+  const miter = i => {
+    const s = S(i), a = dir(at(s - sens * 7), at(s - sens * 3)), b = dir(at(s + sens * 3), at(s + sens * 7)), A = at(s - sens * 5), B = at(s + sens * 5);
+    const det = a[0] * b[1] - a[1] * b[0];
+    let V = at(s);                                                 // le sommet : le croisement des deux côtés prolongés
+    if(Math.abs(det) > .05){ const u = ((B[0] - A[0]) * b[1] - (B[1] - A[1]) * b[0]) / det; V = [A[0] + u * a[0], A[1] + u * a[1]]; }
+    const n1 = [-a[1], a[0]], n2 = [-b[1], b[0]], den = Math.max(.35, 1 + n1[0] * n2[0] + n1[1] * n2[1]);
+    return { P: [V[0] + ecart * (n1[0] + n2[0]) / den, V[1] + ecart * (n1[1] + n2[1]) / den], recul: ecart * Math.tan(Math.max(-1.3, Math.min(1.3, angle(a, b) / 2))) };
+  };
+  const decale = s => { const [tx, ty] = dir(at(s - sens * 2), at(s + sens * 2)), P = at(s); return [P[0] - ecart * ty, P[1] + ecart * tx]; };    // le dedans est à droite : (-ty, tx)
+  if(!coins.length){                                               // aucun angle (l'ovale) : un seul anneau
+    const pts = Array.from({ length: N }, (_, i) => decale(S(i)));
+    return [[...pts, pts[0]]];
+  }
+  return coins.map((c, j) => {
+    const d = coins[(j + 1) % coins.length], long = (((d - c + N - 1) % N) + 1) * L / N, m0 = miter(c), m1 = miter(d);
+    const u0 = Math.max(0, m0.recul) + pas, u1 = long - Math.max(0, m1.recul) - pas, pts = [m0.P];
+    for(let u = u0; u <= u1; u += pas) pts.push(decale(S(c) + sens * u));
+    pts.push(m1.P);
+    return pts;
+  });
+}
+const longueur = pts => pts.slice(1).reduce((s, B, i) => s + Math.hypot(B[0] - pts[i][0], B[1] - pts[i][1]), 0);
+/* des morceaux : ces mêmes morceaux découpés en m motifs chacun (m[j] pour le morceau j), les points de départ des motifs, anneau fermé */
+function motifsAnneau(morceaux, m){
+  const out = [];
+  morceaux.forEach((pts, j) => {
+    const cum = [0]; pts.slice(1).forEach((B, i) => cum.push(cum[i] + Math.hypot(B[0] - pts[i][0], B[1] - pts[i][1])));
+    for(let i = 0; i < m[j]; i++){
+      const d = cum[cum.length - 1] * i / m[j];
+      let q = 1; while(q < cum.length - 1 && cum[q] < d) q++;
+      const f = (d - cum[q - 1]) / ((cum[q] - cum[q - 1]) || 1);
+      out.push([pts[q - 1][0] + (pts[q][0] - pts[q - 1][0]) * f, pts[q - 1][1] + (pts[q][1] - pts[q - 1][1]) * f]);
+    }
+  });
+  return out;
+}
+
+/* le tracé d'une pièce à bords décorés (ou null si on ne sait pas la décorer) ; mêmes cotes que pieceInner */
+function pieceDecoree(kind, line){
+  const S = CONTOURS[line];
+  const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12 }[kind];
+  if(!S || !largeur) return null;
+  const a0 = Math.min(9, Math.max(4, .2 * largeur)), a = a0 * S.h, per = a0 * S.l;
+  if(kind === "bordure" || kind === "orle"){
+    /* ces deux pièces sont minces : on décale le tracé pour que la largeur moyenne reste celle du bord droit
+       (les arcs de l'engrêlé la rognent, ceux du cannelé et les dents du denché l'augmentent) */
+    const moy = { engrele: -.785, cannele: .785, denche: .5 }[line] || 0;
+    /* l'orle est le contour réduit à .74, large de 16 × .74 ; la bordure ne montre que 13 au-dedans du contour */
+    const anneaux = kind === "bordure" ? [contourDecale(13 - moy * a)] : [contourDecale(-5.92 + moy * a, .74), contourDecale(5.92 - moy * a, .74)];
+    /* les anneaux d'une même pièce ont le même nombre de motifs par morceau : leurs ondes restent parallèles */
+    const nb = anneaux.every(r => r.length === anneaux[0].length) ? anneaux[0].map((_, j) => Math.max(1, Math.round(anneaux.reduce((s, r) => s + longueur(r[j]), 0) / anneaux.length / per))) : null;
+    const f = v => +v.toFixed(2);
+    const trace = (morceaux, cote) => {
+      const pts = motifsAnneau(morceaux, nb || morceaux.map(pt => Math.max(1, Math.round(longueur(pt) / per))));
+      let d = `M${f(pts[0][0])},${f(pts[0][1])}`;
+      pts.forEach((A, i) => { d += bordDecore(A, pts[(i + 1) % pts.length], 1, line, a, cote); });
+      return d + "Z";
+    };
+    return (kind === "bordure" ? SHIELD_D : "") + anneaux.map((r, i) => trace(r, i === 0 && kind === "orle" ? 1 : (S.par ? 1 : -1))).join("");
+  }
+  const forme = {
+    chef: () => ({ V: [[-30, -30], [230, -30], [230, 78], [-30, 78]], flags: [false, false, true, false] }),
+    fasce: () => bandePoly([0, 130], [200, 130], 26, 30),
+    pal: () => bandePoly([100, 0], [100, 252], 26, 30),
+    bande: () => bandePoly([6, 6], [200, 252], 23, 40),
+    barre: () => bandePoly([194, 6], [0, 252], 23, 40),
+    croix: () => branchesPoly([100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20, 170),
+    sautoir: () => branchesPoly([100, 123], SAUTOIR_DIRS, 20, 190),
+    chevron: () => branchesPoly([100, 96], [[70, 100], [-70, 100]], 17, 160),
+    canton: () => ({ V: [[-30, -30], [62, -30], [62, 54], [-30, 54]], flags: [false, true, true, false] }),
+    "franc-quartier": () => ({ V: [[-30, -30], [84, -30], [84, 74], [-30, 74]], flags: [false, true, true, false] }),
+    pairle: () => branchesPoly([100, 126], PAIRLE_DIRS, 17, 190),
+  }[kind]();
+  return polyDecore(forme.V, forme.flags, line, a, per);
+}
+
+/* line : contour décoré de la pièce (clé de CONTOURS), ou rien pour un bord droit */
+function pieceInner(kind, pf, line){
+  if(line){
+    let d = null;
+    try{ d = pieceDecoree(kind, line); }
+    catch(err){ console.warn("[armorial] contour décoré impossible, bord droit à la place :", err); }   // mesurer le contour demande un navigateur complet
+    if(d) return `<path d="${d}" fill="${pf}" fill-rule="evenodd"/>`;
+  }
   let inner = "";
   switch(kind){
     case "chef": inner = `<rect x="0" y="16" width="200" height="62" fill="${pf}"/>`; break;
@@ -438,6 +637,10 @@ function pieceInner(kind, pf){
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
     case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
     case "orle": inner = `<path d="${SHIELD_D}" transform="translate(100,122) scale(.74) translate(-100,-122)" fill="none" stroke="${pf}" stroke-width="16"/>`; break;
+    /* pièces secondaires de l'Atelier : le canton au coin dextre du chef, le franc-quartier (celui de l'Empire, 84 × 74), le pairle en Y */
+    case "canton": inner = `<rect x="0" y="0" width="62" height="54" fill="${pf}"/>`; break;
+    case "franc-quartier": inner = `<rect x="0" y="0" width="84" height="74" fill="${pf}"/>`; break;
+    case "pairle": inner = `<path d="${poly(branchesPoly([100, 126], PAIRLE_DIRS, 17, 190).V)}" fill="${pf}"/>`; break;
   }
   return inner;
 }

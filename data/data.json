@@ -473,6 +473,24 @@
       ]
     },
     {
+      "nom": "Coupé dancetté",
+      "en": "per fess dancetty",
+      "kind": "coupe-dancette",
+      "t": [
+        "Or",
+        "Gueules"
+      ]
+    },
+    {
+      "nom": "Coupé nébulé",
+      "en": "per fess nebuly",
+      "kind": "coupe-nebule",
+      "t": [
+        "Argent",
+        "Azur"
+      ]
+    },
+    {
       "nom": "Tiercé en pal",
       "en": "tierced per pale",
       "kind": "tierce-pal",

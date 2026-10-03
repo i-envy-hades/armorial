@@ -118,6 +118,10 @@ if isinstance(a, dict):
             if m["draw"] != "lis" and m["draw"] not in dessins["chargeInner"]:
                 err(f"atelier.json: meuble « {k} » : dessin « {m['draw']} » absent de chargeInner()")
         elif not m.get("custom"): err(f"atelier.json: meuble « {k} » sans dessin ni figure")
+    for pc in a.get("pieces", []):
+        for c in ("kind", "nom", "g"):
+            if not pc.get(c): err(f"atelier.json: pièce « {pc.get('kind')} » sans {c}")
+        if pc.get("kind") not in dessins["pieceInner"]: err(f"atelier.json: pièce « {pc.get('kind')} » sans dessin dans pieceInner() de assets/blason.js")
     o = a.get("ornements", {})
     for h in o.get("heaumes", []):
         if h.get("type") not in o.get("heaumeTypes", {}): err(f"atelier.json: heaume « {h.get('kind')} » : type inconnu")

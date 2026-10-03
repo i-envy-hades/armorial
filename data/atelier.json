@@ -7,6 +7,7 @@
    "plur": "lions",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/lion.svg",
     "commons": "Meuble héraldique Lion.svg",
@@ -35,6 +36,7 @@
    "plur": "aigles",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/aigle.svg",
     "commons": "Meuble héraldique Aigle éployée.svg",
@@ -391,6 +393,7 @@
    "plur": "merlettes",
    "g": "f",
    "cat": "Propres au blason",
+   "asym": true,
    "file": {
     "path": "assets/meubles/merlette.svg",
     "commons": "Héraldique meuble Merlette.svg",
@@ -1040,6 +1043,7 @@
    "plur": "clefs",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "asym": true,
    "draw": "clef"
   },
   {
@@ -1085,6 +1089,7 @@
    "plur": "cors",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "asym": true,
    "file": {
     "path": "assets/meubles/cor.svg",
     "commons": "Héraldique meuble cor.svg",
@@ -1236,6 +1241,7 @@
    "plur": "griffons",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/griffon.svg",
     "commons": "Meuble héraldique Griffon passant.svg",
@@ -1264,6 +1270,7 @@
    "plur": "dragons",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/dragon.svg",
     "commons": "Meuble héraldique Dragon.svg",
@@ -1292,6 +1299,7 @@
    "plur": "licornes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/licorne.svg",
     "commons": "Meuble héraldique Licorne saillante.svg",
@@ -1316,6 +1324,7 @@
    "plur": "panthères",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/panthere.svg",
     "commons": "Meuble héraldique Panthère.svg",
@@ -1344,6 +1353,7 @@
    "plur": "sirènes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/sirene.svg",
     "commons": "Meuble héraldique Sirène.svg",
@@ -1369,6 +1379,7 @@
    "plur": "mélusines",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/melusine.svg",
     "commons": "Meuble Sirene2queues.svg",
@@ -1393,6 +1404,7 @@
    "plur": "basilics",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/basilic.svg",
     "commons": "Basilic.svg",
@@ -1417,6 +1429,7 @@
    "plur": "phénix",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/phenix.svg",
     "commons": "Meuble héraldique Phénix sur son bûcher.svg",
@@ -1447,6 +1460,7 @@
    "plur": "salamandres",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/salamandre.svg",
     "commons": "Meuble héraldique Salamandre crachant.svg",
@@ -1477,6 +1491,7 @@
    "plur": "guivres",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "asym": true,
    "file": {
     "path": "assets/meubles/guivre.svg",
     "commons": "Meuble héraldique Guivre.svg",
@@ -1493,6 +1508,23 @@
    "main": [
     "#2b5df2"
    ]
+  }
+ ],
+ "pieces": [
+  {
+   "kind": "canton",
+   "nom": "Canton",
+   "g": "m"
+  },
+  {
+   "kind": "franc-quartier",
+   "nom": "Franc-quartier",
+   "g": "m"
+  },
+  {
+   "kind": "pairle",
+   "nom": "Pairle",
+   "g": "m"
   }
  ],
  "ornements": {
