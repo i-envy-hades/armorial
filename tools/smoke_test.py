@@ -174,6 +174,12 @@ CONNUES = [
     ({"A0": {"t1": "Gueules", "m": "lion", "nb": "3", "tm": "Or", "ta": "Azur", "ct": "1"}}, "De gueules à trois lions contournés d'or armés et lampassés d'azur"),
     ({"A0": {"t1": "Or", "m": "aigle", "nb": "1", "tm": "Sable", "ta": "Gueules", "ct": "1"}}, "D'or à l'aigle contournée de sable becquée, membrée et couronnée de gueules"),
     ({"A0": {"t1": "Azur", "m": "croissant", "nb": "1", "tm": "Or", "ct": "1"}}, "D'azur au croissant d'or"),   # un croissant ne se contourne pas par simple retournement : le réglage est ignoré
+    # les bêtes de Commons : léopard, lion passant, aigle à deux têtes, cerf, cheval (dont l'accord au pluriel : « chevaux cabrés »)
+    ({"A0": {"t1": "Gueules", "m": "leopard", "nb": "3", "d": "pal", "tm": "Or", "ta": "Azur", "sz": "190"}}, "De gueules à trois léopards d'or armés et lampassés d'azur posés en pal"),
+    ({"A0": {"t1": "Azur", "m": "lion-passant", "nb": "1", "tm": "Or", "ta": "Gueules"}}, "D'azur au lion passant d'or armé et lampassé de gueules"),
+    ({"A0": {"t1": "Or", "m": "aigle-bicephale", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'or à l'aigle bicéphale de sable becquée, membrée et couronnée de gueules"),
+    ({"A0": {"t1": "Sinople", "m": "cerf", "nb": "1", "tm": "Or"}}, "De sinople au cerf passant d'or"),
+    ({"A0": {"t1": "Azur", "m": "cheval", "nb": "3", "tm": "Argent", "ct": "1"}}, "D'azur à trois chevaux cabrés contournés d'argent"),
     # pièces propres à l'Atelier
     ({"A0": {"t1": "Argent", "m": "", "p": "canton", "tp": "Gueules"}}, "D'argent au canton de gueules"),
     ({"A0": {"t1": "Or", "m": "epee", "nb": "1", "tm": "Argent", "p": "franc-quartier", "tp": "Azur", "pos": "sur"}}, "D'or au franc-quartier d'azur chargé d'une épée d'argent"),

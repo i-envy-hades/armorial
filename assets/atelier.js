@@ -872,6 +872,8 @@ const EXEMPLES = [
   ["Fasce ondée", { A0: { t1: "Argent", m: "", p: "fasce", tp: "Azur", ln: "onde" } }],
   ["Bordure engrêlée", { A0: { t1: "Or", m: "lion", nb: "1", tm: "Sable", ta: "Gueules", p: "bordure", tp: "Gueules", ln: "engrele" } }],
   ["Franc-quartier", { A0: { t1: "Or", m: "epee", nb: "1", tm: "Argent", p: "franc-quartier", tp: "Azur", pos: "sur" } }],
+  ["Angleterre", { A0: { t1: "Gueules", m: "leopard", nb: "3", d: "pal", tm: "Or", ta: "Azur", sz: "190" } }],
+  ["Aigle bicéphale", { A0: { t1: "Or", m: "aigle-bicephale", nb: "1", tm: "Sable", ta: "Gueules" } }],
   ["Sur le tout", { q: "2", ab: "1", A0: { t1: "Gueules", m: "lion", nb: "1", tm: "Or", ta: "Azur" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A4: { t1: "Argent", m: "", p: "croix", tp: "Gueules" } }],
 ];
 function example(ex) {
