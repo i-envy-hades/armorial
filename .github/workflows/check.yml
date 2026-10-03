@@ -1,7 +1,8 @@
-name: Vérification des données
+name: Vérification du site
 on: [push, pull_request]
 jobs:
-  check:
+  donnees:
+    name: Cohérence des données et des gabarits
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -9,3 +10,15 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/check_data.py
+
+  navigateur:
+    name: Test de fumée (vrai navigateur)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python tools/smoke_test.py

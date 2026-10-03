@@ -1,7 +1,7 @@
 /* ============================================================================
-   L'ARMORIAL — feuille de style commune aux trois pages
+   L'ARMORIAL — feuille de style commune à toutes les pages
    Variables, masthead, parchemin, ornements, animations.
-   Le CSS propre à une page reste dans cette page.
+   Le CSS propre à une page est dans assets/<page>.css (lignees.html garde le sien en ligne).
    ============================================================================ */
 
 /* Polices auto-hébergées — SIL Open Font License 1.1, voir fonts/OFL-*.txt.
@@ -188,3 +188,6 @@ footer .fine{font-size:.78rem;opacity:.85}
 }
 
 :focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+
+/* ---------- sans JavaScript : les pages se construisent par script, on le dit ---------- */
+.nojs{max-width:60ch;margin:2rem auto;padding:0 1rem;text-align:center;font-style:italic;color:var(--ink-soft)}
