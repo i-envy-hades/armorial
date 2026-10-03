@@ -771,6 +771,36 @@
       }
     },
     {
+      "kind": "lion-passant",
+      "nom": "Lion passant",
+      "en": "lion passant",
+      "champ": "Azur",
+      "charge": "Or",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Lion léopardé.svg",
+        "auteur": "Syryatsu",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
+    },
+    {
+      "kind": "leopard",
+      "nom": "Léopard",
+      "en": "lion passant guardant",
+      "champ": "Gueules",
+      "charge": "Or",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Léopard.svg",
+        "auteur": "Syryatsu",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
+    },
+    {
       "kind": "aigle",
       "nom": "Aigle éployée",
       "en": "eagle displayed",
@@ -782,6 +812,21 @@
         "auteur": "HeraldLanguage",
         "lic": "CC BY 4.0",
         "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
+    },
+    {
+      "kind": "aigle-bicephale",
+      "nom": "Aigle bicéphale",
+      "en": "double-headed eagle displayed",
+      "champ": "Or",
+      "charge": "Sable",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Aigle bicéphale éployée.svg",
+        "auteur": "Syryatsu et Thom.lanaud",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
         "note": "Meuble héraldique publié sur Wikimedia Commons."
       }
     },
@@ -1009,6 +1054,36 @@
     {
       "kind": "panthere", "nom": "Panthère héraldique", "en": "heraldic panther", "champ": "Sinople", "charge": "Argent", "cat": "Bêtes et chimères",
       "image": { "file": "Meuble héraldique Panthère.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Bien le monstre crachant des flammes, non le félin réel." }
+    },
+    {
+      "kind": "cerf",
+      "nom": "Cerf passant",
+      "en": "stag trippant",
+      "champ": "Sinople",
+      "charge": "Or",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Cerf passant.svg",
+        "auteur": "Syryatsu",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
+    },
+    {
+      "kind": "cheval",
+      "nom": "Cheval cabré",
+      "en": "horse forcené",
+      "champ": "Azur",
+      "charge": "Argent",
+      "cat": "Bêtes et chimères",
+      "image": {
+        "file": "Meuble héraldique Cheval cabré.svg",
+        "auteur": "Syryatsu",
+        "lic": "domaine public",
+        "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+        "note": "Meuble héraldique publié sur Wikimedia Commons."
+      }
     },
     {
       "kind": "sirene", "nom": "Sirène", "en": "mermaid", "champ": "Gueules", "charge": "Argent", "cat": "Bêtes et chimères",

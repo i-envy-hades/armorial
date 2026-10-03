@@ -30,6 +30,64 @@
    "accentMot": "armé et lampassé"
   },
   {
+   "kind": "lion-passant",
+   "nom": "Lion passant (léopardé)",
+   "sing": "lion passant",
+   "plur": "lions passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/lion-passant.svg",
+    "commons": "Meuble héraldique Lion léopardé.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
+   "kind": "leopard",
+   "nom": "Léopard (lion passant guardant)",
+   "sing": "léopard",
+   "plur": "léopards",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/leopard.svg",
+    "commons": "Meuble héraldique Léopard.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
    "kind": "aigle",
    "nom": "Aigle",
    "sing": "aigle",
@@ -56,6 +114,34 @@
    "accent": [
     "#fcef3c",
     "#fff03c"
+   ],
+   "accentMot": "becqué, membré et couronné"
+  },
+  {
+   "kind": "aigle-bicephale",
+   "nom": "Aigle bicéphale",
+   "sing": "aigle bicéphale",
+   "plur": "aigles bicéphales",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/aigle-bicephale.svg",
+    "commons": "Meuble héraldique Aigle bicéphale éployée.svg",
+    "auteur": "Syryatsu et Thom.lanaud",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ],
+   "accent": [
+    "#fcef3c"
    ],
    "accentMot": "becqué, membré et couronné"
   },
@@ -1345,6 +1431,56 @@
     "#2b5df2"
    ],
    "accentMot": "armé, lampassé et incensé"
+  },
+  {
+   "kind": "cerf",
+   "nom": "Cerf passant",
+   "sing": "cerf passant",
+   "plur": "cerfs passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/cerf.svg",
+    "commons": "Meuble héraldique Cerf passant.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "cheval",
+   "nom": "Cheval cabré",
+   "sing": "cheval cabré",
+   "plur": "chevaux cabrés",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/cheval.svg",
+    "commons": "Meuble héraldique Cheval cabré.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
   },
   {
    "kind": "sirene",
