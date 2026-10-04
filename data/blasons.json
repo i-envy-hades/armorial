@@ -7,7 +7,13 @@
     "file": "Arms of the Kingdom of France (Moderne).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois de France",
+        "href": "lignees.html#france"
+      }
+    ]
   },
   {
     "nom": "Royaume de France (ancien)",
@@ -17,7 +23,13 @@
     "file": "Arms of the Kingdom of France (Ancien).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois de France",
+        "href": "lignees.html#france"
+      }
+    ]
   },
   {
     "nom": "Royaume d'Angleterre",
@@ -27,7 +39,13 @@
     "file": "Royal arms of England.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      }
+    ]
   },
   {
     "nom": "Couronne d'Aragon",
@@ -37,7 +55,13 @@
     "file": "Royal arms of Aragon (Crowned).svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Saint-Empire romain germanique",
@@ -47,7 +71,13 @@
     "file": "Armoiries modernes Saint-Empire bicéphale.svg",
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des Habsbourg",
+        "href": "lignees.html#habsbourg"
+      }
+    ]
   },
   {
     "nom": "Archiduché d'Autriche",
@@ -57,7 +87,13 @@
     "file": "Coat of arms of the archduchy of Austria.svg",
     "auteur": "Cornelis ; conversion SVG David Liuzzo",
     "lic": "CC BY-SA 2.5",
-    "licurl": "https://creativecommons.org/licenses/by-sa/2.5"
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "liens": [
+      {
+        "t": "Frise des Habsbourg",
+        "href": "lignees.html#habsbourg"
+      }
+    ]
   },
   {
     "nom": "Comté de Foix",
@@ -87,7 +123,13 @@
     "file": "Blason duché fr Savoie.svg",
     "auteur": "Syryatsu",
     "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self"
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+    "liens": [
+      {
+        "t": "Frise de la maison de Savoie",
+        "href": "lignees.html#savoie"
+      }
+    ]
   },
   {
     "nom": "Maison de Médicis",
@@ -142,7 +184,13 @@
       "label": "Wikipédia, « Blason du royaume nasride de Grenade »",
       "url": "https://fr.wikipedia.org/wiki/Blason_du_royaume_nasride_de_Grenade",
       "note": "les teintes sont discutées sur la même page ; le relief photographié n'est pas coloré"
-    }
+    },
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume de Valence",
@@ -157,7 +205,13 @@
       "label": "Viquipèdia, « Escut de València »",
       "url": "https://ca.wikipedia.org/wiki/Escut_de_Val%C3%A8ncia",
       "note": "forme en usage à partir de Pierre IV le Cérémonieux ; la couronne est accordée en 1377"
-    }
+    },
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Premier Empire",
@@ -225,7 +279,13 @@
       "label": "Wikipedia (es), « Escudo de Galicia »",
       "url": "https://es.wikipedia.org/wiki/Escudo_de_Galicia",
       "note": "d'après une description du XVIIIᵉ siècle"
-    }
+    },
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume d'Islande",
@@ -249,7 +309,13 @@
     "file": "Coat of Arms of the Kingdom of Toledo.svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume de Cordoue",
@@ -259,7 +325,13 @@
     "file": "Coat of Arms of the Realm of Cordoba (Kingdom of Leon Arms Variant).svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume de Séville",
@@ -269,7 +341,13 @@
     "file": "Coat of Arms of the Realm of Seville.svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume de Grenade (couronne de Castille)",
@@ -284,7 +362,13 @@
       "label": "Wikipédia, « Armorial de la péninsule Ibérique »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_p%C3%A9ninsule_Ib%C3%A9rique",
       "note": "la même page donne ailleurs une teinte différente pour le fruit"
-    }
+    },
+    "liens": [
+      {
+        "t": "Frise des rois d'Espagne",
+        "href": "lignees.html#espagne"
+      }
+    ]
   },
   {
     "nom": "Royaume des Pays-Bas",

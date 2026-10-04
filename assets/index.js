@@ -334,7 +334,7 @@ function renderGlossary(filter=""){
     const groupes = {};
     items.forEach(g => (groupes[lettre(g.terme)] ||= []).push(g));
     const lettres = Object.keys(groupes).sort();
-    list.innerHTML = lettres.map(L => `<dl class="gl-group" id="gl-${L}"><div class="gl-letter" aria-hidden="true">${L}</div>${groupes[L].map(g => `<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}${pages(g) ? ` <span class="gloss-src">(${pages(g)})</span>` : ""}</dd></div>`).join("")}</dl>`).join("");
+    list.innerHTML = lettres.map(L => `<dl class="gl-group" id="gl-${L}"><div class="gl-letter" aria-hidden="true">${L}</div>${groupes[L].map(g => `<div class="gloss-item" id="terme-${slug(g.terme)}"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}${pages(g) ? ` <span class="gloss-src">(${pages(g)})</span>` : ""}</dd></div>`).join("")}</dl>`).join("");
     const nav = document.getElementById("gnav");
     if(nav) nav.innerHTML = lettres.map(L => `<a href="#gl-${L}">${L}<sup>${groupes[L].length}</sup></a>`).join("");
   }

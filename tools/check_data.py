@@ -9,7 +9,7 @@ Sans dépendance (Python 3 seul). Contrôle, dans l'ordre :
   6. les pages HTML et les scripts : balises équilibrées, pas de coquille dans les gabarits
      (par exemple « <div, »), fichiers liés présents, menu cohérent avec assets/chrome.js.
 Code de sortie 1 s'il y a une erreur ; les avertissements n'en provoquent pas."""
-import html.parser, json, pathlib, re, sys
+import html.parser, json, pathlib, re, sys, unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 errors, warnings = [], []
@@ -79,6 +79,23 @@ if isinstance(fr, dict):
         if x.get("embleme") not in fichiers: err(f"frises.json: l'emblème « {x.get('embleme')} » n'est crédité nulle part dans {x.get('file')}")
 else:
     err("data/frises.json: absent ou mal formé")
+
+# ------------------------------- 3 bis. renvois des cartes (Blasons réels, Personnages)
+def slug(t):
+    t = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFD", str(t))).lower()
+    return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", t))
+cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).get("frises", [])}}
+dd = DATA.get("data.json") or {}
+cibles["index.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
+    | {slug(a_.get("titre")) for s_ in dd.get("sections", []) for a_ in s_.get("articles", []) if a_.get("titre")} \
+    | {"terme-" + slug(g_.get("terme")) for g_ in dd.get("glossaire", [])}
+for nom in ("blasons.json", "personnages.json"):
+    for e in DATA.get(nom) or []:
+        for l in e.get("liens", []):
+            page_, _, ancre = str(l.get("href", "")).partition("#")
+            if not l.get("t"): err(f"{nom}: « {e.get('nom')} » : un renvoi sans texte")
+            elif page_ not in cibles: err(f"{nom}: « {e.get('nom')} » : renvoi vers une page inconnue « {l.get('href')} »")
+            elif ancre not in cibles[page_]: err(f"{nom}: « {e.get('nom')} » : l'ancre « {l.get('href')} » n'existe pas")
 
 # ------------------------------------------------------- 4. moteur de rendu
 JS = (ROOT / "assets" / "blason.js").read_text(encoding="utf-8")
