@@ -104,11 +104,12 @@ async function loadSvg(m) {
   SVGTXT[m.kind] = await res.text();
 }
 const flat = t => (DATA.tinctures.find(x => x.nom === t) || {}).color || "#888";
+/* une couleur du fichier à remplacer : « #fcef3c » partout où elle paraît, ou « fill:#000 » quand le même noir sert aussi aux contours (seuls les remplissages changent) */
 function colorRe(c) {
-  const h = c.slice(1).toLowerCase();
+  const [, pre, hex] = c.match(/^(?:(fill|stroke):)?(#\w+)$/), h = hex.slice(1).toLowerCase();
   const short = h[0] === h[1] && h[2] === h[3] && h[4] === h[5] ? `|#${h[0]}${h[2]}${h[4]}` : "";
-  const named = { ffffff: "|white", "000000": "|black", ff0000: "|red" }[h] || "";
-  return new RegExp(`(#${h}${short}${named})(?![0-9a-z])`, "gi");
+  const named = { ffffff: "|white", "000000": "|black", ff0000: "|red", "008000": "|green" }[h] || "";
+  return new RegExp(`${pre ? `(?<=${pre}\\s*[:=]\\s*["']?)` : ""}(#${h}${short}${named})(?![0-9a-z])`, "gi");
 }
 function recolor(txt, m, tm, ta) {
   let s = txt;
@@ -156,7 +157,10 @@ function fileInner(txt, id) {
   const root = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
   const inner = [...root.childNodes].map(n => new XMLSerializer().serializeToString(n)).join("");
   return inner.replace(/\bid="([^"]+)"/g, `id="${id}-$1"`).replace(/url\(#([^)]+)\)/g, (a, x) => x.startsWith("m-") || x.startsWith("h-") ? a : `url(#${id}-${x})`)
-              .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`);
+              .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`)
+              /* les classes d'une feuille de style interne (.st0, .st1…) deviendraient communes à toute la page, donc à toutes les copies du meuble : on les préfixe, comme les id */
+              .replace(/\bclass="([^"]+)"/g, (a, c) => `class="${c.split(/\s+/).map(k => `${id}-${k}`).join(" ")}"`)
+              .replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, css => css.replace(/\.([A-Za-z_][\w-]*)/g, `.${id}-$1`));
 }
 function vbOf(txt) {
   const r = txt.match(/<svg\b[^>]*>/)[0], vb = r.match(/viewBox="([^"]+)"/);
