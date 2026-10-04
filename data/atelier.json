@@ -1336,6 +1336,34 @@
    ]
   },
   {
+   "kind": "arbre",
+   "nom": "Arbre",
+   "sing": "arbre",
+   "plur": "arbres",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/arbre.svg",
+    "commons": "Meuble héraldique Arbre.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#008000"
+   ],
+   "accent": [
+    "#786721"
+   ],
+   "accentMot": "fûté"
+  },
+  {
    "kind": "coeur",
    "nom": "Cœur",
    "sing": "cœur",
@@ -1532,6 +1560,147 @@
     "auteur": "Syryatsu",
     "lic": "domaine public",
     "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "ours",
+   "nom": "Ours passant",
+   "sing": "ours passant",
+   "plur": "ours passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/ours.svg",
+    "commons": "Ours passant.svg",
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "lampassé et vilené"
+  },
+  {
+   "kind": "sanglier",
+   "nom": "Sanglier passant",
+   "sing": "sanglier passant",
+   "plur": "sangliers passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/sanglier.svg",
+    "commons": "Meuble héraldique Sanglier passant.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#e20909",
+    "#5ab532"
+   ],
+   "accentMot": "onglé et lampassé"
+  },
+  {
+   "kind": "loup",
+   "nom": "Loup passant",
+   "sing": "loup passant",
+   "plur": "loups passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/loup.svg",
+    "commons": "Meuble héraldique Loup passant.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "cygne",
+   "nom": "Cygne",
+   "sing": "cygne",
+   "plur": "cygnes",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/cygne.svg",
+    "commons": "Meuble héraldique Cygne 2.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fff"
+   ],
+   "accent": [
+    "fill:#000"
+   ],
+   "accentMot": "becqué et membré"
+  },
+  {
+   "kind": "poisson",
+   "nom": "Poisson",
+   "sing": "poisson",
+   "plur": "poissons",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/poisson.svg",
+    "commons": "Héraldique meuble poisson 1.svg",
+    "auteur": "Glesker",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
    },
    "box": [
     24,

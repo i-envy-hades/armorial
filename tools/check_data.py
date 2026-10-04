@@ -136,6 +136,10 @@ if isinstance(a, dict):
             cle = re.sub(r"[-\s]+", " ", (nom or "").lower())
             if cle in pieces: err(f"atelier.json: le nom « {nom} » du meuble « {k} » est aussi celui d'une pièce")
             if noms.setdefault(cle, k) != k: err(f"atelier.json: le nom « {nom} » est donné à la fois à « {noms[cle]} » et à « {k} »")
+        for cle in ("main", "accent", "drop"):
+            for c in m.get(cle, []):
+                if not (isinstance(c, str) and re.fullmatch(r"(?:(?:fill|stroke):)?#[0-9a-fA-F]{3,8}", c)):
+                    err(f"atelier.json: meuble « {k} » : couleur « {c} » dans « {cle} » (attendu : #rrggbb, ou fill:#rrggbb)")
         for drapeau in ("accentTrait", "allongee"):
             if drapeau in m and m[drapeau] is not True: err(f"atelier.json: meuble « {k} » : « {drapeau} » vaut true ou n'existe pas")
         if m.get("accentTrait") and not m.get("accentMot"): err(f"atelier.json: meuble « {k} » : « accentTrait » sans « accentMot »")

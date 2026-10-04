@@ -182,6 +182,14 @@ CONNUES = [
     ({"A0": {"t1": "Or", "m": "aigle-bicephale", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'or à l'aigle bicéphale de sable becquée, membrée et couronnée de gueules"),
     ({"A0": {"t1": "Sinople", "m": "cerf", "nb": "1", "tm": "Or"}}, "De sinople au cerf passant d'or"),
     ({"A0": {"t1": "Azur", "m": "cheval", "nb": "3", "tm": "Argent", "ct": "1"}}, "D'azur à trois chevaux cabrés contournés d'argent"),
+    # les figures de Commons ajoutées ensuite : ours, sanglier, loup, cygne, poisson, arbre (l'attribut se dit en entier, ou pas du tout)
+    ({"A0": {"t1": "Azur", "m": "ours", "nb": "1", "tm": "Argent", "ta": "Gueules"}}, "D'azur à l'ours passant d'argent lampassé et vilené de gueules"),
+    ({"A0": {"t1": "Gueules", "m": "sanglier", "nb": "3", "tm": "Or", "ta": "Sable"}}, "De gueules à trois sangliers passants d'or onglés et lampassés de sable"),
+    ({"A0": {"t1": "Argent", "m": "loup", "nb": "1", "tm": "Sable"}}, "D'argent au loup passant de sable"),
+    ({"A0": {"t1": "Azur", "m": "cygne", "nb": "1", "tm": "Argent", "ta": "Sable"}}, "D'azur au cygne d'argent becqué et membré de sable"),
+    ({"A0": {"t1": "Azur", "m": "cygne", "nb": "1", "tm": "Argent", "ta": "Argent"}}, "D'azur au cygne d'argent"),
+    ({"A0": {"t1": "Azur", "m": "poisson", "nb": "3", "tm": "Argent"}}, "D'azur à trois poissons d'argent"),
+    ({"A0": {"t1": "Or", "m": "arbre", "nb": "1", "tm": "Sinople", "ta": "Sable"}}, "D'or à l'arbre de sinople fûté de sable"),
     # pièces propres à l'Atelier
     ({"A0": {"t1": "Argent", "m": "", "p": "canton", "tp": "Gueules"}}, "D'argent au canton de gueules"),
     ({"A0": {"t1": "Or", "m": "epee", "nb": "1", "tm": "Argent", "p": "franc-quartier", "tp": "Azur", "pos": "sur"}}, "D'or au franc-quartier d'azur chargé d'une épée d'argent"),
@@ -220,6 +228,12 @@ def test_atelier(browser, base, n_fuzz):
     verifie("ab=1" in url and "e_p=pairle" in url and "ln=onde" in url and "ct=1" in url, "atelier : l'adresse garde tout (lien de partage)")
     page.goto(url); page.wait_for_selector("#blz:not(:empty)"); page.wait_for_timeout(500)
     verifie("pairle" in blz().split("sur le tout")[1] and "fasce ondée" in blz(), "atelier : le lien de partage redonne la même composition")
+    ok = page.evaluate("""async () => {
+        const St = fresh(); St.q = "2"; St.A[0] = { ...ADEF, m: "poisson", nb: "1", tm: "Argent" }; St.A[1] = { ...ADEF, m: "poisson", nb: "1", tm: "Gueules" };
+        S = normalizeAll(St); await loadAll(S); const svg = compose(S).svg; S = fresh();
+        return !/\\.st0\\s*\\{/.test(svg) && (svg.match(/<style/g) || []).length >= 2;   // le poisson a une feuille de style interne : ses classes sont préfixées, copie par copie
+    }""")
+    verifie(ok, "atelier : deux copies d'un meuble à feuille de style interne gardent chacune leurs couleurs")
     pb = page.evaluate(FUZZ, n_fuzz)
     verifie(not pb, f"atelier : {n_fuzz} compositions au hasard sans défaut" + ("" if not pb else f" — {pb[:3]}"))
     propre("atelier", page, erreurs)
@@ -248,6 +262,9 @@ LUS = [
     ("D'azur à l'aigle d'argent, becquée, membrée et couronnée d'or", "D'azur à l'aigle d'argent becquée, membrée et couronnée d'or", ""),
     ("D'or à six fleurs de lis d'azur, posées 3, 2 et 1", "D'or à six fleurs de lis d'azur posées 3, 2 et 1", ""),
     ("De gueules au lion d'or", "De gueules au lion d'or", ""),                                 # attribut sans émail : l'émail du corps
+    ("D'azur au cygne d'argent becqué et membré de sable", "D'azur au cygne d'argent becqué et membré de sable", ""),
+    ("D'or à l'arbre de sinople fûté de sable", "D'or à l'arbre de sinople fûté de sable", ""),
+    ("De sinople au sanglier passant d'or", "De sinople au sanglier passant d'or", ""),
     ("D'argent à l'aigle de sable", "D'argent à l'aigle de sable becquée, membrée et couronnée de sable", "couronnée"),
     ("De gueules à trois léopards d'or", "De gueules à trois léopards d'or", "posés en pal"),   # disposition non dite : signalée
     ("D'azur à deux étoiles d'or", "D'azur à deux étoiles d'or posées en fasce", "disposition non précisée"),
@@ -275,6 +292,9 @@ REFUSES = [
     ("D'azur à la croix de gueules bordée d'argent", "bordée"),
     ("D'azur à sept étoiles d'or", "sept étoiles"),
     ("D'azur à la fasce d'or ondée", "avant son émail"),
+    ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
+    ("D'azur au cheval d'argent", "cheval cabré"),
+    ("D'azur à trois croix d'or", "croix alésée"),
     ("D'azur à l'aigle d'or becquée et membrée de gueules", "en entier"),
     ("D'azur à la bande d'or brochant sur le tout", "champ divisé"),
     ("D'azur au canton d'or accompagné de deux étoiles d'argent", "autour du canton"),
