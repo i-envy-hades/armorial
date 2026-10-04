@@ -35,5 +35,8 @@ async function init(){
     return;
   }
   document.getElementById("grid").innerHTML = PEOPLE.map(card).join("");
+  const f = document.getElementById("facts");
+  if(f) f.innerHTML = `<div class="c"><span class="n">${PEOPLE.length}</span><span class="l">Personnages</span></div>
+    <div class="c"><span class="n">${LISIBLES.size}</span><span class="l">Relus par l'Atelier</span></div>`;
 }
 init();

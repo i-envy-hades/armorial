@@ -65,5 +65,9 @@ async function init(){
   }
   buildTools();
   render();
+  const f = document.getElementById("facts");
+  if(f) f.innerHTML = `<div class="c"><span class="n">${ARMS.length}</span><span class="l">Blasons</span></div>
+    <div class="c"><span class="n">${new Set(ARMS.map(a => a.cat).filter(Boolean)).size}</span><span class="l">Catégories</span></div>
+    <div class="c"><span class="n">${LISIBLES.size}</span><span class="l">Relus par l'Atelier</span></div>`;
 }
 init();

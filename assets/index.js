@@ -140,6 +140,42 @@ function searchPool(){
    l'adresse d'un article, pour qu'on puisse en partager le lien */
 const slug = s => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 
+/* bandeaux de chapitre : un décor d'ambiance par section (assets/epopee/, images générées par IA) */
+const PLATES = Object.fromEntries(["origines","ecu","emaux","partitions","regles","pieces","meubles","blasonnement","ornements","droit","droit-compare","brisures","glossaire","bibliotheque"].map(k => [k, k]));
+/* une miniature d'époque par chapitre, encadrée dans le bandeau : œuvres du domaine public, créditées une à une */
+const PD = "domaine public";
+const MINIA = {
+  origines: { file: "René d'Anjou Livre des tournois France Provence XVe siècle.jpg", legende: "Cuirasse et tassettes, Livre des tournois du roi René", auteur: "Barthélemy d'Eyck", lic: "Public domain" },
+  ecu: { file: "Bayeux Tapestry scene51 Battle of Hastings Norman knights and archers.jpg", legende: "Chevaliers normands, tapisserie de Bayeux (scène 51)", auteur: "photographie de Myrabella", lic: "Public domain" },
+  emaux: { file: "Gelre Folio 92r.jpg", legende: "Armorial de Gelre, f. 92r", auteur: "Claes Heynensoon", lic: "Public domain" },
+  partitions: { file: "Gelre Folio 67v.jpg", legende: "Armorial de Gelre, f. 67v", auteur: "Claes Heynensoon", lic: "Public domain" },
+  regles: { file: "Armorial Wijnbergen.jpg", legende: "Armorial Wijnbergen", auteur: "auteur inconnu", lic: "Public domain" },
+  pieces: { file: "Gelre Folio 56v.jpg", legende: "Armorial de Gelre, f. 56v : armes royales d'Angleterre et apparentées", auteur: "Claes Heynensoon", lic: "Public domain" },
+  meubles: { file: "Armorial Gelre Flemish Flag.jpg", legende: "Armorial de Gelre, f. 80r : armes de provinces belges et de Flandre", auteur: "Claes Heynensoon", lic: "Public domain" },
+  blasonnement: { file: "Toison d'Or (Folio 120r).jpg", legende: "Armorial de la Toison d'or, f. 120r : familles de Pologne", auteur: "Jean Le Fèvre de Saint-Remy", lic: "Public domain" },
+  ornements: { file: "Wappenbuch Grünenberg 1483 - fol. 131.jpg", legende: "Armes de Bruno von Schauenburg, Wappenbuch de Grünenberg (1483)", auteur: "Konrad Grünenberg", lic: "Public domain" },
+  droit: { file: "Livre des tournois du roi René offert par Louis de Gruuthuse - BNF Fr2692 f1.jpg", legende: "Livre des tournois du roi René, exemplaire de Louis de Gruuthuse, f. 1", auteur: "Maître du cardinal de Bourbon", lic: "Public domain" },
+  "droit-compare": { file: "Battle of crecy froissart.jpg", legende: "La bataille de Crécy, Chroniques de Froissart", auteur: "Loyset Liédet", lic: "Public domain" },
+  brisures: { file: "Froissart Battle Scene BL Arundel 67.jpg", legende: "Scène de mêlée, Chroniques de Froissart (BL Arundel 67)", auteur: "Jean Froissart (manuscrit)", lic: "Public domain" },
+  glossaire: { file: "Toison d'Or (Folio 119v).jpg", legende: "Armorial de la Toison d'or, f. 119v : familles de Pologne", auteur: "Jean Le Fèvre de Saint-Remy", lic: "Public domain" },
+  bibliotheque: { file: "Sacre Robert II le Pieux - Grandes Chroniques de France - BNF, FR 2615, fol.149r.jpg", legende: "Sacre de Robert II, Grandes Chroniques de France (BnF, Fr. 2615, f. 149)", auteur: "auteur inconnu", lic: "Public domain" },
+};
+const miniaHtml = id => {
+  const m = MINIA[id]; if(!m) return "";
+  const page = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(m.file.replace(/ /g, "_"));
+  const src = "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(m.file) + "?width=520";
+  return `<figure class="minia"><img src="${src}" alt="${escHtml(m.legende)}" loading="lazy" decoding="async">
+          <figcaption>${escHtml(m.legende)}<a href="${page}" target="_blank" rel="noopener">${escHtml(m.auteur)} · ${PD}</a></figcaption></figure>`;
+};
+const roman = n => ["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV"][n] || String(n);
+let nChap = 0;
+const plate = (id, num, eyebrow, title, lede) => `<header class="plate"${PLATES[id] ? ` data-img="assets/epopee/${PLATES[id]}.jpg"` : ""}>
+        <div class="plate-bg" data-parallax="0.12" aria-hidden="true"></div>
+        <span class="num" aria-hidden="true">${num}</span>
+        <div class="plate-in"><p class="eyebrow">${eyebrow}</p><h2 class="display">${title}</h2><p class="lede">${lede}</p></div>
+        ${miniaHtml(id)}
+      </header>`;
+
 function buildMain(){
   const main = document.getElementById("main");
   let html = "";
@@ -152,20 +188,33 @@ function buildMain(){
     return id;
   };
 
+  const nbMots = h => h.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   DATA.sections.forEach(sec=>{
-    let arts = "";
+    const num = roman(++nChap);
+    let arts = "", k = 0;
+    const ids = [];
     sec.articles.forEach(a=>{
-      if(a.note){ arts += `<div class="article reveal">${a.html}</div>`; return; }
+      if(a.note){ arts += `<div class="callout reveal">${a.html}</div>`; return; }
       let extra = "";
       if(a.diagram && DIAGRAMS[a.diagram]) extra = `<div class="ecu-diagram">${DIAGRAMS[a.diagram]()}</div>`;
       if(a.gallery) extra += `<div class="reveal">${reglesGallery(a.gallery)}</div>`;
-      arts += `<div class="article reveal" id="${adresse(a.titre)}"><h3>${a.titre}</h3>${a.html}${extra}${srcTag(a.sources)}</div>`;
+      const id = adresse(a.titre); k++; ids.push([id, a.titre]);
+      /* un article = un <details> : le premier est ouvert, les autres se déplient ; l'adresse (#id) l'ouvre */
+      arts += `<details class="article art reveal" id="${id}"${k === 1 ? " open" : ""}>
+        <summary><span class="art-n">${num}.${k}</span><h3>${a.titre}</h3><span class="art-meta">${nbMots(a.html)} mots</span></summary>
+        <div class="art-body">${a.html}${extra}${srcTag(a.sources)}</div></details>`;
     });
-    let gallery = sec.figure ? `<div class="reveal">${figureGallery(sec.figure)}</div>` : "";
+    const chips = ids.length >= 3 ? `<nav class="chips" aria-label="Dans ce chapitre"><span>Dans ce chapitre</span>${ids.map(([id, t], i) => `<a href="#${id}">${num}.${i + 1} ${t}</a>`).join("")}<button type="button" class="fold" data-fold="${sec.id}">Tout déplier</button></nav>` : "";
+    let gallery = "";
+    if(sec.figure){
+      const n = (DATA[sec.figure] || []).length, big = n > 24;
+      gallery = `<details class="art art-planche reveal"${big ? "" : " open"}>
+        <summary><span class="art-n">◈</span><h3>Planche${n ? " : " + n + " figures" : " des figures"}</h3><span class="art-meta">${big ? "à déplier" : ""}</span></summary>
+        <div class="art-body">${figureGallery(sec.figure)}</div></details>`;
+    }
     html += `<section class="section" id="${sec.id}">
-      <p class="eyebrow">${sec.eyebrow}</p>
-      <h2 class="display">${sec.title}</h2>
-      <p class="lede">${sec.lede}</p>
+      ${plate(sec.id, num, sec.eyebrow, sec.title, sec.lede)}
+      ${chips}
       ${arts}
       ${gallery}
     </section>
@@ -174,30 +223,31 @@ function buildMain(){
 
   // ---- glossaire ----
   html += `<section class="section" id="glossaire">
-    <p class="eyebrow">Répertoire</p>
-    <h2 class="display">Glossaire du blason</h2>
-    <p class="lede">Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.</p>
+    ${plate("glossaire", "§", "Répertoire", "Glossaire du blason", "Le vocabulaire minimal pour lire des armoiries. Utilise la recherche en haut de page.")}
     <p class="gloss-count" id="gcount"></p>
-    <dl class="glossary" id="glist"></dl>
+    <nav class="gnav" id="gnav" aria-label="Lettres du glossaire"></nav>
+    <div class="glossary" id="glist"></div>
   </section>
   <hr class="ornament">`;
 
   // ---- bibliothèque ----
+  const types = {};
+  Object.values(DATA.sources).forEach(s => { types[s.type] = (types[s.type] || 0) + 1; });
   const books = Object.values(DATA.sources).map(s=>`
-    <div class="book reveal">
+    <div class="book reveal" data-type="${escHtml(s.type)}">
       <div class="spine" aria-hidden="true"></div>
       <div>
         <h3>${s.titre}</h3>
         <div class="by">${s.auteur}</div>
         <div class="facts">${s.editeur}, ${s.annee}${s.isbn && s.isbn!=="—" ? " · ISBN "+s.isbn : ""}</div>
         <div class="kind">${s.type}</div>
-        <div class="note"><p>${s.note}</p></div>
+        <details class="book-note"><summary>Notre lecture</summary><div class="note"><p>${s.note}</p></div></details>
       </div>
     </div>`).join("");
+  const filtre = `<div class="bfilter" role="group" aria-label="Filtrer les sources par genre"><button type="button" class="on" data-t="">Toutes (${Object.keys(DATA.sources).length})</button>${Object.entries(types).map(([t, c]) => `<button type="button" data-t="${escHtml(t)}">${t} (${c})</button>`).join("")}</div>`;
   html += `<section class="section" id="bibliotheque">
-    <p class="eyebrow">La bibliothèque</p>
-    <h2 class="display">Les sources</h2>
-    <p class="lede">Chaque ouvrage trouvé enrichit l'encyclopédie et rejoint cette étagère. C'est le cœur du projet : le savoir grandit livre après livre.</p>
+    ${plate("bibliotheque", "§", "La bibliothèque", "Les sources", "Chaque ouvrage trouvé enrichit l'encyclopédie et rejoint cette étagère. C'est le cœur du projet : le savoir grandit livre après livre.")}
+    ${filtre}
     <div class="biblio">${books}</div>
   </section>`;
 
@@ -210,6 +260,46 @@ function buildRail(){
     + `<li><a href="#glossaire">Glossaire</a></li>`
     + `<li><a href="#bibliotheque">Sources</a></li>`;
   list.innerHTML = items;
+}
+
+/* sommaire : sous le chapitre en cours, la liste de ses articles */
+function fillRail(){
+  document.querySelectorAll("#rail-list > li").forEach(li => {
+    const id = li.querySelector("a").getAttribute("href").slice(1);
+    const arts = [...document.querySelectorAll(`#${CSS.escape(id)} details.article`)];
+    if(arts.length < 2) return;
+    li.insertAdjacentHTML("beforeend", `<ol class="sub">${arts.map(a => `<li><a href="#${a.id}">${a.querySelector("h3").textContent}</a></li>`).join("")}</ol>`);
+  });
+}
+
+/* un lien vers un article (ou vers quoi que ce soit dedans) déplie ce qui le contient */
+function openFor(el){ for(let n = el; n; n = n.parentElement) if(n.tagName === "DETAILS") n.open = true; }
+function wireFolds(){
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#"]');
+    if(a){
+      let id = a.getAttribute("href").slice(1);
+      try{ id = decodeURIComponent(id); }catch(err){ /* adresse mal formée */ }
+      const t = document.getElementById(id); if(t) openFor(t);
+    }
+    const f = e.target.closest(".fold");
+    if(f){
+      const sec = document.getElementById(f.dataset.fold), arts = [...sec.querySelectorAll("details.article")];
+      const ouvrir = arts.some(d => !d.open);
+      arts.forEach(d => { d.open = ouvrir; });
+      f.textContent = ouvrir ? "Tout replier" : "Tout déplier";
+    }
+    const b = e.target.closest(".bfilter button");
+    if(b){
+      document.querySelectorAll(".bfilter button").forEach(x => x.classList.toggle("on", x === b));
+      document.querySelectorAll(".biblio .book").forEach(k => { k.hidden = !!b.dataset.t && k.dataset.type !== b.dataset.t; });
+    }
+  });
+  addEventListener("hashchange", () => {
+    let id = location.hash.slice(1);
+    try{ id = decodeURIComponent(id); }catch(err){ /* idem */ }
+    const t = document.getElementById(id); if(t) openFor(t);
+  });
 }
 
 function buildCounts(){
@@ -235,11 +325,18 @@ function renderGlossary(filter=""){
     .filter(g=> !f || g.terme.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
   const hl = (txt)=> f ? txt.replace(new RegExp("("+f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>") : txt;
   if(!items.length){
+    const nav0 = document.getElementById("gnav"); if(nav0) nav0.innerHTML = "";
     list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${escHtml(filter)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
   } else {
     /* le glossaire ne montre une source que lorsqu'elle renvoie à une page précise */
     const pages = g => (g.sources || []).filter(r => typeof r !== "string" && r.p).map(srcRef).join(" · ");
-    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}${pages(g) ? ` <span class="gloss-src">(${pages(g)})</span>` : ""}</dd></div>`).join("");
+    const lettre = t => { const c = t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; };
+    const groupes = {};
+    items.forEach(g => (groupes[lettre(g.terme)] ||= []).push(g));
+    const lettres = Object.keys(groupes).sort();
+    list.innerHTML = lettres.map(L => `<dl class="gl-group" id="gl-${L}"><div class="gl-letter" aria-hidden="true">${L}</div>${groupes[L].map(g => `<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}${pages(g) ? ` <span class="gloss-src">(${pages(g)})</span>` : ""}</dd></div>`).join("")}</dl>`).join("");
+    const nav = document.getElementById("gnav");
+    if(nav) nav.innerHTML = lettres.map(L => `<a href="#gl-${L}">${L}<sup>${groupes[L].length}</sup></a>`).join("");
   }
   count.textContent = `${items.length} terme${items.length>1?"s":""}${f?" trouvé"+(items.length>1?"s":""):" répertoriés"}`;
 }
@@ -252,7 +349,9 @@ function initSpy(){
     entries.forEach(e=>{
       if(e.isIntersecting){
         links.forEach(l=>l.classList.remove("active"));
-        const a = map.get(e.target.id); if(a) a.classList.add("active");
+        const a = map.get(e.target.id);
+        document.querySelectorAll(".rail li.on").forEach(x => x.classList.remove("on"));
+        if(a){ a.classList.add("active"); a.parentElement.classList.add("on"); }
       }
     });
   },{rootMargin:"-45% 0px -50% 0px",threshold:0});
@@ -299,9 +398,12 @@ async function init(){
   buildCounts();
   buildRail();
   buildMain();
+  fillRail();
+  wireFolds();
   renderGlossary();
   initSpy();
   initReveal();
+  document.dispatchEvent(new Event("armorial:ready"));
 
   /* la page se construit après coup : le navigateur a déjà manqué l'ancre de l'adresse
      (index.html#emaux), on s'y rend nous-mêmes — puis on s'y replace quand les polices ont
@@ -311,6 +413,7 @@ async function init(){
     try{ id = decodeURIComponent(id); }catch(err){ /* adresse mal formée : on garde le texte tel quel */ }
     const cible = document.getElementById(id);
     if(cible){
+      openFor(cible);
       const aller = () => cible.scrollIntoView({behavior:"instant", block:"start"});   // « instant » : le CSS impose sinon un défilement doux
       const debut = performance.now();
       let libre = true;                                                                  // on ne reprend pas la main si le lecteur a commencé à défiler

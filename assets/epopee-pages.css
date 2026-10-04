@@ -1,0 +1,126 @@
+/* ============================================================================
+   L'ARMORIAL — habillage « chronique » des pages Blasons réels et Personnages
+   Même lumière que l'encyclopédie (assets/epopee.css) : un bandeau d'entrée clair,
+   une méthode repliée, des cartes plus soignées. Tout est réglé sous body.epic2 ;
+   retirer la classe rend la page d'avant. Décors : images générées par IA (voir le pied de page).
+   ============================================================================ */
+
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;pointer-events:none}
+.progress i{display:block;height:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));
+  background:linear-gradient(90deg,#8e1b18,#e3c579 70%,#fff0c4);box-shadow:0 0 10px rgba(227,197,121,.7)}
+
+/* ---------- menu : voile clair sur le bandeau, parchemin ensuite ---------- */
+body.epic2 .mast{
+  position:fixed;left:0;right:0;top:0;
+  background:linear-gradient(180deg,rgba(247,240,222,.9),rgba(247,240,222,0));
+  border-bottom-color:transparent;box-shadow:none;backdrop-filter:none;
+  transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;
+}
+body.epic2 .mast .brand,body.epic2 .mast nav a{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
+body.epic2 .mast nav a:hover,body.epic2 .mast nav a.here{color:#8e1b18}
+body.epic2 .mast .cross{color:#8e1b18}
+body.epic2 .mast.solid{
+  background:rgba(233,225,205,.92);backdrop-filter:blur(8px);
+  border-bottom-color:var(--rule);box-shadow:0 1px 0 rgba(169,129,46,.35),0 10px 30px -22px rgba(26,23,18,.6);
+}
+body.epic2 .mast.solid .brand{color:var(--ink)}
+body.epic2 .mast.solid nav a{color:var(--ink-soft);text-shadow:none}
+body.epic2 .mast.solid nav a:hover,body.epic2 .mast.solid nav a.here{color:var(--gules)}
+@media (max-width:640px){body.epic2 .mast{background:linear-gradient(180deg,rgba(247,240,222,.95),rgba(247,240,222,.5))}}
+
+/* ---------- bandeau d'entrée ---------- */
+body.epic2 .hero{
+  position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;
+  display:grid;place-items:center;min-height:clamp(380px,56vh,560px);
+  padding:clamp(5.5rem,13vh,7.5rem) clamp(1rem,4vw,2.4rem) clamp(3rem,7vh,4.5rem);
+  background:linear-gradient(180deg,#3d8be0,#7bb8ee);color:#1d140b;text-align:center;
+}
+.hero-bg2{
+  position:absolute;inset:-8% 0;z-index:-3;background:center 35%/cover no-repeat;
+  transform:translate3d(0,var(--py,0px),0) scale(1.04);will-change:transform;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.hero-bg2.on{opacity:1}
+body.epic2 .hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 60% 62% at 50% 52%,rgba(255,251,238,.82),rgba(255,251,238,.34) 58%,rgba(255,251,238,0) 82%),
+    linear-gradient(180deg,rgba(255,251,238,.4) 0%,rgba(255,251,238,0) 24%);
+}
+body.epic2 .hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;z-index:-1;
+  background:linear-gradient(180deg,rgba(233,225,205,0),var(--vellum));
+}
+body.epic2 .hero .frame{max-width:860px}
+body.epic2 .hero .eyebrow{color:#8e1b18;letter-spacing:.42em;text-shadow:0 0 14px rgba(255,251,238,.9);opacity:0;animation:monte2 .9s ease .3s forwards}
+body.epic2 .hero h1{
+  font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.8rem,8.5vw,5.6rem);line-height:1.14;padding-bottom:.04em;letter-spacing:.02em;margin:.2rem 0 .3rem;
+  background:linear-gradient(180deg,#3a2410 0%,#1d140b 55%,#4a2c10 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(255,251,238,.7)) drop-shadow(0 6px 22px rgba(255,251,238,.8));
+  opacity:0;animation:monte2 1s cubic-bezier(.2,.8,.3,1) .45s forwards;
+}
+body.epic2 .hero p:not(.eyebrow){
+  color:#2c2113;font-style:italic;font-size:clamp(1.05rem,2.3vw,1.3rem);max-width:52ch;margin:.5rem auto 0;
+  text-shadow:0 0 16px rgba(255,251,238,.95),0 0 4px rgba(255,251,238,.9);opacity:0;animation:monte2 1s ease .7s forwards;
+}
+.hero-facts{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem;opacity:0;animation:monte2 1s ease .95s forwards}
+.hero-facts .c{min-width:90px;padding-top:.55rem;border-top:2px solid #8e1b18}
+.hero-facts .n{display:block;font-family:"Marcellus",serif;font-size:1.8rem;line-height:1;color:#8e1b18;text-shadow:0 0 14px rgba(255,251,238,.95)}
+.hero-facts .l{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#3a2d18;text-shadow:0 0 10px rgba(255,251,238,.95)}
+@keyframes monte2{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ---------- méthode : repliée sous le bandeau ---------- */
+body.epic2 .note{max-width:var(--maxw);margin:1.2rem auto .4rem}
+body.epic2 .note details{
+  background:linear-gradient(180deg,#faf6ea,#f2ebd8);border:1px solid var(--rule);border-left:3px solid var(--or);border-radius:3px;box-shadow:var(--shadow);
+}
+body.epic2 .note summary{
+  display:flex;align-items:baseline;gap:.9rem;padding:.8rem 1.1rem;cursor:pointer;list-style:none;
+}
+body.epic2 .note summary::-webkit-details-marker{display:none}
+body.epic2 .note summary::after{content:"";flex:none;align-self:center;width:.55rem;height:.55rem;margin-left:auto;
+  border-right:1.6px solid var(--gules);border-bottom:1.6px solid var(--gules);transform:rotate(45deg) translateY(-2px);transition:transform .25s}
+body.epic2 .note details[open] summary::after{transform:rotate(-135deg) translate(-2px,-1px)}
+body.epic2 .note summary .k{margin:0;font-family:"Marcellus SC",serif;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:var(--or)}
+body.epic2 .note summary .r{font-size:.95rem;color:var(--ink-soft);font-style:italic}
+body.epic2 .note .box-in{padding:.2rem 1.3rem 1.1rem;border-top:1px solid var(--rule-soft)}
+body.epic2 .note .box-in p{max-width:78ch}
+
+/* ---------- filtres et compteur ---------- */
+body.epic2 .tools{position:sticky;top:56px;z-index:8;margin:1rem auto .4rem;padding-top:.55rem;padding-bottom:.55rem;
+  background:rgba(233,225,205,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule-soft)}
+body.epic2 .chip{transition:border-color .2s,color .2s,background .2s}
+body.epic2 .chip:hover{color:var(--gules)}
+
+/* ---------- cartes : un écu en vitrine ---------- */
+body.epic2 .grid{gap:1.4rem;margin-top:1.2rem}
+body.epic2 .ar{
+  position:relative;border-radius:3px;border-top:3px solid var(--or);
+  background:linear-gradient(180deg,#faf6ea,#efe7d2);transition:transform .35s ease,box-shadow .35s ease,border-top-color .3s;
+}
+body.epic2 .ar::before{ /* un halo de lumière derrière l'écu */
+  content:"";position:absolute;left:50%;top:.9rem;width:78%;height:215px;transform:translateX(-50%);z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 45%,rgba(255,251,238,.95),rgba(255,251,238,0) 68%);
+}
+body.epic2 .ar > *{position:relative;z-index:1}
+body.epic2 .ar:hover{border-top-color:var(--gules)}
+body.epic2 .ar h3{font-size:1.18rem}
+body.epic2 .ar .cat{letter-spacing:.2em}
+
+/* ---------- pied de page ---------- */
+body.epic2 footer{
+  position:relative;isolation:isolate;overflow:hidden;color:var(--ink-soft);
+  background:var(--vellum) var(--foot-img,none) center 70%/cover no-repeat;
+}
+body.epic2 footer::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,var(--vellum) 0%,rgba(244,237,218,.92) 35%,rgba(244,237,218,.85) 100%);
+}
+body.epic2 footer .foot{padding-top:clamp(2.4rem,6vw,3.6rem)}
+body.epic2 footer .fine{opacity:.95;margin-top:.5rem}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-bg2{transition:none}
+  body.epic2 .hero .eyebrow,body.epic2 .hero h1,body.epic2 .hero p:not(.eyebrow),.hero-facts{opacity:1;animation:none}
+  body.epic2 .ar,body.epic2 .mast{transition:none}
+}
