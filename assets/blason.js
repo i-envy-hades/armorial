@@ -346,13 +346,19 @@ function suisseDiagram(){
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
 function stripesH(n,a,b){ let s=""; const h=252/n; for(let i=0;i<n;i++) s+=`<rect x="0" y="${(i*h).toFixed(2)}" width="200" height="${(h+0.6).toFixed(2)}" fill="${i%2?b:a}"/>`; return s; }
 function stripesV(n,a,b){ let s=""; const w=200/n; for(let i=0;i<n;i++) s+=`<rect x="${(i*w).toFixed(2)}" y="0" width="${(w+0.6).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; return s; }
+/* bandé / barré : n bandes égales, parallèles à la diagonale de l'écu (de l'angle dextre du chef à l'angle senestre de la pointe), de sorte que
+   la première touche l'angle senestre du chef — et la dernière l'angle dextre de la pointe. Chaque bande est un polygone : pas de motif répété,
+   donc pas de couture, et le nombre de bandes est celui qu'on demande. Le barré est le miroir du bandé. */
 function stripesBendy(n,a,b,sin){
-  const id = ++uid;
-  const w = 300/n;
-  return `<defs><pattern id="bd${id}" width="${(w*1.4142).toFixed(2)}" height="${(w*1.4142).toFixed(2)}" patternTransform="rotate(${sin?-45:45})" patternUnits="userSpaceOnUse">
-    <rect width="${(w*1.4142).toFixed(2)}" height="${(w*0.7071).toFixed(2)}" fill="${a}"/>
-    <rect y="${(w*0.7071).toFixed(2)}" width="${(w*1.4142).toFixed(2)}" height="${(w*0.7071).toFixed(2)}" fill="${b}"/>
-  </pattern></defs><rect x="-60" y="-60" width="320" height="372" fill="url(#bd${id})"/>`;
+  const L = Math.hypot(252,200), nx = 252/L, ny = -200/L, dx = 200/L, dy = 252/L;
+  const demi = 200*252/L, w = 2*demi/n;                 // demi-largeur de l'écu mesurée en travers des bandes, puis largeur d'une bande
+  const P = (u,t) => `${(100+u*nx+t*dx).toFixed(2)},${(126+u*ny+t*dy).toFixed(2)}`;
+  let s = "";
+  for(let i=0;i<n;i++){
+    const hi = demi - i*w, lo = demi - (i+1)*w;
+    s += `<polygon points="${P(hi,-420)} ${P(hi,420)} ${P(lo,420)} ${P(lo,-420)}" fill="${i%2?b:a}"/>`;
+  }
+  return sin ? `<g transform="translate(200,0) scale(-1,1)">${s}</g>` : s;
 }
 function shieldRecoupement(kind, n, a, b){
   const inner = recoupementInner(kind, n, a, b);

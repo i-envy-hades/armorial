@@ -1,0 +1,427 @@
+/* L'ARMORIAL — le dessin des armes : du modèle d'une composition (assets/blasonnement.js) à un SVG.
+   Partagé par l'Atelier (assets/atelier.js, qui n'en garde que l'interface) et par les pages qui montrent des écus
+   composés par le moteur (S'exercer). Aucune dépendance à une page, à ceci près : le dessin des meubles se mesure dans
+   un <svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden"><g></g></svg>, que la page pose.
+   Il lit les globaux DATA et ATL (voir blasonnement.js) et les fonctions de dessin de assets/blason.js.
+   On s'en sert ainsi : normalizeAll(St), puis await loadAll(St) (charge les figures empruntées), puis compose(St, id).svg. */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
+const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
+const SHRINK = { plein: 1, bordure: .84, orle: .74 };
+/* réglages graphiques (adMap, adStr : assets/blasonnement.js) appliqués aux positions */
+const adjust = (pts, a, grp, sfx) => {
+  const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
+  return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, r]; });
+};
+function ptsFor(s, m) {
+  if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
+  let pts;
+  if (m.seul) pts = [[100, 116, 1]];
+  else if (PLEINLIKE.has(ctxOf(s))) { const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : []; }
+  else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
+  return adjust(pts, s, 1, "");
+}
+const pts2 = s => adjust(dispo2(s).pts, s, 2, "2");
+
+/* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
+const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
+const bandPaint = (f = BAND.fill, w = 1.2) => `fill="${f}" stroke="#1a1712" stroke-width="${w}" stroke-linejoin="round"`;
+const wavy = (xa, xb, Y, k, rev) => {
+  const w = xb - xa, c = n => (xa + w * n).toFixed(1);
+  return rev ? `C${c(5 / 6)},${Y + k} ${c(2 / 3)},${Y + k} ${c(.5)},${Y} C${c(1 / 3)},${Y - k} ${c(1 / 6)},${Y - k} ${xa},${Y}`
+    : `C${c(1 / 6)},${Y - k} ${c(1 / 3)},${Y - k} ${c(.5)},${Y} C${c(2 / 3)},${Y + k} ${c(5 / 6)},${Y + k} ${xb},${Y}`;
+};
+const swallowBand = (sag) => (x0, x1, y0) => {
+  const tail = (x, d) => `<path d="M${x},${y0 + 5} L${x - d * 30},${y0 + 3} L${x - d * 17},${y0 + 19} L${x - d * 30},${y0 + 36} L${x},${y0 + 34} Z" ${bandPaint(BAND.back, 1.1)}/>`;
+  return {
+    d: `M${x0 + 8},${y0 + 20} Q100,${y0 + 20 + sag * 2} ${x1 - 8},${y0 + 20}`, h: 36 + sag,
+    svg: tail(x0 + 6, 1) + tail(x1 - 6, -1) + `<path d="M${x0},${y0} Q100,${y0 + sag * 2} ${x1},${y0} L${x1},${y0 + 30} Q100,${y0 + 30 + sag * 2} ${x0},${y0 + 30} Z" ${bandPaint()}/>`
+  };
+};
+const DEVISES = {
+  "": { nom: "Ruban à queues d'aronde", build: swallowBand(12) },
+  arc: { nom: "Ruban cintré", build: swallowBand(28) },
+  ondule: { nom: "Ruban ondulé", build: (x0, x1, y0) => {
+    const k = 28 / 3;
+    return { d: `M${x0 + 8},${y0 + 20} ${wavy(x0 + 8, x1 - 8, y0 + 20, k, false)}`, h: 43,
+      svg: `<path d="M${x0},${y0} ${wavy(x0, x1, y0, k, false)} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} ${wavy(x0, x1, y0 + 30, k, true)} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>` };
+  } },
+  droit: { nom: "Bandeau droit, bouts fendus", build: (x0, x1, y0) => ({
+    d: `M${x0 + 16},${y0 + 20} L${x1 - 16},${y0 + 20}`, h: 36,
+    svg: `<path d="M${x0},${y0} L${x1},${y0} L${x1 - 12},${y0 + 15} L${x1},${y0 + 30} L${x0},${y0 + 30} L${x0 + 12},${y0 + 15} Z" ${bandPaint()}/>`
+  }) },
+  plis: { nom: "Banderole à plis", build: (x0, x1, y0) => {
+    const e = 26, s = 5, L = x0 + e, R = x1 - e;
+    const tail = (xo, xi, d) => `<path d="M${xi},${y0 + 12} L${xi},${y0 + 42} L${xo},${y0 + 42} L${xo + d * 12},${y0 + 27} L${xo},${y0 + 12} Z" ${bandPaint(BAND.back, 1.1)}/>`
+      + `<path d="M${xi - d * 10},${y0 + 30} L${xi},${y0 + 30} L${xi},${y0 + 42} Z" ${bandPaint(BAND.fold, 1)}/>`;
+    return { d: `M${L + 6},${y0 + 20} Q100,${y0 + 20 + s * 2} ${R - 6},${y0 + 20}`, h: 48,
+      svg: tail(x0, L + 10, 1) + tail(x1, R - 10, -1) + `<path d="M${L},${y0} Q100,${y0 + s * 2} ${R},${y0} L${R},${y0 + 30} Q100,${y0 + 30 + s * 2} ${L},${y0 + 30} Z" ${bandPaint()}/>` };
+  } },
+  rouleau: { nom: "Parchemin enroulé", build: (x0, x1, y0) => {
+    const roll = x => `<ellipse cx="${x}" cy="${y0 + 15}" rx="9" ry="16" ${bandPaint(BAND.back)}/><ellipse cx="${x}" cy="${y0 + 15}" rx="4" ry="9" ${bandPaint(BAND.fold, .9)}/>`;
+    return { d: `M${x0 + 28},${y0 + 20} L${x1 - 28},${y0 + 20}`, h: 34,
+      svg: `<path d="M${x0 + 12},${y0 + 2} L${x1 - 12},${y0 + 2} L${x1 - 12},${y0 + 28} L${x0 + 12},${y0 + 28} Z" ${bandPaint()}/>` + roll(x0 + 12) + roll(x1 - 12) };
+  } },
+  cartouche: { nom: "Cartouche à filet", build: (x0, x1, y0) => ({
+    d: `M${x0 + 18},${y0 + 20} L${x1 - 18},${y0 + 20}`, h: 36,
+    svg: `<rect x="${x0 + 6}" y="${y0}" width="${x1 - x0 - 12}" height="30" rx="7" ${bandPaint()}/>`
+      + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
+  }) }
+};
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "" };
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln"]);
+const PFX = ["", "b_", "c_", "d_", "e_"];
+const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
+let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
+function normalizeAll(St) {
+  if (!["", "2", "4"].includes(St.q)) St.q = "";
+  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
+  const O = ATL.ornements;
+  if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
+  if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
+  /* chaque modèle n'existe que dans certaines positions : on garde la position si possible, sinon le modèle */
+  const has = (t, p) => O.heaumes.some(h => h.type === t && h.pos === p);
+  if (!own(O.heaumeTypes, St.ht)) St.ht = "grilles";
+  if (!own(O.heaumePos, St.hp)) St.hp = "34";
+  if (!has(St.ht, St.hp)) St.hp = O.heaumes.find(h => h.type === St.ht).pos;
+  if (!["", "s"].includes(St.hs)) St.hs = "";
+  if (!own(SHAPES, St.sh)) St.sh = "";
+  if (!["", "1"].includes(St.ab)) St.ab = "";
+  if (!["", "3", "5"].includes(St.pa)) St.pa = "";
+  if (!O.supports.some(x => x.kind === St.su)) St.su = "";
+  if (!O.colliers.some(c => c.kind === St.co)) St.co = "";
+  St.dv = String(St.dv || "").slice(0, 48);
+  if (!own(DEVISES, St.dt)) St.dt = "";
+  St.A.forEach(normalize);
+  if (!active(St).includes(CUR)) CUR = 0;
+  return St;
+}
+
+/* ---------- meubles : dessinés ou empruntés, en <symbol> réutilisable ---------- */
+const SVGTXT = {};
+async function loadSvg(m) {
+  if (!m.file || SVGTXT[m.kind]) return;
+  const res = await fetch(m.file.path);
+  if (!res.ok) throw new Error(`HTTP ${res.status} — ${m.file.path}`);
+  SVGTXT[m.kind] = await res.text();
+}
+const flat = t => (DATA.tinctures.find(x => x.nom === t) || {}).color || "#888";
+/* une couleur du fichier à remplacer : « #fcef3c » partout où elle paraît, ou « fill:#000 » quand le même noir sert aussi aux contours (seuls les remplissages changent) */
+function colorRe(c) {
+  const [, pre, hex] = c.match(/^(?:(fill|stroke):)?(#\w+)$/), h = hex.slice(1).toLowerCase();
+  const short = h[0] === h[1] && h[2] === h[3] && h[4] === h[5] ? `|#${h[0]}${h[2]}${h[4]}` : "";
+  const named = { ffffff: "|white", "000000": "|black", ff0000: "|red", "008000": "|green" }[h] || "";
+  return new RegExp(`${pre ? `(?<=${pre}\\s*[:=]\\s*["']?)` : ""}(#${h}${short}${named})(?![0-9a-z])`, "gi");
+}
+function recolor(txt, m, tm, ta) {
+  let s = txt;
+  (m.main || []).forEach(c => { s = s.replace(colorRe(c), "@@M@@"); });
+  (m.accent || []).forEach(c => { s = s.replace(colorRe(c), "@@A@@"); });
+  (m.drop || []).forEach(c => { s = s.replace(colorRe(c), "none"); });
+  return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta));
+}
+/* les meubles dessinés n'ont pas tous la même taille d'origine : on les mesure une fois et on les ramène à celle des figures empruntées */
+const NORM = {};
+function normOf(m) {
+  if (!(m.kind in NORM)) {
+    const g = $("#measure g");
+    g.innerHTML = m.draw === "lis" ? fleurDeLisPaths() : chargeInner(m.draw, "#000", "#000", "#fff");
+    const b = g.getBBox(), k = Math.min(140 / b.width, 160 / b.height);
+    NORM[m.kind] = { k, t: `translate(100,116) scale(${k.toFixed(4)}) translate(${(-(b.x + b.width / 2)).toFixed(2)},${(-(b.y + b.height / 2)).toFixed(2)})` };
+    g.innerHTML = "";
+  }
+  return NORM[m.kind];
+}
+const normed = (m, inner) => {
+  if (m.seul) return inner;
+  const n = normOf(m);
+  return `<g transform="${n.t}">${inner.replace(/stroke-width="([\d.]+)"/g, (a, w) => `stroke-width="${(w / n.k).toFixed(2)}"`)}</g>`;
+};
+function symbolFor(s, id) {
+  const m = meuble(s.m), tm = s.tm, line = tm === "Sable" ? "#6b6560" : "#1a1712";
+  if (m.draw === "lis") return `<g id="${id}" fill="${tinctPaint(tm)}" stroke="${tm === "Sable" ? "#6b6560" : chgStroke(tm)}" stroke-width="${(1.6 / normOf(m).k).toFixed(2)}" stroke-linejoin="round">${normed(m, fleurDeLisPaths())}</g>`;
+  if (m.draw) {
+    const ground = s.pos === "sur" ? tinctPaint(s.tp) : tinctPaint(s.t1);
+    return `<g id="${id}">${normed(m, chargeInner(m.draw, tinctPaint(tm), tm === "Sable" ? "#6b6560" : chgStroke(tm), ground))}</g>`;
+  }
+  if (m.custom === "billette") return `<rect id="${id}" x="76" y="62" width="48" height="108" rx="2" fill="${tinctPaint(tm)}" stroke="${chgStroke(tm)}" stroke-width="1.4"/>`;
+  /* base : le fichier n'a pas de couleur propre, son dessin prend directement l'émail ; outline : contour fin pour les silhouettes */
+  const txt = recolor(SVGTXT[m.kind], m, tm, s.ta);
+  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null);
+}
+/* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
+function fileSymbol(txt, id, fill, outline) {
+  const [w, h] = vbOf(txt), vb = (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
+  const st = outline ? ` stroke="${outline.stroke}" stroke-width="${outline.width.toFixed(2)}" paint-order="stroke"` : "";
+  return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}"${st} stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
+}
+function fileInner(txt, id) {
+  const root = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
+  const inner = [...root.childNodes].map(n => new XMLSerializer().serializeToString(n)).join("");
+  return inner.replace(/\bid="([^"]+)"/g, `id="${id}-$1"`).replace(/url\(#([^)]+)\)/g, (a, x) => x.startsWith("m-") || x.startsWith("h-") ? a : `url(#${id}-${x})`)
+              .replace(/(xlink:)?href="#([^"]+)"/g, (a, x, y) => `${x || ""}href="#${id}-${y}"`)
+              /* les classes d'une feuille de style interne (.st0, .st1…) deviendraient communes à toute la page, donc à toutes les copies du meuble : on les préfixe, comme les id */
+              .replace(/\bclass="([^"]+)"/g, (a, c) => `class="${c.split(/\s+/).map(k => `${id}-${k}`).join(" ")}"`)
+              .replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, css => css.replace(/\.([A-Za-z_][\w-]*)/g, `.${id}-$1`));
+}
+function vbOf(txt) {
+  const r = txt.match(/<svg\b[^>]*>/)[0], vb = r.match(/viewBox="([^"]+)"/);
+  if (vb) { const p = vb[1].trim().split(/[\s,]+/).map(Number); return [p[2], p[3]]; }
+  return [parseFloat(r.match(/\swidth="([\d.]+)/)[1]), parseFloat(r.match(/\sheight="([\d.]+)/)[1])];
+}
+function useFor(m, id) { return m.file ? `<use href="#${id}" x="${m.box[0]}" y="${m.box[1]}" width="${m.box[2]}" height="${m.box[3]}"/>` : `<use href="#${id}"/>`; }
+
+const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; c < 6; c++) p.push([16 + c * 36 + (r % 2 ? 18 : 0), 22 + r * 30, .17]); return p; })();
+
+/* ---------- l'écu ---------- */
+/* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
+const placeAll = (pts, m, id, flip) => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k},${k}` : k}) translate(-100,-116)">${useFor(m, id)}</g>`).join("");
+function drawBody(s, u) {
+  let field;
+  if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
+  else if (s.f === "ray") field = recoupementInner(s.ray, +s.n, tinctPaint(s.t1), tinctPaint(s.t2));
+  else field = `<rect width="200" height="252" fill="${tinctPaint(s.t1)}"/>`;
+  const m = s.m && meuble(s.m), m2 = count2(s) && meuble(s.m2);
+  let defs = "", under = "", over = "";
+  if (m) {
+    defs += symbolFor(s, `chg-${u}`);
+    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct);
+    if (s.nb === "seme") under = g; else over = g;
+  }
+  if (m2) {
+    defs += symbolFor(arms2(s), `chg2-${u}`);
+    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2);
+  }
+  const piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
+  return { defs, body: field + under + piece + over };
+}
+function draw(s, u = "a", extra = "") {
+  const r = drawBody(s, u);
+  return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${extra}${shieldFinish()}`;
+}
+/* l'écusson en abîme (« sur le tout ») : l'écu entier, réduit au rapport AB_K, centré sur le cœur de l'écu */
+const AB_K = .4;
+function abime(St, u) {
+  const r = drawBody(St.A[4], `${u}ab`);
+  return `<defs><clipPath id="ab-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs>`
+    + `<g transform="translate(100,126) scale(${AB_K}) translate(-100,-126)"><g clip-path="url(#ab-${u})">${r.body}</g>${shieldFinish(3.4)}</g>`;
+}
+/* quartiers : la ligne horizontale passe là où l'écu a autant de surface au-dessus qu'en dessous (la pointe rétrécit le bas) ;
+   les armes de chaque quartier, réduites de moitié, sont centrées sur le barycentre de la partie visible */
+const QGEO = {};
+function quarterGeom() {
+  if (QGEO[SHIELD_D]) return QGEO[SHIELD_D];
+  const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D), pts = [];
+  for (let y = 0; y < 252; y++) for (let x = 0; x < 200; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) pts.push([x + .5, y + .5]);
+  const ys = pts.map(p => p[1]).sort((a, b) => a - b), split = Math.round(ys[Math.floor(ys.length / 2)]);
+  const acc = [0, 1, 2, 3].map(() => [0, 0, 0]);
+  for (const [x, y] of pts) { const q = (y < split ? 0 : 2) + (x < 100 ? 0 : 1); acc[q][0] += x; acc[q][1] += y; acc[q][2]++; }
+  const rects = [[0, 0, 100, split], [100, 0, 100, split], [0, split, 100, 252 - split], [100, split, 100, 252 - split]];
+  return QGEO[SHIELD_D] = { split, q: acc.map(([sx, sy, n], i) => ({ cx: sx / n, cy: sy / n, rect: rects[i] })) };
+}
+const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : [0, 1, 2, 3];
+/* deux couches par quartier : le champ et la pièce étirés pour couvrir tout le quartier, puis les armes entières
+   à demi-taille, centrées sur le barycentre de la partie visible (la pointe ne rogne plus les meubles du bas) */
+function qCover(g) {
+  const [rx, ry, rw, rh] = g.rect, s = Math.max(rw / 200, rh / 252), w = 200 * s, h = 252 * s;
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  return [clamp(g.cx - 100 * s, rx + rw - w, rx), clamp(g.cy - 112 * s, ry + rh - h, ry), s];
+}
+const qOrigin = g => [g.cx - 50, g.cy - 59, .5];
+/* formes citées au chapitre « L'écu » ; toutes tiennent dans la même boîte que l'écu français */
+const SHAPES = {
+  "": { nom: "Français moderne", d: "M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z" },
+  ancien: { nom: "Triangulaire ancien", d: "M18,16 L182,16 C182,112 152,186 100,236 C48,186 18,112 18,16 Z" },
+  losange: { nom: "En losange", d: "M100,10 L190,126 L100,242 L10,126 Z" },
+  targe: { nom: "Targe échancrée", d: "M18,20 C64,10 136,10 182,20 L182,124 C182,180 146,214 100,236 C54,214 18,180 18,124 L18,92 C36,84 36,58 18,50 Z" },
+  ovale: { nom: "Cartouche ovale", d: "M100,12 A84,114 0 0 1 100,240 A84,114 0 0 1 100,12 Z" },
+  banniere: { nom: "Bannière (tournoi)", d: "M18,16 L182,16 L182,236 L18,236 Z" },
+  anglais: { nom: "Anglais à cornes", d: "M4,12 C26,8 54,32 100,28 C146,32 174,8 196,12 C188,20 182,30 182,44 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 L18,44 C18,30 12,20 4,12 Z" },
+  suisse: { nom: "Suisse à trois pointes", d: "M18,16 C48,32 80,30 100,12 C120,30 152,32 182,16 L182,110 C182,170 140,212 100,238 C60,212 18,170 18,110 Z" },
+  italien: { nom: "Italien, tête de cheval", d: "M54,16 C80,22 120,22 146,16 L190,90 C156,132 124,190 100,242 C76,190 44,132 10,90 Z" },
+  sannitique: { nom: "Italien, sannitique", d: "M20,16 L180,16 L180,214 Q180,230 164,230 L114,230 L100,242 L86,230 L36,230 Q20,230 20,214 Z" },
+  iberique: { nom: "Talon arrondi (ibérique)", d: "M18,16 L182,16 L182,126 C182,190 144,236 100,236 C56,236 18,190 18,126 Z" },
+  hongrois: { nom: "Hongrois, talon pointu", d: "M18,16 L182,16 L182,118 C182,182 146,220 112,228 L100,242 L88,228 C54,220 18,182 18,118 Z" },
+  pl16: { nom: "Polonais, à oreilles", d: "M18,12 C40,24 68,22 100,26 C132,22 160,24 182,12 L182,126 C182,190 144,236 100,236 C56,236 18,190 18,126 Z" },
+  pl17: { nom: "Polonais, à échancrures", d: "M100,22 C84,26 48,24 22,12 C26,34 42,50 42,62 C34,70 32,84 42,94 C26,102 16,120 18,140 C20,190 62,222 100,240 C138,222 180,190 182,140 C184,120 174,102 158,94 C168,84 166,70 158,62 C158,50 174,34 178,12 C152,24 116,26 100,22 Z" },
+  pl19: { nom: "Polonais, sommet en coin", d: "M18,12 C50,28 150,28 182,12 C186,96 150,192 100,242 C50,192 14,96 18,12 Z" },
+};
+function drawShield(St, u) {
+  SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
+  const ab = St.ab ? abime(St, u) : "";
+  if (!St.q) return draw(St.A[0], u, ab);
+  const G = quarterGeom();
+  let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
+  quarterArms(St).forEach((ai, qi) => {
+    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "" }, `${u}u${qi}`), g = G.q[qi];
+    const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
+    defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
+    body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
+      + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g></g>`;
+  });
+  body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
+}
+
+/* ---------- les ornements extérieurs ---------- */
+const TXT = {};
+async function getText(path) {
+  if (!(path in TXT)) { const r = await fetch(path); if (!r.ok) throw new Error(`HTTP ${r.status} — ${path}`); TXT[path] = await r.text(); }
+}
+/* les couronnes sont des PNG : en data URI pour qu'elles survivent à l'export */
+async function getDataUri(path) {
+  if (path in TXT) return;
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(`HTTP ${r.status} — ${path}`);
+  const b = await r.blob();
+  TXT[path] = await new Promise((ok, ko) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = ko; fr.readAsDataURL(b); });
+}
+const ornOf = s => { const O = ATL.ornements; return { cr: O.couronnes.find(c => c.kind === s.cr), co: O.colliers.find(c => c.kind === s.co), su: O.supports.find(x => x.kind === s.su), hm: s.hm ? O.heaumes.find(h => h.type === s.ht && h.pos === s.hp) || O.heaumes[0] : null }; };
+/* boîte du dessin réel d'un fichier (ses marges vides varient d'un fichier à l'autre) */
+const BBOX = {};
+function bboxOf(key, inner) {
+  if (!(key in BBOX)) { const g = $("#measure g"); g.innerHTML = inner; const b = g.getBBox(); BBOX[key] = [b.x, b.y, b.width, b.height]; g.innerHTML = ""; }
+  return BBOX[key];
+}
+async function loadAll(St) {
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); }
+  if (su) jobs.push(loadSvg(meuble(su.kind)));
+  if (hm) jobs.push(getText(hm.path));
+  if (St.hm === "hl") jobs.push(getText(O.lambrequins.path));
+  if (St.hm && St.pa) jobs.push(getText(O.plume.path));
+  if (co) jobs.push(getText(co.path));
+  if (cr) jobs.push(getDataUri(cr.png));
+  await Promise.all(jobs);
+}
+const suppAccent = s => s.ts === "Gueules" ? "Azur" : "Gueules";
+const PLAIN_VB = [0, 0, 200, 252];
+function compose(St, u = "a") {
+  const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
+  if (!cr && !St.hm && !co && !su && !dv) return { vb: PLAIN_VB, svg: shield };
+  let defs = "", back = "", front = "", bb = [0, 0, 200, 252];
+  const grow = (x, y, w, h) => { bb = [Math.min(bb[0], x), Math.min(bb[1], y), Math.max(bb[2], x + w), Math.max(bb[3], y + h)]; };
+  const place = (id, x, y, w, h, flip) => { grow(x, y, w, h); return `<use href="#${id}" x="${x}" y="${y}" width="${w}" height="${h}"${flip ? ` transform="matrix(-1 0 0 1 ${2 * x + w} 0)"` : ""}/>`; };
+  const sized = (txt, W) => { const [w, h] = vbOf(txt); return W * h / w; };
+  if (St.hm === "hl") {
+    const L = O.lambrequins, t = TXT[L.path], W = 330;
+    defs += fileSymbol(recolor(t, L, St.tl1, St.tl2), `lb-${u}`, "#1a1712");
+    back += place(`lb-${u}`, 100 - W / 2, -66, W, sized(t, W));
+  }
+  if (co) {
+    const t = TXT[co.path], { W, x, y } = co.pos;
+    defs += fileSymbol(t, `co-${u}`, "#1a1712");
+    back += place(`co-${u}`, x, y, W, sized(t, W));
+  }
+  if (su) {
+    const t = SVGTXT[su.kind], [w, h] = vbOf(t), H = 236, W = Math.min(140, H * w / h);
+    defs += symbolFor({ ...ADEF, m: su.kind, tm: St.ts, ta: suppAccent(St) }, `su-${u}`);
+    back += place(`su-${u}`, 10 - W, 262 - H, W, H, true) + place(`su-${u}`, 190, 262 - H, W, H, false);
+  }
+  let top = 8, helm = "", crown = "", plumes = "", helmTop = 0, helmH = 0;
+  if (hm) {
+    /* le heaume est calé sur son dessin réel : centré sur l'écu, posé sur son bord supérieur ; « à senestre » = retourné */
+    const t = hm.main ? recolor(TXT[hm.path], hm, "Argent", "Argent") : TXT[hm.path];
+    const inner = fileInner(t, `hm-${u}`), [bx, by0, bw, bh] = bboxOf(hm.path, fileInner(TXT[hm.path], "m"));
+    const W = hm.pos === "profil" ? 100 : 112, k = W / bw, base = 50;
+    helmH = bh * k; helmTop = base - helmH;
+    const flip = St.hp !== "face" && St.hs !== hm.nat;
+    helm = `<g transform="translate(100,${base}) scale(${flip ? -k : k},${k}) translate(${-(bx + bw / 2)},${-(by0 + bh)})"><g fill="#1a1712" stroke-linejoin="round">${inner}</g></g>`;
+    grow(100 - W / 2, helmTop, W, helmH);
+    top = helmTop + helmH * .32;
+  }
+  let crownY = null, crownH = 0;
+  if (cr) {
+    const W = hm ? 96 : cr.kind === "roi" ? 120 : 150, H = W * cr.wh[1] / cr.wh[0], x = 100 - W / 2;
+    crownY = top - H; crownH = H;
+    grow(x, crownY, W, H);
+    crown = `<image href="${TXT[cr.png]}" x="${x}" y="${crownY}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid meet"/>`;
+  }
+  if (hm && St.pa) {
+    /* toutes les plumes partent d'un même point, caché par le heaume ou la couronne : on pivote sur la tige du fichier */
+    const P = O.plume, t = TXT[P.path], W = 92, H = sized(t, W), sx = W * P.tige[0], sy = H * P.tige[1];
+    const by = crownY !== null ? crownY + crownH * .55 : helmTop + helmH * .16;
+    defs += fileSymbol(recolor(t, P, St.pa1, St.pa1), `pl1-${u}`, "#1a1712") + fileSymbol(recolor(t, P, St.pa2, St.pa2), `pl2-${u}`, "#1a1712");
+    const angles = St.pa === "5" ? [-48, -24, 0, 24, 48] : [-28, 0, 28];
+    plumes = angles.map((a, i) => `<g transform="translate(100,${by.toFixed(1)}) rotate(${a}) scale(${a < 0 ? -1 : 1},1) translate(${-sx},${-sy})"><use href="#pl${i % 2 ? 2 : 1}-${u}" width="${W}" height="${H}"/></g>`).join("");
+    grow(100 - H - W / 2, by - H - 8, 2 * H + W, H + 8);
+  }
+  front += plumes + helm + crown;
+  if (dv) {
+    const y0 = co ? co.devY : 262, x0 = su ? -120 : -34, x1 = su ? 320 : 234;
+    const B = DEVISES[St.dt].build(x0, x1, y0);
+    const fs = Math.min(15, (x1 - x0 - 40) / (dv.length * .66));
+    defs += `<path id="dvp-${u}" d="${B.d}"/>`;
+    front += B.svg
+      + `<text font-family="'EB Garamond', Georgia, serif" font-size="${fs.toFixed(1)}" letter-spacing=".8" fill="#1a1712"><textPath href="#dvp-${u}" startOffset="50%" text-anchor="middle">${esc(dv.toUpperCase())}</textPath></text>`;
+    grow(x0 - 30, y0, x1 - x0 + 60, B.h);
+  }
+  const pad = 8;
+  return { vb: [bb[0] - pad, bb[1] - pad, bb[2] - bb[0] + 2 * pad, bb[3] - bb[1] + 2 * pad], svg: `<defs>${defs}</defs>${back}<g>${shield}</g>${front}` };
+}
+function ornText(St) {
+  const { cr, co, su } = ornOf(St), out = [];
+  if (St.hm) {
+    const O = ATL.ornements;
+    let t = `${O.heaumeTypes[St.ht]} ${O.heaumePos[St.hp].toLowerCase()}${St.hp !== "face" ? (St.hs === "s" ? ", tourné à senestre" : ", tourné à dextre") : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
+    if (St.pa) t += `, panache de ${NB[+St.pa]} plumes d'autruche ${St.pa1 === St.pa2 ? de(St.pa1) : de(St.pa1) + " et " + de(St.pa2)}`;
+    out.push(t);
+  }
+  if (cr) out.push(cr.nom);
+  if (su) {
+    const m = meuble(su.kind);
+    out.push(`${su.mot} : deux ${m.plur} ${de(St.ts)}${m.accent && m.accentMot ? " " + agree(m.accentMot, m.g, true) + " " + de(suppAccent(St)) : ""}`);
+  }
+  if (co) out.push(co.nom);
+  if (St.dv.trim()) out.push(`Devise : « ${St.dv.trim()} »`);
+  return out.join(" · ");
+}
+
+
+/* ---------- les crédits des figures empruntées à Wikimedia Commons ---------- */
+function creditsOf(St) {
+  const out = [], add = (label, c, adapt) => {
+    const prev = out.find(x => x.commons === c.commons);
+    if (prev) { if (!prev.label.toLowerCase().includes(label.toLowerCase())) prev.label += ", " + label.toLowerCase(); }
+    else out.push({ label, adapt, commons: c.commons, auteur: c.auteur, lic: c.lic, licurl: c.licurl });
+  };
+  for (const i of active(St)) {
+    const a = St.A[i];
+    for (const k of [a.m, count2(a) ? a.m2 : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
+  }
+  const O = ATL.ornements, { cr, co, su } = ornOf(St);
+  if (su) add("Supports", meuble(su.kind).file, true);
+  if (cr) add(cr.nom, cr, false);
+  if (St.hm) add("Heaume", ornOf(St).hm, false);
+  if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
+  if (St.hm && St.pa) add("Panache", O.plume, true);
+  if (co) add(co.nom, co, false);
+  return out;
+}
+const creditTxt = c => `${c.label} : ${c.commons} — ${c.auteur}, ${c.lic}, via Wikimedia Commons${c.adapt ? ", couleurs adaptées" : ""}`;
+/* les mêmes crédits, en HTML, avec liens vers la page du fichier et vers la licence */
+const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)} : <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">« ${esc(c.commons)} »</a> — ${esc(c.auteur)}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(c.lic)}</a>, via Wikimedia Commons${c.adapt ? " · couleurs adaptées" : ""}`).join("<br>") : "Toutes les figures de cet écu sont dessinées par l'encyclopédie.";
+
+/* ---------- la règle des émaux ---------- */function rule(s) {
+  const out = [], word = t => MOT[t];
+  const check = (fig, sur, quoi, lieu) => {
+    const a = classe(fig), b = classe(sur);
+    if (fig === sur) out.push(`${quoi} ${de(fig)} sur ${lieu} ${de(sur)} : même émail, la figure disparaît.`);
+    else if (a === b && a !== "Fourrure") out.push(`${a === "Métal" ? "Métal sur métal" : "Couleur sur couleur"} : ${quoi} ${de(fig)} sur ${lieu} ${de(sur)}.`);
+  };
+  if (s.p && s.f === "plein") check(s.tp, s.t1, cap(art(s.p, PIECES[s.p].g)) + s.p, "un champ");
+  if (s.m) {
+    const m = meuble(s.m), quoi = s.nb === "1" || m.seul ? "Le meuble" : "Les meubles";
+    if (s.p && s.pos === "sur") check(s.tm, s.tp, quoi, { chef: "le chef", canton: "le canton", "franc-quartier": "le franc-quartier" }[s.p] || "la pièce");
+    else if (s.f === "plein") check(s.tm, s.t1, quoi, "un champ");
+  }
+  if (count2(s) && s.f === "plein") check(s.tm2, s.t1, s.nb2 === "1" ? "Le second meuble" : "Les seconds meubles", "un champ");
+  return out;
+}
+function ruleAll(St) {
+  const out = !St.q ? rule(St.A[0]) : active(St).filter(i => i < 4).flatMap(i => rule(St.A[i]).map(w => `${QNAME[St.q][i]} : ${w}`));
+  return St.ab ? [...out, ...rule(St.A[4]).map(w => `Écusson : ${w}`)] : out;
+}
+

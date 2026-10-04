@@ -197,7 +197,7 @@ function pGroupe(P, i) {
   else if (k === "a" && LEX.compte.has(k1)) { j = i + 2; n = LEX.compte.get(k1); }
   else return rate(P, k === "a" ? i + 1 : i, k === "a" ? "un article (« à la », « au ») ou un nombre (« à trois »)" : "« à » ou « au »");
   const pl = suites(LEX.pieces, P, j)[0];
-  if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne dessine qu'une pièce de chaque sorte${{ fasce: " (pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »)", pal: " (voir « Palé »)", bande: " (voir « Bandé »)", barre: " (voir « Barré »)" }[pl.val.p] || ""}.`);
+  if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à quatre, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
   const c = pCorps(P, j);
   if (!c) return null;
   const d = pDispo(P, c.i, n);
@@ -257,6 +257,14 @@ function pChamp(P) {
     const t = pEmail(P, 0);
     if (!t) return null;
     const plein = cle(P, t.i) === "plein";
+    /* « d'or à trois pals de gueules » : de deux à quatre pièces rebattues sur le champ = un champ rayé de cinq, sept ou neuf zones (l'émail du champ aux deux bords) */
+    if (!plein && cle(P, t.i) === "a" && LEX.compte.has(cle(P, t.i + 1))) {
+      const k = LEX.compte.get(cle(P, t.i + 1)), pl = suites(LEX.pieces, P, t.i + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin" };
+      if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 4) {
+        const t2 = pEmail(P, t.i + 2 + pl.n);
+        if (t2) return { ch: { f: "ray", ray: RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
+      }
+    }
     return { ch: { f: "plein", t1: t.t }, i: t.i + (plein ? 1 : 0), plein };
   }
   for (const { n, val } of suites(LEX.parts, P, 0)) {

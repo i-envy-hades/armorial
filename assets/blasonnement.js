@@ -59,6 +59,8 @@ const PLEIN = {
       { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[48, 52, .2], [152, 52, .2], [34, 122, .2], [166, 122, .2], [58, 190, .2], [142, 190, .2]] }],
   8: [{ id: "", lab: "En orle", ph: " en orle", plein: true, pts: [[42, 46, .18], [100, 38, .18], [158, 46, .18], [34, 112, .18], [166, 112, .18], [46, 176, .18], [154, 176, .18], [100, 218, .18]] }],
 };
+/* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
+const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre" };
 const PLEINLIKE = new Set(["plein", "bordure", "orle"]);
 const LAYOUT = {
   chef: { 1: [[100, 154, .62]], 2: [[64, 146, .42], [136, 146, .42]], 3: [[62, 120, .36], [138, 120, .36], [100, 192, .34]] },
@@ -129,7 +131,7 @@ function normalize(s) {
   for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
   if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
   if (!["barry", "paly", "bendy", "bendysin"].includes(s.ray)) s.ray = "barry";
-  if (!["6", "8"].includes(s.n)) s.n = ADEF.n;
+  if (!["5", "6", "7", "8", "9"].includes(s.n)) s.n = ADEF.n;                       // pair : « fascé de six pièces » ; impair : des pièces rebattues (5, 7, 9 : deux, trois, quatre pals, fasces…)
   if (s.pos !== "sur") s.pos = "autour";
   if (!own(PLEIN, s.nb) && s.nb !== "seme") s.nb = ADEF.nb;
   if (!DATA.partitions.some(p => p.kind === s.part)) s.part = "parti";
@@ -209,7 +211,9 @@ function blazon(s) {
     champ = s.part.startsWith("tierce") ? `${p.nom} ${de(s.t1)}, ${de(s.t2)} et ${de(s.t3)}` : `${p.nom} ${de(s.t1)} et ${de(s.t2)}`;
   } else if (s.f === "ray") {
     const nom = { barry: "Fascé", paly: "Palé", bendy: "Bandé", bendysin: "Barré" }[s.ray];
-    champ = `${nom} ${de(s.t1)} et ${de(s.t2)}${s.n === "8" ? " de huit pièces" : ""}`;
+    /* un nombre impair de zones laisse aux deux bords l'émail du champ : ce sont des pièces rebattues, « d'or à trois pals de gueules » */
+    champ = +s.n % 2 ? `${cap(de(s.t1))} à ${NB[(+s.n - 1) / 2]} ${RAY_PIECE[s.ray]}s ${de(s.t2)}`
+      : `${nom} ${de(s.t1)} et ${de(s.t2)}${s.n === "8" ? " de huit pièces" : ""}`;
   } else champ = cap(de(s.t1));
   const parti = s.f !== "plein";
   const m = s.m && meuble(s.m);
