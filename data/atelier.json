@@ -5,6 +5,12 @@
    "nom": "Lion rampant",
    "sing": "lion",
    "plur": "lions",
+   "alias": [
+    [
+     "lion rampant",
+     "lions rampants"
+    ]
+   ],
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,
@@ -34,9 +40,16 @@
    "nom": "Lion passant (léopardé)",
    "sing": "lion passant",
    "plur": "lions passants",
+   "alias": [
+    [
+     "lion léopardé",
+     "lions léopardés"
+    ]
+   ],
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,
+   "allongee": true,
    "file": {
     "path": "assets/meubles/lion-passant.svg",
     "commons": "Meuble héraldique Lion léopardé.svg",
@@ -66,6 +79,7 @@
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,
+   "allongee": true,
    "file": {
     "path": "assets/meubles/leopard.svg",
     "commons": "Meuble héraldique Léopard.svg",
@@ -92,6 +106,12 @@
    "nom": "Aigle",
    "sing": "aigle",
    "plur": "aigles",
+   "alias": [
+    [
+     "aigle éployée",
+     "aigles éployées"
+    ]
+   ],
    "g": "f",
    "cat": "Bêtes et chimères",
    "asym": true,
@@ -115,13 +135,24 @@
     "#fcef3c",
     "#fff03c"
    ],
-   "accentMot": "becqué, membré et couronné"
+   "accentMot": "becqué, membré et couronné",
+   "accentTrait": true
   },
   {
    "kind": "aigle-bicephale",
    "nom": "Aigle bicéphale",
    "sing": "aigle bicéphale",
    "plur": "aigles bicéphales",
+   "alias": [
+    [
+     "aigle bicéphale éployée",
+     "aigles bicéphales éployées"
+    ],
+    [
+     "aigle à deux têtes",
+     "aigles à deux têtes"
+    ]
+   ],
    "g": "f",
    "cat": "Bêtes et chimères",
    "file": {
@@ -143,7 +174,8 @@
    "accent": [
     "#fcef3c"
    ],
-   "accentMot": "becqué, membré et couronné"
+   "accentMot": "becqué, membré et couronné",
+   "accentTrait": true
   },
   {
    "kind": "croix",
@@ -198,6 +230,12 @@
    "nom": "Étoile",
    "sing": "étoile",
    "plur": "étoiles",
+   "alias": [
+    [
+     "étoile à cinq rais",
+     "étoiles à cinq rais"
+    ]
+   ],
    "g": "f",
    "cat": "Astres et éléments",
    "draw": "etoile"
@@ -827,6 +865,16 @@
    "nom": "Croix de Toulouse",
    "sing": "croix cléchée, vidée et pommetée",
    "plur": "croix cléchées, vidées et pommetées",
+   "alias": [
+    [
+     "croix vidée, cléchée et pommetée",
+     "croix vidées, cléchées et pommetées"
+    ],
+    [
+     "croix de Toulouse",
+     "croix de Toulouse"
+    ]
+   ],
    "g": "f",
    "cat": "La famille de la croix",
    "file": {
@@ -1328,6 +1376,7 @@
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,
+   "allongee": true,
    "file": {
     "path": "assets/meubles/griffon.svg",
     "commons": "Meuble héraldique Griffon passant.svg",
@@ -1430,7 +1479,8 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé, lampassé et incensé"
+   "accentMot": "armé, lampassé et incensé",
+   "accentTrait": true
   },
   {
    "kind": "cerf",
@@ -1440,6 +1490,7 @@
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,
+   "allongee": true,
    "file": {
     "path": "assets/meubles/cerf.svg",
     "commons": "Meuble héraldique Cerf passant.svg",
@@ -1462,6 +1513,16 @@
    "nom": "Cheval cabré",
    "sing": "cheval cabré",
    "plur": "chevaux cabrés",
+   "alias": [
+    [
+     "cheval effrayé",
+     "chevaux effrayés"
+    ],
+    [
+     "cheval effaré",
+     "chevaux effarés"
+    ]
+   ],
    "g": "m",
    "cat": "Bêtes et chimères",
    "asym": true,

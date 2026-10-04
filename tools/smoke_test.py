@@ -9,9 +9,11 @@ si bien que le test ne dépend ni du réseau ni de l'humeur de Wikimedia.
 
 Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manquant, aucune balise absurde
 (« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les cinq frises,
-et l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer).
+l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
+(chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
+et les boutons « Redessiner dans l'Atelier » des galeries.
 Code de sortie 1 au premier échec. FUZZ=500 python tools/smoke_test.py pousse l'Atelier plus loin (500 compositions)."""
-import functools, http.server, json, os, pathlib, random, re, sys, threading
+import functools, http.server, json, os, pathlib, random, re, sys, threading, urllib.parse
 
 try:
     from playwright.sync_api import sync_playwright
@@ -231,6 +233,210 @@ def test_atelier_adresse_truquee(browser, base):
     propre("atelier (lien truqué)", page, erreurs)
     page.context.close()
 
+# ------------------------------------------------------------------ lecture d'un blasonnement
+# (texte, réécriture par l'Atelier, fragment attendu parmi les réserves ou "")
+LUS = [
+    ("D'azur à trois fleurs de lis d'or", "D'azur à trois fleurs de lis d'or", ""),
+    ("d'azur a trois fleurs de lys d'or", "D'azur à trois fleurs de lis d'or", ""),           # majuscules, accents et « lys » libres
+    ("D'hermine plain", "D'hermine plein", ""),
+    ("De gueules à la croix d'argent", "De gueules à la croix d'argent", ""),
+    ("D'azur semé de fleurs de lis d'or", "D'azur semé de fleurs de lis d'or", ""),
+    ("D'argent au chef d'azur chargé de trois étoiles d'or", "D'argent au chef d'azur chargé de trois étoiles d'or", ""),
+    ("D'argent à la fasce ondée de sable", "D'argent à la fasce ondée de sable", ""),
+    ("D'azur au lion contourné d'or armé et lampassé de gueules", "D'azur au lion contourné d'or armé et lampassé de gueules", ""),
+    ("D'azur au lion d'or contourné", "D'azur au lion contourné d'or", ""),                    # « contourné » après l'émail
+    ("D'azur à l'aigle d'argent, becquée, membrée et couronnée d'or", "D'azur à l'aigle d'argent becquée, membrée et couronnée d'or", ""),
+    ("D'or à six fleurs de lis d'azur, posées 3, 2 et 1", "D'or à six fleurs de lis d'azur posées 3, 2 et 1", ""),
+    ("De gueules au lion d'or", "De gueules au lion d'or", ""),                                 # attribut sans émail : l'émail du corps
+    ("D'argent à l'aigle de sable", "D'argent à l'aigle de sable becquée, membrée et couronnée de sable", "couronnée"),
+    ("De gueules à trois léopards d'or", "De gueules à trois léopards d'or", "posés en pal"),   # disposition non dite : signalée
+    ("D'azur à deux étoiles d'or", "D'azur à deux étoiles d'or posées en fasce", "disposition non précisée"),
+    ("D'azur à trois étoiles d'or en fasce", "D'azur à trois étoiles d'or rangées en fasce", ""),
+    ("D'azur au chevron d'or accompagné de trois croissants du même", "D'azur au chevron d'or accompagné de trois croissants d'or", ""),
+    ("De gueules à la croix vidée, cléchée et pommetée d'or", "De gueules à la croix cléchée, vidée et pommetée d'or", ""),
+    ("D'azur à la fasce d'or chargée de trois coquilles de sable, accompagnée de trois cœurs de gueules", "D'azur à trois cœurs de gueules, à la fasce d'or chargée de trois coquilles de sable", ""),
+    ("D'or à cinq tourteaux de gueules et, en chef, un tourteau d'azur", "D'or à cinq tourteaux de gueules posés en sautoir, accompagnés d'un tourteau d'azur en chef", "en sautoir"),
+    ("Parti d'azur et de gueules, à la croix d'or", "Parti d'azur et de gueules, à la croix d'or brochant sur le tout", ""),
+    ("Tiercé en pal de gueules, d'argent et d'azur", "Tiercé en pal de gueules, d'argent et d'azur", ""),
+    ("Fascé d'argent et d'azur de huit pièces", "Fascé d'argent et d'azur de huit pièces", ""),
+    ("Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or (France ancien) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
+     "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or", "Commentaire ignoré"),
+    ("Écartelé : au 1, d'azur ; au 2, de gueules ; au 3, d'or ; au 4, de sable", "Écartelé : au 1, d'azur plein ; au 2, de gueules plein ; au 3, d'or plein ; au 4, de sable plein", ""),
+    ("Écartelé : aux 1 et 3, d'azur ; aux 2 et 4, de gueules", "Écartelé : au 1, d'azur plein ; au 2, de gueules plein ; au 3, d'azur plein ; au 4, de gueules plein", ""),
+    ("D'azur au lion d'or, sur le tout d'argent à la croix de gueules", "D'azur au lion d'or, sur le tout d'argent à la croix de gueules", ""),
+    ("Parti d'azur et de gueules à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent",
+     "Parti d'azur et de gueules, à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent", ""),
+]
+# (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
+REFUSES = [
+    ("D'azur à la grenade d'or", "grenade"),
+    ("D'or à quatre pals de gueules", "Plusieurs pals"),
+    ("De gueules à trois fasces d'argent", "Plusieurs fasces"),
+    ("D'azur à la croix de gueules bordée d'argent", "bordée"),
+    ("D'azur à sept étoiles d'or", "sept étoiles"),
+    ("D'azur à la fasce d'or ondée", "avant son émail"),
+    ("D'azur à l'aigle d'or becquée et membrée de gueules", "en entier"),
+    ("D'azur à la bande d'or brochant sur le tout", "champ divisé"),
+    ("D'azur au canton d'or accompagné de deux étoiles d'argent", "autour du canton"),
+    ("D'azur au croissant contourné d'or", "ne se contourne pas"),
+    ("D'azur à trois croissants d'or contournés", "ne se contourne pas"),
+    ("D'azur au lion d'or armé de gueules", "armé et lampassé"),
+    ("Écartelé : aux 1 et 4, d'azur ; aux 2 et 3, de gueules ; au 5, d'or", "quartier 5"),
+    ("Écartelé : au 1, d'azur ; au 2, de gueules", "Il manque"),
+    ("D'azur à la croix", "s'arrête trop tôt"),
+    ("D'azur à trois", "s'arrête trop tôt"),
+    ("Fascé d'argent et d'azur de sept pièces", "six ou à huit"),
+    ("D'azur à l'étoile à sept rais d'or", "à sept rais"),
+    ("D'azur plein à la croix d'or", "plein"),
+    ("D'azur à la croix d'or (", "Parenthèse"),
+    ("sur le tout d'argent à la croix de gueules", "après les armes"),
+    ("Écartelé de France ancien et d'Angleterre", "France"),
+]
+# armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
+BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Saint-Empire romain germanique", "Archiduché d'Autriche",
+                    "Duché de Bretagne", "Duché de Savoie", "Maison de Médicis", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
+                    "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse"]
+BLASONS_REFUSES = ["Couronne d'Aragon", "Comté de Foix", "Royaume de Grenade", "Maison Grimaldi", "Royaume d'Islande"]
+PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur"]
+PERSONNAGES_REFUSES = ["Paul IV", "Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Colbert"]
+
+# armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
+ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
+    ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["6", "8"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
+    nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur"]),
+    ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), ta: pick(Object.keys(MOT)), ta2: pick(Object.keys(MOT)),
+    d: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "orle", "cd", "cs"]),
+    d2: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "cd", "cs"]),
+    tm: pick(Object.keys(MOT)), tm2: pick(Object.keys(MOT)), tp: pick(Object.keys(MOT)), t1: pick(Object.keys(MOT)), t2: pick(Object.keys(MOT)) })"""
+ECU_HASARD = """(pick) => {
+    const St = fresh(), arms = %s;
+    St.q = pick(["", "", "2", "4"]);
+    for (let j = 0; j < 4; j++) St.A[j] = arms(pick);
+    St.ab = pick(["", "", "1"]); if (St.ab) St.A[4] = { ...randomArms(), ln: pick(["", ...Object.keys(CONTOUR_NOM)]) };
+    return normalizeAll(St);
+}""" % ARMES_HASARD
+
+# écu → blasonnement → écu : le lecteur doit rendre exactement ce que l'Atelier a écrit (mêmes armes, même texte, rien à signaler
+# que la disposition des figures allongées, que le texte de l'Atelier ne dit pas pour trois figures)
+LECTURE_ALLER_RETOUR = """(n) => {
+  const pick = a => a[Math.floor(Math.random() * a.length)], ecu = %s, pb = [];
+  const permis = x => /disposition non précisée pour .* \\(dites « posés en pal »/.test(x);
+  for (let i = 0; i < n; i++) {
+    const s0 = ecu(pick), b = blazonAll(s0), r = lire(b);
+    if (!r.ok) { pb.push("refusé : " + b + " — " + r.erreurs.map(e => e.msg).join(" / ")); continue; }
+    if (JSON.stringify(canonAll(s0)) !== JSON.stringify(canonAll(r.etat))) pb.push("autres armes : " + b);
+    else if (!r.exact) pb.push("réécrit autrement : " + b + " → " + r.reecrit);
+    else if (r.notes.some(x => !permis(x))) pb.push("réserves : " + b + " — " + r.notes.join(" / "));
+  }
+  S = fresh();
+  return pb;
+}""" % ECU_HASARD
+
+# la même chose, mais sur le dessin : l'écu relu doit être dessiné trait pour trait comme l'original
+LECTURE_DESSIN = """async (n) => {
+  const pick = a => a[Math.floor(Math.random() * a.length)], ecu = %s, pb = [];
+  for (let i = 0; i < n; i++) {
+    const s0 = ecu(pick), b = blazonAll(s0), r = lire(b);
+    if (!r.ok) { pb.push("refusé : " + b); continue; }
+    const s1 = normalizeAll({ ...fresh(), q: r.etat.q, ab: r.etat.ab, A: r.etat.A.map(a => ({ ...a })) });
+    await loadAll(s0); await loadAll(s1);
+    uid = 0; const d0 = drawShield(s0, "a"); uid = 0; const d1 = drawShield(s1, "a");
+    if (d0 !== d1) pb.push("dessin différent : " + b);
+  }
+  S = fresh();
+  return pb;
+}""" % ECU_HASARD
+
+# jamais deviné : un mot inconnu glissé dans un blasonnement le fait refuser ; un salmigondis de mots du blason ne fait jamais d'exception,
+# et ce qu'il donne par hasard est un écu cohérent (qui se relit à l'identique)
+LECTURE_SALADE = """(n) => {
+  const pick = a => a[Math.floor(Math.random() * a.length)], ecu = %s, pb = [];
+  const mots = [];
+  for (let i = 0; i < 40; i++) mots.push(...blazonAll(ecu(pick)).split(/\\s+/));
+  for (let i = 0; i < n; i++) {
+    const b = blazonAll(ecu(pick)).split(" "), k = Math.floor(Math.random() * (b.length + 1));
+    const m = [...b.slice(0, k), "zzz", ...b.slice(k)].join(" ");
+    try { if (lire(m).ok) pb.push("mot inconnu accepté : " + m); } catch (e) { pb.push("exception : " + m + " — " + e.message); }
+    const salade = Array.from({ length: 3 + Math.floor(Math.random() * 14) }, () => pick(mots)).join(" ");
+    try {
+      const r = lire(salade);
+      if (r.ok) {
+        const r2 = lire(blazonAll(r.etat));
+        if (!r2.ok || JSON.stringify(canonAll(r.etat)) !== JSON.stringify(canonAll(r2.etat))) pb.push("lecture incohérente : " + salade);
+      }
+    } catch (e) { pb.push("exception : " + salade + " — " + e.message); }
+  }
+  S = fresh();
+  return pb;
+}""" % ECU_HASARD
+
+def test_lecture(browser, base, n_fuzz):
+    page, erreurs = ouvre(browser, base, "atelier.html", "#blz:not(:empty)")
+    for texte, reecrit, reserve in LUS:
+        r = page.evaluate("t => { const r = lire(t); return { ok: r.ok, reecrit: r.reecrit, notes: r.notes, erreurs: r.erreurs.map(e => e.msg) }; }", texte)
+        bon = r["ok"] and r["reecrit"] == reecrit and (not reserve or any(reserve in n for n in r["notes"]))
+        verifie(bon, f"lecture : « {texte[:70]}{'…' if len(texte) > 70 else ''} »" + ("" if bon else f" — obtenu {r}"))
+    for texte, raison in REFUSES:
+        r = page.evaluate("t => { const r = lire(t); return { ok: r.ok, erreurs: r.erreurs.map(e => e.msg) }; }", texte)
+        bon = not r["ok"] and any(raison in e for e in r["erreurs"])
+        verifie(bon, f"lecture refusée : « {texte[:60]} » ({raison})" + ("" if bon else f" — obtenu {r}"))
+    vide = page.evaluate("() => { const r = lire('   '); return r.vide && !r.ok && !r.erreurs.length; }")
+    verifie(vide, "lecture : un texte vide n'est ni compris ni une erreur")
+    n = max(300, n_fuzz * 10)
+    pb = page.evaluate(LECTURE_ALLER_RETOUR, n)
+    verifie(not pb, f"lecture : {n} écus au hasard se relisent à l'identique" + ("" if not pb else f" — {pb[:3]}"))
+    pb = page.evaluate(LECTURE_DESSIN, max(40, n_fuzz))
+    verifie(not pb, f"lecture : {max(40, n_fuzz)} écus relus sont dessinés trait pour trait comme l'original" + ("" if not pb else f" — {pb[:3]}"))
+    pb = page.evaluate(LECTURE_SALADE, max(200, n_fuzz * 3))
+    verifie(not pb, "lecture : un mot inconnu fait refuser le texte, un salmigondis ne fait pas d'exception et ne donne que des écus cohérents" + ("" if not pb else f" — {pb[:3]}"))
+    # l'interface : on tape, l'écu se dessine ; on se trompe, c'est signalé et l'écu ne bouge pas
+    blz = lambda: page.inner_text("#blz")
+    page.fill("#lire", "D'azur à la fasce d'or"); page.wait_for_timeout(900)
+    verifie(blz().strip("« »  ") == "D'azur à la fasce d'or" and page.locator("#lire-etat.ok").count() == 1, "lecture : taper un blasonnement dessine l'écu")
+    page.fill("#lire", "D'azur à la fasce d'or et à la grenade de sable"); page.wait_for_timeout(900)
+    verifie(page.locator("#lire-etat.ko mark").count() >= 1 and blz().strip("« »  ") == "D'azur à la fasce d'or", "lecture : un blasonnement non compris est surligné et laisse l'écu comme il était")
+    verifie("grenade" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
+    page.click("#b-recopier"); page.wait_for_timeout(500)
+    verifie(page.input_value("#lire") == "D'azur à la fasce d'or", "lecture : « Reprendre le blasonnement actuel » recopie le blasonnement dans la zone de saisie")
+    page.fill("#lire", "De gueules à trois léopards d'or"); page.wait_for_timeout(900)
+    verifie(page.locator("#lire-etat li:has-text('posés en pal')").count() == 1, "lecture : les réserves s'affichent")
+    page.evaluate("S = fresh(); S.cr = 'duc'; S.A[0].t1 = 'Gueules'; render()"); page.wait_for_timeout(300)
+    page.fill("#lire", "D'argent à la croix de sable"); page.wait_for_timeout(900)
+    verifie(page.evaluate("S.cr") == "duc" and blz().strip("« »  ") == "D'argent à la croix de sable", "lecture : lire des armes laisse les ornements de la composition")
+    propre("atelier (lecture)", page, erreurs)
+    page.context.close()
+    # l'adresse « #lire=… » (celle des boutons des galeries)
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur au chef d'or chargé de trois étoiles de sable"), "#blz:not(:empty)")
+    verifie(page.inner_text("#blz").strip("« »  ") == "D'azur au chef d'or chargé de trois étoiles de sable" and page.input_value("#lire") == "D'azur au chef d'or chargé de trois étoiles de sable",
+            "lecture : l'adresse « #lire=… » dessine l'écu et remplit la zone de saisie")
+    verifie(page.url.startswith(base + "/atelier.html#") and "lire=" not in page.url, "lecture : l'adresse redevient le lien de partage habituel")
+    propre("atelier (#lire)", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur à la grenade d'or"), "#lire-etat.ko")
+    verifie(page.locator("#lire-etat.ko mark").count() == 1, "lecture : une adresse « #lire=… » non comprise est signalée")
+    propre("atelier (#lire refusé)", page, erreurs)
+    page.context.close()
+
+def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
+    """sous les blasonnements que l'Atelier relit en entier, un bouton ouvre l'Atelier ; sous les autres, rien"""
+    page, erreurs = ouvre(browser, base, page_url, ".ar .redo")
+    cartes = dict(page.evaluate("[...document.querySelectorAll('.ar')].map(a => [a.querySelector('h3').textContent, !!a.querySelector('.redo')])"))
+    verifie(all(cartes.get(n) for n in lisibles), f"{nom} : un bouton « Redessiner dans l'Atelier » sous chaque blasonnement lisible" + ("" if all(cartes.get(n) for n in lisibles) else f" — manque {[n for n in lisibles if not cartes.get(n)]}"))
+    verifie(not any(cartes.get(n) for n in refuses), f"{nom} : aucun bouton sous ce que l'Atelier ne comprend pas" + ("" if not any(cartes.get(n) for n in refuses) else f" — {[n for n in refuses if cartes.get(n)]}"))
+    sans = [a["nom"] for a in data(fichier) if not a.get("blason")]
+    verifie(not any(cartes.get(n) for n in sans), f"{nom} : aucun bouton sous une carte sans blasonnement")
+    liens = page.evaluate("[...document.querySelectorAll('.redo a')].map(a => decodeURIComponent(a.getAttribute('href').split('#lire=')[1]))")
+    verifie(all(page.evaluate("t => lire(t).ok", l) for l in liens), f"{nom} : chaque bouton porte un blasonnement que le lecteur comprend")
+    propre(nom + " (boutons)", page, erreurs)
+    # un clic ouvre l'Atelier sur les armes
+    page.locator(".ar", has=page.locator("h3", has_text=lisibles[-1])).locator(".redo a").click()
+    page.wait_for_url("**/atelier.html*"); page.wait_for_selector("#blz:not(:empty)"); page.wait_for_timeout(600)
+    attendu = next(a["blason"] for a in data(fichier) if a["nom"] == lisibles[-1])
+    verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : le bouton ouvre l'Atelier, qui lit le blasonnement de « {lisibles[-1]} »")
+    page.context.close()
+
+
 def main():
     random.seed(1)
     n_fuzz = int(os.environ.get("FUZZ", 60))                 # FUZZ=500 pour une vérification plus poussée
@@ -242,7 +448,10 @@ def main():
                        ("personnages", lambda: test_galerie(browser, base, "personnages.html", "personnages.json", "personnages")),
                        ("lignées", lambda: test_lignees(browser, base)),
                        ("atelier", lambda: test_atelier(browser, base, n_fuzz)),
-                       ("atelier (lien truqué)", lambda: test_atelier_adresse_truquee(browser, base))):
+                       ("atelier (lien truqué)", lambda: test_atelier_adresse_truquee(browser, base)),
+                       ("lecture", lambda: test_lecture(browser, base, n_fuzz)),
+                       ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
+                       ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages"))):
             try: f()
             except Exception as e: ko(f"{nom} : exception du test — {e}")
         browser.close()

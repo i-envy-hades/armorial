@@ -14,10 +14,10 @@ Pour modifier le contenu, on modifie un fichier JSON et on publie.
 | Page | Contenu | Données |
 |---|---|---|
 | `index.html` — **L'encyclopédie** | Douze chapitres (origines, écu, émaux, partitions, règles, pièces, meubles, blasonnement, ornements, droit du blason, droit comparé, brisures), glossaire et répertoire de plus de 300 termes, bibliographie, recherche. Les figures sont dessinées en SVG ; celles qu'on emprunte portent leur crédit. | `data/data.json` |
-| `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement. | `data/blasons.json` |
-| `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement. | `data/personnages.json` |
+| `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement — et, sous celui que l'Atelier sait relire, un bouton « Redessiner dans l'Atelier ». | `data/blasons.json` |
+| `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement (même bouton). | `data/personnages.json` |
 | `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, rois d'Angleterre, maison de Savoie, Habsbourg, papauté. | `data/frises.json` et un fichier par lignée |
-| `atelier.html` — **L'Atelier** | On compose des armes (champ, pièce, meubles, ornements) ; le blasonnement s'écrit tout seul, dans l'ordre où un héraut le lirait. Lien de partage, export SVG et PNG, rappel de la règle des émaux, crédits de chaque figure empruntée. | `data/atelier.json`, `data/data.json` |
+| `atelier.html` — **L'Atelier** | On compose des armes (champ, pièce, meubles, ornements) ; le blasonnement s'écrit tout seul, dans l'ordre où un héraut le lirait. Et inversement : on tape un blasonnement, l'écu se dessine. Lien de partage, export SVG et PNG, rappel de la règle des émaux, crédits de chaque figure empruntée. | `data/atelier.json`, `data/data.json` |
 
 ### Ce que sait faire l'Atelier
 
@@ -27,6 +27,7 @@ Pour modifier le contenu, on modifie un fichier JSON et on publie.
 - **Les meubles** : près de quatre-vingt-dix — dont des bêtes (lion rampant, passant ou léopard, aigle à une ou deux têtes, cerf, cheval, griffon, dragon…) —, jusqu'à deux sortes ensemble ; nombre, disposition (en chef, en pal, 2 et 1, semé, en orle…), sens (contourné), réglages de taille et de position.
 - **Les ornements** : couronnes de rang, heaumes (deux modèles, trois positions), lambrequins, panache, supports, colliers d'ordres, devise sur un bandeau.
 - **La sortie** : le blasonnement, la liste des ornements, l'avertissement si la règle des émaux est enfreinte, un lien qui garde toute la composition, un export SVG ou PNG portant ses crédits.
+- **La lecture** : on tape « D'azur à trois fleurs de lis d'or » (ou on arrive par `atelier.html#lire=…`, l'adresse des boutons des galeries) et l'écu se dessine. L'Atelier lit tout ce qu'il sait écrire — écartelé, écusson sur le tout, pièces et leurs bords, meubles chargés ou accompagnés, semés — et quelques variantes de plume (accents et majuscules libres, « plain », « lys », virgules, commentaires entre parenthèses, « du même »). **Ce qui n'est pas compris est signalé, jamais deviné** : un mot inconnu, un ordre qu'il ne sait pas lire, un nombre ou une disposition qu'il ne sait pas dessiner sont surlignés dans le texte, avec la raison, et l'écu ne bouge pas. Ce qu'il lit en fixant lui-même un détail que le texte ne dit pas (la disposition de deux meubles, l'attribut de l'aigle…) est dit en « réserves » sous la zone de saisie. Voir `assets/lecture.js`.
 
 ## Consulter le site en local
 
@@ -49,9 +50,12 @@ assets/
   site.css          socle commun : polices, couleurs, bandeau, parchemin, animations
   chrome.js         bandeau de navigation et sceau du pied de page, communs à toutes les pages
   blason.js         le dessin héraldique : émaux, partitions, pièces (et leurs contours), meubles — partagé par l'encyclopédie et l'Atelier
+  blasonnement.js   le modèle des armes : grammaire, état d'une composition, normalisation, blasonnement (sans dessin) — partagé par l'Atelier,
+                    le lecteur et les galeries
+  lecture.js        le lecteur de blasonnement : du texte à l'écu, l'inverse de blazonAll() ; décrit en tête du fichier
   index.js .css     l'encyclopédie            atelier.js .css   l'Atelier
   lignees.js        les frises (son CSS reste dans lignees.html, voir plus bas)
-  blasons.js .css   Blasons réels             personnages.js .css   Personnages
+  blasons.js .css   Blasons réels             personnages.js .css   Personnages      (ils chargent le lecteur pour poser leurs boutons)
   favicon.svg       l'icône du site
   fonts/            polices auto-hébergées (licence OFL, texte joint)
   meubles/          figures SVG des meubles empruntés à Wikimedia Commons
@@ -114,8 +118,12 @@ le domaine public.
   - soit `file` (`path` du SVG dans `assets/meubles/`, `commons`, `auteur`, `lic`, `licurl`) avec `box` (où l'inscrire dans l'écu de 200 × 252),
     `main` (les couleurs du fichier que l'émail du meuble remplace) et, si le meuble a une seconde couleur, `accent` et `accentMot` (« armé et lampassé »).
   `asym: true` marque un meuble qui change d'aspect quand on le contourne (un lion, une clef) ; les meubles symétriques n'en ont pas.
+  Le lecteur de blasonnement reconnaît `sing` et `plur`, plus `alias` : une liste de paires `["lion léopardé", "lions léopardés"]` pour les autres noms
+  d'un même meuble (un nom ne peut servir à deux meubles ni à une pièce : `check_data.py` le vérifie). Deux drapeaux aident à lire et à écrire juste :
+  `accentTrait: true` quand l'attribut est un trait du dessin et pas seulement une couleur (l'aigle « couronnée », la panthère « incensée » : on le dit toujours),
+  `allongee: true` pour les bêtes passantes, dont on précise d'ordinaire la disposition (le lecteur le rappelle quand le texte se tait).
 - **Une pièce** : une entrée dans `pieces`, un dessin dans `pieceInner()` (et, si l'on veut des bords décorés, dans `pieceDecoree()`), sa grammaire dans `PIECES` et ses
-  dispositions de meubles dans `LAYOUT`, tous deux en tête de `assets/atelier.js`.
+  dispositions de meubles dans `LAYOUT`, tous deux en tête de `assets/blasonnement.js` (le lecteur de blasonnement et l'Atelier s'en servent ensemble).
 - **Un ornement** : dans `ornements` (couronnes, heaumes, colliers, supports) ; le SVG va dans `assets/ornements/`.
 
 Les figures empruntées gardent leur licence et leur crédit : l'Atelier les recolore, et l'écrit sous chaque écu et dans chaque export.
@@ -128,7 +136,10 @@ python3 tools/check_data.py          # instantané : données, fichiers cités, 
 
 Le test de fumée charge chaque page dans un vrai navigateur, vérifie qu'elle se construit sans erreur, que les cartes sont dans leurs
 grilles, que les ancres d'adresse mènent au bon chapitre, que les cinq frises se dessinent, puis soumet l'Atelier à une série de
-blasonnements connus et à des compositions tirées au hasard (qui ne doivent jamais échouer) :
+blasonnements connus et à des compositions tirées au hasard (qui ne doivent jamais échouer). Il vérifie aussi le lecteur de blasonnement :
+chaque écu que l'Atelier sait écrire doit se relire à l'identique (mêmes armes, même texte, même dessin) ; les textes qu'il ne doit pas
+comprendre sont refusés avec la bonne raison ; un mot inconnu fait refuser le texte ; et chaque bouton « Redessiner dans l'Atelier » des
+galeries mène à un blasonnement relu en entier :
 
 ```sh
 pip install playwright               # une fois ; utilise Google Chrome s'il est installé, sinon : python3 -m playwright install chromium
@@ -172,5 +183,8 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.
+- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu moins de la moitié des blasonnements des galeries (23 sur 52) — ni « quatre pals »
+  (écrivez « Palé… de huit pièces »), ni une même pièce répétée, ni bordure autour d'une croix, ni cotice, ni fuselé, ni meubles absents de l'Atelier. Il ne lit
+  pas les ornements (couronne, heaume, supports). Il pose « 2 et 1 » pour trois meubles dont le texte ne dit pas la disposition, et le dit.
 - **L'Atelier** : peu d'attitudes — le lion existe rampant, passant et léopard, l'aigle à une ou deux têtes, mais la plupart des bêtes n'ont
   qu'un dessin ; ni manteau ni pavillon ; les pièces alésées n'y sont pas.

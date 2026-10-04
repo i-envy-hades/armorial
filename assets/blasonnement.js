@@ -1,0 +1,259 @@
+/* L'ARMORIAL — le modèle des armes : grammaire, état d'une composition et blasonnement.
+   Ni DOM ni dessin : ce fichier sert à l'Atelier (assets/atelier.js) comme au lecteur de blasonnement
+   (assets/lecture.js), qui en est l'inverse. Il lit les globaux DATA (data/data.json) et ATL (data/atelier.json),
+   que la page qui le charge remplit. */
+let DATA, ATL;
+
+/* ---------- grammaire ---------- */
+const MOT = { Or: "or", Argent: "argent", Gueules: "gueules", Azur: "azur", Sable: "sable", Sinople: "sinople", Pourpre: "pourpre", Hermine: "hermine", Vair: "vair" };
+const voy = w => /^[aeiouyhéèêâîôûœ]/i.test(w);
+const de = t => (voy(MOT[t]) ? "d'" : "de ") + MOT[t];
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit"];
+const art = (w, g) => voy(w) ? "l'" : g === "f" ? "la " : "le ";
+const aArt = (w, g) => voy(w) ? "à l'" : g === "f" ? "à la " : "au ";
+/* accorde les participes en -é : « armé et lampassé » → « armées et lampassées » */
+const agree = (phrase, g, pl) => phrase.replace(/é(?=[\s,]|$)/g, "é" + (g === "f" ? "e" : "") + (pl ? "s" : ""));
+const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
+
+const PIECES = {
+  chef: { g: "m" }, fasce: { g: "f" }, pal: { g: "m" }, bande: { g: "f" }, barre: { g: "f" },
+  croix: { g: "f" }, sautoir: { g: "m" }, chevron: { g: "m" }, bordure: { g: "f" }, orle: { g: "m" },
+  canton: { g: "m" }, "franc-quartier": { g: "m" }, pairle: { g: "m" },        // propres à l'Atelier : voir « pieces » dans data/atelier.json
+};
+/* le bord d'une pièce, tel qu'on le blasonne ; les tracés sont dans assets/blason.js (CONTOURS) */
+const CONTOUR_NOM = { onde: "ondé", nebule: "nébulé", dancette: "dancetté", engrele: "engrêlé", cannele: "cannelé", denche: "denché" };
+const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+/* positions des meubles [x, y, échelle, rotation] dans le repère de l'écu (200 × 252) */
+const B = 38.3;
+/* champ plein : dispositions au choix ; la première est celle qu'on ne dit pas, sauf si sa phrase est donnée.
+   ph = participe au masculin singulier, accordé ensuite ; plein:true = exclu avec bordure ou orle */
+const PLEIN = {
+  1: [{ id: "", lab: "Au centre", ph: "", pts: [[100, 118, 1]] },
+      { id: "chef", lab: "En chef", ph: " en chef", pts: [[100, 60, .48]] },
+      { id: "pointe", lab: "En pointe", ph: " en pointe", pts: [[100, 176, .48]] },
+      { id: "cd", lab: "Au canton dextre du chef", ph: " au canton dextre du chef", pts: [[54, 54, .38]] },
+      { id: "cs", lab: "Au canton senestre du chef", ph: " au canton senestre du chef", pts: [[146, 54, .38]] }],
+  2: [{ id: "", lab: "En fasce", ph: " posé en fasce", pts: [[62, 112, .5], [138, 112, .5]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 70, .42], [100, 170, .42]] },
+      { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[62, 74, .4], [138, 164, .4]] },
+      { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[138, 74, .4], [62, 164, .4]] },
+      { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[64, 58, .36], [136, 58, .36]] }],
+  3: [{ id: "", lab: "2 et 1", ph: "", pts: [[62, 80, .46], [138, 80, .46], [100, 168, .46]] },
+      { id: "mal", lab: "1 et 2 (mal ordonnés)", ph: " mal ordonné", pts: [[100, 66, .42], [60, 158, .42], [140, 158, .42]] },
+      { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[48, 116, .3], [100, 116, .3], [152, 116, .3]] },
+      { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[50, 56, .28], [100, 56, .28], [150, 56, .28]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 54, .3], [100, 120, .3], [100, 186, .3]] },
+      { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[52, 62, .3], [100, 118, .3], [148, 174, .3]] },
+      { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[148, 62, .3], [100, 118, .3], [52, 174, .3]] }],
+  4: [{ id: "", lab: "2 et 2", ph: " posé 2 et 2", pts: [[62, 82, .42], [138, 82, .42], [62, 162, .42], [138, 162, .42]] },
+      { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 54, .28], [48, 118, .28], [152, 118, .28], [100, 184, .28]] },
+      { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[34, 116, .22], [78, 116, .22], [122, 116, .22], [166, 116, .22]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 46, .22], [100, 102, .22], [100, 158, .22], [100, 212, .2]] }],
+  5: [{ id: "", lab: "En sautoir", ph: " posé en sautoir", pts: [[56, 64, .34], [144, 64, .34], [100, 118, .34], [64, 176, .34], [136, 176, .34]] },
+      { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 50, .26], [46, 118, .26], [100, 118, .26], [154, 118, .26], [100, 186, .26]] },
+      { id: "221", lab: "2, 2 et 1", ph: " posé 2, 2 et 1", pts: [[64, 62, .3], [136, 62, .3], [64, 128, .3], [136, 128, .3], [100, 192, .3]] }],
+  6: [{ id: "", lab: "3, 2 et 1", ph: " posé 3, 2 et 1", pts: [[48, 62, .3], [100, 62, .3], [152, 62, .3], [72, 120, .3], [128, 120, .3], [100, 180, .3]] },
+      { id: "222", lab: "2, 2 et 2", ph: " posé 2, 2 et 2", pts: [[62, 60, .3], [138, 60, .3], [62, 124, .3], [138, 124, .3], [66, 186, .26], [134, 186, .26]] },
+      { id: "33", lab: "3 et 3", ph: " posé 3 et 3", pts: [[48, 78, .28], [100, 78, .28], [152, 78, .28], [48, 154, .28], [100, 154, .28], [152, 154, .28]] },
+      { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[48, 52, .2], [152, 52, .2], [34, 122, .2], [166, 122, .2], [58, 190, .2], [142, 190, .2]] }],
+  8: [{ id: "", lab: "En orle", ph: " en orle", plein: true, pts: [[42, 46, .18], [100, 38, .18], [158, 46, .18], [34, 112, .18], [166, 112, .18], [46, 176, .18], [154, 176, .18], [100, 218, .18]] }],
+};
+const PLEINLIKE = new Set(["plein", "bordure", "orle"]);
+const LAYOUT = {
+  chef: { 1: [[100, 154, .62]], 2: [[64, 146, .42], [136, 146, .42]], 3: [[62, 120, .36], [138, 120, .36], [100, 192, .34]] },
+  fasce: { 2: [[100, 60, .4], [100, 196, .34]], 3: [[62, 60, .36], [138, 60, .36], [100, 196, .34]],
+           6: [[46, 60, .26], [100, 60, .26], [154, 60, .26], [64, 186, .24], [100, 186, .24], [136, 186, .24]] },
+  pal: { 2: [[46, 118, .34], [154, 118, .34]] },
+  bande: { 2: [[146, 66, .36], [56, 178, .34]] },
+  barre: { 2: [[54, 66, .36], [144, 178, .34]] },
+  chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
+  croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
+  sautoir: { 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
+  "sur-chef": { 1: [[100, 47, .3]], 2: [[68, 47, .28], [132, 47, .28]], 3: [[52, 47, .26], [100, 47, .26], [148, 47, .26]] },
+  "sur-fasce": { 1: [[100, 130, .3]], 3: [[52, 130, .24], [100, 130, .24], [148, 130, .24]] },
+  "sur-pal": { 1: [[100, 120, .28]], 3: [[100, 62, .24], [100, 128, .24], [100, 194, .22]] },
+  "sur-bande": { 1: [[100, 126, .26, -B]], 3: [[54, 67, .22, -B], [100, 126, .22, -B], [146, 184, .22, -B]] },
+  "sur-barre": { 1: [[100, 126, .26, B]], 3: [[146, 67, .22, B], [100, 126, .22, B], [54, 184, .22, B]] },
+  "sur-chevron": { 1: [[100, 112, .22]], 3: [[100, 112, .22], [64, 152, .2], [136, 152, .2]] },
+  "sur-croix": { 1: [[100, 112, .22]], 5: [[100, 112, .18], [100, 54, .17], [100, 180, .16], [44, 112, .17], [156, 112, .17]] },
+  "sur-sautoir": { 1: [[100, 123, .24]], 5: [[100, 123, .2], [56, 68, .18], [144, 68, .18], [56, 178, .18], [144, 178, .18]] },
+  pairle: { 3: [[100, 58, .3], [52, 172, .28], [148, 172, .28]] },
+  "sur-canton": { 1: [[40, 35, .2]] },
+  "sur-franc-quartier": { 1: [[51, 45, .26]] },
+};
+/* bordure et orle n'ont pas de disposition propre (LAYOUT vide, mais présent : on peut y poser des meubles « autour ») ; ils suivent celles du champ plein (PLEIN) */
+for (const p of ["bordure", "orle"]) LAYOUT[p] = {};
+const VERBE = { croix: "cantonné", sautoir: "cantonné", pal: "accosté" };
+function dispo(ctx, n, g) {
+  if (ctx === "fasce" && n === 2) return g === "f" ? ", l'une en chef et l'autre en pointe" : ", l'un en chef et l'autre en pointe";
+  if (ctx === "fasce" && n === 6) return ", trois en chef et trois en pointe";
+  return "";
+}
+function dispos(s) {
+  const ctx = ctxOf(s);
+  if (!PLEINLIKE.has(ctx) || s.nb === "seme") return [];
+  return (PLEIN[s.nb] || []).filter(d => ctx === "plein" || !d.plein);
+}
+const dispoOf = s => { const ds = dispos(s); return ds.find(d => d.id === s.d) || ds[0]; };
+const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) : ""; };
+/* réglages graphiques : par groupe (sz, dx, dy ; sz2…) et par meuble (ad = "1.0:120,4,-6|2.1:…") */
+const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { const [k, v] = x.split(":"); return [k, (v || "").split(",").map(Number)]; }));
+const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
+const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, pos: "autour", p: "" });
+const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
+const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
+
+/* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
+const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
+  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
+  ct: "", ct2: "", ln: "" };
+const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
+  { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
+
+const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+const meuble = k => ATL.meubles.find(m => m.kind === k);
+function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.p) : "plein"; }
+function countsFor(s) {
+  const m = meuble(s.m);
+  if (!m) return [];
+  if (m.seul) return ["1"];
+  const ctx = ctxOf(s);
+  const ns = PLEINLIKE.has(ctx) ? Object.keys(PLEIN).filter(n => ctx === "plein" || PLEIN[n].some(d => !d.plein)) : Object.keys(LAYOUT[ctx] || {});
+  return s.f === "plein" && s.pos !== "sur" ? [...ns, "seme"] : ns;
+}
+const num = (v, lo, hi, d) => { const n = Math.round(+v); return String(Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d); };
+function normalize(s) {
+  /* l'adresse de la page peut porter n'importe quoi : chaque valeur est ramenée à une valeur permise (own : pas de noms hérités, comme « constructor ») */
+  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
+  if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
+  if (!["barry", "paly", "bendy", "bendysin"].includes(s.ray)) s.ray = "barry";
+  if (!["6", "8"].includes(s.n)) s.n = ADEF.n;
+  if (s.pos !== "sur") s.pos = "autour";
+  if (!own(PLEIN, s.nb) && s.nb !== "seme") s.nb = ADEF.nb;
+  if (!DATA.partitions.some(p => p.kind === s.part)) s.part = "parti";
+  if (s.p && !own(PIECES, s.p)) s.p = "";
+  if (s.m && !meuble(s.m)) s.m = "";
+  if (!s.p) s.pos = "autour";
+  if (s.p && s.pos === "sur" && !LAYOUT["sur-" + s.p]) s.pos = "autour";
+  if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = "sur";
+  const cs = countsFor(s);
+  if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
+  if (!dispos(s).some(d => d.id === s.d)) s.d = "";
+  if (!s.m || (s.m2 && !meuble(s.m2))) s.m2 = "";
+  /* le bord de la pièce ; le sens des meubles (seuls les meubles asymétriques se contournent) */
+  if (!s.p || !own(CONTOUR_NOM, s.ln)) s.ln = "";
+  const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
+  s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
+  s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
+  if (!own(PLEIN, s.nb2)) s.nb2 = "3";
+  if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
+  for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
+  const map = adMap(s), n1 = count1(s), n2 = count2(s);
+  for (const [k, v] of map) {
+    const [g, i] = k.split(".").map(Number);
+    if (!(g === 1 && i < n1 || g === 2 && i < n2) || v.length !== 3 || v.some(x => !Number.isFinite(x))) map.delete(k);
+    else map.set(k, [+num(v[0], 30, 200, 100), +num(v[1], -60, 60, 0), +num(v[2], -60, 60, 0)]);
+  }
+  s.ad = adStr(map);
+  return s;
+}
+
+/* ce que des armes montrent et disent : les champs sans objet (l'émail d'un second champ qui n'existe pas) et les réglages graphiques
+   n'y figurent pas. Sert à comparer deux compositions : le lecteur de blasonnement (assets/lecture.js) et les tests */
+function canon(a) {
+  const o = { f: a.f }, m = a.m && meuble(a.m), m2 = m && a.m2 && meuble(a.m2);
+  if (a.f === "plein") o.t1 = a.t1;
+  else if (a.f === "part") { Object.assign(o, { part: a.part, t1: a.t1, t2: a.t2 }); if (a.part.startsWith("tierce")) o.t3 = a.t3; }
+  else Object.assign(o, { ray: a.ray, n: a.n, t1: a.t1, t2: a.t2 });
+  if (a.p) Object.assign(o, { p: a.p, tp: a.tp, ln: a.ln });
+  if (m) {
+    Object.assign(o, { m: a.m, nb: a.nb, tm: a.tm });
+    if (a.p) o.pos = a.pos;
+    if (m.accent) o.ta = a.ta;
+    if (m.asym) o.ct = a.ct;
+    if (dispos(a).length) o.d = a.d;
+  }
+  if (m2) {
+    Object.assign(o, { m2: a.m2, nb2: a.nb2, d2: a.d2, tm2: a.tm2 });
+    if (m2.accent) o.ta2 = a.ta2;
+    if (m2.asym) o.ct2 = a.ct2;
+  }
+  return o;
+}
+const canonAll = St => ({ q: St.q, ab: St.ab, A: active(St).map(i => canon(St.A[i])) });
+
+/* ---------- le blasonnement ---------- */
+/* l'attribut d'un meuble (« armé et lampassé d'azur ») ne se dit que s'il change quelque chose : de l'émail du corps, on se tait.
+   Ceux qui sont un trait du dessin (« couronné », « incensé », « dans des flammes »…) se disent toujours */
+const accentDit = (m, s) => !!(m.accent && m.accentMot && (m.accentFixe || m.accentTrait || s.ta !== s.tm));
+function charges(s) {
+  const m = meuble(s.m), seme = s.nb === "seme", n = seme ? 0 : +s.nb, pl = seme || n > 1;
+  let nom = m.sing, nomPl = m.plur, g = m.g;
+  if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
+  const acc = accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "";
+  const ctr = s.ct ? " " + agree("contourné", g, pl) : "";                      // « un lion contourné d'or », « trois lions contournés d'or »
+  return { m, n, pl, nom, nomPl, g, acc, ctr, tinct: de(s.tm) };
+}
+function semePhrase(c, s) {
+  const m = c.m;
+  if (m.kind === "roundel") return (classe(s.tm) === "Métal" ? "besanté " : "tourteauté ") + de(s.tm);
+  if (m.semeAdj) return m.semeAdj + " " + de(s.tm);
+  return `semé de ${c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;                       // « semé de lions d'or armés et lampassés de gueules »
+}
+function blazon(s) {
+  let champ;
+  if (s.f === "part") {
+    const p = DATA.partitions.find(x => x.kind === s.part);
+    champ = s.part.startsWith("tierce") ? `${p.nom} ${de(s.t1)}, ${de(s.t2)} et ${de(s.t3)}` : `${p.nom} ${de(s.t1)} et ${de(s.t2)}`;
+  } else if (s.f === "ray") {
+    const nom = { barry: "Fascé", paly: "Palé", bendy: "Bandé", bendysin: "Barré" }[s.ray];
+    champ = `${nom} ${de(s.t1)} et ${de(s.t2)}${s.n === "8" ? " de huit pièces" : ""}`;
+  } else champ = cap(de(s.t1));
+  const parti = s.f !== "plein";
+  const m = s.m && meuble(s.m);
+  const c = m ? charges(s) : null;
+  const seme = c && s.nb === "seme";
+  if (seme) champ += " " + semePhrase(c, s);
+  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
+  const grpObj = c && !seme ? (c.n === 1 ? `${c.g === "f" ? "d'une" : "d'un"} ${c.nom}` : `de ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
+  /* le second meuble : « accompagné de … », « et de … », ou meuble du champ quand le premier est sur la pièce ou semé */
+  let x2 = null;
+  if (c && count2(s)) {
+    const c2 = charges(arms2(s)), ph = agree(dispo2(s).ph, c2.g, c2.pl);
+    const obj = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
+    const alone = (c2.n === 1 ? `${aArt(c2.nom, c2.g)}${c2.nom}` : `à ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
+    x2 = { obj, alone, acc: `, ${agree("accompagné", c.g, c.pl)} ${obj}` };
+  }
+  if (!s.p) {
+    if (!c) return champ + (parti ? "" : " plein");
+    if (seme) return champ + (x2 ? ", " + x2.alone : "");
+    return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${parti && c.n === 1 ? " brochant sur le tout" : ""}${x2 ? x2.acc : ""}`;
+  }
+  const P = PIECES[s.p], pnom = s.p;
+  const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
+  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${de(s.tp)}`;
+  const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
+  const sep = parti || seme ? ", " : " ";
+  const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
+  if (c && !seme && s.pos === "sur") {
+    const charge = agree("chargé", P.g, false);
+    return `${champ}${lead}${pieceTxt}${broche ? broche + "," : ""} ${charge} ${grpObj}`;
+  }
+  if (c && !seme && (s.p === "chef" || s.p === "bordure" || s.p === "orle"))
+    return `${champ}${parti ? "," : ""} ${groupe}${s.p === "chef" ? "" : dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt}`;
+  if (c && !seme) {
+    const v = agree(VERBE[s.p] || "accompagné", P.g, false);
+    return `${champ}${sep}${pieceTxt}${broche ? broche + "," : ""} ${v} ${grpObj}${dispo(s.p, c.n, c.g)}${x2 ? " et " + x2.obj : ""}`;
+  }
+  return `${champ}${lead}${pieceTxt}${broche}`;
+}
+const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
+const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
+function blazonAll(St) {
+  const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
+  let b = !St.q ? blazon(St.A[0]) : "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
+  return b;
+}

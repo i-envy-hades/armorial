@@ -61,3 +61,15 @@ footer{background:var(--vellum-3)}
 .foot{max-width:var(--maxw);margin:0 auto;padding:1.6rem clamp(1rem,4vw,2.4rem);font-size:.82rem;color:var(--ink-soft)}
 .foot b{color:var(--ink)}
 .err{max-width:60ch;margin:2rem auto;color:var(--gules);text-align:center}
+.lab-lire{display:block;font-size:.88rem;color:var(--ink-soft);margin:.1rem 0 .45rem}
+textarea{font:inherit;display:block;width:100%;min-height:4.6rem;resize:vertical;color:var(--ink);background:var(--vellum);border:1px solid var(--rule);border-radius:8px;padding:.45rem .65rem;line-height:1.4}
+textarea:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.lire-acts{justify-content:flex-start;margin-top:.55rem}
+.lire-etat{font-size:.9rem;line-height:1.45;margin-top:.5rem}
+.lire-etat:empty{display:none}
+.lire-etat p{margin:.2rem 0}
+.lire-etat ul{margin:.25rem 0 0;padding-left:1.2rem}
+.lire-etat.ok > p:first-child b{color:#2f5a34}
+.lire-etat.ko > p:first-child b{color:var(--gules)}
+.lire-etat .vu{font-family:"EB Garamond",serif;font-style:italic;background:var(--vellum);border:1px dashed var(--rule);border-radius:8px;padding:.3rem .55rem}
+.lire-etat mark{background:#f0cfa6;color:inherit;border-radius:3px;padding:0 1px}
