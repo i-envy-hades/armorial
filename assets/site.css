@@ -95,9 +95,9 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 .mast .brand{
   font-family:"Marcellus SC",serif;letter-spacing:.22em;text-transform:uppercase;
   font-size:.86rem;color:var(--ink);white-space:nowrap;text-decoration:none;
-  display:flex;align-items:center;gap:.6rem;
+  display:flex;align-items:center;gap:.6rem;flex:none;
 }
-.mast .brand .cross{width:13px;height:13px;color:var(--gules)}
+.mast .brand .cross{flex:none;width:13px;height:13px;color:var(--gules)}
 .mast nav{
   margin-left:auto;display:flex;gap:1.3rem;
   font-family:"Marcellus SC",serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
@@ -105,12 +105,31 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 .mast nav a{color:var(--ink-soft);text-decoration:none;white-space:nowrap}
 .mast nav a:hover{color:var(--gules)}
 .mast nav a.here{color:var(--gules)}
-/* écran étroit : la barre défile au lieu d'élargir la page */
-@media (max-width:640px){
+/* ---------- menu repliable : téléphone et petites tablettes ---------- */
+.mast .menu-btn{display:none}
+@media (max-width:1120px){
   .mast{gap:.7rem}
-  .mast nav{min-width:0;overflow-x:auto;scrollbar-width:none;gap:1rem;
-    -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
-  .mast nav::-webkit-scrollbar{display:none}
+  .mast .menu-btn{
+    display:inline-flex;align-items:center;gap:.5rem;order:3;margin-left:auto;padding:.38rem .85rem;
+    font-family:"Marcellus SC",serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+    background:rgba(255,251,238,.75);border:1px solid var(--rule);border-radius:999px;cursor:pointer;text-shadow:none;
+  }
+  .mast .menu-btn svg{width:15px;height:15px}
+  .mast .menu-btn .x{display:none}
+  .mast.open .menu-btn .x{display:block}.mast.open .menu-btn .bars{display:none}
+  .mast nav{
+    display:none;position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;
+    padding:.3rem clamp(1rem,4vw,2.2rem) .9rem;background:rgba(247,240,222,.98);
+    border-bottom:1px solid var(--rule);box-shadow:0 22px 34px -22px rgba(26,23,18,.55);
+  }
+  .mast.open nav{display:flex}
+  .mast nav a{padding:.8rem 0;font-size:.82rem;letter-spacing:.14em;border-bottom:1px solid var(--rule-soft)}
+  .mast nav a:last-child{border-bottom:0}
+}
+@media (max-width:480px){
+  .mast .brand{letter-spacing:.14em;font-size:.78rem}
+  .mast .menu-btn{padding:.45rem .6rem}
+  .mast .menu-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* l'icône seule, le mot reste lu */
 }
 
 /* ---------- ornement de séparation ---------- */
@@ -196,3 +215,26 @@ footer .fine{font-size:.78rem;opacity:.85}
 .redo{margin:.1rem 0 .5rem}
 .redo a{display:inline-block;font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.68rem;border:1px solid var(--rule);background:var(--vellum);color:var(--ink);border-radius:999px;padding:.32rem .8rem;text-decoration:none}
 .redo a:hover,.redo a:focus-visible{border-color:var(--or);text-decoration:none}
+
+/* ---------- lien d'évitement (assets/chrome.js) ---------- */
+.skip{position:absolute;left:.6rem;top:-4rem;z-index:100;padding:.5rem .9rem;background:var(--vellum-2);color:var(--ink);border:2px solid var(--gules);border-radius:3px;font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{top:.6rem}
+main:focus,#wrap:focus{outline:none}
+
+/* ---------- impression : le texte et les figures, sans le décor ---------- */
+@media print{
+  body{background:#fff!important;color:#000;font-size:11pt}
+  body::before{display:none}
+  .mast,.progress,.skip,.rail,.tools,.siecles,.scroll-cue,.portes,.hero-bg,.hero-bg2,.plate-bg,video,.hero-shield,.seal,#tools,.ex-barre,.ex-suite{display:none!important}
+  .hero,body.epic .hero,body.epic2 .hero{min-height:0!important;padding:1rem 0!important;background:none!important}
+  .hero h1,body.epic .hero h1,body.epic2 .hero h1{filter:none!important;color:#000!important;-webkit-text-fill-color:#000!important;background:none!important}
+  .plate{background:none!important;color:#000!important;box-shadow:none!important;border:0!important;padding:.6rem 0!important}
+  .plate .minia{display:none}
+  footer,body.epic footer,body.epic2 footer{background:none!important;color:#000!important}
+  footer::before{display:none!important}
+  .art,.fig,.ar,.book,.ev-c,.detail{box-shadow:none!important;break-inside:avoid}
+  .art > .art-body,.detail{display:block!important}
+  a{color:#000;text-decoration:underline}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.75em;word-break:break-all}
+  .reveal{opacity:1!important;transform:none!important}
+}

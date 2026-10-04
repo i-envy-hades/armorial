@@ -1,0 +1,776 @@
+{
+ "titre": "L'arbre des Capétiens",
+ "sources": {
+  "armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  }
+ },
+ "noeuds": [
+  {
+   "id": "capetiens",
+   "nom": "Capétiens directs",
+   "dates": "987–1328",
+   "parent": null,
+   "fondateur": "Hugues Capet, premier roi capétien (987), et ses successeurs directs jusqu'en 1328",
+   "wiki": "Capétiens_directs",
+   "armes": [
+    {
+     "quand": "avant 1376",
+     "blason": "D'azur semé de fleurs de lys d'or"
+    },
+    {
+     "quand": "après 1376",
+     "blason": "D'azur à trois fleurs de lys d'or"
+    }
+   ],
+   "file": "Blason pays fr France ancien.svg",
+   "auteur": "Syryatsu, Thom.lanaud, Andrew Pertsev",
+   "lic": "Public domain",
+   "lien": "lignees.html#france",
+   "lienTxt": "Frise des rois de France"
+  },
+  {
+   "id": "maison-de-valois",
+   "nom": "Maison de Valois",
+   "dates": "1285–1498",
+   "parent": "capetiens",
+   "fondateur": "Charles de France (1270–1325), comte de Valois, d'Alençon, de Chartres et du Perche (en 1285), comte d'Anjou et du Maine (en 1290), duc d'Anjou (en 1297)",
+   "wiki": "Charles_de_Valois",
+   "armes": [
+    {
+     "quand": "avant 1297",
+     "blason": "D'azur semé de fleurs de lys d'or à la bordure-lambel de gueules"
+    },
+    {
+     "quand": "après 1297",
+     "blason": "D'azur semé de fleurs de lys d'or à la bordure de gueules"
+    }
+   ],
+   "file": "Arms of Charles de Valois.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-valois-orleans",
+   "nom": "Branche de Valois-Orléans",
+   "dates": "1392–1515",
+   "parent": "maison-de-valois",
+   "fondateur": "Louis (1372–1407), duc d'Orléans, frère de Charles VI",
+   "wiki": "Louis_Ier_d%27Orl%C3%A9ans",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or au lambel d'argent"
+    }
+   ],
+   "file": "Blason duché fr Orléans (moderne).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "branche-de-valois-angouleme",
+   "nom": "Branche de Valois-Angoulême",
+   "dates": "1407–1615",
+   "parent": "branche-de-valois-orleans",
+   "fondateur": "Jean d'Orléans (1400–1467), comte d'Angoulême, troisième fils de Louis d'Orléans",
+   "wiki": "Jean_d%27Orl%C3%A9ans_(1399-1467)",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or au lambel d'argent à trois pendants, chaque pendant chargé d'une lune de gueules"
+    }
+   ],
+   "file": "Blason comte fr Angouleme (Valois).svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "branche-d-orleans-longueville",
+   "nom": "Branche d'Orléans-Longueville",
+   "dates": "1403–1707",
+   "parent": "branche-de-valois-orleans",
+   "fondateur": "Jean d'Orléans (1403–1468), comte de Dunois, fils illégitime de Louis d'Orléans",
+   "wiki": "Jean_de_Dunois",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or brisé en chef d'un lambel d'argent et d'une barre d'argent brochant sur le tout"
+    }
+   ],
+   "file": "Arms of jean de dunois.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-d-orleans-rothelin",
+   "nom": "Branche d'Orléans-Rothelin",
+   "dates": "v. 1540–1818",
+   "parent": "branche-de-valois-orleans",
+   "fondateur": "François d'Orléans-Rothelin (mort en 1600), marquis de Rothelin, fils illégitime de François II d'Orléans-Longueville",
+   "wiki": "Fran%C3%A7ois_d%27Orl%C3%A9ans-Rothelin",
+   "armes": [
+    {
+     "blason": "Écartelé : aux 1 et 4, d'or à la bande de gueules (de Bade-Hochberg) ; aux 2 et 3, d'argent au pal de gueules chargé de trois chevrons d'argent (de Neuchâtel) ; sur le tout, d'azur à trois fleurs de lys d'or, au lambel d'argent et un bâton péri en bande du même en abîme (d'Orléans-Longueville)"
+    }
+   ],
+   "file": "Blason maison fr d'Orléans-Rothelin.svg",
+   "auteur": "Jpgibert",
+   "lic": "CC BY 4.0",
+   "licurl": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+   "id": "branche-de-valois-anjou",
+   "nom": "Branche de Valois-Anjou",
+   "dates": "1351–1481",
+   "parent": "maison-de-valois",
+   "fondateur": "Louis Ier (1339–1384), duc d'Anjou et comte de Provence",
+   "wiki": "Louis_Ier_d%27Anjou",
+   "armes": [
+    {
+     "blason": "D'azur semé de lys d'or, à la bordure de gueules"
+    }
+   ],
+   "file": "Blason comte fr Valois.svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "branche-de-valois-bourgogne",
+   "nom": "Branche de Valois-Bourgogne",
+   "dates": "1363–1482",
+   "parent": "maison-de-valois",
+   "fondateur": "Philippe II le Hardi (1342–1404), comte de Touraine, puis duc de Bourgogne (en 1364), fils de Jean II, roi de France",
+   "wiki": "Philippe_II_de_Bourgogne",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bordure componée d'argent et de gueules"
+    }
+   ],
+   "file": "Arms of Charles le Bel.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "lien": "lignees.html#bourgogne",
+   "lienTxt": "Frise des ducs de Bourgogne"
+  },
+  {
+   "id": "branche-de-bourgogne-saint-pol",
+   "nom": "Branche de Bourgogne-Saint-Pol",
+   "dates": "1402–1430",
+   "parent": "branche-de-valois-bourgogne",
+   "fondateur": "Antoine (1384–1415), duc de Lothier, de Brabant et de Limbourg",
+   "wiki": "Antoine_de_Brabant",
+   "armes": [
+    {
+     "blason": "écartelé en 1 et 4 d'azur à trois fleurs de lys d'or et à la bordure componée d'argent et de gueules, en 2 de sable au lion d'or, armé et lampassé de gueules et au 3 d'argent au lion de gueules armé et lampassé d'or"
+    }
+   ],
+   "file": "Arms of Antoine de Brabant.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-bourgogne-nevers",
+   "nom": "Branche de Bourgogne-Nevers",
+   "dates": "1404–1527",
+   "parent": "branche-de-valois-bourgogne",
+   "fondateur": "Philippe (1389–1415), comte de Nevers et de Rethel, fils de Philippe II le Hardi",
+   "wiki": "Philippe_de_Bourgogne_(1389-1415)",
+   "armes": [
+    {
+     "blason": "écartelé en 1 et 4 d'azur semé de lys d'or et à la bordure componée d'argent et de gueules, en 2 et 3 d'or au lion de sable armé, couronné et lampassé de gueules"
+    }
+   ],
+   "file": "Arms of Philippe de Nevers.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-valois-alencon",
+   "nom": "Branche de Valois-Alençon",
+   "dates": "1325–1525",
+   "parent": "maison-de-valois",
+   "fondateur": "Charles II (1297–1346), comte d'Alençon, fils de Charles de Valois",
+   "wiki": "Charles_II_d%27Alen%C3%A7on",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bordure de gueules chargée de besants d'argent"
+    }
+   ],
+   "file": "Blason comte fr Alencon.svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "maison-d-artois",
+   "nom": "Maison d'Artois",
+   "dates": "1237–1472",
+   "parent": "capetiens",
+   "fondateur": "Robert Ier (1216–1250), comte d'Artois, troisième fils de Louis VIII le Lion et de Blanche de Castille",
+   "wiki": "Robert_Ier_d%27Artois",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or au lambel de gueules, chaque pendant chargé de trois châteaux d'or"
+    }
+   ],
+   "file": "Blason comtes fr d'Artois 1.svg",
+   "auteur": "Popvjpaqiaa999",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "notes": [
+    "Comme pour ses frères Alphonse de Poitiers et Charles d'Anjou, les châteaux de la brisure viennent des armes de sa mère, Blanche de Castille ; ses descendants en ligne masculine les portent ensuite."
+   ]
+  },
+  {
+   "id": "maison-d-evreux-navarre",
+   "nom": "Maison d'Évreux-Navarre",
+   "dates": "1298–1441",
+   "parent": "capetiens",
+   "fondateur": "Louis (1276–1319), comte d'Evreux, fils de Philippe III",
+   "wiki": "Louis_d%27%C3%89vreux",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bande componée d'argent et de gueules"
+    }
+   ],
+   "file": "Blason ville fr Mortain (Manche).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "maison-de-bourbon",
+   "nom": "Maison de Bourbon",
+   "dates": "1283–",
+   "parent": "capetiens",
+   "fondateur": "Robert (1256–1317), comte de Clermont et sire de Bourbon, fils de Saint Louis",
+   "wiki": "Robert_de_Clermont",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bande de gueules"
+    }
+   ],
+   "file": "Blason comte fr Clermont (Bourbon).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "branche-ainee-des-ducs-de-bourbon",
+   "nom": "Branche aînée des ducs de Bourbon",
+   "dates": "1283–1521",
+   "parent": "maison-de-bourbon",
+   "fondateur": "Robert (1256–1317), comte de Clermont et sire de Bourbon, fils de Saint Louis",
+   "wiki": "Robert_de_Clermont",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bande de gueules"
+    }
+   ],
+   "file": "Blason comte fr Clermont (Bourbon).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain",
+   "idem": "maison-de-bourbon"
+  },
+  {
+   "id": "premiere-maison-de-bourbon-montpensier",
+   "nom": "Première maison de Bourbon-Montpensier",
+   "dates": "1434–1561",
+   "parent": "branche-ainee-des-ducs-de-bourbon",
+   "fondateur": "Louis Ier (mort en 1486), comte de Montpensier, dauphin d'Auvergne, fils de Jean Ier de Bourbon",
+   "wiki": "Louis_Ier_de_Montpensier",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or à la bande engrelée de gueules"
+    }
+   ],
+   "file": "Arms of Louis de Bourbon-Montpensier (before 1428).svg",
+   "auteur": "MostEpic",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "maison-de-bourbon-la-marche",
+   "nom": "Maison de Bourbon-La Marche",
+   "dates": "1342–1438",
+   "parent": "branche-ainee-des-ducs-de-bourbon",
+   "fondateur": "Jacques Ier (1319–1362), comte de la Marche, fils de Louis Ier de Bourbon",
+   "wiki": "Jacques_Ier_de_Bourbon-La_Marche",
+   "armes": [
+    {
+     "blason": "D'azur semé de fleurs de lys d'or à la bande de gueules chargée de trois lionceaux d'argent"
+    }
+   ],
+   "file": "Arms of Jacques Ier de Bourbon-La Marche.svg",
+   "auteur": "MostEpic",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "maison-de-bourbon-preaux",
+   "nom": "Maison de Bourbon-Préaux",
+   "dates": "1367–1442",
+   "parent": "maison-de-bourbon-la-marche",
+   "fondateur": "Jacques (1346–1417), seigneur de Préaux, fils de Jacques Ier de la Marche",
+   "wiki": "Jacques_de_Bourbon-Pr%C3%A9aux",
+   "armes": [
+    {
+     "blason": "Écartelé en 1 et 4 d'azur semé de fleurs de lys d'or à la bande de gueules chargée de trois lionceaux d'argent, en 2 et 3 de gueules à l'aigle d'or"
+    }
+   ],
+   "file": "Jacques de Bourbon Sieur de Préaulx.svg",
+   "auteur": "Fauntleroy",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "branche-de-bourbon-lavedan",
+   "nom": "Branche de Bourbon-Lavedan",
+   "dates": "1489–1744",
+   "parent": "maison-de-bourbon-la-marche",
+   "fondateur": "Charles de Bourbon-Lavedan (1450–1502), bâtard de Bourbon, chevalier, baron de Chaudes-Aigues et de Malause, seigneur de La Chauffée, d'Estain, de Bouconville, conseiller, chambellan du Roi, sénéchal de Toulouse et du Bourbonnais",
+   "wiki": "Charles_de_Bourbon-Lavedan",
+   "armes": [
+    {
+     "blason": "D'argent à la bande d'azur semé de fleur de lys d'or à la cotice de gueules"
+    }
+   ],
+   "file": "Bourbon-Lavedan.svg",
+   "auteur": "Fauntleroy",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-bourbon-vendome",
+   "nom": "Maison de Bourbon-Vendôme",
+   "dates": "1393–1589",
+   "parent": "maison-de-bourbon-la-marche",
+   "fondateur": "Louis Ier (1376–1446), comte de Vendôme, fils de Jean Ier de la Marche",
+   "wiki": "Louis_Ier_de_Bourbon-Vend%C3%B4me",
+   "armes": [
+    {
+     "blason": "écartelé en 1 et 4 d'azur semé de lys d'or, en 2 et 3 d'argent au chef de gueules, au lion d'azur, armé, lampassé et couronné d'or, brochant sur le tout et à la bande de gueules chargée de (trois) lions d'argent brochant sur le tout"
+    }
+   ],
+   "file": "Arms of Louis Ier de Bourbon-Vendôme.svg",
+   "auteur": "MostEpic",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "seconde-maison-de-bourbon-montpensier",
+   "nom": "Seconde maison de Bourbon-Montpensier",
+   "dates": "1561–1627",
+   "parent": "maison-de-bourbon-vendome",
+   "fondateur": "Louis (1473–1520), prince de la Roche sur Yon, fils de Jean VIII de Vendôme",
+   "wiki": "Louis_de_La_Roche-sur-Yon",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or et au baton de gueules chargé d'une lune d'argent au franc-quartier"
+    }
+   ],
+   "file": "Armoiries Montpensier Moderne.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-bourbon-saint-pol",
+   "nom": "Maison de Bourbon-Saint Pol",
+   "dates": "1495–1601",
+   "parent": "maison-de-bourbon-vendome",
+   "fondateur": "François Ier (1491-1545), comte de Saint-Pol, duc d'Estouteville, fils de François de Vendôme et de Marie de Luxembourg",
+   "wiki": "Fran%C3%A7ois_Ier_de_Saint-Pol",
+   "armes": [
+    {
+     "blason": "écartelé en 1 et 4 d'azur à trois fleurs de lys d'or au bâton de gueules, péri en bande, en 2 et 3 d'argent au lion de gueules, la queue fourchée passée en sautoir, armé, lampassé et couronné d'or"
+    }
+   ],
+   "file": "Armoiries François Ier d'Estouteville.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-bourbon-conde",
+   "nom": "Maison de Bourbon-Condé",
+   "dates": "1546–1830",
+   "parent": "maison-de-bourbon-vendome",
+   "fondateur": "Louis Ier (1530–1569), prince de Condé, fils de Charles IV, duc de Vendôme",
+   "wiki": "Louis_Ier_de_Bourbon-Cond%C3%A9",
+   "armes": [
+    {
+     "blason": "D'azur à trois fleurs de lys d'or et à la bande de gueules chargée au franc quartier d'un besant d'argent"
+    }
+   ],
+   "file": "Blason Louis Ier prince de Condé (1530 † 1569).svg",
+   "auteur": "Jimmy44",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+   "id": "dynastie-royale-de-bourbon",
+   "nom": "Dynastie royale de Bourbon",
+   "dates": "1589–1830",
+   "parent": "maison-de-bourbon",
+   "fondateur": "Henri IV « le Grand » (1553-1610), roi de France et de Navarre en 1589, fils d'Antoine de Bourbon-Vendôme",
+   "wiki": "Henri_IV_(roi_de_France)",
+   "armes": [
+    {
+     "blason": "parti d'azur à trois fleurs de lys d'or et de gueules aux chaînes d'or posées en orle, en croix et en sautoir, chargées en cœur d'une émeraude au naturel"
+    }
+   ],
+   "file": "Coat of arms of France and Navarre (1589-1789).svg",
+   "auteur": "SanchoPanzaXXI",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "lien": "lignees.html#france",
+   "lienTxt": "Frise des rois de France"
+  },
+  {
+   "id": "maison-de-bourbon-espagne",
+   "nom": "Maison de Bourbon-Espagne",
+   "dates": "1700–",
+   "parent": "dynastie-royale-de-bourbon",
+   "fondateur": "Philippe (1683–1746), duc d'Anjou, puis roi d'Espagne (en 1700, sous le nom de Philippe V), fils du Grand dauphin, petit-fils de Louis XIV",
+   "wiki": "Philippe_V_(roi_d%27Espagne)",
+   "armes": [
+    {
+     "blason": "Coupé : en chef parti en 1 écartelé en 1 et 4, de gueules au château d'or ouvert et ajouré d'azur (Castille) et en 2 et 3 d'argent au lion de gueules armé, lampassé et couronné d'or enté (León), en pointe d'argent à une pomme grenade de gueules, tigée et feuillée de sinople (Grenade); 2 parti en 1 d'or à quatre pals de gueules (Aragon) et en 2 écartelé en sautoir d'or aux quatre pals de gueules et d'argent à l'aigle de sable (Sicile); II, tigée et feuilleté de sinople et en pointe écartelé en 1 de gueules à la fasce d'argent (Autriche); 2, d'azur semé de fleurs de lys d'or à la bande componée d'argent et de gueules (Bourgogne moderne), en 3 bandé d'or et d'azur de six pièces, à la bordure de gueules (Bourgogne ancien) 4, de sable au lion d'or, armé et lampassé de gueules (Brabant); enté en pointe parti d'or au lion de sable armé (Flandre), couronné et lampassé de gueules et d'argent à l'aigle éployé de gueules, membré et becqué d'or (Tyrol); sur le tout d'azur à trois fleurs de lys d'or à la bordure de gueules (Anjou moderne)"
+    }
+   ],
+   "file": "Armoiries Philippe V Bourbon-Espagne (simple).svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "lien": "lignees.html#espagne",
+   "lienTxt": "Frise des rois d'Espagne"
+  },
+  {
+   "id": "branche-de-cadix",
+   "nom": "Branche de Cadix",
+   "dates": "1908–",
+   "parent": "maison-de-bourbon-espagne",
+   "fondateur": "Jacques-Henri de Bourbon (1908-1975), infant d'Espagne, duc d'Anjou et de Ségovie. Deuxième fils d'Alphonse XIII",
+   "wiki": "Jacques-Henri_de_Bourbon",
+   "armes": [
+    {
+     "blason": "d'azur à trois fleurs de lys d'or à la bordure de gueules"
+    }
+   ],
+   "file": "Blason ES Alphonse XIII 1931 (France).svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "lien": "lignees.html#espagne",
+   "lienTxt": "Frise des rois d'Espagne"
+  },
+  {
+   "id": "branche-de-barcelone",
+   "nom": "Branche de Barcelone",
+   "dates": "1913–",
+   "parent": "maison-de-bourbon-espagne",
+   "fondateur": "Juan de Borbón, comte de Barcelone (1913–1993), troisième fils d'Alphonse XIII. Prétendant au trône d'Espagne (1941-1977)",
+   "wiki": "Juan_de_Borb%C3%B3n_y_Battenberg",
+   "armes": [
+    {
+     "blason": "écartelé au 1 de gueules au château d'or couvert et ajouré d'azur (Castille), au 2 d'argent au lion de pourpre armé, lampassé et couronné d'or (León), au 3 d'or aux quatre pals de gueules (Aragon), au 4 de gueules aux chaînes d'or posées en orle, en croix et en sautoir, chargées en cœur d'une émeraude au naturel (Navarre), enté en pointe d'argent à une pomme grenade de gueules tigé et feuillé de sinople (Granada) et sur le tout d'azur à trois fleurs de lys d'or à la bordure de gueules"
+    }
+   ],
+   "file": "Armoiries Actuelles Espagne.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "lien": "lignees.html#espagne",
+   "lienTxt": "Frise des rois d'Espagne"
+  },
+  {
+   "id": "branche-de-seville",
+   "nom": "Branche de Séville",
+   "dates": "1823–",
+   "parent": "maison-de-bourbon-espagne",
+   "fondateur": "Ducs de Séville, issus de l'infant Henri de Bourbon, petit-fils de Charles IV d'Espagne",
+   "wiki": "Liste_des_ducs_de_S%C3%A9ville",
+   "armes": [],
+   "file": "Blason duche fr Anjou (moderne).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "maison-de-bourbon-siciles",
+   "nom": "Maison de Bourbon-Siciles",
+   "dates": "1734–",
+   "parent": "maison-de-bourbon-espagne",
+   "fondateur": "Les rois des Deux-Siciles de la maison de Bourbon",
+   "armes": [
+    {
+     "blason": "parti de deux, en I coupé d'or aux six fleurs de lys d'azur (qui est de Farnèse) et d'argent, à cinq écussons d'azur, posés en croix, les deux de flanc mis de côté, chaque écusson chargé de cinq besants du champ, posés en sautoir, à la bordure de gueules, chargée de neuf châteaux d'or, donjonnés de trois tours, ouverts et ajourés d'azur (qui est du Portugal), en II coupé écartelé en 1 et 4, de gueules au château d'or ouvert et ajouré d'azur (qui est de Castille) et en 2 et 3 d'argent au lion de gueules armé, lampassé et couronné d'or (qui est de leon) et d'azur semé de fleurs de lys d'or au lambel de gueules (qui est de Naples) et en III d'or à six tourteaux mis en orle, cinq de gueules, celui en chef d'azur chargé de trois fleurs de lis d'or (qui est de Toscane) ; sur le tout d'azur, à trois fleurs de lys d'or, à la bordure de gueules, (qui est d'Anjou)"
+    }
+   ],
+   "file": "Armoiries Bourbon-Sicile.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-bourbon-parme",
+   "nom": "Maison de Bourbon-Parme",
+   "dates": "1748–",
+   "parent": "maison-de-bourbon-espagne",
+   "fondateur": "Les ducs de Bourbon-Parme (petites armes, de 1748 à nos jours)",
+   "armes": [
+    {
+     "blason": "D'azur aux trois fleurs de lys d'or à la bordure de gueules chargée de huit coquilles d'argent posées en orle"
+    }
+   ],
+   "file": "Lesser Arms of Bourbon-Parma.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "seconde-maison-de-nassau",
+   "nom": "Seconde maison de Nassau",
+   "dates": "1919–",
+   "parent": "maison-de-bourbon-parme",
+   "fondateur": "Jean de Luxembourg, Grand-duc de Luxembourg (1964-2000), fils de la grande-duchesse Charlotte de Luxembourg et de Félix de Bourbon-Parme",
+   "wiki": "Jean_(grand-duc_de_Luxembourg)",
+   "armes": [
+    {
+     "blason": "Écartelé : I et IV d'azur à trois fleurs de lys d'or, brisées d'une bordure de gueules (Maison de Bourbon-Espagne) ; II et III d'azur semé de billettes d'or au lion couronné du second armé et lampassé de gueules brochant (Nassau) ; sur le tout en cœur burelé de dix pièces d'argent et d'azur au lion de gueules à la queue fourchée et passée en sautoir, armé, lampassé et couronné d'or brochant (Luxembourg), l'écu timbré d'une couronne royale doublée à mi-hauteur d'un bonnet de pourpre"
+    }
+   ],
+   "file": "Blason LU Jean de Luxembourg (1939).svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "quatrieme-maison-d-orleans",
+   "nom": "Quatrième maison d'Orléans",
+   "dates": "1661–",
+   "parent": "dynastie-royale-de-bourbon",
+   "fondateur": "Philippe de France (1640 - 1701), duc d'Orléans, fils du roi Louis XIII",
+   "wiki": "Philippe_d%27Orl%C3%A9ans_(1640-1701)",
+   "armes": [
+    {
+     "blason": "D'azur aux trois fleurs de lys d'or, au lambel d'argent"
+    }
+   ],
+   "file": "Blason duché fr Orléans (moderne).svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain",
+   "notes": [
+    "D'abord duc d'Anjou, il hérite du duché d'Orléans à la mort de son oncle Gaston et en reprend les armes."
+   ],
+   "lien": "lignees.html#france",
+   "lienTxt": "Frise des rois de France"
+  },
+  {
+   "id": "maison-d-orleans-bragance",
+   "nom": "Maison d'Orléans-Bragance",
+   "dates": "1864–",
+   "parent": "quatrieme-maison-d-orleans",
+   "fondateur": "Les prétendants au trône du Brésil, de la famille impériale d'Orléans-Bragance",
+   "armes": [
+    {
+     "blason": "De sinople à la sphère armillaire d'or, traversée par une croix de l'ordre du Christ (pattée de gueules, vidée d'argent), et entourée par un anneau d'azur chargé de vingt étoiles d'argent ; le tout chargé en cœur d'un écu d'azur à trois fleurs de lis d'or sous un lambel d'argent"
+    }
+   ],
+   "file": "Coat of arms of Orléans-Braganza.svg",
+   "auteur": "Geraldiker",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-bourbon-busset",
+   "nom": "Branche de Bourbon-Busset",
+   "dates": "1464–",
+   "parent": "maison-de-bourbon",
+   "fondateur": "Pierre, bâtard de Bourbon, baron de Busset (1464-1530), fils naturel de Louis de Bourbon (1438-1482), prince-évêque de Liège",
+   "armes": [
+    {
+     "blason": "semé de France, à la cotice de gueules en bande, au chef d’argent, chargé d’une croix potencée d’or, accompagnée de quatre croisette de même, qui est Jérusalem"
+    }
+   ],
+   "file": "Arms of the House of Bourbon Busset (Ancien).svg",
+   "auteur": "James2813",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "maison-d-anjou-sicile",
+   "nom": "Maison d'Anjou-Sicile",
+   "dates": "1246–1435",
+   "parent": "capetiens",
+   "fondateur": "Charles Ier d'Anjou (1226–1285)",
+   "wiki": "Charles_Ier_d%27Anjou",
+   "armes": [
+    {
+     "blason": "D'azur semé de lys d'or au lambel de gueules"
+    }
+   ],
+   "file": "Blason comte fr Anjou.svg",
+   "auteur": "Syryatsu",
+   "lic": "Public domain"
+  },
+  {
+   "id": "maison-de-courtenay",
+   "nom": "Maison de Courtenay",
+   "dates": "1150–1768",
+   "parent": "capetiens",
+   "fondateur": "Pierre Ier (1126–1183), fils de Louis VI le Gros, roi de France, et époux d'Elisabeth de Courtenay, dont il prit le nom et les armes",
+   "wiki": "Pierre_Ier_de_Courtenay",
+   "armes": [
+    {
+     "blason": "D'or à trois tourteaux de gueules"
+    }
+   ],
+   "file": "Blason maison fr de Courtenay.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-dreux",
+   "nom": "Maison de Dreux",
+   "dates": "1137–1355",
+   "parent": "capetiens",
+   "fondateur": "Robert Ier (1123–1188), comte de Dreux, fils de Louis VI, roi de France",
+   "wiki": "Robert_Ier_de_Dreux",
+   "armes": [
+    {
+     "blason": "Échiqueté d'or et d'azur à la bordure de gueules"
+    }
+   ],
+   "file": "Arms of Robert de Dreux.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-beu",
+   "nom": "Branche de Beu",
+   "dates": "1217–1396",
+   "parent": "maison-de-dreux",
+   "fondateur": "Robert Ier de Dreux (1212-1264), seigneur de Beu, fils de Robert III, comte de Dreux",
+   "wiki": "Robert_Ier_de_Beu",
+   "armes": [
+    {
+     "blason": "Échiqueté d'or et d'azur à la bordure engrelée de gueules"
+    }
+   ],
+   "file": "Arms of Robert de Beu.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "branche-de-dreux-bretagne",
+   "nom": "Branche de Dreux-Bretagne",
+   "dates": "1213–1514",
+   "parent": "maison-de-dreux",
+   "fondateur": "Pierre Mauclerc (1191 – 6 juillet 1250), baillistre de Bretagne (1213-1237) et comte de Richmond (1219-1235)",
+   "wiki": "Pierre_Ier_de_Bretagne",
+   "armes": [
+    {
+     "blason": "Echiqueté d'or et d'azur au franc-quartier d'hermine et à la bordure de gueules"
+    }
+   ],
+   "file": "Arms of Pierre Mauclerc.svg",
+   "auteur": "Carlodangio",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+   "id": "rameau-de-machecoul",
+   "nom": "Rameau de Machecoul",
+   "dates": "1235–1434",
+   "parent": "branche-de-dreux-bretagne",
+   "fondateur": "Olivier Ier de Machecoul (1231 – 1279), dit \"Olivier de Braine\", seigneur de Machecoul, fils de Pierre Mauclerc",
+   "wiki": "Olivier_Ier_de_Machecoul",
+   "armes": [
+    {
+     "blason": "D'argent à trois chevrons de gueules"
+    }
+   ],
+   "file": "Blason Maison de Machecoul.svg",
+   "auteur": "Jimmy44",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+   "id": "rameau-d-avaugour",
+   "nom": "Rameau d’Avaugour",
+   "dates": "1480–1746",
+   "parent": "branche-de-dreux-bretagne",
+   "fondateur": "François Ier d'Avaugour (1462-1510), comte de Vertus et de Goëllo, et baron d'Avaugour, fils de François II de Bretagne",
+   "wiki": "Fran%C3%A7ois_Ier_d%27Avaugour",
+   "armes": [
+    {
+     "blason": "Ecartelé aux I et IV d'hermine, les II et III contre-écartelés : aux I et IV du contre-écartelé d'azur à trois fleurs de lys d'or au lambel d'argent, aux II et III du contre-écartelé d'argent à la guivre d'azur couronnée d'or hissante de carnation ; sur le tout d'argent au chef de gueules"
+    }
+   ],
+   "file": "Blason François 1er (de Bretagne) d'Avaugour (1462-1510).svg",
+   "auteur": "Jimmy44",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+   "id": "maison-de-vermandois",
+   "nom": "Maison de Vermandois",
+   "dates": "1080–1250",
+   "parent": "capetiens",
+   "fondateur": "Raoul Ier (1085–1152), comte de Vermandois et de Valois",
+   "wiki": "Raoul_Ier_de_Vermandois",
+   "armes": [
+    {
+     "blason": "Échiqueté d'or et d'azur"
+    }
+   ],
+   "file": "Armoiries Vermandois.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+   "id": "maison-de-bourgogne",
+   "nom": "Maison de Bourgogne",
+   "dates": "1032–1361",
+   "parent": "capetiens",
+   "fondateur": "Eudes II (1118–1162), duc de Bourgogne",
+   "wiki": "Eudes_II_de_Bourgogne",
+   "armes": [
+    {
+     "blason": "Bandé d'or et d'azur de six pièces, à la bordure de gueules"
+    }
+   ],
+   "file": "Blason Ducs Bourgogne (ancien).svg",
+   "auteur": "ZigeunerAlt",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "lien": "lignees.html#bourgogne",
+   "lienTxt": "Frise des ducs de Bourgogne"
+  },
+  {
+   "id": "maison-de-portugal",
+   "nom": "Maison de Portugal",
+   "dates": "1093–1383",
+   "parent": "maison-de-bourgogne",
+   "fondateur": "Alphonse Ier (1109–1185), roi de Portugal",
+   "wiki": "Alphonse_Ier_(roi_de_Portugal)",
+   "armes": [
+    {
+     "blason": "D'argent, croix d'azur"
+    }
+   ],
+   "file": "Armoires portugal 1160.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "lien": "lignees.html#portugal",
+   "lienTxt": "Frise des rois de Portugal"
+  }
+ ]
+}

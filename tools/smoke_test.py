@@ -11,7 +11,8 @@ Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manqu
 (« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les frises,
 l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
 (chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
-et les boutons « Redessiner dans l'Atelier » des galeries.
+les boutons « Redessiner dans l'Atelier » des galeries, les pages S'exercer (chaque question posée est cohérente), Chronologie, Rechercher
+(chaque lien d'un résultat mène à une ancre qui existe) et Les Capétiens, enfin le téléphone (375 px : rien ne déborde, le menu se replie).
 Code de sortie 1 au premier échec. FUZZ=500 python tools/smoke_test.py pousse l'Atelier plus loin (500 compositions)."""
 import functools, http.server, json, os, pathlib, random, re, sys, threading, urllib.parse
 
@@ -65,6 +66,7 @@ def propre(nom, page, erreurs):
     verifie(not absurdes, f"{nom} : aucune balise absurde" + ("" if not absurdes else f" — {absurdes[:3]}"))
 
 def data(nom): return json.loads((ROOT / "data" / nom).read_text(encoding="utf-8"))
+MENU = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)",\s*"([^"]+)"', (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8"))      # (identifiant, fichier, libellé) du bandeau
 
 # ------------------------------------------------------------------ pages
 def test_index(browser, base):
@@ -106,7 +108,7 @@ def test_index(browser, base):
 def test_galerie(browser, base, page_url, fichier, nom):
     page, erreurs = ouvre(browser, base, page_url, ".ar")
     verifie(page.locator(".ar").count() == len(data(fichier)), f"{nom} : une carte par entrée de {fichier}")
-    verifie(page.locator("header.mast nav a").count() == 5 and page.locator("header.mast nav a.here").count() == 1, f"{nom} : menu complet, page courante marquée")
+    verifie(page.locator("header.mast nav a").count() == len(MENU) and page.locator("header.mast nav a.here").count() == 1, f"{nom} : menu complet, page courante marquée")
     verifie(page.locator("footer .seal").count() == 1, f"{nom} : sceau du pied de page")
     propre(nom, page, erreurs)
     page.context.close()
@@ -129,7 +131,7 @@ FUZZ = """async (n) => {
       const St = fresh();
       St.q = pick(["", "2", "4"]);
       for (let j = 0; j < 4; j++) St.A[j] = { ...randomArms(), f: pick(["plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
-        ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["6", "8"]), t3: pick(Object.keys(MOT)),
+        ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["5", "6", "7", "8", "9"]), t3: pick(Object.keys(MOT)),
         m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
         nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur"]),
         ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]) };
@@ -281,6 +283,11 @@ LUS = [
     ("Parti d'azur et de gueules, à la croix d'or", "Parti d'azur et de gueules, à la croix d'or brochant sur le tout", ""),
     ("Tiercé en pal de gueules, d'argent et d'azur", "Tiercé en pal de gueules, d'argent et d'azur", ""),
     ("Fascé d'argent et d'azur de huit pièces", "Fascé d'argent et d'azur de huit pièces", ""),
+    ("D'or à trois pals de gueules", "D'or à trois pals de gueules", ""),                    # pièces rebattues : un champ rayé de sept zones
+    ("D'or à quatre pals de gueules", "D'or à quatre pals de gueules", ""),
+    ("De gueules à trois fasces d'argent", "De gueules à trois fasces d'argent", ""),
+    ("D'azur à deux bandes d'or", "D'azur à deux bandes d'or", ""),
+    ("D'argent à deux barres de sable, à la croix d'or brochant sur le tout", "D'argent à deux barres de sable, à la croix d'or brochant sur le tout", ""),
     ("Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or (France ancien) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
      "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or", "Commentaire ignoré"),
     ("Écartelé : au 1, d'azur ; au 2, de gueules ; au 3, d'or ; au 4, de sable", "Écartelé : au 1, d'azur plein ; au 2, de gueules plein ; au 3, d'or plein ; au 4, de sable plein", ""),
@@ -292,8 +299,8 @@ LUS = [
 # (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
 REFUSES = [
     ("D'azur à la grenade d'or", "grenade"),
-    ("D'or à quatre pals de gueules", "Plusieurs pals"),
-    ("De gueules à trois fasces d'argent", "Plusieurs fasces"),
+    ("D'or à cinq pals de gueules", "Plusieurs pals"),
+    ("De gueules à cinq fasces d'argent", "Plusieurs fasces"),
     ("D'azur à la croix de gueules bordée d'argent", "bordée"),
     ("D'azur à sept étoiles d'or", "sept étoiles"),
     ("D'azur à la fasce d'or ondée", "avant son émail"),
@@ -318,17 +325,18 @@ REFUSES = [
     ("Écartelé de France ancien et d'Angleterre", "France"),
 ]
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
-BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Saint-Empire romain germanique", "Archiduché d'Autriche",
-                    "Duché de Bretagne", "Duché de Savoie", "Maison de Médicis", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
+BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Archiduché d'Autriche", "Couronne d'Aragon", "Comté de Foix",
+                    "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse"]
-BLASONS_REFUSES = ["Couronne d'Aragon", "Comté de Foix", "Royaume de Grenade", "Maison Grimaldi", "Royaume d'Islande"]
+# (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
+BLASONS_REFUSES = ["Royaume de Grenade", "Maison Grimaldi", "Royaume d'Islande", "Saint-Empire romain germanique", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur"]
-PERSONNAGES_REFUSES = ["Paul IV", "Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Colbert"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV"]
+PERSONNAGES_REFUSES = ["Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Colbert"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
-    ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["6", "8"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
+    ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["5", "6", "7", "8", "9"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
     nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur"]),
     ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), ta: pick(Object.keys(MOT)), ta2: pick(Object.keys(MOT)),
     d: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "orle", "cd", "cs"]),
@@ -461,6 +469,164 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : le bouton ouvre l'Atelier, qui lit le blasonnement de « {lisibles[-1]} »")
     page.context.close()
 
+# ------------------------------------------------------------------ téléphone
+def test_telephone(browser, base):
+    """à 375 px, aucune page ne déborde en largeur ; le menu se replie derrière un bouton, s'ouvre, se ferme à Échap"""
+    for ident, fichier, libelle in MENU:
+        ctx = browser.new_context(viewport={"width": 375, "height": 812}, locale="fr-FR", is_mobile=True, has_touch=True)
+        ctx.route("**/*", lambda r: r.continue_() if r.request.url.startswith(base) else r.fulfill(status=200, content_type="image/png", body=PIXEL))
+        page = ctx.new_page()
+        erreurs = []
+        page.on("pageerror", lambda e: erreurs.append(str(e)))
+        page.goto(f"{base}/{fichier}")
+        page.wait_for_selector("header.mast nav a", state="attached", timeout=20000)
+        page.wait_for_timeout(2500)
+        sw = page.evaluate("document.documentElement.scrollWidth")
+        verifie(sw <= 376, f"téléphone/{ident} : la page ne déborde pas en largeur ({sw} px pour 375)")
+        verifie(page.locator(".menu-btn").is_visible() and not page.locator("header.mast nav").is_visible(), f"téléphone/{ident} : le menu est replié derrière un bouton")
+        page.click(".menu-btn")
+        verifie(page.locator("header.mast nav").is_visible() and page.locator("header.mast nav a").count() == len(MENU), f"téléphone/{ident} : le bouton ouvre le menu complet")
+        page.keyboard.press("Escape")
+        verifie(not page.locator("header.mast nav").is_visible(), f"téléphone/{ident} : Échap referme le menu")
+        verifie(not erreurs, f"téléphone/{ident} : aucune erreur" + ("" if not erreurs else f" — {erreurs[:2]}"))
+        ctx.close()
+
+# ------------------------------------------------------------------ S'exercer
+VERIF_QUESTIONS = """async (n) => {
+  const pb = [], plan = [["lire", 1], ["lire", 2], ["lire", 3], ["dessiner", 1], ["dessiner", 2], ["dessiner", 3], ["regle", 1], ["regle", 2], ["regle", 3], ["vocab", 1], ["vocab", 2], ["vocab", 3], ["points", 1], ["reel", 1]];
+  for (const [id, niv] of plan) {
+    if (!Exercices.ids.includes(id)) { pb.push("exercice absent : " + id); continue; }
+    for (let seed = 1; seed <= n; seed++) {
+      let q;
+      try { q = await Exercices.fabrique(id, niv, seed * 7919 + niv); } catch (e) { pb.push(id + niv + " exception : " + e.message); continue; }
+      const mal = m => pb.push(`${id}${niv} graine ${seed} : ${m}`);
+      if (id === "lire" || id === "dessiner") {
+        if (q.choix.length !== 4) mal("choix = " + q.choix.length);
+        if (q.choix.filter(c => c.ok).length !== 1) mal("pas exactement une bonne réponse");
+        if (new Set(q.choix.map(c => c.texte)).size !== q.choix.length) mal("textes en double");
+        if (q.choix.find(c => c.ok).texte !== q.texte) mal("la bonne réponse n'est pas le texte de l'écu");
+        for (const c of q.choix) { const r = lire(c.texte); if (!r.ok || !r.exact) mal("texte non relu : " + c.texte); }
+      } else if (id === "regle") {
+        if ((q.fautes.length === 0) !== (ruleAll(q.St).length === 0)) mal("fautes incohérentes");
+      } else if (id === "vocab" || id === "points" || id === "reel") {
+        if (q.choix.length !== 4 || new Set(q.choix.map(c => c.texte)).size !== 4) mal("choix mal formés");
+        if (q.choix.filter(c => c.ok).length !== 1) mal("pas exactement une bonne réponse");
+      }
+    }
+  }
+  return pb;
+}"""
+
+def test_exercices(browser, base):
+    page, erreurs = ouvre(browser, base, "exercices.html", ".ex-carte")
+    ids = page.evaluate("Exercices.ids")
+    verifie(page.locator(".ex-carte").count() == len(ids), f"exercices : une carte par exercice ({len(ids)})")
+    pb = page.evaluate(VERIF_QUESTIONS, 20)
+    verifie(not pb, "exercices : les questions tirées sont cohérentes (une seule bonne réponse, textes relus par le lecteur, règle des émaux juste)" + ("" if not pb else f" — {pb[:3]}"))
+    # la même graine donne la même question (c'est ce qui fait le défi du jour)
+    memes = page.evaluate("""async () => { const a = await Exercices.fabrique("lire", 2, 4242), b = await Exercices.fabrique("lire", 2, 4242); return a.texte === b.texte && a.choix.map(c => c.texte).join("|") === b.choix.map(c => c.texte).join("|"); }""")
+    verifie(memes, "exercices : une même graine redonne la même question")
+    # une partie : on répond, la réponse s'explique, la question suivante vient
+    page.click(".ex-carte[data-id=lire]"); page.wait_for_selector(".ex-q .ex-c"); page.wait_for_timeout(400)
+    verifie(page.locator(".ex-q .ex-c").count() == 4 and page.locator(".ex-q svg.ecu").count() == 1, "exercices : « Lire un écu » montre un écu et quatre propositions")
+    page.keyboard.press("2"); page.wait_for_timeout(300)
+    verifie(page.locator(".ex-c.ok").count() == 1 and page.locator("#ex-fb .ex-verdict").count() == 1 and page.locator("#ex-suite:visible").count() == 1, "exercices : la touche « 2 » répond, la bonne réponse est marquée et expliquée")
+    verifie(page.locator(".ex-c:not([disabled])").count() == 0, "exercices : après la réponse, les propositions sont figées")
+    page.click("#ex-suite"); page.wait_for_selector(".ex-q .ex-c:not([disabled])"); page.wait_for_timeout(300)
+    verifie("sur 1" in page.inner_text("#ex-score"), "exercices : le score compte une question jouée")
+    page.click("#ex-retour"); page.wait_for_selector(".ex-carte")
+    # le défi du jour : six questions, puis le résultat à partager
+    page.click(".ex-carte[data-id=defi]")
+    for i in range(6):
+        page.wait_for_selector(".ex-q .ex-c:not([disabled])", timeout=20000); page.wait_for_timeout(300)
+        page.keyboard.press("1"); page.wait_for_selector("#ex-suite:visible"); page.wait_for_timeout(150)
+        page.click("#ex-suite")
+    page.wait_for_selector(".ex-final")
+    verifie(page.locator(".ex-grille").count() == 1 and page.locator("#ex-copie").count() == 1, "exercices : le défi du jour se termine sur une grille de résultat à copier")
+    propre("exercices", page, erreurs)
+    page.context.close()
+    # l'adresse « #defi » ouvre le défi ; les questions du jour sont les mêmes d'une visite à l'autre
+    qs = []
+    for _ in range(2):
+        page, erreurs = ouvre(browser, base, "exercices.html#defi", ".ex-q .ex-c")
+        qs.append(page.inner_text(".ex-q"))
+        page.context.close()
+    verifie(qs[0] == qs[1], "exercices : la première question du défi est la même à chaque visite du jour")
+
+# ------------------------------------------------------------------ Chronologie
+def test_chronologie(browser, base):
+    F = data("frises.json"); C = data("chronologie.json")
+    n_jalons = sum(len(R.get("jalons", [])) for f in F["frises"] for R in data(pathlib.PurePosixPath(f["file"]).name)["royaumes"])
+    page, erreurs = ouvre(browser, base, "chronologie.html", ".ev")
+    total = page.locator(".ev").count()
+    verifie(total == n_jalons + len(C["reperes"]), f"chronologie : un repère par jalon des frises ({n_jalons}) et par repère du droit ({len(C['reperes'])}) — {total}")
+    annees = page.evaluate("[...document.querySelectorAll('.ev')].map(e => +e.dataset.an)")
+    verifie(annees == sorted(annees), "chronologie : les repères sont dans l'ordre du temps")
+    page.click(".chip[data-l=france]"); page.wait_for_timeout(250)
+    verifie(0 < page.locator(".ev").count() < total and "l=france" in page.url, "chronologie : filtrer par lignée réduit la liste et garde l'adresse")
+    page.click("#chip-tout"); page.fill("#q", "union des couronnes"); page.wait_for_timeout(500)
+    verifie(page.locator(".ev").count() >= 2, "chronologie : la recherche trouve « l'union des couronnes »")
+    page.fill("#q", ""); page.check("#desac"); page.wait_for_timeout(300)
+    verifie(0 < page.locator(".ev").count() == page.locator(".ev.dz").count(), "chronologie : « seulement les désaccords » ne garde que les repères en désaccord")
+    propre("chronologie", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "chronologie.html#1603", ".ev.flash")
+    verifie(page.locator(".ev.flash").count() == 1, "chronologie : l'adresse #1603 mène à l'année")
+    propre("chronologie#1603", page, erreurs)
+    page.context.close()
+
+# ------------------------------------------------------------------ Rechercher
+def test_recherche(browser, base):
+    page, erreurs = ouvre(browser, base, "recherche.html#q=lambel", ".r")
+    verifie(page.locator(".r").count() >= 5 and page.locator(".r-ty[data-t=glo]").count() >= 1, "recherche : « lambel » trouve le glossaire et des articles")
+    verifie(page.locator(".chip").count() >= 3, "recherche : les rubriques proposent leur nombre de résultats")
+    page.fill("#q", "zzzzzz"); page.wait_for_selector(".r-vide", timeout=5000)
+    verifie(True, "recherche : une requête sans réponse le dit")
+    liens = page.evaluate("""() => { const out = new Set(); for (const q of ["a", "e", "i", "o", "u", "er", "on", "ou", "lion", "lis", "gueules"]) Recherche.cherche(q).forEach(r => out.add(r.lien)); return [...out]; }""")
+    # chaque lien doit mener à une ancre qui existe : on charge les pages visées une fois, et on lit leurs adresses
+    ancres = {}
+    for cible in ("index.html", "blasons.html", "personnages.html"):
+        pg, er = ouvre(browser, base, cible, "main .section, .ar" if cible == "index.html" else ".ar")
+        pg.wait_for_timeout(800)
+        ancres[cible] = set(pg.evaluate("[...document.querySelectorAll('[id]')].map(e => e.id)"))
+        pg.context.close()
+    frises = {f["id"] for f in data("frises.json")["frises"]}
+    capetiens = {n["id"] for n in data("capetiens.json")["noeuds"]}
+    manquants = []
+    for l in liens:
+        page_, _, a = l.partition("#")
+        if page_ in ancres: ok = a in ancres[page_]
+        elif page_ == "lignees.html": ok = a in frises
+        elif page_ == "capetiens.html": ok = a in capetiens
+        elif page_ == "chronologie.html": ok = a.isdigit()
+        else: ok = False
+        if not ok: manquants.append(l)
+    verifie(not manquants, f"recherche : les {len(liens)} liens de résultats mènent à une ancre qui existe" + ("" if not manquants else f" — {manquants[:5]}"))
+    propre("recherche", page, erreurs)
+    page.context.close()
+    # l'adresse d'une carte de galerie mène à la carte, même si un filtre la cache
+    page, erreurs = ouvre(browser, base, "blasons.html#" + "royaume-de-france-moderne", ".ar.flash")
+    verifie(page.locator(".ar.flash").count() == 1, "galerie : l'adresse d'une carte mène à la carte")
+    propre("blasons#carte", page, erreurs)
+    page.context.close()
+
+# ------------------------------------------------------------------ Les Capétiens
+def test_capetiens(browser, base):
+    D = data("capetiens.json")
+    page, erreurs = ouvre(browser, base, "capetiens.html", ".noeud")
+    verifie(page.locator(".noeud").count() == len(D["noeuds"]), f"capétiens : un nœud par maison ou branche ({len(D['noeuds'])})")
+    verifie(page.locator(".carte mark").count() >= 10, "capétiens : les brisures sont mises en relief")
+    page.click(".chip[data-t=lambel]"); page.wait_for_timeout(250)
+    verifie(0 < page.locator(".noeud.dim").count() < len(D["noeuds"]), "capétiens : choisir une sorte de brisure estompe les autres branches")
+    page.click(".carte[data-id=maison-d-artois]"); page.wait_for_timeout(200)
+    verifie(page.locator("#d-maison-d-artois").is_visible() and "châteaux" in page.inner_text("#d-maison-d-artois"), "capétiens : un clic déplie le détail (Artois et ses châteaux)")
+    verifie(page.locator("#credits li").count() >= 30, "capétiens : les crédits de toutes les figures sont en bas de page")
+    propre("capétiens", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "capetiens.html#maison-de-bourbon-conde", ".noeud.flash")
+    verifie(page.locator("#d-maison-de-bourbon-conde").is_visible(), "capétiens : l'adresse d'une branche l'ouvre")
+    page.context.close()
+
 
 def main():
     random.seed(1)
@@ -476,7 +642,12 @@ def main():
                        ("atelier (lien truqué)", lambda: test_atelier_adresse_truquee(browser, base)),
                        ("lecture", lambda: test_lecture(browser, base, n_fuzz)),
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
-                       ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages"))):
+                       ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
+                       ("exercices", lambda: test_exercices(browser, base)),
+                       ("chronologie", lambda: test_chronologie(browser, base)),
+                       ("recherche", lambda: test_recherche(browser, base)),
+                       ("capétiens", lambda: test_capetiens(browser, base)),
+                       ("téléphone", lambda: test_telephone(browser, base))):
             try: f()
             except Exception as e: ko(f"{nom} : exception du test — {e}")
         browser.close()

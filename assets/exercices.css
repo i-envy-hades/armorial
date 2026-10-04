@@ -1,0 +1,105 @@
+/* CSS propre à la page « S'exercer » ; le socle est dans assets/site.css, l'habillage « chronique » dans assets/epopee-pages.css */
+body.ex .ex-main{max-width:var(--maxw);margin:0 auto;padding:1.4rem clamp(1rem,4vw,2.4rem) 3.4rem;min-height:40vh}
+.ex-chargement{text-align:center;font-style:italic;color:var(--ink-soft);margin:2rem 0}
+.ex [hidden]{display:none!important}
+
+/* ---------- le menu : niveau et exercices ---------- */
+.ex-niveau{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:.4rem 0 1.6rem}
+.ex-niveau .lab{font-family:"Marcellus SC",serif;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.ex-niv-aide{font-size:.95rem;font-style:italic;color:var(--ink-soft)}
+.ex .seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden;background:var(--vellum-2)}
+.ex .seg label{cursor:pointer}
+.ex .seg input{position:absolute;opacity:0;pointer-events:none}
+.ex .seg span{display:block;padding:.35rem .95rem;font-size:.95rem;color:var(--ink-soft)}
+.ex .seg input:checked + span{background:var(--gules);color:#fbf5e4}
+.ex .seg input:focus-visible + span{outline:2px solid var(--or);outline-offset:-2px}
+.ex-cartes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:1.2rem}
+.ex-carte{
+  display:grid;grid-template-columns:92px minmax(0,1fr);gap:1rem;align-items:center;text-align:left;
+  font:inherit;color:inherit;cursor:pointer;padding:1rem 1.1rem;
+  background:linear-gradient(180deg,#faf6ea,#efe7d2);border:1px solid var(--rule);border-top:3px solid var(--or);border-radius:3px;box-shadow:var(--shadow);
+  transition:transform .3s ease,box-shadow .3s ease,border-top-color .3s;
+}
+.ex-carte:hover,.ex-carte:focus-visible{border-top-color:var(--gules);transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.ex-img svg{width:92px;height:auto;display:block;filter:drop-shadow(0 8px 10px rgba(26,23,18,.25))}
+.ex-txt{display:block;min-width:0}
+.ex-nom{display:block;font-family:"Marcellus",serif;font-size:1.22rem;line-height:1.2}
+.ex-court{display:block;font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-top:.15rem}
+.ex-desc{display:block;font-size:.95rem;line-height:1.45;color:var(--ink-soft);margin:.4rem 0 .35rem}
+.ex-fait{display:block;font-size:.84rem;font-style:italic;color:var(--azure)}
+.ex-carte[data-id="defi"]{order:-1;border-top-color:var(--gules);background:linear-gradient(180deg,#faf1de,#f0e2c0)}
+@media (min-width:760px){.ex-carte[data-id="defi"]{grid-column:1 / -1;grid-template-columns:110px minmax(0,1fr)}.ex-carte[data-id="defi"] .ex-img svg{width:110px}}
+
+/* ---------- la partie ---------- */
+.ex-barre{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 1.2rem;padding:.2rem 0 .8rem;border-bottom:1px solid var(--rule)}
+.ex .lnk{font:inherit;background:none;border:0;padding:0;color:var(--gules);text-decoration:underline;cursor:pointer}
+.ex-titre{font-family:"Marcellus SC",serif;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gules)}
+.ex-score{font-size:.95rem;color:var(--ink-soft)}
+.ex-score b{color:var(--ink);font-weight:600}
+.ex-q{max-width:780px;margin:1.5rem auto 0;outline:none}
+.ex-ask{font-family:"Marcellus",serif;font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.25;text-align:center;margin:0 0 1rem}
+.ex-ecu{display:flex;justify-content:center;margin:.2rem 0 1.3rem}
+.ex-ecu svg.ecu{width:min(62vw,240px);height:auto;filter:drop-shadow(0 12px 16px rgba(26,23,18,.28))}
+.ex-reel img{display:block;max-height:260px;width:auto;height:auto;max-width:min(62vw,240px);filter:drop-shadow(0 12px 16px rgba(26,23,18,.28))}
+.ex-indice{text-align:center;margin:-.4rem 0 1rem;font-size:.9rem;font-style:italic;color:var(--ink-soft)}
+.ex-blz{font-style:italic;font-size:clamp(1.1rem,3vw,1.3rem);line-height:1.4;text-align:center;margin:0 auto 1.1rem;max-width:34em}
+.ex-def{margin:0 auto 1.3rem;max-width:56ch;padding:.9rem 1.2rem;border-left:3px solid var(--or);background:linear-gradient(90deg,rgba(169,129,46,.12),transparent);font-size:1.18rem;font-style:italic;line-height:1.5}
+
+.ex-choix{display:grid;gap:.6rem}
+.ex-deux,.ex-courts{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:480px){.ex-deux,.ex-courts{grid-template-columns:minmax(0,1fr)}}
+.ex-c{
+  display:flex;align-items:flex-start;gap:.8rem;text-align:left;width:100%;
+  font:inherit;color:var(--ink);cursor:pointer;
+  background:var(--vellum-2);border:1px solid var(--rule);border-radius:10px;padding:.7rem .9rem;
+  transition:border-color .2s,background .2s,opacity .2s;
+}
+.ex-c .k{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;display:grid;place-items:center;font-family:"Marcellus SC",serif;font-size:.8rem;border:1px solid var(--or);color:var(--or);background:var(--vellum)}
+.ex-c .t{min-width:0;font-style:italic;font-size:1.08rem;line-height:1.4;overflow-wrap:anywhere}
+.ex-courts .ex-c .t,.ex-deux .ex-c .t{font-style:normal}
+.ex-c:hover:not(:disabled),.ex-c:focus-visible{border-color:var(--or);background:#fbf7ea}
+.ex-c:disabled{cursor:default}
+.ex-c.ok{border-color:#3b7a3b;background:#e6f0d9;opacity:1}
+.ex-c.ok .k{background:#3b7a3b;border-color:#3b7a3b;color:#fff}
+.ex-c.ko{border-color:var(--gules);background:#f6e3d4;opacity:1}
+.ex-c.ko .k{background:var(--gules);border-color:var(--gules);color:#fff}
+.ex-c.dim{opacity:.7}
+.ex-c mark{background:#f4d9a0;color:inherit;border-radius:2px;padding:0 .12em;font-style:normal;font-weight:600}
+.ex-ecus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.ex-cecu{flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .5rem .8rem;position:relative}
+.ex-cecu .k{position:absolute;left:.55rem;top:.55rem}
+.ex-cecu svg.ecu{width:min(34vw,150px);height:auto;filter:drop-shadow(0 8px 10px rgba(26,23,18,.25))}
+.ex-sous{display:block;font-size:.88rem;font-style:italic;text-align:center;line-height:1.3;color:var(--ink-soft);padding:0 .3rem}
+.ex-cecu.ok .ex-sous,.ex-cecu.ko .ex-sous{color:var(--ink)}
+
+/* ---------- la réponse expliquée ---------- */
+.ex-fb{max-width:780px;margin:1.3rem auto 0}
+.ex-fb:not(:empty){padding:1rem 1.25rem 1.1rem;background:linear-gradient(180deg,#faf6ea,#f2ebd8);border:1px solid var(--rule);border-left:4px solid var(--or);border-radius:3px;box-shadow:var(--shadow)}
+.ex-fb.ok{border-left-color:#3b7a3b}
+.ex-fb.ko{border-left-color:var(--gules)}
+.ex-fb p{margin:.45rem 0}
+.ex-verdict{font-family:"Marcellus",serif;font-size:1.3rem;margin:0 0 .2rem!important}
+.ex-fb.ok .ex-verdict{color:#2e6a2e}
+.ex-fb.ko .ex-verdict{color:var(--gules)}
+.ex-guide{margin:.6rem 0;padding:.6rem .9rem;background:rgba(32,64,110,.06);border-radius:4px;display:grid;gap:.3rem}
+.ex-guide div{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.2rem .8rem}
+@media (max-width:480px){.ex-guide div{grid-template-columns:minmax(0,1fr)}}
+.ex-guide dt{font-family:"Marcellus SC",serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);padding-top:.25rem}
+.ex-guide dd{margin:0;font-style:italic}
+.ex-retenir span{font-family:"Marcellus SC",serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-right:.4rem}
+.ex-aide{font-size:.94rem;color:var(--ink-soft)}
+.ex-lien{font-size:.94rem}
+.ex-credits{font-size:.74rem!important;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.5rem;margin-top:.7rem!important}
+.ex-credits a{color:var(--ink-soft);text-decoration:underline}
+.ex-suite{max-width:780px;margin:1.1rem auto 0;text-align:center}
+.ex button.main,.ex .acts button{font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;border:1px solid var(--rule);background:var(--vellum);color:var(--ink);border-radius:999px;padding:.55rem 1.2rem;cursor:pointer}
+.ex button.main,.ex .acts button.main{background:var(--gules);border-color:var(--gules);color:#fbf5e4}
+.ex button.main:hover,.ex .acts button:hover{border-color:var(--or)}
+.ex .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1rem 0 .4rem}
+
+/* ---------- résultat du défi ---------- */
+.ex-final{text-align:center;padding:1rem 0}
+.ex-grille{font-size:clamp(1.8rem,8vw,2.6rem);letter-spacing:.14em;margin:.4rem 0}
+.ex-note-final{font-size:1.15rem;margin:.4rem 0 .8rem}
+
+@media (prefers-reduced-motion:reduce){.ex-carte,.ex-c{transition:none}.ex-carte:hover{transform:none}}

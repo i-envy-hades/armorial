@@ -160,6 +160,13 @@ const MINIA = {
   glossaire: { file: "Toison d'Or (Folio 119v).jpg", legende: "Armorial de la Toison d'or, f. 119v : familles de Pologne", auteur: "Jean Le Fèvre de Saint-Remy", lic: "Public domain" },
   bibliotheque: { file: "Sacre Robert II le Pieux - Grandes Chroniques de France - BNF, FR 2615, fol.149r.jpg", legende: "Sacre de Robert II, Grandes Chroniques de France (BnF, Fr. 2615, f. 149)", auteur: "auteur inconnu", lic: "Public domain" },
 };
+/* chapitres ajoutés après coup : décor emprunté à un chapitre voisin, miniature propre */
+Object.assign(PLATES, { alliances: "partitions", heraults: "blasons-hero", villes: "droit-compare" });
+Object.assign(MINIA, {
+  alliances: { file: "Stowe Armorial 2.jpg", legende: "Le Stowe Armorial (1806), composé pour la famille Temple-Grenville : une généalogie en quartiers", auteur: "P. Sonard", lic: "Public domain" },
+  heraults: { file: "Montjoye Saint Denis Roy d'armes de France.jpg", legende: "« Montjoye Saint Denis », roi d'armes de France, estampe du XVIIᵉ siècle", auteur: "Stefano della Bella", lic: "Public domain" },
+  villes: { file: "Armorial de la Gilde Drapière Bruxelles 02.jpg", legende: "Armorial de la gilde drapière de Bruxelles (1713-1724) : les armes de ses membres", auteur: "artiste inconnu", lic: "Public domain" },
+});
 const miniaHtml = id => {
   const m = MINIA[id]; if(!m) return "";
   const page = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(m.file.replace(/ /g, "_"));
@@ -429,6 +436,9 @@ async function init(){
   /* ---- recherche : menu de résultats sous le champ ---- */
   const qInput = document.getElementById("q");
   const sBox = document.getElementById("sresults");
+  /* écran étroit : le champ n'a de place que pour un mot d'invite court */
+  const etroit = matchMedia("(max-width:1120px)"), invite = () => { qInput.placeholder = etroit.matches ? "Rechercher…" : "Rechercher un terme du blason…"; };
+  invite(); etroit.addEventListener("change", invite);
   let sActive = -1;
 
   function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); }
@@ -492,3 +502,8 @@ async function init(){
   });
 }
 init();
+
+/* impression : un <details> fermé n'imprime pas son contenu ; on ouvre tous les articles le temps de l'impression, puis on remet chacun comme il était */
+let ouvertsAvantImpression = [];
+addEventListener("beforeprint", () => { const tous = [...document.querySelectorAll("details.art")]; ouvertsAvantImpression = tous.filter(d => d.open); tous.forEach(d => { d.open = true; }); });
+addEventListener("afterprint", () => document.querySelectorAll("details.art").forEach(d => { d.open = ouvertsAvantImpression.includes(d); }));

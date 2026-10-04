@@ -154,3 +154,14 @@ body.epic2 .chip{font:inherit;font-size:.84rem;cursor:pointer;border:1px solid v
 body.epic2 .chip:hover{border-color:var(--or)}
 body.epic2 .chip.on{background:var(--gules);border-color:var(--gules);color:#f4efe2}
 body.epic2 .tools .count{margin-left:auto;font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- bases communes aux pages qui n'ont pas de feuille de galerie (S'exercer, Chronologie…) :
+   les galeries les posent dans leur propre CSS, avec les mêmes valeurs ---------- */
+body.epic2 .note{padding-left:clamp(1rem,4vw,2.4rem);padding-right:clamp(1rem,4vw,2.4rem)}
+body.epic2 .foot{max-width:var(--maxw);margin:0 auto;padding-left:clamp(1rem,4vw,2.4rem);padding-right:clamp(1rem,4vw,2.4rem);padding-bottom:1.6rem;font-size:.82rem;color:var(--ink-soft)}
+body.epic2 .foot b{color:var(--ink)}
+body.epic2 .foot a{color:var(--gules)}
+
+/* carte visée par son adresse (assets/cartes.js) */
+body.epic2 .ar.flash{box-shadow:0 0 0 3px var(--or-light),var(--shadow-lift)}
+@media (prefers-reduced-motion:no-preference){body.epic2 .ar{transition:box-shadow .8s ease,transform .35s ease,border-top-color .3s}}
