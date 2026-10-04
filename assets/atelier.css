@@ -4,9 +4,10 @@ a:hover{text-decoration:underline}
 .hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin:.4rem 0 .5rem;color:var(--ink)}
 .hero p{max-width:64ch;margin:.3rem auto;color:var(--ink-soft);font-style:italic;font-size:1.04rem}
 .wrap{max-width:var(--maxw);margin:0 auto 3rem;padding:0 clamp(1rem,4vw,2.4rem);display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);gap:2rem;align-items:start}
-@media (max-width:860px){.wrap{grid-template-columns:1fr}.preview{position:static!important;order:-1}}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr)}.preview{position:static!important;order:-1}}
+.panel{min-width:0}
 .panel{display:flex;flex-direction:column;gap:1rem}
-fieldset{margin:0;border:1px solid var(--rule);border-radius:12px;background:var(--vellum-2);padding:.9rem 1rem 1rem;box-shadow:var(--shadow)}
+fieldset{min-width:0;margin:0;border:1px solid var(--rule);border-radius:12px;background:var(--vellum-2);padding:.9rem 1rem 1rem;box-shadow:var(--shadow)}
 legend{font-family:"Marcellus SC",serif;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;color:var(--gules);padding:0 .4rem}
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .8rem;margin:.45rem 0}
 .row > .lab{font-family:"Marcellus SC",serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);min-width:6.5rem}

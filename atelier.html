@@ -14,10 +14,15 @@
 <meta property="og:title" content="L'Armorial — Atelier">
 <meta property="og:description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître. Export en SVG et en PNG, lien de partage.">
 <meta property="og:url" content="https://i-envy-hades.github.io/armorial/atelier.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
 <!--
   L'ARMORIAL — page « Atelier » : composer des armoiries et lire leur blasonnement.
-  Fichiers : assets/atelier.js (l'application) et assets/atelier.css ; assets/blasonnement.js (la grammaire et le
+  Fichiers : assets/atelier.js (l'interface), assets/dessin.js (le dessin des armes, partagé) et assets/atelier.css ; assets/blasonnement.js (la grammaire et le
   blasonnement, partagés avec le lecteur) ; assets/lecture.js (du texte à l'écu) ; assets/blason.js (dessin partagé
   avec l'encyclopédie) ; émaux, partitions, pièces : data/data.json ; meubles, ornements et figures
   Commons recolorables : data/atelier.json, assets/meubles/ et assets/ornements/.
@@ -85,7 +90,7 @@
       <div class="row" id="r-part"><span class="lab">Partition</span><select name="part" aria-label="Partition"></select></div>
       <div class="row" id="r-ray"><span class="lab">Rayures</span>
         <select name="ray" aria-label="Rayures"><option value="barry">Fascé</option><option value="paly">Palé</option><option value="bendy">Bandé</option><option value="bendysin">Barré</option></select>
-        <select name="n" aria-label="Nombre de pièces"><option value="6">six pièces</option><option value="8">huit pièces</option></select>
+        <select name="n" aria-label="Nombre de pièces"><option value="6">six pièces</option><option value="8">huit pièces</option><option value="5">deux pièces rebattues (deux pals…)</option><option value="7">trois pièces rebattues (trois pals…)</option><option value="9">quatre pièces rebattues (quatre pals…)</option></select>
       </div>
       <div class="row"><span class="lab" id="l-t1">Émail</span><div class="chips" data-name="t1"></div></div>
       <div class="row" id="r-t2"><span class="lab">Second émail</span><div class="chips" data-name="t2"></div></div>
@@ -188,6 +193,7 @@
 <script src="assets/blason.js"></script>
 <script src="assets/blasonnement.js"></script>
 <script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
 <script src="assets/atelier.js"></script>
 </body>
 </html>
