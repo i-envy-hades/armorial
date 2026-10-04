@@ -16,7 +16,7 @@ let PEOPLE, LISIBLES = new Set(), GROUPE = "tous", REQ = "";                // L
 
 function card(p){
   const alt = p.blason ? `Armoiries de ${p.nom} — ${p.blason}` : `Armoiries de ${p.nom}`;
-  return `<article class="ar">
+  return `<article class="ar" id="${slugCarte(p.nom)}">
     <div class="shield"><img loading="lazy" src="${src(p.file)}" alt="${alt}"></div>
     <h3>${p.nom}</h3>
     <p class="meta">${p.meta}</p>
@@ -77,6 +77,9 @@ async function init(){
   }
   outils();
   render();
+  /* une carte a son adresse (assets/cartes.js) : si un groupe ou la recherche la cache, on les lève */
+  const tous = () => { GROUPE = "tous"; REQ = ""; const q = document.getElementById("q"); if(q) q.value = ""; document.querySelectorAll("#tools .chip").forEach(x => x.classList.toggle("on", x.dataset.g === "tous")); render(); };
+  allerCarte(tous); addEventListener("hashchange", () => allerCarte(tous));
   const f = document.getElementById("facts");
   if(f) f.innerHTML = `<div class="c"><span class="n">${PEOPLE.length}</span><span class="l">Personnages</span></div>
     <div class="c"><span class="n">${LISIBLES.size}</span><span class="l">Relus par l'Atelier</span></div>`;
