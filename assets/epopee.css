@@ -376,3 +376,4 @@ body.epic .rail .sub a:hover{color:var(--gules)}
 .book-note .note{margin:.45rem 0 0}
 
 @media (prefers-reduced-motion:reduce){.art,.art > summary::after{transition:none}}
+.gloss-item{scroll-margin-top:90px}

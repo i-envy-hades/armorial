@@ -7,7 +7,14 @@
     "file": "Royal arms of England.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "angleterre",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      }
+    ]
   },
   {
     "nom": "Édouard III d'Angleterre",
@@ -17,7 +24,14 @@
     "file": "Coat of Arms of Edward III of England (1327-1377).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "angleterre",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      }
+    ]
   },
   {
     "nom": "Édouard de Woodstock, le Prince Noir",
@@ -27,7 +41,18 @@
     "file": "Coat of Arms of the Prince of Wales (France ancient).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "brisures",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      },
+      {
+        "t": "Le lambel, d'aîné à cadet",
+        "href": "index.html#le-lambel-d-aine-a-cadet"
+      }
+    ]
   },
   {
     "nom": "Henri VI d'Angleterre",
@@ -37,7 +62,14 @@
     "file": "Coat of Arms of Henry VI of England (1422-1471).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "angleterre",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      }
+    ]
   },
   {
     "nom": "Richard III d'Angleterre",
@@ -47,7 +79,14 @@
     "file": "Coat of Arms of Richard III of England (1483-1485).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "angleterre",
+    "liens": [
+      {
+        "t": "Frise des rois d'Angleterre",
+        "href": "lignees.html#angleterre"
+      }
+    ]
   },
   {
     "nom": "Bertrand du Guesclin",
@@ -57,7 +96,14 @@
     "file": "Blason famille fr du Guesclin 2.svg",
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "brisures",
+    "liens": [
+      {
+        "t": "Quatre manières de briser",
+        "href": "index.html#quatre-manieres-de-briser"
+      }
+    ]
   },
   {
     "nom": "Edmond FitzAlan (2e comte d'Arundel)",
@@ -71,7 +117,8 @@
     "blasonSrc": {
       "label": "la page Commons du fichier",
       "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "John FitzAlan",
@@ -85,7 +132,8 @@
     "blasonSrc": {
       "label": "la page Commons du fichier",
       "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Richard FitzAlan",
@@ -99,7 +147,8 @@
     "blasonSrc": {
       "label": "la page Commons du fichier",
       "url": "https://commons.wikimedia.org/wiki/File:FitzAlan_arms.svg"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Paul IV",
@@ -114,7 +163,14 @@
       "label": "la page Commons du fichier",
       "url": "https://commons.wikimedia.org/wiki/File:C_o_a_Paulus_IV.svg",
       "note": "armes des Carafa"
-    }
+    },
+    "groupe": "eglise",
+    "liens": [
+      {
+        "t": "Frise de la papauté",
+        "href": "lignees.html#papaute"
+      }
+    ]
   },
   {
     "nom": "Pie II",
@@ -128,7 +184,14 @@
     "blasonSrc": {
       "label": "la page Commons du fichier, citant Araldica Vaticana",
       "url": "https://commons.wikimedia.org/wiki/File:C_o_a_Pio_II.svg"
-    }
+    },
+    "groupe": "eglise",
+    "liens": [
+      {
+        "t": "Frise de la papauté",
+        "href": "lignees.html#papaute"
+      }
+    ]
   },
   {
     "nom": "Margrethe II",
@@ -143,7 +206,8 @@
       "label": "Wikipedia (da), « Danmarks rigsvåben »",
       "url": "https://da.wikipedia.org/wiki/Danmarks_rigsv%C3%A5ben",
       "note": "section « Kongevåben », version 1972-2024 ; tenants, colliers et manteau non repris"
-    }
+    },
+    "groupe": "aujourdhui"
   },
   {
     "nom": "Frederik X",
@@ -158,7 +222,8 @@
       "label": "Wikipédia, « Armoiries du Danemark »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_du_Danemark",
       "note": "armes fixées en 2024"
-    }
+    },
+    "groupe": "aujourdhui"
   },
   {
     "nom": "Marguerite de Foix-Candale (1473-1536)",
@@ -168,7 +233,8 @@
     "file": "Arms of Margaret of Foix-Candale.svg",
     "auteur": "MostEpic",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "familles"
   },
   {
     "nom": "Alfonso Felice d'Avalos",
@@ -178,7 +244,8 @@
     "file": "Stemma d avalos.jpg",
     "auteur": "DionisusDafne",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "familles"
   },
   {
     "nom": "Giacomo Carafa",
@@ -193,7 +260,14 @@
       "label": "Wikipedia (it), « Carafa »",
       "url": "https://it.wikipedia.org/wiki/Carafa",
       "note": "branche des Carafa della Spina"
-    }
+    },
+    "groupe": "brisures",
+    "liens": [
+      {
+        "t": "Lire un blason brisé",
+        "href": "index.html#lire-un-blason-brise"
+      }
+    ]
   },
   {
     "nom": "Ahmad Shah Zaher",
@@ -203,7 +277,8 @@
     "file": "Emblem of Afghanistan (1931–1973).svg",
     "auteur": "Orange Tuesday d'après Andrew Dunhan, version 2021 de Yeemuha",
     "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Afghanistan"
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Afghanistan",
+    "groupe": "aujourdhui"
   },
   {
     "nom": "Ferenc Fuchs",
@@ -213,7 +288,8 @@
     "file": "COA archbishop HU Fuchs Ferenc Xaver3.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise"
   },
   {
     "nom": "Ignác Fábry",
@@ -223,7 +299,8 @@
     "file": "COA bishop SK Fabry Ignac2.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise"
   },
   {
     "nom": "Justo Rodríguez Gallego",
@@ -233,7 +310,8 @@
     "file": "Escudo de Justo Rodríguez Gallego.svg",
     "auteur": "Macucal",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise"
   },
   {
     "nom": "Stanisław Kiszka",
@@ -248,7 +326,8 @@
       "label": "Wikipedia (pl), « Dąbrowa (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/D%C4%85browa_(herb_szlachecki)",
       "note": "« krzyż kawalerski » rendu par croix pattée"
-    }
+    },
+    "groupe": "eglise"
   },
   {
     "nom": "Jan Lubrański",
@@ -262,7 +341,8 @@
     "blasonSrc": {
       "label": "Wikipedia (pl), « Godziemba (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Godziemba_(herb_szlachecki)"
-    }
+    },
+    "groupe": "eglise"
   },
   {
     "nom": "Nanker",
@@ -276,7 +356,8 @@
     "blasonSrc": {
       "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
-    }
+    },
+    "groupe": "eglise"
   },
   {
     "nom": "Zofia Radziwiłł (1716-1748)",
@@ -290,7 +371,8 @@
     "blasonSrc": {
       "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Vladislovas Tiškevičius",
@@ -305,7 +387,8 @@
       "label": "Wikipedia (pl), « Tyszkiewicz Hrabia »",
       "url": "https://pl.wikipedia.org/wiki/Tyszkiewicz_Hrabia",
       "note": "version de Gajl ; d'autres versions sont sans bordure"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Krister Gabrielsson Oxenstierna",
@@ -315,7 +398,8 @@
     "file": "COA family sv Oxenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "familles"
   },
   {
     "nom": "Anna Fleming (1562-1608)",
@@ -325,7 +409,8 @@
     "file": "COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "familles"
   },
   {
     "nom": "Claes Fleming",
@@ -335,7 +420,8 @@
     "file": "COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "familles"
   },
   {
     "nom": "Herman Fleming",
@@ -345,7 +431,8 @@
     "file": "COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "familles"
   },
   {
     "nom": "Baroness Sigrid Gyllenstierna",
@@ -360,7 +447,8 @@
       "label": "Wikipedia (da), « Gyldenstierne »",
       "url": "https://da.wikipedia.org/wiki/Gyldenstierne",
       "note": "branche danoise ; la même page dit l'étoile d'argent à l'origine"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Erik Eriksson",
@@ -375,7 +463,8 @@
       "label": "Wikipedia (da), « Gyldenstierne »",
       "url": "https://da.wikipedia.org/wiki/Gyldenstierne",
       "note": "branche danoise ; la même page dit l'étoile d'argent à l'origine"
-    }
+    },
+    "groupe": "familles"
   },
   {
     "nom": "Margareta Thuresdotter",
@@ -385,7 +474,8 @@
     "file": "COA-family-sv-Svarte skaning.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "eglise"
   },
   {
     "nom": "Jean-Baptiste Colbert",
@@ -399,7 +489,14 @@
     "blasonSrc": {
       "label": "Wikipédia, « Jean-Baptiste Colbert »",
       "url": "https://fr.wikipedia.org/wiki/Jean-Baptiste_Colbert"
-    }
+    },
+    "groupe": "parlantes",
+    "liens": [
+      {
+        "t": "Armes parlantes (glossaire)",
+        "href": "index.html#terme-armes-parlantes"
+      }
+    ]
   },
   {
     "nom": "Jules Mazarin",
@@ -413,7 +510,14 @@
     "blasonSrc": {
       "label": "Wikipédia, « Jules Mazarin »",
       "url": "https://fr.wikipedia.org/wiki/Jules_Mazarin"
-    }
+    },
+    "groupe": "parlantes",
+    "liens": [
+      {
+        "t": "Armes parlantes (glossaire)",
+        "href": "index.html#terme-armes-parlantes"
+      }
+    ]
   },
   {
     "nom": "Jacques Cœur",
@@ -427,6 +531,13 @@
     "blasonSrc": {
       "label": "Wikipédia, « Jacques Cœur »",
       "url": "https://fr.wikipedia.org/wiki/Jacques_Cœur"
-    }
+    },
+    "groupe": "parlantes",
+    "liens": [
+      {
+        "t": "Armes parlantes (glossaire)",
+        "href": "index.html#terme-armes-parlantes"
+      }
+    ]
   }
 ]

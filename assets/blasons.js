@@ -19,6 +19,10 @@ function blLine(a){
   if (!s) return "Blasonnement : domaine public.";
   return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
 }
+/* renvois vers le reste du site : frise de la lignée, article de l'encyclopédie */
+function liens(a){
+  return a.liens && a.liens.length ? `<p class="liens">${a.liens.map(l => `<a href="${l.href}">${l.t}</a>`).join("")}</p>` : "";
+}
 function card(a){
   const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`;
   return `<article class="ar" data-cat="${a.cat||''}">
@@ -28,6 +32,7 @@ function card(a){
     ${a.blason ? `<p class="bl">${a.blason}</p>` : ""}
     ${LISIBLES.has(a) ? lienAtelier(a) : ""}
     ${a.porteur ? `<p class="po">${a.porteur}</p>` : ""}
+    ${liens(a)}
     <p class="src">${srcLine(a)}</p>
   </article>`;
 }

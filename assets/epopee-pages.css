@@ -124,3 +124,33 @@ body.epic2 footer .fine{opacity:.95;margin-top:.5rem}
   body.epic2 .hero .eyebrow,body.epic2 .hero h1,body.epic2 .hero p:not(.eyebrow),.hero-facts{opacity:1;animation:none}
   body.epic2 .ar,body.epic2 .mast{transition:none}
 }
+
+/* ---------- Personnages : groupes, recherche, renvois ---------- */
+body.epic2 .tools .srch{display:flex;align-items:center;gap:.5rem;flex:1 1 280px;max-width:380px}
+body.epic2 .tools .srch input{
+  flex:1;font:inherit;font-size:.95rem;color:var(--ink);padding:.45rem .8rem;background:var(--vellum-2);border:1px solid var(--rule);border-radius:999px;
+}
+body.epic2 .tools .srch input:focus{outline:2px solid var(--azure);outline-offset:1px;border-color:transparent}
+body.epic2 .tools .chips-g{display:flex;flex-wrap:wrap;gap:.4rem;flex:1 1 100%}
+@media (min-width:1000px){body.epic2 .tools .chips-g{flex:2 1 520px}}
+body.epic2 #grid.groups{display:block;max-width:var(--maxw);padding-bottom:1rem}
+body.epic2 .gp{margin:2rem 0 2.6rem;scroll-margin-top:110px}
+body.epic2 .gp:first-child{margin-top:.6rem}
+.gp-head{margin:0 0 1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,var(--or),transparent) left bottom/220px 2px no-repeat}
+.gp-head h2{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(1.4rem,3.4vw,2rem);margin:0;color:var(--ink)}
+.gp-head p{margin:.3rem 0 0;max-width:72ch;font-style:italic;color:var(--ink-soft);font-size:1.02rem}
+.grid-in{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
+.liens{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin:.1rem 0 .5rem}
+.liens a{font-family:"Marcellus SC",serif;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--gules);
+  border:1px solid var(--rule);border-radius:999px;padding:.2rem .6rem;background:var(--vellum-2);transition:border-color .2s,background .2s}
+.liens a::after{content:" →"}
+.liens a:hover{border-color:var(--or);background:#fff;text-decoration:none}
+.gloss-empty{color:var(--ink-soft);font-style:italic;padding:1rem 0}
+
+/* barre d'outils commune aux deux pages (la page « Personnages » n'avait pas ces règles) */
+body.epic2 .tools{max-width:var(--maxw);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding-left:clamp(1rem,4vw,2.4rem);padding-right:clamp(1rem,4vw,2.4rem)}
+body.epic2 .tools .lab{font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem;color:var(--ink-soft);margin-right:.3rem}
+body.epic2 .chip{font:inherit;font-size:.84rem;cursor:pointer;border:1px solid var(--rule);background:var(--vellum-2);color:var(--ink-soft);border-radius:999px;padding:.28rem .8rem}
+body.epic2 .chip:hover{border-color:var(--or)}
+body.epic2 .chip.on{background:var(--gules);border-color:var(--gules);color:#f4efe2}
+body.epic2 .tools .count{margin-left:auto;font-size:.85rem;color:var(--ink-soft)}
