@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'Armorial — Atelier</title>
-<meta name="description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut. Export en SVG et en PNG, lien de partage.">
+<meta name="description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître. Export en SVG et en PNG, lien de partage.">
 <meta name="theme-color" content="#e9e1cd">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://i-envy-hades.github.io/armorial/atelier.html">
@@ -12,12 +12,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="L'Armorial — Atelier">
-<meta property="og:description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut. Export en SVG et en PNG, lien de partage.">
+<meta property="og:description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître. Export en SVG et en PNG, lien de partage.">
 <meta property="og:url" content="https://i-envy-hades.github.io/armorial/atelier.html">
 <meta name="twitter:card" content="summary">
 <!--
   L'ARMORIAL — page « Atelier » : composer des armoiries et lire leur blasonnement.
-  Fichiers : assets/atelier.js (l'application) et assets/atelier.css ; assets/blason.js (dessin partagé
+  Fichiers : assets/atelier.js (l'application) et assets/atelier.css ; assets/blasonnement.js (la grammaire et le
+  blasonnement, partagés avec le lecteur) ; assets/lecture.js (du texte à l'écu) ; assets/blason.js (dessin partagé
   avec l'encyclopédie) ; émaux, partitions, pièces : data/data.json ; meubles, ornements et figures
   Commons recolorables : data/atelier.json, assets/meubles/ et assets/ornements/.
   L'état de la composition tient dans l'ancre de l'adresse (#…), ce qui fait le lien de partage.
@@ -32,12 +33,22 @@
 <section class="hero">
   <p class="eyebrow">Composer ses armes</p>
   <h1>L'Atelier</h1>
-  <p>Choisissez un champ, une pièce, des meubles et leurs émaux : l'écu se dessine, et le blasonnement s'écrit dans l'ordre où un héraut le lirait.</p>
+  <p>Choisissez un champ, une pièce, des meubles et leurs émaux : l'écu se dessine, et le blasonnement s'écrit dans l'ordre où un héraut le lirait. Ou faites l'inverse : écrivez un blasonnement, et l'écu apparaît.</p>
 </section>
 
 <noscript><p class="nojs">L'Atelier fonctionne avec JavaScript : activez-le pour composer des armoiries.</p></noscript>
 <div class="wrap" id="wrap">
   <form class="panel" id="panel" autocomplete="off" onsubmit="return false">
+    <fieldset>
+      <legend>Écrire un blasonnement</legend>
+      <label class="lab-lire" for="lire">Tapez des armes : l'écu se dessine. Ce que l'Atelier ne comprend pas est signalé, jamais deviné.</label>
+      <textarea id="lire" rows="3" spellcheck="false" placeholder="D'azur à trois fleurs de lis d'or" aria-describedby="lire-etat"></textarea>
+      <div class="acts lire-acts">
+        <button type="button" class="main" id="b-lire">Dessiner</button>
+        <button type="button" id="b-recopier">Reprendre le blasonnement actuel</button>
+      </div>
+      <div class="lire-etat" id="lire-etat" role="status" aria-live="polite"></div>
+    </fieldset>
     <fieldset>
       <legend>Exemples</legend>
       <div class="examples" id="examples"></div>
@@ -175,6 +186,8 @@
 <div id="gdefs"></div>
 <svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
 <script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
 <script src="assets/atelier.js"></script>
 </body>
 </html>

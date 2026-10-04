@@ -5,7 +5,7 @@ Sans dépendance (Python 3 seul). Contrôle, dans l'ordre :
   2. les fichiers cités (images, SVG, données) : ils existent ;
   3. les frises de la page Lignées (data/frises.json) ;
   4. le moteur de rendu (assets/blason.js) : chaque « kind » des données y a son dessin ;
-  5. l'Atelier (data/atelier.json) : meubles, ornements, fichiers ;
+  5. l'Atelier (data/atelier.json) : meubles, noms (le lecteur de blasonnement les reconnaît : pas de doublon), ornements, fichiers ;
   6. les pages HTML et les scripts : balises équilibrées, pas de coquille dans les gabarits
      (par exemple « <div, »), fichiers liés présents, menu cohérent avec assets/chrome.js.
 Code de sortie 1 s'il y a une erreur ; les avertissements n'en provoquent pas."""
@@ -96,6 +96,12 @@ verifie(d.get("regles", {}).get("courbes", []), "partitionInner", "courbe")
 verifie(d.get("regles", {}).get("recoupements", []), "recoupementInner", "recoupement")
 verifie(d.get("pieces", []), "pieceInner", "pièce")
 verifie(d.get("meubles", []), "chargeInner", "meuble", ignore=lambda m: m.get("image"))
+cn = re.search(r"const CONTOUR_NOM = \{(.*?)\};", (ROOT / "assets" / "blasonnement.js").read_text(encoding="utf-8"), re.S)
+cc = re.search(r"const CONTOURS = \{(.*?)^\};", JS, re.S | re.M)
+if cn and cc:
+    for k in re.findall(r"(\w+):", cn.group(1)):
+        if not re.search(rf"^\s*{k}\s*:", cc.group(1), re.M): err(f"assets/blasonnement.js: bord « {k} » (CONTOUR_NOM) sans tracé dans CONTOURS de assets/blason.js")
+else: err("assets/blasonnement.js ou assets/blason.js: CONTOUR_NOM ou CONTOURS introuvable")
 HACHURES = {"none", "ermine", "vair", "dots", "vert", "horiz", "cross", "bend", "bendsin"}
 for t in d.get("tinctures", []):
     if t.get("hatch") not in HACHURES: err(f"data.json: émail « {t.get('nom')} » : hachure inconnue « {t.get('hatch')} »")
@@ -118,6 +124,21 @@ if isinstance(a, dict):
             if m["draw"] != "lis" and m["draw"] not in dessins["chargeInner"]:
                 err(f"atelier.json: meuble « {k} » : dessin « {m['draw']} » absent de chargeInner()")
         elif not m.get("custom"): err(f"atelier.json: meuble « {k} » sans dessin ni figure")
+    # les noms que le lecteur de blasonnement (assets/lecture.js) reconnaît : sing, plur et alias, sans doublon entre meubles ni avec une pièce
+    noms = {}
+    pieces = {"chef", "fasce", "pal", "bande", "barre", "croix", "sautoir", "chevron", "bordure", "orle", "canton", "franc-quartier", "pairle"}
+    for m in a.get("meubles", []):
+        k = m.get("kind")
+        al = m.get("alias", [])
+        if not isinstance(al, list) or any(not (isinstance(x, list) and len(x) == 2 and all(isinstance(s, str) and s for s in x)) for x in al):
+            err(f"atelier.json: meuble « {k} » : « alias » doit être une liste de paires [singulier, pluriel]"); al = []
+        for nom in [m.get("sing"), m.get("plur")] + [s for x in al for s in x]:
+            cle = re.sub(r"[-\s]+", " ", (nom or "").lower())
+            if cle in pieces: err(f"atelier.json: le nom « {nom} » du meuble « {k} » est aussi celui d'une pièce")
+            if noms.setdefault(cle, k) != k: err(f"atelier.json: le nom « {nom} » est donné à la fois à « {noms[cle]} » et à « {k} »")
+        for drapeau in ("accentTrait", "allongee"):
+            if drapeau in m and m[drapeau] is not True: err(f"atelier.json: meuble « {k} » : « {drapeau} » vaut true ou n'existe pas")
+        if m.get("accentTrait") and not m.get("accentMot"): err(f"atelier.json: meuble « {k} » : « accentTrait » sans « accentMot »")
     for pc in a.get("pieces", []):
         for c in ("kind", "nom", "g"):
             if not pc.get(c): err(f"atelier.json: pièce « {pc.get('kind')} » sans {c}")
@@ -160,6 +181,15 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
     t = f.read_text(encoding="utf-8")
     for m in COQUILLE.finditer(t):
         err(f"{f.relative_to(ROOT)}:{t.count(chr(10), 0, m.start()) + 1}: coquille probable dans un gabarit : « {t[m.start():m.start() + 40].splitlines()[0]} »")
+
+# le lecteur de blasonnement (lecture.js) et l'Atelier (atelier.js) s'appuient sur blasonnement.js : il doit être chargé avant eux
+for p in pages:
+    scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
+    for dependant in ("lecture.js", "atelier.js"):
+        if dependant in scripts and ("blasonnement.js" not in scripts or scripts.index("blasonnement.js") > scripts.index(dependant)):
+            err(f"{p.name}: assets/blasonnement.js doit être chargé avant assets/{dependant}")
+    if "atelier.js" in scripts and "lecture.js" in scripts and scripts.index("lecture.js") > scripts.index("atelier.js"):
+        err(f"{p.name}: assets/lecture.js doit être chargé avant assets/atelier.js")
 
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
 menu = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)"', chrome)

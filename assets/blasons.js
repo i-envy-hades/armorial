@@ -3,7 +3,7 @@ const PAGE = "https://commons.wikimedia.org/wiki/File:";
 function src(file){ return FP + encodeURIComponent(file) + "?width=320"; }
 function page(file){ return PAGE + encodeURIComponent(file); }
 
-let ARMS;
+let ARMS, LISIBLES = new Set();                  // LISIBLES : les armes que l'Atelier sait relire (assets/lecture.js)
 
 function srcLine(a){
   const fileLink = `<a href="${page(a.file)}" target="_blank" rel="noopener">« ${a.file} »</a>`;
@@ -26,6 +26,7 @@ function card(a){
     ${a.cat ? `<div class="cat">${a.cat}</div>` : ""}
     <h3>${a.nom}</h3>
     ${a.blason ? `<p class="bl">${a.blason}</p>` : ""}
+    ${LISIBLES.has(a) ? lienAtelier(a) : ""}
     ${a.porteur ? `<p class="po">${a.porteur}</p>` : ""}
     <p class="src">${srcLine(a)}</p>
   </article>`;
@@ -52,9 +53,11 @@ function buildTools(){
 }
 async function init(){
   try{
-    const res = await fetch('data/blasons.json');
+    // les données du lecteur de blasonnement arrivent en même temps ; si elles manquent, la page se passe du bouton
+    const [res] = await Promise.all([fetch('data/blasons.json'), chargerLecteur().catch(() => {})]);
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     ARMS = await res.json();
+    LISIBLES = armesLisibles(ARMS);
   }catch(err){
     document.getElementById("grid").innerHTML =
       `<p>Les données n'ont pas pu être chargées (${err.message||err}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;
