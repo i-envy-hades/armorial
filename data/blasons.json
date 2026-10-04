@@ -606,5 +606,545 @@
       "url": "https://fr.wikipedia.org/wiki/Comté_de_Toulouse",
       "note": "c'est la « croix de Toulouse »"
     }
+  },
+  {
+    "nom": "Confédération suisse",
+    "cat": "Suisse",
+    "porteur": "Confédération suisse",
+    "blason": "De gueules, à la croix alésée d'argent",
+    "file": "Coat of arms of Switzerland.svg",
+    "auteur": "-xfi-, d'après E Pluribus Anthony, Reisio, Wiki-vr et Zscout370",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Zurich",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Tranché d'argent et d'azur",
+    "file": "Wappen Zürich matt.svg",
+    "auteur": "Sa-se (extrait du règlement fédéral des drapeaux)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Berne",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "De gueules, à la bande élargie d'or, chargée d'un ours de sable, armé, vilené et lampassé de gueules",
+    "file": "CHE Bern COA.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Lucerne",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti d'azur et d'argent",
+    "file": "Wappen Luzern matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton d'Uri",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'or, au rencontre de bœuf de sable, allumé d'argent, bouclé et langué de gueules",
+    "file": "Wappen Uri matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Schwytz",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "De gueules, à la croisette d'argent, au franc-quartier sénestre",
+    "file": "Wappen Schwyz matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton d'Obwald",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Coupé de gueules et d'argent, à la clé, de l'un en l'autre, posée en pal",
+    "file": "Wappen Obwalden matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Nidwald",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "De gueules, à la clé d'argent, au double panneton, posée en pal",
+    "file": "Wappen Nidwalden matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Glaris",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "De gueules, à Saint-Fridolin au naturel",
+    "file": "Wappen Glarus matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Zoug",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'argent, à la fasce d'azur",
+    "file": "Wappen Zug matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Fribourg",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Coupé de sable et d'argent",
+    "file": "Wappen Freiburg matt.svg",
+    "auteur": "Sa-se (extrait du règlement fédéral des drapeaux)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Soleure",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Coupé de gueules et d'argent",
+    "file": "Wappen Solothurn matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Bâle-Ville",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'argent, à la crosse stylisée de sable",
+    "file": "Wappen Basel-Stadt matt.svg",
+    "auteur": "Perhelion",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Bâle-Campagne",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'argent, à la crosse stylisée contournée de gueules",
+    "file": "CHE Basel-Landschaft COA.svg",
+    "auteur": "SpinnerLaserzthe2nd",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Schaffhouse",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'or, au bélier saillant de sable, lampassé de gueules, couronné, onglé, accorné et vilené du champ",
+    "file": "Wappen Schaffhausen matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton d'Appenzell Rhodes-Extérieures",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'argent, à l'ours de sable, armé, lampassé et vilené de gueules, entre un \"V\" et un \"R\" du deuxième",
+    "file": "Wappen Appenzell Ausserrhoden matt.svg",
+    "auteur": "Sa-se (extrait du règlement fédéral des drapeaux)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton d'Appenzell Rhodes-Intérieures",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "D'argent, à l'ours de sable, armé, lampassé et vilené de gueules",
+    "file": "Wappen Appenzell Innerrhoden matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Saint-Gall",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "De sinople, au faisceau de licteur d'argent, lié du champ",
+    "file": "Wappen St. Gallen matt (2011).svg",
+    "auteur": "Fabian Sander (2010)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton des Grisons",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Coupé, en 1, parti en 1, parti de sable et d'argent et en 2, écartelé d'azur et d'or, à la croix de l'un-en-l'autre ; en 2, d'argent, au bouquetin saillant de sable, lampassé et vilené de gueules",
+    "file": "CHE Graubünden COA.svg",
+    "auteur": "Toni Nigg, Wappenkommission Graubünden",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton d'Argovie",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti, en 1, de sable, à la rivière formée de trois fasces ondées d'argent, et en 2, d'azur, à trois étoiles d'argent, regroupées en cœur",
+    "file": "Wappen Aargau matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Thurgovie",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Tranché d'argent et de sinople, à deux lions léopardés d'or, armés, lampassés et vilenés de gueules, posés dans le sens du tranché",
+    "file": "Wappen Thurgau matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton du Tessin",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti de gueules et d'azur",
+    "file": "Wappen Tessin matt.svg",
+    "auteur": "Gunnar.offel",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Vaud",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Coupé d'argent et de sinople, l'argent chargé des mots « LIBERTÉ ET PATRIE », d'or",
+    "file": "Wappen Waadt matt.svg",
+    "auteur": "Gunnar.offel",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton du Valais",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti d'argent et de gueules, à treize étoiles, posées en trois pals 4, 5 et 4, de l'un en l'autre",
+    "file": "Wappen Wallis matt.svg",
+    "auteur": "Sa-se (extrait du règlement fédéral des drapeaux)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Neuchâtel",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Tiercé en pal de sinople, d'argent et de gueules, le gueules, chargé en chef d'une croisette du deuxième",
+    "file": "Wappen Neuenburg matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton de Genève",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti, au 1 d'or, à la demi-aigle éployée de sable, mouvant du trait du parti, couronnée, becquée, languée, membrée et armée de gueules; au deuxième de gueules, à la clef d'or en pal, contournée",
+    "file": "Wappen Genf matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
+  },
+  {
+    "nom": "Canton du Jura",
+    "cat": "Suisse",
+    "porteur": "Canton suisse",
+    "blason": "Parti en 1, d'argent, à la crosse stylisée de gueules, et en 2, de gueules, à trois fasces d'argent",
+    "file": "Wappen Jura matt.svg",
+    "auteur": "Sa-se",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
+    "liens": [
+      {
+        "t": "Le droit des armoiries en Suisse",
+        "href": "index.html#allemagne-et-suisse-des-armes-protegees-comme-un-nom"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la Suisse »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
+    }
   }
 ]

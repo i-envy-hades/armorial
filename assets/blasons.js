@@ -25,7 +25,7 @@ function liens(a){
 }
 function card(a){
   const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`;
-  return `<article class="ar" data-cat="${a.cat||''}">
+  return `<article class="ar" id="${slugCarte(a.nom)}" data-cat="${a.cat||''}">
     <div class="shield"><img loading="lazy" src="${src(a.file)}" alt="${alt}"></div>
     ${a.cat ? `<div class="cat">${a.cat}</div>` : ""}
     <h3>${a.nom}</h3>
@@ -70,6 +70,9 @@ async function init(){
   }
   buildTools();
   render();
+  /* une carte a son adresse (assets/cartes.js) : si un filtre la cache, on le lève */
+  const toutes = () => { CURRENT = "Tous"; document.querySelectorAll("#tools .chip").forEach(x => x.classList.toggle("on", x.dataset.c === "Tous")); render(); };
+  allerCarte(toutes); addEventListener("hashchange", () => allerCarte(toutes));
   const f = document.getElementById("facts");
   if(f) f.innerHTML = `<div class="c"><span class="n">${ARMS.length}</span><span class="l">Blasons</span></div>
     <div class="c"><span class="n">${new Set(ARMS.map(a => a.cat).filter(Boolean)).size}</span><span class="l">Catégories</span></div>
