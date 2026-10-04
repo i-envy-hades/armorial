@@ -15,7 +15,7 @@ function srcLine(a){
 }
 function blLine(a){
   const s = a.blasonSrc;
-  if (!a.blason) return "";
+  if (!a.blason) return "Blasonnement non établi : les pages lues ne le donnent pas.";
   if (!s) return "Blasonnement : domaine public.";
   return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
 }

@@ -97,6 +97,13 @@ for nom in ("blasons.json", "personnages.json"):
             elif page_ not in cibles: err(f"{nom}: « {e.get('nom')} » : renvoi vers une page inconnue « {l.get('href')} »")
             elif ancre not in cibles[page_]: err(f"{nom}: « {e.get('nom')} » : l'ancre « {l.get('href')} » n'existe pas")
 
+# --------- 3 ter. un blasonnement s'appuie sur une source (la page Commons du fichier ou un article)
+for nom in ("blasons.json", "personnages.json"):
+    for e in DATA.get(nom) or []:
+        if e.get("blason") and not e.get("blasonSrc"): err(f"{nom}: « {e.get('nom')} » : blasonnement sans source (blasonSrc)")
+        s_ = e.get("blasonSrc")
+        if s_ is not None and not (isinstance(s_, dict) and s_.get("label") and str(s_.get("url", "")).startswith("http")): err(f"{nom}: « {e.get('nom')} » : blasonSrc mal formé (label et url attendus)")
+
 # ------------------------------------------------------- 4. moteur de rendu
 JS = (ROOT / "assets" / "blason.js").read_text(encoding="utf-8")
 def cases(fn):
