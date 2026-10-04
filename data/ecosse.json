@@ -1,0 +1,1024 @@
+{
+ "sources": {
+  "liste_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Écosse »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27%C3%89cosse"
+  },
+  "arms_en": {
+   "label": "Wikipedia (en), « Coat of arms of Scotland »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Scotland"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Avant les armoiries",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Les sources lues ne prêtent d'armoiries à aucun roi d'avant Guillaume le Lion : l'écu reste vide.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "lion": {
+   "nom": "Le lion et le double trescheur",
+   "blason": "D'or au lion de gueules, armé et lampassé d'azur, dans un double trescheur fleuronné et contre-fleuronné de gueules",
+   "file": "Royal Arms of the Kingdom of Scotland.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Un lion rampant se distingue nettement sur le sceau d'Alexandre II ; on en attribue l'adoption à son père Guillaume le Lion, dont le sceau n'en garde pas trace. L'écu passe ensuite de roi en roi presque sans changer. Le trescheur de lis, qu'on dit venu de la Vieille Alliance avec la France, est attesté avant 1295, date où elle commence : l'explication est peu probable. Sous Jacques III, le Parlement décida un jour de supprimer le trescheur ; il fut vite rétabli, d'abord sans son bord supérieur, puis entier.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "marie1558": {
+   "nom": "Marie, dauphine",
+   "blason": "Les armes d'Écosse accolées à celles du dauphin François, roi consort d'Écosse",
+   "file": "Royal Arms of the Kingdom of Scotland (1558-1559).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Au mariage de Marie avec le dauphin, en 1558, les armes d'Écosse sont accolées à celles de François, que l'écu du dauphin fait lui-même entrer en quartier pour marquer son titre de roi consort.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "marie1559": {
+   "nom": "Marie, reine de France",
+   "blason": "Les armes d'Écosse accolées à celles de France (dimidiées)",
+   "file": "Royal Arms of the Kingdom of Scotland (1559-1560).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "François devient roi de France en 1559 : les armes de Marie suivent son rang de reine consort.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "marie1560": {
+   "nom": "Marie, reine douairière",
+   "blason": "Les armes d'Écosse accolées à celles de France (dimidiées), avec une légère modification",
+   "file": "Royal Arms of the Kingdom of Scotland (1560-1565).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Veuve de François en 1560, Marie garde l'accolement jusqu'à son remariage avec Darnley, en 1565, puis revient au lion seul.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "stuart1603": {
+   "nom": "Les trois couronnes",
+   "blason": "Écartelé : aux 1 et 4, d'Écosse (d'or au lion de gueules dans un double trescheur) ; au 2, grand écartelé de France (d'azur à trois fleurs de lis d'or) et d'Angleterre (de gueules à trois léopards d'or) ; au 3, d'Irlande (d'azur à la harpe d'or, cordée d'argent)",
+   "file": "Coat of Arms of Scotland (1603-1649).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Jacques VI hérite d'Angleterre et d'Irlande en 1603 : les armes d'Angleterre, déjà écartelées de France, s'ajoutent au lion d'Écosse, et la harpe d'Irlande entre dans l'écu. Dans la version d'usage en Écosse, le lion garde les places d'honneur (1 et 4).",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "stuart1660": {
+   "nom": "La Restauration",
+   "blason": "Écartelé : aux 1 et 4, d'Écosse ; au 2, grand écartelé de France et d'Angleterre ; au 3, d'Irlande",
+   "file": "Coat of Arms of Scotland (1660-1689).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes de 1603 reviennent avec Charles II ; elles ne servent pas pendant le Commonwealth.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "orange1689": {
+   "nom": "Guillaume et Marie",
+   "blason": "Parti : à dextre, les armes de 1603 avec, en cœur, l'écusson de Nassau (d'azur billeté d'or, au lion d'or armé et lampassé de gueules) ; à senestre, les mêmes armes sans l'écusson",
+   "file": "Coat of Arms of Scotland (1689-1694).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Marie II et Guillaume II règnent ensemble et accolent leurs armes, identiques si ce n'est que Guillaume porte l'écusson de la maison de Nassau.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "orange1694": {
+   "nom": "Guillaume II seul",
+   "blason": "Écartelé comme en 1603, avec en cœur l'écusson de Nassau (d'azur billeté d'or, au lion d'or armé et lampassé de gueules)",
+   "file": "Coat of Arms of Scotland (1694-1702).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "À la mort de Marie, Guillaume porte seul ses armes.",
+   "sources": [
+    "arms_en"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "ecosse",
+   "nom": "Écosse",
+   "titre": "Rois d'Écosse",
+   "lede": "Un seul écu — le lion de gueules dans son double trescheur — traverse cinq siècles de rois d'Écosse presque sans changer. Il ne se brouille qu'avec Marie Stuart, accolé aux armes de France, puis s'efface en 1603 dans l'écartelé qui réunit les trois couronnes.",
+   "debut": 1030,
+   "fin": 1710,
+   "depart": 1214,
+   "theme": "ecosse",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Sans souverain",
+    "rivaux": "En marge"
+   },
+   "methode": [
+    "Dates des règnes : « Liste des monarques d'Écosse » (Wikipédia). La frise commence avec Duncan Iᵉʳ (1034) : les rois de la maison d'Alpin (843-1034) n'ont, dans les sources lues, aucune armoirie, et les armoiries n'existent pas avant le XIIᵉ siècle. Les noms renvoient à l'article Wikipédia du souverain ; Édouard Balliol, que la liste compte parmi les rois mais qui a usurpé le trône de David II, a sa rangée « En marge ».",
+    "Armoiries : « Coat of arms of Scotland » (Wikipedia en) pour l'histoire des armes, des supports et des variantes ; les écus viennent de Commons. Les dates exactes de chaque version sont celles que la page donne ; quand elle ne donne qu'une année, la frise ne précise pas davantage.",
+    "Les rois sont presque tous au lion : la liste ne dit rien des armes de Marguerite la Vierge de Norvège, ni de celles de Jean Balliol, et la frise leur laisse le lion de la couronne. À la fin, l'Union de 1707 met un terme à la lignée : les armes de Grande-Bretagne en Écosse (1707-1714) n'y figurent pas."
+   ],
+   "figures": "Les couronnes ne sont pas dessinées. Écus et grandes armes viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "moray",
+     "nom": "Moray",
+     "couleur": "#9a9482"
+    },
+    {
+     "id": "dunkeld",
+     "nom": "Dunkeld",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "sverre",
+     "nom": "Sverre",
+     "couleur": "#8fa3c9"
+    },
+    {
+     "id": "balliol",
+     "nom": "Balliol",
+     "couleur": "#b48ad6"
+    },
+    {
+     "id": "bruce",
+     "nom": "Bruce",
+     "couleur": "#d9694f"
+    },
+    {
+     "id": "stuart",
+     "nom": "Stewart, puis Stuart",
+     "couleur": "#6f8fd8"
+    },
+    {
+     "id": "orange",
+     "nom": "Orange-Nassau",
+     "couleur": "#e8913a"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Duncan Iᵉʳ",
+     "court": "Duncan Iᵉʳ",
+     "maison": "dunkeld",
+     "debut": 1034,
+     "fin": 1040,
+     "wiki": "Duncan Ier",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Macbeth",
+     "court": "Macbeth",
+     "maison": "moray",
+     "debut": 1040,
+     "fin": "1057-08-15",
+     "wiki": "Macbeth (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Lulach",
+     "court": "Lulach",
+     "maison": "moray",
+     "debut": "1057-08-15",
+     "fin": "1058-03-17",
+     "wiki": "Lulach",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "approx": "août 1057 – 17 mars 1058",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Malcolm III Canmore",
+     "court": "Malcolm III",
+     "maison": "dunkeld",
+     "debut": "1058-03-17",
+     "fin": "1093-11-13",
+     "wiki": "Malcolm III",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Donald III Bán",
+     "court": "Donald III",
+     "maison": "dunkeld",
+     "debut": "1093-11-13",
+     "fin": "1094-05-01",
+     "wiki": "Donald III",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "approx": "1093 – mai 1094",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Duncan II",
+     "court": "Duncan II",
+     "maison": "dunkeld",
+     "debut": "1094-05-01",
+     "fin": "1094-11-12",
+     "wiki": "Duncan II",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "approx": "mai – 12 novembre 1094",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Donald III Bán, rétabli",
+     "court": "Donald III",
+     "maison": "dunkeld",
+     "debut": "1094-11-12",
+     "fin": 1097,
+     "wiki": "Donald III",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "suite": true,
+     "approx": "1094 – 1097",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Edgar",
+     "court": "Edgar",
+     "maison": "dunkeld",
+     "debut": 1097,
+     "fin": "1107-01-08",
+     "wiki": "Edgar (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Alexandre Iᵉʳ",
+     "court": "Alexandre Iᵉʳ",
+     "maison": "dunkeld",
+     "debut": "1107-01-08",
+     "fin": "1124-04-23",
+     "wiki": "Alexandre Ier (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "David Iᵉʳ",
+     "court": "David Iᵉʳ",
+     "maison": "dunkeld",
+     "debut": "1124-04-23",
+     "fin": "1153-05-24",
+     "wiki": "David Ier (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Malcolm IV le Vierge",
+     "court": "Malcolm IV",
+     "maison": "dunkeld",
+     "debut": "1153-05-24",
+     "fin": "1165-12-09",
+     "wiki": "Malcolm IV",
+     "branche": "roi des Écossais",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Guillaume Iᵉʳ le Lion",
+     "court": "Guillaume Iᵉʳ",
+     "maison": "dunkeld",
+     "debut": "1165-12-09",
+     "fin": "1214-12-04",
+     "wiki": "Guillaume le Lion",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alexandre II",
+     "court": "Alexandre II",
+     "maison": "dunkeld",
+     "debut": "1214-12-04",
+     "fin": "1249-07-06",
+     "wiki": "Alexandre II (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alexandre III",
+     "court": "Alexandre III",
+     "maison": "dunkeld",
+     "debut": "1249-07-06",
+     "fin": "1286-03-19",
+     "wiki": "Alexandre III (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Marguerite Iʳᵉ, la Vierge de Norvège",
+     "court": "Marguerite Iʳᵉ",
+     "maison": "sverre",
+     "debut": "1286-03-19",
+     "fin": "1290-09-26",
+     "wiki": "Marguerite Ire d'Écosse",
+     "branche": "reine des Écossais",
+     "armes": "lion",
+     "note": "Reconnue reine par les Gardiens de l'Écosse, elle meurt aux Orcades avant d'avoir touché son royaume. La liste ne dit rien de ses armes ; la frise lui laisse celles de la couronne.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jean Iᵉʳ Balliol",
+     "court": "Jean Balliol",
+     "maison": "balliol",
+     "debut": "1292-11-30",
+     "fin": "1296-07-10",
+     "wiki": "Jean Balliol",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Robert Iᵉʳ Bruce",
+     "court": "Robert Iᵉʳ",
+     "maison": "bruce",
+     "debut": "1306-03-27",
+     "fin": "1329-06-07",
+     "wiki": "Robert Ier d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "David II",
+     "court": "David II",
+     "maison": "bruce",
+     "debut": "1329-06-07",
+     "fin": "1371-02-22",
+     "wiki": "David II (roi d'Écosse)",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Robert II",
+     "court": "Robert II",
+     "maison": "stuart",
+     "debut": "1371-02-22",
+     "fin": "1390-04-19",
+     "wiki": "Robert II d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Robert III",
+     "court": "Robert III",
+     "maison": "stuart",
+     "debut": "1390-04-19",
+     "fin": "1406-04-04",
+     "wiki": "Robert III d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "avant": [
+      {
+       "titre": "Comte de Carrick",
+       "blason": "D'or au lion de gueules, armé et lampassé d'azur, au trescheur de gueules, brochant sur le tout un lambel d'argent à trois pendants échiquetés d'azur et d'argent",
+       "file": "Blason de John Stuart Comte de Carrick (Futur Robert III d'Ecosse) (1337 1406).svg",
+       "auteur": "Fauntleroy",
+       "lic": "CC BY 3.0",
+       "licurl": "https://creativecommons.org/licenses/by/3.0",
+       "note": "Jean Stewart, futur Robert III, porte le lion royal brisé d'un lambel tant qu'il n'est que l'héritier du trône.",
+       "sources": [
+        "liste_fr"
+       ]
+      }
+     ],
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jacques Iᵉʳ",
+     "court": "Jacques Iᵉʳ",
+     "maison": "stuart",
+     "debut": "1406-04-04",
+     "fin": "1437-02-21",
+     "wiki": "Jacques Ier d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "note": "Prisonnier en Angleterre de 1406 à 1424. Il introduit les deux lions comme supports sur son sceau privé.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jacques II",
+     "court": "Jacques II",
+     "maison": "stuart",
+     "debut": "1437-02-21",
+     "fin": "1460-08-03",
+     "wiki": "Jacques II d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jacques III",
+     "court": "Jacques III",
+     "maison": "stuart",
+     "debut": "1460-08-03",
+     "fin": "1488-06-11",
+     "wiki": "Jacques III d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jacques IV",
+     "court": "Jacques IV",
+     "maison": "stuart",
+     "debut": "1488-06-11",
+     "fin": "1513-09-09",
+     "wiki": "Jacques IV d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Jacques V",
+     "court": "Jacques V",
+     "maison": "stuart",
+     "debut": "1513-09-09",
+     "fin": "1542-12-14",
+     "wiki": "Jacques V d'Écosse",
+     "branche": "roi des Écossais",
+     "armes": "lion",
+     "note": "Son sceau privé porte deux licornes, au lieu des deux lions habituels.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Marie Iʳᵉ Stuart",
+     "court": "Marie Iʳᵉ",
+     "maison": "stuart",
+     "debut": "1542-12-14",
+     "fin": "1567-07-24",
+     "wiki": "Marie Stuart",
+     "branche": "reine des Écossais",
+     "armes": "lion",
+     "phases": [
+      {
+       "debut": "1542-12-14",
+       "fin": 1558,
+       "armes": "lion"
+      },
+      {
+       "debut": 1558,
+       "fin": 1559,
+       "armes": "marie1558"
+      },
+      {
+       "debut": 1559,
+       "fin": 1560,
+       "armes": "marie1559"
+      },
+      {
+       "debut": 1560,
+       "fin": 1565,
+       "armes": "marie1560"
+      },
+      {
+       "debut": 1565,
+       "fin": "1567-07-24",
+       "armes": "lion"
+      }
+     ],
+     "note": "Reine de France de 1559 à 1560 par son mariage avec François II ; contrainte d'abdiquer en faveur de son fils en 1567.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jacques VI",
+     "court": "Jacques VI",
+     "maison": "stuart",
+     "debut": "1567-07-24",
+     "fin": "1625-03-27",
+     "wiki": "Jacques VI et Ier",
+     "branche": "roi des Écossais, et d'Angleterre à partir de 1603",
+     "armes": "lion",
+     "phases": [
+      {
+       "debut": "1567-07-24",
+       "fin": "1603-03-24",
+       "armes": "lion"
+      },
+      {
+       "debut": "1603-03-24",
+       "fin": "1625-03-27",
+       "armes": "stuart1603"
+      }
+     ],
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ",
+     "court": "Charles Iᵉʳ",
+     "maison": "stuart",
+     "debut": "1625-03-27",
+     "fin": "1649-01-30",
+     "wiki": "Charles Ier (roi d'Angleterre)",
+     "branche": "roi des Écossais, d'Angleterre et d'Irlande",
+     "armes": "stuart1603",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Charles II, proclamé en Écosse",
+     "court": "Charles II",
+     "maison": "stuart",
+     "debut": "1649-01-30",
+     "fin": "1651-09-03",
+     "wiki": "Charles II (roi d'Angleterre)",
+     "branche": "roi des Écossais",
+     "armes": "stuart1603",
+     "note": "Proclamé par le Parlement d'Écosse le 5 février 1649, sacré à Scone le 1ᵉʳ janvier 1651, vaincu par Cromwell à Worcester le 3 septembre 1651.",
+     "approx": "1649 – 3 septembre 1651",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Charles II, restauré",
+     "court": "Charles II",
+     "maison": "stuart",
+     "debut": "1660-05-29",
+     "fin": "1685-02-06",
+     "wiki": "Charles II (roi d'Angleterre)",
+     "branche": "roi des Écossais, d'Angleterre et d'Irlande",
+     "armes": "stuart1660",
+     "suite": true,
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jacques VII",
+     "court": "Jacques VII",
+     "maison": "stuart",
+     "debut": "1685-02-06",
+     "fin": "1688-12-15",
+     "wiki": "Jacques II (roi d'Angleterre)",
+     "branche": "roi des Écossais, d'Angleterre et d'Irlande",
+     "armes": "stuart1660",
+     "approx": "1685 – décembre 1688",
+     "note": "Fuit la Grande-Bretagne en décembre 1688 ; le Parlement d'Écosse le déclare, le 11 avril 1689, monarque inconstitutionnel à cause de sa religion catholique.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Guillaume II et Marie II",
+     "court": "Guillaume et Marie",
+     "maison": "orange",
+     "debut": "1689-04-11",
+     "fin": "1694-12-28",
+     "wiki": "Marie II (reine d'Angleterre)",
+     "branche": "roi et reine des Écossais",
+     "armes": "orange1689",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Guillaume II",
+     "court": "Guillaume II",
+     "maison": "orange",
+     "debut": "1694-12-28",
+     "fin": "1702-03-08",
+     "wiki": "Guillaume III d'Orange-Nassau",
+     "branche": "roi des Écossais",
+     "armes": "orange1694",
+     "suite": true,
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Anne",
+     "court": "Anne",
+     "maison": "stuart",
+     "debut": "1702-03-08",
+     "fin": "1707-05-01",
+     "wiki": "Anne (reine de Grande-Bretagne)",
+     "branche": "reine des Écossais, d'Angleterre et d'Irlande",
+     "armes": "stuart1603",
+     "note": "Anne reprend la version de 1603 jusqu'à l'Union : le 1ᵉʳ mai 1707, elle devient la première reine de Grande-Bretagne.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Crise de succession",
+     "debut": "1290-09-26",
+     "fin": "1292-11-30",
+     "wiki": "Crise de succession écossaise",
+     "note": "La mort de Marguerite ouvre une crise de succession qui dure près de deux ans, jusqu'au sacre de Jean Balliol.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Vacance du trône",
+     "debut": "1296-07-10",
+     "fin": "1306-03-27",
+     "wiki": "Bataille de Dunbar (1296)",
+     "note": "Jean Balliol abdique à Stracathro après la défaite de Dunbar ; le trône reste sans roi sacré jusqu'à Robert Iᵉʳ Bruce.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Interrègne",
+     "debut": "1651-09-03",
+     "fin": "1660-05-29",
+     "wiki": "Commonwealth d'Angleterre",
+     "note": "Après Worcester, l'Écosse est placée sous gouvernement militaire, puis rattachée au Commonwealth d'Angleterre par le Tender of Union de 1652, qui dissout le Parlement écossais. Cromwell la gouverne de 1653 à 1658, puis son fils Richard jusqu'en 1659.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Vacance du trône",
+     "debut": "1688-12-15",
+     "fin": "1689-04-11",
+     "wiki": "Glorieuse Révolution",
+     "note": "Entre la fuite de Jacques VII et la proclamation de Guillaume et Marie par le Parlement d'Écosse.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "rivaux": [
+    {
+     "nom": "Édouard Balliol",
+     "court": "Édouard Balliol",
+     "debut": "1332-09-24",
+     "fin": "1356-01-20",
+     "label": "Roi contesté",
+     "note": "Sacré à Scone, il usurpe le trône de David II de 1332 à 1341, puis abdique en 1356 à Wheatley Hill.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1165,
+     "titre": "Guillaume le Lion, premier porteur ?",
+     "texte": "On lui attribue l'adoption du lion rampant, mais son sceau n'en garde aucune trace.",
+     "desaccord": "Le lion ne se lit nettement que sur le sceau de son fils Alexandre II (1214).",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1214,
+     "titre": "Le lion sur le sceau",
+     "texte": "Le revers du grand sceau d'Alexandre II montre un lion rampant, sur l'écu comme sur la selle du cheval.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1290,
+     "titre": "La Vierge de Norvège",
+     "texte": "Marguerite, reconnue reine par les Gardiens de l'Écosse, meurt aux Orcades avant d'avoir touché son royaume : le trône reste disputé près de deux ans.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1306,
+     "titre": "Robert Bruce",
+     "texte": "Robert Iᵉʳ est sacré à Scone le 27 mars 1306, après dix ans sans roi sacré.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1371,
+     "titre": "Les Stewart",
+     "texte": "Robert II, fils de Marjorie Bruce, ouvre le règne de la maison Stewart ; Marie Stuart francisera plus tard son nom en Stuart.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1406,
+     "titre": "Les premiers supports",
+     "texte": "Jacques Iᵉʳ introduit deux lions comme supports sur son sceau privé, et une licorne seule ailleurs. Les lions resteront presque sans interruption jusqu'à 1603.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1558,
+     "titre": "Écosse et France",
+     "texte": "Marie épouse le dauphin François : ses armes sont accolées aux siennes, puis à celles de France quand il monte sur le trône (1559). Elle y renonce en 1565 pour revenir au lion seul.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1603,
+     "titre": "L'union des Couronnes",
+     "texte": "Jacques VI hérite d'Angleterre et d'Irlande : le lion d'Écosse est écartelé avec les armes d'Angleterre (déjà chargées de France) et la harpe d'Irlande.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1672,
+     "titre": "Le registre public",
+     "texte": "Charles II fait inscrire au registre public des armoiries d'Écosse l'écu, le heaume, les licornes et la devise du roi des Écossais.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1689,
+     "titre": "L'écusson de Nassau",
+     "texte": "Guillaume II et Marie II accolent leurs armes ; celles de Guillaume portent en cœur l'écusson de la maison de Nassau.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1707,
+     "titre": "L'Acte d'Union",
+     "texte": "L'Écosse et l'Angleterre fusionnent dans le royaume de Grande-Bretagne : le titre de roi des Écossais disparaît.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": "1603-03-24",
+     "fin": "1651-09-03",
+     "file": "Coat of Arms of Scotland (1603-1649).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Jacques VI : l'écu des trois couronnes",
+     "ornements": [
+      "Supports : une licorne et un lion, portant les bannières de saint André et de saint Georges (d'après le dessin du fichier)",
+      "Cimier : un lion assis de face, couronné, tenant une épée et un sceptre",
+      "Devise : In Defens"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "note": "Le fichier est daté de 1603 à 1649 ; la même version sert à Charles II jusqu'en 1651."
+    },
+    {
+     "debut": "1660-05-29",
+     "fin": "1689-04-11",
+     "file": "Coat of Arms of Scotland (1660-1689).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Charles II : les armes rétablies",
+     "ornements": [
+      "Supports : une licorne et un lion, portant les bannières de saint André et de saint Georges (d'après le dessin du fichier)",
+      "Cimier : un lion assis de face, couronné, tenant une épée et un sceptre",
+      "Devise : In Defens"
+     ],
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "debut": "1689-04-11",
+     "fin": "1694-12-28",
+     "file": "Coat of Arms of Scotland (1689-1694).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Guillaume et Marie : les armes accolées",
+     "ornements": [
+      "Supports : une licorne et un lion, portant les bannières de saint André et de saint Georges (d'après le dessin du fichier)",
+      "Devise de l'ordre du Chardon : Nemo me impune lacessit, sur un phylactère d'azur"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "note": "La devise de l'ordre du Chardon paraît sur un phylactère d'azur sous l'écu après le règne de Charles II ; jusque-là, seul le collier de l'ordre figurait sur les armes."
+    },
+    {
+     "debut": "1694-12-28",
+     "fin": "1702-03-08",
+     "file": "Coat of Arms of Scotland (1694-1702).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Guillaume II seul",
+     "ornements": [
+      "Supports : une licorne et un lion, portant les bannières de saint André et de saint Georges (d'après le dessin du fichier)",
+      "Devise de l'ordre du Chardon : Nemo me impune lacessit"
+     ],
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "debut": "1702-03-08",
+     "fin": "1707-05-01",
+     "file": "Coat of Arms of Scotland (1603-1649).svg",
+     "auteur": "Sodacan",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Anne : la version de 1603",
+     "ornements": [
+      "Supports : une licorne et un lion, portant les bannières de saint André et de saint Georges (d'après le dessin du fichier)",
+      "Cimier : un lion assis de face, couronné, tenant une épée et un sceptre",
+      "Devise : In Defens"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "note": "Faute de fichier propre au règne d'Anne, on reprend la version de 1603 que la source dit être la sienne."
+    }
+   ],
+   "ornements": [
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": 1406,
+       "fin": 1513,
+       "type": "lions",
+       "label": "deux lions",
+       "texte": "Jacques Iᵉʳ introduit deux lions comme supports sur son sceau privé, et une licorne seule ailleurs.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1513,
+       "fin": 1542,
+       "type": "licorne",
+       "label": "deux licornes",
+       "texte": "Jacques V fait exception : son sceau privé porte deux licornes.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1542,
+       "fin": 1567,
+       "type": "lions",
+       "label": "lions, puis licornes",
+       "texte": "Marie revient aux lions sur son sceau privé, mais emploie deux licornes sur son grand sceau : la première à le faire.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1567,
+       "fin": "1603-03-24",
+       "type": "lions",
+       "label": "deux lions",
+       "texte": "Les lions servent presque sans interruption jusqu'à l'union des Couronnes.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": "1603-03-24",
+       "fin": "1651-09-03",
+       "type": "licorne",
+       "label": "licorne et lion",
+       "texte": "Jacques VI prend une licorne et un lion : l'usage qui dure encore.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": "1660-05-29",
+       "fin": "1707-05-01",
+       "type": "licorne",
+       "label": "licorne et lion",
+       "texte": "La licorne et le lion reviennent avec Charles II et restent jusqu'à l'Union.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

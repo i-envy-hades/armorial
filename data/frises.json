@@ -2,13 +2,18 @@
   "groupes": [
     "France",
     "Îles Britanniques",
+    "Péninsule ibérique",
     "Italie",
     "Saint-Empire et Espagne",
     "Église"
   ],
   "frises": [
     {"id": "france", "nom": "Rois de France", "groupe": "France", "dates": "987 – 1870", "file": "data/lignees.json", "embleme": "Meuble héraldique Fleur de lys.svg"},
+    {"id": "bourgogne", "nom": "Ducs de Bourgogne", "groupe": "France", "dates": "1032 – 1506", "file": "data/bourgogne.json", "embleme": "Old Arms of the Dukes of Burgundy.svg", "mots": "Bourgogne Dijon Valois Capétiens Toison Flandre Brabant Charles Téméraire Philippe Bon Hardi Jean Peur Marie Habsbourg"},
     {"id": "angleterre", "nom": "Rois d'Angleterre", "groupe": "Îles Britanniques", "dates": "1066 – aujourd'hui", "file": "data/angleterre.json", "embleme": "Royal arms of England.svg", "mots": "Royaume-Uni Grande-Bretagne Plantagenêt Tudor Stuart Hanovre Windsor"},
+    {"id": "ecosse", "nom": "Rois d'Écosse", "groupe": "Îles Britanniques", "dates": "1034 – 1707", "file": "data/ecosse.json", "embleme": "Royal Arms of the Kingdom of Scotland.svg", "mots": "Écossais Dunkeld Bruce Stewart Stuart Balliol Alexandre Robert Jacques Marie Stuart"},
+    {"id": "portugal", "nom": "Rois de Portugal", "groupe": "Péninsule ibérique", "dates": "1139 – 1910", "file": "data/portugal.json", "embleme": "Brasão de armas do reino de Portugal (1485).svg", "mots": "Lusitanie Bourgogne Aviz Bragance Quinas Lisbonne Brésil"},
+    {"id": "espagne", "nom": "Rois d'Espagne", "groupe": "Péninsule ibérique", "dates": "1035 – aujourd'hui", "file": "data/espagne.json", "embleme": "Coat of Arms of Spain.svg", "mots": "Castille León Aragon Catalogne Barcelone Trastamare Bourbon Rois catholiques Grenade Navarre Franco Felipe Juan Carlos Madrid"},
     {"id": "savoie", "nom": "Maison de Savoie", "groupe": "Italie", "dates": "1027 – 1946", "file": "data/savoie.json", "embleme": "Blason duché fr Savoie.svg", "mots": "Sardaigne Piémont"},
     {"id": "habsbourg", "nom": "Habsbourg", "groupe": "Saint-Empire et Espagne", "dates": "1273 – 1918", "file": "data/habsbourg.json", "embleme": "Arms of the Archduchy of Austria.svg", "mots": "Autriche Espagne Empire Hongrie Bohême Lorraine"},
     {"id": "papaute", "nom": "Papauté", "groupe": "Église", "dates": "Iᵉʳ siècle – aujourd'hui", "file": "data/papaute.json", "embleme": "Sede vacante.svg", "mots": "papes antipapes Rome Vatican"}

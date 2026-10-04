@@ -1,0 +1,1059 @@
+{
+ "sources": {
+  "liste_fr": {
+   "label": "Wikipédia, « Liste des rois et reines de Portugal »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_et_reines_de_Portugal"
+  },
+  "arms_en": {
+   "label": "Wikipedia (en), « Coat of arms of Portugal »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Portugal"
+  },
+  "pierre_fr": {
+   "label": "Wikipédia, « Pierre Ier (empereur du Brésil) »",
+   "url": "https://fr.wikipedia.org/wiki/Pierre_Ier_%28empereur_du_Br%C3%A9sil%29"
+  }
+ },
+ "armes": {
+  "q1139": {
+   "nom": "Cinq écus en croix",
+   "blason": "D'argent à cinq écus d'azur posés en croix, ceux de dextre et de senestre tournés vers le centre, chacun chargé de besants d'argent",
+   "file": "Brasão de armas do reino de Portugal (1139).svg",
+   "auteur": "Bragancinho",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "La croix d'azur de l'origine aurait perdu ses bras ; il n'en resterait que cinq écus, chargés de besants (de quatre à onze selon les images). C'est la plus ancienne forme vérifiable : introduite sans doute sous Alphonse Iᵉʳ, sûrement portée sous Sanche Iᵉʳ. Une légende y voit les cinq rois maures vaincus à Ourique, une autre les cinq plaies du Christ.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "q1247": {
+   "nom": "La bordure de Castille",
+   "blason": "D'argent à cinq écus d'azur en croix, chacun chargé de besants d'argent, à la bordure de gueules chargée de châteaux d'or",
+   "file": "Brasão de armas do reino de Portugal (1247).svg",
+   "auteur": "Bragancinho",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Alphonse III, cadet, ajoute une bordure de gueules chargée de châteaux d'or aux armes de son père quand il fait valoir ses droits contre son frère Sanche II, et la garde en devenant roi. Selon l'hypothèse la plus répandue, c'est une brisure de cadet, les châteaux étant empruntés aux armes de sa mère Urraque de Castille ; la tradition y voit les derniers châteaux pris aux Maures dans l'Algarve. Leur nombre varie de huit à quatorze.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "beatrice": {
+   "nom": "Béatrice, reine de Castille et de Portugal",
+   "blason": "Écartelé : aux 1 et 4, de Castille et León (armes de son mari Jean Iᵉʳ de Castille) ; aux 2 et 3, de Portugal",
+   "file": "Coat of Arms of Beatrice of Portugal.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Pendant la crise de 1383-1385, Béatrice porte les armes de Portugal aux 2ᵉ et 3ᵉ quartiers, avec celles de son mari aux 1ᵉʳ et 4ᵉ.",
+   "sources": [
+    "arms_en",
+    "liste_fr"
+   ]
+  },
+  "q1385": {
+   "nom": "La croix d'Aviz",
+   "blason": "D'argent à cinq écus d'azur en croix, chacun chargé de besants d'argent, à la bordure de gueules chargée de châteaux d'or alternant avec la croix fleurdelisée de sinople de l'ordre d'Aviz",
+   "file": "Brasão de armas do reino de Portugal (1385).svg",
+   "auteur": "Bragancinho",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Jean Iᵉʳ, grand maître de l'ordre d'Aviz, ajoute la croix de son ordre : tantôt dans la bordure, entre les châteaux, plus souvent dans l'écu, parfois hors de l'écu, posé dessus.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "afonso5": {
+   "nom": "Alphonse V, prétendant à la Castille",
+   "blason": "Écartelé : aux 1 et 4, de Portugal ; aux 2 et 3, de Castille et León",
+   "file": "Arms of Afonso V of Portugal (as claimant King of Castile).svg",
+   "auteur": "MostEpic",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Alphonse V réclame la couronne de Castille de 1475 à 1479 : ses armes portent le Portugal aux 1ᵉʳ et 4ᵉ quartiers, la Castille et León aux 2ᵉ et 3ᵉ.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "q1485": {
+   "nom": "Les quinas",
+   "blason": "D'argent à cinq écus d'azur posés en croix, chacun chargé de cinq besants d'argent en sautoir, à la bordure de gueules chargée de sept châteaux d'or",
+   "file": "Brasão de armas do reino de Portugal (1485).svg",
+   "auteur": "Bragancinho",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "En 1485, Jean II fait corriger ce qu'il tient pour des erreurs : la croix d'Aviz disparaît, les écus de dextre et de senestre sont redressés (couchés, on les eût pris pour une marque de bâtardise) et les besants sont fixés à cinq en sautoir, pour les cinq plaies du Christ, sa dévotion. Le groupe des cinq écus aux cinq besants s'appelle « quinas », nom qui désignera ensuite l'écu entier. Les châteaux de la bordure sont fixés à sept sous Sébastien. La composition ne change plus ensuite (hors la sphère armillaire de 1815-1826) ; jusqu'en 1910, couleurs et dessin des châteaux varient selon les artistes.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "henri": {
+   "nom": "Henri Iᵉʳ, le roi cardinal",
+   "blason": "L'écu de Portugal sous la couronne royale, couvert du chapeau rouge de cardinal (galero) et de ses glands",
+   "file": "Coat of arms of Henry I de Portugal.svg",
+   "auteur": "RickMorais",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Prêtre, Henri fait ajouter à la couronne royale le chapeau rouge et les glands de sa dignité de cardinal : une composition propre à son règne.",
+   "sources": [
+    "arms_en"
+   ]
+  },
+  "uk1815": {
+   "nom": "Portugal, Brésil et Algarves",
+   "blason": "L'écu de Portugal posé sur une sphère armillaire d'or sur champ d'azur, le tout sous la couronne royale",
+   "file": "Arms of the United Kingdom of Portugal, Brazil and the Algarves (1815-1825).svg",
+   "auteur": "117-M-I-K-E",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Quand le Brésil devient un royaume à part entière dans le Royaume-Uni de Portugal, du Brésil et des Algarves (1815), l'écu de Portugal (pour le Portugal et les Algarves) est posé sur la sphère armillaire d'or sur champ d'azur (pour le Brésil). Ces armes servent de 1815 à 1826 : le Brésil est indépendant dès 1822, mais le Portugal ne revient aux anciennes armes qu'à la mort de Jean VI.",
+   "sources": [
+    "arms_en"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "portugal",
+   "nom": "Portugal",
+   "titre": "Rois de Portugal",
+   "lede": "D'une croix d'azur aux cinq écus d'Alphonse Iᵉʳ à la bordure de Castille, puis à la croix d'Aviz et aux quinas fixées en 1485 : sept siècles pour un seul écu, qui ne bouge presque plus ensuite, sinon pour la sphère armillaire du Brésil.",
+   "debut": 1135,
+   "fin": 1915,
+   "depart": 1485,
+   "theme": "portugal",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Régence",
+    "rivaux": "En marge"
+   },
+   "methode": [
+    "Dates des règnes : « Liste des rois et reines de Portugal » (Wikipédia), qui donne des années ; les dates précises (mort de Ferdinand, Pierre IV, mort de Charles Iᵉʳ, chute de la monarchie) viennent de la même liste et de l'article « Pierre Ier (empereur du Brésil) ». Les régences et la période 1383-1385 y sont signalées. Antoine, prieur de Crato, que la liste range à part et que la plupart des historiens tiennent pour un simple prétendant, a sa rangée « En marge ».",
+    "Armoiries : « Coat of arms of Portugal » (Wikipedia en) pour toute l'histoire de l'écu, des charges, des cimiers, des supports et des couronnes. Quand l'article se contredit (1481 ou 1485 pour la version corrigée de l'écu ; 1247 ou 1248 pour l'avènement d'Alphonse III), la frise donne les deux dates.",
+    "Louis-Philippe, fils aîné de Charles Iᵉʳ, mort vingt minutes après lui et jamais proclamé roi, n'est pas montré. Les rois Habsbourg de 1580 à 1640 sont au Portugal pour leur écu de Portugal ; leurs armes complètes sont dans la frise des Habsbourg."
+   ],
+   "figures": "Les couronnes ne sont pas dessinées. Écus et grandes armes viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "bourgogne",
+     "nom": "Bourgogne",
+     "couleur": "#8fa3c9"
+    },
+    {
+     "id": "aviz",
+     "nom": "Aviz",
+     "couleur": "#7fc4a0"
+    },
+    {
+     "id": "habsbourg",
+     "nom": "Habsbourg",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "bragance",
+     "nom": "Bragance",
+     "couleur": "#d9694f"
+    },
+    {
+     "id": "cobourg",
+     "nom": "Bragance-Saxe-Cobourg et Gotha",
+     "couleur": "#b48ad6"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Alphonse Iᵉʳ le Conquérant",
+     "court": "Alphonse Iᵉʳ",
+     "maison": "bourgogne",
+     "debut": 1139,
+     "fin": 1185,
+     "wiki": "Alphonse Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1139",
+     "note": "Premier roi, d'abord comte puis duc : le royaume se proclame en 1139 et est reconnu en 1143. La forme exacte de ses armes reste incertaine.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Sanche Iᵉʳ le Colonisateur",
+     "court": "Sanche Iᵉʳ",
+     "maison": "bourgogne",
+     "debut": 1185,
+     "fin": 1211,
+     "wiki": "Sanche Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1139",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alphonse II le Gros",
+     "court": "Alphonse II",
+     "maison": "bourgogne",
+     "debut": 1211,
+     "fin": 1223,
+     "wiki": "Alphonse II de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1139",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Sanche II le Pieux",
+     "court": "Sanche II",
+     "maison": "bourgogne",
+     "debut": 1223,
+     "fin": 1248,
+     "wiki": "Sanche II de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1139",
+     "note": "Déclaré « rex innutilis » et destitué par le pape Innocent IV au concile de Lyon en 1245, il abdique en 1247, s'exile à Tolède et meurt au début de 1248. Son frère Alphonse, comte de Boulogne, assure la régence dès 1245.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alphonse III le Boulonnais",
+     "court": "Alphonse III",
+     "maison": "bourgogne",
+     "debut": 1248,
+     "fin": 1279,
+     "wiki": "Alphonse III de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1247",
+     "note": "Régent depuis 1245, il monte sur le trône à la mort de son frère. L'article anglais date son avènement de 1247.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Denis Iᵉʳ le Cultivateur",
+     "court": "Denis Iᵉʳ",
+     "maison": "bourgogne",
+     "debut": 1279,
+     "fin": 1325,
+     "wiki": "Denis Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1247",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alphonse IV le Brave",
+     "court": "Alphonse IV",
+     "maison": "bourgogne",
+     "debut": 1325,
+     "fin": 1357,
+     "wiki": "Alphonse IV de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1247",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Pierre Iᵉʳ le Justicier",
+     "court": "Pierre Iᵉʳ",
+     "maison": "bourgogne",
+     "debut": 1357,
+     "fin": 1367,
+     "wiki": "Pierre Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1247",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand Iᵉʳ le Beau",
+     "court": "Ferdinand Iᵉʳ",
+     "maison": "bourgogne",
+     "debut": 1367,
+     "fin": "1383-10-22",
+     "wiki": "Ferdinand Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1247",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Béatrice Iʳᵉ",
+     "court": "Béatrice Iʳᵉ",
+     "maison": "bourgogne",
+     "debut": "1383-10-22",
+     "fin": 1384,
+     "wiki": "Béatrice de Portugal (1373-1412)",
+     "branche": "reine de Portugal",
+     "armes": "beatrice",
+     "note": "Seule fille de Ferdinand, mariée à Jean Iᵉʳ de Castille. La liste ne la numérote pas : sa mère exerce la régence, et l'aristocratie, qui craint l'influence castillane, déclenche la crise de 1383-1385.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean Iᵉʳ le Prince de Bonne Mémoire",
+     "court": "Jean Iᵉʳ",
+     "maison": "aviz",
+     "debut": 1385,
+     "fin": 1433,
+     "wiki": "Jean Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1385",
+     "note": "Fils illégitime de Pierre Iᵉʳ et grand maître de l'ordre d'Aviz, premier roi de sa maison, au plus long règne de l'histoire du Portugal. Dès son règne au moins, le cimier est un dragon, probablement lié au choix de saint Georges comme patron du royaume.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Édouard Iᵉʳ l'Éloquent",
+     "court": "Édouard Iᵉʳ",
+     "maison": "aviz",
+     "debut": 1433,
+     "fin": 1438,
+     "wiki": "Édouard Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1385",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alphonse V l'Africain",
+     "court": "Alphonse V",
+     "maison": "aviz",
+     "debut": 1438,
+     "fin": 1481,
+     "wiki": "Alphonse V de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1385",
+     "phases": [
+      {
+       "debut": 1438,
+       "fin": 1475,
+       "armes": "q1385"
+      },
+      {
+       "debut": 1475,
+       "fin": 1479,
+       "armes": "afonso5"
+      },
+      {
+       "debut": 1479,
+       "fin": 1481,
+       "armes": "q1385"
+      }
+     ],
+     "note": "Il monte sur le trône à six ans (régences d'Aliénor d'Aragon, puis de Pierre de Coimbra).",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean II le Prince Parfait",
+     "court": "Jean II",
+     "maison": "aviz",
+     "debut": 1481,
+     "fin": 1495,
+     "wiki": "Jean II de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1385",
+     "phases": [
+      {
+       "debut": 1481,
+       "fin": 1485,
+       "armes": "q1385"
+      },
+      {
+       "debut": 1485,
+       "fin": 1495,
+       "armes": "q1485"
+      }
+     ],
+     "note": "Il fait « corriger » l'écu en 1485 : ce sont les quinas.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Manuel Iᵉʳ le Fortuné",
+     "court": "Manuel Iᵉʳ",
+     "maison": "aviz",
+     "debut": 1495,
+     "fin": 1521,
+     "wiki": "Manuel Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Sa sphère armillaire, emblème personnel, et la croix de l'ordre du Christ, dont il est grand maître, entourent désormais l'écu ; elles deviendront des insignes nationaux.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean III le Pieux",
+     "court": "Jean III",
+     "maison": "aviz",
+     "debut": 1521,
+     "fin": 1557,
+     "wiki": "Jean III de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Sébastien Iᵉʳ le Désiré",
+     "court": "Sébastien Iᵉʳ",
+     "maison": "aviz",
+     "debut": 1557,
+     "fin": 1578,
+     "wiki": "Sébastien Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Les châteaux de la bordure sont fixés à sept ; la couronne ouverte devient fermée, à une arche. Il meurt à la bataille de Ksar el-Kébir.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Henri Iᵉʳ le Chaste",
+     "court": "Henri Iᵉʳ",
+     "maison": "aviz",
+     "debut": 1578,
+     "fin": 1580,
+     "wiki": "Henri Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "henri",
+     "note": "Cardinal, il ne peut avoir d'héritier légitime : le pape Grégoire XIII lui refuse de quitter les ordres.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Philippe Iᵉʳ (Philippe II d'Espagne)",
+     "court": "Philippe Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": 1580,
+     "fin": 1598,
+     "wiki": "Philippe II d'Espagne",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Les armes de la maison de Habsbourg portent l'écu de Portugal au point d'honneur, mais cet écartelé ne sert que pour représenter le roi à titre personnel : dans le royaume, on garde l'écu de Portugal seul.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Philippe II (Philippe III d'Espagne)",
+     "court": "Philippe II",
+     "maison": "habsbourg",
+     "debut": 1598,
+     "fin": 1621,
+     "wiki": "Philippe III d'Espagne",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Philippe III (Philippe IV d'Espagne)",
+     "court": "Philippe III",
+     "maison": "habsbourg",
+     "debut": 1621,
+     "fin": 1640,
+     "wiki": "Philippe IV d'Espagne",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean IV le Restaurateur",
+     "court": "Jean IV",
+     "maison": "bragance",
+     "debut": 1640,
+     "fin": 1656,
+     "wiki": "Jean IV de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Alphonse VI le Victorieux",
+     "court": "Alphonse VI",
+     "maison": "bragance",
+     "debut": 1656,
+     "fin": 1683,
+     "wiki": "Alphonse VI de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Pierre II le Pacifique",
+     "court": "Pierre II",
+     "maison": "bragance",
+     "debut": 1683,
+     "fin": 1706,
+     "wiki": "Pierre II de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Le modèle définitif de la couronne royale, fermée à quatre arches, est adopté sous son règne.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean V le Magnanime",
+     "court": "Jean V",
+     "maison": "bragance",
+     "debut": 1706,
+     "fin": 1750,
+     "wiki": "Jean V de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Joseph Iᵉʳ le Réformateur",
+     "court": "Joseph Iᵉʳ",
+     "maison": "bragance",
+     "debut": 1750,
+     "fin": 1777,
+     "wiki": "Joseph Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Marie Iʳᵉ la Pieuse",
+     "court": "Marie Iʳᵉ",
+     "maison": "bragance",
+     "debut": 1777,
+     "fin": 1816,
+     "wiki": "Marie Ire de Portugal",
+     "branche": "reine de Portugal",
+     "armes": "q1485",
+     "phases": [
+      {
+       "debut": 1777,
+       "fin": 1815,
+       "armes": "q1485"
+      },
+      {
+       "debut": 1815,
+       "fin": 1816,
+       "armes": "uk1815"
+      }
+     ],
+     "note": "Elle partage le pouvoir avec son oncle et mari Pierre III, roi jure uxoris de 1777 à 1786. Instable mentalement, elle fuit au Brésil devant Junot ; la régence est assurée par son fils Jean.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Jean VI le Clément",
+     "court": "Jean VI",
+     "maison": "bragance",
+     "debut": 1816,
+     "fin": 1826,
+     "wiki": "Jean VI de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "uk1815",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ],
+     "note": "Il fuit au Brésil avec sa mère et la famille royale ; le Royaume-Uni de Portugal, du Brésil et des Algarves est proclamé en 1815."
+    },
+    {
+     "nom": "Pierre IV le Roi-Soldat",
+     "court": "Pierre IV",
+     "maison": "bragance",
+     "debut": "1826-03-10",
+     "fin": "1826-05-02",
+     "wiki": "Pierre Ier (empereur du Brésil)",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Empereur du Brésil, il abdique le 2 mai 1826 en faveur de sa fille Marie.",
+     "sources": [
+      "liste_fr",
+      "pierre_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Marie II l'Éducatrice",
+     "court": "Marie II",
+     "maison": "bragance",
+     "debut": "1826-05-02",
+     "fin": 1828,
+     "wiki": "Marie II de Portugal",
+     "branche": "reine de Portugal",
+     "armes": "q1485",
+     "note": "Renversée par son oncle Michel, qui prend le pouvoir ; la régence de Michel commence en 1827.",
+     "sources": [
+      "liste_fr",
+      "pierre_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Michel Iᵉʳ l'Usurpateur",
+     "court": "Michel Iᵉʳ",
+     "maison": "bragance",
+     "debut": 1828,
+     "fin": 1834,
+     "wiki": "Michel Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Son court règne est marqué par une guerre civile qui s'achève par son éviction et le rétablissement de Marie II.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Marie II, rétablie",
+     "court": "Marie II",
+     "maison": "bragance",
+     "debut": 1834,
+     "fin": 1853,
+     "wiki": "Marie II de Portugal",
+     "branche": "reine de Portugal",
+     "armes": "q1485",
+     "suite": true,
+     "note": "Son mariage avec Ferdinand de Saxe-Cobourg-Gotha met de facto fin au règne de la maison de Bragance. Ferdinand II est roi jure uxoris de 1837 à 1853.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Pierre V l'Optimiste",
+     "court": "Pierre V",
+     "maison": "cobourg",
+     "debut": 1853,
+     "fin": 1861,
+     "wiki": "Pierre V (roi de Portugal)",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Louis Iᵉʳ le Populaire",
+     "court": "Louis Iᵉʳ",
+     "maison": "cobourg",
+     "debut": 1861,
+     "fin": 1889,
+     "wiki": "Louis Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ le Diplomate",
+     "court": "Charles Iᵉʳ",
+     "maison": "cobourg",
+     "debut": 1889,
+     "fin": "1908-02-01",
+     "wiki": "Charles Ier de Portugal",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Assassiné avec son fils aîné Louis-Philippe, qui lui survit une vingtaine de minutes mais n'est jamais proclamé roi : la liste ne le compte pas.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    },
+    {
+     "nom": "Manuel II le Patriote",
+     "court": "Manuel II",
+     "maison": "cobourg",
+     "debut": "1908-02-01",
+     "fin": "1910-10-05",
+     "wiki": "Manuel II (roi de Portugal)",
+     "branche": "roi de Portugal",
+     "armes": "q1485",
+     "note": "Renversé par la révolution de 1910, il s'exile au Royaume-Uni. La république fait refaire l'écu, dont les couleurs et le dessin des châteaux sont alors fixés.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Régence de Jean d'Aviz",
+     "debut": 1384,
+     "fin": 1385,
+     "wiki": "Crise portugaise de 1383-1385",
+     "note": "La crise de 1383-1385 : Jean, grand maître de l'ordre d'Aviz, est régent dès le 16 décembre 1383 jusqu'à son acclamation comme roi, en 1385.",
+     "sources": [
+      "liste_fr",
+      "arms_en"
+     ]
+    }
+   ],
+   "rivaux": [
+    {
+     "nom": "Antoine, prieur de Crato",
+     "court": "Antoine Iᵉʳ",
+     "debut": 1580,
+     "fin": 1580,
+     "label": "Prétendant",
+     "note": "Petit-fils de Manuel Iᵉʳ, regardé par une petite minorité d'historiens comme roi : la plupart n'y voient qu'un prétendant battu par Philippe II d'Espagne à Alcántara. La liste lui donne un mois de règne.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1139,
+     "titre": "Un royaume sans écu sûr",
+     "texte": "Alphonse Iᵉʳ se proclame roi, et le royaume est reconnu en 1143. On croit son écu d'argent à la croix d'azur ; les besants s'y seraient ajoutés après la reconnaissance.",
+     "desaccord": "La plus ancienne forme vérifiable de l'écu, aux cinq écus, est celle de son successeur Sanche Iᵉʳ.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1185,
+     "titre": "Les cinq écus",
+     "texte": "Sous Sanche Iᵉʳ, l'écu est sûrement formé de cinq écus d'azur chargés de besants.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1248,
+     "titre": "La bordure de Castille",
+     "texte": "Alphonse III monte sur le trône avec les armes qu'il a prises cadet : l'écu de Portugal cerné d'une bordure de gueules aux châteaux d'or, empruntés à sa mère castillane.",
+     "desaccord": "L'article anglais date son avènement de 1247 ; la liste française, de 1248.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1385,
+     "titre": "La croix d'Aviz",
+     "texte": "Jean d'Aviz, acclamé roi, ajoute à l'écu la croix de son ordre.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1475,
+     "titre": "Roi de Castille ?",
+     "texte": "Alphonse V réclame la Castille de 1475 à 1479 et écartèle ses armes avec celles de Castille et León.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1485,
+     "titre": "Les quinas",
+     "texte": "Jean II fait corriger l'écu : la croix d'Aviz disparaît, les écus sont redressés, cinq besants en sautoir.",
+     "desaccord": "Dans sa galerie, l'article anglais date de 1481 la version corrigée ; son texte, de 1485.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1557,
+     "titre": "Sept châteaux, couronne fermée",
+     "texte": "Sous Sébastien, les châteaux de la bordure sont fixés à sept et la couronne ouverte laisse la place à une couronne fermée d'une arche.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1580,
+     "titre": "L'union ibérique",
+     "texte": "Philippe II d'Espagne, devenu roi de Portugal, place l'écu de Portugal au point d'honneur de ses armes. Au Portugal même, on garde l'écu seul.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1640,
+     "titre": "Les Bragance et le vert",
+     "texte": "Avec les Bragance, dont la livrée est verte, le dragon du cimier passe de l'or au vert : le vert devient la couleur nationale.",
+     "desaccord": "L'article anglais le dit « probable » : c'est une explication, pas un fait établi.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1815,
+     "titre": "La sphère armillaire",
+     "texte": "Le Brésil est élevé au rang de royaume : l'écu de Portugal est posé sur la sphère armillaire d'or sur champ d'azur, armes du Brésil.",
+     "sources": [
+      "arms_en"
+     ]
+    },
+    {
+     "annee": 1826,
+     "titre": "Retour à l'écu ancien",
+     "texte": "À la mort de Jean VI, le Portugal reprend l'écu sans sphère armillaire, bien que le Brésil fût indépendant depuis 1822.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1910,
+     "titre": "La République",
+     "texte": "Manuel II est renversé le 5 octobre 1910 ; la république garde l'écu, mais en fixe les couleurs et le dessin des châteaux.",
+     "sources": [
+      "arms_en",
+      "liste_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1400,
+     "fin": 1500,
+     "file": "Brasao de Aviz.svg",
+     "auteur": "Great Brightstar",
+     "lic": "CC BY-SA 3.0",
+     "free": true,
+     "titre": "Les anges d'Aviz",
+     "ornements": [
+      "Supports : deux anges, qui tiennent l'écu (d'après le dessin du fichier)",
+      "Couronne royale au-dessus de l'écu (d'après le dessin)"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "note": "L'article donne les anges pour supports habituels de l'écu jusqu'au XVIIIᵉ siècle, et cite ce modèle du XVᵉ siècle (maison d'Aviz) ; le fichier ne le date pas plus précisément."
+    },
+    {
+     "debut": 1580,
+     "fin": 1598,
+     "file": "Ornamented Royal Coat of Arms of Portugal (Philip I).svg",
+     "auteur": "Williamsongate, d'après des éléments de Heralder",
+     "lic": "CC BY-SA 3.0",
+     "free": true,
+     "titre": "Philippe Iᵉʳ : l'écu avec ses ornements",
+     "ornements": [
+      "Heaume d'or, couronne et dragon en cimier (d'après le dessin du fichier)",
+      "Mantelage aux couleurs de l'écu (d'après le dessin)"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "note": "D'après la page de titre d'un recueil de privilèges de 1583."
+    },
+    {
+     "debut": 1640,
+     "fin": 1910,
+     "file": "Coat of Arms of the Kingdom of Portugal 1640-1910 (4).svg",
+     "auteur": "Great Brightstar",
+     "lic": "CC BY-SA 4.0",
+     "free": true,
+     "titre": "Les Bragance : écu, dragons et bannières",
+     "ornements": [
+      "Supports : deux dragons de sinople portant, à dextre, une bannière d'argent aux cinq écus ; à senestre, une bannière de gueules aux sept châteaux d'or",
+      "Cimier : un dragon de sinople"
+     ],
+     "sources": [
+      "arms_en"
+     ],
+     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "note": "Le fichier couvre 1640-1910 sans distinguer les époques ; selon l'article, les dragons verts ne deviennent le support habituel qu'au XVIIIᵉ siècle."
+    }
+   ],
+   "ornements": [
+    {
+     "id": "couronne",
+     "nom": "Couronne",
+     "segs": [
+      {
+       "debut": 1557,
+       "fin": 1683,
+       "type": "fermee-arche",
+       "label": "fermée, à une puis deux arches",
+       "texte": "Sous Sébastien, la couronne ouverte devient fermée, à une arche ; elle évolue ensuite vers une couronne à deux arches.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1683,
+       "fin": "1910-10-05",
+       "type": "fermee-sans-lis",
+       "label": "fermée, à quatre arches",
+       "texte": "Le modèle définitif est adopté sous Pierre II : une couronne fermée à quatre arches, surmontée d'un globe et d'une croix. La couronne à deux arches devient celle du prince héritier.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cimier",
+     "nom": "Cimier",
+     "segs": [
+      {
+       "debut": 1385,
+       "fin": 1640,
+       "type": "dragon-or",
+       "label": "dragon d'or",
+       "texte": "À partir de Jean Iᵉʳ au moins, le cimier est un dragon, sans doute lié au choix de saint Georges comme patron du Portugal. Jusqu'au XVIIᵉ siècle, il est d'or.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1640,
+       "fin": "1910-10-05",
+       "type": "dragon-sinople",
+       "label": "dragon de sinople",
+       "texte": "Le dragon devient vert, sans doute avec l'avènement des Bragance, dont la livrée est verte.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": 1385,
+       "fin": 1700,
+       "type": "anges",
+       "flou": true,
+       "label": "anges",
+       "texte": "Jusqu'au XVIIIᵉ siècle, les supports les plus fréquents sont deux anges, parfois un seul ; l'article cite ceux de la maison d'Aviz au XVᵉ siècle. Dès Manuel Iᵉʳ, on les voit manier des sphères armillaires et des croix de l'ordre du Christ.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1700,
+       "fin": "1910-10-05",
+       "type": "dragons",
+       "label": "dragons de sinople",
+       "texte": "À partir du XVIIIᵉ siècle, les dragons verts du cimier deviennent aussi les supports habituels, portant chacun une bannière : celle d'argent aux cinq écus à dextre, celle de gueules aux sept châteaux à senestre.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "emblemes",
+     "nom": "Emblèmes",
+     "segs": [
+      {
+       "debut": 1495,
+       "fin": 1521,
+       "type": "sphere",
+       "label": "sphère armillaire et croix du Christ",
+       "texte": "Sous Manuel Iᵉʳ, son emblème personnel (la sphère armillaire) et la croix de l'ordre du Christ, dont il est grand maître, entourent souvent l'écu ; ils passeront de l'emblème personnel au symbole national.",
+       "sources": [
+        "arms_en"
+       ]
+      },
+      {
+       "debut": 1815,
+       "fin": 1826,
+       "type": "sphere",
+       "label": "sphère armillaire sous l'écu",
+       "texte": "La sphère armillaire d'or sur azur, armes du Brésil, supporte l'écu de Portugal.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "pavillon",
+     "nom": "Pavillon",
+     "segs": [
+      {
+       "debut": 1850,
+       "fin": "1910-10-05",
+       "type": "pavillon",
+       "flou": true,
+       "label": "pourpre doublé d'hermine",
+       "texte": "Dans la seconde moitié du XIXᵉ siècle, l'écu est souvent couvert d'un pavillon de pourpre doublé d'hermine, qui sort de la couronne.",
+       "sources": [
+        "arms_en"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

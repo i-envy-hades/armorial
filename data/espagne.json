@@ -1,0 +1,1685 @@
+{
+ "sources": {
+  "castille_fr": {
+   "label": "Wikipédia, « Liste des souverains de Castille »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_souverains_de_Castille"
+  },
+  "aragon_fr": {
+   "label": "Wikipédia, « Liste des souverains d'Aragon »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_souverains_d%27Aragon"
+  },
+  "espagne_fr": {
+   "label": "Wikipédia, « Liste des rois et reines d'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_et_reines_d%27Espagne"
+  },
+  "isabelle_fr": {
+   "label": "Wikipédia, « Isabelle II »",
+   "url": "https://fr.wikipedia.org/wiki/Isabelle_II"
+  },
+  "spain_en": {
+   "label": "Wikipedia (en), « Coat of arms of Spain »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Spain"
+  },
+  "aragon_en": {
+   "label": "Wikipedia (en), « Coat of arms of the Crown of Aragon »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_the_Crown_of_Aragon"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Avant les armoiries",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Les sources lues ne prêtent d'armoiries à aucun roi d'Aragon d'avant Alphonse II ; les plus anciennes preuves des pals sont un sceau de 1150 de Raymond-Bérenger IV, comte de Barcelone et prince d'Aragon.",
+   "sources": [
+    "aragon_en"
+   ]
+  },
+  "castille1230": {
+   "nom": "Le premier écartelé",
+   "blason": "Écartelé : aux 1 et 4, de gueules au château d'or, ajouré d'azur ; aux 2 et 3, d'argent au lion de pourpre, armé, lampassé et couronné d'or",
+   "file": "Royal Coat of Arms of the Crown of Castile (1230-1284).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Armes parlantes : le château (castellum) dit la Castille, le lion dit León. Les rois de León ont d'abord porté un lion de pourpre, puis de gueules ; c'est Ferdinand III, roi de Castille et de León, qui unit les deux écus et produit le premier écartelé.",
+   "sources": [
+    "castille_fr",
+    "spain_en"
+   ]
+  },
+  "castille1284": {
+   "nom": "Castille et León",
+   "blason": "Écartelé : aux 1 et 4, de gueules au château d'or, ajouré d'azur ; aux 2 et 3, d'argent au lion de pourpre, armé, lampassé et couronné d'or",
+   "file": "Royal Coat of Arms of the Crown of Castile (1284-1390).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Même composition ; le lion se blasonne de pourpre ou de gueules selon les auteurs.",
+   "sources": [
+    "castille_fr",
+    "spain_en"
+   ]
+  },
+  "castille15": {
+   "nom": "L'écartelé du XVᵉ siècle",
+   "blason": "Écartelé : aux 1 et 4, de gueules au château d'or, ajouré d'azur ; aux 2 et 3, d'argent au lion de pourpre, armé, lampassé et couronné d'or",
+   "file": "Royal Coat of Arms of the Crown of Castile (15th Century).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le fichier ne date pas son dessin plus précisément que par le siècle.",
+   "sources": [
+    "castille_fr",
+    "spain_en"
+   ]
+  },
+  "aragon": {
+   "nom": "Les quatre pals",
+   "blason": "D'or à quatre pals de gueules",
+   "file": "Royal arms of Aragon.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "L'un des plus anciens écus d'Europe. Sa première trace est un sceau de Raymond-Bérenger IV (1150) pour les auteurs catalans ; les auteurs aragonais n'en voient d'indiscutable qu'à partir d'Alphonse II. Les anciens armoriaux l'attribuent aux comtes de Barcelone, qui ont acquis l'Aragon par mariage.",
+   "sources": [
+    "aragon_en"
+   ]
+  },
+  "cath1474": {
+   "nom": "Les Rois catholiques",
+   "blason": "Écartelé : aux 1 et 4, écartelé de Castille et de León ; aux 2 et 3, parti d'Aragon et d'Aragon-Sicile ; le tout sur la poitrine d'un aigle de Saint-Jean de sable, sous une couronne royale ouverte",
+   "file": "Coat of Arms of Queen Isabella of Castile (1474-1492).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes d'Isabelle et de Ferdinand, dont le mariage unit l'Espagne. Le fichier est intitulé « Isabelle de Castille ».",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "cath1492": {
+   "nom": "Grenade",
+   "blason": "Écartelé : aux 1 et 4, écartelé de Castille et de León ; aux 2 et 3, parti d'Aragon et d'Aragon-Sicile ; enté en pointe, de Grenade ; l'aigle de Saint-Jean sous la couronne",
+   "file": "Coat of Arms of Queen Isabella of Castile (1492-1504).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "La conquête de Grenade se marque par l'ajout enté en pointe d'un quartier de Grenade : d'argent à la grenade au naturel, tigée et feuillée de deux feuilles de sinople.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "ferdinand1513": {
+   "nom": "Ferdinand le Catholique",
+   "blason": "Les armes de Ferdinand après l'annexion de la Navarre : le deuxième quartier est parti, au 1 coupé d'Aragon et de Navarre, au 2 coupé de Jérusalem et de Hongrie",
+   "file": "Escudo de Fernando el Católico a partir de 1513.svg",
+   "auteur": "Miguillen",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "À la mort d'Isabelle (1504), Ferdinand abandonne les armes communes pour un écu tiercé en pal : Castille-León, Aragon-Naples-Sicile, Aragon. L'annexion de la Navarre (1513) y apporte le dernier changement.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "philippe1": {
+   "nom": "Philippe le Beau",
+   "blason": "Écartelé : aux 1 et 4, grand quartier écartelé de Castille-León et parti d'Aragon et d'Aragon-Sicile, enté en pointe de Grenade ; aux 2 et 3, grand quartier écartelé d'Autriche, de Bourgogne ancien, de Bourgogne moderne et de Brabant, sur le tout un écusson parti de Flandre et du Tyrol",
+   "file": "Coat of Arms of Philip I of Castile.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "À la mort d'Isabelle, son gendre, l'archiduc Philippe, écartèle ses propres armes avec celles des Rois catholiques. Son plus haut titre n'étant qu'archiducal, les quartiers espagnols prennent le pas sur les siens.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "charles1504": {
+   "nom": "Jeanne et Charles",
+   "blason": "Armes abrégées des souverains espagnols : Castille, León et Aragon, enté en pointe de Grenade",
+   "file": "Joint Lesser Royal Coat of Arms of Charles I and Joanna as Spanish Monarchs.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Les armes abrégées de Jeanne et de Charles Iᵉʳ, de 1504 à 1555 environ.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "charles1530": {
+   "nom": "Charles Quint, empereur",
+   "blason": "Écartelé : aux 1 et 4, grand quartier d'Espagne, écartelé de Castille-León (1 et 4) et parti (2 et 3) d'un coupé d'Aragon et de Navarre et de Naples (Jérusalem et Hongrie) ; aux 2 et 3, grand quartier d'Autriche, de Bourgogne et de Brabant ; enté en pointe de Grenade ; porté par une aigle impériale bicéphale de sable, sous la couronne impériale, entre les colonnes d'Hercule et la devise PLUS ULTRA, dans le collier de la Toison d'or",
+   "file": "Greater Coat of Arms of Charles I of Spain, Charles V as Holy Roman Emperor (1530-1556).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Après son élection impériale (1519), Charles pose ses armes sur la poitrine d'un aigle ; à partir de 1530, certaines versions portent les quartiers espagnols aux 1 et 4, et les quartiers autrichiens aux 2 et 3.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "philippe1556": {
+   "nom": "Philippe II, roi consort d'Angleterre",
+   "blason": "Les armes espagnoles écartelées avec celles d'Angleterre, pour Philippe, roi consort de Marie Tudor",
+   "file": "Coat of Arms of Philip II of Spain, English King Consort-Spanish Variant (1556-1558).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Armes de Philippe II comme monarque espagnol et époux de Marie Iʳᵉ d'Angleterre, de 1556 à 1558.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "philippe1558": {
+   "nom": "Philippe II avant le Portugal",
+   "blason": "Coupé : en chef, les quartiers espagnols ; en pointe, les quartiers autrichiens, avec en cœur un écusson parti de Flandre et du Tyrol",
+   "file": "Coat of Arms of Philip II of Spain (1558-1580).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Philippe II reprend d'abord les armes simplifiées de son père : un coupé aux quartiers espagnols en chef et autrichiens en pointe.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "espagne1580": {
+   "nom": "L'écusson de Portugal",
+   "blason": "Coupé : en chef, parti, à dextre écartelé de Castille et de León, à senestre parti d'Aragon et d'Aragon-Sicile, le tout enté en pointe de Grenade et chargé au point d'honneur d'un écusson de Portugal ; en pointe, écartelé d'Autriche, de Bourgogne ancien, de Bourgogne moderne et de Brabant, avec un écusson en nombril parti de Flandre et du Tyrol",
+   "file": "Royal Coat of Arms of Spain (1580-1668).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "À l'union avec le Portugal (1580), un écusson de Portugal vient au point d'honneur ; l'écu, sous une couronne royale à trois arches visibles, est entouré du collier de la Toison d'or. Perdu en 1640, le Portugal reste dans l'écu comme armes de prétention jusqu'en 1668.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "charles1668": {
+   "nom": "Sans le Portugal",
+   "blason": "Les mêmes armes que de 1580, sans l'écusson de Portugal",
+   "file": "Coat of Arms of Charles II of Spain (1668-1700).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Charles II renonce à l'écusson de Portugal en 1668.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "bourbon1700": {
+   "nom": "L'écusson d'Anjou",
+   "blason": "Coupé : au 1, parti : à dextre, écartelé de Castille et de León, enté en pointe de Grenade ; à senestre, parti d'Aragon et d'Aragon-Sicile ; au 2, écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, enté en pointe parti de Flandre et du Tyrol ; sur le tout, un écusson d'Anjou (d'azur à trois fleurs de lis d'or, à la bordure de gueules)",
+   "file": "Royal Greater Coat of Arms of Spain (1700-1761) Version with Golden Fleece and Holy Spirit Collars.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Philippe V, petit-fils de Louis XIV, fait dessiner ses armes en novembre 1700 par le héraldiste français Clairambault. Les armes abrégées sont écartelées de Castille et León, enté en pointe de Grenade, avec l'écusson d'Anjou sur le tout. Les colliers de la Toison d'or et du Saint-Esprit entourent l'écu.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "charles3": {
+   "nom": "Les armes de Charles III",
+   "blason": "Écartelé de six, en trois rangs de deux : 1, parti d'Aragon et d'Aragon-Sicile ; 2, parti d'Autriche et de Bourgogne moderne ; 3, de Farnèse ; 4, de Médicis ; 5, de Bourgogne ancien ; 6, de Brabant ; enté en pointe, parti de Flandre et du Tyrol ; sur le tout, un écusson écartelé de Castille-León, enté en pointe de Grenade, et chargé en abîme d'Anjou",
+   "file": "Royal Greater Coat of Arms of Spain (1761-1868 and 1874-1931) Version with Golden Fleece and Order of Charles III Collars.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Charles III, fils d'Élisabeth Farnèse, modifie les armes en 1761, avec les colliers de la Toison d'or et de l'ordre de Charles III. Les armes abrégées, accompagnées des colonnes d'Hercule et de la devise PLUS ULTRA, deviennent l'écusson sur le tout des armes de l'État. L'écusson d'Anjou se montre de plus en plus souvent sans bordure, puis comme un écusson de France.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "joseph1808": {
+   "nom": "Joseph Bonaparte",
+   "blason": "Écartelé de six, en trois rangs de deux : 1, Castille ; 2, León ; 3, Aragon ; 4, Navarre ; 5, Grenade ; 6, les Indes (de gueules, souvent d'azur, aux deux mondes d'or entre les colonnes d'Hercule d'argent) ; sur le tout, un écusson à l'aigle impériale de France",
+   "file": "Middle Coat of Arms of Joseph Bonaparte as King of Spain.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Joseph proclame ses armes en 1808. Il n'est reconnu ni par le peuple ni par les Cortès ; les Espagnols voient en lui un roi intrus.",
+   "sources": [
+    "spain_en",
+    "espagne_fr"
+   ]
+  },
+  "amadeo1871": {
+   "nom": "Amédée de Savoie",
+   "blason": "Écartelé de Castille, de León, d'Aragon et de Navarre, enté en pointe de Grenade, avec en abîme un écusson de Savoie (de gueules à la croix d'argent)",
+   "file": "Coat of Arms of King Amadeo of Spain (1871-1873).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le gouvernement provisoire de 1868 avait adopté les armes territoriales actuelles, sous couronne murale ; Amédée rétablit la couronne royale et pose en abîme un écusson de Savoie. Peu d'armes espagnoles portent l'écusson d'Aoste.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "espagne1874": {
+   "nom": "La Restauration",
+   "blason": "Écartelé de Castille, de León, d'Aragon et de Navarre, enté en pointe de Grenade ; sur le tout, l'écusson de Bourbon (d'azur à trois fleurs de lis d'or) ; entre les colonnes d'Hercule",
+   "file": "Coat of Arms of Spain (1874-1931) Pillars of Hercules Variant.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Le décret du 8 janvier 1875 rétablit les armes d'avant le 29 septembre 1868. Dans la pratique, l'écusson d'Anjou se montre sans sa bordure, signe de la filiation avec les Bourbons de France. Le roi continue de porter à titre personnel les grandes armes de Charles III ; Alphonse XIII fond les deux séries en 1924.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "franco1945": {
+   "nom": "L'aigle de Franco",
+   "blason": "Écartelé : aux 1 et 4, écartelé de Castille et de León ; aux 2 et 3, parti d'Aragon et de Navarre ; enté en pointe de Grenade ; sous une couronne royale ouverte, sur un aigle éployé de sable, entre les colonnes d'Hercule, avec le joug et le faisceau de flèches des Rois catholiques",
+   "file": "Coat of arms of Spain (1945–1977).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "En 1938, Franco rétablit des éléments de la maison de Trastamare : l'aigle de Saint-Jean, le joug et le faisceau de flèches.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "transition": {
+   "nom": "La transition",
+   "blason": "Armes de l'Espagne de 1977 à 1981, des armes de Franco allégées",
+   "file": "Coat of Arms of Spain (1977-1981).svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Un écu intermédiaire, de 1977 à 1981, avant la loi qui fixe les armes actuelles.",
+   "sources": [
+    "spain_en"
+   ]
+  },
+  "espagne1981": {
+   "nom": "Les armes de l'Espagne",
+   "blason": "Écartelé : au 1, de gueules au château d'or ; au 2, d'argent au lion de pourpre couronné d'or ; au 3, d'or à quatre pals de gueules ; au 4, de gueules à la croix, au sautoir et à l'orle de chaînes d'or, au point de sinople ; enté en pointe, d'argent à la grenade au naturel, tigée et feuillée de deux feuilles de sinople ; sur le tout, un écusson d'azur à trois fleurs de lis d'or, à la bordure de gueules (Bourbon-Anjou, ovale dans la version officielle)",
+   "file": "Coat of Arms of Spain.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Fixées par la loi 33/1981 du 5 octobre : les colonnes d'Hercule portent la devise PLUS ULTRA, « plus loin », et la couronne royale est fermée de quatre arches. Des héraldistes en critiquent le dessin, trop proche d'un logotype.",
+   "sources": [
+    "spain_en"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "castille",
+   "nom": "Castille et León",
+   "titre": "Rois de Castille et de León",
+   "lede": "Un château et un lion : deux royaumes, dont les armes parlantes sont réunies par Ferdinand III en 1230 dans le premier écartelé, qui servira pendant deux siècles et demi, jusqu'au mariage d'Isabelle et de Ferdinand d'Aragon.",
+   "debut": 1225,
+   "fin": 1480,
+   "depart": 1252,
+   "theme": "espagne",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Sans souverain"
+   },
+   "methode": [
+    "Trois frises se suivent : Castille et León (1230-1474), Aragon (1035-1479) et Espagne (depuis 1474), qui reprend les deux couronnes à partir du mariage d'Isabelle et de Ferdinand. Les dates précises des règnes viennent des trois listes de Wikipédia : « Liste des souverains de Castille » (section « Couronne de Castille »), « Liste des souverains d'Aragon » et « Liste des rois et reines d'Espagne » ; pour Isabelle II, l'article qui lui est consacré. Les noms renvoient à l'article Wikipédia du souverain.",
+    "Armoiries : « Coat of arms of Spain » et « Coat of arms of the Crown of Aragon » (Wikipedia en). Les sources lues ne donnent d'armes à aucun roi d'Aragon d'avant Alphonse II ; les auteurs catalans datent les pals d'un sceau de 1150, les auteurs aragonais du règne d'Alphonse II, et la frise suit ceux-ci pour les rois, en le disant. Les comtes de Castille, les rois des Asturies et de León d'avant 1230 et les comtes d'Aragon sont laissés de côté.",
+    "Les règnes qui se chevauchent (Jeanne et Philippe, Jeanne et Charles) sont montrés l'un après l'autre ; les trois rois concurrents de Jean II d'Aragon (1462-1472) sont dans la rangée « En marge ». Les périodes sans roi (1868-1870, 1873-1874, 1931-1975) sont marquées d'un trait. Les Habsbourg d'Espagne figurent aussi dans la frise des Habsbourg, qui s'intéresse à la maison plutôt qu'au royaume."
+   ],
+   "figures": "Les couronnes ne sont pas dessinées. Les écus et grandes armes des trois frises viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "ivree",
+     "nom": "Ivrée (Bourgogne-Ivrée)",
+     "couleur": "#8fa3c9"
+    },
+    {
+     "id": "trastamare",
+     "nom": "Trastamare",
+     "couleur": "#d9694f"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Ferdinand III",
+     "court": "Ferdinand III",
+     "maison": "ivree",
+     "debut": "1230-09-24",
+     "fin": "1252-05-31",
+     "wiki": "Ferdinand III de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1230",
+     "note": "Roi de Castille, il hérite de León en 1230 et unit les deux royaumes, avec un écu qui unit leurs armes.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Alphonse X",
+     "court": "Alphonse X",
+     "maison": "ivree",
+     "debut": "1252-05-31",
+     "fin": "1284-04-04",
+     "wiki": "Alphonse X de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1230",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Sanche IV",
+     "court": "Sanche IV",
+     "maison": "ivree",
+     "debut": "1284-04-04",
+     "fin": "1295-04-25",
+     "wiki": "Sanche IV de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand IV",
+     "court": "Ferdinand IV",
+     "maison": "ivree",
+     "debut": "1295-04-25",
+     "fin": "1312-09-07",
+     "wiki": "Ferdinand IV de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "note": "Régence de Marie de Molina de 1295 à 1301.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Alphonse XI",
+     "court": "Alphonse XI",
+     "maison": "ivree",
+     "debut": "1312-09-07",
+     "fin": "1350-03-26",
+     "wiki": "Alphonse XI de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Pierre Iᵉʳ le Cruel",
+     "court": "Pierre Iᵉʳ",
+     "maison": "ivree",
+     "debut": "1350-03-26",
+     "fin": "1369-03-23",
+     "wiki": "Pierre Ier de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "note": "Surnommé « le Cruel » par ses détracteurs, il affronte les rébellions de son demi-frère Henri ; vaincu et capturé à Montiel (1369), il est assassiné lors d'une entrevue avec lui.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Henri II",
+     "court": "Henri II",
+     "maison": "trastamare",
+     "debut": "1369-03-23",
+     "fin": "1379-05-29",
+     "wiki": "Henri II de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "note": "Fils illégitime d'Alphonse XI, comte de Trastamare : il fonde la maison de Trastamare, branche cadette de la maison d'Ivrée.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Jean Iᵉʳ",
+     "court": "Jean Iᵉʳ",
+     "maison": "trastamare",
+     "debut": "1379-05-29",
+     "fin": "1390-10-09",
+     "wiki": "Jean Ier de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille1284",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Henri III",
+     "court": "Henri III",
+     "maison": "trastamare",
+     "debut": "1390-10-09",
+     "fin": "1406-12-25",
+     "wiki": "Henri III de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille15",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Jean II",
+     "court": "Jean II",
+     "maison": "trastamare",
+     "debut": "1406-12-25",
+     "fin": "1454-07-20",
+     "wiki": "Jean II de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille15",
+     "note": "Régence de Ferdinand Iᵉʳ d'Aragon de 1406 à 1410.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Henri IV",
+     "court": "Henri IV",
+     "maison": "trastamare",
+     "debut": "1454-07-20",
+     "fin": "1474-12-11",
+     "wiki": "Henri IV de Castille",
+     "branche": "roi de Castille et de León",
+     "armes": "castille15",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    }
+   ],
+   "vides": [],
+   "jalons": [
+    {
+     "annee": 1230,
+     "titre": "Le premier écartelé",
+     "texte": "Ferdinand III, déjà roi de Castille, hérite de León : il associe les armes des deux royaumes.",
+     "sources": [
+      "castille_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1369,
+     "titre": "Les Trastamare",
+     "texte": "Henri II, fils illégitime d'Alphonse XI, fonde la maison de Trastamare, branche cadette d'Ivrée, sans changer l'écu.",
+     "sources": [
+      "castille_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1406,
+     "fin": 1474,
+     "file": "Coat of Arms of John II and Henry IV of Castile with Supporters.svg",
+     "auteur": "Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Jean II et Henri IV : l'écu aux lions",
+     "ornements": [
+      "Supports : deux lions d'or (d'après le dessin du fichier)"
+     ],
+     "sources": [
+      "spain_en"
+     ]
+    }
+   ],
+   "ornements": []
+  },
+  {
+   "id": "aragon",
+   "nom": "Aragon",
+   "titre": "Rois d'Aragon",
+   "lede": "Quatre pals de gueules sur or : l'un des plus anciens écus d'Europe, né des comtes de Barcelone et porté par les rois d'Aragon à partir d'Alphonse II, jusqu'à ce que Ferdinand le mêle, en 1479, à celui de Castille.",
+   "debut": 1030,
+   "fin": 1485,
+   "depart": 1213,
+   "theme": "espagne",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Interrègne",
+    "rivaux": "En marge"
+   },
+   "maisons": [
+    {
+     "id": "aragon",
+     "nom": "Maison d'Aragon",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "barcelone",
+     "nom": "Maison de Barcelone",
+     "couleur": "#d9694f"
+    },
+    {
+     "id": "trastamare",
+     "nom": "Trastamare",
+     "couleur": "#8fa3c9"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Ramire Iᵉʳ",
+     "court": "Ramire Iᵉʳ",
+     "maison": "aragon",
+     "debut": 1035,
+     "fin": 1063,
+     "wiki": "Ramire Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aucune",
+     "note": "Premier roi d'Aragon après sa victoire de Tafalla sur son demi-frère García.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Sanche Iᵉʳ Ramirez",
+     "court": "Sanche Iᵉʳ",
+     "maison": "aragon",
+     "debut": 1063,
+     "fin": "1094-06-04",
+     "wiki": "Sanche Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aucune",
+     "note": "Aussi roi de Navarre, sous le nom de Sanche V.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Pierre Iᵉʳ",
+     "court": "Pierre Iᵉʳ",
+     "maison": "aragon",
+     "debut": "1094-06-04",
+     "fin": "1104-09-28",
+     "wiki": "Pierre Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aucune",
+     "note": "Conquérant de Huesca.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Alphonse Iᵉʳ le Batailleur",
+     "court": "Alphonse Iᵉʳ",
+     "maison": "aragon",
+     "debut": "1104-09-28",
+     "fin": "1134-09-07",
+     "wiki": "Alphonse Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aucune",
+     "note": "Conquérant de Saragosse.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Ramire II le Moine",
+     "court": "Ramire II",
+     "maison": "aragon",
+     "debut": "1134-09-29",
+     "fin": "1157-08-16",
+     "wiki": "Ramire II d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aucune",
+     "note": "En 1137, sans abdiquer, il délègue son autorité à son gendre Raymond-Bérenger IV, prince d'Aragon et comte de Barcelone : c'est de ce dernier que vient le plus ancien sceau aux pals (1150).",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Pétronille",
+     "court": "Pétronille",
+     "maison": "aragon",
+     "debut": "1157-08-16",
+     "fin": "1164-07-18",
+     "wiki": "Pétronille d'Aragon",
+     "branche": "reine d'Aragon",
+     "armes": "aucune",
+     "note": "Fille de Ramire II. Son mariage avec Raymond-Bérenger IV unit l'Aragon et le comté de Barcelone (1137).",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Alphonse II le Chaste",
+     "court": "Alphonse II",
+     "maison": "barcelone",
+     "debut": "1164-07-18",
+     "fin": "1196-04-25",
+     "wiki": "Alphonse II d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Premier roi d'Aragon et comte de Barcelone : il porte les deux titres, que ses successeurs garderont. Pour les auteurs aragonais, les pals ne sont indiscutables qu'à partir de son règne.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Pierre II le Catholique",
+     "court": "Pierre II",
+     "maison": "barcelone",
+     "debut": "1196-04-25",
+     "fin": "1213-09-12",
+     "wiki": "Pierre II d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Vainqueur aux Navas de Tolosa en 1212, il meurt à Muret en 1213.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Jacques Iᵉʳ le Conquérant",
+     "court": "Jacques Iᵉʳ",
+     "maison": "barcelone",
+     "debut": "1213-09-12",
+     "fin": "1276-07-27",
+     "wiki": "Jacques Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Conquérant de Valence, de Majorque et d'Ibiza ; auteur du Llibre dels feyts.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Pierre III le Grand",
+     "court": "Pierre III",
+     "maison": "barcelone",
+     "debut": "1276-07-27",
+     "fin": "1285-11-11",
+     "wiki": "Pierre III d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Conquérant de la Sicile.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Alphonse III le Libéral",
+     "court": "Alphonse III",
+     "maison": "barcelone",
+     "debut": "1285-11-11",
+     "fin": "1291-06-18",
+     "wiki": "Alphonse III d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Conquérant de Minorque.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Jacques II le Juste",
+     "court": "Jacques II",
+     "maison": "barcelone",
+     "debut": "1291-06-18",
+     "fin": "1327-11-02",
+     "wiki": "Jacques II d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Conquérant de la Sardaigne.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Alphonse IV le Bénin",
+     "court": "Alphonse IV",
+     "maison": "barcelone",
+     "debut": "1327-11-02",
+     "fin": "1336-01-24",
+     "wiki": "Alphonse IV d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Pierre IV le Cérémonieux",
+     "court": "Pierre IV",
+     "maison": "barcelone",
+     "debut": "1336-01-24",
+     "fin": "1387-01-05",
+     "wiki": "Pierre IV d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Il fait dessiner une version de l'écu des rois, avec la bannière à croix bleue et blanche qu'il attribue aux anciens rois d'Aragon, et les pals aux comtes de Barcelone.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Jean Iᵉʳ le Chasseur",
+     "court": "Jean Iᵉʳ",
+     "maison": "barcelone",
+     "debut": "1387-01-05",
+     "fin": "1396-05-19",
+     "wiki": "Jean Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Martin Iᵉʳ l'Humain",
+     "court": "Martin Iᵉʳ",
+     "maison": "barcelone",
+     "debut": "1396-05-19",
+     "fin": "1410-05-31",
+     "wiki": "Martin Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Mort sans descendance : dernier souverain de la maison de Barcelone.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand Iᵉʳ",
+     "court": "Ferdinand Iᵉʳ",
+     "maison": "trastamare",
+     "debut": 1412,
+     "fin": 1416,
+     "wiki": "Ferdinand Ier d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Petit-fils de Pierre IV par sa mère, désigné par le compromis de Caspe.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Alphonse V le Magnanime",
+     "court": "Alphonse V",
+     "maison": "trastamare",
+     "debut": 1416,
+     "fin": 1458,
+     "wiki": "Alphonse V d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "Conquérant de Naples.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Jean II",
+     "court": "Jean II",
+     "maison": "trastamare",
+     "debut": 1458,
+     "fin": 1479,
+     "wiki": "Jean II d'Aragon",
+     "branche": "roi d'Aragon",
+     "armes": "aragon",
+     "note": "De 1462 à 1472, la Catalogne et l'Aragon se soulèvent et reconnaissent des rois concurrents, tous descendants de Pierre IV.",
+     "sources": [
+      "aragon_fr"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Compromis de Caspe",
+     "debut": "1410-05-31",
+     "fin": 1412,
+     "wiki": "Compromis de Caspe",
+     "note": "Martin Iᵉʳ meurt sans descendance ; Ferdinand, désigné par le compromis de Caspe, lui succède en 1412.",
+     "sources": [
+      "aragon_fr"
+     ]
+    }
+   ],
+   "rivaux": [
+    {
+     "nom": "Henri Iᵉʳ (Henri IV de Castille)",
+     "court": "Henri Iᵉʳ",
+     "debut": 1462,
+     "fin": 1463,
+     "label": "Roi concurrent",
+     "note": "Également roi de Castille et de León sous le nom d'Henri IV.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "Pierre V de Coimbra",
+     "court": "Pierre V",
+     "debut": 1463,
+     "fin": 1466,
+     "label": "Roi concurrent",
+     "note": "Infant et connétable de Portugal, il prend le titre de roi des Catalans.",
+     "sources": [
+      "aragon_fr"
+     ]
+    },
+    {
+     "nom": "René Iᵉʳ",
+     "court": "René Iᵉʳ",
+     "debut": 1466,
+     "fin": 1472,
+     "label": "Roi concurrent",
+     "note": "Également roi de Naples, duc d'Anjou et comte de Provence.",
+     "sources": [
+      "aragon_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1150,
+     "titre": "Le sceau de Raymond-Bérenger IV",
+     "texte": "Le plus ancien témoignage des pals, pour les auteurs catalans : un sceau du comte de Barcelone et prince d'Aragon.",
+     "desaccord": "Les auteurs aragonais contestent ce sceau : pour eux, la première preuve indiscutable date du règne d'Alphonse II.",
+     "sources": [
+      "aragon_en"
+     ]
+    },
+    {
+     "annee": 1164,
+     "titre": "Aragon et Barcelone",
+     "texte": "Alphonse II, fils de Pétronille et de Raymond-Bérenger IV, est à la fois roi d'Aragon et comte de Barcelone, deux titres que tous ses successeurs porteront.",
+     "sources": [
+      "aragon_fr",
+      "aragon_en"
+     ]
+    },
+    {
+     "annee": 1336,
+     "titre": "L'écu de Pierre IV",
+     "texte": "Pierre IV fait dessiner une version de l'écu des rois, où les pals reviennent aux comtes de Barcelone et la croix bleue et blanche aux anciens rois d'Aragon.",
+     "sources": [
+      "aragon_en"
+     ]
+    },
+    {
+     "annee": 1412,
+     "titre": "Caspe",
+     "texte": "Le compromis de Caspe désigne Ferdinand, petit-fils de Pierre IV par sa mère, après la mort de Martin Iᵉʳ sans descendance.",
+     "sources": [
+      "aragon_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1336,
+     "fin": 1479,
+     "file": "Arms of Aragonese Monarchs (13th-15 centuries).svg",
+     "auteur": "Heralder",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Pierre IV et les rois d'Aragon : l'écu au cimier",
+     "ornements": [
+      "Une bannière à croix bleue et blanche, que Pierre IV attribue aux anciens rois d'Aragon"
+     ],
+     "note": "Le fichier donne cette version comme celle des XIIIᵉ-XVᵉ siècles ; selon l'article, elle est due à Pierre IV.",
+     "sources": [
+      "aragon_en"
+     ]
+    }
+   ],
+   "ornements": []
+  },
+  {
+   "id": "espagne",
+   "nom": "Espagne",
+   "titre": "Rois d'Espagne",
+   "lede": "Des Rois catholiques à Felipe VI : l'écu de l'Espagne s'ajoute les royaumes (Aragon, Grenade, Navarre), le Portugal (1580-1668), puis l'écusson d'Anjou, avant de revenir en 1981 aux quatre quartiers et à la grenade.",
+   "debut": 1470,
+   "fin": 2030,
+   "depart": 1580,
+   "theme": "espagne",
+   "mots": {
+    "bande": "Armes du souverain",
+    "armesDe": "Armes du souverain",
+    "maisons": "Maisons",
+    "sans": "Sans roi"
+   },
+   "maisons": [
+    {
+     "id": "trastamare",
+     "nom": "Trastamare",
+     "couleur": "#d9694f"
+    },
+    {
+     "id": "habsbourg",
+     "nom": "Habsbourg",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "bourbon",
+     "nom": "Bourbon-Anjou",
+     "couleur": "#f1ece0"
+    },
+    {
+     "id": "bonaparte",
+     "nom": "Bonaparte",
+     "couleur": "#7fcf9b"
+    },
+    {
+     "id": "savoie",
+     "nom": "Savoie-Aoste",
+     "couleur": "#b48ad6"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Isabelle Iʳᵉ et Ferdinand II",
+     "court": "Rois catholiques",
+     "maison": "trastamare",
+     "debut": "1474-12-11",
+     "fin": "1504-11-26",
+     "wiki": "Isabelle Ire de Castille",
+     "branche": "reine de Castille ; Ferdinand, roi d'Aragon à partir de 1479",
+     "armes": "cath1474",
+     "phases": [
+      {
+       "debut": "1474-12-11",
+       "fin": 1492,
+       "armes": "cath1474"
+      },
+      {
+       "debut": 1492,
+       "fin": "1504-11-26",
+       "armes": "cath1492"
+      }
+     ],
+     "note": "Isabelle est reine de Castille et León de 1474 à 1504, et, par mariage, reine d'Aragon (1479-1504) ; Ferdinand, roi consort de Castille, est roi d'Aragon de 1479 à 1516. Les deux couronnes restent juridiquement distinctes. Le titre de « Rois catholiques » leur est accordé en 1496.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe Iᵉʳ le Beau",
+     "court": "Philippe Iᵉʳ",
+     "maison": "habsbourg",
+     "debut": "1504-11-26",
+     "fin": "1506-09-25",
+     "wiki": "Philippe Ier de Castille",
+     "branche": "roi de Castille par mariage",
+     "armes": "philippe1",
+     "note": "Fils de Maximilien Iᵉʳ et de Marie de Bourgogne, fondateur de la dynastie espagnole des Habsbourg ; époux de Jeanne la Folle.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Jeanne Iʳᵉ la Folle et Ferdinand II",
+     "court": "Jeanne Iʳᵉ",
+     "maison": "trastamare",
+     "debut": "1506-09-25",
+     "fin": "1516-01-25",
+     "wiki": "Jeanne Ire de Castille",
+     "branche": "reine de Castille ; Ferdinand, roi d'Aragon",
+     "armes": "ferdinand1513",
+     "note": "Reine de Castille de 1504 à 1555, reine d'Aragon à partir de 1516, Jeanne « n'a en réalité jamais effectivement régné ». Ferdinand reste roi d'Aragon jusqu'à sa mort, le 25 janvier 1516, date où l'ensemble des Espagnes s'unit sous un même sceptre.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Charles Iᵉʳ (Charles Quint)",
+     "court": "Charles Quint",
+     "maison": "habsbourg",
+     "debut": "1516-01-25",
+     "fin": "1556-01-16",
+     "wiki": "Charles Quint",
+     "branche": "roi d'Aragon et co-roi de Castille avec sa mère, puis roi des deux",
+     "armes": "charles1504",
+     "phases": [
+      {
+       "debut": "1516-01-25",
+       "fin": 1530,
+       "armes": "charles1504"
+      },
+      {
+       "debut": 1530,
+       "fin": "1556-01-16",
+       "armes": "charles1530"
+      }
+     ],
+     "note": "Roi d'Aragon par le testament de Ferdinand, puis co-roi de Castille avec sa mère Jeanne ; seul roi des deux couronnes du 12 avril 1555 au 16 janvier 1556, date de son abdication en faveur de Philippe. Empereur depuis 1519, il pose ses armes sur un aigle impérial.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe II",
+     "court": "Philippe II",
+     "maison": "habsbourg",
+     "debut": "1556-01-16",
+     "fin": "1598-09-13",
+     "wiki": "Philippe II (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "philippe1556",
+     "phases": [
+      {
+       "debut": "1556-01-16",
+       "fin": 1558,
+       "armes": "philippe1556"
+      },
+      {
+       "debut": 1558,
+       "fin": 1580,
+       "armes": "philippe1558"
+      },
+      {
+       "debut": 1580,
+       "fin": "1598-09-13",
+       "armes": "espagne1580"
+      }
+     ],
+     "note": "Aussi roi d'Angleterre de 1554 à 1558 par son mariage avec Marie Tudor, et roi de Portugal à partir de 1580 sous le nom de Philippe Iᵉʳ. Avec lui, les armes de la monarchie se fixent pour tout le reste de la maison d'Autriche.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe III",
+     "court": "Philippe III",
+     "maison": "habsbourg",
+     "debut": "1598-09-13",
+     "fin": "1621-03-31",
+     "wiki": "Philippe III (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1580",
+     "note": "Aussi roi de Portugal sous le nom de Philippe II.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe IV",
+     "court": "Philippe IV",
+     "maison": "habsbourg",
+     "debut": "1621-03-31",
+     "fin": "1665-09-17",
+     "wiki": "Philippe IV (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1580",
+     "note": "Aussi roi de Portugal (Philippe III) jusqu'en 1640 ; il garde pourtant l'écusson de Portugal comme armes de prétention jusqu'en 1668.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Charles II l'Ensorcelé",
+     "court": "Charles II",
+     "maison": "habsbourg",
+     "debut": "1665-09-17",
+     "fin": "1700-11-01",
+     "wiki": "Charles II (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1580",
+     "phases": [
+      {
+       "debut": "1665-09-17",
+       "fin": 1668,
+       "armes": "espagne1580"
+      },
+      {
+       "debut": 1668,
+       "fin": "1700-11-01",
+       "armes": "charles1668"
+      }
+     ],
+     "note": "Régence de Marie-Anne d'Autriche de 1665 à 1675. Mort sans descendance, il entraîne la guerre de Succession d'Espagne.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe V",
+     "court": "Philippe V",
+     "maison": "bourbon",
+     "debut": "1700-11-01",
+     "fin": "1724-01-14",
+     "wiki": "Philippe V (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "bourbon1700",
+     "note": "Petit-fils de Louis XIV, choisi pour héritier par Charles II, il abdique en faveur de son fils aîné Louis.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Louis Iᵉʳ",
+     "court": "Louis Iᵉʳ",
+     "maison": "bourbon",
+     "debut": "1724-01-14",
+     "fin": "1724-08-31",
+     "wiki": "Louis Ier (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "bourbon1700",
+     "note": "Mort de la variole après huit mois de règne, très aimé du peuple espagnol.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Philippe V, rétabli",
+     "court": "Philippe V",
+     "maison": "bourbon",
+     "debut": "1724-08-31",
+     "fin": "1746-07-09",
+     "wiki": "Philippe V (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "bourbon1700",
+     "suite": true,
+     "note": "Il remonte sur le trône à la mort de son fils et le garde jusqu'à sa mort.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand VI le Sage",
+     "court": "Ferdinand VI",
+     "maison": "bourbon",
+     "debut": "1746-07-09",
+     "fin": "1759-08-10",
+     "wiki": "Ferdinand VI",
+     "branche": "roi d'Espagne",
+     "armes": "bourbon1700",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Charles III",
+     "court": "Charles III",
+     "maison": "bourbon",
+     "debut": "1759-08-10",
+     "fin": "1788-12-14",
+     "wiki": "Charles III (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "bourbon1700",
+     "phases": [
+      {
+       "debut": "1759-08-10",
+       "fin": 1761,
+       "armes": "bourbon1700"
+      },
+      {
+       "debut": 1761,
+       "fin": "1788-12-14",
+       "armes": "charles3"
+      }
+     ],
+     "note": "Fils de Philippe V et d'Élisabeth Farnèse, il fut duc de Parme puis roi de Naples et de Sicile. Il modifie les armes en 1761.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Charles IV",
+     "court": "Charles IV",
+     "maison": "bourbon",
+     "debut": "1788-12-14",
+     "fin": "1808-03-19",
+     "wiki": "Charles IV (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "charles3",
+     "note": "Contraint d'abdiquer le 19 mars 1808 en faveur de son fils Ferdinand après le soulèvement d'Aranjuez, puis le 5 mai en faveur de Napoléon.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand VII",
+     "court": "Ferdinand VII",
+     "maison": "bourbon",
+     "debut": "1808-03-19",
+     "fin": "1808-05-06",
+     "wiki": "Ferdinand VII",
+     "branche": "roi d'Espagne",
+     "armes": "charles3",
+     "approx": "mars – 6 mai 1808",
+     "note": "Contraint d'abdiquer le 6 mai 1808 en faveur de Napoléon.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Joseph Bonaparte",
+     "court": "Joseph Iᵉʳ",
+     "maison": "bonaparte",
+     "debut": "1808-05-06",
+     "fin": 1813,
+     "wiki": "Joseph Bonaparte",
+     "branche": "roi d'Espagne",
+     "armes": "joseph1808",
+     "approx": "1808 – 1813",
+     "note": "Frère de Napoléon, auparavant roi de Naples. Perçu par la plupart des Espagnols comme un roi intrus, il abdique après la bataille de Vitoria.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Ferdinand VII, rétabli",
+     "court": "Ferdinand VII",
+     "maison": "bourbon",
+     "debut": 1813,
+     "fin": "1833-09-29",
+     "wiki": "Ferdinand VII",
+     "branche": "roi d'Espagne",
+     "armes": "charles3",
+     "suite": true,
+     "approx": "1813 – 1833",
+     "note": "Rétabli par le traité de Valençay. Il rétablit les armes de Charles III, grandes et abrégées.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Isabelle II",
+     "court": "Isabelle II",
+     "maison": "bourbon",
+     "debut": "1833-09-29",
+     "fin": "1868-09-30",
+     "wiki": "Isabelle II",
+     "branche": "reine d'Espagne",
+     "armes": "charles3",
+     "note": "Régences de Marie-Christine (1833-1840) puis d'Espartero (1840-1843). Elle s'exile après la révolution de 1868 et abdique en 1870 en faveur de son fils Alphonse.",
+     "sources": [
+      "espagne_fr",
+      "isabelle_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Amédée Iᵉʳ",
+     "court": "Amédée Iᵉʳ",
+     "maison": "savoie",
+     "debut": "1870-11-16",
+     "fin": "1873-02-11",
+     "wiki": "Amédée Ier (roi d'Espagne)",
+     "branche": "roi d'Espagne",
+     "armes": "amadeo1871",
+     "note": "Fils cadet de Victor-Emmanuel II, élu roi par les Cortès le 16 novembre 1870 ; il abdique le 11 février 1873.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Alphonse XII le Pacifique",
+     "court": "Alphonse XII",
+     "maison": "bourbon",
+     "debut": "1874-12-29",
+     "fin": "1885-11-25",
+     "wiki": "Alphonse XII",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1874",
+     "note": "Proclamé roi le 29 décembre 1874.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Alphonse XIII l'Africain",
+     "court": "Alphonse XIII",
+     "maison": "bourbon",
+     "debut": "1886-05-17",
+     "fin": "1931-04-14",
+     "wiki": "Alphonse XIII",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1874",
+     "note": "Fils posthume d'Alphonse XII ; régence de Marie-Christine d'Autriche jusqu'en 1902. Il s'exile à la proclamation de la Seconde République, le 14 avril 1931. En 1924, il avait fondu les armes de l'État et ses armes personnelles en un seul écu.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Juan Carlos Iᵉʳ",
+     "court": "Juan Carlos Iᵉʳ",
+     "maison": "bourbon",
+     "debut": "1975-11-22",
+     "fin": "2014-06-18",
+     "wiki": "Juan Carlos Ier",
+     "branche": "roi d'Espagne",
+     "armes": "franco1945",
+     "phases": [
+      {
+       "debut": "1975-11-22",
+       "fin": 1977,
+       "armes": "franco1945"
+      },
+      {
+       "debut": 1977,
+       "fin": "1981-10-05",
+       "armes": "transition"
+      },
+      {
+       "debut": "1981-10-05",
+       "fin": "2014-06-18",
+       "armes": "espagne1981"
+      }
+     ],
+     "note": "Choisi par Franco au détriment de son père, il devient roi à la mort du dictateur et est couronné le 27 novembre 1975. Il abdique le 18 juin 2014.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    },
+    {
+     "nom": "Felipe VI",
+     "court": "Felipe VI",
+     "maison": "bourbon",
+     "debut": "2014-06-19",
+     "fin": null,
+     "wiki": "Felipe VI",
+     "branche": "roi d'Espagne",
+     "armes": "espagne1981",
+     "encours": true,
+     "note": "Roi depuis le lendemain de l'abdication de son père.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Gouvernement provisoire",
+     "debut": "1868-09-30",
+     "fin": "1870-11-16",
+     "wiki": "Sexennat démocratique",
+     "note": "Après la révolution de 1868, le gouvernement provisoire adopte les armes territoriales actuelles, sous couronne murale. Amédée est élu roi par les Cortès le 16 novembre 1870.",
+     "sources": [
+      "spain_en",
+      "espagne_fr",
+      "isabelle_fr"
+     ]
+    },
+    {
+     "nom": "Première République",
+     "debut": "1873-02-11",
+     "fin": "1874-12-29",
+     "wiki": "Première République espagnole",
+     "note": "Proclamée le 11 février 1873, au lendemain de l'abdication d'Amédée ; elle dure vingt-trois mois et voit passer cinq présidents.",
+     "sources": [
+      "spain_en",
+      "espagne_fr"
+     ]
+    },
+    {
+     "nom": "Régence avant la naissance du roi",
+     "debut": "1885-11-25",
+     "fin": "1886-05-17",
+     "wiki": "Alphonse XIII",
+     "note": "Alphonse XIII naît après la mort de son père : la liste ne lui donne de règne qu'à partir de 1886.",
+     "sources": [
+      "espagne_fr"
+     ]
+    },
+    {
+     "nom": "Seconde République et Franco",
+     "debut": "1931-04-14",
+     "fin": "1975-11-22",
+     "wiki": "Seconde République espagnole",
+     "note": "La République (1931-1939) reprend les armes territoriales, avec un lion sans couronne au second quartier ; puis l'État de Franco, qui rétablit en 1938 l'aigle de Saint-Jean, le joug et le faisceau de flèches. C'est le plus long interrègne de l'Espagne : à partir de 1949, Franco décrète que le pays est sous sa régence, en attendant la Restauration.",
+     "sources": [
+      "espagne_fr",
+      "spain_en"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1474,
+     "titre": "Les Rois catholiques",
+     "texte": "Isabelle de Castille et Ferdinand d'Aragon unissent leurs couronnes : écartelé de Castille-León et d'Aragon, porté sur la poitrine d'un aigle de Saint-Jean sous une couronne royale ouverte.",
+     "sources": [
+      "spain_en",
+      "espagne_fr"
+     ]
+    },
+    {
+     "annee": 1492,
+     "titre": "Grenade",
+     "texte": "La conquête de Grenade se marque par un quartier de Grenade enté en pointe, la grenade au naturel.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1504,
+     "titre": "Après Isabelle",
+     "texte": "Philippe le Beau écartèle ses armes avec celles des Rois catholiques, et Ferdinand adopte un écu tiercé : Castille-León, Aragon-Naples-Sicile, Aragon.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1513,
+     "titre": "La Navarre",
+     "texte": "L'annexion de la Navarre apporte le dernier changement aux armes de Ferdinand le Catholique.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1530,
+     "titre": "L'aigle impérial",
+     "texte": "Charles Quint, empereur depuis 1519, pose ses armes sur un aigle bicéphale, entre les colonnes d'Hercule et la devise PLUS ULTRA ; certaines versions portent les quartiers espagnols aux 1 et 4.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1556,
+     "titre": "Philippe II",
+     "texte": "Avec lui, les armes de la monarchie se fixent pour le reste de la maison d'Autriche : coupé, les quartiers espagnols en chef et autrichiens en pointe.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1580,
+     "titre": "Le Portugal",
+     "texte": "À l'union avec le Portugal, un écusson de Portugal vient se placer au point d'honneur de l'écu. Perdu en 1640, il reste comme armes de prétention jusqu'en 1668.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1700,
+     "titre": "L'écusson d'Anjou",
+     "texte": "Philippe V, petit-fils de Louis XIV, fait dessiner ses armes par Clairambault : les armes abrégées portent l'écusson d'Anjou sur le tout.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1761,
+     "titre": "Charles III",
+     "texte": "Il fait écarteler de six les armes : Aragon, Autriche, Farnèse, Médicis, Bourgogne, Brabant, avec l'écusson castillan-léonais sur le tout. Ces armes dureront, avec des interruptions, jusqu'en 1931.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1808,
+     "titre": "Le roi intrus",
+     "texte": "Joseph Bonaparte proclame de nouvelles armes : six quartiers (Castille, León, Aragon, Navarre, Grenade, les Indes), l'aigle de France sur le tout.",
+     "sources": [
+      "spain_en",
+      "espagne_fr"
+     ]
+    },
+    {
+     "annee": 1868,
+     "titre": "Les armes territoriales",
+     "texte": "Le gouvernement provisoire adopte l'écu actuel : Castille, León, Aragon et Navarre, Grenade en pointe, sous couronne murale.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1875,
+     "titre": "La Restauration",
+     "texte": "Un décret du 8 janvier 1875 rétablit les armes d'avant septembre 1868. L'écusson d'Anjou se montre sans sa bordure ; avec la mort du comte de Chambord (1883), Alphonse XII porte les armes de France sans brisure.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1938,
+     "titre": "L'aigle de Franco",
+     "texte": "Franco rétablit des éléments de la maison de Trastamare : l'aigle de Saint-Jean, le joug et le faisceau de flèches.",
+     "sources": [
+      "spain_en"
+     ]
+    },
+    {
+     "annee": 1981,
+     "titre": "Les armes de la démocratie",
+     "texte": "La loi 33/1981 du 5 octobre fixe les armes actuelles, avec l'écusson d'Anjou ovale sur le tout.",
+     "sources": [
+      "spain_en"
+     ]
+    }
+   ],
+   "grandesArmes": [],
+   "ornements": [
+    {
+     "id": "toison",
+     "nom": "Collier",
+     "segs": [
+      {
+       "debut": 1580,
+       "fin": "1931-04-14",
+       "type": "toison",
+       "label": "Toison d'or",
+       "texte": "L'écu est entouré du collier de la Toison d'or ; sous Philippe V (1700-1761) s'y ajoute celui du Saint-Esprit, sous Charles III celui de l'ordre de Charles III.",
+       "sources": [
+        "spain_en"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "supports",
+     "nom": "Supports",
+     "segs": [
+      {
+       "debut": 1474,
+       "fin": "1504-11-26",
+       "type": "aigle",
+       "label": "aigle de Saint-Jean",
+       "texte": "Les armes des Rois catholiques reposent sur la poitrine d'un aigle de Saint-Jean, de sable, sous une couronne royale ouverte.",
+       "sources": [
+        "spain_en"
+       ]
+      },
+      {
+       "debut": 1530,
+       "fin": "1556-01-16",
+       "type": "aigle-imperial",
+       "label": "aigle impérial et colonnes",
+       "texte": "Après 1530, les armes de Charles Quint reposent sur un aigle impérial bicéphale, entre les colonnes d'Hercule et la devise PLUS ULTRA.",
+       "sources": [
+        "spain_en"
+       ]
+      },
+      {
+       "debut": 1938,
+       "fin": 1977,
+       "type": "aigle",
+       "label": "aigle, colonnes, joug et flèches",
+       "texte": "Franco rétablit l'aigle de Saint-Jean, les colonnes d'Hercule, le joug et le faisceau de flèches des Rois catholiques.",
+       "sources": [
+        "spain_en"
+       ]
+      },
+      {
+       "debut": "1981-10-05",
+       "fin": 2030,
+       "type": "colonnes",
+       "label": "colonnes d'Hercule",
+       "texte": "Les colonnes d'Hercule, anciens noms du détroit de Gibraltar, portent la devise PLUS ULTRA, « plus loin ».",
+       "sources": [
+        "spain_en"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
