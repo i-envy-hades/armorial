@@ -8,7 +8,7 @@ Le site est servi en local ; les images de Wikimedia Commons sont remplacées pa
 si bien que le test ne dépend ni du réseau ni de l'humeur de Wikimedia.
 
 Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manquant, aucune balise absurde
-(« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les cinq frises,
+(« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les frises,
 l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
 (chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
 et les boutons « Redessiner dans l'Atelier » des galeries.

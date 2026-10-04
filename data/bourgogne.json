@@ -1,0 +1,590 @@
+{
+ "sources": {
+  "liste_fr": {
+   "label": "Wikipédia, « Liste des ducs de Bourgogne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_ducs_de_Bourgogne"
+  },
+  "armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  },
+  "spain_en": {
+   "label": "Wikipedia (en), « Coat of arms of Spain »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Spain"
+  }
+ },
+ "armes": {
+  "aucune": {
+   "nom": "Avant les armoiries",
+   "draw": "aucune",
+   "blason": "",
+   "note": "Les pages lues ne donnent d'armoiries à aucun duc d'avant Eudes II : c'est lui, dit la liste, qui adopte le premier les armes de Bourgogne.",
+   "sources": [
+    "liste_fr",
+    "armorial_cap"
+   ]
+  },
+  "ancien": {
+   "nom": "Bourgogne ancien",
+   "blason": "Bandé d'or et d'azur de six pièces, à la bordure de gueules",
+   "file": "Old Arms of the Dukes of Burgundy.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Adoptées par Eudes II, ces armes sont celles de tous les ducs capétiens jusqu'en 1361. Les cadets les brisent : le comte de Nevers y met une bordure endentée de gueules, le seigneur de Montagu un franc quartier d'hermines, le prince de Morée un franc quartier de Villehardouin, le fils d'Eudes IV une fleur de lis d'or au franc quartier.",
+   "sources": [
+    "liste_fr",
+    "armorial_cap"
+   ]
+  },
+  "p1364": {
+   "nom": "France et Bourgogne",
+   "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or, à la bordure componée d'argent et de gueules (Valois-France) ; aux 2 et 3, bandé d'or et d'azur de six pièces, à la bordure de gueules (Bourgogne ancien)",
+   "file": "Arms of the Duke of Burgundy (1364-1404).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Philippe le Hardi, quatrième fils de Jean II, porte les armes de France brisées d'une bordure componée d'argent et de gueules, qu'il écartèle avec les anciennes armes de Bourgogne quand il devient duc, en 1364.",
+   "sources": [
+    "armorial_cap"
+   ]
+  },
+  "p1404": {
+   "nom": "Le lion de Flandre",
+   "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or, à la bordure componée d'argent et de gueules ; aux 2 et 3, bandé d'or et d'azur de six pièces, à la bordure de gueules ; sur le tout, d'or au lion de sable, armé et lampassé de gueules (Flandre)",
+   "file": "Arms of the Duke of Burgundy (1404-1430).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Jean sans Peur, fils de Marguerite de Flandre, met en cœur le lion de Flandre.",
+   "sources": [
+    "armorial_cap",
+    "liste_fr"
+   ]
+  },
+  "p1430": {
+   "nom": "Brabant et Limbourg",
+   "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or, à la bordure componée d'argent et de gueules ; au 2, parti de bandé d'or et d'azur de six pièces, à la bordure de gueules et de sable au lion d'or, armé et lampassé de gueules (Brabant) ; au 3, parti de bandé d'or et d'azur de six pièces, à la bordure de gueules et d'argent au lion de gueules, armé et lampassé d'or (Limbourg) ; sur le tout, d'or au lion de sable, armé et lampassé de gueules (Flandre)",
+   "file": "Arms of the Duke of Burgundy since 1430.svg",
+   "auteur": "Heralder",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "free": true,
+   "note": "Après l'annexion du Brabant et du Limbourg, Philippe le Bon les fait entrer dans l'écu. Charles le Téméraire ne le change plus.",
+   "sources": [
+    "armorial_cap",
+    "liste_fr"
+   ]
+  },
+  "marie1477": {
+   "nom": "Marie et Maximilien",
+   "blason": "Deux grandes parties : à gauche, pour Maximilien Iᵉʳ de Habsbourg, un coupé du parti d'Autriche ancien et d'Autriche moderne, et du tiercé en pal de Styrie, de Carinthie et de Carniole, sur le tout le Tyrol ; à droite, l'écartelé de Bourgogne de 1430, avec en cœur le lion de Flandre",
+   "file": "Blason FR Marie de Bourgogne.svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Au mariage de Marie avec l'archiduc Maximilien (1477), les armes du mari et celles de la duchesse se partagent l'écu.",
+   "sources": [
+    "armorial_cap"
+   ]
+  },
+  "philippe1482": {
+   "nom": "Philippe le Beau, duc",
+   "blason": "Écartelé : d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, avec en cœur un écusson parti de Flandre et du Tyrol",
+   "file": "Coat of arms of Philipp of Austria 1483-1485.svg",
+   "auteur": "Geraldiker",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "free": true,
+   "note": "Fils de Marie et de Maximilien, Philippe garde les armes de Bourgogne et y joint celles d'Autriche. Plus tard roi de Castille, il y écartèlera aussi les armes des Rois catholiques. Le fichier montre ses armes de duc en 1483-1485.",
+   "sources": [
+    "spain_en",
+    "liste_fr"
+   ]
+  }
+ },
+ "royaumes": [
+  {
+   "id": "bourgogne",
+   "nom": "Bourgogne",
+   "titre": "Ducs de Bourgogne",
+   "lede": "Quatre siècles et demi d'un même bandé d'or et d'azur à la bordure de gueules, qu'on brise à tout va — lambel, bordure endentée, franc quartier —, puis la fleur de lis des Valois, le lion de Flandre, le Brabant et le Limbourg, jusqu'à la mort de Charles à Nancy.",
+   "debut": 1025,
+   "fin": 1510,
+   "depart": 1364,
+   "theme": "bourgogne",
+   "mots": {
+    "bande": "Armes du duc",
+    "armesDe": "Armes du duc",
+    "maisons": "Maisons",
+    "sans": "Sans duc"
+   },
+   "methode": [
+    "Dates des règnes : « Liste des ducs de Bourgogne » (Wikipédia), à partir de Robert Iᵉʳ (1032), fondateur de la première maison capétienne de Bourgogne. Les ducs d'avant (Bosonides, Robertiens, Ivrée) sont laissés de côté, ainsi que les rois de France qui ont brièvement tenu le titre (Robert le Pieux, Henri Iᵉʳ). La frise s'arrête à Philippe le Beau (1506) : après lui, les Habsbourg de Bourgogne, puis les rois d'Espagne, ne sont plus ducs que de titre (voir les frises des Habsbourg et de l'Espagne). Les noms renvoient à l'article Wikipédia du duc.",
+    "Armoiries : « Armorial des Capétiens » (Wikipédia), qui blasonne les armes des ducs de Bourgogne et celles de leurs enfants et frères, et, pour Philippe le Beau, « Coat of arms of Spain » (Wikipedia en). Les armes des cadets, comptes de Nevers et seigneurs de Montagu, sont des brisures : le chapitre de l'encyclopédie les explique.",
+    "Le règne de Jean II le Bon (1361-1363 selon la liste) est montré à part comme une réunion à la couronne : il n'a pas intégré le duché au domaine royal, et l'a donné à son fils en 1364."
+   ],
+   "figures": "Les couronnes ne sont pas dessinées. Écus et grandes armes viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :",
+   "maisons": [
+    {
+     "id": "capetien",
+     "nom": "Première maison capétienne",
+     "couleur": "#e3c579"
+    },
+    {
+     "id": "valois",
+     "nom": "Valois-Bourgogne",
+     "couleur": "#8fb3e8"
+    },
+    {
+     "id": "habsbourg",
+     "nom": "Habsbourg",
+     "couleur": "#d9694f"
+    }
+   ],
+   "regnes": [
+    {
+     "nom": "Robert Iᵉʳ le Vieux",
+     "court": "Robert Iᵉʳ",
+     "maison": "capetien",
+     "debut": 1032,
+     "fin": "1076-03-21",
+     "wiki": "Robert Ier de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "aucune",
+     "note": "Fils du roi Robert II le Pieux et de Constance d'Arles : il fonde la première maison capétienne de Bourgogne.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Hugues Iᵉʳ",
+     "court": "Hugues Iᵉʳ",
+     "maison": "capetien",
+     "debut": "1076-03-21",
+     "fin": 1079,
+     "wiki": "Hugues Ier de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "aucune",
+     "note": "Petit-fils de Robert Iᵉʳ.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Eudes Iᵉʳ le Roux",
+     "court": "Eudes Iᵉʳ",
+     "maison": "capetien",
+     "debut": 1079,
+     "fin": "1103-03-23",
+     "wiki": "Eudes Ier de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "aucune",
+     "note": "Il succède à son frère Hugues.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Hugues II le Pacifique",
+     "court": "Hugues II",
+     "maison": "capetien",
+     "debut": "1103-03-23",
+     "fin": "1143-02-06",
+     "wiki": "Hugues II de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "aucune",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "nom": "Eudes II",
+     "court": "Eudes II",
+     "maison": "capetien",
+     "debut": "1143-02-06",
+     "fin": "1162-06-27",
+     "wiki": "Eudes II de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "note": "Il adopte le premier les armes de Bourgogne.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Hugues III",
+     "court": "Hugues III",
+     "maison": "capetien",
+     "debut": "1162-06-27",
+     "fin": "1192-08-25",
+     "wiki": "Hugues III de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Eudes III",
+     "court": "Eudes III",
+     "maison": "capetien",
+     "debut": "1192-08-25",
+     "fin": "1218-07-06",
+     "wiki": "Eudes III de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Hugues IV",
+     "court": "Hugues IV",
+     "maison": "capetien",
+     "debut": "1218-07-06",
+     "fin": "1272-10-30",
+     "wiki": "Hugues IV de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "note": "Régence d'Alix de Vergy, sa mère, de 1218 à 1228. Roi titulaire de Thessalonique de 1266 à 1272.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Robert II",
+     "court": "Robert II",
+     "maison": "capetien",
+     "debut": "1272-10-30",
+     "fin": "1306-03-21",
+     "wiki": "Robert II de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "note": "Troisième fils d'Hugues IV ; père de Marguerite de Bourgogne (mariée à Louis X) et de Jeanne (mariée à Philippe VI).",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Hugues V",
+     "court": "Hugues V",
+     "maison": "capetien",
+     "debut": "1306-03-21",
+     "fin": "1315-05-09",
+     "wiki": "Hugues V de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Eudes IV",
+     "court": "Eudes IV",
+     "maison": "capetien",
+     "debut": "1315-05-09",
+     "fin": "1349-04-03",
+     "wiki": "Eudes IV de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "note": "Cadet, il brise d'abord les armes d'une bordure endentée avant la mort de son frère aîné. Petit-fils de Saint Louis par sa mère.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Philippe Iᵉʳ de Rouvres",
+     "court": "Philippe Iᵉʳ",
+     "maison": "capetien",
+     "debut": "1349-04-03",
+     "fin": "1361-11-21",
+     "wiki": "Philippe Ier de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "ancien",
+     "note": "Né posthume à Rouvres-en-Plaine en 1346, il succède à son grand-père ; régence de Jeanne d'Auvergne, sa mère, de 1349 à 1361. Il meurt de la peste à quinze ans : c'est le dernier duc capétien.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Philippe II le Hardi",
+     "court": "Philippe II",
+     "maison": "valois",
+     "debut": 1364,
+     "fin": 1404,
+     "wiki": "Philippe II de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "p1364",
+     "avant": [
+      {
+       "titre": "Comte de Touraine",
+       "blason": "D'azur semé de fleurs de lis d'or, à la bordure componée d'argent et de gueules",
+       "file": "Arms of Philip II of Burgundy and the Count of Touraine.svg",
+       "auteur": "Heralder",
+       "lic": "CC BY-SA 3.0",
+       "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+       "note": "Philippe, quatrième fils de Jean II, porte les armes de France brisées d'une bordure componée avant d'être duc.",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ],
+     "note": "Quatrième et dernier fils du roi Jean II le Bon. Jean II lui transmet le duché trois ans après l'avoir revendiqué : c'est la seconde maison de Bourgogne.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Jean sans Peur",
+     "court": "Jean sans Peur",
+     "maison": "valois",
+     "debut": 1404,
+     "fin": 1419,
+     "wiki": "Jean Ier de Bourgogne",
+     "branche": "duc de Bourgogne",
+     "armes": "p1404",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Philippe III le Bon",
+     "court": "Philippe III",
+     "maison": "valois",
+     "debut": 1419,
+     "fin": 1467,
+     "wiki": "Philippe le Bon",
+     "branche": "duc de Bourgogne",
+     "armes": "p1404",
+     "phases": [
+      {
+       "debut": 1419,
+       "fin": 1430,
+       "armes": "p1404"
+      },
+      {
+       "debut": 1430,
+       "fin": 1467,
+       "armes": "p1430"
+      }
+     ],
+     "note": "Duc de Bourgogne, de Lothier et de Brabant, comte de Flandre, de Hainaut et de Hollande.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Charles le Téméraire",
+     "court": "Charles",
+     "maison": "valois",
+     "debut": 1467,
+     "fin": "1477-01-05",
+     "wiki": "Charles le Téméraire",
+     "branche": "duc de Bourgogne",
+     "armes": "p1430",
+     "avant": [
+      {
+       "titre": "Comte de Charolais",
+       "blason": "Les pleines armes de Bourgogne de son père (écartelées de France, de Bourgogne, de Brabant et de Limbourg, Flandre sur le tout), brisées d'un lambel d'argent",
+       "file": "Blason Charles de Bourgogne (1433-1477), Comte de Charolais.svg",
+       "auteur": "Jimmy44, d'après un fichier d'Ipankonin",
+       "lic": "CC BY 3.0",
+       "licurl": "https://creativecommons.org/licenses/by/3.0",
+       "note": "Charles, fils aîné du duc, brise les armes paternelles d'un lambel d'argent ; devenu duc en 1467, il supprime le lambel.",
+       "sources": [
+        "armorial_cap"
+       ]
+      }
+     ],
+     "note": "Fils unique de Philippe le Bon, dernier homme de la maison de Valois-Bourgogne ; mort à Nancy, il ne laisse qu'une fille.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Marie de Bourgogne",
+     "court": "Marie",
+     "maison": "valois",
+     "debut": "1477-01-05",
+     "fin": 1482,
+     "wiki": "Marie de Bourgogne",
+     "branche": "duchesse de Bourgogne",
+     "armes": "marie1477",
+     "note": "Cinquième et dernière duchesse de la branche de Valois-Bourgogne. Elle épouse l'archiduc Maximilien de Habsbourg, qui reprend les titres et possessions des Valois-Bourgogne, les Pays-Bas bourguignons, le comté de Bourgogne, la Toison d'or et les armoiries.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "nom": "Philippe le Beau",
+     "court": "Philippe le Beau",
+     "maison": "habsbourg",
+     "debut": 1482,
+     "fin": "1506-09-25",
+     "wiki": "Philippe Ier le Beau",
+     "branche": "duc de Bourgogne",
+     "armes": "philippe1482",
+     "note": "Premier des ducs « Habsbourg » de la liste (1482-1506), fils de Marie de Bourgogne et de Maximilien ; son fils Charles Quint lui succède comme duc en 1506.",
+     "sources": [
+      "liste_fr",
+      "spain_en"
+     ]
+    }
+   ],
+   "vides": [
+    {
+     "nom": "Jean II le Bon",
+     "debut": "1361-11-21",
+     "fin": 1364,
+     "wiki": "Jean II de France",
+     "note": "À la mort de Philippe de Rouvres, Jean II, deuxième roi Valois, revendique le duché le 28 décembre 1361. Il ne l'intègre pas au domaine royal : le duché reste une entité féodale distincte, que les états bourguignons défendent. Henri de Bar en est le premier gouverneur (1362) ; en 1364, le roi le transmet à son fils Philippe le Hardi. La liste lui donne un règne de 1361 à 1363.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "jalons": [
+    {
+     "annee": 1032,
+     "titre": "La première maison",
+     "texte": "Robert, fils du roi Robert II le Pieux, devient duc de Bourgogne.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1143,
+     "titre": "Les armes de Bourgogne",
+     "texte": "Eudes II adopte le premier les armes : bandé d'or et d'azur de six pièces, à la bordure de gueules. Elles resteront celles des ducs jusqu'en 1361.",
+     "sources": [
+      "liste_fr",
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1315,
+     "titre": "Les brisures des cadets",
+     "texte": "Les cadets brisent les armes ducales : bordure endentée pour le comte de Nevers, que reprend Eudes IV tant que son frère aîné Hugues V vit encore, franc quartier d'hermines pour Montagu, de Villehardouin pour la Morée, fleur de lis au franc quartier pour un fils d'Eudes IV.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1361,
+     "titre": "Le dernier duc capétien",
+     "texte": "Philippe de Rouvres meurt de la peste à quinze ans. Jean II le Bon revendique le duché, qu'il donne en 1364 à son fils Philippe le Hardi.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1364,
+     "titre": "France et Bourgogne",
+     "texte": "Philippe le Hardi écartèle ses armes de fils de France (la bordure componée d'argent et de gueules) avec les anciennes armes de Bourgogne.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1404,
+     "titre": "Le lion de Flandre",
+     "texte": "Jean sans Peur, fils de Marguerite de Flandre, met en cœur le lion de Flandre.",
+     "sources": [
+      "armorial_cap",
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1430,
+     "titre": "Brabant et Limbourg",
+     "texte": "Philippe le Bon fait entrer dans l'écu le Brabant et le Limbourg, annexés.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1467,
+     "titre": "Plus de lambel",
+     "texte": "Charles, comte de Charolais, portait les armes de son père brisées d'un lambel d'argent ; devenu duc, il le supprime.",
+     "sources": [
+      "armorial_cap"
+     ]
+    },
+    {
+     "annee": 1477,
+     "titre": "Nancy",
+     "texte": "Charles meurt à Nancy. Le duché de Bourgogne est annexé au royaume de France ; le comté de Bourgogne (Franche-Comté) et les Pays-Bas passent aux Habsbourg par le mariage de Marie avec Maximilien.",
+     "sources": [
+      "liste_fr"
+     ]
+    },
+    {
+     "annee": 1482,
+     "titre": "Les Habsbourg",
+     "texte": "Philippe le Beau, fils de Marie et de Maximilien, hérite des titres, des armes et de la Toison d'or. Les ducs Habsbourg de Bourgogne se succèdent jusqu'en 1918, titre de courtoisie à partir de 1795 pour les Habsbourg d'Autriche.",
+     "desaccord": "La nature de l'inféodation de 1364 est débattue : le roi de France et les Habsbourg se disputent le titre.",
+     "sources": [
+      "liste_fr"
+     ]
+    }
+   ],
+   "grandesArmes": [
+    {
+     "debut": 1430,
+     "fin": 1467,
+     "file": "Coat of Arms of the Duke of Burgundy since 1430.svg",
+     "auteur": "Sodacan, croix de Katepanomegas",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Philippe le Bon : l'écu dans son décor",
+     "ornements": [
+      "Collier de la Toison d'or (d'après le dessin du fichier)",
+      "Deux bâtons noueux passés en sautoir derrière l'écu : la croix de Bourgogne (d'après le dessin)"
+     ],
+     "sources": [
+      "liste_fr"
+     ],
+     "note": "Le fichier montre l'écu de Philippe III le Bon avec ses ornements ; l'article sur les ducs ne décrit pas ces ornements."
+    },
+    {
+     "debut": 1467,
+     "fin": 1477,
+     "file": "Coat of Arms of Charles the Bold, Duke of Burgundy.svg",
+     "auteur": "Sodacan, quelques éléments de Katepanomegas",
+     "lic": "CC BY-SA 3.0",
+     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "free": true,
+     "titre": "Charles le Téméraire : l'écu et ses supports",
+     "ornements": [
+      "Supports : deux lions (d'après le dessin du fichier)",
+      "Collier de la Toison d'or"
+     ],
+     "sources": [
+      "liste_fr"
+     ],
+     "note": "Le fichier est dessiné d'après un tableau d'armes de Charles le Téméraire ; le lambel du comte de Charolais n'y est plus."
+    }
+   ],
+   "ornements": []
+  }
+ ]
+}

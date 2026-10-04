@@ -16,7 +16,7 @@ Pour modifier le contenu, on modifie un fichier JSON et on publie.
 | `index.html` — **L'encyclopédie** | Douze chapitres (origines, écu, émaux, partitions, règles, pièces, meubles, blasonnement, ornements, droit du blason, droit comparé, brisures), glossaire et répertoire de plus de 300 termes, bibliographie, recherche. Les figures sont dessinées en SVG ; celles qu'on emprunte portent leur crédit. | `data/data.json` |
 | `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement — et, sous celui que l'Atelier sait relire, un bouton « Redessiner dans l'Atelier ». | `data/blasons.json` |
 | `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement (même bouton). | `data/personnages.json` |
-| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, rois d'Angleterre, maison de Savoie, Habsbourg, papauté. | `data/frises.json` et un fichier par lignée |
+| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, d'Angleterre, d'Écosse et de Portugal, ducs de Bourgogne, rois de Castille, d'Aragon et d'Espagne, maisons de Savoie et de Habsbourg, papauté. | `data/frises.json` et un fichier par lignée |
 | `atelier.html` — **L'Atelier** | On compose des armes (champ, pièce, meubles, ornements) ; le blasonnement s'écrit tout seul, dans l'ordre où un héraut le lirait. Et inversement : on tape un blasonnement, l'écu se dessine. Lien de partage, export SVG et PNG, rappel de la règle des émaux, crédits de chaque figure empruntée. | `data/atelier.json`, `data/data.json` |
 
 ### Ce que sait faire l'Atelier
@@ -65,7 +65,8 @@ data/
   data.json         tout le contenu de l'encyclopédie
   blasons.json  personnages.json    les images de Commons des deux galeries
   frises.json       la liste des frises de la page Lignées
-  lignees.json (rois de France)  angleterre.json  savoie.json  habsbourg.json  papaute.json     une lignée par fichier
+  lignees.json (rois de France)  angleterre.json  ecosse.json  portugal.json  espagne.json (Castille, Aragon, Espagne)  bourgogne.json
+  savoie.json  habsbourg.json  papaute.json     une lignée par fichier
   atelier.json      meubles et ornements de l'Atelier
 
 tools/
@@ -112,6 +113,9 @@ le domaine public.
    `sources`), `vides`, `jalons` (les dates qui comptent), `grandesArmes` et `ornements` (couronne, collier, tenants… avec leurs dates).
    Quand les sources divergent, on le dit : `desaccord` dans un jalon, `approx` dans une date.
 2. Ajouter une ligne à `data/frises.json` : `id`, `nom`, `groupe`, `dates`, `file`, et `embleme` (un fichier de Commons déjà crédité dans la lignée).
+3. Si la lignée a sa propre ambiance : un thème (`"theme": "…"`), c'est-à-dire une règle `.stage.theme-…` dans `lignees.html` pour les couleurs et un motif de semis dans `SEMIS` (`assets/lignees.js`). Sans thème, la frise prend celui de la France.
+
+Un fichier peut porter plusieurs `royaumes[]` (Habsbourg, Espagne) : leurs frises s'empilent dans la page, mais seuls `methode` et `figures` du *premier* sont affichés, et les crédits de toutes les figures sont réunis dessous. La méthode de toute la lignée se décrit donc dans le premier.
 
 ### L'Atelier — `data/atelier.json`
 
@@ -139,7 +143,7 @@ python3 tools/check_data.py          # instantané : données, fichiers cités, 
 ```
 
 Le test de fumée charge chaque page dans un vrai navigateur, vérifie qu'elle se construit sans erreur, que les cartes sont dans leurs
-grilles, que les ancres d'adresse mènent au bon chapitre, que les cinq frises se dessinent, puis soumet l'Atelier à une série de
+grilles, que les ancres d'adresse mènent au bon chapitre, que les neuf frises se dessinent, puis soumet l'Atelier à une série de
 blasonnements connus et à des compositions tirées au hasard (qui ne doivent jamais échouer). Il vérifie aussi le lecteur de blasonnement :
 chaque écu que l'Atelier sait écrire doit se relire à l'identique (mêmes armes, même texte, même dessin) ; les textes qu'il ne doit pas
 comprendre sont refusés avec la bonne raison ; un mot inconnu fait refuser le texte ; et chaque bouton « Redessiner dans l'Atelier » des

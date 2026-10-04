@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'Armorial — Lignées</title>
-<meta name="description" content="Les armes des souverains et des papes, règne après règne : ce qui change dans l'écu, et quand. Rois de France et d'Angleterre, maisons de Savoie et de Habsbourg, papauté.">
+<meta name="description" content="Les armes des souverains et des papes, règne après règne : ce qui change dans l'écu, et quand. Rois de France, d'Angleterre, d'Écosse, de Portugal et d'Espagne, ducs de Bourgogne, maisons de Savoie et de Habsbourg, papauté.">
 <meta name="theme-color" content="#e9e1cd">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://i-envy-hades.github.io/armorial/lignees.html">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="L'Armorial — Lignées">
-<meta property="og:description" content="Les armes des souverains et des papes, règne après règne : ce qui change dans l'écu, et quand. Rois de France et d'Angleterre, maisons de Savoie et de Habsbourg, papauté.">
+<meta property="og:description" content="Les armes des souverains et des papes, règne après règne : ce qui change dans l'écu, et quand. Rois de France, d'Angleterre, d'Écosse, de Portugal et d'Espagne, ducs de Bourgogne, maisons de Savoie et de Habsbourg, papauté.">
 <meta property="og:url" content="https://i-envy-hades.github.io/armorial/lignees.html">
 <meta name="twitter:card" content="summary">
 <!--
@@ -50,6 +50,18 @@
 /* thème Angleterre : pourpre royal et or, semis de roses Tudor */
 .stage.theme-angleterre{--night:#12070d;--night-2:#36101f;--night-3:#561a31;--bg:18,7,13;--glow:rgba(214,70,96,.26);--medal:radial-gradient(circle at 40% 35%,#6a1d34,#1e0811)}
 .stage.theme-angleterre .big .b-field{fill:url(#g-gules)}
+/* thème d'Écosse : nuit de chardon et or, semis de croix de saint André */
+.stage.theme-ecosse{--night:#071a24;--night-2:#0e3042;--night-3:#14465f;--bg:7,26,36;--glow:rgba(90,170,210,.26);--medal:radial-gradient(circle at 40% 35%,#1f5b78,#08202c)}
+.stage.theme-ecosse .big .b-field{fill:url(#g-or)}
+/* thème de Portugal : vert profond et or, semis de quinas */
+.stage.theme-portugal{--night:#08201a;--night-2:#0f3a2c;--night-3:#175240;--bg:8,32,26;--glow:rgba(90,200,150,.25);--medal:radial-gradient(circle at 40% 35%,#1f6b52,#08241b)}
+.stage.theme-portugal .big .b-field{fill:url(#g-argent)}
+/* thème d'Espagne : sienne brûlée et or, semis de châteaux */
+.stage.theme-espagne{--night:#1c0b07;--night-2:#47200f;--night-3:#6b3115;--bg:28,11,7;--glow:rgba(240,160,70,.26);--medal:radial-gradient(circle at 40% 35%,#8a4a1f,#2a1006)}
+.stage.theme-espagne .big .b-field{fill:url(#g-gules)}
+/* thème de Bourgogne : brun doré, semis de bandé d'or et d'azur */
+.stage.theme-bourgogne{--night:#1c1608;--night-2:#3d300f;--night-3:#5c4a17;--bg:28,22,8;--glow:rgba(240,200,80,.26);--medal:radial-gradient(circle at 40% 35%,#6e5820,#1f1808)}
+.stage.theme-bourgogne .big .b-field{fill:url(#g-or)}
 /* sélecteur de lignées : bouton + panneau groupé par pays, avec recherche */
 .lpick{position:relative;display:inline-block;margin-top:1.3rem;text-align:left}
 .lp-btn{display:flex;align-items:center;gap:.8rem;min-width:min(22rem,90vw);padding:.5rem 1rem .5rem .6rem;border:1px solid var(--rule);border-radius:14px;background:var(--vellum-2);color:var(--ink);cursor:pointer;font:inherit;transition:border-color .2s,box-shadow .2s}
