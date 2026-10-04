@@ -368,6 +368,177 @@
       "isbn": "—",
       "type": "Ressource en ligne",
       "note": "Les champs remplis par répétition de petits meubles : le semé (nombre indéfini, meubles incomplets près des bords, règle des émaux), le pavage (échiqueté, losangé, maçonné…) et ses rapports avec les fourrures. La page ne porte pas de bandeau d'avertissement et ne cite aucune référence."
+    },
+    "wiki_piece": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Pièce (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Pièce_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition de la pièce, distinction honorable / ordinaire (« très fluctuante »), cinq pièces incontestées, critères objectifs proposés (surface, accrochage, rebattement) et listes de quatre auteurs — Jouffroy d'Eschavannes (1855), Amédée de Foras (1883), Duhoux d'Argicourt (1896), O'Kelly de Galway (1901) —, citées d'après l'article et non lues."
+    },
+    "wiki_chevron": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Chevron (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Chevron_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Forme, position et rebattement du chevron, chevronnel et étai (avec la thèse minoritaire de Duhoux d'Argicourt), attributs. L'origine et le symbolisme y portent un bandeau « interprétation personnelle ? » et ne sont pas repris ici."
+    },
+    "wiki_rebattement": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Rebattement",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Rebattement",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Répétition de partitions ou de pièces simples : pièces rebattues (nombre impair de zones) et champs alternés (nombre pair), noms des rayures (palé, fascé, bandé, barré, chevronné) et de leurs formes à petites pièces (vergeté, burelé, coticé, étayé), nombres par défaut. L'article note que la notion est très diversement définie, archaïque, et que le terme est de moins en moins employé."
+    },
+    "wiki_blasonnement": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Blasonnement",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Blasonnement",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Blasonner des armes ou décrire une représentation, critères d'un blason bien constitué (rapportés à la Commission nationale d'héraldique), ordre de description de l'écu et des ornements, exemples (Alsace ancien, Liège, ducs de Mayenne), propriété intellectuelle en droit français. L'article porte un bandeau demandant à mieux sourcer certains passages."
+    },
+    "wiki_armes_composees": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armes composées",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armes_composées",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Parti, écartelé, mi-parti, quartiers, grandes armes, chef de France ; règles de blasonnement (ordre « haut avant bas, dextre avant senestre », numérotation en cascade) ; exemples (Schönborn, diptyque Grenville)."
+    },
+    "wiki_alliance": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armoiries d'alliance",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armoiries_d'alliance",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Écus accolés ou écu parti ; usages français et belge. Article très court, sans références."
+    },
+    "wiki_courtoisie": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Courtoisie héraldique",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Courtoisie_héraldique",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Contourner un lion, une aigle, un heaume pour qu'ils regardent les armes de l'épouse ; Alsace, Gueldre, Montmorency. L'article cite Fox-Davies (1909) et Bernhard Peter, non lus ici."
+    },
+    "wiki_britannique": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Héraldique britannique",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Héraldique_britannique",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Transmission des armes, femmes (héritière, losange, veuve), mariage, brisures ; différences écossaises. Seule la partie sur les femmes et le mariage est reprise dans le chapitre « Alliances »."
+    },
+    "wiki_obiit": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Obiit",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Obiit",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Armoiries funéraires : panneau en losange, fond sombre, blason ovale des épouses, fond partagé au Royaume-Uni."
+    },
+    "wiki_heraut": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Héraut",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Héraut",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Office d'armes : quatre grades, origine au XIIᵉ siècle, liens avec les tournois, âge d'or et déclin en France (ordonnance de 1306, collège de 1406, juge d'armes en 1615, dernière mention en 1830). L'article renvoie à Nadot et Couhault, non lus ici ; l'une de ses phrases porte la mention « référence nécessaire »."
+    },
+    "wiki_armorial": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armorial",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armorial",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Types d'armoriaux (occasionnels, provinciaux, institutionnels, généraux), exemples datés (Bigot 1254, Compiègne 1278, Falkirk 1298, Gelre vers 1430…), armoriaux ordonnés. Aucune référence dans le corps du texte."
+    },
+    "wiki_cimier": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Cimier",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Cimier",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Fonction militaire du cimier, ornement de parade, formes selon le heaume."
+    },
+    "wiki_cri": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Liste de cris de guerre",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Liste_de_cris_de_guerre",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition du cri de guerre, sa place au-dessus du blason ; quelques cris français et bourguignons. Seul le début de l'article et quelques exemples sont repris."
+    },
+    "wiki_devise": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Devise (phrase)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Devise_(phrase)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition de la devise, quelques exemples célèbres, sa place sous l'écu."
+    },
+    "wiki_listel": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Listel (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Listel_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Le listel : ruban portant devise ou cri, sous, sur ou autour de l'écu."
+    },
+    "wiki_bonne_ville": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Bonne ville (France)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Bonne_ville_(France)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition et histoire de l'expression, droit au chef de France, bonnes villes du Consulat, de l'Empire (liste de 1804, titre de baron, annexions) et de la Restauration (liste de 1821 : quarante villes). L'article cite des textes officiels et des travaux d'historiens (Chevalier, Favreau, Mauduech…), non lus ici."
+    },
+    "wiki_communes_empire": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armorial des communes de l'Empire",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armorial_des_communes_de_l'Empire",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Décret du 17 mai 1809 et les trois ordres de villes avec leurs marques (chef d'abeilles, franc-quartier, couronnes murales). Seul le texte d'introduction est repris ; l'armorial lui-même est une galerie d'images."
+    },
+    "wiki_couronne_murale": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Couronne murale",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Couronne_murale",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Origine antique de la couronne murale et sa présence dans l'héraldique municipale. Article court."
+    },
+    "wiki_armes_parlantes": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Armes parlantes",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Armes_parlantes",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Les procédés des armes parlantes et allusives, avec de nombreux exemples de communes et de familles. L'article renvoie à Michel Pastoureau, « Une écriture en images : les armoiries parlantes » (2008), non lu ici."
     }
   },
   "tinctures": [
@@ -1385,7 +1556,70 @@
           "sources": [
             "joubert1977"
           ],
-          "html": "\n          <p>Les <b>pièces honorables</b> sont les grandes figures géométriques qui traversent l'écu. Beaucoup dériveraient des <i>renforts</i> peints ou métalliques du bouclier primitif — la <b>fasce</b> (bande horizontale), le <b>pal</b> (vertical), le <b>chevron</b>, la <b>bande</b> et la <b>barre</b> (les diagonales), le <b>chef</b> (tiers supérieur), la <b>croix</b>, le <b>sautoir</b>, la <b>bordure</b> et l'<b>orle</b>.</p>\n          <p>Réduites en largeur, elles donnent des <b>rebattements</b> : la fasce amincie devient <i>burelle</i>, le pal <i>vergette</i>, la bande <i>cotice</i>. Multipliées, elles rythment le champ.</p>"
+          "html": "\n          <p>Les <b>pièces honorables</b> sont les grandes figures géométriques qui traversent l'écu. Beaucoup dériveraient des <i>renforts</i> peints ou métalliques du bouclier primitif — la <b>fasce</b> (bande horizontale), le <b>pal</b> (vertical), le <b>chevron</b>, la <b>bande</b> et la <b>barre</b> (les diagonales), le <b>chef</b> (tiers supérieur), la <b>croix</b>, le <b>sautoir</b>, la <b>bordure</b> et l'<b>orle</b>.</p>\n          <p>Réduites en largeur, elles donnent des <b>diminutifs</b> (Joubert les nomme « rebattements » ; l'usage courant réserve ce mot à la répétition, voir plus bas) : la fasce amincie devient <i>burelle</i>, le pal <i>vergette</i>, la bande <i>cotice</i>. Multipliées, elles rythment le champ.</p>"
+        },
+        {
+          "titre": "Honorable ou ordinaire : une frontière qui bouge",
+          "sources": [
+            "wiki_piece"
+          ],
+          "html": "\n          <p>Une <b>pièce</b> est une figure de forme géométrique, limitée par des lignes géométriques, qui occupe une place fixe sur l'écu. Les plus simples et les plus anciennes sont dites <b>honorables</b> ; les autres sont dites <b>ordinaires</b>, ou « de second ordre ». La frontière est très fluctuante : les auteurs ne s'accordent ni sur la liste ni sur le critère qui la fonderait.</p>\n          <p>Une seule chose fait consensus. Cinq pièces ne sont contestées par personne : la <b>fasce</b>, le <b>chef</b>, la <b>bande</b>, le <b>pal</b> et le <b>chevron</b>. La <b>barre</b> — symétrique de la bande, mais plus rare — et la <b>bordure</b> complètent très souvent la liste. Pour aller plus loin, on a proposé trois critères : la <b>surface</b> (une pièce honorable est assez large pour porter des meubles, de l'ordre du tiers de l'écu), l'<b>accrochage</b> (elle touche au moins deux bords de l'écu, souvenir des renforts qu'on fixait au bouclier) et la faculté de se <b>rebattre</b>, c'est-à-dire de se répéter pour paver le champ (voir l'article suivant). Chacun ajoute ou retranche des figures.</p>\n          <p>Les listes d'auteurs le montrent. Aux cinq pièces incontestées, ils ajoutent :</p>\n          <ul>\n          <li>A. O'Kelly de Galway (1901) : la croix et le sautoir ;</li>\n          <li>Amédée de Foras (1883) : la barre, la croix et le sautoir ;</li>\n          <li>L.-A. Duhoux d'Argicourt (1896) : la barre, la croix, le sautoir, le quartier, le giron et la champagne ;</li>\n          <li>Jouffroy d'Eschavannes (1855) : les mêmes, plus l'écusson en cœur — avec cette réserve que la champagne n'y compterait que depuis Napoléon.</li>\n          </ul>\n          <p>Rien de tout cela ne change la façon de blasonner : on écrit « d'argent à la fasce de gueules » que la fasce soit tenue pour honorable ou non. C'est un vocabulaire de classement, pas de grammaire. La liste de dix figures qui ouvre ce chapitre est celle de Joubert ; elle n'a rien d'unanime.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">État des connaissances</span>\n          <p><b>Établi :</b> la définition de la pièce, les cinq pièces incontestées, et le fait que la distinction honorable / ordinaire est « très fluctuante » et n'influe ni sur la création ni sur la lecture du blason.</p>\n          <p><b>Discuté :</b> tout le reste — la liste exacte, le critère. Les quatre auteurs cités le sont d'après Wikipédia ; leurs ouvrages n'ont pas été lus.</p>\n          </div>\n        "
+        },
+        {
+          "titre": "Rebattre : de la pièce au champ rayé",
+          "sources": [
+            "wiki_rebattement",
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>On <b>rebat</b> une partition ou une pièce simple quand on la répète sur tout le champ : c'est le <b>rebattement</b>. Partons d'un parti d'or et de gueules. Un premier rebattement donne trois zones ; ce n'est plus une partition mais une pièce : « d'or au pal de gueules ». Chaque répétition de plus fait apparaître tantôt une pièce, tantôt une partition, selon le nombre de zones :</p>\n          <ul>\n          <li>un nombre <b>impair</b> de zones (trois, cinq, sept…) laisse aux deux bords le même émail : on blasonne des pièces — « d'or à trois pals de gueules » — jusqu'à trois, exceptionnellement quatre ;</li>\n          <li>un nombre <b>pair</b> donne des bords d'émaux opposés : c'est un champ alterné, qu'on blasonne par le type de rayure et le nombre de pièces — « palé d'or et de gueules de huit pièces ».</li>\n          </ul>\n          <p>Le type de rayure suit la direction du trait : <b>palé</b> (vertical), <b>fascé</b> (horizontal), <b>bandé</b>, <b>barré</b>, <b>chevronné</b>. Quand les pièces sont nombreuses — au-delà de huit — et minces, elles changent de nom : <b>vergeté</b>, <b>burelé</b>, <b>coticé</b> (<i>coticé en barre</i>, ou contre-coticé, dans l'autre sens), <b>étayé</b> pour les chevrons. Les rayures à grandes pièces en comptent six par défaut — neuf pour trois émaux —, ce qu'on ne dit pas ; au-delà, on précise : « fascé d'argent et de gueules de huit pièces ». Les rayures à petites pièces en comptent dix par défaut (douze pour trois émaux), mais le nombre exact y devient indifférent. Dans l'Atelier, le champ « Rayé » donne ces rayures, de six ou de huit pièces — ou, avec un nombre impair de zones, deux, trois ou quatre pièces rebattues (« d'or à trois pals de gueules »).</p>\n          <p>Un piège de vocabulaire : le mot « pièce » a ici deux sens. « Fascé de six pièces » compte des zones ; les pièces honorables, elles, sont des figures géométriques à place fixe (voir l'article précédent). Pour les distinguer, certains écrivent « pièce » en minuscule quand il s'agit d'un nombre, « Pièce » en capitale quand il s'agit d'une forme.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">Un mot, deux sens</span>\n          <p>Le glossaire de ce site donne à « rebattement », d'après Joubert, le sens de <i>diminutif</i> : la fasce amincie devient burelle. L'article « Rebattement » de Wikipédia réserve le mot à la <i>répétition</i>, note que les auteurs le définissent très diversement, que la notion paraît archaïque et que le terme, de moins en moins employé, ne fait pas partie du blasonnement. Ce chapitre dit « rebattre » pour répéter et « diminuer » pour amincir (article suivant) ; les deux usages se rencontrent dans les livres.</p>\n          </div>\n        "
+        },
+        {
+          "titre": "Diminuer : toute une famille à partir de la fasce",
+          "sources": [
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Une pièce peut aussi être <b>diminuée</b> : sa largeur est réduite, et elle change de nom. La langue du blason tire ainsi, d'une même pièce, une famille de figures voisines.</p>\n          <ul>\n          <li><b>La fasce</b> donne la <b>divise</b> (seule dans son champ), la <b>burelle</b> (en nombre pair, quatre ou plus : « d'argent à six burelles de gueules »), la <b>trangle</b> (la même, en nombre impair), la <b>jumelle</b> (deux burelles séparées par un espace égal à leur largeur, le tout ayant l'épaisseur d'une fasce) et la <b>tierce</b> (trois trangles, même principe).</li>\n          <li><b>Le pal</b> donne la <b>vergette</b> (rebattue cinq fois ou plus).</li>\n          <li><b>La bande</b> donne la <b>cotice</b> (réduite au tiers, ou rebattue au-delà de quatre), puis le <b>filet</b> (une cotice très amincie). Le <b>bâton</b> et la <b>traverse</b>, bandes ou cotices réduites, servent surtout de brisures (voir le chapitre « Brisures »).</li>\n          <li><b>Le chevron</b> donne le <b>chevronnel</b>, ou <b>étai</b>.</li>\n          <li><b>Le chef</b> donne le <b>comble</b>, ou chef retrait.</li>\n          <li><b>La bordure</b> donne la <b>filière</b> ; <b>la croix</b>, le <b>filet en croix</b> (étrez) ; <b>la champagne</b>, la <b>plaine</b>.</li>\n          </ul>\n          <p>Les définitions flottent, y compris au sein d'une même liste. La <b>divise</b> est tantôt une fasce réduite de moitié, tantôt une fasce réduite à moins du tiers de sa largeur ; sa place par défaut est celle du chef pour Charles de Grandmaison, celle de la fasce pour Pierre Palliot. Le <b>comble</b> est un chef réduit aux deux tiers de sa hauteur (parfois à la moitié) dans une entrée, à moins de la moitié dans une autre. Quant au <b>bâton</b>, les auteurs en donnent trois définitions. On retiendra la logique — même pièce, moins large, autre nom — plutôt que les mesures, que le blasonnement n'exige pas.</p>\n        "
+        },
+        {
+          "titre": "Le chevron, pièce à tout faire",
+          "sources": [
+            "wiki_chevron",
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Le <b>chevron</b> est formé de deux branches inclinées en diagonale, de part et d'autre de l'axe vertical, qui se rejoignent en pointe : un V renversé, comme la fusion d'une demi-bande et d'une demi-barre. Il se pose normalement pointe en haut, ses branches touchant les bords de l'écu ; la pointe se trouve d'ordinaire au point d'honneur — autrefois, parfois, jusqu'au sommet du champ — et chaque branche ne dépasse pas les deux septièmes de la largeur de l'écu.</p>\n          <p>Sa forme occupe une bonne part du champ, ce qui limite ses répétitions : trois au plus, rarement davantage. Un champ couvert d'un nombre pair de chevrons alternés est dit <b>chevronné</b> (« chevronné d'argent et de gueules de douze pièces »).</p>\n          <p>Étroit, il devient <b>chevronnel</b> — réduit au tiers ou au quart de sa largeur — ou <b>étai</b>, que la plupart des auteurs tiennent pour un synonyme. Un seul, L.-A. Duhoux d'Argicourt, y voit un petit chevron qui « soutient » un autre meuble ; l'article de Wikipédia juge cette lecture minoritaire, voire isolée, et rappelle qu'en pratique les largeurs de chevron, de chevronnel et d'étai varient tant que les trois noms s'échangent.</p>\n          <p>Le chevron reçoit enfin de nombreux attributs : <i>abaissé</i> (posé plus bas qu'à l'ordinaire), <i>renversé</i> ou <i>versé</i> (pointe en bas), <i>couché</i> (tourné d'un quart de tour), <i>écimé</i> (sa pointe coupée à l'horizontale), <i>alésé</i> (ses pieds ne touchent pas le bord), <i>failli</i> (une branche manque), <i>en ogive</i> (branches courbées) ; et ses bords peuvent être crénelés, ondés, dentelés, engrêlés…</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">État des connaissances</span>\n          <p><b>Discuté :</b> les mots « brisé » et « rompu ». La liste de pièces de Wikipédia appelle chevron rompu ou brisé celui qui est en plusieurs morceaux ; l'article « Chevron » appelle brisé celui qui est privé du carré de sa pointe, et rompu celui dont une branche est interrompue. Les deux pages ne s'accordent pas ; on ne tranche pas ici.</p>\n          <p><b>Non retenu :</b> l'origine du chevron (éperon du chevalier, barrière de lice des tournois) et son symbolisme figurent dans l'article avec un bandeau « interprétation personnelle ? » ; on ne les donne pas pour établis.</p>\n          </div>\n        "
+        },
+        {
+          "titre": "Trois carrés d'angle : canton, franc-canton, franc-quartier",
+          "sources": [
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Trois figures carrées se posent en coin d'écu, au chef dextre quand rien d'autre n'est dit : le <b>canton</b>, le <b>franc-canton</b> et le <b>franc-quartier</b>. Elles ne diffèrent que par la taille — le canton est le plus petit, le franc-quartier le plus grand — et les auteurs ne s'accordent pas sur les mesures. La liste de pièces de Wikipédia donne, comme valeurs assez souvent retrouvées : les deux septièmes de la largeur de l'écu pour le canton, le tiers pour le franc-canton (un neuvième de la surface), la moitié pour le franc-quartier (un quart de la surface).</p>\n          <p>Le mot <i>canton</i> a un autre sens : il désigne aussi les quatre régions du champ que laissent visibles une croix ou un sautoir — d'où la croix « cantonnée » de quatre meubles.</p>\n          <p>Le franc-canton et le franc-quartier ont beaucoup servi à l'héraldique d'Empire pour inscrire dans l'écu le titre et la fonction du porteur (voir l'article « 1808 — le rang entre dans l'écu »), souvent avec confusion : on réduisait un franc-quartier à la taille d'un franc-canton — et on le blasonnait pourtant « franc-quartier au neuvième de l'écu » — pour que restent lisibles les figures des couches inférieures. Le nom est donc impropre, ce que le chapitre sur le droit relève déjà.</p>\n        "
+        },
+        {
+          "titre": "Le haut et le bas de l'écu : chef, champagne, pile, pointe",
+          "sources": [
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Le <b>chef</b> occupe le tiers supérieur de l'écu ; la <b>champagne</b>, le tiers inférieur. Diminuée, la champagne devient <b>plaine</b> ; en escalier, elle est dite pignonnée. On ne la confond pas avec la <i>terrasse</i>, qui est un meuble, souvent mouvant de la pointe, dont le bord supérieur est irrégulier. Dans les blasons qui forment un tableau, la champagne joue le rôle que la terrasse joue dans les ornements extérieurs.</p>\n          <p>Le chef peut être abaissé (il est alors surmonté de son propre chef), soutenu par une pièce, ou réduit : le <b>comble</b>, ou chef retrait. Réduit au tiers de sa hauteur, il serait « rompu » — un terme qu'Amédée de Foras dit sans emploi, les exemples qu'on en trouverait résultant d'une mauvaise interprétation.</p>\n          <p>Le chef se combine avec d'autres pièces : le <b>chef-pal</b> (en forme de T), le <b>chef-bande</b> et le <b>chef-barre</b> (en forme de sept) sont les principaux ; d'autres, comme le chef-chevron, sont très rares, voire inemployés.</p>\n          <p>Deux triangles occupent aussi le haut ou le bas. La <b>pile</b> est un triangle isocèle dont la base, large des deux tiers de l'écu, tient au chef et dont la pointe vise le bas sans l'atteindre. La <b>pointe</b>, au sens de pièce, est le même triangle retourné : base en bas, sommet vers le chef sans l'atteindre. En bande ou en barre, la pile et la pointe meuvent d'un angle de l'écu.</p>\n        "
+        },
+        {
+          "titre": "Pièces rares : pairle, giron, gousset, hamaide, flanc…",
+          "sources": [
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Les listes de pièces comptent des figures qu'on rencontre peu, mais dont les noms valent d'être connus.</p>\n          <ul>\n          <li>Le <b>pairle</b> est formé du bas du pal et des moitiés hautes de la bande et de la barre, réunis au centre : un Y. Raccourci et aminci (« alésé et aiguisé »), il répond au <i>shakefork</i> de l'héraldique britannique, qui n'a pas de nom propre en français.</li>\n          <li>Le <b>giron</b> est un triangle rectangle qui a pour base la moitié d'un côté du champ et dont l'angle opposé est au centre de l'écu ; par défaut, il meut de la moitié supérieure du flanc dextre. Ses formes sont celles d'un gironné de huit.</li>\n          <li>Le <b>gousset</b> est composé, en haut, d'un triangle mouvant du chef, qui rejoint en bas un pal. Il tire son nom d'une pièce de tissu, puis de la pièce métallique qui reliait le devant et l'arrière d'une armure.</li>\n          <li>La <b>hamaide</b> est formée de trois fasces alésées aux extrémités arrondies ou chanfreinées. On la tient pour une seule pièce, de sorte qu'« une hamaide » est plus juste que « trois hamaides ». Son nom vient de La Hamaide, en Belgique, dont les seigneurs portaient d'or à une hamaide de gueules.</li>\n          <li>Le <b>flanc</b> correspond au bord dextre ou senestre de l'écu et se prolonge jusqu'au tiers. Le mot <i>adextré</i> est ambigu (une pièce secondaire à la dextre d'une principale, ou un écu dont le tiers dextre change d'émail) : on lui préfère « d'argent au flanc dextre de gueules ».</li>\n          <li>L'<b>escarre</b> (équerre) est une équerre de charpentier qui forme bordure sur deux côtés seulement d'un quartier.</li>\n          <li>L'<b>écusson</b> est presque unanimement tenu pour une pièce honorable quand il se pose en abîme, au tiers de la largeur et de la hauteur de l'écu ; en nombre ou ailleurs, il n'est qu'un meuble, sans changer de nom — comme la croix devient croisette.</li>\n          </ul>\n        "
         }
       ]
     },
@@ -1514,6 +1748,42 @@
             "joubert1977"
           ],
           "html": "\n          <p><b>Blasonner</b>, c'est décrire des armoiries dans la langue technique du blason. La description suit toujours le même ordre : d'abord le <b>champ</b> (le fond) avec son émail ; puis la <b>pièce ou le meuble principal</b> avec son émail ; enfin les figures secondaires. En français, l'émail se place <i>après</i> le nom de la figure.</p>\n          <ul>\n            <li><i>D'azur à trois fleurs de lis d'or</i> — champ d'azur, chargé de trois fleurs de lis d'or (les armes de France ancienne).</li>\n            <li><i>D'argent à la croix de gueules</i> — champ d'argent, croix rouge (Saint Georges, Gênes, l'Angleterre).</li>\n          </ul>\n          <p>Bien fait, le blasonnement est sans ambiguïté : deux dessinateurs qui ne se sont jamais parlé produiront les mêmes armes à partir de la même phrase. C'est un langage formel avant la lettre.</p>"
+        },
+        {
+          "titre": "Blasonner des armes, décrire un dessin : deux niveaux de précision",
+          "sources": [
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>On ne décrit pas au même niveau de détail selon qu'on veut <b>blasonner des armes</b> ou <b>décrire une figuration particulière</b> de ces armes.</p>\n          <p>Blasonner des armes, c'est inventorier les détails significatifs qui les distinguent de celles d'un autre titulaire. On y reste aussi général que l'esprit héraldique le permet, pour que l'antériorité puisse être invoquée contre toutes les armes « presque » semblables, qui ne s'en distingueraient que par des détails douteux. On écarte donc ce qui est secondaire ou d'effet de style : une attitude d'animal peu nette, une disposition de meubles qui peut passer pour une position par défaut. Ce qu'on redoute : qu'un tiers adopte « presque » les mêmes armes, au risque de confusion.</p>\n          <p>Décrire une représentation précise — un dessin, un sceau, un monument — permet au contraire d'être beaucoup plus précis : on peut signaler les irrégularités apparentes, les solutions retenues, les alternatives écartées. Ce qu'on redoute alors : le client dont les armes n'auraient pas été dessinées à son goût.</p>\n          <p>Un lion sans poils aux pattes, la queue en dehors ou en dedans, la tête tournée à droite ou à gauche, la patte levée ou non : l'héraldiste qui compose suit volontiers le style d'une région ou le désir du titulaire, mais celui qui décrit les armes doit, selon Wikipédia, exercer une censure ferme et ne retenir que ce qui tient à leur nature essentielle. Dans le doute, mieux vaut mentionner l'originalité quand on décrit le dessin — mais refuser d'y voir un signe suffisant pour distinguer ces armes de celles du voisin.</p>\n          <p>L'<a href=\"atelier.html\">Atelier</a> de ce site écrit des blasonnements du premier genre : seuls comptent l'émail, la pièce, le meuble, son nombre, son sens ; les réglages de taille et de position qu'on donne à un meuble ne changent pas le texte.</p>\n        "
+        },
+        {
+          "titre": "Bien constituer un blason : facile à dire, facile à dessiner",
+          "sources": [
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>Un blason est <b>bien constitué</b> quand il est à la fois facile à blasonner et facile à dessiner. Wikipédia résume ainsi des critères que la Commission nationale d'héraldique a réunis à partir de divers auteurs ; pensés pour les communes, ils se généralisent presque partout. Ils ne donnent pas de jugement tranché, mais permettent de voir en quoi une composition pèche et comment l'améliorer — tant que l'histoire ne l'a pas fixée.</p>\n          <p>On peut pécher de deux manières.</p>\n          <ul>\n          <li><b>Une description correcte, un dessin illisible.</b> Un blason « de vair treillissé d'hermine et clouté du champ » se comprend fort bien ; il est impossible à représenter correctement, tant les détails deviennent petits.</li>\n          <li><b>Un dessin qu'on ne sait pas décrire.</b> Beaucoup d'« armes modernes » de pays ou de communes intègrent des images, même très stylisées, qui ne suivent pas la logique du blason mais celle du dépliant publicitaire.</li>\n          </ul>\n          <p>Les armes de Liège, que l'article juge typiques d'une héraldique tardive et mal constituée, servent d'exemple. Elles se blasonnent sans trop de peine — « de gueules au perron de trois degrés, haussé et supporté par trois lions couchés, portant une colonne à trois tambours, coiffée d'une pomme de pin et sommée d'une croisette, le tout d'or, accosté d'un L et G majuscules du même » —, mais elles pèchent de deux façons. La colonne centrale appelle une dizaine de précisions (lions, pomme de pin, degrés…) qui s'effacent toutes à petite échelle : ce n'est plus une figure abstraite et symbolique, mais le portrait d'un monument, le perron liégeois. Et les lettres sont rares dans les armes, parce qu'elles ne sont pas lisibles universellement — un héraldiste formé à l'alphabet cyrillique n'y lirait rien — même si cette pratique marginale est tolérée depuis longtemps.</p>\n          <p>Plus généralement, une bonne constitution ne s'éloigne pas trop de l'usage courant : elle évite, par exemple, d'inscrire des devises sur l'écu lui-même ou de composer des tableaux trop riches.</p>\n        "
+        },
+        {
+          "titre": "Du champ à l'extérieur : l'ordre d'un blasonnement complet",
+          "sources": [
+            "wiki_blasonnement",
+            "joubert1977"
+          ],
+          "html": "\n          <p>Dans son sens strict, le blasonnement décrit l'écu ; dans son sens large, il décrit l'ensemble des armoiries. L'écu, seul porteur des éléments proprement identitaires (une partie du nom, un territoire), est toujours décrit en premier, et le texte s'arrête parfois là — faute d'ornements, ou parce qu'ils n'apportent rien de significatif.</p>\n          <p>Pour des <b>armes simples</b>, on énonce le champ (simple ou composé), puis les charges, en commençant, s'il y en a plusieurs, par la principale — la plus centrale, la plus grande ou la plus significative — avec tout ce qui la charge elle-même ; viennent ensuite les charges secondaires qui l'accompagnent sur le champ. Pour des <b>armes composées</b>, chaque quartier se comporte comme des armes simples. Dans tous les cas, on blasonne en dernier les meubles ou les figures qui affectent <b>le tout</b>.</p>\n          <p>Les <b>ornements extérieurs</b> — couronnes, colliers, tenants et terrasse, manteaux, drapeaux, devise… — viennent ensuite, du premier plan vers l'arrière et de l'écu vers l'extérieur ; mais cet ordre n'est pas rigoureusement fixé, et varie selon les lieux et les époques. Le langage y est moins rigoureux qu'à l'intérieur de l'écu, et les raccourcis sont de mise : pour des drapeaux, il est plus clair d'écrire « de France, d'Allemagne et de Pologne » que de les décrire un à un.</p>\n          <p>Un exemple simple, l'Alsace ancien : <i>parti, au premier, de gueules à la barre d'argent côtoyée de deux cotices fleuronnées du même, et au second, aussi de gueules à la bande d'or accompagnée de six couronnes du même, trois en chef et trois renversées en pointe</i>. On y lit d'abord le partage (« parti »), puis, pour chaque partie, un champ, une pièce, et les figures qui l'entourent.</p>\n          <p>En principe, à des armes données doit correspondre un texte unique : pour des armes simples, la pratique le confirme ; pour des armes complexes, on trouve assez de variantes synonymes. <a href=\"atelier.html#lire=D'azur à la fasce d'argent accompagnée de trois étoiles d'or\">Essayez cet ordre dans l'Atelier</a> : il écrit toujours le champ, puis la pièce, puis les meubles.</p>\n        "
+        },
+        {
+          "titre": "Plus de cent cinquante mots : les armes des ducs de Mayenne",
+          "sources": [
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>Wikipédia cite, comme exemple complexe, les armoiries des ducs de Mayenne, qui se blasonnent en une seule phrase de plus de cent cinquante mots. Lue de loin, la phrase est un emboîtement : <i>écartelé</i> aux 1 et 4 et aux 2 et 3 ; le grand quartier des 1 et 4 est lui-même divisé en huit parties, que le texte énumère (« au premier… au huitième ») ; un écusson <i>sur le tout</i> — d'or à la bande de gueules chargée de trois alérions d'argent — est brisé d'un <i>lambel de gueules</i> ; le grand quartier des 2 et 3 est <i>contre-écartelé</i>, avec notamment trois fleurs de lis d'or à la bordure endentée de gueules et d'or. Chaque morceau se lit comme des armes simples ; l'art est de ne pas perdre le fil.</p>\n          <p>La même page lit ces armes comme celles d'un couple : elles seraient, dans la généalogie des ducs de Guise, celles de François de Guise, dit le Balafré (1519-1563), et d'Anne d'Este et Ferrare. De cette union naquit un cadet, Charles de Mayenne, ancêtre de la branche cadette — et le lambel de gueules qui brise l'écusson est la marque habituelle d'une branche cadette (voir le chapitre « Brisures »).</p>\n        "
+        },
+        {
+          "titre": "Le texte est libre, le dessin a un auteur",
+          "sources": [
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>En France, selon l'article cité, le blasonnement lui-même — même rédigé aujourd'hui — n'est pas protégé par le droit d'auteur : c'est une description. Le dessin d'un blason, en revanche, qu'on parte d'un blasonnement ou non, est assimilable à une œuvre de l'esprit graphique qui porte « l'empreinte personnelle de son auteur » ; il est protégé, du seul fait de sa création, jusqu'à soixante-dix ans après la mort de l'auteur.</p>\n          <p>C'est ce partage que respecte ce site : les blasonnements sont des faits qu'on peut citer, mais les dessins ont des auteurs — les siens, publiés sous licence libre, et ceux de Wikimedia Commons, crédités un à un (voir la page « Blasons réels »). Ce n'est pas un avis juridique : on rapporte ce que dit l'article, pour le droit français seulement.</p>\n        "
         }
       ]
     },
@@ -1558,6 +1828,16 @@
             "wiki_eccl"
           ],
           "html": "\n          <p>Tous les ornements qui entourent l'écu ne se valent pas : certains sont, en principe, à la disposition de quiconque porte des armes ; d'autres sont réservés — par tradition plus que par loi, en France — à un rang, une fonction ou une dignité précise.</p>\n          <p><b>Ornements communs</b>, ouverts à tout armigère :</p>\n          <ul>\n            <li>le <b>heaume</b>, dont seuls le métal et l'ouverture de la visière restent, eux, un indice de rang (or et grand ouvert pour le souverain, argent ou acier à grille plus fermée en descendant l'échelle) ;</li>\n            <li>le <b>cimier</b>, posé au sommet du casque ;</li>\n            <li>les <b>lambrequins</b>, qui en descendent en feuillages découpés, souvenir du tissu protégeant la nuque du combattant ;</li>\n            <li>le <b>bourrelet</b> ou <b>torque</b>, qui tient lieu de couronne à qui n'y a pas droit ;</li>\n            <li>la <b>devise</b>, sentence brève inscrite sur un listel sous l'écu (le « Preny ! Preny ! » des ducs de Lorraine), et le <b>cri</b>, plus ancien, qui se criait au combat et se place au contraire au-dessus.</li>\n          </ul>\n          <p><b>Ornements spécifiques</b>, réservés à un rang ou une fonction :</p>\n          <ul>\n            <li>les <b>couronnes de rang</b> (voir l'article précédent), de la couronne murale des villes à la couronne fermée du souverain ;</li>\n            <li>le <b>manteau</b>, draperie le plus souvent doublée d'hermine (de vair chez les ducs d'Empire) qui enveloppe l'écu — l'apanage des souverains, des princes et des ducs ; les pairs de France portaient un manteau azur particulier ;</li>\n            <li>le <b>pavillon</b>, qui coiffe le manteau et le distingue encore : réservé au seul souverain, il marque le sommet de la hiérarchie ;</li>\n            <li>les <b>tenants</b> (figures humaines) et <b>supports</b> (animaux) qui flanquent l'écu — d'un usage plus libre en France que dans certaines traditions étrangères, où leur port est strictement réglementé par le droit héraldique ;</li>\n            <li>le <b>chapeau ecclésiastique</b> ou <b>galéro</b>, dont la couleur et le nombre de houppes disent la dignité dans l'Église : rouge à trente houppes (quinze de chaque côté) pour un cardinal, vert à vingt pour un archevêque, vert à douze pour un évêque — nombre où l'on a voulu voir un écho de celui des apôtres — puis noir, avec de moins en moins de houppes, pour les dignités inférieures (abbé, prieur, protonotaire) ; la règle générale tient en une phrase : plus la dignité est haute, plus les houppes sont nombreuses, sans que les sources consultées donnent de compte fixe en dessous du rang épiscopal ;</li>\n            <li>les <b>colliers d'ordres de chevalerie</b> (Saint-Esprit, Toison d'or, Légion d'honneur…), passés autour de l'écu et réservés aux titulaires effectifs de l'ordre.</li>\n          </ul>\n          <p>La distinction reste d'usage plus que de règlement : en dehors des ordres de chevalerie et, dans une moindre mesure, des couronnes, rien n'empêchait juridiquement, en France, d'orner ses armes de tenants ou d'un manteau sans en avoir le rang — d'où la prudence avec laquelle on lit aujourd'hui les armoriaux anciens.</p>"
+        },
+        {
+          "titre": "Au-dessus et au-dessous de l'écu : cimier, cri, devise",
+          "sources": [
+            "wiki_cimier",
+            "wiki_cri",
+            "wiki_devise",
+            "wiki_listel"
+          ],
+          "html": "\n          <p>Le <b>cimier</b> est l'ornement qui surmonte un casque ou un heaume. Sa fonction première est militaire : il grandit la silhouette de son porteur pour impressionner l'adversaire, et sert de repère sur le champ de bataille. Au Moyen Âge, c'est un ornement de parade, destiné à frapper les spectateurs avant l'entrée en tournoi, et non à résister aux coups. Quand le heaume fait partie des ornements extérieurs de l'écu, le cimier reprend fréquemment une figure des armes ; un casque à sommet pointu peut porter un panache, un casque à sommet plat des décors plus élaborés — têtes et cols d'animaux, bustes ou membres issants, ailes, cornes, petites bannières.</p>\n          <p>Les mots, eux, se partagent la place autour de l'écu. Le <b>cri de guerre</b> — mot ou phrase commun aux membres d'une armée ou d'une compagnie, qui sert à se reconnaître et à se motiver avant le combat — figure au-dessus du blason ; la <b>devise</b> — phrase courte qui suggère un idéal, une règle de conduite ou un passé glorieux — se place en dessous. L'un et l'autre s'écrivent sur un <b>listel</b>, ruban ou bandeau qu'on pose le plus souvent sous l'écu, mais aussi au-dessus, ou tout autour comme un collier.</p>\n          <p>Quelques devises connues : « Dieu et mon droit », celle du souverain du Royaume-Uni ; « Honi soit qui mal y pense », celle de l'ordre de la Jarretière ; « Fluctuat nec mergitur », celle de la ville de Paris ; « Je maintiendrai », celle des Pays-Bas ; « Je me souviens », celle du Québec. Du côté des cris : « Montjoie ! Saint Denis ! » pour la France, « Moult me tarde » pour Philippe le Hardi, « Ainsi je frappe » pour Charles le Téméraire. Dans l'<a href=\"atelier.html\">Atelier</a>, la devise se pose sur un bandeau, sous l'écu.</p>\n        "
         }
       ]
     },
@@ -1718,6 +1998,142 @@
             "wiki_cadency"
           ],
           "html": "\n          <p>Quand la brisure s'installe, au XIII<sup>e</sup> siècle, les fils illégitimes n'ont pas de marque particulière ; à partir du XIV<sup>e</sup>, certains signes leur sont plus volontiers réservés, sans que l'usage soit universel. L'historien Laurent Hablot, que suit Wikipédia, distingue trois systèmes.</p>\n          <ul><li>L'<b>écu plain</b> (uni, souvent d'argent ou d'or), qui porte les armes du père — parfois celles de la mère — dans une pièce, le plus souvent un franc-quartier. Hablot le rapproche des romans de chevalerie, où l'écu plain est celui des jeunes chevaliers qui doivent faire leurs preuves. Au XV<sup>e</sup> siècle, le franc-quartier disparaît et le système se retourne : ce sont désormais les armes du père, brisées d'une pièce de métal.</li><li>Le <b>« système de la devise »</b> : le bâtard reprend des éléments emblématiques de son père, notamment en Angleterre (Wikipédia signale ce point comme appelant une source).</li><li>La <b>barre</b>, qui s'impose à partir du XV<sup>e</sup> siècle, parfois réduite en cotice ou en filet. Elle s'oppose à la bande, brisure courante des fils légitimes. Les lettres par lesquelles le roi de France concède des armes dès le milieu du XV<sup>e</sup> siècle, et des textes juridiques comme les Coutumes de Lorraine de 1594, en font le signe des enfants naturels.</li></ul>\n          <p>Le mouvement a son retour : les signes de bâtardise tendent à être retournés en brisures de cadets légitimes. Charles de Beaumont, bâtard de la maison royale de Navarre, reçoit en 1391 des armes écartelées de Navarre et de Beaumont à la place de son franc-quartier de Navarre. Les descendants de Pierre de Bourbon Busset, qui portait les armes de son père sur un pal sous un chef de Jérusalem en signe de bâtardise, ne brisent plus que du chef au XVII<sup>e</sup> siècle. La maison d'Orléans-Longueville, issue de Jean de Dunois, bâtard d'Orléans et premier Capétien à briser d'une barre, n'arbore plus qu'un bâton péri posé en bande. En Angleterre, la marque de l'enfant illégitime est une bordure ondée.</p>"
+        }
+      ]
+    },
+    {
+      "id": "alliances",
+      "label": "Alliances",
+      "eyebrow": "Chapitre XIII",
+      "title": "Alliances : quand les armes se marient",
+      "lede": "Un mariage, un fief annexé, une succession : l'écu se partage, s'agrandit, se retourne — avec ses règles de lecture, et ses politesses.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Deux armes, un écu : parti, écartelé, mi-parti",
+          "sources": [
+            "wiki_armes_composees"
+          ],
+          "html": "\n          <p>Des <b>armes composées</b> sont formées d'armes plus simples, accolées suivant une partition ou assemblées par quartiers. On les comprend mieux comme la réunion de plusieurs écus en un seul que comme l'éclatement d'un écu en plusieurs : la table d'attente est divisée, puis chaque élément de la partition se comporte comme un écu à part entière — et peut être partitionné à son tour. Les éléments sont de tailles égales, mais n'ont pas le même prestige : il décroît de haut en bas, et de dextre à senestre.</p>\n          <p>Un usage très fréquent des partitions est de traduire les unions de toutes natures : mariages, fiefs annexés… L'union à deux se fait souvent par un <b>parti</b>, qui écrase les figures en largeur et souligne la préséance de la dextre — ce qui peut être voulu —, ou par un <b>écartelé</b>, qui ne déforme pas l'écu initial et donne une union plus égalitaire : le plus et le moins prestigieux pour l'un, les deux intermédiaires pour l'autre.</p>\n          <p>Le <b>mi-parti</b> est une autre façon d'unir deux blasons : on réunit la moitié dextre de l'un à la moitié senestre de l'autre — à condition que les originaux restent identifiables une fois coupés en deux. L'article de Wikipédia déconseille d'écrire « coupé mi-parti », ambigu : mieux vaut placer le parti dans la partie du coupé qu'il concerne.</p>\n          <p>Pour <b>blasonner</b> des armes composées, on énonce d'abord la partition, puis les armes élémentaires, dans l'ordre de la partition, en les faisant précéder de leur rang : « parti, au premier d'argent à un tourteau de gueules, au deuxième d'or à une fasce d'azur ». La règle d'ordre est « haut avant bas, dextre avant senestre » ; les quartiers identiques se lisent ensemble avec le premier rencontré ; et quand un quartier est lui-même partitionné, la règle s'applique en cascade (1, 2, 3, 4.1, 4.2, 4.3, 5, 6).</p>\n          <p>L'<a href=\"atelier.html\">Atelier</a> sait composer et lire l'écartelé (« aux 1 et 4… ; aux 2 et 3… »), avec ou sans écusson sur le tout.</p>\n        "
+        },
+        {
+          "titre": "Les armes d'une femme mariée",
+          "sources": [
+            "wiki_alliance",
+            "wiki_courtoisie",
+            "wiki_britannique",
+            "wiki_armes_composees"
+          ],
+          "html": "\n          <p>Longtemps, une femme mariée qui faisait usage d'armoiries arborait les écus <b>accolés</b> de son époux, à dextre, et de son père, à senestre ; ou bien un écu <b>parti</b> des armes du mari à dextre et de celles de son père à senestre. Les armoiries d'alliance, quand elles se composent de deux écus, sont disposées côte à côte ou inclinées l'une vers l'autre — que les écus penchent parfois vers l'extérieur n'est qu'un détail de composition — et surmontées en principe de la couronne du titre du mari.</p>\n          <p>Les usages varient. En France, on trouve des armoiries d'alliance à deux écus ovales (composition faite pour l'épouse) ou à deux écus en accolade (composition faite pour l'époux). En Belgique, l'écu de l'épouse est systématiquement ovale, celui du mari « à la française ». Sur un seul écu, l'alliance se fait par un parti pour le couple, armes de l'époux à dextre, armes de l'épouse à senestre ; ou par un écartelé pour les membres de la lignée issue de ce couple, avec, le cas échéant, une brisure selon le rang du porteur.</p>\n          <p>L'héraldique britannique est plus codifiée. Les femmes n'y héritent généralement pas d'armoiries et ne les transmettent pas, sauf s'il n'y a pas d'héritier mâle : une héritière héraldique qui épouse un homme armoriant donne à son fils le droit d'écarteler. Non mariée, une femme porte ses armes sur un losange ou sur un ovale ; mariée, elle peut porter des armes parties de celles de son mari et des siennes ; veuve, elle garde les armes de son mariage, mais sur un losange ou un ovale, alors qu'un veuf reprend simplement les siennes. Une femme ne porte pas de cimier, tenu pour un attribut masculin. Depuis 2014, des règles existent aussi pour les mariages entre personnes de même sexe.</p>\n          <p>Le losange est donc ici un contenant : la forme de l'écu dit le sexe et l'état de la porteuse, non la composition des armes (voir le chapitre « L'écu »). Le chapitre « Brisures » le rappelle pour le système anglais de cadence : les filles portent les armes de leur père sur un losange.</p>\n        "
+        },
+        {
+          "titre": "La courtoisie héraldique : contourner par politesse",
+          "sources": [
+            "wiki_courtoisie"
+          ],
+          "html": "\n          <p>On appelle <b>courtoisie héraldique</b> la modification d'un blason faite dans un but esthétique, d'équilibre ou d'harmonie. L'exemple type est celui des armes d'alliance : le lion du mari, qui regarde d'ordinaire vers dextre, tournerait le dos aux armes de l'épouse, placées à senestre ; par courtoisie, on le <b>contourne</b> pour qu'il regarde vers elles — et, de fait, c'est l'ensemble du blason qui se retourne. Le même geste vaut pour une aigle, et pour le heaume du mari, contourné pour ne pas tourner le dos à celui de son épouse ; dans les pays où l'on voit deux, trois, cinq ou sept heaumes sur un écu, ceux de dextre sont contournés et se font face à ceux de senestre.</p>\n          <p>On le rencontre aussi dans les armes de grands seigneurs qui rassemblent des provinces ou des royaumes : quand deux lions se trouvent côte à côte, celui de dextre se contourne parfois par courtoisie pour la province que figure le lion de senestre — plus rarement dans un écartelé que dans un parti. Autre cas, l'ancien blason d'Alsace : il fallait y combiner deux blasons portant chacun une bande, et les mettre côte à côte sans inversion eût été disgracieux ; d'où le retournement de celui de la Basse-Alsace, la bande devenue barre. Les armes d'Alsace-Lorraine, de même, combinent celles de la Haute et de la Basse-Alsace contournées vers celles de la Lorraine.</p>\n          <p>La courtoisie n'est pas la seule liberté de l'artiste : il peut aussi modifier la taille de certains meubles ou de l'écu. Les alérions des Montmorency sont passés, au fil des siècles, de quatre à seize ; pour les faire tenir dans l'écartelé, ceux des quartiers 3 et 4 ont dû être réduits afin de paraître en entier.</p>\n        "
+        },
+        {
+          "titre": "Quartiers et grandes armes : un écu pour raconter une généalogie",
+          "sources": [
+            "wiki_armes_composees",
+            "wiki_britannique"
+          ],
+          "html": "\n          <p>Les <b>quartiers</b> résultent d'un certain nombre de partis et de coupés (de deux à six), qui délimitent de six à trente-six armes élémentaires. On les numérote dans le sens de la lecture : en commençant par le plus haut à gauche, puis de gauche à droite, puis les lignes suivantes. On blasonne d'abord « parti de deux, coupé de trois » (six quartiers), puis chaque arme avec son numéro ; une arme répétée se dit dès sa première occurrence (« au premier, au troisième et au cinquième… ») et les quartiers déjà décrits sont sautés.</p>\n          <p>Chaque quartier figure son titulaire — une famille, un fief, un royaume. On devrait donc plutôt le blasonner en nommant ce titulaire qu'en décrivant son blason ; si le titulaire est peu connu, mieux vaut donner les deux. Un exemple d'école : les armes de Lothaire-François de Schönborn, <i>parti de deux traits et coupé de un</i>, avec six quartiers dont le premier et le sixième sont identiques, comme le deuxième et le cinquième, et un écusson <i>sur le tout</i>.</p>\n          <p>On peut pousser l'exercice jusqu'à l'artifice. Le fameux « diptyque Grenville », composé pour Richard Temple-Grenville, aligne tous les quartiers d'une généalogie : ce n'est plus l'emblème d'une personne, mais un faisceau d'alliances et une revendication généalogique, proche de l'armorial personnel. La langue du blason pourrait décrire de telles images point par point (parti de 256, coupé de 256…) ; poussé à l'extrême, cet excès sort clairement du domaine héraldique.</p>\n          <p>Les <b>grandes armes</b> sont des armoiries ornées de tous leurs ornements extérieurs. Elles prennent d'ordinaire la forme d'un écu composé de quartiers, où figurent les armes des dépendances, parties ou possessions, et où broche sur le tout l'écu du possesseur — prince, province… Affirmation solennelle de titres et de droits, elles ne se montrent guère que pour orner une salle d'apparat, une salle du trône par exemple. La page <a href=\"lignees.html\">Lignées</a> en présente, pour plusieurs dynasties, au fil des règnes.</p>\n          <p>Une autre manière de composer consiste à ajouter aux armes principales une pièce honorable — le plus souvent un chef ou un canton : c'est l'<b>augmentation</b>. En France, les « bonnes villes », qui avaient le droit de se faire représenter par leurs maires au sacre du roi, pouvaient porter sur leur blason un chef de France, « d'azur semé de fleurs de lis d'or » ou « d'azur à trois fleurs de lis d'or » : le chef de France est une augmentation des armes accordée à ces villes. La règle des émaux n'y est souvent pas respectée, et le chef est dit « cousu ». L'Angleterre en a accordé aussi, au XVIIIᵉ siècle, notamment à des militaires, pour rendre compte de leurs réussites.</p>\n        "
+        },
+        {
+          "titre": "L'obiit : les armes d'un deuil",
+          "sources": [
+            "wiki_obiit"
+          ],
+          "html": "\n          <p>Un <b>obiit</b> (du latin <i>obivit</i>, « il est mort ») est le nom que l'usage donne aux armoiries funéraires. C'est une peinture ou une enluminure, le plus souvent sur un panneau de bois en forme de losange, à fond sombre, souvent noir, qui porte l'année du décès — parfois aussi celle de la naissance — et les armoiries de la personne. Le fond est blanc pour une demoiselle morte jeune, et donc non mariée.</p>\n          <p>La forme du blason y dit l'état de la défunte : l'obiit d'une épouse, ou d'une veuve, porte son blason de forme ovale, accolé à celui de son époux ; un blason en losange correspond à une femme célibataire. Au Royaume-Uni, le fond est parfois partagé verticalement en blanc et noir : noir à gauche et blanc à droite, c'est un mari mort qui laisse une veuve ; blanc à gauche et noir à droite, c'est une femme mariée morte qui laisse un veuf.</p>\n          <p>L'obiit est placé devant le catafalque pendant la cérémonie des funérailles, puis rapporté au château, ou fixé sur un mur intérieur de l'église à laquelle la famille était liée.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">État des connaissances</span>\n          <p><b>Lu à la source :</b> les cinq pages de Wikipédia citées, dont les usages français, belge et britannique sont rapportés tels quels.</p>\n          <p><b>Fragile :</b> la page « Armoiries d'alliance » est très courte et n'a aucune référence ; la page « Courtoisie héraldique » s'appuie sur Fox-Davies (1909) et sur Bernhard Peter, que nous n'avons pas lus. Les usages varient d'un pays et d'une époque à l'autre : ce chapitre dit ce que font ces pages, pas ce qu'on devrait faire.</p>\n          </div>\n        "
+        }
+      ]
+    },
+    {
+      "id": "heraults",
+      "label": "Hérauts",
+      "eyebrow": "Chapitre XIV",
+      "title": "Hérauts et armoriaux : ceux qui gardent les armes",
+      "lede": "Des hommes pour reconnaître les écus dans la mêlée, puis des registres pour s'en souvenir : comment un savoir de tournoi est devenu une archive.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Le héraut : crieur de tournoi, puis expert en blasons",
+          "sources": [
+            "wiki_heraut",
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>Un <b>héraut</b> (ou héraut d'armes) est un officier de l'office d'armes, chargé de faire certaines publications solennelles ou de porter des messages importants ; on le reconnaît d'ordinaire au <i>tabar</i> dont il est vêtu. L'office compte quatre grades : le <b>roi d'armes</b>, qui supervise une marche d'armes ; le <b>maréchal d'armes</b>, qui le seconde et peut le remplacer ; le <b>héraut</b> proprement dit ; et le <b>poursuivant d'armes</b>, apprenti héraut. Ce sont eux qui donnent son nom à l'héraldique.</p>\n          <p>Les hérauts apparaissent vraisemblablement au XIIᵉ siècle — une mention de Chrétien de Troyes date de la fin de ce siècle — et sont intimement liés au développement de l'héraldique. Issus des rangs des jongleurs et des ménestrels, ils se spécialisent dans les tournois, les joutes et les pas d'armes : ils les annoncent, y mènent les chevaliers et les commentent. D'abord errants, sans attache à un seigneur en particulier, ils contribuent au renom des chevaliers ; au XIVᵉ siècle, les grands seigneurs en prennent plusieurs à leur service, car plus on en avait, plus on affichait sa puissance.</p>\n          <p>Toute l'organisation du corps porte la marque des tournois : les marches d'armes des officiers correspondent aux divisions territoriales des groupes de chevaliers dans les tournois, et il faut sept ans à un poursuivant pour devenir héraut — le temps qu'il faut à un écuyer pour devenir chevalier, rappelle Olivier de la Marche dans ses mémoires.</p>\n          <p>Une précision d'histoire : on a voulu rattacher les hérauts aux <i>kêrukes</i> des Grecs et aux <i>fétiaux</i> des Romains. Rien ne permet de prouver ce lien ; il semble avoir été créé au XVᵉ siècle par les hérauts eux-mêmes, pour prouver l'ancienneté et la noblesse d'un office alors contesté.</p>\n        "
+        },
+        {
+          "titre": "En France : des armes de tournoi au juge d'armes",
+          "sources": [
+            "wiki_heraut",
+            "wiki_blasonnement"
+          ],
+          "html": "\n          <p>Experts en blasons grâce à leur rôle dans les tournois, les officiers d'armes reçoivent des fonctions militaires officielles au début du XIVᵉ siècle, comme le montre l'ordonnance de Philippe le Bel de 1306 sur le gage de bataille. Il n'y avait pas d'uniforme dans l'ost féodal : on ne se reconnaissait que par les armoiries des bannières, des pennons ou des écus, et les hérauts, qui les connaissaient, identifiaient vite les protagonistes et saisissaient le déroulement des batailles — comme ils reconnaissaient, à leurs couleurs, les chevaliers tombés sur le champ. Ils acquièrent aussi des compétences nouvelles : la définition des règles de l'héraldique et la composition des armoriaux.</p>\n          <p>Le XVᵉ siècle est à la fois leur âge d'or et leur crise. Le collège héraldique français est constitué en 1406 ; en janvier 1407, une chapelle des rois d'armes et hérauts du royaume est fondée au Petit-Saint-Antoine, à Paris, qui fait d'eux une confrérie. Mais le droit reconnu au moindre capitaine de s'attacher un poursuivant multiplie les recrues, parfois jugées indignes (« de vielz menestrels qui ne poient plus corner », dit le héraut Sicile), et, à partir de 1445, les compagnies d'ordonnance soldées remplacent les contingents de vassaux ralliés à la bannière de leur seigneur.</p>\n          <p>Le déclin vient surtout aux XVIᵉ et XVIIᵉ siècles : l'État moderne transfère les dignités au monarque et retire à la noblesse son caractère militaire. Le rôle héraldique des hérauts disparaît en 1615, avec la création du juge d'armes (voir le chapitre « Le droit du blason ») ; en 1627, leur collège perd son indépendance et est rattaché à la grande écurie ; Louis XIII est le dernier roi de France à s'entourer de hérauts à la guerre. L'office, réduit à un élément de la pompe monarchique et impériale, subsiste jusqu'en 1830 : des officiers d'armes figurent à l'ouverture des États généraux de 1789, au sacre de Napoléon en 1804, aux funérailles de Louis XVIII, au sacre de Charles X en 1825 — et, dernière mention en France, à la tête du cortège du <i>Te Deum</i> célébrant la prise d'Alger, le 11 juillet 1830.</p>\n          <p>Quelques monarchies ont encore des hérauts : l'Angleterre, où ils prirent part au couronnement d'Élisabeth en 1953, le Canada, l'Écosse (le Lord Lyon : voir le chapitre « Ailleurs »), l'Espagne, où ils participèrent à la proclamation de Juan Carlos en 1975, et l'Irlande.</p>\n        "
+        },
+        {
+          "titre": "Les armoriaux : des registres de blasons",
+          "sources": [
+            "wiki_armorial",
+            "wiki_armorial1696"
+          ],
+          "html": "\n          <p>Un <b>armorial</b> est un registre, un tableau ou un dictionnaire qui met en correspondance des noms de familles ou de communautés et des armoiries ; certains sont illustrés, d'autres se limitent au blasonnement. Les premières armoiries apparaissent vers 1130 ; il faut attendre une cinquantaine d'années pour voir paraître les premiers recueils. On connaît ainsi près d'un million de blasons médiévaux (antérieurs au XVIᵉ siècle), portés sur des rouleaux, des cahiers, des registres, mais aussi sur des murs, des sculptures, des vitraux…</p>\n          <p>On les classe de plusieurs manières. Par nature d'abord :</p>\n          <ul>\n          <li>les <b>armoriaux occasionnels</b>, les plus anciens, dressés à l'occasion d'un événement — tournoi, mariage, traité, campagne — pour décrire les armes des présents : le rôle Bigot (1254, dont subsiste une copie : les chevaliers de la campagne de Charles d'Anjou en Hainaut), l'armorial du tournoi de Compiègne (1278), le rôle de Falkirk (1298), les armoriaux Wijnbergen (XIIIᵉ siècle), Bellenville (vers 1372) et de Gelre (vers 1430, très célèbre) ;</li>\n          <li>les <b>armoriaux provinciaux</b>, comme le rôle Baliol (1332) ou le rôle de Zurich (vers 1340), puis <b>institutionnels</b> : l'idée est de dresser la liste des armoiries de tout un royaume, ou des membres d'une confrérie, d'un ordre de chevalerie (le Grand Armorial équestre de la Toison d'or) ; c'est alors que les cours créent la fonction de juges d'armes, dont les plus célèbres sont ceux de la famille d'Hozier ;</li>\n          <li>les <b>armoriaux généraux</b>, qui recensent toutes les armes d'un territoire, jusqu'à l'<i>Armorial général</i> de Rietstap, qui réunit pour la première fois, en un seul ouvrage, des centaines d'armoriaux de toute l'Europe — et les armoriaux de <b>familles nobles</b>.</li>\n          </ul>\n          <p>On les distingue aussi selon leur auteur — un fonctionnaire qui a accès à des documents fiables et exhaustifs, ou un amateur tributaire de la bonne volonté de ses informateurs — et selon leur classement : par nom du porteur, ou par contenu, ce qui permet de retrouver le porteur à partir de ses armes (un « armorial ordonné » ; l'armorial au lion en est un exemple).</p>\n          <p>L'<i>Armorial général de France</i> de 1696 (voir le chapitre « Le droit du blason ») occupe une place à part : il visait le fisc plus que la mémoire.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">État des connaissances</span>\n          <p><b>Lu à la source :</b> les pages « Héraut » et « Armorial » de Wikipédia, et le passage historique de « Blasonnement ». La page « Armorial » ne cite aucune référence dans son texte ; la page « Héraut » renvoie à des travaux (Nadot, Couhault) que nous n'avons pas lus.</p>\n          <p><b>Chiffres qui ne s'accordent pas :</b> la page « Armorial » parle d'une enquête de Louis XIV (1667-1674) puis de 120 000 armoiries identifiées entre 1696 et 1727 ; l'article « 1696 — l'édit qui taxa les blasons » retient 125 807 blasons peints et une clôture vers 1710. Les deux nombres ne mesurent peut-être pas la même chose ; on ne tranche pas.</p>\n          </div>\n        "
+        }
+      ]
+    },
+    {
+      "id": "villes",
+      "label": "Villes",
+      "eyebrow": "Chapitre XV",
+      "title": "Villes : bonnes villes, couronnes murales et armes parlantes",
+      "lede": "Les armes des villes ont leurs privilèges, leurs couronnes — et leurs jeux de mots.",
+      "figure": null,
+      "articles": [
+        {
+          "titre": "Les bonnes villes et leur chef de France",
+          "sources": [
+            "wiki_bonne_ville",
+            "wiki_communes_empire"
+          ],
+          "html": "\n          <p>Une <b>bonne ville</b> est, dans la France de l'Ancien Régime, une ville qui bénéficie de privilèges et de protections octroyés par le roi, avec l'obligation de contribuer au ban royal en fournissant un contingent d'hommes d'armes. L'expression est attestée en diplomatique dès le XIIᵉ siècle ; selon Robert Favreau, que les auteurs suivent désormais, c'est la chancellerie anglaise qui l'emploie la première — une lettre du 25 juillet 1209 en porte la première occurrence connue. Le statut prend de l'importance à la fin du Moyen Âge, au point que les villes qui n'en jouissent pas se battent pour l'obtenir.</p>\n          <p>En héraldique, les bonnes villes avaient le droit de porter des armoiries avec « un chef d'azur portant trois fleurs de lys d'or », les armes de France : c'est le <b>chef de France</b>, une augmentation (voir le chapitre « Alliances »). Certaines, comme Marseille, Rennes ou Avignon, choisirent de ne pas l'inclure dans leur blason.</p>\n          <p>La notion revit au XIXᵉ siècle. Sous la Seconde Restauration, une ordonnance du 23 avril 1821 fixe définitivement la liste des <b>quarante bonnes villes</b> et leur ordre de préséance ; elles avaient le privilège d'envoyer leur maire au sacre du roi — ce qui se produisit effectivement au sacre de Charles X, le 29 mai 1825 — et de mettre un chef fleurdelisé dans leurs armoiries. La monarchie de Juillet, en 1830, prétendit changer les fleurs de lis contre trois étoiles d'or, mais cet usage fut éphémère ; il réapparut brièvement sous la Seconde République, en 1848.</p>\n        "
+        },
+        {
+          "titre": "1809 : l'Empire range les villes en trois ordres",
+          "sources": [
+            "wiki_communes_empire",
+            "wiki_bonne_ville"
+          ],
+          "html": "\n          <p>La Révolution abolit la coutume du chef de France, et beaucoup de villes perdent des blasons qui portaient les signes de la royauté. Sous le Premier Empire, un nouveau statut de « bonne ville », largement honorifique, est recréé : ce sont les villes dont les maires ont le droit et le devoir d'assister à la prestation de serment de l'Empereur. Le sénatus-consulte du 18 mai 1804 en prévoit trente-six ; un décret du 22 juin 1804 en fixe la liste et l'ordre de préséance ; leurs maires assistent au sacre de Napoléon, le 2 décembre 1804. Le décret du 1ᵉʳ mars 1808 donne aux maires des bonnes villes, après dix ans d'exercice, le titre viager de baron. Les annexions portent le nombre à cinquante — trente villes françaises et vingt étrangères, de Gênes à Hambourg et de Rome à Amsterdam.</p>\n          <p>Le décret du 17 mai 1809 rend aux villes le droit d'obtenir des armoiries : à l'avenir, ni ville ni corporation n'en pourra prendre sans l'autorisation de l'empereur. Il répartit les communes en trois ordres, et fixe pour chacun une marque dans l'écu et des ornements :</p>\n          <ul>\n          <li>les <b>bonnes villes</b> (« duchesses ») portent un <b>chef de gueules chargé de trois abeilles d'or</b> posées en fasce, avec une couronne murale à sept créneaux, sommée d'une aigle naissante d'or, soutenue d'un caducée d'or auquel pendent deux festons, de chêne et d'olivier ;</li>\n          <li>les villes du <b>second ordre</b> (« comtesses »), dont les maires sont, comme ceux des bonnes villes, nommés par l'empereur, portent un <b>franc-quartier à dextre d'azur, chargé d'un N d'or surmonté d'une étoile rayonnante</b>, avec une couronne murale à cinq créneaux d'argent ;</li>\n          <li>les villes du <b>troisième ordre</b> (« baronnes »), dont les maires sont nommés par les préfets, portent un <b>franc-quartier à senestre de gueules</b> chargé des mêmes figures d'argent, et une corbeille de gerbes d'or pour cimier.</li>\n          </ul>\n          <p>C'est la logique de 1808 appliquée aux villes (voir l'article « 1808 — le rang entre dans l'écu ») : le rang se lit dans l'écu — chef, franc-quartier — et dans les ornements, où la couronne murale tient la place des couronnes de duc, de comte ou de baron. Les armes de Rouen sont concédées le 2 novembre 1810 ; celles d'Orléans, Metz, Nantes et Marseille le 21 ; celles de Lyon le 19 janvier 1811 ; celles de Paris le 29.</p>\n          <p>La Seconde Restauration maintient la dignité aux vingt-neuf bonnes villes de l'Empire situées en France, et en ajoute onze de 1816 à 1821.</p>\n        "
+        },
+        {
+          "titre": "La couronne murale",
+          "sources": [
+            "wiki_couronne_murale"
+          ],
+          "html": "\n          <p>La <b>couronne murale</b>, dite aussi tourelée, est un attribut honorifique garni de tours, qui symbolise les murs d'une ville fortifiée. Dans l'Antiquité gréco-romaine, elle coiffe le front des divinités protectrices des cités — l'époque hellénistique l'associe souvent à la déesse Cybèle-Tyché. Dans l'armée romaine, elle récompense le premier soldat qui a franchi une muraille ennemie : le tribun Lucius Siccius Dentatus, surnommé l'« Achille romain », l'aurait reçue trois fois. Elle personnifie l'Italie sous le nom d'« Italia turrita ».</p>\n          <p>En héraldique européenne, elle orne les armes de nombreuses municipalités. L'Empire en a fait le signe du rang des villes, à sept ou à cinq créneaux selon leur ordre (voir l'article précédent) ; pour les autres couronnes de rang, voir le chapitre « Ornements ».</p>\n        "
+        },
+        {
+          "titre": "Armes parlantes : quand l'écu fait un jeu de mots",
+          "sources": [
+            "wiki_armes_parlantes",
+            "wiki_armorial1696"
+          ],
+          "html": "\n          <p>Des <b>armes parlantes</b> comportent des figures qui expriment plus ou moins complètement le nom de leur porteur. L'évocation passe par l'oral : elle s'adressait au départ à un public qui, le plus souvent, ne savait pas lire, et qui reconnaissait le nom dans les termes du blasonnement que le héraut proférait lors des tournois. Une tendance plus intellectuelle a produit des armes <b>allusives</b>, où le nom n'est plus entendu directement mais seulement évoqué. L'anglais garde l'ancien terme d'« armes chantantes » : <i>canting arms</i>.</p>\n          <p>Les procédés sont variés :</p>\n          <ul>\n          <li><b>directement</b> : un coq pour un « Lecoq », un lion pour León, un château pour la Castille ;</li>\n          <li>par <b>homonymie</b> : une grenade pour la ville de Grenade ;</li>\n          <li>par <b>à-peu-près</b> : un calice pour la Galice, un buisson pour Aubusson, une couleuvre (latin <i>coluber</i>) pour Colbert ;</li>\n          <li>par <b>étymologie</b> : un bras tenant une lance pour Shakespeare (« secoue-lance »), un bœuf les pieds dans l'eau pour Oxford (« gué du bœuf ») ;</li>\n          <li>en <b>rébus</b> : un château et un renard pour Châteaurenard, un ours et deux chats pour Chaource, un sanglier et une fasce ondée d'azur pour Eberbach (<i>Eber</i>, sanglier ; <i>Bach</i>, ruisseau), un rat et un cygne pour Racine ;</li>\n          <li>en <b>rébus et à-peu-près</b> mêlés : un gond et un S pour Gonesse, des fleurs dans un sac pour Florensac, une aile et un os pour Allos.</li>\n          </ul>\n          <p>Au second degré, les armes allusives ne font entendre que des termes qui évoquent le nom : un sanglier, plus valorisant, pour un dénommé « Cochon » ; un voilier pour Marines. Elles sont très fréquentes dans les armes de corporations, où l'objet travaillé ou l'outil figure à la place du nom du métier. Les armes de la famille Forcadel mêlent les deux degrés : le chêne symbolise la force, la levrette la fidélité, et l'on retrouve, au début et à la fin du patronyme, « force » et « fidèle ».</p>\n          <p>L'Armorial général de 1696 en a fait un usage moins aimable : les commis qui attribuaient des armes d'office aux récalcitrants composèrent d'abord des armes parlantes (voir l'article « 1696 — l'édit qui taxa les blasons »). L'article de Wikipédia renvoie, pour aller plus loin, à Michel Pastoureau (« Une écriture en images : les armoiries parlantes », 2008), que nous n'avons pas lu.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n          <span class=\"k\">État des connaissances</span>\n          <p><b>Lu à la source :</b> les quatre pages de Wikipédia citées. Celle sur les bonnes villes s'appuie sur des textes officiels et des travaux d'historiens que nous n'avons pas lus.</p>\n          <p><b>Chiffres qui ne s'accordent pas :</b> pour l'Ancien Régime, la page « Armorial des communes de l'Empire » parle de quarante villes jouissant du privilège exclusif d'être représentées par leurs maires au sacre ; la page « Bonne ville » dit les bonnes villes très nombreuses, sans liste officielle, et ne retrouve le nombre de quarante qu'avec la liste de 1821. Ce chapitre rapporte les deux, sans les concilier.</p>\n          </div>\n        "
         }
       ]
     }
@@ -2043,9 +2459,10 @@
     },
     {
       "terme": "Rebattement",
-      "def": "Diminutif d'une pièce honorable amincie (burelle, vergette, cotice…).",
+      "def": "Répétition d'une partition ou d'une pièce simple sur tout le champ, d'où les champs rayés (palé, fascé…) et certaines pièces honorables : « d'or à trois pals de gueules ». Joubert, que suit le glossaire de ce site, emploie plutôt le mot pour le diminutif d'une pièce amincie (burelle, vergette, cotice…) ; l'usage courant nomme cela une pièce diminuée.",
       "sources": [
-        "joubert1977"
+        "joubert1977",
+        "wiki_rebattement"
       ]
     },
     {
@@ -2525,6 +2942,312 @@
       "def": "Se dit d'un meuble figuré dans sa couleur réelle, hors des émaux du blason ; deux cas particuliers ont leur nom, la carnation pour la chair et le tanné pour le brun du cuir. Réservé aux meubles réalistes — jamais au champ, aux pièces ni aux meubles géométriques.",
       "sources": [
         "wiki_couleur"
+      ]
+    },
+    {
+      "terme": "Adextré",
+      "def": "Se dit d'une pièce secondaire placée à la dextre d'une pièce principale ; le mot s'emploie aussi d'un écu dont le tiers dextre a un autre émail que le champ. Ambigu, on lui préfère « au flanc dextre de… » : « d'argent adextré de gueules » se blasonne mieux « d'argent au flanc dextre de gueules ». Le symétrique, « senestré », est plus rare encore.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Bâton",
+      "def": "Bande ou cotice réduite en largeur, normalement posée en bande (ce qu'on ne dit pas) ; en barre, on dit « bâton en barre ». Employé surtout comme brisure, souvent « péri » (raccourci). Sa définition varie selon les auteurs : bande ou barre réduite de moitié, cotice, ou cotice raccourcie, écotée ou fleurdelisée, qui devient alors un meuble.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Burelle",
+      "def": "Fasce diminuée, employée en nombre pair (quatre ou plus) : « d'argent à six burelles de gueules ». Seule, c'est une divise ; en nombre impair, une trangle ; par deux, séparées d'un espace égal à leur largeur, une jumelle.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Champagne",
+      "def": "Pièce honorable occupant le tiers inférieur de l'écu ; diminuée, elle devient plaine. À ne pas confondre avec la terrasse, meuble dont le bord supérieur est irrégulier.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Chevronné",
+      "def": "Se dit d'un champ couvert d'un nombre pair de chevrons alternés, six ou huit d'ordinaire : « chevronné d'or et de sable » (armes primitives du Hainaut).",
+      "sources": [
+        "wiki_chevron",
+        "wiki_rebattement"
+      ]
+    },
+    {
+      "terme": "Chevronnel",
+      "def": "Chevron étroit, réduit au tiers ou au quart de sa largeur — mais parfois plus large, tout en restant plus fin que le chevron. Presque synonyme d'« étai ».",
+      "sources": [
+        "wiki_chevron"
+      ]
+    },
+    {
+      "terme": "Comble",
+      "def": "Chef diminué, dit aussi « chef retrait ». La liste de pièces de Wikipédia le donne tantôt réduit aux deux tiers (parfois à la moitié) de sa hauteur, tantôt à moins de la moitié.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Coticé",
+      "def": "Se dit d'un champ divisé dans le sens de la bande en plus de huit pièces, comme le bandé en compte moins ; dans le sens de la barre, « coticé en barre » (ou contre-coticé).",
+      "sources": [
+        "wiki_rebattement"
+      ]
+    },
+    {
+      "terme": "Cotice",
+      "def": "Petite bande, réduite au tiers de sa largeur ou rebattue au-delà de quatre pièces ; souvent employée seule comme brisure. Elle se pose parfois en barre, en fasce ou en pal, ce qu'on dit alors. Plus mince encore, c'est un filet. Une pièce flanquée de cotices est dite coticée ou côtoyée.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Divise",
+      "def": "Fasce diminuée, employée seule dans son champ (aussi écrit « devise »). Réduite de moitié selon une entrée de la liste de Wikipédia, à moins du tiers selon une autre ; sa place par défaut est celle du chef pour Charles de Grandmaison, celle de la fasce pour Pierre Palliot, qui l'appelle « divise en chef » quand elle est en haut.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Étai",
+      "def": "Synonyme courant de chevronnel ; pour L.-A. Duhoux d'Argicourt, petit chevron qui soutient un meuble, thèse que Wikipédia juge minoritaire. S'emploie parfois au féminin : « une étaie ».",
+      "sources": [
+        "wiki_chevron",
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Fascé",
+      "def": "Se dit d'un champ divisé en un nombre pair de bandes horizontales égales, d'émaux alternés : « fascé de gueules et d'argent de huit pièces » (Hongrie). Six pièces par défaut, ce qu'on ne dit pas ; à partir de dix, on dit « burelé ».",
+      "sources": [
+        "wiki_rebattement"
+      ]
+    },
+    {
+      "terme": "Filet",
+      "def": "Cotice très diminuée, qui se pose en fasce, en pal, en bande ou en barre — toujours dit. Le « filet en croix », ou étrez, est une croix réduite à un filet.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Filière",
+      "def": "Bordure dont l'épaisseur est réduite à un filet.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Flanc",
+      "def": "Pièce honorable qui correspond au bord dextre ou senestre de l'écu et se prolonge jusqu'au tiers ; rare.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Franc-canton",
+      "def": "Carré posé en coin, légèrement plus grand que le canton et plus petit que le franc-quartier, au chef dextre par défaut ; le tiers de la largeur de l'écu selon les valeurs les plus souvent citées.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Giron",
+      "def": "Triangle rectangle qui a pour base la moitié d'un côté du champ et dont l'angle opposé est au centre de l'écu ; par défaut, celui qui meut de la moitié supérieure du flanc dextre. Ses formes sont celles d'un gironné de huit.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Gousset",
+      "def": "Pièce formée, en haut, d'un triangle mouvant du chef et rejoignant, en bas, un pal. Son nom vient d'une pièce de tissu, puis de la pièce métallique qui reliait le devant et l'arrière d'une armure.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Hamaide",
+      "def": "Pièce formée de trois fasces alésées aux extrémités arrondies ou chanfreinées, tenue pour une seule pièce : « d'or à une hamaide de gueules », armes des seigneurs de La Hamaide (Belgique).",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Jumelle",
+      "def": "Paire de burelles séparées par un espace égal à leur largeur, le tout ayant l'épaisseur d'une fasce. Le plus souvent en fasce, parfois en bande (ce qu'on dit alors).",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Pile",
+      "def": "Triangle isocèle dont la base, large des deux tiers de l'écu, tient au chef et dont la pointe vise le bas sans l'atteindre. En bande ou en barre, elle meut d'un angle du chef.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Plaine",
+      "def": "Champagne diminuée.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Tierce",
+      "def": "Groupe de trois trangles séparées par un espace égal à leur largeur, le tout ayant l'épaisseur d'une fasce ; elle se blasonne comme la jumelle.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Trangle",
+      "def": "Fasce diminuée figurant toujours en nombre impair. Seule, on parle plutôt de divise ; en nombre pair, de burelles.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Vergette",
+      "def": "Pal réduit en largeur, rebattu cinq fois ou plus.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Vergeté",
+      "def": "Se dit d'un champ divisé dans le sens du pal en plus de huit pièces (des vergettes), comme le palé en compte moins.",
+      "sources": [
+        "wiki_rebattement"
+      ]
+    },
+    {
+      "terme": "Accolé",
+      "def": "Se dit de deux écus posés côte à côte, ou inclinés l'un vers l'autre : les armes d'un couple, l'époux à dextre et le père de l'épouse à senestre.",
+      "sources": [
+        "wiki_courtoisie",
+        "wiki_alliance"
+      ]
+    },
+    {
+      "terme": "Armes composées",
+      "def": "Armes formées d'armes plus simples, accolées suivant une partition ou assemblées par quartiers. On énonce la partition, puis chaque arme avec son rang : « parti, au premier… au deuxième… ».",
+      "sources": [
+        "wiki_armes_composees"
+      ]
+    },
+    {
+      "terme": "Armoiries d'alliance",
+      "def": "Armes d'un couple : deux écus côte à côte ou inclinés l'un vers l'autre, ou un seul écu parti (époux à dextre, épouse à senestre) ; écartelé pour la lignée issue du couple.",
+      "sources": [
+        "wiki_alliance"
+      ]
+    },
+    {
+      "terme": "Armorial",
+      "def": "Registre, tableau ou dictionnaire qui met en correspondance des noms de familles ou de communautés et des armoiries, illustrés ou seulement blasonnés. On en distingue d'occasionnels, de provinciaux, d'institutionnels et de généraux.",
+      "sources": [
+        "wiki_armorial"
+      ]
+    },
+    {
+      "terme": "Augmentation",
+      "def": "Pièce ou figure ajoutée aux armes principales par concession, en honneur d'un titre ou d'un exploit : le chef de France des bonnes villes, ou les augmentations accordées en Angleterre, notamment à des militaires, au XVIIIᵉ siècle.",
+      "sources": [
+        "wiki_armes_composees",
+        "wiki_britannique"
+      ]
+    },
+    {
+      "terme": "Courtoisie héraldique",
+      "def": "Modification d'un blason faite pour l'équilibre ou l'harmonie : contourner le lion du mari pour qu'il regarde les armes de l'épouse, retourner une bande en barre, réduire un meuble pour qu'il tienne dans son quartier.",
+      "sources": [
+        "wiki_courtoisie"
+      ]
+    },
+    {
+      "terme": "Cri de guerre",
+      "def": "Mot ou phrase de ralliement d'une armée ou d'une compagnie ; en héraldique, il figure au-dessus de l'écu — la devise se plaçant en dessous.",
+      "sources": [
+        "wiki_cri"
+      ]
+    },
+    {
+      "terme": "Devise",
+      "def": "Phrase courte qui suggère un idéal, une règle de conduite ou un passé glorieux ; en héraldique, le plus souvent sur un listel sous l'écu.",
+      "sources": [
+        "wiki_devise"
+      ]
+    },
+    {
+      "terme": "Grandes armes",
+      "def": "Armoiries ornées de tous leurs ornements extérieurs, en général un écu composé de quartiers où figurent les dépendances, avec l'écu du possesseur sur le tout : une affirmation solennelle de titres et de droits.",
+      "sources": [
+        "wiki_armes_composees"
+      ]
+    },
+    {
+      "terme": "Héraut",
+      "def": "Officier de l'office d'armes, chargé de publications solennelles et de messages, vêtu du tabar, expert en blasons. Quatre grades : roi d'armes, maréchal d'armes, héraut, poursuivant d'armes.",
+      "sources": [
+        "wiki_heraut"
+      ]
+    },
+    {
+      "terme": "Listel",
+      "def": "Ruban ou bandeau portant la devise ou le cri de guerre, le plus souvent sous l'écu, parfois au-dessus ou autour. Le mot désigne aussi, plus rarement, la bordure.",
+      "sources": [
+        "wiki_listel"
+      ]
+    },
+    {
+      "terme": "Mi-parti",
+      "def": "Union de deux blasons par la moitié dextre de l'un et la moitié senestre de l'autre. À ne pas confondre avec le « coupé mi-parti », que la page de Wikipédia conseille d'éviter.",
+      "sources": [
+        "wiki_armes_composees"
+      ]
+    },
+    {
+      "terme": "Obiit",
+      "def": "Armoiries funéraires, le plus souvent peintes sur un panneau en losange à fond sombre, avec l'année du décès ; blason ovale pour une épouse ou une veuve, en losange pour une célibataire.",
+      "sources": [
+        "wiki_obiit"
+      ]
+    },
+    {
+      "terme": "Quartier",
+      "def": "Chacune des divisions d'un écu partitionné — et, par extension, les armes qu'elle porte. On les numérote dans le sens de la lecture : haut avant bas, dextre avant senestre.",
+      "sources": [
+        "wiki_armes_composees"
+      ]
+    },
+    {
+      "terme": "Armes allusives",
+      "def": "Armes dont les figures évoquent le nom du porteur au second degré, sans le faire entendre directement : un sanglier pour un « Cochon », l'outil du métier pour une corporation.",
+      "sources": [
+        "wiki_armes_parlantes"
+      ]
+    },
+    {
+      "terme": "Bonne ville",
+      "def": "Dans la France d'Ancien Régime, ville privilégiée du roi, tenue de fournir des hommes d'armes ; elle avait le droit de porter un chef de France dans ses armes. Le statut fut recréé, honorifique, sous l'Empire et la Restauration (liste de quarante villes en 1821).",
+      "sources": [
+        "wiki_bonne_ville"
+      ]
+    },
+    {
+      "terme": "Couronne murale",
+      "def": "Couronne garnie de tours, symbole des murs d'une ville fortifiée ; l'Empire en fait, à sept ou cinq créneaux, le signe du rang des villes.",
+      "sources": [
+        "wiki_couronne_murale",
+        "wiki_communes_empire"
       ]
     }
   ],
