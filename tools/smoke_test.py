@@ -79,6 +79,11 @@ def test_index(browser, base):
     verifie(egares == 0, "index : aucune carte sortie de sa galerie")
     traits = page.evaluate("[...document.querySelectorAll('.gal.figs')].map(g => g.children.length)")
     verifie(len(D["regles"]["traits"]) in traits, "index : la galerie des traits montre ses quatre écus")
+    # le glossaire définit ce que l'Atelier écrit ; le chapitre « Brisures » ne tient plus en un paragraphe ; une source peut citer une page
+    termes = page.evaluate("[...document.querySelectorAll('#glist dt')].map(d => d.textContent)")
+    verifie(all(x in termes for x in ("Canton", "Pairle", "Sur le tout", "Cabré")), "index : le glossaire définit canton, pairle, sur le tout et cabré")
+    verifie(page.locator("#brisures .article").count() >= 5, "index : le chapitre « Brisures » compte plusieurs articles")
+    verifie("Joubert (1977), p. 1" in page.evaluate("srcTag([{ id: 'joubert1977', p: 'p. 1' }])"), "index : une source peut citer une page précise")
     # recherche
     page.fill("#q", "lampass")
     page.wait_for_selector("#sresults .sr", timeout=5000)

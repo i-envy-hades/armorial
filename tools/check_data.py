@@ -41,6 +41,9 @@ for f in sorted((ROOT / "data").glob("*.json")):
         refs = o.get("sources")
         if keys and isinstance(refs, list):
             for s in refs:
+                if isinstance(s, dict) and ("id" in s or "p" in s):         # citation d'une page précise : { "id": "joubert1977", "p": "p. 34-35" }
+                    if set(s) - {"id", "p"} or not isinstance(s.get("p"), str) or not s["p"].strip(): err(f"{f.name}{path}: citation mal formée {s} (attendu : {{ \"id\", \"p\" }})")
+                    s = s.get("id")
                 if isinstance(s, str) and s not in keys: err(f"{f.name}{path}: source inconnue « {s} »")
         if isinstance(o.get("file"), str) and o["file"] and not o["file"].startswith(("data/", "assets/")) and not (o.get("auteur") and o.get("lic")):
             err(f"{f.name}{path}: figure « {o['file']} » sans auteur ou licence")
@@ -147,6 +150,19 @@ if isinstance(a, dict):
         for c in ("kind", "nom", "g"):
             if not pc.get(c): err(f"atelier.json: pièce « {pc.get('kind')} » sans {c}")
         if pc.get("kind") not in dessins["pieceInner"]: err(f"atelier.json: pièce « {pc.get('kind')} » sans dessin dans pieceInner() de assets/blason.js")
+    # le glossaire définit-il les pièces de l'Atelier et les mots dont son blasonnement se sert (voir blazon() dans assets/blasonnement.js) ?
+    def mots(s):
+        s = re.sub(r"[\u0300-\u036f]", "", __import__("unicodedata").normalize("NFD", s.lower()))
+        return re.sub(r"[^a-z0-9]+", " ", s).strip()
+    defini = set()
+    for liste in ("glossaire", "attributs", "positions", "repertoire"):
+        for g in (DATA.get("data.json") or {}).get(liste, []):
+            defini.add(mots(g.get("terme", "")))
+            defini.update(mots(x) for x in g.get("terme", "").split(","))
+    attendus = [pc.get("nom") for pc in a.get("pieces", [])] + ["sur le tout", "brochant", "accompagné", "accosté", "cantonné", "chargé", "rangé en", "contourné", "semé", "plein", "cabré"]
+    for t in attendus:
+        if t and mots(t) not in defini and not any(mots(t) in d for d in defini):
+            err(f"data.json: « {t} » est un mot de l'Atelier (pièce ou blasonnement) que le glossaire ne définit pas")
     o = a.get("ornements", {})
     for h in o.get("heaumes", []):
         if h.get("type") not in o.get("heaumeTypes", {}): err(f"atelier.json: heaume « {h.get('kind')} » : type inconnu")

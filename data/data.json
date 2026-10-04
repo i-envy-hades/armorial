@@ -296,6 +296,78 @@
       "isbn": "—",
       "type": "Ressource en ligne",
       "note": "Couleurs dites naturelles : « au naturel », avec ses deux cas particuliers, la carnation et le tanné, réservées aux meubles réalistes."
+    },
+    "wiki_brisure": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Brisure (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Brisure",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Définition, procédés de brisure, brisures usuelles en France, façon de lire un blason brisé, et les trois systèmes de brisure de bâtardise décrits par Laurent Hablot (2016). L'article porte les bandeaux « ébauche », « sources » (août 2009) et « à compléter », et un appel à citation pour le « système de la devise » ; il s'appuie sur Duhoux d'Argicourt (1896), O'Kelly de Galway (1901), Fourez (1932), Grandmaison (1861) et le Père Anselme avec Potier de Courcy, que nous n'avons pas consultés : seuls les points qu'il énonce sont repris ici, et les désaccords avec d'autres sources sont signalés."
+    },
+    "wiki_cadency": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Cadency (en anglais)",
+      "editeur": "Wikipédia en anglais, encyclopédie en ligne — en.wikipedia.org/wiki/Cadency",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Les marques de cadence du système anglais (neuf fils), celles des filles et des enfants illégitimes, le caractère facultatif du système en Angleterre — avec les déclarations du College of Arms, de Peter Gwynn-Jones et d'Oswald Barron — et obligatoire en Écosse. Deux sections (« Background », « Ways of differencing ») portent un bandeau « à développer » (octobre 2017) ; seuls les points que la page énonce sont repris ici."
+    },
+    "wiki_lambel": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Lambel",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Lambel",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Description du lambel, étymologie, évolution de sa forme, place dans l'écu et passage de brisure de l'aîné à brisure de cadet. L'article ne porte pas de bandeau d'avertissement ; il compte deux références."
+    },
+    "wiki_pieces": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Liste de pièces héraldiques",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Liste_de_pièces_héraldiques",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Une définition par pièce : canton, franc-canton, franc-quartier (proportions « assez fréquemment retrouvées », qui varient selon les auteurs), pairle, bâton (trois familles d'auteurs : Crayencourt, Pastoureau, Duhoux d'Argicourt), cotice, filet, lambel. Les positions des auteurs ne sont reprises que telles que la page les rapporte. Pas de bandeau d'avertissement ; quatorze références."
+    },
+    "wiki_emplacement": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Emplacement des figures héraldiques",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Emplacement_des_figures_héraldiques",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Termes de position et de disposition : en abîme, brochant, sur le tout, sur le tout du tout, cantonné, sommé, surmonté… avec des exemples. La page ne cite aucune source et ne porte pas de bandeau d'avertissement."
+    },
+    "blason_armoiries": {
+      "auteur": "Hervé Dupuis (Au Blason des Armoiries)",
+      "titre": "Dictionnaire de l'héraldique, de la noblesse et de la généalogie — entrée « Effaré »",
+      "editeur": "blason-armoiries.org, site en ligne",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Dictionnaire en ligne dont chaque entrée reproduit les définitions d'ouvrages anciens, nommés mais sans numéro de page : celle d'« effaré » cite O'Kelly de Galway (1901), Duhoux d'Argicourt (1899) et Maigne (1885), et note que, pour le cheval, « cabré » est préférable. Les ouvrages cités n'ont pas été consultés directement."
+    },
+    "wiki_champ": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Champ (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Champ_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Le champ et le fond, l'écu « plain » (et, plus rarement, « champé »), le paillé et le diapré. La page porte le bandeau « à sourcer » et ne cite aucune référence : seule la définition de « plain » est reprise ici."
+    },
+    "wiki_champcompose": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Champ composé",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Champ_composé",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Les champs remplis par répétition de petits meubles : le semé (nombre indéfini, meubles incomplets près des bords, règle des émaux), le pavage (échiqueté, losangé, maçonné…) et ses rapports avec les fourrures. La page ne porte pas de bandeau d'avertissement et ne cite aucune référence."
     }
   },
   "tinctures": [
@@ -1608,6 +1680,44 @@
             "joubert1977"
           ],
           "html": "\n          <p>Au sein d'une même famille, les armes pleines reviennent au chef de nom et d'armes ; les autres membres les <b>brisent</b>, c'est-à-dire les modifient légèrement pour se distinguer sans rompre l'appartenance. Le procédé le plus connu est le <b>lambel</b>, petite barre à pendants placée en chef, marque du fils aîné vivant du père.</p>\n          <p>Les systèmes de brisure diffèrent selon les pays et les époques : le système anglais des marques de cadence (lambel, croissant, molette…) est plus rigide que la pratique française, plus libre. À manier avec prudence : présenter un usage local comme une règle universelle est une erreur fréquente.</p>"
+        },
+        {
+          "titre": "Quatre manières de briser",
+          "sources": [
+            "wiki_brisure",
+            "wiki_pieces"
+          ],
+          "html": "\n          <p>Briser, c'est modifier légèrement des armes héritées pour qu'on ne les confonde pas avec celles du chef de la lignée. Wikipédia relève quatre procédés courants : <b>diminuer une pièce honorable</b> ; <b>changer l'émail</b> d'un élément important, le champ ou une pièce ; <b>ajouter une pièce de second ordre ou un meuble</b> ; et, surtout en Allemagne, <b>changer le cimier</b> — les branches d'une même famille s'y reconnaissent à des cimiers qui diffèrent par le nombre ou par la forme.</p>\n          <p>En France, les brisures qu'on rencontre le plus sont la <b>bordure</b>, le <b>lambel</b> et le <b>bâton péri</b>, posé en bande ou en barre (« péri » : raccourci, de sorte qu'il n'atteigne pas le bord de l'écu). Quelques conventions existent — la bande passe pour un signe de légitimité, le lambel pour la brisure d'un cadet — mais elles supposent du blasonneur une connaissance historique considérable : hors des grandes maisons, on ne les applique guère. La barre, qu'on attribue volontiers aux cadets, est surtout connue comme marque de bâtardise (voir plus bas) ; la liste de pièces de Wikipédia rappelle que la prendre pour une brisure de cadet est loin d'être une règle générale.</p>\n          <p>Le mot <i>bâton</i> lui-même n'a pas de définition stable. Selon la même source, les auteurs forment trois familles : une bande ou une barre réduite de moitié (Crayencourt) ; une cotice, c'est-à-dire une bande amincie (Pastoureau) ; un simple synonyme de cotice, qu'on emploie à sa place quand elle est raccourcie, écotée ou fleurdelisée (Duhoux d'Argicourt). C'est un de ces points où l'on évite de trancher.</p>"
+        },
+        {
+          "titre": "Lire un blason brisé",
+          "sources": [
+            "wiki_brisure"
+          ],
+          "html": "\n          <p>La règle de lecture est simple : on blasonne d'abord les armes pleines, comme si la brisure n'existait pas, puis on conclut par <i>brisé de…</i>. Wikipédia cite les armes du bâtard d'Orléans : <i>d'azur à trois fleurs de lis d'or, brisé en chef d'un lambel d'argent et d'une barre d'argent brochant sur le tout</i>.</p>\n          <p>L'usage courant est moins rigoureux. Les armes du département du Loiret, par exemple, se lisent « … le tout surmonté d'un lambel d'argent », là où la formule exacte serait « … brisé d'un lambel d'argent en chef ». On ne déduit d'ailleurs pas un rang de naissance d'une brisure sans connaître la famille : la même marque a changé de sens selon les temps et les maisons — le lambel de l'aîné devient celui des cadets, la barre de bâtardise devient brisure de cadets légitimes.</p>"
+        },
+        {
+          "titre": "Le lambel, d'aîné à cadet",
+          "sources": [
+            "wiki_lambel"
+          ],
+          "html": "\n          <p>Le <b>lambel</b> est un filet horizontal garni de pendants — le plus souvent trois ; quand le nombre est autre, le blasonnement le dit. On le place d'ordinaire en chef. Le mot, attesté en 1165, est une forme de « lambeau » : il évoque les découpes en dents dont on bordait certains vêtements médiévaux.</p>\n          <p>Son emploi a changé avec le temps. À l'origine, il servait de brisure au fils aîné du vivant de son père, seul à pouvoir porter à titre personnel les armes pleines de la famille ; à la mort du père, l'aîné prenait les armes pleines et le lambel passait au cadet. Les familles issues de cadets ont ensuite gardé l'habitude de le porter, ce qui en a fait la brisure la plus employée en France. On lit donc, selon les livres, « marque de l'aîné » ou « marque de cadet » : ce sont deux états de l'usage, non deux erreurs.</p>\n          <p>Sa forme a varié aussi : traverse sur toute la largeur de l'écu et pendants rectangulaires au Moyen Âge, pendants évasés en trapèze à partir du XV<sup>e</sup> siècle, traverse détachée des bords au XVI<sup>e</sup>, retour des formes médiévales de nos jours. Quelques lambels échappent à la place d'usage : celui des sires de Beaujeu est au milieu de l'écu — les érudits du XVII<sup>e</sup> siècle le disaient « brochant sur le tout » —, et la Hollande moderne le met volontiers au centre.</p>"
+        },
+        {
+          "titre": "Les marques de cadence anglaises",
+          "sources": [
+            "wiki_cadency",
+            "wiki_brisure"
+          ],
+          "html": "\n          <p>L'Angleterre a codifié ce que la France a laissé libre : à chaque fils, selon son rang de naissance, une petite figure posée au centre de l'écu — sauf le lambel, qui reste en chef. Dans l'ordre : le <b>lambel</b> à trois pendants (premier fils), le <b>croissant</b> (deuxième), la <b>molette</b> (troisième), la <b>merlette</b> (quatrième), l'<b>annelet</b> (cinquième), la <b>fleur de lis</b> (sixième), la <b>rose</b> (septième), puis la <i>cross moline</i> (huitième) et le double <i>quatrefoil</i>, aussi nommé <i>octofoil</i> (neuvième). Le fils aîné de l'aîné porte un lambel à cinq pendants ; les petits-enfants combinent la marque de leur père et la leur, d'où des empilements vite illisibles. Les filles n'ont pas de marque propre : elles portent les armes de leur père sur un losange. L'enfant illégitime, lui, porte une bordure ondée.</p>\n          <p>Il faut pourtant se garder d'en faire une règle : <b>codifié ne veut pas dire obligatoire</b>. Le College of Arms présente ces marques comme facultatives et rapporte que le système aurait été inventé vers 1500 par John Writhe, Garter ; Peter Gwynn-Jones, Garter King of Arms, recommande de ne s'en servir qu'avec parcimonie ; Oswald Barron constatait déjà que la pratique était négligée depuis longtemps — vitraux, ex-libris, monuments l'ignorent le plus souvent. Seule l'Écosse l'impose, par l'enregistrement des armes auprès du Lord Lyon (voir le chapitre « Ailleurs »).</p>\n          <p>Les sources ne disent pas tout à fait la même chose : la page française de Wikipédia écrit qu'en Angleterre et en Écosse l'aîné brise <i>obligatoirement</i> d'un lambel ; la page anglaise, plus détaillée sur ce point, précise que le système est facultatif en Angleterre et n'est imposé qu'en Écosse. C'est celle-ci qu'on suit ici.</p>"
+        },
+        {
+          "titre": "Brisures de bâtardise",
+          "sources": [
+            "wiki_brisure",
+            "wiki_cadency"
+          ],
+          "html": "\n          <p>Quand la brisure s'installe, au XIII<sup>e</sup> siècle, les fils illégitimes n'ont pas de marque particulière ; à partir du XIV<sup>e</sup>, certains signes leur sont plus volontiers réservés, sans que l'usage soit universel. L'historien Laurent Hablot, que suit Wikipédia, distingue trois systèmes.</p>\n          <ul><li>L'<b>écu plain</b> (uni, souvent d'argent ou d'or), qui porte les armes du père — parfois celles de la mère — dans une pièce, le plus souvent un franc-quartier. Hablot le rapproche des romans de chevalerie, où l'écu plain est celui des jeunes chevaliers qui doivent faire leurs preuves. Au XV<sup>e</sup> siècle, le franc-quartier disparaît et le système se retourne : ce sont désormais les armes du père, brisées d'une pièce de métal.</li><li>Le <b>« système de la devise »</b> : le bâtard reprend des éléments emblématiques de son père, notamment en Angleterre (Wikipédia signale ce point comme appelant une source).</li><li>La <b>barre</b>, qui s'impose à partir du XV<sup>e</sup> siècle, parfois réduite en cotice ou en filet. Elle s'oppose à la bande, brisure courante des fils légitimes. Les lettres par lesquelles le roi de France concède des armes dès le milieu du XV<sup>e</sup> siècle, et des textes juridiques comme les Coutumes de Lorraine de 1594, en font le signe des enfants naturels.</li></ul>\n          <p>Le mouvement a son retour : les signes de bâtardise tendent à être retournés en brisures de cadets légitimes. Charles de Beaumont, bâtard de la maison royale de Navarre, reçoit en 1391 des armes écartelées de Navarre et de Beaumont à la place de son franc-quartier de Navarre. Les descendants de Pierre de Bourbon Busset, qui portait les armes de son père sur un pal sous un chef de Jérusalem en signe de bâtardise, ne brisent plus que du chef au XVII<sup>e</sup> siècle. La maison d'Orléans-Longueville, issue de Jean de Dunois, bâtard d'Orléans et premier Capétien à briser d'une barre, n'arbore plus qu'un bâton péri posé en bande. En Angleterre, la marque de l'enfant illégitime est une bordure ondée.</p>"
         }
       ]
     }
@@ -1618,6 +1728,20 @@
       "def": "Le point exact du centre de l'écu ; une figure isolée y siégeant est dite « en abîme ».",
       "sources": [
         "joubert1977"
+      ]
+    },
+    {
+      "terme": "Accompagné",
+      "def": "Se dit d'une figure principale que des figures secondaires entourent — à ses côtés, au-dessus ou au-dessous — posées perpendiculairement à elle : « d'azur au chevron d'or accompagné de trois étoiles d'argent ». Quand les figures voisines suivent le sens de la figure principale, on dit plutôt « accosté » ; quand quatre d'entre elles garnissent une croix ou un sautoir, « cantonné ».",
+      "sources": [
+        "wiki_emplacement"
+      ]
+    },
+    {
+      "terme": "Accosté",
+      "def": "Se dit d'une figure allongée — posée en pal, en bande ou en barre — qui a d'autres figures à ses côtés, orientées dans le même sens qu'elle. Une figure ronde (besant, anneau) ne s'accoste pas ; si les figures voisines sont orientées autrement, on dit « accompagné », et « côtoyé » quand elles sont nombreuses.",
+      "sources": [
+        "wiki_emplacement"
       ]
     },
     {
@@ -1677,10 +1801,41 @@
       ]
     },
     {
+      "terme": "Cabré",
+      "def": "Se dit d'un cheval dressé presque à la verticale sur ses jambes de derrière. « Effaré » et « effrayé » sont ses synonymes (certains auteurs y ajoutent « forcené ») ; « effaré » s'étend à d'autres animaux, mais pour le cheval on préfère « cabré ».",
+      "sources": [
+        "wiki_meubles",
+        "blason_armoiries"
+      ]
+    },
+    {
+      "terme": "Canton",
+      "def": "Petit carré posé à un angle de l'écu, au chef dextre quand rien d'autre n'est dit. Le canton est plus petit que le franc-canton, lui-même plus petit que le franc-quartier ; les auteurs ne s'accordent pas sur les proportions, et l'on cite souvent les deux septièmes de la largeur de l'écu pour le canton, le tiers pour le franc-canton, la moitié pour le franc-quartier. Le mot désigne aussi chacun des quatre espaces que la croix ou le sautoir laissent libres — d'où « cantonné ».",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
+      "terme": "Cantonné",
+      "def": "Se dit d'une croix ou d'un sautoir dont les quatre espaces laissés libres — les cantons — sont garnis de figures secondaires : la croix de Jérusalem est une croix potencée cantonnée de quatre croisettes.",
+      "sources": [
+        "wiki_emplacement",
+        "wiki_pieces",
+        "wiki_croix"
+      ]
+    },
+    {
       "terme": "Champ",
       "def": "Le fond de l'écu, sur lequel se posent pièces et meubles.",
       "sources": [
         "joubert1977"
+      ]
+    },
+    {
+      "terme": "Chargé",
+      "def": "Se dit d'une pièce ou d'un meuble sur lequel figurent d'autres pièces ou meubles, les charges. La figure chargée sert de champ : les charges y prennent leur place habituelle, sauf indication contraire du blasonnement. À distinguer de « brochant » : la charge reste tout entière à l'intérieur de la figure qui la porte, alors que la figure qui broche déborde.",
+      "sources": [
+        "wiki_emplacement"
       ]
     },
     {
@@ -1824,6 +1979,13 @@
       ]
     },
     {
+      "terme": "Pairle",
+      "def": "Pièce en forme d'Y : le bas du pal et les moitiés hautes de la bande et de la barre, réunis au centre de l'écu — trois branches qui gagnent les deux angles du chef et la pointe. Raccourci et aminci (« alésé et aiguisé »), il répond au shakefork de l'héraldique britannique, qui n'a pas de nom propre en français.",
+      "sources": [
+        "wiki_pieces"
+      ]
+    },
+    {
       "terme": "Pal",
       "def": "Pièce honorable verticale au milieu de l'écu.",
       "sources": [
@@ -1845,6 +2007,13 @@
       ]
     },
     {
+      "terme": "Plain, plein",
+      "def": "Se dit d'un écu d'un seul émail, sans meuble ni pièce : « d'argent plain » (plus rarement « champé d'argent »). Quand seule une partition est unie, on peut omettre le mot. L'Atelier écrit « plein ».",
+      "sources": [
+        "wiki_champ"
+      ]
+    },
+    {
       "terme": "Pointe",
       "def": "Partie basse de l'écu.",
       "sources": [
@@ -1863,6 +2032,13 @@
       "def": "Se dit d'un animal dressé de profil sur une patte, en posture d'attaque.",
       "sources": [
         "joubert1977"
+      ]
+    },
+    {
+      "terme": "Rangé en",
+      "def": "Se dit de meubles en nombre alignés dans le sens de la pièce qu'on nomme ensuite : en fasce (à l'horizontale), en pal (à la verticale), en bande ou en barre (en diagonale). L'alignement ne règle pas la position de chaque meuble : trois clefs « rangées en fasce » sont alignées à l'horizontale, chacune restant en pal. « Rangé en chef » résume « rangé en fasce » situé en chef.",
+      "sources": [
+        "wiki_emplacement"
       ]
     },
     {
@@ -1894,6 +2070,13 @@
       ]
     },
     {
+      "terme": "Semé",
+      "def": "Se dit d'un champ (d'écu, de partition ou de pièce) où un petit meuble est répété en grand nombre, sans que ce nombre soit fixé : les meubles sont dessinés incomplets près des bords, comme s'ils se poursuivaient au-delà, ou disparaissent sous les figures qui les recouvrent. Le champ et les meubles semés obéissent à la règle des émaux : « d'azur semé de fleurs de lis d'or » (France ancien).",
+      "sources": [
+        "wiki_champcompose"
+      ]
+    },
+    {
       "terme": "Senestre",
       "def": "Le côté gauche du porteur — donc la droite du spectateur.",
       "sources": [
@@ -1912,6 +2095,13 @@
       "def": "Figures (animaux, êtres) soutenant l'écu de part et d'autre ; « tenants » s'ils sont humains.",
       "sources": [
         "joubert1977"
+      ]
+    },
+    {
+      "terme": "Sur le tout",
+      "def": "Dit seul, suivi d'un émail, c'est le raccourci de « à un écusson brochant sur le tout » : un petit écu posé au centre de l'écu principal, par-dessus le reste, et lu en dernier. Un écusson posé à son tour sur le premier est « sur le tout du tout ». Pour une autre figure, on écrit « à un [meuble] brochant sur le tout ». À ne pas confondre avec « en abîme » (figure seule au point central, directement sur le champ) ni avec « brochant sur le tout », qui qualifie une figure passant par-dessus l'ensemble.",
+      "sources": [
+        "wiki_emplacement"
       ]
     },
     {

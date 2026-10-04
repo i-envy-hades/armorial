@@ -33,12 +33,15 @@ function srcLabel(s){
   return `${who} (${an})`;
 }
 
-function srcTag(ids){
-  if(!ids || !ids.length) return "";
-  const names = [...new Set(ids.map(i=>{
-    const s = DATA.sources[i];
-    return s ? srcLabel(s) : i;
-  }))];
+/* une source se cite par son identifiant ("joubert1977") ou, pour une page précise, par { "id": "joubert1977", "p": "p. 34-35" } */
+function srcRef(r){
+  const id = typeof r === "string" ? r : r.id, p = typeof r === "string" ? "" : r.p;
+  const s = DATA.sources[id];
+  return (s ? srcLabel(s) : id) + (p ? ", " + p : "");
+}
+function srcTag(refs){
+  if(!refs || !refs.length) return "";
+  const names = [...new Set(refs.map(srcRef))];
   return `<div class="src-tag">Source : <b>${names.join(" · ")}</b></div>`;
 }
 
@@ -234,7 +237,9 @@ function renderGlossary(filter=""){
   if(!items.length){
     list.innerHTML = `<p class="gloss-empty">Aucun terme ne correspond à « ${escHtml(filter)} ». Ce mot n'est peut-être pas encore couvert — il le sera au prochain livre.</p>`;
   } else {
-    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}</dd></div>`).join("");
+    /* le glossaire ne montre une source que lorsqu'elle renvoie à une page précise */
+    const pages = g => (g.sources || []).filter(r => typeof r !== "string" && r.p).map(srcRef).join(" · ");
+    list.innerHTML = items.map(g=>`<div class="gloss-item"><dt>${hl(g.terme)}</dt><dd>${hl(g.def)}${pages(g) ? ` <span class="gloss-src">(${pages(g)})</span>` : ""}</dd></div>`).join("");
   }
   count.textContent = `${items.length} terme${items.length>1?"s":""}${f?" trouvé"+(items.length>1?"s":""):" répertoriés"}`;
 }

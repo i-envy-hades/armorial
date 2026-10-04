@@ -91,6 +91,8 @@ fichier introuvable, figure sans licence, « kind » sans dessin…).
   `{ "auteur", "titre", "editeur", "annee", "isbn", "type", "note" }`.
 - **Enrichir ou créer un article** : dans `sections[].articles`
   `{ "titre", "html", "sources": ["joubert1977", …] }` — le tag « Source » de l'article se met à jour tout seul.
+  Pour citer une page précise, on remplace l'identifiant par `{ "id": "joubert1977", "p": "p. 34-35" }` : le tag devient « Joubert (1977), p. 34-35 »,
+  et un terme du glossaire qui cite ainsi une page l'affiche à la suite de sa définition.
   Une section peut aussi porter une galerie (`"figure"`), un article un diagramme (`"diagram"`) ou une galerie de règles (`"gallery"`).
 - **Ajouter un terme** : dans `glossaire` `{ "terme", "def", "sources" }` (ou dans `repertoire`, `attributs`, `positions`).
 - **Ajouter une figure** dans `tinctures`, `partitions`, `pieces`, `meubles` ou `couronnes`. Elle est dessinée toute seule si son
@@ -133,7 +135,7 @@ Les figures empruntées gardent leur licence et leur crédit : l'Atelier les rec
 ## Vérifier avant de publier
 
 ```sh
-python3 tools/check_data.py          # instantané : données, fichiers cités, gabarits, menu
+python3 tools/check_data.py          # instantané : données, fichiers cités, gabarits, menu, et le glossaire définit-il les mots de l'Atelier ?
 ```
 
 Le test de fumée charge chaque page dans un vrai navigateur, vérifie qu'elle se construit sans erreur, que les cartes sont dans leurs
@@ -181,7 +183,10 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Petits écrans** : l'encyclopédie et l'Atelier ne sont pas encore adaptés au téléphone (la page déborde en largeur) ; les trois autres pages le sont.
 - **Les images viennent de Wikimedia Commons** : les pages ne sont pas autonomes, et un fichier renommé ou supprimé là-bas manque ici.
   `check_commons.py` le signale ; copier les images dans le dépôt, avec leurs crédits, les rendrait indépendantes.
-- **Sources** : elles sont citées par ouvrage, sans numéro de page ; certaines lignées s'appuient surtout sur Wikipédia.
+- **Sources** : elles sont citées par ouvrage, presque toujours sans numéro de page (le format `{ "id", "p" }` existe, mais n'est pas encore utilisé) ;
+  certaines lignées s'appuient surtout sur Wikipédia. Le chapitre « Brisures » et les entrées du glossaire ajoutées avec lui (canton, pairle, sur le tout,
+  cabré, accompagné, accosté, cantonné, chargé, rangé en, semé, plain) reposent sur des pages de Wikipédia, lues puis reformulées — leurs désaccords avec
+  d'autres sources sont signalés dans le texte —, faute des pages de Joubert et de Pastoureau, à ajouter quand on les aura sous les yeux.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.
