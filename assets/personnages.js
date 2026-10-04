@@ -29,7 +29,7 @@ function card(p){
 }
 function blLine(p){
   const s = p.blasonSrc;
-  if (!p.blason) return "";
+  if (!p.blason) return "Blasonnement non établi : les pages lues ne le donnent pas.";
   if (!s) return "Blasonnement : domaine public.";
   return `Blasonnement d'après <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — domaine public.`;
 }

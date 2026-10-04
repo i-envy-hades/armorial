@@ -2,7 +2,7 @@
   {
     "nom": "Richard Ier « Cœur de Lion »",
     "meta": "v. 1157–1199 · roi d'Angleterre",
-    "blason": "De gueules à trois léopards d'or",
+    "blason": "De gueules à trois léopards d'or, armés et lampassés d'azur",
     "desc": "Sous Richard Ier se fixent les trois léopards (lions passants) des Plantagenêts, qui deviendront les armes de l'Angleterre.",
     "file": "Royal arms of England.svg",
     "auteur": "Sodacan",
@@ -14,7 +14,12 @@
         "t": "Frise des rois d'Angleterre",
         "href": "lignees.html#angleterre"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of England »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
+      "note": "l'article dit « trois lions passant guardant » : ce que la tradition française nomme léopards"
+    }
   },
   {
     "nom": "Édouard III d'Angleterre",
@@ -31,7 +36,12 @@
         "t": "Frise des rois d'Angleterre",
         "href": "lignees.html#angleterre"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of England »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
+      "note": "en 1340, Édouard III écartèle les armes d'Angleterre de celles de France (d'azur semé de lis d'or), qui prennent la place d'honneur"
+    }
   },
   {
     "nom": "Édouard de Woodstock, le Prince Noir",
@@ -52,7 +62,12 @@
         "t": "Le lambel, d'aîné à cadet",
         "href": "index.html#le-lambel-d-aine-a-cadet"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Edward, the Black Prince »",
+      "url": "https://en.wikipedia.org/wiki/Edward,_the_Black_Prince",
+      "note": "légende de l'illustration de l'article : France ancien aux 1 et 4, Angleterre aux 2 et 3, un lambel de trois pendants d'argent"
+    }
   },
   {
     "nom": "Henri VI d'Angleterre",
@@ -69,7 +84,12 @@
         "t": "Frise des rois d'Angleterre",
         "href": "lignees.html#angleterre"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of England »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
+      "note": "Henri IV réduit les lis à trois (l'article date cette version de 1406-1554) ; Henri VI porte la France « moderne »"
+    }
   },
   {
     "nom": "Richard III d'Angleterre",
@@ -86,7 +106,12 @@
         "t": "Frise des rois d'Angleterre",
         "href": "lignees.html#angleterre"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of England »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
+      "note": "pour les deux sangliers (blancs, emblème personnel), voir Wikipedia (en), « Royal supporters of England »"
+    }
   },
   {
     "nom": "Bertrand du Guesclin",
@@ -103,7 +128,12 @@
         "t": "Quatre manières de briser",
         "href": "index.html#quatre-manieres-de-briser"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_du_Guesclin_2.svg",
+      "note": "la page donne aussi une variante à l'aigle bicéphale et au bâton ; elle cite l'Armorial général de d'Hozier (t. VIII, Bretagne, p. 50) et le Nobiliaire et armorial de Bretagne de Potier de Courcy"
+    }
   },
   {
     "nom": "Edmond FitzAlan (2e comte d'Arundel)",

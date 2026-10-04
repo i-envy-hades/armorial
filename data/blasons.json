@@ -13,7 +13,12 @@
         "t": "Frise des rois de France",
         "href": "lignees.html#france"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de la France »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_France",
+      "note": "l'article donne cet écu pour les armes royales adoptées en 1376, sur ordre de Charles V"
+    }
   },
   {
     "nom": "Royaume de France (ancien)",
@@ -29,13 +34,18 @@
         "t": "Frise des rois de France",
         "href": "lignees.html#france"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de la France »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_France",
+      "note": "l'article date de 1211 le moment où l'usage de ces armes se systématise"
+    }
   },
   {
     "nom": "Royaume d'Angleterre",
     "cat": "Royaumes",
     "porteur": "Plantagenêts, à partir de la fin du XIIᵉ s.",
-    "blason": "De gueules à trois léopards d'or",
+    "blason": "De gueules à trois léopards d'or, armés et lampassés d'azur",
     "file": "Royal arms of England.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 4.0",
@@ -45,7 +55,12 @@
         "t": "Frise des rois d'Angleterre",
         "href": "lignees.html#angleterre"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of England »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
+      "note": "l'article dit « trois lions passant guardant » : ce que la tradition française nomme léopards"
+    }
   },
   {
     "nom": "Couronne d'Aragon",
@@ -61,13 +76,18 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coat of arms of the Crown of Aragon »",
+      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_the_Crown_of_Aragon",
+      "note": "les quatre pals de gueules sur or ; l'article discute leur origine, catalane ou aragonaise"
+    }
   },
   {
     "nom": "Saint-Empire romain germanique",
     "cat": "Empires",
     "porteur": "Aigle bicéphale de l'Empire (après 1433)",
-    "blason": "D'or à l'aigle bicéphale de sable",
+    "blason": "D'or à l'aigle bicéphale de sable, becquée et membrée de gueules",
     "file": "Armoiries modernes Saint-Empire bicéphale.svg",
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
@@ -77,7 +97,12 @@
         "t": "Frise des Habsbourg",
         "href": "lignees.html#habsbourg"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coats of arms of the Holy Roman Empire »",
+      "url": "https://en.wikipedia.org/wiki/Coats_of_arms_of_the_Holy_Roman_Empire",
+      "note": "l'article blasonne l'aigle impériale (d'or à l'aigle de sable, becquée et membrée de gueules) et précise que, depuis Albert II (1438), chaque empereur la porte avec ses armes de famille en écusson ; la figure choisie la montre bicéphale"
+    }
   },
   {
     "nom": "Archiduché d'Autriche",
@@ -93,7 +118,12 @@
         "t": "Frise des Habsbourg",
         "href": "lignees.html#habsbourg"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Coats of arms of the Holy Roman Empire »",
+      "url": "https://en.wikipedia.org/wiki/Coats_of_arms_of_the_Holy_Roman_Empire",
+      "note": "armes babenbergeoises de gueules à la fasce d'argent, prises par Rodolphe Iᵉʳ de Habsbourg avec les duchés d'Autriche et de Styrie"
+    }
   },
   {
     "nom": "Comté de Foix",
@@ -103,7 +133,12 @@
     "file": "Blason du comté de Foix.svg",
     "auteur": "Peter Potrowl",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Comté de Foix »",
+      "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_de_Foix",
+      "note": "armes des premiers comtes ; après l'union avec le Béarn, elles sont écartelées des vaches du Béarn"
+    }
   },
   {
     "nom": "Duché de Bretagne",
@@ -113,7 +148,12 @@
     "file": "Armoiries Bretagne - Arms of Brittany.svg",
     "auteur": "Brieg",
     "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self"
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+    "blasonSrc": {
+      "label": "Wikipédia, « Duché de Bretagne »",
+      "url": "https://fr.wikipedia.org/wiki/Duch%C3%A9_de_Bretagne",
+      "note": "hermines plaines depuis Jean III (1316) ; avant lui, un échiqueté d'or et d'azur brisé d'un franc-quartier d'hermine"
+    }
   },
   {
     "nom": "Duché de Savoie",
@@ -129,17 +169,27 @@
         "t": "Frise de la maison de Savoie",
         "href": "lignees.html#savoie"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison de Savoie »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Savoie",
+      "note": "la bannière à la croix d'argent sur champ de gueules apparaît sous Amédée III (1143) et devient définitive sous Amédée V"
+    }
   },
   {
     "nom": "Maison de Médicis",
     "cat": "Maisons",
     "porteur": "Médicis de Florence (les « palle »)",
-    "blason": "D'or à cinq tourteaux de gueules et, en chef, un tourteau d'azur",
+    "blason": "D'or à cinq tourteaux de gueules posés en orle, et, en chef, un tourteau plus grand d'azur chargé de trois fleurs de lis d'or",
     "file": "Coat of arms of the House of Medici.svg",
     "auteur": "F l a n k e r",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (en), « House of Medici »",
+      "url": "https://en.wikipedia.org/wiki/House_of_Medici",
+      "note": "armes « augmentées » : le tourteau aux armes de France est concédé par Louis XI en 1465"
+    }
   },
   {
     "nom": "République de Gênes",
@@ -149,7 +199,12 @@
     "file": "Coat of arms of Republic of Genoa (early).svg",
     "auteur": "Facquis",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Genoa »",
+      "url": "https://en.wikipedia.org/wiki/Genoa",
+      "note": "l'article décrit le drapeau de Gênes, la croix de saint Georges rouge sur fond blanc, même motif que l'écu"
+    }
   },
   {
     "nom": "Ordre Teutonique",
@@ -159,7 +214,12 @@
     "file": "Insignia Germany Order Teutonic.svg",
     "auteur": "Madboy74",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Insignia_Germany_Order_Teutonic.svg",
+      "note": "blasonnement donné par la page du fichier ; Wikipedia (en), « Teutonic Order » parle du surcot blanc à croix noire"
+    }
   },
   {
     "nom": "Ordre de Saint-Jean (Hospitaliers)",
@@ -169,7 +229,12 @@
     "file": "Coat of arms of the Knights Hospitaller.svg",
     "auteur": "Constantine Plakidas",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Sovereign Military Order of Malta »",
+      "url": "https://en.wikipedia.org/wiki/Sovereign_Military_Order_of_Malta",
+      "note": "armes de l'Ordre de Malte, héritier des Hospitaliers"
+    }
   },
   {
     "nom": "Royaume de Grenade",
