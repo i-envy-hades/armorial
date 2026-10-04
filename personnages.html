@@ -28,28 +28,38 @@
 -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/personnages.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
 </head>
-<body>
+<body class="epic2">
+<div class="progress" aria-hidden="true"><i></i></div>
 <header class="mast" data-page="personnages"></header>
 <script src="assets/chrome.js"></script>
 <section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/personnages-hero.jpg" aria-hidden="true"></div>
+  <div class="frame">
   <p class="eyebrow">Armorial illustré</p>
   <h1>Personnages</h1>
   <p>Les armoiries de personnes ayant réellement existé — rois, princes, capitaines. Ici, de vraies images d'armoiries, chacune créditée à son auteur et à sa licence.</p>
+  <div class="hero-facts" id="facts"></div>
+  </div>
 </section>
-<div class="note"><div class="box">
-  <span class="k">Méthode &amp; sources</span>
+<div class="note"><details>
+  <summary><span class="k">Méthode &amp; sources</span><span class="r">images libres de Commons, créditées une à une — et ce que la page ne fait pas</span></summary>
+  <div class="box-in">
   <p>À la différence du reste du site (figures dessinées à neuf), les écus de cette page sont de <b>vraies images</b> tirées de <b>Wikimedia Commons</b>, retenues uniquement lorsqu'elles sont sous <b>licence libre</b> (CC BY-SA) et dont l'<b>auteur est identifié</b>. Chaque illustration est créditée sous elle : auteur, licence et lien. Le <b>blasonnement</b> reste un fait de domaine public.</p>
   <p>Conséquence assumée : cette page <b>n'est pas autonome</b> — les images sont chargées depuis Wikimedia. Si un fichier y est déplacé, l'image peut manquer. C'est le prix du réalisme.</p>
   <p>Sous les blasonnements que <a href="atelier.html">l'Atelier</a> sait relire en entier, un bouton <b>« Redessiner dans l'Atelier »</b> ouvre l'Atelier sur ces armes, où l'on peut les modifier. Les autres n'en ont pas : l'Atelier ne devine pas ce qu'il ne comprend pas (les « quatre pals », une bordure autour d'une croix, un meuble qu'il ne connaît pas…).</p>
-</div></div>
+  </div>
+</details></div>
 <noscript><p class="nojs">Cette page se construit avec JavaScript : activez-le pour voir les personnages.</p></noscript>
 <main class="grid" id="grid"></main>
-<footer><div class="foot">
+<footer data-img="assets/epopee/personnages-hero.jpg"><div class="foot">
   <p><b>L'Armorial</b> — page « Personnages ». Illustrations : Wikimedia Commons, sous licence libre, créditées individuellement. Blasonnements : domaine public. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un paysage imaginé, pas un document historique.</p>
 </div></footer>
 <script src="assets/blasonnement.js"></script>
 <script src="assets/lecture.js"></script>
 <script src="assets/personnages.js"></script>
+<script src="assets/epopee-pages.js"></script>
 </body>
 </html>

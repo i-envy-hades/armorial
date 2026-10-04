@@ -50,8 +50,11 @@
 
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/index.css">
+<link rel="stylesheet" href="assets/epopee.css">
+<link rel="preload" as="image" href="assets/epopee/tournoi-ecus.jpg">
 </head>
-<body>
+<body class="epic">
+<div class="progress" aria-hidden="true"><i></i></div>
 
 <!-- ============ MASTHEAD ============ -->
 <header class="mast" data-page="index">
@@ -65,6 +68,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
+  <div class="hero-bg" data-parallax="0.28" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" poster="assets/epopee/tournoi-ecus.jpg"><source src="assets/epopee/tournoi-ecus.mp4" type="video/mp4"></video></div>
   <div class="frame">
     <svg class="hero-shield" viewBox="0 0 200 252" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
     <p class="hero-credit">Fleur de lis : <a href="https://commons.wikimedia.org/wiki/File:Meuble_h%C3%A9raldique_Fleur_de_lys.svg" target="_blank" rel="noopener">« Meuble héraldique Fleur de lys.svg »</a> — Yorick, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 3.0</a>, via Wikimedia Commons · couleurs et trait adaptés</p>
@@ -86,11 +90,13 @@
 
 <footer>
   <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, la fleur de lis — celle de l'écu du bandeau comprise —, plusieurs croix et meubles d'objet, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <p class="fine">Décors des bandeaux de chapitre, du héros et de ce pied de page : images et vidéo d'ambiance générées par IA (Higgsfield), sans écu ni personnage réels. Ce sont des paysages imaginés, pas des documents historiques.</p>
   <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
   <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
 </footer>
 
 <script src="assets/blason.js"></script>
 <script src="assets/index.js"></script>
+<script src="assets/epopee.js"></script>
 </body>
 </html>

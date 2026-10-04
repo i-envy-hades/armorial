@@ -26,29 +26,39 @@
 -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/blasons.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
 </head>
-<body>
+<body class="epic2">
+<div class="progress" aria-hidden="true"><i></i></div>
 <header class="mast" data-page="blasons"></header>
 <script src="assets/chrome.js"></script>
 <section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/blasons-hero.jpg" aria-hidden="true"></div>
+  <div class="frame">
   <p class="eyebrow">Armorial illustré</p>
   <h1>Blasons réels</h1>
   <p>Les armoiries d'États, royaumes, ordres et maisons — de vraies images, chacune créditée à son auteur et à sa licence. Choisissez une catégorie pour filtrer.</p>
+  <div class="hero-facts" id="facts"></div>
+  </div>
 </section>
-<div class="note"><div class="box">
-  <span class="k">Méthode &amp; sources</span>
+<div class="note"><details>
+  <summary><span class="k">Méthode &amp; sources</span><span class="r">images libres de Commons, créditées une à une — et ce que la page ne fait pas</span></summary>
+  <div class="box-in">
   <p>Les écus de cette page sont de <b>vraies images</b> tirées de <b>Wikimedia Commons</b>, retenues uniquement sous <b>licence libre</b> (CC BY-SA ou CC BY). Chaque illustration est créditée sous elle : nom du fichier, auteur (quand il est identifié), licence, et lien vers la <b>page Commons du fichier</b> — qui fait foi pour l'auteur et la licence exacte. Le <b>blasonnement</b> reste un fait de domaine public.</p>
   <p>Conséquence assumée : cette page <b>n'est pas autonome</b> — les images sont chargées depuis Wikimedia. Deux États (Hongrie et Bourgogne anciennes) manquent encore : je n'ai pas pu vérifier proprement leur fichier, je préfère les ajouter plus tard plutôt que d'attribuer à l'aveugle.</p>
   <p>Sous les blasonnements que <a href="atelier.html">l'Atelier</a> sait relire en entier, un bouton <b>« Redessiner dans l'Atelier »</b> ouvre l'Atelier sur ces armes, où l'on peut les modifier. Les autres n'en ont pas : l'Atelier ne devine pas ce qu'il ne comprend pas (les « quatre pals », une bordure autour d'une croix, un meuble qu'il ne connaît pas…).</p>
-</div></div>
+  </div>
+</details></div>
 <div class="tools" id="tools"></div>
 <noscript><p class="nojs">Cette page se construit avec JavaScript : activez-le pour voir les blasons.</p></noscript>
 <main class="grid" id="grid"></main>
-<footer><div class="foot">
+<footer data-img="assets/epopee/blasons-hero.jpg"><div class="foot">
   <p><b>L'Armorial</b> — page « Blasons réels ». Illustrations : Wikimedia Commons, sous licence libre, créditées individuellement. Blasonnements : domaine public. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un paysage imaginé, pas un document historique.</p>
 </div></footer>
 <script src="assets/blasonnement.js"></script>
 <script src="assets/lecture.js"></script>
 <script src="assets/blasons.js"></script>
+<script src="assets/epopee-pages.js"></script>
 </body>
 </html>
