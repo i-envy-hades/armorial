@@ -9,20 +9,25 @@ de lignées et un atelier pour composer les siennes.
 Aucun framework, aucune étape de compilation : des pages HTML, des scripts, des fichiers de données JSON.
 Pour modifier le contenu, on modifie un fichier JSON et on publie.
 
-## Les cinq pages
+## Les neuf pages
 
 | Page | Contenu | Données |
 |---|---|---|
-| `index.html` — **L'encyclopédie** | Douze chapitres (origines, écu, émaux, partitions, règles, pièces, meubles, blasonnement, ornements, droit du blason, droit comparé, brisures), glossaire et répertoire de plus de 300 termes, bibliographie, recherche. Les figures sont dessinées en SVG ; celles qu'on emprunte portent leur crédit. | `data/data.json` |
-| `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement — et, sous celui que l'Atelier sait relire, un bouton « Redessiner dans l'Atelier ». | `data/blasons.json` |
-| `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement (même bouton). | `data/personnages.json` |
-| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, d'Angleterre, d'Écosse et de Portugal, ducs de Bourgogne, rois de Castille, d'Aragon et d'Espagne, maisons de Savoie et de Habsbourg, papauté. | `data/frises.json` et un fichier par lignée |
+| `index.html` — **L'encyclopédie** | Quatorze chapitres (origines, écu, émaux, partitions, règles, pièces, meubles, blasonnement, ornements, droit du blason, droit comparé, brisures, **alliances**, **hérauts et armoiriaux**), glossaire et répertoire de plus de 350 termes, bibliographie, recherche. Les figures sont dessinées en SVG ; celles qu'on emprunte portent leur crédit. Une bande sous le bandeau renvoie aux autres pages. | `data/data.json` |
+| `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement — et, sous celui que l'Atelier sait relire, un bouton « Redessiner dans l'Atelier ». Chaque carte a son adresse (`#royaume-de-france-moderne`). | `data/blasons.json` |
+| `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement (même bouton, mêmes adresses). | `data/personnages.json` |
+| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, d'Angleterre, d'Écosse et de Portugal, ducs de Bourgogne, rois de Castille, d'Aragon et d'Espagne, maisons de Savoie et de Habsbourg, papauté. Chaque frise renvoie à ses repères dans la chronologie. | `data/frises.json` et un fichier par lignée |
 | `atelier.html` — **L'Atelier** | On compose des armes (champ, pièce, meubles, ornements) ; le blasonnement s'écrit tout seul, dans l'ordre où un héraut le lirait. Et inversement : on tape un blasonnement, l'écu se dessine. Lien de partage, export SVG et PNG, rappel de la règle des émaux, crédits de chaque figure empruntée. | `data/atelier.json`, `data/data.json` |
+| `exercices.html` — **S'exercer** | Des questions tirées à neuf à chaque fois par le moteur de l'Atelier : lire un écu, deviner des armes sur leur texte, juger la règle des émaux, nommer les points de l'écu, réviser le vocabulaire, reconnaître des armes réelles — trois niveaux, la réponse expliquée, et un **défi du jour** (six questions, les mêmes pour tous, résultat à copier). Une question n'est posée que si le lecteur de blasonnement relit à l'identique le texte de l'écu. | `data/data.json`, `data/atelier.json`, `data/blasons.json` |
+| `chronologie.html` — **Chronologie** | Les 143 jalons des frises et une vingtaine de repères du droit et des origines (reformulés des chapitres de l'encyclopédie) sur une seule ligne du temps : filtre par lignée, recherche, désaccords entre sources, sauts de siècle. | les fichiers des frises, `data/chronologie.json` |
+| `capetiens.html` — **Les Capétiens** | L'arbre des brisures : 44 maisons et branches de la maison capétienne (d'après l'« Armorial des Capétiens » de Wikipédia), leurs armes, et ce qui, dans leur écu, les distingue des lis de France (bordure, lambel, bande, bâton…), mis en relief. | `data/capetiens.json` |
+| `recherche.html` — **Rechercher** | Une recherche dans tout le site (articles, glossaire, vocabulaire, blasons, personnages, règnes et armes des lignées, chronologie, arbre des Capétiens, sources) : sans accent ni majuscule, tous les mots dans la même entrée. Chaque résultat mène à l'endroit où il se lit. | tous les fichiers de données |
+| `404.html` | La page d'erreur de GitHub Pages, avec une recherche. | — |
 
 ### Ce que sait faire l'Atelier
 
 - **L'écu** : simple, écartelé (1-4 / 2-3, ou en quatre), avec ou sans écusson en abîme (« sur le tout ») ; quinze formes d'écu.
-- **Le champ** : plein, partagé (parti, coupé, tranché, taillé, tiercé, gironné, traits ondé, crénelé, denché, engrêlé, cannelé, dancetté, nébulé…) ou rayé (fascé, palé, bandé, barré) ; neuf émaux, fourrures comprises.
+- **Le champ** : plein, partagé (parti, coupé, tranché, taillé, tiercé, gironné, traits ondé, crénelé, denché, engrêlé, cannelé, dancetté, nébulé…) ou rayé (fascé, palé, bandé, barré, de six ou huit pièces — ou deux à quatre pièces rebattues : « d'or à trois pals de gueules ») ; neuf émaux, fourrures comprises.
 - **La pièce** : chef, fasce, pal, bande, barre, croix, sautoir, chevron, bordure, orle, canton, franc-quartier, pairle — à bord droit, ondé, nébulé, dancetté, engrêlé, cannelé ou denché.
 - **Les meubles** : plus de quatre-vingt-dix — dont des bêtes (lion rampant, passant ou léopard, aigle à une ou deux têtes, cerf, cheval, ours, sanglier, loup, cygne, poisson, griffon, dragon…) et l'arbre —, jusqu'à deux sortes ensemble ; nombre, disposition (en chef, en pal, 2 et 1, semé, en orle…), sens (contourné), réglages de taille et de position.
 - **Les ornements** : couronnes de rang, heaumes (deux modèles, trois positions), lambrequins, panache, supports, colliers d'ordres, devise sur un bandeau.
@@ -43,23 +48,29 @@ Ouvrir `index.html` par double-clic affiche un message d'erreur, pas la page.
 ## Organisation du dépôt
 
 ```
-index.html  blasons.html  personnages.html  lignees.html  atelier.html     les cinq pages (squelette et textes propres à chacune)
-sitemap.xml                                                                  plan du site, pour les moteurs de recherche
+index.html  blasons.html  personnages.html  lignees.html  atelier.html
+exercices.html  chronologie.html  capetiens.html  recherche.html  404.html      les pages (squelette et textes propres à chacune)
+sitemap.xml  robots.txt                                                           pour les moteurs de recherche
 
 assets/
-  site.css          socle commun : polices, couleurs, bandeau, parchemin, animations
-  chrome.js         bandeau de navigation et sceau du pied de page, communs à toutes les pages
+  site.css          socle commun : polices, couleurs, bandeau (menu replié sur téléphone), parchemin, impression
+  chrome.js         bandeau de navigation, lien d'évitement et sceau du pied de page, communs à toutes les pages
   blason.js         le dessin héraldique : émaux, partitions, pièces (et leurs contours), meubles — partagé par l'encyclopédie et l'Atelier
-  blasonnement.js   le modèle des armes : grammaire, état d'une composition, normalisation, blasonnement (sans dessin) — partagé par l'Atelier,
-                    le lecteur et les galeries
+  blasonnement.js   le modèle des armes : grammaire, état d'une composition, normalisation, blasonnement (sans dessin)
+  dessin.js         le dessin d'une composition (champ, pièce, meubles, ornements, crédits) : de l'état au SVG — partagé par l'Atelier et S'exercer
   lecture.js        le lecteur de blasonnement : du texte à l'écu, l'inverse de blazonAll() ; décrit en tête du fichier
-  index.js .css     l'encyclopédie            atelier.js .css   l'Atelier
+  index.js .css     l'encyclopédie            atelier.js .css   l'Atelier (l'interface seule)
+  exercices.js .css S'exercer                 chronologie.js .css   la ligne du temps
+  capetiens.js .css Les Capétiens             recherche.js .css     la recherche du site
   lignees.js        les frises (son CSS reste dans lignees.html, voir plus bas)
   blasons.js .css   Blasons réels             personnages.js .css   Personnages      (ils chargent le lecteur pour poser leurs boutons)
-  favicon.svg       l'icône du site
+  cartes.js         les adresses des cartes des galeries (et le filtre qu'on lève pour y aller)
+  epopee*.js .css   l'habillage « chronique » : bandeaux, cartes, mouvement léger (désactivé avec prefers-reduced-motion)
+  favicon.svg  og.jpg   l'icône du site, l'image de partage (un écu composé par l'Atelier)
   fonts/            polices auto-hébergées (licence OFL, texte joint)
   meubles/          figures SVG des meubles empruntés à Wikimedia Commons
   ornements/        couronnes, heaumes, lambrequins, colliers, panache (Commons)
+  epopee/           images d'ambiance des bandeaux (générées par IA, sans écu réel)
 
 data/
   data.json         tout le contenu de l'encyclopédie
@@ -68,9 +79,11 @@ data/
   lignees.json (rois de France)  angleterre.json  ecosse.json  portugal.json  espagne.json (Castille, Aragon, Espagne)  bourgogne.json
   savoie.json  habsbourg.json  papaute.json     une lignée par fichier
   atelier.json      meubles et ornements de l'Atelier
+  chronologie.json  les repères du droit et des origines (les jalons viennent des frises)
+  capetiens.json    l'arbre des maisons et branches capétiennes
 
 tools/
-  check_data.py     vérifie les données, les fichiers cités et les gabarits (sans dépendance)
+  check_data.py     vérifie les données, les fichiers cités, les gabarits, l'ordre des scripts et le plan du site (sans dépendance)
   smoke_test.py     charge chaque page dans un vrai navigateur et la fait travailler (Playwright)
   check_commons.py  vérifie auprès de Wikimedia Commons que les figures empruntées existent toujours, en licence libre
 
@@ -99,6 +112,23 @@ fichier introuvable, figure sans licence, « kind » sans dessin…).
 - **Ajouter une figure** dans `tinctures`, `partitions`, `pieces`, `meubles` ou `couronnes`. Elle est dessinée toute seule si son
   `kind` existe dans `assets/blason.js` (`partitionInner`, `pieceInner`, `chargeInner`) — `check_data.py` vérifie. Sinon, on cite une
   figure libre de Commons : `"image": { "file", "auteur", "lic", "licurl" }`.
+
+- **Ajouter un chapitre** : un objet de plus dans `sections` (`id`, `label`, `eyebrow`, `title`, `lede`, `figure`, `articles`). Il prend un décor dans `PLATES` et, si l'on veut,
+  une miniature d'époque dans `MINIA` (`assets/index.js`) : une image de Commons du domaine public, créditée. Un encadré « état des connaissances » est un article
+  `{ "note": true, "html": … }` : il n'a pas d'adresse, on ne peut donc pas s'y renvoyer.
+- **Modifier `data/data.json` sans le reformater** : le fichier est mis en forme à la main ; on y insère des morceaux de texte plutôt que de le re-sérialiser tout entier.
+
+### Chronologie — `data/chronologie.json`
+
+Les **jalons** viennent des frises (`royaumes[].jalons` de chaque lignée) : on les modifie là. `data/chronologie.json` ne porte que les **repères** du droit et des origines :
+`{ "annee", "label", "titre", "texte", "groupe" ("origines" ou "droit"), "sources": [identifiants de data.json], "lien": "index.html#ancre", "desaccord" }`.
+`check_data.py` vérifie les sources et les ancres.
+
+### Les Capétiens — `data/capetiens.json`
+
+Un nœud par maison ou branche : `id`, `nom`, `dates`, `parent` (un seul nœud n'en a pas), `fondateur`, `armes` (`blason`, et `quand` pour un état daté), une figure de Commons
+(`file`, `auteur`, `lic`, `licurl`), `notes`, `lien`/`lienTxt` (vers une frise), `idem` (même figure qu'un autre nœud). Rien n'y est calculé : la brisure mise en relief est
+repérée par la page (`assets/capetiens.js`) dans le texte du blasonnement, quand il commence par les armes de France.
 
 ### Blasons réels et Personnages
 
@@ -139,7 +169,7 @@ Les figures empruntées gardent leur licence et leur crédit : l'Atelier les rec
 ## Vérifier avant de publier
 
 ```sh
-python3 tools/check_data.py          # instantané : données, fichiers cités, gabarits, menu, et le glossaire définit-il les mots de l'Atelier ?
+python3 tools/check_data.py          # instantané : données, fichiers cités, gabarits, ordre des scripts, menu, plan du site, ancres, et le glossaire définit-il les mots de l'Atelier ?
 ```
 
 Le test de fumée charge chaque page dans un vrai navigateur, vérifie qu'elle se construit sans erreur, que les cartes sont dans leurs
@@ -147,7 +177,9 @@ grilles, que les ancres d'adresse mènent au bon chapitre, que les neuf frises s
 blasonnements connus et à des compositions tirées au hasard (qui ne doivent jamais échouer). Il vérifie aussi le lecteur de blasonnement :
 chaque écu que l'Atelier sait écrire doit se relire à l'identique (mêmes armes, même texte, même dessin) ; les textes qu'il ne doit pas
 comprendre sont refusés avec la bonne raison ; un mot inconnu fait refuser le texte ; et chaque bouton « Redessiner dans l'Atelier » des
-galeries mène à un blasonnement relu en entier :
+galeries mène à un blasonnement relu en entier. Il vérifie enfin les pages S'exercer (chaque question tirée a une seule bonne réponse, des textes que le lecteur relit à l'identique,
+une règle des émaux juste ; le défi du jour se joue de bout en bout), Chronologie, Rechercher (chaque lien d'un résultat mène à une ancre qui existe), Les Capétiens, et le
+téléphone (375 px : aucune page ne déborde en largeur, le menu se replie derrière un bouton) :
 
 ```sh
 pip install playwright               # une fois ; utilise Google Chrome s'il est installé, sinon : python3 -m playwright install chromium
@@ -184,7 +216,7 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 ## Limites connues
 
-- **Petits écrans** : l'encyclopédie et l'Atelier ne sont pas encore adaptés au téléphone (la page déborde en largeur) ; les trois autres pages le sont.
+- **Petits écrans** : toutes les pages tiennent en 375 px, mais l'Atelier, avec ses nombreuses commandes, reste un long formulaire sur téléphone.
 - **Les images viennent de Wikimedia Commons** : les pages ne sont pas autonomes, et un fichier renommé ou supprimé là-bas manque ici.
   `check_commons.py` le signale ; copier les images dans le dépôt, avec leurs crédits, les rendrait indépendantes.
 - **Sources** : elles sont citées par ouvrage, presque toujours sans numéro de page (le format `{ "id", "p" }` existe, mais n'est pas encore utilisé) ;
@@ -194,8 +226,17 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.
-- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu moins de la moitié des blasonnements des galeries (23 sur 52) — ni « quatre pals »
-  (écrivez « Palé… de huit pièces »), ni une même pièce répétée, ni bordure autour d'une croix, ni cotice, ni fuselé, ni meubles absents de l'Atelier. Il ne lit
+- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu moins d'un tiers des blasonnements des galeries (31 sur 101) — ni « cinq pals »
+  (il lit « d'or à trois pals de gueules », de deux à quatre pièces rebattues sur le champ ; au-delà, écrivez « Palé… de dix pièces »), ni une même pièce répétée ailleurs que sur le champ, ni bordure autour d'une croix, ni cotice, ni fuselé, ni meubles absents de l'Atelier. Il ne lit
   pas les ornements (couronne, heaume, supports). Il pose « 2 et 1 » pour trois meubles dont le texte ne dit pas la disposition, et le dit.
 - **L'Atelier** : peu d'attitudes — le lion existe rampant, passant et léopard, l'aigle à une ou deux têtes, mais la plupart des bêtes n'ont
   qu'un dessin ; ni manteau ni pavillon ; les pièces alésées n'y sont pas.
+- **Pièces, alliances, hérauts** : les chapitres « Pièces » (sauf son premier article), « Blasonnement » (sauf le premier), « Alliances » et « Hérauts et armoriaux », l'article sur le cimier,
+  le cri et la devise reposent sur des pages de Wikipédia lues puis reformulées (leurs désaccords sont signalés, ceux de Wikipédia avec elle-même compris), pas sur Joubert ni Pastoureau.
+- **L'arbre des Capétiens** reprend la classification de la page « Armorial des Capétiens », qui n'est pas une généalogie : il ne dit rien des liens de parenté entre personnes, et ne montre
+  que le blasonnement du premier porteur de chaque branche.
+- **Les exercices** ne couvrent que ce que l'Atelier sait écrire (trois niveaux de difficulté, des écus à un ou deux meubles, parfois écartelés) ; l'exercice « Armes réelles » dépend de Commons.
+- **Les résultats de S'exercer** ne sont gardés que dans le navigateur du lecteur (`localStorage`) : ni compte, ni classement.
+- **Tests** : `smoke_test.py` n'a pas pu être exécuté lors de l'ajout des pages S'exercer, Chronologie, Rechercher et Les Capétiens ; leurs contrôles ont été écrits d'après des mesures faites dans Chrome
+  à la main. Le premier passage de la CI dira s'ils tiennent.
+

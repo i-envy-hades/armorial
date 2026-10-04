@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Chronologie</title>
+<meta name="description" content="Les armoiries au fil des siècles : les jalons de chaque frise — rois, ducs, papes — et les textes de droit, réunis sur une seule ligne du temps, avec leurs sources et les désaccords entre elles.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/chronologie.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — Chronologie">
+<meta property="og:description" content="Les armoiries au fil des siècles : les jalons des frises et les textes de droit, réunis sur une seule ligne du temps, sources à l'appui.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/chronologie.html">
+<meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<!--
+  L'ARMORIAL — page « Chronologie » : une seule ligne du temps pour tout le site.
+  Rien n'est écrit ici : la page lit les jalons de chaque frise (data/frises.json et un fichier par lignée : « jalons »,
+  chacun avec ses sources et, s'il y a lieu, le désaccord entre elles) et les repères de data/chronologie.json
+  (origines du blason, textes de droit — reformulés des chapitres de l'encyclopédie, mêmes sources).
+  Fichiers : assets/chronologie.js, assets/chronologie.css.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/chronologie.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 chr">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="chronologie"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/bibliotheque.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Le temps des armes</p>
+  <h1>Chronologie</h1>
+  <p>Des sceaux de plomb des papes au Vatican d'aujourd'hui : chaque tournant des frises, chaque texte de droit, sur une seule ligne du temps. On peut trier par lignée, chercher un mot, ne garder que les points où les sources se contredisent.</p>
+  <div class="hero-facts" id="facts"></div>
+  </div>
+</section>
+<div class="note"><details>
+  <summary><span class="k">Méthode &amp; sources</span><span class="r">d'où viennent les dates, et ce que la page ne fait pas</span></summary>
+  <div class="box-in">
+  <p>Cette page ne contient aucun texte de son cru : elle <b>rassemble</b>. Les jalons viennent des frises de la page <a href="lignees.html">Lignées</a> — chacun a été lu dans les pages citées sous lui — et les repères du droit et des origines viennent des chapitres de l'<a href="index.html">encyclopédie</a>, reformulés, avec leurs sources. Modifier une frise met la chronologie à jour.</p>
+  <p>Quand deux sources se contredisent, le jalon le dit (« Les sources divergent »). Les dates anciennes sont souvent approximatives ; l'étiquette de date est celle de la frise (« v. 1150 », « XIIIᵉ s. »).</p>
+  <p>Ce n'est pas une histoire complète de l'Europe : seulement les événements que les frises ont retenus pour leur effet sur les armoiries. Les lignées absentes des frises sont absentes ici.</p>
+  </div>
+</details></div>
+<div class="tools" id="tools">
+  <div class="srch"><input id="q" type="search" placeholder="Chercher : un nom, un mot, une année…" aria-label="Chercher dans la chronologie" autocomplete="off"></div>
+  <div class="chips-g" id="chips" role="group" aria-label="Filtrer par lignée"></div>
+  <label class="tgl"><input type="checkbox" id="desac"><span>Seulement les désaccords entre sources</span></label>
+  <span class="cpt" id="cpt" role="status" aria-live="polite"></span>
+</div>
+<noscript><p class="nojs">Cette page se construit avec JavaScript : activez-le pour voir la chronologie.</p></noscript>
+<main class="chr-main" id="main">
+  <p class="chr-chargement" id="chargement" role="status">Les siècles se rassemblent…</p>
+  <nav class="siecles" id="siecles" aria-label="Aller à un siècle" hidden></nav>
+  <div id="tl"></div>
+</main>
+<footer data-img="assets/epopee/bibliotheque.jpg"><div class="foot">
+  <p><b>L'Armorial</b> — page « Chronologie ». Dates et jalons : les frises de la page Lignées et les chapitres de l'encyclopédie, avec leurs sources. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un paysage imaginé, pas un document historique.</p>
+</div></footer>
+<script src="assets/chronologie.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Rechercher</title>
+<meta name="description" content="Chercher dans tout l'Armorial : articles et glossaire de l'encyclopédie, blasons réels, personnages, règnes et armes des lignées, chronologie et sources.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/recherche.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — Rechercher">
+<meta property="og:description" content="Chercher dans tout l'Armorial : encyclopédie, blasons réels, personnages, lignées, chronologie et sources.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/recherche.html">
+<meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<!--
+  L'ARMORIAL — page « Rechercher » : une recherche dans tout le site.
+  Rien n'est indexé à l'avance : la page lit les fichiers de données du site (data/data.json, blasons.json, personnages.json,
+  frises.json et un fichier par lignée, chronologie.json), en fait une liste en mémoire, et cherche dedans — sans accent ni
+  majuscule, tous les mots demandés devant figurer dans la même entrée. Chaque résultat mène à l'endroit où l'entrée se lit.
+  Fichiers : assets/recherche.js, assets/recherche.css.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/recherche.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 rch">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="recherche"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/glossaire.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Dans tout l'Armorial</p>
+  <h1>Rechercher</h1>
+  <form class="rch-form" id="form" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="un mot, un nom, un blasonnement…" aria-label="Rechercher dans tout le site" autocomplete="off" enterkeyhint="search">
+  </form>
+  <p class="rch-aide" id="aide">Articles, glossaire, blasons, personnages, lignées, chronologie, sources : tout se cherche d'un coup.</p>
+  </div>
+</section>
+<noscript><p class="nojs">La recherche fonctionne avec JavaScript : activez-le pour chercher dans le site.</p></noscript>
+<main class="rch-main" id="main">
+  <p class="rch-chargement" id="chargement" role="status">Le site s'indexe en mémoire…</p>
+  <div class="rch-types" id="types" role="group" aria-label="Filtrer par rubrique" hidden></div>
+  <p class="rch-cpt" id="cpt" role="status" aria-live="polite"></p>
+  <ol class="rch-res" id="res"></ol>
+  <p class="rch-plus" id="plus-p" hidden><button type="button" class="main" id="plus">Afficher la suite</button></p>
+  <section class="rch-idees" id="idees" hidden>
+    <h2>Par où commencer ?</h2>
+    <div class="rch-sug" id="sug"></div>
+  </section>
+</main>
+<footer data-img="assets/epopee/glossaire.jpg"><div class="foot">
+  <p><b>L'Armorial</b> — page « Rechercher ». La recherche lit les données du site au moment où vous ouvrez la page ; rien n'est envoyé nulle part. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un paysage imaginé, pas un document historique.</p>
+</div></footer>
+<script src="assets/recherche.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

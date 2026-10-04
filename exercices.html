@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — S'exercer</title>
+<meta name="description" content="Apprendre à lire un blason en s'exerçant : retrouver le blasonnement d'un écu, dessiner mentalement des armes, juger la règle des émaux, nommer les points de l'écu, réviser le vocabulaire — et un défi chaque jour.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/exercices.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — S'exercer">
+<meta property="og:description" content="Apprendre à lire un blason en s'exerçant : retrouver le blasonnement d'un écu, juger la règle des émaux, nommer les points de l'écu — et un défi chaque jour.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/exercices.html">
+<meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<!--
+  L'ARMORIAL — page « S'exercer » : des questions pour apprendre à lire un blason.
+  Fichiers : assets/exercices.js (les questions et leur déroulement), assets/exercices.css ;
+  assets/dessin.js (le dessin des armes, partagé avec l'Atelier), assets/blasonnement.js (la grammaire et le blasonnement),
+  assets/lecture.js (le lecteur : une question n'est posée que si l'Atelier relit à l'identique le texte qu'il écrit) ;
+  les définitions viennent du glossaire de data/data.json, les écus sont composés par le moteur de l'Atelier (data/atelier.json).
+  Seul l'exercice « Armes réelles » montre des images extérieures : celles de la page Blasons réels (Wikimedia Commons), créditées sous la réponse.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/exercices.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 ex">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="exercices"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/glossaire.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Apprendre en jouant</p>
+  <h1>S'exercer</h1>
+  <p>Lire un écu, deviner ses armes, juger la règle des émaux, nommer les points de l'écu : des questions tirées à neuf à chaque fois, avec la réponse expliquée — et un défi, le même pour tous, chaque jour.</p>
+  </div>
+</section>
+<div class="note"><details>
+  <summary><span class="k">Méthode</span><span class="r">d'où viennent les écus, les textes et les réponses</span></summary>
+  <div class="box-in">
+  <p>Chaque écu est <b>composé au hasard par le moteur de <a href="atelier.html">l'Atelier</a></b>, et chaque blasonnement est celui que l'Atelier écrit pour lui. Une question n'est posée que si le <b>lecteur de blasonnement</b> relit ce texte et retrouve exactement les mêmes armes : ce qu'on vous demande de lire est donc sans ambiguïté, et ne contient rien d'inventé.</p>
+  <p>Les mauvaises réponses sont des écus voisins, qui ne diffèrent de la bonne que par un trait — l'émail du champ, le nombre des meubles, la pièce, le sens. Après chaque réponse, les mots qui font la différence sont soulignés.</p>
+  <p>Les définitions du vocabulaire sont celles du <a href="index.html#glossaire">glossaire</a> de l'encyclopédie, d'où le lien vers chaque terme ; les noms des points de l'écu sont ceux du chapitre « <a href="index.html#ecu">L'écu</a> ». La règle des émaux est celle du chapitre « <a href="index.html#emaux">Les émaux</a> ».</p>
+  <p>Rien n'est envoyé nulle part : vos meilleures séries et le résultat du défi du jour sont gardés dans ce navigateur, et nulle part ailleurs.</p>
+  </div>
+</details></div>
+
+<main class="ex-main" id="ex">
+  <noscript><p class="nojs">Les exercices se construisent avec JavaScript : activez-le pour vous exercer.</p></noscript>
+  <p class="ex-chargement" id="ex-chargement" role="status">Les écus se préparent…</p>
+  <section id="ex-menu" hidden>
+    <div class="ex-niveau">
+      <span class="lab" id="ex-niv-lab">Niveau</span>
+      <span class="seg" role="radiogroup" aria-labelledby="ex-niv-lab" id="ex-niv">
+        <label><input type="radio" name="niv" value="1"><span>Facile</span></label>
+        <label><input type="radio" name="niv" value="2"><span>Moyen</span></label>
+        <label><input type="radio" name="niv" value="3"><span>Difficile</span></label>
+      </span>
+      <span class="ex-niv-aide" id="ex-niv-aide"></span>
+    </div>
+    <div class="ex-cartes" id="ex-cartes"></div>
+  </section>
+  <section id="ex-arene" hidden aria-label="Question">
+    <div class="ex-barre">
+      <button type="button" class="lnk" id="ex-retour">← Les exercices</button>
+      <span class="ex-titre" id="ex-titre"></span>
+      <span class="ex-score" id="ex-score" aria-live="off"></span>
+    </div>
+    <article class="ex-q" id="ex-q" tabindex="-1"></article>
+    <div class="ex-fb" id="ex-fb" role="status" aria-live="polite"></div>
+    <div class="ex-suite"><button type="button" class="main" id="ex-suite" hidden>Question suivante →</button></div>
+  </section>
+</main>
+
+<footer data-img="assets/epopee/glossaire.jpg"><div class="foot">
+  <p><b>L'Armorial</b> — page « S'exercer ». Écus composés par le moteur de l'Atelier ; les figures de bêtes, quelques meubles et les armes réelles de l'exercice « Armes réelles » viennent de Wikimedia Commons : leur crédit s'affiche sous chaque réponse. Vocabulaire : glossaire de l'encyclopédie. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un paysage imaginé, pas un document historique.</p>
+</div></footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/exercices.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

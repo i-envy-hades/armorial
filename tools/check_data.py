@@ -86,8 +86,9 @@ def slug(t):
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", t))
 cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).get("frises", [])}}
 dd = DATA.get("data.json") or {}
+# (un encadré, « note », n'a pas d'adresse : seule la section se vise)
 cibles["index.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
-    | {slug(a_.get("titre")) for s_ in dd.get("sections", []) for a_ in s_.get("articles", []) if a_.get("titre")} \
+    | {slug(a_.get("titre")) for s_ in dd.get("sections", []) for a_ in s_.get("articles", []) if a_.get("titre") and not a_.get("note")} \
     | {"terme-" + slug(g_.get("terme")) for g_ in dd.get("glossaire", [])}
 for nom in ("blasons.json", "personnages.json"):
     for e in DATA.get(nom) or []:
@@ -103,6 +104,41 @@ for nom in ("blasons.json", "personnages.json"):
         if e.get("blason") and not e.get("blasonSrc"): err(f"{nom}: « {e.get('nom')} » : blasonnement sans source (blasonSrc)")
         s_ = e.get("blasonSrc")
         if s_ is not None and not (isinstance(s_, dict) and s_.get("label") and str(s_.get("url", "")).startswith("http")): err(f"{nom}: « {e.get('nom')} » : blasonSrc mal formé (label et url attendus)")
+
+# --------- 3 quater. les repères de la page Chronologie (data/chronologie.json) : sources de l'encyclopédie, renvois, groupes
+chr_ = DATA.get("chronologie.json")
+if chr_ is None or not isinstance(chr_.get("reperes"), list): err("data/chronologie.json: absent ou sans « reperes »")
+else:
+    for r_ in chr_["reperes"]:
+        nom_ = f"chronologie.json: « {r_.get('titre')} »"
+        for c_ in ("annee", "titre", "texte", "groupe", "sources", "lien"):
+            if not r_.get(c_): err(f"{nom_} : « {c_} » manquant")
+        if r_.get("groupe") not in ("origines", "droit"): err(f"{nom_} : groupe « {r_.get('groupe')} » inconnu (origines ou droit)")
+        for src_ in r_.get("sources") or []:
+            if src_ not in (dd.get("sources") or {}): err(f"{nom_} : source « {src_} » absente de data.json")
+        page_, _, ancre = str(r_.get("lien", "")).partition("#")
+        if page_ not in cibles: err(f"{nom_} : renvoi vers une page inconnue « {r_.get('lien')} »")
+        elif ancre not in cibles[page_]: err(f"{nom_} : l'ancre « {r_.get('lien')} » n'existe pas")
+
+# --------- 3 quinquies. l'arbre des Capétiens (data/capetiens.json) : un seul sommet, des parents qui existent, des figures créditées
+cap_ = DATA.get("capetiens.json")
+if cap_ is None or not isinstance(cap_.get("noeuds"), list): err("data/capetiens.json: absent ou sans « noeuds »")
+else:
+    ids_ = [n_.get("id") for n_ in cap_["noeuds"]]
+    if len(ids_) != len(set(ids_)): err("capetiens.json: identifiants en double")
+    if sum(1 for n_ in cap_["noeuds"] if not n_.get("parent")) != 1: err("capetiens.json: il faut exactement un sommet (nœud sans parent)")
+    for n_ in cap_["noeuds"]:
+        nom_ = f"capetiens.json: « {n_.get('nom')} »"
+        for c_ in ("id", "nom", "dates", "fondateur", "armes"):
+            if c_ not in n_: err(f"{nom_} : « {c_} » manquant")
+        if n_.get("parent") and n_["parent"] not in ids_: err(f"{nom_} : parent « {n_['parent']} » inconnu")
+        if n_.get("idem") and n_["idem"] not in ids_: err(f"{nom_} : « idem » renvoie à un nœud inconnu « {n_['idem']} »")
+        for a_ in n_.get("armes", []):
+            if not str(a_.get("blason", "")).strip(): err(f"{nom_} : un blasonnement vide")
+        if n_.get("lien"):
+            page_, _, ancre = n_["lien"].partition("#")
+            if page_ not in cibles or ancre not in cibles[page_]: err(f"{nom_} : renvoi « {n_['lien']} » introuvable")
+        if n_.get("file") and not (n_.get("auteur") and n_.get("lic")): err(f"{nom_} : figure sans auteur ou licence")
 
 # ------------------------------------------------------- 4. moteur de rendu
 JS = (ROOT / "assets" / "blason.js").read_text(encoding="utf-8")
@@ -226,15 +262,23 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
     for m in COQUILLE.finditer(t):
         err(f"{f.relative_to(ROOT)}:{t.count(chr(10), 0, m.start()) + 1}: coquille probable dans un gabarit : « {t[m.start():m.start() + 40].splitlines()[0]} »")
 
-# le lecteur de blasonnement (lecture.js) et l'Atelier (atelier.js) s'appuient sur blasonnement.js : il doit être chargé avant eux
+# l'ordre des scripts : chaque fichier s'appuie sur des globaux que d'autres définissent, il doit venir après eux
+DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
+               "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"], "capetiens.js": ["blasonnement.js", "lecture.js"],
+               "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
-    for dependant in ("lecture.js", "atelier.js"):
-        if dependant in scripts and ("blasonnement.js" not in scripts or scripts.index("blasonnement.js") > scripts.index(dependant)):
-            err(f"{p.name}: assets/blasonnement.js doit être chargé avant assets/{dependant}")
-    if "atelier.js" in scripts and "lecture.js" in scripts and scripts.index("lecture.js") > scripts.index("atelier.js"):
-        err(f"{p.name}: assets/lecture.js doit être chargé avant assets/atelier.js")
+    for dependant, avant in DEPENDANCES.items():
+        if dependant not in scripts: continue
+        for a in avant:
+            if a not in scripts or scripts.index(a) > scripts.index(dependant): err(f"{p.name}: assets/{a} doit être chargé avant assets/{dependant}")
 
+# le plan du site cite chaque page
+plan = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
+for p_ in pages:
+    if p_.name == "404.html": continue                        # la page d'erreur n'est ni au plan du site ni au menu
+    cible = "armorial/" if p_.name == "index.html" else f"armorial/{p_.name}"
+    if f"{cible}</loc>" not in plan: err(f"sitemap.xml: la page « {p_.name} » n'y figure pas")
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
 menu = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)"', chrome)
 for ident, fichier in menu:
@@ -242,7 +286,7 @@ for ident, fichier in menu:
     if not page.exists(): err(f"assets/chrome.js: la page « {fichier} » du menu n'existe pas"); continue
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
-    if p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+    if p.name != "404.html" and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
 
 for w in warnings: print("avertissement :", w)
 print("\n".join(errors) or "OK")

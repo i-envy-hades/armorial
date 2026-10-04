@@ -200,12 +200,9 @@ body.epic footer .fine{opacity:.95}
 /* corrections : sommaire (§ pour glossaire et sources) et lien de licence du pied de page */
 body.epic .rail li:nth-last-child(-n+2) a::before{content:"§"}
 
-/* téléphone : le bandeau passe sur deux lignes (marque et recherche, puis le menu qui défile) */
+/* téléphone : le menu est replié (assets/site.css) ; le bandeau tient sur une ligne, le héros se décale un peu moins */
 @media (max-width:640px){
-  body.epic .mast{flex-wrap:wrap;row-gap:.15rem;padding-top:.5rem;padding-bottom:.35rem}
-  body.epic .mast .search{order:2;margin-left:auto;flex:0 1 150px}
-  body.epic .mast nav{order:3;flex:1 1 100%;margin-left:0}
-  body.epic .hero{padding-top:7.5rem}
+  body.epic .hero{padding-top:6rem}
 }
 
 /* ---------- miniature d'époque, encadrée dans le bandeau ---------- */

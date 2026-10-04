@@ -14,8 +14,13 @@
     ["personnages", "personnages.html", "Personnages"],
     ["lignees", "lignees.html", "Lignées"],
     ["atelier", "atelier.html", "Atelier"],
+    ["capetiens", "capetiens.html", "Capétiens"],
+    ["chronologie", "chronologie.html", "Chronologie"],
+    ["exercices", "exercices.html", "S'exercer"],
+    ["recherche", "recherche.html", "Rechercher"],
   ];
   const BRAND = `<a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>`;
+  const MENU = `<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bars" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg><span>Menu</span></button>`;
   const SEAL = `<svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
     <defs>
       <radialGradient id="wax" cx="38%" cy="32%" r="72%">
@@ -33,9 +38,26 @@
   const head = document.querySelector("header.mast[data-page]");
   if (head) {
     const here = head.dataset.page;
-    head.insertAdjacentHTML("afterbegin", BRAND + "<nav>" + PAGES.map(([id, href, label]) =>
-      `<a href="${href}"${id === here ? ' class="here"' : ""}>${label}</a>`).join("") + "</nav>");
+    head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="Pages du site">` + PAGES.map(([id, href, label]) =>
+      `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + MENU);
+    /* menu repliable (écrans étroits : voir site.css) : s'ouvre au bouton, se ferme à Échap, à un clic ailleurs, ou en suivant un lien */
+    const btn = head.querySelector(".menu-btn");
+    const ouvre = on => { head.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); btn.querySelector("span").textContent = on ? "Fermer" : "Menu"; };
+    btn.addEventListener("click", () => ouvre(!head.classList.contains("open")));
+    head.querySelector("nav").addEventListener("click", e => { if (e.target.closest("a")) ouvre(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && head.classList.contains("open")) { ouvre(false); btn.focus(); } });
+    document.addEventListener("click", e => { if (!head.contains(e.target)) ouvre(false); });
+    matchMedia("(min-width:1121px)").addEventListener("change", e => { if (e.matches) ouvre(false); });
   }
+
+  /* lien d'évitement : au clavier, un premier Tab propose de passer le menu (la page n'a pas de <main> unique partout : on prend le premier) */
+  document.addEventListener("DOMContentLoaded", () => {
+    const cible = document.querySelector("main") || document.getElementById("wrap");
+    if (!cible || !head) return;
+    if (!cible.id) cible.id = "contenu";
+    cible.setAttribute("tabindex", "-1");
+    head.insertAdjacentHTML("beforebegin", `<a class="skip" href="#${cible.id}">Aller au contenu</a>`);
+  });
 
   /* le sceau : le pied de page n'existe pas encore à cet instant */
   document.addEventListener("DOMContentLoaded", () => {

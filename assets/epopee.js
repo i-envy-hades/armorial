@@ -8,6 +8,14 @@
   const bar = document.querySelector(".progress i");
   if(!hero) return;
 
+  /* ---- la vidéo du bandeau (2,5 Mo) ne se charge que si elle sert : écran large, mouvement permis, pas d'économie de données ;
+     sinon le fond reste l'affiche (assets/epopee/tournoi-ecus.jpg), déjà préchargée ---- */
+  const video = document.querySelector(".hero-bg video");
+  if(video && !reduce && !matchMedia("(max-width:700px)").matches && !(navigator.connection && navigator.connection.saveData)){
+    video.preload = "auto";
+    video.play().catch(() => {});
+  }
+
   /* ---- défilement : barre, bandeau, parallaxe (une image d'animation à la fois) ---- */
   let layers = [...document.querySelectorAll("[data-parallax]")], queued = false;
   const frame = () => {

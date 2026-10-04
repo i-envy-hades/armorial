@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://i-envy-hades.github.io/armorial/sitemap.xml
