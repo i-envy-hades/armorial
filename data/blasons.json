@@ -1146,5 +1146,571 @@
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     }
+  },
+  {
+    "nom": "Albanie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules à l'aigle bicéphale de sable surmontée du casque de Skanderbeg d'or",
+    "file": "Albania state emblem.svg",
+    "auteur": "Government of Albania",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Albania_state_emblem.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Allemagne",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'or à l'aigle de sable, armée, béquée et lampassée de gueules",
+    "file": "Coat of Arms of Germany.svg",
+    "auteur": "Karl-Tobias Schwab",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Germany.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Andorre",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé : au 1, de gueules à la mître perfilée et embellie d'argent sur une crosse posée en barre (évêque d'Urgell); au 2, d'or à trois pals de gueules (comté de Foix) ; au 3, d'or à quatre pals de gueules (Catalogne) ; au 4, d'or aux deux vaches de gueules, accornées, colletées et clarinées d'azur, passant l'une sur l'autre (Béarn)",
+    "file": "Coat of arms of Andorra.svg",
+    "auteur": "PavelD ; version actuelle de HansenBCN",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Andorra.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Arménie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé au 1 de gueules au lion contourné d'or portant une croix du même, au 2 d'azur à l'aigle bicéphale d'or, au 3 d'azur à deux têtes d'aigles affrontées d'or, au 4 de gueules au léopard couronné d'or portant une croix du même, et sur le tout d'orangé au mont portant une arche d'argent",
+    "file": "Coat of arms of Armenia.svg",
+    "auteur": "extrait de yeraguyn.com, mise en ligne par Fenn-O-maniC",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Armenia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Belgique",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De sable au lion rampant d'or armé et lampassé de gueules",
+    "file": "Great Coat of Arms of Belgium.svg",
+    "auteur": "Sodacan, avec des éléments de Katepanomegas",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Bosnie-Herzégovine",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Tranché : au premier quartier, d'or ; au deuxième, d'azur aux sept étoiles d'argent accolées en bande",
+    "file": "Coat of arms of Bosnia and Herzegovina.svg",
+    "auteur": "Vernes Seferovic",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Bosnia_and_Herzegovina.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Bulgarie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules au lion rampant d'or couronné d'or aussi",
+    "file": "Coat of arms of Bulgaria.svg",
+    "auteur": "Пакко",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Bulgaria.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Chypre",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'or à la colombe éployée tenant un rameau d'olivier",
+    "file": "Cyprus coat of arms 2006.svg",
+    "auteur": "Borb, modifié par Di (they-them)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Croatie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Echiqueté de vingt-cinq pièces alternativement de gueules et d'argent, en chef de dextre à senestre : sur champ d'azur une étoile d'or à six rais surmontant un croissant d'argent ; trois bandes horizontales d'azur profond sur champ de gueules ; champ d'azur chargé de trois têtes de léopard d'or couronnées ; une chèvre d'or aux cornes et sabots de gueules sur champ d'azur sombre ; enfin, sur champ d'azur, une fasce de gueules bordée d'argent et chargée d'une martre passante de sable à ventre d'argent, le tout surmonté d'une étoile d'or à six rais",
+    "file": "Coat of arms of Croatia.svg",
+    "auteur": "Haisollokopas (d'après les normes graphiques du Sabor)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Croatia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Danemark",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé, à la croix pattée d'argent bordée de gueules; cantonné: en 1, d'or à neuf cœurs de gueules, rangés en trois pals à trois lions léopardés d'azur, armés et lampassés de gueules couronnés du champ ; en 2 d'or à deux lions léopardés d'azur armés et lampassés de gueules; en 3 coupés en 1, d'azur à trois couronnes d'or, en 2 coupé d'azur à un bélier d'argent passant, lampassé de gueules et armé d'or et en 3, d'azur à un ours polaire passant d'argent, armé du premier; en 4, d'or à neuf cœurs de gueules, rangés en trois pals à trois lions léopardés d'azur, armés et lampassés de gueules couronnés du champ; sur-le-tout-du-tout, parti d'or à deux fasces de gueules",
+    "file": "Royal arms of Denmark (crowned).svg",
+    "auteur": "Great Brightstar",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Estonie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'or aux trois léopards d'azur posés en pal, armés et lampassés de gueules",
+    "file": "Coat of arms of Estonia.svg",
+    "auteur": "Riigikantselei",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Estonia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Finlande",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules semé de roses d'argent, au lion d'or couronné tenant dans sa patte dextre une épée haute et dans la senestre une épée courbe sur laquelle repose sa patte arrière",
+    "file": "Coat of arms of Finland.svg",
+    "auteur": "Great Brightstar (d'après l'Agence finlandaise du patrimoine)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Finland.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Géorgie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules à un saint Georges à cheval, terrassant de sa lance, un serpent, tous d'argent, le saint nimbé d'or",
+    "file": "Coat of arms of Georgia.svg",
+    "auteur": "Mamuka Gongadze ; SVG de Vakhtang Jokhadze",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Georgia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Grèce",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'azur à la croix d'argent",
+    "file": "Coat of arms of Greece.svg",
+    "auteur": "Tonyjeff ; œuvre dérivée de Philly boy92",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Greece.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Hongrie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Parti : au 1) fascé de gueules et d'argent. au 2), de gueules, à une croix patriarcale pattée d'argent, issante d'une couronne d'or sommant un mont de trois coupeaux de sinople",
+    "file": "Coat of Arms of Hungary.svg",
+    "auteur": "Volleybrawl (travail personnel)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Hungary.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Islande",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'azur à la croix scandinave de gueules ressarclée d'argent versée en chef",
+    "file": "Coat of arms of Iceland.svg",
+    "auteur": "Rkt2312",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Iceland.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Liechtenstein",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé, au premier d'or à l'aigle de sable, couronnée d'or et armée d'une ancre marine d'argent qui se termine en croix, qui est de Silésie ; au second burelé d'or et de sable de huit pièces au crancelin de sinople posé en bande, qui est de Kuenring ; au troisième parti de gueules et d'argent, qui est de Troppau ; au quatrième d'or à la harpie de sable couronnée d'or, qui est de Rietberg ; à la pointe d'azur au cor de chasse d'or à la corde du même, qui est de Jägerndorf ; sur le tout, coupé d'or et de gueules, qui est de Liechtenstein",
+    "file": "Staatswappen-Liechtensteins.svg",
+    "auteur": "SVG Added Ramos",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Lituanie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules, au chevalier monté d'argent, tenant dans sa main droite une épée au-dessus de sa tête d'argent à poignée d'or, et sur l'épaule gauche un écu d'azur à la croix patriarcale alésée d'or. Les selles, sangles et ceintures du cheval sont d'azur. Les étriers et la décoration du harnais sont d'or",
+    "file": "Coat of Arms of Lithuania.svg",
+    "auteur": "Government of Lithuania",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Lithuania.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Monaco",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Fuselé d'argent et de gueules",
+    "file": "Coat of Arms of Monaco.svg",
+    "auteur": "Echando una mano (travail personnel)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Monténégro",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Coupé au premier parti d'azur au lion d'or passant, au second de sinople",
+    "file": "Coat of arms of Montenegro.svg",
+    "auteur": "Radoslav Rotković",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Montenegro.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Norvège",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules, au lion couronné d'or, tenant dans ses pattes une hache d'argent emmanchée aussi d'or",
+    "file": "Coat of Arms of Norway.svg",
+    "auteur": "Sverre Morken (1992), redessiné par Jonas Madsen Rogne (2023)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Norway.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Pologne",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules à l'aigle d'argent, armée, becquée et couronnée d'or",
+    "file": "Herb Polski.svg",
+    "auteur": "Zygmunt Kamiński / Andrzej Heidrich",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Herb_Polski.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Russie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules, à l'aigle bicéphale, chaque tête surmontée d'une couronne fermée, l'aigle surmontée d'une couronne fermée, à un sceptre dans la patte dextre et un orbe cerclé dans la patte senestre, le tout d'or, l'aigle chargée en cœur d'un écusson de la Moscovie",
+    "file": "Coat of Arms of the Russian Federation.svg",
+    "auteur": "source officielle (loi constitutionnelle fédérale de 2000), mise en ligne par Fry1989",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Russian_Federation.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Serbie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules, à l'aigle bicéphale d'argent, becquée, languée et membrée d'or, à deux fleurs de lys du même sous les deux pattes. Sur le tout, de gueules, à la croix d'argent, cantonnée de quatre briquets du même, adossés deux à deux",
+    "file": "Coat of arms of Serbia.svg",
+    "auteur": "Rokerismoravee",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Serbia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Slovaquie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "De gueules à la double croix d'argent sur le pic central d'un groupe de trois collines d'azur",
+    "file": "Coat of Arms of Slovakia.svg",
+    "auteur": "Tlusťa",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Slovakia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Suède",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé : à la croix pattée d'or, qui est la Croix de Saint-Eric, cantonnée en 1 et 4, de Suède moderne, qui est d'azur, à trois couronnes d'or posées 2 et 1 ; en 2 et 3, de Suède ancien, qui est d'azur, à trois barres ondées d'argent, au lion couronné d'or, brochant sur le tout ; sur-le-tout parti d'un tranché d'azur et de gueules à la bande d'argent et à la gerbe d'or brochant sur le tout qui est de Vasa, et d'azur à un pont de trois arches sommé de deux tours crénelées et posé sur une champagne ondée, le tout d'argent, accompagné en chef de sept étoiles du même au chef d'azur à l'aigle contournée d'or au vol abaissé, empiétant un foudre du même qui est de Bernadotte",
+    "file": "Great coat of arms of Sweden.svg",
+    "auteur": "Sodacan",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Great_coat_of_arms_of_Sweden.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Tchéquie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Écartelé, au premier et quatrième quartier, de gueules au lion d'argent à la queue fourchée et passée en sautoir, couronné, armé et lampassé d'or, qui est de Bohême ; au 2, d'azur, à l'aigle échiquetée d'argent et de gueules, becquée, languée, membrée et couronnée d'or, qui est de Moravie ; au 3, d'or à l'aigle de sable, armé, becqué et langué de gueules, portant sur son cœur un croisant d'argent surmonté d'une croix de même, qui est de Silésie",
+    "file": "Coat of arms of the Czech Republic.svg",
+    "auteur": "loi n° 3/1993, mise en ligne par Zscout370",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Czech_Republic.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
+      "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
+    }
+  },
+  {
+    "nom": "Maison d'Arenberg",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "De gueules à trois fleurs de néflier d'or, percées du champ",
+    "file": "CoA Arenberg County.svg",
+    "auteur": "Nomadic1",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison d'Ascanie",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "Huit points de sable équipollés à sept points d'argent",
+    "file": "Blason Maison d'Ascanie.svg",
+    "auteur": "Jimmy44 (travail personnel)",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison d'Avesnes",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "Bandé d'or et de gueules de six pièces",
+    "file": "Blason Maison d'Avesnes.svg",
+    "auteur": "Kontributor 2K (travail personnel)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison de Clèves",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "De gueules, à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout",
+    "file": "Blason DE Clèves.svg",
+    "auteur": "Biplanjaune",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison d'Egmont",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "Chevronné d'or et de gueules, de douze pièces",
+    "file": "Blason fam nl Egmont.svg",
+    "auteur": "Puck04 (travail personnel)",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison de Hohenstaufen",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "D'or aux trois lions passant de sable",
+    "file": "Arms of Swabia.svg",
+    "auteur": "Galico, œuvre dérivée de The White Lion",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe",
+      "note": "La page lue donne ces armes à la ligne de la famille ; elle donne aux empereurs de la maison une aigle monocéphale de sable sur or, avec ces lions sur le tout. Le fichier se nomme « Arms of Swabia »."
+    }
+  },
+  {
+    "nom": "Maison de Hohenberg",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "Burelé d'argent et de gueules",
+    "file": "Herzog Hohenberg 1917.png",
+    "auteur": "Cyan22",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Herzog_Hohenberg_1917.png",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison de Hohenzollern",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "Écartelé : aux 1 et 4 d'argent, aux 2 et 3 de sable",
+    "file": "Hohenzollern-Sigmaringen CoA.png",
+    "auteur": "Alex:D",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison de Lannoy",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "D'argent à trois lions de sinople, armés et lampassés de gueules, couronnés d'or",
+    "file": "Armoiries de Lannoy.svg",
+    "auteur": "Caranorn (avec des éléments d'autres fichiers, voir la page Commons)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison de Ligne",
+    "cat": "Maisons",
+    "porteur": "maison nobiliaire ou princière",
+    "blason": "D'or à la bande de gueules",
+    "file": "Blason maison be de Ligne.svg",
+    "auteur": "Kontributor 2K (travail personnel)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    }
+  },
+  {
+    "nom": "Maison d'Oldenbourg",
+    "cat": "Maisons",
+    "porteur": "maison des rois de Danemark, de Norvège, de Suède (Holstein-Gottorp), de Grèce",
+    "blason": "D'or à deux fasces de gueules",
+    "file": "BlasonChristian Ier (1143-1167), comte d'Oldenbourg.svg",
+    "auteur": "Jimmy44 (travail personnel)",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maisons d'Europe »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
+    },
+    "liens": [
+      {
+        "t": "Dans « La transmission des armes »",
+        "href": "transmission.html#old_comte"
+      }
+    ]
   }
 ]

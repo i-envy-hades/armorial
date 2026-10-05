@@ -65,6 +65,14 @@
    "label": "Wikipédia, « Adolphe Ier de Luxembourg »",
    "url": "https://fr.wikipedia.org/wiki/Adolphe_Ier_de_Luxembourg"
   },
+  "old:arm": {
+   "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
+  },
+  "old:georges": {
+   "label": "Wikipédia, « Georges de Danemark »",
+   "url": "https://fr.wikipedia.org/wiki/Georges_de_Danemark"
+  },
   "cap:armorial_cap": {
    "label": "Wikipédia, « Armorial des Capétiens »",
    "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
@@ -265,6 +273,279 @@
    "licurl": "https://creativecommons.org/licenses/by/3.0",
    "blason": "Burelé de dix pièces d'argent et d'azur au lion de gueules à la queue fourchée et passée en sautoir, armé, lampassé et couronné d'or, l'épaule du lion chargée d'un écusson d'azur semé de billettes d'or au lion couronné du second, armé et lampassé de gueules (Nassau).",
    "src": "nso:arm_nassau"
+  },
+  "old_comte": {
+   "nom": "Comtes d'Oldenbourg",
+   "blason": "D'or, à deux fasces de gueules",
+   "file": "Arms of the County of Oldenburg.svg",
+   "auteur": "StyraCDF (travail personnel)",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_delm": {
+   "nom": "Comtes de Delmenhorst",
+   "blason": "D'azur, à la croix pattée, au pied fiché, d'or",
+   "file": "Blason Comtes de Delmenhorst.svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "old:arm"
+  },
+  "old_thierry": {
+   "nom": "Thierry, comte d'Oldenbourg et de Delmenhorst",
+   "blason": "Écartelé en 1 et 4, d'or à deux fasces de gueules (de Oldenbourg) et en 2 et 3, d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Blason de Thierry d'Oldenbourg.svg",
+   "auteur": "ThoMiCroN",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_c1": {
+   "nom": "Christian Ier, roi de Danemark, de Norvège et de Suède",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, d'azur, à trois couronnes d'or (de Suède moderne) ; en III, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en IV, de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout écartelé : 1 et 4, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 2 et 3, de gueules, à la feuille d'ortie d'argent (de Holstein) ; sur-le-tout-du-tout, d'or à deux fasces de gueules (de Oldenbourg)",
+   "file": "Royal Arms of Norway, Denmark & Sweden (1460-1523).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_c3": {
+   "nom": "Christian III, roi de Danemark et de Norvège",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, d'azur, à trois couronnes d'or (de Suède moderne) ; en IV, d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) ; sur-le-tout écartelé : 1, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 2 de gueules, à la feuille d'ortie d'argent (de Holstein) ; 3 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn) ; 4 d'or à deux fasces de gueules (de Oldenbourg)",
+   "file": "Royal Arms of Norway & Denmark (1535-1559).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm",
+   "note": "Cette figure est datée de 1535-1559 ; elle correspond au blasonnement que la page lue donne pour Christian III."
+  },
+  "old_f2": {
+   "nom": "Frédéric II, roi de Danemark et de Norvège",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) ; en IV, de gueules au dragon d'or (du Royaume des Vandales) ; en V, d'azur, à trois couronnes d'or (de Suède moderne) ; en VI, de gueules l'agneau pascal d'argent, portant une hampe croisetée d'or en barre de laquelle pend une bannière aussi d'argent chargée d'une croix de gueules (de Gotland ancien) ; en VII, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en VIII, de gueules à la morue d'argent surmonté d'une couronne d'or (de l'Islande) ; en IX, de gueules, à la feuille d'ortie d'argent (de Holstein) ; en X, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn) ; en XI, d'or à deux fasces de gueules (de Oldenbourg) ; en XII, 'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) sur le tout de gueules, au cavalier d'or armé d'argent (Dithmarse)",
+   "file": "Royal Arms of Norway & Denmark (1559-1699).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_f3": {
+   "nom": "Frédéric III et la période 1559-1699",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) ; en IV, de gueules au dragon d'or (du Royaume des Vandales) ; en V, d'azur, à trois couronnes d'or (de Suède moderne) ; en VI, de gueules l'agneau pascal d'argent, portant une hampe croisetée d'or en barre de laquelle pend une bannière aussi d'argent chargée d'une croix de gueules (de Gotland ancien) ; en VII, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en VIII, de gueules à la morue d'argent surmonté d'une couronne d'or (de l'Islande) ; en IX, de gueules, à la feuille d'ortie d'argent (de Holstein) ; en X, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn) ; en XI, d'or à deux fasces de gueules (de Oldenbourg) ; en XII, 'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) sur le tout de gueules, au cavalier d'or armé d'argent (Dithmarse)",
+   "file": "Royal Arms of Norway & Denmark (1559-1699).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm",
+   "note": "La page lue ne consacre pas de ligne à Frédéric III : on montre la figure de la période 1559-1699, qui est celle de son règne."
+  },
+  "old_f4": {
+   "nom": "Frédéric IV, roi de Danemark et de Norvège",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, coupé d'azur, à trois couronnes d'or (de Suède moderne) et d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en IV, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) et de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout parti de gueules, à la feuille d'ortie d'argent (de Holstein) et de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), enté en pointe de gueules, au cavalier armé d'argent (Dithmarse) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Royal Arms of Norway & Denmark (1699-1819).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_f6": {
+   "nom": "Frédéric VI, roi de Danemark",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en III, coupé : À d'azur, à trois couronnes d'or (de Suède moderne) et B coupé de gueules à une peau de morue d'argent tenue en pal par une traverse de sable, le tout couronné d'or et coupé d'azur à un bélier d'argent passant lampassé de gueules et armé d'or (des Îles Féroé), et d'azur à un ours polaire d'argent armé du premier (de Groenland) ; en IV, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) et de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (de Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (de Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Royal arms of Denmark (1819–1903).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm",
+   "note": "Figure datée de 1819-1903 ; le blasonnement de Frédéric VI ne cite pas l'Islande ancienne, qui paraît dans celui de Christian IX."
+  },
+  "old_c9": {
+   "nom": "Christian IX, roi de Danemark",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (Danemark) ; en II, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; en III, coupé : au 1 d'azur, à trois couronnes d'or (Suède moderne) et au 2 parti de gueules à une peau de morue d'argent tenue en pal par une traverse de sable, le tout couronné d'or et coupé d'azur (Islande ancien) à un bélier d'argent passant lampassé de gueules et armé d'or et d'azur à un ours polaire passant d'argent armé du premier ; en IV, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (royaume des Goths) et de gueules au dragon d'or (royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (Delmenhorst)",
+   "file": "Royal arms of Denmark (1819–1903).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_c10": {
+   "nom": "Christian X, roi de Danemark et d'Islande",
+   "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en 1, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (Danemark) ; en 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; en 3, coupé : au A d'azur, à trois couronnes d'or (Suède moderne) et au B parti d'azur à l'aigle d'argent tarée de profil (Islande moderne) et coupé d'azur à un bélier d'argent passant lampassé de gueules et armé d'or et d'azur à un ours polaire passant d'argent armé du premier ; en 4, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (royaume des Goths) et de gueules au dragon d'or (royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (de Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (Delmenhorst)",
+   "file": "Royal Arms of Denmark (1903-1948).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_m2": {
+   "nom": "Marguerite II, reine de Danemark",
+   "blason": "Ecartelé : à la croix d'argent bordée de gueules, qui est le Danebrog, cantonnée en 1 et 4, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (Danemark moderne) ; en 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; en 3, coupé d'azur, à trois couronnes d'or (Suède moderne), et parti à dextre d'azur, à un bélier passant d'argent, lampassé de gueules, armé et corné d'or (îles Féroé), et à senestre, à un ours polaire d'argent armé et lampassé du même (Groenland) ; sur-le-tout, d'or, à deux fasces de gueules (Oldenbourg)",
+   "file": "Royal arms of Denmark (1972-2024).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_henri": {
+   "nom": "Henri de Monpezat, prince consort de Danemark",
+   "blason": "Ecartelé : en 1 et 4, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (Danemark) en 2 et 3 de gueules, au lion rampant d'or surmonté de trois étoiles du même rangées en chef (Monpezat)",
+   "file": "Arms of Henrik, Prince Consort of Denmark.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_gottorp": {
+   "nom": "Adolphe de Holstein-Gottorp",
+   "blason": "Ecartelé : 1, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 3, de gueules, à la feuille d'ortie d'argent (de Holstein) ; 4, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (de Stormarn) ; enté en pointe de gueules, au cavalier armé d'argent (de Dithmarse) ; sur-le-tout, écartelé d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Blason Dynastie Holstein-Gottorp.svg",
+   "auteur": "F5JMH (travail personnel)",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_se1": {
+   "nom": "Adolphe-Frédéric, roi de Suède",
+   "blason": "Écartelé : à la croix pattée d'or, qui est la Croix de Saint Éric, cantonnée en 1 et 4, d'azur, à trois couronnes d'or (de Suède moderne), en 2 et 3, d'azur, à trois barres ondées d'argent, au lion couronné d'or, brochant sur le tout (de Suède ancien) ; sur-le-tout écartelé : 1, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 3, de gueules, à la feuille d'ortie d'argent (de Holstein) ; 4, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (de Stormarn ; enté en pointe de gueules, au cavalier armé d'argent (de Dithmarse) ; sur-le-tout-du-tout, écartelé d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Blason dynastie Holstein-Gottorp (branche suèdoise).svg",
+   "auteur": "Jacques63",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "old:arm"
+  },
+  "old_ch13": {
+   "nom": "Charles XIII, roi de Suède et de Norvège",
+   "blason": "Au pairle patté d'or, cantonné en chef d'azur, à trois couronnes d'or (de Suède moderne), à dextre de gueules, au lion couronné d'or, tenant dans ses pattes une hallebarde d'argent, emmanchée du second et à sénestre d'azur, à trois barres ondées d'argent, au lion couronné d'or, brochant sur le tout (de Suède ancien), sur-le-tout écartelé : 1, de gueules, à la feuille d'ortie d'argent (de Holstein) ; 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 3, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (de Stormarn) ; 4, de gueules, au cavalier armé d'argent (de Dithmarse) ; sur-le-tout-du-tout, écartelé d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Armoiries du Roi Charles XIII de Suède et de Norvège 1814 1818.svg",
+   "auteur": "A.T-2014",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_p3": {
+   "nom": "Pierre III, empereur de Russie et duc de Holstein-Gottorp",
+   "blason": "Accolé : D'or à l'aigle bicéphale de sable, becquée et membrée d'or, languée de gueules, chaque tête surmontée d'une couronne fermée du champ, l'aigle surmontée à son tour d'une troisième couronne fermée du champ et tenant un sceptre du champ dans la patte dextre et un orbe d'azur cerclé d'or dans la patte sénestre ; l'aigle chargée en cœur d'un écusson de gueules représentant Saint Georges terrassant la Dragon, sur son destrier d'argent contourné (de la Moscovie) et parti de un et coupé de deux : 1, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; 2, de gueules, à la feuille d'ortie d'argent (de Holstein) ; 3, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (de Stormarn) ; 4, de gueules, au cavalier armé d'argent (de Dithmarse) ; 5, d'or à deux fasces de gueules (de Oldenbourg) ; 6, coupé d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) et d'or ; sur-le-tout : d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig)",
+   "file": "Coats of arms of Charles Peter Ulrich of Holstein-Gottorp.svg",
+   "auteur": "Jacques63",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "old:arm"
+  },
+  "old_a2": {
+   "nom": "Alexandre II, empereur de Russie",
+   "blason": "D'or à l'aigle bicéphale de sable, becquée et membrée d'or, languée de gueules, chaque tête surmontée d'une couronne fermée du champ, l'aigle surmontée d'une troisième couronne fermée du champ et tenant un sceptre du champ dans la patte dextre et un orbe d'azur cerclé d'or dans la patte senestre ; l'aigle chargée en cœur d'un écusson de gueules représentant saint Georges terrassant le dragon, sur son destrier d'argent (de la Moscovie)",
+   "file": "Coat of Arms of Russian Empire.svg",
+   "auteur": "Лобачев Владимир",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Russian_Empire.svg",
+   "src": "old:arm"
+  },
+  "old_marie": {
+   "nom": "Maria Nikolaïevna, duchesse de Leuchtenberg",
+   "blason": "Parties au premier d'or à l'aigle impériale de Russie chargée sur la poitrine de l'écartelé de Leuchtenberg, d'Eichstadt, de sinople à l'épée d'argent garnie d'or accompagnée de sept étoiles du dernier, de Beauharnais, sur le tout d'azur à la couronne fermée d'or, l'écartelé couronné d'un bonnet princier au naturel, et au second d'or à l'aigle impériale de Russie, chargé sur la poitrine d'un écu de Moscovie entouré du collier de l'ordre du Saint-Apôtre André le premier appelé, et sur les ailes de ceux des tsarats de Kazan, d'Astrakhan, de Pologne, de Sibérie et de Tauride, du royaume de Géorgie, des grands-duchés de Kiev, Vladimir et Novgorod et de celui de Finlande",
+   "file": "Lesser CoA of maria nikolaievna of Russia (1856).svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_konst": {
+   "nom": "Constantin Nikolaïevitch, grand-duc de Russie",
+   "blason": "D'azur à une flèche et une ancre d'argent posées en sautoir sous une étoile d'or, le tout à la bordure d'argent chargée de huit roses de gueules boutonnées d'or (armes alternatives, 1858) ; deux ancres en sautoir derrière l'écu",
+   "file": "Lesser CoA of the Grand-duke Konstantin Nikolaievich of Russia.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_nik": {
+   "nom": "Nicolas Nikolaïevitch, grand-duc de Russie",
+   "blason": "D'azur à deux haches d'or passées en sautoir dans une couronne de roses d'argent boutonnées de gueules, le tout à la bordure de sable à huit têtes de lion alternées d'or et d'argent (armes alternatives, 1858) ; deux haches en sautoir derrière l'écu",
+   "file": "Lesser CoA of the Grand-duke Nikolai Nikolaievich of Russia.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_mich": {
+   "nom": "Michel Nikolaïevitch, grand-duc de Russie",
+   "blason": "D'argent au griffon de gueules tenant une épée de même et une rondache d'or à la bande de gueules, le tout à la bordure de sable à huit têtes de lion alternées d'or et d'argent (armes alternatives, 1858) ; deux canons en sautoir derrière l'écu",
+   "file": "Lesser CoA of the Grand-duke Mikhail Nikolaievich of Russia.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_gr1": {
+   "nom": "Georges Ier, roi des Hellènes",
+   "blason": "D'azur, à la croix alésée d'argent (de Grèce), sur-le-tout écartelé Glücksbourg/Glucksborg simplifié : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en III,de gueules, à la feuille d'ortie d'argent (de Holstein), en IV de gueules à la tête de cheval coupée d'or (de Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) version simples: D'azur, à la croix alésée d'argent (de Grèce)",
+   "file": "Royal Arms of Greece (1863-1936).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_gr3": {
+   "nom": "Georges II, roi des Hellènes (armes après 1936)",
+   "blason": "D'azur, à la croix alésée d'argent (de Grèce), sur-le-tout écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en III, coupé : À d'azur, à trois couronnes d'or (de Suède moderne) et B coupé de gueules à une peau de morue d'argent tenue en pal par une traverse de sable, le tout couronné d'or et coupé d'azur à un bélier d'argent passant lampassé de gueules et armé d'or et d'azur à un ours polaire d'argent armé du premier ; en IV, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) et de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (de Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (de Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Royal Arms of Greece (1936-1967).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_sofia": {
+   "nom": "Sofía de Grèce, reine consort d'Espagne",
+   "blason": "Parti en I, écartelé au 1 de gueules au château d'or couvert et ajouré d'azur (de Castille), au 2 d'argent au lion de gueules armé, lampassé et couronné d'or (de León), au 3 d'or aux quatre pals de gueules, qui est de Aragon, au 4 de gueules aux chaînes d'or posées en orle, en croix et en sautoir, chargées en cœur d'une émeraude au naturel (de Navarre), accompagné en pointe d'argent à une pomme grenade de gueules tigé et feuillé de sinople (de Grenade) et sur le tout d'azur aux trois fleurs de lys d'or à la bourdure de gueules (d'Anjou) et en II, D'azur, à la croix alésée d'argent (de Grèce), sur-le-tout écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en III, coupé : À d'azur, à trois couronnes d'or (de Suède moderne) et B coupé de gueules à une peau de morue d'argent tenue en pal par une traverse de sable, le tout couronné d'or et coupé d'azur à un bélier d'argent passant lampassé de gueules et armé d'or et d'azur à un ours polaire d'argent armé du premier ; en IV, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) et de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (de Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (de Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst)",
+   "file": "Blason Sofía de Grèce.svg",
+   "auteur": "Heralder (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "old:arm"
+  },
+  "old_alex": {
+   "nom": "Alexandra de Danemark, reine consort du Royaume-Uni",
+   "blason": "Parti : au I écartelé, au 1 et 4 de gueules à trois léopards d'or armés et lampassés d'azur (Angleterre) ; au 2 d'or, au lion de gueules, au double trescheur fleuronné et contre-fleuronné du même (Écosse) ; au 3 d'azur, à la harpe d'or, cordée d'argent (Irlande) ; au II écartelé, à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en 1, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (Danemark) ; en 2, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (Schleswig) ; en 3, coupé : au A d'azur, à trois couronnes d'or (Suède moderne) et au B parti de gueules à une peau de morue d'argent tenue en pal par une traverse de sable, le tout couronné d'or et coupé d'azur (Islande ancien) à un bélier d'argent passant lampassé de gueules et armé d'or et d'azur à un ours polaire passant d'argent armé du premier ; en 4, coupé d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (royaume des Goths) et de gueules au dragon d'or (royaume des Vandales) ; sur-le-tout écartelé au 1 de gueules, à la feuille d'ortie d'argent (Holstein) au 2 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn), au 3 de gueules, au cavalier armé d'argent (Dithmarse), au 4 de gueules à la tête de cheval coupée d'or (Lauenbourg) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (Delmenhorst)",
+   "file": "Arms of Alexandra of Denmark.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_philip": {
+   "nom": "Philippe, duc d'Édimbourg, prince consort",
+   "blason": "Ecartelé, au I d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ (de Danemark), au II d'azur à la croix d'argent (de Grèce), au III cousu d'argent à deux pals de sable (de Mountbatten (Battenberg)), au IV cousu d'argent au château donjonné de trois pièces, maçonné d'argent et ouvert de gueules, posé sur un mont de un copeaux (d'Édimbourg)",
+   "file": "Arms of Philip, Duke of Edinburgh.svg",
+   "auteur": "User:Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_george": {
+   "nom": "Georges de Danemark, duc de Cumberland",
+   "blason": "Ecartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, d'azur, à trois couronnes d'or (de Suède moderne) ; en IV, d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) ; en plaine, de gueules au dragon d'or (du Royaume des Vandales) ; sur-le-tout écartelé : 1, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; 2 de gueules, à la feuille d'ortie d'argent (de Holstein) ; 3 de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn) ; 4 de gueules, au cavalier armé d'argent (Dithmarse) ; sur-le-tout-du-tout parti d'or à deux fasces de gueules (de Oldenbourg) et d'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) ; un lambel d'argent, chaque pendant chargé de trois mouchetures d'hermine de sable, brochant sur la partition",
+   "file": "Arms of George of Denmark, Duke of Cumberland.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "old:arm"
+  },
+  "old_glou": {
+   "nom": "Guillaume, duc de Gloucester",
+   "blason": "Ecartelé : aux I et IV contre-écartelé d'azur à trois fleurs-de-lys-d'azur, et de gueules aux trois léopards d'or ; au II d'or, au lion de gueules, au double trescheur fleuronné et contre-fleuronné du même ; d'azur, à la harpe d'or, cordée d'argent ; sur le tout d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; un label d'argent brochant sur la partition, le deuxième lambel chargé d'une Croix de saint Georges de gueules",
+   "file": "Coat of Arms of William of Denmark, Duke of Gloucester.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "old:arm"
+  },
+  "old_no": {
+   "nom": "Haakon VII, roi de Norvège",
+   "blason": "De gueules, au lion couronné d'or, tenant dans ses pattes une hache d'argent, emmanchée du second",
+   "file": "Blason Norvège.svg",
+   "auteur": "Ssolbergj",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Blason_Norvège.svg",
+   "src": "old:arm"
   }
  },
  "noeuds": [
@@ -1135,6 +1416,215 @@
    "nom": "Adolphe, grand-duc de Luxembourg",
    "dates": "1890–1905",
    "parent": "nso_valram"
+  },
+  {
+   "id": "old_comte",
+   "ref": "tr:old_comte",
+   "nom": "Comtes d'Oldenbourg",
+   "dates": "1143–"
+  },
+  {
+   "id": "old_delm",
+   "ref": "tr:old_delm",
+   "nom": "Comtes de Delmenhorst",
+   "dates": "avant 1304",
+   "apport": true
+  },
+  {
+   "id": "old_thierry",
+   "ref": "tr:old_thierry",
+   "nom": "Oldenbourg et Delmenhorst réunis",
+   "dates": "1423–1440",
+   "parent": "old_comte"
+  },
+  {
+   "id": "old_c1",
+   "ref": "tr:old_c1",
+   "nom": "Christian Ier : trois couronnes",
+   "dates": "1448–1481",
+   "parent": "old_thierry"
+  },
+  {
+   "id": "old_c3",
+   "ref": "tr:old_c3",
+   "nom": "Christian III",
+   "dates": "1534–1559",
+   "parent": "old_c1"
+  },
+  {
+   "id": "old_f2",
+   "ref": "tr:old_f2",
+   "nom": "Frédéric II",
+   "dates": "1559–1588",
+   "parent": "old_c3"
+  },
+  {
+   "id": "old_f3",
+   "ref": "tr:old_f3",
+   "nom": "Frédéric III et son temps",
+   "dates": "XVIIe s.",
+   "parent": "old_f2"
+  },
+  {
+   "id": "old_f4",
+   "ref": "tr:old_f4",
+   "nom": "Frédéric IV",
+   "dates": "1699–1730",
+   "parent": "old_f3"
+  },
+  {
+   "id": "old_f6",
+   "ref": "tr:old_f6",
+   "nom": "Frédéric VI : sans la Norvège",
+   "dates": "1808–1839",
+   "parent": "old_f4"
+  },
+  {
+   "id": "old_c9",
+   "ref": "tr:old_c9",
+   "nom": "Christian IX",
+   "dates": "1863–1906",
+   "parent": "old_f6"
+  },
+  {
+   "id": "old_c10",
+   "ref": "tr:old_c10",
+   "nom": "Christian X, roi d'Islande aussi",
+   "dates": "1912–1947",
+   "parent": "old_c9"
+  },
+  {
+   "id": "old_m2",
+   "ref": "tr:old_m2",
+   "nom": "Marguerite II",
+   "dates": "1972–2024",
+   "parent": "old_c10"
+  },
+  {
+   "id": "old_henri",
+   "ref": "tr:old_henri",
+   "nom": "Henri de Monpezat, époux de la reine",
+   "dates": "1972–2016",
+   "parent": "old_m2"
+  },
+  {
+   "id": "old_gottorp",
+   "ref": "tr:old_gottorp",
+   "nom": "Holstein-Gottorp",
+   "dates": "1544–1586",
+   "parent": "old_c3"
+  },
+  {
+   "id": "old_se1",
+   "ref": "tr:old_se1",
+   "nom": "Adolphe-Frédéric, roi de Suède",
+   "dates": "1751–1771",
+   "parent": "old_gottorp"
+  },
+  {
+   "id": "old_ch13",
+   "ref": "tr:old_ch13",
+   "nom": "Charles XIII, roi de Suède et de Norvège",
+   "dates": "1814–1818",
+   "parent": "old_se1"
+  },
+  {
+   "id": "old_p3",
+   "ref": "tr:old_p3",
+   "nom": "Pierre III, empereur de Russie",
+   "dates": "1739–1762",
+   "parent": "old_gottorp"
+  },
+  {
+   "id": "old_a2",
+   "ref": "tr:old_a2",
+   "nom": "Alexandre II",
+   "dates": "1855–1881",
+   "parent": "old_p3"
+  },
+  {
+   "id": "old_marie",
+   "ref": "tr:old_marie",
+   "nom": "Maria Nikolaïevna, duchesse de Leuchtenberg",
+   "dates": "1819–1876",
+   "parent": "old_a2"
+  },
+  {
+   "id": "old_konst",
+   "ref": "tr:old_konst",
+   "nom": "Constantin Nikolaïevitch, amiral",
+   "dates": "1827–1892",
+   "parent": "old_a2"
+  },
+  {
+   "id": "old_nik",
+   "ref": "tr:old_nik",
+   "nom": "Nicolas Nikolaïevitch, génie militaire",
+   "dates": "1831–1891",
+   "parent": "old_a2"
+  },
+  {
+   "id": "old_mich",
+   "ref": "tr:old_mich",
+   "nom": "Michel Nikolaïevitch, maréchal",
+   "dates": "1832–1909",
+   "parent": "old_a2"
+  },
+  {
+   "id": "old_gr1",
+   "ref": "tr:old_gr1",
+   "nom": "Georges Ier, roi des Hellènes",
+   "dates": "1863–1913",
+   "parent": "old_c9"
+  },
+  {
+   "id": "old_gr3",
+   "ref": "tr:old_gr3",
+   "nom": "Georges II, roi des Hellènes",
+   "dates": "1922–1947",
+   "parent": "old_gr1"
+  },
+  {
+   "id": "old_sofia",
+   "ref": "tr:old_sofia",
+   "nom": "Sofía de Grèce, reine d'Espagne",
+   "dates": "depuis 1975",
+   "parent": "old_gr3"
+  },
+  {
+   "id": "old_alex",
+   "ref": "tr:old_alex",
+   "nom": "Alexandra de Danemark, reine consort",
+   "dates": "1901–1910",
+   "parent": "uk37"
+  },
+  {
+   "id": "old_philip",
+   "ref": "tr:old_philip",
+   "nom": "Philippe, duc d'Édimbourg",
+   "dates": "après 1949",
+   "parent": "uk37"
+  },
+  {
+   "id": "old_george",
+   "ref": "tr:old_george",
+   "nom": "Georges de Danemark, duc de Cumberland",
+   "dates": "1653–1708",
+   "parent": "old_f3"
+  },
+  {
+   "id": "old_glou",
+   "ref": "tr:old_glou",
+   "nom": "Guillaume, duc de Gloucester",
+   "dates": "1689–1700",
+   "parent": "old_george"
+  },
+  {
+   "id": "old_no",
+   "ref": "tr:old_no",
+   "nom": "Haakon VII, roi de Norvège",
+   "dates": "1905–1957",
+   "parent": "old_c9"
   }
  ],
  "liens": [
@@ -2880,6 +3370,390 @@
    "sources": [
     "angleterre:arms_en",
     "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "old_comte",
+   "vers": "old_thierry",
+   "type": "heritage",
+   "annee": "1423",
+   "effet": "Les deux fasces d'Oldenbourg occupent les quartiers 1 et 4 ; Delmenhorst les quartiers 2 et 3.",
+   "lacune": "La page lue dit Thierry « comte d'Oldenbourg et de Delmenhorst de 1423 à 1440 » sans dire comment il a succédé.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_delm",
+   "vers": "old_thierry",
+   "type": "annexion",
+   "annee": "1423",
+   "effet": "La croix pattée au pied fiché d'or sur azur de Delmenhorst entre dans l'écu, aux quartiers 2 et 3.",
+   "pourquoi": "Thierry est dit comte d'Oldenbourg et de Delmenhorst de 1423 à 1440 : deux comtés réunis sous un seul comte, et l'écu les écartèle.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_thierry",
+   "vers": "old_c1",
+   "type": "heritage",
+   "annee": "1440–1457",
+   "effet": "Le Danebrog (croix pattée d'argent bordée de gueules) cantonne les armes de Danemark, de Suède moderne, de Norvège ancienne et des Vandales ; Schleswig et Holstein passent sur le tout, Oldenbourg sur le tout du tout.",
+   "pourquoi": "Christian est comte d'Oldenbourg de 1440 à 1449, puis roi de Danemark (1448-1481), de Norvège (1450-1481) et de Suède (1457-1464) : à chaque couronne, un écu de plus, et les armes de la maison reculent au cœur.",
+   "lacune": "La page lue ne dit ni sa filiation avec Thierry ni les circonstances de ses accessions.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c1",
+   "vers": "old_c3",
+   "type": "pretention",
+   "annee": "1534",
+   "effet": "Les trois couronnes de Suède moderne restent à l'écu (quartier III), avec les Goths au quartier IV et Stormarn sur le tout ; le lion de Norvège passe au quartier II.",
+   "pourquoi": "La page ne lui donne que les couronnes de Danemark et de Norvège (1534-1559) et les duchés de Holstein et de Schleswig (1523-1533) : sa titulature lue ne comprend pas la Suède, que son écu cite pourtant.",
+   "lacune": "La page lue ne dit pas que ces quartiers soient une revendication ; elle montre seulement que la titulature citée n'inclut pas la Suède.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c3",
+   "vers": "old_f2",
+   "type": "heritage",
+   "annee": "1559",
+   "effet": "L'écu s'étoffe : Goths et Vandales ont chacun un quartier, le Gotland ancien (l'agneau pascal) entre dans l'écu, Schleswig et Holstein sont rejetés plus loin ; au moins huit quartiers autour du Danebrog.",
+   "lacune": "La page lue donne Frédéric II roi de Danemark et de Norvège (1559-1588) sans dire comment la couronne lui est venue.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_f2",
+   "vers": "old_f3",
+   "type": "heritage",
+   "annee": "1559–1699",
+   "effet": "Même écu que celui de la période 1559-1699.",
+   "lacune": "La page lue ne consacre pas de ligne à Frédéric III ; la figure est celle de la période, et sa place dans la succession vient de la page sur son fils Georges.",
+   "sources": [
+    "old:arm",
+    "old:georges"
+   ]
+  },
+  {
+   "de": "old_f3",
+   "vers": "old_f4",
+   "type": "heritage",
+   "annee": "1699",
+   "effet": "Suède moderne et Schleswig partagent le quartier III (coupé), Goths et Vandales le quartier IV ; Holstein et Stormarn passent sur le tout.",
+   "lacune": "La page lue donne Frédéric IV roi de Danemark et de Norvège (1699-1730) sans dire comment il a succédé.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_f4",
+   "vers": "old_f6",
+   "type": "annexion",
+   "annee": "1814",
+   "effet": "Le lion de Norvège (quartier II) disparaît de l'écu ; Féroé et Groenland, qui restent au roi, entrent au quartier III avec les trois couronnes de Suède moderne.",
+   "pourquoi": "Frédéric VI est roi de Danemark (1808-1839) et de Norvège de 1808 à 1814 seulement : l'écu de la période 1819-1903 ne porte plus la Norvège.",
+   "lacune": "La page lue ne nomme pas l'acte par lequel la Norvège quitte le roi de Danemark.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_f6",
+   "vers": "old_c9",
+   "type": "heritage",
+   "annee": "1863",
+   "effet": "L'Islande ancienne (la morue couronnée) s'ajoute au quartier III, à côté de Féroé et du Groenland.",
+   "pourquoi": "Christian IX est roi de Danemark de 1863 à 1906 et la page range son écu dans la branche de Schleswig-Holstein-Sonderbourg-Glücksbourg ; la morue d'Islande est nouvelle par rapport à Frédéric VI.",
+   "lacune": "La page lue ne dit pas comment la couronne lui est venue après Frédéric VI.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c9",
+   "vers": "old_c10",
+   "type": "annexion",
+   "annee": "1918",
+   "effet": "L'aigle d'argent de l'Islande moderne remplace la morue de l'Islande ancienne.",
+   "pourquoi": "Christian X est roi de Danemark (1912-1947) et d'Islande (1918-1944) : l'écu cite l'Islande moderne.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c10",
+   "vers": "old_m2",
+   "type": "heritage",
+   "annee": "1972",
+   "effet": "Le Danebrog est simplifié (croix d'argent bordée de gueules) et cantonne les armes de Danemark aux quartiers 1 et 4 ; l'Islande ne figure plus ; Féroé et Groenland restent ; Oldenbourg seul sur le tout.",
+   "pourquoi": "Christian X n'est roi d'Islande que jusqu'en 1944 d'après la page : l'écu de la reine, au pouvoir depuis 1972, ne cite plus l'Islande.",
+   "lacune": "La page lue ne détaille pas la succession entre Christian X et Marguerite II.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_m2",
+   "vers": "old_henri",
+   "type": "mariage",
+   "annee": "1972",
+   "effet": "Le lion d'or surmonté de trois étoiles de Monpezat occupe les quartiers 2 et 3, à côté de ceux du Danemark (1 et 4).",
+   "pourquoi": "Henri de Laborde de Monpezat est prince consort de Danemark de 1972 à 2016 ; ses armes écartèlent celles du Danemark et celles de sa famille d'origine.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c3",
+   "vers": "old_gottorp",
+   "type": "cadette",
+   "annee": "1544",
+   "effet": "Plus de Danebrog, de trois couronnes ni de Goths : l'écu garde Norvège, Schleswig, Holstein, Stormarn et Dithmarse, avec Oldenbourg et Delmenhorst sur le tout.",
+   "pourquoi": "Adolphe est duc de Schleswig et duc de Schleswig-Holstein-Gottorp de 1544 à 1586 ; la page le range dans la « Branche de (Oldenbourg)-Schleswig-Holstein-Gottorp », une branche issue de la maison d'Oldenbourg.",
+   "lacune": "La page lue ne dit pas son lien exact avec Christian III.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_gottorp",
+   "vers": "old_se1",
+   "type": "heritage",
+   "annee": "1751",
+   "effet": "La croix de saint Éric d'or cantonne Suède moderne (1 et 4) et Suède ancienne (2 et 3) ; l'écu de Holstein-Gottorp passe sur le tout.",
+   "pourquoi": "Adolphe-Frédéric est prince-évêque de Lübeck (1727-1750) puis roi de Suède (1751-1771) : une couronne qui change de maison s'inscrit avec les armes de la nouvelle.",
+   "lacune": "La page lue ne dit pas pourquoi la Suède se tourne vers lui.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_se1",
+   "vers": "old_ch13",
+   "type": "annexion",
+   "annee": "1814",
+   "effet": "Un pairle pattée d'or cantonne Suède moderne (en chef), la Norvège (à dextre : le lion à la hallebarde) et Suède ancienne (à senestre) ; Holstein-Gottorp reste sur le tout.",
+   "pourquoi": "Charles XIII est roi de Suède et, de 1814 à 1818, roi de Norvège : les armes de la Norvège entrent dans son écu au moment même où elles quittent celles du roi de Danemark.",
+   "lacune": "La page lue ne détaille pas le traité de 1814.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_f6",
+   "vers": "old_ch13",
+   "type": "annexion",
+   "annee": "1814",
+   "effet": "Le lion de Norvège quitte l'écu du roi de Danemark pour celui du roi de Suède (il tient désormais une hallebarde).",
+   "pourquoi": "Frédéric VI est roi de Norvège de 1808 à 1814 ; Charles XIII lui succède comme roi de Norvège en 1814 (pages lues).",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_gottorp",
+   "vers": "old_p3",
+   "type": "heritage",
+   "annee": "1762",
+   "effet": "L'aigle bicéphale de Russie (écusson de saint Georges en cœur) est accolée aux armes de Holstein-Gottorp : Norvège, Holstein, Stormarn, Dithmarse, Oldenbourg, Delmenhorst, Schleswig sur le tout.",
+   "pourquoi": "Charles Pierre Ulrich est duc de Holstein-Gottorp (1739-1762) et empereur de Russie ; la page le range dans le « Rameau Schleswig-Holstein-Gottorp-Russie, dit Romanov ».",
+   "lacune": "La page lue ne dit pas comment la couronne de Russie lui est venue.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_p3",
+   "vers": "old_a2",
+   "type": "heritage",
+   "annee": "1855",
+   "effet": "Les armes de Holstein-Gottorp disparaissent de l'écu : l'aigle bicéphale d'or reste seule, avec saint Georges en cœur.",
+   "pourquoi": "Alexandre II, dit le Libérateur, est dit « Romanov-Holstein-Gottorp » ; il est empereur de Russie, grand-duc de Finlande et roi de Pologne de 1855 à 1881.",
+   "lacune": "La page lue ne détaille pas les passages entre Pierre III et Alexandre II.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_a2",
+   "vers": "old_marie",
+   "type": "mariage",
+   "annee": "1856",
+   "effet": "L'écu est parti : à dextre l'écartelé de Leuchtenberg, d'Eichstätt et de Beauharnais, à senestre l'aigle impériale de Russie.",
+   "pourquoi": "Maria Nikolaïevna est sœur d'Alexandre II, duchesse de Leuchtenberg et princesse d'Eichstätt : le parti donne à dextre les armes de son mari, à senestre celles de sa naissance.",
+   "lacune": "La page lue ne nomme pas l'époux.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_a2",
+   "vers": "old_konst",
+   "type": "cadette",
+   "annee": "1858",
+   "effet": "Armes alternatives : flèche et ancre en sautoir sous une étoile, bordure chargée de huit roses ; deux ancres en sautoir derrière l'écu.",
+   "pourquoi": "Frère d'Alexandre II et amiral, Constantin porte « les armes des frères et fils cadets de l'empereur » avec deux ancres derrière l'écu ; sa devise, « droit et vrai », traduit le « Treu und Glauben » saxon, en hommage à sa femme Alexandra de Saxe-Altenbourg.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_a2",
+   "vers": "old_nik",
+   "type": "cadette",
+   "annee": "1858",
+   "effet": "Armes alternatives : deux haches passées en sautoir dans une couronne de roses, bordure de sable à huit têtes de lion ; deux haches derrière l'écu.",
+   "pourquoi": "Frère d'Alexandre II et inspecteur général du génie militaire, Nicolas porte les mêmes armes des frères et fils cadets de l'empereur, avec deux haches pour sa fonction.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_a2",
+   "vers": "old_mich",
+   "type": "cadette",
+   "annee": "1858",
+   "effet": "Armes alternatives : le griffon de Romanov tenant une rondache à la bande de Bade, bordure de sable à huit têtes de lion ; deux canons derrière l'écu.",
+   "pourquoi": "Frère d'Alexandre II et maréchal, Michel porte les armes des Romanov avec la bande de la maison de Bade sur la rondache, en hommage à sa femme Cécile de Bade ; deux canons derrière l'écu.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c9",
+   "vers": "old_gr1",
+   "type": "heritage",
+   "annee": "1863",
+   "effet": "Sur une croix alésée d'argent (Grèce) sur azur, un écusson de Glücksbourg simplifié : Danebrog, Danemark, Schleswig, Holstein, Lauenbourg, et Oldenbourg-Delmenhorst sur le tout.",
+   "pourquoi": "Georges est dit de Schleswig-Holstein-Sonderbourg-Glücksbourg et roi des Hellènes (1863-1913) : l'armorial le range dans la même branche de Glücksbourg que Christian IX.",
+   "lacune": "La page lue ne dit pas comment la couronne de Grèce lui est venue.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_gr1",
+   "vers": "old_gr3",
+   "type": "heritage",
+   "annee": "1922",
+   "effet": "L'écusson central devient l'écu complet du Danemark (Suède moderne, Féroé, Groenland, Islande ancienne, Goths, Vandales, Holstein, Lauenbourg…) au lieu de la version simplifiée.",
+   "pourquoi": "Constantin (1913-1917), Alexandre (1917-1920) puis Georges II (1922-1924, 1935-1947) portent les armes à la suite de Georges Ier ; les armes de Georges II sont celles d'après 1936.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_gr3",
+   "vers": "old_sofia",
+   "type": "cadette",
+   "annee": "1938",
+   "effet": "À senestre, l'écartelé de Grèce (croix alésée) avec l'écusson du Danemark sur le tout : ses armes de naissance.",
+   "pourquoi": "Sofía est dite princesse de Grèce et de Danemark : son écu reprend les armes de la maison royale de Grèce.",
+   "lacune": "La page lue ne dit pas de quel roi des Hellènes elle descend.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "esp81",
+   "vers": "old_sofia",
+   "type": "mariage",
+   "annee": "1975",
+   "effet": "À dextre, l'écartelé de Castille, León, Aragon, Navarre et Grenade, avec l'écusson d'Anjou ; les armes de Grèce et de Danemark passent à senestre.",
+   "pourquoi": "Princesse d'Espagne puis reine consort d'Espagne depuis 1975 (page lue) : son écu est parti, l'Espagne de son époux à dextre.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c9",
+   "vers": "old_alex",
+   "type": "cadette",
+   "annee": "1844",
+   "effet": "Au second parti : Danebrog écartelé (Danemark, Schleswig, Suède moderne, Islande ancienne, Féroé, Groenland, Goths, Vandales) et Holstein, Stormarn, Dithmarse, Lauenbourg ; Oldenbourg et Delmenhorst sur le tout du tout.",
+   "pourquoi": "Alexandra est princesse de Danemark : son écu porte, au second parti, les armes complètes du Danemark de l'époque.",
+   "lacune": "La page lue ne nomme pas son père.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "uk37",
+   "vers": "old_alex",
+   "type": "mariage",
+   "annee": "1901–1910",
+   "effet": "Le royaume de son époux, Édouard VII, occupe le premier parti : Angleterre aux quartiers 1 et 4, Écosse au 2, Irlande au 3.",
+   "pourquoi": "Alexandra est reine du Royaume-Uni en tant qu'épouse d'Édouard VII (1901-1910) : à dextre, les armes du roi.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "uk37",
+   "vers": "old_philip",
+   "type": "mariage",
+   "annee": "1949",
+   "effet": "Écartelé : Danemark (I), Grèce (II), Mountbatten-Battenberg (III), Édimbourg (IV, un château) ; les armes de 1947-1949, jugées « insatisfaisantes », ont été remplacées.",
+   "pourquoi": "Philippe de Grèce et de Danemark, dit Mountbatten, est prince consort d'Élisabeth II ; l'armorial donne pour armes d'après 1949 un écartelé qui rappelle sa naissance, sa nouvelle famille et son titre.",
+   "lacune": "La page lue ne détaille pas ses ascendants grecs.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_c9",
+   "vers": "old_no",
+   "type": "heritage",
+   "annee": "1905",
+   "effet": "L'écu ne garde que le lion de Norvège couronné tenant la hache : plus de Danebrog, ni de Schleswig, ni d'Oldenbourg.",
+   "pourquoi": "Christian Frédéric Charles Georges Waldemar Axel de Schleswig-Holstein-Sonderbourg-Glücksbourg devient roi de Norvège (1905-1957) sous le nom de Haakon VII : la page le range dans la branche de Glücksbourg, mais ses armes ne gardent que celles du royaume.",
+   "lacune": "La page lue ne dit pas comment il a été choisi ni son lien précis avec Christian IX.",
+   "sources": [
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_f3",
+   "vers": "old_george",
+   "type": "cadette",
+   "annee": "1653",
+   "effet": "Les armes du Danemark brisées d'un lambel d'argent dont chaque pendant porte trois mouchetures d'hermine de sable.",
+   "pourquoi": "Georges est fils du roi Frédéric III (page « Georges de Danemark ») ; l'armorial lui donne l'écu du roi avec un lambel, la marque du cadet.",
+   "lacune": "La page lue ne dit pas pourquoi les pendants portent des mouchetures d'hermine.",
+   "sources": [
+    "old:arm",
+    "old:georges"
+   ]
+  },
+  {
+   "de": "gb07",
+   "vers": "old_george",
+   "type": "mariage",
+   "annee": "1683",
+   "effet": "Aucun quartier d'Angleterre n'entre dans son écu : il reste armé comme prince de Danemark, avec le lambel ; les titres anglais (duc de Cumberland, chevalier de la Jarretière, 1684) viennent à côté.",
+   "pourquoi": "Il épouse Anne le 28 juillet 1683 à Londres, sujet britannique et prince consort d'Angleterre, d'Écosse et d'Irlande de 1702 à 1708 ; le mariage, selon son écu, n'ajoute rien aux armes du mari.",
+   "sources": [
+    "old:georges",
+    "old:arm"
+   ]
+  },
+  {
+   "de": "old_george",
+   "vers": "old_glou",
+   "type": "mariage",
+   "annee": "1689",
+   "effet": "L'écu royal (France contre-écartelé d'Angleterre, Écosse, Irlande) devient celui du fils, avec le Danebrog sur le tout et un lambel d'argent dont le deuxième pendant porte la croix de saint Georges.",
+   "pourquoi": "Guillaume, duc de Gloucester (1689-1700), est le seul des enfants de Georges et d'Anne à survivre à la petite enfance ; il meurt à onze ans. C'est sur l'écu de l'enfant, pas sur celui de son père, que les deux royaumes se rejoignent.",
+   "sources": [
+    "old:georges",
+    "old:arm"
    ]
   }
  ]

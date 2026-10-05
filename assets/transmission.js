@@ -16,11 +16,11 @@
   const vignette = (f, w) => FP + encodeURIComponent(f) + "?width=" + w;
 
   const TYPES = {
-    cadette: { nom: "Branche cadette", c: "#8e1b18", txt: "Un fils ou un frère du roi garde ses armes et y met une marque (une brisure), ou prend celles de son fief." },
-    mariage: { nom: "Mariage", c: "#a2527a", txt: "Les armes d'une épouse ou d'un époux entrent dans l'écu, en quartier, en cœur ou accolées." },
-    heritage: { nom: "Héritage ou succession", c: "#a9812e", txt: "Une couronne, un duché ou un titre change de maison : ses armes s'ajoutent, ou remplacent les anciennes." },
-    annexion: { nom: "Union, conquête ou traité", c: "#20406e", txt: "Un territoire entre dans l'écu parce qu'il est annexé, conquis, uni ou cédé par un traité." },
-    pretention: { nom: "Prétention", c: "#5f4b8b", txt: "Des armes sont portées pour un trône que l'on revendique sans le tenir." },
+    cadette: { nom: "Branche cadette", court: "Cadette", c: "#8e1b18", txt: "Un fils ou un frère du roi garde ses armes et y met une marque (une brisure), ou prend celles de son fief." },
+    mariage: { nom: "Mariage", court: "Mariage", c: "#a2527a", txt: "Les armes d'une épouse ou d'un époux entrent dans l'écu, en quartier, en cœur ou accolées." },
+    heritage: { nom: "Héritage ou succession", court: "Héritage", c: "#a9812e", txt: "Une couronne, un duché ou un titre change de maison : ses armes s'ajoutent, ou remplacent les anciennes." },
+    annexion: { nom: "Union, conquête ou traité", court: "Union / traité", c: "#20406e", txt: "Un territoire entre dans l'écu parce qu'il est annexé, conquis, uni ou cédé par un traité." },
+    pretention: { nom: "Prétention", court: "Prétention", c: "#5f4b8b", txt: "Des armes sont portées pour un trône que l'on revendique sans le tenir." },
   };
   const ORDRE = Object.keys(TYPES);
 
@@ -66,11 +66,17 @@
   const lire_atelier = texte => typeof window.lire === "function" && window.lire(texte).ok;
 
   /* ---------- l'arbre ---------- */
+  /* sur chaque carte : le type du passage qui y mène (« Mariage · 1901–1910 »), et un point de couleur pour chaque autre type d'apport */
+  function etiquette(n) {
+    const p = prim(n); if (!p) return "";
+    const autres = [...new Set(n.in.filter(l => l !== p && l.type !== p.type).map(l => l.type))];
+    return `<span class="kd">${esc(TYPES[p.type].court)} · ${esc(p.annee)}</span>${autres.length ? `<span class="pts">${autres.map(t => `<i class="pt t-${t}" title="Aussi : ${esc(TYPES[t].nom)}"></i>`).join("")}</span>` : ""}`;
+  }
   function carte(n, fils) {
     const ap = n.in.filter(l => PAR_ID[l.de].apport).map(l => PAR_ID[l.de]);
     return `<div class="corps"><div class="ligne"><button type="button" class="carte" data-id="${n.id}" aria-pressed="false">
       ${n.A.file ? `<img class="ecu" src="${esc(vignette(n.A.file, 96))}" alt="" width="40" height="46" loading="lazy">` : `<span class="ecu ecu-vide" aria-hidden="true"></span>`}
-      <span class="txt"><b>${esc(n.nom)}</b><span class="dt">${esc(n.dates)}</span></span>${n.in.length > 1 ? `<span class="nl" title="${n.in.length} apports dans ces armes">${n.in.length}</span>` : ""}</button>${fils.length ? `<button type="button" class="plus" data-id="${n.id}" aria-expanded="false" aria-label="Descendants de ${esc(n.nom)} : ${fils.length}">${fils.length}</button>` : ""}</div>${ap.length ? `<div class="apports"><span>avec</span>${ap.map(a => `<button type="button" class="ap-chip" data-id="${a.id}" title="${esc(a.nom)} (${esc(a.dates)})">${a.A.file ? `<img src="${esc(vignette(a.A.file, 48))}" alt="" width="16" loading="lazy">` : ""}${esc(a.nom)}</button>`).join("")}</div>` : ""}</div>`;
+      <span class="txt"><b>${esc(n.nom)}</b><span class="dt">${esc(n.dates)}</span>${etiquette(n)}</span>${n.in.length > 1 ? `<span class="nl" title="${n.in.length} apports dans ces armes">${n.in.length}</span>` : ""}</button>${fils.length ? `<button type="button" class="plus" data-id="${n.id}" aria-expanded="false" aria-label="Descendants de ${esc(n.nom)} : ${fils.length}">${fils.length}</button>` : ""}</div>${ap.length ? `<div class="apports"><span>avec</span>${ap.map(a => `<button type="button" class="ap-chip" data-id="${a.id}" title="${esc(a.nom)} (${esc(a.dates)})">${a.A.file ? `<img src="${esc(vignette(a.A.file, 48))}" alt="" width="16" loading="lazy">` : ""}${esc(a.nom)}</button>`).join("")}</div>` : ""}</div>`;
   }
   function noeud(n) {
     const fils = enfants(n.id), p = prim(n);
@@ -109,7 +115,7 @@
     const a0 = A.blasons[0];
     if (a0 && a0.blason) { let ok = false; try { ok = lire_atelier(a0.blason); } catch (e) { /* le lecteur manque */ } if (ok) li.push(`<a href="atelier.html#lire=${encodeURIComponent(a0.blason)}">Redessiner dans l'Atelier</a>`); }
     if (li.length) h.push(`<p class="li">${li.join(" · ")}</p>`);
-    if (!n.in.length) h.push(n.apport ? `<h3>Une maison qui entre par mariage</h3><p class="no">Cette maison n'a pas sa propre branche dans l'arbre : ses armes servent surtout à comprendre celles d'une autre. Les passages qui en sortent sont listés plus bas.</p>` : `<h3>Origine</h3><p class="no">Point de départ de l'arbre : les premières armes connues de cette maison (ou de ce royaume) dans les pages lues. Ce qui est antérieur aux armoiries n'y figure pas.</p>`);
+    if (!n.in.length) h.push(n.apport ? `<h3>Une maison qui entre dans l'écu d'une autre</h3><p class="no">Cette maison n'a pas sa propre branche dans l'arbre : ses armes entrent dans celles d'une autre, par mariage, héritage ou union. Les passages qui en sortent sont listés plus bas.</p>` : `<h3>Origine</h3><p class="no">Point de départ de l'arbre : les premières armes connues de cette maison (ou de ce royaume) dans les pages lues. Ce qui est antérieur aux armoiries n'y figure pas.</p>`);
     else h.push(`<h3>Comment ces armes sont venues</h3>` + n.in.map(l => blocLien(l, n)).join(""));
     if (n.out.length) h.push(`<h3>Ce que ces armes ont transmis</h3><ul class="sortie">` + n.out.map(l => `<li><span class="tg t-${l.type}">${esc(TYPES[l.type].nom)}</span> ${esc(l.annee)} → <button type="button" class="va" data-id="${l.vers}">${esc(PAR_ID[l.vers].nom)}</button></li>`).join("") + `</ul>`);
     if (A.file) h.push(`<p class="cr">Figure : <a href="${PG}${encodeURIComponent(A.file.replace(/ /g, "_"))}" target="_blank" rel="noopener">« ${esc(A.file)} »</a> — ${esc(A.auteur)}, ${A.licurl ? `<a href="${esc(A.licurl)}" target="_blank" rel="noopener">${esc(A.lic)}</a>` : esc(A.lic)}, via Wikimedia Commons.</p>`);
@@ -117,7 +123,7 @@
   }
   const nbType = {}; T.liens.forEach(l => { nbType[l.type] = (nbType[l.type] || 0) + 1; });
   function accueil() {
-    $("#panneau").innerHTML = `<h2>Lire l'arbre</h2><p class="no">Chaque écu est un état d'armes. Cliquez-le pour voir comment il est venu ; le nombre à sa droite déplie les armes qui en sont sorties. Un chiffre sur l'écu indique plusieurs apports (par exemple un héritage et un mariage) ; une pastille « avec » sous un écu signale une maison qui n'a pas sa propre branche et entre par mariage.</p>
+    $("#panneau").innerHTML = `<h2>Lire l'arbre</h2><p class="no">Chaque écu est un état d'armes. Son étiquette de couleur dit comment il est venu (« Mariage · 1901–1910 », « Cadette · 1858 »…) ; un point de couleur à côté signale un autre type d'apport. Cliquez l'écu pour le détail ; le nombre à sa droite déplie les armes qui en sont sorties. Un chiffre sur l'écu indique plusieurs apports ; une pastille « avec » sous un écu signale une maison qui n'a pas sa propre branche et entre dans l'écu d'une autre.</p>
       <ul class="legende">${ORDRE.filter(t => nbType[t]).map(t => `<li class="t-${t}"><b>${esc(TYPES[t].nom)}</b> <span class="n">${nbType[t]}</span><br>${esc(TYPES[t].txt)}</li>`).join("")}</ul>
       <p class="no">Quand les sources lues ne disent pas pourquoi, le lien affiche « Raison non établie » : mieux vaut un blanc qu'une histoire inventée.</p>`;
   }

@@ -84,7 +84,8 @@ else:
 def slug(t):
     t = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFD", str(t))).lower()
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", t))
-cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).get("frises", [])}}
+cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).get("frises", [])},
+          "transmission.html": {n.get("id") for n in (DATA.get("transmission.json") or {}).get("noeuds", [])}}
 dd = DATA.get("data.json") or {}
 # (un encadré, « note », n'a pas d'adresse : seule la section se vise)
 cibles["index.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
