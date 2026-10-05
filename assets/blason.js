@@ -360,6 +360,36 @@ function stripesBendy(n,a,b,sin){
   }
   return sin ? `<g transform="translate(200,0) scale(-1,1)">${s}</g>` : s;
 }
+/* chevronné : n zones en chevrons emboîtés, la première (celle du chef) de l'émail a. Les n-1 traits sont des V renversés de même pente que
+   le chevron de l'Atelier (70 en travers pour 100 en hauteur), espacés régulièrement du chef à la pointe ; on peint de bas en haut. */
+function chevronne(n, a, b){
+  const col = i => i % 2 ? b : a, pente = 100 / 70, y0 = 30, y1 = 186, pas = n > 2 ? (y1 - y0) / (n - 2) : 0;
+  let s = `<rect width="200" height="252" fill="${col(n - 1)}"/>`;
+  for(let k = n - 2; k >= 0; k--){
+    const ya = y0 + k * pas, yb = ya + pente * 300;
+    s += `<polygon points="-200,${yb.toFixed(1)} 100,${ya.toFixed(1)} 400,${yb.toFixed(1)} 400,-200 -200,-200" fill="${col(k)}"/>`;
+  }
+  return s;
+}
+/* échiqueté de n tires : n rangées de carrés, autant de colonnes que le permet un carré à peu près carré ; l'angle dextre du chef est de l'émail a */
+function echiquete(n, a, b){
+  const h = 252 / n, cols = Math.max(2, Math.round(200 / h)), w = 200 / cols;
+  let s = `<rect width="200" height="252" fill="${a}"/>`;
+  for(let r = 0; r < n; r++) for(let c = 0; c < cols; c++) if((r + c) % 2) s += `<rect x="${(c * w).toFixed(2)}" y="${(r * h).toFixed(2)}" width="${(w + .4).toFixed(2)}" height="${(h + .4).toFixed(2)}" fill="${b}"/>`;
+  return s;
+}
+/* fuselé : des fusées (losanges allongés) qui se touchent par la pointe sur une rangée, les rangées alternant les émaux ; en bande ou en barre,
+   tout le réseau tourne de l'angle de la diagonale de l'écu (les fusées sont posées en bande, chaque rang dessine une barre) */
+function fusele(kind, a, b){
+  const w = 40, h = 70, ang = Math.atan(200 / 252) * 180 / Math.PI, rot = { lozengy: 0, lozengybend: -ang, lozengysin: ang }[kind];
+  const cx = { lozengy: 0, lozengybend: 200, lozengysin: 0 }[kind];            // le coin dont l'émail est le premier : dextre du chef (sénestre pour le bandé)
+  let s = "";
+  for(let j = -16; j <= 16; j++) for(let i = -12; i <= 12; i++){
+    const x = i * w + j * w / 2, y = j * h / 2;
+    s += `<path d="M${x},${y - h / 2} L${x + w / 2},${y} L${x},${y + h / 2} L${x - w / 2},${y} Z" fill="${(j % 2 + 2) % 2 ? b : a}" stroke="${(j % 2 + 2) % 2 ? b : a}" stroke-width=".5"/>`;
+  }
+  return `<rect width="200" height="252" fill="${a}"/><g transform="translate(${cx},0) rotate(${rot.toFixed(2)})">${s}</g>`;
+}
 function shieldRecoupement(kind, n, a, b){
   const inner = recoupementInner(kind, n, a, b);
   const id = ++uid, cid = "clr"+id;
@@ -383,6 +413,15 @@ function recoupementInner(kind, n, a, b){
       break;
     case "bendysin":
       inner = n===2 ? `<rect width="200" height="252" fill="${b}"/><path d="M200,0 L200,252 L0,252 Z" fill="${a}"/>` : stripesBendy(n,a,b,true);
+      break;
+    case "chevronny":
+      inner = chevronne(n, a, b);
+      break;
+    case "chequy":
+      inner = echiquete(n, a, b);
+      break;
+    case "lozengy": case "lozengybend": case "lozengysin":
+      inner = fusele(kind, a, b);
       break;
     case "quarterly":
       inner = `<rect width="100" height="126" fill="${a}"/><rect x="100" width="100" height="126" fill="${b}"/><rect y="126" width="100" height="126" fill="${b}"/><rect x="100" y="126" width="100" height="126" fill="${a}"/>`;
@@ -587,7 +626,7 @@ function motifsAnneau(morceaux, m){
 /* le tracé d'une pièce à bords décorés (ou null si on ne sait pas la décorer) ; mêmes cotes que pieceInner */
 function pieceDecoree(kind, line){
   const S = CONTOURS[line];
-  const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12 }[kind];
+  const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12, cotice: 23 }[kind];
   if(!S || !largeur) return null;
   const a0 = Math.min(9, Math.max(4, .2 * largeur)), a = a0 * S.h, per = a0 * S.l;
   if(kind === "bordure" || kind === "orle"){
@@ -612,6 +651,7 @@ function pieceDecoree(kind, line){
     fasce: () => bandePoly([0, 130], [200, 130], 26, 30),
     pal: () => bandePoly([100, 0], [100, 252], 26, 30),
     bande: () => bandePoly([6, 6], [200, 252], 23, 40),
+    cotice: () => bandePoly([6, 6], [200, 252], 11.5, 40),
     barre: () => bandePoly([194, 6], [0, 252], 23, 40),
     croix: () => branchesPoly([100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20, 170),
     sautoir: () => branchesPoly([100, 123], SAUTOIR_DIRS, 20, 190),
@@ -623,9 +663,22 @@ function pieceDecoree(kind, line){
   return polyDecore(forme.V, forme.flags, line, a, per);
 }
 
-/* line : contour décoré de la pièce (clé de CONTOURS), ou rien pour un bord droit */
+/* pièce alésée : raccourcie, elle ne touche plus les bords de l'écu (les mêmes cotes que la pièce « au vif », ramenées à l'intérieur) */
+function pieceAlesee(kind, pf){
+  switch(kind){
+    case "fasce": return `<rect x="38" y="104" width="124" height="52" fill="${pf}"/>`;
+    case "pal": return `<rect x="74" y="44" width="52" height="170" fill="${pf}"/>`;
+    case "bande": return `<line x1="50" y1="68" x2="150" y2="190" stroke="${pf}" stroke-width="40"/>`;
+    case "barre": return `<line x1="150" y1="68" x2="50" y2="190" stroke="${pf}" stroke-width="40"/>`;
+    case "chevron": return `<path d="M44,184 L100,104 L156,184" fill="none" stroke="${pf}" stroke-width="30"/>`;
+    case "sautoir": return `<line x1="52" y1="60" x2="148" y2="192" stroke="${pf}" stroke-width="34"/><line x1="148" y1="60" x2="52" y2="192" stroke="${pf}" stroke-width="34"/>`;
+  }
+  return null;
+}
+/* line : contour décoré de la pièce (clé de CONTOURS), « alesee », ou rien pour un bord droit */
 function pieceInner(kind, pf, line){
-  if(line){
+  if(line === "alesee"){ const al = pieceAlesee(kind, pf); if(al) return al; }
+  else if(line){
     let d = null;
     try{ d = pieceDecoree(kind, line); }
     catch(err){ console.warn("[armorial] contour décoré impossible, bord droit à la place :", err); }   // mesurer le contour demande un navigateur complet
@@ -637,6 +690,7 @@ function pieceInner(kind, pf, line){
     case "fasce": inner = `<rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
     case "pal": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/>`; break;
     case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
     case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
     case "croix": inner = `<rect x="80" y="0" width="40" height="252" fill="${pf}"/><rect x="0" y="92" width="200" height="40" fill="${pf}"/>`; break;
     case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
@@ -700,6 +754,15 @@ function ecuPoints(){
 }
 
 /* ---- meubles : figures originales dessinées à neuf ---- */
+/* étoile à n rais (6, 7 ou 8) : même taille et même épaisseur de trait que l'étoile à cinq rais */
+function etoileRais(n, fill, stroke){
+  const R = 26, r = R * (n === 6 ? .5 : .42), pts = [];
+  for(let i = 0; i < 2 * n; i++){
+    const a = Math.PI * i / n, rr = i % 2 ? r : R;
+    pts.push((rr * Math.sin(a)).toFixed(2) + "," + (-rr * Math.cos(a)).toFixed(2));
+  }
+  return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M${pts.join(" L")} Z"/></g>`;
+}
 function chgStroke(t){
   const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440"};
   return m[t]||"#1a1712";
@@ -736,6 +799,7 @@ function chargeInner(kind, fill, stroke, field){
       </g>`;
     case "croissant": return `<path d="M64,108 A42,42 0 1 0 136,108 A34,34 0 1 1 64,108 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "etoile": return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
+    case "etoile6": case "etoile7": case "etoile8": return etoileRais(+kind.slice(6), fill, stroke);
     case "molette": return `<g transform="translate(100,116) scale(1.7)"><path d="M0,-26 L6,-7 L26,-6 L10,5 L16,24 L0,13 L-16,24 L-10,5 L-26,-6 L-6,-7 Z" fill="${fill}" stroke="${stroke}" stroke-width="0.8"/><circle cx="0" cy="2" r="4.5" fill="${field}"/></g>`;
     case "roundel": return `<circle cx="100" cy="116" r="40" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "rose": return `
@@ -866,6 +930,18 @@ function chargeInner(kind, fill, stroke, field){
       <rect x="92" y="60" width="16" height="122"/><rect x="50" y="74" width="100" height="13" rx="6"/>
       <path d="M100,188 C72,188 46,168 40,138 C38,131 45,127 49,133 C58,150 74,162 100,162 C126,162 142,150 151,133 C155,127 162,131 160,138 C154,168 128,188 100,188 Z"/>
       <path d="M34,118 L54,140 L32,148 Z"/><path d="M166,118 L146,140 L168,148 Z"/></g>`;
+    /* la couronne ouverte (celle qu'on voit en meuble : « trois couronnes d'or ») : un bandeau gemmé et cinq pointes, dont trois portent une perle */
+    case "couronne": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M40,142 L36,96 L70,122 L100,82 L130,122 L164,96 L160,142 Z"/>
+      <rect x="40" y="142" width="120" height="30" rx="3"/>
+      <circle cx="36" cy="90" r="7"/><circle cx="100" cy="75" r="7"/><circle cx="164" cy="90" r="7"/></g>
+      <g fill="${field}"><circle cx="66" cy="157" r="5.5"/><circle cx="100" cy="157" r="5.5"/><circle cx="134" cy="157" r="5.5"/></g>`;
+    /* la hache d'armes, le fer à dextre (à gauche pour qui regarde) ; on la contourne pour l'avoir à senestre */
+    case "hache": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      <rect x="95.5" y="42" width="9" height="172" rx="3"/>
+      <path d="M95,54 L52,34 C42,64 42,104 52,136 L95,106 Z"/>
+      <path d="M105,60 L134,68 L105,84 Z"/>
+      <path d="M95,52 L100,28 L105,52 Z"/></g>`;
     case "tour": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <path d="M50,76 L50,50 L72,50 L72,64 L89,64 L89,50 L111,50 L111,64 L128,64 L128,50 L150,50 L150,76 Z"/>
       <path d="M58,76 L142,76 L142,200 L58,200 Z"/></g>

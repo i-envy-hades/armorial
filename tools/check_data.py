@@ -209,6 +209,7 @@ cn = re.search(r"const CONTOUR_NOM = \{(.*?)\};", (ROOT / "assets" / "blasonneme
 cc = re.search(r"const CONTOURS = \{(.*?)^\};", JS, re.S | re.M)
 if cn and cc:
     for k in re.findall(r"(\w+):", cn.group(1)):
+        if k == "alesee": continue                           # l'alésé n'est pas un bord décoré : c'est pieceAlesee() dans assets/blason.js
         if not re.search(rf"^\s*{k}\s*:", cc.group(1), re.M): err(f"assets/blasonnement.js: bord « {k} » (CONTOUR_NOM) sans tracé dans CONTOURS de assets/blason.js")
 else: err("assets/blasonnement.js ou assets/blason.js: CONTOUR_NOM ou CONTOURS introuvable")
 HACHURES = {"none", "ermine", "vair", "dots", "vert", "horiz", "cross", "bend", "bendsin"}
@@ -235,7 +236,7 @@ if isinstance(a, dict):
         elif not m.get("custom"): err(f"atelier.json: meuble « {k} » sans dessin ni figure")
     # les noms que le lecteur de blasonnement (assets/lecture.js) reconnaît : sing, plur et alias, sans doublon entre meubles ni avec une pièce
     noms = {}
-    pieces = {"chef", "fasce", "pal", "bande", "barre", "croix", "sautoir", "chevron", "bordure", "orle", "canton", "franc-quartier", "pairle"}
+    pieces = {"chef", "fasce", "pal", "bande", "barre", "croix", "sautoir", "chevron", "bordure", "orle", "canton", "franc-quartier", "pairle", "cotice"}
     for m in a.get("meubles", []):
         k = m.get("kind")
         al = m.get("alias", [])
@@ -265,7 +266,8 @@ if isinstance(a, dict):
         for g in (DATA.get("data.json") or {}).get(liste, []):
             defini.add(mots(g.get("terme", "")))
             defini.update(mots(x) for x in g.get("terme", "").split(","))
-    attendus = [pc.get("nom") for pc in a.get("pieces", [])] + ["sur le tout", "brochant", "accompagné", "accosté", "cantonné", "chargé", "rangé en", "contourné", "semé", "plein", "cabré"]
+    attendus = [pc.get("nom") for pc in a.get("pieces", [])] + ["sur le tout", "brochant", "accompagné", "accosté", "cantonné", "chargé", "rangé en", "contourné", "semé", "plein", "cabré",
+               "alésé", "bordé", "échiqueté", "fuselé", "vergeté", "coticé", "chevronné", "burelé", "tire"]
     for t in attendus:
         if t and mots(t) not in defini and not any(mots(t) in d for d in defini):
             err(f"data.json: « {t} » est un mot de l'Atelier (pièce ou blasonnement) que le glossaire ne définit pas")

@@ -26,10 +26,10 @@ Pour modifier le contenu, on modifie un fichier JSON et on publie.
 ### Ce que sait faire l'Atelier
 
 - **L'écu** : simple, écartelé (1-4 / 2-3, ou en quatre), avec ou sans écusson en abîme (« sur le tout ») ; quinze formes d'écu.
-- **Le champ** : plein, partagé (parti, coupé, tranché, taillé, tiercé, gironné, traits ondé, crénelé, denché, engrêlé, cannelé, dancetté, nébulé…) ou rayé (fascé, palé, bandé, barré, de six ou huit pièces — ou deux à quatre pièces rebattues : « d'or à trois pals de gueules ») ; neuf émaux, fourrures comprises.
-- **La pièce** : chef, fasce, pal, bande, barre, croix, sautoir, chevron, bordure, orle, canton, franc-quartier, pairle — à bord droit, ondé, nébulé, dancetté, engrêlé, cannelé ou denché.
-- **Les meubles** : plus de quatre-vingt-dix — dont des bêtes (lion rampant, passant ou léopard, aigle à une ou deux têtes, cerf, cheval, ours, sanglier, loup, cygne, poisson, griffon, dragon…) et l'arbre —, jusqu'à deux sortes ensemble ; nombre, disposition (en chef, en pal, 2 et 1, semé, en orle…), sens (contourné), réglages de taille et de position.
-- **Les ornements** : couronnes de rang, heaumes (deux modèles, trois positions), lambrequins, panache, supports, colliers d'ordres, devise sur un bandeau.
+- **Le champ** : plein, partagé (parti, coupé, tranché, taillé, tiercé, gironné, traits ondé, crénelé, denché, engrêlé, cannelé, dancetté, nébulé…) ou rayé (fascé, palé, bandé, barré, chevronné, de six à douze pièces — burelé, vergeté, coticé à partir de dix — ou des pièces rebattues : « d'or à trois pals de gueules », « à trois chevrons »), échiqueté (de trois à huit tires) et fuselé (droit, en bande, en barre) ; neuf émaux, fourrures comprises.
+- **La pièce** : chef, fasce, pal, bande, barre, croix, sautoir, chevron, cotice, bordure, orle, canton, franc-quartier, pairle — à bord droit, ondé, nébulé, dancetté, engrêlé, cannelé ou denché, ou alésée (fasce, pal, bande, barre, chevron, sautoir), bordée d'un filet d'un autre émail (« la croix de gueules bordée d'argent »), brochant sur les meubles du champ (« au lion d'or, à la bande de gueules brochant sur le tout »).
+- **Les meubles** : une centaine — dont des bêtes (lion rampant, passant ou léopard, aigle à une ou deux têtes, cerf, cheval, ours, sanglier, loup, cygne, poisson, griffon, dragon…) et l'arbre —, jusqu'à deux sortes ensemble ; nombre (de un à huit, neuf, dix et douze), disposition (en chef, en pal, 2 et 1, semé, en orle…), sens (contourné), réglages de taille et de position.
+- **Les ornements** : couronnes de rang, heaumes (deux modèles, trois positions), lambrequins, panache, cimier (un meuble posé sur le heaume, entier ou issant), supports, colliers d'ordres, devise sur un bandeau.
 - **La sortie** : le blasonnement, la liste des ornements, l'avertissement si la règle des émaux est enfreinte, un lien qui garde toute la composition, un export SVG ou PNG portant ses crédits.
 - **La lecture** : on tape « D'azur à trois fleurs de lis d'or » (ou on arrive par `atelier.html#lire=…`, l'adresse des boutons des galeries) et l'écu se dessine. L'Atelier lit tout ce qu'il sait écrire — écartelé, écusson sur le tout, pièces et leurs bords, meubles chargés ou accompagnés, semés — et quelques variantes de plume (accents et majuscules libres, « plain », « lys », virgules, commentaires entre parenthèses, « du même »). **Ce qui n'est pas compris est signalé, jamais deviné** : un mot inconnu, un ordre qu'il ne sait pas lire, un nombre ou une disposition qu'il ne sait pas dessiner sont surlignés dans le texte, avec la raison, et l'écu ne bouge pas. Ce qu'il lit en fixant lui-même un détail que le texte ne dit pas (la disposition de deux meubles, l'attribut de l'aigle…) est dit en « réserves » sous la zone de saisie. Voir `assets/lecture.js`.
 
@@ -65,6 +65,7 @@ assets/
   blasons.js .css   Blasons réels             personnages.js .css   Personnages      (ils chargent le lecteur pour poser leurs boutons)
   cartes.js         les adresses des cartes des galeries (et le filtre qu'on lève pour y aller)
   epopee*.js .css   l'habillage « chronique » : bandeaux, cartes, mouvement léger (désactivé avec prefers-reduced-motion)
+  bandeau.css       le même bandeau (menu voilé, barre de lecture, héros, pied de page) pour les pages qui ont leur propre feuille : L'Atelier, Lignées, 404
   favicon.svg  og.jpg   l'icône du site, l'image de partage (un écu composé par l'Atelier)
   fonts/            polices auto-hébergées (licence OFL, texte joint)
   meubles/          figures SVG des meubles empruntés à Wikimedia Commons
@@ -180,7 +181,7 @@ téléphone (375 px : aucune page ne déborde en largeur, le menu se replie derr
 
 ```sh
 pip install playwright               # une fois ; utilise Google Chrome s'il est installé, sinon : python3 -m playwright install chromium
-python3 tools/smoke_test.py          # une trentaine de secondes ; FUZZ=500 pour pousser l'Atelier plus loin
+python3 tools/smoke_test.py          # deux minutes environ ; FUZZ=500 pour pousser l'Atelier plus loin
 ```
 
 Les images de Wikimedia Commons sont remplacées par un pixel dans ce test : il ne dépend pas du réseau.
@@ -223,11 +224,12 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.
-- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu moins d'un tiers des blasonnements des galeries (31 sur 101) — ni « cinq pals »
-  (il lit « d'or à trois pals de gueules », de deux à quatre pièces rebattues sur le champ ; au-delà, écrivez « Palé… de dix pièces »), ni une même pièce répétée ailleurs que sur le champ, ni bordure autour d'une croix, ni cotice, ni fuselé, ni meubles absents de l'Atelier. Il ne lit
-  pas les ornements (couronne, heaume, supports). Il pose « 2 et 1 » pour trois meubles dont le texte ne dit pas la disposition, et le dit.
+- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu plus d'un tiers des blasonnements des galeries (52 sur 141). Il lit les attributs des bêtes en liste
+  (« armé, lampassé et vilené de gueules » : l'Atelier les colore d'un seul émail, et le dit), la couronne d'un lion (« lion couronné d'or »), « du champ », « aux trois… », les quartiers séparés par des virgules. Il ne lit pas un aigle sans couronne,
+  une bordure autour d'une croix-meuble, les attitudes que l'Atelier ne dessine pas (ours dressé, bouquetin saillant…), ni les meubles absents de l'Atelier (harpe, sceptre, crosse, faisceau…), ni « de l'un en l'autre ».
+  Il ne lit pas les ornements (couronne, heaume, cimier, supports). Il pose « 2 et 1 » pour trois meubles dont le texte ne dit pas la disposition, et le dit.
 - **L'Atelier** : peu d'attitudes — le lion existe rampant, passant et léopard, l'aigle à une ou deux têtes, mais la plupart des bêtes n'ont
-  qu'un dessin ; ni manteau ni pavillon ; les pièces alésées n'y sont pas.
+  qu'un dessin ; seuls les lions portent une couronne ; ni manteau ni pavillon ; le fuselé a des proportions fixes ; pas de losangé, d'emmanché, de fretté ni de vairé comme champs.
 - **Pièces, alliances, hérauts** : les chapitres « Pièces » (sauf son premier article), « Blasonnement » (sauf le premier), « Alliances » et « Hérauts et armoriaux », l'article sur le cimier,
   le cri et la devise reposent sur des pages de Wikipédia lues puis reformulées (leurs désaccords sont signalés, ceux de Wikipédia avec elle-même compris), pas sur Joubert ni Pastoureau.
 - **L'arbre de la transmission des armes** n'est pas une généalogie : il ne suit que les passages qui changent un écu, avec une ligne principale par nœud ; une raison n'y est écrite que si une page lue la donne (une trentaine de passages disent encore « raison non établie »). Les branches capétiennes reprennent la classification de la page « Armorial des Capétiens », qui ne dit rien de la parenté entre personnes au-delà de la présentation du fondateur de chaque branche.

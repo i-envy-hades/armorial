@@ -11,10 +11,12 @@ function chipRow(el) {
 function fillSelects() {
   F.part.innerHTML = DATA.partitions.map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
   F.p.innerHTML = `<option value="">Aucune</option>` + [...DATA.pieces, ...(ATL.pieces || [])].filter(p => PIECES[p.kind]).map(p => `<option value="${esc(p.kind)}">${esc(p.nom)}</option>`).join("");
-  F.ln.innerHTML = `<option value="">Droit</option>` + Object.entries(CONTOUR_NOM).map(([k, v]) => `<option value="${k}">${cap(v)}</option>`).join("");
+  F.cn.innerHTML = F.cn2.innerHTML = `<option value="">Aucune</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">Couronné ${de(t.nom)}</option>`).join("");
+  F.pf.innerHTML = `<option value="">Aucun</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">Bordée ${de(t.nom)}</option>`).join("");
   const cats = [...new Set(ATL.meubles.map(m => m.cat))];
   F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
   F.m2.innerHTML = F.m.innerHTML;
+  F.ci.innerHTML = F.m.innerHTML.replace("Aucun", "Aucun");                                        // le cimier se prend dans les mêmes meubles
   const O = ATL.ornements;
   F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
@@ -42,6 +44,10 @@ function syncForm() {
   F.d.innerHTML = ds.map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
   F.nb2.innerHTML = Object.keys(PLEIN).map(n => `<option value="${n}">${n}</option>`).join("");
   F.d2.innerHTML = PLEIN[a.nb2].map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
+  /* le nombre de pièces dépend du champ rayé : six, huit… ou des pièces rebattues pour un nombre impair ; des tires pour l'échiqueté ; rien pour le fuselé */
+  const lab = n => a.ray === "chequy" ? `${NB[n]} tires` : +n % 2 ? `${NB[(n - 1) / 2]} ${RAY_PIECE[a.ray]}s (pièces rebattues)` : `${NB[n]} pièces`;
+  F.n.innerHTML = rayNs(a.ray).map(n => `<option value="${n}">${esc(lab(+n))}</option>`).join("");
+  F.n.hidden = a.ray.startsWith("lozengy");
   F.hp.innerHTML = ATL.ornements.heaumes.filter(h => h.type === S.ht).map(h => `<option value="${h.pos}">${esc(ATL.ornements.heaumePos[h.pos])}</option>`).join("");
   for (const k of Object.keys(ADEF)) setField(k, a[k]);
   for (const k of Object.keys(ODEF)) setField(k, S[k]);
@@ -53,14 +59,20 @@ function syncForm() {
   $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
   $("#r-tp").hidden = !a.p;
   $("#r-ln").hidden = !a.p;
+  $("#r-pf").hidden = !a.p || a.p === "bordure" || a.p === "orle";
+  /* le bord : droit, décoré, ou alésé (seulement pour les pièces qui s'alèsent) */
+  F.ln.innerHTML = `<option value="">Droit</option>` + Object.entries(CONTOUR_NOM).filter(([k]) => k !== "alesee" || ALESEE_OK.has(a.p)).map(([k, v]) => `<option value="${k}">${cap(v)}</option>`).join("");
+  setField("ln", a.ln);
   $("#r-ct").hidden = !(m && m.asym);
   $("#r-ct2").hidden = !(m2 && m2.asym);
   $("#r-nb").hidden = !m || cs.length < 2;
   $("#r-d").hidden = !m || m.seul || ds.length < 2;
   $("#r-tm").hidden = !m;
-  const canSur = a.p && LAYOUT["sur-" + a.p], canAut = a.p && LAYOUT[a.p];
-  $("#r-pos").hidden = !m || !a.p || !(canSur && canAut);
+  const canSur = a.p && LAYOUT["sur-" + a.p], canAut = a.p && LAYOUT[a.p], canSous = a.p && BRO_OK.has(a.p) && a.nb !== "seme";
+  $("#r-pos").hidden = !m || !a.p || [canSur, canAut, canSous].filter(Boolean).length < 2;
+  [...F.elements.pos].forEach(r => { r.closest("label").hidden = !{ sur: canSur, autour: canAut, sous: canSous }[r.value]; });
   $("#r-ta").hidden = !m || !m.accent;
+  $("#r-cn").hidden = !m || !m.couronne;
   if (m?.accentMot) $("#l-ta").textContent = m.accentLabel || cap(m.accentMot.split(/[ ,]/)[0]);
   const note = $("#m-note");
   note.hidden = !m?.file;
@@ -68,10 +80,16 @@ function syncForm() {
   $("#r-m2").hidden = !m;
   $("#r-nb2").hidden = $("#r-d2").hidden = $("#r-tm2").hidden = !m2;
   $("#r-ta2").hidden = !m2 || !m2.accent;
+  $("#r-cn2").hidden = !m2 || !m2.couronne;
   if (m2?.accentMot) $("#l-ta2").textContent = m2.accentLabel || cap(m2.accentMot.split(/[ ,]/)[0]);
   $("#r-tl1").hidden = $("#r-tl2").hidden = S.hm !== "hl";
-  $("#r-pa").hidden = !S.hm;
-  $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa;
+  const mci = S.hm && S.ci && meuble(S.ci);
+  $("#r-ci").hidden = !S.hm;
+  $("#r-cim").hidden = $("#r-cit").hidden = !mci;
+  $("#r-cia").hidden = !mci || !mci.accent;
+  if (mci?.accentMot) $("#l-cia").textContent = mci.accentLabel || cap(mci.accentMot.split(/[ ,]/)[0]);
+  $("#r-pa").hidden = !S.hm || !!S.ci;                                                            // le cimier prend la place du panache
+  $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa || !!S.ci;
   $("#r-ts").hidden = !S.su;
   $("#r-dt").hidden = !S.dv.trim();
   $("#r-hp").hidden = !S.hm;
@@ -243,6 +261,14 @@ const EXEMPLES = [
   ["Franc-quartier", { A0: { t1: "Or", m: "epee", nb: "1", tm: "Argent", p: "franc-quartier", tp: "Azur", pos: "sur" } }],
   ["Angleterre", { A0: { t1: "Gueules", m: "leopard", nb: "3", d: "pal", tm: "Or", ta: "Azur", sz: "190" } }],
   ["Aigle bicéphale", { A0: { t1: "Or", m: "aigle-bicephale", nb: "1", tm: "Sable", ta: "Gueules" } }],
+  ["Échiqueté", { A0: { f: "ray", ray: "chequy", n: "6", t1: "Argent", t2: "Gueules", m: "" } }],
+  ["Fuselé en bande", { A0: { f: "ray", ray: "lozengybend", n: "6", t1: "Azur", t2: "Argent", m: "" } }],
+  ["Chevronné", { A0: { f: "ray", ray: "chevronny", n: "6", t1: "Or", t2: "Sable", m: "" } }],
+  ["Burelé", { A0: { f: "ray", ray: "barry", n: "10", t1: "Argent", t2: "Gueules", m: "" } }],
+  ["Fasce alésée", { A0: { t1: "Argent", m: "", p: "fasce", tp: "Gueules", ln: "alesee" } }],
+  ["Croix bordée", { A0: { t1: "Azur", m: "", p: "croix", tp: "Gueules", pf: "Argent" } }],
+  ["Bande brochante", { A0: { t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Gueules", p: "bande", tp: "Azur", pos: "sous" } }],
+  ["Neuf étoiles", { A0: { t1: "Azur", m: "etoile6", nb: "9", tm: "Or" } }],
   ["Sur le tout", { q: "2", ab: "1", A0: { t1: "Gueules", m: "lion", nb: "1", tm: "Or", ta: "Azur" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A4: { t1: "Argent", m: "", p: "croix", tp: "Gueules" } }],
 ];
 function example(ex) {
@@ -257,6 +283,7 @@ function randomArms() {
   const champ = pick(metalChamp ? metaux : couleurs), contre = list => pick(list.filter(t => t !== champ));
   const s = { ...ADEF, f: Math.random() < .2 ? "part" : "plein", t1: champ, t2: contre(metalChamp ? couleurs : metaux) };
   s.part = pick(["parti", "coupe", "tranche", "ecartele"]);
+  if (s.f === "plein" && Math.random() < .12) { s.f = "ray"; s.ray = pick(RAYS); s.n = pick(rayNs(s.ray)); }                  // de temps en temps, un champ rayé ou un pavage
   s.p = Math.random() < .6 ? pick(Object.keys(PIECES)) : "";
   s.tp = pick(metalChamp ? couleurs : metaux);
   s.m = Math.random() < .8 ? pick(ATL.meubles).kind : "";
