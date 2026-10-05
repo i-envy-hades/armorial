@@ -49,7 +49,7 @@ function sealSvg(r, big){
     ${nm}<text class="sl-n" x="100" y="${big ? 140 : 126}" text-anchor="middle" font-size="${big ? 36 : (String(r.num).length > 2 ? 66 : 80)}">${esc(r.num ?? "")}</text></svg>`;
 }
 
-let DATA, FRISE;                                  // FRISE : la ligne de data/frises.json affichée (son id sert aux liens vers la chronologie)
+let DATA, FRISE;                                  // FRISE : la ligne de data/frises.json affichée
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 /* texte affiché : échappé, et « Iᵉʳ », « XIIIᵉ » en vrais exposants (les lettres modificatrices manquent aux polices) */
@@ -497,7 +497,6 @@ function buildRealm(R){
         <p class="eyebrow">${txt(R.nom)} · ${Math.floor(R.first)} – ${Math.floor(Math.max(...R.regnes.map(r => r.e)))}</p>
         <h2>${txt(R.titre)}</h2>
         <p class="lede">${txt(R.lede)}</p>
-        <p class="stage-links"><a href="chronologie.html#l=${FRISE.id}${DATA.royaumes.length > 1 ? "-" + R.id : ""}">Les repères de cette lignée dans la chronologie →</a></p>
       </header>
       <div class="viewer">
         <div class="big-wrap">

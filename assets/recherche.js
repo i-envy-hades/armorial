@@ -1,10 +1,10 @@
 /* L'ARMORIAL — Rechercher : une recherche dans tout le site.
 
    Rien n'est indexé à l'avance. La page lit les fichiers de données (data.json, blasons.json, personnages.json, frises.json
-   et un fichier par lignée, chronologie.json), en tire une liste d'entrées en mémoire — type, titre, texte, adresse — et cherche
+   et un fichier par lignée), en tire une liste d'entrées en mémoire — type, titre, texte, adresse — et cherche
    dedans : sans accent ni majuscule, tous les mots demandés devant figurer dans la même entrée ; un mot dans le titre compte
    plus qu'un mot dans le texte. Chaque résultat mène à l'endroit où l'entrée se lit (chapitre, terme du glossaire, carte
-   d'une galerie, frise, année de la chronologie).
+   d'une galerie, frise).
    Adresse : recherche.html#q=lambel&t=glo (la requête, et la rubrique si on en a choisi une). */
 (async () => {
   const $ = (s, el = document) => el.querySelector(s);
@@ -18,13 +18,13 @@
   const texteDe = html => String(html || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
   /* les rubriques, dans l'ordre où elles départagent deux résultats de même poids */
-  const TYPES = [["glo", "Glossaire"], ["art", "Encyclopédie"], ["voc", "Vocabulaire"], ["bla", "Blasons réels"], ["per", "Personnages"], ["lig", "Lignées"], ["chr", "Chronologie"], ["src", "Sources"]];
+  const TYPES = [["glo", "Glossaire"], ["art", "Encyclopédie"], ["voc", "Vocabulaire"], ["bla", "Blasons réels"], ["per", "Personnages"], ["lig", "Lignées"], ["src", "Sources"]];
   const NOM = Object.fromEntries(TYPES);
   const RANG = Object.fromEntries(TYPES.map(([id], i) => [id, i]));
 
-  let D, B, P, F, CHR, CAP, L;
+  let D, B, P, F, CAP, TR, L;
   try {
-    [D, B, P, F, CHR, CAP] = await Promise.all([get("data/data.json"), get("data/blasons.json"), get("data/personnages.json"), get("data/frises.json"), get("data/chronologie.json"), get("data/capetiens.json")]);
+    [D, B, P, F, CAP, TR] = await Promise.all([get("data/data.json"), get("data/blasons.json"), get("data/personnages.json"), get("data/frises.json"), get("data/capetiens.json"), get("data/transmission.json")]);
     L = await Promise.all(F.frises.map(f => get(f.file)));
   } catch (e) {
     $("#chargement").textContent = `Les données n'ont pas pu être chargées (${e.message}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.`;
@@ -66,11 +66,11 @@
         const ar = (X.armes || {})[r.armes];
         ajoute("lig", r.nom, [r.approx || `${r.debut} – ${r.fin ?? ""}`, ar && ar.blason, r.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `Règne · ${R.titre || f.nom}`);
       }
-      for (const j of R.jalons || []) ajoute("chr", j.titre, [j.texte, j.desaccord].filter(Boolean).join(" "), `chronologie.html#${String(j.annee).slice(0, 4)}`, `${j.label || String(j.annee).slice(0, 4)} · ${R.titre || f.nom}`);
     }
   });
-  for (const n of CAP.noeuds) ajoute("lig", n.nom, [n.dates, n.fondateur, ...n.armes.map(a => a.blason), ...(n.notes || [])].filter(Boolean).join(" · "), `capetiens.html#${n.id}`, "Arbre des Capétiens");
-  for (const r of CHR.reperes) ajoute("chr", r.titre, [r.texte, r.desaccord].filter(Boolean).join(" "), `chronologie.html#${r.annee}`, `${r.label || r.annee} · ${r.groupe === "droit" ? "Droit du blason" : "Origines du blason"}`);
+  const CAPN = Object.fromEntries(CAP.noeuds.map(n => [n.id, n])), LIGN = Object.fromEntries(F.frises.map((f, i) => [f.id, L[i]]));
+  const blasonDe = ref => { const [k, i] = ref.split(":"); const a = k === "cap" ? (CAPN[i] ? { blason: CAPN[i].armes.map(x => x.blason).join(" · ") } : null) : k === "tr" ? TR.armes[i] : (LIGN[k].armes || {})[i]; return (a && a.blason) || ""; };
+  for (const n of TR.noeuds) ajoute("lig", n.nom, [n.dates, blasonDe(n.ref), ...TR.liens.filter(l => l.vers === n.id).map(l => [l.effet, l.pourquoi].filter(Boolean).join(" "))].filter(Boolean).join(" · "), `transmission.html#${n.id}`, "Transmission des armes");
   const nbType = {}; DOCS.forEach(d => { nbType[d.type] = (nbType[d.type] || 0) + 1; });
 
   /* ---------- chercher ---------- */
@@ -147,7 +147,7 @@
   if (dem && !ET.q) ET.q = dem.trim();
   $("#q").value = ET.q;
   $("#chargement").hidden = true;
-  $("#aide").textContent = `${DOCS.length} entrées : articles, glossaire, blasons, personnages, lignées, chronologie, sources.`;
+  $("#aide").textContent = `${DOCS.length} entrées : articles, glossaire, blasons, personnages, lignées, sources.`;
   affiche();
   addEventListener("hashchange", () => { lire(); $("#q").value = ET.q; affiche(); });
   if (!ET.q) $("#q").focus({ preventScroll: true });

@@ -1,0 +1,2886 @@
+{
+ "titre": "La transmission des armes",
+ "sources": {
+  "marie_fr": {
+   "label": "Wikipédia, « Marie de Bourgogne »",
+   "url": "https://fr.wikipedia.org/wiki/Marie_de_Bourgogne"
+  },
+  "philippe1_fr": {
+   "label": "Wikipédia, « Philippe Ier le Beau »",
+   "url": "https://fr.wikipedia.org/wiki/Philippe_Ier_le_Beau"
+  },
+  "charles2_fr": {
+   "label": "Wikipédia, « Charles II (roi d'Espagne) »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_II_(roi_d%27Espagne)"
+  },
+  "philippe6_fr": {
+   "label": "Wikipédia, « Philippe VI de Valois »",
+   "url": "https://fr.wikipedia.org/wiki/Philippe_VI_de_Valois"
+  },
+  "henri4_fr": {
+   "label": "Wikipédia, « Henri IV (roi de France) »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_IV_(roi_de_France)"
+  },
+  "jacques_fr": {
+   "label": "Wikipédia, « Jacques VI et Ier »",
+   "url": "https://fr.wikipedia.org/wiki/Jacques_VI_et_Ier"
+  },
+  "george1_fr": {
+   "label": "Wikipédia, « George Ier (roi de Grande-Bretagne) »",
+   "url": "https://fr.wikipedia.org/wiki/George_Ier_(roi_de_Grande-Bretagne)"
+  },
+  "obr_fr": {
+   "label": "Wikipédia, « Maison d'Orléans-Bragance »",
+   "url": "https://fr.wikipedia.org/wiki/Maison_d%27Orl%C3%A9ans-Bragance"
+  },
+  "nso:arm_nassau": {
+   "label": "Wikipédia, « Armorial de la maison de Nassau »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Nassau"
+  },
+  "nso:maison_nassau": {
+   "label": "Wikipédia, « Maison de Nassau »",
+   "url": "https://fr.wikipedia.org/wiki/Maison_de_Nassau"
+  },
+  "nso:nass_dill": {
+   "label": "Wikipédia, « Nassau-Dillenbourg »",
+   "url": "https://fr.wikipedia.org/wiki/Nassau-Dillenbourg"
+  },
+  "nso:rene": {
+   "label": "Wikipédia, « René de Chalon »",
+   "url": "https://fr.wikipedia.org/wiki/Ren%C3%A9_de_Chalon"
+  },
+  "nso:guill1": {
+   "label": "Wikipédia, « Guillaume Ier d'Orange-Nassau »",
+   "url": "https://fr.wikipedia.org/wiki/Guillaume_Ier_d%27Orange-Nassau"
+  },
+  "nso:friso": {
+   "label": "Wikipédia, « Jean-Guillaume-Friso d'Orange »",
+   "url": "https://fr.wikipedia.org/wiki/Jean-Guillaume-Friso_d%27Orange"
+  },
+  "nso:armpb": {
+   "label": "Wikipédia, « Armoiries des Pays-Bas »",
+   "url": "https://fr.wikipedia.org/wiki/Armoiries_des_Pays-Bas"
+  },
+  "nso:lux": {
+   "label": "Wikipédia, « Adolphe Ier de Luxembourg »",
+   "url": "https://fr.wikipedia.org/wiki/Adolphe_Ier_de_Luxembourg"
+  },
+  "cap:armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  },
+  "france:liste_monarques": {
+   "label": "Wikipédia, « Liste des monarques de France »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_de_France"
+  },
+  "bourgogne:liste_fr": {
+   "label": "Wikipédia, « Liste des ducs de Bourgogne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_ducs_de_Bourgogne"
+  },
+  "bourgogne:armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  },
+  "france:armorial_cap": {
+   "label": "Wikipédia, « Armorial des Capétiens »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
+  },
+  "espagne:spain_en": {
+   "label": "Wikipedia (en), « Coat of arms of Spain »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Spain"
+  },
+  "france:monarchie_juillet": {
+   "label": "Wikipédia, « Monarchie de Juillet »",
+   "url": "https://fr.wikipedia.org/wiki/Monarchie_de_Juillet"
+  },
+  "habsbourg:bindenschild_de": {
+   "label": "Wikipedia (de), « Österreichischer Bindenschild »",
+   "url": "https://de.wikipedia.org/wiki/%C3%96sterreichischer_Bindenschild"
+  },
+  "habsbourg:armorial_fr": {
+   "label": "Wikipédia, « Armorial des Habsbourg »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_des_Habsbourg"
+  },
+  "habsbourg:charlesv_en": {
+   "label": "Wikipedia (en), « Coat of arms of Charles V, Holy Roman Emperor »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Charles_V%2C_Holy_Roman_Emperor"
+  },
+  "habsbourg:empire_en": {
+   "label": "Wikipedia (en), « Coat of arms of the Austrian Empire »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_the_Austrian_Empire"
+  },
+  "habsbourg:wappen_de": {
+   "label": "Wikipedia (de), « Wappen Österreichs »",
+   "url": "https://de.wikipedia.org/wiki/Wappen_%C3%96sterreichs"
+  },
+  "habsbourg:espagne_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27Espagne"
+  },
+  "espagne:espagne_fr": {
+   "label": "Wikipédia, « Liste des rois et reines d'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_et_reines_d%27Espagne"
+  },
+  "angleterre:arms_en": {
+   "label": "Wikipedia (en), « Royal arms of England »",
+   "url": "https://en.wikipedia.org/wiki/Royal_arms_of_England"
+  },
+  "angleterre:claims_en": {
+   "label": "Wikipedia (en), « English claims to the French throne »",
+   "url": "https://en.wikipedia.org/wiki/English_claims_to_the_French_throne"
+  },
+  "france:armoiries_fr": {
+   "label": "Wikipédia, « Armoiries de la France »",
+   "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_France"
+  },
+  "ecosse:arms_en": {
+   "label": "Wikipedia (en), « Coat of arms of Scotland »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Scotland"
+  },
+  "ecosse:liste_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Écosse »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27%C3%89cosse"
+  },
+  "angleterre:supporters_en": {
+   "label": "Wikipedia (en), « Royal supporters of England »",
+   "url": "https://en.wikipedia.org/wiki/Royal_supporters_of_England"
+  },
+  "angleterre:liste_fr": {
+   "label": "Wikipédia, « Liste des monarques d'Angleterre »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_monarques_d%27Angleterre"
+  },
+  "angleterre:gb_en": {
+   "label": "Wikipedia (en), « Coat of arms of Great Britain »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Great_Britain"
+  },
+  "angleterre:uk_en": {
+   "label": "Wikipedia (en), « Royal coat of arms of the United Kingdom »",
+   "url": "https://en.wikipedia.org/wiki/Royal_coat_of_arms_of_the_United_Kingdom"
+  },
+  "portugal:arms_en": {
+   "label": "Wikipedia (en), « Coat of arms of Portugal »",
+   "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_Portugal"
+  },
+  "portugal:liste_fr": {
+   "label": "Wikipédia, « Liste des rois et reines de Portugal »",
+   "url": "https://fr.wikipedia.org/wiki/Liste_des_rois_et_reines_de_Portugal"
+  },
+  "savoie:simboli_it": {
+   "label": "Wikipedia (it), « Simboli degli Stati sabaudi »",
+   "url": "https://it.wikipedia.org/wiki/Simboli_degli_Stati_sabaudi"
+  },
+  "savoie:armorial_fr": {
+   "label": "Wikipédia, « Armorial de la maison de Savoie »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Savoie"
+  },
+  "savoie:stemma_it": {
+   "label": "Wikipedia (it), « Stemma del Regno d'Italia »",
+   "url": "https://it.wikipedia.org/wiki/Stemma_del_Regno_d%27Italia"
+  }
+ },
+ "armes": {
+  "nso_nassau": {
+   "nom": "Nassau (comtes de Laurenbourg puis de Nassau)",
+   "blason": "D'azur semé de billettes d'or, au lion du même brochant sur le tout.",
+   "file": "Blason famille de Nassau.svg",
+   "auteur": "Bruno Vallette",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "nso:arm_nassau",
+   "note": "Blasonnement de la ligne des premiers comtes (Dedo de Laurenbourg et successeurs) tel que le donne l'armorial ; la fiche Commons cite Rietstap."
+  },
+  "nso_valram": {
+   "nom": "Nassau, ligne walramienne",
+   "blason": "D'azur, semé de billettes d'or, au lion couronné du second, armé, lampassé de gueules.",
+   "file": "Blason famille de Nassau (Lignée Valramienne).svg",
+   "auteur": "Jimmy44",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "nso:arm_nassau",
+   "note": "Blasonnement attribué par l'armorial à Valéran II (co-comte de Nassau de 1249 à 1255)."
+  },
+  "nso_dill": {
+   "nom": "Nassau-Dillenbourg (écartelé)",
+   "blason": "Écartelé : I d'azur semé de billettes d'or, au lion couronné du même, armé et lampassé de gueules (Nassau) ; II d'or au léopard lionné, armé, lampassé et couronné d'azur (Katzenelnbogen) ; III de gueules à la fasce d'argent (Vianden) ; IV de gueules à deux léopards d'or armés, lampassés et couronnés d'azur (Diez).",
+   "file": "Blason DE Nassau-Dillenburg (carré).svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "nso:arm_nassau",
+   "note": "L'armorial donne ce même blasonnement pour Othon II (mort en 1350) et pour Guillaume le Riche (1487-1559) : voir le désaccord sur le lien entrant."
+  },
+  "nso_guillaume": {
+   "nom": "Guillaume d'Orange-Nassau (armes de 1544 à 1582)",
+   "blason": "Écartelé : I d'azur semé de billettes, au lion d'or, armé et lampassé de gueules, brochant sur le tout (Nassau) ; II d'or au léopard lionné de gueules, armé, couronné et lampassé d'azur (Katzenelnbogen) ; III de gueules à la fasce d'argent (Vianden) ; IV de gueules à deux lions passant l'un sur l'autre (Diez) ; sur le tout un écartelé : aux I et IV de gueules à la bande d'or (Châlon), aux II et III d'or au cor de chasse d'azur, virolé et lié de gueules (Orange) ; à l'écusson de cinq points d'or équipolés à quatre d'azur (Genève) brochant sur le tout.",
+   "file": "Willem I van Oranje wapen.svg",
+   "auteur": "Arch",
+   "lic": "Public domain",
+   "licurl": "",
+   "src": "nso:arm_nassau"
+  },
+  "nso_apres1582": {
+   "nom": "Orange-Nassau après 1582 (Veere et Buren)",
+   "blason": "Écartelé : I d'azur semé de billettes, au lion d'or, armé et lampassé de gueules (Nassau) ; II d'or au léopard lionné de gueules, armé, couronné et lampassé d'azur (Katzenelnbogen) ; III de gueules à la fasce d'argent (Vianden) ; IV de gueules à deux lions passant l'un sur l'autre (Diez) ; sur le tout écartelé de Châlon et d'Orange, avec l'écusson de Genève ; un écusson de sable à la fasce d'argent brochant en chef (marquis de Flessingue et Veere) ; un écusson de gueules à la fasce bretessée et contre-bretessée d'argent brochant en pointe (Buren).",
+   "file": "Oranje-Nassau wapen na 1582.svg",
+   "auteur": "Arch",
+   "lic": "Public domain",
+   "licurl": "",
+   "src": "nso:arm_nassau",
+   "note": "La fiche Commons précise que ces armes ne reproduisent pas un aspect d'époque mais sont reconstituées d'après des descriptions et des sources historiques."
+  },
+  "nso_dietz": {
+   "nom": "Nassau-Dietz (1606)",
+   "blason": "Écartelé : I d'azur semé de billettes, au lion d'or, armé et lampassé de gueules (Nassau) ; II d'or au léopard lionné de gueules, armé, couronné et lampassé d'azur (Katzenelnbogen) ; III de gueules à la fasce d'argent (Vianden) ; IV de gueules à deux lions passant l'un sur l'autre (Diez) ; V d'argent au cerf passant de gueules (Spiegelberg) ; VI d'argent à la fasce de sable accompagnée en chef de deux touffes de joncs de sinople (Liesveld) ; sur le tout, une croix de l'ordre Teutonique.",
+   "file": "Blason NL Nassau-Dietz (1606).svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "nso:arm_nassau",
+   "note": "Blasonnement d'Ernest-Casimir de Nassau-Dietz selon l'armorial ; je n'ai pas vérifié que l'image Commons reproduit exactement ce blasonnement."
+  },
+  "nso_odietz": {
+   "nom": "Orange-Nassau-Dietz (1702)",
+   "blason": "Écartelé : I d'azur semé de billettes, au lion d'or, armé et lampassé de gueules (Nassau) ; II d'or au léopard lionné de gueules (Katzenelnbogen) ; III de gueules à la fasce d'argent (Vianden) ; IV de gueules à deux lions passant l'un sur l'autre (Diez) ; V d'argent au cerf passant de gueules (Spiegelberg) ; VI d'argent à la fasce de sable accompagnée en chef de deux touffes de joncs de sinople (Liesveld) ; sur le tout écartelé de Châlon et d'Orange, avec Genève, Moers (d'or au chevron de sable) et un écusson de Bréda (de gueules à la fasce bretessée et contre-bretessée d'argent).",
+   "file": "Blason NL Orange-Nassau-Dietz.svg",
+   "auteur": "Biplanjaune",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "nso:arm_nassau",
+   "note": "Blasonnement de Jean-Guillaume-Friso selon l'armorial ; non vérifié que l'image reproduit chaque détail."
+  },
+  "nso_nl1815": {
+   "nom": "Royaume des Pays-Bas (1815)",
+   "file": "Arms of the netherlands (1815).svg",
+   "auteur": "Dubbelleuw",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "blason": "D'azur semé de billettes d'or, chargé d'un lion couronné d'or, armé et lampassé de gueules, tenant un faisceau de sept flèches d'argent pointées et empennées d'or et une épée d'argent garnie d'or.",
+   "src": "nso:armpb"
+  },
+  "nso_adolphe": {
+   "nom": "Adolphe, grand-duc de Luxembourg (1890)",
+   "file": "Blason Adolphe Ier de Luxembourg (1890).svg",
+   "auteur": "non indiqué sur la fiche (catégorie « CoA Lab-fr:Jimmy44 »)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "blason": "Burelé de dix pièces d'argent et d'azur au lion de gueules à la queue fourchée et passée en sautoir, armé, lampassé et couronné d'or, l'épaule du lion chargée d'un écusson d'azur semé de billettes d'or au lion couronné du second, armé et lampassé de gueules (Nassau).",
+   "src": "nso:arm_nassau"
+  }
+ },
+ "noeuds": [
+  {
+   "id": "cap",
+   "ref": "cap:capetiens",
+   "nom": "Capétiens directs",
+   "dates": "987–1328"
+  },
+  {
+   "id": "val",
+   "ref": "cap:maison-de-valois",
+   "nom": "Maison de Valois",
+   "dates": "1285–1498",
+   "parent": "cap"
+  },
+  {
+   "id": "orl",
+   "ref": "cap:branche-de-valois-orleans",
+   "nom": "Branche de Valois-Orléans",
+   "dates": "1392–1515",
+   "parent": "val"
+  },
+  {
+   "id": "ang",
+   "ref": "cap:branche-de-valois-angouleme",
+   "nom": "Branche de Valois-Angoulême",
+   "dates": "1407–1615",
+   "parent": "orl"
+  },
+  {
+   "id": "olong",
+   "ref": "cap:branche-d-orleans-longueville",
+   "nom": "Branche d'Orléans-Longueville",
+   "dates": "1403–1707",
+   "parent": "orl"
+  },
+  {
+   "id": "orot",
+   "ref": "cap:branche-d-orleans-rothelin",
+   "nom": "Branche d'Orléans-Rothelin",
+   "dates": "v. 1540–1818",
+   "parent": "olong"
+  },
+  {
+   "id": "vanj",
+   "ref": "cap:branche-de-valois-anjou",
+   "nom": "Branche de Valois-Anjou",
+   "dates": "1351–1481",
+   "parent": "val"
+  },
+  {
+   "id": "vale",
+   "ref": "cap:branche-de-valois-alencon",
+   "nom": "Branche de Valois-Alençon",
+   "dates": "1325–1525",
+   "parent": "val"
+  },
+  {
+   "id": "vbou",
+   "ref": "cap:branche-de-valois-bourgogne",
+   "nom": "Branche de Valois-Bourgogne",
+   "dates": "1363–1482",
+   "parent": "val"
+  },
+  {
+   "id": "bsp",
+   "ref": "cap:branche-de-bourgogne-saint-pol",
+   "nom": "Branche de Bourgogne-Saint-Pol",
+   "dates": "1402–1430",
+   "parent": "vbou"
+  },
+  {
+   "id": "bnev",
+   "ref": "cap:branche-de-bourgogne-nevers",
+   "nom": "Branche de Bourgogne-Nevers",
+   "dates": "1404–1527",
+   "parent": "vbou"
+  },
+  {
+   "id": "art",
+   "ref": "cap:maison-d-artois",
+   "nom": "Maison d'Artois",
+   "dates": "1237–1472",
+   "parent": "cap"
+  },
+  {
+   "id": "evr",
+   "ref": "cap:maison-d-evreux-navarre",
+   "nom": "Maison d'Évreux-Navarre",
+   "dates": "1298–1441",
+   "parent": "cap"
+  },
+  {
+   "id": "ansi",
+   "ref": "cap:maison-d-anjou-sicile",
+   "nom": "Maison d'Anjou-Sicile",
+   "dates": "1246–1435",
+   "parent": "cap"
+  },
+  {
+   "id": "cour",
+   "ref": "cap:maison-de-courtenay",
+   "nom": "Maison de Courtenay",
+   "dates": "1150–1768",
+   "parent": "cap"
+  },
+  {
+   "id": "verm",
+   "ref": "cap:maison-de-vermandois",
+   "nom": "Maison de Vermandois",
+   "dates": "1080–1250",
+   "parent": "cap"
+  },
+  {
+   "id": "dre",
+   "ref": "cap:maison-de-dreux",
+   "nom": "Maison de Dreux",
+   "dates": "1137–1355",
+   "parent": "cap"
+  },
+  {
+   "id": "beu",
+   "ref": "cap:branche-de-beu",
+   "nom": "Branche de Beu",
+   "dates": "1217–1396",
+   "parent": "dre"
+  },
+  {
+   "id": "dbr",
+   "ref": "cap:branche-de-dreux-bretagne",
+   "nom": "Branche de Dreux-Bretagne",
+   "dates": "1213–1514",
+   "parent": "dre"
+  },
+  {
+   "id": "mach",
+   "ref": "cap:rameau-de-machecoul",
+   "nom": "Rameau de Machecoul",
+   "dates": "1235–1434",
+   "parent": "dbr"
+  },
+  {
+   "id": "avau",
+   "ref": "cap:rameau-d-avaugour",
+   "nom": "Rameau d’Avaugour",
+   "dates": "1480–1746",
+   "parent": "dbr"
+  },
+  {
+   "id": "bcap",
+   "ref": "cap:maison-de-bourgogne",
+   "nom": "Bourgogne (maison capétienne)",
+   "dates": "1032–1361",
+   "parent": "cap"
+  },
+  {
+   "id": "port",
+   "ref": "cap:maison-de-portugal",
+   "nom": "Maison de Portugal",
+   "dates": "1093–1383",
+   "parent": "bcap"
+  },
+  {
+   "id": "bour",
+   "ref": "cap:maison-de-bourbon",
+   "nom": "Maison de Bourbon",
+   "dates": "1283–",
+   "parent": "cap"
+  },
+  {
+   "id": "bmo1",
+   "ref": "cap:premiere-maison-de-bourbon-montpensier",
+   "nom": "Première maison de Bourbon-Montpensier",
+   "dates": "1434–1561",
+   "parent": "bour"
+  },
+  {
+   "id": "bmar",
+   "ref": "cap:maison-de-bourbon-la-marche",
+   "nom": "Maison de Bourbon-La Marche",
+   "dates": "1342–1438",
+   "parent": "bour"
+  },
+  {
+   "id": "bpre",
+   "ref": "cap:maison-de-bourbon-preaux",
+   "nom": "Maison de Bourbon-Préaux",
+   "dates": "1367–1442",
+   "parent": "bmar"
+  },
+  {
+   "id": "blav",
+   "ref": "cap:branche-de-bourbon-lavedan",
+   "nom": "Branche de Bourbon-Lavedan",
+   "dates": "1489–1744",
+   "parent": "bmar"
+  },
+  {
+   "id": "bven",
+   "ref": "cap:maison-de-bourbon-vendome",
+   "nom": "Maison de Bourbon-Vendôme",
+   "dates": "1393–1589",
+   "parent": "bmar"
+  },
+  {
+   "id": "bmo2",
+   "ref": "cap:seconde-maison-de-bourbon-montpensier",
+   "nom": "Seconde maison de Bourbon-Montpensier",
+   "dates": "1561–1627",
+   "parent": "bven"
+  },
+  {
+   "id": "bsp2",
+   "ref": "cap:maison-de-bourbon-saint-pol",
+   "nom": "Maison de Bourbon-Saint Pol",
+   "dates": "1495–1601",
+   "parent": "bven"
+  },
+  {
+   "id": "bcon",
+   "ref": "cap:maison-de-bourbon-conde",
+   "nom": "Maison de Bourbon-Condé",
+   "dates": "1546–1830",
+   "parent": "bven"
+  },
+  {
+   "id": "bbus",
+   "ref": "cap:branche-de-bourbon-busset",
+   "nom": "Branche de Bourbon-Busset",
+   "dates": "1464–",
+   "parent": "bour"
+  },
+  {
+   "id": "bourr",
+   "ref": "cap:dynastie-royale-de-bourbon",
+   "nom": "Bourbon, rois de France et de Navarre",
+   "dates": "1589–1830",
+   "parent": "bven"
+  },
+  {
+   "id": "bespa",
+   "ref": "cap:maison-de-bourbon-espagne",
+   "nom": "Maison de Bourbon-Espagne",
+   "dates": "1700–",
+   "parent": "bourr"
+  },
+  {
+   "id": "bcad",
+   "ref": "cap:branche-de-cadix",
+   "nom": "Branche de Cadix",
+   "dates": "1908–",
+   "parent": "bespa"
+  },
+  {
+   "id": "bbar",
+   "ref": "cap:branche-de-barcelone",
+   "nom": "Branche de Barcelone",
+   "dates": "1913–",
+   "parent": "bespa"
+  },
+  {
+   "id": "bsic",
+   "ref": "cap:maison-de-bourbon-siciles",
+   "nom": "Maison de Bourbon-Siciles",
+   "dates": "1734–",
+   "parent": "bespa"
+  },
+  {
+   "id": "bpar",
+   "ref": "cap:maison-de-bourbon-parme",
+   "nom": "Maison de Bourbon-Parme",
+   "dates": "1748–",
+   "parent": "bespa"
+  },
+  {
+   "id": "nass",
+   "ref": "cap:seconde-maison-de-nassau",
+   "nom": "Nassau-Luxembourg",
+   "dates": "1919–",
+   "parent": "bpar"
+  },
+  {
+   "id": "orl4",
+   "ref": "cap:quatrieme-maison-d-orleans",
+   "nom": "Quatrième maison d'Orléans",
+   "dates": "1661–",
+   "parent": "bourr"
+  },
+  {
+   "id": "orbr",
+   "ref": "cap:maison-d-orleans-bragance",
+   "nom": "Maison d'Orléans-Bragance",
+   "dates": "1864–",
+   "parent": "orl4"
+  },
+  {
+   "id": "chart",
+   "ref": "france:charte",
+   "nom": "La Charte (Louis-Philippe)",
+   "dates": "1831–1848",
+   "parent": "orl4"
+  },
+  {
+   "id": "pol",
+   "ref": "france:pologne",
+   "nom": "Henri, roi de Pologne",
+   "dates": "1573–1575",
+   "parent": "ang"
+  },
+  {
+   "id": "bdv",
+   "ref": "bourgogne:p1364",
+   "nom": "Philippe le Hardi, duc de Bourgogne",
+   "dates": "1364–1404",
+   "parent": "vbou"
+  },
+  {
+   "id": "bflan",
+   "ref": "bourgogne:p1404",
+   "nom": "Bourgogne et Flandre",
+   "dates": "1404–1430",
+   "parent": "bdv"
+  },
+  {
+   "id": "bbrab",
+   "ref": "bourgogne:p1430",
+   "nom": "Bourgogne, Brabant et Limbourg",
+   "dates": "1430–1477",
+   "parent": "bflan"
+  },
+  {
+   "id": "marie",
+   "ref": "bourgogne:marie1477",
+   "nom": "Marie de Bourgogne et Maximilien",
+   "dates": "1477",
+   "parent": "bbrab"
+  },
+  {
+   "id": "phil",
+   "ref": "bourgogne:philippe1482",
+   "nom": "Philippe le Beau, duc",
+   "dates": "1482–1504",
+   "parent": "marie"
+  },
+  {
+   "id": "hab",
+   "ref": "habsbourg:habsbourg",
+   "nom": "Comtes de Habsbourg",
+   "dates": "avant 1273"
+  },
+  {
+   "id": "aut",
+   "ref": "habsbourg:autriche",
+   "nom": "Habsbourg, ducs d'Autriche",
+   "dates": "1282",
+   "parent": "hab"
+  },
+  {
+   "id": "alb2",
+   "ref": "habsbourg:albert2emp",
+   "nom": "Albert II, roi des Romains",
+   "dates": "1438",
+   "parent": "aut"
+  },
+  {
+   "id": "fr3",
+   "ref": "habsbourg:frederic3",
+   "nom": "Frédéric III, l'aigle à deux têtes",
+   "dates": "1452–1493",
+   "parent": "alb2"
+  },
+  {
+   "id": "maxe",
+   "ref": "habsbourg:maxemp",
+   "nom": "Maximilien, empereur",
+   "dates": "1486–1519",
+   "parent": "fr3"
+  },
+  {
+   "id": "ferd1a",
+   "ref": "habsbourg:ferd1a",
+   "nom": "Ferdinand, roi de Bohême et de Hongrie",
+   "dates": "1526–1558",
+   "parent": "maxe"
+  },
+  {
+   "id": "ferd1b",
+   "ref": "habsbourg:ferd1b",
+   "nom": "Ferdinand Iᵉʳ, empereur",
+   "dates": "1558–",
+   "parent": "ferd1a"
+  },
+  {
+   "id": "rod2",
+   "ref": "habsbourg:rod2",
+   "nom": "Rodolphe II et les empereurs de la fin du XVIᵉ siècle",
+   "dates": "1576–",
+   "parent": "ferd1b"
+  },
+  {
+   "id": "ferd3",
+   "ref": "habsbourg:ferd3",
+   "nom": "Ferdinand III",
+   "dates": "1637–1657",
+   "parent": "rod2"
+  },
+  {
+   "id": "ch6a",
+   "ref": "habsbourg:charles6a",
+   "nom": "L'archiduc Charles, prétendant d'Espagne",
+   "dates": "1700–1711",
+   "parent": "rod2"
+  },
+  {
+   "id": "ch6",
+   "ref": "habsbourg:charles6",
+   "nom": "Charles VI, empereur",
+   "dates": "1711–1740",
+   "parent": "ch6a"
+  },
+  {
+   "id": "mt",
+   "ref": "habsbourg:mt",
+   "nom": "Marie-Thérèse",
+   "dates": "1740–1780",
+   "parent": "ch6"
+  },
+  {
+   "id": "jos2",
+   "ref": "habsbourg:jos2",
+   "nom": "Joseph II, premier Habsbourg-Lorraine",
+   "dates": "1780–1790",
+   "parent": "mt"
+  },
+  {
+   "id": "leo2",
+   "ref": "habsbourg:leo2",
+   "nom": "Léopold II et François II",
+   "dates": "1790–1804",
+   "parent": "jos2"
+  },
+  {
+   "id": "emp04",
+   "ref": "habsbourg:emp1804",
+   "nom": "L'empire d'Autriche",
+   "dates": "1804–1867",
+   "parent": "leo2"
+  },
+  {
+   "id": "emp67",
+   "ref": "habsbourg:emp1867",
+   "nom": "Autriche-Hongrie",
+   "dates": "1867–1915",
+   "parent": "emp04"
+  },
+  {
+   "id": "emp15",
+   "ref": "habsbourg:emp1915",
+   "nom": "Les armes de 1915",
+   "dates": "1915–1918",
+   "parent": "emp67"
+  },
+  {
+   "id": "philc",
+   "ref": "habsbourg:philippe1",
+   "nom": "Philippe le Beau, roi de Castille",
+   "dates": "1504–1506",
+   "parent": "phil"
+  },
+  {
+   "id": "charles",
+   "ref": "habsbourg:charles1516",
+   "nom": "Charles, roi des Espagnes",
+   "dates": "1516",
+   "parent": "philc"
+  },
+  {
+   "id": "cq",
+   "ref": "habsbourg:charles1530",
+   "nom": "Charles Quint, empereur",
+   "dates": "1530–1556",
+   "parent": "charles"
+  },
+  {
+   "id": "ph2a",
+   "ref": "habsbourg:philippe2a",
+   "nom": "Philippe II, roi consort d'Angleterre",
+   "dates": "1554–1558",
+   "parent": "cq"
+  },
+  {
+   "id": "esp80",
+   "ref": "espagne:espagne1580",
+   "nom": "Espagne et Portugal",
+   "dates": "1580–1668",
+   "parent": "cq"
+  },
+  {
+   "id": "chII",
+   "ref": "habsbourg:charles2",
+   "nom": "Charles II d'Espagne",
+   "dates": "1668–1700",
+   "parent": "esp80"
+  },
+  {
+   "id": "cast",
+   "ref": "espagne:castille1230",
+   "nom": "Castille et León",
+   "dates": "1230"
+  },
+  {
+   "id": "arag",
+   "ref": "espagne:aragon",
+   "nom": "Aragon et Barcelone",
+   "dates": "1164",
+   "apport": true
+  },
+  {
+   "id": "cath",
+   "ref": "espagne:cath1474",
+   "nom": "Rois catholiques",
+   "dates": "1474–1492",
+   "parent": "cast"
+  },
+  {
+   "id": "gren",
+   "ref": "espagne:cath1492",
+   "nom": "Rois catholiques, avec Grenade",
+   "dates": "1492–1504",
+   "parent": "cath"
+  },
+  {
+   "id": "fer13",
+   "ref": "espagne:ferdinand1513",
+   "nom": "Ferdinand le Catholique, avec la Navarre",
+   "dates": "1504–1516",
+   "parent": "gren"
+  },
+  {
+   "id": "jc04",
+   "ref": "espagne:charles1504",
+   "nom": "Jeanne et Charles",
+   "dates": "1504–1555",
+   "parent": "gren"
+  },
+  {
+   "id": "ch3",
+   "ref": "espagne:charles3",
+   "nom": "Charles III",
+   "dates": "1761–1931",
+   "parent": "bespa"
+  },
+  {
+   "id": "esp74",
+   "ref": "espagne:espagne1874",
+   "nom": "La Restauration",
+   "dates": "1875–1931",
+   "parent": "ch3"
+  },
+  {
+   "id": "esp81",
+   "ref": "espagne:espagne1981",
+   "nom": "Les armes de l'Espagne",
+   "dates": "1981–",
+   "parent": "esp74"
+  },
+  {
+   "id": "eng",
+   "ref": "angleterre:angleterre",
+   "nom": "Angleterre (trois léopards)",
+   "dates": "1198"
+  },
+  {
+   "id": "engfr",
+   "ref": "angleterre:france_ancien",
+   "nom": "Angleterre et France",
+   "dates": "1340–1367",
+   "parent": "eng"
+  },
+  {
+   "id": "conf",
+   "ref": "angleterre:confesseur",
+   "nom": "Saint Édouard accolé",
+   "dates": "1395–1399",
+   "parent": "engfr"
+  },
+  {
+   "id": "engm",
+   "ref": "angleterre:france_moderne",
+   "nom": "Angleterre et France (trois lis)",
+   "dates": "1399–1603",
+   "parent": "conf"
+  },
+  {
+   "id": "engmar",
+   "ref": "angleterre:marie",
+   "nom": "Marie et Philippe",
+   "dates": "1554–1558",
+   "parent": "engm"
+  },
+  {
+   "id": "eco",
+   "ref": "ecosse:lion",
+   "nom": "Écosse (le lion)",
+   "dates": "v. 1214"
+  },
+  {
+   "id": "ecod",
+   "ref": "ecosse:marie1558",
+   "nom": "Marie, dauphine",
+   "dates": "1558–1559",
+   "parent": "eco"
+  },
+  {
+   "id": "ecof",
+   "ref": "ecosse:marie1559",
+   "nom": "Marie Stuart, reine de France",
+   "dates": "1559–1560",
+   "parent": "ecod"
+  },
+  {
+   "id": "eco60",
+   "ref": "ecosse:marie1560",
+   "nom": "Marie, reine douairière",
+   "dates": "1560–1565",
+   "parent": "ecof"
+  },
+  {
+   "id": "stu",
+   "ref": "angleterre:stuart",
+   "nom": "L'union des couronnes",
+   "dates": "1603–1649",
+   "parent": "eco"
+  },
+  {
+   "id": "stu60",
+   "ref": "ecosse:stuart1660",
+   "nom": "La Restauration",
+   "dates": "1660–1689",
+   "parent": "stu"
+  },
+  {
+   "id": "gm",
+   "ref": "angleterre:guillaume_marie",
+   "nom": "Guillaume et Marie",
+   "dates": "1689–1694",
+   "parent": "stu60"
+  },
+  {
+   "id": "nassau",
+   "ref": "angleterre:guillaume",
+   "nom": "Guillaume III",
+   "dates": "1694–1702",
+   "parent": "gm"
+  },
+  {
+   "id": "gb07",
+   "ref": "angleterre:gb1707",
+   "nom": "Grande-Bretagne",
+   "dates": "1707–1714",
+   "parent": "nassau"
+  },
+  {
+   "id": "gb14",
+   "ref": "angleterre:gb1714",
+   "nom": "Hanovre",
+   "dates": "1714–1801",
+   "parent": "gb07"
+  },
+  {
+   "id": "uk01",
+   "ref": "angleterre:uk1801",
+   "nom": "La fin des lis",
+   "dates": "1801–1816",
+   "parent": "gb14"
+  },
+  {
+   "id": "uk16",
+   "ref": "angleterre:uk1816",
+   "nom": "Le royaume de Hanovre",
+   "dates": "1816–1837",
+   "parent": "uk01"
+  },
+  {
+   "id": "uk37",
+   "ref": "angleterre:uk1837",
+   "nom": "Royaume-Uni (Victoria)",
+   "dates": "1837–",
+   "parent": "uk16"
+  },
+  {
+   "id": "portc",
+   "ref": "portugal:q1247",
+   "nom": "Portugal, bordure de Castille",
+   "dates": "1248",
+   "parent": "port"
+  },
+  {
+   "id": "beat",
+   "ref": "portugal:beatrice",
+   "nom": "Béatrice, reine de Castille et de Portugal",
+   "dates": "1383–1385",
+   "parent": "portc"
+  },
+  {
+   "id": "portav",
+   "ref": "portugal:q1385",
+   "nom": "Portugal, maison d'Aviz",
+   "dates": "1385",
+   "parent": "portc"
+  },
+  {
+   "id": "afo5",
+   "ref": "portugal:afonso5",
+   "nom": "Alphonse V, prétendant à la Castille",
+   "dates": "1475–1479",
+   "parent": "portav"
+  },
+  {
+   "id": "q1485",
+   "ref": "portugal:q1485",
+   "nom": "Les quinas",
+   "dates": "1485",
+   "parent": "afo5"
+  },
+  {
+   "id": "hen",
+   "ref": "portugal:henri",
+   "nom": "Henri Iᵉʳ, le roi cardinal",
+   "dates": "1578–1580",
+   "parent": "q1485"
+  },
+  {
+   "id": "br15",
+   "ref": "portugal:uk1815",
+   "nom": "Portugal, Brésil et Algarves",
+   "dates": "1815–1826",
+   "parent": "q1485"
+  },
+  {
+   "id": "savA",
+   "ref": "savoie:aigle",
+   "nom": "Savoie : l'aigle",
+   "dates": "1217–1263"
+  },
+  {
+   "id": "sav",
+   "ref": "savoie:croix",
+   "nom": "Savoie (la croix)",
+   "dates": "dès 1263",
+   "parent": "savA"
+  },
+  {
+   "id": "savs",
+   "ref": "savoie:savoie1563",
+   "nom": "Savoie, écartelé saxon",
+   "dates": "1563",
+   "parent": "sav"
+  },
+  {
+   "id": "sav32",
+   "ref": "savoie:savoie1632",
+   "nom": "Savoie, Chypre et Jérusalem",
+   "dates": "1632",
+   "parent": "savs"
+  },
+  {
+   "id": "sic13",
+   "ref": "savoie:sicile1713",
+   "nom": "Roi de Sicile",
+   "dates": "1713–1720",
+   "parent": "sav32"
+  },
+  {
+   "id": "sar",
+   "ref": "savoie:sardaigne1720",
+   "nom": "Roi de Sardaigne",
+   "dates": "1720–1815",
+   "parent": "sic13"
+  },
+  {
+   "id": "sar15",
+   "ref": "savoie:sardaigne1815",
+   "nom": "Savoie et Gênes",
+   "dates": "1815–1831",
+   "parent": "sar"
+  },
+  {
+   "id": "sar31",
+   "ref": "savoie:sardaigne1831",
+   "nom": "Charles-Albert (Carignan)",
+   "dates": "1831–1861",
+   "parent": "sar15"
+  },
+  {
+   "id": "sav61",
+   "ref": "savoie:croix",
+   "nom": "Roi d'Italie",
+   "dates": "1861–1946",
+   "parent": "sar31"
+  },
+  {
+   "id": "amad",
+   "ref": "espagne:amadeo1871",
+   "nom": "Amédée de Savoie, roi d'Espagne",
+   "dates": "1871–1873",
+   "parent": "sav61"
+  },
+  {
+   "id": "nso_nassau",
+   "ref": "tr:nso_nassau",
+   "nom": "Comtes de Nassau",
+   "dates": "XIIe s. – 1255"
+  },
+  {
+   "id": "nso_valram",
+   "ref": "tr:nso_valram",
+   "nom": "Ligne walramienne",
+   "dates": "1255",
+   "parent": "nso_nassau"
+  },
+  {
+   "id": "nso_dill",
+   "ref": "tr:nso_dill",
+   "nom": "Nassau-Dillenbourg",
+   "dates": "XVIe s.",
+   "parent": "nso_nassau"
+  },
+  {
+   "id": "nso_guillaume",
+   "ref": "tr:nso_guillaume",
+   "nom": "Guillaume le Taciturne, prince d'Orange",
+   "dates": "1544–1582",
+   "parent": "nso_dill"
+  },
+  {
+   "id": "nso_apres1582",
+   "ref": "tr:nso_apres1582",
+   "nom": "Orange-Nassau après 1582",
+   "dates": "1582–",
+   "parent": "nso_guillaume"
+  },
+  {
+   "id": "nso_dietz",
+   "ref": "tr:nso_dietz",
+   "nom": "Nassau-Dietz",
+   "dates": "1606–1702",
+   "parent": "nso_dill"
+  },
+  {
+   "id": "nso_odietz",
+   "ref": "tr:nso_odietz",
+   "nom": "Orange-Nassau-Dietz",
+   "dates": "1702–",
+   "parent": "nso_dietz"
+  },
+  {
+   "id": "nso_nl1815",
+   "ref": "tr:nso_nl1815",
+   "nom": "Royaume des Pays-Bas",
+   "dates": "1815–",
+   "parent": "nso_odietz"
+  },
+  {
+   "id": "nso_adolphe",
+   "ref": "tr:nso_adolphe",
+   "nom": "Adolphe, grand-duc de Luxembourg",
+   "dates": "1890–1905",
+   "parent": "nso_valram"
+  }
+ ],
+ "liens": [
+  {
+   "de": "cap",
+   "vers": "val",
+   "type": "cadette",
+   "annee": "1285–1297",
+   "effet": "Brisure : d'abord une bordure-lambel de gueules, puis (après 1297) une bordure de gueules sur le semé de lis.",
+   "pourquoi": "Charles de Valois est le frère cadet du roi Philippe le Bel : il garde les lis du roi, brisés d'une marque qui le distingue de l'aîné.",
+   "sources": [
+    "philippe6_fr",
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "cap",
+   "vers": "val",
+   "type": "heritage",
+   "annee": "1328",
+   "effet": "La brisure disparaît : avec Philippe VI, l'écu royal redevient le seul semé de France.",
+   "pourquoi": "Louis X, Philippe V puis Charles IV meurent sans fils survivant. Les filles sont écartées selon la coutume fixée dix ans plus tôt, et Édouard III d'Angleterre, petit-fils de Philippe le Bel par sa mère, est évincé : les pairs refusent de donner la couronne à un roi étranger. Philippe de Valois, fils de Charles de Valois, descend des Capétiens par les mâles : il est choisi et sacré le 29 mai 1328.",
+   "jalon": "france:1328",
+   "sources": [
+    "philippe6_fr",
+    "france:liste_monarques"
+   ]
+  },
+  {
+   "de": "val",
+   "vers": "orl",
+   "type": "cadette",
+   "annee": "1392",
+   "effet": "Brisure : un lambel d'argent sur les trois lis.",
+   "pourquoi": "Louis, duc d'Orléans, est le frère de Charles VI : il garde les armes du roi, brisées d'un lambel d'argent.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "orl",
+   "vers": "ang",
+   "type": "cadette",
+   "annee": "1407",
+   "effet": "Le lambel d'Orléans reçoit trois pendants, chacun chargé d'une lune de gueules.",
+   "pourquoi": "Jean d'Orléans, comte d'Angoulême, est le troisième fils de Louis d'Orléans : il garde le lambel d'argent de son père et le distingue par les lunes.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "orl",
+   "vers": "olong",
+   "type": "cadette",
+   "annee": "1403",
+   "effet": "Au lambel d'argent s'ajoute une barre d'argent brochant sur le tout.",
+   "pourquoi": "Jean d'Orléans, comte de Dunois, est le fils illégitime de Louis d'Orléans : il porte les armes de son père, mais barrées.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "olong",
+   "vers": "orot",
+   "type": "cadette",
+   "annee": "v. 1540",
+   "effet": "Écartelé de Bade-Hochberg et de Neuchâtel, avec sur le tout les armes d'Orléans-Longueville, lambel et bâton péri en bande.",
+   "pourquoi": "François d'Orléans-Rothelin est le fils illégitime de François II d'Orléans-Longueville : il garde les armes de son père, avec un bâton péri en bande.",
+   "lacune": "La page lue ne dit pas pourquoi les quartiers de Bade-Hochberg et de Neuchâtel entourent l'écu.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "val",
+   "vers": "vanj",
+   "type": "cadette",
+   "annee": "1351",
+   "effet": "Brisure : une bordure de gueules sur le semé de lis.",
+   "lacune": "La page donne pour fondateur Louis Ier, duc d'Anjou et comte de Provence, sans dire de quel roi il est le fils ni pourquoi sa bordure est de gueules.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "val",
+   "vers": "vale",
+   "type": "cadette",
+   "annee": "1325",
+   "effet": "Brisure : une bordure de gueules chargée de besants d'argent sur le semé de lis.",
+   "pourquoi": "Charles II, comte d'Alençon, est le fils de Charles de Valois : il garde le semé de lis de son père et charge la bordure de besants d'argent.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "val",
+   "vers": "vbou",
+   "type": "cadette",
+   "annee": "1363",
+   "effet": "Brisure : une bordure componée d'argent et de gueules sur le semé de lis.",
+   "pourquoi": "Philippe le Hardi est le fils de Jean II, roi de France : il garde le semé de lis, brisé d'une bordure componée.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "vbou",
+   "vers": "bsp",
+   "type": "cadette",
+   "annee": "1402",
+   "effet": "Écartelé : aux 1 et 4 les lis à la bordure componée de Valois-Bourgogne, au 2 un lion d'or sur sable, au 3 un lion de gueules sur argent.",
+   "lacune": "La page nomme Antoine duc de Lothier, de Brabant et de Limbourg, sans dire comment il a reçu ces duchés ni d'où viennent les deux lions.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "vbou",
+   "vers": "bnev",
+   "type": "cadette",
+   "annee": "1404",
+   "effet": "Écartelé : aux 1 et 4 les lis à la bordure componée, aux 2 et 3 un lion de sable sur or.",
+   "pourquoi": "Philippe, comte de Nevers et de Rethel, est le fils de Philippe le Hardi : il garde les armes de son père.",
+   "lacune": "La page ne dit pas d'où vient le lion de sable des quartiers 2 et 3.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "art",
+   "type": "cadette",
+   "annee": "1237",
+   "effet": "Brisure : un lambel de gueules dont chaque pendant porte trois châteaux d'or.",
+   "pourquoi": "Robert est le troisième fils de Louis VIII et de Blanche de Castille. Comme ses frères Alphonse de Poitiers et Charles d'Anjou, il met dans sa brisure les châteaux des armes de sa mère ; ses descendants par les mâles les gardent.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "cap",
+   "vers": "ansi",
+   "type": "cadette",
+   "annee": "1246",
+   "effet": "Brisure : un lambel de gueules sur le semé de lis.",
+   "pourquoi": "Charles d'Anjou est un frère de Robert d'Artois, fils de Louis VIII : il garde les lis du roi, brisés d'un lambel de gueules.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "cap",
+   "vers": "evr",
+   "type": "cadette",
+   "annee": "1298",
+   "effet": "Brisure : une bande componée d'argent et de gueules sur le semé de lis.",
+   "pourquoi": "Louis, comte d'Évreux, est le fils de Philippe III : il garde les lis du roi, brisés d'une bande componée.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "cap",
+   "vers": "cour",
+   "type": "mariage",
+   "annee": "1150",
+   "effet": "Les lis sont abandonnés : le champ est d'or à trois tourteaux de gueules.",
+   "pourquoi": "Pierre, fils de Louis VI, épouse Élisabeth de Courtenay, dont il prend le nom et les armes.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "verm",
+   "type": "cadette",
+   "annee": "1080",
+   "effet": "Armes propres : échiqueté d'or et d'azur, sans les lis.",
+   "lacune": "La page donne pour fondateur Raoul Ier, comte de Vermandois et de Valois, sans préciser son lien avec le roi.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "dre",
+   "type": "cadette",
+   "annee": "1137",
+   "effet": "Échiqueté d'or et d'azur, à la bordure de gueules.",
+   "pourquoi": "Robert, comte de Dreux, est le fils de Louis VI.",
+   "lacune": "Le même échiqueté d'or et d'azur est porté, dans la même page, par la maison de Vermandois ; la page ne dit pas pourquoi Dreux le prend.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "dre",
+   "vers": "beu",
+   "type": "cadette",
+   "annee": "1217",
+   "effet": "Brisure : la bordure de gueules devient engrelée.",
+   "pourquoi": "Robert de Dreux, seigneur de Beu, est le fils de Robert III, comte de Dreux : il garde l'échiqueté de son père et en change la bordure.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "dre",
+   "vers": "dbr",
+   "type": "cadette",
+   "annee": "1213",
+   "effet": "Un franc-quartier d'hermine s'ajoute à l'échiqueté à la bordure de gueules.",
+   "lacune": "La page dit que Pierre Mauclerc est baillistre de Bretagne (1213-1237) ; elle ne dit pas comment l'hermine de Bretagne entre dans son écu.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "dbr",
+   "vers": "mach",
+   "type": "cadette",
+   "annee": "1235",
+   "effet": "Armes toutes autres : d'argent à trois chevrons de gueules.",
+   "pourquoi": "Olivier de Machecoul est le fils de Pierre Mauclerc.",
+   "lacune": "La page ne dit pas pourquoi il ne porte ni l'échiqueté ni l'hermine de son père.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "dbr",
+   "vers": "avau",
+   "type": "cadette",
+   "annee": "1480",
+   "effet": "Écartelé d'hermine, avec des quartiers contre-écartelés : les lis au lambel d'argent et une guivre d'azur.",
+   "pourquoi": "François d'Avaugour est le fils de François II de Bretagne.",
+   "lacune": "La page ne dit pas d'où viennent le lambel et la guivre des quartiers.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "bcap",
+   "type": "cadette",
+   "annee": "1032",
+   "effet": "Armes propres : bandé d'or et d'azur de six pièces, à la bordure de gueules — non les lis.",
+   "pourquoi": "Robert, fils du roi Robert II le Pieux, devient duc de Bourgogne en 1032 et fonde la première maison capétienne du duché. Eudes II est le premier à porter ces armes (1143).",
+   "lacune": "Pourquoi le duché porte ses propres armes et non les lis du roi : les sources lues ne le disent pas.",
+   "jalon": "bourgogne:1143",
+   "sources": [
+    "bourgogne:liste_fr",
+    "bourgogne:armorial_cap"
+   ]
+  },
+  {
+   "de": "bcap",
+   "vers": "port",
+   "type": "cadette",
+   "annee": "1093",
+   "effet": "Armes propres : d'argent, croix d'azur (selon la page lue).",
+   "lacune": "La page lue range la maison de Portugal parmi les rameaux de la maison de Bourgogne, sans dire pourquoi ses armes sont toutes autres.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "bour",
+   "type": "cadette",
+   "annee": "1283",
+   "effet": "Brisure : une bande de gueules sur le semé de lis.",
+   "pourquoi": "Robert, comte de Clermont, est un fils de saint Louis : il garde les lis du roi, brisés d'une bande de gueules.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bour",
+   "vers": "bmo1",
+   "type": "cadette",
+   "annee": "1434",
+   "effet": "Les trois lis, avec une bande engrêlée de gueules.",
+   "pourquoi": "Louis, comte de Montpensier et dauphin d'Auvergne, est le fils de Jean Ier de Bourbon : il garde les armes de Bourbon et engrêle la bande.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bour",
+   "vers": "bmar",
+   "type": "cadette",
+   "annee": "1342",
+   "effet": "Brisure : trois lionceaux d'argent sur la bande de gueules.",
+   "pourquoi": "Jacques, comte de la Marche, est le fils de Louis Ier de Bourbon : il garde la bande de Bourbon et la charge de lionceaux.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bmar",
+   "vers": "bpre",
+   "type": "cadette",
+   "annee": "1367",
+   "effet": "Écartelé : aux 1 et 4 Bourbon-La Marche, aux 2 et 3 une aigle d'or sur gueules.",
+   "pourquoi": "Jacques, seigneur de Préaux, est le fils de Jacques Ier de La Marche.",
+   "lacune": "La page ne dit pas d'où vient l'aigle d'or des quartiers 2 et 3.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bmar",
+   "vers": "blav",
+   "type": "cadette",
+   "annee": "1489",
+   "effet": "Le champ est d'argent : une bande d'azur semée de lis, avec une cotice de gueules.",
+   "lacune": "La page nomme Charles de Bourbon-Lavedan « bâtard de Bourbon » et range sa branche sous La Marche ; elle ne dit pas pourquoi les émaux sont ainsi renversés.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bmar",
+   "vers": "bven",
+   "type": "cadette",
+   "annee": "1393",
+   "effet": "Écartelé : aux 1 et 4 les lis ; aux 2 et 3 un lion d'azur sur argent au chef de gueules ; sur le tout, la bande de Bourbon-La Marche.",
+   "pourquoi": "Louis, comte de Vendôme, est le fils de Jean Ier de La Marche : il garde les armes de Bourbon et y place le lion de Vendôme.",
+   "lacune": "La page nomme Louis « comte de Vendôme » mais ne rapproche pas explicitement le lion d'azur de ce comté.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bven",
+   "vers": "bmo2",
+   "type": "cadette",
+   "annee": "1561",
+   "effet": "Les trois lis, avec un bâton de gueules chargé d'une lune d'argent, et un franc-quartier.",
+   "pourquoi": "Louis, prince de La Roche-sur-Yon, est le fils de Jean VIII de Vendôme : il garde les lis et les brise d'un bâton.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bven",
+   "vers": "bsp2",
+   "type": "cadette",
+   "annee": "1495",
+   "effet": "Écartelé : aux 1 et 4 les trois lis au bâton de gueules péri en bande ; aux 2 et 3 un lion de gueules à la queue fourchée passée en sautoir.",
+   "pourquoi": "François, comte de Saint-Pol, est le fils de François de Vendôme et de Marie de Luxembourg.",
+   "lacune": "La page nomme sa mère Marie de Luxembourg ; elle ne dit pas que le lion à queue fourchée des quartiers 2 et 3 vient de cette maison.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bven",
+   "vers": "bcon",
+   "type": "cadette",
+   "annee": "1546",
+   "effet": "Les trois lis, avec une bande de gueules chargée au franc-quartier d'un besant d'argent.",
+   "pourquoi": "Louis, prince de Condé, est le fils de Charles IV, duc de Vendôme : il garde les armes de sa maison, brisées d'un besant.",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bour",
+   "vers": "bbus",
+   "type": "cadette",
+   "annee": "1464",
+   "effet": "Semé de France à la cotice de gueules en bande, au chef d'argent chargé d'une croix potencée d'or (Jérusalem).",
+   "pourquoi": "Pierre de Bourbon, baron de Busset, est le fils naturel de Louis de Bourbon, prince-évêque de Liège : il porte les armes de France, cotisées.",
+   "lacune": "La page ne dit pas pourquoi la croix de Jérusalem orne le chef.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bven",
+   "vers": "bourr",
+   "type": "heritage",
+   "annee": "1589",
+   "effet": "Les trois lis sont partis avec les chaînes de Navarre.",
+   "pourquoi": "Henri de Bourbon est le fils d'Antoine de Bourbon, duc de Vendôme, et de Jeanne d'Albret, et un descendant de saint Louis en ligne masculine. Il est roi de Navarre depuis 1572, à la mort de sa mère. Quand le frère cadet d'Henri III, François d'Anjou, meurt sans héritier en 1584, le roi, qui n'a pas d'enfant, envisage de le confirmer comme héritier légitime ; assassiné le 1er août 1589, Henri III le reconnaît à son tour comme son successeur. Henri IV porte alors les lis et les chaînes de Navarre en parti.",
+   "jalon": "france:1589",
+   "sources": [
+    "henri4_fr",
+    "cap:armorial_cap",
+    "france:armorial_cap"
+   ]
+  },
+  {
+   "de": "bourr",
+   "vers": "bespa",
+   "type": "heritage",
+   "annee": "1700",
+   "effet": "Les armes d'Espagne portent en cœur l'écusson d'Anjou (trois lis, d'abord à la bordure de gueules).",
+   "pourquoi": "Charles II d'Espagne meurt sans enfant. La généalogie désignait le Grand Dauphin, fils de Marie-Thérèse, sœur aînée du roi défunt et épouse de Louis XIV ; l'Autriche défendait les droits de l'archiduc Charles. Pour éviter le démembrement de ses États, Charles II choisit Philippe, duc d'Anjou, deuxième petit-fils de Louis XIV : il juge le roi de France le plus capable de défendre l'héritage. Louis XIV accepte le testament le 16 novembre 1700 ; l'empereur Léopold le conteste.",
+   "jalon": "espagne:1700",
+   "sources": [
+    "charles2_fr",
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "bespa",
+   "vers": "bcad",
+   "type": "cadette",
+   "annee": "1908",
+   "effet": "Les trois lis à la bordure de gueules, sans les quartiers espagnols.",
+   "pourquoi": "Jacques-Henri, deuxième fils d'Alphonse XIII, est titré duc d'Anjou et de Ségovie : il porte les armes d'Anjou.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bespa",
+   "vers": "bbar",
+   "type": "pretention",
+   "annee": "1941–1977",
+   "effet": "Écartelé de Castille, de León, d'Aragon et de Navarre, avec Grenade en pointe et, sur le tout, les lis à la bordure de gueules.",
+   "pourquoi": "Juan, comte de Barcelone, est le troisième fils d'Alphonse XIII et prétendant au trône d'Espagne de 1941 à 1977 : il porte les quartiers du royaume.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bespa",
+   "vers": "bsic",
+   "type": "heritage",
+   "annee": "1734",
+   "effet": "Parti de trois : Farnèse et Portugal, Castille-León et Naples, Toscane ; sur le tout, Anjou.",
+   "lacune": "La page parle des rois des Deux-Siciles de la maison de Bourbon sans dire comment les quartiers de Farnèse, du Portugal et de Toscane entrent dans leurs armes.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bespa",
+   "vers": "bpar",
+   "type": "cadette",
+   "annee": "1748",
+   "effet": "Brisure : une bordure de gueules chargée de huit coquilles d'argent.",
+   "lacune": "La page ne nomme pas de premier porteur précis pour ces petites armes (« les ducs de Bourbon-Parme, de 1748 à nos jours »).",
+   "sources": [
+    "cap:armorial_cap"
+   ],
+   "lien": {
+    "href": "index.html#brisures",
+    "texte": "Le chapitre « Brisures »"
+   }
+  },
+  {
+   "de": "bpar",
+   "vers": "nass",
+   "type": "mariage",
+   "annee": "1919",
+   "effet": "Écartelé : aux quartiers I et IV les lis brisés d'une bordure de gueules (Bourbon-Espagne), aux II et III Nassau (billeté, au lion).",
+   "pourquoi": "Jean, grand-duc de Luxembourg, est le fils de la grande-duchesse Charlotte de Luxembourg et de Félix de Bourbon-Parme : les armes de son père et celles de sa mère se partagent l'écu.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "bourr",
+   "vers": "orl4",
+   "type": "heritage",
+   "annee": "1661",
+   "effet": "Les trois lis au lambel d'argent : les armes d'Orléans.",
+   "pourquoi": "Philippe de France, fils de Louis XIII, est d'abord duc d'Anjou ; il hérite du duché d'Orléans à la mort de son oncle Gaston et en reprend les armes.",
+   "sources": [
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "orl4",
+   "vers": "orbr",
+   "type": "mariage",
+   "annee": "1864",
+   "effet": "Une sphère armillaire d'or, entourée d'un anneau de vingt étoiles, porte en cœur l'écu d'Orléans (trois lis au lambel d'argent).",
+   "pourquoi": "Isabelle, fille de l'empereur Pierre II du Brésil, s'impose comme héritière de l'empire. Elle épouse le 15 octobre 1864 Gaston d'Orléans, comte d'Eu, petit-fils de Louis-Philippe : ce mariage est l'acte de naissance de la branche brésilienne d'Orléans, qui prend le nom d'Orléans-Bragance.",
+   "sources": [
+    "obr_fr",
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "orl4",
+   "vers": "chart",
+   "type": "heritage",
+   "annee": "1830–1831",
+   "effet": "Les armes d'Orléans (France au lambel d'argent) cèdent la place à un écu portant la Charte.",
+   "pourquoi": "Le 13 août 1830, Louis-Philippe fait graver les armes de sa maison, France au lambel d'argent, sur le sceau de l'État. Après les émeutes de février 1831, une ordonnance du 16 février leur substitue un écu portant la Charte de 1830.",
+   "sources": [
+    "france:monarchie_juillet",
+    "france:armorial_cap"
+   ]
+  },
+  {
+   "de": "ang",
+   "vers": "pol",
+   "type": "heritage",
+   "annee": "1573",
+   "effet": "Écartelé d'une aigle d'argent et d'un chevalier d'argent, avec sur le tout les trois lis de France.",
+   "lacune": "Les sources lues disent seulement que ce sont les armes d'Henri comme roi de Pologne, de 1573 à 1575, puis les trois lis seuls ; elles ne disent pas comment il est élu.",
+   "sources": [
+    "france:armorial_cap"
+   ]
+  },
+  {
+   "de": "vbou",
+   "vers": "bdv",
+   "type": "heritage",
+   "annee": "1364",
+   "effet": "Les armes de fils de France sont écartelées avec les anciennes armes de Bourgogne.",
+   "pourquoi": "Philippe de Rouvres, dernier duc de la maison capétienne, meurt de la peste en 1361, à quinze ans. Jean II, roi de France, avait épousé en 1350 sa mère Jeanne de Boulogne, régente du duché : il revendique le duché, qu'il donne en 1364 à son fils Philippe le Hardi. Celui-ci écartèle ses armes de fils de France avec les armes anciennes du duché.",
+   "jalon": "bourgogne:1364",
+   "sources": [
+    "philippe6_fr",
+    "bourgogne:liste_fr",
+    "bourgogne:armorial_cap"
+   ]
+  },
+  {
+   "de": "bcap",
+   "vers": "bdv",
+   "type": "heritage",
+   "annee": "1361–1364",
+   "effet": "Les anciennes armes du duché (bandé d'or et d'azur, à la bordure de gueules) deviennent des quartiers de l'écartelé.",
+   "pourquoi": "Le duché change de maison à la mort de son dernier duc capétien : ses armes ne disparaissent pas, elles entrent dans l'écu du nouveau duc.",
+   "jalon": "bourgogne:1361",
+   "sources": [
+    "bourgogne:liste_fr"
+   ]
+  },
+  {
+   "de": "bdv",
+   "vers": "bflan",
+   "type": "mariage",
+   "annee": "1404",
+   "effet": "Le lion de Flandre est mis en cœur de l'écu.",
+   "pourquoi": "Le comté de Flandre était venu à la maison de Valois-Bourgogne par le mariage de Philippe le Hardi avec la comtesse Marguerite de Flandre. Leur fils Jean sans Peur en met le lion au cœur de son écu.",
+   "jalon": "bourgogne:1404",
+   "sources": [
+    "philippe1_fr",
+    "bourgogne:armorial_cap",
+    "bourgogne:liste_fr"
+   ]
+  },
+  {
+   "de": "bflan",
+   "vers": "bbrab",
+   "type": "annexion",
+   "annee": "1430",
+   "effet": "Le Brabant et le Limbourg entrent dans l'écu.",
+   "lacune": "Les sources lues disent que Philippe le Bon annexe le Brabant et le Limbourg, sans détailler les circonstances.",
+   "jalon": "bourgogne:1430",
+   "sources": [
+    "bourgogne:armorial_cap"
+   ]
+  },
+  {
+   "de": "bbrab",
+   "vers": "marie",
+   "type": "heritage",
+   "annee": "1477",
+   "effet": "Les armes de Marie, héritière, sont portées avec celles de son époux Maximilien (deux grandes parties).",
+   "pourquoi": "Charles le Téméraire meurt devant Nancy le 5 janvier 1477. Sa fille unique Marie, dix-neuf ans, hérite d'un État fragile, que le roi Louis XI attaque aussitôt.",
+   "jalon": "bourgogne:1477",
+   "sources": [
+    "marie_fr",
+    "bourgogne:liste_fr"
+   ]
+  },
+  {
+   "de": "marie",
+   "vers": "phil",
+   "type": "heritage",
+   "annee": "1482",
+   "effet": "Écartelé d'Autriche, de Bourgogne moderne, de Bourgogne ancien et de Brabant, avec en cœur un écusson de Flandre et du Tyrol.",
+   "pourquoi": "Marie meurt le 27 mars 1482 d'une chute de cheval. Son fils Philippe, trois ans, hérite des prétentions au titre de duc de Bourgogne et du reste de l'État bourguignon, en partie occupé par l'armée du roi de France ; son père Maximilien est régent. Le traité d'Arras (décembre 1482) cède à la France le duché et le comté de Bourgogne (le comté sera rendu en 1493 au traité de Senlis), mais les descendants de Marie gardent le titre de « duc de Bourgogne ».",
+   "jalon": "bourgogne:1482",
+   "sources": [
+    "marie_fr",
+    "philippe1_fr",
+    "bourgogne:liste_fr"
+   ]
+  },
+  {
+   "de": "hab",
+   "vers": "aut",
+   "type": "heritage",
+   "annee": "1282",
+   "effet": "Le Bindenschild (de gueules à la fasce d'argent), armes du duché, devient aussi celui des Habsbourg.",
+   "pourquoi": "Rodolphe Ier investit ses fils du duché d'Autriche (1282) : les Habsbourg reprennent le Bindenschild, déjà attesté sur un sceau de 1230.",
+   "jalon": "habsbourg:1282",
+   "sources": [
+    "habsbourg:bindenschild_de"
+   ]
+  },
+  {
+   "de": "aut",
+   "vers": "alb2",
+   "type": "heritage",
+   "annee": "1438",
+   "effet": "Les armes de la Hongrie et de la Bohême, parties, sont posées sur l'aigle de l'Empire, avec en cœur celles de Habsbourg.",
+   "pourquoi": "Albert V, duc d'Autriche, est élu roi des Romains : il place sur l'aigle de l'Empire les armes de ses royaumes.",
+   "lacune": "Les sources lues ne disent pas comment Albert est devenu roi de Hongrie et de Bohême.",
+   "jalon": "habsbourg:1438.2",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "alb2",
+   "vers": "fr3",
+   "type": "heritage",
+   "annee": "1452",
+   "effet": "L'aigle impériale à deux têtes, de sable sur or, remplace l'aigle simple.",
+   "lacune": "L'armorial dit que Frédéric V d'Autriche, empereur sous le nom de Frédéric III, porte l'aigle bicéphale ; les sources lues ne disent pas comment il succède à Albert II.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "fr3",
+   "vers": "maxe",
+   "type": "heritage",
+   "annee": "1486",
+   "effet": "L'aigle de l'Empire porte sur le tout l'Autriche parti de la Bourgogne.",
+   "pourquoi": "Maximilien est le fils de l'empereur Frédéric III ; les quartiers bourguignons sont ceux de son mariage avec Marie de Bourgogne.",
+   "sources": [
+    "marie_fr",
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "aut",
+   "vers": "marie",
+   "type": "mariage",
+   "annee": "1477",
+   "effet": "Les quartiers bourguignons entrent dans les armes de Maximilien.",
+   "pourquoi": "Marie cherche l'appui d'un prince puissant contre la France. Elle épouse Maximilien d'Autriche, fils de l'empereur Frédéric III, par procuration le 21 avril puis en personne le 19 août 1477 : son père avait déjà envisagé cette alliance impériale dès 1473. Maximilien défend les provinces flamandes et le Hainaut ; le duché de Bourgogne et la Picardie restent occupés par la France.",
+   "jalon": "habsbourg:1477",
+   "sources": [
+    "marie_fr",
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "phil",
+   "vers": "philc",
+   "type": "mariage",
+   "annee": "1496–1506",
+   "effet": "Les armes de Castille, de León, d'Aragon et de Grenade s'ajoutent aux armes de Bourgogne et d'Autriche.",
+   "pourquoi": "En 1495, Maximilien et les Rois catholiques concluent un pacte contre la France qui prévoit un double mariage de leurs enfants ; Philippe épouse Jeanne de Castille le 20 octobre 1496. Les morts de Jean d'Aragon (1497), d'Isabelle (1498) et de Miguel (1500) font de Jeanne l'héritière. À la mort d'Isabelle la Catholique (26 novembre 1504), Philippe devient roi consort de Castille : son beau-père Ferdinand conteste, puis cède, et Philippe est reconnu roi à l'été 1506. Il meurt en septembre.",
+   "jalon": "espagne:1504",
+   "sources": [
+    "philippe1_fr",
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "philc",
+   "vers": "charles",
+   "type": "heritage",
+   "annee": "1516",
+   "effet": "Les quartiers d'Espagne et ceux de l'héritage bourguignon et autrichien sont réunis.",
+   "pourquoi": "Philippe meurt en 1506 ; son fils Charles est élevé aux Pays-Bas par sa tante Marguerite. En 1516 il est proclamé roi de Castille et d'Aragon, avec sa mère Jeanne.",
+   "jalon": "habsbourg:1516",
+   "sources": [
+    "philippe1_fr",
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "charles",
+   "vers": "cq",
+   "type": "heritage",
+   "annee": "1519–1530",
+   "effet": "Les armes d'Espagne sont posées sur l'aigle impériale, entre les colonnes d'Hercule.",
+   "pourquoi": "Chef de la maison de Habsbourg en 1519, Charles est élu empereur en 1520 ; couronné, il pose ses armes d'Espagne sur l'aigle.",
+   "jalon": "habsbourg:1530",
+   "sources": [
+    "philippe1_fr",
+    "habsbourg:armorial_fr",
+    "habsbourg:charlesv_en"
+   ]
+  },
+  {
+   "de": "maxe",
+   "vers": "cq",
+   "type": "heritage",
+   "annee": "1519",
+   "effet": "L'écu impérial passe à Charles, qui y pose les armes de ses royaumes.",
+   "pourquoi": "L'empire passe de Maximilien à son petit-fils Charles, élu en 1519-1520 : il garde l'aigle et change ce qu'elle porte.",
+   "sources": [
+    "philippe1_fr",
+    "habsbourg:charlesv_en"
+   ]
+  },
+  {
+   "de": "maxe",
+   "vers": "ferd1a",
+   "type": "heritage",
+   "annee": "1526",
+   "effet": "L'écartelé de Bohême et de Hongrie porte sur le tout l'Autriche parti de la Bourgogne ancien.",
+   "lacune": "Les sources lues donnent les armes de Ferdinand avant 1558 sans dire comment il reçoit les couronnes de Bohême et de Hongrie.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "ferd1a",
+   "vers": "ferd1b",
+   "type": "heritage",
+   "annee": "1558",
+   "effet": "L'aigle bicéphale remplace l'écartelé de Bohême et de Hongrie.",
+   "lacune": "Le jalon dit que Ferdinand Ier passe à l'aigle bicéphale en 1558 ; les sources lues ne disent pas comment il devient empereur.",
+   "jalon": "habsbourg:1558",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "ferd1b",
+   "vers": "rod2",
+   "type": "heritage",
+   "annee": "1576",
+   "effet": "Un quartier de Castille écartelée de Léon entre dans l'écu qui charge l'aigle.",
+   "lacune": "Selon l'armorial, Maximilien II puis Joseph Ier portent les mêmes armes que Ferdinand ; le quartier de Castille apparaît avec Rodolphe II, sans que les sources lues disent pourquoi.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "rod2",
+   "vers": "ferd3",
+   "type": "heritage",
+   "annee": "1637",
+   "effet": "L'Autriche passe sur le tout du tout ; Bourgogne ancien est parti de Tyrol et de Flandre.",
+   "lacune": "L'armorial donne ces armes à Ferdinand III sans dire pourquoi elles changent.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "rod2",
+   "vers": "ch6a",
+   "type": "pretention",
+   "annee": "1700",
+   "effet": "Écartelé de Castille, de Hongrie, d'Aragon et d'Autriche, avec la Bohême en cœur : les armes d'un roi d'Espagne qui ne règne pas.",
+   "pourquoi": "Charles II d'Espagne meurt sans enfant en 1700 et choisit pour héritier le duc d'Anjou, petit-fils de Louis XIV ; l'Autriche défendait les droits de l'archiduc Charles, qui porte ces armes jusqu'en 1711, quand il dispute l'Espagne au petit-fils de Louis XIV.",
+   "sources": [
+    "charles2_fr",
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "chII",
+   "vers": "ch6a",
+   "type": "pretention",
+   "annee": "1700",
+   "effet": "L'archiduc reprend à son compte les quartiers d'Espagne.",
+   "pourquoi": "Voir l'autre lien : à la mort de Charles II, sans descendance, l'archiduc Charles dispute la couronne d'Espagne au duc d'Anjou.",
+   "sources": [
+    "charles2_fr"
+   ]
+  },
+  {
+   "de": "ch6a",
+   "vers": "ch6",
+   "type": "heritage",
+   "annee": "1711",
+   "effet": "L'archiduc pose sur l'aigle impériale les armes qu'il portait comme prétendant.",
+   "lacune": "Le jalon dit que l'archiduc Charles, qui disputait l'Espagne, devient empereur ; les sources lues ne disent pas comment.",
+   "jalon": "habsbourg:1711.3",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "ch6",
+   "vers": "mt",
+   "type": "heritage",
+   "annee": "1740",
+   "effet": "Les armes de Marie-Thérèse reprennent le prétendant d'Espagne, sans aigle dans l'armorial.",
+   "lacune": "Les sources lues ne disent pas comment Marie-Thérèse hérite des couronnes de son père.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "mt",
+   "vers": "jos2",
+   "type": "mariage",
+   "annee": "1780",
+   "effet": "Les alérions de Lorraine entrent en cœur ; Toscane figure au quartier.",
+   "pourquoi": "Joseph II est le fils de François de Lorraine : il est le premier Habsbourg-Lorraine, et les alérions de son père entrent en cœur de ses armes.",
+   "jalon": "habsbourg:1780.9",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "jos2",
+   "vers": "leo2",
+   "type": "heritage",
+   "annee": "1790",
+   "effet": "Bar et Toscane : le cœur est tiercé de Lorraine, d'Autriche et de Toscane.",
+   "lacune": "L'armorial donne les armes de Léopold II et de François II sans dire pourquoi Bar entre dans l'écu.",
+   "sources": [
+    "habsbourg:armorial_fr"
+   ]
+  },
+  {
+   "de": "leo2",
+   "vers": "emp04",
+   "type": "heritage",
+   "annee": "1804",
+   "effet": "Les armes de Habsbourg, d'Autriche et de Lorraine (parties) sur l'aigle d'un empire héréditaire.",
+   "pourquoi": "François II fonde l'empire d'Autriche et en prend l'aigle bicéphale.",
+   "lacune": "Les sources lues ne disent pas ce qui l'y pousse.",
+   "jalon": "habsbourg:1804.6",
+   "sources": [
+    "habsbourg:empire_en"
+   ]
+  },
+  {
+   "de": "emp04",
+   "vers": "emp67",
+   "type": "annexion",
+   "annee": "1867",
+   "effet": "L'aigle bicéphale représente l'Autriche dans les armes de la double monarchie.",
+   "pourquoi": "L'empire d'Autriche et le royaume de Hongrie forment la double monarchie : l'aigle bicéphale représente l'Autriche dans ses armes jusqu'en 1918.",
+   "jalon": "habsbourg:1867",
+   "sources": [
+    "habsbourg:empire_en"
+   ]
+  },
+  {
+   "de": "emp67",
+   "vers": "emp15",
+   "type": "heritage",
+   "annee": "1915",
+   "effet": "Le Bindenschild redevient l'emblème de l'Autriche.",
+   "lacune": "Les sources lues ne disent pas pourquoi les armes changent en 1915.",
+   "jalon": "habsbourg:1915",
+   "sources": [
+    "habsbourg:wappen_de"
+   ]
+  },
+  {
+   "de": "cq",
+   "vers": "ph2a",
+   "type": "heritage",
+   "annee": "1554–1558",
+   "effet": "Les armes d'Espagne sont accolées à celles d'Angleterre.",
+   "pourquoi": "Philippe II porte ces armes comme monarque espagnol et époux de Marie Ire d'Angleterre, de 1556 à 1558.",
+   "jalon": "espagne:1556",
+   "sources": [
+    "habsbourg:armorial_fr",
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "cq",
+   "vers": "esp80",
+   "type": "heritage",
+   "annee": "1580",
+   "effet": "L'écu de Portugal prend place sur le tout des quartiers espagnols.",
+   "lacune": "Les sources lues disent que Philippe II devient roi de Portugal, sans détailler comment.",
+   "jalon": "habsbourg:1580",
+   "sources": [
+    "habsbourg:armorial_fr",
+    "habsbourg:espagne_fr"
+   ]
+  },
+  {
+   "de": "esp80",
+   "vers": "chII",
+   "type": "annexion",
+   "annee": "1640–1668",
+   "effet": "L'écusson de Portugal quitte l'écu (1668).",
+   "pourquoi": "Le Portugal se soulève en 1640 et se donne un roi. L'Espagne, en guerre contre Louis XIV (guerre de Dévolution), reconnaît l'indépendance du Portugal par le traité de Lisbonne (12 février 1668) pour ne pas combattre sur deux fronts.",
+   "jalon": "habsbourg:1640",
+   "sources": [
+    "charles2_fr",
+    "habsbourg:espagne_fr"
+   ]
+  },
+  {
+   "de": "chII",
+   "vers": "bespa",
+   "type": "heritage",
+   "annee": "1700",
+   "effet": "Les armes des Habsbourg d'Espagne cèdent la place à celles des Bourbons.",
+   "pourquoi": "Avec Charles II, sans descendance, s'éteint la branche espagnole de la maison de Habsbourg : la couronne passe aux Bourbons.",
+   "sources": [
+    "charles2_fr"
+   ]
+  },
+  {
+   "de": "cast",
+   "vers": "cath",
+   "type": "heritage",
+   "annee": "1474",
+   "effet": "Castille-León et Aragon sont écartelés ; le tout sur la poitrine de l'aigle de saint Jean.",
+   "pourquoi": "Isabelle de Castille et Ferdinand d'Aragon, mariés depuis 1469, unissent leurs couronnes.",
+   "jalon": "espagne:1474",
+   "sources": [
+    "philippe1_fr",
+    "espagne:spain_en",
+    "espagne:espagne_fr"
+   ]
+  },
+  {
+   "de": "arag",
+   "vers": "cath",
+   "type": "mariage",
+   "annee": "1469–1479",
+   "effet": "L'Aragon et l'Aragon-Sicile occupent la moitié de l'écartelé.",
+   "pourquoi": "Le mariage d'Isabelle et de Ferdinand d'Aragon (1469) est à l'origine de l'union des couronnes : les pals d'Aragon entrent ainsi dans l'écu de Castille.",
+   "sources": [
+    "philippe1_fr",
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "cath",
+   "vers": "gren",
+   "type": "annexion",
+   "annee": "1492",
+   "effet": "Un quartier de Grenade (la grenade au naturel) est enté en pointe.",
+   "pourquoi": "La conquête de Grenade se marque dans l'écu par ce quartier.",
+   "jalon": "espagne:1492",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "gren",
+   "vers": "fer13",
+   "type": "annexion",
+   "annee": "1504–1513",
+   "effet": "Un écu tiercé en pal (Castille-León, Aragon-Naples-Sicile, Aragon) ; la Navarre y ajoute son quartier en 1513.",
+   "pourquoi": "À la mort d'Isabelle (1504), Ferdinand abandonne les armes communes pour un écu tiercé en pal ; l'annexion de la Navarre (1513) y apporte le dernier changement.",
+   "jalon": "espagne:1504",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "gren",
+   "vers": "jc04",
+   "type": "heritage",
+   "annee": "1504",
+   "effet": "Armes abrégées de Jeanne et de Charles : Castille, León et Aragon, enté en pointe de Grenade.",
+   "pourquoi": "Les morts de Jean d'Aragon (1497), d'Isabelle (1498) et de Miguel (1500) font de Jeanne, fille des Rois catholiques, l'héritière ; à la mort d'Isabelle la Catholique, le 26 novembre 1504, la couronne de Castille lui revient.",
+   "sources": [
+    "philippe1_fr",
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "jc04",
+   "vers": "charles",
+   "type": "heritage",
+   "annee": "1516",
+   "effet": "Les quartiers d'Espagne entrent dans les armes de Charles.",
+   "pourquoi": "En 1516, Charles est proclamé roi de Castille et d'Aragon avec sa mère Jeanne.",
+   "sources": [
+    "philippe1_fr"
+   ]
+  },
+  {
+   "de": "gren",
+   "vers": "philc",
+   "type": "mariage",
+   "annee": "1504",
+   "effet": "Les quartiers espagnols des Rois catholiques, avec Grenade, passent dans l'écu de Philippe.",
+   "pourquoi": "C'est le mariage de 1496 avec Jeanne, fille des Rois catholiques, qui ouvre ces quartiers à Philippe (voir l'autre lien).",
+   "sources": [
+    "philippe1_fr"
+   ]
+  },
+  {
+   "de": "bespa",
+   "vers": "ch3",
+   "type": "heritage",
+   "annee": "1761",
+   "effet": "Écartelé de six : Aragon, Autriche, Farnèse, Médicis, Bourgogne, Brabant ; Castille-León sur le tout.",
+   "pourquoi": "Charles III est le fils d'Élisabeth Farnèse : en 1761 il fait écarteler les armes de six quartiers, dont celui de Farnèse.",
+   "lacune": "La page dit que le quartier de Médicis entre aussi, sans dire comment.",
+   "jalon": "espagne:1761",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "ch3",
+   "vers": "esp74",
+   "type": "heritage",
+   "annee": "1875",
+   "effet": "Les armes d'avant septembre 1868 reviennent, avec l'écusson d'Anjou sans bordure.",
+   "pourquoi": "Un décret du 8 janvier 1875 rétablit les armes d'avant septembre 1868 ; à la mort du comte de Chambord (1883), Alphonse XII porte les armes de France sans brisure.",
+   "jalon": "espagne:1875",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "esp74",
+   "vers": "esp81",
+   "type": "heritage",
+   "annee": "1981",
+   "effet": "Les armes actuelles, avec l'écusson d'Anjou ovale sur le tout.",
+   "lacune": "Le jalon donne la loi 33/1981 du 5 octobre ; les sources lues ne disent pas ce qui l'amène.",
+   "jalon": "espagne:1981",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "eng",
+   "vers": "engfr",
+   "type": "pretention",
+   "annee": "1340",
+   "effet": "Les lis de France sont écartelés avec les léopards, à la place d'honneur.",
+   "pourquoi": "En 1328, Édouard III, petit-fils de Philippe le Bel par sa mère Isabelle, a été écarté : on doutait qu'une femme puisse transmettre un droit qu'elle ne pouvait exercer, et les pairs refusaient un roi étranger. En 1337, il fait adresser à « Philippe de Valois, qui se dit roi de France » un message qui rompt l'hommage : c'est le début de la guerre de Cent Ans. En 1340 il prend les lis dans ses armes.",
+   "jalon": "angleterre:1340",
+   "sources": [
+    "philippe6_fr",
+    "angleterre:arms_en",
+    "angleterre:claims_en"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "engfr",
+   "type": "pretention",
+   "annee": "1340",
+   "effet": "Les lis du premier quartier sont les armes de France (semé de lis d'or).",
+   "pourquoi": "Ce sont les armes du royaume que le roi d'Angleterre revendique.",
+   "sources": [
+    "angleterre:claims_en"
+   ]
+  },
+  {
+   "de": "engfr",
+   "vers": "conf",
+   "type": "heritage",
+   "annee": "1395",
+   "effet": "Les armes prêtées à Édouard le Confesseur sont accolées à celles du roi.",
+   "pourquoi": "Richard II accole à ses armes celles prêtées à Édouard le Confesseur, en signe d'union mystique.",
+   "jalon": "angleterre:1395",
+   "sources": [
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "conf",
+   "vers": "engm",
+   "type": "heritage",
+   "annee": "1399–1406",
+   "effet": "Les armes du Confesseur sont abandonnées ; le semé de France est réduit à trois lis.",
+   "pourquoi": "Henri IV abandonne les armes du Confesseur et réduit le semé à trois lis, à l'imitation de Charles V de France.",
+   "jalon": "angleterre:1406",
+   "sources": [
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "engm",
+   "type": "pretention",
+   "annee": "1399–1406",
+   "effet": "Les trois lis d'Angleterre copient les trois lis de France (1376).",
+   "pourquoi": "Charles V avait réduit le semé de France à trois lis en 1376 ; Henri IV d'Angleterre l'imite.",
+   "sources": [
+    "angleterre:arms_en",
+    "france:armoiries_fr"
+   ]
+  },
+  {
+   "de": "engm",
+   "vers": "engmar",
+   "type": "mariage",
+   "annee": "1554",
+   "effet": "Les armes d'Angleterre sont accolées à celles de Philippe d'Espagne.",
+   "pourquoi": "Marie Ire accole les armes de son époux espagnol.",
+   "jalon": "angleterre:1554",
+   "sources": [
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "ph2a",
+   "vers": "engmar",
+   "type": "mariage",
+   "annee": "1554",
+   "effet": "Les armes de Philippe, monarque espagnol, passent dans l'écu accolé.",
+   "pourquoi": "Philippe II porte ces armes comme monarque espagnol et époux de Marie Ire d'Angleterre, de 1556 à 1558.",
+   "sources": [
+    "espagne:spain_en",
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "eco",
+   "vers": "ecod",
+   "type": "mariage",
+   "annee": "1558",
+   "effet": "Les armes d'Écosse sont accolées à celles du dauphin François.",
+   "pourquoi": "Au mariage de Marie avec le dauphin, les armes d'Écosse sont accolées à celles de François, que l'écu du dauphin fait lui-même entrer en quartier pour marquer son titre de roi consort.",
+   "jalon": "ecosse:1558",
+   "sources": [
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "ecod",
+   "type": "mariage",
+   "annee": "1558",
+   "effet": "Les armes de France entrent dans l'écu du dauphin accolé à celui de Marie.",
+   "pourquoi": "C'est le mari de Marie, François, dauphin de France.",
+   "sources": [
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "ecod",
+   "vers": "ecof",
+   "type": "heritage",
+   "annee": "1559",
+   "effet": "Les armes d'Écosse sont accolées à celles de France (dimidiées).",
+   "pourquoi": "François devient roi de France en 1559 : les armes de Marie suivent son rang de reine consort.",
+   "sources": [
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "cap",
+   "vers": "ecof",
+   "type": "mariage",
+   "annee": "1559",
+   "effet": "Les armes de France, accolées (dimidiées), s'ajoutent au lion d'Écosse.",
+   "pourquoi": "Le mari de Marie Stuart, François, devient roi de France en 1559.",
+   "sources": [
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "ecof",
+   "vers": "eco60",
+   "type": "heritage",
+   "annee": "1560",
+   "effet": "L'accolement est conservé, avec une légère modification.",
+   "pourquoi": "Veuve de François en 1560, Marie garde l'accolement jusqu'à son remariage avec Darnley, en 1565, puis revient au lion seul.",
+   "sources": [
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "eco",
+   "vers": "stu",
+   "type": "heritage",
+   "annee": "1603",
+   "effet": "Le lion d'Écosse, la harpe d'Irlande et les armes d'Angleterre se partagent un écu écartelé.",
+   "pourquoi": "La reine Élisabeth Ire est morte sans enfant : Jacques VI d'Écosse, dont les deux parents descendent d'Henri VII par Marguerite Tudor, est son héritier le plus probable. Proclamé roi à Londres le 24 mars 1603, il réunit les couronnes d'Écosse, d'Angleterre et d'Irlande : le lion d'Écosse, la harpe d'Irlande et les armes d'Angleterre se partagent désormais l'écu.",
+   "jalon": "ecosse:1603",
+   "sources": [
+    "jacques_fr",
+    "ecosse:arms_en",
+    "ecosse:liste_fr"
+   ]
+  },
+  {
+   "de": "engm",
+   "vers": "stu",
+   "type": "heritage",
+   "annee": "1603",
+   "effet": "Les armes d'Angleterre, déjà chargées de France, y figurent en contre-écartelé.",
+   "pourquoi": "Élisabeth Ire, dernière des Tudor, est morte sans enfant : la couronne passe au roi d'Écosse, héritier le plus probable (voir l'autre lien).",
+   "jalon": "angleterre:1603.2",
+   "sources": [
+    "jacques_fr",
+    "angleterre:arms_en",
+    "angleterre:supporters_en"
+   ]
+  },
+  {
+   "de": "stu",
+   "vers": "stu60",
+   "type": "heritage",
+   "annee": "1660",
+   "effet": "Les armes de 1603 reviennent avec Charles II.",
+   "pourquoi": "Elles ne servent pas pendant le Commonwealth : la monarchie avait été abolie en 1649, ses armes avec elle.",
+   "jalon": "angleterre:1649.1",
+   "sources": [
+    "ecosse:arms_en",
+    "angleterre:liste_fr",
+    "angleterre:supporters_en"
+   ]
+  },
+  {
+   "de": "stu60",
+   "vers": "gm",
+   "type": "mariage",
+   "annee": "1689",
+   "effet": "Parti : à dextre les armes de 1603 chargées de l'écusson de Nassau, à senestre les mêmes sans l'écusson.",
+   "pourquoi": "Guillaume III et Marie II règnent ensemble et accolent leurs armes, identiques si ce n'est que Guillaume porte en cœur l'écusson de sa maison, Nassau.",
+   "jalon": "angleterre:1689.1",
+   "sources": [
+    "angleterre:arms_en",
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "gm",
+   "vers": "nassau",
+   "type": "heritage",
+   "annee": "1694",
+   "effet": "Guillaume porte seul les armes de 1603, chargées de l'écusson de Nassau.",
+   "pourquoi": "Après la mort de Marie, Guillaume III garde ses seules armes.",
+   "sources": [
+    "angleterre:arms_en",
+    "ecosse:arms_en"
+   ]
+  },
+  {
+   "de": "nassau",
+   "vers": "gb07",
+   "type": "annexion",
+   "annee": "1707",
+   "effet": "Angleterre et Écosse partagent désormais les mêmes quartiers.",
+   "pourquoi": "Les Actes d'Union fondent le royaume de Grande-Bretagne : le titre de roi des Écossais disparaît et les armes des deux royaumes se partagent le même écu.",
+   "jalon": "angleterre:1707.35",
+   "sources": [
+    "angleterre:gb_en",
+    "ecosse:liste_fr"
+   ]
+  },
+  {
+   "de": "gb07",
+   "vers": "gb14",
+   "type": "heritage",
+   "annee": "1714",
+   "effet": "Le Hanovre entre au quatrième quartier ; « Dieu et mon droit » devient la devise fixe.",
+   "pourquoi": "L'Acte d'établissement de 1701 désigne l'électrice Sophie de Hanovre, plus proche parente protestante de la famille royale, pour succéder à la reine Anne ; cinquante-six catholiques mieux placés par le sang sont exclus. Sophie meurt le 8 juin 1714, deux mois avant Anne : son fils George, électeur de Hanovre, devient l'héritier direct, puis est proclamé roi le 1er août. Il fait entrer ses terres allemandes au quatrième quartier.",
+   "jalon": "angleterre:1714.6",
+   "sources": [
+    "george1_fr",
+    "angleterre:gb_en",
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "gb14",
+   "vers": "uk01",
+   "type": "annexion",
+   "annee": "1801",
+   "effet": "Les lis de France quittent l'écu ; l'Irlande prend rang avec l'Angleterre et l'Écosse ; le Hanovre passe sur le tout.",
+   "pourquoi": "L'Irlande est unie à la Grande-Bretagne : par la proclamation du 1er janvier 1801, le roi ne se dit plus roi de France et les lis disparaissent des armes après plus de quatre siècles et demi ; la prétention est abandonnée l'année suivante.",
+   "jalon": "angleterre:1801.0",
+   "sources": [
+    "angleterre:claims_en",
+    "angleterre:uk_en",
+    "angleterre:arms_en"
+   ]
+  },
+  {
+   "de": "uk01",
+   "vers": "uk16",
+   "type": "heritage",
+   "annee": "1816",
+   "effet": "Une couronne remplace le bonnet électoral sur l'écusson de Hanovre.",
+   "pourquoi": "Le Hanovre est devenu un royaume.",
+   "jalon": "angleterre:1816",
+   "sources": [
+    "angleterre:uk_en"
+   ]
+  },
+  {
+   "de": "uk16",
+   "vers": "uk37",
+   "type": "heritage",
+   "annee": "1837",
+   "effet": "L'écusson de Hanovre quitte les armes, qui prennent leur forme actuelle.",
+   "pourquoi": "Victoria, exclue du trône de Hanovre par la loi salique, en retire l'écusson.",
+   "jalon": "angleterre:1837.5",
+   "sources": [
+    "angleterre:uk_en"
+   ]
+  },
+  {
+   "de": "port",
+   "vers": "portc",
+   "type": "mariage",
+   "annee": "1248",
+   "effet": "Une bordure de gueules chargée de châteaux d'or entoure l'écu de Portugal.",
+   "pourquoi": "Alphonse III monte sur le trône avec les armes qu'il avait prises étant cadet : les châteaux de la bordure sont empruntés à sa mère, une Castillane.",
+   "jalon": "portugal:1248",
+   "sources": [
+    "portugal:arms_en",
+    "portugal:liste_fr"
+   ]
+  },
+  {
+   "de": "portc",
+   "vers": "beat",
+   "type": "mariage",
+   "annee": "1383–1385",
+   "effet": "Écartelé : aux 1 et 4 Castille et León, aux 2 et 3 Portugal.",
+   "pourquoi": "Pendant la crise de 1383-1385, Béatrice porte les armes de Portugal aux 2ᵉ et 3ᵉ quartiers, avec celles de son mari Jean Ier de Castille aux 1ᵉʳ et 4ᵉ.",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "cast",
+   "vers": "beat",
+   "type": "mariage",
+   "annee": "1383",
+   "effet": "Les armes de Castille et León, celles de son époux, occupent les premier et quatrième quartiers.",
+   "pourquoi": "Béatrice est l'épouse de Jean Ier de Castille : ses armes portent celles de son mari.",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "portc",
+   "vers": "portav",
+   "type": "heritage",
+   "annee": "1385",
+   "effet": "La croix de l'ordre d'Aviz s'ajoute à l'écu.",
+   "pourquoi": "Jean d'Aviz, acclamé roi en 1385, ajoute à l'écu la croix de son ordre.",
+   "jalon": "portugal:1385",
+   "sources": [
+    "portugal:arms_en",
+    "portugal:liste_fr"
+   ]
+  },
+  {
+   "de": "portav",
+   "vers": "afo5",
+   "type": "pretention",
+   "annee": "1475–1479",
+   "effet": "Écartelé : aux 1 et 4 Portugal, aux 2 et 3 Castille et León.",
+   "pourquoi": "Alphonse V réclame la couronne de Castille de 1475 à 1479 : ses armes portent le Portugal aux 1ᵉʳ et 4ᵉ quartiers, la Castille et León aux 2ᵉ et 3ᵉ.",
+   "jalon": "portugal:1475",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "cast",
+   "vers": "afo5",
+   "type": "pretention",
+   "annee": "1475",
+   "effet": "Les armes de Castille et León occupent les deuxième et troisième quartiers.",
+   "pourquoi": "Ce sont les armes du royaume que revendique Alphonse V.",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "afo5",
+   "vers": "q1485",
+   "type": "heritage",
+   "annee": "1485",
+   "effet": "La croix d'Aviz disparaît ; les écus sont redressés ; cinq besants en sautoir.",
+   "pourquoi": "Jean II fait corriger ce qu'il tient pour des erreurs : la croix d'Aviz disparaît, les écus de dextre et de senestre sont redressés (couchés, on les eût pris pour une marque de bâtardise) et les besants fixés à cinq en sautoir.",
+   "jalon": "portugal:1485",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "q1485",
+   "vers": "hen",
+   "type": "heritage",
+   "annee": "1578",
+   "effet": "Le chapeau rouge et les glands de cardinal coiffent la couronne royale.",
+   "pourquoi": "Prêtre, Henri fait ajouter à la couronne royale le chapeau rouge et les glands de sa dignité de cardinal : une composition propre à son règne.",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "hen",
+   "vers": "esp80",
+   "type": "heritage",
+   "annee": "1580",
+   "effet": "Les armes de Portugal passent dans l'écu de la monarchie espagnole.",
+   "lacune": "Les sources lues disent que Philippe II devient roi de Portugal, sans détailler comment.",
+   "jalon": "espagne:1580",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "q1485",
+   "vers": "br15",
+   "type": "annexion",
+   "annee": "1815",
+   "effet": "L'écu de Portugal est posé sur la sphère armillaire d'or sur champ d'azur.",
+   "pourquoi": "Le Brésil est élevé au rang de royaume dans le Royaume-Uni de Portugal, du Brésil et des Algarves : l'écu de Portugal (pour le Portugal et les Algarves) est posé sur la sphère armillaire, armes du Brésil.",
+   "jalon": "portugal:1815",
+   "sources": [
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "br15",
+   "vers": "orbr",
+   "type": "mariage",
+   "annee": "1864",
+   "effet": "La sphère armillaire, emblème du Brésil, reparaît dans les armes d'Orléans-Bragance.",
+   "pourquoi": "Isabelle, héritière de l'empire du Brésil, épouse Gaston d'Orléans : leurs descendants gardent l'emblème brésilien et y mettent en cœur l'écu d'Orléans.",
+   "sources": [
+    "obr_fr",
+    "portugal:arms_en"
+   ]
+  },
+  {
+   "de": "savA",
+   "vers": "sav",
+   "type": "heritage",
+   "annee": "1263",
+   "effet": "La croix blanche sur gueules remplace l'aigle noire (les deux alternent d'abord).",
+   "pourquoi": "Pierre II, devenu comte, alterne l'aigle et la croix. La croix viendrait de l'emblème des croisés anglais, avec qui il avait pris la croix en 1250-1251.",
+   "jalon": "savoie:1263",
+   "sources": [
+    "savoie:simboli_it"
+   ]
+  },
+  {
+   "de": "sav",
+   "vers": "savs",
+   "type": "heritage",
+   "annee": "1563",
+   "effet": "La croix est écartelée avec Saxe, Westphalie, Angrie, Chablais et Aoste.",
+   "pourquoi": "Emmanuel-Philibert vient de recouvrer ses États : il écartèle la croix avec les armes de ces terres et entoure l'écu du collier de l'ordre.",
+   "jalon": "savoie:1563",
+   "sources": [
+    "savoie:simboli_it",
+    "savoie:armorial_fr"
+   ]
+  },
+  {
+   "de": "savs",
+   "vers": "sav32",
+   "type": "pretention",
+   "annee": "1632",
+   "effet": "Chypre, Jérusalem (avec Lusignan), Genève et Montferrat entrent dans l'écu, sous un pavillon.",
+   "pourquoi": "Victor-Amédée Ier prétend aux couronnes de Chypre et de Jérusalem : il en fait entrer les armes dans l'écu.",
+   "jalon": "savoie:1632",
+   "sources": [
+    "savoie:simboli_it",
+    "savoie:armorial_fr"
+   ]
+  },
+  {
+   "de": "sav32",
+   "vers": "sic13",
+   "type": "annexion",
+   "annee": "1713",
+   "effet": "Nice et Saluces entrent dans l'écu ; l'aigle de Sicile, chargée de Savoie, en prend le centre.",
+   "pourquoi": "Par les traités d'Utrecht, Victor-Amédée II devient roi de Sicile.",
+   "jalon": "savoie:1713",
+   "sources": [
+    "savoie:simboli_it"
+   ]
+  },
+  {
+   "de": "sic13",
+   "vers": "sar",
+   "type": "annexion",
+   "annee": "1720",
+   "effet": "L'aigle passe sur champ d'or ; l'écu de Sardaigne aux quatre têtes de Maure s'y ajoute.",
+   "pourquoi": "La Sicile est échangée contre la Sardaigne : les armes de Sardaigne entrent dans l'écu.",
+   "jalon": "savoie:1720",
+   "sources": [
+    "savoie:simboli_it",
+    "savoie:armorial_fr"
+   ]
+  },
+  {
+   "de": "sar",
+   "vers": "sar15",
+   "type": "annexion",
+   "annee": "1815",
+   "effet": "La croix rouge de Gênes entre dans l'écu simplifié.",
+   "pourquoi": "Victor-Emmanuel Ier reçoit Gênes en 1815 et en profite pour simplifier ses armes.",
+   "jalon": "savoie:1815",
+   "sources": [
+    "savoie:armorial_fr"
+   ]
+  },
+  {
+   "de": "sar15",
+   "vers": "sar31",
+   "type": "heritage",
+   "annee": "1831",
+   "effet": "Les armes de 1720, augmentées de Gênes, Nice, Piémont et Saluces ; sur le tout l'aigle, puis la croix de Savoie.",
+   "pourquoi": "Charles-Albert, de la branche de Carignan, reprend les armes de 1720 en y ajoutant Gênes, Nice, Piémont et Saluces, mais préfère en usage le petit écu à la seule croix.",
+   "lacune": "Les sources lues ne disent pas comment la couronne passe à la branche de Carignan.",
+   "jalon": "savoie:1831",
+   "sources": [
+    "savoie:armorial_fr",
+    "savoie:simboli_it"
+   ]
+  },
+  {
+   "de": "sar31",
+   "vers": "sav61",
+   "type": "annexion",
+   "annee": "1861",
+   "effet": "Le royaume d'Italie garde les armes d'origine : de gueules à la croix d'argent.",
+   "pourquoi": "Dès 1831, Charles-Albert préfère en usage le petit écu à la seule croix ; le nouveau royaume garde les armes d'origine.",
+   "jalon": "savoie:1861",
+   "sources": [
+    "savoie:armorial_fr",
+    "savoie:stemma_it"
+   ]
+  },
+  {
+   "de": "sav61",
+   "vers": "amad",
+   "type": "heritage",
+   "annee": "1871",
+   "effet": "Les armes d'Espagne portent en abîme un écusson de Savoie.",
+   "pourquoi": "Le gouvernement provisoire de 1868 avait adopté les armes territoriales actuelles sous couronne murale ; Amédée rétablit la couronne royale et pose en abîme un écusson de Savoie.",
+   "jalon": "espagne:1868",
+   "sources": [
+    "espagne:spain_en"
+   ]
+  },
+  {
+   "de": "nso_nassau",
+   "vers": "nso_valram",
+   "type": "cadette",
+   "annee": "1255",
+   "effet": "La ligne walramienne place une couronne sur le lion de Nassau, que les premiers comtes portaient sans couronne.",
+   "lacune": "Les pages lues datent le partage de la maison (1251 ou 1255 selon la page) mais ne disent pas pourquoi la ligne walramienne ajoute une couronne au lion.",
+   "desaccord": "La page « Maison de Nassau » date la division de 1251 (mort d'Henri II) ; la page « Nassau-Dillenbourg » écrit « après 1255 ».",
+   "sources": [
+    "nso:maison_nassau",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_nassau",
+   "vers": "nso_dill",
+   "type": "cadette",
+   "annee": "1303",
+   "effet": "L'écu de la ligne ottonienne, d'abord celui des comtes de Nassau, devient un écartelé : Nassau, Katzenelnbogen, Vianden, Diez.",
+   "pourquoi": "La ligne ottonienne se sépare en 1303 en Nassau-Hadamar, Nassau-Siegen et Nassau-Dillenbourg. Les quartiers entrent ensuite par étapes : Diez par le mariage d'Adolphe avec Jutte de Dietz (1386), Vianden récupéré en 1420, et, après un conflit de succession ouvert en 1500 et clos en 1557, le droit de porter le titre de comte de Katzenelnbogen (la plus grande partie du comté allant à la Hesse).",
+   "desaccord": "L'armorial donne le même écartelé à Othon II (mort en 1350) et à Guillaume le Riche (1487-1559), alors que la page « Nassau-Dillenbourg » situe l'arrivée de Diez en 1386, de Vianden en 1420 et du titre de Katzenelnbogen en 1557 : le blasonnement ne peut être celui d'Othon II.",
+   "sources": [
+    "nso:nass_dill",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_dill",
+   "vers": "nso_guillaume",
+   "type": "heritage",
+   "annee": "1544",
+   "effet": "Sur l'écartelé de Nassau-Dillenbourg vient se placer un écusson central écartelé de Châlon et d'Orange, lui-même chargé de l'écusson de Genève.",
+   "pourquoi": "René de Nassau, dit René de Chalon, avait reçu la principauté d'Orange en 1530 conformément au testament (1528) de Philibert de Chalon, et en avait relevé le nom et les armes. Mort sans descendance au siège de Saint-Dizier en juillet 1544, il fait de son cousin Guillaume son héritier, notamment pour la principauté d'Orange, à condition qu'il soit élevé dans la foi catholique et vive au château de Bréda.",
+   "desaccord": "La page « Maison de Nassau » écrit que la ligne ottonienne hérite de la principauté d'Orange en 1530 ; c'est René (de la branche de Bréda) qui la reçoit en 1530, et Guillaume seulement en 1544.",
+   "sources": [
+    "nso:rene",
+    "nso:guill1",
+    "nso:maison_nassau",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_guillaume",
+   "vers": "nso_apres1582",
+   "type": "annexion",
+   "annee": "1582",
+   "effet": "Deux écussons sont ajoutés en chef et en pointe : le marquisat de Veere et Flessingue, et Buren.",
+   "pourquoi": "Le marquisat de Veere et Flessingue, propriété de Philippe II depuis 1567, est mis en vente par ordre de la Cour de Hollande en 1580 ; Guillaume l'achète, ce qui lui donne deux voix de plus aux États de Zélande et le place en position dominante dans cette province. L'armorial rapporte (en citant un ouvrage de 1988 sur les stathouders) qu'il ajoute alors à ses armes l'écu de Veere et de Buren. Buren venait de son premier mariage (1551) avec Anne d'Egmont, fille et héritière du comte de Buren.",
+   "desaccord": "Le texte cité par l'armorial date l'adjonction de 1582 ; la page sur Guillaume Ier place l'entrée de Buren dans sa famille en 1551, sans dire quand le quartier est apparu sur l'écu.",
+   "sources": [
+    "nso:arm_nassau",
+    "nso:guill1"
+   ]
+  },
+  {
+   "de": "nso_dill",
+   "vers": "nso_dietz",
+   "type": "cadette",
+   "annee": "1606",
+   "effet": "La branche de Nassau-Dietz conserve l'écartelé Nassau, Katzenelnbogen, Vianden, Diez et y ajoute deux quartiers : Spiegelberg et Liesveld, avec une croix de l'ordre Teutonique sur le tout.",
+   "pourquoi": "À la mort de Jean VI de Nassau-Dillenbourg en 1606, le comté est partagé entre cinq comtés, dont Nassau-Dietz.",
+   "lacune": "Les pages lues ne disent pas comment Spiegelberg et Liesveld sont entrés dans l'écu de Nassau-Dietz.",
+   "sources": [
+    "nso:nass_dill",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_dietz",
+   "vers": "nso_odietz",
+   "type": "heritage",
+   "annee": "1702",
+   "effet": "Les armes de Nassau-Dietz reprennent l'écusson central de Châlon-Orange avec Genève, Moers et Bréda : la branche frisonne porte désormais les armes de la lignée d'Orange.",
+   "pourquoi": "Guillaume III meurt le 8 mars 1702 et la lignée directe et légitime de Guillaume le Taciturne s'éteint. Jean-Guillaume-Friso de Nassau-Dietz, descendant d'un frère cadet de Guillaume Ier et petit-fils d'une sœur de Guillaume II, hérite de la principauté d'Orange selon la volonté de Guillaume III ; la Prusse réclame aussi la succession, par l'union de Louise-Henriette d'Orange avec Frédéric-Guillaume de Brandebourg.",
+   "sources": [
+    "nso:friso",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_odietz",
+   "vers": "nso_nl1815",
+   "type": "heritage",
+   "annee": "1815",
+   "effet": "Le lion de Nassau sur champ billeté prend la couronne, l'épée et le faisceau de flèches des États généraux.",
+   "pourquoi": "Les armes sont composées en 1815, après la constitution du royaume uni des Pays-Bas par le congrès de Vienne : elles combinent le lion de Nassau sur champ semé de billettes avec le lion couronné à l'épée et au faisceau de flèches qui figurait sur le sceau des États généraux des Provinces-Unies.",
+   "lacune": "La page lue ne détaille pas ici la filiation entre les Nassau-Dietz et le premier roi.",
+   "sources": [
+    "nso:armpb"
+   ]
+  },
+  {
+   "de": "nso_apres1582",
+   "vers": "nso_odietz",
+   "type": "heritage",
+   "annee": "1702",
+   "effet": "Les armes d'Orange passent aux Nassau-Dietz, avec Moers et Bréda.",
+   "pourquoi": "Guillaume III meurt le 8 mars 1702 et la lignée directe de Guillaume le Taciturne s'éteint : Jean-Guillaume-Friso de Nassau-Dietz hérite de la principauté d'Orange selon sa volonté.",
+   "sources": [
+    "nso:friso"
+   ]
+  },
+  {
+   "de": "nso_valram",
+   "vers": "nso_adolphe",
+   "type": "heritage",
+   "annee": "1890",
+   "effet": "Le lion de Luxembourg (burelé) porte en surtout l'écusson de Nassau.",
+   "lacune": "La page lue donne les armes prises par Adolphe à son avènement (1890), après Guillaume III, sans détailler la succession.",
+   "sources": [
+    "nso:lux",
+    "nso:arm_nassau"
+   ]
+  },
+  {
+   "de": "nso_adolphe",
+   "vers": "nass",
+   "type": "heritage",
+   "annee": "1919",
+   "effet": "Les armes de Nassau et de Luxembourg figurent aux quartiers II et III et en cœur.",
+   "lacune": "Les pages lues ne détaillent pas la succession de 1890 à 1919.",
+   "sources": [
+    "nso:arm_nassau",
+    "cap:armorial_cap"
+   ]
+  },
+  {
+   "de": "nso_apres1582",
+   "vers": "gm",
+   "type": "mariage",
+   "annee": "1689",
+   "effet": "L'écusson de la maison de Nassau entre en cœur des armes de Guillaume.",
+   "pourquoi": "Guillaume III d'Orange-Nassau et Marie II accolent leurs armes ; celles de Guillaume portent en cœur l'écusson de sa maison, Nassau.",
+   "jalon": "angleterre:1689.1",
+   "sources": [
+    "angleterre:arms_en",
+    "ecosse:arms_en"
+   ]
+  }
+ ]
+}

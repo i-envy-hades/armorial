@@ -105,21 +105,6 @@ for nom in ("blasons.json", "personnages.json"):
         s_ = e.get("blasonSrc")
         if s_ is not None and not (isinstance(s_, dict) and s_.get("label") and str(s_.get("url", "")).startswith("http")): err(f"{nom}: « {e.get('nom')} » : blasonSrc mal formé (label et url attendus)")
 
-# --------- 3 quater. les repères de la page Chronologie (data/chronologie.json) : sources de l'encyclopédie, renvois, groupes
-chr_ = DATA.get("chronologie.json")
-if chr_ is None or not isinstance(chr_.get("reperes"), list): err("data/chronologie.json: absent ou sans « reperes »")
-else:
-    for r_ in chr_["reperes"]:
-        nom_ = f"chronologie.json: « {r_.get('titre')} »"
-        for c_ in ("annee", "titre", "texte", "groupe", "sources", "lien"):
-            if not r_.get(c_): err(f"{nom_} : « {c_} » manquant")
-        if r_.get("groupe") not in ("origines", "droit"): err(f"{nom_} : groupe « {r_.get('groupe')} » inconnu (origines ou droit)")
-        for src_ in r_.get("sources") or []:
-            if src_ not in (dd.get("sources") or {}): err(f"{nom_} : source « {src_} » absente de data.json")
-        page_, _, ancre = str(r_.get("lien", "")).partition("#")
-        if page_ not in cibles: err(f"{nom_} : renvoi vers une page inconnue « {r_.get('lien')} »")
-        elif ancre not in cibles[page_]: err(f"{nom_} : l'ancre « {r_.get('lien')} » n'existe pas")
-
 # --------- 3 quinquies. l'arbre des Capétiens (data/capetiens.json) : un seul sommet, des parents qui existent, des figures créditées
 cap_ = DATA.get("capetiens.json")
 if cap_ is None or not isinstance(cap_.get("noeuds"), list): err("data/capetiens.json: absent ou sans « noeuds »")
@@ -139,6 +124,61 @@ else:
             page_, _, ancre = n_["lien"].partition("#")
             if page_ not in cibles or ancre not in cibles[page_]: err(f"{nom_} : renvoi « {n_['lien']} » introuvable")
         if n_.get("file") and not (n_.get("auteur") and n_.get("lic")): err(f"{nom_} : figure sans auteur ou licence")
+
+# --------- 3 sexies. la transmission des armes (data/transmission.json) : renvois résolubles, arbre sans cycle, chaque passage typé et sourcé
+tr_ = DATA.get("transmission.json")
+if tr_ is None or not isinstance(tr_.get("noeuds"), list) or not isinstance(tr_.get("liens"), list): err("data/transmission.json: absent ou sans « noeuds » / « liens »")
+else:
+    TYPES_ = {"cadette", "mariage", "heritage", "annexion", "pretention"}
+    ids_ = [n_.get("id") for n_ in tr_["noeuds"]]
+    if len(ids_) != len(set(ids_)): err("transmission.json: identifiants en double")
+    cap_ids = {n_.get("id") for n_ in (cap_ or {}).get("noeuds", [])}
+    frises_ = {x.get("id"): DATA.get(pathlib.PurePosixPath(x.get("file", "")).name) or {} for x in (fr or {}).get("frises", [])}
+    for n_ in tr_["noeuds"]:
+        nom_ = f"transmission.json: nœud « {n_.get('id')} »"
+        for c_ in ("id", "ref", "nom", "dates"):
+            if not n_.get(c_): err(f"{nom_} : « {c_} » manquant")
+        k_, _, i_ = str(n_.get("ref", "")).partition(":")
+        if k_ == "cap":
+            if i_ not in cap_ids: err(f"{nom_} : « {n_.get('ref')} » absent de capetiens.json")
+        elif k_ in frises_:
+            a_ = frises_[k_].get("armes", {}).get(i_)
+            if not a_ or not a_.get("file"): err(f"{nom_} : « {n_.get('ref')} » sans figure dans la frise")
+        elif k_ == "tr":
+            a_ = (tr_.get("armes") or {}).get(i_)
+            if not a_: err(f"{nom_} : « {n_.get('ref')} » absent de la section « armes »")
+            else:
+                for c_ in ("nom", "blason", "file", "auteur", "lic", "src"):
+                    if not a_.get(c_): err(f"{nom_} : armes « {i_} » sans {c_}")
+                if a_.get("src") not in tr_.get("sources", {}): err(f"{nom_} : armes « {i_} » : source « {a_.get('src')} » inconnue")
+        else: err(f"{nom_} : renvoi « {n_.get('ref')} » inconnu")
+        if n_.get("parent") and n_["parent"] not in ids_: err(f"{nom_} : parent « {n_['parent']} » inconnu")
+    par_ = {n_["id"]: n_.get("parent") for n_ in tr_["noeuds"] if n_.get("id")}
+    for i_ in par_:                                          # pas de cycle : on remonte au plus loin len(par_) fois
+        p_, pas_ = i_, 0
+        while p_ and pas_ <= len(par_): p_, pas_ = par_.get(p_), pas_ + 1
+        if p_: err(f"transmission.json: cycle de parents à partir de « {i_} »"); break
+    liens_ = tr_["liens"]
+    for l_ in liens_:
+        nom_ = f"transmission.json: passage « {l_.get('de')} » → « {l_.get('vers')} »"
+        if l_.get("de") not in par_ or l_.get("vers") not in par_: err(f"{nom_} : extrémité inconnue"); continue
+        if l_.get("type") not in TYPES_: err(f"{nom_} : type « {l_.get('type')} » inconnu")
+        for c_ in ("annee", "effet"):
+            if not str(l_.get(c_, "")).strip(): err(f"{nom_} : « {c_} » vide")
+        if not l_.get("pourquoi") and not l_.get("lacune"): err(f"{nom_} : ni raison ni « lacune » (une raison inconnue doit être dite)")
+        if l_.get("pourquoi") and not l_.get("sources"): err(f"{nom_} : une raison sans source")
+        if l_.get("jalon"):
+            fk_, _, an_ = l_["jalon"].partition(":")
+            ok_ = any(isinstance(j_.get("annee"), (int, float)) and str(j_["annee"]) == an_ for r_ in frises_.get(fk_, {}).get("royaumes", []) for j_ in r_.get("jalons", []))
+            if not ok_: err(f"{nom_} : jalon « {l_['jalon']} » introuvable")
+        if l_.get("lien"):
+            page_, _, ancre = l_["lien"].get("href", "").partition("#")
+            if page_ not in cibles or ancre not in cibles[page_]: err(f"{nom_} : renvoi « {l_['lien'].get('href')} » introuvable")
+    for n_ in tr_["noeuds"]:
+        if n_.get("parent") and not any(l_.get("de") == n_["parent"] and l_.get("vers") == n_["id"] for l_ in liens_):
+            err(f"transmission.json: « {n_['id']} » n'a pas de passage depuis son parent « {n_['parent']} »")
+        if n_.get("apport") and n_.get("parent"): err(f"transmission.json: « {n_['id']} » est une maison en apport : elle ne peut pas avoir de parent")
+        if n_.get("apport") and not any(l_.get("de") == n_["id"] for l_ in liens_): err(f"transmission.json: la maison en apport « {n_['id']} » ne donne ses armes à personne")
 
 # ------------------------------------------------------- 4. moteur de rendu
 JS = (ROOT / "assets" / "blason.js").read_text(encoding="utf-8")
@@ -264,7 +304,7 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
 
 # l'ordre des scripts : chaque fichier s'appuie sur des globaux que d'autres définissent, il doit venir après eux
 DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
-               "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"], "capetiens.js": ["blasonnement.js", "lecture.js"],
+               "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"],
                "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))

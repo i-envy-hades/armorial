@@ -16,12 +16,11 @@ Pour modifier le contenu, on modifie un fichier JSON et on publie.
 | `index.html` — **L'encyclopédie** | Quatorze chapitres (origines, écu, émaux, partitions, règles, pièces, meubles, blasonnement, ornements, droit du blason, droit comparé, brisures, **alliances**, **hérauts et armoiriaux**), glossaire et répertoire de plus de 350 termes, bibliographie, recherche. Les figures sont dessinées en SVG ; celles qu'on emprunte portent leur crédit. Une bande sous le bandeau renvoie aux autres pages. | `data/data.json` |
 | `blasons.html` — **Blasons réels** | Armoiries d'États, de royaumes, d'ordres et de maisons : de vraies images de Wikimedia Commons, créditées une à une, avec leur blasonnement — et, sous celui que l'Atelier sait relire, un bouton « Redessiner dans l'Atelier ». Chaque carte a son adresse (`#royaume-de-france-moderne`). | `data/blasons.json` |
 | `personnages.html` — **Personnages** | Armoiries de personnes ayant existé, avec leur blasonnement (même bouton, mêmes adresses). | `data/personnages.json` |
-| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, d'Angleterre, d'Écosse et de Portugal, ducs de Bourgogne, rois de Castille, d'Aragon et d'Espagne, maisons de Savoie et de Habsbourg, papauté. Chaque frise renvoie à ses repères dans la chronologie. | `data/frises.json` et un fichier par lignée |
+| `lignees.html` — **Lignées** | Les armes des souverains règne après règne, sur une frise qu'on fait glisser : rois de France, d'Angleterre, d'Écosse et de Portugal, ducs de Bourgogne, rois de Castille, d'Aragon et d'Espagne, maisons de Savoie et de Habsbourg, papauté. | `data/frises.json` et un fichier par lignée |
 | `atelier.html` — **L'Atelier** | On compose des armes (champ, pièce, meubles, ornements) ; le blasonnement s'écrit tout seul, dans l'ordre où un héraut le lirait. Et inversement : on tape un blasonnement, l'écu se dessine. Lien de partage, export SVG et PNG, rappel de la règle des émaux, crédits de chaque figure empruntée. | `data/atelier.json`, `data/data.json` |
 | `exercices.html` — **S'exercer** | Des questions tirées à neuf à chaque fois par le moteur de l'Atelier : lire un écu, deviner des armes sur leur texte, juger la règle des émaux, nommer les points de l'écu, réviser le vocabulaire, reconnaître des armes réelles — trois niveaux, la réponse expliquée, et un **défi du jour** (six questions, les mêmes pour tous, résultat à copier). Une question n'est posée que si le lecteur de blasonnement relit à l'identique le texte de l'écu. | `data/data.json`, `data/atelier.json`, `data/blasons.json` |
-| `chronologie.html` — **Chronologie** | Les 143 jalons des frises et une vingtaine de repères du droit et des origines (reformulés des chapitres de l'encyclopédie) sur une seule ligne du temps : filtre par lignée, recherche, désaccords entre sources, sauts de siècle. | les fichiers des frises, `data/chronologie.json` |
-| `capetiens.html` — **Les Capétiens** | L'arbre des brisures : 44 maisons et branches de la maison capétienne (d'après l'« Armorial des Capétiens » de Wikipédia), leurs armes, et ce qui, dans leur écu, les distingue des lis de France (bordure, lambel, bande, bâton…), mis en relief. | `data/capetiens.json` |
-| `recherche.html` — **Rechercher** | Une recherche dans tout le site (articles, glossaire, vocabulaire, blasons, personnages, règnes et armes des lignées, chronologie, arbre des Capétiens, sources) : sans accent ni majuscule, tous les mots dans la même entrée. Chaque résultat mène à l'endroit où il se lit. | tous les fichiers de données |
+| `transmission.html` — **La transmission des armes** | Pourquoi les écus changent : un arbre qui se déplie, de sept familles à vraie descendance (Capétiens et toutes leurs branches, Habsbourg, Castille, Angleterre, Écosse, Savoie, Nassau) jusqu'aux maisons récentes. Chaque passage d'armes (branche cadette, mariage, héritage, union ou traité, prétention) dit ce qu'il change dans l'écu et, quand une source lue le donne, pourquoi ; sinon la page écrit « Raison non établie ». Une maison qui n'a pas de branche à elle (l'Aragon) n'a pas de carte : elle apparaît là où son mariage change les armes d'une autre. | `data/transmission.json` (les blasons et figures viennent de `capetiens.json`, des frises, ou de la section `armes` du fichier pour les maisons sans frise) |
+| `recherche.html` — **Rechercher** | Une recherche dans tout le site (articles, glossaire, vocabulaire, blasons, personnages, règnes et armes des lignées, arbre de la transmission des armes, sources) : sans accent ni majuscule, tous les mots dans la même entrée. Chaque résultat mène à l'endroit où il se lit. | tous les fichiers de données |
 | `404.html` | La page d'erreur de GitHub Pages, avec une recherche. | — |
 
 ### Ce que sait faire l'Atelier
@@ -49,7 +48,7 @@ Ouvrir `index.html` par double-clic affiche un message d'erreur, pas la page.
 
 ```
 index.html  blasons.html  personnages.html  lignees.html  atelier.html
-exercices.html  chronologie.html  capetiens.html  recherche.html  404.html      les pages (squelette et textes propres à chacune)
+exercices.html  transmission.html  recherche.html  404.html      les pages (squelette et textes propres à chacune)
 sitemap.xml  robots.txt                                                           pour les moteurs de recherche
 
 assets/
@@ -60,8 +59,8 @@ assets/
   dessin.js         le dessin d'une composition (champ, pièce, meubles, ornements, crédits) : de l'état au SVG — partagé par l'Atelier et S'exercer
   lecture.js        le lecteur de blasonnement : du texte à l'écu, l'inverse de blazonAll() ; décrit en tête du fichier
   index.js .css     l'encyclopédie            atelier.js .css   l'Atelier (l'interface seule)
-  exercices.js .css S'exercer                 chronologie.js .css   la ligne du temps
-  capetiens.js .css Les Capétiens             recherche.js .css     la recherche du site
+  exercices.js .css S'exercer
+  transmission.js .css  La transmission des armes   recherche.js .css     la recherche du site
   lignees.js        les frises (son CSS reste dans lignees.html, voir plus bas)
   blasons.js .css   Blasons réels             personnages.js .css   Personnages      (ils chargent le lecteur pour poser leurs boutons)
   cartes.js         les adresses des cartes des galeries (et le filtre qu'on lève pour y aller)
@@ -79,8 +78,8 @@ data/
   lignees.json (rois de France)  angleterre.json  ecosse.json  portugal.json  espagne.json (Castille, Aragon, Espagne)  bourgogne.json
   savoie.json  habsbourg.json  papaute.json     une lignée par fichier
   atelier.json      meubles et ornements de l'Atelier
-  chronologie.json  les repères du droit et des origines (les jalons viennent des frises)
   capetiens.json    l'arbre des maisons et branches capétiennes
+  transmission.json les passages d'armes d'une maison à l'autre (type, effet, raison, sources)
 
 tools/
   check_data.py     vérifie les données, les fichiers cités, les gabarits, l'ordre des scripts et le plan du site (sans dépendance)
@@ -118,17 +117,15 @@ fichier introuvable, figure sans licence, « kind » sans dessin…).
   `{ "note": true, "html": … }` : il n'a pas d'adresse, on ne peut donc pas s'y renvoyer.
 - **Modifier `data/data.json` sans le reformater** : le fichier est mis en forme à la main ; on y insère des morceaux de texte plutôt que de le re-sérialiser tout entier.
 
-### Chronologie — `data/chronologie.json`
-
-Les **jalons** viennent des frises (`royaumes[].jalons` de chaque lignée) : on les modifie là. `data/chronologie.json` ne porte que les **repères** du droit et des origines :
-`{ "annee", "label", "titre", "texte", "groupe" ("origines" ou "droit"), "sources": [identifiants de data.json], "lien": "index.html#ancre", "desaccord" }`.
-`check_data.py` vérifie les sources et les ancres.
-
 ### Les Capétiens — `data/capetiens.json`
 
 Un nœud par maison ou branche : `id`, `nom`, `dates`, `parent` (un seul nœud n'en a pas), `fondateur`, `armes` (`blason`, et `quand` pour un état daté), une figure de Commons
-(`file`, `auteur`, `lic`, `licurl`), `notes`, `lien`/`lienTxt` (vers une frise), `idem` (même figure qu'un autre nœud). Rien n'y est calculé : la brisure mise en relief est
-repérée par la page (`assets/capetiens.js`) dans le texte du blasonnement, quand il commence par les armes de France.
+(`file`, `auteur`, `lic`, `licurl`), `notes`, `lien`/`lienTxt` (vers une frise), `idem` (même figure qu'un autre nœud). Ce fichier n'a plus de page à lui : c'est la source des
+nœuds capétiens de la page de la transmission des armes (`cap:<id>`), où chaque branche est reliée à sa maison d'origine.
+
+### La transmission des armes — `data/transmission.json`
+
+`noeuds[]` : `id`, `ref` (`cap:<id>` dans `capetiens.json`, `<frise>:<id d'armes>` dans une lignée, ou `tr:<id>` dans la section `armes` du fichier), `nom`, `dates`, `parent` (l'arbre ; les racines n'en ont pas), `apport` (une maison qui entre par mariage sans branche propre : pas de carte, une pastille sous les armes qu'elle nourrit ; elle n'a pas de parent). `armes{}` : pour les maisons sans frise, `nom`, `blason`, `file`, `auteur`, `lic`, `licurl` et `src` (la page où le blasonnement est lu). `liens[]` : `de`, `vers`, `type` (`cadette`, `mariage`, `heritage`, `annexion`, `pretention`), `annee`, `effet` (ce qui change dans l'écu), `pourquoi` (la raison, seulement si une source lue la donne), sinon `lacune` (ce qui manque), `sources[]`, `jalon` (`<frise>:<année>`, pour renvoyer au jalon de la frise), `desaccord`, `lien`. Les blasonnements, figures et crédits ne sont pas recopiés : la page les lit à la source. Un nœud peut avoir plusieurs passages entrants (par exemple un héritage et un mariage) : celui qui vient de son `parent` trace la branche, les autres s'affichent dans le panneau. Ce n'est pas une généalogie : seuls les passages qui changent un écu y figurent.
 
 ### Blasons réels et Personnages
 
@@ -178,7 +175,7 @@ blasonnements connus et à des compositions tirées au hasard (qui ne doivent ja
 chaque écu que l'Atelier sait écrire doit se relire à l'identique (mêmes armes, même texte, même dessin) ; les textes qu'il ne doit pas
 comprendre sont refusés avec la bonne raison ; un mot inconnu fait refuser le texte ; et chaque bouton « Redessiner dans l'Atelier » des
 galeries mène à un blasonnement relu en entier. Il vérifie enfin les pages S'exercer (chaque question tirée a une seule bonne réponse, des textes que le lecteur relit à l'identique,
-une règle des émaux juste ; le défi du jour se joue de bout en bout), Chronologie, Rechercher (chaque lien d'un résultat mène à une ancre qui existe), Les Capétiens, et le
+une règle des émaux juste ; le défi du jour se joue de bout en bout), Rechercher (chaque lien d'un résultat mène à une ancre qui existe), La transmission des armes, et le
 téléphone (375 px : aucune page ne déborde en largeur, le menu se replie derrière un bouton) :
 
 ```sh
@@ -233,10 +230,9 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   qu'un dessin ; ni manteau ni pavillon ; les pièces alésées n'y sont pas.
 - **Pièces, alliances, hérauts** : les chapitres « Pièces » (sauf son premier article), « Blasonnement » (sauf le premier), « Alliances » et « Hérauts et armoriaux », l'article sur le cimier,
   le cri et la devise reposent sur des pages de Wikipédia lues puis reformulées (leurs désaccords sont signalés, ceux de Wikipédia avec elle-même compris), pas sur Joubert ni Pastoureau.
-- **L'arbre des Capétiens** reprend la classification de la page « Armorial des Capétiens », qui n'est pas une généalogie : il ne dit rien des liens de parenté entre personnes, et ne montre
-  que le blasonnement du premier porteur de chaque branche.
+- **L'arbre de la transmission des armes** n'est pas une généalogie : il ne suit que les passages qui changent un écu, avec une ligne principale par nœud ; une raison n'y est écrite que si une page lue la donne (une trentaine de passages disent encore « raison non établie »). Les branches capétiennes reprennent la classification de la page « Armorial des Capétiens », qui ne dit rien de la parenté entre personnes au-delà de la présentation du fondateur de chaque branche.
 - **Les exercices** ne couvrent que ce que l'Atelier sait écrire (trois niveaux de difficulté, des écus à un ou deux meubles, parfois écartelés) ; l'exercice « Armes réelles » dépend de Commons.
 - **Les résultats de S'exercer** ne sont gardés que dans le navigateur du lecteur (`localStorage`) : ni compte, ni classement.
-- **Tests** : `smoke_test.py` n'a pas pu être exécuté lors de l'ajout des pages S'exercer, Chronologie, Rechercher et Les Capétiens ; leurs contrôles ont été écrits d'après des mesures faites dans Chrome
+- **Tests** : `smoke_test.py` n'a pas pu être exécuté lors de l'ajout des pages S'exercer, Rechercher et La transmission des armes ; leurs contrôles ont été écrits d'après des mesures faites dans Chrome
   à la main. Le premier passage de la CI dira s'ils tiennent.
 
