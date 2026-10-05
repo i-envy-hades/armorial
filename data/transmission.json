@@ -73,6 +73,110 @@
    "label": "Wikipédia, « Georges de Danemark »",
    "url": "https://fr.wikipedia.org/wiki/Georges_de_Danemark"
   },
+  "y:louis_anjou": {
+   "label": "Wikipédia, « Louis Ier d'Anjou »",
+   "url": "https://fr.wikipedia.org/wiki/Louis_Ier_d'Anjou"
+  },
+  "y:antoine": {
+   "label": "Wikipédia, « Antoine de Bourgogne »",
+   "url": "https://fr.wikipedia.org/wiki/Antoine_de_Bourgogne"
+  },
+  "y:hugues_verm": {
+   "label": "Wikipédia, « Hugues de Vermandois »",
+   "url": "https://fr.wikipedia.org/wiki/Hugues_de_Vermandois"
+  },
+  "y:pierre_dreux": {
+   "label": "Wikipédia, « Pierre Ier de Bretagne »",
+   "url": "https://fr.wikipedia.org/wiki/Pierre_Ier_de_Bretagne"
+  },
+  "y:henri_bourg": {
+   "label": "Wikipédia, « Henri de Bourgogne (comte de Portugal) »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_de_Bourgogne_(comte_de_Portugal)"
+  },
+  "y:lavedan": {
+   "label": "Wikipédia, « Charles de Bourbon-Lavedan »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_de_Bourbon-Lavedan"
+  },
+  "y:charles3": {
+   "label": "Wikipédia, « Charles III d'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_III_d'Espagne"
+  },
+  "y:philippe_parme": {
+   "label": "Wikipédia, « Philippe Ier de Parme »",
+   "url": "https://fr.wikipedia.org/wiki/Philippe_Ier_de_Parme"
+  },
+  "y:henri3": {
+   "label": "Wikipédia, « Henri III (roi de France) »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_III_(roi_de_France)"
+  },
+  "y:philippe_bon": {
+   "label": "Wikipédia, « Philippe III de Bourgogne »",
+   "url": "https://fr.wikipedia.org/wiki/Philippe_III_de_Bourgogne"
+  },
+  "y:fred3": {
+   "label": "Wikipédia, « Frédéric III (empereur du Saint-Empire) »",
+   "url": "https://fr.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_III_(empereur_du_Saint-Empire)"
+  },
+  "y:ferd1": {
+   "label": "Wikipédia, « Ferdinand Ier (empereur du Saint-Empire) »",
+   "url": "https://fr.wikipedia.org/wiki/Ferdinand_Ier_(empereur_du_Saint-Empire)"
+  },
+  "y:ferd3": {
+   "label": "Wikipédia, « Ferdinand III (empereur du Saint-Empire) »",
+   "url": "https://fr.wikipedia.org/wiki/Ferdinand_III_(empereur_du_Saint-Empire)"
+  },
+  "y:charles6": {
+   "label": "Wikipédia, « Charles VI (empereur du Saint-Empire) »",
+   "url": "https://fr.wikipedia.org/wiki/Charles_VI_(empereur_du_Saint-Empire)"
+  },
+  "y:leopold2": {
+   "label": "Wikipédia, « Léopold II (empereur du Saint-Empire) »",
+   "url": "https://fr.wikipedia.org/wiki/L%C3%A9opold_II_(empereur_du_Saint-Empire)"
+  },
+  "y:philippe2": {
+   "label": "Wikipédia, « Philippe II (roi d'Espagne) »",
+   "url": "https://fr.wikipedia.org/wiki/Philippe_II_(roi_d'Espagne)"
+  },
+  "y:henri_port": {
+   "label": "Wikipédia, « Henri Ier (roi de Portugal) »",
+   "url": "https://fr.wikipedia.org/wiki/Henri_Ier_(roi_de_Portugal)"
+  },
+  "y:arm_esp": {
+   "label": "Wikipédia, « Armoiries de l'Espagne »",
+   "url": "https://fr.wikipedia.org/wiki/Armoiries_de_l'Espagne"
+  },
+  "y:adolphe_lux": {
+   "label": "Wikipédia, « Adolphe (grand-duc de Luxembourg) »",
+   "url": "https://fr.wikipedia.org/wiki/Adolphe_(grand-duc_de_Luxembourg)"
+  },
+  "y:charlotte": {
+   "label": "Wikipédia, « Charlotte (grande-duchesse de Luxembourg) »",
+   "url": "https://fr.wikipedia.org/wiki/Charlotte_(grande-duchesse_de_Luxembourg)"
+  },
+  "y:thierry": {
+   "label": "Wikipédia, « Thierry d'Oldenbourg »",
+   "url": "https://fr.wikipedia.org/wiki/Thierry_d'Oldenbourg"
+  },
+  "y:fred2": {
+   "label": "Wikipédia, « Frédéric II (roi de Danemark) »",
+   "url": "https://fr.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_II_(roi_de_Danemark)"
+  },
+  "y:fred4": {
+   "label": "Wikipédia, « Frédéric IV (roi de Danemark) »",
+   "url": "https://fr.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_IV_(roi_de_Danemark)"
+  },
+  "wet:arm": {
+   "label": "Wikipédia, « Armorial de la maison de Wettin »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Wettin"
+  },
+  "wit:arm": {
+   "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
+  },
+  "lor:arm": {
+   "label": "Wikipédia, « Armorial de la maison de Lorraine »",
+   "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine"
+  },
   "cap:armorial_cap": {
    "label": "Wikipédia, « Armorial des Capétiens »",
    "url": "https://fr.wikipedia.org/wiki/Armorial_des_Cap%C3%A9tiens"
@@ -330,14 +434,14 @@
    "src": "old:arm"
   },
   "old_f3": {
-   "nom": "Frédéric III et la période 1559-1699",
+   "nom": "Frédéric III, Christian V : l'écu de 1559-1699",
    "blason": "Écartelé : à la croix pattée d'argent bordée de gueules, qui est le Danebrog, cantonnée en I, d'or, à neuf cœurs de gueules, posés en trois pals, à trois lions léopardés d'azur, armés et lampassés de gueules, couronnés du champ, brochant sur-le-tout (de Danemark) ; en II, de gueules, au lion couronné d'or, tenant dans ses pattes une hache danoise d'argent, emmanchée du second (de Norvège ancien) ; en III, d'or au lion léopardé d'azur soutenu de neuf cœurs de gueules ordonnés 5 et 4 (du Royaume des Goths) ; en IV, de gueules au dragon d'or (du Royaume des Vandales) ; en V, d'azur, à trois couronnes d'or (de Suède moderne) ; en VI, de gueules l'agneau pascal d'argent, portant une hampe croisetée d'or en barre de laquelle pend une bannière aussi d'argent chargée d'une croix de gueules (de Gotland ancien) ; en VII, d'or, à deux lions léopardés d'azur, armés et lampassés de gueules (de Schleswig) ; en VIII, de gueules à la morue d'argent surmonté d'une couronne d'or (de l'Islande) ; en IX, de gueules, à la feuille d'ortie d'argent (de Holstein) ; en X, de gueules, au cygne d'argent, becqué, membré et colleté d'une couronne d'or (Stormarn) ; en XI, d'or à deux fasces de gueules (de Oldenbourg) ; en XII, 'azur, à la croix pattée, au pied fiché d'or (de Delmenhorst) sur le tout de gueules, au cavalier d'or armé d'argent (Dithmarse)",
    "file": "Royal Arms of Norway & Denmark (1559-1699).svg",
    "auteur": "Sodacan",
    "lic": "CC BY-SA 3.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
    "src": "old:arm",
-   "note": "La page lue ne consacre pas de ligne à Frédéric III : on montre la figure de la période 1559-1699, qui est celle de son règne."
+   "note": "La page lue ne consacre pas de ligne à Frédéric III ni à Christian V : on montre la figure de la période 1559-1699, qui est celle de leurs règnes."
   },
   "old_f4": {
    "nom": "Frédéric IV, roi de Danemark et de Norvège",
@@ -546,6 +650,415 @@
    "lic": "domaine public",
    "licurl": "https://commons.wikimedia.org/wiki/File:Blason_Norvège.svg",
    "src": "old:arm"
+  },
+  "wet_conrad": {
+   "nom": "Margraves de Misnie (Conrad le Pieux)",
+   "blason": "D'or, au lion de sable, armé et lampassé de gueules",
+   "file": "Blason Nord-Pas-De-Calais.svg",
+   "auteur": "Kontributor 2K (travail personnel)",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wet:arm",
+   "note": "Le fichier se nomme « Nord-Pas-de-Calais » ; la page lue l'emploie pour le lion de Misnie."
+  },
+  "wet_henri3": {
+   "nom": "Henri III de Misnie",
+   "blason": "Écartelé : aux I et IV, d'azur au lion burelé d'argent et de gueules (Thuringe) ; aux II et III, d'or au lion de sable (Misnie)",
+   "file": "Blason Thuringe-Misnie.svg",
+   "auteur": "Ziegelbrenner",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_fred4": {
+   "nom": "Frédéric le Belliqueux, électeur de Saxe",
+   "blason": "Burelé de sable et d'or, au crancelin de sinople brochant en bande sur le tout (Saxe). Archi-maréchalat du Saint-Empire, charge attachée à l'électorat : coupé de sable et d'argent, à deux épées de gueules posées en sautoir",
+   "file": "Armoiries Saxe2.svg",
+   "auteur": "MostEpic (voir l'historique du fichier)",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wet:arm"
+  },
+  "wet_ernest": {
+   "nom": "Ernest, électeur de Saxe",
+   "blason": "Burelé de sable et d'or, au crancelin de sinople brochant en bande sur le tout (Saxe). Archi-maréchalat du Saint-Empire : coupé de sable et d'argent, à deux épées de gueules posées en sautoir",
+   "file": "Blason Saxe (Petites armes).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_albert3": {
+   "nom": "Albert III de Saxe",
+   "blason": "Écartelé : en I, burelé de dix pièces de sable et d'or au crancelin de sinople (Saxe) ; en II, d'azur au lion burelé d'argent et de gueules, couronné d'or (Thuringe) ; en III, d'azur à l'aigle d'or (Palatinat de Saxe) ; en IV, d'or au lion de sable, armé et lampassé de gueules (Misnie)",
+   "file": "Blason Albert III de Saxe (1443 † 1500).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_jf": {
+   "nom": "Jean-Frédéric le Magnanime, duc de Saxe-Weimar",
+   "blason": "Parti de deux, coupé de trois : I, d'azur à l'aigle d'or (Palatinat de Saxe) ; II, d'azur au lion burelé d'argent et de gueules, couronné d'or (Thuringe) ; III, d'or au lion de sable (Misnie) ; IV, d'or semé de cœurs de gueules, au lion de sable (Orlamünde) ; V, en sur-le-tout, burelé de sable et d'or au crancelin de sinople (Saxe) ; VI, d'azur au lion coupé d'or et d'argent (Pleissen) ; VII, d'argent à trois bouterolles de gueules (Angrie) ; VIII, d'or à deux pals d'azur (Landsberg) ; IX, de sable à l'aigle d'or (Palatinat de Thuringe) ; X, de gueules (droit de régale) ; la page donne d'autres quartiers",
+   "file": "Blason Duché de Saxe-Weimar.svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_saalfeld": {
+   "nom": "Jean-Ernest, duc de Saxe-Saalfeld",
+   "blason": "Parti de deux et coupé de cinq : I, d'azur au lion burelé d'argent et de gueules, couronné d'or (Thuringe) ; II, de gueules à l'écusson d'argent, aux rais d'escarboucle d'or (Clèves) ; III, d'or au lion de sable (Misnie) ; IV, d'or au lion de sable (Juliers) ; V, en sur-le-tout, burelé de sable et d'or au crancelin de sinople (Saxe) ; VI, d'argent au lion de gueules, armé et lampassé d'azur, couronné d'or (Berg) ; VII, d'azur à l'aigle d'or (Palatinat de Saxe) ; VIII, d'or à deux pals d'azur (Landsberg) ; IX, de sable à l'aigle d'or (Palatinat de Thuringe) ; la page donne d'autres quartiers",
+   "file": "Blason Duché de Saxe-Hildbourghausen.svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm",
+   "note": "La page lue emploie ici la figure de Saxe-Hildburghausen, dont l'écu est composé des mêmes quartiers."
+  },
+  "wet_ernest2": {
+   "nom": "Ernest, duc de Saxe-Cobourg-Gotha",
+   "blason": "Armes moyennes : écartelé : I, d'azur au lion burelé d'argent et de gueules, couronné d'or (Thuringe) ; II, d'or au lion de sable, armé et lampassé de gueules (Misnie) ; III, d'or à une poule de sable, crêtée, becquée et membrée de gueules, posée sur un mont de sinople ; IV, de sable au lion d'or, armé, lampassé et couronné de gueules (Vogtland) ; sur-le-tout, Burelé de sable et d'or, au crancelin de sinople brochant en bande sur le tout (Saxe)",
+   "file": "Blason Duché de Saxe-Cobourg et Gotha.svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_albert": {
+   "nom": "Albert, prince consort",
+   "blason": "Écartelé : I et IV, contre-écartelé : aux 1 et 4 de gueules à trois léopards d'or, armés et lampassés d'azur (Angleterre) ; au 2 d'or au lion de gueules dans un double trescheur fleuronné et contre-fleuronné du même (Écosse) ; au 3 d'azur à la harpe d'or cordée d'argent (Irlande), au lambel à trois pendants d'argent, celui du cœur chargé d'une croix de gueules (de saint Georges) ; II et III, burelé de dix pièces de sable et d'or au crancelin de sinople, brochant en bande sur le tout (Saxe)",
+   "file": "Arms of Albert of Saxe-Coburg and Gotha.svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wet:arm"
+  },
+  "wet_edward7": {
+   "nom": "Albert-Édouard, prince de Galles, puis Édouard VII",
+   "blason": "Écartelé : I et IV de gueules à trois léopards d'or (Angleterre) ; II d'or au lion de gueules, au double trescheur fleuronné et contre-fleuronné du même (Écosse) ; III d'azur à la harpe d'or cordée d'argent (Irlande) ; au lambel à trois pendants d'argent ; sur-le-tout, burelé de dix pièces de sable et d'or au crancelin de sinople (Saxe)",
+   "file": "Arms of the Prince of Wales (1841-1910).svg",
+   "auteur": "Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wet:arm"
+  },
+  "wet_george5": {
+   "nom": "George, duc d'York (avant 1892), puis George V",
+   "blason": "Avant 1892 : écartelé : I et IV de gueules à trois léopards d'or (Angleterre) ; II d'or au lion de gueules, au double trescheur fleuronné et contre-fleuronné du même (Écosse) ; III d'azur à la harpe d'or cordée d'argent (Irlande) ; au lambel à cinq pendants d'argent ; sur-le-tout, burelé de dix pièces de sable et d'or au crancelin de sinople (Saxe)",
+   "file": "Blason George V du Royaume-Uni (avant 1892).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_leopold1": {
+   "nom": "Léopold Ier, roi des Belges",
+   "blason": "Variante 1 : écartelé : I et IV, contre-écartelé : aux 1 et 4 de gueules à trois léopards d'or, armés et lampassés d'azur (Angleterre) ; au 2 d'or au lion de gueules dans un double trescheur fleuronné et contre-fleuronné du même (Écosse) ; au 3 d'azur à la harpe d'or cordée d'argent (Irlande) ; sur-le-tout, tiercé en pairle renversé : 1, de gueules à deux léopards d'or (Brunswick) ; 2, d'or semé de cœurs de gueules, au lion d'azur (Lunebourg) ; 3, de gueules au cheval cabré d'argent",
+   "file": "Blason Léopold Ier de Belgique (1790-1865) Variante 1.svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm",
+   "note": "La page lue donne plusieurs variantes avant que les armes ne se fixent au cours du règne ; on montre la première."
+  },
+  "wet_leopold2": {
+   "nom": "Léopold II, roi des Belges",
+   "blason": "De sable, au lion d'or, armé et lampassé de gueules (Belgique), chargé d'un écusson burelé de dix pièces d'or et de sable au crancelin de sinople, brochant en bande sur le tout (Saxe)",
+   "file": "Arms of the king of the Belgians (1837-1921).svg",
+   "auteur": "Dubbelleuw",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "wet:arm"
+  },
+  "wet_pierre5": {
+   "nom": "Pierre V, Louis Ier, Charles Ier et Manuel II, rois de Portugal",
+   "blason": "D'argent à cinq écussons d'azur disposés en croix, chaque écusson chargé de cinq besants d'argent, à la bordure de gueules chargée de sept châteaux d'or",
+   "file": "Blason Portugal 1485.svg",
+   "auteur": "Great Brightstar",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm",
+   "note": "La page lue donne ces armes à Pierre V (1837-1861), à son frère Louis Ier, à Charles Ier et à Manuel II, détrôné par la révolution de 1910."
+  },
+  "wet_ferd2": {
+   "nom": "Ferdinand II, roi consort de Portugal",
+   "blason": "Parti : au 1, d'argent à cinq écussons d'azur disposés en croix, chaque écusson chargé de cinq besants d'argent, à la bordure de gueules chargée de sept châteaux d'or (Portugal) ; au 2, burelé de sable et d'or au crancelin de sinople brochant en bande sur le tout (Saxe)",
+   "file": "Blason Saxe (Petites armes).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm",
+   "note": "Seul le burelé de Saxe est montré ici : la page lue ne donne pas de figure du parti de Ferdinand II."
+  },
+  "wet_bg": {
+   "nom": "Ferdinand, prince puis roi de Bulgarie",
+   "blason": "De gueules, au lion d'or, armé et lampassé de sinople, coiffé d'une couronne fermée",
+   "file": "Arms of Bulgaria 1908-1946.svg",
+   "auteur": "Glasshouse, d'après des éléments de Sodacan",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "wet:arm",
+   "note": "La page lue donne ces armes à Boris III (roi des Bulgares, 1918-1943) et à Siméon II (roi, 1943-1946, puis ministre-président de la République de Bulgarie de 2001 à 2005 sous le nom de Siméon Sakskoburggotski)."
+  },
+  "wet_bresil": {
+   "nom": "Prétendants au trône brésilien (Saxe-Cobourg-Bragance)",
+   "blason": "De sinople, à la sphère armillaire d'or sur une croix de l'ordre du Christ, entourée d'un anneau d'azur chargé de vingt étoiles d'argent ; sur-le-tout, un écusson burelé de sable et d'or au crancelin de sinople",
+   "file": "Blazon of the Saxe-Coburgo-Bragança Dinasty.svg",
+   "auteur": "Tonyjeff, d'après Jean-Baptiste Debret",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Blazon_of_the_Saxe-Coburgo-Bragança_Dinasty.svg",
+   "src": "wet:arm"
+  },
+  "wet_jg1": {
+   "nom": "Jean-Georges Ier, électeur de Saxe",
+   "blason": "Écartelé : en I, burelé de dix pièces de sable et d'or au crancelin de sinople ; en II, d'azur au lion burelé d'argent et de gueules, couronné d'or (Thuringe) ; en III, mi-parti : 1, de gueules à l'aigle d'argent, becquée, languée, membrée, liée et couronnée d'or (Pologne), 2, fascé de huit pièces de gueules et d'argent (Hongrie) ; en IV, d'or à deux pals d'azur (Landsberg) ; sur-le-tout, coupé de sable et d'argent à deux épées de gueules posées en sautoir (archi-maréchalat)",
+   "file": "Blason Jean-Georges Ier de Saxe (1585-1656).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm"
+  },
+  "wet_roi": {
+   "nom": "Frédéric-Auguste le Juste, roi de Saxe",
+   "blason": "Petites armes : Burelé de sable et d'or, au crancelin de sinople brochant en bande sur le tout (Saxe)",
+   "file": "Blason Saxe (Petites armes).svg",
+   "auteur": "Jimmy44 (travail personnel)",
+   "lic": "CC BY 3.0",
+   "licurl": "https://creativecommons.org/licenses/by/3.0",
+   "src": "wet:arm",
+   "note": "La page lue donne aussi des grandes armes du royaume (Misnie, Thuringe, les deux Palatinats, Vogtland et d'autres quartiers) ; on ne montre ici que les petites armes."
+  },
+  "wit_root": {
+   "nom": "Ducs de Bavière",
+   "blason": "Fuselé en bande d'azur et d'argent",
+   "file": "Armoiries Bavière.svg",
+   "auteur": "Squwelf",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm",
+   "note": "Othon Ier reçoit en 1180 de Frédéric Barberousse le duché de Bavière confisqué à Henri le Lion ; la page donne pour les ducs de Bavière de 1180 à 1623 ce fuselé."
+  },
+  "wit_palat": {
+   "nom": "Comtes palatins du Rhin",
+   "blason": "Écartelé : aux 1 et 4, de sable au lion d'or, armé, lampassé et couronné de gueules ; aux 2 et 3, fuselé en bande d'azur et d'argent ; sur-le-tout, de gueules à l'orbe d'or cerclé de même (archi-sénéchal du Saint-Empire)",
+   "file": "COA Churpfalz.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_robert": {
+   "nom": "Robert, roi des Romains",
+   "blason": "D'or à l'aigle de sable, membrée, becquée et liée de gueules ; sur-le-tout, écartelé : aux 1 et 4, de sable au lion d'or, armé, lampassé et couronné de gueules ; aux 2 et 3, fuselé en bande d'azur et d'argent",
+   "file": "Armoiries empereur Robert Ier.svg",
+   "auteur": "Watchduck",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_fred5": {
+   "nom": "Frédéric V, électeur palatin et roi de Bohême",
+   "blason": "Parti d'un, coupé de deux : au 1, de gueules au lion d'argent à la queue fourchée passée en sautoir, couronné, armé et lampassé d'or (Bohême) ; au 2, d'azur à l'aigle échiquetée d'argent et de gueules, couronnée d'or (Moravie) ; au 3, d'or à l'aigle de sable portant sur son cœur un croissant d'argent surmonté d'une croix de même (Silésie) ; au 4, burelé d'argent et d'azur de dix pièces, au lion de gueules à la queue fourchée, couronné d'or (Luxembourg) ; au 5, coupé crénelé d'azur et d'or (Haute-Lusace) ; la page donne d'autres quartiers",
+   "file": "Coat of arms Frederick V, Elector Palatine, King of Bohemia.png",
+   "auteur": "Rs-nourse",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_elect": {
+   "nom": "Électeurs de Bavière",
+   "blason": "Écartelé : aux 1 et 4, fuselé en bande d'azur et d'argent ; aux 2 et 3, de sable au lion d'or, armé, lampassé et couronné de gueules ; sur-le-tout, de gueules à l'orbe crucifère d'or",
+   "file": "Duchy of bavaria large.svg",
+   "auteur": "Xenakis",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_louis4": {
+   "nom": "Louis IV, empereur",
+   "blason": "D'or à l'aigle de sable, membrée, becquée et liée de gueules ; sur-le-tout, fuselé en bande d'azur et d'argent",
+   "file": "Emperor Louis IV Arms.svg",
+   "auteur": "Ipankonin",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_charles7": {
+   "nom": "Charles VII, empereur",
+   "blason": "D'or à l'aigle de sable, membrée, becquée et liée de gueules ; écartelé : aux 1 et 4, fuselé en bande d'azur et d'argent ; aux 2 et 3, de sable au lion d'or, armé, lampassé et couronné de gueules ; sur-le-tout, de gueules à l'orbe crucifère d'or",
+   "file": "Coat of Arms of Charles VII Albert, Holy Roman Emperor.svg",
+   "auteur": "Tom Lemmens et Heralder, éléments de Sodacan",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_brand": {
+   "nom": "Bavière-Brandebourg",
+   "blason": "Parti : fuselé en bande d'azur et d'argent ; et d'argent à l'aigle de gueules, armée, becquée et languée d'or",
+   "file": "Armoiries Bavière-Brandebourg.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_hol": {
+   "nom": "Bavière-Straubing, Hainaut et Hollande",
+   "blason": "Écartelé : aux 1 et 4, fuselé en bande d'azur et d'argent ; aux 2 et 3, contre-écartelé : aux 1 et 4 d'or au lion de sable, armé et lampassé de gueules, aux 2 et 3 d'or au lion de gueules, armé et lampassé d'azur",
+   "file": "Die Grave van Hollant Codex 148 wapen.svg",
+   "auteur": "Arch",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Die_Grave_van_Hollant_Codex_148_wapen.svg",
+   "src": "wit:arm"
+  },
+  "wit_zwei": {
+   "nom": "Comtes palatins de Deux-Ponts",
+   "blason": "Parti : en I, écartelé : aux 1 et 4, de sable au lion d'or, armé, lampassé et couronné de gueules (Palatinat du Rhin) ; aux 2 et 3, fuselé en bande d'azur et d'argent (Bavière) ; sur-le-tout, d'argent au lion d'azur, armé, lampassé et couronné d'or (Veldenz) ; en II, coupé de deux, parti de trois : d'or au lion de sable (Juliers) ; de gueules à l'écusson d'argent aux rais d'escarboucle d'or (Clèves) ; d'argent au lion de gueules à la queue fourchée, couronné d'or (Berg) ; d'or à la fasce échiquetée d'argent et de gueules de trois tires (La Marck) ; la page donne d'autres quartiers",
+   "file": "Armoiries comtes palatins de Deux-Ponts.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_swe": {
+   "nom": "Rois de Suède de la maison palatine",
+   "blason": "Écartelé : à la croix pattée d'or (croix de Saint-Éric), cantonnée aux 1 et 4 de Suède moderne (d'azur à trois couronnes d'or, posées 2 et 1), aux 2 et 3 de Suède ancien (d'azur à trois barres ondées d'argent, au lion couronné d'or brochant) ; sur-le-tout, écartelé : 1, fuselé en bande d'azur et d'argent (Bavière) ; 2, d'or au lion de sable (Juliers) ; 3, de gueules à l'écusson d'argent aux rais d'escarboucle d'or (Clèves) ; 4, d'argent au lion de gueules à la queue fourchée, couronné d'or (Berg) ; la page donne d'autres quartiers",
+   "file": "Greater coat of arms of Suède Palatinat.svg",
+   "auteur": "Jacques63",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_max": {
+   "nom": "Maximilien, de Deux-Ponts à la couronne de Bavière",
+   "blason": "Palatinat en Bavière, 1799-1804 : parti ; au 1, d'or au lion de sable à la queue fourchée passée en sautoir, couronné d'or (Juliers) ; au 2, d'argent au lion de gueules à la queue fourchée passée en sautoir, couronné d'azur (Berg) ; au 3, de gueules à l'écusson d'argent aux rais d'escarboucle d'or (Clèves) ; au 4, d'or à la fasce de sable (Sponheim) ; au 5, échiqueté d'argent et de gueules de trois tires (Birkenfeld) ; la page donne d'autres quartiers",
+   "file": "CoA Kurpfalz-Bayern 1799-1804.svg",
+   "auteur": "Katepanomegas",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_roy09": {
+   "nom": "Rois de Bavière, 1809-1835",
+   "blason": "Fuselé en bande d'azur et d'argent, chargé en cœur d'un écusson de gueules à une épée d'argent garnie d'or passée en sautoir avec un sceptre d'or, le tout surmonté d'une couronne royale du même",
+   "file": "Wapp bayern 1806.svg",
+   "auteur": "GrussGottTrauer",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "wit:arm"
+  },
+  "wit_roy35": {
+   "nom": "Rois de Bavière, 1835-1918",
+   "blason": "Écartelé : au 1, de sable au lion d'or, armé, lampassé et couronné de gueules (Palatinat du Rhin) ; au 2, émanché de gueules et d'argent de trois pièces (Franconie) ; au 3, bandé d'argent et de gueules, au pal d'or brochant (Burgovie) ; au 4, d'argent au lion d'azur, armé, lampassé et couronné d'or (Veldenz) ; sur-le-tout, fuselé en bande d'azur et d'argent (Bavière)",
+   "file": "Coat of Arms of the Kingdom of Bavaria 1835-1918.svg",
+   "auteur": "Glasshouse, d'après des éléments de Sodacan et Heralder",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Kingdom_of_Bavaria_1835-1918.svg",
+   "src": "wit:arm"
+  },
+  "wit_otto": {
+   "nom": "Othon, roi de Grèce",
+   "blason": "D'azur à la croix alésée d'argent, sur-le-tout fuselé en bande d'azur et d'argent",
+   "file": "Greek CoA (1831-1863).svg",
+   "auteur": "peeperman",
+   "lic": "domaine public",
+   "licurl": "https://commons.wikimedia.org/wiki/File:Greek_CoA_(1831-1863).svg",
+   "src": "wit:arm"
+  },
+  "lor_root": {
+   "nom": "Ducs de Lorraine, de Simon II à Charles II",
+   "blason": "D'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+   "file": "Blason Lorraine.svg",
+   "auteur": "Thom.lanaud",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm",
+   "note": "Il s'agissait à l'origine de trois aiglettes dont les pattes et le bec s'atrophièrent pour devenir l'alérion actuel, à la fin du XVe siècle (page lue)."
+  },
+  "lor_vaud": {
+   "nom": "Comtes de Vaudémont, 1393-1473",
+   "blason": "D'or à la bande de gueules chargée de trois alérions d'argent, brisé d'un lambel d'azur",
+   "file": "Armoiries Comtes Lorraine-Vaudémont.svg",
+   "auteur": "ZigeunerAlt",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm"
+  },
+  "lor_antoine": {
+   "nom": "Antoine de Vaudémont, chef de la maison",
+   "blason": "D'or à la bande de gueules chargée de trois alérions d'argent (Lorraine), sans le lambel",
+   "file": "Blason Lorraine.svg",
+   "auteur": "Thom.lanaud",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm",
+   "note": "La figure est la même que celle des ducs de Lorraine antérieurs : le lambel d'azur a été supprimé."
+  },
+  "lor_rene2": {
+   "nom": "René II, armes de ses deux parents",
+   "blason": "Écartelé : aux 1 et 4, d'or à la bande de gueules chargée de trois alérions d'argent (Lorraine) ; aux 2 et 3, coupé : le chef tiercé en pal d'un fascé de gueules et d'argent de huit pièces (Hongrie), d'azur semé de fleurs de lis d'or au lambel de gueules (Anjou-Sicile), d'argent à la croix potencée d'or cantonnée de quatre croisettes du même (Jérusalem) ; en pointe, parti d'azur semé de fleurs de lis d'or à la bordure de gueules (Anjou) et d'azur semé de croisettes recroisetées au pied fiché d'or, à deux bars adossés du même (Bar)",
+   "file": "Blason_du_duc_de_René_II_de_Lorraine_1473-1500.svg",
+   "auteur": "Mithres Carlos",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "lor:arm"
+  },
+  "lor_d1500": {
+   "nom": "Ducs de Lorraine, de René II à Antoine (vers 1538)",
+   "blason": "Coupé, le chef parti de trois traits : en 1, fascé de gueules et d'argent de huit pièces (Hongrie) ; en 2, d'azur semé de fleurs de lis d'or au lambel de gueules (Anjou-Sicile) ; en 3, d'argent à la croix potencée d'or cantonnée de quatre croisettes du même (Jérusalem) ; en 4, d'or à quatre pals de gueules (Aragon) ; la pointe parti d'azur semé de fleurs de lis d'or à la bordure de gueules (Anjou) et d'azur semé de croisettes recroisetées au pied fiché d'or, à deux bars adossés du même (Bar) ; sur-le-tout, d'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+   "file": "Lorraine Arms 1473.svg",
+   "auteur": "Ipankonin",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm"
+  },
+  "lor_d1538": {
+   "nom": "Ducs de Lorraine, d'Antoine (vers 1538) à François III (1737)",
+   "blason": "Coupé d'un trait et parti de trois : en 1, fascé de gueules et d'argent de huit pièces (Hongrie) ; en 2, Anjou-Sicile ; en 3, Jérusalem ; en 4, d'or à quatre pals de gueules (Aragon) ; en 5, Anjou ; en 6, d'azur au lion contourné à queue fourchée d'or, armé, lampassé et couronné de gueules (Gueldre) ; en 7, d'or au lion de sable, armé et lampassé de gueules (Juliers) ; la page donne le reste et, sur-le-tout, la Lorraine",
+   "file": "Lorraine Arms 1538.svg",
+   "auteur": "Ipankonin",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm"
+  },
+  "lor_fr3": {
+   "nom": "François, grand-duc de Toscane",
+   "blason": "Coupé d'un trait et parti de trois : en 1, Hongrie ; en 2, Anjou-Sicile ; en 3, Jérusalem ; en 4, Aragon ; en 5, Anjou ; en 6, Gueldre ; en 7, Juliers ; en 8, Bar ; la page donne la suite",
+   "file": "Armoiries François Ier de Lorraine.svg",
+   "auteur": "Mithres Carlos",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm",
+   "note": "La page renvoie à la partie Habsbourg-Lorraine de l'Armorial des Habsbourg pour ses descendants."
+  },
+  "lor_flandre": {
+   "nom": "Comtes de Flandre (maison d'Alsace)",
+   "blason": "D'or au lion de sable, armé et lampassé de gueules (Flandre)",
+   "file": "Blason Comté de Flandre.svg",
+   "auteur": "Kontributor 2K (travail personnel)",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "src": "lor:arm",
+   "note": "À partir de la seconde moitié du XIVe siècle, on attribua rétrospectivement aux prédécesseurs de Philippe d'Alsace un écu gironné d'or et d'azur à l'écu de gueules brochant (Flandre ancien)."
+  },
+  "lor_guise": {
+   "nom": "Ducs de Guise",
+   "blason": "Coupé et parti de trois : au premier, fascé de gueules et d'argent (Hongrie) ; au second, d'azur semé de lis d'or et au lambel de gueules (Anjou-Sicile) ; au troisième, d'argent à la croix potencée d'or cantonnée de quatre croisettes du même (Jérusalem) ; au quatrième, d'or aux quatre pals de gueules (Aragon) ; au cinquième, parti d'azur semé de lis d'or à la bordure de gueules (Anjou) ; au sixième, d'azur au lion contourné d'or (Gueldre) ; au septième, d'or au lion de sable (Juliers) ; au huitième, d'azur semé de croisettes d'or aux deux bars d'or (Bar) ; sur-le-tout, d'or à la bande de gueules chargée de trois alérions d'argent, le tout brisé d'un lambel de gueules",
+   "file": "Armoiries ducs de Guise.svg",
+   "auteur": "Thom.lanaud",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm"
+  },
+  "lor_louise": {
+   "nom": "Louise de Lorraine, reine de France",
+   "blason": "Mi-parti de France (d'azur à trois fleurs de lis d'or) et de Lorraine (coupé et parti de trois : Hongrie, Anjou-Sicile au lambel de gueules, Jérusalem, Aragon, Anjou, Gueldre, Juliers, Bar ; sur-le-tout, d'or à la bande de gueules chargée de trois alérions d'argent)",
+   "file": "COA french queen Louise de Lorraine.svg",
+   "auteur": "Odejea",
+   "lic": "CC BY-SA 3.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "src": "lor:arm",
+   "note": "Le blasonnement est résumé : la page donne le détail des huit quartiers lorrains."
   }
  },
  "noeuds": [
@@ -1461,7 +1974,7 @@
   {
    "id": "old_f3",
    "ref": "tr:old_f3",
-   "nom": "Frédéric III et son temps",
+   "nom": "Frédéric III et Christian V",
    "dates": "XVIIe s.",
    "parent": "old_f2"
   },
@@ -1625,6 +2138,311 @@
    "nom": "Haakon VII, roi de Norvège",
    "dates": "1905–1957",
    "parent": "old_c9"
+  },
+  {
+   "id": "wet_conrad",
+   "ref": "tr:wet_conrad",
+   "nom": "Margraves de Misnie",
+   "dates": "1098–"
+  },
+  {
+   "id": "wet_henri3",
+   "ref": "tr:wet_henri3",
+   "nom": "Henri III : Misnie et Thuringe",
+   "dates": "1247–1265",
+   "parent": "wet_conrad"
+  },
+  {
+   "id": "wet_fred4",
+   "ref": "tr:wet_fred4",
+   "nom": "Frédéric le Belliqueux : l'électorat",
+   "dates": "1423–1428",
+   "parent": "wet_henri3"
+  },
+  {
+   "id": "wet_ernest",
+   "ref": "tr:wet_ernest",
+   "nom": "Ernest, branche ernestine",
+   "dates": "1482–1486",
+   "parent": "wet_fred4"
+  },
+  {
+   "id": "wet_albert3",
+   "ref": "tr:wet_albert3",
+   "nom": "Albert III, branche albertine",
+   "dates": "1443–1500",
+   "parent": "wet_fred4"
+  },
+  {
+   "id": "wet_jf",
+   "ref": "tr:wet_jf",
+   "nom": "Jean-Frédéric, déposé de l'électorat",
+   "dates": "1532–1547",
+   "parent": "wet_ernest"
+  },
+  {
+   "id": "wet_saalfeld",
+   "ref": "tr:wet_saalfeld",
+   "nom": "Saxe-Saalfeld",
+   "dates": "1658–1729",
+   "parent": "wet_jf"
+  },
+  {
+   "id": "wet_ernest2",
+   "ref": "tr:wet_ernest2",
+   "nom": "Saxe-Cobourg-Gotha",
+   "dates": "1826–1844",
+   "parent": "wet_saalfeld"
+  },
+  {
+   "id": "wet_albert",
+   "ref": "tr:wet_albert",
+   "nom": "Albert, époux de la reine Victoria",
+   "dates": "après 1840",
+   "parent": "uk37"
+  },
+  {
+   "id": "wet_edward7",
+   "ref": "tr:wet_edward7",
+   "nom": "Édouard, prince de Galles",
+   "dates": "1841–1901",
+   "parent": "wet_albert"
+  },
+  {
+   "id": "wet_george5",
+   "ref": "tr:wet_george5",
+   "nom": "George, duc d'York",
+   "dates": "avant 1892",
+   "parent": "wet_edward7"
+  },
+  {
+   "id": "wet_leopold1",
+   "ref": "tr:wet_leopold1",
+   "nom": "Léopold Ier, roi des Belges",
+   "dates": "1831–1865",
+   "parent": "wet_saalfeld"
+  },
+  {
+   "id": "wet_leopold2",
+   "ref": "tr:wet_leopold2",
+   "nom": "Léopold II",
+   "dates": "1865–1909",
+   "parent": "wet_leopold1"
+  },
+  {
+   "id": "wet_pierre5",
+   "ref": "tr:wet_pierre5",
+   "nom": "Pierre V et ses successeurs",
+   "dates": "jusqu'en 1910",
+   "parent": "q1485"
+  },
+  {
+   "id": "wet_ferd2",
+   "ref": "tr:wet_ferd2",
+   "nom": "Ferdinand II, roi consort",
+   "dates": "1837–1853",
+   "apport": true
+  },
+  {
+   "id": "wet_bg",
+   "ref": "tr:wet_bg",
+   "nom": "Ferdinand, roi de Bulgarie",
+   "dates": "1887–1918",
+   "parent": "wet_ernest2"
+  },
+  {
+   "id": "wet_bresil",
+   "ref": "tr:wet_bresil",
+   "nom": "Prétendants au trône du Brésil",
+   "dates": "XIXe s.–",
+   "parent": "wet_ernest2"
+  },
+  {
+   "id": "wet_jg1",
+   "ref": "tr:wet_jg1",
+   "nom": "Jean-Georges Ier",
+   "dates": "1611–1656",
+   "parent": "wet_albert3"
+  },
+  {
+   "id": "wet_roi",
+   "ref": "tr:wet_roi",
+   "nom": "Frédéric-Auguste, roi de Saxe",
+   "dates": "1806–1827",
+   "parent": "wet_jg1"
+  },
+  {
+   "id": "wit_root",
+   "ref": "tr:wit_root",
+   "nom": "Ducs de Bavière",
+   "dates": "1180–1623"
+  },
+  {
+   "id": "wit_palat",
+   "ref": "tr:wit_palat",
+   "nom": "Comtes palatins du Rhin",
+   "dates": "1215–1623",
+   "parent": "wit_root"
+  },
+  {
+   "id": "wit_robert",
+   "ref": "tr:wit_robert",
+   "nom": "Robert, roi des Romains",
+   "dates": "1400–1410",
+   "parent": "wit_palat"
+  },
+  {
+   "id": "wit_fred5",
+   "ref": "tr:wit_fred5",
+   "nom": "Frédéric V, roi de Bohême",
+   "dates": "1619–1620",
+   "parent": "wit_palat"
+  },
+  {
+   "id": "wit_elect",
+   "ref": "tr:wit_elect",
+   "nom": "Électeurs de Bavière",
+   "dates": "1623–1777",
+   "parent": "wit_root"
+  },
+  {
+   "id": "wit_charles7",
+   "ref": "tr:wit_charles7",
+   "nom": "Charles VII, empereur",
+   "dates": "1742–1745",
+   "parent": "wit_elect"
+  },
+  {
+   "id": "wit_louis4",
+   "ref": "tr:wit_louis4",
+   "nom": "Louis IV, empereur",
+   "dates": "1314–1347",
+   "parent": "wit_root"
+  },
+  {
+   "id": "wit_brand",
+   "ref": "tr:wit_brand",
+   "nom": "Bavière-Brandebourg",
+   "dates": "XIVe s.",
+   "parent": "wit_louis4"
+  },
+  {
+   "id": "wit_hol",
+   "ref": "tr:wit_hol",
+   "nom": "Bavière-Straubing : Hainaut et Hollande",
+   "dates": "jusqu'en 1433",
+   "parent": "wit_louis4"
+  },
+  {
+   "id": "wit_zwei",
+   "ref": "tr:wit_zwei",
+   "nom": "Palatins de Deux-Ponts",
+   "dates": "1569–1675",
+   "parent": "wit_palat"
+  },
+  {
+   "id": "wit_swe",
+   "ref": "tr:wit_swe",
+   "nom": "Rois de Suède de la maison palatine",
+   "dates": "1654–1720",
+   "parent": "wit_zwei"
+  },
+  {
+   "id": "wit_max",
+   "ref": "tr:wit_max",
+   "nom": "Maximilien : le Palatinat en Bavière",
+   "dates": "1799–1804",
+   "parent": "wit_zwei"
+  },
+  {
+   "id": "wit_roy09",
+   "ref": "tr:wit_roy09",
+   "nom": "Rois de Bavière",
+   "dates": "1809–1835",
+   "parent": "wit_max"
+  },
+  {
+   "id": "wit_roy35",
+   "ref": "tr:wit_roy35",
+   "nom": "Rois de Bavière (1835)",
+   "dates": "1835–1918",
+   "parent": "wit_roy09"
+  },
+  {
+   "id": "wit_otto",
+   "ref": "tr:wit_otto",
+   "nom": "Othon, roi de Grèce",
+   "dates": "1831–1863",
+   "parent": "wit_roy09"
+  },
+  {
+   "id": "lor_root",
+   "ref": "tr:lor_root",
+   "nom": "Ducs de Lorraine",
+   "dates": "v. 1140–1431"
+  },
+  {
+   "id": "lor_vaud",
+   "ref": "tr:lor_vaud",
+   "nom": "Comtes de Vaudémont",
+   "dates": "1393–1473",
+   "parent": "lor_root"
+  },
+  {
+   "id": "lor_antoine",
+   "ref": "tr:lor_antoine",
+   "nom": "Antoine de Vaudémont, chef de la maison",
+   "dates": "1431–1458",
+   "parent": "lor_vaud"
+  },
+  {
+   "id": "lor_rene2",
+   "ref": "tr:lor_rene2",
+   "nom": "René II : les armes de ses deux parents",
+   "dates": "1473–1500",
+   "parent": "lor_antoine"
+  },
+  {
+   "id": "lor_d1500",
+   "ref": "tr:lor_d1500",
+   "nom": "Ducs de Lorraine à partir de 1500",
+   "dates": "1500–vers 1538",
+   "parent": "lor_rene2"
+  },
+  {
+   "id": "lor_d1538",
+   "ref": "tr:lor_d1538",
+   "nom": "Gueldre et Juliers",
+   "dates": "vers 1538–1737",
+   "parent": "lor_d1500"
+  },
+  {
+   "id": "lor_fr3",
+   "ref": "tr:lor_fr3",
+   "nom": "François, grand-duc de Toscane",
+   "dates": "1737",
+   "parent": "lor_d1538"
+  },
+  {
+   "id": "lor_flandre",
+   "ref": "tr:lor_flandre",
+   "nom": "Comtes de Flandre (maison d'Alsace)",
+   "dates": "XIIe s.",
+   "parent": "lor_root"
+  },
+  {
+   "id": "lor_guise",
+   "ref": "tr:lor_guise",
+   "nom": "Ducs de Guise",
+   "dates": "XVIe s.",
+   "parent": "lor_d1500"
+  },
+  {
+   "id": "lor_louise",
+   "ref": "tr:lor_louise",
+   "nom": "Louise de Lorraine, reine de France",
+   "dates": "1575",
+   "parent": "lor_d1500"
   }
  ],
  "liens": [
@@ -1720,14 +2538,16 @@
    "type": "cadette",
    "annee": "1351",
    "effet": "Brisure : une bordure de gueules sur le semé de lis.",
-   "lacune": "La page donne pour fondateur Louis Ier, duc d'Anjou et comte de Provence, sans dire de quel roi il est le fils ni pourquoi sa bordure est de gueules.",
+   "lacune": "La page lue ne dit pas pourquoi la bordure est de gueules.",
    "sources": [
-    "cap:armorial_cap"
+    "cap:armorial_cap",
+    "y:louis_anjou"
    ],
    "lien": {
     "href": "index.html#brisures",
     "texte": "Le chapitre « Brisures »"
-   }
+   },
+   "pourquoi": "Louis, deuxième fils du roi Jean le Bon, reçoit de son père en apanage le duché d'Anjou et le comté du Maine en 1360 ; l'armorial lui donne la brisure d'une bordure de gueules."
   },
   {
    "de": "val",
@@ -1765,10 +2585,12 @@
    "type": "cadette",
    "annee": "1402",
    "effet": "Écartelé : aux 1 et 4 les lis à la bordure componée de Valois-Bourgogne, au 2 un lion d'or sur sable, au 3 un lion de gueules sur argent.",
-   "lacune": "La page nomme Antoine duc de Lothier, de Brabant et de Limbourg, sans dire comment il a reçu ces duchés ni d'où viennent les deux lions.",
+   "lacune": "La page lue ne dit pas à quel titre il succède à Jeanne, ni d'où viennent les deux lions.",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:antoine"
+   ],
+   "pourquoi": "Antoine, de la maison de Valois-Bourgogne, succède à Jeanne de Brabant comme duc de Brabant et de Limbourg en 1406 ; il meurt à Azincourt en 1415."
   },
   {
    "de": "vbou",
@@ -1844,10 +2666,12 @@
    "type": "cadette",
    "annee": "1080",
    "effet": "Armes propres : échiqueté d'or et d'azur, sans les lis.",
-   "lacune": "La page donne pour fondateur Raoul Ier, comte de Vermandois et de Valois, sans préciser son lien avec le roi.",
+   "lacune": "L'armorial nomme Raoul Ier comme premier porteur ; la page lue sur Hugues, très brève, ne donne ni la date de son mariage ni le passage de Hugues à Raoul.",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:hugues_verm"
+   ],
+   "pourquoi": "Hugues de Vermandois (1057-1102), fils du roi Henri Ier, épouse l'héritière du comté de Vermandois : la branche prend le nom de ce comté."
   },
   {
    "de": "cap",
@@ -1882,10 +2706,12 @@
    "type": "cadette",
    "annee": "1213",
    "effet": "Un franc-quartier d'hermine s'ajoute à l'échiqueté à la bordure de gueules.",
-   "lacune": "La page dit que Pierre Mauclerc est baillistre de Bretagne (1213-1237) ; elle ne dit pas comment l'hermine de Bretagne entre dans son écu.",
+   "lacune": "La page lue ne dit pas comment l'hermine de Bretagne entre dans son écu.",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:pierre_dreux"
+   ],
+   "pourquoi": "Pierre de Dreux, d'ascendance capétienne, est fiancé à Alix de Thouars, duchesse de Bretagne : il rend l'hommage lige pour la Bretagne à Philippe Auguste en 1213 et gouverne le duché comme baillistre de 1213 à 1237 ; le mariage n'est concrétisé qu'un peu plus tard."
   },
   {
    "de": "dbr",
@@ -1931,10 +2757,12 @@
    "type": "cadette",
    "annee": "1093",
    "effet": "Armes propres : d'argent, croix d'azur (selon la page lue).",
-   "lacune": "La page lue range la maison de Portugal parmi les rameaux de la maison de Bourgogne, sans dire pourquoi ses armes sont toutes autres.",
+   "lacune": "La page lue ne dit pas pourquoi les armes du Portugal sont toutes autres que celles de Bourgogne.",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:henri_bourg"
+   ],
+   "pourquoi": "Henri de Bourgogne épouse Thérèse de León en 1093 et reçoit d'Alphonse VI de León les terres au sud du Minho, à l'origine du comté de Portugal."
   },
   {
    "de": "cap",
@@ -1999,10 +2827,12 @@
    "type": "cadette",
    "annee": "1489",
    "effet": "Le champ est d'argent : une bande d'azur semée de lis, avec une cotice de gueules.",
-   "lacune": "La page nomme Charles de Bourbon-Lavedan « bâtard de Bourbon » et range sa branche sous La Marche ; elle ne dit pas pourquoi les émaux sont ainsi renversés.",
+   "lacune": "La page lue ne dit pas pourquoi les émaux sont renversés (champ d'argent, bande d'azur).",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:lavedan"
+   ],
+   "pourquoi": "Charles de Bourbon-Lavedan, dit « bâtard de Bourbon », fils illégitime de Jean II de Bourbon et de Jeanne Louise d'Albret, est à l'origine de la branche illégitime de Bourbon-Lavedan."
   },
   {
    "de": "bmar",
@@ -2125,10 +2955,12 @@
    "type": "heritage",
    "annee": "1734",
    "effet": "Parti de trois : Farnèse et Portugal, Castille-León et Naples, Toscane ; sur le tout, Anjou.",
-   "lacune": "La page parle des rois des Deux-Siciles de la maison de Bourbon sans dire comment les quartiers de Farnèse, du Portugal et de Toscane entrent dans leurs armes.",
+   "lacune": "La page lue ne détaille pas l'entrée des quartiers du Portugal et de Toscane dans les armes.",
    "sources": [
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:charles3"
+   ],
+   "pourquoi": "Charles, duc de Parme et Plaisance en 1731 à la mort de son grand-oncle Antoine Farnèse, devient roi de Naples en 1734 puis de Sicile en 1735, « par conquête » de ces deux royaumes."
   },
   {
    "de": "bespa",
@@ -2136,14 +2968,16 @@
    "type": "cadette",
    "annee": "1748",
    "effet": "Brisure : une bordure de gueules chargée de huit coquilles d'argent.",
-   "lacune": "La page ne nomme pas de premier porteur précis pour ces petites armes (« les ducs de Bourbon-Parme, de 1748 à nos jours »).",
+   "lacune": "La page lue ne dit pas d'où viennent la bordure de gueules et les huit coquilles.",
    "sources": [
-    "cap:armorial_cap"
+    "cap:armorial_cap",
+    "y:philippe_parme"
    ],
    "lien": {
     "href": "index.html#brisures",
     "texte": "Le chapitre « Brisures »"
-   }
+   },
+   "pourquoi": "Le traité d'Aix-la-Chapelle, qui met fin à la guerre de Succession d'Autriche, attribue Parme, Plaisance et Guastalla à l'infant Philippe, qui devient duc en 1748."
   },
   {
    "de": "bpar",
@@ -2197,10 +3031,11 @@
    "type": "heritage",
    "annee": "1573",
    "effet": "Écartelé d'une aigle d'argent et d'un chevalier d'argent, avec sur le tout les trois lis de France.",
-   "lacune": "Les sources lues disent seulement que ce sont les armes d'Henri comme roi de Pologne, de 1573 à 1575, puis les trois lis seuls ; elles ne disent pas comment il est élu.",
    "sources": [
-    "france:armorial_cap"
-   ]
+    "france:armorial_cap",
+    "y:henri3"
+   ],
+   "pourquoi": "Henri est élu roi de Pologne le 11 mai 1573 et couronné au Wawel le 21 février 1574 ; il règne jusqu'en 1575, puis ne porte plus que les trois lis."
   },
   {
    "de": "vbou",
@@ -2248,11 +3083,13 @@
    "type": "annexion",
    "annee": "1430",
    "effet": "Le Brabant et le Limbourg entrent dans l'écu.",
-   "lacune": "Les sources lues disent que Philippe le Bon annexe le Brabant et le Limbourg, sans détailler les circonstances.",
    "jalon": "bourgogne:1430",
    "sources": [
-    "bourgogne:armorial_cap"
-   ]
+    "bourgogne:armorial_cap",
+    "y:philippe_bon"
+   ],
+   "pourquoi": "La page parle de l'« héritage du Brabant et du Limbourg » de Philippe le Bon : ses possessions des Pays-Bas croissent par étapes de 1427 à 1443.",
+   "desaccord": "Les jalons de la frise parlent d'annexion ; la page « Philippe III de Bourgogne » parle d'héritage."
   },
   {
    "de": "bbrab",
@@ -2312,15 +3149,17 @@
    "type": "heritage",
    "annee": "1452",
    "effet": "L'aigle impériale à deux têtes, de sable sur or, remplace l'aigle simple.",
-   "lacune": "L'armorial dit que Frédéric V d'Autriche, empereur sous le nom de Frédéric III, porte l'aigle bicéphale ; les sources lues ne disent pas comment il succède à Albert II.",
+   "lacune": "La page lue ne dit pas qu'il succède à Albert II.",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:fred3"
+   ],
+   "pourquoi": "Frédéric III est élu roi des Romains en 1440 et couronné empereur en 1452 ; il devient archiduc d'Autriche en 1457 à la mort de son cousin Ladislas."
   },
   {
    "de": "fr3",
    "vers": "maxe",
-   "type": "heritage",
+   "type": "mariage",
    "annee": "1486",
    "effet": "L'aigle de l'Empire porte sur le tout l'Autriche parti de la Bourgogne.",
    "pourquoi": "Maximilien est le fils de l'empereur Frédéric III ; les quartiers bourguignons sont ceux de son mariage avec Marie de Bourgogne.",
@@ -2397,13 +3236,14 @@
   {
    "de": "maxe",
    "vers": "ferd1a",
-   "type": "heritage",
+   "type": "mariage",
    "annee": "1526",
    "effet": "L'écartelé de Bohême et de Hongrie porte sur le tout l'Autriche parti de la Bourgogne ancien.",
-   "lacune": "Les sources lues donnent les armes de Ferdinand avant 1558 sans dire comment il reçoit les couronnes de Bohême et de Hongrie.",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:ferd1"
+   ],
+   "pourquoi": "Après la bataille de Mohács (1526), Ferdinand, marié à Anne Jagellon, « avait droit à succéder au trône de Bohême et de Hongrie » ; il hérite donc par sa femme."
   },
   {
    "de": "ferd1a",
@@ -2411,11 +3251,12 @@
    "type": "heritage",
    "annee": "1558",
    "effet": "L'aigle bicéphale remplace l'écartelé de Bohême et de Hongrie.",
-   "lacune": "Le jalon dit que Ferdinand Ier passe à l'aigle bicéphale en 1558 ; les sources lues ne disent pas comment il devient empereur.",
    "jalon": "habsbourg:1558",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:ferd1"
+   ],
+   "pourquoi": "Ferdinand est élu empereur par l'assemblée des princes à Francfort le 24 mars 1558 ; la confirmation du pape n'est plus jugée nécessaire."
   },
   {
    "de": "ferd1b",
@@ -2434,10 +3275,12 @@
    "type": "heritage",
    "annee": "1637",
    "effet": "L'Autriche passe sur le tout du tout ; Bourgogne ancien est parti de Tyrol et de Flandre.",
-   "lacune": "L'armorial donne ces armes à Ferdinand III sans dire pourquoi elles changent.",
+   "lacune": "La page lue ne dit pas pourquoi les armes changent à ce moment.",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:ferd3"
+   ],
+   "pourquoi": "Ferdinand III est élu roi des Romains le 22 décembre 1636, puis devient empereur le 15 février 1637."
   },
   {
    "de": "rod2",
@@ -2468,11 +3311,13 @@
    "type": "heritage",
    "annee": "1711",
    "effet": "L'archiduc pose sur l'aigle impériale les armes qu'il portait comme prétendant.",
-   "lacune": "Le jalon dit que l'archiduc Charles, qui disputait l'Espagne, devient empereur ; les sources lues ne disent pas comment.",
+   "lacune": "La page lue ne développe pas ici l'ouverture de la succession en 1711.",
    "jalon": "habsbourg:1711.3",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:charles6"
+   ],
+   "pourquoi": "Charles VI est empereur à partir du 17 avril 1711 ; il est élu le 12 octobre et couronné à Francfort le 22 décembre 1711."
   },
   {
    "de": "ch6",
@@ -2480,10 +3325,11 @@
    "type": "heritage",
    "annee": "1740",
    "effet": "Les armes de Marie-Thérèse reprennent le prétendant d'Espagne, sans aigle dans l'armorial.",
-   "lacune": "Les sources lues ne disent pas comment Marie-Thérèse hérite des couronnes de son père.",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:charles6"
+   ],
+   "pourquoi": "Sans héritier mâle, Charles VI édicte la Pragmatique Sanction : le domaine des Habsbourg devient indivisible et les femmes sont déclarées aptes à succéder ; Marie-Thérèse lui succède comme souveraine d'Autriche, de Bohême et de Hongrie."
   },
   {
    "de": "mt",
@@ -2505,8 +3351,10 @@
    "effet": "Bar et Toscane : le cœur est tiercé de Lorraine, d'Autriche et de Toscane.",
    "lacune": "L'armorial donne les armes de Léopold II et de François II sans dire pourquoi Bar entre dans l'écu.",
    "sources": [
-    "habsbourg:armorial_fr"
-   ]
+    "habsbourg:armorial_fr",
+    "y:leopold2"
+   ],
+   "pourquoi": "Léopold II, frère cadet de Joseph II et grand-duc de Toscane, est élu empereur le 30 septembre 1790 et couronné à Francfort le 9 octobre."
   },
   {
    "de": "leo2",
@@ -2548,7 +3396,7 @@
   {
    "de": "cq",
    "vers": "ph2a",
-   "type": "heritage",
+   "type": "mariage",
    "annee": "1554–1558",
    "effet": "Les armes d'Espagne sont accolées à celles d'Angleterre.",
    "pourquoi": "Philippe II porte ces armes comme monarque espagnol et époux de Marie Ire d'Angleterre, de 1556 à 1558.",
@@ -2564,12 +3412,15 @@
    "type": "heritage",
    "annee": "1580",
    "effet": "L'écu de Portugal prend place sur le tout des quartiers espagnols.",
-   "lacune": "Les sources lues disent que Philippe II devient roi de Portugal, sans détailler comment.",
+   "lacune": "Les pages lues ne détaillent pas la reconnaissance de Philippe II comme roi de Portugal.",
    "jalon": "habsbourg:1580",
    "sources": [
     "habsbourg:armorial_fr",
-    "habsbourg:espagne_fr"
-   ]
+    "habsbourg:espagne_fr",
+    "y:philippe2",
+    "y:henri_port"
+   ],
+   "pourquoi": "Henri Ier, le Cardinal-Roi, meurt le 31 janvier 1580 ; sa fonction ecclésiastique l'empêchait d'avoir une descendance légitime. Philippe II, fils de Charles Quint et d'Isabelle de Portugal, est roi de Portugal à partir du 12 septembre 1580."
   },
   {
    "de": "esp80",
@@ -2598,7 +3449,7 @@
   {
    "de": "cast",
    "vers": "cath",
-   "type": "heritage",
+   "type": "mariage",
    "annee": "1474",
    "effet": "Castille-León et Aragon sont écartelés ; le tout sur la poitrine de l'aigle de saint Jean.",
    "pourquoi": "Isabelle de Castille et Ferdinand d'Aragon, mariés depuis 1469, unissent leurs couronnes.",
@@ -2710,11 +3561,12 @@
    "type": "heritage",
    "annee": "1981",
    "effet": "Les armes actuelles, avec l'écusson d'Anjou ovale sur le tout.",
-   "lacune": "Le jalon donne la loi 33/1981 du 5 octobre ; les sources lues ne disent pas ce qui l'amène.",
    "jalon": "espagne:1981",
    "sources": [
-    "espagne:spain_en"
-   ]
+    "espagne:spain_en",
+    "y:arm_esp"
+   ],
+   "pourquoi": "La loi 33/1981 remplace les armes de 1977 ; elles sont adoptées à la suite de la transition démocratique qui a sorti l'Espagne du franquisme."
   },
   {
    "de": "eng",
@@ -3089,11 +3941,14 @@
    "type": "heritage",
    "annee": "1580",
    "effet": "Les armes de Portugal passent dans l'écu de la monarchie espagnole.",
-   "lacune": "Les sources lues disent que Philippe II devient roi de Portugal, sans détailler comment.",
+   "lacune": "Les pages lues ne détaillent pas la reconnaissance de Philippe II comme roi de Portugal.",
    "jalon": "espagne:1580",
    "sources": [
-    "espagne:spain_en"
-   ]
+    "espagne:spain_en",
+    "y:philippe2",
+    "y:henri_port"
+   ],
+   "pourquoi": "Henri Ier, le Cardinal-Roi, meurt le 31 janvier 1580 ; sa fonction ecclésiastique l'empêchait d'avoir une descendance légitime. Philippe II, fils de Charles Quint et d'Isabelle de Portugal, est roi de Portugal à partir du 12 septembre 1580."
   },
   {
    "de": "q1485",
@@ -3341,11 +4196,12 @@
    "type": "heritage",
    "annee": "1890",
    "effet": "Le lion de Luxembourg (burelé) porte en surtout l'écusson de Nassau.",
-   "lacune": "La page lue donne les armes prises par Adolphe à son avènement (1890), après Guillaume III, sans détailler la succession.",
    "sources": [
     "nso:lux",
-    "nso:arm_nassau"
-   ]
+    "nso:arm_nassau",
+    "y:adolphe_lux"
+   ],
+   "pourquoi": "En 1890, Wilhelmine hérite du trône des Pays-Bas mais, en vertu du traité de 1783-1815 entre les branches de la maison de Nassau, qui réserve la couronne aux seuls héritiers mâles, elle est exclue de la succession luxembourgeoise : Adolphe, héritier de la branche aînée, devient grand-duc."
   },
   {
    "de": "nso_adolphe",
@@ -3353,11 +4209,13 @@
    "type": "heritage",
    "annee": "1919",
    "effet": "Les armes de Nassau et de Luxembourg figurent aux quartiers II et III et en cœur.",
-   "lacune": "Les pages lues ne détaillent pas la succession de 1890 à 1919.",
+   "lacune": "Les pages lues ne détaillent pas la succession entre 1905 et 1919.",
    "sources": [
     "nso:arm_nassau",
-    "cap:armorial_cap"
-   ]
+    "cap:armorial_cap",
+    "y:charlotte"
+   ],
+   "pourquoi": "Charlotte succède en 1919 à sa sœur aînée Marie-Adélaïde, qui abdique le 15 janvier 1919."
   },
   {
    "de": "nso_apres1582",
@@ -3378,10 +4236,12 @@
    "type": "heritage",
    "annee": "1423",
    "effet": "Les deux fasces d'Oldenbourg occupent les quartiers 1 et 4 ; Delmenhorst les quartiers 2 et 3.",
-   "lacune": "La page lue dit Thierry « comte d'Oldenbourg et de Delmenhorst de 1423 à 1440 » sans dire comment il a succédé.",
+   "lacune": "La page lue sur Thierry ne dit pas comment Delmenhorst s'ajoute à Oldenbourg (voir le passage suivant).",
    "sources": [
-    "old:arm"
-   ]
+    "old:arm",
+    "y:thierry"
+   ],
+   "pourquoi": "Thierry, fils de Christian V d'Oldenbourg, succède à son père en 1423 ; il est comte d'Oldenbourg de 1423 à 1440."
   },
   {
    "de": "old_delm",
@@ -3389,9 +4249,10 @@
    "type": "annexion",
    "annee": "1423",
    "effet": "La croix pattée au pied fiché d'or sur azur de Delmenhorst entre dans l'écu, aux quartiers 2 et 3.",
-   "pourquoi": "Thierry est dit comte d'Oldenbourg et de Delmenhorst de 1423 à 1440 : deux comtés réunis sous un seul comte, et l'écu les écartèle.",
+   "pourquoi": "Thierry est dit comte d'Oldenbourg et de Delmenhorst de 1423 à 1440 : deux comtés réunis sous un seul comte, et l'écu les écartèle. En 1401, Thierry avait épousé Adélaïde, fille du comte Othon IV d'Oldenbourg-Delmenhorst (la page lue ne dit pas si ce mariage fonde la réunion).",
    "sources": [
-    "old:arm"
+    "old:arm",
+    "y:thierry"
    ]
   },
   {
@@ -3424,10 +4285,11 @@
    "type": "heritage",
    "annee": "1559",
    "effet": "L'écu s'étoffe : Goths et Vandales ont chacun un quartier, le Gotland ancien (l'agneau pascal) entre dans l'écu, Schleswig et Holstein sont rejetés plus loin ; au moins huit quartiers autour du Danebrog.",
-   "lacune": "La page lue donne Frédéric II roi de Danemark et de Norvège (1559-1588) sans dire comment la couronne lui est venue.",
    "sources": [
-    "old:arm"
-   ]
+    "old:arm",
+    "y:fred2"
+   ],
+   "pourquoi": "Frédéric II, fils de Christian III, est roi de Danemark et de Norvège à partir du 1er janvier 1559."
   },
   {
    "de": "old_f2",
@@ -3447,10 +4309,11 @@
    "type": "heritage",
    "annee": "1699",
    "effet": "Suède moderne et Schleswig partagent le quartier III (coupé), Goths et Vandales le quartier IV ; Holstein et Stormarn passent sur le tout.",
-   "lacune": "La page lue donne Frédéric IV roi de Danemark et de Norvège (1699-1730) sans dire comment il a succédé.",
    "sources": [
-    "old:arm"
-   ]
+    "old:arm",
+    "y:fred4"
+   ],
+   "pourquoi": "Frédéric IV, fils du roi précédent et de Charlotte-Amélie de Hesse-Cassel, succède à son père le 25 août 1699."
   },
   {
    "de": "old_f4",
@@ -3754,6 +4617,541 @@
    "sources": [
     "old:georges",
     "old:arm"
+   ]
+  },
+  {
+   "de": "wet_conrad",
+   "vers": "wet_henri3",
+   "type": "heritage",
+   "annee": "1247",
+   "effet": "Le lion de Misnie s'écartèle avec le lion burelé de Thuringe.",
+   "pourquoi": "Henri III est margrave de Misnie et de Basse-Lusace, landgrave de Thuringe et comte palatin de Saxe (1247-1265) : chaque titre apporte son écu.",
+   "lacune": "La page lue ne dit pas comment la Thuringe lui vient.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_henri3",
+   "vers": "wet_fred4",
+   "type": "heritage",
+   "annee": "1423",
+   "effet": "Le burelé de sable et d'or au crancelin de sinople devient l'écu de l'électorat ; un coupé de sable et d'argent à deux épées figure l'archi-maréchalat de l'Empire.",
+   "pourquoi": "Frédéric est margrave de Misnie (1381-1423), puis électeur de Saxe et comte palatin de Saxe (1423-1428).",
+   "lacune": "La page lue ne dit pas comment l'électorat lui vient.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_fred4",
+   "vers": "wet_ernest",
+   "type": "heritage",
+   "annee": "partage",
+   "effet": "L'électeur garde le burelé de Saxe et l'archi-maréchalat.",
+   "pourquoi": "À la mort de Frédéric II, ses fils divisent son héritage : l'aîné, Ernest, devient électeur et reçoit la Misnie septentrionale, la Thuringe méridionale, Wittenberg et le titre électoral.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_fred4",
+   "vers": "wet_albert3",
+   "type": "cadette",
+   "annee": "partage",
+   "effet": "L'écu s'écartèle : le burelé de Saxe au I, la Thuringe au II, le Palatinat de Saxe au III, la Misnie au IV.",
+   "pourquoi": "Albert III, le cadet, devient duc et reçoit la Thuringe septentrionale et la Misnie méridionale.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_ernest",
+   "vers": "wet_jf",
+   "type": "heritage",
+   "annee": "1547",
+   "effet": "Le burelé de Saxe n'est plus qu'un quartier, au milieu de nombreux autres : Palatinat de Saxe, Thuringe, Misnie, Orlamünde, Pleissen, Angrie, Landsberg, Palatinat de Thuringe…",
+   "pourquoi": "Jean-Frédéric est électeur de Saxe, comte palatin de Saxe et landgrave de Thuringe de 1532 à 1547, puis déposé : il est ensuite duc de Saxe-Weimar.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_jf",
+   "vers": "wet_saalfeld",
+   "type": "cadette",
+   "annee": "1658",
+   "effet": "Clèves, Juliers et Berg entrent dans l'écu, à côté de la Thuringe, de la Misnie et du burelé de Saxe.",
+   "pourquoi": "La page range Jean-Ernest (1658-1729) parmi les ducs de Saxe-Saalfeld puis de Saxe-Cobourg-Saalfeld, dans la descendance ernestine.",
+   "lacune": "La page lue ne dit pas sa filiation ni comment Clèves, Juliers et Berg entrent dans l'écu.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_saalfeld",
+   "vers": "wet_ernest2",
+   "type": "heritage",
+   "annee": "1826",
+   "effet": "Armes moyennes : Thuringe, Misnie, une poule de sable sur un mont, Vogtland, et le burelé de Saxe sur le tout.",
+   "pourquoi": "Ernest est duc de Saxe-Cobourg-Saalfeld (1806-1826), puis de Saxe-Cobourg-Gotha (1826-1844).",
+   "lacune": "La page lue ne dit pas sa filiation avec Jean-Ernest.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_ernest2",
+   "vers": "wet_albert",
+   "type": "cadette",
+   "annee": "après 1840",
+   "effet": "Le burelé de Saxe reste aux quartiers II et III de l'écu.",
+   "pourquoi": "La page range Albert, prince de Saxe-Cobourg et Gotha et duc en Saxe, dans le « Rameau anglais de Saxe-Cobourg-Gotha ».",
+   "lacune": "La page lue ne nomme pas son père.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "uk37",
+   "vers": "wet_albert",
+   "type": "mariage",
+   "annee": "avec Victoria",
+   "effet": "Les trois royaumes (Angleterre, Écosse, Irlande) occupent les quartiers I et IV, le burelé de Saxe les II et III, avec un lambel d'argent à trois pendants dont celui du cœur porte la croix de saint Georges.",
+   "pourquoi": "Albert est prince consort de Grande-Bretagne et d'Irlande après son mariage avec la reine Victoria ; chevalier de la Jarretière en 1839.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_albert",
+   "vers": "wet_edward7",
+   "type": "cadette",
+   "annee": "1841",
+   "effet": "Les trois royaumes occupent les quatre quartiers, brisés d'un lambel d'argent à trois pendants ; le burelé de Saxe passe sur le tout.",
+   "pourquoi": "Albert-Édouard est prince de Galles de 1841 à 1901, duc de Saxe-Cobourg-Gotha, puis roi du Royaume-Uni sous le nom d'Édouard VII.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_edward7",
+   "vers": "wet_george5",
+   "type": "cadette",
+   "annee": "avant 1892",
+   "effet": "Même écu que son père, mais le lambel d'argent a cinq pendants.",
+   "pourquoi": "Avant 1892, George est duc d'York, comte d'Inverness et baron Killarney ; il devient prince de Galles (1901-1910), puis roi du Royaume-Uni (1910-1936).",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_saalfeld",
+   "vers": "wet_leopold1",
+   "type": "heritage",
+   "annee": "1831",
+   "effet": "Variante 1 : le royaume britannique aux quartiers I et IV, Brunswick, Lunebourg et un cheval cabré sur le tout.",
+   "pourquoi": "Léopold est prince de Saxe-Cobourg et Gotha et duc en Saxe, élu roi des Belges en 1831.",
+   "lacune": "La page lue ne dit pas sa filiation, ni pourquoi le royaume britannique figure dans cette première variante (elle en donne plusieurs avant que les armes se fixent).",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_leopold1",
+   "vers": "wet_leopold2",
+   "type": "heritage",
+   "annee": "1865",
+   "effet": "Le lion d'or de Belgique porte en cœur l'écusson burelé de Saxe.",
+   "pourquoi": "Léopold est duc de Brabant (1835-1865), roi des Belges (1865-1909) et souverain de l'État indépendant du Congo (1884-1908).",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "q1485",
+   "vers": "wet_pierre5",
+   "type": "heritage",
+   "annee": "après 1853",
+   "effet": "Les armes sont celles du Portugal ; le burelé de Saxe de Ferdinand II n'y figure pas.",
+   "pourquoi": "Pierre V (1837-1861) est fils de Marie II et de Ferdinand II ; Louis Ier, Charles Ier et Manuel II, détrôné par la révolution de 1910, portent les mêmes armes.",
+   "lacune": "La page lue ne dit pas comment la couronne passe aux fils de Marie II.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_ferd2",
+   "vers": "wet_pierre5",
+   "type": "mariage",
+   "annee": "1837–1853",
+   "effet": "Le burelé de Saxe est mis en parti avec les armes du Portugal, le temps du roi consort ; ses fils n'en gardent rien.",
+   "pourquoi": "Ferdinand II (1816-1885) est roi consort de Marie II de 1837 à 1853 ; il porte un parti : au 1 les armes du Portugal, au 2 le burelé de Saxe.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_ernest2",
+   "vers": "wet_bg",
+   "type": "heritage",
+   "annee": "1887",
+   "effet": "Un lion d'or couronné sur gueules remplace les quartiers saxons.",
+   "pourquoi": "Ferdinand est prince régnant de Bulgarie (1887-1908) et gouverneur général de Roumélie orientale, puis roi de Bulgarie (1908-1918).",
+   "lacune": "La page lue ne dit ni sa filiation ni comment il est choisi.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_ernest2",
+   "vers": "wet_bresil",
+   "type": "pretention",
+   "annee": "XIXe s.",
+   "effet": "Une sphère armillaire d'or sur une croix de l'ordre du Christ, entourée de vingt étoiles, porte sur le tout le burelé de Saxe.",
+   "pourquoi": "La page range ces armes sous « Prétendants au trône brésilien de la dynastie de Saxe-Coburgo-Bragança ».",
+   "lacune": "La page lue ne donne ni la filiation ni la date du passage.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_albert3",
+   "vers": "wet_jg1",
+   "type": "heritage",
+   "annee": "1611",
+   "effet": "La Pologne et la Hongrie (mi-parti) entrent au quartier III, Landsberg au IV ; l'archi-maréchalat passe sur le tout.",
+   "pourquoi": "Jean-Georges est électeur de Saxe, comte palatin de Saxe et margrave de Misnie de 1611 à 1656.",
+   "lacune": "La page lue ne dit pas pourquoi la Pologne et la Hongrie figurent à l'écu : elle ne le dit roi ni de l'une ni de l'autre.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wet_jg1",
+   "vers": "wet_roi",
+   "type": "heritage",
+   "annee": "1806",
+   "effet": "Les petites armes du royaume se réduisent au burelé de Saxe ; les grandes armes reprennent Misnie, Thuringe et les deux Palatinats.",
+   "pourquoi": "Frédéric-Auguste le Juste est électeur de Saxe, puis roi de Saxe (1806-1827) et duc de Varsovie (1807-1815).",
+   "lacune": "La page lue ne détaille pas la succession entre Jean-Georges Ier et lui.",
+   "sources": [
+    "wet:arm"
+   ]
+  },
+  {
+   "de": "wit_root",
+   "vers": "wit_palat",
+   "type": "mariage",
+   "annee": "1215",
+   "effet": "Le lion palatin (de sable au lion d'or couronné de gueules) s'écartèle avec le fuselé de Bavière ; l'électeur y ajoute l'orbe d'archi-sénéchal sur le tout.",
+   "pourquoi": "Otton l'Illustre reçoit le titre de comte palatin du Rhin par son mariage avec l'héritière du Welf Henri de Brunswick, dignité assortie de la souveraineté sur le Palatinat.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_palat",
+   "vers": "wit_robert",
+   "type": "heritage",
+   "annee": "1400",
+   "effet": "L'aigle de sable sur or de l'Empire occupe l'écu ; le lion palatin et le fuselé de Bavière passent sur le tout.",
+   "pourquoi": "Robert de Wittelsbach est roi des Romains de 1400 à 1410.",
+   "lacune": "La page lue ne dit pas comment il est élu.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_palat",
+   "vers": "wit_fred5",
+   "type": "heritage",
+   "annee": "1619",
+   "effet": "Un parti de Bohême, de Moravie, de Silésie, de Luxembourg et de Haute-Lusace remplace les armes palatines.",
+   "pourquoi": "Frédéric V est électeur palatin et archi-sénéchal de 1610 à 1623 et roi de Bohême de 1619 à 1620 ; il est vaincu en 1620 après avoir tenté de prendre le royaume de Bohême.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_root",
+   "vers": "wit_elect",
+   "type": "annexion",
+   "annee": "1623",
+   "effet": "Écartelé : le fuselé de Bavière aux 1 et 4, le lion palatin aux 2 et 3, et sur le tout l'orbe crucifère d'or sur gueules.",
+   "pourquoi": "En 1620, l'électeur palatin Frédéric V, protestant, est vaincu ; mis au ban de l'Empire, ses terres, son titre d'électeur et sa charge de sénéchal sont confisqués et donnés à son cousin catholique, le duc de Bavière, qui prend alors cet écu.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_fred5",
+   "vers": "wit_elect",
+   "type": "annexion",
+   "annee": "1623",
+   "effet": "Son titre d'électeur, ses terres et sa charge de sénéchal passent au duc de Bavière.",
+   "pourquoi": "Même passage que ci-dessus, vu depuis le vaincu : il est mis au ban de l'Empire après sa défaite de 1620.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_elect",
+   "vers": "wit_charles7",
+   "type": "heritage",
+   "annee": "1742",
+   "effet": "L'aigle de sable sur or occupe l'écu ; le fuselé de Bavière et le lion palatin sont écartelés, l'orbe crucifère sur le tout.",
+   "pourquoi": "Charles VII de Bavière est empereur de 1742 à 1745.",
+   "lacune": "La page lue ne dit pas comment l'élection se fait.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_root",
+   "vers": "wit_louis4",
+   "type": "heritage",
+   "annee": "1314",
+   "effet": "L'aigle de sable sur or de l'Empire reçoit le fuselé de Bavière sur le tout.",
+   "pourquoi": "Louis IV de Bavière est roi des Romains en 1314, sacré empereur romain germanique en 1328 ; la page le range dans la branche ludovicienne, cadette.",
+   "lacune": "La page lue ne dit pas sa filiation.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_louis4",
+   "vers": "wit_brand",
+   "type": "heritage",
+   "annee": "XIVe s.",
+   "effet": "Le fuselé de Bavière est mis en parti avec l'aigle de gueules de Brandebourg.",
+   "pourquoi": "Louis V (mort en 1361), Louis VI (mort en 1365) et Othon V (mort en 1379) sont ducs de Bavière et électeurs de Brandebourg.",
+   "lacune": "La page lue ne dit pas comment le Brandebourg leur vient.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_louis4",
+   "vers": "wit_hol",
+   "type": "heritage",
+   "annee": "jusqu'en 1433",
+   "effet": "Le fuselé de Bavière est écartelé avec les lions de Hainaut et de Hollande.",
+   "pourquoi": "La page lue les dit ducs de Bavière-Straubing et comtes de Hainaut et de Hollande, jusqu'en 1433.",
+   "lacune": "La page lue ne dit pas comment Hainaut et Hollande leur viennent.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_palat",
+   "vers": "wit_zwei",
+   "type": "cadette",
+   "annee": "1569",
+   "effet": "Le parti palatin-Bavière reçoit sur le tout le lion de Veldenz ; Juliers, Clèves, Berg et La Marck entrent au second parti.",
+   "pourquoi": "La page lue les dit comtes palatins de Deux-Ponts de 1569 à 1675, dans la branche rodolphine.",
+   "lacune": "La page lue ne dit pas comment Juliers, Clèves, Berg et La Marck entrent dans l'écu.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_zwei",
+   "vers": "wit_swe",
+   "type": "heritage",
+   "annee": "1654",
+   "effet": "La croix de saint Éric d'or cantonne la Suède moderne et la Suède ancienne ; Bavière, Juliers, Clèves, Berg et d'autres quartiers passent sur le tout.",
+   "pourquoi": "La page lue les dit rois de Suède de 1654 à 1720, issus des comtes palatins de Deux-Ponts.",
+   "lacune": "La page lue ne dit pas comment la couronne de Suède leur vient.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_zwei",
+   "vers": "wit_max",
+   "type": "heritage",
+   "annee": "1799",
+   "effet": "Palatinat en Bavière, 1799-1804 : Juliers, Berg, Clèves, Sponheim, Birkenfeld et d'autres quartiers dans un parti.",
+   "pourquoi": "Maximilien (1756-1825), duc de Deux-Ponts et comte de Birkenfeld, devient électeur palatin et électeur de Bavière (Maximilien IV), puis premier roi de Bavière.",
+   "lacune": "La page lue ne détaille pas comment les électorats lui reviennent.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_max",
+   "vers": "wit_roy09",
+   "type": "heritage",
+   "annee": "1809",
+   "effet": "Le fuselé de Bavière porte en cœur un écusson de gueules à l'épée et au sceptre en sautoir, sous une couronne royale.",
+   "pourquoi": "La page lue donne ces armes aux rois de Bavière de 1809 à 1835.",
+   "lacune": "La page lue ne dit pas comment la royauté est acquise.",
+   "sources": [
+    "wit:arm"
+   ],
+   "desaccord": "Le texte de la page dit 1809-1835 ; la figure est datée de 1806."
+  },
+  {
+   "de": "wit_roy09",
+   "vers": "wit_roy35",
+   "type": "heritage",
+   "annee": "1835",
+   "effet": "Écartelé : Palatinat du Rhin, Franconie, Burgovie, Veldenz, avec le fuselé de Bavière sur le tout.",
+   "pourquoi": "La page lue donne cet écu aux rois de Bavière de 1835 à 1918.",
+   "lacune": "La page lue ne dit pas pourquoi les armes changent en 1835.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_roy09",
+   "vers": "wit_otto",
+   "type": "heritage",
+   "annee": "1831–1863",
+   "effet": "Une croix alésée d'argent sur azur porte le fuselé de Bavière sur le tout.",
+   "pourquoi": "Othon de Wittelsbach (1815-1867) est roi de Grèce ; la figure est datée de 1831 à 1863.",
+   "lacune": "La page lue ne dit pas sa filiation ni comment il devient roi.",
+   "sources": [
+    "wit:arm"
+   ]
+  },
+  {
+   "de": "wit_otto",
+   "vers": "old_gr1",
+   "type": "heritage",
+   "annee": "1863",
+   "effet": "Le fuselé de Bavière sur la croix alésée est remplacé par l'écusson de Glücksbourg.",
+   "lacune": "La page de Wittelsbach donne Othon roi de Grèce (figure de 1831 à 1863) ; celle d'Oldenbourg donne Georges Ier roi des Hellènes (1863-1913) ; aucune des deux ne dit comment l'un succède à l'autre.",
+   "sources": [
+    "wit:arm",
+    "old:arm"
+   ]
+  },
+  {
+   "de": "lor_root",
+   "vers": "lor_vaud",
+   "type": "cadette",
+   "annee": "1393",
+   "effet": "Les mêmes alérions, brisés d'un lambel d'azur.",
+   "pourquoi": "Les comtes de Vaudémont sont une branche cadette de la maison de Lorraine : le lambel d'azur marque leur statut de cadet.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_vaud",
+   "vers": "lor_antoine",
+   "type": "heritage",
+   "annee": "1431",
+   "effet": "Le lambel d'azur disparaît : l'écu redevient celui de Lorraine.",
+   "pourquoi": "Charles II (1364-1431) n'ayant pas de fils, son neveu Antoine de Vaudémont devient chef de la maison de Lorraine et supprime le lambel d'azur qui marquait son statut de cadet.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_antoine",
+   "vers": "lor_rene2",
+   "type": "mariage",
+   "annee": "1473",
+   "effet": "Lorraine aux quartiers 1 et 4 ; Hongrie, Anjou-Sicile, Jérusalem, Anjou et Bar aux 2 et 3.",
+   "pourquoi": "La page dit que ces armes combinent celles de ses deux parents ; René II (1451-1508) les utilise jusqu'en 1500.",
+   "lacune": "La page lue ne nomme pas ses parents ni sa filiation avec Antoine.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_rene2",
+   "vers": "lor_d1500",
+   "type": "heritage",
+   "annee": "1500",
+   "effet": "Hongrie, Anjou-Sicile, Jérusalem, Aragon, Anjou et Bar forment un coupé ; la Lorraine passe sur le tout.",
+   "pourquoi": "La page donne cet écu aux ducs de Lorraine de René II, à partir de 1500, jusqu'à Antoine (1489-1544), vers 1538.",
+   "lacune": "La page lue ne dit pas pourquoi les armes changent en 1500.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_d1500",
+   "vers": "lor_d1538",
+   "type": "pretention",
+   "annee": "vers 1538",
+   "effet": "Gueldre (lion contourné) et Juliers (lion de sable) entrent à l'écu.",
+   "pourquoi": "Héritées de Philippe de Gueldre (1467-1544), les prétentions lorraines sur les duchés de Gueldre et de Juliers se bornèrent à cet ajout héraldique.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_d1538",
+   "vers": "lor_fr3",
+   "type": "heritage",
+   "annee": "1737",
+   "effet": "Il reprend l'écu de la période d'Antoine à François III ; la page renvoie aux Habsbourg-Lorraine pour ses descendants.",
+   "pourquoi": "François (1708-1765), anciennement François III de Lorraine, est grand-duc de Toscane (François II) ; la page donne l'écu de la période vers 1538-1737 à François III, en 1737.",
+   "lacune": "La page lue ne dit pas comment la Toscane lui vient.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_fr3",
+   "vers": "jos2",
+   "type": "heritage",
+   "annee": "après 1737",
+   "effet": "Bar et Toscane entrent dans le cœur de l'écu des Habsbourg-Lorraine (voir ce passage).",
+   "lacune": "La page de Lorraine ne détaille pas la descendance de François : elle renvoie à la partie Habsbourg-Lorraine de l'Armorial des Habsbourg.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_root",
+   "vers": "lor_flandre",
+   "type": "heritage",
+   "annee": "XIIe s.",
+   "effet": "Le lion de sable sur or de Flandre remplace les armes de Lorraine.",
+   "pourquoi": "Thierry d'Alsace (vers 1100-1168), fils cadet de Thierry II de Lorraine, hérite du comté de Flandre par sa mère Gertrude ; son fils Philippe d'Alsace adopte ces armes léonines, devenues emblématiques des Flandres.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_d1500",
+   "vers": "lor_guise",
+   "type": "cadette",
+   "annee": "XVIe s.",
+   "effet": "Les mêmes quartiers, brisés d'un lambel de gueules, avec la Lorraine brisée de même sur le tout.",
+   "pourquoi": "Claude II de Lorraine (1496-1550) est comte d'Aumale, comte de Guise, baron d'Elbeuf, de Mayenne et de Joinville, puis duc de Guise et pair de France.",
+   "lacune": "La page lue ne dit pas de quand date l'écu ni pourquoi le lambel est de gueules.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "lor_d1500",
+   "vers": "lor_louise",
+   "type": "cadette",
+   "annee": "1553",
+   "effet": "L'écu lorrain est mi-parti avec la France.",
+   "pourquoi": "La page range Louise de Lorraine (1553-1601), fille de Nicolas, duc de Mercœur, parmi les branches cadettes de la maison.",
+   "lacune": "La page lue ne dit pas par quel passage les Mercœur se rattachent aux ducs de Lorraine de la période précédente.",
+   "sources": [
+    "lor:arm"
+   ]
+  },
+  {
+   "de": "ang",
+   "vers": "lor_louise",
+   "type": "mariage",
+   "annee": "1575",
+   "effet": "L'écu est mi-parti : les trois lis de France à dextre, la Lorraine à senestre.",
+   "pourquoi": "Louise de Lorraine est mariée en 1575 à Henri III (1551-1589), roi de France.",
+   "sources": [
+    "lor:arm"
    ]
   }
  ]

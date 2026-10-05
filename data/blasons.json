@@ -1712,5 +1712,68 @@
         "href": "transmission.html#old_comte"
       }
     ]
+  },
+  {
+    "nom": "Maison de Wettin (Misnie)",
+    "cat": "Maisons",
+    "porteur": "margraves de Misnie, puis électeurs et rois de Saxe, ducs de Saxe-Cobourg",
+    "blason": "D'or, au lion de sable, armé et lampassé de gueules",
+    "file": "Blason Nord-Pas-De-Calais.svg",
+    "auteur": "Kontributor 2K (travail personnel)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Dans « La transmission des armes »",
+        "href": "transmission.html#wet_conrad"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison de Wettin »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Wettin",
+      "note": "Le fichier se nomme « Nord-Pas-de-Calais » ; la page lue l'emploie pour le lion de Misnie."
+    }
+  },
+  {
+    "nom": "Maison de Wittelsbach (Bavière)",
+    "cat": "Maisons",
+    "porteur": "ducs, électeurs et rois de Bavière ; comtes palatins du Rhin",
+    "blason": "Fuselé en bande d'azur et d'argent",
+    "file": "Armoiries Bavière.svg",
+    "auteur": "Squwelf",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Dans « La transmission des armes »",
+        "href": "transmission.html#wit_root"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach",
+      "note": "Othon Ier reçoit en 1180 de Frédéric Barberousse le duché de Bavière confisqué à Henri le Lion ; la page donne pour les ducs de Bavière de 1180 à 1623 ce fuselé."
+    }
+  },
+  {
+    "nom": "Maison de Lorraine",
+    "cat": "Maisons",
+    "porteur": "ducs de Lorraine ; branches de Vaudémont, de Guise, de Flandre",
+    "blason": "D'or à la bande de gueules chargée de trois alérions d'argent (Lorraine)",
+    "file": "Blason Lorraine.svg",
+    "auteur": "Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "liens": [
+      {
+        "t": "Dans « La transmission des armes »",
+        "href": "transmission.html#lor_root"
+      }
+    ],
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison de Lorraine »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine",
+      "note": "Il s'agissait à l'origine de trois aiglettes dont les pattes et le bec s'atrophièrent pour devenir l'alérion actuel, à la fin du XVe siècle (page lue)."
+    }
   }
 ]
