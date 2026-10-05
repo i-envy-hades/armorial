@@ -153,11 +153,12 @@ function symbolFor(s, id) {
   if (m.custom === "billette") return `<rect id="${id}" x="76" y="62" width="48" height="108" rx="2" fill="${tinctPaint(tm)}" stroke="${chgStroke(tm)}" stroke-width="1.4"/>`;
   /* base : le fichier n'a pas de couleur propre, son dessin prend directement l'émail ; outline : contour fin pour les silhouettes */
   const txt = recolor(SVGTXT[m.kind], m, tm, s.ta);
-  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null);
+  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null, m.file.vb);
 }
 /* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
-function fileSymbol(txt, id, fill, outline) {
-  const [w, h] = vbOf(txt), vb = (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
+/* vbo : la boîte du dessin, quand le fichier n'a pas de viewBox et que sa page est plus grande que la figure (« file.vb » dans atelier.json) */
+function fileSymbol(txt, id, fill, outline, vbo) {
+  const [w, h] = vbOf(txt), vb = vbo ? vbo.join(" ") : (txt.match(/<svg\b[^>]*\bviewBox="([^"]+)"/) || [])[1] || `0 0 ${w} ${h}`;
   const st = outline ? ` stroke="${outline.stroke}" stroke-width="${outline.width.toFixed(2)}" paint-order="stroke"` : "";
   return `<symbol id="${id}" viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g fill="${fill}"${st} stroke-linejoin="round">${fileInner(txt, id)}</g></symbol>`;
 }

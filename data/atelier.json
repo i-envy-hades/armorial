@@ -121,6 +121,35 @@
    ]
   },
   {
+   "kind": "leopard-lionne",
+   "nom": "Léopard lionné",
+   "sing": "léopard lionné",
+   "plur": "léopards lionnés",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/leopard-lionne.svg",
+    "commons": "Meuble héraldique Léopard lionné.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé"
+  },
+  {
    "kind": "aigle",
    "nom": "Aigle",
    "sing": "aigle",
@@ -177,6 +206,35 @@
    "file": {
     "path": "assets/meubles/aigle-bicephale.svg",
     "commons": "Meuble héraldique Aigle bicéphale éployée.svg",
+    "auteur": "Syryatsu et Thom.lanaud",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "becqué, membré et couronné",
+   "accentTrait": true
+  },
+  {
+   "kind": "aigle-vol-abaisse",
+   "nom": "Aigle au vol abaissé",
+   "sing": "aigle au vol abaissé",
+   "plur": "aigles au vol abaissé",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/aigle-vol-abaisse.svg",
+    "commons": "Meuble héraldique Aigle vol abaissé.svg",
     "auteur": "Syryatsu et Thom.lanaud",
     "lic": "domaine public",
     "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
@@ -1533,6 +1591,42 @@
    "accentMot": "armé et lampassé"
   },
   {
+   "kind": "wyverne",
+   "nom": "Wyvern (dragon à deux pattes)",
+   "sing": "wyvern",
+   "plur": "wyverns",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/wyverne.svg",
+    "commons": "Meuble héraldique Dragon (wyvern).svg",
+    "auteur": "ZigeunerAlt, d'après Delta-9",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "vb": [
+     5,
+     69,
+     734,
+     914
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#217844",
+    "#e80000"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
    "kind": "licorne",
    "nom": "Licorne",
    "sing": "licorne",
@@ -1546,6 +1640,31 @@
     "auteur": "Jpgibert",
     "lic": "CC BY 4.0",
     "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "licorne-assise",
+   "nom": "Licorne assise",
+   "sing": "licorne assise",
+   "plur": "licornes assises",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/licorne-assise.svg",
+    "commons": "Meuble héraldique Licorne assise.svg",
+    "auteur": "Syryatsu",
+    "lic": "CC0 1.0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
    },
    "box": [
     24,
@@ -1620,6 +1739,58 @@
    ]
   },
   {
+   "kind": "cerf-courant",
+   "nom": "Cerf courant",
+   "sing": "cerf courant",
+   "plur": "cerfs courants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/cerf-courant.svg",
+    "commons": "Meuble héraldique Cerf courant.svg",
+    "auteur": "Syryatsu",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "cerf-couche",
+   "nom": "Cerf couché",
+   "sing": "cerf couché",
+   "plur": "cerfs couchés",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/cerf-couche.svg",
+    "commons": "Meuble héraldique cerf couché.svg",
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
    "kind": "cheval",
    "nom": "Cheval cabré",
    "sing": "cheval cabré",
@@ -1643,6 +1814,32 @@
     "auteur": "Syryatsu",
     "lic": "domaine public",
     "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "cheval-passant",
+   "nom": "Cheval passant",
+   "sing": "cheval passant",
+   "plur": "chevaux passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/cheval-passant.svg",
+    "commons": "Meuble héraldique Cheval passant.svg",
+    "auteur": "Lokal Profil et Syryatsu",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr"
    },
    "box": [
     24,
@@ -1691,6 +1888,42 @@
    ]
   },
   {
+   "kind": "ours-rampant",
+   "nom": "Ours rampant (dansant)",
+   "sing": "ours rampant",
+   "plur": "ours rampants",
+   "alias": [
+    [
+     "ours dansant",
+     "ours dansants"
+    ]
+   ],
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/ours-rampant.svg",
+    "commons": "Meuble héraldique ours dansant.svg",
+    "auteur": "BotaFlo",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "accent": [
+    "#f60102"
+   ],
+   "accentMot": "lampassé et vilené",
+   "outline": true
+  },
+  {
    "kind": "sanglier",
    "nom": "Sanglier passant",
    "sing": "sanglier passant",
@@ -1728,6 +1961,31 @@
    ]
   },
   {
+   "kind": "taureau",
+   "nom": "Taureau",
+   "sing": "taureau",
+   "plur": "taureaux",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/taureau.svg",
+    "commons": "Meuble héraldique Taureau.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
    "kind": "loup",
    "nom": "Loup passant",
    "sing": "loup passant",
@@ -1760,6 +2018,61 @@
    ]
   },
   {
+   "kind": "loup-ravissant",
+   "nom": "Loup ravissant",
+   "sing": "loup ravissant",
+   "plur": "loups ravissants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/loup-ravissant.svg",
+    "commons": "Meuble héraldique Loup ravissant.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
+   "kind": "belier",
+   "nom": "Bélier passant",
+   "sing": "bélier passant",
+   "plur": "béliers passants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/belier.svg",
+    "commons": "Meuble héraldique bélier.svg",
+    "auteur": "Frédéric Michel, d'après Bernard Le Brun",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#ffff00"
+   ],
+   "accentMot": "accorné et onglé",
+   "allongee": true
+  },
+  {
    "kind": "cygne",
    "nom": "Cygne",
    "sing": "cygne",
@@ -1785,6 +2098,35 @@
    ],
    "accent": [
     "fill:#000"
+   ],
+   "accentMot": "becqué et membré"
+  },
+  {
+   "kind": "colombe-essorante",
+   "nom": "Colombe essorante",
+   "sing": "colombe essorante",
+   "plur": "colombes essorantes",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/colombe-essorante.svg",
+    "commons": "Meuble héraldique Colombe essorante.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#e20909"
    ],
    "accentMot": "becqué et membré"
   },
