@@ -1,0 +1,142 @@
+/* CSS propre à la page « La transmission des armes » ; le socle est dans assets/site.css, l'habillage « chronique » dans assets/epopee-pages.css */
+body.trans a{text-decoration:none}
+body.trans a:hover{text-decoration:underline}
+.trans [hidden]{display:none!important}
+.trans{--tc-cadette:#8e1b18;--tc-mariage:#a2527a;--tc-heritage:#a9812e;--tc-annexion:#20406e;--tc-pretention:#5f4b8b}
+.tr-main{max-width:1500px;margin:0 auto;padding:.4rem clamp(1rem,3vw,2rem) 3.4rem;min-height:40vh}
+.tr-chargement{text-align:center;font-style:italic;color:var(--ink-soft);margin:2rem 0}
+
+/* ---------- barre d'outils ---------- */
+.tools{max-width:1500px;margin:1rem auto .4rem;padding:.2rem clamp(1rem,3vw,2rem) .5rem;display:flex;flex-wrap:wrap;gap:.55rem .9rem;align-items:center}
+body.epic2.trans .tools{position:static;background:none;backdrop-filter:none;border-bottom:0}
+.chips-g{display:flex;flex-wrap:wrap;gap:.4rem;flex:1 1 100%}
+.chip{font:inherit;font-size:.86rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--rule);background:var(--vellum-2);color:var(--ink-soft);border-radius:999px;padding:.28rem .85rem}
+.chip i{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:var(--tc,var(--rule))}
+.chip.t-cadette{--tc:var(--tc-cadette)}.chip.t-mariage{--tc:var(--tc-mariage)}.chip.t-heritage{--tc:var(--tc-heritage)}.chip.t-annexion{--tc:var(--tc-annexion)}.chip.t-pretention{--tc:var(--tc-pretention)}
+.chip:hover{border-color:var(--or);color:var(--ink)}
+.chip .n{font-size:.72rem;opacity:.65}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fbf5e4}
+.chip.on i{box-shadow:0 0 0 2px #fbf5e4}
+.cpt{font-size:.9rem;font-style:italic;color:var(--ink-soft)}
+.lnk{font:inherit;background:none;border:0;padding:0;color:var(--gules);text-decoration:underline;cursor:pointer;margin-left:auto}
+.rech{position:relative;flex:0 1 330px}
+.rech input{width:100%;font:inherit;font-size:.95rem;padding:.38rem .8rem;border:1px solid var(--rule);border-radius:999px;background:var(--vellum-2);color:var(--ink)}
+.rech input:focus{outline:2px solid var(--or-light);border-color:var(--or)}
+#res{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);margin:0;padding:.3rem;list-style:none;background:var(--vellum-2);border:1px solid var(--rule);border-radius:6px;box-shadow:var(--shadow-lift)}
+#res button{display:block;width:100%;text-align:left;font:inherit;font-size:.92rem;background:none;border:0;padding:.35rem .55rem;cursor:pointer;color:var(--ink);border-radius:4px}
+#res button:hover,#res button:focus-visible{background:rgba(169,129,46,.16)}
+#res i{font-style:normal;font-size:.78rem;color:var(--or);margin-left:.3rem}
+#res .vide{padding:.4rem .6rem;font-style:italic;color:var(--ink-soft);font-size:.9rem}
+
+/* ---------- la scène : l'arbre et son panneau ---------- */
+.scene{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:1.2rem;align-items:start}
+.vue{height:min(80vh,900px);overflow:auto;padding:1.1rem 1.4rem 1.6rem;border:1px solid var(--rule);border-radius:4px;background:linear-gradient(180deg,rgba(255,252,242,.6),rgba(239,232,214,.7));box-shadow:inset 0 0 40px -22px rgba(26,23,18,.5);cursor:grab;overscroll-behavior:contain}
+.vue.glisse{cursor:grabbing;user-select:none}
+.vue:focus-visible{outline:2px solid var(--or-light)}
+.rac,.fils{list-style:none;margin:0;padding:0}
+.rac{display:flex;flex-direction:column;gap:1.1rem;width:max-content;min-width:100%}
+
+/* arbre horizontal : un nœud = sa carte, puis la colonne de ses descendants */
+.nd{--L:1.8rem;--tc:var(--rule);position:relative;display:flex;align-items:center}
+.nd.t-cadette{--tc:var(--tc-cadette)}.n.t-mariage{--tc:var(--tc-mariage)}.n.t-heritage{--tc:var(--tc-heritage)}.n.t-annexion{--tc:var(--tc-annexion)}.n.t-pretention{--tc:var(--tc-pretention)}
+.corps{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;flex:none}
+.ligne{display:flex;align-items:center;gap:.3rem;flex:none}
+.apports{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem;max-width:262px;font-size:.7rem;color:var(--ink-soft)}
+.apports > span{font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.6rem;color:var(--or)}
+.ap-chip{display:inline-flex;align-items:center;gap:.25rem;font:inherit;font-size:.74rem;cursor:pointer;border:1px dashed var(--or);background:var(--vellum-2);color:var(--ink);border-radius:999px;padding:.1rem .55rem .1rem .3rem}
+.ap-chip img{width:16px;height:auto}
+.ap-chip:hover,.ap-chip.on{background:var(--or-light);border-style:solid}
+.fils{position:relative;display:flex;flex-direction:column;margin-left:var(--L)}
+.fils::before{content:"";position:absolute;left:calc(var(--L) * -1);top:50%;width:var(--L);border-top:2px solid var(--rule)}
+.fils:not([hidden]){animation:pousse .38s ease both}
+.fils > .nd{padding:.28rem 0 .28rem var(--L)}
+.fils > .nd::before{content:"";position:absolute;left:0;top:50%;width:var(--L);border-top:3px solid var(--tc)}
+.fils > .nd::after{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--rule)}
+.fils > .nd:first-child::after{top:50%}
+.fils > .nd:last-child::after{bottom:50%}
+.fils > .nd:only-child::after{display:none}
+.nd.chemin > .corps .carte{box-shadow:0 0 0 2px rgba(169,129,46,.45),var(--shadow)}
+.fils > .nd.chemin::before{border-top-width:5px}
+.nd.dim > .corps{opacity:.25;transition:opacity .3s}
+.nd.dim > .corps:hover{opacity:.8}
+@keyframes pousse{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+
+.carte{position:relative;display:flex;align-items:center;gap:.65rem;width:236px;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:.45rem .55rem .45rem .6rem;
+  background:linear-gradient(180deg,#faf6ea,#efe7d2);border:1px solid var(--rule);border-left:4px solid var(--tc);border-radius:3px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
+.carte:hover,.carte:focus-visible{box-shadow:var(--shadow-lift);transform:translateY(-1px)}
+.carte.on{background:linear-gradient(180deg,#fff9e2,#f5e9c4);box-shadow:0 0 0 2px var(--or),var(--shadow-lift)}
+.carte.lie{outline:2px dashed var(--or);outline-offset:2px}
+.carte .ecu{flex:none;width:36px;height:auto;max-height:46px;object-fit:contain;filter:drop-shadow(0 3px 4px rgba(26,23,18,.25))}
+.ecu-vide{flex:none;display:block;width:36px;height:42px}
+.carte .txt{display:block;min-width:0}
+.carte b{display:block;font-family:"Marcellus",serif;font-weight:400;font-size:.98rem;line-height:1.2;color:var(--ink)}
+.carte .dt{display:block;margin-top:.1rem;font-family:"Marcellus SC",serif;font-size:.64rem;letter-spacing:.12em;color:var(--or)}
+.carte .nl{position:absolute;top:-.5rem;right:-.45rem;min-width:1.2rem;height:1.2rem;padding:0 .25rem;border-radius:999px;background:var(--ink);color:#fbf5e4;font:.68rem/1.2rem "Marcellus SC",serif;text-align:center}
+.plus{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid var(--tc,var(--rule));background:var(--vellum-2);color:var(--ink);font:.78rem/1 "Marcellus SC",serif;cursor:pointer;transition:background .2s,transform .3s,color .2s}
+.plus:hover{background:var(--or-light)}
+.plus[aria-expanded="true"]{background:var(--ink);border-color:var(--ink);color:#fbf5e4;transform:rotate(0)}
+
+/* ---------- le panneau ---------- */
+.panneau{position:sticky;top:4.4rem;max-height:calc(100vh - 5.6rem);overflow:auto;padding:1rem 1.1rem 1.2rem;background:var(--vellum-2);border:1px solid var(--rule);border-top:3px solid var(--or);border-radius:3px;box-shadow:var(--shadow)}
+.panneau h2{font-family:"Marcellus",serif;font-weight:400;font-size:1.35rem;line-height:1.2;margin:0 0 .15rem}
+.panneau h3{margin:1.2rem 0 .5rem;font-family:"Marcellus SC",serif;font-weight:400;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);border-bottom:1px solid var(--rule-soft);padding-bottom:.25rem}
+.panneau p{margin:.4rem 0;font-size:.98rem;line-height:1.55}
+.tete{display:flex;gap:1rem;align-items:center}
+.tete .fig{flex:none;width:96px;height:auto;filter:drop-shadow(0 8px 10px rgba(26,23,18,.25))}
+.panneau .dt{font-family:"Marcellus SC",serif;font-size:.74rem;letter-spacing:.12em;color:var(--or);margin:.1rem 0}
+.panneau .bl{font-style:italic;overflow-wrap:anywhere}
+.panneau .bl.vide{font-style:normal;color:var(--ink-soft)}
+.panneau .q,.panneau .fo span,.ef span,.pq span{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-right:.35rem;font-style:normal}
+.panneau .no{color:var(--ink-soft);font-size:.93rem}
+.panneau .li{font-size:.9rem}
+.panneau .cr{font-size:.72rem;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.45rem;margin-top:1rem}
+.panneau .cr a,.sr a{color:var(--ink-soft);text-decoration:underline}
+.va{font:inherit;color:var(--gules);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.legende{list-style:none;margin:.8rem 0;padding:0}
+.legende li{margin:.55rem 0;padding:.3rem 0 .3rem .8rem;border-left:4px solid var(--tc);font-size:.93rem;line-height:1.45;color:var(--ink-soft)}
+.legende b{color:var(--ink);font-weight:600}.legende .n{font-size:.74rem;opacity:.7}
+.legende .t-cadette,.lien.t-cadette,.tg.t-cadette{--tc:var(--tc-cadette)}.legende .t-mariage,.lien.t-mariage,.tg.t-mariage{--tc:var(--tc-mariage)}.legende .t-heritage,.lien.t-heritage,.tg.t-heritage{--tc:var(--tc-heritage)}.legende .t-annexion,.lien.t-annexion,.tg.t-annexion{--tc:var(--tc-annexion)}.legende .t-pretention,.lien.t-pretention,.tg.t-pretention{--tc:var(--tc-pretention)}
+.lien{margin:.7rem 0 1rem;padding:.2rem 0 .1rem .85rem;border-left:4px solid var(--tc,var(--rule))}
+.lien header{display:flex;flex-wrap:wrap;gap:.2rem .55rem;align-items:baseline}
+.tag,.tg{font-family:"Marcellus SC",serif;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#fbf5e4;background:var(--tc,var(--ink));border-radius:2px;padding:.12rem .45rem}
+.lien .an{font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.1em;color:var(--or)}
+.lien .de{font-size:.88rem;color:var(--ink-soft)}
+.ap{display:flex;align-items:center;gap:.5rem;margin:.55rem 0;flex-wrap:wrap}
+.ap b{color:var(--or);font-size:1.3rem}
+.mi{display:flex;flex-direction:column;align-items:center;gap:.15rem;width:92px;text-align:center}
+.mi img{width:46px;height:auto;filter:drop-shadow(0 3px 4px rgba(26,23,18,.25))}
+.mi i{font-style:normal;font-size:.72rem;line-height:1.2;color:var(--ink-soft)}
+.pq.lac{color:var(--ink-soft);font-style:italic}
+.lac2{font-size:.88rem!important;font-style:italic;color:var(--ink-soft);padding:.3rem .6rem;border-left:2px dashed var(--rule)}
+.dz{padding:.4rem .7rem;border-left:3px solid var(--gules);background:linear-gradient(90deg,rgba(142,27,24,.08),transparent);font-size:.92rem!important}
+.jal{margin:.5rem 0;border:1px solid var(--rule-soft);border-radius:3px;background:rgba(255,255,255,.35)}
+.jal summary{cursor:pointer;padding:.35rem .6rem;font-size:.86rem;color:var(--ink-soft)}
+.jal p{padding:0 .7rem;font-size:.9rem!important}
+.jal .s,.sr{font-size:.76rem!important;line-height:1.4;color:var(--ink-soft)}
+.sortie{list-style:none;margin:0;padding:0}
+.sortie li{margin:.35rem 0;font-size:.93rem}
+.sortie .tg{margin-right:.3rem}
+
+.credits{margin-top:2.2rem;border:1px solid var(--rule);border-radius:3px;background:var(--vellum-2)}
+.credits summary{cursor:pointer;padding:.7rem 1rem;font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.credits ul{margin:0;padding:.2rem 1.2rem 1rem 2.2rem;font-size:.82rem;line-height:1.5;color:var(--ink-soft);columns:2 340px;column-gap:2rem}
+.credits li{break-inside:avoid;margin:.2rem 0}
+.credits a{color:var(--ink-soft);text-decoration:underline}
+
+/* ---------- téléphone et tablette : l'arbre se range en colonne, le panneau passe dessous ---------- */
+@media (max-width:1060px){
+  .scene{grid-template-columns:minmax(0,1fr)}
+  .panneau{position:static;max-height:none}
+}
+@media (max-width:760px){
+  .vue{height:auto;overflow:visible;padding:.8rem .6rem 1rem;cursor:auto}
+  .rac{width:auto}
+  .nd{display:block;padding:0!important}
+  .nd::before,.nd::after,.fils::before{display:none!important}
+  .fils{margin:.3rem 0 .3rem .9rem;padding-left:.8rem;border-left:3px solid var(--tc,var(--rule))}
+  .fils > .nd{padding:.25rem 0!important}
+  .carte{width:100%;max-width:300px}
+  .rech{flex:1 1 100%}
+  .lnk{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){.fils:not([hidden]){animation:none}.carte,.plus{transition:none}}

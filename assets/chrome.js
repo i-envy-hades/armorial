@@ -14,8 +14,7 @@
     ["personnages", "personnages.html", "Personnages"],
     ["lignees", "lignees.html", "Lignées"],
     ["atelier", "atelier.html", "Atelier"],
-    ["capetiens", "capetiens.html", "Capétiens"],
-    ["chronologie", "chronologie.html", "Chronologie"],
+    ["transmission", "transmission.html", "Transmission"],
     ["exercices", "exercices.html", "S'exercer"],
     ["recherche", "recherche.html", "Rechercher"],
   ];

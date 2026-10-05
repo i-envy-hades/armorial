@@ -11,8 +11,8 @@ Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manqu
 (« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les frises,
 l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
 (chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
-les boutons « Redessiner dans l'Atelier » des galeries, les pages S'exercer (chaque question posée est cohérente), Chronologie, Rechercher
-(chaque lien d'un résultat mène à une ancre qui existe) et Les Capétiens, enfin le téléphone (375 px : rien ne déborde, le menu se replie).
+les boutons « Redessiner dans l'Atelier » des galeries, les pages S'exercer (chaque question posée est cohérente), Rechercher
+(chaque lien d'un résultat mène à une ancre qui existe) et La transmission des armes, enfin le téléphone (375 px : rien ne déborde, le menu se replie).
 Code de sortie 1 au premier échec. FUZZ=500 python tools/smoke_test.py pousse l'Atelier plus loin (500 compositions)."""
 import functools, http.server, json, os, pathlib, random, re, sys, threading, urllib.parse
 
@@ -553,28 +553,6 @@ def test_exercices(browser, base):
         page.context.close()
     verifie(qs[0] == qs[1], "exercices : la première question du défi est la même à chaque visite du jour")
 
-# ------------------------------------------------------------------ Chronologie
-def test_chronologie(browser, base):
-    F = data("frises.json"); C = data("chronologie.json")
-    n_jalons = sum(len(R.get("jalons", [])) for f in F["frises"] for R in data(pathlib.PurePosixPath(f["file"]).name)["royaumes"])
-    page, erreurs = ouvre(browser, base, "chronologie.html", ".ev")
-    total = page.locator(".ev").count()
-    verifie(total == n_jalons + len(C["reperes"]), f"chronologie : un repère par jalon des frises ({n_jalons}) et par repère du droit ({len(C['reperes'])}) — {total}")
-    annees = page.evaluate("[...document.querySelectorAll('.ev')].map(e => +e.dataset.an)")
-    verifie(annees == sorted(annees), "chronologie : les repères sont dans l'ordre du temps")
-    page.click(".chip[data-l=france]"); page.wait_for_timeout(250)
-    verifie(0 < page.locator(".ev").count() < total and "l=france" in page.url, "chronologie : filtrer par lignée réduit la liste et garde l'adresse")
-    page.click("#chip-tout"); page.fill("#q", "union des couronnes"); page.wait_for_timeout(500)
-    verifie(page.locator(".ev").count() >= 2, "chronologie : la recherche trouve « l'union des couronnes »")
-    page.fill("#q", ""); page.check("#desac"); page.wait_for_timeout(300)
-    verifie(0 < page.locator(".ev").count() == page.locator(".ev.dz").count(), "chronologie : « seulement les désaccords » ne garde que les repères en désaccord")
-    propre("chronologie", page, erreurs)
-    page.context.close()
-    page, erreurs = ouvre(browser, base, "chronologie.html#1603", ".ev.flash")
-    verifie(page.locator(".ev.flash").count() == 1, "chronologie : l'adresse #1603 mène à l'année")
-    propre("chronologie#1603", page, erreurs)
-    page.context.close()
-
 # ------------------------------------------------------------------ Rechercher
 def test_recherche(browser, base):
     page, erreurs = ouvre(browser, base, "recherche.html#q=lambel", ".r")
@@ -591,14 +569,13 @@ def test_recherche(browser, base):
         ancres[cible] = set(pg.evaluate("[...document.querySelectorAll('[id]')].map(e => e.id)"))
         pg.context.close()
     frises = {f["id"] for f in data("frises.json")["frises"]}
-    capetiens = {n["id"] for n in data("capetiens.json")["noeuds"]}
+    transmission = {n["id"] for n in data("transmission.json")["noeuds"]}
     manquants = []
     for l in liens:
         page_, _, a = l.partition("#")
         if page_ in ancres: ok = a in ancres[page_]
         elif page_ == "lignees.html": ok = a in frises
-        elif page_ == "capetiens.html": ok = a in capetiens
-        elif page_ == "chronologie.html": ok = a.isdigit()
+        elif page_ == "transmission.html": ok = a in transmission
         else: ok = False
         if not ok: manquants.append(l)
     verifie(not manquants, f"recherche : les {len(liens)} liens de résultats mènent à une ancre qui existe" + ("" if not manquants else f" — {manquants[:5]}"))
@@ -610,21 +587,25 @@ def test_recherche(browser, base):
     propre("blasons#carte", page, erreurs)
     page.context.close()
 
-# ------------------------------------------------------------------ Les Capétiens
-def test_capetiens(browser, base):
-    D = data("capetiens.json")
-    page, erreurs = ouvre(browser, base, "capetiens.html", ".noeud")
-    verifie(page.locator(".noeud").count() == len(D["noeuds"]), f"capétiens : un nœud par maison ou branche ({len(D['noeuds'])})")
-    verifie(page.locator(".carte mark").count() >= 10, "capétiens : les brisures sont mises en relief")
-    page.click(".chip[data-t=lambel]"); page.wait_for_timeout(250)
-    verifie(0 < page.locator(".noeud.dim").count() < len(D["noeuds"]), "capétiens : choisir une sorte de brisure estompe les autres branches")
-    page.click(".carte[data-id=maison-d-artois]"); page.wait_for_timeout(200)
-    verifie(page.locator("#d-maison-d-artois").is_visible() and "châteaux" in page.inner_text("#d-maison-d-artois"), "capétiens : un clic déplie le détail (Artois et ses châteaux)")
-    verifie(page.locator("#credits li").count() >= 30, "capétiens : les crédits de toutes les figures sont en bas de page")
-    propre("capétiens", page, erreurs)
+# ------------------------------------------------------------------ La transmission des armes
+def test_transmission(browser, base):
+    D = data("transmission.json")
+    page, erreurs = ouvre(browser, base, "transmission.html", ".carte")
+    cartes = sum(1 for n in D["noeuds"] if not n.get("apport"))
+    verifie(page.locator(".carte").count() == cartes, f"transmission : une carte par état d'armes ({cartes}) ; les maisons en apport n'ont pas de carte")
+    page.click(".plus >> nth=0"); page.wait_for_timeout(250)
+    page.click(".carte[data-id=art]"); page.wait_for_timeout(250)
+    verifie("châteaux" in page.inner_text("#panneau") and "Pourquoi" in page.inner_text("#panneau"), "transmission : un clic montre ce qui change dans l'écu et pourquoi (Artois et ses châteaux)")
+    page.click(".chip[data-t=mariage]"); page.wait_for_timeout(250)
+    verifie(0 < page.locator(".nd.dim").count() < len(D["noeuds"]), "transmission : choisir un type de passage estompe les autres branches")
+    verifie(page.locator("#credits li").count() >= 30, "transmission : les crédits de toutes les figures sont en bas de page")
+    propre("transmission", page, erreurs)
     page.context.close()
-    page, erreurs = ouvre(browser, base, "capetiens.html#maison-de-bourbon-conde", ".noeud.flash")
-    verifie(page.locator("#d-maison-de-bourbon-conde").is_visible(), "capétiens : l'adresse d'une branche l'ouvre")
+    page, erreurs = ouvre(browser, base, "transmission.html#arag", ".ap-chip")
+    verifie("Une maison qui entre par mariage" in page.inner_text("#panneau"), "transmission : l'adresse d'une maison en apport (Aragon) ouvre sa fiche")
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "transmission.html#bven", ".carte.on")
+    verifie(page.locator(".carte.on").count() == 1, "transmission : l'adresse d'une branche profonde déplie le chemin et la sélectionne")
     page.context.close()
 
 
@@ -644,9 +625,8 @@ def main():
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("exercices", lambda: test_exercices(browser, base)),
-                       ("chronologie", lambda: test_chronologie(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),
-                       ("capétiens", lambda: test_capetiens(browser, base)),
+                       ("transmission", lambda: test_transmission(browser, base)),
                        ("téléphone", lambda: test_telephone(browser, base))):
             try: f()
             except Exception as e: ko(f"{nom} : exception du test — {e}")
