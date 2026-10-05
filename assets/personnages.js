@@ -10,6 +10,7 @@ const GROUPES = [
   { id: "parlantes", titre: "Armes parlantes et devises", texte: "La couleuvre (coluber) de Colbert, les cœurs et les coquilles de Jacques Cœur, le faisceau de licteur de Mazarin : des armes qui disent un nom, une origine, un programme." },
   { id: "eglise", titre: "Papes et prélats", texte: "Les armes de deux papes, Paul IV et Pie II, et de prélats de Hongrie, de Pologne et d'Espagne, avec une abbesse suédoise." },
   { id: "aujourdhui", titre: "Maisons royales d'aujourd'hui", texte: "En 1972, la reine Margrethe II simplifie les armes du Danemark ; l'Afghanistan, lui, n'a qu'un emblème et non des armes blasonnées." },
+  { id: "nord", titre: "Du Danemark à la Russie : l'écu suit la couronne", texte: "Haakon VII ne garde que le lion de Norvège ; Pierre III accole l'aigle de Russie à Holstein-Gottorp, Alexandre II ne garde que l'aigle ; les frères cadets d'Alexandre II portent une ancre, des haches ou des canons, et la bande de Bade ou une devise saxonne pour leurs épouses ; Georges de Danemark, époux d'une reine, n'ajoute rien d'anglais à son écu." },
   { id: "familles", titre: "Familles : le même écu de génération en génération", texte: "Trois FitzAlan sous un même lion d'or ; trois Fleming de Finlande ; Sigrid Gyllenstierna et Erik Eriksson sous une même étoile à sept rais ; des familles d'Italie, de Pologne et de Lituanie." },
 ];
 let PEOPLE, LISIBLES = new Set(), GROUPE = "tous", REQ = "";                // LISIBLES : les armes que l'Atelier sait relire (assets/lecture.js)
