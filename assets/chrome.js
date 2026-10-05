@@ -7,6 +7,15 @@
      <script src="assets/chrome.js"></script>
    data-page est l'identifiant de la page dans PAGES ; l'en-tête garde ce qui lui est propre
    (la recherche, pour l'encyclopédie). Le pied de page reçoit le sceau en tête, ses textes restent à la page. */
+/* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),
+   celui qui porte l'accent le garde dans son adresse (« terme-bandé ») : sans cela les deux auraient la même. */
+function termeId(terme, glossaire) {
+  const s = t => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  const id = s(terme), t = String(terme).toLowerCase();
+  const double = glossaire.some(g => g.terme !== terme && s(g.terme) === id);
+  return ("terme-" + (double && t !== id ? t.replace(/\s+/g, "-") : id)).normalize("NFC");
+}
+
 (function () {
   const PAGES = [
     ["index", "index.html", "L'encyclopédie"],

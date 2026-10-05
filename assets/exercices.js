@@ -150,7 +150,7 @@
     trouves.sort((x, y) => (emaux.has(plie(x.terme)) - emaux.has(plie(y.terme))) || y.terme.length - x.terme.length);
     return trouves.slice(0, 6);
   }
-  const lienTerme = g => `<a href="index.html#terme-${sluge(g.terme)}">${esc(g.terme.toLowerCase())}</a>`;
+  const lienTerme = g => `<a href="index.html#${termeId(g.terme, DATA.glossaire)}">${esc(g.terme.toLowerCase())}</a>`;
   const lienAtelier = St => `<a href="atelier.html#lire=${encodeURIComponent(blazonAll(St))}">Ouvrir ces armes dans l'Atelier</a>`;
 
   /* ---------- dessiner ---------- */
@@ -363,7 +363,7 @@
       else h += `<p>${esc(par.join(" ; "))} : l'un se détache de l'autre, la règle est respectée.</p>`;
       h += `<p class="ex-lien"><a href="index.html#emaux">Relire le chapitre « Les émaux »</a> · ${lienAtelier(q.St)}</p>` + credits([q.St]);
     } else if (q.type === "vocab") {
-      const e = q.cible, lien = e.gloss ? ` · <a href="index.html#terme-${sluge(e.terme)}">dans le glossaire</a>` : "";
+      const e = q.cible, lien = e.gloss ? ` · <a href="index.html#${termeId(e.terme, DATA.glossaire)}">dans le glossaire</a>` : "";
       h += `<p><b>${esc(e.terme)}</b> : ${esc(e.def)}${lien}</p>`;
     } else if (q.type === "reel") {
       const a = q.cible, lis = (() => { try { return lire(a.blason).ok; } catch (e) { return false; } })();

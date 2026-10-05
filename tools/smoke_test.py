@@ -593,16 +593,19 @@ def test_transmission(browser, base):
     page, erreurs = ouvre(browser, base, "transmission.html", ".carte")
     cartes = sum(1 for n in D["noeuds"] if not n.get("apport"))
     verifie(page.locator(".carte").count() == cartes, f"transmission : une carte par état d'armes ({cartes}) ; les maisons en apport n'ont pas de carte")
-    page.click(".plus >> nth=0"); page.wait_for_timeout(250)
+    if page.locator(".carte[data-id=art]").is_hidden():      # Artois est sous une branche repliée : on déplie ses ancêtres
+        for plus in page.locator(".plus[aria-expanded=false]").all():
+            if plus.is_visible(): plus.click(); page.wait_for_timeout(100)
+            if page.locator(".carte[data-id=art]").is_visible(): break
     page.click(".carte[data-id=art]"); page.wait_for_timeout(250)
-    verifie("châteaux" in page.inner_text("#panneau") and "Pourquoi" in page.inner_text("#panneau"), "transmission : un clic montre ce qui change dans l'écu et pourquoi (Artois et ses châteaux)")
+    verifie("châteaux" in page.inner_text("#panneau") and "pourquoi" in page.inner_text("#panneau").lower(), "transmission : un clic montre ce qui change dans l'écu et pourquoi (Artois et ses châteaux)")
     page.click(".chip[data-t=mariage]"); page.wait_for_timeout(250)
     verifie(0 < page.locator(".nd.dim").count() < len(D["noeuds"]), "transmission : choisir un type de passage estompe les autres branches")
     verifie(page.locator("#credits li").count() >= 30, "transmission : les crédits de toutes les figures sont en bas de page")
     propre("transmission", page, erreurs)
     page.context.close()
-    page, erreurs = ouvre(browser, base, "transmission.html#arag", ".ap-chip")
-    verifie("Une maison qui entre par mariage" in page.inner_text("#panneau"), "transmission : l'adresse d'une maison en apport (Aragon) ouvre sa fiche")
+    page, erreurs = ouvre(browser, base, "transmission.html#arag", "#panneau .tete")
+    verifie("une maison qui entre dans l'écu d'une autre" in page.inner_text("#panneau").lower(), "transmission : l'adresse d'une maison en apport (Aragon) ouvre sa fiche")
     page.context.close()
     page, erreurs = ouvre(browser, base, "transmission.html#bven", ".carte.on")
     verifie(page.locator(".carte.on").count() == 1, "transmission : l'adresse d'une branche profonde déplie le chemin et la sélectionne")

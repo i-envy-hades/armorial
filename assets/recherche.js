@@ -47,7 +47,7 @@
       ajoute("art", a.titre, texteDe(a.html), `index.html#${id}`, `Article · ${s.title || s.label || ""}`);
     }
   }
-  for (const g of D.glossaire) ajoute("glo", g.terme, g.def, `index.html#terme-${slug(g.terme)}`, "Glossaire");
+  for (const g of D.glossaire) ajoute("glo", g.terme, g.def, `index.html#${termeId(g.terme, D.glossaire)}`, "Glossaire");
   const deja = new Set(D.glossaire.map(g => plie(g.terme)));
   const vocab = (liste, article, meta) => liste.forEach(t => { if (!deja.has(plie(t.terme))) ajoute("voc", t.terme, t.def, `index.html#${ancreDe[article] || "meubles"}`, `${meta}${t.cat ? " · " + t.cat : ""}`); });
   vocab(D.attributs, "Les attributs : nommer les parties", "Attributs");
