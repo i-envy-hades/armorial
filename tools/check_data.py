@@ -84,13 +84,18 @@ else:
 def slug(t):
     t = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFD", str(t))).lower()
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", t))
+def terme_id(t, glossaire):
+    """Même règle que termeId() de assets/chrome.js : Bande et Bandé n'ont pas la même adresse."""
+    i, bas = slug(t), str(t).lower()
+    double = any(g_.get("terme") != t and slug(g_.get("terme")) == i for g_ in glossaire)
+    return unicodedata.normalize("NFC", "terme-" + (re.sub(r"\s+", "-", bas) if double and bas != i else i))
 cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).get("frises", [])},
           "transmission.html": {n.get("id") for n in (DATA.get("transmission.json") or {}).get("noeuds", [])}}
 dd = DATA.get("data.json") or {}
 # (un encadré, « note », n'a pas d'adresse : seule la section se vise)
 cibles["index.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
     | {slug(a_.get("titre")) for s_ in dd.get("sections", []) for a_ in s_.get("articles", []) if a_.get("titre") and not a_.get("note")} \
-    | {"terme-" + slug(g_.get("terme")) for g_ in dd.get("glossaire", [])}
+    | {terme_id(g_.get("terme"), dd.get("glossaire", [])) for g_ in dd.get("glossaire", [])}
 for nom in ("blasons.json", "personnages.json"):
     for e in DATA.get(nom) or []:
         for l in e.get("liens", []):
