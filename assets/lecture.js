@@ -96,10 +96,11 @@ function lexique() {
   L.ctr = table(quatre("contourné").map(f => [f, true]));
   L.borde = table(quatre("bordé").map(f => [f, true]));
   L.coure = table(quatre("couronné").map(f => [f, true]));
+  L.issant = table(["issant", "issante"].map(f => [f, true]));
   L.charge = table(quatre("chargé").map(f => [f, true]));
   L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.charge, L.verbe, L.fasceDispo])
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
   for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires"]) L.vocab.add(w);
   return L;
@@ -180,8 +181,10 @@ function pAccent(P, i, m, tm) {
 function pCorps(P, i, ref, nb) {
   for (const { n, val } of suites(LEX.noms, P, i)) {
     const m = meuble(val.kind);
-    let j = i + n, ct = false, cnAv = false;
-    for (let q = 0; q < 2; q++) {                               // « contourné » et « couronné » devant l'émail, dans l'ordre qu'on veut
+    let j = i + n, ct = false, cnAv = false, iss = false;
+    for (let q = 0; q < 3; q++) {                               // « issant », « contourné » et « couronné » devant l'émail, dans l'ordre qu'on veut
+      const c0 = !iss && suites(LEX.issant, P, j)[0];
+      if (c0) { iss = true; j += c0.n; continue; }
       const c1 = !ct && suites(LEX.ctr, P, j)[0];
       if (c1) { ct = true; j += c1.n; continue; }
       const k1 = !cnAv && m.couronne && suites(LEX.coure, P, j)[0];
@@ -197,6 +200,8 @@ function pCorps(P, i, ref, nb) {
     j = t.i;
     const c2 = !ct && suites(LEX.ctr, P, j)[0];
     if (c2) { ct = true; j += c2.n; }
+    const c3 = !iss && suites(LEX.issant, P, j)[0];                       // « un lion d'or issant » : aussi après l'émail
+    if (c3) { iss = true; j += c3.n; }
     /* la couronne d'un autre émail, après l'émail du meuble (« un lion d'or couronné d'argent, armé et lampassé de gueules ») */
     let cn = cnAv ? t.t : "";
     const aussi = q => (cle(P, q) === "aussi" ? q + 1 : q);                               // « couronné d'or aussi » : du même émail
@@ -212,7 +217,7 @@ function pCorps(P, i, ref, nb) {
       const jb = cle(P, fin) === "," ? fin + 1 : fin, k3 = suites(LEX.coure, P, jb)[0], te = k3 && pEmail(P, jb + k3.n, t.t);
       if (te) { cn = te.t; fin = aussi(te.i); } else if (k3) continue;
     }
-    return { m, tm: t.t, ta: ac.ta, ct, cn, mot: val.mot, i: fin, pre: avant };
+    return { m, tm: t.t, ta: ac.ta, ct, cn, iss, mot: val.mot, i: fin, pre: avant };
   }
   const k = cle(P, i), noms = k && !suites(LEX.noms, P, i).length && LEX.debuts.get(k);
   /* une piste, pas une erreur : elle ne parle que si la lecture ne va pas plus loin ailleurs (« la croix » est d'abord une pièce) */
@@ -413,7 +418,7 @@ function pArmes(P) {
 }
 
 /* ---------- de l'analyse aux armes de l'Atelier ---------- */
-const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", d: o.d || "" });
+const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.iss ? "1" : "", d: o.d || "" });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
 const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
@@ -482,12 +487,14 @@ function verifie(P, a, src, lieu) {
     else if (key === "pf") mets(src.p, `L'Atelier ne sait pas border ${art(a.p, PIECES[a.p].g)}${a.p} d'un filet.`);
     else if (key === "d") mets(src.m, `Cette disposition n'est pas possible ici dans l'Atelier (possibles : ${dispos(a).map(d => d.lab.toLowerCase()).join(" ; ") || "aucune"}).`);
     else if (key === "d2") mets(src.m2, `Cette disposition n'est pas possible dans l'Atelier (possibles : ${(PLEIN[a.nb2] || []).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
+    else if (key === "iss") mets(src.m, "Dans l'Atelier, « issant » ne se dit que d'un seul meuble, sans pièce : il sort de la pointe de l'écu.");
     else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
     else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else if (key === "ct2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else mets(null, `L'Atelier ne sait pas dessiner cela (${key}).`);
   }
+  if (src.m2 && src.m2.iss) mets(src.m2, "Dans l'Atelier, « issant » ne se dit que du premier meuble.");
   for (const [msg, it] of dit) erreur(P, it.de, it.fin, msg);
   if (dit.size) return null;
   /* une disposition dite, que l'Atelier ne reprendrait pas (place fixe) : on ne l'ignore pas en silence */

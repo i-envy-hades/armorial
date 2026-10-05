@@ -126,6 +126,12 @@
           <label><input type="radio" name="ct" value="1"><span>Contourné</span></label>
         </span>
       </div>
+      <div class="row" id="r-iss"><span class="lab">Position</span>
+        <span class="seg" role="radiogroup" aria-label="Le meuble entier ou issant">
+          <label><input type="radio" name="iss" value=""><span>Entier</span></label>
+          <label><input type="radio" name="iss" value="1"><span>Issant (de la pointe)</span></label>
+        </span>
+      </div>
       <div class="row" id="r-tm"><span class="lab">Émail</span><div class="chips" data-name="tm"></div></div>
       <div class="row" id="r-ta"><span class="lab" id="l-ta">Armé</span><div class="chips" data-name="ta"></div></div>
       <div class="row" id="r-cn"><span class="lab">Couronne</span><select name="cn" aria-label="Couronne portée par le meuble"></select></div>
@@ -155,6 +161,9 @@
     <fieldset>
       <legend>Les ornements</legend>
       <div class="row"><span class="lab">Couronne</span><select name="cr" aria-label="Couronne"></select></div>
+      <div class="row"><span class="lab">Manteau</span><select name="mt" aria-label="Manteau et pavillon"><option value="">Aucun</option><option value="m">Manteau</option><option value="p">Manteau et pavillon</option></select></div>
+      <div class="row" id="r-mc"><span class="lab">Émail</span><div class="chips" data-name="mc"></div></div>
+      <div class="row" id="r-ml"><span class="lab">Doublé</span><div class="chips" data-name="ml"></div></div>
       <div class="row"><span class="lab">Heaume</span><select name="hm" aria-label="Heaume et lambrequins"><option value="">Aucun</option><option value="h">Heaume</option><option value="hl">Heaume et lambrequins</option></select></div>
       <div class="row" id="r-hp"><span class="lab">Modèle</span><select name="ht" aria-label="Modèle de heaume"></select><select name="hp" aria-label="Position du heaume"></select>
         <span class="seg" id="r-hs" role="radiogroup" aria-label="Sens du heaume">

@@ -18,7 +18,8 @@ const adjust = (pts, a, grp, sfx) => {
 function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
-  if (m.seul) pts = [[100, 116, 1]];
+  if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
+  else if (m.seul) pts = [[100, 116, 1]];
   else if (PLEINLIKE.has(ctxOf(s))) { const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : []; }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
@@ -71,14 +72,16 @@ const DEVISES = {
   }) }
 };
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
-  ci: "", cim: "", cit: "Or", cia: "Gueules" };          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim"]);
+  ci: "", cim: "", cit: "Or", cia: "Gueules",
+  mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt"]);
 const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4"].includes(St.q)) St.q = "";
-  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
+  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
+  if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
   if (!mci || mci.seul) St.ci = "";
   if (!["", "issant"].includes(St.cim)) St.cim = "";
@@ -314,14 +317,44 @@ async function loadAll(St) {
   await Promise.all(jobs);
 }
 const suppAccent = s => s.ts === "Gueules" ? "Azur" : "Gueules";
+/* le manteau : une draperie de l'émail mc, doublée de ml, qui retombe autour de l'écu ; le pavillon : la tente qui le coiffe (au souverain seul). Dessinés ici, d'après
+   la description de « Manteau (héraldique) » (draperie de couleur, généralement doublée d'hermine) : une moitié, reflétée. Les coordonnées sont celles de l'écu (200 × 252). */
+const ourlet = (x0, x1, y, d, n) => { let s = "", w = (x1 - x0) / n; for (let i = 0; i < n; i++) s += `Q${(x0 + w * (i + .5)).toFixed(1)},${y + d} ${(x0 + w * (i + 1)).toFixed(1)},${y}`; return s; };
+function manteauSvg(St, u) {
+  const pav = St.mt === "p", ext = tinctPaint(St.mc), dbl = tinctPaint(St.ml), or = "url(#m-or)", ink = "#1a1712";
+  /* chaque moitié : le contour extérieur, la doublure en retrait, le filet d'or de la doublure */
+  const draperie = (hautY, haut, bas, hemY, ex, ixTop, ixBot, hemIn, n1, n2) => {
+    const outer = `M100,${hautY} ${haut} ${ourlet(ex, 100, hemY, 14, n1)}`, inner = `M100,${ixTop} ${bas} ${ourlet(ixBot, 100, hemIn, 12, n2)}`;
+    return { outer, inner };
+  };
+  const m = draperie(-26, "C46,-24 -14,32 -44,122 C-62,178 -70,232 -76,284", "C54,-6 6,40 -18,126 C-33,176 -40,226 -44,270", 284, -76, -8, -44, 270, 6, 5);
+  const gauche = (o, i, filet) =>
+    `<path d="${o} Z" fill="${ext}" stroke="${ext}" stroke-width=".8"/><path d="${o}" fill="none" stroke="${ink}" stroke-width="1.3" stroke-linejoin="round"/>`
+    + `<path d="${i} Z" fill="${dbl}" stroke="${dbl}" stroke-width=".8"/><path d="${filet}" fill="none" stroke="${or}" stroke-width="2.4"/><path d="${i}" fill="none" stroke="${ink}" stroke-width=".9" stroke-linejoin="round"/>`;
+  const paire = g => `<g>${g}</g><g transform="translate(200,0) scale(-1,1)">${g}</g>`;
+  let svg = paire(gauche(m.outer, m.inner, "M100,-8 C54,-6 6,40 -18,126 C-33,176 -40,226 -44,270"));
+  let bb = [-80, -30, 360, 330];
+  if (pav) {
+    const o = `M100,-168 C72,-166 28,-130 4,-70 C-12,-30 -28,12 -40,52 ${ourlet(-40, 100, 52, 14, 5)}`, i = `M100,-146 C78,-143 44,-114 24,-64 C10,-30 -2,2 -10,38 ${ourlet(-10, 100, 38, 10, 4)}`;
+    svg += paire(gauche(o, i, "M100,-146 C78,-143 44,-114 24,-64 C10,-30 -2,2 -10,38"))
+      + `<circle cx="100" cy="-174" r="7" fill="${or}" stroke="${ink}" stroke-width="1.2"/>`;
+    bb = [-80, -184, 360, 484];
+  }
+  return { svg, bb };
+}
 const PLAIN_VB = [0, 0, 200, 252];
 function compose(St, u = "a") {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
-  if (!cr && !St.hm && !co && !su && !dv) return { vb: PLAIN_VB, svg: shield };
+  if (!cr && !St.hm && !co && !su && !dv && !St.mt) return { vb: PLAIN_VB, svg: shield };
   let defs = "", back = "", front = "", bb = [0, 0, 200, 252];
   const grow = (x, y, w, h) => { bb = [Math.min(bb[0], x), Math.min(bb[1], y), Math.max(bb[2], x + w), Math.max(bb[3], y + h)]; };
   const place = (id, x, y, w, h, flip) => { grow(x, y, w, h); return `<use href="#${id}" x="${x}" y="${y}" width="${w}" height="${h}"${flip ? ` transform="matrix(-1 0 0 1 ${2 * x + w} 0)"` : ""}/>`; };
   const sized = (txt, W) => { const [w, h] = vbOf(txt); return W * h / w; };
+  if (St.mt) {
+    const M = manteauSvg(St, u);
+    back += M.svg;
+    grow(M.bb[0], M.bb[1], M.bb[2], M.bb[3]);
+  }
   if (St.hm === "hl") {
     const L = O.lambrequins, t = TXT[L.path], W = 330;
     defs += fileSymbol(recolor(t, L, St.tl1, St.tl2), `lb-${u}`, "#1a1712");
@@ -408,6 +441,7 @@ function ornText(St) {
     const c = charges({ m: St.ci, nb: "1", tm: St.cit, ta: St.cia, ct: "" }), f = c.g === "f";
     out.push(`Cimier : ${f ? "une" : "un"} ${c.nom}${St.cim ? (f ? " issante" : " issant") : ""} ${c.tinct}${c.acc}`);
   }
+  if (St.mt) out.push(`${St.mt === "p" ? "Manteau surmonté d'un pavillon" : "Manteau"} ${de(St.mc)} doublé ${de(St.ml)}`);
   if (cr) out.push(cr.nom);
   if (su) {
     const m = meuble(su.kind);

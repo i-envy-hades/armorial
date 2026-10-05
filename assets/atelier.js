@@ -73,6 +73,7 @@ function syncForm() {
   [...F.elements.pos].forEach(r => { r.closest("label").hidden = !{ sur: canSur, autour: canAut, sous: canSous }[r.value]; });
   $("#r-ta").hidden = !m || !m.accent;
   $("#r-cn").hidden = !m || !m.couronne;
+  $("#r-iss").hidden = !m || m.seul || a.nb !== "1" || !!a.p;                                   // « issant » : un seul meuble, sans pièce
   if (m?.accentMot) $("#l-ta").textContent = m.accentLabel || cap(m.accentMot.split(/[ ,]/)[0]);
   const note = $("#m-note");
   note.hidden = !m?.file;
@@ -91,6 +92,7 @@ function syncForm() {
   $("#r-pa").hidden = !S.hm || !!S.ci;                                                            // le cimier prend la place du panache
   $("#r-pa1").hidden = $("#r-pa2").hidden = !S.hm || !S.pa || !!S.ci;
   $("#r-ts").hidden = !S.su;
+  $("#r-mc").hidden = $("#r-ml").hidden = !S.mt;
   $("#r-dt").hidden = !S.dv.trim();
   $("#r-hp").hidden = !S.hm;
   $("#r-hs").hidden = S.hp === "face";

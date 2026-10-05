@@ -129,14 +129,14 @@ const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) 
 const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { const [k, v] = x.split(":"); return [k, (v || "").split(",").map(Number)]; }));
 const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
 const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
-const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, pos: "autour", p: "" });
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, iss: "", pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
-  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "" };               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "" };       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
@@ -178,6 +178,7 @@ function normalize(s) {
   const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
   s.cn = mm && mm.couronne && own(MOT, s.cn) ? s.cn : "";
   s.cn2 = mm2 && mm2.couronne && own(MOT, s.cn2) ? s.cn2 : "";
+  s.iss = mm && !mm.seul && s.iss === "1" && s.nb === "1" && !s.p ? "1" : "";               // un seul meuble, sans pièce
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
@@ -207,6 +208,7 @@ function canon(a) {
     if (m.accent) o.ta = a.ta;
     if (m.asym) o.ct = a.ct;
     if (m.couronne) o.cn = a.cn;
+    if (a.iss) o.iss = a.iss;
     if (dispos(a).length) o.d = a.d;
   }
   if (m2) {
@@ -230,7 +232,7 @@ function charges(s) {
   /* la couronne : de l'émail du meuble, elle se dit devant lui (« un lion couronné d'or ») ; d'un autre, après l'attribut (« … armé et lampassé de gueules couronné d'argent ») */
   const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && s.cn === s.tm;
   const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
-  const ctr = (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
+  const ctr = (s.iss ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
   return { m, n, pl, nom, nomPl, g, acc, ctr, tinct: de(s.tm) };
 }
 function semePhrase(c, s) {

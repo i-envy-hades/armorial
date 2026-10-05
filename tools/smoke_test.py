@@ -133,7 +133,7 @@ FUZZ = """async (n) => {
       for (let j = 0; j < 4; j++) St.A[j] = { ...randomArms(), f: pick(["plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
         ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)),
         m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
-        nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
+        nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", iss: pick(["", "", "1"]), pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
         ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]) };
       St.cr = pick(["", ...O.couronnes.map(c => c.kind)]); St.hm = pick(["", "h", "hl"]); St.ht = pick(Object.keys(O.heaumeTypes)); St.hp = pick(Object.keys(O.heaumePos));
       St.pa = pick(["", "3", "5"]); St.su = pick(["", ...O.supports.map(x => x.kind)]); St.co = pick(["", ...O.colliers.map(c => c.kind)]);
@@ -232,6 +232,10 @@ CONNUES = [
     ({"A0": {"t1": "Or", "m": "aigle-vol-abaisse", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'or à l'aigle au vol abaissé de sable becquée, membrée et couronnée de gueules"),
     ({"A0": {"t1": "Argent", "m": "wyverne", "nb": "1", "tm": "Sinople", "ta": "Gueules"}}, "D'argent au wyvern de sinople lampassé de gueules"),
     ({"A0": {"t1": "Gueules", "m": "belier", "nb": "1", "tm": "Argent", "ta": "Or"}}, "De gueules au bélier passant d'argent accorné et onglé d'or"),
+    # issant : la moitié haute d'un seul meuble, sortant de la pointe
+    ({"A0": {"t1": "Azur", "m": "lion", "nb": "1", "tm": "Or", "ta": "Or", "iss": "1"}}, "D'azur au lion issant d'or"),
+    ({"A0": {"t1": "Azur", "m": "lion", "nb": "1", "tm": "Or", "ta": "Gueules", "iss": "1", "ct": "1"}}, "D'azur au lion issant contourné d'or armé et lampassé de gueules"),
+    ({"A0": {"t1": "Argent", "m": "aigle", "nb": "1", "tm": "Azur", "ta": "Azur", "iss": "1"}}, "D'argent à l'aigle issante d'azur becquée, membrée et couronnée d'azur"),
     # la couronne d'une bête : de son émail (devant), d'un autre (après l'attribut)
     ({"A0": {"t1": "Gueules", "m": "lion", "nb": "1", "tm": "Or", "ta": "Azur", "cn": "Or"}}, "De gueules au lion couronné d'or armé et lampassé d'azur"),
     ({"A0": {"t1": "Gueules", "m": "lion", "nb": "3", "tm": "Or", "ta": "Azur", "cn": "Argent", "ct": "1"}}, "De gueules à trois lions contournés d'or armés et lampassés d'azur couronnés d'argent"),
@@ -284,6 +288,13 @@ def test_atelier(browser, base, n_fuzz):
         return /Cimier : un lion issant d'or armé et lampassé de gueules/.test(t) && c.svg.includes("ci-a") && !c0.svg.includes("ci-a");   // le cimier ne se pose que sur un heaume
     }""")
     verifie(ok, "atelier : le cimier se pose sur le heaume (et seulement sur lui), entier ou issant, et se dit")
+    ok = page.evaluate("""async () => {
+        const St = fresh(); Object.assign(St, { mt: "p", mc: "Gueules", ml: "Hermine" });
+        S = normalizeAll(St); await loadAll(S); const c = compose(S), t = ornText(S), sans = compose(normalizeAll(fresh()));
+        S = fresh();
+        return t === "Manteau surmonté d'un pavillon de gueules doublé d'hermine" && c.vb[3] > sans.vb[3] * 1.8 && c.vb[2] > sans.vb[2] * 1.5;   // la tente et le manteau agrandissent la page
+    }""")
+    verifie(ok, "atelier : le manteau et le pavillon se dessinent autour de l'écu et se disent")
     pb = page.evaluate(FUZZ, n_fuzz)
     verifie(not pb, f"atelier : {n_fuzz} compositions au hasard sans défaut" + ("" if not pb else f" — {pb[:3]}"))
     propre("atelier", page, erreurs)
@@ -358,6 +369,8 @@ LUS = [
     ("De gueules au lion rampant d'or couronné d'or aussi", "De gueules au lion couronné d'or", ""),
     ("D'or au lion de sable armé, lampassé et couronné de gueules", "D'or au lion de sable armé et lampassé de gueules couronné de gueules", "colore d'un seul émail"),
     ("D'argent à trois lions de sinople, armés et lampassés de gueules, couronnés d'or", "D'argent à trois lions de sinople armés et lampassés de gueules couronnés d'or", ""),
+    ("D'azur au lion d'or issant", "D'azur au lion issant d'or", ""),
+    ("D'azur au lion issant contourné d'or", "D'azur au lion issant contourné d'or", ""),
     ("D'azur à neuf cœurs d'or posés en trois pals", "D'azur à neuf cœurs d'or posés 3, 3 et 3", ""),
     ("D'azur à douze besants d'argent posés 4, 4 et 4", "D'azur à douze besants d'argent posés 4, 4 et 4", ""),
 ]
@@ -367,6 +380,8 @@ REFUSES = [
     ("D'or à sept pals de gueules", "Plusieurs pals"),
     ("De gueules à sept fasces d'argent", "Plusieurs fasces"),
     ("D'azur à l'ours passant d'argent couronné d'or", "couronné"),
+    ("D'azur à la croix d'or chargée d'un lion issant de gueules", "issant"),
+    ("D'azur à deux lions issants d'or", "issants"),
     ("D'azur à onze étoiles d'or", "onze étoiles"),
     ("D'azur à la fasce d'or ondée", "avant son émail"),
     ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
@@ -402,7 +417,7 @@ PERSONNAGES_REFUSES = ["Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Co
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
     ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
-    nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
+    nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", iss: pick(["", "", "1"]), pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
     ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), ta: pick(Object.keys(MOT)), ta2: pick(Object.keys(MOT)),
     d: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "orle", "cd", "cs"]),
     d2: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "cd", "cs"]),
