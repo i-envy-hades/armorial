@@ -378,6 +378,24 @@
       "type": "Ressource en ligne",
       "note": "Lexique des attributs qui modifient une pièce, une partition ou un meuble (alésé, bordé, bretessé, cléché, denché, fiché, pommeté…), chacun avec son exemple de blasonnement."
     },
+    "wiki_attribut": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Attribut (héraldique)",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Attribut_(héraldique)",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "La position d'une figure (ce qu'on ne dit pas) et ses attributs : attributs des animaux (armé, lampassé, vilené, couronné…), attitudes des quadrupèdes (rampant, passant, courant, assis, couché, dormant) et règle de la couronne, dite avant la figure si elle est du même émail, après sinon."
+    },
+    "wiki_wyvern": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Wyvern",
+      "editeur": "Wikipédia en anglais — en.wikipedia.org/wiki/Wyvern",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Le dragon à deux pattes des armoiries britanniques, distinct du dragon à quatre pattes, et l'origine du mot (anglo-français wivre, « vipère », d'où aussi la guivre)."
+    },
     "wiki_piece": {
       "auteur": "Wikipédia (contributeurs)",
       "titre": "Pièce (héraldique)",
@@ -3273,6 +3291,41 @@
       "def": "Champ couvert de fusées (losanges allongés) aboutées, c'est-à-dire se touchant par la pointe : un semé abouté de fusées, d'après la page « Champ composé ». Dit « en bande » ou « en barre », les fusées sont posées dans ce sens et chaque rang dessine l'autre diagonale. L'Atelier dessine un fuselé de proportions fixes.",
       "sources": [
         "wiki_champcompose"
+      ]
+    },
+    {
+      "terme": "Courant",
+      "def": "Se dit d'un quadrupède représenté au galop : les deux pattes arrière sur le sol, le tronc à l'horizontale. Un cerf dans cette attitude se dit plutôt élancé.",
+      "sources": [
+        "wiki_attribut"
+      ]
+    },
+    {
+      "terme": "Couché",
+      "def": "Se dit d'un animal au tronc allongé, la tête restant redressée (on dit gisant d'un cerf) ; quand la tête repose aussi sur le sol, il est dormant.",
+      "sources": [
+        "wiki_attribut"
+      ]
+    },
+    {
+      "terme": "Assis",
+      "def": "Se dit d'un animal dont l'arrière-train est posé sur le sol et le tronc dressé, les pattes avant posées au sol elles aussi ; levées, elles le font dire accroupi.",
+      "sources": [
+        "wiki_attribut"
+      ]
+    },
+    {
+      "terme": "Vol abaissé",
+      "def": "Se dit d'un oiseau dont les ailes, décollées du corps, ont leurs plumes dirigées vers le bas : un aigle au vol abaissé.",
+      "sources": [
+        "wiki_emplacement"
+      ]
+    },
+    {
+      "terme": "Wyvern",
+      "def": "Dragon à deux pattes, que l'héraldique britannique distingue du dragon à quatre pattes. Le mot vient de l'anglo-français wivre, « vipère », comme la guivre.",
+      "sources": [
+        "wiki_wyvern"
       ]
     },
     {
