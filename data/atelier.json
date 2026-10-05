@@ -33,7 +33,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    86,
+    34,
+    30
+   ]
   },
   {
    "kind": "lion-passant",
@@ -44,6 +49,10 @@
     [
      "lion léopardé",
      "lions léopardés"
+    ],
+    [
+     "lion passant",
+     "lions passant"
     ]
    ],
    "g": "m",
@@ -69,7 +78,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    88,
+    86,
+    26
+   ]
   },
   {
    "kind": "leopard",
@@ -99,7 +113,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    88,
+    84,
+    26
+   ]
   },
   {
    "kind": "aigle",
@@ -239,6 +258,33 @@
    "g": "f",
    "cat": "Astres et éléments",
    "draw": "etoile"
+  },
+  {
+   "kind": "etoile6",
+   "nom": "Étoile à six rais",
+   "sing": "étoile à six rais",
+   "plur": "étoiles à six rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile6"
+  },
+  {
+   "kind": "etoile7",
+   "nom": "Étoile à sept rais",
+   "sing": "étoile à sept rais",
+   "plur": "étoiles à sept rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile7"
+  },
+  {
+   "kind": "etoile8",
+   "nom": "Étoile à huit rais",
+   "sing": "étoile à huit rais",
+   "plur": "étoiles à huit rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile8"
   },
   {
    "kind": "molette",
@@ -1178,7 +1224,13 @@
    "g": "f",
    "cat": "Objets et bâtiments",
    "asym": true,
-   "draw": "clef"
+   "draw": "clef",
+   "alias": [
+    [
+     "clé",
+     "clés"
+    ]
+   ]
   },
   {
    "kind": "epee",
@@ -1206,6 +1258,31 @@
    "g": "f",
    "cat": "Objets et bâtiments",
    "draw": "tour"
+  },
+  {
+   "kind": "couronne",
+   "nom": "Couronne",
+   "sing": "couronne",
+   "plur": "couronnes",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "draw": "couronne"
+  },
+  {
+   "kind": "hache",
+   "nom": "Hache d'armes",
+   "sing": "hache d'armes",
+   "plur": "haches d'armes",
+   "alias": [
+    [
+     "hache",
+     "haches"
+    ]
+   ],
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "draw": "hache"
   },
   {
    "kind": "chateau",
@@ -1534,6 +1611,12 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "alias": [
+    [
+     "cerf passant",
+     "cerfs passant"
+    ]
    ]
   },
   {
@@ -1599,7 +1682,13 @@
    "accent": [
     "#e20909"
    ],
-   "accentMot": "lampassé et vilené"
+   "accentMot": "lampassé et vilené",
+   "alias": [
+    [
+     "ours passant",
+     "ours passant"
+    ]
+   ]
   },
   {
    "kind": "sanglier",
@@ -1630,7 +1719,13 @@
     "#e20909",
     "#5ab532"
    ],
-   "accentMot": "onglé et lampassé"
+   "accentMot": "onglé et lampassé",
+   "alias": [
+    [
+     "sanglier passant",
+     "sangliers passant"
+    ]
+   ]
   },
   {
    "kind": "loup",
@@ -1656,6 +1751,12 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "alias": [
+    [
+     "loup passant",
+     "loups passant"
+    ]
    ]
   },
   {
@@ -1891,6 +1992,11 @@
    "kind": "pairle",
    "nom": "Pairle",
    "g": "m"
+  },
+  {
+   "kind": "cotice",
+   "nom": "Cotice",
+   "g": "f"
   }
  ],
  "ornements": {

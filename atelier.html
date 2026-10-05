@@ -94,8 +94,8 @@
       </div>
       <div class="row" id="r-part"><span class="lab">Partition</span><select name="part" aria-label="Partition"></select></div>
       <div class="row" id="r-ray"><span class="lab">Rayures</span>
-        <select name="ray" aria-label="Rayures"><option value="barry">Fascé</option><option value="paly">Palé</option><option value="bendy">Bandé</option><option value="bendysin">Barré</option></select>
-        <select name="n" aria-label="Nombre de pièces"><option value="6">six pièces</option><option value="8">huit pièces</option><option value="5">deux pièces rebattues (deux pals…)</option><option value="7">trois pièces rebattues (trois pals…)</option><option value="9">quatre pièces rebattues (quatre pals…)</option></select>
+        <select name="ray" aria-label="Rayures"><option value="barry">Fascé</option><option value="paly">Palé</option><option value="bendy">Bandé</option><option value="bendysin">Barré</option><option value="chevronny">Chevronné</option><option value="chequy">Échiqueté</option><option value="lozengy">Fuselé</option><option value="lozengybend">Fuselé en bande</option><option value="lozengysin">Fuselé en barre</option></select>
+        <select name="n" aria-label="Nombre de pièces"></select>
       </div>
       <div class="row"><span class="lab" id="l-t1">Émail</span><div class="chips" data-name="t1"></div></div>
       <div class="row" id="r-t2"><span class="lab">Second émail</span><div class="chips" data-name="t2"></div></div>
@@ -106,6 +106,7 @@
       <div class="row"><span class="lab">Pièce</span><select name="p" aria-label="Pièce honorable"></select></div>
       <div class="row" id="r-tp"><span class="lab">Émail</span><div class="chips" data-name="tp"></div></div>
       <div class="row" id="r-ln"><span class="lab">Bord</span><select name="ln" aria-label="Bord de la pièce"></select></div>
+      <div class="row" id="r-pf"><span class="lab">Filet</span><select name="pf" aria-label="Pièce bordée d'un filet d'un autre émail"></select></div>
     </fieldset>
     <fieldset>
       <legend>Les meubles</legend>
@@ -116,6 +117,7 @@
         <span class="seg" role="radiogroup" aria-label="Place des meubles">
           <label><input type="radio" name="pos" value="autour"><span>Autour de la pièce</span></label>
           <label><input type="radio" name="pos" value="sur"><span>Sur la pièce</span></label>
+          <label><input type="radio" name="pos" value="sous"><span>Sous la pièce (elle broche dessus)</span></label>
         </span>
       </div>
       <div class="row" id="r-ct"><span class="lab">Sens</span>
@@ -126,6 +128,7 @@
       </div>
       <div class="row" id="r-tm"><span class="lab">Émail</span><div class="chips" data-name="tm"></div></div>
       <div class="row" id="r-ta"><span class="lab" id="l-ta">Armé</span><div class="chips" data-name="ta"></div></div>
+      <div class="row" id="r-cn"><span class="lab">Couronne</span><select name="cn" aria-label="Couronne portée par le meuble"></select></div>
       <p class="note" id="m-note" hidden></p>
       <div class="sub" id="r-m2">
         <div class="row"><span class="lab">Second meuble</span><select name="m2" aria-label="Second meuble"></select></div>
@@ -139,6 +142,7 @@
         </div>
         <div class="row" id="r-tm2"><span class="lab">Émail</span><div class="chips" data-name="tm2"></div></div>
         <div class="row" id="r-ta2"><span class="lab" id="l-ta2">Armé</span><div class="chips" data-name="ta2"></div></div>
+        <div class="row" id="r-cn2"><span class="lab">Couronne</span><select name="cn2" aria-label="Couronne portée par le second meuble"></select></div>
       </div>
       <div class="sub" id="r-adj">
         <div class="row"><span class="lab">Ajuster</span><select id="k-t" aria-label="Meuble à ajuster"></select></div>
@@ -163,6 +167,15 @@
       <div class="row" id="r-pa"><span class="lab">Panache</span><select name="pa" aria-label="Panache"><option value="">Aucun</option><option value="3">Trois plumes</option><option value="5">Cinq plumes</option></select></div>
       <div class="row" id="r-pa1"><span class="lab">Plumes</span><div class="chips" data-name="pa1"></div></div>
       <div class="row" id="r-pa2"><span class="lab">Alternées</span><div class="chips" data-name="pa2"></div></div>
+      <div class="row" id="r-ci"><span class="lab">Cimier</span><select name="ci" aria-label="Cimier : un meuble posé sur le heaume"></select></div>
+      <div class="row" id="r-cim"><span class="lab">Posé</span>
+        <span class="seg" role="radiogroup" aria-label="Le cimier entier ou issant">
+          <label><input type="radio" name="cim" value=""><span>Entier</span></label>
+          <label><input type="radio" name="cim" value="issant"><span>Issant</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-cit"><span class="lab">Émail du cimier</span><div class="chips" data-name="cit"></div></div>
+      <div class="row" id="r-cia"><span class="lab" id="l-cia">Armé</span><div class="chips" data-name="cia"></div></div>
       <div class="row"><span class="lab">Supports</span><select name="su" aria-label="Supports"></select></div>
       <div class="row" id="r-ts"><span class="lab">Émail</span><div class="chips" data-name="ts"></div></div>
       <div class="row"><span class="lab">Collier</span><select name="co" aria-label="Collier d'ordre"></select></div>

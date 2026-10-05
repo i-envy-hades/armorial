@@ -369,6 +369,15 @@
       "type": "Ressource en ligne",
       "note": "Les champs remplis par répétition de petits meubles : le semé (nombre indéfini, meubles incomplets près des bords, règle des émaux), le pavage (échiqueté, losangé, maçonné…) et ses rapports avec les fourrures. La page ne porte pas de bandeau d'avertissement et ne cite aucune référence."
     },
+    "wiki_attributs": {
+      "auteur": "Wikipédia (contributeurs)",
+      "titre": "Attribut des figures géométriques",
+      "editeur": "Wikipédia, encyclopédie en ligne — fr.wikipedia.org/wiki/Attribut_des_figures_géométriques",
+      "annee": "consulté en 2026",
+      "isbn": "—",
+      "type": "Ressource en ligne",
+      "note": "Lexique des attributs qui modifient une pièce, une partition ou un meuble (alésé, bordé, bretessé, cléché, denché, fiché, pommeté…), chacun avec son exemple de blasonnement."
+    },
     "wiki_piece": {
       "auteur": "Wikipédia (contributeurs)",
       "titre": "Pièce (héraldique)",
@@ -2775,9 +2784,10 @@
     },
     {
       "terme": "Alésé",
-      "def": "Se dit d'une pièce honorable raccourcie qui ne touche plus les bords de l'écu.",
+      "def": "Se dit d'une pièce honorable raccourcie qui ne touche plus les bords de l'écu : « d'argent à la croix alésée de gueules ». Elle se comporte alors comme un meuble. L'Atelier alèse la fasce, le pal, la bande, la barre, le chevron et le sautoir ; sa croix alésée est un meuble.",
       "sources": [
-        "joubert1977"
+        "joubert1977",
+        "wiki_attributs"
       ]
     },
     {
@@ -2789,9 +2799,10 @@
     },
     {
       "terme": "Burelé",
-      "def": "Champ couvert d'un nombre pair de bandes horizontales égales et alternées (multiplication du coupé).",
+      "def": "Champ couvert d'un nombre pair de bandes horizontales égales et alternées (multiplication du coupé). C'est le nom que prend le fascé à partir de dix pièces, quand elles sont minces.",
       "sources": [
-        "wenzler2015"
+        "wenzler2015",
+        "wiki_rebattement"
       ]
     },
     {
@@ -3248,6 +3259,34 @@
       "sources": [
         "wiki_couronne_murale",
         "wiki_communes_empire"
+      ]
+    },
+    {
+      "terme": "Échiqueté",
+      "def": "Champ couvert de carreaux alternés de deux émaux, comme un échiquier : un pavage, que la page « Champ composé » décrit comme un semé abouté de carreaux. On le compte en tires, ses rangées horizontales : une surface en porte normalement six ou à peu près, et l'on dit le nombre quand il est manifestement autre (« échiqueté de quatre tires »). L'Atelier en dessine six par défaut, de trois à huit au choix.",
+      "sources": [
+        "wiki_champcompose"
+      ]
+    },
+    {
+      "terme": "Fuselé",
+      "def": "Champ couvert de fusées (losanges allongés) aboutées, c'est-à-dire se touchant par la pointe : un semé abouté de fusées, d'après la page « Champ composé ». Dit « en bande » ou « en barre », les fusées sont posées dans ce sens et chaque rang dessine l'autre diagonale. L'Atelier dessine un fuselé de proportions fixes.",
+      "sources": [
+        "wiki_champcompose"
+      ]
+    },
+    {
+      "terme": "Tire",
+      "def": "Rangée horizontale de pièces répétées dans un champ composé (échiqueté, vairé, semé) : « échiqueté de six tires ».",
+      "sources": [
+        "wiki_champcompose"
+      ]
+    },
+    {
+      "terme": "Bordé",
+      "def": "Se dit d'une pièce entourée d'une bordure de couleur différente, un liseré : « croix d'argent bordée de gueules ».",
+      "sources": [
+        "wiki_attributs"
       ]
     }
   ],

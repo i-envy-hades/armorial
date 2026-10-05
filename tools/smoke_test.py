@@ -131,9 +131,9 @@ FUZZ = """async (n) => {
       const St = fresh();
       St.q = pick(["", "2", "4"]);
       for (let j = 0; j < 4; j++) St.A[j] = { ...randomArms(), f: pick(["plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
-        ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["5", "6", "7", "8", "9"]), t3: pick(Object.keys(MOT)),
+        ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)),
         m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
-        nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur"]),
+        nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
         ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]) };
       St.cr = pick(["", ...O.couronnes.map(c => c.kind)]); St.hm = pick(["", "h", "hl"]); St.ht = pick(Object.keys(O.heaumeTypes)); St.hp = pick(Object.keys(O.heaumePos));
       St.pa = pick(["", "3", "5"]); St.su = pick(["", ...O.supports.map(x => x.kind)]); St.co = pick(["", ...O.colliers.map(c => c.kind)]);
@@ -201,6 +201,27 @@ CONNUES = [
     ({"A0": {"t1": "Argent", "m": "", "p": "canton", "tp": "Gueules"}}, "D'argent au canton de gueules"),
     ({"A0": {"t1": "Or", "m": "epee", "nb": "1", "tm": "Argent", "p": "franc-quartier", "tp": "Azur", "pos": "sur"}}, "D'or au franc-quartier d'azur chargé d'une épée d'argent"),
     ({"A0": {"t1": "Argent", "m": "etoile", "nb": "3", "tm": "Azur", "p": "pairle", "tp": "Gueules"}}, "D'argent au pairle de gueules accompagné de trois étoiles d'azur"),
+    # champs rayés : burelé, vergeté, coticé, chevronné, échiqueté, fuselé (les noms que prennent les rayures à partir de dix pièces)
+    ({"A0": {"f": "ray", "ray": "barry", "n": "10", "t1": "Argent", "t2": "Gueules", "m": ""}}, "Burelé d'argent et de gueules"),
+    ({"A0": {"f": "ray", "ray": "paly", "n": "12", "t1": "Or", "t2": "Azur", "m": ""}}, "Vergeté d'or et d'azur de douze pièces"),
+    ({"A0": {"f": "ray", "ray": "bendysin", "n": "10", "t1": "Or", "t2": "Gueules", "m": ""}}, "Coticé en barre d'or et de gueules"),
+    ({"A0": {"f": "ray", "ray": "chevronny", "n": "6", "t1": "Or", "t2": "Sable", "m": ""}}, "Chevronné d'or et de sable"),
+    ({"A0": {"f": "ray", "ray": "chevronny", "n": "7", "t1": "Or", "t2": "Gueules", "m": ""}}, "D'or à trois chevrons de gueules"),
+    ({"A0": {"f": "ray", "ray": "chequy", "n": "6", "t1": "Argent", "t2": "Gueules", "m": ""}}, "Échiqueté d'argent et de gueules"),
+    ({"A0": {"f": "ray", "ray": "chequy", "n": "4", "t1": "Or", "t2": "Azur", "m": ""}}, "Échiqueté d'or et d'azur de quatre tires"),
+    ({"A0": {"f": "ray", "ray": "lozengybend", "n": "6", "t1": "Azur", "t2": "Argent", "m": ""}}, "Fuselé en bande d'azur et d'argent"),
+    # pièces alésées, filet, pièce brochant sur des meubles, cotice, nombres de meubles au-delà de huit, étoiles à six rais
+    ({"A0": {"t1": "Argent", "m": "", "p": "fasce", "tp": "Gueules", "ln": "alesee"}}, "D'argent à la fasce alésée de gueules"),
+    ({"A0": {"t1": "Azur", "m": "", "p": "croix", "tp": "Gueules", "pf": "Argent"}}, "D'azur à la croix de gueules bordée d'argent"),
+    ({"A0": {"t1": "Azur", "m": "lion", "nb": "1", "tm": "Or", "ta": "Or", "p": "bande", "tp": "Gueules", "pos": "sous"}}, "D'azur au lion d'or, à la bande de gueules brochant sur le tout"),
+    ({"A0": {"t1": "Or", "m": "", "p": "cotice", "tp": "Azur"}}, "D'or à la cotice d'azur"),
+    ({"A0": {"t1": "Azur", "m": "etoile", "nb": "9", "tm": "Or"}}, "D'azur à neuf étoiles d'or posées 3, 3 et 3"),
+    ({"A0": {"t1": "Azur", "m": "roundel", "nb": "12", "tm": "Argent"}}, "D'azur à douze besants d'argent posés 4, 4 et 4"),
+    ({"A0": {"t1": "Azur", "m": "etoile6", "nb": "3", "tm": "Or"}}, "D'azur à trois étoiles à six rais d'or"),
+    # la couronne d'une bête : de son émail (devant), d'un autre (après l'attribut)
+    ({"A0": {"t1": "Gueules", "m": "lion", "nb": "1", "tm": "Or", "ta": "Azur", "cn": "Or"}}, "De gueules au lion couronné d'or armé et lampassé d'azur"),
+    ({"A0": {"t1": "Gueules", "m": "lion", "nb": "3", "tm": "Or", "ta": "Azur", "cn": "Argent", "ct": "1"}}, "De gueules à trois lions contournés d'or armés et lampassés d'azur couronnés d'argent"),
+    ({"A0": {"t1": "Azur", "m": "leopard", "nb": "1", "tm": "Or", "ta": "Or", "cn": "Or"}}, "D'azur au léopard couronné d'or"),
     # l'écusson en abîme
     ({"ab": "1", "A0": {"t1": "Azur", "m": "fleurdelis", "nb": "3", "tm": "Or"}, "A4": {"t1": "Argent", "m": "", "p": "croix", "tp": "Gueules"}},
      "D'azur à trois fleurs de lis d'or, sur le tout d'argent à la croix de gueules"),
@@ -241,6 +262,14 @@ def test_atelier(browser, base, n_fuzz):
         return !/\\.st0\\s*\\{/.test(svg) && (svg.match(/<style/g) || []).length >= 2;   // le poisson a une feuille de style interne : ses classes sont préfixées, copie par copie
     }""")
     verifie(ok, "atelier : deux copies d'un meuble à feuille de style interne gardent chacune leurs couleurs")
+    ok = page.evaluate("""async () => {
+        const St = fresh(); Object.assign(St, { hm: "hl", ci: "lion", cim: "issant", cit: "Or", cia: "Gueules" });
+        S = normalizeAll(St); await loadAll(S); const c = compose(S), t = ornText(S);
+        const sans = fresh(); Object.assign(sans, { ci: "lion" }); normalizeAll(sans); await loadAll(sans); const c0 = compose(sans);
+        S = fresh();
+        return /Cimier : un lion issant d'or armé et lampassé de gueules/.test(t) && c.svg.includes("ci-a") && !c0.svg.includes("ci-a");   // le cimier ne se pose que sur un heaume
+    }""")
+    verifie(ok, "atelier : le cimier se pose sur le heaume (et seulement sur lui), entier ou issant, et se dit")
     pb = page.evaluate(FUZZ, n_fuzz)
     verifie(not pb, f"atelier : {n_fuzz} compositions au hasard sans défaut" + ("" if not pb else f" — {pb[:3]}"))
     propre("atelier", page, erreurs)
@@ -295,14 +324,36 @@ LUS = [
     ("D'azur au lion d'or, sur le tout d'argent à la croix de gueules", "D'azur au lion d'or, sur le tout d'argent à la croix de gueules", ""),
     ("Parti d'azur et de gueules à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent",
      "Parti d'azur et de gueules, à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent", ""),
+    # ce que la galerie a appris à relire : « aux » devant un nombre, la disposition avant l'attribut, une liste d'attributs, « du champ », les quartiers séparés par une virgule
+    ("D'or aux trois léopards d'azur posés en pal, armés et lampassés de gueules", "D'or à trois léopards d'azur armés et lampassés de gueules posés en pal", ""),
+    ("D'argent, à l'ours passant de sable, armé, lampassé et vilené de gueules", "D'argent à l'ours passant de sable lampassé et vilené de gueules", "colore d'un seul émail"),
+    ("D'argent à trois lions passant de sable", "D'argent à trois lions passants de sable", ""),
+    ("Écartelé : aux 1 et 4 d'argent, aux 2 et 3 de sable", "Écartelé : aux 1 et 4, d'argent plein ; aux 2 et 3, de sable plein", ""),
+    ("Écartelé : en 1 et 4, d'or ; en 2 et 3, de gueules", "Écartelé : aux 1 et 4, d'or plein ; aux 2 et 3, de gueules plein", ""),
+    ("D'azur à l'étoile à six rais d'or", "D'azur à l'étoile à six rais d'or", ""),
+    ("Fuselé d'argent et de gueules", "Fuselé d'argent et de gueules", ""),
+    ("Burelé d'argent et de gueules", "Burelé d'argent et de gueules", ""),
+    ("Burelé d'or et de sable de huit pièces", "Fascé d'or et de sable de huit pièces", ""),
+    ("Chevronné d'or et de gueules, de douze pièces", "Chevronné d'or et de gueules de douze pièces", ""),
+    ("Échiqueté d'argent et de gueules de quatre tires", "Échiqueté d'argent et de gueules de quatre tires", ""),
+    ("D'or à trois chevrons de gueules", "D'or à trois chevrons de gueules", ""),
+    ("D'azur à la croix de gueules bordée d'argent", "D'azur à la croix de gueules bordée d'argent", ""),
+    ("D'argent à la fasce alésée de gueules", "D'argent à la fasce alésée de gueules", ""),
+    ("D'azur à la croix alésée d'argent", "D'azur à la croix alésée d'argent", ""),            # un meuble de l'Atelier, non une pièce alésée
+    ("D'azur au lion d'or, à la bande de gueules brochant sur le tout", "D'azur au lion d'or, à la bande de gueules brochant sur le tout", ""),
+    ("De gueules au lion rampant d'or couronné d'or aussi", "De gueules au lion couronné d'or", ""),
+    ("D'or au lion de sable armé, lampassé et couronné de gueules", "D'or au lion de sable armé et lampassé de gueules couronné de gueules", "colore d'un seul émail"),
+    ("D'argent à trois lions de sinople, armés et lampassés de gueules, couronnés d'or", "D'argent à trois lions de sinople armés et lampassés de gueules couronnés d'or", ""),
+    ("D'azur à neuf cœurs d'or posés en trois pals", "D'azur à neuf cœurs d'or posés 3, 3 et 3", ""),
+    ("D'azur à douze besants d'argent posés 4, 4 et 4", "D'azur à douze besants d'argent posés 4, 4 et 4", ""),
 ]
 # (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
 REFUSES = [
     ("D'azur à la grenade d'or", "grenade"),
-    ("D'or à cinq pals de gueules", "Plusieurs pals"),
-    ("De gueules à cinq fasces d'argent", "Plusieurs fasces"),
-    ("D'azur à la croix de gueules bordée d'argent", "bordée"),
-    ("D'azur à sept étoiles d'or", "sept étoiles"),
+    ("D'or à sept pals de gueules", "Plusieurs pals"),
+    ("De gueules à sept fasces d'argent", "Plusieurs fasces"),
+    ("D'azur à l'ours passant d'argent couronné d'or", "couronné"),
+    ("D'azur à onze étoiles d'or", "onze étoiles"),
     ("D'azur à la fasce d'or ondée", "avant son émail"),
     ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
     ("D'azur au cheval d'argent", "cheval cabré"),
@@ -317,8 +368,8 @@ REFUSES = [
     ("Écartelé : au 1, d'azur ; au 2, de gueules", "Il manque"),
     ("D'azur à la croix", "s'arrête trop tôt"),
     ("D'azur à trois", "s'arrête trop tôt"),
-    ("Fascé d'argent et d'azur de sept pièces", "six ou à huit"),
-    ("D'azur à l'étoile à sept rais d'or", "à sept rais"),
+    ("Fascé d'argent et d'azur de sept pièces", "six, huit"),
+    ("D'azur à l'étoile à neuf rais d'or", "à neuf rais"),
     ("D'azur plein à la croix d'or", "plein"),
     ("D'azur à la croix d'or (", "Parenthèse"),
     ("sur le tout d'argent à la croix de gueules", "après les armes"),
@@ -327,17 +378,17 @@ REFUSES = [
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
 BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Archiduché d'Autriche", "Couronne d'Aragon", "Comté de Foix",
                     "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
-                    "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse"]
+                    "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande"]
 # (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
-BLASONS_REFUSES = ["Royaume de Grenade", "Maison Grimaldi", "Royaume d'Islande", "Saint-Empire romain germanique", "Maison de Médicis"]
+BLASONS_REFUSES = ["Royaume de Grenade", "Saint-Empire romain germanique", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
                         "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV"]
 PERSONNAGES_REFUSES = ["Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Colbert"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
-    ray: pick(["barry", "paly", "bendy", "bendysin"]), n: pick(["5", "6", "7", "8", "9"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
-    nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur"]),
+    ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
+    nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
     ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), ta: pick(Object.keys(MOT)), ta2: pick(Object.keys(MOT)),
     d: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "orle", "cd", "cs"]),
     d2: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "cd", "cs"]),

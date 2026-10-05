@@ -70,14 +70,18 @@ const DEVISES = {
       + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
   }) }
 };
-const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "" };
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln"]);
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
+  ci: "", cim: "", cit: "Or", cia: "Gueules" };          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim"]);
 const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4"].includes(St.q)) St.q = "";
-  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
+  for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
+  const mci = St.ci && meuble(St.ci);
+  if (!mci || mci.seul) St.ci = "";
+  if (!["", "issant"].includes(St.cim)) St.cim = "";
   const O = ATL.ornements;
   if (!O.couronnes.some(c => c.kind === St.cr)) St.cr = "";
   if (!["", "h", "hl"].includes(St.hm)) St.hm = "";
@@ -177,7 +181,14 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
-const placeAll = (pts, m, id, flip) => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k},${k}` : k}) translate(-100,-116)">${useFor(m, id)}</g>`).join("");
+const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k},${k}` : k}) translate(-100,-116)">${useFor(m, id)}${over}</g>`).join("");
+/* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
+function couronneDe(m, tinct) {
+  if (!m.couronne || !tinct) return "";
+  const [x, y, w] = m.couronne, k = w / 128, ink = chgStroke(tinct);
+  const inner = chargeInner("couronne", tinctPaint(tinct), tinct === "Sable" ? "#6b6560" : ink, ink).replace(/stroke-width="1\.4"/g, `stroke-width="${(1.3 / k).toFixed(2)}"`);
+  return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
+}
 function drawBody(s, u) {
   let field;
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
@@ -187,15 +198,19 @@ function drawBody(s, u) {
   let defs = "", under = "", over = "";
   if (m) {
     defs += symbolFor(s, `chg-${u}`);
-    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct);
+    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct, couronneDe(m, s.cn));
     if (s.nb === "seme") under = g; else over = g;
   }
   if (m2) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
-    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2);
+    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
-  const piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
-  return { defs, body: field + under + piece + over };
+  let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
+  if (piece && s.pf) {                                    // le filet : la pièce cernée d'un liseré de l'émail dit (le contour de sa forme, élargi)
+    defs += `<filter id="fl-${u}" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="d"/><feFlood flood-color="${flat(s.pf)}"/><feComposite in2="d" operator="in" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+    piece = `<g filter="url(#fl-${u})">${piece}</g>`;
+  }
+  return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) };
 }
 function draw(s, u = "a", extra = "") {
   const r = drawBody(s, u);
@@ -289,6 +304,7 @@ async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
   for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
+  if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
   if (hm) jobs.push(getText(hm.path));
   if (St.hm === "hl") jobs.push(getText(O.lambrequins.path));
   if (St.hm && St.pa) jobs.push(getText(O.plume.path));
@@ -348,7 +364,25 @@ function compose(St, u = "a") {
     plumes = angles.map((a, i) => `<g transform="translate(100,${by.toFixed(1)}) rotate(${a}) scale(${a < 0 ? -1 : 1},1) translate(${-sx},${-sy})"><use href="#pl${i % 2 ? 2 : 1}-${u}" width="${W}" height="${H}"/></g>`).join("");
     grow(100 - H - W / 2, by - H - 8, 2 * H + W, H + 8);
   }
-  front += plumes + helm + crown;
+  /* le cimier : un meuble posé sur le heaume, sur un bourrelet aux émaux des lambrequins — ou sur la couronne, s'il y en a une ; « issant » : la moitié haute seulement */
+  let crest = "";
+  if (hm && St.ci) {
+    const m = meuble(St.ci), id = `ci-${u}`, issant = St.cim === "issant", k = issant ? .74 : .56, H = 172 * k;
+    defs += symbolFor({ ...ADEF, m: St.ci, tm: St.cit, ta: St.cia, nb: "1" }, id);
+    const bourrelet = crownY === null;
+    const yb = bourrelet ? helmTop + helmH * .1 : crownY + crownH * .22, yc = issant ? yb : yb - H / 2, flipC = St.hp !== "face" && St.hs === "s";
+    if (bourrelet) {                                                // le bourrelet : six segments aux émaux des lambrequins
+      const w = 74, h = 11, x0 = 100 - w / 2, y0 = yb - h / 2;
+      let b = "";
+      for (let i = 0; i < 6; i++) b += `<rect x="${(x0 + i * w / 6).toFixed(1)}" y="${y0.toFixed(1)}" width="${(w / 6 + .6).toFixed(1)}" height="${h}" rx="3" fill="${tinctPaint(i % 2 ? St.tl2 : St.tl1)}" stroke="#1a1712" stroke-width=".8"/>`;
+      crest += b;
+      grow(x0, y0, w, h);
+    }
+    defs += `<clipPath id="cic-${u}"><rect x="-300" y="-400" width="800" height="${(yb + 400).toFixed(1)}"/></clipPath>`;
+    crest += `<g${issant ? ` clip-path="url(#cic-${u})"` : ""}><g transform="translate(100,${yc.toFixed(1)}) scale(${flipC ? -k : k},${k}) translate(-100,-116)">${useFor(m, id)}</g></g>`;
+    grow(100 - 75 * k, yb - (issant ? H / 2 : H) - 4, 150 * k, (issant ? H / 2 : H) + 4);
+  }
+  front += (St.ci && hm ? "" : plumes) + helm + crown + crest;
   if (dv) {
     const y0 = co ? co.devY : 262, x0 = su ? -120 : -34, x1 = su ? 320 : 234;
     const B = DEVISES[St.dt].build(x0, x1, y0);
@@ -368,6 +402,10 @@ function ornText(St) {
     let t = `${O.heaumeTypes[St.ht]} ${O.heaumePos[St.hp].toLowerCase()}${St.hp !== "face" ? (St.hs === "s" ? ", tourné à senestre" : ", tourné à dextre") : ""}` + (St.hm === "hl" ? `, lambrequins ${de(St.tl1)} doublés ${de(St.tl2)}` : "");
     if (St.pa) t += `, panache de ${NB[+St.pa]} plumes d'autruche ${St.pa1 === St.pa2 ? de(St.pa1) : de(St.pa1) + " et " + de(St.pa2)}`;
     out.push(t);
+  }
+  if (St.hm && St.ci) {
+    const c = charges({ m: St.ci, nb: "1", tm: St.cit, ta: St.cia, ct: "" }), f = c.g === "f";
+    out.push(`Cimier : ${f ? "une" : "un"} ${c.nom}${St.cim ? (f ? " issante" : " issant") : ""} ${c.tinct}${c.acc}`);
   }
   if (cr) out.push(cr.nom);
   if (su) {
@@ -396,6 +434,7 @@ function creditsOf(St) {
   if (cr) add(cr.nom, cr, false);
   if (St.hm) add("Heaume", ornOf(St).hm, false);
   if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
+  if (St.hm && St.ci) { const m = meuble(St.ci); if (m && (m.file || m.credit)) add("Cimier", m.file || m.credit, true); }
   if (St.hm && St.pa) add("Panache", O.plume, true);
   if (co) add(co.nom, co, false);
   return out;

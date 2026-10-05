@@ -9,7 +9,7 @@ const MOT = { Or: "or", Argent: "argent", Gueules: "gueules", Azur: "azur", Sabl
 const voy = w => /^[aeiouyhéèêâîôûœ]/i.test(w);
 const de = t => (voy(MOT[t]) ? "d'" : "de ") + MOT[t];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit"];
+const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize"];
 const art = (w, g) => voy(w) ? "l'" : g === "f" ? "la " : "le ";
 const aArt = (w, g) => voy(w) ? "à l'" : g === "f" ? "à la " : "au ";
 /* accorde les participes en -é : « armé et lampassé » → « armées et lampassées » */
@@ -19,10 +19,13 @@ const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
 const PIECES = {
   chef: { g: "m" }, fasce: { g: "f" }, pal: { g: "m" }, bande: { g: "f" }, barre: { g: "f" },
   croix: { g: "f" }, sautoir: { g: "m" }, chevron: { g: "m" }, bordure: { g: "f" }, orle: { g: "m" },
-  canton: { g: "m" }, "franc-quartier": { g: "m" }, pairle: { g: "m" },        // propres à l'Atelier : voir « pieces » dans data/atelier.json
+  canton: { g: "m" }, "franc-quartier": { g: "m" }, pairle: { g: "m" }, cotice: { g: "f" },        // propres à l'Atelier : voir « pieces » dans data/atelier.json
 };
+/* les pièces qui peuvent brocher sur des meubles du champ (« à l'aigle de sable, à la cotice de gueules brochant sur le tout »), et celles qui s'alèsent */
+const BRO_OK = new Set(["fasce", "pal", "bande", "barre", "chevron", "croix", "sautoir", "pairle", "cotice"]);
+const ALESEE_OK = new Set(["fasce", "pal", "bande", "barre", "chevron", "sautoir"]);          // la croix alésée est un meuble de l'Atelier
 /* le bord d'une pièce, tel qu'on le blasonne ; les tracés sont dans assets/blason.js (CONTOURS) */
-const CONTOUR_NOM = { onde: "ondé", nebule: "nébulé", dancette: "dancetté", engrele: "engrêlé", cannele: "cannelé", denche: "denché" };
+const CONTOUR_NOM = { onde: "ondé", nebule: "nébulé", dancette: "dancetté", engrele: "engrêlé", cannele: "cannelé", denche: "denché", alesee: "alésé" };
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 /* positions des meubles [x, y, échelle, rotation] dans le repère de l'écu (200 × 252) */
 const B = 38.3;
@@ -57,10 +60,32 @@ const PLEIN = {
       { id: "222", lab: "2, 2 et 2", ph: " posé 2, 2 et 2", pts: [[62, 60, .3], [138, 60, .3], [62, 124, .3], [138, 124, .3], [66, 186, .26], [134, 186, .26]] },
       { id: "33", lab: "3 et 3", ph: " posé 3 et 3", pts: [[48, 78, .28], [100, 78, .28], [152, 78, .28], [48, 154, .28], [100, 154, .28], [152, 154, .28]] },
       { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[48, 52, .2], [152, 52, .2], [34, 122, .2], [166, 122, .2], [58, 190, .2], [142, 190, .2]] }],
+  7: [{ id: "", lab: "3, 3 et 1", ph: " posé 3, 3 et 1", pts: [[48, 62, .27], [100, 62, .27], [152, 62, .27], [48, 124, .27], [100, 124, .27], [152, 124, .27], [100, 186, .27]] },
+      { id: "43", lab: "4 et 3", ph: " posé 4 et 3", pts: [[34, 84, .23], [78, 84, .23], [122, 84, .23], [166, 84, .23], [56, 152, .23], [100, 152, .23], [144, 152, .23]] }],
   8: [{ id: "", lab: "En orle", ph: " en orle", plein: true, pts: [[42, 46, .18], [100, 38, .18], [158, 46, .18], [34, 112, .18], [166, 112, .18], [46, 176, .18], [154, 176, .18], [100, 218, .18]] }],
+  9: [{ id: "", lab: "3, 3 et 3", ph: " posé 3, 3 et 3", alt: [" posé en trois pals"], pts: [[48, 62, .26], [100, 62, .26], [152, 62, .26], [48, 124, .26], [100, 124, .26], [152, 124, .26], [56, 186, .26], [100, 186, .26], [144, 186, .26]] }],
+  10: [{ id: "", lab: "4, 3, 2 et 1", ph: " posé 4, 3, 2 et 1", pts: [[40, 52, .2], [80, 52, .2], [120, 52, .2], [160, 52, .2], [60, 104, .2], [100, 104, .2], [140, 104, .2], [80, 156, .2], [120, 156, .2], [100, 206, .2]] },
+       { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[46, 46, .17], [100, 38, .17], [154, 46, .17], [34, 96, .17], [166, 96, .17], [34, 150, .17], [166, 150, .17], [66, 196, .17], [134, 196, .17], [100, 222, .17]] }],
+  12: [{ id: "", lab: "4, 4 et 4", ph: " posé 4, 4 et 4", pts: [[40, 62, .17], [80, 62, .17], [120, 62, .17], [160, 62, .17], [40, 120, .17], [80, 120, .17], [120, 120, .17], [160, 120, .17], [58, 178, .17], [86, 178, .17], [114, 178, .17], [142, 178, .17]] },
+       { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[46, 46, .15], [100, 38, .15], [154, 46, .15], [34, 86, .15], [166, 86, .15], [32, 126, .15], [168, 126, .15], [40, 166, .15], [160, 166, .15], [64, 198, .15], [136, 198, .15], [100, 222, .15]] }],
 };
 /* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
-const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre" };
+const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
+/* les champs rayés : les quatre sens du trait, les chevrons, l'échiqueté (n = nombre de tires) et le fuselé (trois sens) */
+const RAYS = ["barry", "paly", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin"];
+const RAY_BANDES = ["5", "6", "7", "8", "9", "10", "11", "12", "13"], RAY_TIRES = ["3", "4", "5", "6", "7", "8"];
+const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : RAY_BANDES;
+/* à partir de dix pièces, les pièces diminuées changent de nom (burelé, vergeté, coticé) ; le nombre par défaut est six, ou dix pour ces noms-là */
+const RAY_NOM = { barry: ["Fascé", "Burelé"], paly: ["Palé", "Vergeté"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
+function rayTexte(s) {
+  const n = +s.n, ems = `${de(s.t1)} et ${de(s.t2)}`;
+  if (s.ray === "chequy") return `Échiqueté ${ems}${n === 6 ? "" : ` de ${NB[n]} tires`}`;
+  if (s.ray.startsWith("lozengy")) return `Fuselé${{ lozengybend: " en bande", lozengysin: " en barre" }[s.ray] || ""} ${ems}`;
+  /* un nombre impair de zones laisse aux deux bords l'émail du champ : ce sont des pièces rebattues, « d'or à trois pals de gueules » */
+  if (n % 2) return `${cap(de(s.t1))} à ${NB[(n - 1) / 2]} ${RAY_PIECE[s.ray]}s ${de(s.t2)}`;
+  const [petit, grand] = RAY_NOM[s.ray];
+  return `${n >= 10 ? grand : petit} ${ems}${n === 6 || (n === 10 && s.ray !== "chevronny") ? "" : ` de ${NB[n]} pièces`}`;
+}
 const PLEINLIKE = new Set(["plein", "bordure", "orle"]);
 const LAYOUT = {
   chef: { 1: [[100, 154, .62]], 2: [[64, 146, .42], [136, 146, .42]], 3: [[62, 120, .36], [138, 120, .36], [100, 192, .34]] },
@@ -68,6 +93,7 @@ const LAYOUT = {
            6: [[46, 60, .26], [100, 60, .26], [154, 60, .26], [64, 186, .24], [100, 186, .24], [136, 186, .24]] },
   pal: { 2: [[46, 118, .34], [154, 118, .34]] },
   bande: { 2: [[146, 66, .36], [56, 178, .34]] },
+  cotice: { 2: [[146, 66, .3], [56, 178, .28]] },                                  // trop étroite pour porter des meubles : ils l'accompagnent
   barre: { 2: [[54, 66, .36], [144, 178, .34]] },
   chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
   croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
@@ -103,50 +129,55 @@ const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) 
 const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { const [k, v] = x.split(":"); return [k, (v || "").split(",").map(Number)]; }));
 const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
 const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
-const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, pos: "autour", p: "" });
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
-  ct: "", ct2: "", ln: "" };
+  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "" };               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
 const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
-function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.p) : "plein"; }
+/* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
+function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p) : "plein"; }
 function countsFor(s) {
   const m = meuble(s.m);
   if (!m) return [];
   if (m.seul) return ["1"];
   const ctx = ctxOf(s);
   const ns = PLEINLIKE.has(ctx) ? Object.keys(PLEIN).filter(n => ctx === "plein" || PLEIN[n].some(d => !d.plein)) : Object.keys(LAYOUT[ctx] || {});
-  return s.f === "plein" && s.pos !== "sur" ? [...ns, "seme"] : ns;
+  return s.f === "plein" && s.pos !== "sur" && s.pos !== "sous" ? [...ns, "seme"] : ns;
 }
 const num = (v, lo, hi, d) => { const n = Math.round(+v); return String(Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d); };
 function normalize(s) {
   /* l'adresse de la page peut porter n'importe quoi : chaque valeur est ramenée à une valeur permise (own : pas de noms hérités, comme « constructor ») */
   for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
   if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
-  if (!["barry", "paly", "bendy", "bendysin"].includes(s.ray)) s.ray = "barry";
-  if (!["5", "6", "7", "8", "9"].includes(s.n)) s.n = ADEF.n;                       // pair : « fascé de six pièces » ; impair : des pièces rebattues (5, 7, 9 : deux, trois, quatre pals, fasces…)
-  if (s.pos !== "sur") s.pos = "autour";
+  if (!RAYS.includes(s.ray)) s.ray = "barry";
+  if (!rayNs(s.ray).includes(s.n)) s.n = ADEF.n;                                    // pair : « fascé de six pièces » ; impair : des pièces rebattues (5, 7, 9… : deux, trois, quatre pals, fasces…)
+  if (s.pos !== "sur" && s.pos !== "sous") s.pos = "autour";
   if (!own(PLEIN, s.nb) && s.nb !== "seme") s.nb = ADEF.nb;
   if (!DATA.partitions.some(p => p.kind === s.part)) s.part = "parti";
   if (s.p && !own(PIECES, s.p)) s.p = "";
   if (s.m && !meuble(s.m)) s.m = "";
+  if (!s.p || !s.m || s.nb === "seme" || !BRO_OK.has(s.p)) { if (s.pos === "sous") s.pos = "autour"; }
   if (!s.p) s.pos = "autour";
   if (s.p && s.pos === "sur" && !LAYOUT["sur-" + s.p]) s.pos = "autour";
-  if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = "sur";
+  if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = BRO_OK.has(s.p) && s.nb !== "seme" ? "sous" : "sur";
   const cs = countsFor(s);
   if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
   if (!dispos(s).some(d => d.id === s.d)) s.d = "";
   if (!s.m || (s.m2 && !meuble(s.m2))) s.m2 = "";
   /* le bord de la pièce ; le sens des meubles (seuls les meubles asymétriques se contournent) */
-  if (!s.p || !own(CONTOUR_NOM, s.ln)) s.ln = "";
+  if (!s.p || !own(CONTOUR_NOM, s.ln) || (s.ln === "alesee" && !ALESEE_OK.has(s.p))) s.ln = "";
+  if (!s.p || s.p === "bordure" || s.p === "orle" || !own(MOT, s.pf)) s.pf = "";                  // le filet : « la croix de gueules bordée d'argent »
   const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
+  s.cn = mm && mm.couronne && own(MOT, s.cn) ? s.cn : "";
+  s.cn2 = mm2 && mm2.couronne && own(MOT, s.cn2) ? s.cn2 : "";
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
@@ -168,19 +199,21 @@ function canon(a) {
   const o = { f: a.f }, m = a.m && meuble(a.m), m2 = m && a.m2 && meuble(a.m2);
   if (a.f === "plein") o.t1 = a.t1;
   else if (a.f === "part") { Object.assign(o, { part: a.part, t1: a.t1, t2: a.t2 }); if (a.part.startsWith("tierce")) o.t3 = a.t3; }
-  else Object.assign(o, { ray: a.ray, n: a.n, t1: a.t1, t2: a.t2 });
-  if (a.p) Object.assign(o, { p: a.p, tp: a.tp, ln: a.ln });
+  else Object.assign(o, { ray: a.ray, ...(a.ray.startsWith("lozengy") ? {} : { n: a.n }), t1: a.t1, t2: a.t2 });
+  if (a.p) Object.assign(o, { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
   if (m) {
     Object.assign(o, { m: a.m, nb: a.nb, tm: a.tm });
     if (a.p) o.pos = a.pos;
     if (m.accent) o.ta = a.ta;
     if (m.asym) o.ct = a.ct;
+    if (m.couronne) o.cn = a.cn;
     if (dispos(a).length) o.d = a.d;
   }
   if (m2) {
     Object.assign(o, { m2: a.m2, nb2: a.nb2, d2: a.d2, tm2: a.tm2 });
     if (m2.accent) o.ta2 = a.ta2;
     if (m2.asym) o.ct2 = a.ct2;
+    if (m2.couronne) o.cn2 = a.cn2;
   }
   return o;
 }
@@ -194,8 +227,10 @@ function charges(s) {
   const m = meuble(s.m), seme = s.nb === "seme", n = seme ? 0 : +s.nb, pl = seme || n > 1;
   let nom = m.sing, nomPl = m.plur, g = m.g;
   if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
-  const acc = accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "";
-  const ctr = s.ct ? " " + agree("contourné", g, pl) : "";                      // « un lion contourné d'or », « trois lions contournés d'or »
+  /* la couronne : de l'émail du meuble, elle se dit devant lui (« un lion couronné d'or ») ; d'un autre, après l'attribut (« … armé et lampassé de gueules couronné d'argent ») */
+  const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && s.cn === s.tm;
+  const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
+  const ctr = (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
   return { m, n, pl, nom, nomPl, g, acc, ctr, tinct: de(s.tm) };
 }
 function semePhrase(c, s) {
@@ -210,10 +245,7 @@ function blazon(s) {
     const p = DATA.partitions.find(x => x.kind === s.part);
     champ = s.part.startsWith("tierce") ? `${p.nom} ${de(s.t1)}, ${de(s.t2)} et ${de(s.t3)}` : `${p.nom} ${de(s.t1)} et ${de(s.t2)}`;
   } else if (s.f === "ray") {
-    const nom = { barry: "Fascé", paly: "Palé", bendy: "Bandé", bendysin: "Barré" }[s.ray];
-    /* un nombre impair de zones laisse aux deux bords l'émail du champ : ce sont des pièces rebattues, « d'or à trois pals de gueules » */
-    champ = +s.n % 2 ? `${cap(de(s.t1))} à ${NB[(+s.n - 1) / 2]} ${RAY_PIECE[s.ray]}s ${de(s.t2)}`
-      : `${nom} ${de(s.t1)} et ${de(s.t2)}${s.n === "8" ? " de huit pièces" : ""}`;
+    champ = rayTexte(s);
   } else champ = cap(de(s.t1));
   const parti = s.f !== "plein";
   const m = s.m && meuble(s.m);
@@ -237,8 +269,10 @@ function blazon(s) {
   }
   const P = PIECES[s.p], pnom = s.p;
   const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
-  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${de(s.tp)}`;
+  const filet = s.pf ? ` ${agree("bordé", P.g, false)} ${de(s.pf)}` : "";                       // « la croix de gueules bordée d'argent »
+  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${de(s.tp)}${filet}`;
   const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
+  if (c && !seme && s.pos === "sous") return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt} brochant sur le tout`;
   const sep = parti || seme ? ", " : " ";
   const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
   if (c && !seme && s.pos === "sur") {

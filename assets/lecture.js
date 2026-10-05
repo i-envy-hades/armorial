@@ -19,7 +19,7 @@
 /* ---------- jetons ---------- */
 const LETTRES = "A-Za-zÀ-ÖØ-öø-ÿŒœÆæ";
 const ELISIONS = { d: "de", l: "le", qu: "que" };
-const SYNONYMES = { plain: "plein", lys: "lis" };
+const SYNONYMES = { plain: "plein", lys: "lis", bequee: "becquee", bequees: "becquees", beque: "becque", beques: "becques" };
 const plie = s => String(s).toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 /* mots (w : forme sans accent ni majuscule ; « d' » devient « de »), nombres, ponctuation, et le reste (k "?") ; guillemets, point et trait d'union sautés */
 function decouper(texte) {
@@ -62,7 +62,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "pieces", "vert"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -74,25 +74,34 @@ function lexique() {
   L.noms = table(noms);
   /* noms de plusieurs mots, par leur premier mot : « ours » → « ours passant » */
   L.debuts = new Map();
-  for (const [s, v] of noms) if (v.nom && cles(s).length > 1) { const k = cles(s)[0]; L.debuts.set(k, [...(L.debuts.get(k) || []), s]); }
+  for (const [s, v] of noms) if (v.nom && cles(s).length > 1) { const k = cles(s)[0]; if (!(L.debuts.get(k) || []).includes(s)) L.debuts.set(k, [...(L.debuts.get(k) || []), s]); }
   L.semeAdj = table([...ATL.meubles.filter(m => m.semeAdj).map(m => [m.semeAdj, { kind: m.kind }]), ["besanté", { kind: "roundel", mot: "besant" }], ["tourteauté", { kind: "roundel", mot: "tourteau" }]]);
   L.pieces = table(Object.keys(PIECES).flatMap(p => [[p, { p }], ...(p === "croix" ? [] : [[p + "s", { p, plur: true }]])]));
   L.contours = table(Object.entries(CONTOUR_NOM).flatMap(([k, v]) => quatre(v).map(f => [f, k])));
   L.parts = table(DATA.partitions.map(p => [p.nom, { kind: p.kind, tierce: p.kind.startsWith("tierce") }]));
-  L.raye = table([["fascé", "barry"], ["palé", "paly"], ["bandé", "bendy"], ["barré", "bendysin"]]);
+  /* champs rayés : { ray, n } ; les noms des petites pièces (burelé, vergeté, coticé) valent dix pièces sauf mention */
+  L.raye = table([["fascé", { ray: "barry" }], ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
+    ["burelé", { ray: "barry", n: "10" }], ["vergeté", { ray: "paly", n: "10" }], ["vergetté", { ray: "paly", n: "10" }], ["coticé", { ray: "bendy", n: "10" }], ["coticé en barre", { ray: "bendysin", n: "10" }],
+    ["échiqueté", { ray: "chequy" }], ["fuselé", { ray: "lozengy" }], ["fuselé en bande", { ray: "lozengybend" }], ["fuselé en barre", { ray: "lozengysin" }]]);
   L.accent = {};
   for (const m of ATL.meubles) if (m.accent && m.accentMot) L.accent[m.kind] = table((m.accentFixe ? [m.accentMot] : quatre(m.accentMot)).map(f => [f, true]));
+  /* les attributs des bêtes, par classe : « armé » = « membré » = « onglé » (les griffes), « lampassé » = « langué » (la langue)… */
+  L.attr = new Map();
+  for (const [mot, cl] of [["armé", "A"], ["membré", "A"], ["onglé", "A"], ["lampassé", "L"], ["langué", "L"], ["vilené", "V"], ["becqué", "B"], ["couronné", "C"], ["incensé", "I"], ["accorné", "H"]])
+    for (const f of quatre(mot)) L.attr.set(cles(f)[0], cl);
   L.dispos = {};
   /* « posés en pal » = « rangés en pal » = « en pal » : le verbe ne change rien au dessin */
   const variantes = ph => { const m = ph.match(/^(posé|rangé) (en .+)$/); return m ? [ph, "posé " + m[2], "rangé " + m[2], m[2]] : [ph]; };
-  for (const [n, ds] of Object.entries(PLEIN)) L.dispos[n] = table(ds.filter(d => d.ph.trim()).flatMap(d => [...new Set(variantes(d.ph.trim()).flatMap(quatre))].map(f => [f, d.id])));
+  for (const [n, ds] of Object.entries(PLEIN)) L.dispos[n] = table(ds.filter(d => d.ph.trim()).flatMap(d => [...new Set([d.ph, ...(d.alt || [])].flatMap(ph => variantes(ph.trim())).flatMap(quatre))].map(f => [f, d.id])));
   L.ctr = table(quatre("contourné").map(f => [f, true]));
+  L.borde = table(quatre("bordé").map(f => [f, true]));
+  L.coure = table(quatre("couronné").map(f => [f, true]));
   L.charge = table(quatre("chargé").map(f => [f, true]));
   L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.charge, L.verbe, L.fasceDispo])
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.charge, L.verbe, L.fasceDispo])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys()]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires"]) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -127,9 +136,13 @@ function suites(T, P, i) {
 const bornes = (P, it, i0) => Object.assign(it, { de: P.toks[i0].de, fin: P.toks[it.i - 1].a });
 const erreur = (P, de, a, msg) => { P.errs.push({ de, a, msg }); return null; };
 
-function pEmail(P, i, ref) {                                 // « d'azur » · « de gueules » · « du même » (ref : l'émail déjà dit)
+function pEmail(P, i, ref) {                                 // « d'azur » · « de gueules » · « du même » · « du champ » (ref : l'émail déjà dit)
   const t = cle(P, i) === "de" && LEX.emaux.get(cle(P, i + 1));
   if (t) return { t, i: i + 2 };
+  if (cle(P, i) === "du" && cle(P, i + 1) === "champ" && P.champ) {         // le champ n'a un émail que s'il est plein
+    P.notes.push(`« du champ » : lu comme l'émail du champ, ${de(P.champ)}.`);
+    return { t: P.champ, i: i + 2 };
+  }
   if (ref && (cle(P, i) === "du" || cle(P, i) === "de") && cle(P, i + 1) === "meme") return { t: ref, i: i + 2 };
   return rate(P, i, "un émail (« d'azur », « de gueules »…)");
 }
@@ -137,20 +150,44 @@ function pEmail(P, i, ref) {                                 // « d'azur » · 
 function pAccent(P, i, m, tm) {
   const T = LEX.accent[m.kind];
   if (!T) return { ta: null, i };
-  const j = cle(P, i) === "," ? i + 1 : i, s = suites(T, P, j)[0];
+  const j = cle(P, i) === "," ? i + 1 : i;
+  let s = suites(T, P, j)[0], mots = null, cnAttr = false;
+  if (!s && !m.accentFixe) {
+    /* « armé, lampassé et vilené de gueules » : une liste d'attributs de la bête. L'Atelier les colore d'un seul émail : on l'accepte si elle
+       couvre ce qu'il dit (armé, lampassé…) et n'ajoute que des attributs qu'il ne distingue pas — pas une couronne, des cornes… */
+    const need = new Set(cles(m.accentMot).map(w => LEX.attr.get(w)).filter(Boolean)), used = new Set();
+    let q = j;
+    for (;;) {
+      const cl = LEX.attr.get(cle(P, q));
+      if (!cl) break;
+      used.add(cl); q++;
+      if ((cle(P, q) === "," || cle(P, q) === "et") && LEX.attr.has(cle(P, q + 1))) q++; else break;
+    }
+    const couronne = m.couronne && used.delete("C");                               // « … et couronné de gueules » : la couronne est du même émail que l'attribut
+    if (q > j && [...need].every(c => used.has(c)) && [...used].every(c => need.has(c) || "ALVB".includes(c))) {
+      s = { n: q - j }; mots = P.toks.slice(j, q).filter(t => t.k === "w" && t.w !== "et").map(t => t.r); cnAttr = !!couronne;
+    }
+  }
   if (!s) return { ta: null, i };
   const k = j + s.n;
-  if ((cle(P, k) === "du" || cle(P, k) === "de") && cle(P, k + 1) === "meme") return { ta: tm, i: k + 2 };
+  const noter = () => { if (mots) P.notes.push(`« ${mots.join(", ")} » : l'Atelier colore d'un seul émail ce qu'il appelle « ${m.accentMot} ».`); };
+  if ((cle(P, k) === "du" || cle(P, k) === "de") && cle(P, k + 1) === "meme") { noter(); return { ta: tm, i: k + 2, cn: cnAttr ? tm : "" }; }
   const t = pEmail(P, k);
-  return t ? { ta: t.t, i: t.i } : null;
+  if (t) noter();
+  return t ? { ta: t.t, i: t.i, cn: cnAttr ? t.t : "" } : null;
 }
 /* NOM [contourné] ÉMAIL [contourné] [attribut] */
-function pCorps(P, i, ref) {
+function pCorps(P, i, ref, nb) {
   for (const { n, val } of suites(LEX.noms, P, i)) {
     const m = meuble(val.kind);
-    let j = i + n, ct = false;
-    const c1 = suites(LEX.ctr, P, j)[0];
-    if (c1) { ct = true; j += c1.n; }
+    let j = i + n, ct = false, cnAv = false;
+    for (let q = 0; q < 2; q++) {                               // « contourné » et « couronné » devant l'émail, dans l'ordre qu'on veut
+      const c1 = !ct && suites(LEX.ctr, P, j)[0];
+      if (c1) { ct = true; j += c1.n; continue; }
+      const k1 = !cnAv && m.couronne && suites(LEX.coure, P, j)[0];
+      if (k1) { cnAv = true; j += k1.n; continue; }
+      break;
+    }
     const t = pEmail(P, j, ref);
     if (!t) {
       if (cle(P, j) === "a" && LEX.compte.has(cle(P, j + 1)) && cle(P, j + 2) === "rais")
@@ -160,9 +197,22 @@ function pCorps(P, i, ref) {
     j = t.i;
     const c2 = !ct && suites(LEX.ctr, P, j)[0];
     if (c2) { ct = true; j += c2.n; }
-    const ac = pAccent(P, j, m, t.t);
+    /* la couronne d'un autre émail, après l'émail du meuble (« un lion d'or couronné d'argent, armé et lampassé de gueules ») */
+    let cn = cnAv ? t.t : "";
+    const aussi = q => (cle(P, q) === "aussi" ? q + 1 : q);                               // « couronné d'or aussi » : du même émail
+    const pcr = () => { const jb = cle(P, j) === "," ? j + 1 : j, k2 = m.couronne && !cn && suites(LEX.coure, P, jb)[0], te = k2 && pEmail(P, jb + k2.n, t.t); if (te) { cn = te.t; j = aussi(te.i); } return !k2 || !!te; };
+    if (!pcr()) continue;
+    /* « trois léopards d'azur posés en pal, armés et lampassés de gueules » : la disposition peut précéder l'attribut */
+    const dp = nb && m.accent ? pDispo(P, j, nb) : null, avant = dp && dp.dit ? dp : null;
+    const ac = pAccent(P, avant ? avant.i : j, m, t.t);
     if (!ac) continue;
-    return { m, tm: t.t, ta: ac.ta, ct, mot: val.mot, i: ac.i };
+    if (ac.cn) cn = ac.cn;
+    let fin = ac.i;
+    if (!cn && m.couronne) {                                    // « … armé et lampassé de gueules couronné d'argent »
+      const jb = cle(P, fin) === "," ? fin + 1 : fin, k3 = suites(LEX.coure, P, jb)[0], te = k3 && pEmail(P, jb + k3.n, t.t);
+      if (te) { cn = te.t; fin = aussi(te.i); } else if (k3) continue;
+    }
+    return { m, tm: t.t, ta: ac.ta, ct, cn, mot: val.mot, i: fin, pre: avant };
   }
   const k = cle(P, i), noms = k && !suites(LEX.noms, P, i).length && LEX.debuts.get(k);
   /* une piste, pas une erreur : elle ne parle que si la lecture ne va pas plus loin ailleurs (« la croix » est d'abord une pièce) */
@@ -183,9 +233,9 @@ function pObjet(P, i, ref) {
   if (cle(P, i) !== "de") return rate(P, i, "« de »");
   const n = LEX.compte.get(cle(P, i + 1));
   if (!n) return rate(P, i + 1, "un nombre (« un », « trois »…)");
-  const c = pCorps(P, i + 2, ref);
+  const c = pCorps(P, i + 2, ref, n);
   if (!c) return null;
-  const d = pDispo(P, c.i, n);
+  const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
   return bornes(P, { n, ...c, d: d.d, dit: d.dit, i: d.i }, i);
 }
 /* « à la fleur de lis d'or » · « au lion d'or » · « à trois étoiles d'or posées en pal » [brochant sur le tout] */
@@ -194,13 +244,13 @@ function pGroupe(P, i) {
   let j, n;
   if (k === "au") { j = i + 1; n = 1; }
   else if (k === "a" && (k1 === "le" || k1 === "la")) { j = i + 2; n = 1; }
-  else if (k === "a" && LEX.compte.has(k1)) { j = i + 2; n = LEX.compte.get(k1); }
+  else if ((k === "a" || k === "aux") && LEX.compte.has(k1)) { j = i + 2; n = LEX.compte.get(k1); }          // « à trois lions » · « aux trois lions »
   else return rate(P, k === "a" ? i + 1 : i, k === "a" ? "un article (« à la », « au ») ou un nombre (« à trois »)" : "« à » ou « au »");
   const pl = suites(LEX.pieces, P, j)[0];
-  if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à quatre, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
-  const c = pCorps(P, j);
+  if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à six, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
+  const c = pCorps(P, j, undefined, n);
   if (!c) return null;
-  const d = pDispo(P, c.i, n);
+  const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
   let e = d.i;
   const br = pBrochant(P, e);
   if (br) e = br;
@@ -225,11 +275,14 @@ function pPiece(P, i) {
   const ps = j >= 0 && suites(LEX.pieces, P, j)[0];
   if (!ps || ps.val.plur) return undefined;
   let e = j + ps.n, ln = "";
-  const cn = suites(LEX.contours, P, e)[0];
+  const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee" || ALESEE_OK.has(ps.val.p));         // « la croix alésée » est un meuble : on ne la lit pas comme une pièce alésée
   if (cn) { ln = cn.val; e += cn.n; }
   const t = pEmail(P, e);
   if (!t) return null;
-  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, broche: false, charge: null, verbe: null, i: t.i };
+  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, pf: "", broche: false, charge: null, verbe: null, i: t.i };
+  /* « la croix de gueules bordée d'argent » : un filet d'un autre émail */
+  const jb = cle(P, it.i) === "," ? it.i + 1 : it.i, bd = suites(LEX.borde, P, jb)[0];
+  if (bd) { const tf = pEmail(P, jb + bd.n); if (!tf) return null; it.pf = tf.t; it.i = tf.i; }
   for (;;) {
     const q = cle(P, it.i) === "," ? it.i + 1 : it.i, br = pBrochant(P, q);
     if (br) { it.broche = true; it.i = br; continue; }
@@ -257,10 +310,10 @@ function pChamp(P) {
     const t = pEmail(P, 0);
     if (!t) return null;
     const plein = cle(P, t.i) === "plein";
-    /* « d'or à trois pals de gueules » : de deux à quatre pièces rebattues sur le champ = un champ rayé de cinq, sept ou neuf zones (l'émail du champ aux deux bords) */
+    /* « d'or à trois pals de gueules » : de deux à six pièces rebattues sur le champ = un champ rayé de cinq à treize zones (l'émail du champ aux deux bords) */
     if (!plein && cle(P, t.i) === "a" && LEX.compte.has(cle(P, t.i + 1))) {
-      const k = LEX.compte.get(cle(P, t.i + 1)), pl = suites(LEX.pieces, P, t.i + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin" };
-      if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 4) {
+      const k = LEX.compte.get(cle(P, t.i + 1)), pl = suites(LEX.pieces, P, t.i + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin", chevron: "chevronny" };
+      if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 6) {
         const t2 = pEmail(P, t.i + 2 + pl.n);
         if (t2) return { ch: { f: "ray", ray: RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
       }
@@ -291,13 +344,18 @@ function pChamp(P) {
     if (cle(P, t1.i) !== "et") return rate(P, t1.i, "« et » (deux émaux)");
     const t2 = pEmail(P, t1.i + 1);
     if (!t2) return null;
-    let i = t2.i, nn = "6";
-    if (cle(P, i) === "de" && LEX.compte.has(cle(P, i + 1)) && cle(P, i + 2) === "pieces") {
-      const n = LEX.compte.get(cle(P, i + 1));
-      if (n !== 6 && n !== 8) return erreur(P, P.toks[i].de, P.toks[i + 2].a, `« de ${cle(P, i + 1)} pièces » : l'Atelier dessine les champs à six ou à huit pièces.`);
+    const ray = r.val.ray, losange = ray.startsWith("lozengy");
+    let i = t2.i, nn = r.val.n || "6";
+    if (cle(P, i) === "," && cle(P, i + 1) === "de" && LEX.compte.has(cle(P, i + 2))) i++;                // « Chevronné d'or et de gueules, de douze pièces »
+    if (cle(P, i) === "de" && LEX.compte.has(cle(P, i + 1)) && (cle(P, i + 2) === "pieces" || cle(P, i + 2) === "tires" || cle(P, i + 2) === "tire")) {
+      const n = LEX.compte.get(cle(P, i + 1)), mot = cle(P, i + 2) === "pieces" ? "pièces" : "tires", ici = P.toks[i], fin = P.toks[i + 2];
+      if (losange) return erreur(P, ici.de, fin.a, "L'Atelier dessine le fuselé tel qu'il est, sans nombre de pièces.");
+      if (ray === "chequy" ? mot !== "tires" || !RAY_TIRES.includes(String(n)) : mot !== "pièces" || n % 2 || !RAY_BANDES.includes(String(n)))
+        return erreur(P, ici.de, fin.a, ray === "chequy" ? `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine l'échiqueté de trois à huit tires (six, si l'on ne dit rien).`
+          : `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine les champs rayés à six, huit, dix ou douze pièces (pour les nombres impairs : « d'or à trois pals de gueules »).`);
       nn = String(n); i += 3;
     }
-    return { ch: { f: "ray", ray: r.val, t1: t1.t, t2: t2.t, n: nn }, i };
+    return { ch: { f: "ray", ray, t1: t1.t, t2: t2.t, n: nn }, i };
   }
   return rate(P, 0, "un champ (« d'azur », « parti d'azur et d'or », « fascé… »…)");
 }
@@ -318,6 +376,7 @@ function aideSuite(P, items, i) {
 function pArmes(P) {
   const ch = pChamp(P);
   if (!ch) return null;
+  P.champ = ch.ch.f === "plein" ? ch.ch.t1 : undefined;             // « du champ » ne se dit que d'un champ d'un seul émail
   const items = [];
   let i = ch.i;
   if (ch.plein && i < P.fin) { rate(P, i, "la fin du blasonnement (« plein » se dit d'un champ nu)"); return null; }
@@ -326,7 +385,7 @@ function pArmes(P) {
     const k = cle(P, i);
     let it = null;
     if (k === "seme" || suites(LEX.semeAdj, P, i).length) it = pSeme(P, i);
-    else if (k === "a" || k === "au") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
+    else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
     else if (suites(LEX.verbe, P, i).length) {
       const vb = suites(LEX.verbe, P, i)[0], o = pObjet(P, i + vb.n, items.length ? items[items.length - 1].tm : undefined);
       it = o && bornes(P, { t: "acc", o, i: o.i }, i);
@@ -354,9 +413,9 @@ function pArmes(P) {
 }
 
 /* ---------- de l'analyse aux armes de l'Atelier ---------- */
-const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", d: o.d || "" });
-const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", d2: o.d || "" });
-const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln });
+const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", d: o.d || "" });
+const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
+const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */
 function assembler(P, r) {
@@ -367,7 +426,8 @@ function assembler(P, r) {
   const mal = (it, msg) => erreur(P, it.de, it.fin, msg);
   if (k < its.length) return mal(its[k], `Cet élément arrive là où l'Atelier ne sait pas le lire. ${ORDRE}.`);
   const br = [g1, g2, pc].find(x => x && x.broche);
-  if (br && a.f === "plein") return mal(br, "« brochant sur le tout » n'a de sens, dans l'Atelier, que sur un champ divisé : il ne sait pas poser une pièce par-dessus un meuble.");
+  const bro = g1 && pc && pc.broche && BRO_OK.has(pc.p) && !pc.charge && !pc.verbe && !sem;         // « à l'aigle de sable, à la cotice de gueules brochant sur le tout »
+  if (br && a.f === "plein" && !(bro && br === pc)) return mal(br, "« brochant sur le tout » n'a de sens, dans l'Atelier, que sur un champ divisé ou pour une pièce qui broche sur des meubles (« à l'aigle de sable, à la cotice de gueules brochant sur le tout »).");
   const pose1 = o => { poseM(a, o); src.m = o; }, pose2 = o => { poseM2(a, o); src.m2 = o; }, pose = it => { posePiece(a, it); src.p = it; };
   if (sem) {
     pose1(sem);
@@ -378,6 +438,7 @@ function assembler(P, r) {
     }
   } else if (g1) {
     if (!pc) { pose1(g1); if (acc) pose2(acc.o); }
+    else if (bro) { pose1(g1); if (acc) pose2(acc.o); pose(pc); a.pos = "sous"; }
     else if (pc.charge) {                                      // « à trois étoiles d'or, à la fasce d'azur chargée de… » : les étoiles sont celles du champ
       if (acc || pc.verbe) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);
       pose2(g1); pose1(pc.charge); a.pos = "sur"; pose(pc);
@@ -404,7 +465,7 @@ function verifie(P, a, src, lieu) {
   const b = normalize({ ...a }), x = canon(a), y = canon(b), m = a.m && meuble(a.m), m2 = a.m2 && meuble(a.m2);
   const dit = new Map();                                       // message → élément du texte qu'il vise
   const mets = (it, msg) => { if (!dit.has(msg)) dit.set(msg, it || src.m || src.p || src.m2); };
-  const ou = a.p ? (a.pos === "sur" ? ` sur ${art(a.p, PIECES[a.p].g)}${a.p}` : ` autour ${dePiece(a.p)}`) : "";
+  const ou = a.p ? (a.pos === "sur" ? ` sur ${art(a.p, PIECES[a.p].g)}${a.p}` : a.pos === "sous" ? ` sous ${art(a.p, PIECES[a.p].g)}${a.p}` : ` autour ${dePiece(a.p)}`) : "";
   const nombres = s => countsFor(s).map(n => n === "seme" ? "semé" : NB[+n] || n).join(", ");
   const diff = new Set([...Object.keys(x), ...Object.keys(y)].filter(key => x[key] !== y[key]));
   /* « contourné » sur une figure symétrique : canon() ne le voit pas (rien ne change au dessin), mais le texte le disait — on ne l'avale pas */
@@ -416,9 +477,13 @@ function verifie(P, a, src, lieu) {
   for (const key of diff) {
     if (key === "nb") mets(src.m, `L'Atelier ne sait pas poser ${a.nb === "seme" ? "un semé" : `${NB[+a.nb]} ${m.plur}`}${ou} (nombres possibles : ${nombres(a)}).`);
     else if (key === "nb2") mets(src.m2, `L'Atelier ne sait pas poser ${NB[+a.nb2]} ${m2.plur} (nombres possibles : ${Object.keys(PLEIN).map(n => NB[+n]).join(", ")}).`);
-    else if (key === "pos") mets(src.p, `L'Atelier ne sait pas poser des meubles ${a.pos === "sur" ? "sur" : "autour"} ${a.pos === "sur" ? `${art(a.p, PIECES[a.p].g)}${a.p}` : dePiece(a.p)}.`);
+    else if (key === "pos") mets(src.p, a.pos === "sous" ? `L'Atelier ne sait pas faire brocher ${art(a.p, PIECES[a.p].g)}${a.p} sur des meubles ici.` : `L'Atelier ne sait pas poser des meubles ${a.pos === "sur" ? "sur" : "autour"} ${a.pos === "sur" ? `${art(a.p, PIECES[a.p].g)}${a.p}` : dePiece(a.p)}.`);
+    else if (key === "ln") mets(src.p, a.ln === "alesee" ? `${cap(art(a.p, PIECES[a.p].g))}${a.p} ne s'alèse pas dans l'Atelier (alésés : ${[...ALESEE_OK].join(", ")}).` : `L'Atelier ne sait pas dessiner ce bord pour ${art(a.p, PIECES[a.p].g)}${a.p}.`);
+    else if (key === "pf") mets(src.p, `L'Atelier ne sait pas border ${art(a.p, PIECES[a.p].g)}${a.p} d'un filet.`);
     else if (key === "d") mets(src.m, `Cette disposition n'est pas possible ici dans l'Atelier (possibles : ${dispos(a).map(d => d.lab.toLowerCase()).join(" ; ") || "aucune"}).`);
     else if (key === "d2") mets(src.m2, `Cette disposition n'est pas possible dans l'Atelier (possibles : ${(PLEIN[a.nb2] || []).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
+    else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
+    else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else if (key === "ct2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else mets(null, `L'Atelier ne sait pas dessiner cela (${key}).`);
@@ -446,9 +511,9 @@ function verifie(P, a, src, lieu) {
 }
 
 /* ---------- le texte entier : quartiers, écusson en abîme ---------- */
-/* « aux 1 et 4, » · « au 2 » → { nums, i } */
+/* « aux 1 et 4, » · « au 2 » · « en 1 et 4, » → { nums, i } */
 function etiquette(seg) {
-  if (!seg[0] || (seg[0].w !== "au" && seg[0].w !== "aux")) return null;
+  if (!seg[0] || !["au", "aux", "en"].includes(seg[0].w)) return null;
   const nums = [];
   let i = 1;
   for (;;) {
@@ -463,7 +528,7 @@ function etiquette(seg) {
 function lireArmes(texte, toks, lieu, res) {
   const P = { toks, fin: toks.length, far: { i: -1, att: new Set() }, errs: [], notes: [] };
   const r = pArmes(P), t = r && assembler(P, r), b = t && verifie(P, t.a, t.src, lieu);
-  if (b) { res.notes.push(...P.notes); return b; }
+  if (b) { res.notes.push(...new Set(P.notes)); return b; }
   if (P.errs.length) { res.erreurs.push(...P.errs); return null; }
   if (P.hint && P.hint.i >= P.far.i) { res.erreurs.push({ de: P.hint.de, a: P.hint.a, msg: P.hint.msg }); return null; }
   /* pas d'erreur précise : on dit où la lecture s'est arrêtée et ce qu'on y attendait */
@@ -498,7 +563,12 @@ function lire(texte) {
   const etat = { q: "", ab: "", A: ADEFS.map(a => ({ ...a })) };
   if (!res.erreurs.length && quartele) {
     const segs = [[]];
-    for (const t of main.slice(2)) { if (t.k === "p" && t.w === ";") segs.push([]); else segs[segs.length - 1].push(t); }
+    /* les quartiers se séparent d'un point-virgule, ou d'une virgule devant « aux 2 et 3 », « en 2 et 3 » */
+    const reste = main.slice(2);
+    reste.forEach((t, x) => {
+      const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && reste[x + 1] && ["au", "aux", "en"].includes(reste[x + 1].w) && reste[x + 2] && reste[x + 2].k === "n"));
+      if (coupe) segs.push([]); else segs[segs.length - 1].push(t);
+    });
     const quarts = {}, groupes = [];
     segs.forEach((seg, n) => {
       const e = etiquette(seg);
