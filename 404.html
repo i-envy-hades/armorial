@@ -11,11 +11,9 @@
 <script>document.write('<base href="' + (location.pathname.indexOf("/armorial/") === 0 ? "/armorial/" : "/") + '">')</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/bandeau.css">
 <style>
-.perdu{max-width:640px;margin:0 auto;padding:clamp(4rem,12vw,7rem) clamp(1rem,4vw,2rem) 3rem;text-align:center}
-.perdu svg{width:110px;height:auto;filter:drop-shadow(0 12px 16px rgba(26,23,18,.28))}
-.perdu h1{font-family:"Marcellus",serif;font-size:clamp(2rem,6vw,3rem);margin:.8rem 0 .4rem}
-.perdu p{color:var(--ink-soft);font-style:italic;font-size:1.1rem;margin:.4rem 0}
+.perdu{max-width:640px;margin:0 auto;padding:1.6rem clamp(1rem,4vw,2rem) 3rem;text-align:center}
 .perdu form{margin:1.6rem auto 0;display:flex;gap:.5rem;max-width:420px}
 .perdu input{flex:1;font:inherit;padding:.55rem 1rem;border:1px solid var(--rule);border-radius:999px;background:var(--vellum-2);color:var(--ink)}
 .perdu button{font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.74rem;border:1px solid var(--gules);background:var(--gules);color:#fbf5e4;border-radius:999px;padding:.5rem 1.1rem;cursor:pointer}
@@ -23,20 +21,27 @@
 .perdu .liens a{font-family:"Marcellus SC",serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
 </style>
 </head>
-<body>
+<body class="bandeau">
+<div class="progress" aria-hidden="true"><i></i></div>
 <header class="mast" data-page="404"></header>
 <script src="assets/chrome.js"></script>
-<main class="perdu" id="main">
-  <!-- un écu vide : « d'argent plein », dessiné ici même -->
-  <svg viewBox="0 0 200 252" role="img" aria-label="Un écu vide"><path d="M18,16 L182,16 L182,120 C182,178 146,214 100,236 C54,214 18,178 18,120 Z" fill="#f4efe2" stroke="#1a1712" stroke-width="3"/><text x="100" y="150" text-anchor="middle" font-family="Marcellus,serif" font-size="96" fill="#8e1b18" opacity=".85">?</text></svg>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/perdu.jpg" data-video="assets/epopee/perdu.mp4" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Erreur 404</p>
   <h1>Page introuvable</h1>
   <p>Cette adresse ne mène à aucun écu : la page a changé de place, ou n'a jamais existé.</p>
+  </div>
+</section>
+<main class="perdu" id="main">
   <form action="recherche.html" method="get" role="search" onsubmit="location.href='recherche.html#q='+encodeURIComponent(this.q.value);return false">
     <input name="q" type="search" placeholder="Chercher dans tout le site…" aria-label="Chercher dans tout le site" autocomplete="off">
     <button type="submit">Chercher</button>
   </form>
   <p class="liens"><a href="index.html">L'encyclopédie</a><a href="atelier.html">L'Atelier</a><a href="exercices.html">S'exercer</a><a href="blasons.html">Blasons réels</a></p>
 </main>
-<footer><div class="foot"><p class="fine">L'Armorial — encyclopédie ouverte de l'héraldique.</p></div></footer>
+<footer data-img="assets/epopee/perdu.jpg"><div class="foot"><p class="fine">L'Armorial — encyclopédie ouverte de l'héraldique.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image et vidéo d'ambiance générées par IA (Higgsfield), sans écu réel. Un carrefour imaginé, pas un document historique.</p></div></footer>
+<script src="assets/epopee-pages.js"></script>
 </body>
 </html>

@@ -22,6 +22,17 @@
   /* image du bandeau et du pied de page : chargées après la page, elles apparaissent en fondu */
   const charge = (url, ok) => { if(!url) return; const i = new Image(); i.onload = () => ok(url); i.src = url; };
   if(bg) charge(bg.dataset.img, u => { bg.style.backgroundImage = `url("${u}")`; bg.classList.add("on"); });
+  /* une vidéo d'ambiance (data-video) : seulement sur grand écran, sans « réduire les animations » ni économie de données ;
+     elle se pose sur l'image, qui reste l'affiche, et s'arrête quand le bandeau sort de l'écran */
+  if(bg && bg.dataset.video && !reduce && !matchMedia("(max-width:700px)").matches && !(navigator.connection && navigator.connection.saveData)){
+    const v = document.createElement("video");
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = "auto"; v.setAttribute("aria-hidden", "true"); v.tabIndex = -1;
+    v.src = bg.dataset.video;
+    v.addEventListener("playing", () => v.classList.add("on"), {once:true});
+    bg.appendChild(v);
+    const joue = () => v.play().catch(() => {});
+    if("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? joue() : v.pause())).observe(hero); else joue();
+  }
   const foot = document.querySelector("footer");
   if(foot && foot.dataset.img) charge(foot.dataset.img, u => foot.style.setProperty("--foot-img", `url("${new URL(u, location.href).href}")`));   // une variable CSS se résout depuis la feuille de style : on donne l'adresse entière
 
