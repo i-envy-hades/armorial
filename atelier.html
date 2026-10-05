@@ -30,15 +30,20 @@
 -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/atelier.css">
+<link rel="stylesheet" href="assets/bandeau.css">
 </head>
-<body>
+<body class="bandeau">
+<div class="progress" aria-hidden="true"><i></i></div>
 <header class="mast" data-page="atelier"></header>
 <script src="assets/chrome.js"></script>
 
 <section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/atelier.jpg" data-video="assets/epopee/atelier.mp4" aria-hidden="true"></div>
+  <div class="frame">
   <p class="eyebrow">Composer ses armes</p>
   <h1>L'Atelier</h1>
   <p>Choisissez un champ, une pièce, des meubles et leurs émaux : l'écu se dessine, et le blasonnement s'écrit dans l'ordre où un héraut le lirait. Ou faites l'inverse : écrivez un blasonnement, et l'écu apparaît.</p>
+  </div>
 </section>
 
 <noscript><p class="nojs">L'Atelier fonctionne avec JavaScript : activez-le pour composer des armoiries.</p></noscript>
@@ -184,8 +189,9 @@
 
 <div class="toast" id="toast" role="status"></div>
 
-<footer><div class="foot">
+<footer data-img="assets/epopee/atelier.jpg"><div class="foot">
   <p><b>L'Armorial</b> — page « Atelier ». Champ, partitions, pièces et la plupart des meubles sont dessinés par l'encyclopédie ; les meubles empruntés viennent de Wikimedia Commons, recolorés ici, et leur crédit accompagne chaque écu et chaque export. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image et vidéo d'ambiance générées par IA (Higgsfield), sans écu réel. Un atelier imaginé, pas un document historique.</p>
 </div></footer>
 
 <div id="gdefs"></div>
@@ -195,5 +201,6 @@
 <script src="assets/lecture.js"></script>
 <script src="assets/dessin.js"></script>
 <script src="assets/atelier.js"></script>
+<script src="assets/epopee-pages.js"></script>
 </body>
 </html>

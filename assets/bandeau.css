@@ -1,0 +1,92 @@
+/* ============================================================================
+   L'ARMORIAL — bandeau « chronique » pour les pages qui ont leur propre feuille (L'Atelier, Lignées, 404)
+   Mêmes règles que le bandeau, le menu voilé, la barre de lecture et le pied de page de epopee-pages.css,
+   mais sous body.bandeau : cette feuille-là règle aussi les cartes, les filtres et les pastilles, que ces pages
+   emploient autrement (« .chip » de l'Atelier, par exemple). Décors : images et vidéos générées par IA (voir le pied de page).
+   ============================================================================ */
+
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;pointer-events:none}
+.progress i{display:block;height:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));
+  background:linear-gradient(90deg,#8e1b18,#e3c579 70%,#fff0c4);box-shadow:0 0 10px rgba(227,197,121,.7)}
+
+/* ---------- menu : voile clair sur le bandeau, parchemin ensuite ---------- */
+body.bandeau .mast{
+  position:fixed;left:0;right:0;top:0;
+  background:linear-gradient(180deg,rgba(247,240,222,.9),rgba(247,240,222,0));
+  border-bottom-color:transparent;box-shadow:none;backdrop-filter:none;
+  transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;
+}
+body.bandeau .mast .brand,body.bandeau .mast nav a{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
+body.bandeau .mast nav a:hover,body.bandeau .mast nav a.here{color:#8e1b18}
+body.bandeau .mast .cross{color:#8e1b18}
+body.bandeau .mast.solid{
+  background:rgba(233,225,205,.92);backdrop-filter:blur(8px);
+  border-bottom-color:var(--rule);box-shadow:0 1px 0 rgba(169,129,46,.35),0 10px 30px -22px rgba(26,23,18,.6);
+}
+body.bandeau .mast.solid .brand{color:var(--ink)}
+body.bandeau .mast.solid nav a{color:var(--ink-soft);text-shadow:none}
+body.bandeau .mast.solid nav a:hover,body.bandeau .mast.solid nav a.here{color:var(--gules)}
+@media (max-width:640px){body.bandeau .mast{background:linear-gradient(180deg,rgba(247,240,222,.95),rgba(247,240,222,.5))}}
+
+/* ---------- bandeau d'entrée ---------- */
+body.bandeau .hero{
+  position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;
+  display:grid;place-items:center;min-height:clamp(380px,56vh,560px);
+  padding:clamp(5.5rem,13vh,7.5rem) clamp(1rem,4vw,2.4rem) clamp(3rem,7vh,4.5rem);
+  background:linear-gradient(180deg,#3d8be0,#7bb8ee);color:#1d140b;text-align:center;
+}
+.hero-bg2{
+  position:absolute;inset:-8% 0;z-index:-3;background:center 35%/cover no-repeat;
+  transform:translate3d(0,var(--py,0px),0) scale(1.04);will-change:transform;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.hero-bg2.on{opacity:1}
+body.bandeau .hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 60% 62% at 50% 52%,rgba(255,251,238,.82),rgba(255,251,238,.34) 58%,rgba(255,251,238,0) 82%),
+    linear-gradient(180deg,rgba(255,251,238,.4) 0%,rgba(255,251,238,0) 24%);
+}
+body.bandeau .hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;z-index:-1;
+  background:linear-gradient(180deg,rgba(233,225,205,0),var(--vellum));
+}
+body.bandeau .hero .frame{max-width:860px}
+body.bandeau .hero .eyebrow{color:#8e1b18;letter-spacing:.42em;text-shadow:0 0 14px rgba(255,251,238,.9);opacity:0;animation:monte2 .9s ease .3s forwards}
+body.bandeau .hero h1{
+  font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.8rem,8.5vw,5.6rem);line-height:1.14;padding-bottom:.04em;letter-spacing:.02em;margin:.2rem 0 .3rem;
+  background:linear-gradient(180deg,#3a2410 0%,#1d140b 55%,#4a2c10 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(255,251,238,.7)) drop-shadow(0 6px 22px rgba(255,251,238,.8));
+  opacity:0;animation:monte2 1s cubic-bezier(.2,.8,.3,1) .45s forwards;
+}
+body.bandeau .hero p:not(.eyebrow){
+  color:#2c2113;font-style:italic;font-size:clamp(1.05rem,2.3vw,1.3rem);max-width:52ch;margin:.5rem auto 0;
+  text-shadow:0 0 16px rgba(255,251,238,.95),0 0 4px rgba(255,251,238,.9);opacity:0;animation:monte2 1s ease .7s forwards;
+}
+.hero-facts{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem;opacity:0;animation:monte2 1s ease .95s forwards}
+.hero-facts .c{min-width:90px;padding-top:.55rem;border-top:2px solid #8e1b18}
+.hero-facts .n{display:block;font-family:"Marcellus",serif;font-size:1.8rem;line-height:1;color:#8e1b18;text-shadow:0 0 14px rgba(255,251,238,.95)}
+.hero-facts .l{font-family:"Marcellus SC",serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#3a2d18;text-shadow:0 0 10px rgba(255,251,238,.95)}
+@keyframes monte2{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ---------- pied de page ---------- */
+body.bandeau footer{
+  position:relative;isolation:isolate;overflow:hidden;color:var(--ink-soft);
+  background:var(--vellum) var(--foot-img,none) center 70%/cover no-repeat;
+}
+body.bandeau footer::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,var(--vellum) 0%,rgba(244,237,218,.92) 35%,rgba(244,237,218,.85) 100%);
+}
+body.bandeau footer .foot{padding-top:clamp(2.4rem,6vw,3.6rem)}
+body.bandeau footer .fine{opacity:.95;margin-top:.5rem}
+/* vidéo d'ambiance, posée par assets/epopee-pages.js sur les écrans larges seulement */
+.hero-bg2 video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;transition:opacity 1.4s ease}
+.hero-bg2 video.on{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-bg2{transition:none}
+  .hero-bg2 video{display:none}
+  body.bandeau .hero .eyebrow,body.bandeau .hero h1,body.bandeau .hero p:not(.eyebrow){opacity:1;animation:none}
+  body.bandeau .mast{transition:none}
+}

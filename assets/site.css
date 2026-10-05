@@ -226,8 +226,8 @@ main:focus,#wrap:focus{outline:none}
   body{background:#fff!important;color:#000;font-size:11pt}
   body::before{display:none}
   .mast,.progress,.skip,.rail,.tools,.siecles,.scroll-cue,.portes,.hero-bg,.hero-bg2,.plate-bg,video,.hero-shield,.seal,#tools,.ex-barre,.ex-suite{display:none!important}
-  .hero,body.epic .hero,body.epic2 .hero{min-height:0!important;padding:1rem 0!important;background:none!important}
-  .hero h1,body.epic .hero h1,body.epic2 .hero h1{filter:none!important;color:#000!important;-webkit-text-fill-color:#000!important;background:none!important}
+  .hero,body.epic .hero,body.epic2 .hero,body.bandeau .hero{min-height:0!important;padding:1rem 0!important;background:none!important}
+  .hero h1,body.epic .hero h1,body.epic2 .hero h1,body.bandeau .hero h1{filter:none!important;color:#000!important;-webkit-text-fill-color:#000!important;background:none!important}
   .plate{background:none!important;color:#000!important;box-shadow:none!important;border:0!important;padding:.6rem 0!important}
   .plate .minia{display:none}
   footer,body.epic footer,body.epic2 footer{background:none!important;color:#000!important}
