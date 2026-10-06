@@ -656,6 +656,46 @@ function lireArmes(texte, toks, lieu, res) {
   res.erreurs.push({ de: k.de, a: toks[j].a, msg: `« ${texte.slice(k.de, toks[j].a)} » : ici, l'Atelier attend ${att}.` });
   return null;
 }
+/* « Parti : au 1, A ; au 2, B » : chaque moitié est des armes, ou « écartelé : aux 1 et 4, … ; aux 2 et 3, … » (ou « au 1, … ; … ; au 4, … ») ; les moitiés se disent dans l'ordre */
+function lireParti(texte, segs, res, etat, main) {
+  let k = 0;
+  const bute = (seg, msg) => { const t = seg && seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg } : { de: main[0].de, a: main[main.length - 1].a, msg }); };
+  const moitiés = [];
+  for (let h = 0; h < 2; h++) {
+    const seg = segs[k++];
+    if (!seg || !seg.length) return bute(seg, h ? "Il manque la moitié 2." : "Moitié vide après « ; ».");
+    const e = etiquette(seg);
+    if (!e || e.nums.length !== 1 || e.nums[0] !== h + 1) return bute(seg, `Un parti compte deux moitiés, dites dans l'ordre : « au 1, … ; au 2, … » (ici, on attend « au ${h + 1} »).`);
+    let rest = seg.slice(e.i), mode = "";
+    const armes = [];
+    if (rest[0] && rest[0].w === "ecartele" && rest[1] && rest[1].w === ":") {
+      rest = rest.slice(2);
+      const e2 = etiquette(rest), cle2 = e2 && e2.nums.slice().sort().join();
+      if (cle2 !== "1,4" && cle2 !== "1") return bute(rest, "Un écartelé dans une moitié commence par « aux 1 et 4, … » (puis « aux 2 et 3, … ») ou par « au 1, … » (jusqu'à « au 4, … »).");
+      const quarts = cle2 === "1,4" ? ["1,4", "2,3"] : ["1", "2", "3", "4"];
+      mode = quarts.length === 2 ? "2" : "4";
+      const lieu = n => `Moitié ${h + 1}, quartier${quarts[n].length > 1 ? "s" : ""} ${quarts[n].split(",").join(" et ")}`;
+      const a0 = lireArmes(texte, rest.slice(e2.i), lieu(0), res);
+      if (!a0) return;
+      armes.push(a0);
+      for (let n = 1; n < quarts.length; n++) {
+        const sg = segs[k++], en = sg && etiquette(sg);
+        if (!en || en.nums.slice().sort().join() !== quarts[n]) return bute(sg, `Il manque, dans l'écartelé de la moitié ${h + 1}, le quartier ${quarts[n].split(",").join(" et ")} (« ${quarts[n].length > 1 ? "aux" : "au"} ${quarts[n].split(",").join(" et ")}, … »).`);
+        const a = lireArmes(texte, sg.slice(en.i), lieu(n), res);
+        if (!a) return;
+        armes.push(a);
+      }
+    } else {
+      const a = lireArmes(texte, rest, `Moitié ${h + 1}`, res);
+      if (!a) return;
+      armes.push(a);
+    }
+    moitiés.push({ mode, armes });
+  }
+  if (k < segs.length) return bute(segs[k], "Un parti compte deux moitiés : « au 1, … ; au 2, … ».");
+  etat.q = "p"; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
+  moitiés.forEach((m, h) => m.armes.forEach((a, n) => { etat.A[HALF_ARMS[h][n]] = a; }));
+}
 function lire(texte) {
   const L = lexique(), brut = decouper(texte), { toks, comm, erreurs } = sansCommentaires(texte, brut);
   const res = { ok: false, etat: null, notes: comm.map(c => `Commentaire ignoré : ${c}`), erreurs: [...erreurs], exact: false, reecrit: "" };
@@ -680,8 +720,7 @@ function lire(texte) {
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
   const parti = !!(main[0] && main[0].w === "parti" && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
   const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
-  const NQ = parti ? 2 : 4;
-  const etat = { q: "", ab: "", A: ADEFS.map(a => ({ ...a })) };
+  const etat = { q: "", ab: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
   if (!res.erreurs.length && quartele) {
     const segs = [[]];
     /* les quartiers se séparent d'un point-virgule, ou d'une virgule devant « aux 2 et 3 », « en 2 et 3 » */
@@ -691,22 +730,24 @@ function lire(texte) {
       const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && etiq)) || (parti && t.w === "et" && etiq);
       if (coupe) segs.push([]); else segs[segs.length - 1].push(t);
     });
-    const quarts = {}, groupes = [];
-    segs.forEach((seg, n) => {
-      const e = etiquette(seg);
-      if (!e) { const t = seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg: parti ? "Chaque moitié commence par son numéro : « au 1, … ; au 2, … »." : "Chaque quartier commence par son numéro : « aux 1 et 4, … », « au 2, … »." } : { de: texte.length, a: texte.length, msg: parti ? "Moitié vide après « ; »." : "Quartier vide après « ; »." }); return; }
-      const lieu = parti ? `Moitié ${e.nums.join(" et ")}` : e.nums.length > 1 ? `Quartiers ${e.nums.join(" et ")}` : `Quartier ${e.nums[0]}`;
-      const a = lireArmes(texte, seg.slice(e.i), lieu, res);
-      if (!a) return;
-      for (const q of e.nums) { if (!(q >= 1 && q <= NQ) || quarts[q] || (parti && e.nums.length > 1)) res.erreurs.push({ de: seg[0].de, a: seg[Math.min(1, seg.length - 1)].a, msg: parti ? (quarts[q] ? `La moitié ${q} est donnée deux fois.` : "Un parti compte deux moitiés : « au 1, … ; au 2, … ».") : quarts[q] ? `Le quartier ${q} est donné deux fois.` : `Il n'y a pas de quartier ${q} : l'écartelé en compte quatre.` }); else quarts[q] = a; }
-      groupes.push(e.nums.slice().sort().join());
-    });
-    if (!res.erreurs.length) {
-      const manque = [1, 2, 3, 4].slice(0, NQ).filter(q => !quarts[q]);
-      if (manque.length) res.erreurs.push({ de: main[0].de, a: main[1].a, msg: parti ? `Il manque la moitié ${manque.join(", ")}.` : `Il manque ${manque.length > 1 ? "les quartiers" : "le quartier"} ${manque.join(", ")}.` });
-      else if (parti) { etat.q = "p"; etat.A[0] = quarts[1]; etat.A[1] = quarts[2]; }
-      else if (groupes.length === 2 && groupes.includes("1,4") && groupes.includes("2,3")) { etat.q = "2"; etat.A[0] = quarts[1]; etat.A[1] = quarts[2]; }
-      else { etat.q = "4"; [1, 2, 3, 4].forEach(q => { etat.A[q - 1] = { ...quarts[q] }; }); }
+    if (parti) lireParti(texte, segs, res, etat, main);
+    else {
+      const quarts = {}, groupes = [];
+      segs.forEach(seg => {
+        const e = etiquette(seg);
+        if (!e) { const t = seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg: "Chaque quartier commence par son numéro : « aux 1 et 4, … », « au 2, … »." } : { de: texte.length, a: texte.length, msg: "Quartier vide après « ; »." }); return; }
+        const lieu = e.nums.length > 1 ? `Quartiers ${e.nums.join(" et ")}` : `Quartier ${e.nums[0]}`;
+        const a = lireArmes(texte, seg.slice(e.i), lieu, res);
+        if (!a) return;
+        for (const q of e.nums) { if (!(q >= 1 && q <= 4) || quarts[q]) res.erreurs.push({ de: seg[0].de, a: seg[Math.min(1, seg.length - 1)].a, msg: quarts[q] ? `Le quartier ${q} est donné deux fois.` : `Il n'y a pas de quartier ${q} : l'écartelé en compte quatre.` }); else quarts[q] = a; }
+        groupes.push(e.nums.slice().sort().join());
+      });
+      if (!res.erreurs.length) {
+        const manque = [1, 2, 3, 4].filter(q => !quarts[q]);
+        if (manque.length) res.erreurs.push({ de: main[0].de, a: main[1].a, msg: `Il manque ${manque.length > 1 ? "les quartiers" : "le quartier"} ${manque.join(", ")}.` });
+        else if (groupes.length === 2 && groupes.includes("1,4") && groupes.includes("2,3")) { etat.q = "2"; etat.A[0] = quarts[1]; etat.A[1] = quarts[2]; }
+        else { etat.q = "4"; [1, 2, 3, 4].forEach(q => { etat.A[q - 1] = { ...quarts[q] }; }); }
+      }
     }
   } else if (!res.erreurs.length) {
     const a = lireArmes(texte, main, "", res);
@@ -716,7 +757,7 @@ function lire(texte) {
     const a = lireArmes(texte, abime, "Écusson", res);
     if (a) { etat.ab = "1"; etat.A[4] = a; }
   }
-  if (!res.erreurs.length) for (const i of active(etat)) if (etat.A[i].iss === "t" && (etat.q !== "p" || i > 1)) res.erreurs.push({ de: 0, a: texte.length, msg: "« demi-… mouvant du trait du parti » ne se dit que d'une moitié d'un parti : « Parti : au 1, … ; au 2, … »." });
+  if (!res.erreurs.length) for (const i of active(etat)) if (etat.A[i].iss === "t" && (etat.q !== "p" || i > 1 || halfMode(etat, i))) res.erreurs.push({ de: 0, a: texte.length, msg: "« demi-… mouvant du trait du parti » ne se dit que d'une moitié d'un parti : « Parti : au 1, … ; au 2, … »." });
   if (res.erreurs.length) return res;
   res.ok = true; res.etat = etat;
   res.reecrit = blazonAll(etat);
