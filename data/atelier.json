@@ -505,16 +505,6 @@
    "draw": "flanchis"
   },
   {
-   "kind": "lambel",
-   "nom": "Lambel",
-   "sing": "lambel",
-   "plur": "lambels",
-   "g": "m",
-   "cat": "Propres au blason",
-   "draw": "lambel",
-   "seul": true
-  },
-  {
    "kind": "croisette",
    "nom": "Croisette",
    "sing": "croisette",

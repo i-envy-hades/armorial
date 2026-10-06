@@ -103,7 +103,7 @@ function lexique() {
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
   for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri"]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui"]) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -398,6 +398,7 @@ function pBrisure(P, i) {
     return o && bornes(P, { t: "bris", fig: true, ...o }, i);
   }
   if (n !== 1) return erreur(P, P.toks[i].de, P.toks[j + bp.n - 1].a, "Une brisure par une pièce ne se lit qu'au singulier.");
+  if (bp.val.b === "lambel") return pLambel(P, j + bp.n, i);
   let e = j + bp.n, lbr = "";
   const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee");
   if (cn) { lbr = cn.val; e += cn.n; }
@@ -412,6 +413,42 @@ function pBrisure(P, i) {
     sbr = s; q += 2;
   }
   return bornes(P, { t: "bris", b: bp.val.b, tbr: t.t, sbr, lbr, i: q }, i);
+}
+/* « d'argent » et « à cinq pendants » dans l'ordre qu'on veut, puis « chargé sur chaque pendant d'un besant de gueules » ; j : le mot qui suit « lambel », i0 : le début de l'élément (« au », « brisé ») */
+function pLambel(P, j, i0) {
+  const it = { t: "bris", b: "lambel", tbr: "", sbr: "bande", lbr: "", lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", i: j };
+  let q = j, nPend = false;
+  for (;;) {
+    if (!it.tbr && cle(P, q) === "de" && LEX.emaux.has(cle(P, q + 1))) { it.tbr = LEX.emaux.get(cle(P, q + 1)); q += 2; continue; }
+    if (!nPend && cle(P, q) === "a" && LEX.compte.has(cle(P, q + 1)) && cle(P, q + 2) === "pendants") {
+      const n = LEX.compte.get(cle(P, q + 1));
+      if (n < 2 || n > 6) return erreur(P, P.toks[q].de, P.toks[q + 2].a, "L'Atelier dessine des lambels de deux à six pendants.");
+      it.lpn = String(n); nPend = true; q += 3; continue;
+    }
+    break;
+  }
+  if (!it.tbr) return rate(P, q, "un émail (« d'argent », « de gueules »…)");
+  it.i = q;
+  let k = cle(P, q) === "," ? q + 1 : q, w = null;
+  if (cle(P, k) === "celui" && cle(P, k + 1) === "du" && ["milieu", "coeur", "centre"].includes(cle(P, k + 2))) { w = "milieu"; k += 3; }
+  const ch = suites(LEX.charge, P, k)[0];
+  if (!ch) return w === null ? bornes(P, it, i0) : rate(P, k, "« chargé de… »");
+  k += ch.n;
+  if (w === null) {
+    if (cle(P, k) === "sur" && cle(P, k + 1) === "chaque" && cle(P, k + 2) === "pendant") { w = ""; k += 3; }
+    else if (cle(P, k) === "sur" && cle(P, k + 1) === "le" && cle(P, k + 2) === "pendant" && cle(P, k + 3) === "du" && cle(P, k + 4) === "milieu") { w = "milieu"; k += 5; }
+    else return rate(P, k, "« sur chaque pendant » ou « sur le pendant du milieu »");
+  }
+  const o = pObjet(P, k);
+  if (!o) return null;
+  const mal = msg => erreur(P, o.de, o.fin, msg);
+  if (o.seme || o.ct || o.iss || o.cn) return mal("Sur un pendant, l'Atelier ne pose que des figures simples : ni semé, ni contourné, ni issant, ni couronné.");
+  if (!LAMBEL_FIGS.includes(o.m.kind)) return mal(`L'Atelier ne pose sur un pendant que : ${LAMBEL_FIGS.map(f => meuble(f).plur).join(", ")}.`);
+  if (o.n > 3) return mal("Un pendant ne porte, dans l'Atelier, qu'une, deux ou trois figures.");
+  if (o.dit && o.d !== "pal") return mal("Sur un pendant, les figures se rangent en pal : l'Atelier ne les dispose pas autrement.");
+  if (w === "milieu" && !(+it.lpn % 2)) return mal("Le pendant du milieu n'existe que si le lambel a un nombre impair de pendants.");
+  Object.assign(it, { lpc: o.m.kind, lpt: o.tm, lpk: String(o.n), lpw: w, i: o.i });
+  return bornes(P, it, i0);
 }
 /* quand la lecture bute sur un mot qui ressemble à quelque chose que l'Atelier sait dire autrement, on le lui dit */
 function aideSuite(P, items, i) {
@@ -439,6 +476,7 @@ function pArmes(P) {
     const k = cle(P, i);
     let it = null;
     if (k === "seme" || suites(LEX.semeAdj, P, i).length) it = pSeme(P, i);
+    else if (k === "au" && cle(P, i + 1) === "lambel") it = pLambel(P, i + 2, i);
     else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
     else if (k === "brise") it = pBrisure(P, i);
     else if (suites(LEX.verbe, P, i).length) {
@@ -517,7 +555,7 @@ function assembler(P, r) {
   if (bris) {
     src.bris = bris;
     if (bris.fig) Object.assign(a, { br: bris.m.kind, tbr: bris.tm, brn: String(bris.n), brd: bris.d || "" });
-    else Object.assign(a, { br: bris.b, tbr: bris.tbr, sbr: bris.sbr, lbr: bris.lbr });
+    else Object.assign(a, { br: bris.b, tbr: bris.tbr, sbr: bris.sbr, lbr: bris.lbr }, bris.b === "lambel" ? { lpn: bris.lpn, lpc: bris.lpc, lpt: bris.lpt, lpk: bris.lpk, lpw: bris.lpw } : {});
   }
   return { a, src };
 }
@@ -538,7 +576,7 @@ function verifie(P, a, src, lieu) {
   if (diff.has("pos")) { diff.delete("nb"); diff.delete("d"); }                 // l'un entraîne l'autre : on ne dit que la cause
   if (diff.has("nb")) diff.delete("d");
   if (diff.has("nb2")) diff.delete("d2");
-  if (diff.has("br")) for (const k of ["tbr", "sbr", "lbr", "brn", "brd"]) diff.delete(k);
+  if (diff.has("br")) for (const k of ["tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) diff.delete(k);
   if (diff.has("brn")) diff.delete("brd");
   for (const key of diff) {
     if (key === "nb") mets(src.m, `L'Atelier ne sait pas poser ${a.nb === "seme" ? "un semé" : `${NB[+a.nb]} ${m.plur}`}${ou} (nombres possibles : ${nombres(a)}).`);
@@ -552,7 +590,7 @@ function verifie(P, a, src, lieu) {
     else if (key === "br") mets(src.bris, `L'Atelier ne brise qu'avec une bordure, un bâton, un filet, un canton, un franc-quartier ou l'une de ces figures : ${BRIS_FIGS.map(k => meuble(k).plur).join(", ")}.`);
     else if (key === "brn") mets(src.bris, "L'Atelier ne pose en brisure qu'une, deux ou trois figures.");
     else if (key === "brd") mets(src.bris, `Cette disposition n'est pas possible pour une brisure dans l'Atelier (possibles : ${dispos(brisArms(a)).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
-    else if (key === "tbr" || key === "sbr" || key === "lbr") mets(src.bris, "L'Atelier ne sait pas dessiner cette brisure.");
+    else if (/^(tbr|sbr|lbr|lpn|lpc|lpt|lpk|lpw)$/.test(key)) mets(src.bris, "L'Atelier ne sait pas dessiner cette brisure.");
     else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
     else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);

@@ -32,6 +32,18 @@ function brisPts(s) {
   const seul = s.brn === "1" && !d.id;
   return d.pts.map(([x, y, sc, r]) => [x + +s.brdx, y + +s.brdy, (seul ? .3 : sc * .62) * k, r]);
 }
+/* le lambel : le filet et ses pendants, puis les figures qu'ils portent ; taille et position (réglages de la brisure) se prennent depuis le milieu du filet */
+function lambelDraw(s, u) {
+  const n = +s.lpn, g = lambelGeom(n, !!s.lpc), line = s.tbr === "Sable" ? "#6b6560" : chgStroke(s.tbr);
+  let defs = "", ch = "";
+  if (s.lpc) {
+    const k = +s.lpk, h = (g.y1 - g.y0) / k, sc = Math.min(.75 * (g.wt + g.wb) / 2 / 140, .85 * h / 160);
+    const xs = s.lpw === "milieu" ? [g.xs[(n - 1) / 2]] : g.xs;
+    defs = symbolFor(lambelArms(s), `lp-${u}`);
+    ch = placeAll(xs.flatMap(x => Array.from({ length: k }, (_, j) => [x, g.y0 + h * (j + .5), sc, 0])), meuble(s.lpc), `lp-${u}`, false);
+  }
+  return { defs, body: `<g transform="translate(${100 + +s.brdx},${50 + +s.brdy}) scale(${+s.brsz / 100}) translate(-100,-50)">${lambelInner(n, tinctPaint(s.tbr), line, !!s.lpc)}${ch}</g>` };
+}
 
 /* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
 const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
@@ -81,7 +93,7 @@ const DEVISES = {
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd", "lpc", "lpw"]);
 const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -224,7 +236,8 @@ function drawBody(s, u) {
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";
   if (s.br) {
-    if (brisPiece(s)) bris = pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr);
+    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = l.body; }
+    else if (brisPiece(s)) bris = pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
   return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + bris };
@@ -319,7 +332,7 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); }
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
   if (hm) jobs.push(getText(hm.path));
@@ -475,7 +488,7 @@ function creditsOf(St) {
   };
   for (const i of active(St)) {
     const a = St.A[i];
-    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
+    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : "", a.br === "lambel" ? a.lpc : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
   }
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
   if (su) add("Supports", meuble(su.kind).file, true);

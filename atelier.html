@@ -179,6 +179,16 @@
       <div class="row" id="r-lbr"><span class="lab">Bord</span><select name="lbr" aria-label="Bord de la brisure"></select></div>
       <div class="row" id="r-brn"><span class="lab">Nombre</span><select name="brn" aria-label="Nombre de figures de brisure"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
       <div class="row" id="r-brd"><span class="lab">Place</span><select name="brd" aria-label="Place de la brisure"></select></div>
+      <div class="row" id="r-lpn"><span class="lab">Pendants</span><select name="lpn" aria-label="Nombre de pendants du lambel"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+      <div class="row" id="r-lpc"><span class="lab">Chargé de</span><select name="lpc" aria-label="Figure portée par les pendants"></select></div>
+      <div class="row" id="r-lpt"><span class="lab">Émail des figures</span><div class="chips" data-name="lpt"></div></div>
+      <div class="row" id="r-lpk"><span class="lab">Par pendant</span><select name="lpk" aria-label="Nombre de figures par pendant"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+      <div class="row" id="r-lpw"><span class="lab">Sur</span>
+        <span class="seg" role="radiogroup" aria-label="Pendants chargés">
+          <label><input type="radio" name="lpw" value=""><span>Chaque pendant</span></label>
+          <label><input type="radio" name="lpw" value="milieu"><span>Pendant du milieu</span></label>
+        </span>
+      </div>
       <div class="sub" id="r-brj">
         <div class="row"><span class="lab">Taille</span><input type="range" id="k-brsz" min="30" max="250" step="5" aria-label="Taille de la brisure en pourcentage"><output id="o-brsz"></output></div>
         <div class="row"><span class="lab">Gauche ↔ droite</span><input type="range" id="k-brdx" min="-80" max="80" step="1" aria-label="Décalage horizontal de la brisure"><output id="o-brdx"></output></div>

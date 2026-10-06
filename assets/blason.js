@@ -768,6 +768,16 @@ function etoileRais(n, fill, stroke){
   }
   return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M${pts.join(" L")} Z"/></g>`;
 }
+/* le lambel : un filet horizontal d'un seul tenant, garni de n pendants ; ils s'allongent quand ils portent des figures */
+function lambelGeom(n, long){
+  const d = n <= 3 ? 38 : n === 4 ? 34 : n === 5 ? 28 : 24, wt = Math.round(d * .62);
+  return { wt, wb: Math.round(wt * .75), y0: 62, y1: long ? 124 : 112, xs: Array.from({ length: n }, (_, i) => 100 + (i - (n - 1) / 2) * d) };
+}
+function lambelInner(n, fill, stroke, long){
+  const g = lambelGeom(n, long);
+  const pend = g.xs.slice().reverse().map(x => ` L${x + g.wt / 2},${g.y0} L${x + g.wb / 2},${g.y1} L${x - g.wb / 2},${g.y1} L${x - g.wt / 2},${g.y0}`).join("");
+  return `<path d="M32,50 L168,50 L168,${g.y0}${pend} L32,${g.y0} Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+}
 function chgStroke(t){
   const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440"};
   return m[t]||"#1a1712";
@@ -846,9 +856,7 @@ function chargeInner(kind, fill, stroke, field){
     case "flanchis": return `<path d="M74,84 L100,110 L126,84 L142,100 L116,126 L142,152 L126,168 L100,142 L74,168 L58,152 L84,126 L58,100 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
     case "frette": return `<g fill="none" stroke="${fill}" stroke-width="11" stroke-linecap="square">
       <path d="M42,58 L158,174"/><path d="M158,58 L42,174"/><path d="M100,50 L154,116 L100,182 L46,116 Z"/></g>`;
-    case "lambel": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round">
-      <rect x="32" y="50" width="136" height="17" rx="2"/>
-      <path d="M50,67 L78,67 L74,112 L54,112 Z"/><path d="M86,67 L114,67 L110,112 L90,112 Z"/><path d="M122,67 L150,67 L146,112 L126,112 Z"/></g>`;
+    case "lambel": return lambelInner(3, fill, stroke);
     case "trescheur": return `<g fill="none" stroke="${fill}" stroke-linejoin="round">
       <path d="${SHIELD_D}" transform="translate(100,126) scale(.84) translate(-100,-126)" stroke-width="9"/>
       <path d="${SHIELD_D}" transform="translate(100,126) scale(.71) translate(-100,-126)" stroke-width="5"/></g>`;

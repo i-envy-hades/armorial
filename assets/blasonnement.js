@@ -133,9 +133,12 @@ const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2,
 /* la brisure : une pièce ou une figure de plus, posée sur les armes pleines (« …, brisé d'un bâton de gueules péri en bande ») ; c'est ce qui distingue un cadet de son aîné.
    Les pièces se dessinent comme les autres (assets/blason.js) ; les figures suivent les dispositions du champ plein, réduites. Le lambel a sa propre entrée. */
 const BRIS_PIECES = { bordure: { nom: "Bordure", g: "f", bord: true }, baton: { nom: "Bâton", g: "m", sens: true }, filet: { nom: "Filet", g: "m", sens: true },
-  canton: { nom: "Canton", g: "m", bord: true }, "franc-quartier": { nom: "Franc-quartier", g: "m", bord: true } };
+  canton: { nom: "Canton", g: "m", bord: true }, "franc-quartier": { nom: "Franc-quartier", g: "m", bord: true },
+  lambel: { nom: "Lambel", g: "m", pend: true } };
 const BRIS_FIGS = ["croissant", "molette", "merlette", "annelet", "fleurdelis", "rose", "etoile", "roundel", "coquille"];     // les marques de cadence anglaises, puis l'étoile, le besant et la coquille
+const LAMBEL_FIGS = [...BRIS_FIGS, "croisette"];                                           // ce que peuvent porter les pendants d'un lambel
 const brisPiece = s => (own(BRIS_PIECES, s.br) ? BRIS_PIECES[s.br] : null);
+const lambelArms = s => ({ ...s, m: s.lpc, m2: "", nb: s.lpk, tm: s.lpt, ta: s.lpt, ct: "", cn: "", iss: "", d: "", pos: "autour", p: "" });
 const brisArms = s => ({ ...s, m: s.br, m2: "", nb: s.brn, tm: s.tbr, ta: s.tbr, ct: "", cn: "", iss: "", d: s.brd, pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
@@ -144,7 +147,8 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "",
-  br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0" };       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "" };       // le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
@@ -162,6 +166,11 @@ function countsFor(s) {
 }
 const num = (v, lo, hi, d) => { const n = Math.round(+v); return String(Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d); };
 function normalize(s) {
+  /* l'ancien lambel-meuble (des adresses déjà partagées) est devenu la brisure */
+  if (s.m === "lambel" || s.m2 === "lambel") {
+    if (!s.br) Object.assign(s, { br: "lambel", tbr: s.m === "lambel" ? s.tm : s.tm2 });
+    if (s.m === "lambel") s.m = ""; else s.m2 = "";
+  }
   /* l'adresse de la page peut porter n'importe quoi : chaque valeur est ramenée à une valeur permise (own : pas de noms hérités, comme « constructor ») */
   for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
   if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
@@ -200,6 +209,12 @@ function normalize(s) {
     if (!["1", "2", "3"].includes(s.brn)) s.brn = "1";
     if (!dispos(brisArms(s)).some(d => d.id === s.brd)) s.brd = "";
   }
+  const lam = s.br === "lambel";
+  s.lpn = lam && ["2", "3", "4", "5", "6"].includes(s.lpn) ? s.lpn : "3";
+  if (!lam || !LAMBEL_FIGS.includes(s.lpc) || !meuble(s.lpc)) s.lpc = "";
+  s.lpk = s.lpc && ["1", "2", "3"].includes(s.lpk) ? s.lpk : "1";
+  s.lpw = s.lpc && s.lpw === "milieu" && +s.lpn % 2 ? "milieu" : "";
+  if (!s.lpc || !own(MOT, s.lpt)) s.lpt = ADEF.lpt;
   s.brsz = num(s.brsz, 30, 250, 100); s.brdx = num(s.brdx, -80, 80, 0); s.brdy = num(s.brdy, -80, 80, 0);
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
@@ -242,6 +257,7 @@ function canon(a) {
     const bp = brisPiece(a);
     if (bp && bp.sens) o.sbr = a.sbr;
     if (bp && bp.bord) o.lbr = a.lbr;
+    if (bp && bp.pend) { Object.assign(o, { lpn: a.lpn, lpc: a.lpc }); if (a.lpc) Object.assign(o, { lpt: a.lpt, lpk: a.lpk, lpw: a.lpw }); }
     if (!bp) Object.assign(o, { brn: a.brn, brd: a.brd });
   }
   return o;
@@ -316,9 +332,19 @@ function blazonCore(s) {
   }
   return `${champ}${lead}${pieceTxt}${broche}`;
 }
+/* « d'un lambel d'argent » · « d'un lambel d'argent à cinq pendants chargé sur chaque pendant d'un besant de gueules » */
+function lambelTxt(s) {
+  let t = `d'un lambel ${de(s.tbr)}${s.lpn !== "3" ? ` à ${NB[+s.lpn]} pendants` : ""}`;
+  if (s.lpc) {
+    const c = charges(lambelArms(s));
+    t += ` chargé ${s.lpw === "milieu" ? "sur le pendant du milieu" : "sur chaque pendant"} ${c.n === 1 ? (c.g === "f" ? "d'une" : "d'un") + " " + c.nom : "de " + NB[c.n] + " " + c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;
+  }
+  return t;
+}
 /* la brisure, dite après les armes pleines : « brisé d'un bâton de gueules péri en bande », « brisé d'un croissant d'argent en chef » */
 function brisTxt(s) {
   const bp = brisPiece(s), t = de(s.tbr);
+  if (bp && bp.pend) return lambelTxt(s);
   if (bp) {
     const bord = s.lbr ? " " + agree(CONTOUR_NOM[s.lbr], bp.g, false) : "";
     return `${bp.g === "f" ? "d'une" : "d'un"} ${s.br === "baton" ? "bâton" : s.br}${bord} ${t}` + (s.br === "baton" ? ` péri en ${s.sbr}` : s.br === "filet" ? ` en ${s.sbr}` : "");
