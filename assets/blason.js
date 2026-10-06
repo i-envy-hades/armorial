@@ -343,6 +343,32 @@ function suisseDiagram(){
   </div>`;
 }
 
+/* les clefs : la pose et le groupe, un écu par cas */
+function clefDiagram(){
+  const mini = (champ, corps, label) => {
+    const id = ++uid, cid = "clclef" + id;
+    return `<svg viewBox="${VB}" width="108" role="img" aria-label="${label}">
+      <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
+      <path d="${SHIELD_D}" fill="${tinctPaint(champ)}"/>
+      <g clip-path="url(#${cid})">${corps}</g>
+      ${shieldFinish()}
+    </svg>`;
+  };
+  const key = (t, tr) => `<g transform="${tr}">${chargeInner("clef", tinctPaint(t), chgStroke(t), "")}</g>`;
+  const around = (k, tr, mir) => `translate(100 116) ${tr} scale(${mir ? -k : k} ${k}) translate(-100 -116)`;
+  const figs = [
+    ["En pal", "l'anneau en pointe, le panneton en chef vers dextre", mini("Gueules", key("Or", ""), "Clef d'or en pal")],
+    ["Contournée", "le panneton vers senestre", mini("Gueules", key("Or", "translate(200 0) scale(-1 1)"), "Clef d'or contournée")],
+    ["En bande", "le panneton vers la pointe", mini("Gueules", key("Or", around(.85, "rotate(-45)")), "Clef d'or posée en bande")],
+    ["Adossées, entretenues", "dos à dos, les anneaux entrelacés", mini("Azur",
+      key("Or", around(.8, "translate(-19 0)")) + key("Or", around(.8, "translate(19 0)", true)), "Deux clefs d'or adossées en pal")],
+    ["Passées en sautoir", "croisées, l'une d'or, l'autre d'argent", mini("Gueules",
+      key("Or", around(.74, "rotate(45)")) + key("Argent", around(.74, "rotate(-45)", true)), "Deux clefs passées en sautoir, l'une d'or, l'autre d'argent")]
+  ];
+  return `<div class="diagram-row">${figs.map(([t, d, s]) => `<figure>${s}<figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join("")}
+    <div class="credit">Dessins de l'encyclopédie ; la source ne dit pas comment se tournent les pannetons d'un sautoir, ce choix est le nôtre.</div></div>`;
+}
+
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
 /* la boîte de l'écu [x0, y0, x1, y1] : les rayures se partagent ce qu'on voit de l'écu, pas la boîte 200 × 252 (« d'or à quatre pals » : de l'or aux deux bords) */
 function boiteEcu(){
@@ -935,10 +961,9 @@ function chargeInner(kind, fill, stroke, field){
       <path d="M100,58 C74,58 60,80 58,110 C56,140 48,158 38,168 L162,168 C152,158 144,140 142,110 C140,80 126,58 100,58 Z"/>
       <rect x="34" y="168" width="132" height="14" rx="4"/>
       <rect x="95" y="182" width="10" height="10"/><circle cx="100" cy="198" r="11"/></g>`;
-    case "clef": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
-      <path fill-rule="evenodd" d="M128,174 A28,28 0 1 0 72,174 A28,28 0 1 0 128,174 Z M112,174 A12,12 0 1 0 88,174 A12,12 0 1 0 112,174 Z"/>
-      <rect x="93" y="42" width="14" height="106"/>
-      <rect x="65" y="50" width="28" height="13"/><rect x="71" y="78" width="22" height="13"/></g>`;
+    /* un seul contour, sans traits intérieurs (anneau en pointe, panneton en chef à dextre) : le dégradé du métal reste d'une pièce */
+    case "clef": return `<path d="M90,38 H110 V46 H106 V106 H110 V112 H106 V128 H111 V136 H106 V146.7 A26,26 0 1 1 94,146.7 V136 H89 V128 H94 V112 H90 V106 H94 V88 H60 V80 H76 V72 H60 V64 H76 V56 H60 V46 H90 Z
+      M112,172 A12,12 0 1 0 88,172 A12,12 0 1 0 112,172 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
     case "epee": return epeeGraphic(100, 110, 2.15, fill, stroke);
     case "ancre": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <path fill-rule="evenodd" d="M117,46 A17,17 0 1 0 83,46 A17,17 0 1 0 117,46 Z M107,46 A7,7 0 1 0 93,46 A7,7 0 1 0 107,46 Z"/>
