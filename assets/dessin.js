@@ -266,15 +266,35 @@ const croixDeCase = (pf, th) => {
    Un seul élément : pas de couture sous un émail métallique. La bordure occupe les 13 premières unités, l'orle les unités 15,4 à 27,2 depuis le bord. */
 let NOBORD = false, BID = 0;
 const enBande = k => k === "bordure" || k === "orle";
-function bandeDeCase(kind, pf, rect, f, edges) {
+/* la bordure à bord décoré d'une case : l'anneau décoré de l'écu entier (que la case rogne) et, le long de chaque trait de partition, une bande dont le bord intérieur est décoré */
+function bandeDecoree(rect, f, edges, line) {
+  let d = null;
+  try { d = pieceDecoree("bordure", line, 100, f); } catch (err) { /* la mesure du contour demande un navigateur complet */ }
+  const S = CONTOURS[line];
+  if (!d || !S) return null;
+  const [x, y, w, h] = rect, bw = 13 * f, a = 4 * S.h * f, per = 4 * S.l * f;
+  const bande = {
+    l: [[[x, y], [x + bw, y], [x + bw, y + h], [x, y + h]], [false, true, false, false]],
+    r: [[[x + w - bw, y], [x + w, y], [x + w, y + h], [x + w - bw, y + h]], [false, false, false, true]],
+    t: [[[x, y], [x + w, y], [x + w, y + bw], [x, y + bw]], [false, false, true, false]],
+    b: [[[x, y + h - bw], [x + w, y + h - bw], [x + w, y + h], [x, y + h]], [true, false, false, false]],
+  };
+  return `<path d="${d}" fill="#fff" fill-rule="evenodd"/>` + [...edges].map(e => `<path d="${polyDecore(bande[e][0], bande[e][1], line, a, per)}" fill="#fff"/>`).join("");
+}
+function bandeDeCase(kind, pf, rect, f, edges, line) {
   const [x, y, w, h] = rect;
   const d = SHIELD_D + [...edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
+  const deco = kind === "bordure" && line && bandeDecoree(rect, f, edges, line);
+  if (deco) {
+    const id = `mb${++BID}`;
+    return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${deco}</mask></defs><rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
+  }
   if (kind !== "orle") return `<path d="${d}" fill="none" stroke="${pf}" stroke-width="${26 * f}"/>`;
   const id = `mo${++BID}`;
   return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500"><path d="${d}" fill="none" stroke="#fff" stroke-width="${54.4 * f}"/><path d="${d}" fill="none" stroke="#000" stroke-width="${30.8 * f}"/></mask></defs>`
     + `<rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
 }
-const bandeLocale = (kind, pf) => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${bandeDeCase(kind, pf, MAP.rect, MAP.pk, MAP.edges)}</g>`;
+const bandeLocale = (kind, pf, line) => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${bandeDeCase(kind, pf, MAP.rect, MAP.pk, MAP.edges, line)}</g>`;
 function drawBody(s, u) {
   let field;
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
@@ -294,7 +314,7 @@ function drawBody(s, u) {
   }
   const croixCase = MAP && s.p === "croix" && !s.ln;      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
-  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp)) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
+  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp), s.ln) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
   if (bandeCase) return corps(s, u, defs, field, under, over, piece);
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
@@ -306,7 +326,7 @@ function corps(s, u, defs, field, under, over, piece) {
   let bris = "";
   if (s.br) {
     if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body, 1); }
-    else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr)) : "";
+    else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr), s.lbr) : "";
     else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
@@ -427,7 +447,7 @@ function drawShield(St, u) {
     let r, under;
     NOBORD = true;
     try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
-    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed) : "");
+    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
     const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
     body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`

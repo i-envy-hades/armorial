@@ -120,7 +120,7 @@ function syncForm() {
     $("#o-brdx").textContent = +a.brdx ? (a.brdx > 0 ? "→ " : "← ") + Math.abs(a.brdx) : "0";
     $("#o-brdy").textContent = +a.brdy ? (a.brdy < 0 ? "↑ " : "↓ ") + Math.abs(a.brdy) : "0";
   }
-  $("#r-pj").hidden = !a.p;
+  $("#r-pj").hidden = !a.p || a.p === "bordure" || a.p === "orle";
   if (a.p) {
     $("#k-pdx").value = a.pdx; $("#k-pdy").value = -a.pdy;
     $("#o-pdx").textContent = +a.pdx ? (a.pdx > 0 ? "→ " : "← ") + Math.abs(a.pdx) : "0";

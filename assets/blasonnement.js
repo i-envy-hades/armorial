@@ -230,7 +230,7 @@ function normalize(s) {
   s.lpw = s.lpc && s.lpw === "milieu" && +s.lpn % 2 ? "milieu" : "";
   if (!s.lpc || !own(MOT, s.lpt)) s.lpt = ADEF.lpt;
   s.brsz = num(s.brsz, 30, 250, 100); s.brdx = num(s.brdx, -80, 80, 0); s.brdy = num(s.brdy, -80, 80, 0);
-  s.pdx = s.p ? num(s.pdx, -80, 80, 0) : "0"; s.pdy = s.p ? num(s.pdy, -80, 80, 0) : "0";
+  s.pdx = s.p && s.p !== "bordure" && s.p !== "orle" ? num(s.pdx, -80, 80, 0) : "0"; s.pdy = s.p && s.p !== "bordure" && s.p !== "orle" ? num(s.pdy, -80, 80, 0) : "0";      // la bordure et l'orle longent toujours les bords
   s.pth = s.p === "croix" ? num(s.pth, 50, 250, 100) : "100";
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
