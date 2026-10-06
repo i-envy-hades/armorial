@@ -230,7 +230,7 @@ function drawBody(s, u) {
   }
   let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
   if (piece && s.pf) {                                    // le filet : la pièce cernée d'un liseré de l'émail dit (le contour de sa forme, élargi)
-    defs += `<filter id="fl-${u}" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="d"/><feFlood flood-color="${flat(s.pf)}"/><feComposite in2="d" operator="in" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+    defs += `<filter id="fl-${u}" filterUnits="userSpaceOnUse" x="-30" y="-30" width="260" height="312" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="d"/><feFlood flood-color="${flat(s.pf)}"/><feComposite in2="d" operator="in" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
     piece = `<g filter="url(#fl-${u})">${piece}</g>`;
   }
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
