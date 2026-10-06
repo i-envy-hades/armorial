@@ -704,8 +704,8 @@ function pieceInner(kind, pf, line){
     /* pièces de brisure : le bâton, diminutif de la bande qui ne touche pas les bords de l'écu (« péri »), et le filet, plus mince que la cotice et qui va d'un bord à l'autre */
     case "baton-bande": inner = `<line x1="52" y1="64" x2="148" y2="188" stroke="${pf}" stroke-width="15"/>`; break;
     case "baton-barre": inner = `<line x1="148" y1="64" x2="52" y2="188" stroke="${pf}" stroke-width="15"/>`; break;
-    case "filet-bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="11"/>`; break;
-    case "filet-barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="11"/>`; break;
+    case "filet-bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="16"/>`; break;
+    case "filet-barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="16"/>`; break;
   }
   return inner;
 }
@@ -768,15 +768,15 @@ function etoileRais(n, fill, stroke){
   }
   return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M${pts.join(" L")} Z"/></g>`;
 }
-/* le lambel : un filet horizontal d'un seul tenant, garni de n pendants ; ils s'allongent quand ils portent des figures */
+/* le lambel : un filet horizontal d'un seul tenant qui déborde l'écu (le contour le coupe), garni de n pendants ; ils s'allongent quand ils portent des figures */
 function lambelGeom(n, long){
-  const d = n <= 3 ? 38 : n === 4 ? 34 : n === 5 ? 28 : 24, wt = Math.round(d * .62);
-  return { wt, wb: Math.round(wt * .75), y0: 62, y1: long ? 124 : 112, xs: Array.from({ length: n }, (_, i) => 100 + (i - (n - 1) / 2) * d) };
+  const [d, wt] = n <= 3 ? [44, 32] : n === 4 ? [40, 29] : n === 5 ? [33, 24] : [29, 20];            // écart entre pendants, largeur d'un pendant
+  return { wt, wb: Math.round(wt * .72), y0: 61, y1: long ? 116 : 100, xs: Array.from({ length: n }, (_, i) => 100 + (i - (n - 1) / 2) * d) };
 }
 function lambelInner(n, fill, stroke, long){
   const g = lambelGeom(n, long);
   const pend = g.xs.slice().reverse().map(x => ` L${x + g.wt / 2},${g.y0} L${x + g.wb / 2},${g.y1} L${x - g.wb / 2},${g.y1} L${x - g.wt / 2},${g.y0}`).join("");
-  return `<path d="M32,50 L168,50 L168,${g.y0}${pend} L32,${g.y0} Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+  return `<path d="M-80,50 L280,50 L280,${g.y0}${pend} L-80,${g.y0} Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
 }
 function chgStroke(t){
   const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440"};
