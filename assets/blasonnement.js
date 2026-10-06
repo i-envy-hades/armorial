@@ -31,6 +31,8 @@ const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 const B = 38.3;
 /* champ plein : dispositions au choix ; la première est celle qu'on ne dit pas, sauf si sa phrase est donnée.
    ph = participe au masculin singulier, accordé ensuite ; plein:true = exclu avec bordure ou orle */
+/* « trois léopards l'un sur l'autre » : autre façon, pour la lecture, de dire des meubles posés en pal */
+const L_PAL = [" l'un sur l'autre", " l'une sur l'autre", " les uns sur les autres", " les unes sur les autres"];
 const PLEIN = {
   1: [{ id: "", lab: "Au centre", ph: "", pts: [[100, 118, 1]] },
       { id: "chef", lab: "En chef", ph: " en chef", pts: [[100, 60, .48]] },
@@ -38,7 +40,7 @@ const PLEIN = {
       { id: "cd", lab: "Au canton dextre du chef", ph: " au canton dextre du chef", pts: [[54, 54, .38]] },
       { id: "cs", lab: "Au canton senestre du chef", ph: " au canton senestre du chef", pts: [[146, 54, .38]] }],
   2: [{ id: "", lab: "En fasce", ph: " posé en fasce", pts: [[62, 112, .5], [138, 112, .5]] },
-      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 70, .42], [100, 170, .42]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", alt: L_PAL, pts: [[100, 70, .42], [100, 170, .42]] },
       { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[62, 74, .4], [138, 164, .4]] },
       { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[138, 74, .4], [62, 164, .4]] },
       { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[64, 58, .36], [136, 58, .36]] }],
@@ -46,13 +48,13 @@ const PLEIN = {
       { id: "mal", lab: "1 et 2 (mal ordonnés)", ph: " mal ordonné", pts: [[100, 66, .42], [60, 158, .42], [140, 158, .42]] },
       { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[48, 116, .3], [100, 116, .3], [152, 116, .3]] },
       { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[50, 56, .28], [100, 56, .28], [150, 56, .28]] },
-      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 54, .3], [100, 120, .3], [100, 186, .3]] },
+      { id: "pal", lab: "En pal", ph: " posé en pal", alt: L_PAL, pts: [[100, 54, .3], [100, 120, .3], [100, 186, .3]] },
       { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[52, 62, .3], [100, 118, .3], [148, 174, .3]] },
       { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[148, 62, .3], [100, 118, .3], [52, 174, .3]] }],
   4: [{ id: "", lab: "2 et 2", ph: " posé 2 et 2", pts: [[62, 82, .42], [138, 82, .42], [62, 162, .42], [138, 162, .42]] },
       { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 54, .28], [48, 118, .28], [152, 118, .28], [100, 184, .28]] },
       { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[34, 116, .22], [78, 116, .22], [122, 116, .22], [166, 116, .22]] },
-      { id: "pal", lab: "En pal", ph: " posé en pal", pts: [[100, 46, .22], [100, 102, .22], [100, 158, .22], [100, 212, .2]] }],
+      { id: "pal", lab: "En pal", ph: " posé en pal", alt: L_PAL, pts: [[100, 46, .22], [100, 102, .22], [100, 158, .22], [100, 212, .2]] }],
   5: [{ id: "", lab: "En sautoir", ph: " posé en sautoir", pts: [[56, 64, .34], [144, 64, .34], [100, 118, .34], [64, 176, .34], [136, 176, .34]] },
       { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 50, .26], [46, 118, .26], [100, 118, .26], [154, 118, .26], [100, 186, .26]] },
       { id: "221", lab: "2, 2 et 1", ph: " posé 2, 2 et 1", pts: [[64, 62, .3], [136, 62, .3], [64, 128, .3], [136, 128, .3], [100, 192, .3]] }],

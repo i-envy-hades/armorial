@@ -189,7 +189,7 @@ function marker() {
   const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
   HSIDE = 0;
   if (!p) return "";
-  if (S.q === "p" && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => { const m = partiMap(c); return `<circle cx="${m.cx + (p[0] - 100) * m.px + m.shx}" cy="${m.cy + (p[1] - 126) * m.py + m.shy}" r="${Math.max(6, 82 * p[2] * m.pk)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`; }).join("");
+  if (S.q === "p" && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => { const m = partiMap(c); return `<circle cx="${m.cx + (p[0] - 100) * m.vpx + m.shx}" cy="${m.cy + (p[1] - 126) * m.vpy + m.shy}" r="${Math.max(6, 82 * p[2] * m.pk)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`; }).join("");
   const spots = CUR === 4 ? [[100 - 100 * AB_K, 126 - 126 * AB_K, AB_K]]               // dans l'écusson en abîme
     : !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
   return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
