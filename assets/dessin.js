@@ -257,8 +257,11 @@ function couronneDe(m, tinct) {
   const inner = chargeInner("couronne", tinctPaint(tinct), tinct === "Sable" ? "#6b6560" : ink, ink).replace(/stroke-width="1\.4"/g, `stroke-width="${(1.3 / k).toFixed(2)}"`);
   return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
 }
-const croixDeCase = (pf, th) => {
+const croixDeCase = (pf, th, line) => {
   const t = 40 * MAP.px * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
+  let d = null;
+  if (CONTOURS[line]) { try { d = pieceDecoree("croix", line, +th || 100, MAP.px, { c: [x, y], ext: 500 }); } catch (err) { /* la mesure demande un navigateur complet */ } }
+  if (d) return `<path d="${d}" fill="${pf}" fill-rule="evenodd"/>`;
   return `<path d="${croixTrace(x, y, t / 2, -400, 500, -400, 500)}" fill="${pf}"/>`;
 };
 /* bordure et orle d'une case (moitié ou quartier) : ils suivent le contour de l'écu et les traits de partition qui bordent la case, pas l'écu entier.
@@ -322,9 +325,9 @@ function drawBody(s, u) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
     over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
-  const croixCase = MAP && s.p === "croix" && !s.ln;      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
+  const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
-  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp), s.ln) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
+  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp), s.ln) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth, s.ln) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
   if (bandeCase) return corps(s, u, defs, field, under, over, piece);
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
