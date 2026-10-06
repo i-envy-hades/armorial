@@ -344,8 +344,13 @@ function suisseDiagram(){
 }
 
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
-function stripesH(n,a,b){ let s=""; const h=252/n; for(let i=0;i<n;i++) s+=`<rect x="0" y="${(i*h).toFixed(2)}" width="200" height="${(h+0.6).toFixed(2)}" fill="${i%2?b:a}"/>`; return s; }
-function stripesV(n,a,b){ let s=""; const w=200/n; for(let i=0;i<n;i++) s+=`<rect x="${(i*w).toFixed(2)}" y="0" width="${(w+0.6).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; return s; }
+/* la boîte de l'écu [x0, y0, x1, y1] : les rayures se partagent ce qu'on voit de l'écu, pas la boîte 200 × 252 (« d'or à quatre pals » : de l'or aux deux bords) */
+function boiteEcu(){
+  try { const m = contourMesure().getBBox(); if(m.width) return [m.x, m.y, m.x + m.width, m.y + m.height]; } catch(err) { /* pas de mesure possible hors navigateur */ }
+  return [18, 16, 182, 236];
+}
+function stripesH(n,a,b){ let s=""; const [, y0, , y1] = boiteEcu(), h=(y1-y0)/n; for(let i=0;i<n;i++){ const top = i ? y0+i*h : 0, bot = i===n-1 ? 252 : y0+(i+1)*h+0.6; s+=`<rect x="0" y="${top.toFixed(2)}" width="200" height="${(bot-top).toFixed(2)}" fill="${i%2?b:a}"/>`; } return s; }
+function stripesV(n,a,b){ let s=""; const [x0, , x1] = boiteEcu(), w=(x1-x0)/n; for(let i=0;i<n;i++){ const left = i ? x0+i*w : 0, right = i===n-1 ? 200 : x0+(i+1)*w+0.6; s+=`<rect x="${left.toFixed(2)}" y="0" width="${(right-left).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; } return s; }
 /* bandé / barré : n bandes égales, parallèles à la diagonale de l'écu (de l'angle dextre du chef à l'angle senestre de la pointe), de sorte que
    la première touche l'angle senestre du chef — et la dernière l'angle dextre de la pointe. Chaque bande est un polygone : pas de motif répété,
    donc pas de couture, et le nombre de bandes est celui qu'on demande. Le barré est le miroir du bandé. */
@@ -363,10 +368,11 @@ function stripesBendy(n,a,b,sin){
 /* chevronné : n zones en chevrons emboîtés, la première (celle du chef) de l'émail a. Les n-1 traits sont des V renversés de même pente que
    le chevron de l'Atelier (70 en travers pour 100 en hauteur), espacés régulièrement du chef à la pointe ; on peint de bas en haut. */
 function chevronne(n, a, b){
-  const col = i => i % 2 ? b : a, pente = 100 / 70, y0 = 30, y1 = 186, pas = n > 2 ? (y1 - y0) / (n - 2) : 0;
+  /* n zones égales sur la hauteur de l'écu (le long de l'axe), la première touchant le chef ; des bras assez plats pour que les chevrons couvrent tout l'écu */
+  const col = i => i % 2 ? b : a, pente = .6, [, y0, , y1] = boiteEcu(), pas = (y1 - y0) / n;
   let s = `<rect width="200" height="252" fill="${col(n - 1)}"/>`;
   for(let k = n - 2; k >= 0; k--){
-    const ya = y0 + k * pas, yb = ya + pente * 300;
+    const ya = y0 + (k + 1) * pas, yb = ya + pente * 300;
     s += `<polygon points="-200,${yb.toFixed(1)} 100,${ya.toFixed(1)} 400,${yb.toFixed(1)} 400,-200 -200,-200" fill="${col(k)}"/>`;
   }
   return s;
