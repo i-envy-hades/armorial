@@ -266,13 +266,23 @@ const croixDeCase = (pf, th) => {
    Un seul élément : pas de couture sous un émail métallique. La bordure occupe les 13 premières unités, l'orle les unités 15,4 à 27,2 depuis le bord. */
 let NOBORD = false, BID = 0;
 const enBande = k => k === "bordure" || k === "orle";
-/* la bordure à bord décoré d'une case : l'anneau décoré de l'écu entier (que la case rogne) et, le long de chaque trait de partition, une bande dont le bord intérieur est décoré */
-function bandeDecoree(rect, f, edges, line) {
+/* la bordure ou l'orle à bord décoré d'une case : l'anneau décoré de l'écu entier (que la case rogne) et, le long de chaque trait de partition, une bande
+   dont le bord intérieur (bordure) ou les deux bords (orle, à 21,3 f du trait, large de 11,84 f) sont décorés */
+function bandeDecoree(kind, rect, f, edges, line) {
   let d = null;
-  try { d = pieceDecoree("bordure", line, 100, f); } catch (err) { /* la mesure du contour demande un navigateur complet */ }
+  try { d = pieceDecoree(kind, line, 100, f); } catch (err) { /* la mesure du contour demande un navigateur complet */ }
   const S = CONTOURS[line];
   if (!d || !S) return null;
   const [x, y, w, h] = rect, bw = 13 * f, a = 4 * S.h * f, per = 4 * S.l * f;
+  if (kind === "orle") {
+    const g = cellGeom(rect), c = 21.3 * f, hw = 5.92 * f, vert = e => e === "l" || e === "r";
+    const rubans = [...edges].map(e => {
+      const xa = e === "l" ? x + c - hw : e === "r" ? x + w - c - hw : g.x0 + c, xb = e === "l" ? x + c + hw : e === "r" ? x + w - c + hw : g.x1 - c;
+      const ya = e === "t" ? y + c - hw : e === "b" ? y + h - c - hw : g.y0 + c, yb = e === "t" ? y + c + hw : e === "b" ? y + h - c + hw : g.y1 - c;
+      return polyDecore([[xa, ya], [xb, ya], [xb, yb], [xa, yb]], vert(e) ? [false, true, false, true] : [true, false, true, false], line, a, per);
+    });
+    return `<path d="${d}" fill="#fff" fill-rule="evenodd"/>` + rubans.map(r => `<path d="${r}" fill="#fff"/>`).join("");
+  }
   const bande = {
     l: [[[x, y], [x + bw, y], [x + bw, y + h], [x, y + h]], [false, true, false, false]],
     r: [[[x + w - bw, y], [x + w, y], [x + w, y + h], [x + w - bw, y + h]], [false, false, false, true]],
@@ -284,7 +294,7 @@ function bandeDecoree(rect, f, edges, line) {
 function bandeDeCase(kind, pf, rect, f, edges, line) {
   const [x, y, w, h] = rect;
   const d = SHIELD_D + [...edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
-  const deco = kind === "bordure" && line && bandeDecoree(rect, f, edges, line);
+  const deco = enBande(kind) && line && bandeDecoree(kind, rect, f, edges, line);
   if (deco) {
     const id = `mb${++BID}`;
     return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${deco}</mask></defs><rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
@@ -405,7 +415,7 @@ function cellGeom(rect) {
   for (let y = Math.floor(ry); y < ry + rh; y++) for (let x = Math.floor(rx); x < rx + rw; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) {
     sx += x + .5; sy += y + .5; n++; x0 = Math.min(x0, x); x1 = Math.max(x1, x + 1); y0 = Math.min(y0, y); y1 = Math.max(y1, y + 1);
   }
-  return CGEO[key] = n ? { cx: sx / n, cy: sy / n, w: n / (y1 - y0), h: n / (x1 - x0), x0, x1 } : { cx: rx + rw / 2, cy: ry + rh / 2, w: rw, h: rh, x0: rx, x1: rx + rw };
+  return CGEO[key] = n ? { cx: sx / n, cy: sy / n, w: n / (y1 - y0), h: n / (x1 - x0), x0, x1, y0, y1 } : { cx: rx + rw / 2, cy: ry + rh / 2, w: rw, h: rh, x0: rx, x1: rx + rw, y0: ry, y1: ry + rh };
 }
 /* l'étendue horizontale visible d'une moitié de l'écu */
 const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0, g.x1]; };
