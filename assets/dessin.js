@@ -7,9 +7,9 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-/* un demi-écu du parti (drawParti) : les positions se resserrent de PX, les figures de PK sans se déformer ; HSIDE : 0 dextre, 1 senestre */
-let PX = 1, PK = 1, HSIDE = 0;
-const sq = s => (PX === 1 || !s ? s : `<g transform="translate(${100 * (1 - PX)},0) scale(${PX},1)">${s}</g>`);
+/* une case du parti (drawParti) : MAP resserre le champ et la pièce à la taille de la case ; les figures se repositionnent (px, py, décalage) et se réduisent de pk sans se déformer ; HSIDE : 0 dextre, 1 senestre */
+let MAP = null, HSIDE = 0;
+const sq = s => (!MAP || !s ? s : `<g transform="translate(${100 * (1 - MAP.px)},${126 * (1 - MAP.py)}) scale(${MAP.px},${MAP.py})">${s}</g>`);
 
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
 const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
@@ -117,14 +117,15 @@ const DEVISES = {
   }) }
 };
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
-  ci: "", cim: "", cit: "Or", cia: "Gueules",
+  ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd", "lpc", "lpw"]);
-const PFX = ["", "b_", "c_", "d_", "e_"];
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
+const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4", "p"].includes(St.q)) St.q = "";
+  for (const k of ["h1", "h2"]) if (St.q !== "p" || !["", "2", "4"].includes(St[k])) St[k] = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
@@ -147,7 +148,7 @@ function normalizeAll(St) {
   St.dv = String(St.dv || "").slice(0, 48);
   if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
-  St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1)) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
+  St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1 || halfMode(St, i))) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
 }
@@ -232,7 +233,10 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
-const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => `<g transform="translate(${PX === 1 ? x : 100 + (x - 100) * PX},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k * PK},${k * PK}` : k * PK}) translate(-100,-116)">${useFor(m, id)}${over}</g>`).join("");
+const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => {
+  const X = MAP ? 100 + (x - 100) * MAP.px + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.py + MAP.shy : y, K = MAP ? k * MAP.pk : k;
+  return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
+}).join("");
 /* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
 function couronneDe(m, tinct) {
   if (!m.couronne || !tinct) return "";
@@ -294,7 +298,7 @@ function quarterGeom() {
   const rects = [[0, 0, 100, split], [100, 0, 100, split], [0, split, 100, 252 - split], [100, split, 100, 252 - split]];
   return QGEO[SHIELD_D] = { split, q: acc.map(([sx, sy, n], i) => ({ cx: sx / n, cy: sy / n, rect: rects[i] })) };
 }
-const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : St.q === "p" ? [0, 1] : [0, 1, 2, 3];
+const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : [0, 1, 2, 3];
 /* deux couches par quartier : le champ et la pièce étirés pour couvrir tout le quartier, puis les armes entières
    à demi-taille, centrées sur le barycentre de la partie visible (la pointe ne rogne plus les meubles du bas) */
 function qCover(g) {
@@ -321,18 +325,47 @@ const SHAPES = {
   pl17: { nom: "Polonais, à échancrures", d: "M100,22 C84,26 48,24 22,12 C26,34 42,50 42,62 C34,70 32,84 42,94 C26,102 16,120 18,140 C20,190 62,222 100,240 C138,222 180,190 182,140 C184,120 174,102 158,94 C168,84 166,70 158,62 C158,50 174,34 178,12 C152,24 116,26 100,22 Z" },
   pl19: { nom: "Polonais, sommet en coin", d: "M18,12 C50,28 150,28 182,12 C186,96 150,192 100,242 C50,192 14,96 18,12 Z" },
 };
-/* parti : deux moitiés, chacune avec ses armes entières resserrées de moitié (champ et pièce comprimés, meubles repositionnés mais non déformés) */
-const PARTI_PX = .5, PARTI_PK = .8;
+/* les cases d'un parti : chaque moitié, ou, si elle s'écartèle, ses quatre quartiers */
+function partiCells(St) {
+  const split = quarterGeom().split, out = [];
+  [0, 1].forEach(h => {
+    const qa = halfQuarters(St, h), hx = h * 100;
+    if (!qa) out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252] });
+    else [[0, 0, split], [50, 0, split], [0, split, 252 - split], [50, split, 252 - split]].forEach(([dx, y, hh], n) => out.push({ arm: qa[n], half: h, q: n, rect: [hx + dx, y, 50, hh] }));
+  });
+  return out;
+}
+/* le barycentre de la partie visible d'une case (la pointe de l'écu en rogne le bas) */
+const CGEO = {};
+function cellGeom(rect) {
+  const key = SHIELD_D + rect.join();
+  if (CGEO[key]) return CGEO[key];
+  const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D), [rx, ry, rw, rh] = rect;
+  let sx = 0, sy = 0, n = 0;
+  for (let y = Math.floor(ry); y < ry + rh; y++) for (let x = Math.floor(rx); x < rx + rw; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) { sx += x + .5; sy += y + .5; n++; }
+  return CGEO[key] = n ? { cx: sx / n, cy: sy / n } : { cx: rx + rw / 2, cy: ry + rh / 2 };
+}
+const HALF_PK = .8, SUB_PK = .3;
+function partiMap(c) {
+  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
+  if (c.q !== undefined) { const g = cellGeom(c.rect); Object.assign(m, { pk: SUB_PK, shx: g.cx - cx, shy: g.cy - cy }); }
+  return m;
+}
+/* parti : chaque case reçoit ses armes entières resserrées à sa taille ; une moitié écartelée montre ses quatre quartiers */
 function drawParti(St, u, ab) {
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
-  [0, 1].forEach(i => {
-    PX = PARTI_PX; PK = PARTI_PK; HSIDE = i;
+  partiCells(St).forEach((c, ci) => {
+    const m = partiMap(c), id = `${u}h${ci}`, [rx, ry, rw, rh] = c.rect;
+    MAP = m; HSIDE = c.half;
     let r;
-    try { r = drawBody(St.A[i], `${u}h${i}`); } finally { PX = 1; PK = 1; HSIDE = 0; }
-    defs += r.defs + `<clipPath id="qr-${u}${i}"><rect x="${i * 100}" y="0" width="100" height="252"/></clipPath>`;
-    body += `<g clip-path="url(#qr-${u}${i})"><g transform="translate(${i ? 50 : -50},0)">${r.body}</g></g>`;
+    try { r = drawBody(St.A[c.arm], id); } finally { MAP = null; HSIDE = 0; }
+    defs += r.defs + `<clipPath id="qr-${id}"><rect x="${rx}" y="${ry}" width="${rw}" height="${rh}"/></clipPath>`;
+    body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
-  body += `<path d="M100,0V252" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  const split = quarterGeom().split;
+  let lignes = "M100,0V252";
+  [0, 1].forEach(h => { if (halfQuarters(St, h)) lignes += `M${h * 100 + 50},0V252M${h * 100},${split}H${h * 100 + 100}`; });
+  body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
 function drawShield(St, u) {
@@ -564,7 +597,7 @@ const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)} : <a href="ht
   return out;
 }
 function ruleAll(St) {
-  const out = !St.q ? rule(St.A[0]) : active(St).filter(i => i < 4).flatMap(i => rule(St.A[i]).map(w => `${QNAME[St.q][i]} : ${w}`));
+  const out = !St.q ? rule(St.A[0]) : cellNames(St).flatMap(([i, nom]) => rule(St.A[i]).map(w => `${nom} : ${w}`));
   return St.ab ? [...out, ...rule(St.A[4]).map(w => `Écusson : ${w}`)] : out;
 }
 

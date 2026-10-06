@@ -150,9 +150,17 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
   lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
-  { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
+  { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
+  { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
+  { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];      // 5 à 8 : les armes en plus des moitiés d'un parti qui s'écartelle (HALF_ARMS)
 
-const active = St => (!St.q ? [0] : St.q === "2" || St.q === "p" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+/* un parti : deux moitiés (armes 0 et 1), dont chacune peut s'écarteler (h1, h2 : "", "2" pour 1-4 / 2-3, "4" en quatre) ; ses quartiers 2, 3, 4 prennent alors les armes de HALF_ARMS */
+const HALF_ARMS = [[0, 2, 3, 5], [1, 6, 7, 8]];
+const halfMode = (St, h) => (h ? St.h2 : St.h1);
+/* les armes de chaque quartier d'une moitié écartelée, dans l'ordre 1-2-3-4 ; null si la moitié est simple */
+const halfQuarters = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? [a[0], a[1], a[1], a[0]] : m === "4" ? a.slice() : null; };
+const halfUsed = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? a.slice(0, 2) : m === "4" ? a.slice() : [a[0]]; };
+const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p) : "plein"; }
@@ -263,7 +271,7 @@ function canon(a) {
   }
   return o;
 }
-const canonAll = St => ({ q: St.q, ab: St.ab, A: active(St).map(i => canon(St.A[i])) });
+const canonAll = St => ({ q: St.q, ab: St.ab, h1: St.h1 || "", h2: St.h2 || "", A: active(St).map(i => canon(St.A[i])) });
 
 /* ---------- le blasonnement ---------- */
 /* l'attribut d'un meuble (« armé et lampassé d'azur ») ne se dit que s'il change quelque chose : de l'émail du corps, on se tait.
@@ -355,11 +363,31 @@ function brisTxt(s) {
   return `${c.n === 1 ? (c.g === "f" ? "d'une" : "d'un") + " " + c.nom : "de " + NB[c.n] + " " + c.nomPl}${c.ctr} ${c.tinct}${c.acc}${dph(arms, c)}`;
 }
 const blazon = s => blazonCore(s) + (s.br ? ", brisé " + brisTxt(s) : "");
-const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"], p: ["au 1", "au 2"] };
-const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"], p: ["Moitié dextre (1)", "Moitié senestre (2)"] };
+const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
+const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
+/* les armes que l'on peut modifier (hors écusson), avec leur nom */
+function cellNames(St) {
+  if (St.q !== "p") return St.q ? QNAME[St.q].map((l, i) => [i, l]) : [];
+  return [0, 1].flatMap(h => {
+    const nom = h ? "senestre" : "dextre", m = halfMode(St, h), a = HALF_ARMS[h];
+    return m === "2" ? [[a[0], `Moitié ${nom} : quartiers 1 et 4`], [a[1], `Moitié ${nom} : quartiers 2 et 3`]]
+      : m === "4" ? a.map((i, n) => [i, `Moitié ${nom} : quartier ${n + 1}`]) : [[a[0], `Moitié ${nom} (${h + 1})`]];
+  });
+}
 function blazonAll(St) {
   const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
-  let b = !St.q ? blazon(St.A[0]) : (St.q === "p" ? "Parti" : "Écartelé") + " : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  let b;
+  if (!St.q) b = blazon(St.A[0]);
+  else if (St.q === "p") {
+    /* chaque moitié : des armes, ou un écartelé « écartelé : aux 1 et 4, … ; aux 2 et 3, … » (les quartiers se disent alors avant la moitié suivante) */
+    const moitie = h => {
+      const m = halfMode(St, h), a = HALF_ARMS[h];
+      if (!m) return lo(blazon(St.A[a[0]]));
+      const labs = m === "2" ? QLAB[2] : QLAB[4];
+      return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+    };
+    b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
+  } else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
   return b;
 }
