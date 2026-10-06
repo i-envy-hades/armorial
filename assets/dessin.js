@@ -31,14 +31,14 @@ function ptsFor(s, m) {
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
     if (d && m.allongee) {      // un meuble allongé (léopard) : en pal à pleine largeur, et rapprochés verticalement quand ils sont trois
-      if (d.pal || d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .85, sc * 1.75 * (MAP ? 1.4 : 1), r]);
+      if (d.pal || d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .9, Math.min(.9, sc * 3) * (MAP ? 1.4 : 1), r]);
       else if (+s.nb === 3 && (d.id === "" || d.id === "base" || d.id === "mal")) pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .72, sc * .92, r]);
     }
   }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
 }
-const pts2 = s => adjust(dispo2(s).pts, s, 2, "2");
+const pts2 = s => adjust(s.p === "fasce" ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
