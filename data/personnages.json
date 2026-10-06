@@ -73,6 +73,7 @@
     "nom": "Henri VI d'Angleterre",
     "meta": "1421–1471 · roi d'Angleterre",
     "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or (France moderne) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
+    "atelier": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or",
     "desc": "Proclamé « roi de France et d'Angleterre », Henri VI porte la France « moderne » (trois lis), qui a remplacé le semé vers 1406.",
     "file": "Coat of Arms of Henry VI of England (1422-1471).svg",
     "auteur": "Sodacan",
@@ -88,7 +89,7 @@
     "blasonSrc": {
       "label": "Wikipedia (en), « Coat of arms of England »",
       "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
-      "note": "Henri IV réduit les lis à trois (l'article date cette version de 1406-1554) ; Henri VI porte la France « moderne »"
+      "note": "Henri IV réduit les lis à trois (l'article date cette version de 1406-1554) ; Henri VI porte la France « moderne ». L'article parle d'écarteler les armes d'Angleterre avec celles de France ; le fichier Commons montre à dextre la France moderne seule, à senestre l'écartelé France/Angleterre"
     }
   },
   {
