@@ -1747,6 +1747,18 @@
           "gallery": "positions",
           "html": "\n          <p>Chaque meuble a une <b>position par défaut</b> qu'on ne blasonne pas : le lion est rampant, l'aigle éployée, l'épée en pal la pointe en haut, la clef le panneton en chef, le croissant les cornes vers le haut. On ne nomme que l'écart.</p>\n          <p>Le corollaire est qu'une même bête change de nom en changeant de pose : le lion qui marche la tête de face devient un <b>léopard</b>. Et l'écart le plus fréquent est le plus simple — <b>contourné</b>, c'est-à-dire tourné vers senestre, alors que tout, par défaut, regarde à dextre.</p>"
         },
+{
+          "titre": "La clef : pose, groupes et sens",
+          "sources": [
+            "wiki_meubles"
+          ],
+          "diagram": "clefs",
+          "html": "\n          <p>La <b>clef</b> est, parmi les objets, un des meubles les plus codifiés : sa pose, son sens et la façon d'en grouper deux se disent chacun d'un mot.</p>\n          <p><b>Par défaut</b>, la clef se tient en pal, l'<b>anneau en pointe</b>, le <b>panneton</b> — la partie dentée — en chef, tourné vers dextre. Si le panneton regarde vers senestre, elle est <b>contournée</b>. Posée en <b>barre</b> ou en <b>bande</b>, voire en fasce, elle a normalement le panneton tourné vers la pointe : c'est la position où l'on engage une clef dans une serrure.</p>\n          <p>À deux, les clefs prennent des noms de groupe. <b>Adossées</b> en pal et <b>entretenues</b> quand leurs anneaux s'entrelacent, comme chez Clugny : d'azur à deux clefs d'or adossées en pal, entretenues par le bas, aux anneaux losangés et pommetés. <b>Passées en sautoir</b>, elles se croisent ; si un lien joint leurs anneaux, elles sont <b>liées</b> — le Comtat Venaissin porte de gueules à deux clefs d'or passées en sautoir et liées d'azur.</p>\n          <p><b>Ce que la clef veut dire.</b> Elle symbolise <b>saint Pierre</b>, dont elle est l'attribut — la clef du paradis : un saint Pierre dans un écu se reconnaît à sa clef (à Eguisheim, il la tient renversée, de sable). Deux clefs en sautoir sont celles des armes pontificales, l'une d'or, l'autre d'argent, qu'on retrouve aussi en ornement extérieur de l'écu. Elles ont souvent été <b>accordées par faveur papale</b> à des armes qui ne sont pas celles d'un pape : l'abbaye de Cluny, la maison de Clermont-Tonnerre.</p>\n        "
+        },
+        {
+          "note": true,
+          "html": "\n          <div class=\"note\">\n            <span class=\"k\">État des connaissances</span>\n            <p><b>Lu à la source :</b> l'entrée « Clef » de la liste des meubles, et les exemples qu'elle cite (Clugny, Comtat Venaissin, Cluny, Clermont-Tonnerre, Eguisheim).</p>\n            <p><b>Non lu :</b> le sens d'une clef seule hors de saint Pierre, ses emplois dans les armes de corporations ou de villes, l'orientation des pannetons dans un sautoir. Rien de cela n'est avancé ici.</p>\n          </div>\n        "
+        },
         {
           "titre": "Répertoire des meubles",
           "sources": [
@@ -3354,6 +3366,27 @@
       "def": "Se dit d'une pièce entourée d'une bordure de couleur différente, un liseré : « croix d'argent bordée de gueules ».",
       "sources": [
         "wiki_attributs"
+      ]
+    },
+    {
+      "terme": "Entretenues",
+      "def": "Se dit de deux clefs dont les anneaux sont entrelacés.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Passées en sautoir",
+      "def": "Se dit de deux clefs (ou épées, lances) croisées en X ; sur les armes pontificales, l'une est d'or, l'autre d'argent.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Liées",
+      "def": "Se dit de deux clefs en sautoir dont les anneaux sont joints par un lien.",
+      "sources": [
+        "wiki_meubles"
       ]
     }
   ],

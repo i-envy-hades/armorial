@@ -118,7 +118,7 @@ function reglesGallery(kind){
 }
 
 /* diagrammes appelés depuis un article par sa clé `diagram` */
-const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram, suisse2013: suisseDiagram };
+const DIAGRAMS = { ecu: ecuPoints, eccl1969: ecclDiagram, empire1808: empireDiagram, suisse2013: suisseDiagram, clefs: clefDiagram };
 
 /* la recherche couvre le glossaire, le répertoire et les deux tables de vocabulaire ;
    en cas d'homonymie, la définition du glossaire l'emporte */
