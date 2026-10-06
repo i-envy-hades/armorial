@@ -634,7 +634,7 @@ function pieceDecoree(kind, line, th = 100, wf = 1){      // wf : réduction de 
        (les arcs de l'engrêlé la rognent, ceux du cannelé et les dents du denché l'augmentent) */
     const moy = { engrele: -.785, cannele: .785, denche: .5 }[line] || 0;
     /* l'orle est le contour réduit à .74, large de 16 × .74 ; la bordure ne montre que 13 au-dedans du contour */
-    const anneaux = kind === "bordure" ? [contourDecale(13 * wf - moy * a)] : [contourDecale(-5.92 + moy * a, .74), contourDecale(5.92 - moy * a, .74)];
+    const anneaux = kind === "bordure" ? [contourDecale(13 * wf - moy * a)] : [contourDecale(-5.92 * wf + moy * a, 1 - .26 * wf), contourDecale(5.92 * wf - moy * a, 1 - .26 * wf)];
     /* les anneaux d'une même pièce ont le même nombre de motifs par morceau : leurs ondes restent parallèles */
     const nb = anneaux.every(r => r.length === anneaux[0].length) ? anneaux[0].map((_, j) => Math.max(1, Math.round(anneaux.reduce((s, r) => s + longueur(r[j]), 0) / anneaux.length / per))) : null;
     const f = v => +v.toFixed(2);
