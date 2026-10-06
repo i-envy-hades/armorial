@@ -874,9 +874,6 @@ function chargeInner(kind, fill, stroke, field){
       <circle cx="100" cy="116" r="11" fill="${field}"/>`;
     case "tiercefeuille": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
       ${[0, 120, 240].map(a => `<path transform="rotate(${a} 100 116)" d="M100,114 C78,98 74,66 100,46 C126,66 122,98 100,114 Z"/>`).join("")}</g>`;
-    case "trefle": return `<g fill="${fill}">
-      <circle cx="100" cy="76" r="26"/><circle cx="70" cy="114" r="26"/><circle cx="130" cy="114" r="26"/>
-      <path d="M93,124 C93,152 90,172 78,192 C94,182 106,182 122,192 C110,172 107,152 107,124 Z"/></g>`;
     case "otelle": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
       ${[45, 135, 225, 315].map(a => `<path transform="rotate(${a} 100 116)" d="M100,108 C116,84 116,48 100,26 C84,48 84,84 100,108 Z"/>`).join("")}</g>`;
     case "moucheture": return `<g transform="translate(100,122) scale(9)" fill="${fill}" stroke="${stroke}" stroke-width=".12" stroke-linejoin="round">
@@ -923,11 +920,6 @@ function chargeInner(kind, fill, stroke, field){
     case "eclair": return `<path d="M118,34 L68,124 L96,124 L80,200 L134,106 L104,106 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
 
     /* ---------- objets et bâtiments ---------- */
-    case "coquille": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
-      <path d="M74,62 C64,56 50,58 46,68 C53,66 62,68 68,74 Z"/><path d="M126,62 C136,56 150,58 154,68 C147,66 138,68 132,74 Z"/>
-      <path d="M100,52 C88,52 78,56 74,62 L44,150 C58,168 78,178 100,178 C122,178 142,168 156,150 L126,62 C122,56 112,52 100,52 Z"/></g>
-      <g fill="none" stroke="${stroke}" stroke-width="1.5" opacity=".45">
-      <path d="M100,60 L100,176"/><path d="M84,62 L66,168"/><path d="M116,62 L134,168"/><path d="M76,72 L50,152"/><path d="M124,72 L150,152"/></g>`;
     case "cloche": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <rect x="92" y="44" width="16" height="14" rx="5"/>
       <path d="M100,58 C74,58 60,80 58,110 C56,140 48,158 38,168 L162,168 C152,158 144,140 142,110 C140,80 126,58 100,58 Z"/>
