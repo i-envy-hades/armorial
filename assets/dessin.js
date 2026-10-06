@@ -242,9 +242,10 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
+/* dans une moitié de parti, quelques figures côte à côte se serrent : on les réduit pour qu'elles ne se chevauchent pas */
+const facteurMoitie = pts => MAP && MAP.half && pts.length >= 2 && pts.length <= 6 && new Set(pts.map(q => Math.round(q[0]))).size >= 2 ? .7 : 1;
 const placeAll = (pts, m, id, flip, over = "") => {
-  /* dans une moitié de parti, quelques figures côte à côte se serrent : on les réduit pour qu'elles ne se chevauchent pas */
-  const fx = MAP && MAP.half && pts.length >= 2 && pts.length <= 6 && new Set(pts.map(q => Math.round(q[0]))).size >= 2 ? .7 : 1;
+  const fx = facteurMoitie(pts);
   return pts.map(([x, y, k, r]) => {
     const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk * fx : k;
     return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
