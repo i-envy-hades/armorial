@@ -20,6 +20,8 @@
 const LETTRES = "A-Za-zÀ-ÖØ-öø-ÿŒœÆæ";
 const ELISIONS = { d: "de", l: "le", qu: "que" };
 const SYNONYMES = { plain: "plein", lys: "lis", bequee: "becquee", bequees: "becquees", beque: "becque", beques: "becques" };
+/* « au premier, au deuxième… » disent la place d'un quartier comme « au 1, au 2… » */
+const ORDINAUX = { premier: "1", deuxieme: "2", second: "2", seconde: "2", troisieme: "3", quatrieme: "4" };
 const plie = s => String(s).toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 /* mots (w : forme sans accent ni majuscule ; « d' » devient « de »), nombres, ponctuation, et le reste (k "?") ; guillemets, point et trait d'union sautés */
 function decouper(texte) {
@@ -27,7 +29,7 @@ function decouper(texte) {
   for (let m; (m = re.exec(texte));) {
     const de = m.index, a = de + m[0].length;                 // r : le mot tel qu'il est écrit
     if (m[1]) { const w = plie(m[1]); toks.push({ k: "w", w: ELISIONS[w] || w, de, a, r: m[0] }); }
-    else if (m[2]) { const w = plie(m[2]); toks.push({ k: "w", w: SYNONYMES[w] || w, de, a, r: m[0] }); }
+    else if (m[2]) { const w = plie(m[2]); if (ORDINAUX[w]) toks.push({ k: "n", w: ORDINAUX[w], de, a, r: m[0] }); else toks.push({ k: "w", w: SYNONYMES[w] || w, de, a, r: m[0] }); }
     else if (m[3]) toks.push({ k: "n", w: m[3], de, a, r: m[0] });
     else if (m[4]) toks.push({ k: "p", w: m[4], de, a, r: m[0] });
     else if (m[6]) toks.push({ k: "?", w: m[6], de, a, r: m[0] });
@@ -103,7 +105,7 @@ function lexique() {
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
   for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
