@@ -2059,6 +2059,7 @@
   },
   {
    "kind": "taureau",
+   "allongee": true,
    "nom": "Taureau",
    "sing": "taureau",
    "plur": "taureaux",
@@ -2291,6 +2292,7 @@
   },
   {
    "kind": "poisson",
+   "allongee": true,
    "nom": "Poisson",
    "sing": "poisson",
    "plur": "poissons",
