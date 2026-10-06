@@ -1388,6 +1388,12 @@
    "nom": "Couronne",
    "sing": "couronne",
    "plur": "couronnes",
+   "alias": [
+    [
+     "couronne royale",
+     "couronnes royales"
+    ]
+   ],
    "g": "f",
    "cat": "Objets et bâtiments",
    "draw": "couronne"
@@ -2470,6 +2476,203 @@
    "main": [
     "#2b5df2"
    ]
+  },
+  {
+   "kind": "couleuvre",
+   "nom": "Couleuvre ondoyante",
+   "sing": "couleuvre ondoyante",
+   "plur": "couleuvres ondoyantes",
+   "alias": [
+    [
+     "couleuvre ondoyante en pal",
+     "couleuvres ondoyantes en pal"
+    ]
+   ],
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/couleuvre.svg",
+    "commons": "Meuble héraldique Serpent.svg",
+    "auteur": "Bruno Vallette, d'après l'Armorial d'Hozier",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#5ab532"
+   ]
+  },
+  {
+   "kind": "alerion",
+   "nom": "Alérion",
+   "sing": "alérion",
+   "plur": "alérions",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/alerion.svg",
+    "commons": "Alérion.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffffff"
+   ]
+  },
+  {
+   "kind": "choucas",
+   "nom": "Choucas",
+   "sing": "choucas",
+   "plur": "choucas",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/choucas.svg",
+    "commons": "Meuble héraldique Choucas.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#313131",
+    "#252525"
+   ],
+   "accent": [
+    "fill:#fcef3c",
+    "fill:#e20909"
+   ],
+   "accentMot": "becqué et membré"
+  },
+  {
+   "kind": "faisceau",
+   "nom": "Faisceau de licteur",
+   "sing": "faisceau de licteur",
+   "plur": "faisceaux de licteur",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/faisceau.svg",
+    "commons": "Meuble héraldique Faisceau de licteur.svg",
+    "auteur": "Blanchoyeur",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c",
+    "fill:#fff"
+   ],
+   "accent": [
+    "fill:#e20909"
+   ],
+   "accentMot": "lié"
+  },
+  {
+   "kind": "grenade",
+   "nom": "Grenade",
+   "sing": "grenade",
+   "plur": "grenades",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/grenade.svg",
+    "commons": "Héraldique meuble Grenade.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ],
+   "accent": [
+    "fill:#ff0000"
+   ],
+   "accentMot": "ouvert",
+   "fixe": {
+    "mot": "tigé et feuillé",
+    "t": "Sinople",
+    "c": [
+     "fill:#00ff00"
+    ]
+   }
+  },
+  {
+   "kind": "neflier",
+   "nom": "Fleur de néflier",
+   "sing": "fleur de néflier",
+   "plur": "fleurs de néflier",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/neflier.svg",
+    "commons": "Meuble héraldique Fleur de néflier.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c",
+    "fill:#5ab532"
+   ],
+   "accent": [
+    "fill:#e20909"
+   ],
+   "accentMot": "percé"
+  },
+  {
+   "kind": "crosse-bale",
+   "nom": "Crosse de Bâle",
+   "sing": "crosse stylisée",
+   "plur": "crosses stylisées",
+   "alias": [
+    [
+     "crosse de Bâle",
+     "crosses de Bâle"
+    ]
+   ],
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "draw": "crosse-bale"
   }
  ],
  "pieces": [

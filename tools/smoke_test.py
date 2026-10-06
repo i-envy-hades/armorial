@@ -380,7 +380,7 @@ LUS = [
 ]
 # (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
 REFUSES = [
-    ("D'azur à la grenade d'or", "grenade"),
+    ("D'azur au ciboire d'or", "ciboire"),
     ("D'or à sept pals de gueules", "Plusieurs pals"),
     ("De gueules à sept fasces d'argent", "Plusieurs fasces"),
     ("D'azur à l'ours passant d'argent couronné d'or", "couronné"),
@@ -411,12 +411,14 @@ REFUSES = [
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
 BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Archiduché d'Autriche", "Couronne d'Aragon", "Comté de Foix",
                     "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
-                    "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande"]
+                    "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
+                    "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
+                    "Royaume de Grenade (couronne de Castille)"]
 # (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Saint-Empire romain germanique", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Bertrand du Guesclin"]
-PERSONNAGES_REFUSES = ["Margrethe II", "Jean-Baptiste Colbert"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin"]
+PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
@@ -511,9 +513,9 @@ def test_lecture(browser, base, n_fuzz):
     blz = lambda: page.inner_text("#blz")
     page.fill("#lire", "D'azur à la fasce d'or"); page.wait_for_timeout(900)
     verifie(blz().strip("« »  ") == "D'azur à la fasce d'or" and page.locator("#lire-etat.ok").count() == 1, "lecture : taper un blasonnement dessine l'écu")
-    page.fill("#lire", "D'azur à la fasce d'or et à la grenade de sable"); page.wait_for_timeout(900)
+    page.fill("#lire", "D'azur à la fasce d'or et au ciboire de sable"); page.wait_for_timeout(900)
     verifie(page.locator("#lire-etat.ko mark").count() >= 1 and blz().strip("« »  ") == "D'azur à la fasce d'or", "lecture : un blasonnement non compris est surligné et laisse l'écu comme il était")
-    verifie("grenade" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
+    verifie("ciboire" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
     page.click("#b-recopier"); page.wait_for_timeout(500)
     verifie(page.input_value("#lire") == "D'azur à la fasce d'or", "lecture : « Reprendre le blasonnement actuel » recopie le blasonnement dans la zone de saisie")
     page.fill("#lire", "D'azur à quatre étoiles d'or"); page.wait_for_timeout(900)
@@ -530,7 +532,7 @@ def test_lecture(browser, base, n_fuzz):
     verifie(page.url.startswith(base + "/atelier.html#") and "lire=" not in page.url, "lecture : l'adresse redevient le lien de partage habituel")
     propre("atelier (#lire)", page, erreurs)
     page.context.close()
-    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur à la grenade d'or"), "#lire-etat.ko")
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur au ciboire d'or"), "#lire-etat.ko")
     verifie(page.locator("#lire-etat.ko mark").count() == 1, "lecture : une adresse « #lire=… » non comprise est signalée")
     propre("atelier (#lire refusé)", page, erreurs)
     page.context.close()

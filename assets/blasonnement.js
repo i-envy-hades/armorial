@@ -15,7 +15,7 @@ const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", 
 const art = (w, g) => voy(w) ? "l'" : g === "f" ? "la " : "le ";
 const aArt = (w, g) => voy(w) ? "à l'" : g === "f" ? "à la " : "au ";
 /* accorde les participes en -é : « armé et lampassé » → « armées et lampassées » */
-const agree = (phrase, g, pl) => phrase.replace(/é(?=[\s,]|$)/g, "é" + (g === "f" ? "e" : "") + (pl ? "s" : ""));
+const agree = (phrase, g, pl) => phrase.replace(/(é|ouvert)(?=[\s,]|$)/g, (x, w) => w + (g === "f" ? "e" : "") + (pl ? "s" : ""));         // « ouvert » : la grenade ouverte
 const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
 
 const PIECES = {
@@ -303,7 +303,9 @@ function charges(s) {
   /* ta vide (contre-changé) : l'attribut suit le corps, « du même » */
   const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + (s.ta ? de(s.ta) : "du même") : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
   const ctr = (s.iss === "1" ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
-  return { m, n, pl, nom, nomPl, g, acc, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: s.cc ? ccTexte(s.cc) : de(s.tm) };
+  /* une partie du dessin toujours du même émail se dit toujours (« la grenade d'or ouverte de gueules, tigée et feuillée de sinople ») */
+  const fixe = m.fixe ? `, ${agree(m.fixe.mot, g, pl)} ${de(m.fixe.t)}` : "";
+  return { m, n, pl, nom, nomPl, g, acc: acc + fixe, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: s.cc ? ccTexte(s.cc) : de(s.tm) };
 }
 function semePhrase(c, s) {
   const m = c.m;

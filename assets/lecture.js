@@ -85,6 +85,8 @@ function lexique() {
   L.raye = table([["fascé", { ray: "barry" }], ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
     ["burelé", { ray: "barry", n: "10" }], ["vergeté", { ray: "paly", n: "10" }], ["vergetté", { ray: "paly", n: "10" }], ["coticé", { ray: "bendy", n: "10" }], ["coticé en barre", { ray: "bendysin", n: "10" }],
     ["échiqueté", { ray: "chequy" }], ["fuselé", { ray: "lozengy" }], ["fuselé en bande", { ray: "lozengybend" }], ["fuselé en barre", { ray: "lozengysin" }]]);
+  L.fixe = {};
+  for (const m of ATL.meubles) if (m.fixe) L.fixe[m.kind] = table(quatre(m.fixe.mot).map(f => [f, true]));
   L.accent = {};
   for (const m of ATL.meubles) if (m.accent && m.accentMot) L.accent[m.kind] = table((m.accentFixe ? [m.accentMot] : quatre(m.accentMot)).map(f => [f, true]));
   /* les attributs des bêtes, par classe : « armé » = « membré » = « onglé » (les griffes), « lampassé » = « langué » (la langue)… */
@@ -103,7 +105,7 @@ function lexique() {
   L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
   for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   return L;
@@ -243,6 +245,13 @@ function pCorps(P, i, ref, nb) {
       const jb = cle(P, fin) === "," ? fin + 1 : fin, k3 = suites(LEX.coure, P, jb)[0], te = k3 && pEmail(P, jb + k3.n, t.t);
       if (te) { cn = te.t; fin = aussi(te.i); } else if (k3) continue;
     }
+    /* la partie fixe du dessin (« tigée et feuillée de sinople ») : dite, elle doit l'être de son émail ; tue, on le signale */
+    if (m.fixe) {
+      const jf = cle(P, fin) === "," ? fin + 1 : fin, sf = suites(LEX.fixe[m.kind], P, jf)[0], tf = sf && pEmail(P, jf + sf.n);
+      if (sf && !tf) continue;
+      if (tf && tf.t !== m.fixe.t) { erreur(P, P.toks[jf].de, P.toks[tf.i - 1].a, `L'Atelier dessine ${art(m.sing, m.g)}${m.sing} ${agree(m.fixe.mot, m.g, false)} ${de(m.fixe.t)}, pas d'un autre émail.`); continue; }
+      if (tf) fin = tf.i; else P.notes.push(`${cap(art(m.sing, m.g))}${m.sing} n'est pas ${m.g === "f" ? "dite" : "dit"} « ${agree(m.fixe.mot, m.g, false)} » : l'Atelier ${m.g === "f" ? "la" : "le"} dessine ${agree(m.fixe.mot, m.g, false)} ${de(m.fixe.t)}.`);
+    }
     const lu = { m, tm: t.t, ta: ac.ta, ct, cn, iss, cc: cc ? cc.cc : "", mot: val.mot, i: fin, pre: avant, notes: P.notes.splice(base) };
     if (!best || lu.i > best.i) best = lu;
   }
@@ -371,10 +380,11 @@ function pChamp(P) {
     if (!t) return null;
     const plein = cle(P, t.i) === "plein";
     /* « d'or à trois pals de gueules » : de deux à six pièces rebattues sur le champ = un champ rayé de cinq à treize zones (l'émail du champ aux deux bords) */
-    if (!plein && cle(P, t.i) === "a" && LEX.compte.has(cle(P, t.i + 1))) {
-      const k = LEX.compte.get(cle(P, t.i + 1)), pl = suites(LEX.pieces, P, t.i + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin", chevron: "chevronny" };
+    const v = cle(P, t.i) === "," ? t.i + 1 : t.i;                 // « de gueules, à trois fasces d'argent » : la virgule est libre
+    if (!plein && cle(P, v) === "a" && LEX.compte.has(cle(P, v + 1))) {
+      const k = LEX.compte.get(cle(P, v + 1)), pl = suites(LEX.pieces, P, v + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin", chevron: "chevronny" };
       if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 6) {
-        const t2 = pEmail(P, t.i + 2 + pl.n);
+        const t2 = pEmail(P, v + 2 + pl.n);
         if (t2) return { ch: { f: "ray", ray: RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
       }
     }
@@ -648,7 +658,7 @@ function verifie(P, a, src, lieu) {
   if (b.m2) place(src.m2, m2, +b.nb2);
   if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn, true);
   for (const [o, mm] of [[src.m, m], [src.m2, m2]]) {
-    if (!o || !mm || o.ta || !(mm.accentFixe || mm.accentTrait)) continue;
+    if (!o || !mm || o.ta != null || !(mm.accentFixe || mm.accentTrait)) continue;          // ta "" : dit « du même » sur un meuble contre-changé
     note(`${cap(art(mm.sing, mm.g))}${mm.sing} n'est pas dite « ${mm.accentFixe ? mm.accentMot : agree(mm.accentMot, mm.g, false)} » : l'Atelier la dessine ainsi dans tous les cas, de l'émail du meuble faute d'indication.`);
   }
   for (const o of [src.m, src.m2]) if (o && o.mot && ((o.mot === "besant") !== (classe(o.tm) === "Métal"))) note(`${o.mot === "besant" ? "un besant est d'un métal" : "un tourteau est d'une couleur"} : l'Atelier écrira « ${classe(o.tm) === "Métal" ? "besant" : "tourteau"} ».`);
