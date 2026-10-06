@@ -217,6 +217,31 @@ Les images de Wikimedia Commons restent la propriété de leurs auteurs, sous le
 Les ouvrages cités en bibliographie ne sont pas couverts par cette licence. Les polices (Marcellus, Marcellus SC, EB Garamond) sont sous
 licence OFL, dont le texte est dans `assets/fonts/`.
 
+## Atelier : trois choses à savoir
+
+- **Champ `atelier`** (dans `blasons.json` et `personnages.json`) : un blasonnement de remplacement, que l'Atelier lit à la place du texte de la carte quand l'image
+  Commons montre autre chose que la source, ou que la source emploie un nom que l'Atelier ne connaît pas (« France ancien »). Le texte de la source n'est jamais modifié ;
+  la carte signale que le dessin suit l'image.
+- **Épaisseur de la croix** : un curseur règle l'épaisseur d'une croix (pièce), de la croix posée en meuble comme de celle d'une case.
+- **Bordure, orle et brisure en bordure** suivent la case où elles sont posées (moitié d'un parti, quartier), bord décoré compris pour la bordure.
+
+## Ce qui reste à faire
+
+Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
+
+1. **Cartes sans blasonnement** : une vingtaine de cartes (blasons et personnages) n'ont aucun blasonnement lu à la source ; on ne l'invente pas, il faut le trouver.
+2. **Cartes encore illisibles** (84) : elles demandent des mots que l'Atelier ne connaît pas — tenants et supports, devises, écusson, crosse, faisceau, alérion, saint Georges,
+   « à cheval » — ou des armes à étages (Russie, Danemark, Belgique…). Chaque mot est une figure à dessiner ou à emprunter, avec sa licence.
+3. **Épaisseur par défaut** de la fasce, du pal et de la bande : environ 21 % de l'écu ici, près d'un tiers sur Commons. À trancher. Les fascé de quatre pièces (Hohenberg)
+   ne se lisent pas : le lecteur n'accepte « fascé » qu'à partir de cinq.
+4. **Pal par défaut** pour d'autres bêtes passantes (cerf, ours, loup, sanglier, bélier) : aujourd'hui seuls le lion passant et le léopard le font. À trancher.
+5. **Boutons « Exemples »** de l'Atelier : les 31 sont à rafraîchir avec les outils récents (bordure en case, épaisseur de la croix, clef).
+6. **Lambel sur un écartelé** : l'Atelier le pose par case ; les armes réelles (Prince Noir) le portent sur tout l'écu.
+7. **Encyclopédie, croix alésée** : les schémas sont encore faits de deux rectangles, d'où une couture visible sous un émail métallique.
+8. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
+   « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
+9. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
+
 ## Limites connues
 
 - **Petits écrans** : toutes les pages tiennent en 375 px, mais l'Atelier, avec ses nombreuses commandes, reste un long formulaire sur téléphone.
@@ -229,7 +254,7 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.
-- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu plus d'un tiers des blasonnements des galeries (54 sur 141). Il lit les attributs des bêtes en liste
+- **Le lecteur de blasonnement** ne comprend que ce que l'Atelier sait dessiner : un peu plus d'un tiers des blasonnements des galeries (57 sur 141). Il lit les attributs des bêtes en liste
   (« armé, lampassé et vilené de gueules » : l'Atelier les colore d'un seul émail, et le dit), la couronne d'un lion (« lion couronné d'or »), « du champ », « aux trois… », les quartiers séparés par des virgules. Il ne lit pas une bordure autour d'une croix-meuble, les attitudes que l'Atelier ne dessine pas (ours dressé, bouquetin saillant…), ni les meubles absents de l'Atelier (harpe, sceptre, crosse, faisceau…), ni « de l'un en l'autre ».
   Il ne lit pas les ornements (couronne, heaume, cimier, supports). Il pose « 2 et 1 » pour trois meubles dont le texte ne dit pas la disposition, et le dit.
 - **L'Atelier** : encore peu d'attitudes — une ou deux par bête, « saillant » pour le bouquetin, la chèvre et la biche seulement ; « issant » ne se dit que d'un meuble seul, sans pièce, et sort toujours de la pointe ; seuls les lions portent une couronne ; le manteau et le pavillon sont une silhouette unique, de proportions fixes (ni armes sur les côtés, ni toque des pairs) ; le fuselé a des proportions fixes ; pas de losangé, d'emmanché, de fretté ni de vairé comme champs.
