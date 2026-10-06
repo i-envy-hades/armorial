@@ -148,7 +148,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "" };       // le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
@@ -216,6 +216,7 @@ function normalize(s) {
   s.lpw = s.lpc && s.lpw === "milieu" && +s.lpn % 2 ? "milieu" : "";
   if (!s.lpc || !own(MOT, s.lpt)) s.lpt = ADEF.lpt;
   s.brsz = num(s.brsz, 30, 250, 100); s.brdx = num(s.brdx, -80, 80, 0); s.brdy = num(s.brdy, -80, 80, 0);
+  s.pdx = s.p ? num(s.pdx, -80, 80, 0) : "0"; s.pdy = s.p ? num(s.pdy, -80, 80, 0) : "0";
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
   for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }

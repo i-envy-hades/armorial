@@ -119,6 +119,12 @@ function syncForm() {
     $("#o-brdx").textContent = +a.brdx ? (a.brdx > 0 ? "→ " : "← ") + Math.abs(a.brdx) : "0";
     $("#o-brdy").textContent = +a.brdy ? (a.brdy < 0 ? "↑ " : "↓ ") + Math.abs(a.brdy) : "0";
   }
+  $("#r-pj").hidden = !a.p;
+  if (a.p) {
+    $("#k-pdx").value = a.pdx; $("#k-pdy").value = -a.pdy;
+    $("#o-pdx").textContent = +a.pdx ? (a.pdx > 0 ? "→ " : "← ") + Math.abs(a.pdx) : "0";
+    $("#o-pdy").textContent = +a.pdy ? (a.pdy < 0 ? "↑ " : "↓ ") + Math.abs(a.pdy) : "0";
+  }
   syncAdj();
 }
 /* la cible des curseurs : tout un groupe ("1", "2") ou un seul meuble ("1.0", "2.2"…) */
@@ -495,12 +501,14 @@ function afficheOrigine() {
     if (t.name === "q") { readForm(); S = normalizeAll(S); syncForm(); render(); return; }      // le quartier modifi\u00e9 peut dispara\u00eetre : le formulaire montre alors les armes de l'\u00e9cu avant que l'\u00e9v\u00e9nement « change » ne le relise
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
+    if (/^k-p(dx|dy)$/.test(t.id)) { const a = cur(); a.pdx = $("#k-pdx").value; a.pdy = String(-$("#k-pdy").value); render(); return; }
     if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
     readForm(); render();
   };
   F.addEventListener("input", onInput);
   F.addEventListener("change", onInput);
   $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0]); render(); });
+  $("#b-preset").addEventListener("click", () => { Object.assign(cur(), { pdx: "0", pdy: "0" }); render(); });
   $("#b-brreset").addEventListener("click", () => { Object.assign(cur(), { brsz: "100", brdx: "0", brdy: "0" }); render(); });
   $("#b-link").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(location.href); toast("Lien copié"); } catch { toast("Copiez l'adresse de la page"); }
