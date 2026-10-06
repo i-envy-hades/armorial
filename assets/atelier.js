@@ -19,6 +19,7 @@ function fillSelects() {
   F.ci.innerHTML = F.m.innerHTML.replace("Aucun", "Aucun");                                        // le cimier se prend dans les mêmes meubles
   F.br.innerHTML = `<option value="">Aucune</option><optgroup label="Pièces de brisure">${Object.entries(BRIS_PIECES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("")}</optgroup>`
     + `<optgroup label="Figures de brisure">${BRIS_FIGS.map(k => `<option value="${k}">${esc(meuble(k).nom)}</option>`).join("")}</optgroup>`;
+  F.lpc.innerHTML = `<option value="">Rien</option>` + LAMBEL_FIGS.map(k => `<option value="${k}">${cap(meuble(k).plur)}</option>`).join("");
   const O = ATL.ornements;
   F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
@@ -105,8 +106,13 @@ function syncForm() {
   $("#r-tbr").hidden = !a.br;
   $("#r-sbr").hidden = !(bp && bp.sens);
   $("#r-lbr").hidden = !(bp && bp.bord);
-  $("#r-brn").hidden = $("#r-brd").hidden = $("#r-brj").hidden = !bf;
-  if (bf) {
+  $("#r-brn").hidden = $("#r-brd").hidden = !bf;
+  const lam = a.br === "lambel";
+  $("#r-brj").hidden = !(bf || lam);
+  $("#r-lpn").hidden = $("#r-lpc").hidden = !lam;
+  $("#r-lpt").hidden = $("#r-lpk").hidden = !(lam && a.lpc);
+  $("#r-lpw").hidden = !(lam && a.lpc && +a.lpn % 2);
+  if (bf || lam) {
     $("#k-brsz").value = a.brsz; $("#k-brdx").value = a.brdx; $("#k-brdy").value = -a.brdy;
     $("#o-brsz").textContent = a.brsz + " %";
     $("#o-brdx").textContent = +a.brdx ? (a.brdx > 0 ? "→ " : "← ") + Math.abs(a.brdx) : "0";
@@ -291,6 +297,8 @@ const EXEMPLES = [
   ["Brisé d'un croissant", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "croissant", tbr: "Argent" } }],
   ["Brisé d'une bordure", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "bordure", tbr: "Gueules" } }],
   ["Brisé d'un bâton", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "baton", tbr: "Gueules", sbr: "barre" } }],
+  ["Lambel", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Argent" } }],
+  ["Lambel chargé", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Gueules", lpn: "5", lpc: "roundel", lpt: "Or", lpk: "2" } }],
 ];
 function example(ex) {
   const St = fresh();
