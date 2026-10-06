@@ -45,6 +45,27 @@ function lambelDraw(s, u) {
   return { defs, body: `<g transform="translate(${100 + +s.brdx},${50 + +s.brdy}) scale(${+s.brsz / 100}) translate(-100,-50)">${lambelInner(n, tinctPaint(s.tbr), line, !!s.lpc)}${ch}</g>` };
 }
 
+/* le filet d'une pièce : son tracé grossi de g de chaque côté (traits plus épais et bouts allongés, remplissages cernés d'un trait), à angles vifs, à l'émail du filet ; la pièce se pose par-dessus */
+function filetDe(markup, color, g) {
+  const at = (a, k) => parseFloat((a.match(new RegExp(`(?<![\\w-])${k}="([^"]*)"`)) || [])[1]);
+  const f = x => +x.toFixed(2);
+  const bout = (x, y, tx, ty) => { const L = Math.hypot(x - tx, y - ty) || 1; return [f(x + (x - tx) / L * g), f(y + (y - ty) / L * g)]; };
+  return markup.replace(/<(rect|line|path)\b([^>]*?)\/>/g, (m, tag, a) => {
+    if (tag === "rect") return `<rect x="${at(a, "x") - g}" y="${at(a, "y") - g}" width="${at(a, "width") + 2 * g}" height="${at(a, "height") + 2 * g}" fill="${color}"/>`;
+    if (tag === "line") {
+      const [x1, y1, x2, y2] = ["x1", "y1", "x2", "y2"].map(k => at(a, k)), [p1x, p1y] = bout(x1, y1, x2, y2), [p2x, p2y] = bout(x2, y2, x1, y1);
+      return `<line x1="${p1x}" y1="${p1y}" x2="${p2x}" y2="${p2y}" stroke="${color}" stroke-width="${at(a, "stroke-width") + 2 * g}"/>`;
+    }
+    const sw = at(a, "stroke-width");
+    if (!Number.isNaN(sw)) {
+      let d = (a.match(/(?<![\w-])d="([^"]*)"/) || [])[1];
+      const c = d.match(/^M([\d.]+),([\d.]+) L([\d.]+),([\d.]+) L([\d.]+),([\d.]+)$/);
+      if (c) { const [, ax, ay, bx, by, cx, cy] = c.map(Number), p = bout(ax, ay, bx, by), q = bout(cx, cy, bx, by); d = `M${p} L${bx},${by} L${q}`; }
+      return `<path ${a.replace(/(?<![\w-])d="[^"]*"/, `d="${d}"`).replace(/stroke="[^"]*"/, `stroke="${color}"`).replace(/stroke-width="[\d.]+"/, `stroke-width="${sw + 2 * g}"`)}/>`;
+    }
+    return `<path ${a.replace(/fill="[^"]*"/, `fill="${color}"`)} stroke="${color}" stroke-width="${2 * g}" stroke-linejoin="miter"/>`;
+  });
+}
 /* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
 const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
 const bandPaint = (f = BAND.fill, w = 1.2) => `fill="${f}" stroke="#1a1712" stroke-width="${w}" stroke-linejoin="round"`;
@@ -229,10 +250,7 @@ function drawBody(s, u) {
     over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
   let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
-  if (piece && s.pf) {                                    // le filet : la pièce cernée d'un liseré de l'émail dit (le contour de sa forme, élargi)
-    defs += `<filter id="fl-${u}" filterUnits="userSpaceOnUse" x="-30" y="-30" width="260" height="312" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="d"/><feFlood flood-color="${flat(s.pf)}"/><feComposite in2="d" operator="in" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
-    piece = `<g filter="url(#fl-${u})">${piece}</g>`;
-  }
+  if (piece && s.pf) piece = filetDe(piece, flat(s.pf), 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";
   if (s.br) {
