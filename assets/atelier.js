@@ -184,18 +184,19 @@ async function render() {
   $("#warn").innerHTML = w.length ? w.map(esc).join("<br>") + ` La <a href="index.html#emaux">règle des émaux</a> l'interdit, sauf armes à enquerre${active(S).some(i => S.A[i].p === "chef") ? " — ou chef dit « cousu »" : ""}.` : "";
   const cr = creditsOf(S);
   $("#credits").innerHTML = creditsHtml(cr);
-  const h = encode(S);
+  afficheOrigine();
+  const h = [encode(S), ORIGINE ? `de=${ORIGINE.gal}:${ORIGINE.slug}` : ""].filter(Boolean).join("&");
   history.replaceState(null, "", h ? "#" + h : location.pathname);
 }
 
 /* ---------- exports ---------- */
 function standalone(St, scale = 3) {
   const defs = (globalDefs().match(/<defs>([\s\S]*)<\/defs>/) || ["", ""])[1];
-  const b = blazonAll(St), o = ornText(St), c = compose(St, "x");
+  const b = blazonAll(St), o = ornText(St), c = compose(St, "x"), d = origineTxt(St);
   const credit = creditsOf(St).map(creditTxt).join(" ; ");
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${c.vb.join(" ")}" width="${Math.round(c.vb[2] * scale)}" height="${Math.round(c.vb[3] * scale)}">
   <title>${esc(b)}</title>
-  <desc>${esc("Composé dans l'Atelier de L'Armorial (CC BY-SA 4.0)." + (o ? " " + o + "." : "") + (credit ? " Figures : " + credit + "." : ""))}</desc>
+  <desc>${esc("Composé dans l'Atelier de L'Armorial (CC BY-SA 4.0)." + (d ? " " + d + "." : "") + (o ? " " + o + "." : "") + (credit ? " Figures : " + credit + "." : ""))}</desc>
   <defs>${defs}</defs>
   ${c.svg}
 </svg>`;
@@ -226,7 +227,7 @@ async function exportPng(s) {
   ctx.font = "italic 30px 'EB Garamond', Georgia, serif";
   const lines = wrapText(ctx, "« " + blazonAll(s) + " »", W - 120);
   ctx.font = "italic 20px 'EB Garamond', Georgia, serif";
-  const oLines = ornText(s) ? wrapText(ctx, ornText(s), W - 120) : [];
+  const oLines = [origineTxt(s), ornText(s)].filter(Boolean).flatMap(t => wrapText(ctx, t, W - 120));
   ctx.font = "16px Georgia, serif";
   const crLines = creditsOf(s).flatMap(c => wrapText(ctx, creditTxt(c), W - 120));
   const H = 50 + ih + 40 + lines.length * 40 + oLines.length * 28 + 24 + crLines.length * 22 + 50;
@@ -348,8 +349,93 @@ function lireDepuisAdresse() {
   const dem = new URLSearchParams(location.hash.replace(/^#/, "")).get("lire");
   if (dem === null) return false;
   $("#lire").value = dem;
-  lireLeChamp();
+  const r = lire(dem);
+  afficheLecture(r, dem);
+  if (r.ok) appliqueLecture(r.etat); else render();          // non compris : l'écu ne bouge pas, mais il est dessiné, et l'adresse redevient un lien de partage
   return true;
+}
+
+/* ---------- partir d'un blason réel : les cartes des galeries ---------- */
+const GALERIES = { blasons: { fichier: "data/blasons.json", titre: "Blasons réels", page: "blasons.html" }, personnages: { fichier: "data/personnages.json", titre: "Personnages", page: "personnages.html" } };
+const COMMONS_W = "https://commons.wikimedia.org/wiki/";
+let CARTES = null;                 // [{ gal, slug, a, r }] : toutes les cartes des galeries, et ce que le lecteur fait de leur blasonnement
+let ORIGINE = null;                // { gal, slug, c } : la carte d'où l'on part (« de=blasons:… » dans l'adresse) ; c : la carte, quand les galeries sont là
+/* « de=blasons:royaume-de-france-moderne » → { gal, slug } ; rien d'autre n'est accepté */
+function origineDemandee(h) {
+  const m = /^(blasons|personnages):([a-z0-9-]+)$/.exec(new URLSearchParams(h.replace(/^#/, "")).get("de") || "");
+  return m ? { gal: m[1], slug: m[2], c: null } : null;
+}
+async function chargeCartes() {
+  const listes = await Promise.all(Object.entries(GALERIES).map(async ([gal, G]) => {
+    const r = await fetch(G.fichier);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return (await r.json()).map(a => ({ gal, slug: slugCarte(a.nom), a, r: a.blason ? lire(a.blason) : null }));
+  }));
+  CARTES = listes.flat();
+}
+/* le sélecteur : les cartes que le lecteur relit en entier, par galerie et par rubrique. Rien n'y est écrit en dur : quand le lecteur
+   apprend un mot, les armes qu'il relit de plus y entrent d'elles-mêmes */
+function remplitReels() {
+  const ok = CARTES.filter(c => c.r && c.r.ok), groupes = new Map();
+  for (const c of ok) { const g = GALERIES[c.gal].titre + (c.a.cat ? " · " + c.a.cat : ""); groupes.set(g, [...(groupes.get(g) || []), c]); }
+  $("#reel").innerHTML = `<option value="">Choisir des armes réelles (${ok.length})…</option>` + [...groupes].map(([g, cs]) =>
+    `<optgroup label="${esc(g)}">${cs.map(c => `<option value="${CARTES.indexOf(c)}">${esc(c.a.nom)}</option>`).join("")}</optgroup>`).join("");
+  $("#reel-note").innerHTML = `${ok.length} des ${CARTES.filter(c => c.r).length} blasonnements des galeries : l'Atelier ne dessine que ce qu'il relit en entier, et la liste s'allonge à mesure qu'il apprend des mots. Un clic sur l'écu d'une carte de <a href="blasons.html">Blasons réels</a> ou de <a href="personnages.html">Personnages</a> mène ici aussi.`;
+}
+/* la carte demandée par l'adresse, une fois les galeries chargées ; inconnue, on l'oublie. Si le lecteur ne la relit pas,
+   son texte va dans la zone de saisie, surligné là où il bute (c'est ce que l'on vient voir) */
+function resoudOrigine() {
+  if (!ORIGINE || !CARTES) return;
+  ORIGINE.c = CARTES.find(c => c.gal === ORIGINE.gal && c.slug === ORIGINE.slug && c.r) || null;          // une carte sans blasonnement n'a rien à ouvrir
+  if (!ORIGINE.c) { ORIGINE = null; return; }
+  const { a, r } = ORIGINE.c;
+  if (r && !r.ok && !$("#lire").value.trim()) { $("#lire").value = a.blason; afficheLecture(r, a.blason); }
+}
+/* en arrivant d'une carte (ou d'un autre lien « #lire=… »), on va droit à l'écu : le bandeau est passé, l'en-tête fixe ne le cache pas */
+function allerALEcu() {
+  const m = $(".mast");
+  scrollTo(0, $("#wrap").getBoundingClientRect().top + scrollY - (m ? m.offsetHeight : 0) - 10);
+}
+function partirDe(c) {
+  ORIGINE = { gal: c.gal, slug: c.slug, c };
+  $("#lire").value = c.a.blason;
+  lireLeChamp();
+  if (matchMedia("(max-width: 860px)").matches) allerALEcu();                     // sur téléphone, l'écu est au-dessus du formulaire
+}
+/* l'empreinte des armes (sans les ornements ni les réglages graphiques) : sont-ce encore celles de la carte ? */
+const empreinte = St => JSON.stringify(canonAll(St));
+function empreinteCarte(c) {
+  if (!c.emp) { const e = c.r.etat; c.emp = empreinte({ q: e.q, ab: e.ab, A: e.A.map(a => normalize({ ...a })) }); }
+  return c.emp;
+}
+const armesDeLaCarte = (St, c) => !!(c && c.r && c.r.ok) && empreinte(St) === empreinteCarte(c);
+/* pour les exports : « Armes de … » ou « D'après les armes de … » */
+function origineTxt(St) {
+  const c = ORIGINE && ORIGINE.c;
+  if (!c) return "";
+  return `${armesDeLaCarte(St, c) ? "Armes de" : "D'après les armes de"} « ${c.a.nom} » (L'Armorial, ${GALERIES[c.gal].titre})`;
+}
+/* sous l'écu : la carte d'où l'on part, son image (de Wikimedia Commons, créditée) à comparer au dessin, et si l'on s'en est écarté */
+function afficheOrigine() {
+  const el = $("#origine"), c = ORIGINE && ORIGINE.c;
+  if (CARTES) $("#reel").value = c && c.r && c.r.ok ? String(CARTES.indexOf(c)) : "";
+  el.hidden = !c;
+  if (!c) { el.innerHTML = afficheOrigine.h = ""; return; }
+  const a = c.a, G = GALERIES[c.gal], fichier = encodeURIComponent(a.file);
+  const etat = !c.r || !c.r.ok
+    ? `<p class="or-etat ko">L'Atelier ne relit pas encore ce blasonnement : l'écu dessiné ici n'est pas celui de la carte.</p>`
+    : armesDeLaCarte(S, c)
+      ? `<p class="or-etat ok">Ce sont les armes de la carte, telles qu'elle les blasonne.${ornText(S) || S.sh ? " La forme de l'écu et les ornements sont de votre main : le blasonnement ne les dit pas." : ""}</p>`
+      : `<p class="or-etat mod">Vous les avez modifiées : ce ne sont plus les armes de la carte. <button type="button" class="lnk" id="b-origine">Revenir aux armes de la carte</button></p>`;
+  const lic = a.lic ? (a.licurl ? `<a href="${esc(a.licurl)}" target="_blank" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic)) : "licence libre";
+  const h = `<img class="or-img" src="${COMMONS_W}Special:FilePath/${fichier}?width=200" alt="Armoiries — ${esc(a.nom)} : l'image de la carte" loading="lazy">
+    <div class="or-txt">
+      <p class="or-k">Parti d'un blason réel · ${G.titre}</p>
+      <p class="or-nom"><a href="${G.page}#${c.slug}">${esc(a.nom)}</a></p>
+      ${etat}
+      <p class="or-cr">À gauche, l'image de la carte : <a href="${COMMONS_W}File:${fichier}" target="_blank" rel="noopener">« ${esc(a.file)} »</a>${a.auteur ? ` — ${esc(a.auteur)}` : ""}, ${lic}, via Wikimedia Commons.</p>
+    </div>`;
+  if (h !== afficheOrigine.h) el.innerHTML = afficheOrigine.h = h;          // render() passe ici à chaque curseur : l'image n'est refaite que si la carte ou l'état changent
 }
 
 /* ---------- démarrage ---------- */
@@ -365,11 +451,14 @@ function lireDepuisAdresse() {
   $("#gdefs").innerHTML = globalDefs();
   fillSelects();
   $("#examples").innerHTML = EXEMPLES.map(([n], i) => `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
-  $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); CUR = 0; KT = "1"; render(); });
+  $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); ORIGINE = null; CUR = 0; KT = "1"; render(); });
+  ORIGINE = origineDemandee(location.hash);
+  const arrivee = /(^|[#&])(lire|de)=/.test(location.hash);
   S = decode(location.hash);
   const onInput = e => {
     const t = e.target;
     if (t.id === "lire") { clearTimeout(lireT); lireT = setTimeout(lireLeChamp, 450); return; }
+    if (t.id === "reel") { if (e.type === "change" && t.value && CARTES && CARTES[+t.value]) partirDe(CARTES[+t.value]); return; }
     if (t.name === "cur") { CUR = +t.value; KT = "1"; syncForm(); render(); return; }
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
@@ -383,10 +472,22 @@ function lireDepuisAdresse() {
   });
   $("#b-svg").addEventListener("click", () => download(slug(S) + ".svg", new Blob([standalone(S)], { type: "image/svg+xml" })));
   $("#b-png").addEventListener("click", () => exportPng(S).catch(e => toast("Export impossible : " + e.message)));
-  $("#b-rand").addEventListener("click", () => { S = random(); render(); });
+  $("#b-rand").addEventListener("click", () => { S = random(); ORIGINE = null; render(); });
   $("#b-lire").addEventListener("click", lireLeChamp);
   $("#b-recopier").addEventListener("click", () => { $("#lire").value = blazonAll(S); lireLeChamp(); $("#lire").focus(); });
   $("#lire").addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); lireLeChamp(); } });
-  addEventListener("hashchange", () => { if (!lireDepuisAdresse()) { S = decode(location.hash); render(); } });
+  $("#origine").addEventListener("click", e => {
+    if (!e.target.closest("#b-origine") || !ORIGINE || !ORIGINE.c) return;
+    $("#lire").value = ORIGINE.c.a.blason; lireLeChamp();
+  });
+  addEventListener("hashchange", () => {
+    ORIGINE = origineDemandee(location.hash); resoudOrigine();
+    if (!lireDepuisAdresse()) { S = decode(location.hash); render(); }
+  });
   if (!lireDepuisAdresse()) render();
+  if (arrivee) allerALEcu();
+  /* les galeries arrivent ensuite : le sélecteur « Partir d'un blason réel » et la carte d'où l'on part */
+  try { await chargeCartes(); }
+  catch (e) { $("#reel").innerHTML = `<option value="">Galeries indisponibles (${esc(e.message)})</option>`; $("#reel").disabled = true; ORIGINE = null; render(); return; }
+  remplitReels(); resoudOrigine(); render();
 })();

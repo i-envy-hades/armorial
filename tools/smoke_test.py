@@ -11,10 +11,10 @@ Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manqu
 (« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les frises,
 l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
 (chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
-les boutons « Redessiner dans l'Atelier » des galeries, les pages S'exercer (chaque question posée est cohérente), Rechercher
+les boutons « Redessiner dans l'Atelier » et les écus cliquables des galeries, « Partir d'un blason réel » dans l'Atelier, les pages S'exercer (chaque question posée est cohérente), Rechercher
 (chaque lien d'un résultat mène à une ancre qui existe) et La transmission des armes, enfin le téléphone (375 px : rien ne déborde, le menu se replie).
 Code de sortie 1 au premier échec. FUZZ=500 python tools/smoke_test.py pousse l'Atelier plus loin (500 compositions)."""
-import functools, http.server, json, os, pathlib, random, re, sys, threading, urllib.parse
+import functools, http.server, json, os, pathlib, random, re, sys, threading, unicodedata, urllib.parse
 
 try:
     from playwright.sync_api import sync_playwright
@@ -66,6 +66,9 @@ def propre(nom, page, erreurs):
     verifie(not absurdes, f"{nom} : aucune balise absurde" + ("" if not absurdes else f" — {absurdes[:3]}"))
 
 def data(nom): return json.loads((ROOT / "data" / nom).read_text(encoding="utf-8"))
+def slug_carte(nom):                                         # l'adresse d'une carte des galeries, comme slugCarte (assets/cartes.js)
+    s = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFD", nom)).lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 MENU = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)",\s*"([^"]+)"', (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8"))      # (identifiant, fichier, libellé) du bandeau
 
 # ------------------------------------------------------------------ pages
@@ -533,22 +536,82 @@ def test_lecture(browser, base, n_fuzz):
     page.context.close()
 
 def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
-    """sous les blasonnements que l'Atelier relit en entier, un bouton ouvre l'Atelier ; sous les autres, rien"""
+    """sous les blasonnements que l'Atelier relit en entier, un bouton ouvre l'Atelier, et l'écu de la carte aussi ; sous les autres, une ligne dit où il bute"""
+    gal = page_url.split(".")[0]
     page, erreurs = ouvre(browser, base, page_url, ".ar .redo")
-    cartes = dict(page.evaluate("[...document.querySelectorAll('.ar')].map(a => [a.querySelector('h3').textContent, !!a.querySelector('.redo')])"))
-    verifie(all(cartes.get(n) for n in lisibles), f"{nom} : un bouton « Redessiner dans l'Atelier » sous chaque blasonnement lisible" + ("" if all(cartes.get(n) for n in lisibles) else f" — manque {[n for n in lisibles if not cartes.get(n)]}"))
-    verifie(not any(cartes.get(n) for n in refuses), f"{nom} : aucun bouton sous ce que l'Atelier ne comprend pas" + ("" if not any(cartes.get(n) for n in refuses) else f" — {[n for n in refuses if cartes.get(n)]}"))
+    cartes = {c["nom"]: c for c in page.evaluate("""[...document.querySelectorAll('.ar')].map(a => ({ nom: a.querySelector('h3').textContent, id: a.id,
+        redo: a.querySelector('.redo a')?.getAttribute('href') || null, ecu: a.querySelector('a.shield')?.getAttribute('href') || null,
+        non: a.querySelector('.redo-non')?.textContent || null, nonHref: a.querySelector('.redo-non a')?.getAttribute('href') || null }))""")}
+    verifie(all(cartes.get(n, {}).get("redo") for n in lisibles), f"{nom} : un bouton « Redessiner dans l'Atelier » sous chaque blasonnement lisible" + ("" if all(cartes.get(n, {}).get("redo") for n in lisibles) else f" — manque {[n for n in lisibles if not cartes.get(n, {}).get('redo')]}"))
+    verifie(not any(cartes.get(n, {}).get("redo") for n in refuses), f"{nom} : aucun bouton sous ce que l'Atelier ne comprend pas" + ("" if not any(cartes.get(n, {}).get("redo") for n in refuses) else f" — {[n for n in refuses if cartes.get(n, {}).get('redo')]}"))
     sans = [a["nom"] for a in data(fichier) if not a.get("blason")]
-    verifie(not any(cartes.get(n) for n in sans), f"{nom} : aucun bouton sous une carte sans blasonnement")
-    liens = page.evaluate("[...document.querySelectorAll('.redo a')].map(a => decodeURIComponent(a.getAttribute('href').split('#lire=')[1]))")
-    verifie(all(page.evaluate("t => lire(t).ok", l) for l in liens), f"{nom} : chaque bouton porte un blasonnement que le lecteur comprend")
+    verifie(not any(cartes[n]["redo"] or cartes[n]["ecu"] or cartes[n]["non"] for n in sans), f"{nom} : rien sous une carte sans blasonnement, et son écu ne mène nulle part")
+    verifie(all(c["ecu"] == c["redo"] for c in cartes.values()), f"{nom} : l'écu d'une carte mène à l'Atelier quand le bouton est là, et seulement alors, à la même adresse")
+    avec = [a["nom"] for a in data(fichier) if a.get("blason")]
+    verifie(all(bool(cartes[n]["redo"]) != bool(cartes[n]["non"]) for n in avec), f"{nom} : sous chaque blasonnement, le bouton ou la ligne qui dit où l'Atelier bute, jamais les deux")
+    verifie(all("bute sur « " in (cartes[n]["non"] or "") for n in refuses), f"{nom} : sous un blasonnement refusé, l'endroit où l'Atelier bute est cité")
+    params = lambda h: page.evaluate("h => Object.fromEntries(new URLSearchParams(h.split('#')[1]))", h)
+    avec_bouton = [c for c in cartes.values() if c["redo"]]
+    verifie(all(page.evaluate("t => lire(t).ok", params(c["redo"])["lire"]) for c in avec_bouton), f"{nom} : chaque bouton porte un blasonnement que le lecteur comprend")
+    verifie(all(params(c["redo"]).get("de") == f"{gal}:{c['id']}" == f"{gal}:{slug_carte(c['nom'])}" for c in avec_bouton), f"{nom} : chaque lien vers l'Atelier dit de quelle carte il part")
+    verifie(all(not page.evaluate("t => lire(t).ok", params(c["nonHref"])["lire"]) and params(c["nonHref"]).get("de") == f"{gal}:{c['id']}" for c in cartes.values() if c["nonHref"]),
+            f"{nom} : « Voir où dans l'Atelier » porte le texte refusé et la carte d'où il vient")
     propre(nom + " (boutons)", page, erreurs)
-    # un clic ouvre l'Atelier sur les armes
-    page.locator(".ar", has=page.locator("h3", has_text=lisibles[-1])).locator(".redo a").click()
-    page.wait_for_url("**/atelier.html*"); page.wait_for_selector("#blz:not(:empty)"); page.wait_for_timeout(600)
-    attendu = next(a["blason"] for a in data(fichier) if a["nom"] == lisibles[-1])
-    verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : le bouton ouvre l'Atelier, qui lit le blasonnement de « {lisibles[-1]} »")
+    # un clic sur l'écu ouvre l'Atelier sur les armes, et y montre la carte d'où l'on part
+    cible = lisibles[-1]
+    page.locator(".ar", has=page.locator("h3", has_text=cible)).locator("a.shield").click()
+    page.wait_for_url("**/atelier.html*"); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(600)
+    attendu = next(a["blason"] for a in data(fichier) if a["nom"] == cible)
+    verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : un clic sur l'écu ouvre l'Atelier, qui lit le blasonnement de « {cible} »")
+    verifie(page.inner_text("#origine .or-nom") == cible and page.locator("#origine .or-etat.ok").count() == 1, f"{nom} : l'Atelier montre la carte d'où l'on part et dit que ce sont ses armes")
+    verifie(f"de={gal}:{slug_carte(cible)}" in page.url and "lire=" not in page.url, f"{nom} : l'adresse de l'Atelier redevient un lien de partage qui garde la carte d'origine")
     page.context.close()
+
+def test_partir(browser, base):
+    """« Partir d'un blason réel » : le sélecteur propose les cartes relues, et elles seules ; la carte d'origine suit les modifications ; on y revient"""
+    page, erreurs = ouvre(browser, base, "atelier.html", "#reel")
+    page.wait_for_function("document.querySelectorAll('#reel optgroup').length > 0")
+    relues = page.evaluate("""async () => { const t = []; for (const f of ['blasons', 'personnages']) for (const a of await (await fetch('data/' + f + '.json')).json()) if (a.blason && lire(a.blason).ok) t.push(a.nom); return t; }""")
+    options = page.evaluate("[...document.querySelectorAll('#reel option')].filter(o => o.value).map(o => o.textContent)")
+    verifie(sorted(options) == sorted(relues) and len(relues) >= len(BLASONS_LISIBLES) + len(PERSONNAGES_LISIBLES),
+            f"partir : le sélecteur propose les {len(relues)} cartes des galeries que le lecteur relit, et elles seules")
+    blz = lambda: page.inner_text("#blz").strip("« »  ")
+    etat = lambda: page.get_attribute("#origine .or-etat", "class")
+    bretagne = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Duché de Bretagne")
+    page.select_option("#reel", label="Duché de Bretagne"); page.wait_for_timeout(900)
+    verifie(blz() == page.evaluate("t => lire(t).reecrit", bretagne) and page.input_value("#lire") == bretagne, "partir : choisir une carte dessine ses armes et met son blasonnement dans la zone de saisie")
+    verifie(page.inner_text("#origine .or-nom") == "Duché de Bretagne" and "ok" in etat() and "de=blasons:duche-de-bretagne" in page.url, "partir : la carte d'origine s'affiche sous l'écu, et l'adresse la garde")
+    verifie("Armes de « Duché de Bretagne »" in page.evaluate("standalone(S)"), "partir : l'export nomme les armes de la carte")
+    page.locator("[data-name=t1] input[value=Azur]").check(force=True); page.wait_for_timeout(700)
+    verifie("mod" in etat() and page.locator("#b-origine").count() == 1, "partir : modifier les armes le dit, avec de quoi revenir à la carte")
+    verifie("D&#39;après les armes de « Duché de Bretagne »" in page.evaluate("standalone(S)"), "partir : l'export des armes modifiées dit d'où elles viennent")      # l'apostrophe est échappée dans le SVG
+    page.reload(); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(500)
+    verifie("mod" in etat() and blz().startswith("D'azur"), "partir : recharger la page garde la composition et la carte d'origine")
+    page.click("#b-origine"); page.wait_for_timeout(700)
+    verifie("ok" in etat() and blz() == page.evaluate("t => lire(t).reecrit", bretagne), "partir : « Revenir aux armes de la carte » les redonne")
+    page.select_option("select[name=cr]", index=1); page.wait_for_timeout(700)
+    verifie("ok" in etat() and "ornements" in page.inner_text("#origine .or-etat"), "partir : une couronne ajoutée ne change pas les armes de la carte")
+    page.click("#examples button >> nth=0"); page.wait_for_timeout(700)
+    verifie(page.is_hidden("#origine") and "de=" not in page.url and page.input_value("#reel") == "", "partir : un exemple fait oublier la carte d'origine")
+    propre("partir", page, erreurs)
+    page.context.close()
+    # une carte que le lecteur ne relit pas : le texte surligné, l'écu inchangé mais dessiné, la carte nommée
+    norvege = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Norvège")
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote(norvege) + "&de=blasons:norvege", "#origine:not([hidden]) .or-etat")
+    verifie("ko" in etat() and page.locator("#lire-etat.ko mark").count() >= 1 and blz() != "", "partir : une carte que le lecteur ne relit pas s'ouvre, texte surligné, sans rien deviner")
+    verifie("de=blasons:norvege" in page.url and "lire=" not in page.url, "partir : son adresse garde la carte")
+    page.reload(); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(500)
+    verifie(page.input_value("#lire") == norvege and page.locator("#lire-etat.ko mark").count() >= 1, "partir : rechargée, elle remet le texte de la carte dans la zone de saisie, surligné")
+    propre("partir (refusé)", page, erreurs)
+    page.context.close()
+    # une carte inconnue, une adresse truquée : ignorées
+    sans = next(slug_carte(a["nom"]) for a in data("blasons.json") if not a.get("blason"))
+    for de in ("blasons:n-existe-pas", "ailleurs:royaume-de-france-moderne", "blasons:<b>x</b>", "blasons:" + sans):
+        page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'or à la croix de gueules") + "&de=" + urllib.parse.quote(de), "#reel")
+        page.wait_for_function("document.querySelectorAll('#reel optgroup').length > 0"); page.wait_for_timeout(400)
+        verifie(page.is_hidden("#origine") and "de=" not in page.url and blz() == "D'or à la croix de gueules", f"partir : « de={de} » est ignoré, l'écu dessiné")
+        propre("partir (de truqué)", page, erreurs)
+        page.context.close()
 
 # ------------------------------------------------------------------ téléphone
 def test_telephone(browser, base):
@@ -708,6 +771,7 @@ def main():
                        ("lecture", lambda: test_lecture(browser, base, n_fuzz)),
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
+                       ("partir d'un blason réel", lambda: test_partir(browser, base)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),
                        ("transmission", lambda: test_transmission(browser, base)),

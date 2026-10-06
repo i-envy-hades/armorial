@@ -113,12 +113,27 @@ async function chargerLecteur() {
   DATA = await a.json(); ATL = await b.json();
 }
 
-/* galeries (Blasons réels, Personnages) : quelles armoiries l'Atelier sait-il lire en entier ? Un Set (vide si les données manquent) */
-function armesLisibles(liste) {
-  try { return new Set(liste.filter(a => a.blason && lire(a.blason).ok)); } catch (e) { return new Set(); }
+/* galeries (Blasons réels, Personnages) : ce que le lecteur fait de chaque blasonnement. Une Map carte → lecture (vide si les données manquent) ;
+   rien n'est écrit en dur : quand le lecteur apprend un mot, les cartes qu'il relit de plus s'ouvrent d'elles-mêmes dans l'Atelier */
+function lectures(liste) {
+  try { return new Map(liste.filter(a => a.blason).map(a => [a, lire(a.blason)])); } catch (e) { return new Map(); }
 }
-/* le bouton qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (adresse « #lire=… ») et dit ses réserves */
-const lienAtelier = a => `<p class="redo"><a href="atelier.html#lire=${encodeURIComponent(a.blason)}">Redessiner dans l'Atelier</a></p>`;
+/* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
+   « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
+const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(a.blason)}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
+const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>`;
+/* l'écu d'une carte : un lien vers l'Atelier si le lecteur relit ses armes (la souris y va ; au clavier, c'est le bouton « Redessiner ») */
+const ecuCarte = (a, galerie, img, lisible) => lisible
+  ? `<a class="shield to-at" href="${adresseAtelier(a, galerie)}" tabindex="-1" title="Modifier ces armes dans l'Atelier">${img}<span class="to-at-k" aria-hidden="true">Modifier dans l'Atelier</span></a>`
+  : `<div class="shield">${img}</div>`;
+/* sous un blasonnement que l'Atelier ne relit pas : où il bute, et de quoi ouvrir quand même le texte dans l'Atelier, où il est surligné */
+function buteAtelier(a, r, galerie) {
+  const e = r && r.erreurs[0];
+  let mot = e ? a.blason.slice(e.de, e.a).replace(/\s+/g, " ").replace(/^[\s,;:]+/, "").trim() : "";
+  if (mot.length > 30) mot = mot.slice(0, 28).trim() + "…";
+  mot = mot.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  return `<p class="redo-non">L'Atelier ne relit pas encore ces armes${mot ? ` : il bute sur « ${mot} »` : ""}. <a href="${adresseAtelier(a, galerie)}">Voir où dans l'Atelier</a></p>`;
+}
 
 /* ---------- l'analyse d'un seul blason (champ, pièce, meubles) : descente récursive sur les jetons ---------- */
 /* P = { toks, fin, far, errs, notes } ; chaque pX(P, i) rend l'élément lu et sa fin (i), ou null. `far` retient l'endroit le plus loin atteint

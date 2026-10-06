@@ -74,3 +74,19 @@ textarea:focus-visible{outline:2px solid var(--or);outline-offset:2px}
 .lire-etat.ko > p:first-child b{color:var(--gules)}
 .lire-etat .vu{font-family:"EB Garamond",serif;font-style:italic;background:var(--vellum);border:1px dashed var(--rule);border-radius:8px;padding:.3rem .55rem}
 .lire-etat mark{background:#f0cfa6;color:inherit;border-radius:3px;padding:0 1px}
+/* partir d'un blason réel : le sélecteur, et sous l'écu la carte d'où l'on part (assets/atelier.js, afficheOrigine) */
+#reel{width:100%}
+.origine{width:100%;display:flex;gap:.8rem;align-items:flex-start;text-align:left;background:var(--vellum);border:1px solid var(--rule);border-left:3px solid var(--or);border-radius:8px;padding:.6rem .7rem}
+.origine[hidden]{display:none}
+.or-img{flex:none;width:76px;height:auto;max-height:96px;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(26,23,18,.2))}
+.or-txt{min-width:0}
+.or-txt p{margin:.1rem 0}
+.or-k{font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.64rem;color:var(--or)}
+.or-nom{font-family:"Marcellus",serif;font-size:1.02rem;line-height:1.25}
+.or-nom a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--or-light)}
+.or-etat{font-size:.86rem;line-height:1.4}
+.or-etat.ok{color:#2f5a34}
+.or-etat.mod{color:var(--ink)}
+.or-etat.ko{color:var(--gules)}
+.or-cr{font-size:.7rem;line-height:1.35;color:var(--ink-soft)}
+.or-cr a{color:var(--ink-soft);text-decoration:underline}
