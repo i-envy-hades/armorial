@@ -508,11 +508,16 @@
     "nom": "Royaume de Galicie et de Lodomérie",
     "cat": "Royaumes",
     "porteur": "ancien pays, province de l'Autriche-Hongrie",
-    "blason": "",
+    "blason": "D'azur à la fasce de gueules, accompagnée en chef d'un choucas de sable et en pointe de trois couronnes royales d'or",
     "file": "Coat of arms of the Kingdom of Galicia and Lodomeria.svg",
     "auteur": "Samhanin",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipedia (de), « Galizien »",
+      "url": "https://de.wikipedia.org/wiki/Galizien#Wappen",
+      "note": "section « Wappen », traduite de l'allemand ; l'article date ces armes de 1804 (avant : deux ou trois couronnes d'or sur champ bleu), d'après Franz Gall, « Österreichische Wappenkunde »"
+    }
   },
   {
     "nom": "Empire serbe",
