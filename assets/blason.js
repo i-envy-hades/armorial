@@ -624,7 +624,7 @@ function motifsAnneau(morceaux, m){
 }
 
 /* le tracé d'une pièce à bords décorés (ou null si on ne sait pas la décorer) ; mêmes cotes que pieceInner */
-function pieceDecoree(kind, line, th = 100, wf = 1){      // wf : réduction de la bordure d'une case de parti
+function pieceDecoree(kind, line, th = 100, wf = 1, geo = null){      // wf : réduction d'une case de parti ; geo : centre et longueur des bras de la croix d'une case
   const S = CONTOURS[line];
   const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12, cotice: 23 }[kind];
   if(!S || !largeur) return null;
@@ -653,7 +653,7 @@ function pieceDecoree(kind, line, th = 100, wf = 1){      // wf : réduction de 
     bande: () => bandePoly([6, 6], [200, 252], 23, 40),
     cotice: () => bandePoly([6, 6], [200, 252], 11.5, 40),
     barre: () => bandePoly([194, 6], [0, 252], 23, 40),
-    croix: () => branchesPoly([100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20 * th / 100, 170),
+    croix: () => branchesPoly(geo ? geo.c : [100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20 * th / 100 * wf, geo ? geo.ext : 170),
     sautoir: () => branchesPoly([100, 123], SAUTOIR_DIRS, 20, 190),
     chevron: () => branchesPoly([100, 96], [[70, 100], [-70, 100]], 17, 160),
     canton: () => ({ V: [[-30, -30], [62, -30], [62, 54], [-30, 54]], flags: [false, true, true, false] }),
