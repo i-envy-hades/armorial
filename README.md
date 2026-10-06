@@ -229,7 +229,11 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
 
-1. **Cartes sans blasonnement** : une vingtaine de cartes (blasons et personnages) n'ont aucun blasonnement lu à la source ; on ne l'invente pas, il faut le trouver.
+1. **Cartes sans blasonnement** (21) : on ne l'invente pas, il faut le trouver. Déjà cherché sans succès (octobre 2026) : les pages Commons des images et les articles
+   de Wikipédia (fr, en, es, de, sv, it) des royaumes et des familles. Pistes écartées : la Saxe (la source décrit l'écu saxon seul, l'image est la grande armoirie à quartiers),
+   Séville et Tolède (blasonnements des villes, pas des royaumes), les Fleming (la description suédoise est celle de la branche danoise, et compte neuf besants où l'image en
+   montre huit), d'Avalos (armes de la famille, l'image est écartelée d'Aquino et d'Aragon), l'Irak (une description d'emblème, non un blasonnement). L'Afghanistan n'a qu'un
+   emblème : sans objet. La Galicie-Lodomérie a trouvé le sien (Wikipédia allemande).
 2. **Cartes encore illisibles** (84) : elles demandent des mots que l'Atelier ne connaît pas — tenants et supports, devises, écusson, crosse, faisceau, alérion, saint Georges,
    « à cheval » — ou des armes à étages (Russie, Danemark, Belgique…). Chaque mot est une figure à dessiner ou à emprunter, avec sa licence.
 3. **Épaisseur par défaut** de la fasce, du pal et de la bande : environ 21 % de l'écu ici, près d'un tiers sur Commons. À trancher. Les fascé de quatre pièces (Hohenberg)
