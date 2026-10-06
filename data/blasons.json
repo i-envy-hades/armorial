@@ -45,7 +45,7 @@
     "nom": "Royaume d'Angleterre",
     "cat": "Royaumes",
     "porteur": "Plantagenêts, à partir de la fin du XIIᵉ s.",
-    "blason": "De gueules à trois léopards d'or armés et lampassés d'azur posés en pal",
+    "blason": "De gueules à trois léopards d'or, armés et lampassés d'azur",
     "file": "Royal arms of England.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 4.0",
@@ -59,7 +59,7 @@
     "blasonSrc": {
       "label": "Wikipedia (en), « Coat of arms of England »",
       "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
-      "note": "l'article dit « trois lions passant guardant » : ce que la tradition française nomme léopards"
+      "note": "l'article dit « three lions passant guardant in pale » (trois lions passant guardant, l'un sur l'autre) : ce que la tradition française nomme léopards ; le blasonnement français sous-entend « en pal »"
     }
   },
   {

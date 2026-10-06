@@ -44,7 +44,7 @@ const PLEIN = {
       { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[62, 74, .4], [138, 164, .4]] },
       { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[138, 74, .4], [62, 164, .4]] },
       { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[64, 58, .36], [136, 58, .36]] }],
-  3: [{ id: "", lab: "2 et 1", ph: "", pts: [[62, 80, .46], [138, 80, .46], [100, 168, .46]] },
+  3: [{ id: "", lab: "2 et 1", ph: "", alt: [" posé 2 et 1"], pts: [[62, 80, .46], [138, 80, .46], [100, 168, .46]] },
       { id: "mal", lab: "1 et 2 (mal ordonnés)", ph: " mal ordonné", pts: [[100, 66, .42], [60, 158, .42], [140, 158, .42]] },
       { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[48, 116, .3], [100, 116, .3], [152, 116, .3]] },
       { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[50, 56, .28], [100, 56, .28], [150, 56, .28]] },
@@ -120,10 +120,13 @@ function dispo(ctx, n, g) {
   if (ctx === "fasce" && n === 6) return ", trois en chef et trois en pointe";
   return "";
 }
+/* deux ou trois lions ou léopards passants se posent l'un sur l'autre sans qu'on le dise ; « posés 2 et 1 » se dit (id « base ») */
+const palParDefaut = s => { const m = s.m && meuble(s.m); return !!(m && m.palDefaut && (s.nb === "2" || s.nb === "3")); };
 function dispos(s) {
   const ctx = ctxOf(s);
   if (!PLEINLIKE.has(ctx) || s.nb === "seme") return [];
-  return (PLEIN[s.nb] || []).filter(d => ctx === "plein" || !d.plein);
+  const ds = (PLEIN[s.nb] || []).filter(d => ctx === "plein" || !d.plein), pal = palParDefaut(s) && ds.find(d => d.id === "pal");
+  return pal ? [{ ...pal, id: "", ph: "", pal: true }, ...ds.filter(d => d !== pal).map(d => d.id === "" ? { ...d, id: "base", ph: d.ph || " posé 2 et 1" } : d)] : ds;
 }
 const dispoOf = s => { const ds = dispos(s); return ds.find(d => d.id === s.d) || ds[0]; };
 const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) : ""; };
@@ -197,6 +200,7 @@ function normalize(s) {
   if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = BRO_OK.has(s.p) && s.nb !== "seme" ? "sous" : "sur";
   const cs = countsFor(s);
   if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
+  if (palParDefaut(s) && s.d === "pal") s.d = "";
   if (!dispos(s).some(d => d.id === s.d)) s.d = "";
   if (!s.m || (s.m2 && !meuble(s.m2))) s.m2 = "";
   /* le bord de la pièce ; le sens des meubles (seuls les meubles asymétriques se contournent) */
