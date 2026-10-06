@@ -187,7 +187,7 @@ CONNUES = [
     ({"A0": {"t1": "Or", "m": "aigle", "nb": "1", "tm": "Sable", "ta": "Gueules", "ct": "1"}}, "D'or à l'aigle contournée de sable becquée, membrée et couronnée de gueules"),
     ({"A0": {"t1": "Azur", "m": "croissant", "nb": "1", "tm": "Or", "ct": "1"}}, "D'azur au croissant d'or"),   # un croissant ne se contourne pas par simple retournement : le réglage est ignoré
     # les bêtes de Commons : léopard, lion passant, aigle à deux têtes, cerf, cheval (dont l'accord au pluriel : « chevaux cabrés »)
-    ({"A0": {"t1": "Gueules", "m": "leopard", "nb": "3", "d": "pal", "tm": "Or", "ta": "Azur", "sz": "190"}}, "De gueules à trois léopards d'or armés et lampassés d'azur posés en pal"),
+    ({"A0": {"t1": "Gueules", "m": "leopard", "nb": "3", "d": "pal", "tm": "Or", "ta": "Azur", "sz": "190"}}, "De gueules à trois léopards d'or armés et lampassés d'azur"),       # trois léopards : en pal sans qu'on le dise
     ({"A0": {"t1": "Azur", "m": "lion-passant", "nb": "1", "tm": "Or", "ta": "Gueules"}}, "D'azur au lion passant d'or armé et lampassé de gueules"),
     ({"A0": {"t1": "Or", "m": "aigle-bicephale", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'or à l'aigle bicéphale de sable becquée, membrée et couronnée de gueules"),
     ({"A0": {"t1": "Sinople", "m": "cerf", "nb": "1", "tm": "Or"}}, "De sinople au cerf passant d'or"),
@@ -257,7 +257,7 @@ def test_atelier(browser, base, n_fuzz):
         obtenu = blasonne(page, etat)
         verifie(obtenu == attendu, f"atelier : « {attendu} »" + ("" if obtenu == attendu else f" — obtenu « {obtenu} »"))
     for ex in page.evaluate("EXEMPLES.map(e => e[0])"):
-        page.click(f"#examples button:text-is('{ex}')"); page.wait_for_timeout(250)
+        page.locator("#examples button").get_by_text(ex, exact=True).click(); page.wait_for_timeout(250)
     # l'interface : les commandes sont bien reliées à l'état (champs, pièce, bord, sens, écusson)
     page.evaluate("S = fresh(); render()"); page.wait_for_timeout(300)
     blz = lambda: page.inner_text("#blz")
@@ -331,7 +331,7 @@ LUS = [
     ("De sinople au sanglier passant d'or", "De sinople au sanglier passant d'or", ""),
     ("D'argent à l'aigle de sable", "D'argent à l'aigle de sable", ""),                        # l'aigle sans couronne ; « couronnée » la donne couronnée
     ("D'or à l'aigle de sable, armée, becquée et lampassée de gueules", "D'or à l'aigle de sable becquée et membrée de gueules", "colore d'un seul émail"),
-    ("De gueules à trois léopards d'or", "De gueules à trois léopards d'or", "posés en pal"),   # disposition non dite : signalée
+    ("D'azur à quatre étoiles d'or", "D'azur à quatre étoiles d'or posées 2 et 2", "2 et 2"),   # disposition non dite : signalée (trois léopards, eux, vont en pal sans qu'on le dise)
     ("D'azur à deux étoiles d'or", "D'azur à deux étoiles d'or posées en fasce", "disposition non précisée"),
     ("D'azur à trois étoiles d'or en fasce", "D'azur à trois étoiles d'or rangées en fasce", ""),
     ("D'azur au chevron d'or accompagné de trois croissants du même", "D'azur au chevron d'or accompagné de trois croissants d'or", ""),
@@ -354,7 +354,7 @@ LUS = [
     ("Parti d'azur et de gueules à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent",
      "Parti d'azur et de gueules, à la bande d'or brochant sur le tout, sur le tout de sinople à l'étoile d'argent", ""),
     # ce que la galerie a appris à relire : « aux » devant un nombre, la disposition avant l'attribut, une liste d'attributs, « du champ », les quartiers séparés par une virgule
-    ("D'or aux trois léopards d'azur posés en pal, armés et lampassés de gueules", "D'or à trois léopards d'azur armés et lampassés de gueules posés en pal", ""),
+    ("D'or aux trois léopards d'azur posés en pal, armés et lampassés de gueules", "D'or à trois léopards d'azur armés et lampassés de gueules", ""),
     ("D'argent, à l'ours passant de sable, armé, lampassé et vilené de gueules", "D'argent à l'ours passant de sable lampassé et vilené de gueules", "colore d'un seul émail"),
     ("D'argent à trois lions passant de sable", "D'argent à trois lions passants de sable", ""),
     ("Écartelé : aux 1 et 4 d'argent, aux 2 et 3 de sable", "Écartelé : aux 1 et 4, d'argent plein ; aux 2 et 3, de sable plein", ""),
@@ -458,7 +458,7 @@ LECTURE_DESSIN = """async (n) => {
     if (!r.ok) { pb.push("refusé : " + b); continue; }
     const s1 = normalizeAll({ ...fresh(), q: r.etat.q, ab: r.etat.ab, A: r.etat.A.map(a => ({ ...a })) });
     await loadAll(s0); await loadAll(s1);
-    uid = 0; const d0 = drawShield(s0, "a"); uid = 0; const d1 = drawShield(s1, "a");
+    uid = BID = 0; const d0 = drawShield(s0, "a"); uid = BID = 0; const d1 = drawShield(s1, "a");     // les compteurs d'identifiants (motifs, masques de bordure) repartent de zéro
     if (d0 !== d1) pb.push("dessin différent : " + b);
   }
   S = fresh();
@@ -516,8 +516,8 @@ def test_lecture(browser, base, n_fuzz):
     verifie("grenade" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
     page.click("#b-recopier"); page.wait_for_timeout(500)
     verifie(page.input_value("#lire") == "D'azur à la fasce d'or", "lecture : « Reprendre le blasonnement actuel » recopie le blasonnement dans la zone de saisie")
-    page.fill("#lire", "De gueules à trois léopards d'or"); page.wait_for_timeout(900)
-    verifie(page.locator("#lire-etat li:has-text('posés en pal')").count() == 1, "lecture : les réserves s'affichent")
+    page.fill("#lire", "D'azur à quatre étoiles d'or"); page.wait_for_timeout(900)
+    verifie(page.locator("#lire-etat li:has-text('2 et 2')").count() == 1, "lecture : les réserves s'affichent")
     page.evaluate("S = fresh(); S.cr = 'duc'; S.A[0].t1 = 'Gueules'; render()"); page.wait_for_timeout(300)
     page.fill("#lire", "D'argent à la croix de sable"); page.wait_for_timeout(900)
     verifie(page.evaluate("S.cr") == "duc" and blz().strip("« »  ") == "D'argent à la croix de sable", "lecture : lire des armes laisse les ornements de la composition")
@@ -561,7 +561,7 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     cible = lisibles[-1]
     page.locator(".ar", has=page.locator("h3", has_text=cible)).locator("a.shield").click()
     page.wait_for_url("**/atelier.html*"); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(600)
-    attendu = next(a["blason"] for a in data(fichier) if a["nom"] == cible)
+    attendu = next(a.get("atelier") or a["blason"] for a in data(fichier) if a["nom"] == cible)       # le champ « atelier » : ce que l'Atelier lit pour suivre l'image
     verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : un clic sur l'écu ouvre l'Atelier, qui lit le blasonnement de « {cible} »")
     verifie(page.inner_text("#origine .or-nom") == cible and page.locator("#origine .or-etat.ok").count() == 1, f"{nom} : l'Atelier montre la carte d'où l'on part et dit que ce sont ses armes")
     verifie(f"de={gal}:{slug_carte(cible)}" in page.url and "lire=" not in page.url, f"{nom} : l'adresse de l'Atelier redevient un lien de partage qui garde la carte d'origine")
@@ -571,7 +571,7 @@ def test_partir(browser, base):
     """« Partir d'un blason réel » : le sélecteur propose les cartes relues, et elles seules ; la carte d'origine suit les modifications ; on y revient"""
     page, erreurs = ouvre(browser, base, "atelier.html", "#reel")
     page.wait_for_function("document.querySelectorAll('#reel optgroup').length > 0")
-    relues = page.evaluate("""async () => { const t = []; for (const f of ['blasons', 'personnages']) for (const a of await (await fetch('data/' + f + '.json')).json()) if (a.blason && lire(a.blason).ok) t.push(a.nom); return t; }""")
+    relues = page.evaluate("""async () => { const t = []; for (const f of ['blasons', 'personnages']) for (const a of await (await fetch('data/' + f + '.json')).json()) if (a.blason && lire(a.atelier || a.blason).ok) t.push(a.nom); return t; }""")
     options = page.evaluate("[...document.querySelectorAll('#reel option')].filter(o => o.value).map(o => o.textContent)")
     verifie(sorted(options) == sorted(relues) and len(relues) >= len(BLASONS_LISIBLES) + len(PERSONNAGES_LISIBLES),
             f"partir : le sélecteur propose les {len(relues)} cartes des galeries que le lecteur relit, et elles seules")
