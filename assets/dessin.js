@@ -261,6 +261,20 @@ const croixDeCase = (pf, th) => {
   const t = 40 * MAP.px * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
   return `<path d="${croixTrace(x, y, t / 2, -400, 500, -400, 500)}" fill="${pf}"/>`;
 };
+/* bordure et orle d'une case (moitié ou quartier) : ils suivent le contour de l'écu et les traits de partition qui bordent la case, pas l'écu entier.
+   edges : les côtés de la case qui sont des traits de partition (l, r, t, b) ; f réduit la largeur comme les figures de la case.
+   Un seul élément : pas de couture sous un émail métallique. La bordure occupe les 13 premières unités, l'orle les unités 15,4 à 27,2 depuis le bord. */
+let NOBORD = false, BID = 0;
+const enBande = k => k === "bordure" || k === "orle";
+function bandeDeCase(kind, pf, rect, f, edges) {
+  const [x, y, w, h] = rect;
+  const d = SHIELD_D + [...edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
+  if (kind !== "orle") return `<path d="${d}" fill="none" stroke="${pf}" stroke-width="${26 * f}"/>`;
+  const id = `mo${++BID}`;
+  return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500"><path d="${d}" fill="none" stroke="#fff" stroke-width="${54.4 * f}"/><path d="${d}" fill="none" stroke="#000" stroke-width="${30.8 * f}"/></mask></defs>`
+    + `<rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
+}
+const bandeLocale = (kind, pf) => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${bandeDeCase(kind, pf, MAP.rect, MAP.pk, MAP.edges)}</g>`;
 function drawBody(s, u) {
   let field;
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
@@ -279,14 +293,20 @@ function drawBody(s, u) {
     over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
   const croixCase = MAP && s.p === "croix" && !s.ln;      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
-  let piece = s.p ? (croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth)) : "";
+  const bandeCase = enBande(s.p) && (MAP || NOBORD);
+  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp)) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
+  if (bandeCase) return corps(s, u, defs, field, under, over, piece);
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
   if (!croixCase) piece = sq(piece, 1);
-  /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
+  return corps(s, u, defs, field, under, over, piece);
+}
+/* la brisure, par-dessus tout le reste (une pièce de brisure, ou des figures), puis l'assemblage des couches */
+function corps(s, u, defs, field, under, over, piece) {
   let bris = "";
   if (s.br) {
     if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body, 1); }
+    else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr)) : "";
     else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
@@ -348,10 +368,10 @@ function partiCells(St) {
   const split = quarterGeom().split, out = [];
   [0, 1].forEach(h => {
     const qa = halfQuarters(St, h), hx = h * 100;
-    if (!qa) { out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252] }); return; }
+    if (!qa) { out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252], edges: h ? "l" : "r" }); return; }
     const [a, b] = halfSpan(h), mid = (a + b) / 2;      // le trait de l'écartelé passe au milieu de ce qu'on voit de la moitié, pas au milieu de sa boîte
     const rects = [[a, 0, mid - a, split], [mid, 0, b - mid, split], [a, split, mid - a, 252 - split], [mid, split, b - mid, 252 - split]];
-    rects.forEach((rect, n) => out.push({ arm: qa[n], half: h, q: n, rect, rects, a, b, mid }));
+    rects.forEach((rect, n) => out.push({ arm: qa[n], half: h, q: n, rect, rects, a, b, mid, edges: (n % 2 ? (h ? "l" : "lr") : (h ? "lr" : "r")) + (n < 2 ? "b" : "t") }));
   });
   return out;
 }
@@ -372,9 +392,10 @@ const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0
 const HALF_PK = .8, SUB_PK = .3;
 function partiMap(c) {
   const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, half: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
-  if (c.q === undefined) return Object.assign(m, { shx: cellGeom(c.rect).cx - cx });      // une moitié se centre en largeur sur ce qu'on en voit
+  m.rect = c.rect; m.edges = c.edges;
+  if (c.q === undefined) { const g = cellGeom(c.rect); return Object.assign(m, { shx: g.cx - cx, gx: g.cx, gy: g.cy }); }      // une moitié se centre en largeur sur ce qu'on en voit
   const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
-  return Object.assign(m, { half: false, vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
+  return Object.assign(m, { gx: g.cx, gy: g.cy, half: false, vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
 }
 /* parti : chaque case reçoit ses armes entières resserrées à sa taille ; une moitié écartelée montre ses quatre quartiers */
 function drawParti(St, u, ab) {
@@ -402,11 +423,15 @@ function drawShield(St, u) {
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {
-    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`), g = G.q[qi];
+    const a = St.A[ai], g = G.q[qi];
+    let r, under;
+    NOBORD = true;
+    try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
+    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed) : "");
     const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
     body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
-      + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g></g>`;
+      + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g>${bande}</g>`;
   });
   body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
