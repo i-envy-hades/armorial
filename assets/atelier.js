@@ -187,14 +187,21 @@ function decode(h) {
 function marker() {
   if (!/^[12]\.\d$/.test(KT)) return "";
   const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
-  HSIDE = S.q === "p" && CUR < 2 ? CUR : 0;
+  const circle = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`;
+  /* dans un parti, chaque case place ses figures à sa façon (carte de la case, demi-meuble sur le trait) : on les calcule sous la même carte que le dessin */
+  if (S.q === "p" && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => {
+    const mp = partiMap(c);
+    let all, fx;
+    MAP = mp; HSIDE = c.half;
+    try { all = g === 1 ? ptsFor(a, m) : pts2(a); fx = facteurMoitie(all); } finally { MAP = null; HSIDE = 0; }
+    const q = all[i];
+    return q ? circle(mp.cx + (q[0] - 100) * mp.vpx + mp.shx, mp.cy + (q[1] - 126) * mp.fpy + mp.shy, Math.max(6, 82 * q[2] * mp.pk * fx)) : "";
+  }).join("");
   const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
-  HSIDE = 0;
   if (!p) return "";
-  if (S.q === "p" && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => { const m = partiMap(c); return `<circle cx="${m.cx + (p[0] - 100) * m.vpx + m.shx}" cy="${m.cy + (p[1] - 126) * m.fpy + m.shy}" r="${Math.max(6, 82 * p[2] * m.pk)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`; }).join("");
   const spots = CUR === 4 ? [[100 - 100 * AB_K, 126 - 126 * AB_K, AB_K]]               // dans l'écusson en abîme
     : !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
-  return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
+  return spots.map(([ox, oy, k]) => circle(ox + p[0] * k, oy + p[1] * k, Math.max(8, 82 * p[2] * k))).join("");
 }
 async function render() {
   const tok = render.n = (render.n || 0) + 1;
