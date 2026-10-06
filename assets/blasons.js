@@ -3,7 +3,7 @@ const PAGE = "https://commons.wikimedia.org/wiki/File:";
 function src(file){ return FP + encodeURIComponent(file) + "?width=320"; }
 function page(file){ return PAGE + encodeURIComponent(file); }
 
-let ARMS, LISIBLES = new Set();                  // LISIBLES : les armes que l'Atelier sait relire (assets/lecture.js)
+let ARMS, LECTURES = new Map(), LISIBLES = new Set();     // ce que le lecteur de l'Atelier fait de chaque blasonnement (assets/lecture.js), et les armes qu'il relit
 
 function srcLine(a){
   const fileLink = `<a href="${page(a.file)}" target="_blank" rel="noopener">« ${a.file} »</a>`;
@@ -24,13 +24,13 @@ function liens(a){
   return a.liens && a.liens.length ? `<p class="liens">${a.liens.map(l => `<a href="${l.href}">${l.t}</a>`).join("")}</p>` : "";
 }
 function card(a){
-  const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`;
+  const alt = a.blason ? `Armoiries — ${a.nom} : ${a.blason}` : `Armoiries — ${a.nom}`, r = LECTURES.get(a);
   return `<article class="ar" id="${slugCarte(a.nom)}" data-cat="${a.cat||''}">
-    <div class="shield"><img loading="lazy" src="${src(a.file)}" alt="${alt}"></div>
+    ${ecuCarte(a, "blasons", `<img loading="lazy" src="${src(a.file)}" alt="${alt}">`, LISIBLES.has(a))}
     ${a.cat ? `<div class="cat">${a.cat}</div>` : ""}
     <h3>${a.nom}</h3>
     ${a.blason ? `<p class="bl">${a.blason}</p>` : ""}
-    ${LISIBLES.has(a) ? lienAtelier(a) : ""}
+    ${LISIBLES.has(a) ? lienAtelier(a, "blasons") : r ? buteAtelier(a, r, "blasons") : ""}
     ${a.porteur ? `<p class="po">${a.porteur}</p>` : ""}
     ${liens(a)}
     <p class="src">${srcLine(a)}</p>
@@ -62,7 +62,8 @@ async function init(){
     const [res] = await Promise.all([fetch('data/blasons.json'), chargerLecteur().catch(() => {})]);
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     ARMS = await res.json();
-    LISIBLES = armesLisibles(ARMS);
+    LECTURES = lectures(ARMS);
+    LISIBLES = new Set([...LECTURES].filter(([, r]) => r.ok).map(([a]) => a));
   }catch(err){
     document.getElementById("grid").innerHTML =
       `<p>Les données n'ont pas pu être chargées (${err.message||err}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;

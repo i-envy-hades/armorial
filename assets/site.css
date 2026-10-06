@@ -215,6 +215,18 @@ footer .fine{font-size:.78rem;opacity:.85}
 .redo{margin:.1rem 0 .5rem}
 .redo a{display:inline-block;font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.68rem;border:1px solid var(--rule);background:var(--vellum);color:var(--ink);border-radius:999px;padding:.32rem .8rem;text-decoration:none}
 .redo a:hover,.redo a:focus-visible{border-color:var(--or);text-decoration:none}
+/* l'écu d'une carte que l'Atelier relit : un clic l'y ouvre, pour le modifier (assets/lecture.js, ecuCarte) */
+.ar a.shield{position:relative;width:100%;cursor:pointer;text-decoration:none}          /* toute la largeur de la carte : une cible large */
+.ar a.shield img{transition:transform .25s ease}
+.ar a.shield:hover img{transform:translateY(-3px) scale(1.02)}
+.to-at-k{position:absolute;left:50%;bottom:.2rem;transform:translate(-50%,4px);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s ease,transform .2s ease;
+  font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.62rem;color:var(--ink);background:var(--vellum-2);border:1px solid var(--or);border-radius:999px;padding:.22rem .7rem;box-shadow:0 2px 8px rgba(26,23,18,.18)}
+.ar a.shield:hover .to-at-k{opacity:1;transform:translate(-50%,0)}
+@media (hover:none){.to-at-k{display:none}}
+@media (prefers-reduced-motion:reduce){.ar a.shield img,.to-at-k{transition:none}.ar a.shield:hover img{transform:none}}
+/* sous les blasonnements que l'Atelier ne relit pas encore : où il bute */
+.redo-non{font-size:.78rem;font-style:italic;line-height:1.4;color:var(--ink-soft);margin:.1rem 0 .5rem}
+.redo-non a{color:var(--ink-soft);text-decoration:underline;white-space:nowrap}
 
 /* ---------- lien d'évitement (assets/chrome.js) ---------- */
 .skip{position:absolute;left:.6rem;top:-4rem;z-index:100;padding:.5rem .9rem;background:var(--vellum-2);color:var(--ink);border:2px solid var(--gules);border-radius:3px;font-family:"Marcellus SC",serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}

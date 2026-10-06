@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'Armorial — Atelier</title>
-<meta name="description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître. Export en SVG et en PNG, lien de partage.">
+<meta name="description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître ; ou partez des armes réelles des galeries pour les modifier. Export en SVG et en PNG, lien de partage.">
 <meta name="theme-color" content="#e9e1cd">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://i-envy-hades.github.io/armorial/atelier.html">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="L'Armorial — Atelier">
-<meta property="og:description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître. Export en SVG et en PNG, lien de partage.">
+<meta property="og:description" content="Composez des armoiries — champ, pièce, meubles, ornements — et lisez leur blasonnement, écrit comme le ferait un héraut ; ou écrivez un blasonnement et voyez l'écu apparaître ; ou partez des armes réelles des galeries pour les modifier. Export en SVG et en PNG, lien de partage.">
 <meta property="og:url" content="https://i-envy-hades.github.io/armorial/atelier.html">
 <meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -27,6 +27,8 @@
   avec l'encyclopédie) ; émaux, partitions, pièces : data/data.json ; meubles, ornements et figures
   Commons recolorables : data/atelier.json, assets/meubles/ et assets/ornements/.
   L'état de la composition tient dans l'ancre de l'adresse (#…), ce qui fait le lien de partage.
+  « Partir d'un blason réel » : les cartes des galeries (data/blasons.json, data/personnages.json) que le lecteur relit en entier ;
+  l'adresse « #lire=…&de=blasons:<carte> » (l'écu d'une carte, ou son bouton « Redessiner ») ouvre l'Atelier sur ces armes et montre la carte d'origine.
 -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/atelier.css">
@@ -42,7 +44,7 @@
   <div class="frame">
   <p class="eyebrow">Composer ses armes</p>
   <h1>L'Atelier</h1>
-  <p>Choisissez un champ, une pièce, des meubles et leurs émaux : l'écu se dessine, et le blasonnement s'écrit dans l'ordre où un héraut le lirait. Ou faites l'inverse : écrivez un blasonnement, et l'écu apparaît.</p>
+  <p>Choisissez un champ, une pièce, des meubles et leurs émaux : l'écu se dessine, et le blasonnement s'écrit dans l'ordre où un héraut le lirait. Ou faites l'inverse : écrivez un blasonnement, et l'écu apparaît. Ou partez d'un blason réel — un royaume, un canton, un roi des galeries — et modifiez-le.</p>
   </div>
 </section>
 
@@ -58,6 +60,12 @@
         <button type="button" id="b-recopier">Reprendre le blasonnement actuel</button>
       </div>
       <div class="lire-etat" id="lire-etat" role="status" aria-live="polite"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Partir d'un blason réel</legend>
+      <label class="lab-lire" for="reel">Les armes des galeries que l'Atelier sait relire : choisissez-en une, l'écu se dessine, puis modifiez-le à votre guise.</label>
+      <select id="reel" aria-describedby="reel-note"><option value="">Chargement des galeries…</option></select>
+      <p class="note" id="reel-note">Un clic sur l'écu d'une carte de <a href="blasons.html">Blasons réels</a> ou de <a href="personnages.html">Personnages</a> mène ici aussi.</p>
     </fieldset>
     <fieldset>
       <legend>Exemples</legend>
@@ -199,6 +207,7 @@
     <p class="blz" id="blz"></p>
     <p class="ornt" id="orn" hidden></p>
     <p class="warn" id="warn" hidden></p>
+    <div class="origine" id="origine" hidden></div>
     <div class="acts">
       <button type="button" class="main" id="b-link">Copier le lien</button>
       <button type="button" id="b-svg">SVG</button>
@@ -221,6 +230,7 @@
 <script src="assets/blason.js"></script>
 <script src="assets/blasonnement.js"></script>
 <script src="assets/lecture.js"></script>
+<script src="assets/cartes.js"></script>
 <script src="assets/dessin.js"></script>
 <script src="assets/atelier.js"></script>
 <script src="assets/epopee-pages.js"></script>
