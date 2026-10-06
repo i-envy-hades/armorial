@@ -274,7 +274,8 @@ if isinstance(a, dict):
             defini.update(mots(x) for x in g.get("terme", "").split(","))
     attendus = [pc.get("nom") for pc in a.get("pieces", [])] + ["sur le tout", "brochant", "accompagné", "accosté", "cantonné", "chargé", "rangé en", "contourné", "semé", "plein", "cabré",
                "alésé", "bordé", "échiqueté", "fuselé", "vergeté", "coticé", "chevronné", "burelé", "tire",
-               "courant", "couché", "assis", "vol abaissé", "wyvern", "lionné", "ravissant", "essorant", "manteau", "pavillon", "issant", "doublé"]
+               "courant", "couché", "assis", "vol abaissé", "wyvern", "lionné", "ravissant", "essorant", "manteau", "pavillon", "issant", "doublé",
+               "de l'un en l'autre"]
     for t in attendus:
         if t and mots(t) not in defini and not any(mots(t) in d for d in defini):
             err(f"data.json: « {t} » est un mot de l'Atelier (pièce ou blasonnement) que le glossaire ne définit pas")

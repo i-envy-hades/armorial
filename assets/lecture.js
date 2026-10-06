@@ -216,7 +216,8 @@ function pCorps(P, i, ref, nb) {
       if (k1) { cnAv = true; j += k1.n; continue; }
       break;
     }
-    const t = pEmail(P, j, ref);
+    /* « de l'un en l'autre » (ou « à l'autre ») au lieu d'un émail : le meuble prend l'émail opposé de chaque part du champ ; vérifié à l'assemblage */
+    const cc = pContre(P, j), t = cc ? { t: ref || ADEF.tm, i: cc.i } : pEmail(P, j, ref);
     if (!t) {
       if (cle(P, j) === "a" && LEX.compte.has(cle(P, j + 1)) && cle(P, j + 2) === "rais")
         rais = rais || { de: P.toks[j].de, a: P.toks[j + 2].a, msg: `« ${cle(P, j + 1) === "un" ? "à un" : "à " + cle(P, j + 1)} rais » : l'Atelier ne dessine pas ${voy(m.sing) ? "d'" : "de "}${m.sing} à ${cle(P, j + 1)} rais (seulement à cinq, six, sept ou huit).` };
@@ -234,7 +235,7 @@ function pCorps(P, i, ref, nb) {
     if (!pcr()) continue;
     /* « trois léopards d'azur posés en pal, armés et lampassés de gueules » : la disposition peut précéder l'attribut */
     const dp = nb && m.accent ? pDispo(P, j, nb) : null, avant = dp && dp.dit ? dp : null;
-    const ac = pAccent(P, avant ? avant.i : j, m, t.t);
+    const ac = pAccent(P, avant ? avant.i : j, m, cc ? "" : t.t);           // contre-changé : « du même » laisse l'attribut suivre le corps
     if (!ac) continue;
     if (ac.cn) cn = ac.cn;
     let fin = ac.i;
@@ -242,7 +243,7 @@ function pCorps(P, i, ref, nb) {
       const jb = cle(P, fin) === "," ? fin + 1 : fin, k3 = suites(LEX.coure, P, jb)[0], te = k3 && pEmail(P, jb + k3.n, t.t);
       if (te) { cn = te.t; fin = aussi(te.i); } else if (k3) continue;
     }
-    const lu = { m, tm: t.t, ta: ac.ta, ct, cn, iss, mot: val.mot, i: fin, pre: avant, notes: P.notes.splice(base) };
+    const lu = { m, tm: t.t, ta: ac.ta, ct, cn, iss, cc: cc ? cc.cc : "", mot: val.mot, i: fin, pre: avant, notes: P.notes.splice(base) };
     if (!best || lu.i > best.i) best = lu;
   }
   P.notes.length = base;
@@ -252,6 +253,12 @@ function pCorps(P, i, ref, nb) {
   /* une piste, pas une erreur : elle ne parle que si la lecture ne va pas plus loin ailleurs (« la croix » est d'abord une pièce) */
   if (noms && !(P.hint && P.hint.i >= i)) P.hint = { i, de: P.toks[i].de, a: P.toks[i].a, msg: `« ${P.toks[i].r} » seul n'est pas un meuble de l'Atelier : il connaît ${noms.slice(0, 4).map(n => `« ${n} »`).join(", ")}${noms.length > 4 ? ` et ${noms.length - 4} autre${noms.length > 5 ? "s" : ""}` : ""}.` };
   return rate(P, i, "un meuble");
+}
+/* [,] « de l'un en l'autre » · « de l'un à l'autre » → { cc: "en" | "a", i } ; virgule ensuite permise (« à la clé, de l'un en l'autre, posée en pal ») */
+function pContre(P, i) {
+  const j = cle(P, i) === "," ? i + 1 : i;
+  if (cle(P, j) !== "de" || cle(P, j + 1) !== "le" || cle(P, j + 2) !== "un" || !["en", "a"].includes(cle(P, j + 3)) || cle(P, j + 4) !== "le" || cle(P, j + 5) !== "autre") return null;
+  return { cc: cle(P, j + 3), i: j + 6 };
 }
 /* disposition que le texte dit après des meubles de nombre n : « posés en pal », « rangées en chef », « posées 3, 2 et 1 »… */
 function pDispo(P, i, n) {
@@ -288,7 +295,16 @@ function pGroupe(P, i) {
   const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
   let e = d.i, ctApres = false;
   const jp = cle(P, e) === "," ? e + 1 : e;                      // « la clef d'or en pal, contournée » : « en pal » est la pose ordinaire de la clef
-  if (n === 1 && !d.dit && c.m.kind === "clef" && cle(P, jp) === "en" && cle(P, jp + 1) === "pal") { e = jp + 2; P.notes.push("« en pal » : la pose ordinaire de la clef, que l'Atelier ne dit pas."); }
+  const jq = ["pose", "posee"].includes(cle(P, jp)) ? jp + 1 : jp;                         // « posée en pal »
+  if (n === 1 && !d.dit && c.m.kind === "clef" && cle(P, jq) === "en" && cle(P, jq + 1) === "pal") { e = jq + 2; P.notes.push("« en pal » : la pose ordinaire de la clef, que l'Atelier ne dit pas."); }
+  /* la hache : « le fer à dextre » est sa pose ordinaire dans l'Atelier ; « le fer à senestre », elle est contournée */
+  let ferSen = false;
+  if (n === 1 && c.m.kind === "hache" && cle(P, jp) === "le" && cle(P, jp + 1) === "fer" && cle(P, jp + 2) === "a" && ["dextre", "senestre"].includes(cle(P, jp + 3))) {
+    ferSen = cle(P, jp + 3) === "senestre";
+    if (c.ct && !ferSen) return erreur(P, P.toks[jp].de, P.toks[jp + 3].a, "Une hache contournée a le fer à senestre, pas à dextre.");
+    e = jp + 4;
+    P.notes.push(ferSen ? "« le fer à senestre » : l'Atelier écrit « contournée »." : "« le fer à dextre » : la pose ordinaire de la hache, que l'Atelier ne dit pas.");
+  }
   const jc = cle(P, e) === "," ? e + 1 : e, c4 = !c.ct && suites(LEX.ctr, P, jc)[0];
   if (c4 && e > d.i) { ctApres = true; e = jc + c4.n; }
   /* un demi-meuble : « à la demi-aigle de sable mouvant du trait du parti » (dit après l'émail et les attributs) */
@@ -298,7 +314,7 @@ function pGroupe(P, i) {
   if (demi && (n !== 1 || c.iss)) return erreur(P, P.toks[i].de, P.toks[e - 1].a, "Un demi-meuble mouvant du trait du parti se dit d'un seul meuble, qui n'est pas « issant ».");
   const br = pBrochant(P, e);
   if (br) e = br;
-  return bornes(P, { t: "groupe", n, ...c, ct: c.ct || ctApres, d: d.d, dit: d.dit, broche: !!br, trait: mv, i: e }, i);
+  return bornes(P, { t: "groupe", n, ...c, ct: c.ct || ctApres || ferSen, d: d.d, dit: d.dit, broche: !!br, trait: mv, i: e }, i);
 }
 /* « semé de fleurs de lis d'or » · « billeté d'or » · « besanté d'or » */
 function pSeme(P, i) {
@@ -522,7 +538,7 @@ function pArmes(P) {
 /* ---------- de l'analyse aux armes de l'Atelier ---------- */
 /* la disposition lue : pour des léopards, « en pal » est la disposition qu'on ne dit pas, et « 2 et 1 » se dit (« base ») */
 const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
-const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", d: dispoLue(o) });
+const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.cc ? o.ta || "" : o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", cc: o.cc || "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
 const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
@@ -610,10 +626,12 @@ function verifie(P, a, src, lieu) {
     else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
     else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
+    else if (key === "cc") mets(src.m, "« De l'un en l'autre » : il faut un champ partagé de deux émaux (parti, coupé, tranché, écartelé…) et des meubles posés sur le champ, non sur une pièce ; ni besants ni tourteaux, dont le nom dit l'émail.");
     else if (key === "ct2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else mets(null, `L'Atelier ne sait pas dessiner cela (${key}).`);
   }
   if (src.m2 && src.m2.iss) mets(src.m2, "Dans l'Atelier, « issant » ne se dit que du premier meuble.");
+  if (src.m2 && src.m2.cc) mets(src.m2, "Dans l'Atelier, « de l'un en l'autre » ne se dit que du premier meuble.");
   for (const [msg, it] of dit) erreur(P, it.de, it.fin, msg);
   if (dit.size) return null;
   /* une disposition dite, que l'Atelier ne reprendrait pas (place fixe) : on ne l'ignore pas en silence */

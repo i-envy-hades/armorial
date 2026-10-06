@@ -6,7 +6,9 @@ let DATA, ATL;
 
 /* ---------- grammaire ---------- */
 const MOT = { Or: "or", Argent: "argent", Gueules: "gueules", Azur: "azur", Sable: "sable", Sinople: "sinople", Pourpre: "pourpre", Hermine: "hermine", Vair: "vair" };
-const voy = w => /^[aeiouyhéèêâîôûœ]/i.test(w);
+/* h aspiré : « la hache », « le heaume », non « l'hache » */
+const H_ASPIRE = /^(hach|harp|heaum|hériss|héron|hibou|hure|huchet|hamaïde|hallebard|hampe|houx|hêtre)/i;
+const voy = w => /^[aeiouyhéèêâîôûœ]/i.test(w) && !H_ASPIRE.test(w);
 const de = t => (voy(MOT[t]) ? "d'" : "de ") + MOT[t];
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize"];
@@ -134,7 +136,7 @@ const dph = (s, c) => { const d = dispoOf(s); return d ? agree(d.ph, c.g, c.pl) 
 const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { const [k, v] = x.split(":"); return [k, (v || "").split(",").map(Number)]; }));
 const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
 const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
-const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, iss: "", pos: "autour", p: "" });
+const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, iss: "", cc: "", pos: "autour", p: "" });
 /* la brisure : une pièce ou une figure de plus, posée sur les armes pleines (« …, brisé d'un bâton de gueules péri en bande ») ; c'est ce qui distingue un cadet de son aîné.
    Les pièces se dessinent comme les autres (assets/blason.js) ; les figures suivent les dispositions du champ plein, réduites. Le lambel a sa propre entrée. */
 const BRIS_PIECES = { bordure: { nom: "Bordure", g: "f", bord: true }, baton: { nom: "Bâton", g: "m", sens: true }, filet: { nom: "Filet", g: "m", sens: true },
@@ -143,15 +145,15 @@ const BRIS_PIECES = { bordure: { nom: "Bordure", g: "f", bord: true }, baton: { 
 const BRIS_FIGS = ["croissant", "molette", "merlette", "annelet", "fleurdelis", "rose", "etoile", "roundel", "coquille"];     // les marques de cadence anglaises, puis l'étoile, le besant et la coquille
 const LAMBEL_FIGS = [...BRIS_FIGS, "croisette"];                                           // ce que peuvent porter les pendants d'un lambel
 const brisPiece = s => (own(BRIS_PIECES, s.br) ? BRIS_PIECES[s.br] : null);
-const lambelArms = s => ({ ...s, m: s.lpc, m2: "", nb: s.lpk, tm: s.lpt, ta: s.lpt, ct: "", cn: "", iss: "", d: "", pos: "autour", p: "" });
-const brisArms = s => ({ ...s, m: s.br, m2: "", nb: s.brn, tm: s.tbr, ta: s.tbr, ct: "", cn: "", iss: "", d: s.brd, pos: "autour", p: "" });
+const lambelArms = s => ({ ...s, m: s.lpc, m2: "", nb: s.lpk, tm: s.lpt, ta: s.lpt, ct: "", cn: "", iss: "", cc: "", d: "", pos: "autour", p: "" });
+const brisArms = s => ({ ...s, m: s.br, m2: "", nb: s.brn, tm: s.tbr, ta: s.tbr, ct: "", cn: "", iss: "", cc: "", d: s.brd, pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
-  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "",
+  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
   lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
@@ -185,7 +187,7 @@ function normalize(s) {
     if (s.m === "lambel") s.m = ""; else s.m2 = "";
   }
   /* l'adresse de la page peut porter n'importe quoi : chaque valeur est ramenée à une valeur permise (own : pas de noms hérités, comme « constructor ») */
-  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k])) s[k] = ADEF[k];
+  for (const k of ["t1", "t2", "t3", "tp", "tm", "ta", "tm2", "ta2"]) if (!own(MOT, s[k]) && !(k === "ta" && s[k] === "")) s[k] = ADEF[k];
   if (!["plein", "part", "ray"].includes(s.f)) s.f = "plein";
   if (!RAYS.includes(s.ray)) s.ray = "barry";
   if (!rayNs(s.ray).includes(s.n)) s.n = ADEF.n;                                    // pair : « fascé de six pièces » ; impair : des pièces rebattues (5, 7, 9… : deux, trois, quatre pals, fasces…)
@@ -212,6 +214,8 @@ function normalize(s) {
   s.iss = mm && !mm.seul && (s.iss === "1" || s.iss === "t") && s.nb === "1" && !s.p ? s.iss : "";               // un seul meuble, sans pièce ; « t » : demi-meuble mouvant du trait du parti (voir normalizeAll)
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
+  s.cc = ccPossible(s) && (s.cc === "en" || s.cc === "a") ? s.cc : "";
+  if (s.ta === "" && !s.cc) s.ta = ADEF.ta;                                          // ta vide : l'attribut d'un meuble contre-changé, contre-changé avec lui
   /* la brisure : une pièce ou une marque de la liste, son émail ; le sens ne vaut que pour le bâton et le filet, le bord que pour les pièces qui en ont un, le nombre et la place que pour les figures */
   if (s.br && !own(BRIS_PIECES, s.br) && !(BRIS_FIGS.includes(s.br) && meuble(s.br))) s.br = "";
   if (!own(MOT, s.tbr)) s.tbr = ADEF.tbr;
@@ -245,6 +249,11 @@ function normalize(s) {
   return s;
 }
 
+/* « de l'un en l'autre » (cc « en ») ou « de l'un à l'autre » (« a ») : le meuble prend, sur chaque part du champ, l'émail de l'autre part.
+   Il faut un champ partagé de deux émaux et des meubles posés sur le champ (pas sur une pièce) ; ni besant ni tourteau, dont le nom dit l'émail */
+const ccPossible = s => !!(s.m && meuble(s.m) && s.m !== "roundel" && s.f === "part" && !s.part.startsWith("tierce") && s.pos !== "sur" && s.t1 !== s.t2);
+const ccTexte = cc => cc === "a" ? "de l'un à l'autre" : "de l'un en l'autre";
+
 /* ce que des armes montrent et disent : les champs sans objet (l'émail d'un second champ qui n'existe pas) et les réglages graphiques
    n'y figurent pas. Sert à comparer deux compositions : le lecteur de blasonnement (assets/lecture.js) et les tests */
 function canon(a) {
@@ -254,7 +263,7 @@ function canon(a) {
   else Object.assign(o, { ray: a.ray, ...(a.ray.startsWith("lozengy") ? {} : { n: a.n }), t1: a.t1, t2: a.t2 });
   if (a.p) Object.assign(o, { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
   if (m) {
-    Object.assign(o, { m: a.m, nb: a.nb, tm: a.tm });
+    Object.assign(o, a.cc ? { m: a.m, nb: a.nb, cc: a.cc } : { m: a.m, nb: a.nb, tm: a.tm });       // contre-changé : l'émail du meuble est celui du champ
     if (a.p) o.pos = a.pos;
     if (m.accent) o.ta = a.ta;
     if (m.asym) o.ct = a.ct;
@@ -283,17 +292,18 @@ const canonAll = St => ({ q: St.q, ab: St.ab, h1: St.h1 || "", h2: St.h2 || "", 
 /* ---------- le blasonnement ---------- */
 /* l'attribut d'un meuble (« armé et lampassé d'azur ») ne se dit que s'il change quelque chose : de l'émail du corps, on se tait.
    Ceux qui sont un trait du dessin (« couronné », « incensé », « dans des flammes »…) se disent toujours */
-const accentDit = (m, s) => !!(m.accent && m.accentMot && (m.accentFixe || m.accentTrait || s.ta !== s.tm));
+const accentDit = (m, s) => !!(m.accent && m.accentMot && (m.accentFixe || m.accentTrait || (s.cc ? !!s.ta : s.ta !== s.tm)));
 function charges(s) {
   const m = meuble(s.m), seme = s.nb === "seme", n = seme ? 0 : +s.nb, pl = seme || n > 1;
   let nom = m.sing, nomPl = m.plur, g = m.g;
   if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
   if (s.iss === "t") nom = "demi-" + nom;
   /* la couronne : de l'émail du meuble, elle se dit devant lui (« un lion couronné d'or ») ; d'un autre, après l'attribut (« … armé et lampassé de gueules couronné d'argent ») */
-  const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && s.cn === s.tm;
-  const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
+  const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && !s.cc && s.cn === s.tm;
+  /* ta vide (contre-changé) : l'attribut suit le corps, « du même » */
+  const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + (s.ta ? de(s.ta) : "du même") : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
   const ctr = (s.iss === "1" ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
-  return { m, n, pl, nom, nomPl, g, acc, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: de(s.tm) };
+  return { m, n, pl, nom, nomPl, g, acc, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: s.cc ? ccTexte(s.cc) : de(s.tm) };
 }
 function semePhrase(c, s) {
   const m = c.m;
@@ -327,7 +337,7 @@ function blazonCore(s) {
   if (!s.p) {
     if (!c) return champ + (parti ? "" : " plein");
     if (seme) return champ + (x2 ? ", " + x2.alone : "");
-    return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${parti && c.n === 1 ? " brochant sur le tout" : ""}${x2 ? x2.acc : ""}`;
+    return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${parti && c.n === 1 && !s.cc ? " brochant sur le tout" : ""}${x2 ? x2.acc : ""}`;       // contre-changé, le meuble ne broche pas : il se partage
   }
   const P = PIECES[s.p], pnom = s.p;
   const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
