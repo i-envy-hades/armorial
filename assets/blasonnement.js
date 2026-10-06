@@ -130,13 +130,21 @@ const adMap = a => new Map((a.ad || "").split("|").filter(Boolean).map(x => { co
 const adStr = map => [...map].map(([k, v]) => k + ":" + v.join(",")).join("|");
 const dispo2 = s => (PLEIN[s.nb2] || PLEIN[3]).find(d => d.id === s.d2) || (PLEIN[s.nb2] || PLEIN[3])[0];
 const arms2 = s => ({ ...s, m: s.m2, nb: s.nb2, tm: s.tm2, ta: s.ta2, ct: s.ct2, cn: s.cn2, iss: "", pos: "autour", p: "" });
+/* la brisure : une pièce ou une figure de plus, posée sur les armes pleines (« …, brisé d'un bâton de gueules péri en bande ») ; c'est ce qui distingue un cadet de son aîné.
+   Les pièces se dessinent comme les autres (assets/blason.js) ; les figures suivent les dispositions du champ plein, réduites. Le lambel a sa propre entrée. */
+const BRIS_PIECES = { bordure: { nom: "Bordure", g: "f", bord: true }, baton: { nom: "Bâton", g: "m", sens: true }, filet: { nom: "Filet", g: "m", sens: true },
+  canton: { nom: "Canton", g: "m", bord: true }, "franc-quartier": { nom: "Franc-quartier", g: "m", bord: true } };
+const BRIS_FIGS = ["croissant", "molette", "merlette", "annelet", "fleurdelis", "rose", "etoile", "roundel", "coquille"];     // les marques de cadence anglaises, puis l'étoile, le besant et la coquille
+const brisPiece = s => (own(BRIS_PIECES, s.br) ? BRIS_PIECES[s.br] : null);
+const brisArms = s => ({ ...s, m: s.br, m2: "", nb: s.brn, tm: s.tbr, ta: s.tbr, ct: "", cn: "", iss: "", d: s.brd, pos: "autour", p: "" });
 const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme" ? 0 : m.seul ? 1 : +s.nb; };
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
-  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "" };       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "",
+  br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0" };       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
@@ -181,6 +189,18 @@ function normalize(s) {
   s.iss = mm && !mm.seul && s.iss === "1" && s.nb === "1" && !s.p ? "1" : "";               // un seul meuble, sans pièce
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
+  /* la brisure : une pièce ou une marque de la liste, son émail ; le sens ne vaut que pour le bâton et le filet, le bord que pour les pièces qui en ont un, le nombre et la place que pour les figures */
+  if (s.br && !own(BRIS_PIECES, s.br) && !(BRIS_FIGS.includes(s.br) && meuble(s.br))) s.br = "";
+  if (!own(MOT, s.tbr)) s.tbr = ADEF.tbr;
+  const bp = brisPiece(s);
+  s.sbr = bp && bp.sens && s.sbr === "barre" ? "barre" : "bande";
+  s.lbr = bp && bp.bord && own(CONTOUR_NOM, s.lbr) && s.lbr !== "alesee" ? s.lbr : "";
+  if (!BRIS_FIGS.includes(s.br)) { s.brn = "1"; s.brd = ""; }
+  else {
+    if (!["1", "2", "3"].includes(s.brn)) s.brn = "1";
+    if (!dispos(brisArms(s)).some(d => d.id === s.brd)) s.brd = "";
+  }
+  s.brsz = num(s.brsz, 30, 250, 100); s.brdx = num(s.brdx, -80, 80, 0); s.brdy = num(s.brdy, -80, 80, 0);
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
   for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
@@ -217,6 +237,13 @@ function canon(a) {
     if (m2.asym) o.ct2 = a.ct2;
     if (m2.couronne) o.cn2 = a.cn2;
   }
+  if (a.br) {
+    Object.assign(o, { br: a.br, tbr: a.tbr });
+    const bp = brisPiece(a);
+    if (bp && bp.sens) o.sbr = a.sbr;
+    if (bp && bp.bord) o.lbr = a.lbr;
+    if (!bp) Object.assign(o, { brn: a.brn, brd: a.brd });
+  }
   return o;
 }
 const canonAll = St => ({ q: St.q, ab: St.ab, A: active(St).map(i => canon(St.A[i])) });
@@ -241,7 +268,7 @@ function semePhrase(c, s) {
   if (m.semeAdj) return m.semeAdj + " " + de(s.tm);
   return `semé de ${c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;                       // « semé de lions d'or armés et lampassés de gueules »
 }
-function blazon(s) {
+function blazonCore(s) {
   let champ;
   if (s.f === "part") {
     const p = DATA.partitions.find(x => x.kind === s.part);
@@ -289,6 +316,17 @@ function blazon(s) {
   }
   return `${champ}${lead}${pieceTxt}${broche}`;
 }
+/* la brisure, dite après les armes pleines : « brisé d'un bâton de gueules péri en bande », « brisé d'un croissant d'argent en chef » */
+function brisTxt(s) {
+  const bp = brisPiece(s), t = de(s.tbr);
+  if (bp) {
+    const bord = s.lbr ? " " + agree(CONTOUR_NOM[s.lbr], bp.g, false) : "";
+    return `${bp.g === "f" ? "d'une" : "d'un"} ${s.br === "baton" ? "bâton" : s.br}${bord} ${t}` + (s.br === "baton" ? ` péri en ${s.sbr}` : s.br === "filet" ? ` en ${s.sbr}` : "");
+  }
+  const arms = brisArms(s), c = charges(arms);
+  return `${c.n === 1 ? (c.g === "f" ? "d'une" : "d'un") + " " + c.nom : "de " + NB[c.n] + " " + c.nomPl}${c.ctr} ${c.tinct}${c.acc}${dph(arms, c)}`;
+}
+const blazon = s => blazonCore(s) + (s.br ? ", brisé " + brisTxt(s) : "");
 const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
 const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
 function blazonAll(St) {
