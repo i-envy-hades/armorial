@@ -676,6 +676,8 @@ function pieceAlesee(kind, pf){
   return null;
 }
 /* line : contour décoré de la pièce (clé de CONTOURS), « alesee », ou rien pour un bord droit */
+/* une croix d'un seul tenant (un seul élément : l'émail, métallique ou non, ne montre aucune couture entre les deux barres) */
+const croixTrace = (cx, cy, h, x0, x1, y0, y1) => `M${cx - h},${y0} H${cx + h} V${cy - h} H${x1} V${cy + h} H${cx + h} V${y1} H${cx - h} V${cy + h} H${x0} V${cy - h} H${cx - h} Z`;
 /* th : l'épaisseur de la croix, en % de la cote ordinaire */
 function pieceInner(kind, pf, line, th){
   th = +th || 100;
@@ -694,8 +696,8 @@ function pieceInner(kind, pf, line, th){
     case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
     case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
     case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
-    case "croix": { const t = 40 * th / 100; inner = `<rect x="${100 - t / 2}" y="0" width="${t}" height="252" fill="${pf}"/><rect x="0" y="${112 - t / 2}" width="200" height="${t}" fill="${pf}"/>`; break; }
-    case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
+    case "croix": { const t = 40 * th / 100; inner = `<path d="${croixTrace(100, 112, t / 2, 0, 200, 0, 252)}" fill="${pf}"/>`; break; }
+    case "sautoir": inner = `<path d="M14,16 L186,230 M186,16 L14,230" fill="none" stroke="${pf}" stroke-width="40"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
     case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
     case "orle": inner = `<path d="${SHIELD_D}" transform="translate(100,122) scale(.74) translate(-100,-122)" fill="none" stroke="${pf}" stroke-width="16"/>`; break;

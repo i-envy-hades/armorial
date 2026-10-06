@@ -254,8 +254,8 @@ function couronneDe(m, tinct) {
   return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
 }
 const croixDeCase = (pf, th) => {
-  const t = 40 * MAP.vpx * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
-  return `<rect x="${x - t / 2}" y="-400" width="${t}" height="900" fill="${pf}"/><rect x="-400" y="${y - t / 2}" width="900" height="${t}" fill="${pf}"/>`;
+  const t = 40 * MAP.px * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
+  return `<path d="${croixTrace(x, y, t / 2, -400, 500, -400, 500)}" fill="${pf}"/>`;
 };
 function drawBody(s, u) {
   let field;
