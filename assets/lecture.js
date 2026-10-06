@@ -103,7 +103,7 @@ function lexique() {
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
   for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui"]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -278,13 +278,19 @@ function pGroupe(P, i) {
   else return rate(P, k === "a" ? i + 1 : i, k === "a" ? "un article (« à la », « au ») ou un nombre (« à trois »)" : "« à » ou « au »");
   const pl = suites(LEX.pieces, P, j)[0];
   if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à six, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
-  const c = pCorps(P, j, undefined, n);
+  const demi = cle(P, j) === "demi";
+  const c = pCorps(P, demi ? j + 1 : j, undefined, n);
   if (!c) return null;
   const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
   let e = d.i;
+  /* un demi-meuble : « à la demi-aigle de sable mouvant du trait du parti » (dit après l'émail et les attributs) */
+  const jm = cle(P, e) === "," ? e + 1 : e, mv = cle(P, jm) === "mouvant" && cle(P, jm + 1) === "du" && cle(P, jm + 2) === "trait" && cle(P, jm + 3) === "du" && cle(P, jm + 4) === "parti";
+  if (mv) e = jm + 5;
+  if (demi !== mv) return erreur(P, P.toks[i].de, P.toks[e - 1].a, "Dans l'Atelier, « demi- » et « mouvant du trait du parti » vont ensemble : « à la demi-aigle de sable mouvant du trait du parti ».");
+  if (demi && (n !== 1 || c.iss)) return erreur(P, P.toks[i].de, P.toks[e - 1].a, "Un demi-meuble mouvant du trait du parti se dit d'un seul meuble, qui n'est pas « issant ».");
   const br = pBrochant(P, e);
   if (br) e = br;
-  return bornes(P, { t: "groupe", n, ...c, d: d.d, dit: d.dit, broche: !!br, i: e }, i);
+  return bornes(P, { t: "groupe", n, ...c, d: d.d, dit: d.dit, broche: !!br, trait: mv, i: e }, i);
 }
 /* « semé de fleurs de lis d'or » · « billeté d'or » · « besanté d'or » */
 function pSeme(P, i) {
@@ -506,7 +512,7 @@ function pArmes(P) {
 }
 
 /* ---------- de l'analyse aux armes de l'Atelier ---------- */
-const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.iss ? "1" : "", d: o.d || "" });
+const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", d: o.d || "" });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
 const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
@@ -586,7 +592,7 @@ function verifie(P, a, src, lieu) {
     else if (key === "pf") mets(src.p, `L'Atelier ne sait pas border ${art(a.p, PIECES[a.p].g)}${a.p} d'un filet.`);
     else if (key === "d") mets(src.m, `Cette disposition n'est pas possible ici dans l'Atelier (possibles : ${dispos(a).map(d => d.lab.toLowerCase()).join(" ; ") || "aucune"}).`);
     else if (key === "d2") mets(src.m2, `Cette disposition n'est pas possible dans l'Atelier (possibles : ${(PLEIN[a.nb2] || []).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
-    else if (key === "iss") mets(src.m, "Dans l'Atelier, « issant » ne se dit que d'un seul meuble, sans pièce : il sort de la pointe de l'écu.");
+    else if (key === "iss") mets(src.m, src.m && src.m.trait ? "Dans l'Atelier, un demi-meuble mouvant du trait du parti se dit d'un seul meuble, sans pièce." : "Dans l'Atelier, « issant » ne se dit que d'un seul meuble, sans pièce : il sort de la pointe de l'écu.");
     else if (key === "br") mets(src.bris, `L'Atelier ne brise qu'avec une bordure, un bâton, un filet, un canton, un franc-quartier ou l'une de ces figures : ${BRIS_FIGS.map(k => meuble(k).plur).join(", ")}.`);
     else if (key === "brn") mets(src.bris, "L'Atelier ne pose en brisure qu'une, deux ou trois figures.");
     else if (key === "brd") mets(src.bris, `Cette disposition n'est pas possible pour une brisure dans l'Atelier (possibles : ${dispos(brisArms(a)).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
@@ -670,29 +676,35 @@ function lire(texte) {
   } else if (toks[0].w === "sur" && toks[1] && toks[1].w === "le" && toks[2] && toks[2].w === "tout") {
     res.erreurs.push({ de: toks[0].de, a: toks[2].a, msg: "« sur le tout » vient après les armes de l'écu, pas avant." });
   }
-  const quartele = main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":";
+  const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
+  /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
+  const parti = !!(main[0] && main[0].w === "parti" && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
+  const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
+  const NQ = parti ? 2 : 4;
   const etat = { q: "", ab: "", A: ADEFS.map(a => ({ ...a })) };
   if (!res.erreurs.length && quartele) {
     const segs = [[]];
     /* les quartiers se séparent d'un point-virgule, ou d'une virgule devant « aux 2 et 3 », « en 2 et 3 » */
-    const reste = main.slice(2);
+    const reste = main.slice(parti && estLabel(1) ? 1 : 2);
     reste.forEach((t, x) => {
-      const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && reste[x + 1] && ["au", "aux", "en"].includes(reste[x + 1].w) && reste[x + 2] && reste[x + 2].k === "n"));
+      const sui = reste[x + 1], etiq = sui && ["au", "aux", "en"].includes(sui.w) && reste[x + 2] && reste[x + 2].k === "n";
+      const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && etiq)) || (parti && t.w === "et" && etiq);
       if (coupe) segs.push([]); else segs[segs.length - 1].push(t);
     });
     const quarts = {}, groupes = [];
     segs.forEach((seg, n) => {
       const e = etiquette(seg);
-      if (!e) { const t = seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg: "Chaque quartier commence par son numéro : « aux 1 et 4, … », « au 2, … »." } : { de: texte.length, a: texte.length, msg: "Quartier vide après « ; »." }); return; }
-      const lieu = e.nums.length > 1 ? `Quartiers ${e.nums.join(" et ")}` : `Quartier ${e.nums[0]}`;
+      if (!e) { const t = seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg: parti ? "Chaque moitié commence par son numéro : « au 1, … ; au 2, … »." : "Chaque quartier commence par son numéro : « aux 1 et 4, … », « au 2, … »." } : { de: texte.length, a: texte.length, msg: parti ? "Moitié vide après « ; »." : "Quartier vide après « ; »." }); return; }
+      const lieu = parti ? `Moitié ${e.nums.join(" et ")}` : e.nums.length > 1 ? `Quartiers ${e.nums.join(" et ")}` : `Quartier ${e.nums[0]}`;
       const a = lireArmes(texte, seg.slice(e.i), lieu, res);
       if (!a) return;
-      for (const q of e.nums) { if (!(q >= 1 && q <= 4) || quarts[q]) res.erreurs.push({ de: seg[0].de, a: seg[Math.min(1, seg.length - 1)].a, msg: quarts[q] ? `Le quartier ${q} est donné deux fois.` : `Il n'y a pas de quartier ${q} : l'écartelé en compte quatre.` }); else quarts[q] = a; }
+      for (const q of e.nums) { if (!(q >= 1 && q <= NQ) || quarts[q] || (parti && e.nums.length > 1)) res.erreurs.push({ de: seg[0].de, a: seg[Math.min(1, seg.length - 1)].a, msg: parti ? (quarts[q] ? `La moitié ${q} est donnée deux fois.` : "Un parti compte deux moitiés : « au 1, … ; au 2, … ».") : quarts[q] ? `Le quartier ${q} est donné deux fois.` : `Il n'y a pas de quartier ${q} : l'écartelé en compte quatre.` }); else quarts[q] = a; }
       groupes.push(e.nums.slice().sort().join());
     });
     if (!res.erreurs.length) {
-      const manque = [1, 2, 3, 4].filter(q => !quarts[q]);
-      if (manque.length) res.erreurs.push({ de: main[0].de, a: main[1].a, msg: `Il manque ${manque.length > 1 ? "les quartiers" : "le quartier"} ${manque.join(", ")}.` });
+      const manque = [1, 2, 3, 4].slice(0, NQ).filter(q => !quarts[q]);
+      if (manque.length) res.erreurs.push({ de: main[0].de, a: main[1].a, msg: parti ? `Il manque la moitié ${manque.join(", ")}.` : `Il manque ${manque.length > 1 ? "les quartiers" : "le quartier"} ${manque.join(", ")}.` });
+      else if (parti) { etat.q = "p"; etat.A[0] = quarts[1]; etat.A[1] = quarts[2]; }
       else if (groupes.length === 2 && groupes.includes("1,4") && groupes.includes("2,3")) { etat.q = "2"; etat.A[0] = quarts[1]; etat.A[1] = quarts[2]; }
       else { etat.q = "4"; [1, 2, 3, 4].forEach(q => { etat.A[q - 1] = { ...quarts[q] }; }); }
     }
@@ -704,6 +716,7 @@ function lire(texte) {
     const a = lireArmes(texte, abime, "Écusson", res);
     if (a) { etat.ab = "1"; etat.A[4] = a; }
   }
+  if (!res.erreurs.length) for (const i of active(etat)) if (etat.A[i].iss === "t" && (etat.q !== "p" || i > 1)) res.erreurs.push({ de: 0, a: texte.length, msg: "« demi-… mouvant du trait du parti » ne se dit que d'une moitié d'un parti : « Parti : au 1, … ; au 2, … »." });
   if (res.erreurs.length) return res;
   res.ok = true; res.etat = etat;
   res.reecrit = blazonAll(etat);

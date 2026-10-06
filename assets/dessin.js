@@ -7,6 +7,10 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
+/* un demi-écu du parti (drawParti) : les positions se resserrent de PX, les figures de PK sans se déformer ; HSIDE : 0 dextre, 1 senestre */
+let PX = 1, PK = 1, HSIDE = 0;
+const sq = s => (PX === 1 || !s ? s : `<g transform="translate(${100 * (1 - PX)},0) scale(${PX},1)">${s}</g>`);
+
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
 const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
 const SHRINK = { plein: 1, bordure: .84, orle: .74 };
@@ -18,7 +22,8 @@ const adjust = (pts, a, grp, sfx) => {
 function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
-  if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
+  if (s.iss === "t") pts = [[HSIDE ? 0 : 200, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
+  else if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
   else if (m.seul) pts = [[100, 116, 1]];
   else if (PLEINLIKE.has(ctxOf(s))) { const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : []; }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
@@ -119,7 +124,7 @@ const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
-  if (!["", "2", "4"].includes(St.q)) St.q = "";
+  if (!["", "2", "4", "p"].includes(St.q)) St.q = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
@@ -142,6 +147,7 @@ function normalizeAll(St) {
   St.dv = String(St.dv || "").slice(0, 48);
   if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
+  St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1)) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
 }
@@ -226,7 +232,7 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
-const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => `<g transform="translate(${x},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k},${k}` : k}) translate(-100,-116)">${useFor(m, id)}${over}</g>`).join("");
+const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => `<g transform="translate(${PX === 1 ? x : 100 + (x - 100) * PX},${y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-k * PK},${k * PK}` : k * PK}) translate(-100,-116)">${useFor(m, id)}${over}</g>`).join("");
 /* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
 function couronneDe(m, tinct) {
   if (!m.couronne || !tinct) return "";
@@ -239,6 +245,7 @@ function drawBody(s, u) {
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
   else if (s.f === "ray") field = recoupementInner(s.ray, +s.n, tinctPaint(s.t1), tinctPaint(s.t2));
   else field = `<rect width="200" height="252" fill="${tinctPaint(s.t1)}"/>`;
+  field = sq(field);
   const m = s.m && meuble(s.m), m2 = count2(s) && meuble(s.m2);
   let defs = "", under = "", over = "";
   if (m) {
@@ -252,11 +259,12 @@ function drawBody(s, u) {
   }
   let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
+  piece = sq(piece);
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";
   if (s.br) {
-    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = l.body; }
-    else if (brisPiece(s)) bris = pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr);
+    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body); }
+    else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr));
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
   return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + bris };
@@ -285,7 +293,7 @@ function quarterGeom() {
   const rects = [[0, 0, 100, split], [100, 0, 100, split], [0, split, 100, 252 - split], [100, split, 100, 252 - split]];
   return QGEO[SHIELD_D] = { split, q: acc.map(([sx, sy, n], i) => ({ cx: sx / n, cy: sy / n, rect: rects[i] })) };
 }
-const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : [0, 1, 2, 3];
+const quarterArms = St => St.q === "2" ? [0, 1, 1, 0] : St.q === "p" ? [0, 1] : [0, 1, 2, 3];
 /* deux couches par quartier : le champ et la pièce étirés pour couvrir tout le quartier, puis les armes entières
    à demi-taille, centrées sur le barycentre de la partie visible (la pointe ne rogne plus les meubles du bas) */
 function qCover(g) {
@@ -312,10 +320,25 @@ const SHAPES = {
   pl17: { nom: "Polonais, à échancrures", d: "M100,22 C84,26 48,24 22,12 C26,34 42,50 42,62 C34,70 32,84 42,94 C26,102 16,120 18,140 C20,190 62,222 100,240 C138,222 180,190 182,140 C184,120 174,102 158,94 C168,84 166,70 158,62 C158,50 174,34 178,12 C152,24 116,26 100,22 Z" },
   pl19: { nom: "Polonais, sommet en coin", d: "M18,12 C50,28 150,28 182,12 C186,96 150,192 100,242 C50,192 14,96 18,12 Z" },
 };
+/* parti : deux moitiés, chacune avec ses armes entières resserrées de moitié (champ et pièce comprimés, meubles repositionnés mais non déformés) */
+const PARTI_PX = .5, PARTI_PK = .8;
+function drawParti(St, u, ab) {
+  let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
+  [0, 1].forEach(i => {
+    PX = PARTI_PX; PK = PARTI_PK; HSIDE = i;
+    let r;
+    try { r = drawBody(St.A[i], `${u}h${i}`); } finally { PX = 1; PK = 1; HSIDE = 0; }
+    defs += r.defs + `<clipPath id="qr-${u}${i}"><rect x="${i * 100}" y="0" width="100" height="252"/></clipPath>`;
+    body += `<g clip-path="url(#qr-${u}${i})"><g transform="translate(${i ? 50 : -50},0)">${r.body}</g></g>`;
+  });
+  body += `<path d="M100,0V252" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
+}
 function drawShield(St, u) {
   SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
   const ab = St.ab ? abime(St, u) : "";
   if (!St.q) return draw(St.A[0], u, ab);
+  if (St.q === "p") return drawParti(St, u, ab);
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {

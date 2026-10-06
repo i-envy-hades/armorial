@@ -80,6 +80,7 @@ function syncForm() {
   $("#r-ta").hidden = !m || !m.accent;
   $("#r-cn").hidden = !m || !m.couronne;
   $("#r-iss").hidden = !m || m.seul || a.nb !== "1" || !!a.p;                                   // « issant » : un seul meuble, sans pièce
+  [...F.elements.iss].forEach(r => { if (r.value === "t") r.closest("label").hidden = !(S.q === "p" && CUR < 2); });          // le demi-meuble : seulement dans une moitié du parti
   if (m?.accentMot) $("#l-ta").textContent = m.accentLabel || cap(m.accentMot.split(/[ ,]/)[0]);
   const note = $("#m-note");
   note.hidden = !m?.file;
@@ -177,8 +178,11 @@ function decode(h) {
 function marker() {
   if (!/^[12]\.\d$/.test(KT)) return "";
   const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
+  HSIDE = S.q === "p" && CUR < 2 ? CUR : 0;
   const p = (g === 1 ? ptsFor(a, m) : pts2(a))[i];
+  HSIDE = 0;
   if (!p) return "";
+  if (S.q === "p" && CUR < 2) return `<circle cx="${(CUR ? 50 : -50) + 100 + (p[0] - 100) * PARTI_PX}" cy="${p[1]}" r="${Math.max(8, 82 * p[2] * PARTI_PK)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`;
   const spots = CUR === 4 ? [[100 - 100 * AB_K, 126 - 126 * AB_K, AB_K]]               // dans l'écusson en abîme
     : !S.q ? [[0, 0, 1]] : quarterArms(S).map((ai, qi) => ai === CUR ? qOrigin(quarterGeom().q[qi]) : null).filter(Boolean);
   return spots.map(([ox, oy, k]) => `<circle cx="${ox + p[0] * k}" cy="${oy + p[1] * k}" r="${Math.max(8, 82 * p[2] * k)}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`).join("");
@@ -299,6 +303,8 @@ const EXEMPLES = [
   ["Brisé d'un bâton", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "baton", tbr: "Gueules", sbr: "barre" } }],
   ["Lambel", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Argent" } }],
   ["Lambel chargé", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Gueules", lpn: "5", lpc: "roundel", lpt: "Or", lpk: "2" } }],
+  ["Parti", { q: "p", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A1: { t1: "Gueules", m: "leopard", nb: "3", tm: "Or", ta: "Azur", d: "pal", p: "" } }],
+  ["Demi-aigle au parti", { q: "p", A0: { t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules", iss: "t", p: "" }, A1: { t1: "Gueules", m: "clef", nb: "1", tm: "Or", p: "" } }],
 ];
 function example(ex) {
   const St = fresh();
@@ -486,6 +492,7 @@ function afficheOrigine() {
     if (t.id === "lire") { clearTimeout(lireT); lireT = setTimeout(lireLeChamp, 450); return; }
     if (t.id === "reel") { if (e.type === "change" && t.value && CARTES && CARTES[+t.value]) partirDe(CARTES[+t.value]); return; }
     if (t.name === "cur") { CUR = +t.value; KT = "1"; syncForm(); render(); return; }
+    if (t.name === "q") { readForm(); S = normalizeAll(S); syncForm(); render(); return; }      // le quartier modifi\u00e9 peut dispara\u00eetre : le formulaire montre alors les armes de l'\u00e9cu avant que l'\u00e9v\u00e9nement « change » ne le relise
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
     if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
