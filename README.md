@@ -241,7 +241,9 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    La Galicie-Lodomérie attend une fasce « accompagnée en chef d'un… et en pointe de… » (deux meubles différents) ; la crosse de Bâle-Campagne porte sur l'image sept crabbes que son blasonnement ne dit pas.
 3. ~~**Épaisseur par défaut**~~ — fait (octobre 2026) : fasce, chef, pal, bande et barre ont le tiers de l'écu, comme le disent les traités
    (Wikipédia, « Pièce (héraldique) ») ; meubles posés dessus ou autour recalés. La croix, le sautoir et le chevron gardent leur cote. « Fascé de quatre pièces » se lit.
-4. **Pal par défaut** pour d'autres bêtes passantes (cerf, ours, loup, sanglier, bélier) : aujourd'hui seuls le lion passant et le léopard le font. À trancher.
+4. ~~**Pal par défaut**~~ — tranché (octobre 2026) : seuls le lion passant et le léopard se posent en pal sans qu'on le dise ; pour tout autre meuble,
+   « en pal » reste une disposition au choix (de deux à cinq meubles), et une figure allongée s'y dessine à pleine largeur sans mordre sur sa voisine
+   (taille réglée sur sa hauteur réelle). Le taureau et le poisson sont devenus des figures allongées.
 5. **Boutons « Exemples »** de l'Atelier : les 31 sont à rafraîchir avec les outils récents (bordure en case, épaisseur de la croix, clef).
 6. **Lambel sur un écartelé** : l'Atelier le pose par case ; les armes réelles (Prince Noir) le portent sur tout l'écu.
 7. **Encyclopédie, croix alésée** : les schémas sont encore faits de deux rectangles, d'où une couture visible sous un émail métallique.

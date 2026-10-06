@@ -22,6 +22,23 @@ const adjust = (pts, a, grp, sfx) => {
   const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
   return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, r]; });
 };
+/* la hauteur, dans le repère de l'écu, d'une figure empruntée à l'échelle 1 (sa boîte la contient sans la déformer) ; null pour un dessin de l'encyclopédie */
+/* mesurée une fois dans le SVG caché #measure (les marges vides du fichier n'y comptent pas) ; à défaut, d'après le viewBox */
+const HFIG = {};
+function hauteurFigure(m) {
+  if (!m.file || !SVGTXT[m.kind]) return null;
+  if (m.kind in HFIG) return HFIG[m.kind];
+  const [w, h] = m.file.vb ? m.file.vb.slice(2) : vbOf(SVGTXT[m.kind]);
+  let H = Math.min(m.box[3], m.box[2] * h / w);
+  const g = $("#measure g");
+  if (g) {
+    const id = `hf-${m.kind}`;
+    g.innerHTML = `<defs>${fileSymbol(SVGTXT[m.kind], id, "#000", null, m.file.vb)}</defs>${useFor(m, id)}`;
+    try { const b = g.querySelector("use").getBBox(); if (b.height > 1) H = b.height; } catch (e) { /* pas de mise en page : le viewBox suffit */ }
+    g.innerHTML = "";
+  }
+  return HFIG[m.kind] = H;
+}
 function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
@@ -31,7 +48,12 @@ function ptsFor(s, m) {
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
     if (d && m.allongee) {      // un meuble allongé (léopard) : en pal à pleine largeur, et rapprochés verticalement quand ils sont trois
-      if (d.pal || d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .9, Math.min(.9, sc * 3) * (MAP ? 1.4 : 1), r]);
+      if (d.pal || d.id === "pal") {
+        pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .9, Math.min(.9, sc * 3) * (MAP ? 1.4 : 1), r]);
+        /* une figure haute (cerf, bélier) ne doit pas mordre sur sa voisine : sa taille se règle sur sa hauteur réelle et l'écart entre les deux */
+        const H = hauteurFigure(m), pas = pts.length > 1 ? Math.abs(pts[1][1] - pts[0][1]) : 0;
+        if (H && pas) pts = pts.map(([x, y, sc, r]) => [x, y, Math.min(sc, 1.1 * pas / H * (MAP ? MAP.fpy / MAP.pk : 1)), r]);
+      }
       else if (+s.nb === 3 && (d.id === "" || d.id === "base" || d.id === "mal")) pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .72, sc * .92, r]);
     }
   }
