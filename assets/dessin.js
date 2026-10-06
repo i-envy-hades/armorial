@@ -128,7 +128,7 @@ const DEVISES = {
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -317,7 +317,14 @@ function drawBody(s, u) {
   field = sq(field);
   const m = s.m && meuble(s.m), m2 = count2(s) && meuble(s.m2);
   let defs = "", under = "", over = "";
-  if (m) {
+  if (m && s.cc) {
+    /* « de l'un en l'autre » : les meubles deux fois, de chacun des émaux du champ, chaque fois masqués par la part de l'autre émail */
+    const pts = ptsFor(s, m), part = k => sq(partitionInner(s.part, k ? ["#000", "#fff"] : ["#fff", "#000"], true));
+    defs += symbolFor({ ...s, tm: s.t2, ta: s.ta || s.t2 }, `chg-${u}`) + symbolFor({ ...s, tm: s.t1, ta: s.ta || s.t1 }, `chgx-${u}`)
+      + [0, 1].map(k => `<mask id="cc${k}-${u}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${part(k)}</mask>`).join("");
+    const g = `<g mask="url(#cc0-${u})">${placeAll(pts, m, `chg-${u}`, s.ct, couronneDe(m, s.cn))}</g><g mask="url(#cc1-${u})">${placeAll(pts, m, `chgx-${u}`, s.ct, couronneDe(m, s.cn))}</g>`;
+    if (s.nb === "seme") under = g; else over = g;
+  } else if (m) {
     defs += symbolFor(s, `chg-${u}`);
     const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct, couronneDe(m, s.cn));
     if (s.nb === "seme") under = g; else over = g;

@@ -155,8 +155,9 @@ function shieldPartition(kind, tinc){
     ${shieldFinish()}
   </svg>`;
 }
-function partitionInner(kind, tinc){
-  const a = tinctPaint(tinc[0]), b = tinctPaint(tinc[1]), c = tinc[2]?tinctPaint(tinc[2]):a;
+/* brut : les remplissages sont donnés tels quels (couleurs d'un masque, par exemple), non des noms d'émaux */
+function partitionInner(kind, tinc, brut){
+  const P = brut ? (x => x) : tinctPaint, a = P(tinc[0]), b = P(tinc[1]), c = tinc[2]?P(tinc[2]):a;
   let inner = "";
   switch(kind){
     case "parti": inner = `<rect x="0" y="0" width="100" height="252" fill="${a}"/><rect x="100" y="0" width="100" height="252" fill="${b}"/>`; break;

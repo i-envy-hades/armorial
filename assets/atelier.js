@@ -74,7 +74,8 @@ function syncForm() {
   $("#r-ct2").hidden = !(m2 && m2.asym);
   $("#r-nb").hidden = !m || cs.length < 2;
   $("#r-d").hidden = !m || m.seul || ds.length < 2;
-  $("#r-tm").hidden = !m;
+  $("#r-tm").hidden = !m || !!a.cc;
+  $("#r-cc").hidden = !ccPossible(a);                                         // « de l'un en l'autre » : sur un champ partagé de deux émaux
   const canSur = a.p && LAYOUT["sur-" + a.p], canAut = a.p && LAYOUT[a.p], canSous = a.p && BRO_OK.has(a.p) && a.nb !== "seme";
   $("#r-pos").hidden = !m || !a.p || [canSur, canAut, canSous].filter(Boolean).length < 2;
   [...F.elements.pos].forEach(r => { r.closest("label").hidden = !{ sur: canSur, autour: canAut, sous: canSous }[r.value]; });
@@ -514,6 +515,9 @@ function afficheOrigine() {
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
     if (/^k-p(dx|dy|th)$/.test(t.id)) { const a = cur(); a.pdx = $("#k-pdx").value; a.pdy = String(-$("#k-pdy").value); a.pth = $("#k-pth").value; render(); return; }
     if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
+    /* on passe au contre-changé : l'attribut le suit (« du même »), sauf si l'on choisit ensuite un émail. Le menu envoie « input » puis « change » :
+       on ne relit pas tout le formulaire, dont les émaux cochés ne sont pas encore à jour */
+    if (t.name === "cc") { const a = cur(); if (t.value && !a.cc) a.ta = ""; a.cc = t.value; render(); return; }
     readForm(); render();
   };
   F.addEventListener("input", onInput);
