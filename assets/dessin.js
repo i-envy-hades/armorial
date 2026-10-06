@@ -259,6 +259,7 @@ function drawBody(s, u) {
   }
   let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
+  if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${+s.pdx},${+s.pdy})">${piece}</g>`;
   piece = sq(piece);
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";

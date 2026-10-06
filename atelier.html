@@ -116,6 +116,11 @@
       <div class="row" id="r-tp"><span class="lab">Émail</span><div class="chips" data-name="tp"></div></div>
       <div class="row" id="r-ln"><span class="lab">Bord</span><select name="ln" aria-label="Bord de la pièce"></select></div>
       <div class="row" id="r-pf"><span class="lab">Filet</span><select name="pf" aria-label="Pièce bordée d'un filet d'un autre émail"></select></div>
+      <div class="sub" id="r-pj">
+        <div class="row"><span class="lab">Gauche ↔ droite</span><input type="range" id="k-pdx" min="-80" max="80" step="1" aria-label="Décalage horizontal de la pièce"><output id="o-pdx"></output></div>
+        <div class="row"><span class="lab">Bas ↕ haut</span><input type="range" id="k-pdy" min="-80" max="80" step="1" aria-label="Décalage vertical de la pièce"><output id="o-pdy"></output></div>
+        <p class="note">Réglage graphique : il ne modifie pas le blasonnement. <button type="button" class="lnk" id="b-preset">Remettre à zéro</button></p>
+      </div>
     </fieldset>
     <fieldset>
       <legend>Les meubles</legend>
