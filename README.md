@@ -239,8 +239,8 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    Restent des mots que l'Atelier ne connaît pas — tenants et supports, devises, écusson, saint Georges, « à cheval » — ou des armes à étages (Russie, Danemark, Belgique…).
    Figures cherchées sans succès sur Commons : bélier saillant (Schaffhouse), rencontre de bœuf bouclé (Uri), ciboire de licence compatible (Galice), branche d'épine (Carafa).
    La Galicie-Lodomérie attend une fasce « accompagnée en chef d'un… et en pointe de… » (deux meubles différents) ; la crosse de Bâle-Campagne porte sur l'image sept crabbes que son blasonnement ne dit pas.
-3. **Épaisseur par défaut** de la fasce, du pal et de la bande : environ 21 % de l'écu ici, près d'un tiers sur Commons. À trancher. Les fascé de quatre pièces (Hohenberg)
-   ne se lisent pas : le lecteur n'accepte « fascé » qu'à partir de cinq.
+3. ~~**Épaisseur par défaut**~~ — fait (octobre 2026) : fasce, chef, pal, bande et barre ont le tiers de l'écu, comme le disent les traités
+   (Wikipédia, « Pièce (héraldique) ») ; meubles posés dessus ou autour recalés. La croix, le sautoir et le chevron gardent leur cote. « Fascé de quatre pièces » se lit.
 4. **Pal par défaut** pour d'autres bêtes passantes (cerf, ours, loup, sanglier, bélier) : aujourd'hui seuls le lion passant et le léopard le font. À trancher.
 5. **Boutons « Exemples »** de l'Atelier : les 31 sont à rafraîchir avec les outils récents (bordure en case, épaisseur de la croix, clef).
 6. **Lambel sur un écartelé** : l'Atelier le pose par case ; les armes réelles (Prince Noir) le portent sur tout l'écu.

@@ -480,8 +480,8 @@ function shieldPieceAlesee(kind, champ, piece, alesee){
       : `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`;
   } else if(kind==="bande"){
     inner = alesee
-      ? `<line x1="48" y1="68" x2="152" y2="184" stroke="${pf}" stroke-width="32" stroke-linecap="round"/>`
-      : `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`;
+      ? `<line x1="48" y1="68" x2="152" y2="184" stroke="${pf}" stroke-width="40" stroke-linecap="round"/>`
+      : `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="55"/>`;
   }
   return `<svg viewBox="${VB}" width="120" role="img" aria-label="${kind}${alesee?' alésé':''}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
@@ -659,7 +659,7 @@ function motifsAnneau(morceaux, m){
 /* le tracé d'une pièce à bords décorés (ou null si on ne sait pas la décorer) ; mêmes cotes que pieceInner */
 function pieceDecoree(kind, line, th = 100, wf = 1, geo = null){      // wf : réduction d'une case de parti ; geo : centre et longueur des bras de la croix d'une case
   const S = CONTOURS[line];
-  const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12, cotice: 23 }[kind];
+  const largeur = { chef: 73, fasce: 73, pal: 55, bande: 55, barre: 55, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12, cotice: 23 }[kind];
   if(!S || !largeur) return null;
   const a0 = Math.min(9, Math.max(4, .2 * largeur)), a = a0 * S.h * wf, per = a0 * S.l * wf;
   if(kind === "bordure" || kind === "orle"){
@@ -680,12 +680,12 @@ function pieceDecoree(kind, line, th = 100, wf = 1, geo = null){      // wf : r�
     return (kind === "bordure" ? SHIELD_D : "") + anneaux.map((r, i) => trace(r, i === 0 && kind === "orle" ? 1 : (S.par ? 1 : -1))).join("");
   }
   const forme = {
-    chef: () => ({ V: [[-30, -30], [230, -30], [230, 78], [-30, 78]], flags: [false, false, true, false] }),
-    fasce: () => bandePoly([0, 130], [200, 130], 26, 30),
-    pal: () => bandePoly([100, 0], [100, 252], 26, 30),
-    bande: () => bandePoly([6, 6], [200, 252], 23, 40),
+    chef: () => ({ V: [[-30, -30], [230, -30], [230, 89], [-30, 89]], flags: [false, false, true, false] }),
+    fasce: () => bandePoly([0, 130], [200, 130], 36.5, 30),
+    pal: () => bandePoly([100, 0], [100, 252], 27.5, 30),
+    bande: () => bandePoly([6, 6], [200, 252], 27.5, 40),
     cotice: () => bandePoly([6, 6], [200, 252], 11.5, 40),
-    barre: () => bandePoly([194, 6], [0, 252], 23, 40),
+    barre: () => bandePoly([194, 6], [0, 252], 27.5, 40),
     croix: () => branchesPoly(geo ? geo.c : [100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20 * th / 100 * wf, geo ? geo.ext : 170),
     sautoir: () => branchesPoly([100, 123], SAUTOIR_DIRS, 20, 190),
     chevron: () => branchesPoly([100, 96], [[70, 100], [-70, 100]], 17, 160),
@@ -699,10 +699,10 @@ function pieceDecoree(kind, line, th = 100, wf = 1, geo = null){      // wf : r�
 /* pièce alésée : raccourcie, elle ne touche plus les bords de l'écu (les mêmes cotes que la pièce « au vif », ramenées à l'intérieur) */
 function pieceAlesee(kind, pf){
   switch(kind){
-    case "fasce": return `<rect x="38" y="104" width="124" height="52" fill="${pf}"/>`;
-    case "pal": return `<rect x="74" y="44" width="52" height="170" fill="${pf}"/>`;
-    case "bande": return `<line x1="50" y1="68" x2="150" y2="190" stroke="${pf}" stroke-width="40"/>`;
-    case "barre": return `<line x1="150" y1="68" x2="50" y2="190" stroke="${pf}" stroke-width="40"/>`;
+    case "fasce": return `<rect x="38" y="93.5" width="124" height="73" fill="${pf}"/>`;
+    case "pal": return `<rect x="72.5" y="44" width="55" height="170" fill="${pf}"/>`;
+    case "bande": return `<line x1="50" y1="68" x2="150" y2="190" stroke="${pf}" stroke-width="48"/>`;
+    case "barre": return `<line x1="150" y1="68" x2="50" y2="190" stroke="${pf}" stroke-width="48"/>`;
     case "chevron": return `<path d="M44,184 L100,104 L156,184" fill="none" stroke="${pf}" stroke-width="30"/>`;
     case "sautoir": return `<line x1="52" y1="60" x2="148" y2="192" stroke="${pf}" stroke-width="34"/><line x1="148" y1="60" x2="52" y2="192" stroke="${pf}" stroke-width="34"/>`;
   }
@@ -723,12 +723,13 @@ function pieceInner(kind, pf, line, th){
   }
   let inner = "";
   switch(kind){
-    case "chef": inner = `<rect x="0" y="16" width="200" height="62" fill="${pf}"/>`; break;
-    case "fasce": inner = `<rect x="0" y="104" width="200" height="52" fill="${pf}"/>`; break;
-    case "pal": inner = `<rect x="74" y="0" width="52" height="252" fill="${pf}"/>`; break;
-    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    /* chef, fasce, pal, bande, barre : le tiers de l'écu (220 de haut, 164 de large), comme le disent les traités (Wikipédia, « Pièce (héraldique) ») */
+    case "chef": inner = `<rect x="0" y="16" width="200" height="73" fill="${pf}"/>`; break;
+    case "fasce": inner = `<rect x="0" y="93.5" width="200" height="73" fill="${pf}"/>`; break;
+    case "pal": inner = `<rect x="72.5" y="0" width="55" height="252" fill="${pf}"/>`; break;
+    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="55"/>`; break;
     case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
-    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
+    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="55"/>`; break;
     case "croix": { const t = 40 * th / 100; inner = `<path d="${croixTrace(100, 112, t / 2, 0, 200, 0, 252)}" fill="${pf}"/>`; break; }
     case "sautoir": inner = `<path d="M14,16 L186,230 M186,16 L14,230" fill="none" stroke="${pf}" stroke-width="40"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
