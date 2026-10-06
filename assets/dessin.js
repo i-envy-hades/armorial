@@ -31,8 +31,8 @@ function ptsFor(s, m) {
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
     if (d && m.allongee) {      // un meuble allongé (léopard) : en pal à pleine largeur, et rapprochés verticalement quand ils sont trois
-      if (d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .85, sc * 1.75 * (MAP ? 1.4 : 1), r]);
-      else if (+s.nb === 3 && (d.id === "" || d.id === "mal")) pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .72, sc * .92, r]);
+      if (d.pal || d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .85, sc * 1.75 * (MAP ? 1.4 : 1), r]);
+      else if (+s.nb === 3 && (d.id === "" || d.id === "base" || d.id === "mal")) pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .72, sc * .92, r]);
     }
   }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];

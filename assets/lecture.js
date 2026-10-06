@@ -94,7 +94,7 @@ function lexique() {
   L.dispos = {};
   /* « posés en pal » = « rangés en pal » = « en pal » : le verbe ne change rien au dessin */
   const variantes = ph => { const m = ph.match(/^(posé|rangé) (en .+)$/); return m ? [ph, "posé " + m[2], "rangé " + m[2], m[2]] : [ph]; };
-  for (const [n, ds] of Object.entries(PLEIN)) L.dispos[n] = table(ds.filter(d => d.ph.trim()).flatMap(d => [...new Set([d.ph, ...(d.alt || [])].flatMap(ph => variantes(ph.trim())).flatMap(quatre))].map(f => [f, d.id])));
+  for (const [n, ds] of Object.entries(PLEIN)) L.dispos[n] = table(ds.filter(d => d.ph.trim() || (d.alt || []).length).flatMap(d => [...new Set([d.ph, ...(d.alt || [])].filter(ph => ph.trim()).flatMap(ph => variantes(ph.trim())).flatMap(quatre))].map(f => [f, d.id])));
   L.ctr = table(quatre("contourné").map(f => [f, true]));
   L.borde = table(quatre("bordé").map(f => [f, true]));
   L.coure = table(quatre("couronné").map(f => [f, true]));
@@ -514,7 +514,9 @@ function pArmes(P) {
 }
 
 /* ---------- de l'analyse aux armes de l'Atelier ---------- */
-const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", d: o.d || "" });
+/* la disposition lue : pour des léopards, « en pal » est la disposition qu'on ne dit pas, et « 2 et 1 » se dit (« base ») */
+const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
+const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
 const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
@@ -613,14 +615,14 @@ function verifie(P, a, src, lieu) {
   /* réserves : ce que le texte ne dit pas et que l'Atelier a dû fixer */
   const note = t => P.notes.push((lieu ? lieu + " : " : "") + t);
   const plur = (mm, o) => mm.kind === "roundel" ? (classe(o.tm) === "Métal" ? "besants" : "tourteaux") : mm.plur;
-  const place = (o, mm, n) => {
-    if (!o || o.seme || o.dit || !PLEIN[n]) return;
+  const place = (o, mm, n, premier) => {
+    if (!o || o.seme || o.dit || !PLEIN[n] || (premier && mm.palDefaut && (n === 2 || n === 3))) return;
     const d0 = PLEIN[n][0], pal = mm.allongee && PLEIN[n].some(d => d.id === "pal") ? " (dites « posés en pal » s'ils sont l'un sur l'autre)" : "";
     if (d0.ph.trim() || pal) note(`disposition non précisée pour ${NB[n]} ${plur(mm, o)} : l'Atelier les pose ${d0.lab.toLowerCase()}${pal}.`);
   };
-  if (dispos(b).length) place(src.m, m, +b.nb);
+  if (dispos(b).length) place(src.m, m, +b.nb, true);
   if (b.m2) place(src.m2, m2, +b.nb2);
-  if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn);
+  if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn, true);
   for (const [o, mm] of [[src.m, m], [src.m2, m2]]) {
     if (!o || !mm || o.ta || !(mm.accentFixe || mm.accentTrait)) continue;
     note(`${cap(art(mm.sing, mm.g))}${mm.sing} n'est pas dite « ${mm.accentFixe ? mm.accentMot : agree(mm.accentMot, mm.g, false)} » : l'Atelier la dessine ainsi dans tous les cas, de l'émail du meuble faute d'indication.`);

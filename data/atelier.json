@@ -41,7 +41,7 @@
    ]
   },
   {
-   "kind": "lion-passant",
+   "kind": "lion-passant", "palDefaut": true,
    "nom": "Lion passant (léopardé)",
    "sing": "lion passant",
    "plur": "lions passants",
@@ -86,7 +86,7 @@
    ]
   },
   {
-   "kind": "leopard",
+   "kind": "leopard", "palDefaut": true,
    "nom": "Léopard (lion passant guardant)",
    "sing": "léopard",
    "plur": "léopards",
