@@ -25,12 +25,15 @@ const adjust = (pts, a, grp, sfx) => {
 function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
-  if (s.iss === "t") pts = [[HSIDE ? 0 : 200, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
+  if (s.iss === "t") pts = [[100 + ((HSIDE ? -50 : 50) - MAP.shx) / MAP.vpx, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
   else if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
   else if (m.seul) pts = [[100, 116, 1]];
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
-    if (d && d.id === "pal" && m.allongee) pts = pts.map(([x, y, sc, r]) => [x, y, sc * 1.5, r]);      // un meuble allongé (léopard) se range en pal à pleine largeur
+    if (d && m.allongee) {      // un meuble allongé (léopard) : en pal à pleine largeur, et rapprochés verticalement quand ils sont trois
+      if (d.id === "pal") pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .85, sc * 1.75 * (MAP ? 1.4 : 1), r]);
+      else if (+s.nb === 3 && (d.id === "" || d.id === "mal")) pts = pts.map(([x, y, sc, r]) => [x, 116 + (y - 116) * .72, sc * .92, r]);
+    }
   }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
@@ -240,7 +243,7 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
 const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => {
-  const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.vpy + MAP.shy : y, K = MAP ? k * MAP.pk : k;
+  const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk : k;
   return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
 }).join("");
 /* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
@@ -250,6 +253,10 @@ function couronneDe(m, tinct) {
   const inner = chargeInner("couronne", tinctPaint(tinct), tinct === "Sable" ? "#6b6560" : ink, ink).replace(/stroke-width="1\.4"/g, `stroke-width="${(1.3 / k).toFixed(2)}"`);
   return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
 }
+const croixDeCase = pf => {
+  const t = 40 * MAP.vpx, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
+  return `<rect x="${x - t / 2}" y="-400" width="${t}" height="900" fill="${pf}"/><rect x="-400" y="${y - t / 2}" width="900" height="${t}" fill="${pf}"/>`;
+};
 function drawBody(s, u) {
   let field;
   if (s.f === "part") field = partitionInner(s.part, [s.t1, s.t2, s.t3]);
@@ -267,10 +274,11 @@ function drawBody(s, u) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
     over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
-  let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
-  if (piece && s.pf) piece = filetDe(piece, flat(s.pf), 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
-  if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${+s.pdx},${+s.pdy})">${piece}</g>`;
-  piece = sq(piece, 1);
+  const croixCase = MAP && s.p === "croix" && !s.ln;      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
+  let piece = s.p ? (croixCase ? croixDeCase(tinctPaint(s.tp)) : pieceInner(s.p, tinctPaint(s.tp), s.ln)) : "";
+  if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
+  if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
+  if (!croixCase) piece = sq(piece, 1);
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";
   if (s.br) {
@@ -359,10 +367,10 @@ function cellGeom(rect) {
 const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0, g.x1]; };
 const HALF_PK = .8, SUB_PK = .3;
 function partiMap(c) {
-  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
-  if (c.q === undefined) return m;
+  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
+  if (c.q === undefined) return Object.assign(m, { shx: cellGeom(c.rect).cx - cx });      // une moitié se centre en largeur sur ce qu'on en voit
   const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
-  return Object.assign(m, { vpx: g.w / 200, vpy: g.h / 252, pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
+  return Object.assign(m, { vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
 }
 /* parti : chaque case reçoit ses armes entières resserrées à sa taille ; une moitié écartelée montre ses quatre quartiers */
 function drawParti(St, u, ab) {
