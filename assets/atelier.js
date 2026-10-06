@@ -125,6 +125,8 @@ function syncForm() {
     $("#k-pdx").value = a.pdx; $("#k-pdy").value = -a.pdy;
     $("#o-pdx").textContent = +a.pdx ? (a.pdx > 0 ? "→ " : "← ") + Math.abs(a.pdx) : "0";
     $("#o-pdy").textContent = +a.pdy ? (a.pdy < 0 ? "↑ " : "↓ ") + Math.abs(a.pdy) : "0";
+    $("#r-pth").hidden = a.p !== "croix";
+    $("#k-pth").value = a.pth; $("#o-pth").textContent = a.pth + " %";
   }
   syncAdj();
 }
@@ -503,14 +505,14 @@ function afficheOrigine() {
     if (t.name === "q" || t.name === "h1" || t.name === "h2") { readForm(); S = normalizeAll(S); syncForm(); render(); return; }      // des armes peuvent disparaître : le formulaire montre alors celles qui restent avant que l'événement « change » ne le relise
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
-    if (/^k-p(dx|dy)$/.test(t.id)) { const a = cur(); a.pdx = $("#k-pdx").value; a.pdy = String(-$("#k-pdy").value); render(); return; }
+    if (/^k-p(dx|dy|th)$/.test(t.id)) { const a = cur(); a.pdx = $("#k-pdx").value; a.pdy = String(-$("#k-pdy").value); a.pth = $("#k-pth").value; render(); return; }
     if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
     readForm(); render();
   };
   F.addEventListener("input", onInput);
   F.addEventListener("change", onInput);
   $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0]); render(); });
-  $("#b-preset").addEventListener("click", () => { Object.assign(cur(), { pdx: "0", pdy: "0" }); render(); });
+  $("#b-preset").addEventListener("click", () => { Object.assign(cur(), { pdx: "0", pdy: "0", pth: "100" }); render(); });
   $("#b-brreset").addEventListener("click", () => { Object.assign(cur(), { brsz: "100", brdx: "0", brdy: "0" }); render(); });
   $("#b-link").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(location.href); toast("Lien copié"); } catch { toast("Copiez l'adresse de la page"); }

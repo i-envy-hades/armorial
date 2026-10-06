@@ -253,8 +253,8 @@ function couronneDe(m, tinct) {
   const inner = chargeInner("couronne", tinctPaint(tinct), tinct === "Sable" ? "#6b6560" : ink, ink).replace(/stroke-width="1\.4"/g, `stroke-width="${(1.3 / k).toFixed(2)}"`);
   return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
 }
-const croixDeCase = pf => {
-  const t = 40 * MAP.vpx, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
+const croixDeCase = (pf, th) => {
+  const t = 40 * MAP.vpx * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
   return `<rect x="${x - t / 2}" y="-400" width="${t}" height="900" fill="${pf}"/><rect x="-400" y="${y - t / 2}" width="900" height="${t}" fill="${pf}"/>`;
 };
 function drawBody(s, u) {
@@ -275,7 +275,7 @@ function drawBody(s, u) {
     over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
   }
   const croixCase = MAP && s.p === "croix" && !s.ln;      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
-  let piece = s.p ? (croixCase ? croixDeCase(tinctPaint(s.tp)) : pieceInner(s.p, tinctPaint(s.tp), s.ln)) : "";
+  let piece = s.p ? (croixCase ? croixDeCase(tinctPaint(s.tp), s.pth) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth)) : "";
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
   if (!croixCase) piece = sq(piece, 1);

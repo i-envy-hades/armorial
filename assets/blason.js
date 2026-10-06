@@ -624,7 +624,7 @@ function motifsAnneau(morceaux, m){
 }
 
 /* le tracé d'une pièce à bords décorés (ou null si on ne sait pas la décorer) ; mêmes cotes que pieceInner */
-function pieceDecoree(kind, line){
+function pieceDecoree(kind, line, th = 100){
   const S = CONTOURS[line];
   const largeur = { chef: 62, fasce: 52, pal: 52, bande: 46, barre: 46, croix: 40, sautoir: 40, chevron: 34, canton: 40, "franc-quartier": 50, pairle: 34, bordure: 13, orle: 12, cotice: 23 }[kind];
   if(!S || !largeur) return null;
@@ -653,7 +653,7 @@ function pieceDecoree(kind, line){
     bande: () => bandePoly([6, 6], [200, 252], 23, 40),
     cotice: () => bandePoly([6, 6], [200, 252], 11.5, 40),
     barre: () => bandePoly([194, 6], [0, 252], 23, 40),
-    croix: () => branchesPoly([100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20, 170),
+    croix: () => branchesPoly([100, 112], [[0, -1], [1, 0], [0, 1], [-1, 0]], 20 * th / 100, 170),
     sautoir: () => branchesPoly([100, 123], SAUTOIR_DIRS, 20, 190),
     chevron: () => branchesPoly([100, 96], [[70, 100], [-70, 100]], 17, 160),
     canton: () => ({ V: [[-30, -30], [62, -30], [62, 54], [-30, 54]], flags: [false, true, true, false] }),
@@ -676,11 +676,13 @@ function pieceAlesee(kind, pf){
   return null;
 }
 /* line : contour décoré de la pièce (clé de CONTOURS), « alesee », ou rien pour un bord droit */
-function pieceInner(kind, pf, line){
+/* th : l'épaisseur de la croix, en % de la cote ordinaire */
+function pieceInner(kind, pf, line, th){
+  th = +th || 100;
   if(line === "alesee"){ const al = pieceAlesee(kind, pf); if(al) return al; }
   else if(line){
     let d = null;
-    try{ d = pieceDecoree(kind, line); }
+    try{ d = pieceDecoree(kind, line, th); }
     catch(err){ console.warn("[armorial] contour décoré impossible, bord droit à la place :", err); }   // mesurer le contour demande un navigateur complet
     if(d) return `<path d="${d}" fill="${pf}" fill-rule="evenodd"/>`;
   }
@@ -692,7 +694,7 @@ function pieceInner(kind, pf, line){
     case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
     case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
     case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="46"/>`; break;
-    case "croix": inner = `<rect x="80" y="0" width="40" height="252" fill="${pf}"/><rect x="0" y="92" width="200" height="40" fill="${pf}"/>`; break;
+    case "croix": { const t = 40 * th / 100; inner = `<rect x="${100 - t / 2}" y="0" width="${t}" height="252" fill="${pf}"/><rect x="0" y="${112 - t / 2}" width="200" height="${t}" fill="${pf}"/>`; break; }
     case "sautoir": inner = `<line x1="14" y1="16" x2="186" y2="230" stroke="${pf}" stroke-width="40"/><line x1="186" y1="16" x2="14" y2="230" stroke="${pf}" stroke-width="40"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
     case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
