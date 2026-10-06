@@ -167,6 +167,27 @@
       </div>
     </fieldset>
     <fieldset>
+      <legend>La brisure</legend>
+      <div class="row"><span class="lab">Brisure</span><select name="br" aria-label="Brisure : ce qui distingue un cadet de son aîné"></select></div>
+      <div class="row" id="r-tbr"><span class="lab">Émail</span><div class="chips" data-name="tbr"></div></div>
+      <div class="row" id="r-sbr"><span class="lab">Sens</span>
+        <span class="seg" role="radiogroup" aria-label="Sens du bâton ou du filet">
+          <label><input type="radio" name="sbr" value="bande"><span>En bande</span></label>
+          <label><input type="radio" name="sbr" value="barre"><span>En barre</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-lbr"><span class="lab">Bord</span><select name="lbr" aria-label="Bord de la brisure"></select></div>
+      <div class="row" id="r-brn"><span class="lab">Nombre</span><select name="brn" aria-label="Nombre de figures de brisure"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+      <div class="row" id="r-brd"><span class="lab">Place</span><select name="brd" aria-label="Place de la brisure"></select></div>
+      <div class="sub" id="r-brj">
+        <div class="row"><span class="lab">Taille</span><input type="range" id="k-brsz" min="30" max="250" step="5" aria-label="Taille de la brisure en pourcentage"><output id="o-brsz"></output></div>
+        <div class="row"><span class="lab">Gauche ↔ droite</span><input type="range" id="k-brdx" min="-80" max="80" step="1" aria-label="Décalage horizontal de la brisure"><output id="o-brdx"></output></div>
+        <div class="row"><span class="lab">Bas ↕ haut</span><input type="range" id="k-brdy" min="-80" max="80" step="1" aria-label="Décalage vertical de la brisure"><output id="o-brdy"></output></div>
+        <p class="note">Réglage graphique : il ne modifie pas le blasonnement. <button type="button" class="lnk" id="b-brreset">Remettre à zéro</button></p>
+      </div>
+      <p class="note" id="br-note">La brisure se pose par-dessus tout le reste (« brisé d'un bâton de gueules péri en bande »). Le chapitre <a href="index.html#brisures">Les brisures</a> dit pourquoi on brise.</p>
+    </fieldset>
+    <fieldset>
       <legend>Les ornements</legend>
       <div class="row"><span class="lab">Couronne</span><select name="cr" aria-label="Couronne"></select></div>
       <div class="row"><span class="lab">Manteau</span><select name="mt" aria-label="Manteau et pavillon"><option value="">Aucun</option><option value="m">Manteau</option><option value="p">Manteau et pavillon</option></select></div>

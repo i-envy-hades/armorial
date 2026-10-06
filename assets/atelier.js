@@ -17,6 +17,8 @@ function fillSelects() {
   F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
   F.m2.innerHTML = F.m.innerHTML;
   F.ci.innerHTML = F.m.innerHTML.replace("Aucun", "Aucun");                                        // le cimier se prend dans les mêmes meubles
+  F.br.innerHTML = `<option value="">Aucune</option><optgroup label="Pièces de brisure">${Object.entries(BRIS_PIECES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("")}</optgroup>`
+    + `<optgroup label="Figures de brisure">${BRIS_FIGS.map(k => `<option value="${k}">${esc(meuble(k).nom)}</option>`).join("")}</optgroup>`;
   const O = ATL.ornements;
   F.cr.innerHTML = `<option value="">Aucune</option>` + O.couronnes.map(c => `<option value="${esc(c.kind)}">${esc(c.nom)}</option>`).join("");
   F.su.innerHTML = `<option value="">Aucun</option>` + O.supports.map(x => `<option value="${esc(x.kind)}">Deux ${esc(meuble(x.kind).plur)}</option>`).join("");
@@ -49,6 +51,9 @@ function syncForm() {
   F.n.innerHTML = rayNs(a.ray).map(n => `<option value="${n}">${esc(lab(+n))}</option>`).join("");
   F.n.hidden = a.ray.startsWith("lozengy");
   F.hp.innerHTML = ATL.ornements.heaumes.filter(h => h.type === S.ht).map(h => `<option value="${h.pos}">${esc(ATL.ornements.heaumePos[h.pos])}</option>`).join("");
+  const bp = brisPiece(a), bf = BRIS_FIGS.includes(a.br);
+  F.lbr.innerHTML = `<option value="">Droit</option>` + Object.entries(CONTOUR_NOM).filter(([k]) => k !== "alesee").map(([k, v]) => `<option value="${k}">${cap(v)}</option>`).join("");
+  F.brd.innerHTML = bf ? dispos(brisArms(a)).map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("") : "";
   for (const k of Object.keys(ADEF)) setField(k, a[k]);
   for (const k of Object.keys(ODEF)) setField(k, S[k]);
   const tri = a.f === "part" && a.part.startsWith("tierce");
@@ -97,6 +102,16 @@ function syncForm() {
   $("#r-hp").hidden = !S.hm;
   $("#r-hs").hidden = S.hp === "face";
   $("#hm-note").textContent = "";
+  $("#r-tbr").hidden = !a.br;
+  $("#r-sbr").hidden = !(bp && bp.sens);
+  $("#r-lbr").hidden = !(bp && bp.bord);
+  $("#r-brn").hidden = $("#r-brd").hidden = $("#r-brj").hidden = !bf;
+  if (bf) {
+    $("#k-brsz").value = a.brsz; $("#k-brdx").value = a.brdx; $("#k-brdy").value = -a.brdy;
+    $("#o-brsz").textContent = a.brsz + " %";
+    $("#o-brdx").textContent = +a.brdx ? (a.brdx > 0 ? "→ " : "← ") + Math.abs(a.brdx) : "0";
+    $("#o-brdy").textContent = +a.brdy ? (a.brdy < 0 ? "↑ " : "↓ ") + Math.abs(a.brdy) : "0";
+  }
   syncAdj();
 }
 /* la cible des curseurs : tout un groupe ("1", "2") ou un seul meuble ("1.0", "2.2"…) */
@@ -273,6 +288,9 @@ const EXEMPLES = [
   ["Bande brochante", { A0: { t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Gueules", p: "bande", tp: "Azur", pos: "sous" } }],
   ["Neuf étoiles", { A0: { t1: "Azur", m: "etoile6", nb: "9", tm: "Or" } }],
   ["Sur le tout", { q: "2", ab: "1", A0: { t1: "Gueules", m: "lion", nb: "1", tm: "Or", ta: "Azur" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A4: { t1: "Argent", m: "", p: "croix", tp: "Gueules" } }],
+  ["Brisé d'un croissant", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "croissant", tbr: "Argent" } }],
+  ["Brisé d'une bordure", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "bordure", tbr: "Gueules" } }],
+  ["Brisé d'un bâton", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "baton", tbr: "Gueules", sbr: "barre" } }],
 ];
 function example(ex) {
   const St = fresh();
@@ -462,11 +480,13 @@ function afficheOrigine() {
     if (t.name === "cur") { CUR = +t.value; KT = "1"; syncForm(); render(); return; }
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
     if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
+    if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
     readForm(); render();
   };
   F.addEventListener("input", onInput);
   F.addEventListener("change", onInput);
   $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0]); render(); });
+  $("#b-brreset").addEventListener("click", () => { Object.assign(cur(), { brsz: "100", brdx: "0", brdy: "0" }); render(); });
   $("#b-link").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(location.href); toast("Lien copié"); } catch { toast("Copiez l'adresse de la page"); }
   });

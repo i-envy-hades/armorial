@@ -100,9 +100,10 @@ function lexique() {
   L.charge = table(quatre("chargé").map(f => [f, true]));
   L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo])
+  L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires"]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), "tire", "tires", "brise", "peri"]) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -388,6 +389,30 @@ function pChamp(P) {
   }
   return rate(P, 0, "un champ (« d'azur », « parti d'azur et d'or », « fascé… »…)");
 }
+/* « brisé d'un bâton de gueules péri en barre » · « brisé d'une bordure engrêlée de gueules » · « brisé d'un croissant d'argent en chef » · « brisé de trois merlettes de sable » */
+function pBrisure(P, i) {
+  if (cle(P, i + 1) !== "de") return rate(P, i + 1, "« d'un », « d'une » ou « de » suivi d'un nombre");
+  const n = LEX.compte.get(cle(P, i + 2)), j = i + 3, bp = n && suites(LEX.brisPieces, P, j)[0];
+  if (!bp) {
+    const o = pObjet(P, i + 1, undefined);
+    return o && bornes(P, { t: "bris", fig: true, ...o }, i);
+  }
+  if (n !== 1) return erreur(P, P.toks[i].de, P.toks[j + bp.n - 1].a, "Une brisure par une pièce ne se lit qu'au singulier.");
+  let e = j + bp.n, lbr = "";
+  const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee");
+  if (cn) { lbr = cn.val; e += cn.n; }
+  const t = pEmail(P, e);
+  if (!t) return null;
+  let sbr = "bande", q = t.i;
+  if (bp.val.b === "baton" || bp.val.b === "filet") {
+    if (bp.val.b === "baton") { if (cle(P, q) !== "peri") return rate(P, q, "« péri » (le bâton ne touche pas les bords de l'écu)"); q++; }
+    if (cle(P, q) !== "en") return rate(P, q, "« en bande » ou « en barre »");
+    const s = cle(P, q + 1);
+    if (s !== "bande" && s !== "barre") return rate(P, q + 1, "« bande » ou « barre »");
+    sbr = s; q += 2;
+  }
+  return bornes(P, { t: "bris", b: bp.val.b, tbr: t.t, sbr, lbr, i: q }, i);
+}
 /* quand la lecture bute sur un mot qui ressemble à quelque chose que l'Atelier sait dire autrement, on le lui dit */
 function aideSuite(P, items, i) {
   const last = items[items.length - 1], w = P.toks[i].w;
@@ -415,6 +440,7 @@ function pArmes(P) {
     let it = null;
     if (k === "seme" || suites(LEX.semeAdj, P, i).length) it = pSeme(P, i);
     else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
+    else if (k === "brise") it = pBrisure(P, i);
     else if (suites(LEX.verbe, P, i).length) {
       const vb = suites(LEX.verbe, P, i)[0], o = pObjet(P, i + vb.n, items.length ? items[items.length - 1].tm : undefined);
       it = o && bornes(P, { t: "acc", o, i: o.i }, i);
@@ -449,6 +475,10 @@ const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois éto
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */
 function assembler(P, r) {
   const a = { ...ADEF, m: "", p: "", m2: "", ...r.ch.ch }, its = r.items, src = {};       // ADEF porte une fleur de lis : le texte seul dit quels meubles il y a
+  /* la brisure se dit en dernier : on la met de côté, le reste se lit comme avant */
+  const bi = its.findIndex(x => x.t === "bris"), bris = bi >= 0 ? its.splice(bi, 1)[0] : null;
+  if (bris && bi !== its.length) return erreur(P, bris.de, bris.fin, "La brisure se dit en dernier : « …, brisé d'un… ».");
+  if (bris && bris.fig && (bris.ct || bris.iss || bris.cn)) return erreur(P, bris.de, bris.fin, "Dans l'Atelier, une figure de brisure ne se contourne pas, ne sort pas de la pointe et ne porte pas de couronne.");
   let k = 0;
   const prend = t => (its[k] && its[k].t === t ? its[k++] : null);
   const sem = prend("seme"), g1 = sem ? null : prend("groupe"), acc = g1 ? prend("acc") : null, g2 = sem ? prend("groupe") : null, pc = prend("piece");
@@ -484,6 +514,11 @@ function assembler(P, r) {
       }
     } else if (pc.verbe) { pose1(pc.verbe.o); if (pc.verbe.o2) pose2(pc.verbe.o2); }
   }
+  if (bris) {
+    src.bris = bris;
+    if (bris.fig) Object.assign(a, { br: bris.m.kind, tbr: bris.tm, brn: String(bris.n), brd: bris.d || "" });
+    else Object.assign(a, { br: bris.b, tbr: bris.tbr, sbr: bris.sbr, lbr: bris.lbr });
+  }
   return { a, src };
 }
 /* « de la fasce » · « du chef » · « de l'orle » */
@@ -503,6 +538,8 @@ function verifie(P, a, src, lieu) {
   if (diff.has("pos")) { diff.delete("nb"); diff.delete("d"); }                 // l'un entraîne l'autre : on ne dit que la cause
   if (diff.has("nb")) diff.delete("d");
   if (diff.has("nb2")) diff.delete("d2");
+  if (diff.has("br")) for (const k of ["tbr", "sbr", "lbr", "brn", "brd"]) diff.delete(k);
+  if (diff.has("brn")) diff.delete("brd");
   for (const key of diff) {
     if (key === "nb") mets(src.m, `L'Atelier ne sait pas poser ${a.nb === "seme" ? "un semé" : `${NB[+a.nb]} ${m.plur}`}${ou} (nombres possibles : ${nombres(a)}).`);
     else if (key === "nb2") mets(src.m2, `L'Atelier ne sait pas poser ${NB[+a.nb2]} ${m2.plur} (nombres possibles : ${Object.keys(PLEIN).map(n => NB[+n]).join(", ")}).`);
@@ -512,6 +549,10 @@ function verifie(P, a, src, lieu) {
     else if (key === "d") mets(src.m, `Cette disposition n'est pas possible ici dans l'Atelier (possibles : ${dispos(a).map(d => d.lab.toLowerCase()).join(" ; ") || "aucune"}).`);
     else if (key === "d2") mets(src.m2, `Cette disposition n'est pas possible dans l'Atelier (possibles : ${(PLEIN[a.nb2] || []).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
     else if (key === "iss") mets(src.m, "Dans l'Atelier, « issant » ne se dit que d'un seul meuble, sans pièce : il sort de la pointe de l'écu.");
+    else if (key === "br") mets(src.bris, `L'Atelier ne brise qu'avec une bordure, un bâton, un filet, un canton, un franc-quartier ou l'une de ces figures : ${BRIS_FIGS.map(k => meuble(k).plur).join(", ")}.`);
+    else if (key === "brn") mets(src.bris, "L'Atelier ne pose en brisure qu'une, deux ou trois figures.");
+    else if (key === "brd") mets(src.bris, `Cette disposition n'est pas possible pour une brisure dans l'Atelier (possibles : ${dispos(brisArms(a)).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
+    else if (key === "tbr" || key === "sbr" || key === "lbr") mets(src.bris, "L'Atelier ne sait pas dessiner cette brisure.");
     else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
     else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
@@ -533,6 +574,7 @@ function verifie(P, a, src, lieu) {
   };
   if (dispos(b).length) place(src.m, m, +b.nb);
   if (b.m2) place(src.m2, m2, +b.nb2);
+  if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn);
   for (const [o, mm] of [[src.m, m], [src.m2, m2]]) {
     if (!o || !mm || o.ta || !(mm.accentFixe || mm.accentTrait)) continue;
     note(`${cap(art(mm.sing, mm.g))}${mm.sing} n'est pas dite « ${mm.accentFixe ? mm.accentMot : agree(mm.accentMot, mm.g, false)} » : l'Atelier la dessine ainsi dans tous les cas, de l'émail du meuble faute d'indication.`);

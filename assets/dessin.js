@@ -25,6 +25,13 @@ function ptsFor(s, m) {
   return adjust(pts, s, 1, "");
 }
 const pts2 = s => adjust(dispo2(s).pts, s, 2, "2");
+/* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
+function brisPts(s) {
+  const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
+  if (!d) return [];
+  const seul = s.brn === "1" && !d.id;
+  return d.pts.map(([x, y, sc, r]) => [x + +s.brdx, y + +s.brdy, (seul ? .3 : sc * .62) * k, r]);
+}
 
 /* bandeaux de devise : pur dessin, sans valeur héraldique ; chaque build() rend la forme, la ligne portant le texte et sa hauteur */
 const BAND = { fill: "#f3ecd8", back: "#d9cfb4", fold: "#b9ac8a" };
@@ -74,7 +81,7 @@ const DEVISES = {
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "br", "lbr", "brd"]);
 const PFX = ["", "b_", "c_", "d_", "e_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -214,7 +221,13 @@ function drawBody(s, u) {
     defs += `<filter id="fl-${u}" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="d"/><feFlood flood-color="${flat(s.pf)}"/><feComposite in2="d" operator="in" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
     piece = `<g filter="url(#fl-${u})">${piece}</g>`;
   }
-  return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) };
+  /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
+  let bris = "";
+  if (s.br) {
+    if (brisPiece(s)) bris = pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr);
+    else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
+  }
+  return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + bris };
 }
 function draw(s, u = "a", extra = "") {
   const r = drawBody(s, u);
@@ -274,7 +287,7 @@ function drawShield(St, u) {
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {
-    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "" }, `${u}u${qi}`), g = G.q[qi];
+    const a = St.A[ai], r = drawBody(a, `${u}q${qi}`), under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`), g = G.q[qi];
     const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
     body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
@@ -306,7 +319,7 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); }
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
   if (hm) jobs.push(getText(hm.path));
@@ -462,7 +475,7 @@ function creditsOf(St) {
   };
   for (const i of active(St)) {
     const a = St.A[i];
-    for (const k of [a.m, count2(a) ? a.m2 : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
+    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
   }
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
   if (su) add("Supports", meuble(su.kind).file, true);

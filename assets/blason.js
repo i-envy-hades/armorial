@@ -701,6 +701,11 @@ function pieceInner(kind, pf, line){
     case "canton": inner = `<rect x="0" y="0" width="62" height="54" fill="${pf}"/>`; break;
     case "franc-quartier": inner = `<rect x="0" y="0" width="84" height="74" fill="${pf}"/>`; break;
     case "pairle": inner = `<path d="${poly(branchesPoly([100, 126], PAIRLE_DIRS, 17, 190).V)}" fill="${pf}"/>`; break;
+    /* pièces de brisure : le bâton, diminutif de la bande qui ne touche pas les bords de l'écu (« péri »), et le filet, plus mince que la cotice et qui va d'un bord à l'autre */
+    case "baton-bande": inner = `<line x1="52" y1="64" x2="148" y2="188" stroke="${pf}" stroke-width="15"/>`; break;
+    case "baton-barre": inner = `<line x1="148" y1="64" x2="52" y2="188" stroke="${pf}" stroke-width="15"/>`; break;
+    case "filet-bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="11"/>`; break;
+    case "filet-barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="11"/>`; break;
   }
   return inner;
 }
