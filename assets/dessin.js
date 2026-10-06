@@ -184,7 +184,8 @@ function recolor(txt, m, tm, ta) {
   (m.accent || []).forEach(c => { s = s.replace(colorRe(c), "@@A@@"); });
   (m.drop || []).forEach(c => { s = s.replace(colorRe(c), "none"); });
   (m.line || []).forEach(c => { s = s.replace(colorRe(c), "@@L@@"); });
-  return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta)).replace(/@@L@@/g, tm === "Sable" ? "#6b6560" : "#1a1712");
+  (m.fixe ? m.fixe.c : []).forEach(c => { s = s.replace(colorRe(c), "@@F@@"); });          // une partie toujours du même émail (« tigée et feuillée de sinople »)
+  return s.replace(/@@F@@/g, m.fixe ? tinctPaint(m.fixe.t) : "").replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta)).replace(/@@L@@/g, tm === "Sable" ? "#6b6560" : "#1a1712");
 }
 /* les meubles dessinés n'ont pas tous la même taille d'origine : on les mesure une fois et on les ramène à celle des figures empruntées */
 const NORM = {};

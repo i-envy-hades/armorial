@@ -957,6 +957,12 @@ function chargeInner(kind, fill, stroke, field){
     case "eclair": return `<path d="M118,34 L68,124 L96,124 L80,200 L134,106 L104,106 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
 
     /* ---------- objets et bâtiments ---------- */
+    /* la crosse de Bâle (« Baslerstab ») : crochet enroulé à dextre, deux bagues, pied évasé à trois pointes. Le crochet est un trait épais
+       tracé deux fois (le contour, puis l'émail) pour garder un seul contour ; d'après les armes de Bâle-Ville, dessinées ici */
+    case "crosse-bale": { const crochet = "M100,124 V78 C100,46 86,30 68,30 C50,30 40,44 40,58 C40,72 50,80 60,78 C67,77 70,70 67,65";
+      return `<g stroke-linejoin="round"><path d="${crochet}" fill="none" stroke="${stroke}" stroke-width="35.6" stroke-linecap="round"/><path d="${crochet}" fill="none" stroke="${fill}" stroke-width="32" stroke-linecap="round"/>
+      <path d="M62,66 C57,58 64,50 71,53 C79,57 78,69 69,73" fill="none" stroke="${field}" stroke-width="3.6" stroke-linecap="round"/>
+      <g fill="${fill}" stroke="${stroke}" stroke-width="1.8"><path d="M86,141 H114 L140,230 L120,211 L100,232 L80,211 L60,230 Z"/><rect x="76" y="117" width="48" height="10" rx="5"/><rect x="72" y="129" width="56" height="11" rx="5.5"/></g></g>`; }
     case "cloche": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <rect x="92" y="44" width="16" height="14" rx="5"/>
       <path d="M100,58 C74,58 60,80 58,110 C56,140 48,158 38,168 L162,168 C152,158 144,140 142,110 C140,80 126,58 100,58 Z"/>
