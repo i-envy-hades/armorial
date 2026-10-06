@@ -224,8 +224,8 @@ footer .fine{font-size:.78rem;opacity:.85}
 .ar a.shield:hover .to-at-k{opacity:1;transform:translate(-50%,0)}
 @media (hover:none){.to-at-k{display:none}}
 @media (prefers-reduced-motion:reduce){.ar a.shield img,.to-at-k{transition:none}.ar a.shield:hover img{transform:none}}
-/* sous les blasonnements que l'Atelier ne relit pas encore : où il bute */
-.redo-non{font-size:.78rem;font-style:italic;line-height:1.4;color:var(--ink-soft);margin:.1rem 0 .5rem}
+/* sous les blasonnements que l'Atelier ne relit pas encore : où il bute ; ou, quand il dessine d'après l'image (champ « atelier »), ce qu'il lit */
+.redo-non,.redo-atelier{font-size:.78rem;font-style:italic;line-height:1.4;color:var(--ink-soft);margin:.1rem 0 .5rem}
 .redo-non a{color:var(--ink-soft);text-decoration:underline;white-space:nowrap}
 
 /* ---------- lien d'évitement (assets/chrome.js) ---------- */

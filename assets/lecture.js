@@ -126,7 +126,7 @@ function lectures(liste) {
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
 const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
-const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-non">Le dessin suit l'image de la carte, qui montre autre chose que la source : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
+const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-atelier">Le dessin suit l'image de la carte, qui montre autre chose que la source : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
 /* l'écu d'une carte : un lien vers l'Atelier si le lecteur relit ses armes (la souris y va ; au clavier, c'est le bouton « Redessiner ») */
 const ecuCarte = (a, galerie, img, lisible) => lisible
   ? `<a class="shield to-at" href="${adresseAtelier(a, galerie)}" tabindex="-1" title="Modifier ces armes dans l'Atelier">${img}<span class="to-at-k" aria-hidden="true">Modifier dans l'Atelier</span></a>`
