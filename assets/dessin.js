@@ -338,7 +338,11 @@ function drawBody(s, u) {
 function corps(s, u, defs, field, under, over, piece) {
   let bris = "";
   if (s.br) {
-    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body, 1); }
+    if (s.br === "lambel") {
+      const l = lambelDraw(s, u); defs += l.defs;
+      /* dans une case, le lambel reste à sa place (en chef) mais se réduit sans se déformer : pendants et filet gardent leurs proportions */
+      bris = MAP ? `<g transform="translate(${100 + MAP.shx},${126 + (50 - 126) * MAP.vpy + MAP.shy}) scale(${MAP.vpx}) translate(-100,-50)">${l.body}</g>` : l.body;
+    }
     else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr), s.lbr) : "";
     else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
