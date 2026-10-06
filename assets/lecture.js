@@ -178,8 +178,13 @@ function pAccent(P, i, m, tm) {
   return t ? { ta: t.t, i: t.i, cn: cnAttr ? t.t : "" } : null;
 }
 /* NOM [contourné] ÉMAIL [contourné] [attribut] */
+/* Deux meubles peuvent porter le même nom (l'aigle, couronnée ou non) : on garde la lecture qui va le plus loin dans le texte
+   (« becquée, membrée et couronnée de gueules » n'est lu en entier que par l'aigle couronnée), avec les réserves de celle-là seulement. */
 function pCorps(P, i, ref, nb) {
+  let best = null, rais = null;
+  const base = P.notes.length;
   for (const { n, val } of suites(LEX.noms, P, i)) {
+    P.notes.length = base;                                       // les réserves d'une lecture abandonnée ne comptent pas
     const m = meuble(val.kind);
     let j = i + n, ct = false, cnAv = false, iss = false;
     for (let q = 0; q < 3; q++) {                               // « issant », « contourné » et « couronné » devant l'émail, dans l'ordre qu'on veut
@@ -194,7 +199,7 @@ function pCorps(P, i, ref, nb) {
     const t = pEmail(P, j, ref);
     if (!t) {
       if (cle(P, j) === "a" && LEX.compte.has(cle(P, j + 1)) && cle(P, j + 2) === "rais")
-        return erreur(P, P.toks[j].de, P.toks[j + 2].a, `« ${cle(P, j + 1) === "un" ? "à un" : "à " + cle(P, j + 1)} rais » : l'Atelier ne dessine qu'un modèle ${voy(m.sing) ? "d'" : "de "}${m.sing}${m.kind === "etoile" ? " (à cinq rais)" : ""}.`);
+        rais = rais || { de: P.toks[j].de, a: P.toks[j + 2].a, msg: `« ${cle(P, j + 1) === "un" ? "à un" : "à " + cle(P, j + 1)} rais » : l'Atelier ne dessine pas ${voy(m.sing) ? "d'" : "de "}${m.sing} à ${cle(P, j + 1)} rais (seulement à cinq, six, sept ou huit).` };
       continue;
     }
     j = t.i;
@@ -217,8 +222,12 @@ function pCorps(P, i, ref, nb) {
       const jb = cle(P, fin) === "," ? fin + 1 : fin, k3 = suites(LEX.coure, P, jb)[0], te = k3 && pEmail(P, jb + k3.n, t.t);
       if (te) { cn = te.t; fin = aussi(te.i); } else if (k3) continue;
     }
-    return { m, tm: t.t, ta: ac.ta, ct, cn, iss, mot: val.mot, i: fin, pre: avant };
+    const lu = { m, tm: t.t, ta: ac.ta, ct, cn, iss, mot: val.mot, i: fin, pre: avant, notes: P.notes.splice(base) };
+    if (!best || lu.i > best.i) best = lu;
   }
+  P.notes.length = base;
+  if (best) { const { notes, ...lu } = best; P.notes.push(...notes); return lu; }
+  if (rais) return erreur(P, rais.de, rais.a, rais.msg);
   const k = cle(P, i), noms = k && !suites(LEX.noms, P, i).length && LEX.debuts.get(k);
   /* une piste, pas une erreur : elle ne parle que si la lecture ne va pas plus loin ailleurs (« la croix » est d'abord une pièce) */
   if (noms && !(P.hint && P.hint.i >= i)) P.hint = { i, de: P.toks[i].de, a: P.toks[i].a, msg: `« ${P.toks[i].r} » seul n'est pas un meuble de l'Atelier : il connaît ${noms.slice(0, 4).map(n => `« ${n} »`).join(", ")}${noms.length > 4 ? ` et ${noms.length - 4} autre${noms.length > 5 ? "s" : ""}` : ""}.` };

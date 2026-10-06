@@ -150,8 +150,44 @@
    "accentMot": "armé et lampassé"
   },
   {
-   "kind": "aigle",
+   "kind": "aigle-sans-couronne",
    "nom": "Aigle",
+   "sing": "aigle",
+   "plur": "aigles",
+   "alias": [
+    [
+     "aigle éployée",
+     "aigles éployées"
+    ]
+   ],
+   "homonyme": "aigle",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/aigle-sans-couronne.svg",
+    "commons": "Meuble héraldique Aigle Medieval 1.svg",
+    "auteur": "A.T-2014",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#313131"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "becqué et membré"
+  },
+  {
+   "kind": "aigle",
+   "nom": "Aigle couronnée",
    "sing": "aigle",
    "plur": "aigles",
    "alias": [
@@ -1791,6 +1827,31 @@
    ]
   },
   {
+   "kind": "biche-saillante",
+   "nom": "Biche saillante",
+   "sing": "biche saillante",
+   "plur": "biches saillantes",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/biche-saillante.svg",
+    "commons": "Meuble héraldique Biche saillant.svg",
+    "auteur": "Mspecht",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
    "kind": "cheval",
    "nom": "Cheval cabré",
    "sing": "cheval cabré",
@@ -2071,6 +2132,68 @@
    ],
    "accentMot": "accorné et onglé",
    "allongee": true
+  },
+  {
+   "kind": "bouquetin-saillant",
+   "nom": "Bouquetin saillant",
+   "sing": "bouquetin saillant",
+   "plur": "bouquetins saillants",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/bouquetin-saillant.svg",
+    "commons": "Bouquetin1.svg",
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#f0f0f0",
+    "#f5f5f5",
+    "#ffffff",
+    "#e5e5e5",
+    "#fffcfc"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
+   "kind": "chevre-saillante",
+   "nom": "Chèvre saillante",
+   "sing": "chèvre saillante",
+   "plur": "chèvres saillantes",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/chevre-saillante.svg",
+    "commons": "Meuble heraldique chevre saillante.svg",
+    "auteur": "Olves",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "lampassé"
   },
   {
    "kind": "cygne",

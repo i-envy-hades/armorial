@@ -326,7 +326,8 @@ LUS = [
     ("D'azur au cygne d'argent becqué et membré de sable", "D'azur au cygne d'argent becqué et membré de sable", ""),
     ("D'or à l'arbre de sinople fûté de sable", "D'or à l'arbre de sinople fûté de sable", ""),
     ("De sinople au sanglier passant d'or", "De sinople au sanglier passant d'or", ""),
-    ("D'argent à l'aigle de sable", "D'argent à l'aigle de sable becquée, membrée et couronnée de sable", "couronnée"),
+    ("D'argent à l'aigle de sable", "D'argent à l'aigle de sable", ""),                        # l'aigle sans couronne ; « couronnée » la donne couronnée
+    ("D'or à l'aigle de sable, armée, becquée et lampassée de gueules", "D'or à l'aigle de sable becquée et membrée de gueules", "colore d'un seul émail"),
     ("De gueules à trois léopards d'or", "De gueules à trois léopards d'or", "posés en pal"),   # disposition non dite : signalée
     ("D'azur à deux étoiles d'or", "D'azur à deux étoiles d'or posées en fasce", "disposition non précisée"),
     ("D'azur à trois étoiles d'or en fasce", "D'azur à trois étoiles d'or rangées en fasce", ""),
@@ -387,7 +388,7 @@ REFUSES = [
     ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
     ("D'azur au cheval d'argent", "cheval cabré"),
     ("D'azur à trois croix d'or", "croix alésée"),
-    ("D'azur à l'aigle d'or becquée et membrée de gueules", "en entier"),
+    ("D'azur à l'aigle bicéphale d'or becquée et membrée de gueules", "en entier"),
     ("D'azur à la bande d'or brochant sur le tout", "champ divisé"),
     ("D'azur au canton d'or accompagné de deux étoiles d'argent", "autour du canton"),
     ("D'azur au croissant contourné d'or", "ne se contourne pas"),
@@ -411,8 +412,8 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)",
 # (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Saint-Empire romain germanique", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV"]
-PERSONNAGES_REFUSES = ["Bertrand du Guesclin", "Margrethe II", "Jean-Baptiste Colbert"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Bertrand du Guesclin"]
+PERSONNAGES_REFUSES = ["Margrethe II", "Jean-Baptiste Colbert"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),

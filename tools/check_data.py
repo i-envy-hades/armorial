@@ -236,6 +236,9 @@ if isinstance(a, dict):
         elif not m.get("custom"): err(f"atelier.json: meuble « {k} » sans dessin ni figure")
     # les noms que le lecteur de blasonnement (assets/lecture.js) reconnaît : sing, plur et alias, sans doublon entre meubles ni avec une pièce
     noms = {}
+    par_kind = {m.get("kind"): m for m in a.get("meubles", [])}
+    for m in a.get("meubles", []):
+        if m.get("homonyme") and m["homonyme"] not in par_kind: err(f"atelier.json: meuble « {m.get('kind')} » : homonyme « {m['homonyme']} » inconnu")
     pieces = {"chef", "fasce", "pal", "bande", "barre", "croix", "sautoir", "chevron", "bordure", "orle", "canton", "franc-quartier", "pairle", "cotice"}
     for m in a.get("meubles", []):
         k = m.get("kind")
@@ -245,7 +248,10 @@ if isinstance(a, dict):
         for nom in [m.get("sing"), m.get("plur")] + [s for x in al for s in x]:
             cle = re.sub(r"[-\s]+", " ", (nom or "").lower())
             if cle in pieces: err(f"atelier.json: le nom « {nom} » du meuble « {k} » est aussi celui d'une pièce")
-            if noms.setdefault(cle, k) != k: err(f"atelier.json: le nom « {nom} » est donné à la fois à « {noms[cle]} » et à « {k} »")
+            autre = noms.setdefault(cle, k)
+            # deux meubles peuvent partager un nom s'ils le déclarent (« homonyme ») : le lecteur les départage par leurs attributs (l'aigle, couronnée ou non)
+            if autre != k and m.get("homonyme") != autre and par_kind.get(autre, {}).get("homonyme") != k:
+                err(f"atelier.json: le nom « {nom} » est donné à la fois à « {autre} » et à « {k} »")
         for cle in ("main", "accent", "drop"):
             for c in m.get(cle, []):
                 if not (isinstance(c, str) and re.fullmatch(r"(?:(?:fill|stroke):)?#[0-9a-fA-F]{3,8}", c)):
