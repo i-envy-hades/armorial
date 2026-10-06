@@ -1205,7 +1205,7 @@
     { "kind": "quartefeuille", "nom": "Quartefeuille", "en": "quatrefoil", "champ": "Gueules", "charge": "Argent", "cat": "Propres au blason" },
     { "kind": "quintefeuille", "nom": "Quintefeuille", "en": "cinquefoil", "champ": "Or", "charge": "Azur", "cat": "Propres au blason" },
     { "kind": "tiercefeuille", "nom": "Tiercefeuille", "en": "trefoil slipped-less", "champ": "Azur", "charge": "Or", "cat": "Propres au blason" },
-    { "kind": "trefle", "nom": "Trèfle", "en": "trefoil", "champ": "Or", "charge": "Sinople", "cat": "Propres au blason" },
+    { "kind": "trefle", "nom": "Trèfle", "en": "trefoil", "champ": "Or", "charge": "Sinople", "cat": "Propres au blason", "image": { "file": "TrefoilSlipped svg-element.svg", "auteur": "Lobsterthermidor", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "d'après une planche de Fox-Davies (1909)." } },
     {
       "kind": "fer-moulin", "nom": "Fer-de-moulin", "en": "millrind", "champ": "Azur", "charge": "Or", "cat": "Propres au blason",
       "image": { "file": "Meuble héraldique Fer de moulin.svg", "auteur": "ℍenry Salomé", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Deux C adossés réunis par une barre et percés au centre — d'où la confusion constante avec l'anille." }
@@ -1275,7 +1275,7 @@
     },
     { "kind": "eclair", "nom": "Éclair", "en": "lightning bolt", "champ": "Or", "charge": "Gueules", "cat": "Astres et éléments" },
 
-    { "kind": "coquille", "nom": "Coquille", "en": "escallop", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments" },
+    { "kind": "coquille", "nom": "Coquille", "en": "escallop", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments", "image": { "file": "Meuble héraldique Coquille 2.svg", "auteur": "ZigeunerAlt, d'après Bruno Vallette", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr" } },
     {
       "kind": "fercheval", "nom": "Fer à cheval", "en": "horseshoe", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
       "image": { "file": "Héraldique meuble Fer à cheval.svg", "auteur": "Regl!sse et ℍenry Salomé", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Fer cloué, l'ouverture tournée vers la pointe de l'écu." }

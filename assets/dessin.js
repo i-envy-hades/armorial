@@ -167,7 +167,8 @@ function recolor(txt, m, tm, ta) {
   (m.main || []).forEach(c => { s = s.replace(colorRe(c), "@@M@@"); });
   (m.accent || []).forEach(c => { s = s.replace(colorRe(c), "@@A@@"); });
   (m.drop || []).forEach(c => { s = s.replace(colorRe(c), "none"); });
-  return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta));
+  (m.line || []).forEach(c => { s = s.replace(colorRe(c), "@@L@@"); });
+  return s.replace(/@@M@@/g, tinctPaint(tm)).replace(/@@A@@/g, tinctPaint(ta)).replace(/@@L@@/g, tm === "Sable" ? "#6b6560" : "#1a1712");
 }
 /* les meubles dessinés n'ont pas tous la même taille d'origine : on les mesure une fois et on les ramène à celle des figures empruntées */
 const NORM = {};
