@@ -9,7 +9,10 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 
 /* une case du parti (drawParti) : MAP resserre le champ et la pièce à la taille de la case ; les figures se repositionnent (px, py, décalage) et se réduisent de pk sans se déformer ; HSIDE : 0 dextre, 1 senestre */
 let MAP = null, HSIDE = 0;
-const sq = s => (!MAP || !s ? s : `<g transform="translate(${100 * (1 - MAP.px)},${126 * (1 - MAP.py)}) scale(${MAP.px},${MAP.py})">${s}</g>`);
+/* le champ couvre toute la case ; la pièce et les figures se calent sur ce qu'on en voit (vpx, vpy, shx, shy) */
+const sq = (s, vis) => (!MAP || !s ? s : vis
+  ? `<g transform="translate(${100 * (1 - MAP.vpx) + MAP.shx},${126 * (1 - MAP.vpy) + MAP.shy}) scale(${MAP.vpx},${MAP.vpy})">${s}</g>`
+  : `<g transform="translate(${100 * (1 - MAP.px)},${126 * (1 - MAP.py)}) scale(${MAP.px},${MAP.py})">${s}</g>`);
 
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
 const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
@@ -25,7 +28,10 @@ function ptsFor(s, m) {
   if (s.iss === "t") pts = [[HSIDE ? 0 : 200, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
   else if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
   else if (m.seul) pts = [[100, 116, 1]];
-  else if (PLEINLIKE.has(ctxOf(s))) { const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : []; }
+  else if (PLEINLIKE.has(ctxOf(s))) {
+    const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
+    if (d && d.id === "pal" && m.allongee) pts = pts.map(([x, y, sc, r]) => [x, y, sc * 1.5, r]);      // un meuble allongé (léopard) se range en pal à pleine largeur
+  }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
 }
@@ -234,7 +240,7 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
 const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => {
-  const X = MAP ? 100 + (x - 100) * MAP.px + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.py + MAP.shy : y, K = MAP ? k * MAP.pk : k;
+  const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.vpy + MAP.shy : y, K = MAP ? k * MAP.pk : k;
   return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
 }).join("");
 /* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
@@ -264,12 +270,12 @@ function drawBody(s, u) {
   let piece = s.p ? pieceInner(s.p, tinctPaint(s.tp), s.ln) : "";
   if (piece && s.pf) piece = filetDe(piece, flat(s.pf), 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
   if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${+s.pdx},${+s.pdy})">${piece}</g>`;
-  piece = sq(piece);
+  piece = sq(piece, 1);
   /* la brisure, par-dessus tout le reste : une pièce de brisure, ou des figures */
   let bris = "";
   if (s.br) {
-    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body); }
-    else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr));
+    if (s.br === "lambel") { const l = lambelDraw(s, u); defs += l.defs; bris = sq(l.body, 1); }
+    else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
   return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + bris };
@@ -330,31 +336,39 @@ function partiCells(St) {
   const split = quarterGeom().split, out = [];
   [0, 1].forEach(h => {
     const qa = halfQuarters(St, h), hx = h * 100;
-    if (!qa) out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252] });
-    else [[0, 0, split], [50, 0, split], [0, split, 252 - split], [50, split, 252 - split]].forEach(([dx, y, hh], n) => out.push({ arm: qa[n], half: h, q: n, rect: [hx + dx, y, 50, hh] }));
+    if (!qa) { out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252] }); return; }
+    const [a, b] = halfSpan(h), mid = (a + b) / 2;      // le trait de l'écartelé passe au milieu de ce qu'on voit de la moitié, pas au milieu de sa boîte
+    const rects = [[a, 0, mid - a, split], [mid, 0, b - mid, split], [a, split, mid - a, 252 - split], [mid, split, b - mid, 252 - split]];
+    rects.forEach((rect, n) => out.push({ arm: qa[n], half: h, q: n, rect, rects, a, b, mid }));
   });
   return out;
 }
-/* le barycentre de la partie visible d'une case (la pointe de l'écu en rogne le bas) */
+/* la partie visible d'une case (la pointe et les flancs de l'écu en rognent le bas et le côté) : barycentre, largeur et hauteur moyennes */
 const CGEO = {};
 function cellGeom(rect) {
   const key = SHIELD_D + rect.join();
   if (CGEO[key]) return CGEO[key];
   const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D), [rx, ry, rw, rh] = rect;
-  let sx = 0, sy = 0, n = 0;
-  for (let y = Math.floor(ry); y < ry + rh; y++) for (let x = Math.floor(rx); x < rx + rw; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) { sx += x + .5; sy += y + .5; n++; }
-  return CGEO[key] = n ? { cx: sx / n, cy: sy / n } : { cx: rx + rw / 2, cy: ry + rh / 2 };
+  let sx = 0, sy = 0, n = 0, x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+  for (let y = Math.floor(ry); y < ry + rh; y++) for (let x = Math.floor(rx); x < rx + rw; x++) if (ctx.isPointInPath(path, x + .5, y + .5)) {
+    sx += x + .5; sy += y + .5; n++; x0 = Math.min(x0, x); x1 = Math.max(x1, x + 1); y0 = Math.min(y0, y); y1 = Math.max(y1, y + 1);
+  }
+  return CGEO[key] = n ? { cx: sx / n, cy: sy / n, w: n / (y1 - y0), h: n / (x1 - x0), x0, x1 } : { cx: rx + rw / 2, cy: ry + rh / 2, w: rw, h: rh, x0: rx, x1: rx + rw };
 }
+/* l'étendue horizontale visible d'une moitié de l'écu */
+const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0, g.x1]; };
 const HALF_PK = .8, SUB_PK = .3;
 function partiMap(c) {
-  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
-  if (c.q !== undefined) { const g = cellGeom(c.rect); Object.assign(m, { pk: SUB_PK, shx: g.cx - cx, shy: g.cy - cy }); }
-  return m;
+  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
+  if (c.q === undefined) return m;
+  const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
+  return Object.assign(m, { vpx: g.w / 200, vpy: g.h / 252, pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
 }
 /* parti : chaque case reçoit ses armes entières resserrées à sa taille ; une moitié écartelée montre ses quatre quartiers */
 function drawParti(St, u, ab) {
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
-  partiCells(St).forEach((c, ci) => {
+  const cells = partiCells(St);
+  cells.forEach((c, ci) => {
     const m = partiMap(c), id = `${u}h${ci}`, [rx, ry, rw, rh] = c.rect;
     MAP = m; HSIDE = c.half;
     let r;
@@ -364,7 +378,7 @@ function drawParti(St, u, ab) {
   });
   const split = quarterGeom().split;
   let lignes = "M100,0V252";
-  [0, 1].forEach(h => { if (halfQuarters(St, h)) lignes += `M${h * 100 + 50},0V252M${h * 100},${split}H${h * 100 + 100}`; });
+  cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
