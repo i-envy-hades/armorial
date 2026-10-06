@@ -152,7 +152,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" }];       // la cinquième : l'écusson en abîme (« sur le tout »)
 
-const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+const active = St => (!St.q ? [0] : St.q === "2" || St.q === "p" ? [0, 1] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p) : "plein"; }
@@ -195,7 +195,7 @@ function normalize(s) {
   const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
   s.cn = mm && mm.couronne && own(MOT, s.cn) ? s.cn : "";
   s.cn2 = mm2 && mm2.couronne && own(MOT, s.cn2) ? s.cn2 : "";
-  s.iss = mm && !mm.seul && s.iss === "1" && s.nb === "1" && !s.p ? "1" : "";               // un seul meuble, sans pièce
+  s.iss = mm && !mm.seul && (s.iss === "1" || s.iss === "t") && s.nb === "1" && !s.p ? s.iss : "";               // un seul meuble, sans pièce ; « t » : demi-meuble mouvant du trait du parti (voir normalizeAll)
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
   /* la brisure : une pièce ou une marque de la liste, son émail ; le sens ne vaut que pour le bâton et le filet, le bord que pour les pièces qui en ont un, le nombre et la place que pour les figures */
@@ -272,11 +272,12 @@ function charges(s) {
   const m = meuble(s.m), seme = s.nb === "seme", n = seme ? 0 : +s.nb, pl = seme || n > 1;
   let nom = m.sing, nomPl = m.plur, g = m.g;
   if (m.kind === "roundel") { const metal = classe(s.tm) === "Métal"; nom = metal ? "besant" : "tourteau"; nomPl = metal ? "besants" : "tourteaux"; g = "m"; }
+  if (s.iss === "t") nom = "demi-" + nom;
   /* la couronne : de l'émail du meuble, elle se dit devant lui (« un lion couronné d'or ») ; d'un autre, après l'attribut (« … armé et lampassé de gueules couronné d'argent ») */
   const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && s.cn === s.tm;
   const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + de(s.ta) : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
-  const ctr = (s.iss ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
-  return { m, n, pl, nom, nomPl, g, acc, ctr, tinct: de(s.tm) };
+  const ctr = (s.iss === "1" ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
+  return { m, n, pl, nom, nomPl, g, acc, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: de(s.tm) };
 }
 function semePhrase(c, s) {
   const m = c.m;
@@ -297,7 +298,7 @@ function blazonCore(s) {
   const c = m ? charges(s) : null;
   const seme = c && s.nb === "seme";
   if (seme) champ += " " + semePhrase(c, s);
-  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
+  const groupe = c && !seme ? (c.n === 1 ? `${aArt(c.nom, c.g)}${c.nom}` : `à ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}${c.mv}` : "";
   const grpObj = c && !seme ? (c.n === 1 ? `${c.g === "f" ? "d'une" : "d'un"} ${c.nom}` : `de ${NB[c.n]} ${c.nomPl}`) + `${c.ctr} ${c.tinct}${c.acc}` : "";
   /* le second meuble : « accompagné de … », « et de … », ou meuble du champ quand le premier est sur la pièce ou semé */
   let x2 = null;
@@ -353,11 +354,11 @@ function brisTxt(s) {
   return `${c.n === 1 ? (c.g === "f" ? "d'une" : "d'un") + " " + c.nom : "de " + NB[c.n] + " " + c.nomPl}${c.ctr} ${c.tinct}${c.acc}${dph(arms, c)}`;
 }
 const blazon = s => blazonCore(s) + (s.br ? ", brisé " + brisTxt(s) : "");
-const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"] };
-const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
+const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 4"], p: ["au 1", "au 2"] };
+const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"], p: ["Moitié dextre (1)", "Moitié senestre (2)"] };
 function blazonAll(St) {
   const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
-  let b = !St.q ? blazon(St.A[0]) : "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  let b = !St.q ? blazon(St.A[0]) : (St.q === "p" ? "Parti" : "Écartelé") + " : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
   return b;
 }
