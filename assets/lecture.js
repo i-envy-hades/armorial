@@ -286,7 +286,11 @@ function pGroupe(P, i) {
   const c = pCorps(P, demi ? j + 1 : j, undefined, n);
   if (!c) return null;
   const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
-  let e = d.i;
+  let e = d.i, ctApres = false;
+  const jp = cle(P, e) === "," ? e + 1 : e;                      // « la clef d'or en pal, contournée » : « en pal » est la pose ordinaire de la clef
+  if (n === 1 && !d.dit && c.m.kind === "clef" && cle(P, jp) === "en" && cle(P, jp + 1) === "pal") { e = jp + 2; P.notes.push("« en pal » : la pose ordinaire de la clef, que l'Atelier ne dit pas."); }
+  const jc = cle(P, e) === "," ? e + 1 : e, c4 = !c.ct && suites(LEX.ctr, P, jc)[0];
+  if (c4 && e > d.i) { ctApres = true; e = jc + c4.n; }
   /* un demi-meuble : « à la demi-aigle de sable mouvant du trait du parti » (dit après l'émail et les attributs) */
   const jm = cle(P, e) === "," ? e + 1 : e, mv = cle(P, jm) === "mouvant" && cle(P, jm + 1) === "du" && cle(P, jm + 2) === "trait" && cle(P, jm + 3) === "du" && cle(P, jm + 4) === "parti";
   if (mv) e = jm + 5;
@@ -294,7 +298,7 @@ function pGroupe(P, i) {
   if (demi && (n !== 1 || c.iss)) return erreur(P, P.toks[i].de, P.toks[e - 1].a, "Un demi-meuble mouvant du trait du parti se dit d'un seul meuble, qui n'est pas « issant ».");
   const br = pBrochant(P, e);
   if (br) e = br;
-  return bornes(P, { t: "groupe", n, ...c, d: d.d, dit: d.dit, broche: !!br, trait: mv, i: e }, i);
+  return bornes(P, { t: "groupe", n, ...c, ct: c.ct || ctApres, d: d.d, dit: d.dit, broche: !!br, trait: mv, i: e }, i);
 }
 /* « semé de fleurs de lis d'or » · « billeté d'or » · « besanté d'or » */
 function pSeme(P, i) {
@@ -702,8 +706,21 @@ function lireParti(texte, segs, res, etat, main) {
   etat.q = "p"; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
   moitiés.forEach((m, h) => m.armes.forEach((a, n) => { etat.A[HALF_ARMS[h][n]] = a; }));
 }
+/* « demi-aigle de sable, mouvant du trait du parti, couronnée, becquée… de gueules » : on ramène le trait en dernier, où l'Atelier le lit */
+function ramenerMouvant(toks) {
+  const w = i => toks[i] && toks[i].w;
+  for (let i = 1; i + 5 < toks.length; i++) {
+    if (!(w(i) === "mouvant" && w(i + 1) === "du" && w(i + 2) === "trait" && w(i + 3) === "du" && w(i + 4) === "parti" && w(i + 5) === ",")) continue;
+    const d = w(i - 1) === "," ? i - 1 : i;
+    let f = i + 6;
+    while (f < toks.length && w(f) !== ";") f++;
+    toks.splice(d, f - d, ...toks.slice(i + 5, f), ...toks.slice(d, i + 5));
+    return;
+  }
+}
 function lire(texte) {
   const L = lexique(), brut = decouper(texte), { toks, comm, erreurs } = sansCommentaires(texte, brut);
+  ramenerMouvant(toks);
   const res = { ok: false, etat: null, notes: comm.map(c => `Commentaire ignoré : ${c}`), erreurs: [...erreurs], exact: false, reecrit: "" };
   if (!toks.length && !erreurs.length) { res.vide = true; return res; }
   for (const t of toks) {
