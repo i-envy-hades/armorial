@@ -242,10 +242,14 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 
 /* ---------- l'écu ---------- */
 /* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
-const placeAll = (pts, m, id, flip, over = "") => pts.map(([x, y, k, r]) => {
-  const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk : k;
-  return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
-}).join("");
+const placeAll = (pts, m, id, flip, over = "") => {
+  /* dans une moitié de parti, quelques figures côte à côte se serrent : on les réduit pour qu'elles ne se chevauchent pas */
+  const fx = MAP && MAP.half && pts.length >= 2 && pts.length <= 6 && new Set(pts.map(q => Math.round(q[0]))).size >= 2 ? .7 : 1;
+  return pts.map(([x, y, k, r]) => {
+    const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk * fx : k;
+    return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
+  }).join("");
+};
 /* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
 function couronneDe(m, tinct) {
   if (!m.couronne || !tinct) return "";
@@ -367,10 +371,10 @@ function cellGeom(rect) {
 const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0, g.x1]; };
 const HALF_PK = .8, SUB_PK = .3;
 function partiMap(c) {
-  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
+  const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, half: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
   if (c.q === undefined) return Object.assign(m, { shx: cellGeom(c.rect).cx - cx });      // une moitié se centre en largeur sur ce qu'on en voit
   const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
-  return Object.assign(m, { vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
+  return Object.assign(m, { half: false, vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
 }
 /* parti : chaque case reçoit ses armes entières resserrées à sa taille ; une moitié écartelée montre ses quatre quartiers */
 function drawParti(St, u, ab) {

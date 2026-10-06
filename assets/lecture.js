@@ -118,13 +118,15 @@ async function chargerLecteur() {
 
 /* galeries (Blasons réels, Personnages) : ce que le lecteur fait de chaque blasonnement. Une Map carte → lecture (vide si les données manquent) ;
    rien n'est écrit en dur : quand le lecteur apprend un mot, les cartes qu'il relit de plus s'ouvrent d'elles-mêmes dans l'Atelier */
+/* ce que l'Atelier lit d'une carte : son blasonnement, ou, si l'image montre autre chose que la source, le champ « atelier » (ce que dit l'image) */
+const texteAtelier = a => a.atelier || a.blason;
 function lectures(liste) {
-  try { return new Map(liste.filter(a => a.blason).map(a => [a, lire(a.blason)])); } catch (e) { return new Map(); }
+  try { return new Map(liste.filter(a => a.blason).map(a => [a, lire(texteAtelier(a))])); } catch (e) { return new Map(); }
 }
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
-const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(a.blason)}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
-const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>`;
+const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
+const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-non">Le dessin suit l'image de la carte, qui montre autre chose que la source : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
 /* l'écu d'une carte : un lien vers l'Atelier si le lecteur relit ses armes (la souris y va ; au clavier, c'est le bouton « Redessiner ») */
 const ecuCarte = (a, galerie, img, lisible) => lisible
   ? `<a class="shield to-at" href="${adresseAtelier(a, galerie)}" tabindex="-1" title="Modifier ces armes dans l'Atelier">${img}<span class="to-at-k" aria-hidden="true">Modifier dans l'Atelier</span></a>`
@@ -132,7 +134,7 @@ const ecuCarte = (a, galerie, img, lisible) => lisible
 /* sous un blasonnement que l'Atelier ne relit pas : où il bute, et de quoi ouvrir quand même le texte dans l'Atelier, où il est surligné */
 function buteAtelier(a, r, galerie) {
   const e = r && r.erreurs[0];
-  let mot = e ? a.blason.slice(e.de, e.a).replace(/\s+/g, " ").replace(/^[\s,;:]+/, "").trim() : "";
+  let mot = e ? texteAtelier(a).slice(e.de, e.a).replace(/\s+/g, " ").replace(/^[\s,;:]+/, "").trim() : "";
   if (mot.length > 30) mot = mot.slice(0, 28).trim() + "…";
   mot = mot.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   return `<p class="redo-non">L'Atelier ne relit pas encore ces armes${mot ? ` : il bute sur « ${mot} »` : ""}. <a href="${adresseAtelier(a, galerie)}">Voir où dans l'Atelier</a></p>`;

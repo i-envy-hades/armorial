@@ -411,7 +411,7 @@ async function chargeCartes() {
   const listes = await Promise.all(Object.entries(GALERIES).map(async ([gal, G]) => {
     const r = await fetch(G.fichier);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return (await r.json()).map(a => ({ gal, slug: slugCarte(a.nom), a, r: a.blason ? lire(a.blason) : null }));
+    return (await r.json()).map(a => ({ gal, slug: slugCarte(a.nom), a, r: a.blason ? lire(texteAtelier(a)) : null }));
   }));
   CARTES = listes.flat();
 }
@@ -431,7 +431,7 @@ function resoudOrigine() {
   ORIGINE.c = CARTES.find(c => c.gal === ORIGINE.gal && c.slug === ORIGINE.slug && c.r) || null;          // une carte sans blasonnement n'a rien à ouvrir
   if (!ORIGINE.c) { ORIGINE = null; return; }
   const { a, r } = ORIGINE.c;
-  if (r && !r.ok && !$("#lire").value.trim()) { $("#lire").value = a.blason; afficheLecture(r, a.blason); }
+  if (r && !r.ok && !$("#lire").value.trim()) { $("#lire").value = texteAtelier(a); afficheLecture(r, texteAtelier(a)); }
 }
 /* en arrivant d'une carte (ou d'un autre lien « #lire=… »), on va droit à l'écu : le bandeau est passé, l'en-tête fixe ne le cache pas */
 function allerALEcu() {
@@ -440,7 +440,7 @@ function allerALEcu() {
 }
 function partirDe(c) {
   ORIGINE = { gal: c.gal, slug: c.slug, c };
-  $("#lire").value = c.a.blason;
+  $("#lire").value = texteAtelier(c.a);
   lireLeChamp();
   if (matchMedia("(max-width: 860px)").matches) allerALEcu();                     // sur téléphone, l'écu est au-dessus du formulaire
 }
@@ -525,7 +525,7 @@ function afficheOrigine() {
   $("#lire").addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); lireLeChamp(); } });
   $("#origine").addEventListener("click", e => {
     if (!e.target.closest("#b-origine") || !ORIGINE || !ORIGINE.c) return;
-    $("#lire").value = ORIGINE.c.a.blason; lireLeChamp();
+    $("#lire").value = texteAtelier(ORIGINE.c.a); lireLeChamp();
   });
   addEventListener("hashchange", () => {
     ORIGINE = origineDemandee(location.hash); resoudOrigine();
