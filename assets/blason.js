@@ -971,12 +971,6 @@ function chargeInner(kind, fill, stroke, field){
       <rect x="92" y="60" width="16" height="122"/><rect x="50" y="74" width="100" height="13" rx="6"/>
       <path d="M100,188 C72,188 46,168 40,138 C38,131 45,127 49,133 C58,150 74,162 100,162 C126,162 142,150 151,133 C155,127 162,131 160,138 C154,168 128,188 100,188 Z"/>
       <path d="M34,118 L54,140 L32,148 Z"/><path d="M166,118 L146,140 L168,148 Z"/></g>`;
-    /* la couronne ouverte (celle qu'on voit en meuble : « trois couronnes d'or ») : un bandeau gemmé et cinq pointes, dont trois portent une perle */
-    case "couronne": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
-      <path d="M40,142 L36,96 L70,122 L100,82 L130,122 L164,96 L160,142 Z"/>
-      <rect x="40" y="142" width="120" height="30" rx="3"/>
-      <circle cx="36" cy="90" r="7"/><circle cx="100" cy="75" r="7"/><circle cx="164" cy="90" r="7"/></g>
-      <g fill="${field}"><circle cx="66" cy="157" r="5.5"/><circle cx="100" cy="157" r="5.5"/><circle cx="134" cy="157" r="5.5"/></g>`;
     /* la hache d'armes, le fer à dextre (à gauche pour qui regarde) ; on la contourne pour l'avoir à senestre */
     case "hache": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <rect x="95.5" y="42" width="9" height="172" rx="3"/>
