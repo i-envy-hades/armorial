@@ -426,7 +426,8 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
-                    "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie"]
+                    "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
+                    "Canton d'Appenzell Rhodes-Intérieures"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
