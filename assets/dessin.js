@@ -283,12 +283,14 @@ const placeAll = (pts, m, id, flip, over = "") => {
     return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
   }).join("");
 };
-/* la couronne d'une bête (« lion couronné d'or ») : la couronne du meuble « couronne », posée sur la tête de la figure (m.couronne = [x, y, largeur] dans le cadre de l'écu) */
-function couronneDe(m, tinct) {
+/* la couronne d'une bête (« lion couronné d'or ») : le meuble « couronne » (à fleurons) ou « couronne antique », posé sur la tête de la figure (m.couronne = [x, y, largeur] : le centre de la couronne, dans le cadre de l'écu) */
+let CNID = 0;
+function couronneDe(m, tinct, forme) {
   if (!m.couronne || !tinct) return "";
-  const [x, y, w] = m.couronne, k = w / 128, ink = chgStroke(tinct);
-  const inner = chargeInner("couronne", tinctPaint(tinct), tinct === "Sable" ? "#6b6560" : ink, ink).replace(/stroke-width="1\.4"/g, `stroke-width="${(1.3 / k).toFixed(2)}"`);
-  return `<g transform="translate(${x},${y}) scale(${k.toFixed(4)}) translate(-100,-121)">${inner}</g>`;
+  const cm = meuble(forme === "antique" ? "couronne-antique" : "couronne"), txt = SVGTXT[cm.kind];
+  if (!txt) return "";
+  const [x, y, w] = m.couronne, vb = cm.file.vb, h = w * vb[3] / vb[2];
+  return `<svg x="${(x - w / 2).toFixed(1)}" y="${(y - h / 2).toFixed(1)}" width="${w}" height="${h.toFixed(1)}" viewBox="${vb.join(" ")}" overflow="visible"><g fill="#000" stroke-linejoin="round">${fileInner(recolor(txt, cm, tinct, tinct), `cn${++CNID}`)}</g></svg>`;
 }
 const croixDeCase = (pf, th, line) => {
   const t = 40 * MAP.px * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
@@ -354,16 +356,16 @@ function drawBody(s, u) {
     const pts = ptsFor(s, m), part = k => sq(partitionInner(s.part, k ? ["#000", "#fff"] : ["#fff", "#000"], true));
     defs += symbolFor({ ...s, tm: s.t2, ta: s.ta || s.t2 }, `chg-${u}`) + symbolFor({ ...s, tm: s.t1, ta: s.ta || s.t1 }, `chgx-${u}`)
       + [0, 1].map(k => `<mask id="cc${k}-${u}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${part(k)}</mask>`).join("");
-    const g = `<g mask="url(#cc0-${u})">${placeAll(pts, m, `chg-${u}`, s.ct, couronneDe(m, s.cn))}</g><g mask="url(#cc1-${u})">${placeAll(pts, m, `chgx-${u}`, s.ct, couronneDe(m, s.cn))}</g>`;
+    const g = `<g mask="url(#cc0-${u})">${placeAll(pts, m, `chg-${u}`, s.ct, couronneDe(m, s.cn, s.cnk))}</g><g mask="url(#cc1-${u})">${placeAll(pts, m, `chgx-${u}`, s.ct, couronneDe(m, s.cn, s.cnk))}</g>`;
     if (s.nb === "seme") under = g; else over = g;
   } else if (m) {
     defs += symbolFor(s, `chg-${u}`);
-    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct, couronneDe(m, s.cn));
+    const g = placeAll(ptsFor(s, m), m, `chg-${u}`, s.ct, couronneDe(m, s.cn, s.cnk));
     if (s.nb === "seme") under = g; else over = g;
   }
   if (m2) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
-    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2));
+    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
   }
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
@@ -547,7 +549,7 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.m && a.cn) jobs.push(loadSvg(meuble(a.cnk === "antique" ? "couronne-antique" : "couronne"))); if (a.m && a.m2 && a.cn2) jobs.push(loadSvg(meuble(a.cnk2 === "antique" ? "couronne-antique" : "couronne"))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
   if (hm) jobs.push(getText(hm.path));

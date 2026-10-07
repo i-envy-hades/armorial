@@ -156,7 +156,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -212,6 +212,7 @@ function normalize(s) {
   const mm = s.m && meuble(s.m), mm2 = s.m2 && meuble(s.m2);
   s.cn = mm && mm.couronne && own(MOT, s.cn) ? s.cn : "";
   s.cn2 = mm2 && mm2.couronne && own(MOT, s.cn2) ? s.cn2 : "";
+  s.cnk = s.cn && s.cnk === "antique" ? "antique" : ""; s.cnk2 = s.cn2 && s.cnk2 === "antique" ? "antique" : "";             // la forme de la couronne : un choix de dessin, que le blasonnement ne dit pas
   s.iss = mm && !mm.seul && (s.iss === "1" || s.iss === "t") && s.nb === "1" && !s.p ? s.iss : "";               // un seul meuble, sans pièce ; « t » : demi-meuble mouvant du trait du parti (voir normalizeAll)
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";

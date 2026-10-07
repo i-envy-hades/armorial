@@ -82,6 +82,7 @@ function syncForm() {
   [...F.elements.pos].forEach(r => { r.closest("label").hidden = !{ sur: canSur, autour: canAut, sous: canSous }[r.value]; });
   $("#r-ta").hidden = !m || !m.accent;
   $("#r-cn").hidden = !m || !m.couronne;
+  $("#r-cnk").hidden = !m || !m.couronne || !a.cn;
   $("#r-iss").hidden = !m || m.seul || a.nb !== "1" || !!a.p;                                   // « issant » : un seul meuble, sans pièce
   [...F.elements.iss].forEach(r => { if (r.value === "t") r.closest("label").hidden = !(S.q === "p" && CUR < 2); });          // le demi-meuble : seulement dans une moitié du parti
   if (m?.accentMot) $("#l-ta").textContent = m.accentLabel || cap(m.accentMot.split(/[ ,]/)[0]);
@@ -92,6 +93,7 @@ function syncForm() {
   $("#r-nb2").hidden = $("#r-d2").hidden = $("#r-tm2").hidden = !m2;
   $("#r-ta2").hidden = !m2 || !m2.accent;
   $("#r-cn2").hidden = !m2 || !m2.couronne;
+  $("#r-cnk2").hidden = !m2 || !m2.couronne || !a.cn2;
   if (m2?.accentMot) $("#l-ta2").textContent = m2.accentLabel || cap(m2.accentMot.split(/[ ,]/)[0]);
   $("#r-tl1").hidden = $("#r-tl2").hidden = S.hm !== "hl";
   const mci = S.hm && S.ci && meuble(S.ci);
