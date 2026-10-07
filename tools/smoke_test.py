@@ -380,10 +380,10 @@ LUS = [
 ]
 # (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
 REFUSES = [
-    ("D'azur au ciboire d'or", "ciboire"),
+    ("D'azur au calice d'or", "calice"),
     ("D'or à sept pals de gueules", "Plusieurs pals"),
     ("De gueules à sept fasces d'argent", "Plusieurs fasces"),
-    ("D'azur à l'ours passant d'argent couronné d'or", "couronné"),
+    ("D'azur à la rose d'argent couronnée d'or", "couronnée"),                 # seules les bêtes portent une couronne
     ("D'azur à la croix d'or chargée d'un lion issant de gueules", "issant"),
     ("D'azur à deux lions issants d'or", "issants"),
     ("D'azur à onze étoiles d'or", "onze étoiles"),
@@ -391,7 +391,7 @@ REFUSES = [
     ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
     ("D'azur au cheval d'argent", "cheval cabré"),
     ("D'azur à trois croix d'or", "croix alésée"),
-    ("D'azur à l'aigle bicéphale d'or becquée et membrée de gueules", "en entier"),
+    ("D'azur à la panthère d'or armée et lampassée de gueules", "en entier"),   # les aigles et la vache acceptent un attribut partiel, pas la panthère
     ("D'azur à la bande d'or brochant sur le tout", "champ divisé"),
     ("D'azur au canton d'or accompagné de deux étoiles d'argent", "autour du canton"),
     ("D'azur au croissant contourné d'or", "ne se contourne pas"),
@@ -413,9 +413,9 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
-                    "Royaume de Grenade (couronne de Castille)"]
-# (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
-BLASONS_REFUSES = ["Royaume de Grenade", "Saint-Empire romain germanique", "Maison de Médicis"]
+                    "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique"]
+# (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
+BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
                         "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin"]
 PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
@@ -513,9 +513,9 @@ def test_lecture(browser, base, n_fuzz):
     blz = lambda: page.inner_text("#blz")
     page.fill("#lire", "D'azur à la fasce d'or"); page.wait_for_timeout(900)
     verifie(blz().strip("« »  ") == "D'azur à la fasce d'or" and page.locator("#lire-etat.ok").count() == 1, "lecture : taper un blasonnement dessine l'écu")
-    page.fill("#lire", "D'azur à la fasce d'or et au ciboire de sable"); page.wait_for_timeout(900)
+    page.fill("#lire", "D'azur à la fasce d'or et au calice de sable"); page.wait_for_timeout(900)
     verifie(page.locator("#lire-etat.ko mark").count() >= 1 and blz().strip("« »  ") == "D'azur à la fasce d'or", "lecture : un blasonnement non compris est surligné et laisse l'écu comme il était")
-    verifie("ciboire" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
+    verifie("calice" in page.inner_text("#lire-etat"), "lecture : le mot que l'Atelier ne connaît pas est nommé")
     page.click("#b-recopier"); page.wait_for_timeout(500)
     verifie(page.input_value("#lire") == "D'azur à la fasce d'or", "lecture : « Reprendre le blasonnement actuel » recopie le blasonnement dans la zone de saisie")
     page.fill("#lire", "D'azur à quatre étoiles d'or"); page.wait_for_timeout(900)
@@ -532,7 +532,7 @@ def test_lecture(browser, base, n_fuzz):
     verifie(page.url.startswith(base + "/atelier.html#") and "lire=" not in page.url, "lecture : l'adresse redevient le lien de partage habituel")
     propre("atelier (#lire)", page, erreurs)
     page.context.close()
-    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur au ciboire d'or"), "#lire-etat.ko")
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote("D'azur au calice d'or"), "#lire-etat.ko")
     verifie(page.locator("#lire-etat.ko mark").count() == 1, "lecture : une adresse « #lire=… » non comprise est signalée")
     propre("atelier (#lire refusé)", page, erreurs)
     page.context.close()
