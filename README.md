@@ -239,6 +239,12 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Pal par défaut** (octobre 2026) : seuls le lion passant et le léopard se posent en pal sans qu'on le dise ; pour tout autre meuble, « en pal » reste une disposition au choix (de deux à cinq meubles), et une figure allongée s'y dessine à pleine largeur sans mordre sur sa voisine (taille réglée sur sa hauteur réelle). Le taureau et le poisson sont devenus des figures allongées.
 - **Boutons « Exemples »** (octobre 2026) : les 36 boutons se relisent tous sans écart ; ajouts : croix mince, clef, parti bordé (bordure dans une case), lambel sur tout l'écu ; « Demi-aigle au parti » prend la clef contournée.
 
+- **Troisième passe** (octobre 2026) :
+  - *Navire* : « navire » est maintenant le navire toutes voiles dehors (Cfaerber, CC BY-SA 3.0) ; l'ancien dessin devient « navire à voile carguée » ; un *vaisseau* à trois mâts s'y ajoute.
+  - *Harpe* (cordes colorables : « cordée d'argent ») et *ciboire* (extrait des armes de Galice, ce qui rend lisible la carte du royaume de Galice ; « du même » se lit aussi après un semé).
+  - *Rencontres* sur le modèle de la rencontre de cerf : ours (lampassé), sanglier (défendu), loup, lion et léopard (lampassés), bélier (accorné), avec fiche d'encyclopédie, et deux entrées de glossaire (*défendu / allumé*, *cordé*).
+  - *Bras* : un réglage « Inclinaison » (droit, 45° ou couché, à dextre ou à senestre), exclusif, qui ne change que le dessin, pas le blasonnement ; un meuble s'y ouvre en ajoutant `"incline": true` à sa fiche de `atelier.json`.
+  - La carte de l'Empire britannique se lit (champ `atelier`, sans le double trescheur de l'Écosse).
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
@@ -248,10 +254,9 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et d'Aragon ; « Stemma della famiglia D'Avalos.svg » donne les armes de la famille, d'azur au château d'or à la bordure componée de gueules et d'argent) et Rodríguez Gallego (écu trop petit).
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (80 sur 156 ; 76 se lisent) — ce qui bloque vraiment :
-   - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Six cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
-   - *À reprendre, figure trouvée mais pas encore téléchargée* (Commons a limité les téléchargements le 7 octobre 2026) : la **harpe** (« Héraldique meuble harpe.svg », Jean-Paul Gibert, CC BY-SA 4.0 ; attribut « cordée » à colorer ; elle ouvrirait la carte de l'Empire britannique avec un champ `atelier`) et le **ciboire** (à extraire des armes de Galice, « COA Kingdom of Galice.svg », SanchoPanzaXXI, CC BY-SA 4.0 ; l'extraction reste à vérifier).
-   - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse.
+2. **Cartes encore illisibles** (78 se lisent sur 156) — ce qui bloque vraiment :
+   - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
+   - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
    - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une fasce accompagnée de deux meubles différents (Galicie-Lodomérie), une pièce chargée qui broche sur un meuble (Mazarin).
 3. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
    « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
