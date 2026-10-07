@@ -39,9 +39,9 @@
    ],
    "accentMot": "armé et lampassé",
    "couronne": [
-    86,
-    34,
-    30
+    100,
+    37,
+    28
    ]
   },
   {
@@ -85,9 +85,9 @@
    ],
    "accentMot": "armé et lampassé",
    "couronne": [
-    88,
-    86,
-    26
+    66,
+    89,
+    24
    ]
   },
   {
@@ -121,9 +121,9 @@
    ],
    "accentMot": "armé et lampassé",
    "couronne": [
-    88,
-    84,
-    26
+    66,
+    89,
+    24
    ]
   },
   {
@@ -153,7 +153,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    91,
+    41,
+    26
+   ]
   },
   {
    "kind": "aigle-sans-couronne",
@@ -1664,7 +1669,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    43,
+    80,
+    20
+   ]
   },
   {
    "kind": "dragon",
@@ -1693,7 +1703,12 @@
    "accent": [
     "#2b5df2"
    ],
-   "accentMot": "armé et lampassé"
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    56,
+    46,
+    22
+   ]
   },
   {
    "kind": "wyverne",
@@ -1729,7 +1744,12 @@
    "accent": [
     "#e20909"
    ],
-   "accentMot": "lampassé"
+   "accentMot": "lampassé",
+   "couronne": [
+    144,
+    42,
+    22
+   ]
   },
   {
    "kind": "licorne",
@@ -1754,6 +1774,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    104,
+    44,
+    18
    ]
   },
   {
@@ -1779,6 +1804,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    48,
+    50,
+    20
    ]
   },
   {
@@ -1809,7 +1839,12 @@
     "#2b5df2"
    ],
    "accentMot": "armé, lampassé et incensé",
-   "accentTrait": true
+   "accentTrait": true,
+   "couronne": [
+    86,
+    44,
+    24
+   ]
   },
   {
    "kind": "cerf",
@@ -1841,6 +1876,11 @@
      "cerf passant",
      "cerfs passant"
     ]
+   ],
+   "couronne": [
+    58,
+    86,
+    20
    ]
   },
   {
@@ -1867,6 +1907,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    64,
+    76,
+    20
    ]
   },
   {
@@ -1893,6 +1938,11 @@
    ],
    "main": [
     "#fcef3c"
+   ],
+   "couronne": [
+    88,
+    70,
+    20
    ]
   },
   {
@@ -1918,6 +1968,11 @@
    ],
    "main": [
     "#fcef3c"
+   ],
+   "couronne": [
+    108,
+    36,
+    16
    ]
   },
   {
@@ -1953,6 +2008,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    56,
+    46,
+    18
    ]
   },
   {
@@ -1979,6 +2039,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    44,
+    53,
+    18
    ]
   },
   {
@@ -2015,6 +2080,11 @@
      "ours passant",
      "ours passant"
     ]
+   ],
+   "couronne": [
+    40,
+    83,
+    18
    ]
   },
   {
@@ -2051,7 +2121,12 @@
     "#f60102"
    ],
    "accentMot": "lampassé et vilené",
-   "outline": true
+   "outline": true,
+   "couronne": [
+    118,
+    18,
+    18
+   ]
   },
   {
    "kind": "sanglier",
@@ -2088,6 +2163,11 @@
      "sanglier passant",
      "sangliers passant"
     ]
+   ],
+   "couronne": [
+    58,
+    94,
+    18
    ]
   },
   {
@@ -2114,6 +2194,11 @@
    ],
    "main": [
     "#fcef3c"
+   ],
+   "couronne": [
+    38,
+    64,
+    18
    ]
   },
   {
@@ -2146,6 +2231,11 @@
      "loup passant",
      "loups passant"
     ]
+   ],
+   "couronne": [
+    42,
+    74,
+    16
    ]
   },
   {
@@ -2171,6 +2261,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    91,
+    36,
+    16
    ]
   },
   {
@@ -2201,7 +2296,12 @@
     "#ffff00"
    ],
    "accentMot": "accorné et onglé",
-   "allongee": true
+   "allongee": true,
+   "couronne": [
+    58,
+    44,
+    18
+   ]
   },
   {
    "kind": "bouquetin-saillant",
@@ -2234,7 +2334,12 @@
    "accent": [
     "#e20909"
    ],
-   "accentMot": "lampassé"
+   "accentMot": "lampassé",
+   "couronne": [
+    96,
+    52,
+    14
+   ]
   },
   {
    "kind": "chevre-saillante",
@@ -2263,7 +2368,12 @@
    "accent": [
     "#e20909"
    ],
-   "accentMot": "lampassé"
+   "accentMot": "lampassé",
+   "couronne": [
+    128,
+    37,
+    16
+   ]
   },
   {
    "kind": "cygne",
@@ -2292,7 +2402,12 @@
    "accent": [
     "fill:#000"
    ],
-   "accentMot": "becqué et membré"
+   "accentMot": "becqué et membré",
+   "couronne": [
+    66,
+    36,
+    16
+   ]
   },
   {
    "kind": "colombe-essorante",
@@ -2321,7 +2436,12 @@
    "accent": [
     "#e20909"
    ],
-   "accentMot": "becqué et membré"
+   "accentMot": "becqué et membré",
+   "couronne": [
+    40,
+    92,
+    14
+   ]
   },
   {
    "kind": "poisson",
@@ -2347,6 +2467,11 @@
    ],
    "main": [
     "#ffffff"
+   ],
+   "couronne": [
+    48,
+    94,
+    16
    ]
   },
   {
@@ -2373,6 +2498,11 @@
    "main": [
     "#5ab532",
     "#2b5df2"
+   ],
+   "couronne": [
+    107,
+    33,
+    18
    ]
   },
   {
@@ -2398,6 +2528,11 @@
    ],
    "main": [
     "#fcef3c"
+   ],
+   "couronne": [
+    100,
+    38,
+    18
    ]
   },
   {
@@ -2423,6 +2558,11 @@
    ],
    "main": [
     "#fcef3c"
+   ],
+   "couronne": [
+    56,
+    52,
+    14
    ]
   },
   {
@@ -2454,7 +2594,12 @@
    ],
    "accentMot": "sur son immortalité",
    "accentFixe": true,
-   "accentLabel": "Immortalité"
+   "accentLabel": "Immortalité",
+   "couronne": [
+    101,
+    82,
+    16
+   ]
   },
   {
    "kind": "salamandre",
@@ -2485,7 +2630,12 @@
    ],
    "accentMot": "dans des flammes",
    "accentFixe": true,
-   "accentLabel": "Flammes"
+   "accentLabel": "Flammes",
+   "couronne": [
+    125,
+    72,
+    14
+   ]
   },
   {
    "kind": "guivre",
@@ -2510,6 +2660,11 @@
    ],
    "main": [
     "#2b5df2"
+   ],
+   "couronne": [
+    58,
+    50,
+    12
    ]
   },
   {
@@ -2541,6 +2696,11 @@
    ],
    "main": [
     "#5ab532"
+   ],
+   "couronne": [
+    62,
+    38,
+    12
    ]
   },
   {
@@ -2597,7 +2757,12 @@
     "fill:#fcef3c",
     "fill:#e20909"
    ],
-   "accentMot": "becqué et membré"
+   "accentMot": "becqué et membré",
+   "couronne": [
+    55,
+    24,
+    14
+   ]
   },
   {
    "kind": "faisceau",
@@ -2765,7 +2930,12 @@
     "#0000ff"
    ],
    "accentMot": "accorné, colleté et clariné",
-   "accentSouple": true
+   "accentSouple": true,
+   "couronne": [
+    50,
+    70,
+    14
+   ]
   },
   {
    "kind": "navire",

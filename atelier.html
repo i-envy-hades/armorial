@@ -165,6 +165,12 @@
       <div class="row" id="r-cc"><span class="lab">Contre-changé</span><select name="cc" aria-label="Émail du meuble : de l'un en l'autre"><option value="">Non : un seul émail</option><option value="en">De l'un en l'autre</option><option value="a">De l'un à l'autre</option></select></div>
       <div class="row" id="r-ta"><span class="lab" id="l-ta">Armé</span><div class="chips" data-name="ta"></div></div>
       <div class="row" id="r-cn"><span class="lab">Couronne</span><select name="cn" aria-label="Couronne portée par le meuble"></select></div>
+      <div class="row" id="r-cnk"><span class="lab">Forme</span>
+        <span class="seg" role="radiogroup" aria-label="Forme de la couronne (dessin seul)">
+          <label><input type="radio" name="cnk" value=""><span>À fleurons</span></label>
+          <label><input type="radio" name="cnk" value="antique"><span>Antique</span></label>
+        </span>
+      </div>
       <p class="note" id="m-note" hidden></p>
       <div class="sub" id="r-m2">
         <div class="row"><span class="lab">Second meuble</span><select name="m2" aria-label="Second meuble"></select></div>
@@ -179,6 +185,12 @@
         <div class="row" id="r-tm2"><span class="lab">Émail</span><div class="chips" data-name="tm2"></div></div>
         <div class="row" id="r-ta2"><span class="lab" id="l-ta2">Armé</span><div class="chips" data-name="ta2"></div></div>
         <div class="row" id="r-cn2"><span class="lab">Couronne</span><select name="cn2" aria-label="Couronne portée par le second meuble"></select></div>
+      <div class="row" id="r-cnk2"><span class="lab">Forme</span>
+        <span class="seg" role="radiogroup" aria-label="Forme de la couronne du second meuble (dessin seul)">
+          <label><input type="radio" name="cnk2" value=""><span>À fleurons</span></label>
+          <label><input type="radio" name="cnk2" value="antique"><span>Antique</span></label>
+        </span>
+      </div>
       </div>
       <div class="sub" id="r-adj">
         <div class="row"><span class="lab">Ajuster</span><select id="k-t" aria-label="Meuble à ajuster"></select></div>

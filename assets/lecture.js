@@ -658,7 +658,7 @@ function verifie(P, a, src, lieu) {
     else if (key === "brn") mets(src.bris, "L'Atelier ne pose en brisure qu'une, deux ou trois figures.");
     else if (key === "brd") mets(src.bris, `Cette disposition n'est pas possible pour une brisure dans l'Atelier (possibles : ${dispos(brisArms(a)).map(d => d.lab.toLowerCase()).join(" ; ")}).`);
     else if (/^(tbr|sbr|lbr|lpn|lpc|lpt|lpk|lpw)$/.test(key)) mets(src.bris, "L'Atelier ne sait pas dessiner cette brisure.");
-    else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seuls ${ATL.meubles.filter(x => x.couronne).map(x => `le ${x.sing}`).join(", ")} en portent).`);
+    else if (key === "cn") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne porte pas de couronne dans l'Atelier (seules les bêtes en portent, les aigles l'ayant déjà dessinée).`);
     else if (key === "cn2") mets(src.m2, `${cap(art(m2.sing, m2.g))}${m2.sing} ne porte pas de couronne dans l'Atelier.`);
     else if (key === "ct") mets(src.m, `${cap(art(m.sing, m.g))}${m.sing} ne se contourne pas dans l'Atelier : retourné de gauche à droite, il ne changerait pas.`);
     else if (key === "cc") mets(src.m, "« De l'un en l'autre » : il faut un champ partagé de deux émaux (parti, coupé, tranché, écartelé…) et des meubles posés sur le champ, non sur une pièce ; ni besants ni tourteaux, dont le nom dit l'émail.");
