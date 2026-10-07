@@ -264,6 +264,7 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
 3. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
    « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
 4. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
+5. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
 ## Limites connues
 
