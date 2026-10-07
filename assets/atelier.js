@@ -107,6 +107,7 @@ function syncForm() {
   $("#r-hs").hidden = S.hp === "face";
   $("#hm-note").textContent = "";
   $("#r-tbr").hidden = !a.br;
+  $("#r-gb").hidden = !(S.q && CUR === 0 && a.br);
   $("#r-sbr").hidden = !(bp && bp.sens);
   $("#r-lbr").hidden = !(bp && bp.bord);
   $("#r-brn").hidden = $("#r-brd").hidden = !bf;
@@ -312,8 +313,10 @@ const EXEMPLES = [
   ["Burelé", { A0: { f: "ray", ray: "barry", n: "10", t1: "Argent", t2: "Gueules", m: "" } }],
   ["Fasce alésée", { A0: { t1: "Argent", m: "", p: "fasce", tp: "Gueules", ln: "alesee" } }],
   ["Croix bordée", { A0: { t1: "Azur", m: "", p: "croix", tp: "Gueules", pf: "Argent" } }],
+  ["Croix mince", { A0: { t1: "Argent", m: "", p: "croix", tp: "Gueules", pth: "60" } }],
   ["Bande brochante", { A0: { t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Gueules", p: "bande", tp: "Azur", pos: "sous" } }],
   ["Neuf étoiles", { A0: { t1: "Azur", m: "etoile6", nb: "9", tm: "Or" } }],
+  ["Clef", { A0: { t1: "Azur", m: "clef", nb: "1", tm: "Or" } }],
   ["Sur le tout", { q: "2", ab: "1", A0: { t1: "Gueules", m: "lion", nb: "1", tm: "Or", ta: "Azur" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A4: { t1: "Argent", m: "", p: "croix", tp: "Gueules" } }],
   ["Brisé d'un croissant", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "croissant", tbr: "Argent" } }],
   ["Brisé d'une bordure", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "bordure", tbr: "Gueules" } }],
@@ -321,7 +324,9 @@ const EXEMPLES = [
   ["Lambel", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Argent" } }],
   ["Lambel chargé", { A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", br: "lambel", tbr: "Gueules", lpn: "5", lpc: "roundel", lpt: "Or", lpk: "2" } }],
   ["Parti", { q: "p", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A1: { t1: "Gueules", m: "leopard", nb: "3", tm: "Or", ta: "Azur", d: "pal", p: "" } }],
-  ["Demi-aigle au parti", { q: "p", A0: { t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules", iss: "t", p: "" }, A1: { t1: "Gueules", m: "clef", nb: "1", tm: "Or", p: "" } }],
+  ["Demi-aigle au parti", { q: "p", A0: { t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules", iss: "t", p: "" }, A1: { t1: "Gueules", m: "clef", nb: "1", tm: "Or", ct: "1", p: "" } }],
+  ["Parti bordé", { q: "p", A0: { t1: "Or", m: "lion", nb: "1", tm: "Sable", ta: "Gueules", p: "bordure", tp: "Gueules", ln: "engrele" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" } }],
+  ["Lambel sur tout l'écu", { q: "2", gb: "1", A0: { t1: "Azur", m: "fleurdelis", nb: "seme", tm: "Or", br: "lambel", tbr: "Argent" }, A1: { t1: "Gueules", m: "leopard", nb: "3", d: "pal", tm: "Or", ta: "Azur", sz: "190", p: "" } }],
   ["Parti écartelé", { q: "p", h1: "2", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A2: { t1: "Gueules", m: "leopard", nb: "3", tm: "Or", ta: "Azur", d: "pal", p: "" }, A1: { t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur", p: "" } }],
 ];
 function example(ex) {
@@ -383,7 +388,7 @@ function afficheLecture(r, texte) {
 }
 /* applique des armes lues : les ornements, la forme de l'écu et le reste de la composition ne bougent pas */
 function appliqueLecture(etat) {
-  S = { ...S, q: etat.q, ab: etat.ab, h1: etat.h1, h2: etat.h2, A: etat.A.map(a => ({ ...a })) };
+  S = { ...S, q: etat.q, ab: etat.ab, gb: etat.gb || "", h1: etat.h1, h2: etat.h2, A: etat.A.map(a => ({ ...a })) };
   CUR = 0; KT = "1";
   render();
 }
@@ -455,7 +460,7 @@ function partirDe(c) {
 /* l'empreinte des armes (sans les ornements ni les réglages graphiques) : sont-ce encore celles de la carte ? */
 const empreinte = St => JSON.stringify(canonAll(St));
 function empreinteCarte(c) {
-  if (!c.emp) { const e = c.r.etat; c.emp = empreinte({ q: e.q, ab: e.ab, h1: e.h1, h2: e.h2, A: e.A.map(a => normalize({ ...a })) }); }
+  if (!c.emp) { const e = c.r.etat; c.emp = empreinte({ q: e.q, ab: e.ab, gb: e.gb || "", h1: e.h1, h2: e.h2, A: e.A.map(a => normalize({ ...a })) }); }
   return c.emp;
 }
 const armesDeLaCarte = (St, c) => !!(c && c.r && c.r.ok) && empreinte(St) === empreinteCarte(c);

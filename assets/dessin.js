@@ -147,10 +147,10 @@ const DEVISES = {
       + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
   }) }
 };
-const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "",
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "", gb: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -179,6 +179,7 @@ function normalizeAll(St) {
   St.dv = String(St.dv || "").slice(0, 48);
   if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
+  if (St.gb !== "1" || !St.q || !St.A[0].br) St.gb = "";
   St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1 || halfMode(St, i))) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
@@ -366,8 +367,8 @@ function drawBody(s, u) {
   return corps(s, u, defs, field, under, over, piece);
 }
 /* la brisure, par-dessus tout le reste (une pièce de brisure, ou des figures), puis l'assemblage des couches */
-function corps(s, u, defs, field, under, over, piece) {
-  let bris = "";
+function brisLayer(s, u) {
+  let defs = "", bris = "";
   if (s.br) {
     if (s.br === "lambel") {
       const l = lambelDraw(s, u); defs += l.defs;
@@ -378,8 +379,15 @@ function corps(s, u, defs, field, under, over, piece) {
     else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
-  return { defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + bris };
+  return { defs, bris };
 }
+function corps(s, u, defs, field, under, over, piece) {
+  const b = brisLayer(s, u);
+  return { defs: defs + b.defs, body: field + under + (s.pos === "sous" ? over + piece : piece + over) + b.bris };
+}
+/* la brisure de tout l'écu (écartelé ou parti : « …, le tout brisé d'un lambel ») est celle des premières armes, posée une fois sur l'ensemble */
+const GBR = St => (St.q && St.gb === "1" && St.A[0].br ? St.A[0] : null);
+const armsCell = (St, ai) => (ai === 0 && GBR(St) ? { ...St.A[0], br: "" } : St.A[ai]);
 function draw(s, u = "a", extra = "") {
   const r = drawBody(s, u);
   return `<defs><clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>${r.defs}</defs><g clip-path="url(#cl-${u})">${r.body}</g>${extra}${shieldFinish()}`;
@@ -473,7 +481,7 @@ function drawParti(St, u, ab) {
     const m = partiMap(c), id = `${u}h${ci}`, [rx, ry, rw, rh] = c.rect;
     MAP = m; HSIDE = c.half;
     let r;
-    try { r = drawBody(St.A[c.arm], id); } finally { MAP = null; HSIDE = 0; }
+    try { r = drawBody(armsCell(St, c.arm), id); } finally { MAP = null; HSIDE = 0; }
     defs += r.defs + `<clipPath id="qr-${id}"><rect x="${rx}" y="${ry}" width="${rw}" height="${rh}"/></clipPath>`;
     body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
@@ -481,6 +489,8 @@ function drawParti(St, u, ab) {
   let lignes = "M100,0V252";
   cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  const gl = GBR(St) ? brisLayer(St.A[0], `${u}g`) : null;
+  if (gl) { defs += gl.defs; body += gl.bris; }
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
 function drawShield(St, u) {
@@ -491,7 +501,7 @@ function drawShield(St, u) {
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {
-    const a = St.A[ai], g = G.q[qi];
+    const a = armsCell(St, ai), g = G.q[qi];
     let r, under;
     NOBORD = true;
     try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
@@ -502,6 +512,8 @@ function drawShield(St, u) {
       + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g>${bande}</g>`;
   });
   body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  const gl = GBR(St) ? brisLayer(St.A[0], `${u}g`) : null;
+  if (gl) { defs += gl.defs; body += gl.bris; }
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
 
