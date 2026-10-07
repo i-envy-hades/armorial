@@ -197,7 +197,7 @@ function marker() {
   const a = cur(), [g, i] = KT.split(".").map(Number), m = meuble(g === 1 ? a.m : a.m2);
   const circle = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#c9a227" stroke-width="2.2" stroke-dasharray="6 4" pointer-events="none"/>`;
   /* dans un parti, chaque case place ses figures à sa façon (carte de la case, demi-meuble sur le trait) : on les calcule sous la même carte que le dessin */
-  if ((S.q === "p" || S.q === "c") && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => {
+  if (["p", "c", "t", "l"].includes(S.q) && CUR !== 4) return partiCells(S).filter(c => c.arm === CUR).map(c => {
     const mp = partiMap(c);
     let all, fx;
     MAP = mp; HSIDE = c.half;

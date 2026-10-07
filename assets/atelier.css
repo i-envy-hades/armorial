@@ -17,6 +17,7 @@ select:focus,button:focus-visible,.chip input:focus-visible + span{outline:2px s
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}
 .seg label{cursor:pointer}
 .seg input{position:absolute;opacity:0;pointer-events:none}
+.seg.seg-large{flex-wrap:wrap;border-radius:16px}          /* la composition : sept choix, qui passent à la ligne sur un téléphone */
 .seg span{display:block;padding:.3rem .8rem;font-size:.9rem;color:var(--ink-soft)}
 .seg input:checked + span{background:var(--gules);color:#fbf5e4}
 .seg input:focus-visible + span{outline:2px solid var(--or);outline-offset:-2px}

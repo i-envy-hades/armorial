@@ -703,7 +703,7 @@ function verifie(P, a, src, lieu) {
     if (d0.ph.trim() || pal) note(`disposition non précisée pour ${NB[n]} ${plur(mm, o)} : l'Atelier les pose ${d0.lab.toLowerCase()}${pal}.`);
   };
   if (dispos(b).length) place(src.m, m, +b.nb, true);
-  if (b.m2) place(src.m2, m2, +b.nb2);
+  if (b.m2 && !b.cp) place(src.m2, m2, +b.nb2);          // en pointe d'une fasce (cp), leur place est fixe
   if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn, true);
   for (const [o, mm] of [[src.m, m], [src.m2, m2]]) {
     if (!o || !mm || o.ta != null || !(mm.accentFixe || mm.accentTrait)) continue;          // ta "" : dit « du même » sur un meuble contre-changé
@@ -745,7 +745,8 @@ function lireArmes(texte, toks, lieu, res) {
 /* « Parti : au 1, A ; au 2, B » : chaque moitié est des armes, ou « écartelé : aux 1 et 4, … ; aux 2 et 3, … » (ou « au 1, … ; … ; au 4, … ») ; les moitiés se disent dans l'ordre */
 function lireParti(texte, segs, res, etat, main) {
   let k = 0;
-  const coupe = main[0].w === "coupe", nom = coupe ? "Un coupé" : "Un parti";            // « Coupé : au 1, … ; au 2, … » : la moitié du chef, puis celle de la pointe
+  /* « Coupé (Tranché, Taillé) : au 1, … ; au 2, … » : la partie du chef, puis celle de la pointe ; seules les moitiés d'un parti s'écartèlent */
+  const Q = { parti: ["p", "Un parti"], coupe: ["c", "Un coupé"], tranche: ["t", "Un tranché"], taille: ["l", "Un taillé"] }[main[0].w], coupe = Q[0] !== "p", nom = Q[1];
   const bute = (seg, msg) => { const t = seg && seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg } : { de: main[0].de, a: main[main.length - 1].a, msg }); };
   const moitiés = [];
   for (let h = 0; h < 2; h++) {
@@ -756,7 +757,7 @@ function lireParti(texte, segs, res, etat, main) {
     let rest = seg.slice(e.i), mode = "";
     const armes = [];
     if (rest[0] && rest[0].w === "ecartele" && rest[1] && rest[1].w === ":") {
-      if (coupe) return bute(rest, "Dans l'Atelier, les moitiés d'un coupé ne s'écartèlent pas (celles d'un parti, si).");
+      if (coupe) return bute(rest, `Dans l'Atelier, les parties ${nom.replace("Un", "d'un")} ne s'écartèlent pas (les moitiés d'un parti, si).`);
       rest = rest.slice(2);
       const e2 = etiquette(rest), cle2 = e2 && e2.nums.slice().sort().join();
       if (cle2 !== "1,4" && cle2 !== "1") return bute(rest, "Un écartelé dans une moitié commence par « aux 1 et 4, … » (puis « aux 2 et 3, … ») ou par « au 1, … » (jusqu'à « au 4, … »).");
@@ -781,7 +782,7 @@ function lireParti(texte, segs, res, etat, main) {
     moitiés.push({ mode, armes });
   }
   if (k < segs.length) return bute(segs[k], `${nom} compte deux moitiés : « au 1, … ; au 2, … ».`);
-  etat.q = coupe ? "c" : "p"; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
+  etat.q = Q[0]; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
   moitiés.forEach((m, h) => m.armes.forEach((a, n) => { etat.A[HALF_ARMS[h][n]] = a; }));
 }
 /* « demi-aigle de sable, mouvant du trait du parti, couronnée, becquée… de gueules » : on ramène le trait en dernier, où l'Atelier le lit */
@@ -819,7 +820,7 @@ function lire(texte) {
   }
   const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
-  const parti = !!(main[0] && (main[0].w === "parti" || main[0].w === "coupe") && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
+  const parti = !!(main[0] && ["parti", "coupe", "tranche", "taille"].includes(main[0].w) && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
   const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
   const etat = { q: "", ab: "", gb: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
   /* « ; le tout brisé d'un lambel d'argent » : la brisure de tout l'écu, dite après les quartiers ou les moitiés */
