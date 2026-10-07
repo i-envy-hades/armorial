@@ -288,7 +288,7 @@ function canon(a) {
   }
   return o;
 }
-const canonAll = St => ({ q: St.q, ab: St.ab, h1: St.h1 || "", h2: St.h2 || "", A: active(St).map(i => canon(St.A[i])) });
+const canonAll = St => ({ q: St.q, ab: St.ab, gb: St.gb || "", h1: St.h1 || "", h2: St.h2 || "", A: active(St).map(i => canon(St.A[i])) });
 
 /* ---------- le blasonnement ---------- */
 /* l'attribut d'un meuble (« armé et lampassé d'azur ») ne se dit que s'il change quelque chose : de l'émail du corps, on se tait.
@@ -396,18 +396,20 @@ function cellNames(St) {
 }
 function blazonAll(St) {
   const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
+  const bz = i => (i === 0 && St.q && St.gb === "1" ? blazonCore(St.A[0]) : blazon(St.A[i]));      // la brisure de tout l'écu se dit à la fin
   let b;
   if (!St.q) b = blazon(St.A[0]);
   else if (St.q === "p") {
     /* chaque moitié : des armes, ou un écartelé « écartelé : aux 1 et 4, … ; aux 2 et 3, … » (les quartiers se disent alors avant la moitié suivante) */
     const moitie = h => {
       const m = halfMode(St, h), a = HALF_ARMS[h];
-      if (!m) return lo(blazon(St.A[a[0]]));
+      if (!m) return lo(bz(a[0]));
       const labs = m === "2" ? QLAB[2] : QLAB[4];
-      return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+      return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(bz(i))}`).join(" ; ");
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
-  } else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(blazon(St.A[i]))}`).join(" ; ");
+  } else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
+  if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
   return b;
 }

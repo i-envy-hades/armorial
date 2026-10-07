@@ -771,7 +771,13 @@ function lire(texte) {
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
   const parti = !!(main[0] && main[0].w === "parti" && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
   const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
-  const etat = { q: "", ab: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
+  const etat = { q: "", ab: "", gb: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
+  /* « ; le tout brisé d'un lambel d'argent » : la brisure de tout l'écu, dite après les quartiers ou les moitiés */
+  let gbToks = null;
+  if (quartele) {
+    const kg = main.findIndex((t, i) => i > 0 && t.w === "le" && main[i + 1] && main[i + 1].w === "tout" && main[i + 2] && main[i + 2].w === "brise" && main[i - 1].k === "p" && main[i - 1].w === ";");
+    if (kg >= 0) { gbToks = main.slice(kg + 2); main = main.slice(0, kg - 1); }
+  }
   if (!res.erreurs.length && quartele) {
     const segs = [[]];
     /* les quartiers se séparent d'un point-virgule, ou d'une virgule devant « aux 2 et 3 », « en 2 et 3 » */
@@ -807,6 +813,12 @@ function lire(texte) {
   if (!res.erreurs.length && abime) {
     const a = lireArmes(texte, abime, "Écusson", res);
     if (a) { etat.ab = "1"; etat.A[4] = a; }
+  }
+  if (!res.erreurs.length && gbToks) {
+    const d0 = gbToks[0].de, f = w => ({ k: "w", w, de: d0, a: d0, r: "" });
+    const g = lireArmes(texte, [f("de"), f("or"), { k: "p", w: ",", de: d0, a: d0, r: "" }, ...gbToks], "Brisure de l'écu", res);
+    if (g && etat.A[0].br) res.erreurs.push({ de: gbToks[0].de, a: gbToks[gbToks.length - 1].a, msg: "La brisure de tout l'écu ne s'ajoute pas à celle des premières armes : l'Atelier n'en pose qu'une." });
+    else if (g) { for (const k of ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) if (k in g) etat.A[0][k] = g[k]; etat.gb = "1"; }
   }
   if (!res.erreurs.length) for (const i of active(etat)) if (etat.A[i].iss === "t" && (etat.q !== "p" || i > 1 || halfMode(etat, i))) res.erreurs.push({ de: 0, a: texte.length, msg: "« demi-… mouvant du trait du parti » ne se dit que d'une moitié d'un parti : « Parti : au 1, … ; au 2, … »." });
   if (res.erreurs.length) return res;
