@@ -756,7 +756,13 @@
    "plur": "croix recroisettées",
    "g": "f",
    "cat": "La famille de la croix",
-   "draw": "croix-recroisettee"
+   "draw": "croix-recroisettee",
+   "alias": [
+    [
+     "croix recroisetée",
+     "croix recroisetées"
+    ]
+   ]
   },
   {
    "kind": "croix-ancree",
@@ -2689,6 +2695,69 @@
    ],
    "base": true,
    "outline": true
+  },
+  {
+   "kind": "vache",
+   "nom": "Vache passante",
+   "sing": "vache passante",
+   "plur": "vaches passantes",
+   "alias": [
+    [
+     "vache",
+     "vaches"
+    ]
+   ],
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/vache.svg",
+    "commons": "Meuble héraldique Vache.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#0000ff"
+   ],
+   "accentMot": "colleté et clariné"
+  },
+  {
+   "kind": "navire",
+   "nom": "Navire",
+   "sing": "navire",
+   "plur": "navires",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/navire.svg",
+    "commons": "Meuble héraldique Navire voile.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fdef3c",
+    "#ffffff",
+    "#fdefff"
+   ]
   }
  ],
  "pieces": [
