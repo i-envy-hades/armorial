@@ -45,7 +45,8 @@
    ]
   },
   {
-   "kind": "lion-passant", "palDefaut": true,
+   "kind": "lion-passant",
+   "palDefaut": true,
    "nom": "Lion passant (léopardé)",
    "sing": "lion passant",
    "plur": "lions passants",
@@ -90,7 +91,8 @@
    ]
   },
   {
-   "kind": "leopard", "palDefaut": true,
+   "kind": "leopard",
+   "palDefaut": true,
    "nom": "Léopard (lion passant guardant)",
    "sing": "léopard",
    "plur": "léopards",
@@ -721,22 +723,7 @@
    "plur": "croix pattées",
    "g": "f",
    "cat": "La famille de la croix",
-   "file": {
-    "path": "assets/meubles/croix-pattee.svg",
-    "commons": "Meuble héraldique Croix pattée.svg",
-    "auteur": "Etxeko, AnonMoos",
-    "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
-   },
-   "box": [
-    24,
-    30,
-    152,
-    172
-   ],
-   "main": [
-    "#ffffff"
-   ]
+   "draw": "croix-pattee"
   },
   {
    "kind": "croix-potencee",
@@ -769,22 +756,7 @@
    "plur": "croix recroisettées",
    "g": "f",
    "cat": "La famille de la croix",
-   "file": {
-    "path": "assets/meubles/croix-recroisettee.svg",
-    "commons": "Croix-recroisettee.svg",
-    "auteur": "PercevalBxl, AnonMoos, Fred the Oyster",
-    "lic": "domaine public",
-    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
-   },
-   "box": [
-    24,
-    30,
-    152,
-    172
-   ],
-   "main": [
-    "#990000"
-   ]
+   "draw": "croix-recroisettee"
   },
   {
    "kind": "croix-ancree",
@@ -1290,7 +1262,7 @@
    "file": {
     "path": "assets/meubles/coquille.svg",
     "commons": "Meuble héraldique Coquille 2.svg",
-    "auteur": "ZigeunerAlt, d\u0027après Bruno Vallette",
+    "auteur": "ZigeunerAlt, d'après Bruno Vallette",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
    },
@@ -1492,7 +1464,29 @@
    "plur": "glands",
    "g": "m",
    "cat": "Le règne végétal",
-   "draw": "gland"
+   "file": {
+    "path": "assets/meubles/gland.svg",
+    "commons": "Meuble héraldique Gland tigé et feuillé.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "fixe": {
+    "mot": "feuillé",
+    "t": "Sinople",
+    "c": [
+     "#5ab532"
+    ]
+   }
   },
   {
    "kind": "epi",
@@ -2674,7 +2668,27 @@
    "g": "f",
    "cat": "Objets et bâtiments",
    "asym": true,
-   "draw": "crosse-bale"
+   "file": {
+    "path": "assets/meubles/crosse-bale.svg",
+    "commons": "Wappen Basel-Stadt matt.svg",
+    "auteur": "Daniel FR",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+    "vb": [
+     74,
+     30,
+     314,
+     530
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
   }
  ],
  "pieces": [

@@ -1296,7 +1296,8 @@
       "kind": "feuille-ortie", "nom": "Feuille d'ortie", "en": "nettle leaf", "champ": "Gueules", "charge": "Argent", "cat": "Le règne végétal",
       "image": { "file": "Héraldique meuble Feuille d'ortie.svg", "auteur": "ZigeunerAlt", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Large forme de Holstein, à trois lobes dentelés et trois clous détachés : rien à voir avec une feuille d'ortie réelle, et c'est précisément pour cela qu'elle figure au deuxième étage des meubles." }
     },
-    { "kind": "gland", "nom": "Gland", "en": "acorn", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal" },
+    { "kind": "gland", "nom": "Gland", "en": "acorn", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
+      "image": { "file": "Meuble héraldique Gland tigé et feuillé.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Le gland tigé et feuillé : la tige porte deux feuilles de chêne." } },
     {
       "kind": "epi", "nom": "Épi", "en": "ear of wheat", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Epi.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 2.5", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr", "note": "Sa page Commons dit « épi de céréales » sans nommer le blé, et la tige y est légèrement inclinée." }
