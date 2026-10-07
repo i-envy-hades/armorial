@@ -245,6 +245,7 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   - *Rencontres* sur le modèle de la rencontre de cerf : ours (lampassé), sanglier (défendu), loup, lion et léopard (lampassés), bélier (accorné), avec fiche d'encyclopédie, et deux entrées de glossaire (*défendu / allumé*, *cordé*).
   - *Bras* : un réglage « Inclinaison » (droit, 45° ou couché, à dextre ou à senestre), exclusif, qui ne change que le dessin, pas le blasonnement ; un meuble s'y ouvre en ajoutant `"incline": true` à sa fiche de `atelier.json`.
   - La carte de l'Empire britannique se lit (champ `atelier`, sans le double trescheur de l'Écosse).
+- **Liste des meubles** (menu « Meuble ») : triée par ordre alphabétique à l'intérieur de chaque catégorie (octobre 2026).
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :

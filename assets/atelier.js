@@ -14,7 +14,7 @@ function fillSelects() {
   F.cn.innerHTML = F.cn2.innerHTML = `<option value="">Aucune</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">Couronné ${de(t.nom)}</option>`).join("");
   F.pf.innerHTML = `<option value="">Aucun</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">Bordée ${de(t.nom)}</option>`).join("");
   const cats = [...new Set(ATL.meubles.map(m => m.cat))];
-  F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
+  F.m.innerHTML = `<option value="">Aucun</option>` + cats.map(c => `<optgroup label="${esc(c)}">${ATL.meubles.filter(m => m.cat === c).sort((a, b) => a.nom.localeCompare(b.nom, "fr")).map(m => `<option value="${esc(m.kind)}">${esc(m.nom)}</option>`).join("")}</optgroup>`).join("");
   F.m2.innerHTML = F.m.innerHTML;
   F.ci.innerHTML = F.m.innerHTML.replace("Aucun", "Aucun");                                        // le cimier se prend dans les mêmes meubles
   F.br.innerHTML = `<option value="">Aucune</option><optgroup label="Pièces de brisure">${Object.entries(BRIS_PIECES).map(([k, v]) => `<option value="${k}">${esc(v.nom)}</option>`).join("")}</optgroup>`
