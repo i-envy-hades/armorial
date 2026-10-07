@@ -71,6 +71,7 @@ function syncForm() {
   F.ln.innerHTML = `<option value="">Droit</option>` + Object.entries(CONTOUR_NOM).filter(([k]) => k !== "alesee" || ALESEE_OK.has(a.p)).map(([k, v]) => `<option value="${k}">${cap(v)}</option>`).join("");
   setField("ln", a.ln);
   $("#r-ct").hidden = !(m && m.asym);
+  $("#r-rot").hidden = !(m && m.incline);
   $("#r-ct2").hidden = !(m2 && m2.asym);
   $("#r-nb").hidden = !m || cs.length < 2;
   $("#r-d").hidden = !m || m.seul || ds.length < 2;

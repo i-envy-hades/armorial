@@ -1301,7 +1301,7 @@
     { "kind": "vache", "nom": "Vache passante", "en": "cow passant", "champ": "Or", "charge": "Gueules", "cat": "Bêtes et chimères",
       "image": { "file": "Meuble héraldique Vache.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "navire", "nom": "Navire", "en": "ship", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments",
-      "image": { "file": "Meuble héraldique Navire voile.svg", "auteur": "Etxeko", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+      "image": { "file": "Héraldique meuble navire 1.svg", "auteur": "Cfaerber", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "pin", "nom": "Pin", "en": "pine tree", "champ": "Argent", "charge": "Sinople", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Pin maritime.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "casque", "nom": "Casque", "en": "helm", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
@@ -1318,6 +1318,26 @@
       "image": { "file": "Coa Illustration Elements Globus cruciger 1.svg", "auteur": "RootOfAllLight", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "bras", "nom": "Bras", "en": "arm embowed", "champ": "Azur", "charge": "Argent", "cat": "Corps et cœur",
       "image": { "file": "Arm Embowed.svg", "auteur": "Christie L. Ward, via Ilzolende", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "navire-cargue", "nom": "Navire à voile carguée", "en": "ship, sails furled", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments",
+      "image": { "file": "Meuble héraldique Navire voile.svg", "auteur": "Etxeko", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "vaisseau", "nom": "Vaisseau", "en": "ship of the line", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Héraldique meuble Vaisseau.svg", "auteur": "Moktoipas", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "harpe", "nom": "Harpe", "en": "harp", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Héraldique meuble harpe.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "ciboire", "nom": "Ciboire", "en": "ciborium", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "COA Kingdom of Galice.svg", "auteur": "SanchoPanzaXXI (le ciboire est extrait des armes de Galice)", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Le ciboire est extrait des armes de Galice du même fichier." } },
+    { "kind": "rencontre-ours", "nom": "Rencontre d'ours", "en": "bear's head, full-faced", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique rencontre-ours.svg", "auteur": "Jacques63", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-sanglier", "nom": "Rencontre de sanglier", "en": "boar's head, full-faced", "champ": "Or", "charge": "Gueules", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Rencontre de sanglier.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-loup", "nom": "Rencontre de loup", "en": "wolf's head, full-faced", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble rencontre loup.svg", "auteur": "MaxxL", "lic": "CC BY 2.5", "licurl": "https://creativecommons.org/licenses/by/2.5/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-lion", "nom": "Rencontre de lion", "en": "lion's face", "champ": "Gueules", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Tête (lion).svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-leopard", "nom": "Rencontre de léopard", "en": "leopard's face", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Tête (léopard).svg", "auteur": "Jean-Paul GIBERT", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-belier", "nom": "Rencontre de bélier", "en": "ram's head, full-faced", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique tête de bélier.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "ours", "nom": "Ours passant", "en": "bear passant", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
       "image": { "file": "Ours passant.svg", "auteur": "Jacques63", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "sanglier", "nom": "Sanglier passant", "en": "boar passant", "champ": "Or", "charge": "Sable", "cat": "Bêtes et chimères",
@@ -3451,6 +3471,20 @@
       ]
     },
     {
+      "terme": "Défendu, allumé (tête de sanglier)",
+      "def": "Pour la tête de sanglier, si la défense est d'un autre émail, elle est dite « défendue de… » ; si c'est l'œil, on dit « allumée de… ».",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Cordé",
+      "def": "Se dit d'un arc dont la corde est d'un autre émail ; les armes d'Irlande disent de même la harpe « d'or cordée d'argent ».",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
       "terme": "Ramé",
       "def": "Se dit de la ramure d'un cerf quand elle est d'un autre émail que le corps ; « ramé », « chevillé » ou « sommé de dix cors » dit aussi le nombre d'andouillers. La tête de cerf de face est un rencontre.",
       "sources": [
@@ -3466,7 +3500,7 @@
     },
     {
       "terme": "Rencontre",
-      "def": "Tête d'animal vue de face, sans cou : la tête de cerf de face se dit « un rencontre de cerf ». La liste de Wikipédia ne donne le mot que pour le cerf.",
+      "def": "Tête d'animal vue de face, sans cou : la tête de cerf de face se dit « un rencontre de cerf ». La liste de Wikipédia ne donne le mot que pour le cerf ; les figures du Projet:Blasons de Commons le disent aussi de l'ours, du loup, du lion, du léopard, du bélier et du sanglier.",
       "sources": [
         "wiki_meubles"
       ]

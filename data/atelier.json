@@ -765,6 +765,14 @@
     [
      "croix recroisetée",
      "croix recroisetées"
+    ],
+    [
+     "croisette recroisettée",
+     "croisettes recroisettées"
+    ],
+    [
+     "croisette recroisetée",
+     "croisettes recroisetées"
     ]
    ]
   },
@@ -2748,10 +2756,10 @@
    "asym": true,
    "file": {
     "path": "assets/meubles/navire.svg",
-    "commons": "Meuble héraldique Navire voile.svg",
-    "auteur": "Etxeko",
-    "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+    "commons": "Héraldique meuble navire 1.svg",
+    "auteur": "Cfaerber",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
    },
    "box": [
     24,
@@ -2760,9 +2768,7 @@
     172
    ],
    "main": [
-    "#fdef3c",
-    "#ffffff",
-    "#fdefff"
+    "fill:#fcef3c"
    ]
   },
   {
@@ -3011,7 +3017,295 @@
    ],
    "main": [
     "fill:#ffffff"
+   ],
+   "incline": true
+  },
+  {
+   "kind": "navire-cargue",
+   "nom": "Navire à voile carguée",
+   "sing": "navire à voile carguée",
+   "plur": "navires à voile carguée",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/navire-cargue.svg",
+    "commons": "Meuble héraldique Navire voile.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fdef3c",
+    "#ffffff",
+    "#fdefff"
    ]
+  },
+  {
+   "kind": "vaisseau",
+   "nom": "Vaisseau",
+   "sing": "vaisseau",
+   "plur": "vaisseaux",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/vaisseau.svg",
+    "commons": "Héraldique meuble Vaisseau.svg",
+    "auteur": "Moktoipas",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "harpe",
+   "nom": "Harpe",
+   "sing": "harpe",
+   "plur": "harpes",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/harpe.svg",
+    "commons": "Héraldique meuble harpe.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ],
+   "accent": [
+    "stroke:#0000ff"
+   ],
+   "accentMot": "cordé"
+  },
+  {
+   "kind": "ciboire",
+   "nom": "Ciboire",
+   "sing": "ciboire",
+   "plur": "ciboires",
+   "alias": [
+    [
+     "ciboire couvert",
+     "ciboires couverts"
+    ]
+   ],
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/ciboire.svg",
+    "commons": "COA Kingdom of Galice.svg",
+    "auteur": "SanchoPanzaXXI (le ciboire est extrait des armes de Galice)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     148,
+     74,
+     294,
+     470
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "rencontre-ours",
+   "nom": "Rencontre d'ours",
+   "sing": "rencontre d'ours",
+   "plur": "rencontres d'ours",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-ours.svg",
+    "commons": "Meuble héraldique rencontre-ours.svg",
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     10,
+     170,
+     722,
+     688
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#000000"
+   ],
+   "accent": [
+    "fill:#e20909"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
+   "kind": "rencontre-sanglier",
+   "nom": "Rencontre de sanglier",
+   "sing": "rencontre de sanglier",
+   "plur": "rencontres de sanglier",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-sanglier.svg",
+    "commons": "Meuble héraldique Rencontre de sanglier.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#e20909"
+   ],
+   "accent": [
+    "fill:#ffffff"
+   ],
+   "accentMot": "défendu"
+  },
+  {
+   "kind": "rencontre-loup",
+   "nom": "Rencontre de loup",
+   "sing": "rencontre de loup",
+   "plur": "rencontres de loup",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-loup.svg",
+    "commons": "Meuble rencontre loup.svg",
+    "auteur": "MaxxL",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "rencontre-lion",
+   "nom": "Rencontre de lion",
+   "sing": "rencontre de lion",
+   "plur": "rencontres de lion",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-lion.svg",
+    "commons": "Meuble héraldique Tête (lion).svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffffff"
+   ],
+   "accent": [
+    "fill:#2b5df2"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
+   "kind": "rencontre-leopard",
+   "nom": "Rencontre de léopard",
+   "sing": "rencontre de léopard",
+   "plur": "rencontres de léopard",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-leopard.svg",
+    "commons": "Meuble héraldique Tête (léopard).svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffffff"
+   ],
+   "accent": [
+    "fill:#2b5df2"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
+   "kind": "rencontre-belier",
+   "nom": "Rencontre de bélier",
+   "sing": "rencontre de bélier",
+   "plur": "rencontres de bélier",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-belier.svg",
+    "commons": "Meuble héraldique tête de bélier.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ],
+   "accent": [
+    "fill:#e20909"
+   ],
+   "accentMot": "accorné"
   }
  ],
  "pieces": [

@@ -308,7 +308,7 @@ function pGroupe(P, i) {
   const pl = suites(LEX.pieces, P, j)[0];
   if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à six, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
   const demi = cle(P, j) === "demi";
-  const c = pCorps(P, demi ? j + 1 : j, undefined, n);
+  const c = pCorps(P, demi ? j + 1 : j, P.prev, n);
   if (!c) return null;
   const d = c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n);
   let e = d.i, ctApres = false;
@@ -524,6 +524,7 @@ function pArmes(P) {
     if (cle(P, i) === ",") { i++; continue; }
     const k = cle(P, i);
     let it = null;
+    P.prev = items.length ? items[items.length - 1].tm || items[items.length - 1].tp : undefined;               // « du même » : l'émail dit juste avant
     if (k === "seme" || suites(LEX.semeAdj, P, i).length) it = pSeme(P, i);
     else if (k === "au" && cle(P, i + 1) === "lambel") it = pLambel(P, i + 2, i);
     else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
