@@ -273,14 +273,14 @@ function useFor(m, id) { return m.file ? `<use href="#${id}" x="${m.box[0]}" y="
 const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; c < 6; c++) p.push([16 + c * 36 + (r % 2 ? 18 : 0), 22 + r * 30, .17]); return p; })();
 
 /* ---------- l'écu ---------- */
-/* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) */
+/* flip : meuble contourné, retourné vers senestre (miroir autour de son axe) ; m.retourne : le fichier emprunté regarde à senestre, on le remet à dextre */
 /* dans une moitié de parti, quelques figures côte à côte se serrent : on les réduit pour qu'elles ne se chevauchent pas */
 const facteurMoitie = pts => MAP && MAP.half && pts.length >= 2 && pts.length <= 6 && new Set(pts.map(q => Math.round(q[0]))).size >= 2 ? .7 : 1;
 const placeAll = (pts, m, id, flip, over = "") => {
   const fx = facteurMoitie(pts);
   return pts.map(([x, y, k, r]) => {
     const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk * fx : k;
-    return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${flip ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
+    return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${!flip !== !m.retourne ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
   }).join("");
 };
 /* la couronne d'une bête (« lion couronné d'or ») : le meuble « couronne » (à fleurons) ou « couronne antique », posé sur la tête de la figure (m.couronne = [x, y, largeur] : le centre de la couronne, dans le cadre de l'écu) */
@@ -649,7 +649,7 @@ function compose(St, u = "a") {
     const m = meuble(St.ci), id = `ci-${u}`, issant = St.cim === "issant", k = issant ? .74 : .56, H = 172 * k;
     defs += symbolFor({ ...ADEF, m: St.ci, tm: St.cit, ta: St.cia, nb: "1" }, id);
     const bourrelet = crownY === null;
-    const yb = bourrelet ? helmTop + helmH * .1 : crownY + crownH * .22, yc = issant ? yb : yb - H / 2, flipC = St.hp !== "face" && St.hs === "s";
+    const yb = bourrelet ? helmTop + helmH * .1 : crownY + crownH * .22, yc = issant ? yb : yb - H / 2, flipC = (St.hp !== "face" && St.hs === "s") !== !!meuble(St.ci)?.retourne;
     if (bourrelet) {                                                // le bourrelet : six segments aux émaux des lambrequins
       const w = 74, h = 11, x0 = 100 - w / 2, y0 = yb - h / 2;
       let b = "";
