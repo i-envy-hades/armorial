@@ -480,6 +480,7 @@ function pLambel(P, j, i0) {
   it.i = q;
   let k = cle(P, q) === "," ? q + 1 : q, w = null;
   if (cle(P, k) === "celui" && cle(P, k + 1) === "du" && ["milieu", "coeur", "centre"].includes(cle(P, k + 2))) { w = "milieu"; k += 3; }
+  else if (cle(P, k) === "chaque" && cle(P, k + 1) === "pendant") { w = ""; k += 2; }                // « au lambel de gueules, chaque pendant chargé de trois châteaux d'or » (Artois)
   const ch = suites(LEX.charge, P, k)[0];
   if (!ch) return w === null ? bornes(P, it, i0) : rate(P, k, "« chargé de… »");
   k += ch.n;
