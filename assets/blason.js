@@ -820,6 +820,8 @@ function chgStroke(t){
   const m={Or:"#7a5c1e",Argent:"#8a8a8a",Gueules:"#5a1210",Azur:"#16294a",Sable:"#000000",Sinople:"#1c4026",Pourpre:"#3f1440"};
   return m[t]||"#1a1712";
 }
+/* un point tourné de a degrés autour du centre de l'écu, « x,y » */
+const rotCroix = (x, y, a) => { const r = a * Math.PI / 180, dx = x - 100, dy = y - 116; return `${(100 + dx * Math.cos(r) - dy * Math.sin(r)).toFixed(1)},${(116 + dx * Math.sin(r) + dy * Math.cos(r)).toFixed(1)}`; };
 function chargeInner(kind, fill, stroke, field){
   switch(kind){
     case "lion": return `
@@ -934,14 +936,11 @@ function chargeInner(kind, fill, stroke, field){
     case "tau": return `<path d="M34,50 L166,50 L166,84 L117,84 L117,198 L83,198 L83,84 L34,84 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
 
     /* ---------- la famille de la croix ---------- */
-    case "croix-pattee": return `<path d="M82,32 L118,32 L110,96 L174,88 L174,144 L110,136 L118,200 L82,200 L90,136 L26,144 L26,88 L90,96 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
+    /* les croix pattée et recroisettée : un seul contour, calculé (quatre bras tournés autour du centre de l'écu) */
+    case "croix-pattee": return `<path d="M${rotCroix(89, 105, 0)} ${[0, 90, 180, 270].map(a => `Q${rotCroix(87, 80, a)} ${rotCroix(72, 42, a)} L${rotCroix(128, 42, a)} Q${rotCroix(113, 80, a)} ${rotCroix(111, 105, a)}`).join(" ")} Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
     case "croix-potencee": return `<path d="M62,34 L138,34 L138,48 L114,48 L114,102 L170,102 L170,82 L184,82 L184,150 L170,150 L170,130 L114,130 L114,184 L138,184 L138,198 L62,198 L62,184 L86,184 L86,130 L30,130 L30,150 L16,150 L16,82 L30,82 L30,102 L86,102 L86,48 L62,48 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
-    case "croix-recroisettee": return `<g fill="${fill}">
-      <path d="M88,52 L112,52 L112,104 L164,104 L164,128 L112,128 L112,180 L88,180 L88,128 L36,128 L36,104 L88,104 Z"/>
-      <rect x="64" y="40" width="72" height="12"/><rect x="64" y="180" width="72" height="12"/>
-      <rect x="24" y="80" width="12" height="72"/><rect x="164" y="80" width="12" height="72"/>
-      <rect x="94" y="28" width="12" height="12"/><rect x="94" y="192" width="12" height="12"/>
-      <rect x="12" y="110" width="12" height="12"/><rect x="176" y="110" width="12" height="12"/></g>`;
+    case "croix-recroisettee": { const P = [[-7.5, -52], [-24, -52], [-24, -67], [-7.5, -67], [-7.5, -78], [7.5, -78], [7.5, -67], [24, -67], [24, -52], [7.5, -52], [7.5, -7.5]];
+      return `<path d="M${rotCroix(92.5, 108.5, 0)} ${[0, 90, 180, 270].map(a => P.map(([x, y]) => `L${rotCroix(100 + x, 116 + y, a)}`).join(" ")).join(" ")} Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`; }
     case "croix-lorraine": return `<path d="M88,32 L112,32 L112,72 L150,72 L150,94 L112,94 L112,134 L164,134 L164,156 L112,156 L112,202 L88,202 L88,156 L36,156 L36,134 L88,134 L88,94 L50,94 L50,72 L88,72 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3"/>`;
 
     /* ---------- astres et éléments ---------- */
@@ -958,12 +957,6 @@ function chargeInner(kind, fill, stroke, field){
     case "eclair": return `<path d="M118,34 L68,124 L96,124 L80,200 L134,106 L104,106 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.3" stroke-linejoin="round"/>`;
 
     /* ---------- objets et bâtiments ---------- */
-    /* la crosse de Bâle (« Baslerstab ») : crochet enroulé à dextre, deux bagues, pied évasé à trois pointes. Le crochet est un trait épais
-       tracé deux fois (le contour, puis l'émail) pour garder un seul contour ; d'après les armes de Bâle-Ville, dessinées ici */
-    case "crosse-bale": { const crochet = "M100,124 V78 C100,46 86,30 68,30 C50,30 40,44 40,58 C40,72 50,80 60,78 C67,77 70,70 67,65";
-      return `<g stroke-linejoin="round"><path d="${crochet}" fill="none" stroke="${stroke}" stroke-width="35.6" stroke-linecap="round"/><path d="${crochet}" fill="none" stroke="${fill}" stroke-width="32" stroke-linecap="round"/>
-      <path d="M62,66 C57,58 64,50 71,53 C79,57 78,69 69,73" fill="none" stroke="${field}" stroke-width="3.6" stroke-linecap="round"/>
-      <g fill="${fill}" stroke="${stroke}" stroke-width="1.8"><path d="M86,141 H114 L140,230 L120,211 L100,232 L80,211 L60,230 Z"/><rect x="76" y="117" width="48" height="10" rx="5"/><rect x="72" y="129" width="56" height="11" rx="5.5"/></g></g>`; }
     case "cloche": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
       <rect x="92" y="44" width="16" height="14" rx="5"/>
       <path d="M100,58 C74,58 60,80 58,110 C56,140 48,158 38,168 L162,168 C152,158 144,140 142,110 C140,80 126,58 100,58 Z"/>
@@ -1007,10 +1000,6 @@ function chargeInner(kind, fill, stroke, field){
       <path d="M100,66 L100,166 M57,91 L143,141 M57,141 L143,91"/></g><circle cx="100" cy="116" r="13" fill="${fill}"/>`;
 
     /* ---------- règne végétal ---------- */
-    case "gland": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
-      <path d="M95,62 C95,54 100,46 100,46 C100,46 105,54 105,62 Z"/>
-      <path d="M66,102 C66,84 81,72 100,72 C119,72 134,84 134,102 C134,109 127,114 100,114 C73,114 66,109 66,102 Z"/>
-      <path d="M72,114 C72,150 83,182 100,194 C117,182 128,150 128,114 Z"/></g>`;
     case "gerbe": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.2" stroke-linejoin="round">
       ${[-30, -18, -6, 6, 18, 30].map(a => `<path transform="rotate(${a} 100 188)" d="M91,188 L91,62 C91,52 100,42 100,42 C100,42 109,52 109,62 L109,188 Z"/>`).join("")}
       <rect x="56" y="130" width="88" height="22" rx="7"/></g>`;
