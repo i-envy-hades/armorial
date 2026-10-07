@@ -1,27 +1,5 @@
 [
   {
-    "nom": "Richard Ier « Cœur de Lion »",
-    "meta": "v. 1157–1199 · roi d'Angleterre",
-    "blason": "De gueules à trois léopards d'or, armés et lampassés d'azur",
-    "desc": "Sous Richard Ier se fixent les trois léopards (lions passants) des Plantagenêts, qui deviendront les armes de l'Angleterre.",
-    "file": "Royal arms of England.svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "groupe": "angleterre",
-    "liens": [
-      {
-        "t": "Frise des rois d'Angleterre",
-        "href": "lignees.html#angleterre"
-      }
-    ],
-    "blasonSrc": {
-      "label": "Wikipedia (en), « Coat of arms of England »",
-      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
-      "note": "l'article dit « three lions passant guardant in pale » (trois lions passant guardant, l'un sur l'autre) : ce que la tradition française nomme léopards ; le blasonnement français sous-entend « en pal »"
-    }
-  },
-  {
     "nom": "Édouard III d'Angleterre",
     "meta": "1312–1377 · roi d'Angleterre",
     "blason": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or (France ancien) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
@@ -68,52 +46,6 @@
       "label": "Wikipedia (en), « Edward, the Black Prince »",
       "url": "https://en.wikipedia.org/wiki/Edward,_the_Black_Prince",
       "note": "légende de l'illustration de l'article : France ancien aux 1 et 4, Angleterre aux 2 et 3, un lambel de trois pendants d'argent"
-    }
-  },
-  {
-    "nom": "Henri VI d'Angleterre",
-    "meta": "1421–1471 · roi d'Angleterre",
-    "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or (France moderne) ; aux 2 et 3, de gueules à trois léopards d'or (Angleterre)",
-    "atelier": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or",
-    "desc": "Proclamé « roi de France et d'Angleterre », Henri VI porte la France « moderne » (trois lis), qui a remplacé le semé vers 1406.",
-    "file": "Coat of Arms of Henry VI of England (1422-1471).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "groupe": "angleterre",
-    "liens": [
-      {
-        "t": "Frise des rois d'Angleterre",
-        "href": "lignees.html#angleterre"
-      }
-    ],
-    "blasonSrc": {
-      "label": "Wikipedia (en), « Coat of arms of England »",
-      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
-      "note": "Henri IV réduit les lis à trois (l'article date cette version de 1406-1554) ; Henri VI porte la France « moderne ». L'article parle d'écarteler les armes d'Angleterre avec celles de France ; le fichier Commons montre à dextre la France moderne seule, à senestre l'écartelé France/Angleterre"
-    }
-  },
-  {
-    "nom": "Richard III d'Angleterre",
-    "meta": "1452–1485 · roi d'Angleterre",
-    "blason": "Écartelé de France moderne et d'Angleterre ; pour supports, deux sangliers d'argent",
-    "atelier": "Écartelé : aux 1 et 4 d'azur à trois fleurs de lis d'or, aux 2 et 3 de gueules à trois léopards d'or armés et lampassés d'azur",
-    "desc": "Le sanglier blanc (« white boar ») était l'emblème personnel de Richard III, dernier roi de la maison d'York.",
-    "file": "Coat of Arms of Richard III of England (1483-1485).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "groupe": "angleterre",
-    "liens": [
-      {
-        "t": "Frise des rois d'Angleterre",
-        "href": "lignees.html#angleterre"
-      }
-    ],
-    "blasonSrc": {
-      "label": "Wikipedia (en), « Coat of arms of England »",
-      "url": "https://en.wikipedia.org/wiki/Coat_of_arms_of_England",
-      "note": "pour les deux sangliers (blancs, emblème personnel), voir Wikipedia (en), « Royal supporters of England »"
     }
   },
   {
@@ -262,13 +194,18 @@
   {
     "nom": "Marguerite de Foix-Candale (1473-1536)",
     "meta": "1473–1536 · marquise de Saluces",
-    "blason": "",
+    "blason": "Parti : au 1, d'argent au chef d'azur ; au 2, écartelé : aux 1 et 4 d'or à trois pals de gueules (Foix), aux 2 et 3 d'or à deux vaches de gueules accornées et colletées d'azur (Béarn)",
     "desc": "",
     "file": "Arms of Margaret of Foix-Candale.svg",
     "auteur": "MostEpic",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "groupe": "familles"
+    "groupe": "familles",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Arms_of_Margaret_of_Foix-Candale.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Alfonso Felice d'Avalos",
@@ -304,37 +241,36 @@
     ]
   },
   {
-    "nom": "Ahmad Shah Zaher",
-    "meta": "1934–2024 · chef de la famille royale et prétendant au trône d'Afghanistan",
-    "blason": "",
-    "desc": "Emblème du royaume d'Afghanistan (1931-1973), non des armes blasonnées ; la page Commons hésite sur la date de fin, 1973 ou 1974.",
-    "file": "Emblem of Afghanistan (1931–1973).svg",
-    "auteur": "Orange Tuesday d'après Andrew Dunhan, version 2021 de Yeemuha",
-    "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Afghanistan",
-    "groupe": "aujourdhui"
-  },
-  {
     "nom": "Ferenc Fuchs",
     "meta": "1744–1807 · prêtre catholique hongrois",
-    "blason": "",
+    "blason": "D'azur à un bras armé d'argent, clouté d'or, mouvant du flanc senestre, tenant deux branches d'olivier d'or, au croissant figuré d'or au canton dextre du chef et au soleil figuré d'or au canton senestre du chef",
     "desc": "",
     "file": "COA archbishop HU Fuchs Ferenc Xaver3.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:COA_archbishop_HU_Fuchs_Ferenc_Xaver3.png",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Ignác Fábry",
     "meta": "1792–1867 · prélat catholique",
-    "blason": "",
+    "blason": "D'azur à la colonne d'argent sommée d'une étoile à huit rais d'or, posée sur une terrasse de sinople",
     "desc": "",
     "file": "COA bishop SK Fabry Ignac2.png",
     "auteur": "GiMa38",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:COA_bishop_SK_Fabry_Ignac2.png",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Justo Rodríguez Gallego",
@@ -427,46 +363,34 @@
   {
     "nom": "Krister Gabrielsson Oxenstierna",
     "meta": "1545–1592 · personnalité politique suédoise",
-    "blason": "",
+    "blason": "D'or à un front de bœuf de gueules, avec ses deux cornes et ses deux oreilles",
     "desc": "",
     "file": "COA family sv Oxenstierna.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "groupe": "familles"
+    "groupe": "familles",
+    "blasonSrc": {
+      "label": "Wikipédia (sv), « Oxenstierna »",
+      "url": "https://sv.wikipedia.org/wiki/Oxenstierna",
+      "note": "l'article dit que le plus ancien blason de la famille est une « oxpanna » (front de bœuf) d'où sortent deux cornes ; l'émail et les oreilles sont lus sur l'image Commons"
+    }
   },
   {
-    "nom": "Anna Fleming (1562-1608)",
-    "meta": "1562–1608 · héritière d'Yläne",
-    "blason": "",
+    "nom": "Famille Fleming",
+    "meta": "Anna Fleming (1562–1608), Herman Fleming (1579–1652) et Claes Fleming (1617–1669)",
+    "blason": "Fascé de gueules et d'or de cinq pièces, les trois fasces de gueules chargées de huit besants d'or, 3, 3 et 2",
     "desc": "",
     "file": "COA-family-Fleming.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "groupe": "familles"
-  },
-  {
-    "nom": "Claes Fleming",
-    "meta": "1617–1669",
-    "blason": "",
-    "desc": "",
-    "file": "COA-family-Fleming.png",
-    "auteur": "Dan Koehl",
-    "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "groupe": "familles"
-  },
-  {
-    "nom": "Herman Fleming",
-    "meta": "1579–1652",
-    "blason": "",
-    "desc": "",
-    "file": "COA-family-Fleming.png",
-    "auteur": "Dan Koehl",
-    "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "groupe": "familles"
+    "groupe": "familles",
+    "blasonSrc": {
+      "label": "Wikipédia (sv), « Fleming (adelsätt) »",
+      "url": "https://sv.wikipedia.org/wiki/Fleming_(adels%C3%A4tt)",
+      "note": "l'article décrit, pour la branche danoise, un écu « delad i fem bjälkar i guld och rött » (cinq fasces d'or et de gueules) chargé de besants d'or, dont le nombre varie d'une phrase à l'autre ; ici, les huit besants 3, 3 et 2 sont lus sur l'image Commons"
+    }
   },
   {
     "nom": "Baroness Sigrid Gyllenstierna",
@@ -503,13 +427,18 @@
   {
     "nom": "Margareta Thuresdotter",
     "meta": "1450–1508 · abbesse suédoise",
-    "blason": "",
+    "blason": "D'or à un navire de sable dont les deux extrémités se terminent en têtes de loup affrontées",
     "desc": "",
     "file": "COA-family-sv-Svarte skaning.png",
     "auteur": "Dan Koehl",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Svarte_skaning.png",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Jean-Baptiste Colbert",

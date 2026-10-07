@@ -5,14 +5,14 @@ function page(file){ return PAGE + encodeURIComponent(file); }
 
 /* les personnages sont rangés par ce que leurs armes enseignent ; chaque groupe a sa phrase (tirée des fiches) */
 const GROUPES = [
-  { id: "angleterre", titre: "Rois d'Angleterre : l'écu suit les prétentions", texte: "Des trois léopards de Richard Iᵉʳ aux lis de France qu'Édouard III puis Henri VI écartèlent à ses armes ; Richard III y ajoute son emblème personnel, le sanglier blanc." },
+  { id: "angleterre", titre: "Rois d'Angleterre : l'écu suit les prétentions", texte: "Édouard III écartèle les léopards d'Angleterre des lis de France qu'il revendique ; les autres rois sont dans la frise des rois d'Angleterre." },
   { id: "brisures", titre: "Brisures : héritiers et cadets", texte: "Le lambel d'argent du Prince Noir, la cotice de du Guesclin, la branche d'épine d'un Carafa sur les fasces de sa famille : une marque posée sur l'écu pour distinguer." },
   { id: "parlantes", titre: "Armes parlantes et devises", texte: "La couleuvre (coluber) de Colbert, les cœurs et les coquilles de Jacques Cœur, le faisceau de licteur de Mazarin : des armes qui disent un nom, une origine, un programme." },
   { id: "eglise", titre: "Papes et prélats", texte: "Les armes de deux papes, Paul IV et Pie II, et de prélats de Hongrie, de Pologne et d'Espagne, avec une abbesse suédoise." },
-  { id: "aujourdhui", titre: "Maisons royales d'aujourd'hui", texte: "En 1972, la reine Margrethe II simplifie les armes du Danemark ; l'Afghanistan, lui, n'a qu'un emblème et non des armes blasonnées." },
+  { id: "aujourdhui", titre: "Maisons royales d'aujourd'hui", texte: "En 1972, la reine Margrethe II simplifie les armes du Danemark." },
   { id: "nord", titre: "Du Danemark à la Russie : l'écu suit la couronne", texte: "Haakon VII ne garde que le lion de Norvège ; Pierre III accole l'aigle de Russie à Holstein-Gottorp, Alexandre II ne garde que l'aigle ; les frères cadets d'Alexandre II portent une ancre, des haches ou des canons, et la bande de Bade ou une devise saxonne pour leurs épouses ; Georges de Danemark, époux d'une reine, n'ajoute rien d'anglais à son écu." },
   { id: "trones", titre: "Un prince allemand sur un trône étranger", texte: "Le burelé de Saxe devient un écusson sur le lion de Belgique ou un quartier de l'écu d'un prince consort ; le fuselé de Bavière se pose sur la croix de Grèce ; Frédéric V, roi de Bohême un hiver, perd son électorat ; Louise de Lorraine et René II montrent des armes mi-parties ou combinées." },
-  { id: "familles", titre: "Familles : le même écu de génération en génération", texte: "Trois FitzAlan sous un même lion d'or ; trois Fleming de Finlande ; Sigrid Gyllenstierna et Erik Eriksson sous une même étoile à sept rais ; des familles d'Italie, de Pologne et de Lituanie." },
+  { id: "familles", titre: "Familles : le même écu de génération en génération", texte: "Trois FitzAlan sous un même lion d'or ; la famille Fleming, de Finlande ; Sigrid Gyllenstierna et Erik Eriksson sous une même étoile à sept rais ; des familles d'Italie, de Pologne et de Lituanie." },
 ];
 let PEOPLE, LECTURES = new Map(), LISIBLES = new Set(), GROUPE = "tous", REQ = "";   // ce que le lecteur de l'Atelier fait de chaque blasonnement (assets/lecture.js), et les armes qu'il relit
 
