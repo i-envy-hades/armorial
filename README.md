@@ -248,47 +248,45 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Liste des meubles** (menu « Meuble ») : triée par ordre alphabétique à l'intérieur de chaque catégorie (octobre 2026).
 - **Couronne** (octobre 2026) : le meuble « couronne » reprend la couronne à fleurons de Jean-Paul Gibert (CC BY 4.0) à la place de l'ancien tracé, trop simple ; deux meubles s'y ajoutent, la *couronne antique* (Gibert, CC BY 4.0) et la *couronne de laurier* (Henrysalome, CC BY-SA 3.0), avec leurs fiches d'encyclopédie.
 - **Bêtes couronnées** (octobre 2026) : toutes les bêtes portent maintenant la couronne (« couronné d'or ») — lions, léopards, cerfs, chevaux, ours, sanglier, taureau, loups, bélier, bouquetin, chèvre, vache, cygne, colombe, poisson, sirène, mélusine, dragon, wyvern, basilic, griffon, phénix, salamandre, guivre, couleuvre, choucas, licorne, panthère. Les aigles gardent leur image, qui a déjà la couronne. Chaque figure a son point d'ancrage sur la tête (`couronne: [x, y, largeur]` dans `atelier.json`, le centre de la couronne dans le repère de l'écu) ; la forme se choisit, *à fleurons* ou *antique* (dessin seul, le blasonnement ne la dit pas). Pour caler une nouvelle bête : afficher la figure sur une grille de 10 unités et relever le haut de la tête.
+- **Cartes rendues lisibles** (octobre 2026, sept lots, de 87 à 100 cartes sur 167) :
+  - *Compositions à deux armes* : **coupé**, **tranché** et **taillé** (« Coupé : au 1, … ; au 2, … »), à côté du parti ; leurs parties ne s'écartèlent pas. Dans le chef d'un coupé, une figure
+    issante sort du trait ; dans un tranché (un taillé), des meubles posés en bande (en barre) longent le trait. Zélande, Monténégro (son écusson seul), Bosnie-Herzégovine.
+  - *Champs et dispositions* : **fascé ondé** (« fascé ondé », ou « ondé d'argent et d'azur », de quatre, six ou huit pièces) ; **treize meubles** en trois pals 4, 5 et 4 (Valais) ;
+    **sept meubles en bande** ; une fasce **« accompagnée en chef de … et en pointe de … »**, deux meubles différents de part et d'autre (réglage « Place » du second meuble ; Galicie-Lodomérie).
+  - *Lambel* : des châteaux sur les pendants, et « au lambel de gueules, chaque pendant chargé de… » (Artois).
+  - *Figures* : le **lion à la queue fourchée et passée en sautoir** (Syryatsu, domaine public ; une variante qui porte le nom « lion », champ `queue` dans `atelier.json` ; Limbourg) ;
+    le **rencontre de bœuf** (Rinaldum et Ripounet, CC BY-SA 3.0 ; sans anneau, langue ni yeux d'un autre émail ; Uri) et le **lion couronné tenant une hache**, extrait des armes de Norvège
+    d'Odejea (CC BY-SA 3.0, champ `extrait` du crédit ; Norvège, Haakon VII) — ces deux-là, de provenance imparfaite, choisis par le curateur.
+  - *Figures remises à dextre* : ours rampant, wyvern, biche saillante, chèvre saillante et salamandre regardaient à senestre dans leurs fichiers (`"retourne": true`) ; Appenzell Rhodes-Intérieures.
+  - *Lecture* : « couronné, armé et lampassé d'or » (la couronne en tête des attributs) ; la traverse se dessine en cotice (Namur) ; Ferdinand de Bulgarie (couronne fermée dessinée à fleurons).
+  - *Cartes sans blasonnement* : l'Irak a reçu le blasonnement de Hubert de Vries (un paysage, sans émaux dans la source ; illisible par l'Atelier).
 ## Ce qui reste à faire
 
-Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
+Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes sans blasonnement** : trois restent vides. L'Irak a reçu le blasonnement de Hubert de Vries (un paysage, sans émaux dans la source). La Saxe (grandes armes à douze quartiers et
-   écusson ; la carte nomme les territoires que la page de la transmission des armes cite — Misnie, Thuringe, les deux Palatinats, Vogtland — et y renvoie) : aucun blasonnement écrit trouvé
-   (de.wikipedia « Wappen Sachsens » montre l'image sans la décrire, heraldry-wiki « Sachsen (Kingdom) » le note « wanted »). D'Avalos : it.wikipedia « D'Avalos » blasonne l'écartelé d'Avalos,
-   d'Aquino et del Borgo, mais l'image de la carte a un autre 3ᵉ quartier (pals et lis) et un écusson à l'aigle bicéphale : la source ne correspond pas à l'image. Rodríguez Gallego : écu trop petit,
-   et la page Commons ne cite qu'un message du diocèse de Zárate-Campana, sans blasonnement.
-   Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
-   L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (100 se lisent sur 167) — ce qui bloque vraiment :
-   - *Fait en octobre 2026* : l'Artois (le lambel « chaque pendant chargé de trois châteaux », les châteaux sur les pendants), le Valais (treize meubles « en trois pals 4, 5 et 4 »)
-     et Namur (la traverse dessinée en cotice) se lisent ; les trois cartes portent un champ `atelier`. Deuxième lot : le **coupé à deux armes** (« Coupé : au 1, … ; au 2, … »,
-     composition « Coupé » de l'Atelier ; ses moitiés ne s'écartèlent pas, et une figure issante y sort du trait) et le **fascé ondé** (« fascé ondé » ou « ondé d'argent et d'azur »,
-     de quatre, six ou huit pièces) : la Zélande et le Monténégro (son écusson seul) se lisent. Le coupé dont une moitié est partie (Grisons) reste à faire.
-     Troisième lot : une fasce **« accompagnée en chef de … et en pointe de … »**, deux meubles différents de part et d'autre (une à trois figures de chaque côté ; réglage « Place » du second meuble) :
-     la Galicie-Lodomérie se lit telle quelle ; Ferdinand de Bulgarie se lit (sa couronne fermée est dessinée à fleurons, la carte le dit).
-   - *Écartés à l'essai* : Thurgovie (l'Atelier pose les deux lions à cheval sur le trait du tranché ; sur l'image, chacun est dans sa moitié, grand, montant le long du trait),
-     Clèves (un meuble qui broche sur un autre : l'écusson et les rais d'escarboucle).
-   - *Figures retournées* : cinq figures empruntées à Commons regardaient à senestre (ours rampant, wyvern, biche saillante, chèvre saillante, salamandre) ; elles sont remises à dextre
-     au dessin (`"retourne": true` dans `atelier.json`), « contourné » les tourne toujours. Appenzell Rhodes-Intérieures se lit (son ours, dressé sur l'image, est l'ours rampant).
-   - *Lion à la queue fourchée* (« Meuble héraldique Lion (queue fourchée sautoir).svg », Syryatsu, domaine public, de la même série que le lion) : une variante qui porte
-     le nom « lion » et se reconnaît à « (à) la queue fourchée (et) passée en sautoir », dit après l'émail (`queue` dans `atelier.json`). Le lecteur prend aussi « couronné, armé et lampassé d'or »
-     (la couronne en tête de la liste des attributs). Le Limbourg se lit ; la Tchéquie reste illisible pour ses autres quartiers. Le lion tenant une hache (Norvège, Haakon VII) n'a pas de figure libre propre sur Commons.
-   - *Tranché et taillé à deux armes* (« Tranché : au 1, … ; au 2, … », compositions « Tranché » et « Taillé » de l'Atelier) : chaque partie, un triangle, reçoit ses armes resserrées
-     sur ce qu'on en voit ; des meubles posés en bande (en barre, pour le taillé) longent le trait. Sept étoiles « en bande » existent aussi sur l'écu plein. Bosnie-Herzégovine se lit.
-   - *Figures imparfaites acceptées par le curateur* (octobre 2026) : le **rencontre de bœuf** (« Heraldique rencontre boeuf.svg », dessiné par Rinaldum, vectorisé par Ripounet,
-     CC BY-SA 3.0 ; sans anneau ni langue, et ses blancs ne sont que des reflets : « allumé » n'est pas pris) et le **lion couronné tenant une hache**, extrait de « Armoiries Norvège.svg »
-     (Odejea, CC BY-SA 3.0 : le lion seul, sans le champ ni l'ombrage, tracés inchangés ; champ `extrait` du crédit). Uri, la Norvège et Haakon VII se lisent. Le « front de bœuf » d'Oxenstierna
-     n'est pas un rencontre (ni mufle ni yeux, seulement le front, les cornes et les oreilles) : la carte reste illisible. Écartés : un bélier de Commons (passant, pas saillant : Schaffhouse),
-     le casque de Skanderbeg (seulement dans les armes entières d'Albanie), la branche d'épine (introuvable).
-   - *Figures à revoir* : l'ours passant posé sur une bande (Berne) reste petit et à plat,
-     là où l'image le fait monter le long de la bande.
-   - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
-   - *Figures sans figure libre sur Commons* : bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
-   - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une pièce chargée qui broche sur un meuble (Mazarin).
-3. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
+1. **Cartes encore illisibles** (100 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+   - *Constructions qui débloqueraient une carte chacune* : un meuble qui broche sur un autre (Clèves : l'écusson et les rais d'escarboucle) ; une pièce chargée qui broche
+     sur un meuble (Mazarin) ; le coupé dont une moitié est partie (Grisons) ; un meuble plus grand que les autres et chargé (Médicis) ; « chacun accompagné de… » (Sultanat d'Égypte) ;
+     la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ; un fascé de cinq pièces aux fasces chargées (Fleming) ;
+     le franc-quartier senestre (Schwytz) ; un écusson posé sur un meuble (Léopold II).
+   - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
+     grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
+   - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
+     (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), clé au double panneton (Nidwald), colombe tenant un rameau (Chypre,
+     dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
+   - *Hors de portée pour l'instant* : les grandes armes à quartiers multiples ou à étages (Danemark, Suède, Russie, Tchéquie, Hongrie, Croatie, Serbie, Arménie, Andorre, Liechtenstein,
+     et les personnages qui les portent : Margrethe II, Frederik X, Georges de Danemark, Henri de Monpezat, Adolphe-Frédéric, Charles XIII, Georges Ier de Grèce, Gloucester,
+     Albert de Saxe-Cobourg, Léopold Ier, Frédéric V, Charles VII, Louise et René II de Lorraine, Pierre III, Alexandre II, Maria Nikolaïevna) ; les blasonnements en prose ou
+     qui nomment des personnages, des paysages, des lettres (Grenade, Irak, Hedjaz, Karthli, Brandebourg, Séville, Glaris, Géorgie, Lituanie, Finlande, Islande, Slovaquie,
+     Appenzell Rhodes-Extérieures, Argovie, Ascanie, Fuchs, Kiszka, Lubrański, Thuresdotter, Constantin et Michel Nikolaïevitch).
+2. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
 ## Limites connues
 
+- **Trois cartes sans blasonnement**, laissées ainsi par choix du curateur : la Saxe (grandes armes à douze quartiers et écusson ; aucun blasonnement écrit trouvé, de.wikipedia
+  « Wappen Sachsens » montre l'image sans la décrire, heraldry-wiki « Sachsen (Kingdom) » le note « wanted » ; la carte renvoie à la page de la transmission des armes),
+  d'Avalos (it.wikipedia « D'Avalos » blasonne un écartelé d'Avalos, d'Aquino et del Borgo qui ne correspond pas à l'image) et Rodríguez Gallego (écu trop petit, aucune source écrite).
+  Les autres cartes jadis vides ont un blasonnement **lu à vue sur l'image**, que la carte signale.
 - **Cartes écartées faute d'armes propres** : l'Empire colonial danois (ses colonies portaient les armes royales de Danemark-Norvège), le royaume ahom (un insigne royal,
   dessiné en 2010 par un contributeur de Wikipédia, sans blasonnement) et les Dix-Sept Provinces comme ensemble (le fichier montrait les armes de Philippe le Beau) ; douze des provinces ont
   chacune leur carte. Le « Califat chérifien » est devenu le royaume du Hedjaz (blasonnement de Hubert de Vries, d'après les billets de 1924 ; aucune source lue ne donne d'armes au califat de 1924).
