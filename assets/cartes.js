@@ -13,3 +13,18 @@ function allerCarte(remetsAZero) {
   carte.classList.add("flash");
   setTimeout(() => carte.classList.remove("flash"), 2400);
 }
+
+/* Couleurs d'une image de Commons corrigées à l'affichage (champ « filtre » d'une carte) : le fichier reste celui de Commons,
+   la carte dit ce qui a été changé. « inverse-or-azur » échange l'or et l'azur du dessin de Dan Koehl
+   (or 252,227,62 ↔ azur 56,110,174 ; le noir et le blanc restent), pour Gregers Matsson (data/personnages.json). */
+const FILTRES = {
+  "inverse-or-azur": "-1.7081 1.9305 0.7776 0 0 -1.6166 2.1524 0.4642 0 0 1.5475 -1.1031 0.5557 0 0 0 0 0 1 0",
+};
+function styleFiltre(a) {
+  const m = a && FILTRES[a.filtre];
+  if (!m) return "";
+  if (!document.getElementById("filtres-cartes")) document.body.insertAdjacentHTML("beforeend",
+    `<svg id="filtres-cartes" width="0" height="0" style="position:absolute" aria-hidden="true">${Object.entries(FILTRES).map(([k, v]) =>
+      `<filter id="f-${k}" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="${v}"/></filter>`).join("")}</svg>`);
+  return ` style="filter:url(#f-${a.filtre})"`;
+}

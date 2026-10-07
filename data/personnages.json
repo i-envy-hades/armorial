@@ -427,6 +427,24 @@
     "groupe": "familles"
   },
   {
+    "nom": "Gregers Matsson",
+    "meta": "mort en 1494 · riksråd et lagman, en Suède",
+    "blason": "D'azur à la fleur de lis d'or",
+    "desc": "Les armes de la famille médiévale qu'on appelle Lillie, reprises par son père Matts Ödgislason. Une autre famille Lillie, introduite à la Maison de la noblesse en 1625, se disait de sa lignée, ce qu'on juge aujourd'hui improbable, et portait les émaux inverses : d'or à la fleur de lis d'azur.",
+    "file": "COA family sv Lillie af Greger Mattssons att.png",
+    "filtre": "inverse-or-azur",
+    "filtreNote": "or et azur échangés à l'affichage, le fichier montrant les armes de la famille de 1625",
+    "auteur": "Dan Koehl",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "familles",
+    "blasonSrc": {
+      "label": "Svenskt biografiskt lexikon, « Lillie, släkt » (H. Gillingstam), t. 23, p. 62",
+      "url": "https://sok.riksarkivet.se/sbl/Presentation.aspx?id=10285",
+      "note": "« en lilja av guld i blått fält » ; la famille de 1625 : Wikipédia (sv), « Lillie af Greger Mattssons ätt »"
+    }
+  },
+  {
     "nom": "Margareta Thuresdotter",
     "meta": "1450–1508 · abbesse suédoise",
     "blason": "D'or à un navire de sable dont les deux extrémités se terminent en têtes de loup affrontées",
