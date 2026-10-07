@@ -302,7 +302,7 @@ function charges(s) {
   /* la couronne : de l'émail du meuble, elle se dit devant lui (« un lion couronné d'or ») ; d'un autre, après l'attribut (« … armé et lampassé de gueules couronné d'argent ») */
   const couronne = s.cn ? " " + agree("couronné", g, pl) : "", mem = s.cn && !s.cc && s.cn === s.tm;
   /* ta vide (contre-changé) : l'attribut suit le corps, « du même » */
-  const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + (s.ta ? de(s.ta) : "du même") : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
+  const acc = (accentDit(m, s) ? " " + (m.accentFixe ? m.accentMot : agree(m.accentMot, g, pl)) + " " + (s.ta ? de(s.ta) : "du même") + (m.accentPlus ? ", " + m.accentPlus : "") : "") + (s.cn && !mem ? couronne + " " + de(s.cn) : "");
   const ctr = (s.iss === "1" ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
   /* une partie du dessin toujours du même émail se dit toujours (« la grenade d'or ouverte de gueules, tigée et feuillée de sinople ») */
   const fixe = m.fixe ? `, ${agree(m.fixe.mot, g, pl)} ${de(m.fixe.t)}` : "";

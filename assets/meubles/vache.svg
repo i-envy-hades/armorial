@@ -152,7 +152,7 @@
        sodipodi:nodetypes="cssssssc"
        id="path51603"
        d="M 87.928078,239.43096 C 91.074194,248.69175 98.156491,250.41051 105.04492,250.6758 C 112.18869,250.95093 119.46341,251.10682 126.59445,250.19829 C 142.0425,248.23014 167.36875,255.28311 162.42027,274.66593 C 161.44512,278.48549 155.72569,279.61081 151.95439,279.98812 C 147.81875,280.40188 148.9558,274.78252 148.28446,272.05292 C 144.06339,254.89045 126.96451,260.21672 112.51314,259.84508 C 100.63494,259.53961 84.87386,254.28793 87.928078,239.43096 z "
-       style="fill:#fcef3c;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
        id="g4399"
        style="stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
@@ -222,7 +222,7 @@
        id="path35178"
        sodipodi:nodetypes="ccc" />
     <path
-       style="fill:#fcef3c;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 103.321,219.79072 C 104.94687,229.43525 111.66352,232.26362 118.42104,233.62624 C 125.42905,235.03937 132.58539,236.35571 139.76997,236.59836 C 155.33402,237.124 179.20781,248.13333 171.22565,266.47635 C 169.65269,270.09101 163.82694,270.28793 160.0438,270.05776 C 155.89518,269.80535 157.91557,264.43989 157.68903,261.63809 C 156.26466,244.02166 138.53439,246.54719 124.3281,243.87108 C 112.65134,241.67146 97.931971,233.96874 103.321,219.79072 z "
        id="path50631"
        sodipodi:nodetypes="cssssssc" />
