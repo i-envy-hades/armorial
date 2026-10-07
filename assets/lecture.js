@@ -91,7 +91,7 @@ function lexique() {
   for (const m of ATL.meubles) if (m.accent && m.accentMot) L.accent[m.kind] = table((m.accentFixe ? [m.accentMot] : quatre(m.accentMot)).map(f => [f, true]));
   /* les attributs des bêtes, par classe : « armé » = « membré » = « onglé » (les griffes), « lampassé » = « langué » (la langue)… */
   L.attr = new Map();
-  for (const [mot, cl] of [["armé", "A"], ["membré", "A"], ["onglé", "A"], ["lampassé", "L"], ["langué", "L"], ["vilené", "V"], ["becqué", "B"], ["couronné", "C"], ["incensé", "I"], ["accorné", "H"]])
+  for (const [mot, cl] of [["armé", "A"], ["membré", "A"], ["onglé", "A"], ["lampassé", "L"], ["langué", "L"], ["vilené", "V"], ["becqué", "B"], ["couronné", "C"], ["incensé", "I"], ["accorné", "H"], ["colleté", "K"], ["clariné", "N"]])
     for (const f of quatre(mot)) L.attr.set(cles(f)[0], cl);
   L.dispos = {};
   /* « posés en pal » = « rangés en pal » = « en pal » : le verbe ne change rien au dessin */
@@ -102,12 +102,15 @@ function lexique() {
   L.coure = table(quatre("couronné").map(f => [f, true]));
   L.issant = table(["issant", "issante"].map(f => [f, true]));
   L.charge = table(quatre("chargé").map(f => [f, true]));
-  L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
+  L.surmontant = table([["surmontant", true]]);
+L.sommet = table(["sommé", "surmonté"].flatMap(w => quatre(w).map(f => [f, true])));
+L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.fasceDispo, L.brisPieces])
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.sommet, L.surmontant, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
   for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
+  for (const m of ATL.meubles) if (m.accentPlus) for (const w of cles(m.accentPlus)) L.vocab.add(w);
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -128,7 +131,7 @@ function lectures(liste) {
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
 const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
-const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-atelier">Le dessin suit l'image de la carte, qui montre autre chose que la source : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
+const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-atelier">${a.atelierNote || "Le dessin suit l'image de la carte, qui montre autre chose que la source"} : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
 /* l'écu d'une carte : un lien vers l'Atelier si le lecteur relit ses armes (la souris y va ; au clavier, c'est le bouton « Redessiner ») */
 const ecuCarte = (a, galerie, img, lisible) => lisible
   ? `<a class="shield to-at" href="${adresseAtelier(a, galerie)}" tabindex="-1" title="Modifier ces armes dans l'Atelier">${img}<span class="to-at-k" aria-hidden="true">Modifier dans l'Atelier</span></a>`
@@ -170,7 +173,7 @@ function pEmail(P, i, ref) {                                 // « d'azur » · 
   return rate(P, i, "un émail (« d'azur », « de gueules »…)");
 }
 /* [,] « armé et lampassé d'azur » · « … du même » : { ta, i } ; ta null s'il n'y en a pas ; null si l'attribut est dit sans émail */
-function pAccent(P, i, m, tm) {
+function pAccent0(P, i, m, tm) {
   const T = LEX.accent[m.kind];
   if (!T) return { ta: null, i };
   const j = cle(P, i) === "," ? i + 1 : i;
@@ -187,7 +190,7 @@ function pAccent(P, i, m, tm) {
       if ((cle(P, q) === "," || cle(P, q) === "et") && LEX.attr.has(cle(P, q + 1))) q++; else break;
     }
     const couronne = m.couronne && used.delete("C");                               // « … et couronné de gueules » : la couronne est du même émail que l'attribut
-    if (q > j && [...need].every(c => used.has(c)) && [...used].every(c => need.has(c) || "ALVB".includes(c))) {
+    if (q > j && (m.accentSouple ? used.size > 0 : [...need].every(c => used.has(c))) && [...used].every(c => need.has(c) || "ALVB".includes(c))) {
       s = { n: q - j }; mots = P.toks.slice(j, q).filter(t => t.k === "w" && t.w !== "et").map(t => t.r); cnAttr = !!couronne;
     }
   }
@@ -273,6 +276,12 @@ function pContre(P, i) {
 function pDispo(P, i, n) {
   const T = LEX.dispos[n], j = cle(P, i) === "," ? i + 1 : i, s = T && suites(T, P, j)[0];
   return s ? { d: s.val, dit: true, i: j + s.n } : { d: "", dit: false, i };
+}
+/* « …, la hache du même » : la suite que dit un meuble dont l'accent colore deux parties (faisceau : le lien et la hache) */
+function pAccent(P, i, m, tm) {
+  const r = pAccent0(P, i, m, tm);
+  if (r && r.ta != null && m.accentPlus) { const j = cle(P, r.i) === "," ? r.i + 1 : r.i, ks = cles(m.accentPlus); if (ks.every((c, q) => cle(P, j + q) === c)) r.i = j + ks.length; }
+  return r;
 }
 function pBrochant(P, i) {                                   // [,] « brochant sur le tout » → fin, ou 0
   const j = cle(P, i) === "," ? i + 1 : i;
@@ -519,8 +528,23 @@ function pArmes(P) {
     else if (k === "au" && cle(P, i + 1) === "lambel") it = pLambel(P, i + 2, i);
     else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
     else if (k === "brise") it = pBrisure(P, i);
-    else if (suites(LEX.verbe, P, i).length) {
-      const vb = suites(LEX.verbe, P, i)[0], o = pObjet(P, i + vb.n, items.length ? items[items.length - 1].tm : undefined);
+    else if (suites(LEX.surmontant, P, i).length) {
+      /* « une étoile surmontant un croissant » : le second meuble est sous le premier, donc en pointe */
+      const j = i + suites(LEX.surmontant, P, i)[0].n, ref = items.length ? items[items.length - 1].tm : undefined, n = LEX.compte.get(cle(P, j));
+      const c = n ? pCorps(P, j + 1, ref, n) : rate(P, j, "un nombre (« un », « trois »…)"), dd = c && (c.pre ? { ...c.pre, i: c.i } : pDispo(P, c.i, n));
+      const o = c && bornes(P, { n, ...c, d: dd.d, dit: dd.dit, i: dd.i }, j);
+      if (o) {
+        if (o.dit && o.d !== "pointe") return erreur(P, o.de, o.fin, "Après « surmontant », l'Atelier pose le second meuble en pointe, et pas autrement.");
+        o.d = "pointe"; o.dit = true; P.notes.push("« surmontant… » : l'Atelier le dit « accompagné en pointe de… ».");
+      }
+      it = o && bornes(P, { t: "acc", o, i: o.i }, i);
+    } else if (suites(LEX.verbe, P, i).length || suites(LEX.sommet, P, i).length) {
+      const somme = !suites(LEX.verbe, P, i).length, vb = suites(LEX.verbe, P, i)[0] || suites(LEX.sommet, P, i)[0], o = pObjet(P, i + vb.n, items.length ? items[items.length - 1].tm : undefined);
+      /* « sommé de » et « surmonté de » : l'Atelier n'a que l'accompagnement ; un meuble qui en porte un autre à son sommet l'a en chef */
+      if (o && somme) {
+        if (o.dit && o.d !== "chef") return erreur(P, o.de, o.fin, "Après « sommé » ou « surmonté », l'Atelier pose le second meuble en chef, et pas autrement.");
+        o.d = "chef"; o.dit = true; P.notes.push(`« ${P.toks[i].r} de… » : l'Atelier le dit « accompagné en chef de… ».`);
+      }
       it = o && bornes(P, { t: "acc", o, i: o.i }, i);
     } else if (k === "et" && items.length && items[items.length - 1].t === "groupe") {
       /* « à cinq tourteaux de gueules et, en chef, un tourteau d'azur » : un second meuble, seul, à la place dite */

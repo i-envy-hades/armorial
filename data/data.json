@@ -1302,6 +1302,22 @@
       "image": { "file": "Meuble héraldique Vache.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "navire", "nom": "Navire", "en": "ship", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments",
       "image": { "file": "Meuble héraldique Navire voile.svg", "auteur": "Etxeko", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "pin", "nom": "Pin", "en": "pine tree", "champ": "Argent", "charge": "Sinople", "cat": "Le règne végétal",
+      "image": { "file": "Meuble héraldique Pin maritime.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "casque", "nom": "Casque", "en": "helm", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Meuble héraldique Casque de profil.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "tete-de-loup", "nom": "Tête de loup arrachée", "en": "wolf's head erased", "champ": "Or", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique tête de loup.svg", "auteur": "Brookford, d'après Flaurentine", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "colonne", "nom": "Colonne", "en": "column", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments",
+      "image": { "file": "Colonne.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 3.0", "licurl": "https://creativecommons.org/licenses/by/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "fleche", "nom": "Flèche", "en": "arrow", "champ": "Gueules", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Héraldique meuble Flèche.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "rencontre-cerf", "nom": "Rencontre de cerf", "en": "stag's head caboshed", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Rencontre de cerf.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "orbe", "nom": "Orbe crucifère", "en": "orb (globus cruciger)", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Coa Illustration Elements Globus cruciger 1.svg", "auteur": "RootOfAllLight", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "bras", "nom": "Bras", "en": "arm embowed", "champ": "Azur", "charge": "Argent", "cat": "Corps et cœur",
+      "image": { "file": "Arm Embowed.svg", "auteur": "Christie L. Ward, via Ilzolende", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "ours", "nom": "Ours passant", "en": "bear passant", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
       "image": { "file": "Ours passant.svg", "auteur": "Jacques63", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "sanglier", "nom": "Sanglier passant", "en": "boar passant", "champ": "Or", "charge": "Sable", "cat": "Bêtes et chimères",
@@ -3430,6 +3446,20 @@
     {
       "terme": "Liées",
       "def": "Se dit de deux clefs en sautoir dont les anneaux sont joints par un lien.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Ramé",
+      "def": "Se dit de la ramure d'un cerf quand elle est d'un autre émail que le corps ; « ramé », « chevillé » ou « sommé de dix cors » dit aussi le nombre d'andouillers. La tête de cerf de face est un rencontre.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Empenné, ferré, fûté (flèche)",
+      "def": "La flèche se compose d'un fût, d'une pointe et de plumes. Quand la pointe est d'une autre couleur, elle est armée (ou ferrée) ; quand ce sont les plumes, elle est empennée ; quand c'est le fût, elle est fûtée. Posée seule, elle est en pal, pointe en haut ; pointe en bas, elle est versée.",
       "sources": [
         "wiki_meubles"
       ]

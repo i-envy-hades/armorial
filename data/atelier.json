@@ -189,7 +189,8 @@
    "accent": [
     "#fcef3c"
    ],
-   "accentMot": "becqué et membré"
+   "accentMot": "becqué et membré",
+   "accentSouple": true
   },
   {
    "kind": "aigle",
@@ -226,7 +227,8 @@
     "#fff03c"
    ],
    "accentMot": "becqué, membré et couronné",
-   "accentTrait": true
+   "accentTrait": true,
+   "accentSouple": true
   },
   {
    "kind": "aigle-bicephale",
@@ -265,7 +267,8 @@
     "#fcef3c"
    ],
    "accentMot": "becqué, membré et couronné",
-   "accentTrait": true
+   "accentTrait": true,
+   "accentSouple": true
   },
   {
    "kind": "aigle-vol-abaisse",
@@ -294,7 +297,8 @@
     "#fcef3c"
    ],
    "accentMot": "becqué, membré et couronné",
-   "accentTrait": true
+   "accentTrait": true,
+   "accentSouple": true
   },
   {
    "kind": "croix",
@@ -2588,13 +2592,14 @@
     172
    ],
    "main": [
-    "fill:#fcef3c",
-    "fill:#fff"
+    "fill:#fcef3c"
    ],
    "accent": [
-    "fill:#e20909"
+    "fill:#e20909",
+    "fill:#fff"
    ],
-   "accentMot": "lié"
+   "accentMot": "lié",
+   "accentPlus": "la hache du même"
   },
   {
    "kind": "grenade",
@@ -2730,7 +2735,8 @@
    "accent": [
     "#0000ff"
    ],
-   "accentMot": "colleté et clariné"
+   "accentMot": "accorné, colleté et clariné",
+   "accentSouple": true
   },
   {
    "kind": "navire",
@@ -2757,6 +2763,254 @@
     "#fdef3c",
     "#ffffff",
     "#fdefff"
+   ]
+  },
+  {
+   "kind": "pin",
+   "nom": "Pin",
+   "sing": "pin",
+   "plur": "pins",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/pin.svg",
+    "commons": "Meuble héraldique Pin maritime.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     108,
+     44,
+     578,
+     1034
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#5ab532"
+   ],
+   "accent": [
+    "fill:#fff"
+   ],
+   "accentMot": "fûté"
+  },
+  {
+   "kind": "casque",
+   "nom": "Casque",
+   "sing": "casque",
+   "plur": "casques",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/casque.svg",
+    "commons": "Meuble héraldique Casque de profil.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+    "vb": [
+     8,
+     8,
+     304,
+     394
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "tete-de-loup",
+   "nom": "Tête de loup arrachée",
+   "sing": "tête de loup arrachée",
+   "plur": "têtes de loup arrachées",
+   "alias": [
+    [
+     "tête de loup",
+     "têtes de loup"
+    ]
+   ],
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/tete-de-loup.svg",
+    "commons": "Meuble héraldique tête de loup.svg",
+    "auteur": "Brookford, d'après Flaurentine",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffffff"
+   ]
+  },
+  {
+   "kind": "colonne",
+   "nom": "Colonne",
+   "sing": "colonne",
+   "plur": "colonnes",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/colonne.svg",
+    "commons": "Colonne.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0/deed.fr",
+    "vb": [
+     288,
+     221,
+     217,
+     680
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "fleche",
+   "nom": "Flèche",
+   "sing": "flèche",
+   "plur": "flèches",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/fleche.svg",
+    "commons": "Héraldique meuble Flèche.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "vb": [
+     244,
+     30,
+     67,
+     586
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c",
+    "fill:#e6e6e6"
+   ],
+   "accent": [
+    "fill:#e20909"
+   ],
+   "accentMot": "empenné"
+  },
+  {
+   "kind": "rencontre-cerf",
+   "nom": "Rencontre de cerf",
+   "sing": "rencontre de cerf",
+   "plur": "rencontres de cerf",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-cerf.svg",
+    "commons": "Meuble héraldique Rencontre de cerf.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ],
+   "accent": [
+    "fill:#804000"
+   ],
+   "accentMot": "ramé"
+  },
+  {
+   "kind": "orbe",
+   "nom": "Orbe crucifère",
+   "sing": "orbe crucifère",
+   "plur": "orbes crucifères",
+   "alias": [
+    [
+     "orbe",
+     "orbes"
+    ],
+    [
+     "globe crucifère",
+     "globes crucifères"
+    ]
+   ],
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/orbe.svg",
+    "commons": "Coa Illustration Elements Globus cruciger 1.svg",
+    "auteur": "RootOfAllLight",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#f3f3f3"
+   ]
+  },
+  {
+   "kind": "bras",
+   "nom": "Bras",
+   "sing": "bras",
+   "plur": "bras",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/bras.svg",
+    "commons": "Arm Embowed.svg",
+    "auteur": "Christie L. Ward, via Ilzolende",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffffff"
    ]
   }
  ],

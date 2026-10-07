@@ -229,6 +229,11 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Quatre figures refaites** (octobre 2026), dans l'Atelier comme dans l'encyclopédie : le *gland* (figure empruntée « tigé et feuillé », de Jean-Paul Gibert, CC BY 4.0 ; l'Atelier dit « feuillé de sinople », la tige est de l'émail du gland), la *croix pattée* et la *croix recroisettée* (tracées d'un seul contour, quatre bras tournés autour du centre) et la *crosse de Bâle* (le crochet repris des armes de Bâle-Ville du règlement de l'armée suisse, domaine public).
 
 - **Vocabulaire ajouté** (octobre 2026) : *vache passante* (collier et clochette réglables : « colletée et clarinée »), *navire* (figures libres de Commons, créditées) ; 23 fiches ajoutées à l'encyclopédie pour les meubles que l'Atelier dessinait sans qu'elle les présente (ours, sanglier, taureau, loup, bélier, cygne, poisson, couleuvre, alérion, choucas, colombe, bouquetin, chèvre, biche, wyvern, faisceau, grenade, fleur de néflier, arbre, hache, couronne, vache, navire) ; 9 entrées de glossaire tirées de la « Liste des meubles héraldiques » de Wikipédia (rencontre, sommé, surmonté, terrassé, écusson, colonne, dextrochère, vache, navire) ; « croix recroisetée » (un seul t) se lit.
+- **Deuxième passe de vocabulaire** (octobre 2026) :
+  - *Parties colorables* : les cornes de la vache passent à l'attribut (« accorné, colleté et clariné d'azur » ; le lecteur accepte une partie de la liste, et le dit) ; la hache du faisceau suit le lien (« lié d'argent, la hache du même »).
+  - *Figures de Commons reprises* (créditées sous la figure, fiche d'encyclopédie pour chacune) : pin (fûté), casque, tête de loup arrachée, colonne, flèche (empennée), rencontre de cerf (ramé), orbe crucifère, bras. Deux entrées de glossaire : *ramé*, *empenné / ferré / fûté*.
+  - *« sommé de » et « surmonté de »* se lisent comme « accompagné en chef de », « surmontant » comme « accompagné en pointe de » : l'Atelier le dit en réserve et réécrit « accompagné ». Les aigles acceptent « becquée et membrée » seules (un seul émail pour le bec, les serres et la couronne, dit en réserve).
+  - *Champ `atelier` + `atelierNote`* : Valence, Premier Empire, Pays-Bas, Vaud, Neuchâtel, Fábry ; la note de la carte dit ce que le dessin laisse de côté.
 
 ## Ce qui reste à faire
 
@@ -239,11 +244,10 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et d'Aragon ; « Stemma della famiglia D'Avalos.svg » donne les armes de la famille, d'azur au château d'or à la bordure componée de gueules et d'argent) et Rodríguez Gallego (écu trop petit).
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (73) — reprise d'octobre 2026, ce qui bloque vraiment :
-   - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… » ; ces cartes restent illisibles (ou prendraient un champ `atelier` lu sur l'image, carte par carte).
-   - *Figures sans figure libre sur Commons* : ciboire, rencontre de bœuf, bélier saillant, branche d'épine, bras (dextrochère), colonne entière (seule « en ruines » existe), flèche, mitre, orbe ; pin, casque et tête de loup existent sur Commons mais ne sont pas encore repris.
-   - *Parties de figure que le dessin ne distingue pas* : les cornes de la vache (« accornées… d'azur », Béarn), la hache du faisceau (« la hache du même », Mazarin).
-   - *Constructions que l'Atelier ne dit pas* : tenants et supports, « sommé / surmonté de », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une fasce accompagnée de deux meubles différents (Galicie-Lodomérie).
+2. **Cartes encore illisibles** (80 sur 156 ; 76 se lisent) — ce qui bloque vraiment :
+   - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Six cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
+   - *Figures sans figure libre sur Commons* : ciboire (seulement dans les armes de Galice), rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse.
+   - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une fasce accompagnée de deux meubles différents (Galicie-Lodomérie), une pièce chargée qui broche sur un meuble (Mazarin).
 3. ~~**Épaisseur par défaut**~~ — fait (octobre 2026) : fasce, chef, pal, bande et barre ont le tiers de l'écu, comme le disent les traités
    (Wikipédia, « Pièce (héraldique) ») ; meubles posés dessus ou autour recalés. La croix, le sautoir et le chevron gardent leur cote. « Fascé de quatre pièces » se lit.
 4. ~~**Pal par défaut**~~ — tranché (octobre 2026) : seuls le lion passant et le léopard se posent en pal sans qu'on le dise ; pour tout autre meuble,
