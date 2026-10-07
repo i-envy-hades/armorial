@@ -369,6 +369,16 @@ function pPiece(P, i) {
     if (ch) { const o = pObjet(P, q + ch.n, it.tp); if (!o) return null; it.charge = o; it.i = o.i; continue; }
     const vb = !it.verbe && suites(LEX.verbe, P, q)[0];
     if (vb) {
+      /* « accompagnée en chef d'un choucas de sable et en pointe de trois couronnes d'or » : deux meubles différents, de part et d'autre */
+      if (cle(P, q + vb.n) === "en" && cle(P, q + vb.n + 1) === "chef") {
+        const o = pObjet(P, q + vb.n + 2, it.tp);
+        if (!o) return null;
+        if (!(cle(P, o.i) === "et" && cle(P, o.i + 1) === "en" && cle(P, o.i + 2) === "pointe")) return rate(P, o.i, "« et en pointe de… »");
+        const o2 = pObjet(P, o.i + 3, o.tm);
+        if (!o2) return null;
+        it.verbe = { o, o2, cp: true }; it.i = o2.i;
+        continue;
+      }
       const o = pObjet(P, q + vb.n, it.tp);
       if (!o) return null;
       let r = o.i, o2 = null;
@@ -617,10 +627,13 @@ function assembler(P, r) {
     if (pc.charge) {
       a.pos = "sur"; pose1(pc.charge);
       if (pc.verbe) {                                          // « chargée de …, accompagnée de … » : le second est un meuble du champ
-        if (pc.verbe.o2) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);
+        if (pc.verbe.o2 || pc.verbe.cp) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);
         pose2(pc.verbe.o);
       }
-    } else if (pc.verbe) { pose1(pc.verbe.o); if (pc.verbe.o2) pose2(pc.verbe.o2); }
+    } else if (pc.verbe) {
+      if (pc.verbe.cp && pc.p !== "fasce") return mal(pc, "« accompagné en chef de … et en pointe de … » : l'Atelier ne le dit que d'une fasce.");
+      pose1(pc.verbe.o); if (pc.verbe.o2) pose2(pc.verbe.o2); if (pc.verbe.cp) a.cp = "1";
+    }
   }
   if (bris) {
     src.bris = bris;
@@ -646,10 +659,12 @@ function verifie(P, a, src, lieu) {
   if (diff.has("pos")) { diff.delete("nb"); diff.delete("d"); }                 // l'un entraîne l'autre : on ne dit que la cause
   if (diff.has("nb")) diff.delete("d");
   if (diff.has("nb2")) diff.delete("d2");
+  if (diff.has("cp")) diff.delete("d2");
   if (diff.has("br")) for (const k of ["tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) diff.delete(k);
   if (diff.has("brn")) diff.delete("brd");
   for (const key of diff) {
     if (key === "nb") mets(src.m, `L'Atelier ne sait pas poser ${a.nb === "seme" ? "un semé" : `${NB[+a.nb]} ${m.plur}`}${ou} (nombres possibles : ${nombres(a)}).`);
+    else if (key === "cp") mets(src.m2, "« en chef … et en pointe … » : l'Atelier pose une, deux ou trois figures de chaque côté de la fasce, ni semé ni contourné autrement.");
     else if (key === "nb2") mets(src.m2, `L'Atelier ne sait pas poser ${NB[+a.nb2]} ${m2.plur} (nombres possibles : ${Object.keys(PLEIN).map(n => NB[+n]).join(", ")}).`);
     else if (key === "pos") mets(src.p, a.pos === "sous" ? `L'Atelier ne sait pas faire brocher ${art(a.p, PIECES[a.p].g)}${a.p} sur des meubles ici.` : `L'Atelier ne sait pas poser des meubles ${a.pos === "sur" ? "sur" : "autour"} ${a.pos === "sur" ? `${art(a.p, PIECES[a.p].g)}${a.p}` : dePiece(a.p)}.`);
     else if (key === "ln") mets(src.p, a.ln === "alesee" ? `${cap(art(a.p, PIECES[a.p].g))}${a.p} ne s'alèse pas dans l'Atelier (alésés : ${[...ALESEE_OK].join(", ")}).` : `L'Atelier ne sait pas dessiner ce bord pour ${art(a.p, PIECES[a.p].g)}${a.p}.`);

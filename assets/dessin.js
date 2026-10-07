@@ -61,7 +61,7 @@ function ptsFor(s, m) {
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
 }
-const pts2 = s => adjust(s.p === "fasce" ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
+const pts2 = s => adjust(s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
