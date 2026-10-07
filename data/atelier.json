@@ -45,6 +45,50 @@
    ]
   },
   {
+   "kind": "lion-queue-fourchee",
+   "nom": "Lion à la queue fourchée",
+   "homonyme": "lion",
+   "sing": "lion",
+   "plur": "lions",
+   "queue": {
+    "mot": "à la queue fourchée et passée en sautoir",
+    "lus": [
+     "à la queue fourchée et passée en sautoir",
+     "à la queue fourchée passée en sautoir",
+     "la queue fourchée et passée en sautoir",
+     "la queue fourchée passée en sautoir"
+    ]
+   },
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/lion-queue-fourchee.svg",
+    "commons": "Meuble héraldique Lion (queue fourchée sautoir).svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "armé et lampassé",
+   "couronne": [
+    100,
+    30.2,
+    28
+   ]
+  },
+  {
    "kind": "lion-passant",
    "palDefaut": true,
    "nom": "Lion passant (léopardé)",

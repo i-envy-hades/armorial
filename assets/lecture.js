@@ -86,6 +86,8 @@ function lexique() {
     ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
     ["burelé", { ray: "barry", n: "10" }], ["vergeté", { ray: "paly", n: "10" }], ["vergetté", { ray: "paly", n: "10" }], ["coticé", { ray: "bendy", n: "10" }], ["coticé en barre", { ray: "bendysin", n: "10" }],
     ["échiqueté", { ray: "chequy" }], ["fuselé", { ray: "lozengy" }], ["fuselé en bande", { ray: "lozengybend" }], ["fuselé en barre", { ray: "lozengysin" }]]);
+  L.queue = {};
+  for (const m of ATL.meubles) if (m.queue) L.queue[m.kind] = table(m.queue.lus.map(f => [f, true]));
   L.fixe = {};
   for (const m of ATL.meubles) if (m.fixe) L.fixe[m.kind] = table(quatre(m.fixe.mot).map(f => [f, true]));
   L.accent = {};
@@ -108,7 +110,7 @@ L.sommet = table(["sommé", "surmonté"].flatMap(w => quatre(w).map(f => [f, tru
 L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).map(f => [f, true])));
   L.fasceDispo = table([", l'un en chef et l'autre en pointe", ", l'une en chef et l'autre en pointe", ", trois en chef et trois en pointe"].map(f => [f, true]));
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
-  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.sommet, L.surmontant, L.fasceDispo, L.brisPieces])
+  for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.queue), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.sommet, L.surmontant, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
   for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   for (const m of ATL.meubles) if (m.accentPlus) for (const w of cles(m.accentPlus)) L.vocab.add(w);
@@ -234,10 +236,13 @@ function pCorps(P, i, ref, nb) {
     if (c2) { ct = true; j += c2.n; }
     const c3 = !iss && suites(LEX.issant, P, j)[0];                       // « un lion d'or issant » : aussi après l'émail
     if (c3) { iss = true; j += c3.n; }
+    /* une variante qui porte le nom de la figure (« lion ») et se reconnaît à ce qui suit l'émail (« la queue fourchée et passée en sautoir ») */
+    if (m.queue) { const jq = cle(P, j) === "," ? j + 1 : j, sq = suites(LEX.queue[m.kind], P, jq)[0]; if (!sq) continue; j = jq + sq.n; }
     /* la couronne d'un autre émail, après l'émail du meuble (« un lion d'or couronné d'argent, armé et lampassé de gueules ») */
     let cn = cnAv ? t.t : "";
     const aussi = q => (cle(P, q) === "aussi" ? q + 1 : q);                               // « couronné d'or aussi » : du même émail
-    const pcr = () => { const jb = cle(P, j) === "," ? j + 1 : j, k2 = m.couronne && !cn && suites(LEX.coure, P, jb)[0], te = k2 && pEmail(P, jb + k2.n, t.t); if (te) { cn = te.t; j = aussi(te.i); } return !k2 || !!te; };
+    /* « couronné, armé et lampassé d'or » : sans émail à lui, « couronné » ouvre la liste des attributs, que pAccent lit */
+    const pcr = () => { const jb = cle(P, j) === "," ? j + 1 : j, k2 = m.couronne && !cn && suites(LEX.coure, P, jb)[0], te = k2 && pEmail(P, jb + k2.n, t.t); if (te) { cn = te.t; j = aussi(te.i); } return !k2 || !!te || (k2.n === 1 && [",", "et"].includes(cle(P, jb + 1)) && LEX.attr.has(cle(P, jb + 2))); };
     if (!pcr()) continue;
     /* « trois léopards d'azur posés en pal, armés et lampassés de gueules » : la disposition peut précéder l'attribut */
     const dp = nb && m.accent ? pDispo(P, j, nb) : null, avant = dp && dp.dit ? dp : null;

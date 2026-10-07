@@ -382,6 +382,9 @@ LUS = [
     ("Fascé ondé d'or et de gueules de huit pièces", "Fascé ondé d'or et de gueules de huit pièces", ""),
     ("D'azur à la fasce de gueules, accompagnée en chef d'un choucas de sable et en pointe de trois couronnes d'or",
      "D'azur à la fasce de gueules accompagnée en chef d'un choucas de sable et en pointe de trois couronnes d'or", ""),      # la Galicie-Lodomérie
+    ("D'argent au lion de gueules, la queue fourchée passée en sautoir, armé, lampassé et couronné d'or",
+     "D'argent au lion de gueules, à la queue fourchée et passée en sautoir, armé et lampassé d'or couronné d'or", "colore d'un seul émail"),      # le Limbourg
+    ("De gueules au lion d'argent, couronné, armé et lampassé d'or", "De gueules au lion d'argent armé et lampassé d'or couronné d'or", "colore d'un seul émail"),
     ("D'azur à treize besants d'or", "D'azur à treize besants d'or posés en trois pals 4, 5 et 4", "4, 5 et 4"),          # le Valais
     ("D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
      "D'azur semé de fleurs de lis d'or, brisé d'un lambel de gueules chargé sur chaque pendant de trois châteaux donjonnés d'or", ""),      # l'Artois
@@ -427,7 +430,7 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",

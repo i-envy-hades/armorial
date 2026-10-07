@@ -259,7 +259,7 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et la page Commons ne cite qu'un message du diocèse de Zárate-Campana, sans blasonnement.
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (95 se lisent sur 167) — ce qui bloque vraiment :
+2. **Cartes encore illisibles** (96 se lisent sur 167) — ce qui bloque vraiment :
    - *Fait en octobre 2026* : l'Artois (le lambel « chaque pendant chargé de trois châteaux », les châteaux sur les pendants), le Valais (treize meubles « en trois pals 4, 5 et 4 »)
      et Namur (la traverse dessinée en cotice) se lisent ; les trois cartes portent un champ `atelier`. Deuxième lot : le **coupé à deux armes** (« Coupé : au 1, … ; au 2, … »,
      composition « Coupé » de l'Atelier ; ses moitiés ne s'écartèlent pas, et une figure issante y sort du trait) et le **fascé ondé** (« fascé ondé » ou « ondé d'argent et d'azur »,
@@ -270,6 +270,9 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
      Clèves (un meuble qui broche sur un autre : l'écusson et les rais d'escarboucle).
    - *Figures retournées* : cinq figures empruntées à Commons regardaient à senestre (ours rampant, wyvern, biche saillante, chèvre saillante, salamandre) ; elles sont remises à dextre
      au dessin (`"retourne": true` dans `atelier.json`), « contourné » les tourne toujours. Appenzell Rhodes-Intérieures se lit (son ours, dressé sur l'image, est l'ours rampant).
+   - *Lion à la queue fourchée* (« Meuble héraldique Lion (queue fourchée sautoir).svg », Syryatsu, domaine public, de la même série que le lion) : une variante qui porte
+     le nom « lion » et se reconnaît à « (à) la queue fourchée (et) passée en sautoir », dit après l'émail (`queue` dans `atelier.json`). Le lecteur prend aussi « couronné, armé et lampassé d'or »
+     (la couronne en tête de la liste des attributs). Le Limbourg se lit ; la Tchéquie reste illisible pour ses autres quartiers. Le lion tenant une hache (Norvège, Haakon VII) n'a pas de figure libre propre sur Commons.
    - *Figures à revoir* : l'ours passant posé sur une bande (Berne) reste petit et à plat,
      là où l'image le fait monter le long de la bande.
    - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
