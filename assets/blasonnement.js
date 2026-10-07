@@ -66,7 +66,8 @@ const PLEIN = {
       { id: "33", lab: "3 et 3", ph: " posé 3 et 3", pts: [[48, 78, .28], [100, 78, .28], [152, 78, .28], [48, 154, .28], [100, 154, .28], [152, 154, .28]] },
       { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[48, 52, .2], [152, 52, .2], [34, 122, .2], [166, 122, .2], [58, 190, .2], [142, 190, .2]] }],
   7: [{ id: "", lab: "3, 3 et 1", ph: " posé 3, 3 et 1", pts: [[48, 62, .27], [100, 62, .27], [152, 62, .27], [48, 124, .27], [100, 124, .27], [152, 124, .27], [100, 186, .27]] },
-      { id: "43", lab: "4 et 3", ph: " posé 4 et 3", pts: [[34, 84, .23], [78, 84, .23], [122, 84, .23], [166, 84, .23], [56, 152, .23], [100, 152, .23], [144, 152, .23]] }],
+      { id: "43", lab: "4 et 3", ph: " posé 4 et 3", pts: [[34, 84, .23], [78, 84, .23], [122, 84, .23], [166, 84, .23], [56, 152, .23], [100, 152, .23], [144, 152, .23]] },
+      { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[34, 44, .17], [56, 71, .17], [78, 99, .17], [100, 126, .17], [122, 153, .17], [144, 181, .17], [166, 208, .17]] }],
   8: [{ id: "", lab: "En orle", ph: " en orle", plein: true, pts: [[42, 46, .18], [100, 38, .18], [158, 46, .18], [34, 112, .18], [166, 112, .18], [46, 176, .18], [154, 176, .18], [100, 218, .18]] }],
   9: [{ id: "", lab: "3, 3 et 3", ph: " posé 3, 3 et 3", alt: [" posé en trois pals"], pts: [[48, 62, .26], [100, 62, .26], [152, 62, .26], [48, 124, .26], [100, 124, .26], [152, 124, .26], [56, 186, .26], [100, 186, .26], [144, 186, .26]] }],
   10: [{ id: "", lab: "4, 3, 2 et 1", ph: " posé 4, 3, 2 et 1", pts: [[40, 52, .2], [80, 52, .2], [120, 52, .2], [160, 52, .2], [60, 104, .2], [100, 104, .2], [140, 104, .2], [80, 156, .2], [120, 156, .2], [100, 206, .2]] },
@@ -167,13 +168,17 @@ const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
   { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" }];      // 5 à 8 : les armes en plus des moitiés d'un parti qui s'écartelle (HALF_ARMS)
 
+/* deux armes, sans plus : l'écartelé 1-4 / 2-3, le coupé, le tranché et le taillé (le parti, lui, peut écarteler ses moitiés) */
+const DEUX = new Set(["2", "c", "t", "l"]);
+/* coupé, tranché, taillé : « Coupé : au 1, … ; au 2, … » ; le nom et les deux parties */
+const QDEUX = { c: ["Coupé", "Moitié du chef (1)", "Moitié de la pointe (2)"], t: ["Tranché", "Partie haute (1)", "Partie basse (2)"], l: ["Taillé", "Partie haute (1)", "Partie basse (2)"] };
 /* un parti : deux moitiés (armes 0 et 1), dont chacune peut s'écarteler (h1, h2 : "", "2" pour 1-4 / 2-3, "4" en quatre) ; ses quartiers 2, 3, 4 prennent alors les armes de HALF_ARMS */
 const HALF_ARMS = [[0, 2, 3, 5], [1, 6, 7, 8]];
 const halfMode = (St, h) => (h ? St.h2 : St.h1);
 /* les armes de chaque quartier d'une moitié écartelée, dans l'ordre 1-2-3-4 ; null si la moitié est simple */
 const halfQuarters = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? [a[0], a[1], a[1], a[0]] : m === "4" ? a.slice() : null; };
 const halfUsed = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? a.slice(0, 2) : m === "4" ? a.slice() : [a[0]]; };
-const active = St => (!St.q ? [0] : St.q === "2" || St.q === "c" ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+const active = St => (!St.q ? [0] : DEUX.has(St.q) ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p === "fasce" && s.cp ? "fasce-cp" : s.p) : "plein"; }
@@ -402,7 +407,7 @@ const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 
 const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
 /* les armes que l'on peut modifier (hors écusson), avec leur nom */
 function cellNames(St) {
-  if (St.q === "c") return [[0, "Moitié du chef (1)"], [1, "Moitié de la pointe (2)"]];
+  if (QDEUX[St.q]) return [[0, QDEUX[St.q][1]], [1, QDEUX[St.q][2]]];
   if (St.q !== "p") return St.q ? QNAME[St.q].map((l, i) => [i, l]) : [];
   return [0, 1].flatMap(h => {
     const nom = h ? "senestre" : "dextre", m = halfMode(St, h), a = HALF_ARMS[h];
@@ -424,7 +429,7 @@ function blazonAll(St) {
       return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(bz(i))}`).join(" ; ");
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
-  } else if (St.q === "c") b = `Coupé : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
+  } else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
   else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
   if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme

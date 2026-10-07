@@ -259,11 +259,11 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et la page Commons ne cite qu'un message du diocèse de Zárate-Campana, sans blasonnement.
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (96 se lisent sur 167) — ce qui bloque vraiment :
+2. **Cartes encore illisibles** (97 se lisent sur 167) — ce qui bloque vraiment :
    - *Fait en octobre 2026* : l'Artois (le lambel « chaque pendant chargé de trois châteaux », les châteaux sur les pendants), le Valais (treize meubles « en trois pals 4, 5 et 4 »)
      et Namur (la traverse dessinée en cotice) se lisent ; les trois cartes portent un champ `atelier`. Deuxième lot : le **coupé à deux armes** (« Coupé : au 1, … ; au 2, … »,
      composition « Coupé » de l'Atelier ; ses moitiés ne s'écartèlent pas, et une figure issante y sort du trait) et le **fascé ondé** (« fascé ondé » ou « ondé d'argent et d'azur »,
-     de quatre, six ou huit pièces) : la Zélande et le Monténégro (son écusson seul) se lisent. Le tranché à deux armes (Bosnie-Herzégovine) et le coupé dont une moitié est partie (Grisons) restent à faire.
+     de quatre, six ou huit pièces) : la Zélande et le Monténégro (son écusson seul) se lisent. Le coupé dont une moitié est partie (Grisons) reste à faire.
      Troisième lot : une fasce **« accompagnée en chef de … et en pointe de … »**, deux meubles différents de part et d'autre (une à trois figures de chaque côté ; réglage « Place » du second meuble) :
      la Galicie-Lodomérie se lit telle quelle ; Ferdinand de Bulgarie se lit (sa couronne fermée est dessinée à fleurons, la carte le dit).
    - *Écartés à l'essai* : Thurgovie (l'Atelier pose les deux lions à cheval sur le trait du tranché ; sur l'image, chacun est dans sa moitié, grand, montant le long du trait),
@@ -273,13 +273,14 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    - *Lion à la queue fourchée* (« Meuble héraldique Lion (queue fourchée sautoir).svg », Syryatsu, domaine public, de la même série que le lion) : une variante qui porte
      le nom « lion » et se reconnaît à « (à) la queue fourchée (et) passée en sautoir », dit après l'émail (`queue` dans `atelier.json`). Le lecteur prend aussi « couronné, armé et lampassé d'or »
      (la couronne en tête de la liste des attributs). Le Limbourg se lit ; la Tchéquie reste illisible pour ses autres quartiers. Le lion tenant une hache (Norvège, Haakon VII) n'a pas de figure libre propre sur Commons.
+   - *Tranché et taillé à deux armes* (« Tranché : au 1, … ; au 2, … », compositions « Tranché » et « Taillé » de l'Atelier) : chaque partie, un triangle, reçoit ses armes resserrées
+     sur ce qu'on en voit ; des meubles posés en bande (en barre, pour le taillé) longent le trait. Sept étoiles « en bande » existent aussi sur l'écu plein. Bosnie-Herzégovine se lit.
    - *Figures à revoir* : l'ours passant posé sur une bande (Berne) reste petit et à plat,
      là où l'image le fait monter le long de la bande.
    - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
    - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
    - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une pièce chargée qui broche sur un meuble (Mazarin).
-3. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
-4. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
+3. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
 ## Limites connues
 
@@ -294,7 +295,7 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
 - **Sources** : elles sont citées par ouvrage, presque toujours sans numéro de page (le format `{ "id", "p" }` existe, mais n'est pas encore utilisé) ;
   certaines lignées s'appuient surtout sur Wikipédia. Le chapitre « Brisures » et les entrées du glossaire ajoutées avec lui (canton, pairle, sur le tout,
   cabré, accompagné, accosté, cantonné, chargé, rangé en, semé, plain) reposent sur des pages de Wikipédia, lues puis reformulées — leurs désaccords avec
-  d'autres sources sont signalés dans le texte —, faute des pages de Joubert et de Pastoureau, à ajouter quand on les aura sous les yeux.
+  d'autres sources sont signalés dans le texte —, sans renvoi aux pages de Joubert ni de Pastoureau : le curateur a choisi (octobre 2026) de ne pas en ajouter.
 - **Le CSS de `lignees.html` reste dans la page** : quatre de ses règles renvoient par `url(#…)` à des dégradés définis dans la page, ce que
   les navigateurs n'interprètent pas tous de la même manière depuis une feuille de style externe.
 - **Le code n'a pas de licence propre** : `LICENSE` ne couvre que les textes et les figures originales.

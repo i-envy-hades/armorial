@@ -132,7 +132,7 @@ FUZZ = """async (n) => {
   for (let i = 0; i < n; i++) {
     try {
       const St = fresh();
-      St.q = pick(["", "2", "4", "c"]);
+      St.q = pick(["", "2", "4", "c", "t", "l"]);
       for (let j = 0; j < 4; j++) St.A[j] = { ...randomArms(), f: pick(["plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
         ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)),
         m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
@@ -385,6 +385,8 @@ LUS = [
     ("D'argent au lion de gueules, la queue fourchée passée en sautoir, armé, lampassé et couronné d'or",
      "D'argent au lion de gueules, à la queue fourchée et passée en sautoir, armé et lampassé d'or couronné d'or", "colore d'un seul émail"),      # le Limbourg
     ("De gueules au lion d'argent, couronné, armé et lampassé d'or", "De gueules au lion d'argent armé et lampassé d'or couronné d'or", "colore d'un seul émail"),
+    ("Tranché : au 1, d'or ; au 2, d'azur à sept étoiles d'argent posées en bande", "Tranché : au 1, d'or plein ; au 2, d'azur à sept étoiles d'argent posées en bande", ""),      # Bosnie-Herzégovine
+    ("Taillé : au 1, d'azur au lion d'or ; au 2, de gueules à la croix d'argent", "Taillé : au 1, d'azur au lion d'or ; au 2, de gueules à la croix d'argent", ""),
     ("D'azur à treize besants d'or", "D'azur à treize besants d'or posés en trois pals 4, 5 et 4", "4, 5 et 4"),          # le Valais
     ("D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
      "D'azur semé de fleurs de lis d'or, brisé d'un lambel de gueules chargé sur chaque pendant de trois châteaux donjonnés d'or", ""),      # l'Artois
@@ -421,6 +423,7 @@ REFUSES = [
     ("Coupé : au 1, écartelé : aux 1 et 4, d'or ; aux 2 et 3, d'azur ; au 2, de gueules", "ne s'écartèlent pas"),
     ("D'or au chevron d'azur accompagné en chef de deux étoiles de gueules et en pointe d'un croissant de sable", "que d'une fasce"),
     ("D'or à la fasce d'azur accompagnée en chef de deux étoiles de gueules et en pointe de quatre croissants de sable", "de chaque côté de la fasce"),
+    ("Tranché : au 1, écartelé : aux 1 et 4, d'or ; aux 2 et 3, d'azur ; au 2, de gueules", "d'un tranché ne s'écartèlent pas"),
     ("Fascé ondé d'or et de gueules de dix pièces", "fascé ondé à quatre, six ou huit"),
 ]
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
@@ -430,7 +433,7 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
@@ -447,7 +450,7 @@ ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part
     tm: pick(Object.keys(MOT)), tm2: pick(Object.keys(MOT)), tp: pick(Object.keys(MOT)), t1: pick(Object.keys(MOT)), t2: pick(Object.keys(MOT)) })"""
 ECU_HASARD = """(pick) => {
     const St = fresh(), arms = %s;
-    St.q = pick(["", "", "2", "4", "c"]);
+    St.q = pick(["", "", "2", "4", "c", "t", "l"]);
     for (let j = 0; j < 4; j++) St.A[j] = arms(pick);
     St.ab = pick(["", "", "1"]); if (St.ab) St.A[4] = { ...randomArms(), ln: pick(["", ...Object.keys(CONTOUR_NOM)]) };
     return normalizeAll(St);
