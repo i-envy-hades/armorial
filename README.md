@@ -224,7 +224,7 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   la carte signale que le dessin suit l'image.
 - **Épaisseur de la croix** : un curseur règle l'épaisseur d'une croix (pièce), de la croix posée en meuble comme de celle d'une case.
 - **Bordure, orle et brisure en bordure** suivent la case où elles sont posées (moitié d'un parti, quartier), bord décoré compris pour la bordure.
-- **Brisure sur tout l'écu** : sur un parti ou un écartelé, la brisure des premières armes peut se poser sur l'écu entier (« Écartelé : … ; le tout brisé d'un lambel d'argent »), comme au Prince Noir. Réglage « Sur ces armes / Sur tout l'écu » (paramètre `gb` de l'adresse) ; le lecteur relit « ; le tout brisé d'un… ».
+- **Brisure sur tout l'écu** : sur un parti ou un écartelé, la brisure des premières armes peut se poser sur l'écu entier (« Écartelé : … ; le tout brisé d'un lambel d'argent »), comme au Prince Noir. Sur un écu parti ou écartelé la brisure est toujours à tout l'écu : elle se règle avec les premières armes, et une brisure posée sur une autre case y est ramenée ; le lecteur relit « ; le tout brisé d'un… ».
 
 ## Ce qui reste à faire
 
@@ -246,7 +246,7 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    « en pal » reste une disposition au choix (de deux à cinq meubles), et une figure allongée s'y dessine à pleine largeur sans mordre sur sa voisine
    (taille réglée sur sa hauteur réelle). Le taureau et le poisson sont devenus des figures allongées.
 5. ~~**Boutons « Exemples »**~~ — fait (octobre 2026) : les 36 boutons se relisent tous sans écart ; ajouts : croix mince, clef, parti bordé (bordure dans une case), lambel sur tout l'écu ; « Demi-aigle au parti » prend la clef contournée.
-6. ~~**Lambel sur un écartelé**~~ — fait (octobre 2026) : réglage « Sur ces armes / Sur tout l'écu » ; voir « Brisure sur tout l'écu » plus haut.
+6. ~~**Lambel sur un écartelé**~~ — fait (octobre 2026) : la brisure est toujours à tout l'écu ; voir « Brisure sur tout l'écu » plus haut.
 7. **Encyclopédie, croix alésée** : les schémas sont encore faits de deux rectangles, d'où une couture visible sous un émail métallique.
 8. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
    « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
