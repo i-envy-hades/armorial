@@ -409,14 +409,14 @@ REFUSES = [
     ("Écartelé de France ancien et d'Angleterre", "France"),
 ]
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
-BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume de France (ancien)", "Royaume d'Angleterre", "Archiduché d'Autriche", "Couronne d'Aragon", "Comté de Foix",
+BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Archiduché d'Autriche", "Couronne d'Aragon", "Comté de Foix",
                     "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)"]
 # (le Saint-Empire et les Médicis n'y sont plus depuis que leurs blasonnements ont été corrigés d'après leur source : aigle becquée et membrée de gueules, tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Saint-Empire romain germanique", "Maison de Médicis"]
-PERSONNAGES_LISIBLES = ["Richard Ier « Cœur de Lion »", "Édouard III d'Angleterre", "Henri VI d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
+PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
                         "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin"]
 PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
 

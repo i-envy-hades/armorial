@@ -21,27 +21,6 @@
     }
   },
   {
-    "nom": "Royaume de France (ancien)",
-    "cat": "Royaumes",
-    "porteur": "Capétiens, avant la réduction à trois lis",
-    "blason": "D'azur semé de fleurs de lis d'or",
-    "file": "Arms of the Kingdom of France (Ancien).svg",
-    "auteur": "Sodacan",
-    "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "liens": [
-      {
-        "t": "Frise des rois de France",
-        "href": "lignees.html#france"
-      }
-    ],
-    "blasonSrc": {
-      "label": "Wikipédia, « Armoiries de la France »",
-      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_France",
-      "note": "l'article date de 1211 le moment où l'usage de ces armes se systématise"
-    }
-  },
-  {
     "nom": "Royaume d'Angleterre",
     "cat": "Royaumes",
     "porteur": "Plantagenêts, à partir de la fin du XIIᵉ s.",
@@ -296,11 +275,16 @@
     "nom": "Sultanat d'Égypte",
     "cat": "Royaumes",
     "porteur": "ancien pays",
-    "blason": "",
+    "blason": "De gueules à trois croissants contournés d'argent, chacun accompagné d'une étoile à cinq rais du même",
     "file": "Coat of Arms of the Sultan of Egypt.svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Sultan_of_Egypt.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Empire britannique",
@@ -371,7 +355,7 @@
     "nom": "Royaume de Tolède",
     "cat": "Royaumes",
     "porteur": "",
-    "blason": "",
+    "blason": "D'azur à la couronne d'or",
     "file": "Coat of Arms of the Kingdom of Toledo.svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
@@ -381,13 +365,18 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Kingdom_of_Toledo.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Royaume de Cordoue",
     "cat": "Royaumes",
     "porteur": "province de la Castille",
-    "blason": "",
+    "blason": "D'argent au lion de gueules couronné d'or, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château d'or, ceux d'argent d'un lion de gueules",
     "file": "Coat of Arms of the Realm of Cordoba (Kingdom of Leon Arms Variant).svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
@@ -397,13 +386,18 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Realm_of_Cordoba_(Kingdom_of_Leon_Arms_Variant).svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Royaume de Séville",
     "cat": "Royaumes",
     "porteur": "1248-1833",
-    "blason": "",
+    "blason": "De gueules à saint Ferdinand de carnation, nimbé et couronné d'or, vêtu d'azur, assis sur un trône d'argent, tenant une épée, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château d'or, ceux d'argent d'un lion de gueules",
     "file": "Coat of Arms of the Realm of Seville.svg",
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
@@ -413,7 +407,12 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Realm_of_Seville.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Royaume de Grenade (couronne de Castille)",
@@ -454,11 +453,16 @@
     "nom": "Royaume de Bosnie",
     "cat": "Royaumes",
     "porteur": "",
-    "blason": "",
+    "blason": "D'azur à la bande d'argent ornée d'un rinceau de sable, accompagnée de six fleurs de lis d'or, trois en chef et trois en pointe ; timbré d'un heaume d'argent couronné d'or et cimé d'un panache de plumes de paon, lambrequins d'azur",
     "file": "Coat of arms of Kingdom of Bosnia.svg",
     "auteur": "Samhanin",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Kingdom_of_Bosnia.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Province de Brandebourg",
@@ -489,21 +493,32 @@
     "nom": "Royaume de Karthli",
     "cat": "Royaumes",
     "porteur": "monarchie du Bas Moyen Âge et de l'époque moderne dans l'est de la Géorgie",
-    "blason": "",
+    "blason": "De gueules à une épée d'argent garnie d'or et un sceptre d'or passés en sautoir, entre un lion couché d'or et un âne couché d'argent, à l'étoile à huit rais de sable en chef",
     "file": "Coat of arms of the Kingdom of Kartli.png",
     "auteur": "Professor Alexander Mikaberidze",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Kingdom_of_Kartli.png",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Royaume de Saxe",
     "cat": "Royaumes",
-    "porteur": "ancien royaume (1806-1918)",
+    "porteur": "ancien royaume (1806-1918) — grandes armes à quartiers (Misnie, Thuringe, les deux Palatinats, Vogtland et d'autres), non blasonnées ici",
     "blason": "",
     "file": "Coat of Arms of the Kingdom of Saxony 1806-1918.svg",
     "auteur": "Glasshouse, using elements by Sodacan, Trondivers and katepanomegas",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "liens": [
+      {
+        "t": "Les rois de Saxe dans « La transmission des armes »",
+        "href": "transmission.html#wet_roi"
+      }
+    ]
   },
   {
     "nom": "Royaume de Galicie et de Lodomérie",
@@ -524,21 +539,31 @@
     "nom": "Empire serbe",
     "cat": "Empires",
     "porteur": "",
-    "blason": "",
+    "blason": "De gueules à l'aigle bicéphale d'argent, membrée de sable",
     "file": "Coat of arms of the Nemanic Dynasty.svg",
     "auteur": "MazzyBor",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Nemanic_Dynasty.svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
-    "nom": "Royaume albanais",
+    "nom": "Royaume d'Albanie (1939-1943)",
     "cat": "Royaumes",
-    "porteur": "période de l'histoire de l'Albanie",
-    "blason": "",
-    "file": "Coat of Arms of Albania (1943-1944).svg",
-    "auteur": "Havsjö",
+    "porteur": "sous occupation italienne",
+    "blason": "De gueules à l'aigle bicéphale de sable, au casque de Scanderbeg d'or en chef",
+    "file": "Lesser CoA of the Kingdom of Albania (1939–1943).svg",
+    "auteur": "Flopao",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Blasonné d'après l'image de la carte",
+      "url": "https://commons.wikimedia.org/wiki/File:Lesser_CoA_of_the_Kingdom_of_Albania_(1939–1943).svg",
+      "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
+    }
   },
   {
     "nom": "Maison d'Este",
