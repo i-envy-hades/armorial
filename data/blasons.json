@@ -491,7 +491,12 @@
     "nom": "Royaume d'Irak",
     "cat": "Royaumes",
     "porteur": "État indépendant du Moyen-Orient, de 1932 à 1958",
-    "blason": "",
+    "blason": "Un paysage montrant le confluent de l'Euphrate et du Tigre, chargé de trois palmiers, les monts Hakkari au loin, une lance et une épée passées en sautoir en pointe",
+    "blasonSrc": {
+      "label": "Hubert de Vries, « Iraq », Heraldica civica et militaris",
+      "url": "http://www.hubert-herald.nl/Iraq.htm#IraqHer",
+      "note": "traduit de l'anglais ; armes adoptées le 3 mars 1931 ; la source ne donne pas les émaux de l'écu. Le cimier (deux étoiles de gueules), les tenants (un lion babylonien et un cheval arabe), la devise et le manteau ne sont pas blasonnés ici"
+    },
     "file": "Coat of arms of the Kingdom of Iraq (1921–1958).svg",
     "auteur": "Samhanin",
     "lic": "CC BY 3.0",
