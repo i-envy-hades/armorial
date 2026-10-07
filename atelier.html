@@ -181,13 +181,9 @@
     </fieldset>
     <fieldset>
       <legend>La brisure</legend>
+      <p class="note" id="br-q" hidden>Sur un écu parti ou écartelé, la brisure se pose sur tout l'écu : elle se règle avec les premières armes.</p>
+      <div id="br-ctl">
       <div class="row"><span class="lab">Brisure</span><select name="br" aria-label="Brisure : ce qui distingue un cadet de son aîné"></select></div>
-      <div class="row" id="r-gb"><span class="lab">Posée</span>
-        <span class="seg" role="radiogroup" aria-label="Où se pose la brisure">
-          <label><input type="radio" name="gb" value=""><span>Sur ces armes</span></label>
-          <label><input type="radio" name="gb" value="1"><span>Sur tout l'écu</span></label>
-        </span>
-      </div>
       <div class="row" id="r-tbr"><span class="lab">Émail</span><div class="chips" data-name="tbr"></div></div>
       <div class="row" id="r-sbr"><span class="lab">Sens</span>
         <span class="seg" role="radiogroup" aria-label="Sens du bâton ou du filet">
@@ -213,6 +209,7 @@
         <div class="row"><span class="lab">Gauche ↔ droite</span><input type="range" id="k-brdx" min="-80" max="80" step="1" aria-label="Décalage horizontal de la brisure"><output id="o-brdx"></output></div>
         <div class="row"><span class="lab">Bas ↕ haut</span><input type="range" id="k-brdy" min="-80" max="80" step="1" aria-label="Décalage vertical de la brisure"><output id="o-brdy"></output></div>
         <p class="note">Réglage graphique : il ne modifie pas le blasonnement. <button type="button" class="lnk" id="b-brreset">Remettre à zéro</button></p>
+      </div>
       </div>
       <p class="note" id="br-note">La brisure se pose par-dessus tout le reste (« brisé d'un bâton de gueules péri en bande »). Le chapitre <a href="index.html#brisures">Les brisures</a> dit pourquoi on brise.</p>
     </fieldset>

@@ -107,7 +107,8 @@ function syncForm() {
   $("#r-hs").hidden = S.hp === "face";
   $("#hm-note").textContent = "";
   $("#r-tbr").hidden = !a.br;
-  $("#r-gb").hidden = !(S.q && CUR === 0 && a.br);
+  $("#br-ctl").hidden = !!S.q && CUR !== 0;
+  $("#br-q").hidden = !(S.q && CUR !== 0);
   $("#r-sbr").hidden = !(bp && bp.sens);
   $("#r-lbr").hidden = !(bp && bp.bord);
   $("#r-brn").hidden = $("#r-brd").hidden = !bf;
@@ -326,7 +327,7 @@ const EXEMPLES = [
   ["Parti", { q: "p", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A1: { t1: "Gueules", m: "leopard", nb: "3", tm: "Or", ta: "Azur", d: "pal", p: "" } }],
   ["Demi-aigle au parti", { q: "p", A0: { t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules", iss: "t", p: "" }, A1: { t1: "Gueules", m: "clef", nb: "1", tm: "Or", ct: "1", p: "" } }],
   ["Parti bordé", { q: "p", A0: { t1: "Or", m: "lion", nb: "1", tm: "Sable", ta: "Gueules", p: "bordure", tp: "Gueules", ln: "engrele" }, A1: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" } }],
-  ["Lambel sur tout l'écu", { q: "2", gb: "1", A0: { t1: "Azur", m: "fleurdelis", nb: "seme", tm: "Or", br: "lambel", tbr: "Argent" }, A1: { t1: "Gueules", m: "leopard", nb: "3", d: "pal", tm: "Or", ta: "Azur", sz: "190", p: "" } }],
+  ["Lambel sur tout l'écu", { q: "2", A0: { t1: "Azur", m: "fleurdelis", nb: "seme", tm: "Or", br: "lambel", tbr: "Argent" }, A1: { t1: "Gueules", m: "leopard", nb: "3", d: "pal", tm: "Or", ta: "Azur", sz: "190", p: "" } }],
   ["Parti écartelé", { q: "p", h1: "2", A0: { t1: "Azur", m: "fleurdelis", nb: "3", tm: "Or", p: "" }, A2: { t1: "Gueules", m: "leopard", nb: "3", tm: "Or", ta: "Azur", d: "pal", p: "" }, A1: { t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur", p: "" } }],
 ];
 function example(ex) {

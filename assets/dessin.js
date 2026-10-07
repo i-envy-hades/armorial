@@ -150,6 +150,7 @@ const DEVISES = {
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "", gb: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
+const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
 const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
@@ -179,7 +180,13 @@ function normalizeAll(St) {
   St.dv = String(St.dv || "").slice(0, 48);
   if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
-  if (St.gb !== "1" || !St.q || !St.A[0].br) St.gb = "";
+  if (St.q) {                                                                                                  // la brisure est à tout l'écu : elle se range dans les premières armes
+    const j = St.A[0].br ? 0 : active(St).find(i => St.A[i].br);
+    if (j > 0) for (const k of BRKEYS) St.A[0][k] = St.A[j][k];
+    St.A.forEach((a, i) => { if (i) for (const k of BRKEYS) a[k] = ADEF[k] ?? ""; });
+    normalize(St.A[0]);
+  }
+  St.gb = St.q && St.A[0].br ? "1" : "";
   St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1 || halfMode(St, i))) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
   if (!active(St).includes(CUR)) CUR = 0;
   return St;
