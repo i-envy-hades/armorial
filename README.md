@@ -252,9 +252,11 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
 
-1. **Cartes sans blasonnement** : quatre restent vides. L'Irak (des grandes armes à pavillon et tenants, rien à blasonner à l'écu), la Saxe (grandes armes à quartiers ; la carte nomme
-   les territoires que la page de la transmission des armes cite — Misnie, Thuringe, les deux Palatinats, Vogtland — et y renvoie), d'Avalos (l'image est trop petite pour lire l'écartelé d'Aquino
-   et d'Aragon ; « Stemma della famiglia D'Avalos.svg » donne les armes de la famille, d'azur au château d'or à la bordure componée de gueules et d'argent) et Rodríguez Gallego (écu trop petit).
+1. **Cartes sans blasonnement** : trois restent vides. L'Irak a reçu le blasonnement de Hubert de Vries (un paysage, sans émaux dans la source). La Saxe (grandes armes à douze quartiers et
+   écusson ; la carte nomme les territoires que la page de la transmission des armes cite — Misnie, Thuringe, les deux Palatinats, Vogtland — et y renvoie) : aucun blasonnement écrit trouvé
+   (de.wikipedia « Wappen Sachsens » montre l'image sans la décrire, heraldry-wiki « Sachsen (Kingdom) » le note « wanted »). D'Avalos : it.wikipedia « D'Avalos » blasonne l'écartelé d'Avalos,
+   d'Aquino et del Borgo, mais l'image de la carte a un autre 3ᵉ quartier (pals et lis) et un écusson à l'aigle bicéphale : la source ne correspond pas à l'image. Rodríguez Gallego : écu trop petit,
+   et la page Commons ne cite qu'un message du diocèse de Zárate-Campana, sans blasonnement.
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
 2. **Cartes encore illisibles** (87 se lisent sur 166) — ce qui bloque vraiment :
