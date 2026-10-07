@@ -105,6 +105,7 @@ const LAYOUT = {
   chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
   croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
   sautoir: { 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
+  "fasce-cp": { 1: [[100, 62, .4]], 2: [[64, 62, .32], [136, 62, .32]], 3: [[50, 62, .26], [100, 62, .26], [150, 62, .26]] },     // « accompagnée en chef de …» (cp) : les premiers meubles au-dessus de la fasce
   "sur-chef": { 1: [[100, 52, .36]], 2: [[66, 52, .33], [134, 52, .33]], 3: [[50, 52, .3], [100, 52, .3], [150, 52, .3]] },
   "sur-fasce": { 1: [[100, 130, .38]], 3: [[50, 130, .3], [100, 130, .3], [150, 130, .3]] },
   "sur-pal": { 1: [[100, 120, .32]], 3: [[100, 60, .28], [100, 128, .28], [100, 196, .25]] },
@@ -119,6 +120,8 @@ const LAYOUT = {
 };
 /* bordure et orle n'ont pas de disposition propre (LAYOUT vide, mais présent : on peut y poser des meubles « autour ») ; ils suivent celles du champ plein (PLEIN) */
 for (const p of ["bordure", "orle"]) LAYOUT[p] = {};
+/* « … et en pointe de … » (cp) : les seconds meubles sous la fasce (Galicie-Lodomérie : un choucas en chef, trois couronnes en pointe) */
+const CP_POINTE = { 1: [[100, 192, .34]], 2: [[70, 186, .28], [130, 186, .28]], 3: [[66, 176, .27], [134, 176, .27], [100, 212, .24]] };
 const VERBE = { croix: "cantonné", sautoir: "cantonné", pal: "accosté" };
 function dispo(ctx, n, g) {
   if (ctx === "fasce" && n === 2) return g === "f" ? ", l'une en chef et l'autre en pointe" : ", l'un en chef et l'autre en pointe";
@@ -155,7 +158,7 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
-  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
+  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
   lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
@@ -173,7 +176,7 @@ const halfUsed = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); retur
 const active = St => (!St.q ? [0] : St.q === "2" || St.q === "c" ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
-function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p) : "plein"; }
+function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p === "fasce" && s.cp ? "fasce-cp" : s.p) : "plein"; }
 function countsFor(s) {
   const m = meuble(s.m);
   if (!m) return [];
@@ -203,6 +206,8 @@ function normalize(s) {
   if (!s.p) s.pos = "autour";
   if (s.p && s.pos === "sur" && !LAYOUT["sur-" + s.p]) s.pos = "autour";
   if (s.m && s.p && s.pos === "autour" && !LAYOUT[s.p]) s.pos = BRO_OK.has(s.p) && s.nb !== "seme" ? "sous" : "sur";
+  /* « à la fasce … accompagnée en chef de A et en pointe de B » : une, deux ou trois figures de chaque côté */
+  s.cp = s.cp === "1" && s.p === "fasce" && s.pos === "autour" && s.m && s.nb !== "seme" && s.m2 && meuble(s.m2) && ["1", "2", "3"].includes(s.nb2) ? "1" : "";
   const cs = countsFor(s);
   if (s.m && !cs.includes(s.nb)) s.nb = cs.includes("3") ? "3" : cs[0];
   if (palParDefaut(s) && s.d === "pal") s.d = "";
@@ -277,7 +282,7 @@ function canon(a) {
     if (dispos(a).length) o.d = a.d;
   }
   if (m2) {
-    Object.assign(o, { m2: a.m2, nb2: a.nb2, d2: a.d2, tm2: a.tm2 });
+    Object.assign(o, { m2: a.m2, nb2: a.nb2, ...(a.cp ? { cp: a.cp } : { d2: a.d2 }), tm2: a.tm2 });
     if (m2.accent) o.ta2 = a.ta2;
     if (m2.asym) o.ct2 = a.ct2;
     if (m2.couronne) o.cn2 = a.cn2;
@@ -360,6 +365,10 @@ function blazonCore(s) {
   }
   if (c && !seme && (s.p === "chef" || s.p === "bordure" || s.p === "orle"))
     return `${champ}${parti ? "," : ""} ${groupe}${s.p === "chef" ? "" : dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt}`;
+  if (c && !seme && s.cp && count2(s)) {
+    const c2 = charges(arms2(s)), obj2 = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}`;
+    return `${champ}${sep}${pieceTxt}${broche ? broche + "," : ""} ${agree("accompagné", P.g, false)} en chef ${grpObj} et en pointe ${obj2}`;
+  }
   if (c && !seme) {
     const v = agree(VERBE[s.p] || "accompagné", P.g, false);
     return `${champ}${sep}${pieceTxt}${broche ? broche + "," : ""} ${v} ${grpObj}${dispo(s.p, c.n, c.g)}${x2 ? " et " + x2.obj : ""}`;

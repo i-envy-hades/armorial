@@ -380,6 +380,8 @@ LUS = [
     ("Coupé : au 1, d'or au lion issant de gueules ; au 2, ondé d'argent et d'azur", "Coupé : au 1, d'or au lion issant de gueules ; au 2, fascé ondé d'argent et d'azur", ""),      # la Zélande
     ("Coupé, en 1, d'or à trois étoiles de gueules ; en 2, d'azur à la fasce d'argent", "Coupé : au 1, d'or à trois étoiles de gueules ; au 2, d'azur à la fasce d'argent", ""),
     ("Fascé ondé d'or et de gueules de huit pièces", "Fascé ondé d'or et de gueules de huit pièces", ""),
+    ("D'azur à la fasce de gueules, accompagnée en chef d'un choucas de sable et en pointe de trois couronnes d'or",
+     "D'azur à la fasce de gueules accompagnée en chef d'un choucas de sable et en pointe de trois couronnes d'or", ""),      # la Galicie-Lodomérie
     ("D'azur à treize besants d'or", "D'azur à treize besants d'or posés en trois pals 4, 5 et 4", "4, 5 et 4"),          # le Valais
     ("D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
      "D'azur semé de fleurs de lis d'or, brisé d'un lambel de gueules chargé sur chaque pendant de trois châteaux donjonnés d'or", ""),      # l'Artois
@@ -414,6 +416,8 @@ REFUSES = [
     ("sur le tout d'argent à la croix de gueules", "après les armes"),
     ("Écartelé de France ancien et d'Angleterre", "France"),
     ("Coupé : au 1, écartelé : aux 1 et 4, d'or ; aux 2 et 3, d'azur ; au 2, de gueules", "ne s'écartèlent pas"),
+    ("D'or au chevron d'azur accompagné en chef de deux étoiles de gueules et en pointe d'un croissant de sable", "que d'une fasce"),
+    ("D'or à la fasce d'azur accompagnée en chef de deux étoiles de gueules et en pointe de quatre croissants de sable", "de chaque côté de la fasce"),
     ("Fascé ondé d'or et de gueules de dix pièces", "fascé ondé à quatre, six ou huit"),
 ]
 # armes de la galerie que l'Atelier doit savoir relire (la liste peut s'allonger, jamais se raccourcir) et d'autres qu'il doit refuser
@@ -422,18 +426,18 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
-                    "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro"]
+                    "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie"]
 PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
     ray: pick(RAYS), n: pick(["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]), t3: pick(Object.keys(MOT)), m2: Math.random() < .4 ? pick(ATL.meubles).kind : "", nb2: pick(["1", "2", "3", "4"]),
     nb: pick(["1", "2", "3", "4", "5", "6", "8", "seme"]), p: Math.random() < .6 ? pick(Object.keys(PIECES)) : "", iss: pick(["", "", "1"]), pos: pick(["autour", "sur", "sous"]), pf: pick(["", "", "", ...Object.keys(MOT)]), cn: pick(["", "", ...Object.keys(MOT)]), cn2: pick(["", "", ...Object.keys(MOT)]),
-    ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), cc: pick(["", "", "", "en", "a"]), ta: pick([...Object.keys(MOT), ""]), ta2: pick(Object.keys(MOT)),
+    ln: pick(["", ...Object.keys(CONTOUR_NOM)]), ct: pick(["", "1"]), ct2: pick(["", "1"]), cc: pick(["", "", "", "en", "a"]), ta: pick([...Object.keys(MOT), ""]), ta2: pick(Object.keys(MOT)), cp: pick(["", "", "1"]),
     d: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "orle", "cd", "cs"]),
     d2: pick(["", "chef", "pal", "fasce", "croix", "pointe", "bande", "barre", "mal", "222", "33", "221", "cd", "cs"]),
     tm: pick(Object.keys(MOT)), tm2: pick(Object.keys(MOT)), tp: pick(Object.keys(MOT)), t1: pick(Object.keys(MOT)), t2: pick(Object.keys(MOT)) })"""

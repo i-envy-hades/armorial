@@ -46,7 +46,7 @@ function syncForm() {
   F.nb.innerHTML = cs.map(n => `<option value="${n}">${n === "seme" ? "semé" : n}</option>`).join("");
   const ds = dispos(a);
   F.d.innerHTML = ds.map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
-  F.nb2.innerHTML = Object.keys(PLEIN).map(n => `<option value="${n}">${n}</option>`).join("");
+  F.nb2.innerHTML = Object.keys(PLEIN).filter(n => !a.cp || +n <= 3).map(n => `<option value="${n}">${n}</option>`).join("");
   F.d2.innerHTML = PLEIN[a.nb2].map(d => `<option value="${d.id}">${esc(d.lab)}</option>`).join("");
   /* le nombre de pièces dépend du champ rayé : six, huit… ou des pièces rebattues pour un nombre impair ; des tires pour l'échiqueté ; rien pour le fuselé */
   const lab = n => a.ray === "chequy" ? `${NB[n]} tires` : +n % 2 ? `${NB[(n - 1) / 2]} ${RAY_PIECE[a.ray]}s (pièces rebattues)` : `${NB[n]} pièces`;
@@ -91,6 +91,8 @@ function syncForm() {
   if (m?.file) note.textContent = `Figure empruntée à Wikimedia Commons, recolorée ici : ${m.file.auteur}, ${m.file.lic}.`;
   $("#r-m2").hidden = !m;
   $("#r-nb2").hidden = $("#r-d2").hidden = $("#r-tm2").hidden = !m2;
+  $("#r-cp").hidden = !m2 || a.p !== "fasce" || a.pos !== "autour" || a.nb === "seme";          // « accompagnée en chef de … et en pointe de … »
+  if (a.cp) $("#r-d2").hidden = true;
   $("#r-ta2").hidden = !m2 || !m2.accent;
   $("#r-cn2").hidden = !m2 || !m2.couronne;
   $("#r-cnk2").hidden = !m2 || !m2.couronne || !a.cn2;
