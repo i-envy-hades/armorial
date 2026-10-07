@@ -79,11 +79,11 @@ const PLEIN = {
 /* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
 const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
 /* les champs rayés : les quatre sens du trait, les chevrons, l'échiqueté (n = nombre de tires) et le fuselé (trois sens) */
-const RAYS = ["barry", "paly", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin"];
+const RAYS = ["barry", "barryonde", "paly", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin"];
 const RAY_BANDES = ["4", "5", "6", "7", "8", "9", "10", "11", "12", "13"], RAY_TIRES = ["3", "4", "5", "6", "7", "8"];
-const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : RAY_BANDES;
+const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : ray === "barryonde" ? ["4", "6", "8"] : RAY_BANDES;          // le fascé ondé : un nombre pair de pièces
 /* à partir de dix pièces, les pièces diminuées changent de nom (burelé, vergeté, coticé) ; le nombre par défaut est six, ou dix pour ces noms-là */
-const RAY_NOM = { barry: ["Fascé", "Burelé"], paly: ["Palé", "Vergeté"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
+const RAY_NOM = { barry: ["Fascé", "Burelé"], barryonde: ["Fascé ondé", "Fascé ondé"], paly: ["Palé", "Vergeté"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
 function rayTexte(s) {
   const n = +s.n, ems = `${de(s.t1)} et ${de(s.t2)}`;
   if (s.ray === "chequy") return `Échiqueté ${ems}${n === 6 ? "" : ` de ${NB[n]} tires`}`;
@@ -170,7 +170,7 @@ const halfMode = (St, h) => (h ? St.h2 : St.h1);
 /* les armes de chaque quartier d'une moitié écartelée, dans l'ordre 1-2-3-4 ; null si la moitié est simple */
 const halfQuarters = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? [a[0], a[1], a[1], a[0]] : m === "4" ? a.slice() : null; };
 const halfUsed = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? a.slice(0, 2) : m === "4" ? a.slice() : [a[0]]; };
-const active = St => (!St.q ? [0] : St.q === "2" ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+const active = St => (!St.q ? [0] : St.q === "2" || St.q === "c" ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p) : "plein"; }
@@ -391,6 +391,7 @@ const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 
 const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
 /* les armes que l'on peut modifier (hors écusson), avec leur nom */
 function cellNames(St) {
+  if (St.q === "c") return [[0, "Moitié du chef (1)"], [1, "Moitié de la pointe (2)"]];
   if (St.q !== "p") return St.q ? QNAME[St.q].map((l, i) => [i, l]) : [];
   return [0, 1].flatMap(h => {
     const nom = h ? "senestre" : "dextre", m = halfMode(St, h), a = HALF_ARMS[h];
@@ -412,7 +413,8 @@ function blazonAll(St) {
       return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(bz(i))}`).join(" ; ");
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
-  } else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
+  } else if (St.q === "c") b = `Coupé : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
+  else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
   if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
   return b;
