@@ -246,6 +246,7 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   - *Bras* : un réglage « Inclinaison » (droit, 45° ou couché, à dextre ou à senestre), exclusif, qui ne change que le dessin, pas le blasonnement ; un meuble s'y ouvre en ajoutant `"incline": true` à sa fiche de `atelier.json`.
   - La carte de l'Empire britannique se lit (champ `atelier`, sans le double trescheur de l'Écosse).
 - **Liste des meubles** (menu « Meuble ») : triée par ordre alphabétique à l'intérieur de chaque catégorie (octobre 2026).
+- **Couronne** (octobre 2026) : le meuble « couronne » reprend la couronne à fleurons de Jean-Paul Gibert (CC BY 4.0) à la place de l'ancien tracé, trop simple ; deux meubles s'y ajoutent, la *couronne antique* (Gibert, CC BY 4.0) et la *couronne de laurier* (Henrysalome, CC BY-SA 3.0), avec leurs fiches d'encyclopédie.
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :

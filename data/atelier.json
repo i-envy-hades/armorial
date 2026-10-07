@@ -1386,7 +1386,28 @@
    ],
    "g": "f",
    "cat": "Objets et bâtiments",
-   "draw": "couronne"
+   "file": {
+    "path": "assets/meubles/couronne.svg",
+    "commons": "Meuble héraldique Couronne royale simplifiée.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+    "vb": [
+     1,
+     1,
+     56,
+     30
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
   },
   {
    "kind": "hache",
@@ -3306,6 +3327,66 @@
     "fill:#e20909"
    ],
    "accentMot": "accorné"
+  },
+  {
+   "kind": "couronne-antique",
+   "nom": "Couronne antique",
+   "sing": "couronne antique",
+   "plur": "couronnes antiques",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/couronne-antique.svg",
+    "commons": "Meuble héraldique couronne antique.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+    "vb": [
+     0.5,
+     0.5,
+     312,
+     117
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
+   "kind": "couronne-laurier",
+   "nom": "Couronne de laurier",
+   "sing": "couronne de laurier",
+   "plur": "couronnes de laurier",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/couronne-laurier.svg",
+    "commons": "Héraldique meuble Couronne.svg",
+    "auteur": "Henrysalome",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "vb": [
+     -18,
+     -20,
+     336,
+     342
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
   }
  ],
  "pieces": [
