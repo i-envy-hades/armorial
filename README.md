@@ -235,6 +235,10 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   - *« sommé de » et « surmonté de »* se lisent comme « accompagné en chef de », « surmontant » comme « accompagné en pointe de » : l'Atelier le dit en réserve et réécrit « accompagné ». Les aigles acceptent « becquée et membrée » seules (un seul émail pour le bec, les serres et la couronne, dit en réserve).
   - *Champ `atelier` + `atelierNote`* : Valence, Premier Empire, Pays-Bas, Vaud, Neuchâtel, Fábry ; la note de la carte dit ce que le dessin laisse de côté.
 
+- **Épaisseur par défaut** (octobre 2026) : fasce, chef, pal, bande et barre ont le tiers de l'écu, comme le disent les traités (Wikipédia, « Pièce (héraldique) ») ; meubles posés dessus ou autour recalés. La croix, le sautoir et le chevron gardent leur cote. « Fascé de quatre pièces » se lit.
+- **Pal par défaut** (octobre 2026) : seuls le lion passant et le léopard se posent en pal sans qu'on le dise ; pour tout autre meuble, « en pal » reste une disposition au choix (de deux à cinq meubles), et une figure allongée s'y dessine à pleine largeur sans mordre sur sa voisine (taille réglée sur sa hauteur réelle). Le taureau et le poisson sont devenus des figures allongées.
+- **Boutons « Exemples »** (octobre 2026) : les 36 boutons se relisent tous sans écart ; ajouts : croix mince, clef, parti bordé (bordure dans une case), lambel sur tout l'écu ; « Demi-aigle au parti » prend la clef contournée.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la reprendrait :
@@ -246,18 +250,12 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
 2. **Cartes encore illisibles** (80 sur 156 ; 76 se lisent) — ce qui bloque vraiment :
    - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Six cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
-   - *Figures sans figure libre sur Commons* : ciboire (seulement dans les armes de Galice), rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse.
+   - *À reprendre, figure trouvée mais pas encore téléchargée* (Commons a limité les téléchargements le 7 octobre 2026) : la **harpe** (« Héraldique meuble harpe.svg », Jean-Paul Gibert, CC BY-SA 4.0 ; attribut « cordée » à colorer ; elle ouvrirait la carte de l'Empire britannique avec un champ `atelier`) et le **ciboire** (à extraire des armes de Galice, « COA Kingdom of Galice.svg », SanchoPanzaXXI, CC BY-SA 4.0 ; l'extraction reste à vérifier).
+   - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse.
    - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une fasce accompagnée de deux meubles différents (Galicie-Lodomérie), une pièce chargée qui broche sur un meuble (Mazarin).
-3. ~~**Épaisseur par défaut**~~ — fait (octobre 2026) : fasce, chef, pal, bande et barre ont le tiers de l'écu, comme le disent les traités
-   (Wikipédia, « Pièce (héraldique) ») ; meubles posés dessus ou autour recalés. La croix, le sautoir et le chevron gardent leur cote. « Fascé de quatre pièces » se lit.
-4. ~~**Pal par défaut**~~ — tranché (octobre 2026) : seuls le lion passant et le léopard se posent en pal sans qu'on le dise ; pour tout autre meuble,
-   « en pal » reste une disposition au choix (de deux à cinq meubles), et une figure allongée s'y dessine à pleine largeur sans mordre sur sa voisine
-   (taille réglée sur sa hauteur réelle). Le taureau et le poisson sont devenus des figures allongées.
-5. ~~**Boutons « Exemples »**~~ — fait (octobre 2026) : les 36 boutons se relisent tous sans écart ; ajouts : croix mince, clef, parti bordé (bordure dans une case), lambel sur tout l'écu ; « Demi-aigle au parti » prend la clef contournée.
-6. ~~**Lambel sur un écartelé**~~ — fait (octobre 2026) : la brisure est toujours à tout l'écu ; voir « Brisure sur tout l'écu » plus haut.
-7. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
+3. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
    « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
-8. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
+4. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
 
 ## Limites connues
 
