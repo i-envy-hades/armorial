@@ -73,6 +73,8 @@ const PLEIN = {
        { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[46, 46, .17], [100, 38, .17], [154, 46, .17], [34, 96, .17], [166, 96, .17], [34, 150, .17], [166, 150, .17], [66, 196, .17], [134, 196, .17], [100, 222, .17]] }],
   12: [{ id: "", lab: "4, 4 et 4", ph: " posé 4, 4 et 4", pts: [[40, 62, .17], [80, 62, .17], [120, 62, .17], [160, 62, .17], [40, 120, .17], [80, 120, .17], [120, 120, .17], [160, 120, .17], [58, 178, .17], [86, 178, .17], [114, 178, .17], [142, 178, .17]] },
        { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[46, 46, .15], [100, 38, .15], [154, 46, .15], [34, 86, .15], [166, 86, .15], [32, 126, .15], [168, 126, .15], [40, 166, .15], [160, 166, .15], [64, 198, .15], [136, 198, .15], [100, 222, .15]] }],
+  /* les treize étoiles du Valais : trois pals, celui du milieu sur le trait du parti */
+  13: [{ id: "", lab: "En trois pals, 4, 5 et 4", ph: " posé en trois pals 4, 5 et 4", alt: [" posé 4, 5 et 4"], pts: [[52, 50, .21], [52, 96, .21], [52, 142, .21], [58, 188, .21], [100, 42, .19], [100, 86, .19], [100, 130, .19], [100, 174, .19], [100, 216, .19], [148, 50, .21], [148, 96, .21], [148, 142, .21], [142, 188, .21]] }],
 };
 /* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
 const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
@@ -144,7 +146,7 @@ const BRIS_PIECES = { bordure: { nom: "Bordure", g: "f", bord: true }, baton: { 
   canton: { nom: "Canton", g: "m", bord: true }, "franc-quartier": { nom: "Franc-quartier", g: "m", bord: true },
   lambel: { nom: "Lambel", g: "m", pend: true } };
 const BRIS_FIGS = ["croissant", "molette", "merlette", "annelet", "fleurdelis", "rose", "etoile", "roundel", "coquille"];     // les marques de cadence anglaises, puis l'étoile, le besant et la coquille
-const LAMBEL_FIGS = [...BRIS_FIGS, "croisette"];                                           // ce que peuvent porter les pendants d'un lambel
+const LAMBEL_FIGS = [...BRIS_FIGS, "croisette", "chateau"];                                // ce que peuvent porter les pendants d'un lambel (les châteaux : Artois)
 const brisPiece = s => (own(BRIS_PIECES, s.br) ? BRIS_PIECES[s.br] : null);
 const lambelArms = s => ({ ...s, m: s.lpc, m2: "", nb: s.lpk, tm: s.lpt, ta: s.lpt, ct: "", cn: "", iss: "", cc: "", d: "", pos: "autour", p: "" });
 const brisArms = s => ({ ...s, m: s.br, m2: "", nb: s.brn, tm: s.tbr, ta: s.tbr, ct: "", cn: "", iss: "", cc: "", d: s.brd, pos: "autour", p: "" });

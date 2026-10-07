@@ -377,6 +377,9 @@ LUS = [
     ("D'azur au lion issant contourné d'or", "D'azur au lion issant contourné d'or", ""),
     ("D'azur à neuf cœurs d'or posés en trois pals", "D'azur à neuf cœurs d'or posés 3, 3 et 3", ""),
     ("D'azur à douze besants d'argent posés 4, 4 et 4", "D'azur à douze besants d'argent posés 4, 4 et 4", ""),
+    ("D'azur à treize besants d'or", "D'azur à treize besants d'or posés en trois pals 4, 5 et 4", "4, 5 et 4"),          # le Valais
+    ("D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
+     "D'azur semé de fleurs de lis d'or, brisé d'un lambel de gueules chargé sur chaque pendant de trois châteaux donjonnés d'or", ""),      # l'Artois
 ]
 # (texte, fragment de l'explication) : refusés, avec la raison — jamais devinés
 REFUSES = [
@@ -413,7 +416,8 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Duché de Bretagne", "Duché de Savoie", "République de Gênes", "Ordre Teutonique", "Ordre de Saint-Jean (Hospitaliers)",
                     "Maison d'Este", "Maison Farnèse", "Marquisat de Saluces", "Comté de Toulouse", "Maison Grimaldi", "Monaco", "Maison de Hohenberg", "Royaume d'Islande",
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
-                    "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique"]
+                    "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
+                    "Comté d'Artois", "Comté de Namur", "Canton du Valais"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
