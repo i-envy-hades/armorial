@@ -387,6 +387,8 @@ LUS = [
     ("De gueules au lion d'argent, couronné, armé et lampassé d'or", "De gueules au lion d'argent armé et lampassé d'or couronné d'or", "colore d'un seul émail"),
     ("Tranché : au 1, d'or ; au 2, d'azur à sept étoiles d'argent posées en bande", "Tranché : au 1, d'or plein ; au 2, d'azur à sept étoiles d'argent posées en bande", ""),      # Bosnie-Herzégovine
     ("Taillé : au 1, d'azur au lion d'or ; au 2, de gueules à la croix d'argent", "Taillé : au 1, d'azur au lion d'or ; au 2, de gueules à la croix d'argent", ""),
+    ("De gueules au lion couronné d'or, tenant une hache d'argent emmanchée du même", "De gueules au lion couronné d'or, tenant une hache d'argent emmanchée du même", ""),      # la Norvège
+    ("D'or au rencontre de bœuf de sable", "D'or au rencontre de bœuf de sable", ""),      # Uri
     ("D'azur à treize besants d'or", "D'azur à treize besants d'or posés en trois pals 4, 5 et 4", "4, 5 et 4"),          # le Valais
     ("D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
      "D'azur semé de fleurs de lis d'or, brisé d'un lambel de gueules chargé sur chaque pendant de trois châteaux donjonnés d'or", ""),      # l'Artois
@@ -433,11 +435,11 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie", "Haakon VII"]
 PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
@@ -618,12 +620,12 @@ def test_partir(browser, base):
     propre("partir", page, erreurs)
     page.context.close()
     # une carte que le lecteur ne relit pas : le texte surligné, l'écu inchangé mais dessiné, la carte nommée
-    norvege = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Norvège")
-    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote(norvege) + "&de=blasons:norvege", "#origine:not([hidden]) .or-etat")
+    chypre = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Chypre")      # (la Norvège, prise d'abord, se lit depuis le lion à la hache)
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote(chypre) + "&de=blasons:chypre", "#origine:not([hidden]) .or-etat")
     verifie("ko" in etat() and page.locator("#lire-etat.ko mark").count() >= 1 and blz() != "", "partir : une carte que le lecteur ne relit pas s'ouvre, texte surligné, sans rien deviner")
-    verifie("de=blasons:norvege" in page.url and "lire=" not in page.url, "partir : son adresse garde la carte")
+    verifie("de=blasons:chypre" in page.url and "lire=" not in page.url, "partir : son adresse garde la carte")
     page.reload(); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(500)
-    verifie(page.input_value("#lire") == norvege and page.locator("#lire-etat.ko mark").count() >= 1, "partir : rechargée, elle remet le texte de la carte dans la zone de saisie, surligné")
+    verifie(page.input_value("#lire") == chypre and page.locator("#lire-etat.ko mark").count() >= 1, "partir : rechargée, elle remet le texte de la carte dans la zone de saisie, surligné")
     propre("partir (refusé)", page, erreurs)
     page.context.close()
     # une carte inconnue, une adresse truquée : ignorées

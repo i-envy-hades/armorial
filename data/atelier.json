@@ -89,6 +89,45 @@
    ]
   },
   {
+   "kind": "lion-hache",
+   "nom": "Lion couronné tenant une hache (Norvège)",
+   "sing": "lion couronné",
+   "plur": "lions couronnés",
+   "queue": {
+    "mot": "tenant une hache d'argent emmanchée du même",
+    "lus": [
+     "tenant une hache d'argent emmanchée du même",
+     "tenant dans ses pattes une hache d'argent emmanchée du même"
+    ]
+   },
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/lion-hache.svg",
+    "commons": "Armoiries Norvège.svg",
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "extrait": "le lion couronné et sa hache, détachés de l'écu (champ, ombrage et bord retirés, tracés inchangés)",
+    "vb": [
+     28,
+     18,
+     486,
+     558
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#fcef3c"
+   ]
+  },
+  {
    "kind": "lion-passant",
    "palDefaut": true,
    "nom": "Lion passant (léopardé)",
@@ -3518,6 +3557,36 @@
     "fill:#2b5df2"
    ],
    "accentMot": "lampassé"
+  },
+  {
+   "kind": "rencontre-boeuf",
+   "nom": "Rencontre de bœuf",
+   "sing": "rencontre de bœuf",
+   "plur": "rencontres de bœuf",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/rencontre-boeuf.svg",
+    "commons": "Heraldique rencontre boeuf.svg",
+    "auteur": "Rinaldum (dessin) et Ripounet (vectorisation)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "vb": [
+     3,
+     1,
+     494,
+     538
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e2e011"
+   ]
   },
   {
    "kind": "rencontre-belier",
