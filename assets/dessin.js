@@ -44,7 +44,7 @@ function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
   if (s.iss === "t") pts = [[100 + ((HSIDE ? -50 : 50) - MAP.shx) / MAP.vpx, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
-  else if (s.iss) pts = [[100, 204, 1]];                                       // issant : le meuble, à demi caché par le bas de l'écu
+  else if (s.iss) pts = [[100, 204, MAP && MAP.coupe ? 1.5 : 1]];             // issant : le meuble, à demi caché par le bas de l'écu (dans le chef d'un coupé, il sort du trait, plus grand)
   else if (m.seul) pts = [[100, 116, 1]];
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
@@ -157,7 +157,7 @@ const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
-  if (!["", "2", "4", "p"].includes(St.q)) St.q = "";
+  if (!["", "2", "4", "p", "c"].includes(St.q)) St.q = "";
   for (const k of ["h1", "h2"]) if (St.q !== "p" || !["", "2", "4"].includes(St[k])) St[k] = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
@@ -452,6 +452,7 @@ const SHAPES = {
 /* les cases d'un parti : chaque moitié, ou, si elle s'écartèle, ses quatre quartiers */
 function partiCells(St) {
   const split = quarterGeom().split, out = [];
+  if (St.q === "c") return [{ arm: 0, half: 0, coupe: true, rect: [0, 0, 200, split], edges: "b" }, { arm: 1, half: 1, coupe: true, rect: [0, split, 200, 252 - split], edges: "t" }];      // coupé : la moitié du chef, puis celle de la pointe
   [0, 1].forEach(h => {
     const qa = halfQuarters(St, h), hx = h * 100;
     if (!qa) { out.push({ arm: HALF_ARMS[h][0], half: h, rect: [hx, 0, 100, 252], edges: h ? "l" : "r" }); return; }
@@ -475,10 +476,11 @@ function cellGeom(rect) {
 }
 /* l'étendue horizontale visible d'une moitié de l'écu */
 const halfSpan = h => { const g = cellGeom([h * 100, 0, 100, 252]); return [g.x0, g.x1]; };
-const HALF_PK = .8, SUB_PK = .3;
+const HALF_PK = .8, SUB_PK = .3, COUPE_PK = 1.4;
 function partiMap(c) {
   const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, half: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
   m.rect = c.rect; m.edges = c.edges;
+  if (c.coupe) { const g = cellGeom(c.rect); return Object.assign(m, { half: false, coupe: true, shy: g.cy - cy, gx: g.cx, gy: g.cy, pk: Math.min(HALF_PK, COUPE_PK * g.h / 252) }); }      // une moitié de coupé : les figures se règlent sur sa hauteur visible
   if (c.q === undefined) { const g = cellGeom(c.rect); return Object.assign(m, { shx: g.cx - cx, gx: g.cx, gy: g.cy }); }      // une moitié se centre en largeur sur ce qu'on en voit
   const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
   return Object.assign(m, { gx: g.cx, gy: g.cy, half: false, vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
@@ -496,7 +498,7 @@ function drawParti(St, u, ab) {
     body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
   const split = quarterGeom().split;
-  let lignes = "M100,0V252";
+  let lignes = St.q === "c" ? `M0,${split}H200` : "M100,0V252";
   cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   const gl = GBR(St) ? brisLayer(St.A[0], `${u}g`) : null;
@@ -507,7 +509,7 @@ function drawShield(St, u) {
   SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
   const ab = St.ab ? abime(St, u) : "";
   if (!St.q) return draw(St.A[0], u, ab);
-  if (St.q === "p") return drawParti(St, u, ab);
+  if (St.q === "p" || St.q === "c") return drawParti(St, u, ab);
   const G = quarterGeom();
   let defs = `<clipPath id="cl-${u}"><path d="${SHIELD_D}"/></clipPath>`, body = "";
   quarterArms(St).forEach((ai, qi) => {

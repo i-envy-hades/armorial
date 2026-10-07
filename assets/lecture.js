@@ -82,7 +82,8 @@ function lexique() {
   L.contours = table(Object.entries(CONTOUR_NOM).flatMap(([k, v]) => quatre(v).map(f => [f, k])));
   L.parts = table(DATA.partitions.map(p => [p.nom, { kind: p.kind, tierce: p.kind.startsWith("tierce") }]));
   /* champs rayés : { ray, n } ; les noms des petites pièces (burelé, vergeté, coticé) valent dix pièces sauf mention */
-  L.raye = table([["fascé", { ray: "barry" }], ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
+  L.raye = table([["fascé", { ray: "barry" }], ["fascé ondé", { ray: "barryonde" }], ["ondé", { ray: "barryonde" }],          // « ondé d'argent et d'azur » : un fascé ondé (Zélande)
+    ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
     ["burelé", { ray: "barry", n: "10" }], ["vergeté", { ray: "paly", n: "10" }], ["vergetté", { ray: "paly", n: "10" }], ["coticé", { ray: "bendy", n: "10" }], ["coticé en barre", { ray: "bendysin", n: "10" }],
     ["échiqueté", { ray: "chequy" }], ["fuselé", { ray: "lozengy" }], ["fuselé en bande", { ray: "lozengybend" }], ["fuselé en barre", { ray: "lozengysin" }]]);
   L.fixe = {};
@@ -429,8 +430,9 @@ function pChamp(P) {
     if (cle(P, i) === "de" && LEX.compte.has(cle(P, i + 1)) && (cle(P, i + 2) === "pieces" || cle(P, i + 2) === "tires" || cle(P, i + 2) === "tire")) {
       const n = LEX.compte.get(cle(P, i + 1)), mot = cle(P, i + 2) === "pieces" ? "pièces" : "tires", ici = P.toks[i], fin = P.toks[i + 2];
       if (losange) return erreur(P, ici.de, fin.a, "L'Atelier dessine le fuselé tel qu'il est, sans nombre de pièces.");
-      if (ray === "chequy" ? mot !== "tires" || !RAY_TIRES.includes(String(n)) : mot !== "pièces" || n % 2 || !RAY_BANDES.includes(String(n)))
+      if (ray === "chequy" ? mot !== "tires" || !RAY_TIRES.includes(String(n)) : mot !== "pièces" || n % 2 || !rayNs(ray).includes(String(n)))
         return erreur(P, ici.de, fin.a, ray === "chequy" ? `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine l'échiqueté de trois à huit tires (six, si l'on ne dit rien).`
+          : ray === "barryonde" ? `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine le fascé ondé à quatre, six ou huit pièces.`
           : `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine les champs rayés à six, huit, dix ou douze pièces (pour les nombres impairs : « d'or à trois pals de gueules »).`);
       nn = String(n); i += 3;
     }
@@ -723,16 +725,18 @@ function lireArmes(texte, toks, lieu, res) {
 /* « Parti : au 1, A ; au 2, B » : chaque moitié est des armes, ou « écartelé : aux 1 et 4, … ; aux 2 et 3, … » (ou « au 1, … ; … ; au 4, … ») ; les moitiés se disent dans l'ordre */
 function lireParti(texte, segs, res, etat, main) {
   let k = 0;
+  const coupe = main[0].w === "coupe", nom = coupe ? "Un coupé" : "Un parti";            // « Coupé : au 1, … ; au 2, … » : la moitié du chef, puis celle de la pointe
   const bute = (seg, msg) => { const t = seg && seg[0]; res.erreurs.push(t ? { de: t.de, a: seg[Math.min(2, seg.length - 1)].a, msg } : { de: main[0].de, a: main[main.length - 1].a, msg }); };
   const moitiés = [];
   for (let h = 0; h < 2; h++) {
     const seg = segs[k++];
     if (!seg || !seg.length) return bute(seg, h ? "Il manque la moitié 2." : "Moitié vide après « ; ».");
     const e = etiquette(seg);
-    if (!e || e.nums.length !== 1 || e.nums[0] !== h + 1) return bute(seg, `Un parti compte deux moitiés, dites dans l'ordre : « au 1, … ; au 2, … » (ici, on attend « au ${h + 1} »).`);
+    if (!e || e.nums.length !== 1 || e.nums[0] !== h + 1) return bute(seg, `${nom} compte deux moitiés, dites dans l'ordre : « au 1, … ; au 2, … » (ici, on attend « au ${h + 1} »).`);
     let rest = seg.slice(e.i), mode = "";
     const armes = [];
     if (rest[0] && rest[0].w === "ecartele" && rest[1] && rest[1].w === ":") {
+      if (coupe) return bute(rest, "Dans l'Atelier, les moitiés d'un coupé ne s'écartèlent pas (celles d'un parti, si).");
       rest = rest.slice(2);
       const e2 = etiquette(rest), cle2 = e2 && e2.nums.slice().sort().join();
       if (cle2 !== "1,4" && cle2 !== "1") return bute(rest, "Un écartelé dans une moitié commence par « aux 1 et 4, … » (puis « aux 2 et 3, … ») ou par « au 1, … » (jusqu'à « au 4, … »).");
@@ -756,8 +760,8 @@ function lireParti(texte, segs, res, etat, main) {
     }
     moitiés.push({ mode, armes });
   }
-  if (k < segs.length) return bute(segs[k], "Un parti compte deux moitiés : « au 1, … ; au 2, … ».");
-  etat.q = "p"; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
+  if (k < segs.length) return bute(segs[k], `${nom} compte deux moitiés : « au 1, … ; au 2, … ».`);
+  etat.q = coupe ? "c" : "p"; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
   moitiés.forEach((m, h) => m.armes.forEach((a, n) => { etat.A[HALF_ARMS[h][n]] = a; }));
 }
 /* « demi-aigle de sable, mouvant du trait du parti, couronnée, becquée… de gueules » : on ramène le trait en dernier, où l'Atelier le lit */
@@ -795,7 +799,7 @@ function lire(texte) {
   }
   const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
-  const parti = !!(main[0] && main[0].w === "parti" && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
+  const parti = !!(main[0] && (main[0].w === "parti" || main[0].w === "coupe") && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
   const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
   const etat = { q: "", ab: "", gb: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
   /* « ; le tout brisé d'un lambel d'argent » : la brisure de tout l'écu, dite après les quartiers ou les moitiés */
