@@ -315,7 +315,9 @@ function charges(s) {
   const ctr = (s.iss === "1" ? (g === "f" ? " issante" : " issant") : "") + (s.ct ? " " + agree("contourné", g, pl) : "") + (mem ? couronne : "");   // « un lion contourné d'or », « trois lions contournés couronnés d'or »
   /* une partie du dessin toujours du même émail se dit toujours (« la grenade d'or ouverte de gueules, tigée et feuillée de sinople ») */
   const fixe = m.fixe ? `, ${agree(m.fixe.mot, g, pl)} ${de(m.fixe.t)}` : "";
-  return { m, n, pl, nom, nomPl, g, acc: acc + fixe, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: s.cc ? ccTexte(s.cc) : de(s.tm) };
+  /* une variante de la figure, dite après l'émail (« au lion d'argent, à la queue fourchée et passée en sautoir, armé… ») */
+  const queue = m.queue ? `, ${m.queue.mot}${acc ? "," : ""}` : "";
+  return { m, n, pl, nom, nomPl, g, acc: queue + acc + fixe, ctr, mv: s.iss === "t" ? " mouvant du trait du parti" : "", tinct: s.cc ? ccTexte(s.cc) : de(s.tm) };
 }
 function semePhrase(c, s) {
   const m = c.m;
