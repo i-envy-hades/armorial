@@ -1298,6 +1298,50 @@
     },
     { "kind": "gland", "nom": "Gland", "en": "acorn", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Gland tigé et feuillé.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Le gland tigé et feuillé : la tige porte deux feuilles de chêne." } },
+    { "kind": "vache", "nom": "Vache passante", "en": "cow passant", "champ": "Or", "charge": "Gueules", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Vache.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "navire", "nom": "Navire", "en": "ship", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments",
+      "image": { "file": "Meuble héraldique Navire voile.svg", "auteur": "Etxeko", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "ours", "nom": "Ours passant", "en": "bear passant", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Ours passant.svg", "auteur": "Jacques63", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "sanglier", "nom": "Sanglier passant", "en": "boar passant", "champ": "Or", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Sanglier passant.svg", "auteur": "Jpgibert", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "taureau", "nom": "Taureau", "en": "bull", "champ": "Or", "charge": "Gueules", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Taureau.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "loup", "nom": "Loup passant", "en": "wolf passant", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Loup passant.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "belier", "nom": "Bélier passant", "en": "ram passant", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique bélier.svg", "auteur": "Frédéric Michel, d'après Bernard Le Brun", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "cygne", "nom": "Cygne", "en": "swan", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Cygne 2.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "poisson", "nom": "Poisson", "en": "fish", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Héraldique meuble poisson 1.svg", "auteur": "Glesker", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "couleuvre", "nom": "Couleuvre ondoyante", "en": "snake", "champ": "Or", "charge": "Sinople", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Serpent.svg", "auteur": "Bruno Vallette, d'après l'Armorial d'Hozier", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "alerion", "nom": "Alérion", "en": "alerion", "champ": "Or", "charge": "Azur", "cat": "Bêtes et chimères",
+      "image": { "file": "Alérion.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "choucas", "nom": "Choucas", "en": "chough", "champ": "Argent", "charge": "Sable", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Choucas.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "colombe-essorante", "nom": "Colombe essorante", "en": "dove rising", "champ": "Azur", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Colombe essorante.svg", "auteur": "Syryatsu", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "bouquetin-saillant", "nom": "Bouquetin saillant", "en": "ibex salient", "champ": "Gueules", "charge": "Argent", "cat": "Bêtes et chimères",
+      "image": { "file": "Bouquetin1.svg", "auteur": "Jacques63", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "chevre-saillante", "nom": "Chèvre saillante", "en": "goat salient", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble heraldique chevre saillante.svg", "auteur": "Olves", "lic": "domaine public", "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "biche-saillante", "nom": "Biche saillante", "en": "hind salient", "champ": "Azur", "charge": "Or", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Biche saillant.svg", "auteur": "Mspecht", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "wyverne", "nom": "Wyvern (dragon à deux pattes)", "en": "wyvern", "champ": "Argent", "charge": "Sinople", "cat": "Bêtes et chimères",
+      "image": { "file": "Meuble héraldique Dragon (wyvern).svg", "auteur": "ZigeunerAlt, d'après Delta-9", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "faisceau", "nom": "Faisceau de licteur", "en": "fasces", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments",
+      "image": { "file": "Meuble héraldique Faisceau de licteur.svg", "auteur": "Blanchoyeur", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "grenade", "nom": "Grenade", "en": "pomegranate", "champ": "Argent", "charge": "Gueules", "cat": "Le règne végétal",
+      "image": { "file": "Héraldique meuble Grenade.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "neflier", "nom": "Fleur de néflier", "en": "medlar blossom", "champ": "Or", "charge": "Gueules", "cat": "Le règne végétal",
+      "image": { "file": "Meuble héraldique Fleur de néflier.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "arbre", "nom": "Arbre", "en": "tree", "champ": "Or", "charge": "Sinople", "cat": "Le règne végétal",
+      "image": { "file": "Meuble héraldique Arbre.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "hache", "nom": "Hache d'armes", "en": "battle-axe", "champ": "Azur", "charge": "Argent", "cat": "Objets et bâtiments" },
+    { "kind": "couronne", "nom": "Couronne", "en": "crown", "champ": "Azur", "charge": "Or", "cat": "Objets et bâtiments" },
     {
       "kind": "epi", "nom": "Épi", "en": "ear of wheat", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Epi.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 2.5", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr", "note": "Sa page Commons dit « épi de céréales » sans nommer le blé, et la tige y est légèrement inclinée." }
@@ -3386,6 +3430,69 @@
     {
       "terme": "Liées",
       "def": "Se dit de deux clefs en sautoir dont les anneaux sont joints par un lien.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Rencontre",
+      "def": "Tête d'animal vue de face, sans cou : la tête de cerf de face se dit « un rencontre de cerf ». La liste de Wikipédia ne donne le mot que pour le cerf.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Sommé",
+      "def": "Se dit d'une figure qui porte une autre figure à son sommet (« ancre sommée d'un croissant », « pont sommé d'un château »). Du cerf, la ramure d'un émail particulier se dit « ramée » ou « sommée », et « sommé de dix cors » compte ses andouillers.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Surmonté",
+      "def": "Se dit d'une figure qui porte au-dessus d'elle une autre figure : une arche de Noé « surmontée d'une maison », un bâtiment « surmonté d'une girouette » (il est alors girouetté).",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Terrassé",
+      "def": "Se dit d'un arbre planté sur une terrasse, normalement mouvante de la pointe de l'écu.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Écusson",
+      "def": "Petit écu d'armoiries posé dans l'écu (« d'argent chargé d'un écusson de gueules »). Posé en cœur d'un écu écartelé, il est dit « sur le tout ».",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Colonne",
+      "def": "Colonne grecque d'ordre ionique au trait simplifié, sans volute, ove, cannelure ni tore (« d'argent à la colonne de gueules »).",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Dextrochère, senestrochère",
+      "def": "Le bras, droit (dextrochère) ou gauche (senestrochère). Nu par défaut, il peut être paré (de vêtements) ou armé (d'une armure), et souvent mouvant d'un flanc, qu'il faut alors blasonner.",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Vache",
+      "def": "Se reconnaît à ses pis ; généralement passante, la queue étendue le long du flanc. Les armes du Béarn en portent deux : « d'or à deux vaches de gueules, accornées, colletées et clarinées d'azur ».",
+      "sources": [
+        "wiki_meubles"
+      ]
+    },
+    {
+      "terme": "Navire",
+      "def": "Le navire de base comprend une coque simple, un mât et une voile ; il peut être équipé, ses voiles gonflées (« d'azur à un navire d'argent »). Le navire à rames (langskip, drakkar) représente le pouvoir royal dans l'ancienne héraldique écossaise ; la galère a des voiles toujours ferlées.",
       "sources": [
         "wiki_meubles"
       ]
