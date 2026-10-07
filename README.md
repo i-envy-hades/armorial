@@ -259,7 +259,7 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et la page Commons ne cite qu'un message du diocèse de Zárate-Campana, sans blasonnement.
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (97 se lisent sur 167) — ce qui bloque vraiment :
+2. **Cartes encore illisibles** (100 se lisent sur 167) — ce qui bloque vraiment :
    - *Fait en octobre 2026* : l'Artois (le lambel « chaque pendant chargé de trois châteaux », les châteaux sur les pendants), le Valais (treize meubles « en trois pals 4, 5 et 4 »)
      et Namur (la traverse dessinée en cotice) se lisent ; les trois cartes portent un champ `atelier`. Deuxième lot : le **coupé à deux armes** (« Coupé : au 1, … ; au 2, … »,
      composition « Coupé » de l'Atelier ; ses moitiés ne s'écartèlent pas, et une figure issante y sort du trait) et le **fascé ondé** (« fascé ondé » ou « ondé d'argent et d'azur »,
@@ -275,10 +275,15 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
      (la couronne en tête de la liste des attributs). Le Limbourg se lit ; la Tchéquie reste illisible pour ses autres quartiers. Le lion tenant une hache (Norvège, Haakon VII) n'a pas de figure libre propre sur Commons.
    - *Tranché et taillé à deux armes* (« Tranché : au 1, … ; au 2, … », compositions « Tranché » et « Taillé » de l'Atelier) : chaque partie, un triangle, reçoit ses armes resserrées
      sur ce qu'on en voit ; des meubles posés en bande (en barre, pour le taillé) longent le trait. Sept étoiles « en bande » existent aussi sur l'écu plein. Bosnie-Herzégovine se lit.
+   - *Figures imparfaites acceptées par le curateur* (octobre 2026) : le **rencontre de bœuf** (« Heraldique rencontre boeuf.svg », dessiné par Rinaldum, vectorisé par Ripounet,
+     CC BY-SA 3.0 ; sans anneau ni langue, et ses blancs ne sont que des reflets : « allumé » n'est pas pris) et le **lion couronné tenant une hache**, extrait de « Armoiries Norvège.svg »
+     (Odejea, CC BY-SA 3.0 : le lion seul, sans le champ ni l'ombrage, tracés inchangés ; champ `extrait` du crédit). Uri, la Norvège et Haakon VII se lisent. Le « front de bœuf » d'Oxenstierna
+     n'est pas un rencontre (ni mufle ni yeux, seulement le front, les cornes et les oreilles) : la carte reste illisible. Écartés : un bélier de Commons (passant, pas saillant : Schaffhouse),
+     le casque de Skanderbeg (seulement dans les armes entières d'Albanie), la branche d'épine (introuvable).
    - *Figures à revoir* : l'ours passant posé sur une bande (Berne) reste petit et à plat,
      là où l'image le fait monter le long de la bande.
    - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
-   - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
+   - *Figures sans figure libre sur Commons* : bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
    - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une pièce chargée qui broche sur un meuble (Mazarin).
 3. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
