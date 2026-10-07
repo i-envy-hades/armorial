@@ -574,6 +574,21 @@
     }
   },
   {
+    "nom": "Royaume du Hedjaz",
+    "cat": "Royaumes",
+    "porteur": "Hussein ben Ali, roi du Hedjaz (1916-1924), qui se proclame aussi calife en 1924",
+    "blason": "De sinople à deux lances d'or passées en sautoir, ferrées d'argent et houppées de gueules, chargées d'un bâton de commandement en pal d'or et de sable, accosté de deux sabres d'argent garnis d'or, les poignées en chef",
+    "file": "Coat of arms of Kingdom of Hejaz.svg",
+    "auteur": "Samhanin",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Hubert de Vries, « Arabiyah », Heraldica civica et militaris",
+      "url": "http://www.hubert-herald.nl/Arabiyah.htm#hejaz",
+      "note": "traduit de l'anglais ; décrit d'après les billets de 1924 ; le manteau, les palmiers et les drapeaux ne sont pas blasonnés ici. Aucune source lue ne donne d'armes propres au califat de 1924"
+    }
+  },
+  {
     "nom": "Maison d'Este",
     "cat": "Maisons",
     "porteur": "Seigneurs de Ferrare, avant la concession française de 1431",
@@ -644,6 +659,185 @@
       "label": "Wikipédia, « Comté de Toulouse »",
       "url": "https://fr.wikipedia.org/wiki/Comté_de_Toulouse",
       "note": "c'est la « croix de Toulouse »"
+    }
+  },
+  {
+    "nom": "Duché de Brabant",
+    "cat": "Provinces",
+    "porteur": "Ducs de Brabant ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "De sable au lion d'or, armé et lampassé de gueules",
+    "file": "Wapenschild van Brabant.svg",
+    "auteur": "Tom-L",
+    "lic": "CC0 1.0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr",
+    "blasonSrc": {
+      "label": "Wikipédia (nl), « Wapen van Brabant »",
+      "url": "https://nl.wikipedia.org/wiki/Wapen_van_Brabant",
+      "note": "traduit du néerlandais : « in sabel een leeuw van goud, genageld en getongd van keel »"
+    }
+  },
+  {
+    "nom": "Comté de Flandre",
+    "cat": "Provinces",
+    "porteur": "Comtes de Flandre ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'or au lion de sable, armé et lampassé de gueules",
+    "file": "Coat of Arms of Flanders (according to the Gelre Armorial).svg",
+    "auteur": "Kathisma",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Comté de Flandre »",
+      "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_de_Flandre",
+      "note": "légende de l'écu dans l'article ; l'image suit l'armorial Gelre (XIVᵉ s.), avec heaume et cimier, que le blasonnement ne décrit pas"
+    }
+  },
+  {
+    "nom": "Comté de Hollande",
+    "cat": "Provinces",
+    "porteur": "Comtes de Hollande ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'or au lion de gueules, armé et lampassé d'azur",
+    "file": "Wapen graafschap Holland.svg",
+    "auteur": "Katchatsa",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia (nl), « Wapen van Holland »",
+      "url": "https://nl.wikipedia.org/wiki/Wapen_van_Holland",
+      "note": "traduit du néerlandais : « in goud een leeuw van keel, getongd en geklauwd van azuur »"
+    }
+  },
+  {
+    "nom": "Comté de Zélande",
+    "cat": "Provinces",
+    "porteur": "Comtes de Zélande ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "Coupé : au 1, d'or au lion issant de gueules ; au 2, ondé d'argent et d'azur",
+    "file": "Coat of arms of Zeeland.svg",
+    "auteur": "Lievinie, d'après Ipankonin et d'autres (fichier dérivé)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Zeeland.svg",
+    "blasonSrc": {
+      "label": "Wikipédia (nl), « Wapen van Zeeland (provincie) »",
+      "url": "https://nl.wikipedia.org/wiki/Wapen_van_Zeeland_(provincie)",
+      "note": "l'article décrit un lion issant au-dessus d'un champ de vagues, séparés par une ligne droite dans les versions anciennes (dès 1440), sans donner de blasonnement : les émaux sont lus sur l'image"
+    }
+  },
+  {
+    "nom": "Duché de Gueldre",
+    "cat": "Provinces",
+    "porteur": "Ducs de Gueldre, armes de l'union avec Juliers (1379-1423), gardées ensuite ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "Parti : au 1, d'azur au lion contourné d'or, armé, lampassé et couronné de gueules ; au 2, d'or au lion de sable, armé et lampassé de gueules",
+    "file": "Guelders-Jülich Arms.svg",
+    "auteur": "Ipankonin",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Duché de Gueldre »",
+      "url": "https://fr.wikipedia.org/wiki/Duch%C3%A9_de_Gueldre",
+      "note": "l'article écrit « au lion contourné couronné d'or, armé, lampassé et couronné de gueules » : il donne deux émaux à la couronne ; on garde le second, celui de l'image"
+    }
+  },
+  {
+    "nom": "Comté de Hainaut",
+    "cat": "Provinces",
+    "porteur": "Comtes de Hainaut ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "Écartelé : aux 1 et 4, d'or au lion de sable, armé et lampassé de gueules ; aux 2 et 3, d'or au lion de gueules, armé et lampassé d'azur",
+    "file": "Hainaut Modern Arms.svg",
+    "auteur": "Ipankonin",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries du comté de Hainaut »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_du_comt%C3%A9_de_Hainaut",
+      "note": "l'article y lit Flandre (1 et 4) et Hollande (2 et 3)"
+    }
+  },
+  {
+    "nom": "Comté d'Artois",
+    "cat": "Provinces",
+    "porteur": "Comtes d'Artois ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux d'or",
+    "file": "Blason comtes fr d'Artois 1.svg",
+    "auteur": "Popvjpaqiaa999",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Comté d'Artois »",
+      "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_d%27Artois"
+    }
+  },
+  {
+    "nom": "Comté de Namur",
+    "cat": "Provinces",
+    "porteur": "Comtes de Namur ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'or au lion de sable, armé et lampassé de gueules, à la traverse de gueules brochant sur le tout",
+    "file": "Comté de Namur.svg",
+    "auteur": "Windharinus",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Comté de Namur »",
+      "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_de_Namur",
+      "note": "armes de Flandre brisées par Philippe Iᵉʳ de Namur, comte en 1196 ; la page du fichier dit « une bande de gueules », et le dessin, d'après l'armorial Gelre, ajoute heaume et cimier"
+    }
+  },
+  {
+    "nom": "Duché de Limbourg",
+    "cat": "Provinces",
+    "porteur": "Ducs de Limbourg ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'argent au lion de gueules, la queue fourchée passée en sautoir, armé, lampassé et couronné d'or",
+    "file": "Berg Arms.svg",
+    "auteur": "Ipankonin",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Duché de Limbourg »",
+      "url": "https://fr.wikipedia.org/wiki/Duch%C3%A9_de_Limbourg",
+      "note": "le même dessin sert sur Commons aux armes du duché de Berg"
+    }
+  },
+  {
+    "nom": "Seigneurie de Malines",
+    "cat": "Provinces",
+    "porteur": "Seigneurs puis comtes de Malines ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'or à trois pals de gueules ; sur le tout, d'or à l'aigle de sable",
+    "file": "Escudo de Malinas 1581.svg",
+    "auteur": "Trasamundo",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Escudo_de_Malinas_1581.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Malines »",
+      "url": "https://fr.wikipedia.org/wiki/Malines",
+      "note": "armes de la ville, que l'article dit être celles « du domaine et du comté de Malines » : les pals des Berthout, et l'aigle accordée par Frédéric III en 1490 ; le dessin suit Guicciardini (1581)"
+    }
+  },
+  {
+    "nom": "Principauté d'Utrecht",
+    "cat": "Provinces",
+    "porteur": "Princes-évêques d'Utrecht (le Sticht) ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "De gueules à la croix d'argent",
+    "file": "CoA Utrecht Diocese.svg",
+    "auteur": "Nomadic1",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia (nl), « Wapen van Utrecht (provincie) »",
+      "url": "https://nl.wikipedia.org/wiki/Wapen_van_Utrecht_(provincie)",
+      "note": "« het zilveren kruis op rode achtergrond », sur le sceau de l'évêque Jean de Sierck dès 1291"
+    }
+  },
+  {
+    "nom": "Comté de Zutphen",
+    "cat": "Provinces",
+    "porteur": "Comtes de Zutphen ; l'une des Dix-Sept Provinces réunies par Charles Quint (1549)",
+    "blason": "D'argent au lion de gueules, armé, lampassé et couronné d'or",
+    "file": "CoA Zutphen County.svg",
+    "auteur": "Nomadic1",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia (nl), « Wapen van het graafschap Zutphen »",
+      "url": "https://nl.wikipedia.org/wiki/Wapen_van_het_graafschap_Zutphen",
+      "note": "traduit du néerlandais ; l'article date ces armes des environs de 1539 (Guillaume V de Clèves), d'après Hubert de Vries, Wapens van de Nederlanden, 1995, p. 111"
     }
   },
   {

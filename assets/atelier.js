@@ -487,12 +487,12 @@ function afficheOrigine() {
       ? `<p class="or-etat ok">Ce sont les armes de la carte, telles qu'elle les blasonne.${ornText(S) || S.sh ? " La forme de l'écu et les ornements sont de votre main : le blasonnement ne les dit pas." : ""}</p>`
       : `<p class="or-etat mod">Vous les avez modifiées : ce ne sont plus les armes de la carte. <button type="button" class="lnk" id="b-origine">Revenir aux armes de la carte</button></p>`;
   const lic = a.lic ? (a.licurl ? `<a href="${esc(a.licurl)}" target="_blank" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic)) : "licence libre";
-  const h = `<img class="or-img" src="${COMMONS_W}Special:FilePath/${fichier}?width=200" alt="Armoiries — ${esc(a.nom)} : l'image de la carte" loading="lazy">
+  const h = `<img class="or-img" src="${COMMONS_W}Special:FilePath/${fichier}?width=200" alt="Armoiries — ${esc(a.nom)} : l'image de la carte" loading="lazy"${styleFiltre(a)}>
     <div class="or-txt">
       <p class="or-k">Parti d'un blason réel · ${G.titre}</p>
       <p class="or-nom"><a href="${G.page}#${c.slug}">${esc(a.nom)}</a></p>
       ${etat}
-      <p class="or-cr">À gauche, l'image de la carte : <a href="${COMMONS_W}File:${fichier}" target="_blank" rel="noopener">« ${esc(a.file)} »</a>${a.auteur ? ` — ${esc(a.auteur)}` : ""}, ${lic}, via Wikimedia Commons.</p>
+      <p class="or-cr">À gauche, l'image de la carte : <a href="${COMMONS_W}File:${fichier}" target="_blank" rel="noopener">« ${esc(a.file)} »</a>${a.auteur ? ` — ${esc(a.auteur)}` : ""}, ${lic}, via Wikimedia Commons${a.filtreNote ? ` ; ${esc(a.filtreNote)}` : ""}.</p>
     </div>`;
   if (h !== afficheOrigine.h) el.innerHTML = afficheOrigine.h = h;          // render() passe ici à chaque curseur : l'image n'est refaite que si la carte ou l'état changent
 }

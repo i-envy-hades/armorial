@@ -257,17 +257,20 @@ Reste de la liste de travail de l'Atelier (phase AA), dans l'ordre où on la rep
    et d'Aragon ; « Stemma della famiglia D'Avalos.svg » donne les armes de la famille, d'azur au château d'or à la bordure componée de gueules et d'argent) et Rodríguez Gallego (écu trop petit).
    Les autres cartes vides ont reçu un blasonnement **lu à vue sur l'image de la carte**, faute de source écrite : la carte le dit et renvoie à la page Commons ; à corriger si l'image est mal lue.
    L'Albanie a changé d'image (petites armes de 1939-1943, qui montrent l'écu ; l'ancien fichier de 1943-1944 n'était que l'aigle), et l'Afghanistan, qui n'a qu'un emblème, a été retiré.
-2. **Cartes encore illisibles** (78 se lisent sur 156) — ce qui bloque vraiment :
+2. **Cartes encore illisibles** (87 se lisent sur 166) — ce qui bloque vraiment :
    - *Prose de la source*, pas du vocabulaire : devise, enclos, chacun, rivière, sens, mots, noms propres, « qui est de… ». Sept cartes de plus portent un champ `atelier` (+ `atelierNote`, qui dit ce que le dessin ne reprend pas) ; les autres restent illisibles.
    - *Figures sans figure libre sur Commons* : rencontre de bœuf (les fichiers trouvés sont des écus entiers), bélier saillant, branche d'épine, mitre, terrasse. Des rencontres existent aussi pour le bouc et le bison (Commons), non reprises faute d'attributs vérifiés.
    - *Constructions que l'Atelier ne dit pas* : tenants et supports, « tenant une épée », « au naturel », écusson posé en meuble (Clèves), bordure componée aux compons chargés (Cordoue), six meubles autour d'une bande (Bosnie), étages d'armes (Russie, Danemark), « de cinq pièces », « coupés / parties », une fasce accompagnée de deux meubles différents (Galicie-Lodomérie), une pièce chargée qui broche sur un meuble (Mazarin).
-3. **Données contestées**, signalées, jamais corrigées en silence : « Empire colonial danois » (armes royales de Danemark-Norvège), « Dix-Sept Provinces » (armes de Philippe le Beau),
-   « Califat chérifien » (armes du Hedjaz, dessin contesté), « Royaume ahom » (un insigne), Gregers Matsson (fichier probablement d'une autre famille Lillie).
-4. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
-5. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
+3. **Sources** : numéros de page (le format `{ "id", "p" }` existe), pages de Joubert et de Pastoureau pour les chapitres qui reposent sur Wikipédia.
+4. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
 ## Limites connues
 
+- **Cartes écartées faute d'armes propres** : l'Empire colonial danois (ses colonies portaient les armes royales de Danemark-Norvège), le royaume ahom (un insigne royal,
+  dessiné en 2010 par un contributeur de Wikipédia, sans blasonnement) et les Dix-Sept Provinces comme ensemble (le fichier montrait les armes de Philippe le Beau) ; douze des provinces ont
+  chacune leur carte. Le « Califat chérifien » est devenu le royaume du Hedjaz (blasonnement de Hubert de Vries, d'après les billets de 1924 ; aucune source lue ne donne d'armes au califat de 1924).
+  Gregers Matsson porte les armes que donne le *Svenskt biografiskt lexikon* (d'azur à la fleur de lis d'or) : le seul fichier de Commons qui les montre droites est celui de la famille Lillie
+  de 1625, aux émaux inverses ; la carte échange l'or et l'azur à l'affichage (champ `filtre`, assets/cartes.js) et le dit.
 - **Petits écrans** : toutes les pages tiennent en 375 px, mais l'Atelier, avec ses nombreuses commandes, reste un long formulaire sur téléphone.
 - **Les images viennent de Wikimedia Commons** : les pages ne sont pas autonomes, et un fichier renommé ou supprimé là-bas manque ici.
   `check_commons.py` le signale ; copier les images dans le dépôt, avec leurs crédits, les rendrait indépendantes.

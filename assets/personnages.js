@@ -12,21 +12,21 @@ const GROUPES = [
   { id: "aujourdhui", titre: "Maisons royales d'aujourd'hui", texte: "En 1972, la reine Margrethe II simplifie les armes du Danemark." },
   { id: "nord", titre: "Du Danemark à la Russie : l'écu suit la couronne", texte: "Haakon VII ne garde que le lion de Norvège ; Pierre III accole l'aigle de Russie à Holstein-Gottorp, Alexandre II ne garde que l'aigle ; les frères cadets d'Alexandre II portent une ancre, des haches ou des canons, et la bande de Bade ou une devise saxonne pour leurs épouses ; Georges de Danemark, époux d'une reine, n'ajoute rien d'anglais à son écu." },
   { id: "trones", titre: "Un prince allemand sur un trône étranger", texte: "Le burelé de Saxe devient un écusson sur le lion de Belgique ou un quartier de l'écu d'un prince consort ; le fuselé de Bavière se pose sur la croix de Grèce ; Frédéric V, roi de Bohême un hiver, perd son électorat ; Louise de Lorraine et René II montrent des armes mi-parties ou combinées." },
-  { id: "familles", titre: "Familles : le même écu de génération en génération", texte: "Trois FitzAlan sous un même lion d'or ; la famille Fleming, de Finlande ; Sigrid Gyllenstierna et Erik Eriksson sous une même étoile à sept rais ; des familles d'Italie, de Pologne et de Lituanie." },
+  { id: "familles", titre: "Familles : le même écu de génération en génération", texte: "Trois FitzAlan sous un même lion d'or ; la famille Fleming, de Finlande ; Sigrid Gyllenstierna et Erik Eriksson sous une même étoile à sept rais ; le lis d'or de Gregers Matsson ; des familles d'Italie, de Pologne et de Lituanie." },
 ];
 let PEOPLE, LECTURES = new Map(), LISIBLES = new Set(), GROUPE = "tous", REQ = "";   // ce que le lecteur de l'Atelier fait de chaque blasonnement (assets/lecture.js), et les armes qu'il relit
 
 function card(p){
   const alt = p.blason ? `Armoiries de ${p.nom} — ${p.blason}` : `Armoiries de ${p.nom}`, r = LECTURES.get(p);
   return `<article class="ar" id="${slugCarte(p.nom)}">
-    ${ecuCarte(p, "personnages", `<img loading="lazy" src="${src(p.file)}" alt="${alt}">`, LISIBLES.has(p))}
+    ${ecuCarte(p, "personnages", `<img loading="lazy" src="${src(p.file)}" alt="${alt}"${styleFiltre(p)}>`, LISIBLES.has(p))}
     <h3>${p.nom}</h3>
     <p class="meta">${p.meta}</p>
     ${p.blason ? `<p class="bl">${p.blason}</p>` : ""}
     ${LISIBLES.has(p) ? lienAtelier(p, "personnages") : r ? buteAtelier(p, r, "personnages") : ""}
     ${p.desc ? `<p class="desc">${p.desc}</p>` : ""}
     ${p.liens && p.liens.length ? `<p class="liens">${p.liens.map(l => `<a href="${l.href}">${l.t}</a>`).join("")}</p>` : ""}
-    <p class="src">Illustration : <a href="${page(p.file)}" target="_blank" rel="noopener">« ${p.file} »</a> — ${p.auteur}, <a href="${p.licurl}" target="_blank" rel="noopener">${p.lic}</a>, via Wikimedia Commons. ${blLine(p)}</p>
+    <p class="src">Illustration : <a href="${page(p.file)}" target="_blank" rel="noopener">« ${p.file} »</a> — ${p.auteur}, <a href="${p.licurl}" target="_blank" rel="noopener">${p.lic}</a>, via Wikimedia Commons${p.filtreNote ? ` ; ${p.filtreNote}` : ""}. ${blLine(p)}</p>
   </article>`;
 }
 function blLine(p){
