@@ -68,7 +68,7 @@ function ptsFor(s, m) {
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
 }
-const pts2 = s => adjust(s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
+const pts2 = s => adjust(s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
@@ -372,7 +372,8 @@ function drawBody(s, u) {
   }
   if (m2) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
-    over += placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
+    const g2 = placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
+    if (s.pbro) under += g2; else over += g2;                       // la pièce chargée broche sur ce meuble : il est dessous, ses figures dessus
   }
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);

@@ -610,9 +610,10 @@ function assembler(P, r) {
   if (k < its.length) return mal(its[k], `Cet élément arrive là où l'Atelier ne sait pas le lire. ${ORDRE}.`);
   if (g1b && !g1b.broche) return mal(g1b, "Un second groupe de meubles ne se lit, dans l'Atelier, que s'il broche sur le premier : « à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout ».");
   if (g1b && (pc || g1b.n !== 1)) return mal(g1b, "Le meuble qui broche sur le premier est seul, sans pièce, dans l'Atelier.");
+  const broCh = g1 && pc && pc.broche && pc.charge && !pc.verbe && !acc && g1.n === 1 && !g1.broche;         // « au faisceau d'or, à la fasce de gueules brochant sur le tout, chargée de trois étoiles d'or »
   const br = [g1, g2, pc].find(x => x && x.broche);
   const bro = g1 && pc && pc.broche && BRO_OK.has(pc.p) && !pc.charge && !pc.verbe && !sem;         // « à l'aigle de sable, à la cotice de gueules brochant sur le tout »
-  if (br && a.f === "plein" && !(bro && br === pc)) return mal(br, "« brochant sur le tout » n'a de sens, dans l'Atelier, que sur un champ divisé ou pour une pièce qui broche sur des meubles (« à l'aigle de sable, à la cotice de gueules brochant sur le tout »).");
+  if (br && a.f === "plein" && !(bro && br === pc) && !(broCh && br === pc)) return mal(br, "« brochant sur le tout » n'a de sens, dans l'Atelier, que sur un champ divisé ou pour une pièce qui broche sur des meubles (« à l'aigle de sable, à la cotice de gueules brochant sur le tout »).");
   const pose1 = o => { poseM(a, o); src.m = o; }, pose2 = o => { poseM2(a, o); src.m2 = o; }, pose = it => { posePiece(a, it); src.p = it; };
   if (sem) {
     pose1(sem);
@@ -627,6 +628,7 @@ function assembler(P, r) {
     else if (pc.charge) {                                      // « à trois étoiles d'or, à la fasce d'azur chargée de… » : les étoiles sont celles du champ
       if (acc || pc.verbe) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);
       pose2(g1); pose1(pc.charge); a.pos = "sur"; pose(pc);
+      if (broCh) a.pbro = "1";
     } else if (!["chef", "bordure", "orle"].includes(pc.p) || pc.verbe) {
       return mal(pc, `Des meubles avant la pièce : l'Atelier ne les lit ainsi que pour le chef, la bordure et l'orle (« à trois étoiles d'or, au chef d'azur »). Pour les autres pièces, écrivez « à ${aArt(pc.p, PIECES[pc.p].g).slice(2)}${pc.p} …, accompagnée de… ».`);
     } else { pose1(g1); if (acc) pose2(acc.o); pose(pc); }
