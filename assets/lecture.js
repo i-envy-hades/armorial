@@ -135,10 +135,8 @@ function lectures(liste) {
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
 const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
 const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-atelier">${a.atelierNote || "Le dessin suit l'image de la carte, qui montre autre chose que la source"} : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
-/* l'écu d'une carte : un clic l'agrandit (assets/cartes.js) ; si le lecteur relit ses armes, la vue agrandie propose l'Atelier (au clavier, c'est le bouton « Redessiner ») */
-const ecuCarte = (a, galerie, img, lisible) => lisible
-  ? `<a class="shield to-at" href="${adresseAtelier(a, galerie)}" tabindex="-1" title="Agrandir l'image">${img}<span class="to-at-k" aria-hidden="true">Agrandir</span></a>`
-  : `<div class="shield">${img}</div>`;
+/* l'écu d'une carte : un clic l'agrandit (assets/cartes.js) ; l'Atelier s'ouvre par le bouton « Redessiner » sous la carte */
+const ecuCarte = (a, galerie, img) => `<div class="shield" title="Agrandir l'image">${img}</div>`;
 /* sous un blasonnement que l'Atelier ne relit pas : où il bute, et de quoi ouvrir quand même le texte dans l'Atelier, où il est surligné */
 function buteAtelier(a, r, galerie) {
   const e = r && r.erreurs[0];
