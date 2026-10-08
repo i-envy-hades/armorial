@@ -289,11 +289,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Deux figures « passées en sautoir »** (octobre 2026) : une nouvelle disposition pour deux meubles (lances, épées, sabres…), dite et lue « passés en sautoir ». Carte acceptée : *Islande* (croix de gueules bordée d'argent, croix centrée ; la croix scandinave décalée reste à tracer). Hedjaz et Kiszka, essayés, ont été refusés : trop de détails perdus.
 
 
+- **Trois meubles de plus et un réglage d'angle** (octobre 2026) : le *sceptre* (Xavigivax, CC BY-SA 4.0), la *mitre* (Greentubing, domaine public ; « perfilée d'or ») et le *briquet* (Henry Salomé, CC BY-SA 3.0). Le curseur « Angle » du réglage graphique tourne un meuble isolé ou tout un groupe (par pas de 15°), sans toucher au blasonnement : c'est ce qui permet de tourner les briquets « adossés deux à deux ». Carte acceptée : *Serbie* (l'aigle et l'écusson à la croix cantonnée de quatre briquets ; les deux lis sous les pattes ne sont pas dessinés).
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (123 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (124 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).

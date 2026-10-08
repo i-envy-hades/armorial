@@ -168,8 +168,9 @@ function adjTargets(a) {
   return out;
 }
 function adjValues(a, t) {
-  if (t === "1" || t === "2") { const x = t === "2" ? "2" : ""; return [+a["sz" + x], +a["dx" + x], +a["dy" + x]]; }
-  return adMap(a).get(t) || [100, 0, 0];
+  if (t === "1" || t === "2") { const x = t === "2" ? "2" : ""; return [+a["sz" + x], +a["dx" + x], +a["dy" + x], +a["an" + x]]; }
+  const v = adMap(a).get(t) || [100, 0, 0];
+  return [v[0], v[1], v[2], v[3] || 0];
 }
 function syncAdj() {
   const a = cur(), ts = adjTargets(a);
@@ -177,17 +178,18 @@ function syncAdj() {
   if (!ts.length) return;
   if (!ts.some(([v]) => v === KT)) KT = "1";
   $("#k-t").innerHTML = ts.map(([v, l]) => `<option value="${v}"${v === KT ? " selected" : ""}>${esc(l)}</option>`).join("");
-  const [sz, dx, dy] = adjValues(a, KT);
-  $("#k-sz").value = sz; $("#k-dx").value = dx; $("#k-dy").value = -dy;
+  const [sz, dx, dy, an] = adjValues(a, KT);
+  $("#k-sz").value = sz; $("#k-dx").value = dx; $("#k-dy").value = -dy; $("#k-an").value = an;
   $("#o-sz").textContent = sz + " %";
+  $("#o-an").textContent = an ? (an > 0 ? "↻ " : "↺ ") + Math.abs(an) + "°" : "0°";
   $("#o-dx").textContent = dx ? (dx > 0 ? "→ " : "← ") + Math.abs(dx) : "0";
   $("#o-dy").textContent = dy ? (dy < 0 ? "↑ " : "↓ ") + Math.abs(dy) : "0";
 }
 function setAdj(v) {
   const a = cur();
-  if (KT === "1" || KT === "2") { const x = KT === "2" ? "2" : ""; a["sz" + x] = String(v[0]); a["dx" + x] = String(v[1]); a["dy" + x] = String(v[2]); return; }
+  if (KT === "1" || KT === "2") { const x = KT === "2" ? "2" : ""; a["sz" + x] = String(v[0]); a["dx" + x] = String(v[1]); a["dy" + x] = String(v[2]); a["an" + x] = String(v[3]); return; }
   const map = adMap(a);
-  if (v[0] === 100 && !v[1] && !v[2]) map.delete(KT); else map.set(KT, v);
+  if (v[0] === 100 && !v[1] && !v[2] && !v[3]) map.delete(KT); else map.set(KT, v[3] ? v : v.slice(0, 3));
   a.ad = adStr(map);
 }
 function readForm() {
@@ -544,7 +546,7 @@ function afficheOrigine() {
     if (t.name === "cur") { CUR = +t.value; KT = "1"; syncForm(); render(); return; }
     if (t.name === "q" || t.name === "h1" || t.name === "h2") { readForm(); S = normalizeAll(S); syncForm(); render(); return; }      // des armes peuvent disparaître : le formulaire montre alors celles qui restent avant que l'événement « change » ne le relise
     if (t.id === "k-t") { KT = t.value; syncAdj(); render(); return; }
-    if (/^k-(sz|dx|dy)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value]); render(); return; }
+    if (/^k-(sz|dx|dy|an)$/.test(t.id)) { setAdj([+$("#k-sz").value, +$("#k-dx").value, -$("#k-dy").value, +$("#k-an").value]); render(); return; }
     if (/^k-p(dx|dy|th)$/.test(t.id)) { const a = cur(); a.pdx = $("#k-pdx").value; a.pdy = String(-$("#k-pdy").value); a.pth = $("#k-pth").value; render(); return; }
     if (/^k-br(sz|dx|dy)$/.test(t.id)) { const a = cur(); a.brsz = $("#k-brsz").value; a.brdx = $("#k-brdx").value; a.brdy = String(-$("#k-brdy").value); render(); return; }
     /* on passe au contre-changé : l'attribut le suit (« du même »), sauf si l'on choisit ensuite un émail. Le menu envoie « input » puis « change » :
@@ -554,7 +556,7 @@ function afficheOrigine() {
   };
   F.addEventListener("input", onInput);
   F.addEventListener("change", onInput);
-  $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0]); render(); });
+  $("#b-reset").addEventListener("click", () => { setAdj([100, 0, 0, 0]); render(); });
   $("#b-preset").addEventListener("click", () => { Object.assign(cur(), { pdx: "0", pdy: "0", pth: "100" }); render(); });
   $("#b-brreset").addEventListener("click", () => { Object.assign(cur(), { brsz: "100", brdx: "0", brdy: "0" }); render(); });
   $("#b-link").addEventListener("click", async () => {
