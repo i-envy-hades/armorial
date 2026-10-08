@@ -278,13 +278,13 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Un meuble plus grand et chargé, cinq figures en orle** (octobre 2026) : « à cinq tourteaux de gueules posés en orle, et, en chef, un tourteau plus grand d'azur chargé de trois fleurs de lis d'or » — le second meuble, seul en chef, se dit « plus grand » (champ `big2`) ; un tourteau ainsi grandi porte une à trois figures (`m2c`, `m2cn`, `m2ct`, par le blasonnement) ; cinq figures se posent aussi en orle. La carte de la maison de Médicis se lit.
 
+- **Bande élargie, bête qui monte la bande ; Thurgovie** (octobre 2026) : « la bande élargie d'or » (champ `lrg`, réglage « Largeur ») ; une bête allongée posée sur une bande ou une barre en suit désormais la pente, la tête vers le haut de la pièce, plus grande (l'ours de Berne). Thurgovie se dessine par un texte propre à l'Atelier (un lion dans chaque partie du tranché, comme sur l'image). Les cartes de Berne et de Thurgovie se lisent.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (110 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
-     grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
+1. **Cartes encore illisibles** (112 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), clé au double panneton (Nidwald), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).

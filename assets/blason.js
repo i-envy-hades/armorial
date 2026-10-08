@@ -738,9 +738,9 @@ function pieceInner(kind, pf, line, th){
     case "chef": inner = `<rect x="0" y="16" width="200" height="73" fill="${pf}"/>`; break;
     case "fasce": inner = `<rect x="0" y="93.5" width="200" height="73" fill="${pf}"/>`; break;
     case "pal": inner = `<rect x="72.5" y="0" width="55" height="252" fill="${pf}"/>`; break;
-    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="55"/>`; break;
+    case "bande": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="${(55 * th / 100).toFixed(1)}"/>`; break;
     case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
-    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="55"/>`; break;
+    case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="${(55 * th / 100).toFixed(1)}"/>`; break;
     case "croix": { const t = 40 * th / 100; inner = `<path d="${croixTrace(100, 112, t / 2, 0, 200, 0, 252)}" fill="${pf}"/>`; break; }
     case "sautoir": inner = `<path d="M14,16 L186,230 M186,16 L14,230" fill="none" stroke="${pf}" stroke-width="40"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
