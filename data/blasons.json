@@ -581,8 +581,8 @@
     "cat": "Royaumes",
     "porteur": "sous occupation italienne",
     "blason": "De gueules à l'aigle bicéphale de sable, au casque de Scanderbeg d'or en chef",
-    "atelier": "De gueules à l'aigle bicéphale de sable",
-    "atelierNote": "Le dessin ne reprend pas le casque de Scanderbeg d'or",
+    "atelier": "De gueules à l'aigle bicéphale de sable, accompagné d'un casque de Skanderbeg d'or en chef",
+    "atelierNote": "Le casque de Skanderbeg est posé en chef, réduit et monté au-dessus de l'aigle (dans les armes il surmonte l'écu) ; les réglages « Ajuster » de l'Atelier le déplacent à votre guise.",
     "file": "Lesser CoA of the Kingdom of Albania (1939–1943).svg",
     "auteur": "Flopao",
     "lic": "CC BY-SA 4.0",
@@ -591,7 +591,8 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Lesser_CoA_of_the_Kingdom_of_Albania_(1939–1943).svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelierAjust": "sz=76&dy=26&sz2=60&dy2=-24"
   },
   {
     "nom": "Royaume du Hedjaz",
@@ -1439,8 +1440,8 @@
     "cat": "Europe d'aujourd'hui",
     "porteur": "État souverain, armoiries actuelles",
     "blason": "De gueules à l'aigle bicéphale de sable surmontée du casque de Skanderbeg d'or",
-    "atelier": "De gueules à l'aigle bicéphale de sable",
-    "atelierNote": "Le dessin ne reprend pas le casque de Skanderbeg d'or",
+    "atelier": "De gueules à l'aigle bicéphale de sable, accompagné d'un casque de Skanderbeg d'or en chef",
+    "atelierNote": "Le casque de Skanderbeg est posé en chef, réduit et monté au-dessus de l'aigle (dans les armes il surmonte l'écu) ; les réglages « Ajuster » de l'Atelier le déplacent à votre guise.",
     "file": "Albania state emblem.svg",
     "auteur": "Government of Albania",
     "lic": "domaine public",
@@ -1449,7 +1450,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelierAjust": "sz=76&dy=26&sz2=60&dy2=-24"
   },
   {
     "nom": "Allemagne",

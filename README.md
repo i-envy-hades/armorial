@@ -307,6 +307,9 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Saint Fridolin, lion couché, casque de Skanderbeg** (octobre 2026) : le *saint Fridolin* est découpé des armes de Glaris (domaine public, nimbe, bâton et livre recolorés d'un émail), le *lion couché* vient de Sodacan (CC BY-SA 3.0) et le *casque de Skanderbeg* d'une variante des armes d'Albanie (CC BY-SA 3.0, auteur non nommé sur Commons). La carte *Glaris* est désormais dessinée avec son saint ; *Karthli* reste une ébauche, avec l'épée et le lion couché.
 
 
+- **Réglages proposés par une carte** (octobre 2026) : une carte peut porter `atelierAjust` (par exemple `sz=76&dy=26&sz2=60&dy2=-24` : taille, décalages et angle du premier ou du second meuble des premières armes) ; l'Atelier l'applique à l'ouverture de la carte. Les deux cartes d'Albanie l'utilisent pour monter le casque de Skanderbeg au-dessus de l'aigle réduite ; les curseurs « Ajuster » de l'Atelier permettent de les reprendre à la main.
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
