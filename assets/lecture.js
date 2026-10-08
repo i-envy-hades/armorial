@@ -328,7 +328,7 @@ function pGroupe(P, i) {
   let e = d.i, ctApres = false;
   const jp = cle(P, e) === "," ? e + 1 : e;                      // « la clef d'or en pal, contournée » : « en pal » est la pose ordinaire de la clef
   const jq = ["pose", "posee"].includes(cle(P, jp)) ? jp + 1 : jp;                         // « posée en pal »
-  if (n === 1 && !d.dit && c.m.kind === "clef" && cle(P, jq) === "en" && cle(P, jq + 1) === "pal") { e = jq + 2; P.notes.push("« en pal » : la pose ordinaire de la clef, que l'Atelier ne dit pas."); }
+  if (n === 1 && !d.dit && ["clef", "crosse", "epee", "lance", "sceptre", "sabre"].includes(c.m.kind) && cle(P, jq) === "en" && cle(P, jq + 1) === "pal") { e = jq + 2; P.notes.push(`« en pal » : la pose ordinaire ${c.m.kind === "clef" ? "de la clef" : "de cette figure"}, que l'Atelier ne dit pas.`); }
   /* la hache : « le fer à dextre » est sa pose ordinaire dans l'Atelier ; « le fer à senestre », elle est contournée */
   let ferSen = false;
   if (n === 1 && c.m.kind === "hache" && cle(P, jp) === "le" && cle(P, jp + 1) === "fer" && cle(P, jp + 2) === "a" && ["dextre", "senestre"].includes(cle(P, jp + 3))) {

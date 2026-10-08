@@ -1653,24 +1653,31 @@
    "asym": false,
    "file": {
     "path": "assets/meubles/mitre.svg",
-    "commons": "Mitre (plain).svg",
-    "auteur": "Greentubing",
+    "commons": "MitreSmall.svg",
+    "auteur": "Stannered (tracé)",
     "lic": "domaine public",
-    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+    "vb": [
+     16,
+     10,
+     98,
+     106
+    ]
    },
    "box": [
-    35,
-    71,
-    130,
-    110
+    50,
+    62,
+    100,
+    108
    ],
    "main": [
     "#ffffff"
    ],
    "accent": [
-    "#f7d917"
+    "#e6e6e6"
    ],
-   "accentMot": "perfilé"
+   "accentMot": "perfilé",
+   "broSc": 0.65
   },
   {
    "kind": "briquet",
@@ -1695,6 +1702,98 @@
    ],
    "main": [
     "#fcef3c"
+   ]
+  },
+  {
+   "kind": "crosse",
+   "nom": "Crosse",
+   "sing": "crosse",
+   "plur": "crosses",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": false,
+   "file": {
+    "path": "assets/meubles/crosse.svg",
+    "commons": "Meuble héraldique Crosse.svg",
+    "auteur": "Frédéric Michel (-Strogoff-)",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     190,
+     -36,
+     358,
+     1068
+    ]
+   },
+   "box": [
+    66,
+    24,
+    68,
+    204
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
+   "kind": "aigle-moravie",
+   "nom": "Aigle échiquetée (Moravie)",
+   "sing": "aigle échiquetée",
+   "plur": "aigles échiquetées",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": false,
+   "file": {
+    "path": "assets/meubles/aigle-moravie.svg",
+    "commons": "Moravian Eagle 2.svg",
+    "auteur": "Kirk979",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     35,
+     9,
+     412,
+     519
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    192
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#ba2b1a"
+   ],
+   "accentMot": "et"
+  },
+  {
+   "kind": "ane",
+   "nom": "Âne",
+   "sing": "âne",
+   "plur": "ânes",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/ane.svg",
+    "commons": "Meuble héraldique ane.svg",
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
    ]
   },
   {
