@@ -440,12 +440,12 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons", "Sultanat d'Égypte", "Royaume de Cordoue", "Famille Fleming", "Royaume de Bosnie", "Canton de Schwytz", "Maison de Médicis", "Canton de Berne", "Canton de Thurgovie", "Canton d'Argovie", "Canton de Nidwald", "Finlande", "Province de Brandebourg", "Chypre", "Slovaquie", "Albanie", "Royaume d'Albanie (1939-1943)", "Islande", "Serbie", "Andorre", "Tchéquie", "Lituanie", "Géorgie", "Russie", "Alexandre II de Russie", "Frederik X"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons", "Sultanat d'Égypte", "Royaume de Cordoue", "Royaume de Bosnie", "Canton de Schwytz", "Maison de Médicis", "Canton de Berne", "Canton de Thurgovie", "Canton d'Argovie", "Canton de Nidwald", "Finlande", "Province de Brandebourg", "Chypre", "Slovaquie", "Albanie", "Royaume d'Albanie (1939-1943)", "Islande", "Serbie", "Andorre", "Tchéquie", "Lituanie", "Géorgie", "Russie"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve)
-BLASONS_REFUSES = ["Royaume de Grenade"]
+BLASONS_REFUSES = ["Slovénie", "Moldavie"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
                         "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie", "Haakon VII", "Léopold II de Belgique", "Henri de Monpezat", "Jan Lubrański"]
-PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
+PERSONNAGES_REFUSES = ["Jeanne d'Arc", "Michel de Montaigne"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
 ARMES_HASARD = """(pick) => ({ ...randomArms(), f: pick(["plein", "plein", "part", "ray"]), part: pick(DATA.partitions.map(p => p.kind)),
@@ -569,13 +569,13 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     gal = page_url.split(".")[0]
     page, erreurs = ouvre(browser, base, page_url, ".ar .redo")
     cartes = {c["nom"]: c for c in page.evaluate("""[...document.querySelectorAll('.ar')].map(a => ({ nom: a.querySelector('h3').textContent, id: a.id,
-        redo: a.querySelector('.redo a')?.getAttribute('href') || null, ecu: a.querySelector('a.shield')?.getAttribute('href') || null,
+        redo: a.querySelector('.redo a')?.getAttribute('href') || null, ecu: a.querySelector('a.shield')?.getAttribute('href') || null, ecuNu: a.querySelector('.shield') !== null,
         non: a.querySelector('.redo-non')?.textContent || null, nonHref: a.querySelector('.redo-non a')?.getAttribute('href') || null }))""")}
     verifie(all(cartes.get(n, {}).get("redo") for n in lisibles), f"{nom} : un bouton « Redessiner dans l'Atelier » sous chaque blasonnement lisible" + ("" if all(cartes.get(n, {}).get("redo") for n in lisibles) else f" — manque {[n for n in lisibles if not cartes.get(n, {}).get('redo')]}"))
     verifie(not any(cartes.get(n, {}).get("redo") for n in refuses), f"{nom} : aucun bouton sous ce que l'Atelier ne comprend pas" + ("" if not any(cartes.get(n, {}).get("redo") for n in refuses) else f" — {[n for n in refuses if cartes.get(n, {}).get('redo')]}"))
     sans = [a["nom"] for a in data(fichier) if not a.get("blason")]
     verifie(not any(cartes[n]["redo"] or cartes[n]["ecu"] or cartes[n]["non"] for n in sans), f"{nom} : rien sous une carte sans blasonnement, et son écu ne mène nulle part")
-    verifie(all(c["ecu"] == c["redo"] for c in cartes.values()), f"{nom} : l'écu d'une carte mène à l'Atelier quand le bouton est là, et seulement alors, à la même adresse")
+    verifie(all(c["ecu"] is None and c["ecuNu"] for c in cartes.values()), f"{nom} : l'écu d'une carte n'est pas un lien (il s'agrandit ; l'Atelier s'ouvre par le bouton)")
     avec = [a["nom"] for a in data(fichier) if a.get("blason")]
     verifie(all(bool(cartes[n]["redo"]) != bool(cartes[n]["non"]) for n in avec), f"{nom} : sous chaque blasonnement, le bouton ou la ligne qui dit où l'Atelier bute, jamais les deux")
     verifie(all("bute sur « " in (cartes[n]["non"] or "") for n in refuses), f"{nom} : sous un blasonnement refusé, l'endroit où l'Atelier bute est cité")
@@ -586,12 +586,18 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     verifie(all(not page.evaluate("t => lire(t).ok", params(c["nonHref"])["lire"]) and params(c["nonHref"]).get("de") == f"{gal}:{c['id']}" for c in cartes.values() if c["nonHref"]),
             f"{nom} : « Voir où dans l'Atelier » porte le texte refusé et la carte d'où il vient")
     propre(nom + " (boutons)", page, erreurs)
-    # un clic sur l'écu ouvre l'Atelier sur les armes, et y montre la carte d'où l'on part
+    # un clic sur l'écu l'agrandit, sans quitter la page ; Échap le referme ; le bouton « Redessiner » ouvre l'Atelier sur les armes, et y montre la carte d'où l'on part
     cible = lisibles[-1]
-    page.locator(".ar", has=page.locator("h3", has_text=cible)).locator("a.shield").click()
+    carte = page.locator(".ar", has=page.locator("h3", has_text=cible))
+    carte.locator(".shield").click()
+    page.wait_for_selector("#agrandi[open]")
+    verifie(page.locator("#agrandi img").count() == 1 and cible in page.inner_text("#agrandi .ag-t") and page.locator("#agrandi a").count() == 0 and page.url.endswith(page_url), f"{nom} : un clic sur l'écu l'agrandit (nom de la carte, pas de lien vers l'Atelier), sans quitter la page")
+    page.keyboard.press("Escape")
+    verifie(page.locator("#agrandi[open]").count() == 0, f"{nom} : Échap referme l'image agrandie")
+    carte.locator(".redo a").click()
     page.wait_for_url("**/atelier.html*"); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(600)
     attendu = next(a.get("atelier") or a["blason"] for a in data(fichier) if a["nom"] == cible)       # le champ « atelier » : ce que l'Atelier lit pour suivre l'image
-    verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : un clic sur l'écu ouvre l'Atelier, qui lit le blasonnement de « {cible} »")
+    verifie(page.input_value("#lire") == attendu and page.locator("#lire-etat.ok").count() == 1, f"{nom} : le bouton ouvre l'Atelier, qui lit le blasonnement de « {cible} »")
     verifie(page.inner_text("#origine .or-nom") == cible and page.locator("#origine .or-etat.ok").count() == 1, f"{nom} : l'Atelier montre la carte d'où l'on part et dit que ce sont ses armes")
     verifie(f"de={gal}:{slug_carte(cible)}" in page.url and "lire=" not in page.url, f"{nom} : l'adresse de l'Atelier redevient un lien de partage qui garde la carte d'origine")
     page.context.close()
@@ -625,10 +631,10 @@ def test_partir(browser, base):
     propre("partir", page, erreurs)
     page.context.close()
     # une carte que le lecteur ne relit pas : le texte surligné, l'écu inchangé mais dessiné, la carte nommée
-    chypre = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Chypre")      # (la Norvège, prise d'abord, se lit depuis le lion à la hache)
-    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote(chypre) + "&de=blasons:chypre", "#origine:not([hidden]) .or-etat")
+    chypre = next(a["blason"] for a in data("blasons.json") if a["nom"] == "Slovénie")      # (la Norvège, puis Chypre, se lisent désormais ; la Slovénie, avec son mont Triglav, reste refusée)
+    page, erreurs = ouvre(browser, base, "atelier.html#lire=" + urllib.parse.quote(chypre) + "&de=blasons:slovenie", "#origine:not([hidden]) .or-etat")
     verifie("ko" in etat() and page.locator("#lire-etat.ko mark").count() >= 1 and blz() != "", "partir : une carte que le lecteur ne relit pas s'ouvre, texte surligné, sans rien deviner")
-    verifie("de=blasons:chypre" in page.url and "lire=" not in page.url, "partir : son adresse garde la carte")
+    verifie("de=blasons:slovenie" in page.url and "lire=" not in page.url, "partir : son adresse garde la carte")
     page.reload(); page.wait_for_selector("#origine:not([hidden]) .or-etat"); page.wait_for_timeout(500)
     verifie(page.input_value("#lire") == chypre and page.locator("#lire-etat.ko mark").count() >= 1, "partir : rechargée, elle remet le texte de la carte dans la zone de saisie, surligné")
     propre("partir (refusé)", page, erreurs)

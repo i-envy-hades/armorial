@@ -310,6 +310,10 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Réglages proposés par une carte** (octobre 2026) : une carte peut porter `atelierAjust` (par exemple `sz=76&dy=26&sz2=60&dy2=-24` : taille, décalages et angle du premier ou du second meuble des premières armes) ; l'Atelier l'applique à l'ouverture de la carte. Les deux cartes d'Albanie l'utilisent pour monter le casque de Skanderbeg au-dessus de l'aigle réduite ; les curseurs « Ajuster » de l'Atelier permettent de les reprendre à la main.
 
 
+
+- **Treize cartes de plus** (octobre 2026) : sept *Blasons réels* hors des lignées et des lieux déjà traités (le royaume de Jérusalem, armes « à enquerre » ; les seigneurs de Lusignan ; le duché de Normandie ; l'Irlande, le Luxembourg, la Slovénie, la Moldavie) et six *Personnages* réunis dans un groupe « Plumes, savants et chefs de guerre » (Jeanne d'Arc, Shakespeare et sa lance, Montaigne qui blasonne lui-même ses armes, Thomas More, Pascal, la famille de Gaulle). Toutes les images sont chargées depuis Wikimedia Commons (aucun téléchargement), créditées à l'auteur de la page de description ; `check_data.py` et `check_commons.py` passent (0 erreur). L'Atelier relit cinq des sept blasons (le Luxembourg par un texte propre, « fourchée » pour « fourchue ») ; il ne relit pas encore la Slovénie (mont Triglav), la Moldavie (tête d'aurochs) ni les six personnages (figures à trouver : agneau pascal, patte de lion, coq de bruyère, noix de galle, tête de licorne ; « soutenant », « la pointe d'argent »).
+- **L'écu d'une carte s'agrandit au clic** (octobre 2026) : une boîte `<dialog>` montre l'image à 1000 px (Échap ou un clic dehors la ferme) ; l'écu n'est plus un lien vers l'Atelier, qui s'ouvre par le bouton « Redessiner dans l'Atelier ». `smoke_test.py` en tient compte ; ses six échecs restants (croissant contourné, franc-quartier, 600 écus et 60 écus au hasard) datent d'avant.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :

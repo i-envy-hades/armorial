@@ -2105,5 +2105,118 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine",
       "note": "Il s'agissait à l'origine de trois aiglettes dont les pattes et le bec s'atrophièrent pour devenir l'alérion actuel, à la fin du XVe siècle (page lue)."
     }
+  },
+  {
+    "nom": "Royaume de Jérusalem",
+    "cat": "Royaumes",
+    "porteur": "Royaume latin de Jérusalem (1099-1291)",
+    "blason": "D'argent, à la croix potencée d'or, cantonnée de quatre croisettes du même",
+    "file": "Arms of the Kingdom of Jerusalem.svg",
+    "auteur": "Heralder ; croix de Katepanomegas",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Royaume de Jérusalem »",
+      "url": "https://fr.wikipedia.org/wiki/Royaume_de_J%C3%A9rusalem",
+      "note": "armes dites « à enquerre » : un métal (l'or) posé sur un métal (l'argent), contre la règle des émaux"
+    },
+    "liens": [
+      {
+        "t": "La règle des émaux",
+        "href": "index.html#emaux"
+      }
+    ]
+  },
+  {
+    "nom": "Seigneurs de Lusignan",
+    "cat": "Maisons",
+    "porteur": "Seigneurs de Lusignan (Poitou) ; les rois de Chypre y ajoutent un lion",
+    "blason": "Burelé d'argent et d'azur",
+    "file": "Armoiries des seigneurs de Lusignan.svg",
+    "auteur": "Baptiste de Lusignan",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Armoiries_des_seigneurs_de_Lusignan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison de Lusignan »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_de_Lusignan",
+      "note": "les rois de Chypre portaient « burelé d'argent et d'azur au lion de gueules, armé, lampassé et couronné d'or, brochant » ; la page Commons du fichier précise dix pièces"
+    }
+  },
+  {
+    "nom": "Duché de Normandie",
+    "cat": "Provinces",
+    "porteur": "Ducs de Normandie, puis province de Normandie",
+    "blason": "De gueules à deux léopards d'or",
+    "file": "Blason Duché de Normandie.svg",
+    "auteur": "Thom.Lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Normandie »",
+      "url": "https://fr.wikipedia.org/wiki/Normandie",
+      "note": "armes en usage depuis la fin du XIIIᵉ siècle ; Henri II Plantagenêt portait déjà un écu à deux léopards"
+    }
+  },
+  {
+    "nom": "Irlande",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'azur, à la harpe d'or cordée d'argent",
+    "file": "Coat of arms of Ireland.svg",
+    "auteur": "Setanta Saki",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Ireland.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de l'Irlande »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_l%27Irlande",
+      "note": "la harpe de l'écu est inversée pour la distinguer de celle de la brasserie Guinness"
+    }
+  },
+  {
+    "nom": "Luxembourg",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "Grand-duché, petites armoiries nationales",
+    "blason": "Burelé d'argent et d'azur de dix pièces, au lion rampant de gueules, couronné, armé et lampassé d'or, la queue fourchue et passée en sautoir",
+    "file": "Coat of arms of Luxembourg (Lesser).svg",
+    "auteur": "Ssolbergj et auteurs des fichiers d'origine ; dérivé de Fry1989",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries du Luxembourg »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_du_Luxembourg",
+      "note": "l'image porte aussi la couronne royale, que le blasonnement de l'écu ne dit pas"
+    },
+    "atelier": "Burelé d'argent et d'azur de dix pièces, au lion de gueules, la queue fourchée passée en sautoir, armé, lampassé et couronné d'or",
+    "atelierNote": "Le dessin suit le blasonnement de l'écu (« fourchée » pour « fourchue ») ; la couronne royale posée sur l'écu n'est pas dessinée."
+  },
+  {
+    "nom": "Slovénie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "D'azur à la bordure de gueules, au mont Triglav d'argent surmonté de trois étoiles à six rais d'or, deux et une, et, à sa base, deux lignes ondulées d'azur",
+    "file": "Coat of arms of Slovenia.svg",
+    "auteur": "Zscout370",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Slovenia.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de la Slovénie »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_Slov%C3%A9nie",
+      "note": "les trois étoiles viennent des armes des comtes de Celje ; les ondes figurent l'Adriatique et les fleuves"
+    }
+  },
+  {
+    "nom": "Moldavie",
+    "cat": "Europe d'aujourd'hui",
+    "porteur": "État souverain, armoiries actuelles",
+    "blason": "Coupé d'azur et de gueules, à la tête d'aurochs accompagnée en chef d'un soleil et en pointe, à dextre d'une fleur, à senestre d'un croissant contourné mi-versé, accosté de deux macles pleines, le tout d'or",
+    "file": "Coat of arms of Moldova.svg",
+    "auteur": "auteur non indiqué (extrait du drapeau de la Moldavie)",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Moldova.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de la Moldavie »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_Moldavie",
+      "note": "l'image montre aussi l'aigle qui porte l'écu, sa croix, son rameau et son sceptre, que le blasonnement de l'écu ne dit pas"
+    }
   }
 ]
