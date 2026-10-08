@@ -99,7 +99,10 @@ function ptsFor(s, m) {
 }
 const chaPts = s => ptsFor(s, meuble(s.m)).map(([x, y, sc]) => [x + 20 * sc, y - 22 * sc, sc * .5, 0]);      // une figure du second meuble à côté de chacune du premier
 const pts2base = s => adjust(s.cha ? chaPts(s) : s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
-const pts2 = s => (s.big2 ? adjust([[100, 46, .37]], s, 2, "2") : pts2base(s));      // « un tourteau plus grand » : seul en chef
+const pts2 = s => {
+  const p = s.big2 ? adjust([[100, 46, .37]], s, 2, "2") : pts2base(s), m2 = s.bro2 && meuble(s.m2);      // brochant sur le premier, une figure large (la mitre) se réduit
+  return m2 && m2.broSc ? p.map(([x, y, sc, r]) => [x, y, sc * m2.broSc, r]) : p;
+};      // « un tourteau plus grand » : seul en chef
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
