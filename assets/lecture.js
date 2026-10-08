@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie", "ondees"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "par", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie", "ondees"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -931,10 +931,27 @@ function lire(texte) {
     res.erreurs.push({ de: toks[0].de, a: toks[2].a, msg: "« sur le tout » vient après les armes de l'écu, pas avant." });
   }
   const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
+  /* « Écartelé par une croix [pattée] d'argent [bordée de gueules] : aux 1 et 4, … » : la croix passe sur les quatre quartiers */
+  let croix = null;
+  if (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === "par") {
+    const w = k => main[k] && main[k].w, em = k => Object.keys(MOT).find(t => MOT[t].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === w(k));
+    let j = 2;
+    if (w(j) === "une" && w(j + 1) === "croix") {
+      j += 2;
+      const xp = w(j) === "pattee" ? (j++, "1") : "";
+      if (w(j) === "de" && em(j + 1)) {
+        const xc = em(j + 1); j += 2;
+        let xb = "";
+        if (w(j) === "bordee" && w(j + 1) === "de" && em(j + 2)) { xb = em(j + 2); j += 3; }
+        if (w(j) === ":") { croix = { xc, xb, xp }; main = [main[0], ...main.slice(j)]; }
+      }
+    }
+  }
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
   const parti = !!(main[0] && ["parti", "coupe", "tranche", "taille"].includes(main[0].w) && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
   const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
-  const etat = { q: "", ab: "", gb: "", h1: "", h2: "", A: ADEFS.map(a => ({ ...a })) };
+  const etat = { q: "", ab: "", gb: "", h1: "", h2: "", xc: "", xb: "", xp: "", A: ADEFS.map(a => ({ ...a })) };
+  if (croix) Object.assign(etat, croix);
   /* « ; le tout brisé d'un lambel d'argent » : la brisure de tout l'écu, dite après les quartiers ou les moitiés */
   let gbToks = null;
   if (quartele) {

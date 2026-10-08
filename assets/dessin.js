@@ -189,11 +189,11 @@ const DEVISES = {
       + `<rect x="${x0 + 10}" y="${y0 + 3.5}" width="${x1 - x0 - 20}" height="23" rx="4" fill="none" stroke="#1a1712" stroke-width=".7"/>`
   }) }
 };
-const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "", gb: "",
+const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "", gb: "", xc: "", xb: "", xp: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2", "lrg"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2", "lrg"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -215,6 +215,9 @@ function normalizeAll(St) {
   if (!has(St.ht, St.hp)) St.hp = O.heaumes.find(h => h.type === St.ht).pos;
   if (!["", "s"].includes(St.hs)) St.hs = "";
   if (!own(SHAPES, St.sh)) St.sh = "";
+  if (!["2", "4"].includes(St.q) || !own(MOT, St.xc)) St.xc = "";                                              // la croix de l'écartelé : un émail, un bord facultatif, une forme
+  if (!St.xc || !own(MOT, St.xb)) St.xb = "";
+  if (!St.xc || St.xp !== "1") St.xp = "";
   if (!["", "1"].includes(St.ab)) St.ab = "";
   if (!["", "3", "5"].includes(St.pa)) St.pa = "";
   if (!O.supports.some(x => x.kind === St.su)) St.su = "";
@@ -620,6 +623,15 @@ function drawParti(St, u, ab) {
   if (gl) { defs += gl.defs; body += gl.bris; }
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;
 }
+/* la croix qui passe sur les quatre quartiers (« écartelé par une croix d'argent bordée de gueules ») : droite, ou pattée (ses bras s'évasent) */
+function croixEcartele(St, cy) {
+  if (!St.xc) return "";
+  const w = 9, b = St.xb ? 5 : 0, e = 17;
+  const forme = (n, ex) => St.xp
+    ? `M${100 - n},${cy - n}L${100 - ex},0L${100 + ex},0L${100 + n},${cy - n}L200,${cy - ex}L200,${cy + ex}L${100 + n},${cy + n}L${100 + ex},252L${100 - ex},252L${100 - n},${cy + n}L0,${cy + ex}L0,${cy - ex}Z`
+    : `M${100 - n},0V252H${100 + n}V0ZM0,${cy - n}V${cy + n}H200V${cy - n}Z`;
+  return (St.xb ? `<path d="${forme(w + b, e + b)}" fill="${tinctPaint(St.xb)}"/>` : "") + `<path d="${forme(w, e)}" fill="${tinctPaint(St.xc)}" stroke="#1a1712" stroke-width=".6" stroke-opacity=".6"/>`;
+}
 function drawShield(St, u) {
   SHIELD_D = (SHAPES[St.sh] || SHAPES[""]).d;
   const ab = St.ab ? abime(St, u) : "";
@@ -633,12 +645,14 @@ function drawShield(St, u) {
     NOBORD = true;
     try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
     const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
-    const [ox, oy, s] = qOrigin(g), [cx, cy, cs] = qCover(g);
+    const [, , s0] = qOrigin(g), [cx, cy, cs] = qCover(g);
+    const kx = St.xc && a.nb !== "seme" ? .78 : 1, s = s0 * kx, ox = g.cx - 100 * s, oy = g.cy - 118 * s;      // sous une croix, les figures se resserrent (sauf un semé, qui remplit son quartier)
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
     body += `<g clip-path="url(#qr-${u}${qi})"><g transform="translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${cs.toFixed(4)})">${under.body}</g>`
       + `<g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)}) scale(${s})">${r.body}</g>${bande}</g>`;
   });
   body += `<path d="M100,0V252M0,${G.split}H200" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
+  body += croixEcartele(St, G.split);
   const gl = GBR(St) ? brisLayer(St.A[0], `${u}g`) : null;
   if (gl) { defs += gl.defs; body += gl.bris; }
   return `<defs>${defs}</defs><g clip-path="url(#cl-${u})">${body}</g>${ab}${shieldFinish()}`;

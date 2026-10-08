@@ -301,11 +301,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Saint Georges terrassant le dragon** (octobre 2026) : figure de Gaeser, tirée des armes de la Géorgie (domaine public), recolorée d'un seul émail. Cartes acceptées : *Géorgie*, *Russie* et *Alexandre II de Russie* (l'écusson de la Moscovie posé sur le tout, au cœur de l'aigle ; sceptre, orbe et couronnes fermées non dessinés).
 
 
+- **Croix sur l'écartelé** (octobre 2026) : un écartelé peut porter une croix sur ses quatre quartiers (émail, bord et forme au choix, droite ou pattée), dite « écartelé par une croix pattée d'argent bordée de gueules » ; les figures des quartiers se resserrent alors (sauf un semé). Carte acceptée : *Frederik X* (Dannebrog, Oldenbourg sur le tout ; le premier quartier est semé de cœurs sans en compter neuf).
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (130 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (131 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
