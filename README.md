@@ -298,11 +298,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Chevalier monté** (octobre 2026) : figure de Ssolbergj (CC BY-SA 4.0), recolorée (le chevalier prend l'émail du meuble, le cheval reste blanc, l'écu reste d'azur). Carte acceptée : *Lituanie* (le chevalier d'argent sur champ de gueules ; la croix patriarcale de l'écu n'est pas tracée).
 
 
+- **Saint Georges terrassant le dragon** (octobre 2026) : figure de Gaeser, tirée des armes de la Géorgie (domaine public), recolorée d'un seul émail. Cartes acceptées : *Géorgie*, *Russie* et *Alexandre II de Russie* (l'écusson de la Moscovie posé sur le tout, au cœur de l'aigle ; sceptre, orbe et couronnes fermées non dessinés).
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (127 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (130 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).

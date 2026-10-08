@@ -1835,6 +1835,32 @@
    ]
   },
   {
+   "kind": "saint-georges",
+   "nom": "Saint Georges terrassant le dragon",
+   "sing": "saint Georges",
+   "plur": "saints Georges",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/saint-georges.svg",
+    "commons": "Saint George.svg",
+    "auteur": "Gaeser (d'après les armes de la Géorgie)",
+    "lic": "domaine public (PD-GE-exempt)",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-GE-exempt"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    176
+   ],
+   "main": [
+    "#f0f0f0",
+    "#e8e8e8"
+   ]
+  },
+  {
    "kind": "ancre",
    "nom": "Ancre",
    "sing": "ancre",
