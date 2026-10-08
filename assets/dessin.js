@@ -183,7 +183,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -408,6 +408,7 @@ function drawBody(s, u) {
     let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.pth);
     if (p && s.pf) p = filetDe(p, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + p;            // le filet : la pièce cernée d'un liseré de l'émail dit
     if (p && (+s.pdx || +s.pdy)) p = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${p}</g>`;
+    if (s.ri && (s.p === "bande" || s.p === "barre")) p += rinceau(s);
     return croixCase ? p : sq(p, 1);
   };
   let piece = "";
@@ -418,6 +419,18 @@ function drawBody(s, u) {
     piece = `<g mask="url(#pc0-${u})">${dress(tinctPaint(s.t2))}</g><g mask="url(#pc1-${u})">${dress(tinctPaint(s.t1))}</g>`;
   } else if (s.p) piece = dress(tinctPaint(s.tp));
   return corps(s, u, defs, field, under, over, piece);
+}
+/* le rinceau d'une bande (barre) : une tige sinueuse le long de l'axe, une feuille à chaque courbe, de part et d'autre */
+function rinceau(s) {
+  const col = tinctPaint(s.ri), wl = 44, amp = 8, ang = Math.atan2(246, 194) * 180 / Math.PI;
+  let d = "", feuilles = "";
+  for (let x = -200; x <= 200; x += 4) d += (x === -200 ? "M" : "L") + `${x},${(amp * Math.sin(2 * Math.PI * x / wl)).toFixed(2)}`;
+  for (let k = -9; k <= 9; k++) {
+    const x = wl / 4 + k * wl / 2, haut = k % 2 === 0, y = amp * Math.sin(2 * Math.PI * x / wl);
+    feuilles += `<path transform="translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${haut ? -40 : 40}) scale(1,${haut ? 1 : -1})" d="M0,0 C4,-9 15,-11 22,-3 C14,-1 6,1 0,0Z" fill="${col}"/>`;
+  }
+  const g = `<g transform="translate(103,129) rotate(${ang.toFixed(2)})"><path d="${d}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linecap="round"/>${feuilles}</g>`;
+  return s.p === "barre" ? `<g transform="translate(200,0) scale(-1,1)">${g}</g>` : g;
 }
 /* la bordure componée : seize compons égaux le long du contour, en alternance, et leurs figures, une au milieu de chaque compon */
 const COMPONS = 16;
