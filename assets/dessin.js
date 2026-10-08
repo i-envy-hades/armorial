@@ -40,11 +40,34 @@ function hauteurFigure(m) {
   }
   return HFIG[m.kind] = H;
 }
+/* l'étendue de l'écu sur la ligne y */
+const ROWS = {};
+function rowSpan(y) {
+  const key = SHIELD_D + y;
+  if (ROWS[key]) return ROWS[key];
+  const ctx = document.createElement("canvas").getContext("2d"), path = new Path2D(SHIELD_D);
+  let x0 = 200, x1 = 0;
+  for (let x = 0; x < 200; x++) if (ctx.isPointInPath(path, x + .5, y)) { x0 = Math.min(x0, x); x1 = Math.max(x1, x + 1); }
+  return ROWS[key] = x1 > x0 ? [x0, x1] : [90, 110];
+}
+/* les figures réparties sur les pièces du premier émail d'un fascé impair (rc), chaque rangée centrée sur sa pièce */
+function rcPts(s) {
+  const n = +s.n, h = 252 / n, out = [], K = (n + 1) / 2;
+  const ys = []; for (let y = 0; y < 252; y += 2) if (rowSpan(y + 1)[1] - rowSpan(y + 1)[0] > 20) ys.push(y);
+  const Y0 = ys[0] || 0, Y1 = (ys[ys.length - 1] || 250) + 2;
+  rcDist(s).forEach((c, i) => {
+    const top = Math.max(2 * i * h, Y0), bot = Math.min((2 * i + 1) * h, i === K - 1 ? Y1 - 16 : Y1), y = (top + bot) / 2;
+    const [x0, x1] = rowSpan(y), w = x1 - x0 - 20, sc = Math.min(.24, w / c * .8 / 100, (bot - top) * .8 / 100);
+    for (let j = 0; j < c; j++) out.push([x0 + 10 + w * (j + .5) / c, y, sc]);
+  });
+  return out;
+}
 function ptsFor(s, m) {
   if (s.nb === "seme") return SEME.map(([x, y, sc]) => [x, y, sc * +s.sz / 100]);
   let pts;
   if (s.iss === "t") pts = [[100 + ((HSIDE ? -50 : 50) - MAP.shx) / MAP.vpx, 116, 1.12]];                // demi-meuble : le centre de la figure sur le trait du parti
   else if (s.iss) pts = [[100, 204, MAP && MAP.coupe ? 1.5 : 1]];             // issant : le meuble, à demi caché par le bas de l'écu (dans le chef d'un coupé, il sort du trait, plus grand)
+  else if (s.rc) pts = rcPts(s);
   else if (m.seul) pts = [[100, 116, 1]];
   else if (PLEINLIKE.has(ctxOf(s))) {
     const d = dispoOf(s); pts = d ? shrink(d.pts, SHRINK[ctxOf(s)]) : [];
@@ -160,7 +183,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif

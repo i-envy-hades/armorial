@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -359,6 +359,30 @@ function pSeme(P, i) {
   const t = pEmail(P, i + a.n);
   return t && bornes(P, { t: "seme", m: meuble(a.val.kind), tm: t.t, ta: null, ct: false, mot: a.val.mot, seme: true, i: t.i }, i);
 }
+/* « les trois fasces de gueules chargées de huit besants d'or, 3, 3 et 2 » : les figures sur les pièces du premier émail d'un fascé de nombre impair */
+function pRC(P, i) {
+  const k = LEX.compte.get(cle(P, i + 1)), pl = suites(LEX.pieces, P, i + 2)[0];
+  if (!k || !pl || !pl.val.plur || pl.val.p !== "fasce") return rate(P, i + 1, "un nombre et « fasces » (« les trois fasces de gueules chargées de… »)");
+  const t = pEmail(P, i + 2 + pl.n);
+  if (!t) return null;
+  const ch = suites(LEX.charge, P, t.i)[0];
+  if (!ch) return rate(P, t.i, "« chargées de »");
+  const o = pObjet(P, t.i + ch.n, t.t);
+  if (!o) return null;
+  let j = o.i;
+  const nums = [];
+  if (cle(P, j) === ",") {
+    j++;
+    for (;;) {
+      const tk = P.toks[j];
+      if (!tk || tk.k !== "n") break;
+      nums.push(+tk.w); j++;
+      if (cle(P, j) === "," || cle(P, j) === "et") { j++; continue; }
+      break;
+    }
+  }
+  return bornes(P, { t: "rc", k, o, tp: t.t, nums, i: j }, i);
+}
 /* « à la fasce ondée d'azur [brochant sur le tout] [chargée de …] [accompagnée de … [et de …]] » */
 function pPiece(P, i) {
   const k = cle(P, i);
@@ -452,7 +476,7 @@ function pChamp(P) {
     if (cle(P, i) === "de" && LEX.compte.has(cle(P, i + 1)) && (cle(P, i + 2) === "pieces" || cle(P, i + 2) === "tires" || cle(P, i + 2) === "tire")) {
       const n = LEX.compte.get(cle(P, i + 1)), mot = cle(P, i + 2) === "pieces" ? "pièces" : "tires", ici = P.toks[i], fin = P.toks[i + 2];
       if (losange) return erreur(P, ici.de, fin.a, "L'Atelier dessine le fuselé tel qu'il est, sans nombre de pièces.");
-      if (ray === "chequy" ? mot !== "tires" || !RAY_TIRES.includes(String(n)) : mot !== "pièces" || n % 2 || !rayNs(ray).includes(String(n)))
+      if (ray === "chequy" ? mot !== "tires" || !RAY_TIRES.includes(String(n)) : mot !== "pièces" || (n % 2 && !(ray === "barry" && n >= 5 && cle(P, i + 3) === "," && cle(P, i + 4) === "les")) || !rayNs(ray).includes(String(n)))
         return erreur(P, ici.de, fin.a, ray === "chequy" ? `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine l'échiqueté de trois à huit tires (six, si l'on ne dit rien).`
           : ray === "barryonde" ? `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine le fascé ondé à quatre, six ou huit pièces.`
           : `« de ${cle(P, i + 1)} ${mot} » : l'Atelier dessine les champs rayés à six, huit, dix ou douze pièces (pour les nombres impairs : « d'or à trois pals de gueules »).`);
@@ -554,6 +578,7 @@ function pArmes(P) {
     else if (k === "au" && cle(P, i + 1) === "lambel") it = pLambel(P, i + 2, i);
     else if (k === "a" || k === "au" || k === "aux") it = pPiece(P, i) || pGroupe(P, i);              // « la croix d'argent » est une pièce, « la croix de Lorraine » un meuble
     else if (k === "brise") it = pBrisure(P, i);
+    else if (k === "les") it = pRC(P, i);
     else if (suites(LEX.surmontant, P, i).length) {
       /* « une étoile surmontant un croissant » : le second meuble est sous le premier, donc en pointe */
       const j = i + suites(LEX.surmontant, P, i)[0].n, ref = items.length ? items[items.length - 1].tm : undefined, n = LEX.compte.get(cle(P, j));
@@ -615,7 +640,7 @@ function assembler(P, r) {
   if (bris && bris.fig && (bris.ct || bris.iss || bris.cn)) return erreur(P, bris.de, bris.fin, "Dans l'Atelier, une figure de brisure ne se contourne pas, ne sort pas de la pointe et ne porte pas de couronne.");
   let k = 0;
   const prend = t => (its[k] && its[k].t === t ? its[k++] : null);
-  const sem = prend("seme"), g1 = sem ? null : prend("groupe"), acc = g1 ? prend("acc") : null, g1b = g1 && !acc ? prend("groupe") : null, g2 = sem ? prend("groupe") : null, pc = prend("piece");
+  const sem = prend("seme"), g1 = sem ? null : prend("groupe"), acc = g1 ? prend("acc") : null, g1b = g1 && !acc ? prend("groupe") : null, g2 = sem ? prend("groupe") : null, pc = prend("piece"), rci = !sem && !g1 && !pc ? prend("rc") : null;
   const mal = (it, msg) => erreur(P, it.de, it.fin, msg);
   if (k < its.length) return mal(its[k], `Cet élément arrive là où l'Atelier ne sait pas le lire. ${ORDRE}.`);
   if (g1b && !g1b.broche) return mal(g1b, "Un second groupe de meubles ne se lit, dans l'Atelier, que s'il broche sur le premier : « à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout ».");
@@ -655,6 +680,15 @@ function assembler(P, r) {
       if (pc.verbe.cp && pc.p !== "fasce") return mal(pc, "« accompagné en chef de … et en pointe de … » : l'Atelier ne le dit que d'une fasce.");
       pose1(pc.verbe.o); if (pc.verbe.o2) pose2(pc.verbe.o2); if (pc.verbe.cp) a.cp = "1";
     }
+  }
+  if (rci) {
+    const n = +a.n, K = (n + 1) / 2, dist = rcDist({ n: a.n, nb: String(rci.o.n) });
+    if (a.f !== "ray" || a.ray !== "barry" || n % 2 === 0 || n < 5) return mal(rci, "« Les fasces … chargées de… » ne se dit, dans l'Atelier, que d'un fascé de nombre impair de pièces (cinq, sept…).");
+    if (rci.k !== K) return mal(rci, `Un fascé de ${NB[n]} pièces a ${NB[K]} fasces du premier émail, non ${NB[rci.k]}.`);
+    if (rci.tp !== a.t1) return mal(rci, "Les fasces chargées sont celles du premier émail du champ.");
+    if (rci.o.seme || rci.o.n < K) return mal(rci, `Il faut au moins une figure par fasce (${NB[K]}).`);
+    if (rci.nums.join() !== dist.join()) return mal(rci, `L'Atelier répartit ${NB[rci.o.n]} figures sur ${NB[K]} fasces ainsi : ${dist.join(", ")} (à dire après les figures : « , ${dist.join(", ")} »).`);
+    pose1(rci.o); a.rc = "1";
   }
   if (bris) {
     src.bris = bris;
@@ -709,7 +743,7 @@ function verifie(P, a, src, lieu) {
   for (const [msg, it] of dit) erreur(P, it.de, it.fin, msg);
   if (dit.size) return null;
   /* une disposition dite, que l'Atelier ne reprendrait pas (place fixe) : on ne l'ignore pas en silence */
-  if (src.m && src.m.dit && !dispos(b).length) return erreur(P, src.m.de, src.m.fin, "Dans l'Atelier, ces meubles ont ici une place fixe : la disposition dite n'y est pas prise en compte.");
+  if (src.m && src.m.dit && !dispos(b).length && !b.rc) return erreur(P, src.m.de, src.m.fin, "Dans l'Atelier, ces meubles ont ici une place fixe : la disposition dite n'y est pas prise en compte.");
   /* réserves : ce que le texte ne dit pas et que l'Atelier a dû fixer */
   const note = t => P.notes.push((lieu ? lieu + " : " : "") + t);
   const plur = (mm, o) => mm.kind === "roundel" ? (classe(o.tm) === "Métal" ? "besants" : "tourteaux") : mm.plur;
@@ -718,7 +752,7 @@ function verifie(P, a, src, lieu) {
     const d0 = PLEIN[n][0], pal = mm.allongee && PLEIN[n].some(d => d.id === "pal") ? " (dites « posés en pal » s'ils sont l'un sur l'autre)" : "";
     if (d0.ph.trim() || pal) note(`disposition non précisée pour ${NB[n]} ${plur(mm, o)} : l'Atelier les pose ${d0.lab.toLowerCase()}${pal}.`);
   };
-  if (dispos(b).length) place(src.m, m, +b.nb, true);
+  if (dispos(b).length && !b.rc) place(src.m, m, +b.nb, true);
   if (b.m2 && !b.cp) place(src.m2, m2, +b.nb2);          // en pointe d'une fasce (cp), leur place est fixe
   if (b.br && BRIS_FIGS.includes(b.br)) place(src.bris, meuble(b.br), +b.brn, true);
   for (const [o, mm] of [[src.m, m], [src.m2, m2]]) {

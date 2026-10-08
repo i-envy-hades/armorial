@@ -597,6 +597,30 @@
    "pluriel": true
   },
   {
+   "kind": "crancelin",
+   "nom": "Crancelin",
+   "sing": "crancelin",
+   "plur": "crancelins",
+   "g": "m",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/crancelin.svg",
+    "commons": "Héraldique meuble Crancelin.svg",
+    "auteur": "Henri Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    25,
+    41,
+    150,
+    151
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
    "kind": "flanchis",
    "nom": "Flanchis",
    "sing": "flanchis",
