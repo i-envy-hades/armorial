@@ -308,15 +308,9 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (131 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
-     (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
-     dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
-   - *Hors de portée pour l'instant* : les grandes armes à quartiers multiples ou à étages (Danemark, Suède, Russie, Tchéquie, Hongrie, Croatie, Serbie, Arménie, Andorre, Liechtenstein,
-     et les personnages qui les portent : Margrethe II, Frederik X, Georges de Danemark, Adolphe-Frédéric, Charles XIII, Georges Ier de Grèce, Gloucester,
-     Albert de Saxe-Cobourg, Léopold Ier, Frédéric V, Charles VII, Louise et René II de Lorraine, Pierre III, Alexandre II, Maria Nikolaïevna) ; les blasonnements en prose ou
-     qui nomment des personnages, des paysages, des lettres (Grenade, Irak, Hedjaz, Karthli, Séville, Glaris, Géorgie, Lituanie, Islande, Slovaquie,
-     Appenzell Rhodes-Extérieures, Ascanie, Fuchs, Kiszka, Thuresdotter, Constantin et Michel Nikolaïevitch).
+1. **Trente-six ébauches à reprendre** (octobre 2026) : les 167 cartes se lisent désormais, mais 36 le font par une version simplifiée (`atelier` dans `blasons.json` et `personnages.json`), dont la note sous la carte dit ce qui manque. À ajuster à la main dans l'Atelier (cliquer l'écu de la carte) : Grenade, Séville, Irak, Karthli, Hedjaz, Glaris, Schaffhouse, Appenzell Rhodes-Extérieures, Arménie, Croatie, Danemark, Hongrie, Liechtenstein, Suède, Ascanie, Margrethe II, Carafa, Fuchs, Kiszka, Oxenstierna, Thuresdotter, Pierre III, Constantin et Michel Nikolaïevitch, Maria Nikolaïevna, Adolphe-Frédéric, Charles XIII, Georges Ier de Grèce, Georges de Danemark, Gloucester, Albert de Saxe-Cobourg, Léopold Ier, Frédéric V, Charles VII, Louise et René II de Lorraine.
+   - *Figures encore à trouver* : saint Fridolin, branche d'épine, lion couché et âne couché (Karthli), aigle bicéphale tenant sceptre et orbe, casque de Skanderbeg (Albanie), colombe de Chypre dont le blasonnement ne dit pas l'émail.
+   - *Constructions encore absentes* : sceptre et épée de natures différentes passés en sautoir, meubles sur une bordure, barres ondées, parti d'un tranché sur le tout, quartiers à plus de quatre figures, nombre exact de cœurs (neuf) autour de lions, blason à plusieurs écus accolés.
 2. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
 ## Limites connues
