@@ -28,3 +28,22 @@ function styleFiltre(a) {
       `<filter id="f-${k}" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="${v}"/></filter>`).join("")}</svg>`);
   return ` style="filter:url(#f-${a.filtre})"`;
 }
+
+/* Un clic sur l'image d'une carte l'agrandit (boîte <dialog> : Échap ou un clic dehors la ferme) ; si l'écu menait à l'Atelier, la vue agrandie y renvoie. */
+document.addEventListener("click", e => {
+  const img = e.target.closest && e.target.closest(".ar .shield img");
+  if (!img || e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  e.preventDefault();
+  const lien = img.closest("a.shield"), carte = img.closest(".ar"), titre = carte.querySelector("h3");
+  let d = document.getElementById("agrandi");
+  if (!d) {
+    d = document.createElement("dialog"); d.id = "agrandi";
+    d.addEventListener("click", ev => { if (ev.target === d || ev.target.closest(".ag-x")) d.close(); });
+    document.body.appendChild(d);
+  }
+  const grand = img.currentSrc.replace(/([?&])width=\d+/, "$1width=1000") || img.src;
+  d.innerHTML = `<button type="button" class="ag-x" aria-label="Fermer">×</button>
+    <img src="${grand.replace(/"/g, "&quot;")}" alt="${(img.alt || "").replace(/"/g, "&quot;")}"${img.getAttribute("style") ? ` style="${img.getAttribute("style")}"` : ""}>
+    <p class="ag-t">${titre ? titre.innerHTML : ""}${lien ? ` · <a href="${lien.getAttribute("href")}">Redessiner dans l'Atelier</a>` : ""}</p>`;
+  d.showModal();
+});
