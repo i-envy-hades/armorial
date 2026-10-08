@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -564,6 +564,10 @@ function pArmes(P) {
         o.d = "pointe"; o.dit = true; P.notes.push("« surmontant… » : l'Atelier le dit « accompagné en pointe de… ».");
       }
       it = o && bornes(P, { t: "acc", o, i: o.i }, i);
+    } else if (k === "chacun" && suites(LEX.verbe, P, i + 1).length) {
+      /* « …, chacun accompagné d'une étoile du même » : une figure du second meuble auprès de chaque figure du premier */
+      const o = pObjet(P, i + 1 + suites(LEX.verbe, P, i + 1)[0].n, items.length ? items[items.length - 1].tm : undefined);
+      it = o && bornes(P, { t: "acc", o, cha: true, i: o.i }, i);
     } else if (suites(LEX.verbe, P, i).length || suites(LEX.sommet, P, i).length) {
       const somme = !suites(LEX.verbe, P, i).length, vb = suites(LEX.verbe, P, i)[0] || suites(LEX.sommet, P, i)[0], o = pObjet(P, i + vb.n, items.length ? items[items.length - 1].tm : undefined);
       /* « sommé de » et « surmonté de » : l'Atelier n'a que l'accompagnement ; un meuble qui en porte un autre à son sommet l'a en chef */
@@ -616,6 +620,7 @@ function assembler(P, r) {
   if (k < its.length) return mal(its[k], `Cet élément arrive là où l'Atelier ne sait pas le lire. ${ORDRE}.`);
   if (g1b && !g1b.broche) return mal(g1b, "Un second groupe de meubles ne se lit, dans l'Atelier, que s'il broche sur le premier : « à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout ».");
   if (g1b && (pc || g1b.n !== 1)) return mal(g1b, "Le meuble qui broche sur le premier est seul, sans pièce, dans l'Atelier.");
+  if (acc && acc.cha && (pc || g1.n < 2 || g1.m.seul || g1.iss || g1.broche || acc.o.n !== 1 || acc.o.dit)) return mal(acc, "« chacun accompagné de… » : l'Atelier le lit de plusieurs meubles (deux ou plus, sans pièce), chacun auprès d'une seule figure, sans place dite (« …, chacun accompagné d'une étoile d'argent »).");
   const broCh = g1 && pc && pc.broche && pc.charge && !pc.verbe && !acc && g1.n === 1 && !g1.broche;         // « au faisceau d'or, à la fasce de gueules brochant sur le tout, chargée de trois étoiles d'or »
   const br = [g1, g2, pc].find(x => x && x.broche);
   const bro = g1 && pc && pc.broche && BRO_OK.has(pc.p) && !pc.charge && !pc.verbe && !sem;         // « à l'aigle de sable, à la cotice de gueules brochant sur le tout »
@@ -629,7 +634,7 @@ function assembler(P, r) {
       pose(pc);
     }
   } else if (g1) {
-    if (!pc) { pose1(g1); if (acc) pose2(acc.o); if (g1b) { pose2(g1b); a.bro2 = "1"; } }
+    if (!pc) { pose1(g1); if (acc) { pose2(acc.o); if (acc.cha) a.cha = "1"; } if (g1b) { pose2(g1b); a.bro2 = "1"; } }
     else if (bro) { pose1(g1); if (acc) pose2(acc.o); pose(pc); a.pos = "sous"; }
     else if (pc.charge) {                                      // « à trois étoiles d'or, à la fasce d'azur chargée de… » : les étoiles sont celles du champ
       if (acc || pc.verbe) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);

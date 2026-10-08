@@ -96,6 +96,7 @@ function syncForm() {
   $("#r-cn").hidden = !m || !m.couronne;
   $("#r-pbro").hidden = !(a.p && a.pos === "sur" && count2(a) && a.nb2 === "1" && a.nb !== "seme");
   $("#r-bro2").hidden = !(m && count2(a) && a.nb2 === "1" && a.nb !== "seme" && !a.p && !a.cc);
+  $("#r-cha").hidden = !(m && !m.seul && count2(a) && a.nb2 === "1" && a.nb !== "seme" && +a.nb >= 2 && !a.p && !a.cc && !a.bro2 && !a.iss);
   $("#r-cnk").hidden = !m || !m.couronne || !a.cn;
   $("#r-iss").hidden = !m || m.seul || a.nb !== "1" || !!a.p;                                   // « issant » : un seul meuble, sans pièce
   [...F.elements.iss].forEach(r => { if (r.value === "t") r.closest("label").hidden = !(S.q === "p" && CUR < 2); });          // le demi-meuble : seulement dans une moitié du parti

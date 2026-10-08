@@ -68,7 +68,8 @@ function ptsFor(s, m) {
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   return adjust(pts, s, 1, "");
 }
-const pts2 = s => adjust(s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
+const chaPts = s => ptsFor(s, meuble(s.m)).map(([x, y, sc]) => [x + 20 * sc, y - 22 * sc, sc * .5, 0]);      // une figure du second meuble à côté de chacune du premier
+const pts2 = s => adjust(s.cha ? chaPts(s) : s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
@@ -159,7 +160,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -287,7 +288,8 @@ const placeAll = (pts, m, id, flip, over = "") => {
   const fx = facteurMoitie(pts);
   return pts.map(([x, y, k, r]) => {
     const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = (MAP ? k * MAP.pk * fx : k) * (m.k || 1);
-    return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${!flip !== !m.retourne ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
+    const R = (r || 0) + (flip && m.ctRot ? 90 : 0), miroir = m.ctRot ? !!m.retourne : !flip !== !m.retourne;      // ctRot : « contourné » se dessine en tournant le meuble (le croissant ouvert à senestre)
+    return `<g transform="translate(${X},${Y})${R ? ` rotate(${R})` : ""} scale(${miroir ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
   }).join("");
 };
 /* la couronne d'une bête (« lion couronné d'or ») : le meuble « couronne » (à fleurons) ou « couronne antique », posé sur la tête de la figure (m.couronne = [x, y, largeur] : le centre de la couronne, dans le cadre de l'écu) */
