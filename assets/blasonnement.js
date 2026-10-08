@@ -162,7 +162,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -264,6 +264,16 @@ function normalize(s) {
   if (s.cha) s.d2 = "";
   s.rc = s.rc === "1" && rcPossible(s) ? "1" : "";                    // les meubles sur les pièces du premier émail d'un fascé impair
   if (s.rc) s.d = "";
+  /* la bordure componée : deux émaux en alternance, et, sur les compons de chacun, une figure (cm1 sur ceux du premier émail, cm2 sur ceux du second) */
+  if (!own(MOT, s.tpc)) s.tpc = ADEF.tpc;
+  s.cmp = s.cmp === "1" && s.p === "bordure" && !s.ln && !s.pf && s.pos !== "sur" ? "1" : "";
+  if (s.cmp && s.tpc === s.tp) s.tpc = s.tp === "Argent" ? "Or" : "Argent";
+  for (const [k, kt] of [["cm1", "cm1t"], ["cm2", "cm2t"]]) {
+    let mm = s[k] && meuble(s[k]);
+    if (mm) { mm = ATL.meubles.find(o => o.sing === mm.sing); s[k] = mm.kind; }       // deux meubles de même nom : le texte lit le premier de la liste
+    if (!s.cmp || !mm || mm.seul || mm.queue) s[k] = "";
+    if (!s[k] || !own(MOT, s[kt])) s[kt] = ADEF[kt];
+  }
   for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
   const map = adMap(s), n1 = count1(s), n2 = count2(s);
   for (const [k, v] of map) {
@@ -293,6 +303,7 @@ function canon(a) {
   else if (a.f === "part") { Object.assign(o, { part: a.part, t1: a.t1, t2: a.t2 }); if (a.part.startsWith("tierce")) o.t3 = a.t3; }
   else Object.assign(o, { ray: a.ray, ...(a.ray.startsWith("lozengy") ? {} : { n: a.n }), t1: a.t1, t2: a.t2 });
   if (a.p) Object.assign(o, a.pcc ? { p: a.p, pcc: a.pcc, ln: a.ln, pf: a.pf } : { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
+  if (a.cmp) Object.assign(o, { cmp: "1", tpc: a.tpc, cm1: a.cm1, cm2: a.cm2, ...(a.cm1 ? { cm1t: a.cm1t } : {}), ...(a.cm2 ? { cm2t: a.cm2t } : {}) });
   if (m) {
     Object.assign(o, a.cc ? { m: a.m, nb: a.nb, cc: a.cc } : { m: a.m, nb: a.nb, tm: a.tm });       // contre-changé : l'émail du meuble est celui du champ
     if (a.p) o.pos = a.pos;
@@ -385,7 +396,10 @@ function blazonCore(s) {
   const P = PIECES[s.p], pnom = s.p;
   const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
   const filet = s.pf ? ` ${agree("bordé", P.g, false)} ${de(s.pf)}` : "";                       // « la croix de gueules bordée d'argent »
-  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${s.pcc ? ccTexte(s.pcc) : de(s.tp)}${filet}`;
+  const cmObj = (k, t) => { const mm = meuble(k); return `${mm.g === "f" ? "d'une" : "d'un"} ${mm.sing} ${de(t)}`; };
+  const cmTxt = !s.cmp ? "" : s.cm1 ? `, les compons ${de(s.tp)} chargés ${cmObj(s.cm1, s.cm1t)}` + (s.cm2 ? `, ceux ${de(s.tpc)} ${cmObj(s.cm2, s.cm2t)}` : "")
+    : s.cm2 ? `, les compons ${de(s.tpc)} chargés ${cmObj(s.cm2, s.cm2t)}` : "";
+  const pieceTxt = s.cmp ? `${aArt(pnom, P.g)}${pnom} componée ${de(s.tp)} et ${de(s.tpc)}${cmTxt}` : `${aArt(pnom, P.g)}${pnom}${bord} ${s.pcc ? ccTexte(s.pcc) : de(s.tp)}${filet}`;
   const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
   if (c && !seme && s.pos === "sous") return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt} brochant sur le tout`;
   const sep = parti || seme ? ", " : " ";

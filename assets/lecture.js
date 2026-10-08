@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -392,9 +392,43 @@ function pPiece(P, i) {
   let e = j + ps.n, ln = "";
   const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee" || ALESEE_OK.has(ps.val.p));         // « la croix alésée » est un meuble : on ne la lit pas comme une pièce alésée
   if (cn) { ln = cn.val; e += cn.n; }
-  const cc = pContre(P, e), t = cc ? { t: ADEF.tp, i: cc.i } : pEmail(P, e);         // « à la croix de l'un en l'autre »
+  let cmp = null;
+  if (ps.val.p === "bordure" && !ln && cle(P, e) === "componee") {
+    /* « la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château d'or, ceux d'argent d'un lion de gueules » */
+    const a1 = pEmail(P, e + 1);
+    if (!a1) return null;
+    if (cle(P, a1.i) !== "et") return rate(P, a1.i, "« et » (deux émaux de la bordure componée)");
+    const a2 = pEmail(P, a1.i + 1);
+    if (!a2) return null;
+    cmp = { t1: a1.t, t2: a2.t, i: a2.i, c: {} };
+    const groupe = (q, ceux) => {
+      const x = pEmail(P, q + (ceux ? 1 : 2));
+      if (!x) return null;
+      let o;
+      if (ceux) o = pObjet(P, x.i, x.t);
+      else { const ch = suites(LEX.charge, P, x.i)[0]; if (!ch) return rate(P, x.i, "« chargés de »"); o = pObjet(P, x.i + ch.n, x.t); }
+      if (!o) return null;
+      if (o.n !== 1 || o.seme) return erreur(P, o.de, o.fin, "Sur chaque compon, l'Atelier ne pose qu'une figure.");
+      if (x.t !== a1.t && x.t !== a2.t) return erreur(P, o.de, o.fin, "Les compons dont on parle sont d'un des deux émaux de la bordure.");
+      return { x: x.t, o, i: o.i };
+    };
+    let q = cle(P, cmp.i) === "," ? cmp.i + 1 : cmp.i;
+    if (cle(P, q) === "les" && cle(P, q + 1) === "compons" && cle(P, q + 2) === "de") {
+      const g1 = groupe(q, false);
+      if (!g1) return null;
+      cmp.c[g1.x === a1.t ? 1 : 2] = g1.o; cmp.i = g1.i;
+      q = cle(P, cmp.i) === "," ? cmp.i + 1 : cmp.i;
+      if (cle(P, q) === "ceux" && cle(P, q + 1) === "de") {
+        const g2 = groupe(q, true);
+        if (!g2) return null;
+        if (g2.x === g1.x) return erreur(P, g2.o.de, g2.o.fin, "Les deux groupes de compons sont de deux émaux différents.");
+        cmp.c[g2.x === a1.t ? 1 : 2] = g2.o; cmp.i = g2.i;
+      }
+    }
+  }
+  const cc = pContre(P, e), t = cmp ? { t: cmp.t1, i: cmp.i } : cc ? { t: ADEF.tp, i: cc.i } : pEmail(P, e);       // « à la croix de l'un en l'autre »
   if (!t) return null;
-  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, pcc: cc ? cc.cc : "", pf: "", broche: false, charge: null, verbe: null, i: t.i };
+  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, cmp, pcc: cc && !cmp ? cc.cc : "", pf: "", broche: false, charge: null, verbe: null, i: t.i };
   /* « la croix de gueules bordée d'argent » : un filet d'un autre émail */
   const jb = cle(P, it.i) === "," ? it.i + 1 : it.i, bd = suites(LEX.borde, P, jb)[0];
   if (bd) { const tf = pEmail(P, jb + bd.n); if (!tf) return null; it.pf = tf.t; it.i = tf.i; }
@@ -629,7 +663,8 @@ function pArmes(P) {
 const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
 const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.cc ? o.ta || "" : o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", cc: o.cc || "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
-const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" });
+const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" }, it.cmp ? {
+  cmp: "1", tpc: it.cmp.t2, cm1: it.cmp.c[1] ? it.cmp.c[1].m.kind : "", cm1t: it.cmp.c[1] ? it.cmp.c[1].tm : ADEF.cm1t, cm2: it.cmp.c[2] ? it.cmp.c[2].m.kind : "", cm2t: it.cmp.c[2] ? it.cmp.c[2].tm : ADEF.cm2t } : {});
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */
 function assembler(P, r) {

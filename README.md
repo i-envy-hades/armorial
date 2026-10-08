@@ -270,13 +270,15 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Crancelin et fascé impair à pièces chargées** (octobre 2026) : le *crancelin* est un meuble emprunté à Commons (Henri Salomé, CC BY-SA 3.0), ce qui donne les armes de Saxe sur l'écusson de Léopold II (texte propre à l'Atelier : « sur le tout burelé…, au crancelin de sinople ») ; « Fascé de gueules et d'or de cinq pièces, les trois fasces de gueules chargées de huit besants d'or, 3, 3 et 2 » — un fascé de nombre impair dont les pièces du premier émail portent les meubles, répartis comme le dit le texte (réglage « Sur : les pièces du premier émail », champ `rc`). Les cartes de Léopold II et de Fleming se lisent.
 
+- **Bordure componée aux compons chargés** (octobre 2026) : « à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château donjonné d'or, ceux d'argent d'un lion de gueules » — seize compons égaux le long du contour (traits en pointillé de même longueur), une figure au milieu de chacun ; réglage « Compons » (champ `cmp`) pour la bordure, le second émail et les figures (`tpc`, `cm1`, `cm2`…) se disent par le blasonnement. Dans une case de parti, la bordure reste unie. La carte de Cordoue se lit.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (106 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (107 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis) ;
-     la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ;
+     six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ;
      le franc-quartier senestre (Schwytz).
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
      grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
