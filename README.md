@@ -262,13 +262,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
   - *Cartes sans blasonnement* : l'Irak a reçu le blasonnement de Hubert de Vries (un paysage, sans émaux dans la source ; illisible par l'Atelier).
 - **Écusson et meuble brochant** (octobre 2026) : l'*écusson* est un meuble (un petit écu, réduit par `k` dans `atelier.json`), et un second meuble peut broche sur le premier, seul et au centre : « à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout » (réglage « Brochant sur le tout », champ `bro2`) ; « aux rais d'escarboucle » se lit comme un seul meuble dit au pluriel (`pluriel` dans `atelier.json`). La carte de Clèves se lit.
 
+- **Pièce chargée brochant sur un meuble** (octobre 2026) : « au faisceau de licteur d'or, à la fasce de gueules brochant sur le tout, chargée de trois étoiles d'or » — le meuble du champ, seul et au centre, passe sous la pièce, les figures de la pièce restent dessus (réglage « Pièce : Brochant sur le meuble », champ `pbro`). La carte de Mazarin se lit.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (101 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Constructions qui débloqueraient une carte chacune* : une pièce chargée qui broche
-     sur un meuble (Mazarin) ; le coupé dont une moitié est partie (Grisons) ; un meuble plus grand que les autres et chargé (Médicis) ; « chacun accompagné de… » (Sultanat d'Égypte) ;
+1. **Cartes encore illisibles** (102 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+   - *Constructions qui débloqueraient une carte chacune* : le coupé dont une moitié est partie (Grisons) ; un meuble plus grand que les autres et chargé (Médicis) ; « chacun accompagné de… » (Sultanat d'Égypte) ;
      la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ; un fascé de cinq pièces aux fasces chargées (Fleming) ;
      le franc-quartier senestre (Schwytz) ; un écusson posé sur un meuble (Léopold II).
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,

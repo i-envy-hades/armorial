@@ -162,7 +162,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -255,6 +255,8 @@ function normalize(s) {
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
   s.bro2 = s.bro2 === "1" && s.m && s.m2 && s.nb2 === "1" && s.nb !== "seme" && !s.p && !s.cc ? "1" : "";             // le second meuble broche sur le premier : au centre, seul
   if (s.bro2) s.d2 = "";
+  s.pbro = s.pbro === "1" && s.p && s.pos === "sur" && s.m && s.m2 && s.nb2 === "1" && s.nb !== "seme" ? "1" : "";       // la pièce chargée broche sur le meuble du champ, qui est seul, au centre
+  if (s.pbro) s.d2 = "";
   for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); }
   const map = adMap(s), n1 = count1(s), n2 = count2(s);
   for (const [k, v] of map) {
@@ -294,6 +296,7 @@ function canon(a) {
     if (m2.asym) o.ct2 = a.ct2;
     if (m2.couronne) o.cn2 = a.cn2;
     if (a.bro2) o.bro2 = "1";
+    if (a.pbro) o.pbro = "1";
   }
   if (a.br) {
     Object.assign(o, { br: a.br, tbr: a.tbr });
@@ -371,7 +374,7 @@ function blazonCore(s) {
   const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
   if (c && !seme && s.pos === "sur") {
     const charge = agree("chargé", P.g, false);
-    return `${champ}${lead}${pieceTxt}${broche ? broche + "," : ""} ${charge} ${grpObj}`;
+    return `${champ}${lead}${pieceTxt}${s.pbro ? " brochant sur le tout," : broche ? broche + "," : ""} ${charge} ${grpObj}`;
   }
   if (c && !seme && (s.p === "chef" || s.p === "bordure" || s.p === "orle"))
     return `${champ}${parti ? "," : ""} ${groupe}${s.p === "chef" ? "" : dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt}`;
