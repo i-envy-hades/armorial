@@ -295,11 +295,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Crosse, aigle de Moravie, âne, mitre sans fanons** (octobre 2026) : la *crosse* (Frédéric Michel, CC BY-SA 4.0), l'*aigle échiquetée de Moravie* (Kirk979, CC BY-SA 4.0), l'*âne* (Jacques63, CC BY-SA 4.0), et une *mitre* sans fanons (Stannered, domaine public) qui remplace la précédente. Un meuble seul se pose désormais « en barre », « en bande » ou « en fasce » (« en pal » se lit, c'est sa pose ordinaire) ; la mitre se réduit quand elle broche sur un autre meuble. Cartes acceptées : *Andorre* (mitre sur crosse en barre, pals de Foix et de Catalogne, deux vaches du Béarn) et *Tchéquie* (la Silésie est dessinée avec l'aigle couronnée, sans son croissant sur le cœur).
 
 
+- **Chevalier monté** (octobre 2026) : figure de Ssolbergj (CC BY-SA 4.0), recolorée (le chevalier prend l'émail du meuble, le cheval reste blanc, l'écu reste d'azur). Carte acceptée : *Lituanie* (le chevalier d'argent sur champ de gueules ; la croix patriarcale de l'écu n'est pas tracée).
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (126 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (127 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
