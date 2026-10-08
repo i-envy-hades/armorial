@@ -276,12 +276,13 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Franc-quartier senestre** (octobre 2026) : « au franc-quartier senestre de gueules chargé d'une croisette d'argent » (champ `fqs`, réglage « Côté ») ; la figure suit le franc-quartier. La carte de Schwytz se lit (sa source dit « à la croisette d'argent, au franc-quartier senestre » ; l'image montre bien la croisette au chef senestre).
 
+- **Un meuble plus grand et chargé, cinq figures en orle** (octobre 2026) : « à cinq tourteaux de gueules posés en orle, et, en chef, un tourteau plus grand d'azur chargé de trois fleurs de lis d'or » — le second meuble, seul en chef, se dit « plus grand » (champ `big2`) ; un tourteau ainsi grandi porte une à trois figures (`m2c`, `m2cn`, `m2ct`, par le blasonnement) ; cinq figures se posent aussi en orle. La carte de la maison de Médicis se lit.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (109 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis).
+1. **Cartes encore illisibles** (110 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
      grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg

@@ -59,6 +59,7 @@ const PLEIN = {
       { id: "pal", lab: "En pal", ph: " posé en pal", alt: L_PAL, pts: [[100, 46, .22], [100, 102, .22], [100, 158, .22], [100, 212, .2]] }],
   5: [{ id: "", lab: "En sautoir", ph: " posé en sautoir", pts: [[56, 64, .34], [144, 64, .34], [100, 118, .34], [64, 176, .34], [136, 176, .34]] },
       { id: "croix", lab: "En croix", ph: " posé en croix", pts: [[100, 50, .26], [46, 118, .26], [100, 118, .26], [154, 118, .26], [100, 186, .26]] },
+      { id: "orle", lab: "En orle", ph: " en orle", alt: [" posé en orle"], plein: true, pts: [[34, 84, .19], [166, 84, .19], [46, 152, .19], [154, 152, .19], [100, 206, .19]] },
       { id: "221", lab: "2, 2 et 1", ph: " posé 2, 2 et 1", pts: [[64, 62, .3], [136, 62, .3], [64, 128, .3], [136, 128, .3], [100, 192, .3]] },
       { id: "pal", lab: "En pal", ph: " posé en pal", alt: L_PAL, pts: [[100, 40, .19], [100, 83, .19], [100, 126, .19], [100, 169, .18], [100, 210, .16]] }],
   6: [{ id: "", lab: "3, 2 et 1", ph: " posé 3, 2 et 1", pts: [[48, 62, .3], [100, 62, .3], [152, 62, .3], [72, 120, .3], [128, 120, .3], [100, 180, .3]] },
@@ -162,7 +163,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "", big2: "", m2c: "", m2cn: "3", m2ct: "Or" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -264,6 +265,12 @@ function normalize(s) {
   if (s.cha) s.d2 = "";
   s.rc = s.rc === "1" && rcPossible(s) ? "1" : "";                    // les meubles sur les pièces du premier émail d'un fascé impair
   if (s.rc) s.d = "";
+  /* le second meuble, seul en chef, plus grand que les autres (Médicis) ; un tourteau ainsi grandi peut porter une à trois figures */
+  s.big2 = s.big2 === "1" && s.m && s.m2 && s.nb2 === "1" && s.d2 === "chef" && !s.p && s.nb !== "seme" && !s.cp && !s.bro2 && !s.pbro && !s.cha ? "1" : "";
+  { let mc = s.m2c && meuble(s.m2c); if (mc) { mc = ATL.meubles.find(o => o.sing === mc.sing); s.m2c = mc.kind; }
+    if (!s.big2 || s.m2 !== "roundel" || !mc || mc.seul || mc.queue) s.m2c = "";
+    if (!s.m2c || !["1", "2", "3"].includes(s.m2cn)) s.m2cn = ADEF.m2cn;
+    if (!s.m2c || !own(MOT, s.m2ct)) s.m2ct = ADEF.m2ct; }
   s.fqs = s.p === "franc-quartier" && s.fqs === "1" ? "1" : "";                // le franc-quartier senestre (Schwytz)
   s.ri = (s.p === "bande" || s.p === "barre") && own(MOT, s.ri) ? s.ri : "";                // la bande (barre) ornée d'un rinceau
   /* la bordure componée : deux émaux en alternance, et, sur les compons de chacun, une figure (cm1 sur ceux du premier émail, cm2 sur ceux du second) */
@@ -325,6 +332,8 @@ function canon(a) {
     if (m2.couronne) o.cn2 = a.cn2;
     if (a.bro2) o.bro2 = "1";
     if (a.pbro) o.pbro = "1";
+    if (a.big2) o.big2 = "1";
+    if (a.m2c) Object.assign(o, { m2c: a.m2c, m2cn: a.m2cn, m2ct: a.m2ct });
     if (a.cha) o.cha = "1";
   }
   if (a.br) {
@@ -386,7 +395,11 @@ function blazonCore(s) {
     const c2 = charges(arms2(s)), ph = s.cha ? "" : agree(dispo2(s).ph, c2.g, c2.pl);
     const obj = (c2.n === 1 ? `${c2.g === "f" ? "d'une" : "d'un"} ${c2.nom}` : `de ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
     const alone = (c2.n === 1 ? `${aArt(c2.nom, c2.g)}${c2.nom}` : `à ${NB[c2.n]} ${c2.nomPl}`) + `${c2.ctr} ${c2.tinct}${c2.acc}${ph}`;
-    x2 = { obj, alone, acc: s.cha ? `, chacun accompagné ${obj}` : `, ${agree("accompagné", c.g, c.pl)} ${obj}`, bro: `, ${alone} brochant sur le tout` };
+    const grand = s.big2 ? ` plus ${c2.g === "f" ? "grande" : "grand"}` : "";
+    let chg = "";
+    if (s.m2c) { const cx = charges({ ...ADEF, m: s.m2c, nb: s.m2cn, tm: s.m2ct, ta: s.m2ct, ct: "", cn: "", cc: "", iss: "", p: "", pos: "autour", m2: "" }); chg = ` ${agree("chargé", c2.g, false)} ${cx.n === 1 ? (cx.g === "f" ? "d'une" : "d'un") + " " + cx.nom : "de " + NB[cx.n] + " " + cx.nomPl}${cx.ctr} ${cx.tinct}${cx.acc}`; }
+    const big = s.big2 ? `, et, en chef, ${c2.g === "f" ? "une" : "un"} ${c2.nom}${grand}${c2.ctr} ${c2.tinct}${c2.acc}${chg}` : "";
+    x2 = { obj, alone, acc: big || (s.cha ? `, chacun accompagné ${obj}` : `, ${agree("accompagné", c.g, c.pl)} ${obj}`), bro: `, ${alone} brochant sur le tout` };
   }
   if (s.rc && c) {
     const dist = rcDist(s), liste = dist.length > 1 ? dist.slice(0, -1).join(", ") + " et " + dist[dist.length - 1] : String(dist[0]);
