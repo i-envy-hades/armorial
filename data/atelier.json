@@ -389,6 +389,31 @@
    "accentSouple": true
   },
   {
+   "kind": "aigle-brandebourg",
+   "nom": "Aigle de Brandebourg (coiffé, tenant sceptre et épée)",
+   "sing": "aigle de Brandebourg",
+   "plur": "aigles de Brandebourg",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/aigle-brandebourg.svg",
+    "commons": "Brandenburg Eagle.svg",
+    "auteur": "HeraldLanguage",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#be1313"
+   ]
+  },
+  {
    "kind": "croix",
    "nom": "Croix alésée",
    "sing": "croix alésée",
@@ -595,6 +620,30 @@
    "cat": "Propres au blason",
    "draw": "escarboucle",
    "pluriel": true
+  },
+  {
+   "kind": "mont-trois-coupeaux",
+   "nom": "Mont à trois coupeaux",
+   "sing": "mont à trois coupeaux",
+   "plur": "monts à trois coupeaux",
+   "g": "m",
+   "cat": "Propres au blason",
+   "file": {
+    "path": "assets/meubles/mont-trois-coupeaux.svg",
+    "commons": "Meuble héraldique Montagnes à trois coupeaux.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    60,
+    152,
+    113
+   ],
+   "main": [
+    "#e3e4e5"
+   ]
   },
   {
    "kind": "crancelin",
@@ -2555,6 +2604,31 @@
     40,
     88.6,
     14
+   ]
+  },
+  {
+   "kind": "colombe-rameau",
+   "nom": "Colombe tenant un rameau d'olivier",
+   "sing": "colombe tenant un rameau",
+   "plur": "colombes tenant un rameau",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/colombe-rameau.svg",
+    "commons": "Meuble héraldique Colombe essorante tenant un rameau dans son bec.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    137
+   ],
+   "main": [
+    "#fff"
    ]
   },
   {
