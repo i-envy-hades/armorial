@@ -183,7 +183,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -403,8 +403,9 @@ function drawBody(s, u) {
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
   if (bandeCase) return corps(s, u, defs, field, under, over, !s.p || !MAP ? "" : bandeLocale(s.p, tinctPaint(s.tp), s.ln));
+  const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case, la bordure reste unie
   const dress = paint => {
-    let p = croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.pth);
+    let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.pth);
     if (p && s.pf) p = filetDe(p, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + p;            // le filet : la pièce cernée d'un liseré de l'émail dit
     if (p && (+s.pdx || +s.pdy)) p = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${p}</g>`;
     return croixCase ? p : sq(p, 1);
@@ -417,6 +418,30 @@ function drawBody(s, u) {
     piece = `<g mask="url(#pc0-${u})">${dress(tinctPaint(s.t2))}</g><g mask="url(#pc1-${u})">${dress(tinctPaint(s.t1))}</g>`;
   } else if (s.p) piece = dress(tinctPaint(s.tp));
   return corps(s, u, defs, field, under, over, piece);
+}
+/* la bordure componée : seize compons égaux le long du contour, en alternance, et leurs figures, une au milieu de chaque compon */
+const COMPONS = 16;
+function componee(s, u, defs) {
+  const g = $("#measure g"), pa = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  pa.setAttribute("d", SHIELD_D); g.appendChild(pa);
+  const total = pa.getTotalLength(), L = total / COMPONS, at = l => pa.getPointAtLength(((l % total) + total) % total);
+  const pts = [[], []];
+  for (let k = 0; k < COMPONS; k++) {
+    const l = (k + .5) * L, a = at(l - 1.5), b = at(l + 1.5), p = at(l), tx = b.x - a.x, ty = b.y - a.y, n = Math.hypot(tx, ty) || 1;
+    let nx = -ty / n, ny = tx / n;
+    if (nx * (100 - p.x) + ny * (126 - p.y) < 0) { nx = -nx; ny = -ny; }
+    pts[k % 2].push([p.x + nx * 6.5, p.y + ny * 6.5, .105, 0]);
+  }
+  g.removeChild(pa);
+  let out = `<path d="${SHIELD_D}" fill="none" stroke="${tinctPaint(s.tp)}" stroke-width="26"/>`
+    + `<path d="${SHIELD_D}" fill="none" stroke="${tinctPaint(s.tpc)}" stroke-width="26" stroke-dasharray="${L.toFixed(3)} ${L.toFixed(3)}" stroke-dashoffset="${L.toFixed(3)}"/>`;
+  [[s.cm1, s.cm1t], [s.cm2, s.cm2t]].forEach(([k, t], i) => {
+    if (!k) return;
+    const mm = meuble(k), id = `cm${i}-${u}`;
+    defs(symbolFor({ ...s, m: k, tm: t, ta: t, cc: "", ct: "", cn: "", cnk: "" }, id));
+    out += placeAll(pts[i], mm, id, false);
+  });
+  return out;
 }
 /* la brisure, par-dessus tout le reste (une pièce de brisure, ou des figures), puis l'assemblage des couches */
 function brisLayer(s, u) {
@@ -610,7 +635,8 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.m && a.cn) jobs.push(loadSvg(meuble(a.cnk === "antique" ? "couronne-antique" : "couronne"))); if (a.m && a.m2 && a.cn2) jobs.push(loadSvg(meuble(a.cnk2 === "antique" ? "couronne-antique" : "couronne"))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.cmp) for (const k of [a.cm1, a.cm2]) if (k) jobs.push(loadSvg(meuble(k)));
+    if (a.m && a.cn) jobs.push(loadSvg(meuble(a.cnk === "antique" ? "couronne-antique" : "couronne"))); if (a.m && a.m2 && a.cn2) jobs.push(loadSvg(meuble(a.cnk2 === "antique" ? "couronne-antique" : "couronne"))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
   if (hm) jobs.push(getText(hm.path));
