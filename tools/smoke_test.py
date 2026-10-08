@@ -345,6 +345,7 @@ LUS = [
     ("D'or à quatre pals de gueules", "D'or à quatre pals de gueules", ""),
     ("De gueules à trois fasces d'argent", "De gueules à trois fasces d'argent", ""),
     ("D'azur à deux bandes d'or", "D'azur à deux bandes d'or", ""),
+    ("De gueules à trois croissants contournés d'argent, chacun accompagné d'une étoile à cinq rais du même", "De gueules à trois croissants contournés d'argent, chacun accompagné d'une étoile d'argent", ""),
     ("Coupé : au 1, parti : au 1, d'or plein ; au 2, de gueules plein ; au 2, d'azur plein", "Coupé : au 1, parti : au 1, d'or plein ; au 2, de gueules plein ; au 2, d'azur plein", ""),
     ("Parti d'azur et d'or, à la croix de l'un en l'autre", "Parti d'azur et d'or, à la croix de l'un en l'autre brochant sur le tout", ""),
     ("D'argent au bouquetin saillant de sable, lampassé et vilené de gueules", "D'argent au bouquetin saillant de sable lampassé de gueules", "vilené"),
@@ -438,7 +439,7 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons", "Sultanat d'Égypte"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve ; les Médicis restent refusés : tourteau de France chargé de trois lis)
 BLASONS_REFUSES = ["Royaume de Grenade", "Maison de Médicis"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",

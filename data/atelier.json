@@ -434,7 +434,9 @@
    "plur": "croissants",
    "g": "m",
    "cat": "Astres et éléments",
-   "draw": "croissant"
+   "draw": "croissant",
+   "asym": true,
+   "ctRot": true
   },
   {
    "kind": "etoile",

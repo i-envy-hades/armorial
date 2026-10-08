@@ -266,12 +266,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Chef de coupé parti et pièce de l'un en l'autre** (octobre 2026) : le chef d'un coupé peut être partie en deux (réglage « Chef : parti » ; champ `h1` = `p`, trois armes : chef dextre 0, chef senestre 2, pointe 1) — « Coupé : au 1, parti : au 1, … ; au 2, … ; au 2, … » ; une pièce se dit « de l'un en l'autre » sur un champ partagé de deux émaux, sans meuble (« à la croix de l'un en l'autre », champ `pcc`, dessinée deux fois sous masque) ; et une liste d'attributs (« lampassé et vilené de gueules ») passe désormais même quand le premier mot est celui que connaît la bête. La carte des Grisons se lit (son texte propre à l'Atelier est dans `blasons.json`, champ `atelier`).
 
+- **« Chacun accompagné de… » et croissant contourné** (octobre 2026) : « à trois croissants contournés d'argent, chacun accompagné d'une étoile du même » — une figure du second meuble auprès de chaque figure du premier (réglage « Chacun accompagné », champ `cha` ; deux meubles ou plus, sans pièce) ; le croissant se contourne en tournant (`ctRot` dans `atelier.json` : ouvert à senestre), non en miroir. La carte du Sultanat d'Égypte se lit.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (103 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis) ; « chacun accompagné de… » (Sultanat d'Égypte) ;
+1. **Cartes encore illisibles** (104 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+   - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis) ;
      la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ; un fascé de cinq pièces aux fasces chargées (Fleming) ;
      le franc-quartier senestre (Schwytz) ; un écusson posé sur un meuble (Léopold II).
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
