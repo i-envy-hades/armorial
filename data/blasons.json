@@ -234,7 +234,9 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "atelier": "De gueules à la bande d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la devise nasride en lettres arabes n'est pas dessinée."
   },
   {
     "nom": "Royaume de Valence",
@@ -420,7 +422,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Realm_of_Seville.svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelier": "De gueules à l'épée d'argent, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château donjonné d'or, ceux d'argent d'un lion de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : saint Ferdinand assis sur son trône, nimbé et couronné, n'est pas dessiné : une épée tient sa place."
   },
   {
     "nom": "Royaume de Grenade (couronne de Castille)",
@@ -505,7 +509,9 @@
     "file": "Coat of arms of the Kingdom of Iraq (1921–1958).svg",
     "auteur": "Samhanin",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0"
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "atelier": "D'azur à deux épées d'argent passées en sautoir",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le paysage (confluent de l'Euphrate et du Tigre, palmiers, monts Hakkari) n'est pas dessinable ; l'épée et la lance en sautoir sont suggérées par deux épées."
   },
   {
     "nom": "Royaume de Karthli",
@@ -520,7 +526,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Kingdom_of_Kartli.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelier": "De gueules à l'épée d'argent garnie d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : seule l'épée est dessinée ; le sceptre en sautoir, le lion couché, l'âne couché et l'étoile à huit rais de sable en chef restent à ajouter."
   },
   {
     "nom": "Royaume de Saxe",
@@ -598,7 +606,9 @@
       "label": "Hubert de Vries, « Arabiyah », Heraldica civica et militaris",
       "url": "http://www.hubert-herald.nl/Arabiyah.htm#hejaz",
       "note": "traduit de l'anglais ; décrit d'après les billets de 1924 ; le manteau, les palmiers et les drapeaux ne sont pas blasonnés ici. Aucune source lue ne donne d'armes propres au califat de 1924"
-    }
+    },
+    "atelier": "De sinople à deux lances d'or passées en sautoir",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : deux lances seulement ; le bâton de commandement, les deux sabres, les fers et les houppes restent à ajouter."
   },
   {
     "nom": "Maison d'Este",
@@ -1044,7 +1054,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "atelier": "De gueules à la crosse d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : saint Fridolin n'a pas de figure : une crosse tient sa place."
   },
   {
     "nom": "Canton de Zoug",
@@ -1164,7 +1176,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "atelier": "D'or au bélier passant de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : bélier passant au lieu de saillant ; couronne, onglons, cornes et vilenés du champ à régler."
   },
   {
     "nom": "Canton d'Appenzell Rhodes-Extérieures",
@@ -1184,7 +1198,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "atelier": "D'argent à l'ours rampant de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'ours est sans ses armes de gueules ; le V et le R du deuxième ne sont pas dessinés."
   },
   {
     "nom": "Canton d'Appenzell Rhodes-Intérieures",
@@ -1480,7 +1496,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Écartelé : au 1, de gueules au lion contourné d'or ; au 2, d'azur à l'aigle bicéphale d'or ; au 3, d'azur à deux aigles d'or ; au 4, de gueules au léopard couronné d'or ; sur le tout, d'or au mont à trois coupeaux d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux têtes d'aigle affrontées sont deux aigles ; le lion et le léopard ne portent pas leur croix ; l'écusson d'orangé à l'arche est un mont d'or (l'orangé et l'arche manquent)."
   },
   {
     "nom": "Belgique",
@@ -1559,7 +1577,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Échiqueté de gueules et d'argent de cinq tires",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : seul l'échiqueté de vingt-cinq pièces est dessiné ; la couronne aux cinq écus est à ajouter."
   },
   {
     "nom": "Danemark",
@@ -1574,7 +1594,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Écartelé par une croix pattée d'argent bordée de gueules : au 1, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; au 2, d'or à deux lions léopardés d'azur, armés et lampassés de gueules ; au 3, d'azur à trois couronnes d'or ; au 4, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; sur le tout, d'or à deux fasces de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les cœurs sont un semé sans compte ; le troisième quartier est réduit aux trois couronnes (le bélier et l'ours manquent)."
   },
   {
     "nom": "Estonie",
@@ -1653,7 +1675,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Parti : au 1, fascé de gueules et d'argent de huit pièces ; au 2, de gueules à la croix de Lorraine d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la croix patriarcale est dessinée en croix de Lorraine ; la couronne et le mont de trois coupeaux de sinople manquent."
   },
   {
     "nom": "Islande",
@@ -1685,7 +1709,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Écartelé : au 1, d'or à l'aigle de sable becquée, membrée et couronnée d'or ; au 2, fascé d'or et de sable de huit pièces, au crancelin de sinople ; au 3, parti de gueules et d'argent ; au 4, d'or à l'aigle de sable ; sur le tout, coupé d'or et de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'aigle de Silésie est sans son ancre, la harpie de Rietberg est une aigle, la pointe au cor de chasse manque, le crancelin n'est pas posé en bande."
   },
   {
     "nom": "Lituanie",
@@ -1831,7 +1857,9 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "Écartelé par une croix d'or : aux 1 et 4, d'azur à trois couronnes d'or ; aux 2 et 3, d'azur à trois barres d'argent, au lion couronné d'or brochant sur le tout ; sur le tout, parti d'azur et de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les barres ne sont pas ondées ; le sur-le-tout est réduit à un parti d'azur et de gueules (Vasa et Bernadotte restent à ajouter)."
   },
   {
     "nom": "Tchéquie",
@@ -1876,7 +1904,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial des maisons d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
-    }
+    },
+    "atelier": "Échiqueté de sable et d'argent de quatre tires",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'équipollé (huit points de sable, sept points d'argent) est suggéré par un échiqueté de quatre tires."
   },
   {
     "nom": "Maison d'Avesnes",

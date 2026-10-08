@@ -173,7 +173,9 @@
       "url": "https://da.wikipedia.org/wiki/Danmarks_rigsv%C3%A5ben",
       "note": "section « Kongevåben », version 1972-2024 ; tenants, colliers et manteau non repris"
     },
-    "groupe": "aujourdhui"
+    "groupe": "aujourdhui",
+    "atelier": "Écartelé par une croix d'argent bordée de gueules : au 1, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; au 2, d'or à deux lions léopardés d'azur, armés et lampassés de gueules ; au 3, d'azur à trois couronnes d'or ; au 4, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; sur le tout, d'or à deux fasces de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les cœurs sont un semé sans compte ; le troisième quartier est réduit aux trois couronnes (le bélier et l'ours polaire en pointe manquent)."
   },
   {
     "nom": "Frederik X",
@@ -240,7 +242,9 @@
         "t": "Lire un blason brisé",
         "href": "index.html#lire-un-blason-brise"
       }
-    ]
+    ],
+    "atelier": "Fascé de gueules et d'argent de six pièces, à la bande de sinople brochant sur le tout",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la branche d'épine est une bande de sinople ; les trois fasces d'argent sont un fascé de six pièces."
   },
   {
     "nom": "Ferenc Fuchs",
@@ -256,7 +260,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:COA_archbishop_HU_Fuchs_Ferenc_Xaver3.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelier": "D'azur au bras d'argent, accompagné d'un croissant d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le bras armé tenant deux branches d'olivier et le soleil figuré sont à ajouter ; un seul croissant d'or."
   },
   {
     "nom": "Ignác Fábry",
@@ -301,7 +307,9 @@
       "url": "https://pl.wikipedia.org/wiki/D%C4%85browa_(herb_szlachecki)",
       "note": "« krzyż kawalerski » rendu par croix pattée"
     },
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "atelier": "D'azur au fer à cheval d'argent sommé d'une croix pattée d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux croix fichées aux bouts du fer, les deux croix en biais et le cimier (aile d'aigle percée d'une flèche) manquent."
   },
   {
     "nom": "Jan Lubrański",
@@ -380,7 +388,9 @@
       "label": "Wikipédia (sv), « Oxenstierna »",
       "url": "https://sv.wikipedia.org/wiki/Oxenstierna",
       "note": "l'article dit que le plus ancien blason de la famille est une « oxpanna » (front de bœuf) d'où sortent deux cornes ; l'émail et les oreilles sont lus sur l'image Commons"
-    }
+    },
+    "atelier": "D'or à la rencontre de bœuf de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : rencontre de bœuf à la place du front de bœuf ; cornes et oreilles à vérifier."
   },
   {
     "nom": "Famille Fleming",
@@ -462,7 +472,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:COA-family-sv-Svarte_skaning.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelier": "D'or au navire de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le navire est sans ses extrémités en têtes de loup affrontées."
   },
   {
     "nom": "Jean-Baptiste Colbert",
@@ -568,7 +580,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "D'or à l'aigle bicéphale de sable becquée, membrée et couronnée d'or, sur le tout de gueules au saint Georges d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : sceptre, orbe, couronnes fermées et le parti de Holstein-Oldenbourg (écartelé accolé) manquent ; l'écusson de la Moscovie est posé sur le tout."
   },
   {
     "nom": "Alexandre II de Russie",
@@ -612,7 +626,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "D'azur à l'ancre d'argent, à la bordure d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la flèche en sautoir, l'étoile d'or, les huit roses de la bordure et les deux ancres derrière l'écu manquent."
   },
   {
     "nom": "Michel Nikolaïevitch de Russie",
@@ -633,7 +649,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "D'argent au griffon de gueules, à la bordure de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le griffon est sans épée ni rondache ; la bordure n'a pas ses huit têtes de lion ; les deux canons derrière l'écu manquent."
   },
   {
     "nom": "Maria Nikolaïevna de Russie",
@@ -654,7 +672,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "Parti : au 1, de sinople à l'épée d'argent garnie d'or ; au 2, d'or à l'aigle bicéphale de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : première moitié réduite à l'épée de Leuchtenberg ; l'aigle impériale n'a ni son écusson de Moscovie ni ses écus sur les ailes."
   },
   {
     "nom": "Adolphe-Frédéric de Suède",
@@ -675,7 +695,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "Écartelé par une croix d'or : aux 1 et 4, d'azur à trois couronnes d'or ; aux 2 et 3, d'azur à trois barres d'argent, au lion couronné d'or brochant sur le tout ; sur le tout, d'or à deux lions léopardés d'azur, armés et lampassés de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : barres non ondées ; le sur-le-tout est réduit à Schleswig (Norvège, Holstein, Stormarn, Dithmarse, Oldenbourg et Delmenhorst manquent)."
   },
   {
     "nom": "Charles XIII de Suède et de Norvège",
@@ -696,7 +718,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "Écartelé par une croix d'or : aux 1 et 4, d'azur à trois couronnes d'or ; aux 2 et 3, d'azur à trois barres d'argent, au lion couronné d'or brochant sur le tout ; sur le tout, de gueules à la feuille d'ortie d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le pairle patté est devenu une croix sur un écartelé ; barres non ondées ; le sur-le-tout est réduit à Holstein."
   },
   {
     "nom": "Georges Ier de Grèce",
@@ -717,7 +741,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "D'azur à la croix alésée d'argent, sur le tout de gueules à la croix d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écartelé de Danemark, de Schleswig, de Holstein, etc. est réduit à un écusson de gueules à la croix d'argent."
   },
   {
     "nom": "Henri de Monpezat",
@@ -761,7 +787,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "Écartelé par une croix pattée d'argent bordée de gueules : au 1, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; au 2, de gueules au lion couronné d'or ; au 3, d'azur à trois couronnes d'or ; au 4, d'or au lion léopardé d'azur ; le tout brisé d'un lambel d'argent ; sur le tout, d'or à deux lions léopardés d'azur, armés et lampassés de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le lambel est sans ses mouchetures d'hermine ; la hache du lion de Norvège, les Goths et les Vandales, et le sur-le-tout (réduit à Schleswig) sont simplifiés."
   },
   {
     "nom": "Guillaume, duc de Gloucester",
@@ -782,7 +810,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "atelier": "Écartelé : aux 1 et 4, de gueules à trois léopards d'or ; au 2, d'or au lion de gueules ; au 3, d'azur à la harpe d'or ; sur le tout, d'or à trois lions léopardés d'azur, armés et lampassés de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le contre-écartelé de France et d'Angleterre, le double trescheur d'Écosse et les cœurs de Danemark manquent."
   },
   {
     "nom": "Albert de Saxe-Cobourg et Gotha",
@@ -803,7 +833,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison de Wettin »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Wettin"
-    }
+    },
+    "atelier": "Écartelé : aux 1 et 4, de gueules à trois léopards d'or, armés et lampassés d'azur ; aux 2 et 3, fascé d'or et de sable de dix pièces, au crancelin de sinople posé en bande",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'Écosse, l'Irlande et le lambel de saint Georges manquent ; fascé de dix pièces au lieu de burelé."
   },
   {
     "nom": "Léopold Ier de Belgique",
@@ -824,7 +856,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison de Wettin »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Wettin"
-    }
+    },
+    "atelier": "Écartelé : aux 1 et 4, de gueules à trois léopards d'or, armés et lampassés d'azur ; au 2, d'or au lion de gueules ; au 3, d'azur à la harpe d'or ; sur le tout, d'or semé de cœurs de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le double trescheur d'Écosse manque ; le sur-le-tout tiercé en pairle renversé (Brunswick…) est réduit à un semé de cœurs."
   },
   {
     "nom": "Léopold II de Belgique",
@@ -911,7 +945,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
-    }
+    },
+    "atelier": "Écartelé : au 1, de gueules au lion d'argent à la queue fourchée et passée en sautoir, couronné, armé et lampassé d'or ; au 2, d'azur à l'aigle échiquetée d'argent et de gueules ; au 3, d'or à l'aigle de sable becquée, membrée et couronnée d'or ; au 4, fascé d'argent et d'azur de dix pièces, au lion de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : écartelé au lieu de « parti d'un, coupé de deux » ; l'aigle de Silésie est sans son croissant ni sa croix ; le lion du quartier 4 est sans sa queue fourchée."
   },
   {
     "nom": "Charles VII de Bavière",
@@ -932,7 +968,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
-    }
+    },
+    "atelier": "Écartelé : aux 1 et 4, fuselé en bande d'azur et d'argent ; aux 2 et 3, de sable au lion d'or, armé et lampassé de gueules ; sur le tout, de gueules à l'orbe crucifère d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'aigle de sable en champ n'est pas dessinée ; le lion n'est pas couronné."
   },
   {
     "nom": "Louise de Lorraine",
@@ -953,7 +991,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison de Lorraine »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine"
-    }
+    },
+    "atelier": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, d'or à la bande de gueules chargée de trois alérions d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la Lorraine est réduite à ses alérions : Hongrie, Anjou-Sicile, Jérusalem, Aragon, Anjou, Gueldre, Juliers et Bar manquent."
   },
   {
     "nom": "René II de Lorraine",
@@ -974,6 +1014,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison de Lorraine »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine"
-    }
+    },
+    "atelier": "Écartelé : aux 1 et 4, d'or à la bande de gueules chargée de trois alérions d'argent ; aux 2 et 3, fascé de gueules et d'argent de huit pièces",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : Hongrie, Anjou-Sicile, Jérusalem et Bar sont réduits à un fascé de huit pièces aux quartiers 2 et 3."
   }
 ]
