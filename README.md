@@ -284,6 +284,8 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Trois figures de Commons, cinq cartes acceptées une à une** (octobre 2026) : l'*aigle de Brandebourg* (coiffé, tenant sceptre et épée, écusson au sceptre : HeraldLanguage, CC BY 4.0), la *colombe tenant un rameau* et le *mont à trois coupeaux* (Jpgibert, CC BY 4.0). Cartes : Brandebourg ; Chypre (la source ne dit pas l'émail de la colombe : argent, dit dans la note) ; Slovaquie ; les deux Albanie (l'aigle seul, sans le casque de Scanderbeg, dit dans la note). Refusées par Arthur : Schaffhouse (bélier passant), Oxenstierna (rencontre de bœuf), Grenade (bande sans devise).
 
+- **Quatre meubles de plus** (octobre 2026) : le *sabre* (Etxeko, CC BY-SA 4.0), la *lance* (Zigeuner, CC BY-SA 3.0), le *rameau d'olivier* (Henry Salomé, CC BY-SA 4.0), et l'*épée* refaite à partir de Commons (Archimatth, CC BY-SA 4.0 : épée médiévale à croisée, retournée pointe en haut) ; sabre et épée se disent « garni(e) d'or » (garde et poignée : l'attribut `garni` s'accorde désormais). Les épées passées en sautoir, le sceptre, la mitre, le briquet et le double panneton de la clé restent à trouver.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :

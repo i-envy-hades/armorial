@@ -1517,7 +1517,106 @@
    "plur": "épées",
    "g": "f",
    "cat": "Objets et bâtiments",
-   "draw": "epee"
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/epee.svg",
+    "commons": "Heraldique Meuble Epee Pointe en bas.svg",
+    "auteur": "Archimatth",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    32,
+    152,
+    167
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "garni"
+  },
+  {
+   "kind": "lance",
+   "nom": "Lance",
+   "sing": "lance",
+   "plur": "lances",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/lance.svg",
+    "commons": "Héraldique meuble Lance.svg",
+    "auteur": "Zigeuner",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    32,
+    152,
+    167
+   ],
+   "main": [
+    "#e20909"
+   ]
+  },
+  {
+   "kind": "sabre",
+   "nom": "Sabre",
+   "sing": "sabre",
+   "plur": "sabres",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/sabre.svg",
+    "commons": "Meuble héraldique Sabre.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    31,
+    152,
+    170
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "garni"
+  },
+  {
+   "kind": "rameau-olivier",
+   "nom": "Rameau d'olivier",
+   "sing": "rameau d'olivier",
+   "plur": "rameaux d'olivier",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/rameau-olivier.svg",
+    "commons": "Meuble héraldique Rameau d'olivier.svg",
+    "auteur": "Henry Salomé",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    49,
+    152,
+    133
+   ],
+   "main": [
+    "#5ab532"
+   ]
   },
   {
    "kind": "ancre",
