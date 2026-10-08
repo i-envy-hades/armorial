@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie", "ondees"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -484,8 +484,9 @@ function pChamp(P) {
     if (!plein && cle(P, v) === "a" && LEX.compte.has(cle(P, v + 1))) {
       const k = LEX.compte.get(cle(P, v + 1)), pl = suites(LEX.pieces, P, v + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin", chevron: "chevronny" };
       if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 6) {
-        const t2 = pEmail(P, v + 2 + pl.n);
-        if (t2) return { ch: { f: "ray", ray: RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
+        const onde = pl.val.p === "fasce" && cle(P, v + 2 + pl.n) === "ondees";          // « de sable à trois fasces ondées d'argent »
+        const t2 = pEmail(P, v + 2 + pl.n + (onde ? 1 : 0));
+        if (t2) return { ch: { f: "ray", ray: onde ? "barryonde" : RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
       }
     }
     return { ch: { f: "plein", t1: t.t }, i: t.i + (plein ? 1 : 0), plein };

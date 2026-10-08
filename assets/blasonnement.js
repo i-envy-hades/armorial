@@ -79,11 +79,11 @@ const PLEIN = {
   13: [{ id: "", lab: "En trois pals, 4, 5 et 4", ph: " posé en trois pals 4, 5 et 4", alt: [" posé 4, 5 et 4"], pts: [[52, 50, .21], [52, 96, .21], [52, 142, .21], [58, 188, .21], [100, 42, .19], [100, 86, .19], [100, 130, .19], [100, 174, .19], [100, 216, .19], [148, 50, .21], [148, 96, .21], [148, 142, .21], [142, 188, .21]] }],
 };
 /* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
-const RAY_PIECE = { barry: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
+const RAY_PIECE = { barry: "fasce", barryonde: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
 /* les champs rayés : les quatre sens du trait, les chevrons, l'échiqueté (n = nombre de tires) et le fuselé (trois sens) */
 const RAYS = ["barry", "barryonde", "paly", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin"];
 const RAY_BANDES = ["4", "5", "6", "7", "8", "9", "10", "11", "12", "13"], RAY_TIRES = ["3", "4", "5", "6", "7", "8"];
-const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : ray === "barryonde" ? ["4", "6", "8"] : RAY_BANDES;          // le fascé ondé : un nombre pair de pièces
+const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : ray === "barryonde" ? ["4", "5", "6", "7", "8", "9"] : RAY_BANDES;          // le fascé ondé : un nombre pair de pièces
 /* à partir de dix pièces, les pièces diminuées changent de nom (burelé, vergeté, coticé) ; le nombre par défaut est six, ou dix pour ces noms-là */
 const RAY_NOM = { barry: ["Fascé", "Burelé"], barryonde: ["Fascé ondé", "Fascé ondé"], paly: ["Palé", "Vergeté"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
 function rayTexte(s) {
@@ -91,7 +91,7 @@ function rayTexte(s) {
   if (s.ray === "chequy") return `Échiqueté ${ems}${n === 6 ? "" : ` de ${NB[n]} tires`}`;
   if (s.ray.startsWith("lozengy")) return `Fuselé${{ lozengybend: " en bande", lozengysin: " en barre" }[s.ray] || ""} ${ems}`;
   /* un nombre impair de zones laisse aux deux bords l'émail du champ : ce sont des pièces rebattues, « d'or à trois pals de gueules » */
-  if (n % 2) return `${cap(de(s.t1))} à ${NB[(n - 1) / 2]} ${RAY_PIECE[s.ray]}s ${de(s.t2)}`;
+  if (n % 2) return `${cap(de(s.t1))} à ${NB[(n - 1) / 2]} ${RAY_PIECE[s.ray]}s${s.ray === "barryonde" ? " ondées" : ""} ${de(s.t2)}`;
   const [petit, grand] = RAY_NOM[s.ray];
   return `${n >= 10 ? grand : petit} ${ems}${n === 6 || (n === 10 && s.ray !== "chevronny") ? "" : ` de ${NB[n]} pièces`}`;
 }
