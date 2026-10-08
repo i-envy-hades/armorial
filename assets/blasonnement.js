@@ -162,7 +162,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -178,7 +178,9 @@ const halfMode = (St, h) => (h ? St.h2 : St.h1);
 /* les armes de chaque quartier d'une moitié écartelée, dans l'ordre 1-2-3-4 ; null si la moitié est simple */
 const halfQuarters = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? [a[0], a[1], a[1], a[0]] : m === "4" ? a.slice() : null; };
 const halfUsed = (St, h) => { const a = HALF_ARMS[h], m = halfMode(St, h); return m === "2" ? a.slice(0, 2) : m === "4" ? a.slice() : [a[0]]; };
-const active = St => (!St.q ? [0] : DEUX.has(St.q) ? [0, 1] : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
+/* un coupé dont la partie du chef est partie (h1 « p ») : trois armes, le chef à dextre (0), le chef à senestre (2), la pointe (1) */
+const chefParti = St => St.q === "c" && St.h1 === "p";
+const active = St => (!St.q ? [0] : DEUX.has(St.q) ? (chefParti(St) ? [0, 2, 1] : [0, 1]) : St.q === "p" ? [...halfUsed(St, 0), ...halfUsed(St, 1)] : [0, 1, 2, 3]).concat(St.ab ? [4] : []);
 const meuble = k => ATL.meubles.find(m => m.kind === k);
 /* « sous » : les meubles sont sur le champ, la pièce brochant sur le tout (ils suivent alors les dispositions du champ plein) */
 function ctxOf(s) { return s.p ? (s.pos === "sur" ? "sur-" + s.p : s.pos === "sous" ? "plein" : s.p === "fasce" && s.cp ? "fasce-cp" : s.p) : "plein"; }
@@ -229,6 +231,7 @@ function normalize(s) {
   s.ct = mm && mm.asym && s.ct === "1" ? "1" : "";
   s.ct2 = mm2 && mm2.asym && s.ct2 === "1" ? "1" : "";
   s.cc = ccPossible(s) && (s.cc === "en" || s.cc === "a") ? s.cc : "";
+  s.pcc = pccPossible(s) && (s.pcc === "en" || s.pcc === "a") ? s.pcc : "";
   if (s.ta === "" && !s.cc) s.ta = ADEF.ta;                                          // ta vide : l'attribut d'un meuble contre-changé, contre-changé avec lui
   /* la brisure : une pièce ou une marque de la liste, son émail ; le sens ne vaut que pour le bâton et le filet, le bord que pour les pièces qui en ont un, le nombre et la place que pour les figures */
   if (s.br && !own(BRIS_PIECES, s.br) && !(BRIS_FIGS.includes(s.br) && meuble(s.br))) s.br = "";
@@ -271,6 +274,8 @@ function normalize(s) {
 /* « de l'un en l'autre » (cc « en ») ou « de l'un à l'autre » (« a ») : le meuble prend, sur chaque part du champ, l'émail de l'autre part.
    Il faut un champ partagé de deux émaux et des meubles posés sur le champ (pas sur une pièce) ; ni besant ni tourteau, dont le nom dit l'émail */
 const ccPossible = s => !!(s.m && meuble(s.m) && s.m !== "roundel" && s.f === "part" && !s.part.startsWith("tierce") && s.pos !== "sur" && s.t1 !== s.t2);
+/* la pièce de l'un en l'autre (« à la croix de l'un en l'autre ») : sans meuble, sur un champ partagé de deux émaux ; la bordure et l'orle, dessinées à part, ne s'y prêtent pas */
+const pccPossible = s => !!(s.p && !s.m && s.p !== "bordure" && s.p !== "orle" && s.f === "part" && !s.part.startsWith("tierce") && s.t1 !== s.t2);
 const ccTexte = cc => cc === "a" ? "de l'un à l'autre" : "de l'un en l'autre";
 
 /* ce que des armes montrent et disent : les champs sans objet (l'émail d'un second champ qui n'existe pas) et les réglages graphiques
@@ -280,7 +285,7 @@ function canon(a) {
   if (a.f === "plein") o.t1 = a.t1;
   else if (a.f === "part") { Object.assign(o, { part: a.part, t1: a.t1, t2: a.t2 }); if (a.part.startsWith("tierce")) o.t3 = a.t3; }
   else Object.assign(o, { ray: a.ray, ...(a.ray.startsWith("lozengy") ? {} : { n: a.n }), t1: a.t1, t2: a.t2 });
-  if (a.p) Object.assign(o, { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
+  if (a.p) Object.assign(o, a.pcc ? { p: a.p, pcc: a.pcc, ln: a.ln, pf: a.pf } : { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
   if (m) {
     Object.assign(o, a.cc ? { m: a.m, nb: a.nb, cc: a.cc } : { m: a.m, nb: a.nb, tm: a.tm });       // contre-changé : l'émail du meuble est celui du champ
     if (a.p) o.pos = a.pos;
@@ -367,7 +372,7 @@ function blazonCore(s) {
   const P = PIECES[s.p], pnom = s.p;
   const bord = s.ln ? " " + agree(CONTOUR_NOM[s.ln], P.g, false) : "";                // « la fasce ondée », « le chef denché »
   const filet = s.pf ? ` ${agree("bordé", P.g, false)} ${de(s.pf)}` : "";                       // « la croix de gueules bordée d'argent »
-  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${de(s.tp)}${filet}`;
+  const pieceTxt = `${aArt(pnom, P.g)}${pnom}${bord} ${s.pcc ? ccTexte(s.pcc) : de(s.tp)}${filet}`;
   const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
   if (c && !seme && s.pos === "sous") return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt} brochant sur le tout`;
   const sep = parti || seme ? ", " : " ";
@@ -413,6 +418,7 @@ const QLAB = { 2: ["aux 1 et 4", "aux 2 et 3"], 4: ["au 1", "au 2", "au 3", "au 
 const QNAME = { 2: ["Quartiers 1 et 4", "Quartiers 2 et 3"], 4: ["Quartier 1", "Quartier 2", "Quartier 3", "Quartier 4"] };
 /* les armes que l'on peut modifier (hors écusson), avec leur nom */
 function cellNames(St) {
+  if (chefParti(St)) return [[0, "Chef : dextre (1)"], [2, "Chef : senestre (2)"], [1, "Pointe (3)"]];
   if (QDEUX[St.q]) return [[0, QDEUX[St.q][1]], [1, QDEUX[St.q][2]]];
   if (St.q !== "p") return St.q ? QNAME[St.q].map((l, i) => [i, l]) : [];
   return [0, 1].flatMap(h => {
@@ -435,7 +441,8 @@ function blazonAll(St) {
       return "écartelé : " + halfUsed(St, h).map((i, n) => `${labs[n]}, ${lo(bz(i))}`).join(" ; ");
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
-  } else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
+  } else if (chefParti(St)) b = `Coupé : au 1, parti : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(2))} ; au 2, ${lo(bz(1))}`;      // le chef d'un coupé, partie en deux : le chef à dextre, à senestre, puis la pointe
+  else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
   else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
   if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme

@@ -35,11 +35,22 @@ function setField(k, v) {
   if (el instanceof RadioNodeList || el.length && el[0]?.type === "radio") [...el].forEach(r => r.checked = r.value === v);
   else if (el.value !== v) el.value = v;
 }
+let H1_PARTI = "";
 function syncForm() {
   const a = cur(), m = a.m && meuble(a.m), m2 = count2(a) && meuble(a.m2);
   /* quelles armes se modifient : les quartiers (ou l'écu seul), et l'écusson en abîme s'il y en a un */
   const curs = [...(S.q ? cellNames(S) : S.ab ? [[0, "Écu"]] : []), ...(S.ab ? [[4, "Écusson"]] : [])];
-  $("#r-halves").hidden = S.q !== "p";
+  $("#r-halves").hidden = S.q !== "p" && S.q !== "c";
+  /* un parti a deux moitiés qui s'écartèlent ; un coupé, un chef qui se partit */
+  F.h2.hidden = S.q === "c";
+  const modeH1 = S.q === "c" ? "c" : "p";
+  if (F.h1.dataset.mode !== modeH1) {
+    H1_PARTI = H1_PARTI || F.h1.innerHTML;
+    F.h1.innerHTML = modeH1 === "c" ? `<option value="">Chef : simple</option><option value="p">Chef : parti</option>` : H1_PARTI;
+    F.h1.dataset.mode = modeH1;
+    F.h1.setAttribute("aria-label", modeH1 === "c" ? "Chef du coupé" : "Moitié dextre du parti");
+  }
+  F.h1.value = S.h1;
   $("#cur-seg").innerHTML = curs.map(([i, l]) => `<label><input type="radio" name="cur" value="${i}"${i === CUR ? " checked" : ""}><span>${l}</span></label>`).join("");
   $("#r-cur").hidden = $("#q-note").hidden = !curs.length;
   const cs = m ? countsFor(a) : [];
@@ -64,7 +75,8 @@ function syncForm() {
   $("#r-t2").hidden = a.f === "plein";
   $("#r-t3").hidden = !tri;
   $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
-  $("#r-tp").hidden = !a.p;
+  $("#r-tp").hidden = !a.p || !!a.pcc;
+  $("#r-pcc").hidden = !pccPossible(a);                                        // la pièce « de l'un en l'autre » : sur un champ partagé, sans meuble
   $("#r-ln").hidden = !a.p;
   $("#r-pf").hidden = !a.p || a.p === "bordure" || a.p === "orle";
   /* le bord : droit, décoré, ou alésé (seulement pour les pièces qui s'alèsent) */
