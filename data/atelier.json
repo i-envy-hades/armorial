@@ -1619,6 +1619,85 @@
    ]
   },
   {
+   "kind": "sceptre",
+   "nom": "Sceptre",
+   "sing": "sceptre",
+   "plur": "sceptres",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": false,
+   "file": {
+    "path": "assets/meubles/sceptre.svg",
+    "commons": "Cetro.svg",
+    "auteur": "Xavigivax",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    84,
+    30,
+    32,
+    192
+   ],
+   "main": [
+    "#eac102"
+   ]
+  },
+  {
+   "kind": "mitre",
+   "nom": "Mitre",
+   "sing": "mitre",
+   "plur": "mitres",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "asym": false,
+   "file": {
+    "path": "assets/meubles/mitre.svg",
+    "commons": "Mitre (plain).svg",
+    "auteur": "Greentubing",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    35,
+    71,
+    130,
+    110
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "accent": [
+    "#f7d917"
+   ],
+   "accentMot": "perfilé"
+  },
+  {
+   "kind": "briquet",
+   "nom": "Briquet",
+   "sing": "briquet",
+   "plur": "briquets",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": false,
+   "file": {
+    "path": "assets/meubles/briquet.svg",
+    "commons": "Héraldique meuble Briquet.svg",
+    "auteur": "Henry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    40,
+    88,
+    120,
+    77
+   ],
+   "main": [
+    "#fcef3c"
+   ]
+  },
+  {
    "kind": "ancre",
    "nom": "Ancre",
    "sing": "ancre",

@@ -20,8 +20,8 @@ const SHRINK = { plein: 1, bordure: .84, orle: .74 };
 /* réglages graphiques (adMap, adStr : assets/blasonnement.js) appliqués aux positions */
 const adjust = (pts, a, grp, sfx) => {
   const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
-  const rot = grp === 1 ? +a.rot || 0 : 0;
-  return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, (r || 0) + rot]; });
+  const rot = (grp === 1 ? +a.rot || 0 : 0) + (+a["an" + sfx] || 0);
+  return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, (r || 0) + rot + (it[3] || 0)]; });
 };
 /* la hauteur, dans le repère de l'écu, d'une figure empruntée à l'échelle 1 (sa boîte la contient sans la déformer) ; null pour un dessin de l'encyclopédie */
 /* mesurée une fois dans le SVG caché #measure (les marges vides du fichier n'y comptent pas) ; à défaut, d'après le viewBox */
