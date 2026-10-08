@@ -1861,6 +1861,97 @@
    ]
   },
   {
+   "kind": "saint-fridolin",
+   "nom": "Saint Fridolin",
+   "sing": "saint Fridolin",
+   "plur": "saints Fridolin",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/saint-fridolin.svg",
+    "commons": "Wappen Glarus matt.svg",
+    "auteur": "auteur non indiqué sur la page Commons ; figure seule, sans l'écu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr",
+    "vb": [
+     -138,
+     -203,
+     286,
+     445
+    ]
+   },
+   "box": [
+    39,
+    31,
+    122,
+    190
+   ],
+   "main": [
+    "#ffd730"
+   ]
+  },
+  {
+   "kind": "casque-skanderbeg",
+   "nom": "Casque de Skanderbeg",
+   "sing": "casque de Skanderbeg",
+   "plur": "casques de Skanderbeg",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/casque-skanderbeg.svg",
+    "commons": "Variant of the Skanderbeg Helmet.svg",
+    "auteur": "travail personnel du téléverseur (auteur non nommé)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    44,
+    56,
+    112,
+    133
+   ],
+   "main": [
+    "#ffe100",
+    "#d9a005"
+   ],
+   "line": [
+    "#a37508",
+    "#714f07"
+   ]
+  },
+  {
+   "kind": "lion-couche",
+   "nom": "Lion couché",
+   "sing": "lion couché",
+   "plur": "lions couchés",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "allongee": true,
+   "file": {
+    "path": "assets/meubles/lion-couche.svg",
+    "commons": "Lion Couchant.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    20,
+    70,
+    160,
+    95
+   ],
+   "main": [
+    "#f8de00"
+   ],
+   "accent": [
+    "#ff0000"
+   ],
+   "accentMot": "lampassé"
+  },
+  {
    "kind": "ancre",
    "nom": "Ancre",
    "sing": "ancre",
