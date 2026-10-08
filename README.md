@@ -268,14 +268,16 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **« Chacun accompagné de… » et croissant contourné** (octobre 2026) : « à trois croissants contournés d'argent, chacun accompagné d'une étoile du même » — une figure du second meuble auprès de chaque figure du premier (réglage « Chacun accompagné », champ `cha` ; deux meubles ou plus, sans pièce) ; le croissant se contourne en tournant (`ctRot` dans `atelier.json` : ouvert à senestre), non en miroir. La carte du Sultanat d'Égypte se lit.
 
+- **Crancelin et fascé impair à pièces chargées** (octobre 2026) : le *crancelin* est un meuble emprunté à Commons (Henri Salomé, CC BY-SA 3.0), ce qui donne les armes de Saxe sur l'écusson de Léopold II (texte propre à l'Atelier : « sur le tout burelé…, au crancelin de sinople ») ; « Fascé de gueules et d'or de cinq pièces, les trois fasces de gueules chargées de huit besants d'or, 3, 3 et 2 » — un fascé de nombre impair dont les pièces du premier émail portent les meubles, répartis comme le dit le texte (réglage « Sur : les pièces du premier émail », champ `rc`). Les cartes de Léopold II et de Fleming se lisent.
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (104 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (106 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis) ;
-     la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ; un fascé de cinq pièces aux fasces chargées (Fleming) ;
-     le franc-quartier senestre (Schwytz) ; un écusson posé sur un meuble (Léopold II).
+     la bordure componée aux compons chargés (Cordoue) ; six meubles autour d'une bande ornée d'un rinceau (royaume de Bosnie) ;
+     le franc-quartier senestre (Schwytz).
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
      grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
