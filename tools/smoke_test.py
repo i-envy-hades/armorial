@@ -440,11 +440,11 @@ BLASONS_LISIBLES = ["Royaume de France (moderne)", "Royaume d'Angleterre", "Arch
                     "Royaume de Gwynedd", "Canton d'Obwald", "Canton de Bâle-Ville", "Canton de Bâle-Campagne", "Canton du Jura", "Canton de Saint-Gall", "Maison d'Arenberg", "Maison de Lorraine",
                     "Royaume de Grenade (couronne de Castille)", "Saint-Empire romain germanique",
                     "Comté d'Artois", "Comté de Namur", "Canton du Valais", "Comté de Zélande", "Monténégro", "Royaume de Galicie et de Lodomérie",
-                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons", "Sultanat d'Égypte", "Royaume de Cordoue", "Famille Fleming", "Royaume de Bosnie", "Canton de Schwytz", "Maison de Médicis", "Canton de Berne", "Canton de Thurgovie"]
+                    "Canton d'Appenzell Rhodes-Intérieures", "Duché de Limbourg", "Bosnie-Herzégovine", "Canton d'Uri", "Norvège", "Canton des Grisons", "Sultanat d'Égypte", "Royaume de Cordoue", "Famille Fleming", "Royaume de Bosnie", "Canton de Schwytz", "Maison de Médicis", "Canton de Berne", "Canton de Thurgovie", "Canton d'Argovie", "Canton de Nidwald", "Finlande"]
 # (le Saint-Empire est relu depuis que les aigles acceptent « becquée et membrée » seules, dit en réserve)
 BLASONS_REFUSES = ["Royaume de Grenade"]
 PERSONNAGES_LISIBLES = ["Édouard III d'Angleterre", "Edmond FitzAlan (2e comte d'Arundel)",
-                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie", "Haakon VII", "Léopold II de Belgique"]
+                        "John FitzAlan", "Richard FitzAlan", "Pie II", "Jacques Cœur", "Paul IV", "Nanker", "Jean-Baptiste Colbert", "Bertrand du Guesclin", "Ferdinand de Bulgarie", "Haakon VII", "Léopold II de Belgique", "Henri de Monpezat", "Jan Lubrański"]
 PERSONNAGES_REFUSES = ["Margrethe II", "Giacomo Carafa"]
 
 # armes au hasard (comme le FUZZ de l'Atelier, avec plus de variété dans les émaux et les dispositions)
