@@ -1017,5 +1017,106 @@
     },
     "atelier": "Écartelé : aux 1 et 4, d'or à la bande de gueules chargée de trois alérions d'argent ; aux 2 et 3, fascé de gueules et d'argent de huit pièces",
     "atelierNote": "Ébauche à ajuster dans l'Atelier : Hongrie, Anjou-Sicile, Jérusalem et Bar sont réduits à un fascé de huit pièces aux quartiers 2 et 3."
+  },
+  {
+    "nom": "Jeanne d'Arc",
+    "meta": "v. 1412–1431 · la Pucelle d'Orléans",
+    "blason": "D'azur à une épée d'argent garnie d'or, soutenant une couronne royale du même et accostée de deux fleurs de lis d'or",
+    "desc": "Armes conférées en mai 1429, après la levée du siège d'Orléans : l'épée de la Pucelle soutient la couronne du roi, entre deux lis de France.",
+    "file": "Coat of Arms of Jeanne d'Arc.svg",
+    "auteur": "Tom Lemmens (Adelbrecht)",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Famille d'Arc »",
+      "url": "https://fr.wikipedia.org/wiki/Famille_d%27Arc",
+      "note": "blasonnement tiré de l'Armorial de Rietstap ; les armes concédées aux frères de Jeanne y ajoutent un nom (du Lys)"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "William Shakespeare",
+    "meta": "1564–1616 · dramaturge et poète",
+    "blason": "D'or, à la bande de sable chargée d'une lance d'or, la pointe d'argent",
+    "desc": "Armes concédées en 1596 à son père John, un gantier de Stratford, et reprises par le dramaturge : la lance fait un jeu de mots avec le nom (shake-spear). Devise : « Non sans droict ». Le cimier est un faucon d'argent tenant une lance d'or.",
+    "file": "Coat of arms of William Shakespeare.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Shakespeare coat of arms »",
+      "url": "https://en.wikipedia.org/wiki/Shakespeare_coat_of_arms",
+      "note": "projet de 1596 : « Gold, on a bend sable, a spear of the first, steeled argent » ; l'image porte aussi le heaume, le cimier, les lambrequins et la devise"
+    },
+    "groupe": "esprits",
+    "liens": [
+      {
+        "t": "Armes parlantes (glossaire)",
+        "href": "index.html#terme-armes-parlantes"
+      }
+    ]
+  },
+  {
+    "nom": "Michel de Montaigne",
+    "meta": "1533–1592 · essayiste, maire de Bordeaux",
+    "blason": "D'azur semé de trèfles d'or, à une patte de lion du même, armée de gueules, mise en fasce",
+    "desc": "Montaigne blasonne lui-même ses armes dans les Essais (« Je porte d'azur semé de trèfles d'or, à une patte de lion de même, armée de gueules ») et se demande quel privilège cette figure a pour demeurer dans sa maison.",
+    "file": "Blason Michel de Montaigne.svg",
+    "auteur": "Rinaldum",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Michel de Montaigne »",
+      "url": "https://fr.wikipedia.org/wiki/Michel_de_Montaigne",
+      "note": "citation des Essais, I, 46 ; « mise en fasce » est tiré de la page Commons du fichier"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Thomas More",
+    "meta": "1478–1535 · humaniste, chancelier d'Angleterre",
+    "blason": "Écartelé : aux 1 et 4, d'argent au chevron engrêlé de sable accompagné de trois coqs de bruyère de sable crêtés de gueules ; aux 2 et 3, d'argent au chevron de sable chargé de trois besants d'or, accompagné de trois têtes de licorne arrachées de sable",
+    "desc": "Un écartelé de deux dessins : aux 1 et 4 un chevron engrêlé accompagné de trois coqs de bruyère (moorcocks), aux 2 et 3 un chevron chargé de trois besants, accompagné de trois têtes de licorne. Le cimier, un buste de Maure, n'est pas repris sur l'image.",
+    "file": "Arms of Sir Thomas More.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipedia (en), « Thomas More »",
+      "url": "https://en.wikipedia.org/wiki/Thomas_More",
+      "note": "blasonnement de l'infobox, traduit ; « Argent on a chevron between three unicorns' heads erased sable as many bezants » : la couleur des besants (or) est celle de l'image"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Blaise Pascal",
+    "meta": "1623–1662 · mathématicien, physicien et philosophe",
+    "blason": "D'azur à l'agneau pascal d'argent portant bannière du même avec une croisette de gueules, accompagné en chef à dextre d'une étoile d'or",
+    "desc": "L'agneau pascal est le meuble de l'écu familial, d'après Rietstap et Bouillet que cite Wikipédia ; le rapprochement avec le nom Pascal saute aux yeux, mais ces sources ne le disent pas.",
+    "file": "Blason Blaise Pascal (1623-1662).svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Blaise Pascal »",
+      "url": "https://fr.wikipedia.org/wiki/Blaise_Pascal",
+      "note": "Wikipédia (d'après Rietstap) dit « d'azur à l'agneau pascal d'argent, la banderole chargée d'une croix de gueules » ; l'étoile et la bannière sont celles du blasonnement de la page Commons du fichier"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Famille de Gaulle",
+    "meta": "famille de Gaulle · armes dites empruntées",
+    "blason": "Tiercé en fasce : au 1, d'argent à trois noix de galle de chêne de gueules tigées et feuillées de sinople ; au 2, de gueules plain ; au 3, d'azur à trois trèfles d'or",
+    "desc": "Armes que Wikipédia dit « empruntées », c'est-à-dire reprises d'une autre famille : un tiercé en fasce de trois noix de galle de chêne, d'un champ de gueules et de trois trèfles.",
+    "file": "Blason famille fr de Gaulle.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Famille de Gaulle »",
+      "url": "https://fr.wikipedia.org/wiki/Famille_de_Gaulle"
+    },
+    "groupe": "esprits"
   }
 ]

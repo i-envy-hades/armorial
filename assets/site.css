@@ -216,7 +216,7 @@ footer .fine{font-size:.78rem;opacity:.85}
 .redo a{display:inline-block;font-family:"Marcellus SC",serif;letter-spacing:.1em;text-transform:uppercase;font-size:.68rem;border:1px solid var(--rule);background:var(--vellum);color:var(--ink);border-radius:999px;padding:.32rem .8rem;text-decoration:none}
 .redo a:hover,.redo a:focus-visible{border-color:var(--or);text-decoration:none}
 /* l'écu d'une carte : un clic l'agrandit (assets/cartes.js) */
-.ar .shield{cursor:zoom-in}
+.ar .shield{cursor:zoom-in;width:100%}            /* toute la largeur de la carte : une cible large (et visible même avant le chargement de l'image) */
 /* sous les blasonnements que l'Atelier ne relit pas encore : où il bute ; ou, quand il dessine d'après l'image (champ « atelier »), ce qu'il lit */
 .redo-non,.redo-atelier{font-size:.78rem;font-style:italic;line-height:1.4;color:var(--ink-soft);margin:.1rem 0 .5rem}
 .redo-non a{color:var(--ink-soft);text-decoration:underline;white-space:nowrap}
