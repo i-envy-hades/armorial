@@ -76,6 +76,7 @@ function syncForm() {
   $("#r-t3").hidden = !tri;
   $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
   $("#r-tp").hidden = !a.p || !!a.pcc;
+  $("#r-fqs").hidden = a.p !== "franc-quartier";
   $("#r-ri").hidden = !(a.p === "bande" || a.p === "barre");
   $("#r-cmp").hidden = !(a.p === "bordure" && !a.ln && !a.pf && a.pos !== "sur");
   $("#r-pcc").hidden = !pccPossible(a);                                        // la pièce « de l'un en l'autre » : sur un champ partagé, sans meuble
