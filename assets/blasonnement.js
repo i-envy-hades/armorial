@@ -352,7 +352,7 @@ function canon(a) {
   }
   return o;
 }
-const canonAll = St => ({ q: St.q, ab: St.ab, gb: St.gb || "", h1: St.h1 || "", h2: St.h2 || "", A: active(St).map(i => canon(St.A[i])) });
+const canonAll = St => ({ q: St.q, ab: St.ab, gb: St.gb || "", h1: St.h1 || "", h2: St.h2 || "", xc: St.xc || "", xb: St.xb || "", xp: St.xp || "", A: active(St).map(i => canon(St.A[i])) });
 
 /* ---------- le blasonnement ---------- */
 /* l'attribut d'un meuble (« armé et lampassé d'azur ») ne se dit que s'il change quelque chose : de l'émail du corps, on se tait.
@@ -493,7 +493,7 @@ function blazonAll(St) {
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
   } else if (chefParti(St)) b = `Coupé : au 1, parti : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(2))} ; au 2, ${lo(bz(1))}`;      // le chef d'un coupé, partie en deux : le chef à dextre, à senestre, puis la pointe
   else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
-  else b = "Écartelé : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
+  else b = "Écartelé" + (St.xc ? ` par une croix${St.xp ? " pattée" : ""} ${de(St.xc)}${St.xb ? ` bordée ${de(St.xb)}` : ""}` : "") + " : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
   if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);
   if (St.ab) b += (St.q ? " ; " : ", ") + "sur le tout " + lo(blazon(St.A[4]));            // l'écusson en abîme
   return b;

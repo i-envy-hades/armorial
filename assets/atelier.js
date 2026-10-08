@@ -41,6 +41,7 @@ function syncForm() {
   /* quelles armes se modifient : les quartiers (ou l'écu seul), et l'écusson en abîme s'il y en a un */
   const curs = [...(S.q ? cellNames(S) : S.ab ? [[0, "Écu"]] : []), ...(S.ab ? [[4, "Écusson"]] : [])];
   $("#r-halves").hidden = S.q !== "p" && S.q !== "c";
+  $("#r-x").hidden = S.q !== "2" && S.q !== "4";
   /* un parti a deux moitiés qui s'écartèlent ; un coupé, un chef qui se partit */
   F.h2.hidden = S.q === "c";
   const modeH1 = S.q === "c" ? "c" : "p";
@@ -417,7 +418,7 @@ function afficheLecture(r, texte) {
 }
 /* applique des armes lues : les ornements, la forme de l'écu et le reste de la composition ne bougent pas */
 function appliqueLecture(etat) {
-  S = { ...S, q: etat.q, ab: etat.ab, gb: etat.gb || "", h1: etat.h1, h2: etat.h2, A: etat.A.map(a => ({ ...a })) };
+  S = { ...S, q: etat.q, ab: etat.ab, gb: etat.gb || "", xc: etat.xc || "", xb: etat.xb || "", xp: etat.xp || "", h1: etat.h1, h2: etat.h2, A: etat.A.map(a => ({ ...a })) };
   CUR = 0; KT = "1";
   render();
 }
@@ -489,7 +490,7 @@ function partirDe(c) {
 /* l'empreinte des armes (sans les ornements ni les réglages graphiques) : sont-ce encore celles de la carte ? */
 const empreinte = St => JSON.stringify(canonAll(St));
 function empreinteCarte(c) {
-  if (!c.emp) { const e = c.r.etat; c.emp = empreinte({ q: e.q, ab: e.ab, gb: e.gb || "", h1: e.h1, h2: e.h2, A: e.A.map(a => normalize({ ...a })) }); }
+  if (!c.emp) { const e = c.r.etat; c.emp = empreinte({ q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(a => normalize({ ...a })) }); }
   return c.emp;
 }
 const armesDeLaCarte = (St, c) => !!(c && c.r && c.r.ok) && empreinte(St) === empreinteCarte(c);
