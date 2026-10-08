@@ -310,6 +310,7 @@ function pGroupe(P, i) {
   if (k === "au") { j = i + 1; n = 1; }
   else if (k === "a" && (k1 === "le" || k1 === "la")) { j = i + 2; n = 1; }
   else if ((k === "a" || k === "aux") && LEX.compte.has(k1)) { j = i + 2; n = LEX.compte.get(k1); }          // « à trois lions » · « aux trois lions »
+  else if (k === "aux" && suites(LEX.noms, P, i + 1).some(s => meuble(s.val.kind).pluriel)) { j = i + 1; n = 1; }     // « aux rais d'escarboucle » : un seul meuble, dit au pluriel
   else return rate(P, k === "a" ? i + 1 : i, k === "a" ? "un article (« à la », « au ») ou un nombre (« à trois »)" : "« à » ou « au »");
   const pl = suites(LEX.pieces, P, j)[0];
   if (pl && pl.val.plur) return erreur(P, P.toks[i].de, P.toks[j + pl.n - 1].a, `Plusieurs ${pl.val.p}s : l'Atelier ne les lit que comme le champ, de deux à six, juste après son émail (« D'or à trois ${pl.val.p}s de gueules »)${{ fasce: " ; pour un champ coupé de bandes, écrivez « Fascé d'argent et d'azur de huit pièces »", pal: " ; au-delà, voir « Palé »", bande: " ; au-delà, voir « Bandé »", barre: " ; au-delà, voir « Barré »" }[pl.val.p] || ""}.`);
@@ -604,9 +605,11 @@ function assembler(P, r) {
   if (bris && bris.fig && (bris.ct || bris.iss || bris.cn)) return erreur(P, bris.de, bris.fin, "Dans l'Atelier, une figure de brisure ne se contourne pas, ne sort pas de la pointe et ne porte pas de couronne.");
   let k = 0;
   const prend = t => (its[k] && its[k].t === t ? its[k++] : null);
-  const sem = prend("seme"), g1 = sem ? null : prend("groupe"), acc = g1 ? prend("acc") : null, g2 = sem ? prend("groupe") : null, pc = prend("piece");
+  const sem = prend("seme"), g1 = sem ? null : prend("groupe"), acc = g1 ? prend("acc") : null, g1b = g1 && !acc ? prend("groupe") : null, g2 = sem ? prend("groupe") : null, pc = prend("piece");
   const mal = (it, msg) => erreur(P, it.de, it.fin, msg);
   if (k < its.length) return mal(its[k], `Cet élément arrive là où l'Atelier ne sait pas le lire. ${ORDRE}.`);
+  if (g1b && !g1b.broche) return mal(g1b, "Un second groupe de meubles ne se lit, dans l'Atelier, que s'il broche sur le premier : « à l'écusson d'argent, aux rais d'escarboucle d'or brochant sur le tout ».");
+  if (g1b && (pc || g1b.n !== 1)) return mal(g1b, "Le meuble qui broche sur le premier est seul, sans pièce, dans l'Atelier.");
   const br = [g1, g2, pc].find(x => x && x.broche);
   const bro = g1 && pc && pc.broche && BRO_OK.has(pc.p) && !pc.charge && !pc.verbe && !sem;         // « à l'aigle de sable, à la cotice de gueules brochant sur le tout »
   if (br && a.f === "plein" && !(bro && br === pc)) return mal(br, "« brochant sur le tout » n'a de sens, dans l'Atelier, que sur un champ divisé ou pour une pièce qui broche sur des meubles (« à l'aigle de sable, à la cotice de gueules brochant sur le tout »).");
@@ -619,7 +622,7 @@ function assembler(P, r) {
       pose(pc);
     }
   } else if (g1) {
-    if (!pc) { pose1(g1); if (acc) pose2(acc.o); }
+    if (!pc) { pose1(g1); if (acc) pose2(acc.o); if (g1b) { pose2(g1b); a.bro2 = "1"; } }
     else if (bro) { pose1(g1); if (acc) pose2(acc.o); pose(pc); a.pos = "sous"; }
     else if (pc.charge) {                                      // « à trois étoiles d'or, à la fasce d'azur chargée de… » : les étoiles sont celles du champ
       if (acc || pc.verbe) return mal(pc, `Trop de meubles autour de la pièce chargée. ${ORDRE}.`);
