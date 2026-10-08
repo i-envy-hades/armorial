@@ -282,18 +282,20 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Fasces ondées en nombre impair, cinq cartes par texte propre à l'Atelier** (octobre 2026) : « de sable à trois fasces ondées d'argent » (Argovie) ; Nidwald (la clé, sans son double panneton), Finlande (le lion, sans ses épées), Henri de Monpezat (le Danemark en semé de cœurs) et Jan Lubrański (le pin, de sinople) se dessinent avec une note qui dit ce que l'image a de plus. Chaque note s'affiche sous la carte.
 
+- **Trois figures de Commons, cinq cartes acceptées une à une** (octobre 2026) : l'*aigle de Brandebourg* (coiffé, tenant sceptre et épée, écusson au sceptre : HeraldLanguage, CC BY 4.0), la *colombe tenant un rameau* et le *mont à trois coupeaux* (Jpgibert, CC BY 4.0). Cartes : Brandebourg ; Chypre (la source ne dit pas l'émail de la colombe : argent, dit dans la note) ; Slovaquie ; les deux Albanie (l'aigle seul, sans le casque de Scanderbeg, dit dans la note). Refusées par Arthur : Schaffhouse (bélier passant), Oxenstierna (rencontre de bœuf), Grenade (bande sans devise).
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (117 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (122 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
    - *Hors de portée pour l'instant* : les grandes armes à quartiers multiples ou à étages (Danemark, Suède, Russie, Tchéquie, Hongrie, Croatie, Serbie, Arménie, Andorre, Liechtenstein,
      et les personnages qui les portent : Margrethe II, Frederik X, Georges de Danemark, Adolphe-Frédéric, Charles XIII, Georges Ier de Grèce, Gloucester,
      Albert de Saxe-Cobourg, Léopold Ier, Frédéric V, Charles VII, Louise et René II de Lorraine, Pierre III, Alexandre II, Maria Nikolaïevna) ; les blasonnements en prose ou
-     qui nomment des personnages, des paysages, des lettres (Grenade, Irak, Hedjaz, Karthli, Brandebourg, Séville, Glaris, Géorgie, Lituanie, Islande, Slovaquie,
+     qui nomment des personnages, des paysages, des lettres (Grenade, Irak, Hedjaz, Karthli, Séville, Glaris, Géorgie, Lituanie, Islande, Slovaquie,
      Appenzell Rhodes-Extérieures, Ascanie, Fuchs, Kiszka, Thuresdotter, Constantin et Michel Nikolaïevitch).
 2. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 
