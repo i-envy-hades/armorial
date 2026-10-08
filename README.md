@@ -286,11 +286,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Quatre meubles de plus** (octobre 2026) : le *sabre* (Etxeko, CC BY-SA 4.0), la *lance* (Zigeuner, CC BY-SA 3.0), le *rameau d'olivier* (Henry Salomé, CC BY-SA 4.0), et l'*épée* refaite à partir de Commons (Archimatth, CC BY-SA 4.0 : épée médiévale à croisée, retournée pointe en haut) ; sabre et épée se disent « garni(e) d'or » (garde et poignée : l'attribut `garni` s'accorde désormais). Les épées passées en sautoir, le sceptre, la mitre, le briquet et le double panneton de la clé restent à trouver.
 
+- **Deux figures « passées en sautoir »** (octobre 2026) : une nouvelle disposition pour deux meubles (lances, épées, sabres…), dite et lue « passés en sautoir ». Carte acceptée : *Islande* (croix de gueules bordée d'argent, croix centrée ; la croix scandinave décalée reste à tracer). Hedjaz et Kiszka, essayés, ont été refusés : trop de détails perdus.
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (122 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+1. **Cartes encore illisibles** (123 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
      (les deux cartes d'Albanie ; il n'existe que dans les armes entières), front de bœuf sans mufle (Oxenstierna), colombe tenant un rameau (Chypre,
      dont le blasonnement ne dit d'ailleurs pas l'émail de la colombe).
