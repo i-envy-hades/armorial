@@ -15,7 +15,7 @@ const NB = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", 
 const art = (w, g) => voy(w) ? "l'" : g === "f" ? "la " : "le ";
 const aArt = (w, g) => (typeof ATL !== "undefined" && ATL && ATL.meubles.some(m => m.pluriel && m.sing === w)) ? "aux " : voy(w) ? "à l'" : g === "f" ? "à la " : "au ";
 /* accorde les participes en -é : « armé et lampassé » → « armées et lampassées » */
-const agree = (phrase, g, pl) => phrase.replace(/(é|ouvert)(?=[\s,]|$)/g, (x, w) => w + (g === "f" ? "e" : "") + (pl ? "s" : ""));         // « ouvert » : la grenade ouverte
+const agree = (phrase, g, pl) => phrase.replace(/(é|ouvert|garni)(?=[\s,]|$)/g, (x, w) => w + (g === "f" ? "e" : "") + (pl ? "s" : ""));         // « ouvert » : la grenade ouverte
 const classe = t => (DATA.tinctures.find(x => x.nom === t) || {}).type;
 
 const PIECES = {
