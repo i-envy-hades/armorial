@@ -274,13 +274,14 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 
 - **Bande ornée d'un rinceau, six figures en bande** (octobre 2026) : « à la bande d'argent ornée d'un rinceau de sable, accompagnée de six fleurs de lis d'or, trois en chef et trois en pointe » — une tige sinueuse à feuilles alternées dessinée le long de la bande ou de la barre (champ `ri`, réglage « Rinceau »), et la disposition « trois en chef et trois en pointe » pour la bande et la barre. La carte du royaume de Bosnie se lit, en écu seul (le timbre — heaume, panache de plumes de paon — n'est pas dessiné ; la note de la carte le dit).
 
+- **Franc-quartier senestre** (octobre 2026) : « au franc-quartier senestre de gueules chargé d'une croisette d'argent » (champ `fqs`, réglage « Côté ») ; la figure suit le franc-quartier. La carte de Schwytz se lit (sa source dit « à la croisette d'argent, au franc-quartier senestre » ; l'image montre bien la croisette au chef senestre).
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
-1. **Cartes encore illisibles** (108 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
-   - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis) ;
-      le franc-quartier senestre (Schwytz).
+1. **Cartes encore illisibles** (109 se lisent sur 167 ; `lire()` sur chaque carte donne la liste et ce qui bloque) :
+   - *Constructions qui débloqueraient une carte chacune* : un meuble plus grand que les autres et chargé (Médicis).
    - *Dessins à reprendre* : l'ours sur une bande (Berne) reste petit et à plat, là où l'image le fait monter le long de la bande ; dans un tranché, deux lions chacun dans sa partie,
      grands, le long du trait (Thurgovie : l'Atelier les pose à cheval sur le trait).
    - *Figures manquantes* (rien de libre et de propre sur Commons) : bélier saillant (Schaffhouse ; le seul bélier trouvé est passant), branche d'épine (Carafa), casque de Skanderbeg
