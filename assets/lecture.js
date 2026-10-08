@@ -180,7 +180,12 @@ function pAccent0(P, i, m, tm) {
   const T = LEX.accent[m.kind];
   if (!T) return { ta: null, i };
   const j = cle(P, i) === "," ? i + 1 : i;
-  let s = suites(T, P, j)[0], mots = null, cnAttr = false;
+  const s0 = suites(T, P, j)[0];
+  let s = s0, mots = null, cnAttr = false;
+  if (s && !m.accentFixe) {         // « lampassé et vilené de gueules » : un autre attribut suit le mot exact, on lit la liste
+    const a = j + s.n, b = cle(P, a) === "," || cle(P, a) === "et" ? a + 1 : -1;
+    if (b > 0 && LEX.attr.has(cle(P, b))) s = undefined;
+  }
   if (!s && !m.accentFixe) {
     /* « armé, lampassé et vilené de gueules » : une liste d'attributs de la bête. L'Atelier les colore d'un seul émail : on l'accepte si elle
        couvre ce qu'il dit (armé, lampassé…) et n'ajoute que des attributs qu'il ne distingue pas — pas une couronne, des cornes… */
@@ -197,6 +202,7 @@ function pAccent0(P, i, m, tm) {
       s = { n: q - j }; mots = P.toks.slice(j, q).filter(t => t.k === "w" && t.w !== "et").map(t => t.r); cnAttr = !!couronne;
     }
   }
+  if (!s) s = s0;
   if (!s) return { ta: null, i };
   const k = j + s.n;
   const noter = () => { if (mots) P.notes.push(`« ${mots.join(", ")} » : l'Atelier colore d'un seul émail ce qu'il appelle « ${m.accentMot} ».`); };
@@ -362,9 +368,9 @@ function pPiece(P, i) {
   let e = j + ps.n, ln = "";
   const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee" || ALESEE_OK.has(ps.val.p));         // « la croix alésée » est un meuble : on ne la lit pas comme une pièce alésée
   if (cn) { ln = cn.val; e += cn.n; }
-  const t = pEmail(P, e);
+  const cc = pContre(P, e), t = cc ? { t: ADEF.tp, i: cc.i } : pEmail(P, e);         // « à la croix de l'un en l'autre »
   if (!t) return null;
-  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, pf: "", broche: false, charge: null, verbe: null, i: t.i };
+  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, pcc: cc ? cc.cc : "", pf: "", broche: false, charge: null, verbe: null, i: t.i };
   /* « la croix de gueules bordée d'argent » : un filet d'un autre émail */
   const jb = cle(P, it.i) === "," ? it.i + 1 : it.i, bd = suites(LEX.borde, P, jb)[0];
   if (bd) { const tf = pEmail(P, jb + bd.n); if (!tf) return null; it.pf = tf.t; it.i = tf.i; }
@@ -594,7 +600,7 @@ function pArmes(P) {
 const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
 const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.cc ? o.ta || "" : o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", cc: o.cc || "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
-const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, ln: it.ln, pf: it.pf || "" });
+const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" });
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */
 function assembler(P, r) {
@@ -761,7 +767,17 @@ function lireParti(texte, segs, res, etat, main) {
     if (!e || e.nums.length !== 1 || e.nums[0] !== h + 1) return bute(seg, `${nom} compte deux moitiés, dites dans l'ordre : « au 1, … ; au 2, … » (ici, on attend « au ${h + 1} »).`);
     let rest = seg.slice(e.i), mode = "";
     const armes = [];
-    if (rest[0] && rest[0].w === "ecartele" && rest[1] && rest[1].w === ":") {
+    if (Q[0] === "c" && h === 0 && rest[0] && rest[0].w === "parti" && rest[1] && rest[1].w === ":") {
+      /* « Coupé : au 1, parti : au 1, … ; au 2, … ; au 2, … » : le chef du coupé est partie en deux */
+      rest = rest.slice(2); mode = "p";
+      for (let n = 0; n < 2; n++) {
+        const sg = n ? segs[k++] : rest, en = sg && etiquette(sg);
+        if (!en || en.nums.length !== 1 || en.nums[0] !== n + 1) return bute(sg, `Le chef parti d'un coupé compte deux moitiés : « parti : au 1, … ; au 2, … » (ici, on attend « au ${n + 1} »).`);
+        const a = lireArmes(texte, sg.slice(en.i), `Chef, ${n ? "senestre" : "dextre"}`, res);
+        if (!a) return;
+        armes.push(a);
+      }
+    } else if (rest[0] && rest[0].w === "ecartele" && rest[1] && rest[1].w === ":") {
       if (coupe) return bute(rest, `Dans l'Atelier, les parties ${nom.replace("Un", "d'un")} ne s'écartèlent pas (les moitiés d'un parti, si).`);
       rest = rest.slice(2);
       const e2 = etiquette(rest), cle2 = e2 && e2.nums.slice().sort().join();
@@ -788,6 +804,7 @@ function lireParti(texte, segs, res, etat, main) {
   }
   if (k < segs.length) return bute(segs[k], `${nom} compte deux moitiés : « au 1, … ; au 2, … ».`);
   etat.q = Q[0]; etat.h1 = moitiés[0].mode; etat.h2 = moitiés[1].mode;
+  if (etat.q === "c" && etat.h1 === "p") { etat.A[0] = moitiés[0].armes[0]; etat.A[2] = moitiés[0].armes[1]; etat.A[1] = moitiés[1].armes[0]; return; }
   moitiés.forEach((m, h) => m.armes.forEach((a, n) => { etat.A[HALF_ARMS[h][n]] = a; }));
 }
 /* « demi-aigle de sable, mouvant du trait du parti, couronnée, becquée… de gueules » : on ramène le trait en dernier, où l'Atelier le lit */

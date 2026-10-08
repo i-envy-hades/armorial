@@ -159,13 +159,13 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4", "p", "c", "t", "l"].includes(St.q)) St.q = "";
-  for (const k of ["h1", "h2"]) if (St.q !== "p" || !["", "2", "4"].includes(St[k])) St[k] = "";
+  for (const k of ["h1", "h2"]) if (!(St.q === "p" ? ["", "2", "4"] : St.q === "c" && k === "h1" ? ["", "p"] : [""]).includes(St[k])) St[k] = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
@@ -377,11 +377,20 @@ function drawBody(s, u) {
   }
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
-  let piece = !s.p || (bandeCase && !MAP) ? "" : bandeCase ? bandeLocale(s.p, tinctPaint(s.tp), s.ln) : croixCase ? croixDeCase(tinctPaint(s.tp), s.pth, s.ln) : pieceInner(s.p, tinctPaint(s.tp), s.ln, s.pth);
-  if (bandeCase) return corps(s, u, defs, field, under, over, piece);
-  if (piece && s.pf) piece = filetDe(piece, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + piece;            // le filet : la pièce cernée d'un liseré de l'émail dit
-  if (piece && (+s.pdx || +s.pdy)) piece = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${piece}</g>`;
-  if (!croixCase) piece = sq(piece, 1);
+  if (bandeCase) return corps(s, u, defs, field, under, over, !s.p || !MAP ? "" : bandeLocale(s.p, tinctPaint(s.tp), s.ln));
+  const dress = paint => {
+    let p = croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.pth);
+    if (p && s.pf) p = filetDe(p, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + p;            // le filet : la pièce cernée d'un liseré de l'émail dit
+    if (p && (+s.pdx || +s.pdy)) p = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${p}</g>`;
+    return croixCase ? p : sq(p, 1);
+  };
+  let piece = "";
+  if (s.p && s.pcc && pccPossible(s)) {
+    /* « de l'un en l'autre » : la pièce deux fois, de chacun des émaux du champ, chaque fois masquée par la part de l'autre émail */
+    const part = k => sq(partitionInner(s.part, k ? ["#000", "#fff"] : ["#fff", "#000"], true));
+    defs += [0, 1].map(k => `<mask id="pc${k}-${u}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${part(k)}</mask>`).join("");
+    piece = `<g mask="url(#pc0-${u})">${dress(tinctPaint(s.t2))}</g><g mask="url(#pc1-${u})">${dress(tinctPaint(s.t1))}</g>`;
+  } else if (s.p) piece = dress(tinctPaint(s.tp));
   return corps(s, u, defs, field, under, over, piece);
 }
 /* la brisure, par-dessus tout le reste (une pièce de brisure, ou des figures), puis l'assemblage des couches */
@@ -465,6 +474,7 @@ function partiCells(St) {
     { arm: 1, half: 1, poly: [[0, 0], [200, 252], [0, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "bande", n: [-.78, .62] } }];
   if (St.q === "l") return [{ arm: 0, half: 0, poly: [[0, 0], [200, 0], [0, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "barre", n: [-.78, -.62] } },
     { arm: 1, half: 1, poly: [[200, 0], [200, 252], [0, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "barre", n: [.78, .62] } }];
+  if (chefParti(St)) return [{ arm: 0, half: 0, rect: [0, 0, 100, split], edges: "rb" }, { arm: 2, half: 1, rect: [100, 0, 100, split], edges: "lb" }, { arm: 1, half: 1, coupe: true, rect: [0, split, 200, 252 - split], edges: "t" }];      // coupé dont le chef est parti : deux cases en chef, une en pointe
   if (St.q === "c") return [{ arm: 0, half: 0, coupe: true, rect: [0, 0, 200, split], edges: "b" }, { arm: 1, half: 1, coupe: true, rect: [0, split, 200, 252 - split], edges: "t" }];      // coupé : la moitié du chef, puis celle de la pointe
   [0, 1].forEach(h => {
     const qa = halfQuarters(St, h), hx = h * 100;
@@ -522,7 +532,7 @@ function drawParti(St, u, ab) {
     body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
   const split = quarterGeom().split;
-  let lignes = St.q === "c" ? `M0,${split}H200` : St.q === "t" ? "M0,0L200,252" : St.q === "l" ? "M200,0L0,252" : "M100,0V252";
+  let lignes = St.q === "c" ? `M0,${split}H200${chefParti(St) ? `M100,0V${split}` : ""}` : St.q === "t" ? "M0,0L200,252" : St.q === "l" ? "M200,0L0,252" : "M100,0V252";
   cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
   const gl = GBR(St) ? brisLayer(St.A[0], `${u}g`) : null;
