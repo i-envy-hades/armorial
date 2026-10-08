@@ -1797,6 +1797,44 @@
    ]
   },
   {
+   "kind": "chevalier",
+   "nom": "Chevalier monté",
+   "sing": "chevalier monté",
+   "plur": "chevaliers montés",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/chevalier.svg",
+    "commons": "Cheval cabré et en chevalier.svg",
+    "auteur": "Ssolbergj",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     12,
+     183,
+     726,
+     857
+    ]
+   },
+   "box": [
+    24,
+    34,
+    152,
+    180
+   ],
+   "main": [
+    "#ffe455",
+    "#fadf4f",
+    "#d4aa00",
+    "#be9500"
+   ],
+   "line": [
+    "#806600",
+    "#aa8800"
+   ]
+  },
+  {
    "kind": "ancre",
    "nom": "Ancre",
    "sing": "ancre",
