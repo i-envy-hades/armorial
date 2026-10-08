@@ -93,7 +93,8 @@ function ptsFor(s, m) {
   return adjust(pts, s, 1, "");
 }
 const chaPts = s => ptsFor(s, meuble(s.m)).map(([x, y, sc]) => [x + 20 * sc, y - 22 * sc, sc * .5, 0]);      // une figure du second meuble à côté de chacune du premier
-const pts2 = s => adjust(s.cha ? chaPts(s) : s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
+const pts2base = s => adjust(s.cha ? chaPts(s) : s.cp ? CP_POINTE[s.nb2] : s.p === "fasce" && !s.pbro ? dispo2(s).pts.map(([x, y, sc, r]) => [x, y, sc * .55, r]) : dispo2(s).pts, s, 2, "2");   // accompagnant une fasce : plus petits
+const pts2 = s => (s.big2 ? adjust([[100, 46, .37]], s, 2, "2") : pts2base(s));      // « un tourteau plus grand » : seul en chef
 /* les figures de la brisure : les dispositions du champ plein, réduites (une marque seule au centre est petite), puis les réglages de la brisure */
 function brisPts(s) {
   const d = dispoOf(brisArms(s)), k = +s.brsz / 100;
@@ -184,7 +185,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -398,7 +399,14 @@ function drawBody(s, u) {
   }
   if (m2) {
     defs += symbolFor(arms2(s), `chg2-${u}`);
-    const g2 = placeAll(pts2(s), m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
+    const p2 = pts2(s);
+    let g2 = placeAll(p2, m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
+    if (s.m2c) {
+      /* les figures portées par un tourteau (un à trois), au rapport de son rayon */
+      const n = +s.m2cn, mc = meuble(s.m2c);
+      defs += symbolFor({ ...s, m: s.m2c, tm: s.m2ct, ta: s.m2ct, cc: "", ct: "", cn: "", cnk: "", iss: "" }, `chg2c-${u}`);
+      g2 += placeAll(p2.flatMap(([X, Y, K]) => { const R = 40 * K * (m2.k || 1); return n === 1 ? [[X, Y, .9 * K]] : n === 2 ? [[X - .48 * R, Y, .56 * K], [X + .48 * R, Y, .56 * K]] : [[X, Y - .42 * R, .48 * K], [X - .45 * R, Y + .3 * R, .48 * K], [X + .45 * R, Y + .3 * R, .48 * K]]; }), mc, `chg2c-${u}`, false);
+    }
     if (s.pbro) under += g2; else over += g2;                       // la pièce chargée broche sur ce meuble : il est dessous, ses figures dessus
   }
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
@@ -650,7 +658,7 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.cmp) for (const k of [a.cm1, a.cm2]) if (k) jobs.push(loadSvg(meuble(k)));
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.m && a.m2 && a.m2c) jobs.push(loadSvg(meuble(a.m2c))); if (a.cmp) for (const k of [a.cm1, a.cm2]) if (k) jobs.push(loadSvg(meuble(k)));
     if (a.m && a.cn) jobs.push(loadSvg(meuble(a.cnk === "antique" ? "couronne-antique" : "couronne"))); if (a.m && a.m2 && a.cn2) jobs.push(loadSvg(meuble(a.cnk2 === "antique" ? "couronne-antique" : "couronne"))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
