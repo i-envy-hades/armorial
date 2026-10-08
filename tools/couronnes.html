@@ -26,11 +26,12 @@
 <header>
   <b>Couronnes des bêtes</b>
   <label>Filtre <input id="filtre" placeholder="lion, cerf…" size="14"></label>
+  <label>Pas <select id="pas"><option value="0.5">0,5</option><option value="1" selected>1</option><option value="2">2</option><option value="4">4</option></select></label>
   <label>Émail <select id="email"><option>Or</option><option>Argent</option><option>Gueules</option><option>Azur</option><option>Sable</option></select></label>
   <button id="copier">Copier les ancrages modifiés</button>
   <button id="tout">Copier tous les ancrages</button>
-  <span id="etat"></span>
-  <p class="aide">Cliquez ou glissez sur une bête pour placer le <i>centre</i> de la couronne ; molette ou − / + pour sa largeur ; ↺ remet la valeur d'origine.</p>
+  <span id="etat">Chargement des figures…</span>
+  <p class="aide">Cliquez ou glissez sur une bête, ou utilisez ← ↑ ↓ → (par pas), pour placer le <i>centre</i> de la couronne ; molette ou − / + pour sa largeur ; ↺ remet la valeur d'origine.</p>
 </header>
 <div id="grid"></div>
 <textarea id="sortie" placeholder="Les ancrages copiés apparaissent ici (kind: [x, y, largeur])." readonly></textarea>
@@ -70,10 +71,11 @@ function maj() { document.getElementById("etat").textContent = `${[...TILES.valu
   DATA = await r1.json(); ATL = await r2.json();
   document.body.insertAdjacentHTML("afterbegin", globalDefs());      // les dégradés et hachures des émaux
   const grid = document.getElementById("grid");
+  let n = 0;
   ATL.meubles.filter(m => m.couronne).forEach((m, i) => {
     ORIG[m.kind] = m.couronne.slice();
     const el = document.createElement("div"); el.className = "tile";
-    el.innerHTML = `<h3>${m.nom}<span></span></h3><svg xmlns="http://www.w3.org/2000/svg"></svg><div class="bar"><button data-a="-">−</button><button data-a="+">+</button><button data-a="r">↺</button></div>`;
+    el.innerHTML = `<h3>${m.nom}<span></span></h3><svg xmlns="http://www.w3.org/2000/svg"></svg><div class="bar"><button data-a="l" title="à gauche">←</button><button data-a="u" title="vers le haut">↑</button><button data-a="d" title="vers le bas">↓</button><button data-a="rt" title="à droite">→</button><button data-a="-" title="plus étroite">−</button><button data-a="+" title="plus large">+</button><button data-a="r" title="valeur d'origine">↺</button></div>`;
     const t = { kind: m.kind, i, el, svg: el.querySelector("svg"), val: el.querySelector("h3 span"), vb: [0, 0, 200, 252] };
     TILES.set(m.kind, t); grid.appendChild(el);
     let drag = false;
@@ -84,10 +86,15 @@ function maj() { document.getElementById("etat").textContent = `${[...TILES.valu
     t.svg.addEventListener("wheel", e => { e.preventDefault(); regle(t, c => { c[2] += e.deltaY < 0 ? 1 : -1; }).then(maj); }, { passive: false });
     el.querySelector(".bar").addEventListener("click", e => {
       const a = e.target.dataset.a; if (!a) return;
-      regle(t, c => { if (a === "r") { c[0] = ORIG[t.kind][0]; c[1] = ORIG[t.kind][1]; c[2] = ORIG[t.kind][2]; } else c[2] += a === "+" ? 1 : -1; }).then(maj);
+      regle(t, c => {
+        const pas = +document.getElementById("pas").value;
+        if (a === "r") { c[0] = ORIG[t.kind][0]; c[1] = ORIG[t.kind][1]; c[2] = ORIG[t.kind][2]; }
+        else if (a === "l") c[0] -= pas; else if (a === "rt") c[0] += pas; else if (a === "u") c[1] -= pas; else if (a === "d") c[1] += pas;
+        else c[2] += (a === "+" ? 1 : -1) * pas;
+      }).then(maj);
     });
   });
-  for (const t of TILES.values()) await dessine(t);
+  for (const t of TILES.values()) { await dessine(t); n++; document.getElementById("etat").textContent = `Chargement des figures… ${n} / ${TILES.size}`; }
   maj();
   document.getElementById("filtre").addEventListener("input", e => { const q = e.target.value.trim().toLowerCase(); for (const t of TILES.values()) t.el.hidden = !!q && !(t.kind.includes(q) || meuble(t.kind).nom.toLowerCase().includes(q)); });
   document.getElementById("email").addEventListener("change", async e => { EM = e.target.value; for (const t of TILES.values()) await dessine(t); });
