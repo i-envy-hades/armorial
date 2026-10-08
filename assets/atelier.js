@@ -77,6 +77,7 @@ function syncForm() {
   $("#l-t1").textContent = a.f === "plein" ? "Émail" : "Premier émail";
   $("#r-tp").hidden = !a.p || !!a.pcc;
   $("#r-big2").hidden = !(m && count2(a) && a.nb2 === "1" && a.d2 === "chef" && !a.cp);
+  $("#r-lrg").hidden = !((a.p === "bande" || a.p === "barre") && !a.ln);
   $("#r-fqs").hidden = a.p !== "franc-quartier";
   $("#r-ri").hidden = !(a.p === "bande" || a.p === "barre");
   $("#r-cmp").hidden = !(a.p === "bordure" && !a.ln && !a.pf && a.pos !== "sur");

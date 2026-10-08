@@ -90,6 +90,11 @@ function ptsFor(s, m) {
   }
   else pts = (LAYOUT[ctxOf(s)] || {})[s.nb] || [];
   if (s.fqs && s.pos === "sur") pts = pts.map(([x, ...r]) => [200 - x, ...r]);
+  /* une bête allongée sur une bande (barre) la suit : sa tête vers le haut de la pièce (Berne) */
+  if (m.allongee && (ctxOf(s) === "sur-bande" || ctxOf(s) === "sur-barre") && !s.iss) {
+    const r0 = ctxOf(s) === "sur-bande" ? 90 - B : -(90 - B);
+    pts = pts.map(([x, y, sc]) => [x, y, s.nb === "1" ? (s.lrg ? .5 : .38) : sc, r0]);
+  }
   return adjust(pts, s, 1, "");
 }
 const chaPts = s => ptsFor(s, meuble(s.m)).map(([x, y, sc]) => [x + 20 * sc, y - 22 * sc, sc * .5, 0]);      // une figure du second meuble à côté de chacune du premier
@@ -185,7 +190,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2", "lrg"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
@@ -414,7 +419,7 @@ function drawBody(s, u) {
   if (bandeCase) return corps(s, u, defs, field, under, over, !s.p || !MAP ? "" : bandeLocale(s.p, tinctPaint(s.tp), s.ln));
   const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case, la bordure reste unie
   const dress = paint => {
-    let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.pth);
+    let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.lrg ? 145 : s.pth);
     if (p && s.pf) p = filetDe(p, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + p;            // le filet : la pièce cernée d'un liseré de l'émail dit
     if (p && (+s.pdx || +s.pdy)) p = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${p}</g>`;
     if (s.ri && (s.p === "bande" || s.p === "barre")) p += rinceau(s);
