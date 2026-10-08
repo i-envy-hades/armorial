@@ -1383,6 +1383,7 @@
       "image": { "file": "Meuble héraldique couronne antique.svg", "auteur": "Jean-Paul GIBERT", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
     { "kind": "couronne-laurier", "nom": "Couronne de laurier", "en": "laurel wreath", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Héraldique meuble Couronne.svg", "auteur": "Henrysalome", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr", "note": "Meuble héraldique publié sur Wikimedia Commons." } },
+    { "kind": "ecusson", "nom": "Écusson", "en": "inescutcheon", "champ": "Gueules", "charge": "Argent", "cat": "Propres au blason" },
     {
       "kind": "epi", "nom": "Épi", "en": "ear of wheat", "champ": "Azur", "charge": "Or", "cat": "Le règne végétal",
       "image": { "file": "Meuble héraldique Epi.svg", "auteur": "Bruno Vallette", "lic": "CC BY-SA 2.5", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/deed.fr", "note": "Sa page Commons dit « épi de céréales » sans nommer le blé, et la tige y est légèrement inclinée." }

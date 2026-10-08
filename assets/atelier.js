@@ -82,6 +82,7 @@ function syncForm() {
   [...F.elements.pos].forEach(r => { r.closest("label").hidden = !{ sur: canSur, autour: canAut, sous: canSous }[r.value]; });
   $("#r-ta").hidden = !m || !m.accent;
   $("#r-cn").hidden = !m || !m.couronne;
+  $("#r-bro2").hidden = !(m && count2(a) && a.nb2 === "1" && a.nb !== "seme" && !a.p && !a.cc);
   $("#r-cnk").hidden = !m || !m.couronne || !a.cn;
   $("#r-iss").hidden = !m || m.seul || a.nb !== "1" || !!a.p;                                   // « issant » : un seul meuble, sans pièce
   [...F.elements.iss].forEach(r => { if (r.value === "t") r.closest("label").hidden = !(S.q === "p" && CUR < 2); });          // le demi-meuble : seulement dans une moitié du parti

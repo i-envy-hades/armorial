@@ -286,7 +286,7 @@ const facteurMoitie = pts => MAP && MAP.half && pts.length >= 2 && pts.length <=
 const placeAll = (pts, m, id, flip, over = "") => {
   const fx = facteurMoitie(pts);
   return pts.map(([x, y, k, r]) => {
-    const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = MAP ? k * MAP.pk * fx : k;
+    const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = (MAP ? k * MAP.pk * fx : k) * (m.k || 1);
     return `<g transform="translate(${X},${Y})${r ? ` rotate(${r})` : ""} scale(${!flip !== !m.retourne ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
   }).join("");
 };

@@ -1010,6 +1010,8 @@ function chargeInner(kind, fill, stroke, field){
       <rect x="56" y="130" width="88" height="22" rx="7"/></g>`;
 
     /* ---------- corps humain ---------- */
+    /* l'écusson : un petit écu posé dans l'écu ; le meuble d'atelier.json le réduit (k) */
+    case "ecusson": return `<g transform="translate(100,116) scale(.55) translate(-100,-126)"><path d="${SHIELD_D}" fill="${fill}" stroke="${stroke}" stroke-width="2.6" stroke-linejoin="round"/></g>`;
     case "coeur": return `<path d="M100,194 C58,158 38,134 38,106 C38,83 55,66 76,66 C88,66 97,72 100,82 C103,72 112,66 124,66 C145,66 162,83 162,106 C162,134 142,158 100,194 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
   }
   return "";

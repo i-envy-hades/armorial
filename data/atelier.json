@@ -591,7 +591,8 @@
    "plur": "rais d'escarboucle",
    "g": "m",
    "cat": "Propres au blason",
-   "draw": "escarboucle"
+   "draw": "escarboucle",
+   "pluriel": true
   },
   {
    "kind": "flanchis",
@@ -3675,6 +3676,16 @@
    "main": [
     "fill:#fcef3c"
    ]
+  },
+  {
+   "kind": "ecusson",
+   "nom": "Écusson",
+   "sing": "écusson",
+   "plur": "écussons",
+   "g": "m",
+   "cat": "Propres au blason",
+   "draw": "ecusson",
+   "k": 0.55
   }
  ],
  "pieces": [
