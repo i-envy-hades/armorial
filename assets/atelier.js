@@ -423,6 +423,12 @@ function appliqueLecture(etat) {
   render();
 }
 let lireT = 0;
+/* réglages graphiques proposés par une carte (« sz2=60&dy2=-40 ») : taille, décalages et angle du premier ou du second meuble des premières armes */
+function appliqueAjust(aj) {
+  if (!aj) return;
+  for (const [k, v] of new URLSearchParams(aj)) if (/^(sz|dx|dy|an)2?$/.test(k)) S.A[0][k] = v;
+  render();
+}
 function lireLeChamp() {
   clearTimeout(lireT);
   const texte = $("#lire").value, r = lire(texte);
@@ -437,6 +443,7 @@ function lireDepuisAdresse() {
   const r = lire(dem);
   afficheLecture(r, dem);
   if (r.ok) appliqueLecture(r.etat); else render();          // non compris : l'écu ne bouge pas, mais il est dessiné, et l'adresse redevient un lien de partage
+  if (r.ok) appliqueAjust(new URLSearchParams(location.hash.replace(/^#/, "")).get("aj"));
   return true;
 }
 
@@ -485,6 +492,7 @@ function partirDe(c) {
   ORIGINE = { gal: c.gal, slug: c.slug, c };
   $("#lire").value = texteAtelier(c.a);
   lireLeChamp();
+  appliqueAjust(c.a.atelierAjust);
   if (matchMedia("(max-width: 860px)").matches) allerALEcu();                     // sur téléphone, l'écu est au-dessus du formulaire
 }
 /* l'empreinte des armes (sans les ornements ni les réglages graphiques) : sont-ce encore celles de la carte ? */
