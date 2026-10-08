@@ -304,12 +304,15 @@ licence OFL, dont le texte est dans `assets/fonts/`.
 - **Croix sur l'écartelé** (octobre 2026) : un écartelé peut porter une croix sur ses quatre quartiers (émail, bord et forme au choix, droite ou pattée), dite « écartelé par une croix pattée d'argent bordée de gueules » ; les figures des quartiers se resserrent alors (sauf un semé). Carte acceptée : *Frederik X* (Dannebrog, Oldenbourg sur le tout ; le premier quartier est semé de cœurs sans en compter neuf).
 
 
+- **Saint Fridolin, lion couché, casque de Skanderbeg** (octobre 2026) : le *saint Fridolin* est découpé des armes de Glaris (domaine public, nimbe, bâton et livre recolorés d'un émail), le *lion couché* vient de Sodacan (CC BY-SA 3.0) et le *casque de Skanderbeg* d'une variante des armes d'Albanie (CC BY-SA 3.0, auteur non nommé sur Commons). La carte *Glaris* est désormais dessinée avec son saint ; *Karthli* reste une ébauche, avec l'épée et le lion couché.
+
+
 ## Ce qui reste à faire
 
 Reste de la liste de travail de l'Atelier, dans l'ordre où on la reprendrait :
 
 1. **Trente-six ébauches à reprendre** (octobre 2026) : les 167 cartes se lisent désormais, mais 36 le font par une version simplifiée (`atelier` dans `blasons.json` et `personnages.json`), dont la note sous la carte dit ce qui manque. À ajuster à la main dans l'Atelier (cliquer l'écu de la carte) : Grenade, Séville, Irak, Karthli, Hedjaz, Glaris, Schaffhouse, Appenzell Rhodes-Extérieures, Arménie, Croatie, Danemark, Hongrie, Liechtenstein, Suède, Ascanie, Margrethe II, Carafa, Fuchs, Kiszka, Oxenstierna, Thuresdotter, Pierre III, Constantin et Michel Nikolaïevitch, Maria Nikolaïevna, Adolphe-Frédéric, Charles XIII, Georges Ier de Grèce, Georges de Danemark, Gloucester, Albert de Saxe-Cobourg, Léopold Ier, Frédéric V, Charles VII, Louise et René II de Lorraine.
-   - *Figures encore à trouver* : saint Fridolin, branche d'épine, lion couché et âne couché (Karthli), aigle bicéphale tenant sceptre et orbe, casque de Skanderbeg (Albanie), colombe de Chypre dont le blasonnement ne dit pas l'émail.
+   - *Figures encore à trouver* : branche d'épine (Carafa), âne couché (Karthli), aigle bicéphale tenant sceptre et orbe, colombe de Chypre dont le blasonnement ne dit pas l'émail.
    - *Constructions encore absentes* : sceptre et épée de natures différentes passés en sautoir, meubles sur une bordure, barres ondées, parti d'un tranché sur le tout, quartiers à plus de quatre figures, nombre exact de cœurs (neuf) autour de lions, blason à plusieurs écus accolés.
 2. **Calage des couronnes des bêtes** : les ancrages (`couronne: [x, y, largeur]` dans `atelier.json`) ont été relevés à vue puis remontés ; à reprendre bête par bête, en grand : quelques couronnes flottent encore au-dessus de la tête (cheval, loup), celle de la licorne croise la corne, et celles des figures au repos ou aux cornes hautes (cerfs, bélier, bouquetin) sont à ajuster.
 

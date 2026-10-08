@@ -518,6 +518,8 @@
     "cat": "Royaumes",
     "porteur": "monarchie du Bas Moyen Âge et de l'époque moderne dans l'est de la Géorgie",
     "blason": "De gueules à une épée d'argent garnie d'or et un sceptre d'or passés en sautoir, entre un lion couché d'or et un âne couché d'argent, à l'étoile à huit rais de sable en chef",
+    "atelier": "De gueules à l'épée d'argent garnie d'or, accompagnée d'un lion couché d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'épée et le lion couché ; le sceptre en sautoir, l'âne couché et l'étoile à huit rais de sable en chef restent à ajouter.",
     "file": "Coat of arms of the Kingdom of Kartli.png",
     "auteur": "Professor Alexander Mikaberidze",
     "lic": "CC BY-SA 3.0",
@@ -526,9 +528,7 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Kingdom_of_Kartli.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    },
-    "atelier": "De gueules à l'épée d'argent garnie d'or",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : seule l'épée est dessinée ; le sceptre en sautoir, le lion couché, l'âne couché et l'étoile à huit rais de sable en chef restent à ajouter."
+    }
   },
   {
     "nom": "Royaume de Saxe",
@@ -1055,8 +1055,8 @@
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
-    "atelier": "De gueules à la crosse d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : saint Fridolin n'a pas de figure : une crosse tient sa place."
+    "atelier": "De gueules au saint Fridolin d'or",
+    "atelierNote": "Saint Fridolin est dessiné d'après les armes du canton (nimbe, bâton et livre d'or) ; le « au naturel » du blasonnement n'est pas rendu par l'émail."
   },
   {
     "nom": "Canton de Zoug",
