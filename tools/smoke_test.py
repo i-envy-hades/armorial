@@ -11,7 +11,7 @@ Ce que l'on contrôle : aucune erreur dans la console, aucun fichier local manqu
 (« <div, »), toutes les cartes dans leur grille, la recherche, les ancres d'adresse, les frises,
 l'Atelier (blasonnements connus, puis des compositions au hasard qui ne doivent jamais échouer), le lecteur de blasonnement
 (chaque écu que l'Atelier sait écrire doit se relire à l'identique ; ce qui n'est pas compris est refusé, jamais deviné)
-les boutons « Redessiner dans l'Atelier » et les écus cliquables des galeries, « Partir d'un blason réel » dans l'Atelier, les pages S'exercer (chaque question posée est cohérente), Rechercher
+les boutons « Redessiner dans l'Atelier » et les écus cliquables des galeries, « Partir d'un blason réel » dans l'Atelier, les pages S'exercer (chaque question posée est cohérente), L'Écu du jour (une partie gagnée, une partie perdue, le profil), Rechercher
 (chaque lien d'un résultat mène à une ancre qui existe) et La transmission des armes, enfin le téléphone (375 px : rien ne déborde, le menu se replie).
 Code de sortie 1 au premier échec. FUZZ=500 python tools/smoke_test.py pousse l'Atelier plus loin (500 compositions)."""
 import functools, http.server, json, os, pathlib, random, re, sys, threading, unicodedata, urllib.parse
@@ -732,6 +732,96 @@ def test_exercices(browser, base):
         page.context.close()
     verifie(qs[0] == qs[1], "exercices : la première question du défi est la même à chaque visite du jour")
 
+# ------------------------------------------------------------------ L'Écu du jour
+PARTIE_JEU = """async (nom) => { const E = window.EcuDuJour; await E.devine(E.CARTES.find(c => c.nom === nom)); return E.J.essais.length; }"""
+
+def devine_au_clavier(page, nom):
+    """ce que fait un joueur : taper le nom, choisir dans la liste (Entrée), valider (Entrée)"""
+    page.fill("#jeu-nom", nom)
+    page.wait_for_selector("#jeu-liste li", state="visible", timeout=3000)
+    page.keyboard.press("Enter"); page.keyboard.press("Enter")
+
+def test_jeu(browser, base):
+    cal = data("jeu.json")
+    page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+    page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    E = page.evaluate("({ n: EcuDuJour.N, pool: EcuDuJour.CARTES.length, cible: EcuDuJour.cible.nom, noms: EcuDuJour.CARTES.map(c => c.nom) })")
+    verifie(E["pool"] >= 100, f"jeu : plus de cent armes proposables (le lecteur en relit {E['pool']})")
+    verifie(all(n in E["noms"] for n in cal["ordre"]), "jeu : chaque arme du calendrier est une carte que le lecteur relit en entier")
+    verifie(page.locator("#jeu-palette .em").count() == 9, "jeu : la palette montre les neuf émaux")
+    verifie(page.locator("#jeu-ecu > svg").count() == 1 and page.locator(".essai").count() == 0, "jeu : l'écu mystère est dessiné, aucun essai pour l'instant")
+    # les traits lus : fleurs de lis d'azur d'or, trois, sur un champ plein
+    tr = page.evaluate("(() => { const c = EcuDuJour.CARTES.find(x => x.nom === 'Royaume de France (moderne)'); return EcuDuJour.traits(c); })()")
+    verifie(tr["emaux"] == ["Or", "Azur"] and tr["compo"] == "Plein" and tr["meubles"] == ["fleurdelis"] and tr["nombre"] == 3 and tr["pieces"] == [], f"jeu : la France moderne se lit « azur, or, plein, trois fleurs de lis » ({tr})")
+    memes = page.evaluate("(() => { const c = EcuDuJour.CARTES[0]; const m = EcuDuJour.compare(c.t, c.t); return Object.values(m).every(x => x.cls === 'ok'); })()")
+    verifie(memes, "jeu : des armes comparées à elles-mêmes sont identiques partout")
+    # un essai perdant, au clavier
+    perdante = page.evaluate("EcuDuJour.CARTES.find(c => c.canon !== EcuDuJour.cible.canon && c.t.emaux.some(e => EcuDuJour.cible.t.emaux.includes(e)) && c.t.emaux.some(e => !EcuDuJour.cible.t.emaux.includes(e))).nom")
+    devine_au_clavier(page, perdante[:6].lower())
+    page.wait_for_selector(".essai .case", timeout=8000); page.wait_for_timeout(500)
+    verifie(page.locator(".essai").count() == 1 and page.locator(".essai .case").count() == 6, "jeu : une réponse ajoute une ligne de six cases")
+    attendu = page.evaluate("(() => { const c = EcuDuJour.J.essais[0], m = EcuDuJour.cible.t.emaux; return [c.t.emaux.filter(e => m.includes(e)).length, c.t.emaux.filter(e => !m.includes(e)).length]; })()")
+    verifie([page.locator(".em.oui").count(), page.locator(".em.non").count()] == attendu, f"jeu : la palette allume les émaux trouvés et barre les absents ({attendu})")
+    verifie("essai 2 sur 6" in page.text_content("#jeu-essais").lower(), "jeu : le compteur d'essais avance")
+    verifie(page.locator("#jeu-liste li").count() == 0 or not page.locator("#jeu-liste").is_visible(), "jeu : la liste de propositions se referme après la réponse")
+    # la même armes ne se propose pas deux fois
+    page.fill("#jeu-nom", perdante[:6].lower()); page.wait_for_timeout(150)
+    verifie(perdante not in page.inner_text("#jeu-liste"), "jeu : une arme déjà proposée disparaît de la liste")
+    page.fill("#jeu-nom", "")
+    # la partie se reprend après un rechargement
+    page.reload(); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000); page.wait_for_selector(".essai .case", timeout=8000)
+    verifie(page.locator(".essai").count() == 1 and page.locator(".em.oui").count() == attendu[0], "jeu : après un rechargement, la partie reprend où elle s'était arrêtée")
+    # un nom qui n'existe pas n'est pas un essai
+    page.fill("#jeu-nom", "zzzzqq"); page.keyboard.press("Enter"); page.wait_for_timeout(200)
+    verifie(page.locator(".essai").count() == 1 and "Aucune arme" in page.inner_text("#jeu-aide-saisie"), "jeu : un nom inconnu n'est pas un essai, et la page le dit")
+    # la victoire : résultat, partage, statistiques
+    devine_au_clavier(page, E["cible"])
+    page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
+    verifie("Ces armes sont celles de" in page.inner_text("#jeu-resultat") and E["cible"] in page.inner_text("#jeu-resultat"), "jeu : la victoire donne le nom des armes")
+    verifie(page.locator("#jeu-resultat img").count() == 1 and "Wikimedia Commons" in page.inner_text(".res-credit"), "jeu : l'image réelle est montrée avec son crédit")
+    verifie(not page.locator("#jeu-saisie").is_visible(), "jeu : la saisie disparaît une fois la partie finie")
+    partage = page.evaluate("EcuDuJour.texteDePartage()")
+    verifie(partage.startswith(f"L'Écu du jour n° {E['n']} — 2/6") and partage.count("\n") == 3 and "🟩🟩🟩🟩🟩🟩" in partage, f"jeu : le texte de partage porte le numéro, le score et une ligne par essai ({partage!r})")
+    st = page.evaluate("Compte.carnet('ecu').stats")
+    verifie(st["joues"] == 1 and st["gagnes"] == 1 and st["serie"] == 1 and st["rep"][1] == 1, f"jeu : les statistiques comptent la victoire en deux essais ({st})")
+    page.reload(); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=20000)
+    st = page.evaluate("Compte.carnet('ecu').stats")
+    verifie(st["joues"] == 1, "jeu : recharger une partie finie ne la recompte pas")
+    # le profil : créer, règle des émaux, sauvegarde
+    page.click("#jeu-pf"); page.wait_for_selector("dialog.cpt[open]")
+    page.wait_for_selector("#cpt-ecu svg", timeout=5000)
+    page.click("label.cpt-sw:has(input[name=champ][value=Argent])")
+    tms = page.evaluate("[...document.querySelectorAll('input[name=tm]')].map(i => i.value)")
+    verifie("Or" not in tms and "Argent" not in tms and len(tms) == 5, f"jeu/profil : sur un champ d'argent, seules les couleurs sont proposées ({tms})")
+    page.fill("#cpt-pseudo", "<b>X</b>"); page.click("#cpt-form button.main")
+    verifie(page.locator("#cpt-err").is_visible() and page.evaluate("Compte.profil()") is None, "jeu/profil : un pseudo avec des chevrons est refusé")
+    page.fill("#cpt-pseudo", "Héraut Test"); page.click("#cpt-form button.main")
+    page.wait_for_selector("dialog.cpt:not([open])", state="attached")
+    pf = page.evaluate("Compte.profil()")
+    verifie(pf and pf["pseudo"] == "Héraut Test" and pf["armes"]["champ"] == "Argent" and "Héraut Test" in page.inner_text("#jeu-profil"), "jeu/profil : le profil est créé et affiché dans le carnet")
+    code = page.evaluate("Compte.exporter()")
+    page.evaluate("localStorage.clear()")
+    verifie(page.evaluate("(c) => Compte.importer(c)", code) and page.evaluate("Compte.carnet('ecu').stats.gagnes") == 1 and not page.evaluate("Compte.importer('pas un code')"), "jeu/profil : le code de sauvegarde rend le profil et les scores ; un code illisible est refusé")
+    propre("jeu", page, erreurs)
+    page.context.close()
+    # la défaite : six mauvaises réponses, la série retombe, les armes sont révélées
+    page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+    page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    page.evaluate("""async () => { const E = EcuDuJour; for (const c of E.CARTES.filter(c => c.canon !== E.cible.canon).slice(0, 6)) await E.devine(c); }""")
+    page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
+    verifie("Perdu" in page.inner_text("#jeu-resultat h2") and f"C'étaient les armes de {E['cible']}" in page.inner_text("#jeu-resultat"), "jeu : après six essais manqués, la partie est perdue et les armes sont révélées")
+    st = page.evaluate("Compte.carnet('ecu').stats")
+    verifie(st["joues"] == 1 and st["gagnes"] == 0 and st["serie"] == 0, f"jeu : la défaite compte une partie, aucune victoire, pas de série ({st})")
+    verifie(page.evaluate("EcuDuJour.texteDePartage()").startswith(f"L'Écu du jour n° {E['n']} — X/6"), "jeu : le partage d'une défaite porte « X/6 »")
+    propre("jeu (défaite)", page, erreurs)
+    page.context.close()
+    # l'écu du jour est le même pour tous : deux visiteurs, les mêmes armes
+    cibles = []
+    for _ in range(2):
+        page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+        cibles.append(page.evaluate("EcuDuJour.cible.nom")); page.context.close()
+    verifie(cibles[0] == cibles[1], "jeu : deux visiteurs ont les mêmes armes mystères le même jour")
+
 # ------------------------------------------------------------------ Rechercher
 def test_recherche(browser, base):
     page, erreurs = ouvre(browser, base, "recherche.html#q=lambel", ".r")
@@ -807,6 +897,7 @@ def main():
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
+                       ("jeu", lambda: test_jeu(browser, base)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),
                        ("transmission", lambda: test_transmission(browser, base)),
