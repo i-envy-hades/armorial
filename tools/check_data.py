@@ -186,6 +186,19 @@ else:
         if n_.get("apport") and n_.get("parent"): err(f"transmission.json: « {n_['id']} » est une maison en apport : elle ne peut pas avoir de parent")
         if n_.get("apport") and not any(l_.get("de") == n_["id"] for l_ in liens_): err(f"transmission.json: la maison en apport « {n_['id']} » ne donne ses armes à personne")
 
+# --------- 3 septies. le jeu du jour (data/jeu.json) : une date de départ valide, des cartes qui existent, aucune en double
+jeu_ = DATA.get("jeu.json")
+if jeu_ is None or not isinstance(jeu_.get("ordre"), list) or not jeu_["ordre"]: err("data/jeu.json: absent ou sans « ordre »")
+else:
+    import datetime
+    try: datetime.date.fromisoformat(jeu_.get("debut", ""))
+    except ValueError: err("jeu.json: « debut » n'est pas une date AAAA-MM-JJ")
+    if not isinstance(jeu_.get("essais", 6), int) or not 1 <= jeu_.get("essais", 6) <= 12: err("jeu.json: « essais » doit être un entier de 1 à 12")
+    noms_ = {a_.get("nom") for f_ in ("blasons.json", "personnages.json") for a_ in DATA.get(f_, []) if a_.get("blason") and a_.get("file")}
+    for n_ in jeu_["ordre"]:
+        if n_ not in noms_: err(f"jeu.json: « {n_} » n'est pas une carte de Blasons réels ou de Personnages (avec blasonnement et image)")
+    if len(jeu_["ordre"]) != len(set(jeu_["ordre"])): err("jeu.json: des armes reviennent deux fois dans « ordre »")
+
 # ------------------------------------------------------- 4. moteur de rendu
 JS = (ROOT / "assets" / "blason.js").read_text(encoding="utf-8")
 def cases(fn):

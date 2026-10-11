@@ -24,6 +24,7 @@ function termeId(terme, glossaire) {
     ["lignees", "lignees.html", "Lignées"],
     ["atelier", "atelier.html", "Atelier"],
     ["transmission", "transmission.html", "Transmission"],
+    ["jeu", "jeu.html", "Jouer"],
     ["exercices", "exercices.html", "S'exercer"],
     ["recherche", "recherche.html", "Rechercher"],
   ];

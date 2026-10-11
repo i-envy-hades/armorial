@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — L'Écu du jour</title>
+<meta name="description" content="Le jeu du jour de l'Armorial : des armoiries mystères, six essais. À chaque réponse, les émaux, la partition, la pièce et les meubles qu'elles ont en commun avec l'écu caché se révèlent. Un écu par jour, le même pour tous.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://i-envy-hades.github.io/armorial/jeu.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — L'Écu du jour">
+<meta property="og:description" content="Un écu mystère par jour, six essais : les émaux, les pièces et les meubles en commun se révèlent à chaque réponse.">
+<meta property="og:url" content="https://i-envy-hades.github.io/armorial/jeu.html">
+<meta property="og:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-envy-hades.github.io/armorial/assets/og.jpg">
+<!--
+  L'ARMORIAL — page « L'Écu du jour » : le jeu du jour, et d'autres jeux sur le côté.
+  Fichiers : assets/jeu.js (le jeu : le tirage du jour, la comparaison des armes, les scores), assets/jeu.css ;
+  assets/compte.js (le profil du joueur et son carnet de scores, gardés dans le navigateur) ;
+  assets/enligne.js (les comptes en ligne, Firebase : inactif tant que data/compte.json est vide) ;
+  data/jeu.json (l'ordre des armes mystères, une par jour) ; les armes viennent de data/blasons.json et data/personnages.json ;
+  le dessin des armes mystères et des réponses est celui du moteur de l'Atelier (assets/dessin.js), après lecture du blasonnement
+  (assets/lecture.js) : une carte que le lecteur ne relit pas n'entre pas dans le jeu.
+  Seule l'image de la réponse, montrée à la fin, vient de Wikimedia Commons : son crédit s'affiche dessous.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+<link rel="stylesheet" href="assets/jeu.css">
+</head>
+<body class="epic2 jeu">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="jeu"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/tournoi-ecus.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Un écu par jour</p>
+  <h1>L'Écu du jour</h1>
+  <p>Des armes mystères, six essais. Chaque réponse fait apparaître en couleur ce qu'elle a de commun avec l'écu caché.</p>
+  </div>
+</section>
+
+<main class="jeu-main" id="jeu">
+  <noscript><p class="nojs">Le jeu se construit avec JavaScript : activez-le pour jouer.</p></noscript>
+  <p class="jeu-chargement" id="jeu-chargement" role="status">Les écus se préparent…</p>
+
+  <div class="jeu-grille" id="jeu-grille" hidden>
+    <section class="jeu-jeu" aria-labelledby="jeu-jour">
+      <div class="jeu-barre">
+        <h2 id="jeu-jour" class="jeu-jour"></h2>
+        <span class="jeu-essais" id="jeu-essais" aria-live="polite"></span>
+      </div>
+
+      <details class="jeu-regles" id="jeu-regles">
+        <summary>Comment jouer ?</summary>
+        <div class="jeu-regles-in">
+          <p>Un écu est caché : <b>trouvez à qui sont ces armes</b> en six essais. Tapez le nom d'un État, d'une province, d'une maison ou d'un personnage de la liste.</p>
+          <p>Chaque réponse montre ses armes et les compare à l'écu mystère, case par case :</p>
+          <ul class="jeu-legende">
+            <li><span class="t ok">✓</span> identique</li>
+            <li><span class="t mid">≈</span> proche : un émail ou un meuble en commun, ou de la même famille</li>
+            <li><span class="t no">✗</span> différent</li>
+          </ul>
+          <p>Les <b>émaux</b> (les couleurs de l'héraldique) trouvés s'allument sur l'écu mystère : tant qu'un émail n'est pas découvert, il reste gris. Le dessin se précise à chaque essai. Besoin d'un coup de main ? L'encyclopédie, à côté, est faite pour ça.</p>
+        </div>
+      </details>
+
+      <div class="jeu-scene">
+        <figure class="jeu-mystere" id="jeu-mystere">
+          <div class="jeu-ecu" id="jeu-ecu" role="img" aria-label="Les armes mystères"></div>
+          <figcaption id="jeu-leg">Armes mystères</figcaption>
+        </figure>
+        <div class="jeu-emaux" aria-labelledby="jeu-emaux-t">
+          <p class="jeu-emaux-t" id="jeu-emaux-t">Émaux</p>
+          <p class="jeu-nb" id="jeu-nb"></p>
+          <ul class="jeu-palette" id="jeu-palette"></ul>
+        </div>
+      </div>
+
+      <form class="jeu-saisie" id="jeu-saisie" autocomplete="off" novalidate>
+        <label for="jeu-nom" class="sr">Nom des armes à proposer</label>
+        <div class="jeu-champ">
+          <input id="jeu-nom" type="text" role="combobox" aria-expanded="false" aria-controls="jeu-liste" aria-autocomplete="list" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Un État, une province, une maison…">
+          <ul id="jeu-liste" class="jeu-liste" role="listbox" aria-label="Armes proposées" hidden></ul>
+        </div>
+        <button type="submit" class="main" id="jeu-ok">Deviner</button>
+      </form>
+      <p class="jeu-aide-saisie" id="jeu-aide-saisie"></p>
+
+      <ol class="jeu-essais-liste" id="jeu-liste-essais" aria-label="Vos essais"></ol>
+      <section class="jeu-resultat" id="jeu-resultat" tabindex="-1" hidden></section>
+      <p class="sr" id="jeu-annonce" role="status" aria-live="polite"></p>
+    </section>
+
+    <aside class="jeu-cote" aria-label="Autour du jeu">
+      <section class="jeu-carte" id="jeu-profil" aria-labelledby="jeu-profil-t"></section>
+      <section class="jeu-carte" id="jeu-classement" aria-labelledby="jeu-classement-t" hidden></section>
+      <section class="jeu-carte" aria-labelledby="jeu-autres-t">
+        <h2 id="jeu-autres-t">D'autres jeux</h2>
+        <ul class="jeu-autres" id="jeu-autres"></ul>
+      </section>
+      <section class="jeu-carte jeu-aide" aria-labelledby="jeu-aide-t">
+        <h2 id="jeu-aide-t">L'Armorial vous aide</h2>
+        <p>Toutes les armes du jeu sont dans <a href="blasons.html">Blasons réels</a> et <a href="personnages.html">Personnages</a>. Les mots, dans l'encyclopédie :</p>
+        <ul>
+          <li><a href="index.html#emaux">Les émaux</a> : or, argent, gueules, azur…</li>
+          <li><a href="index.html#partitions">Les partitions</a> : parti, coupé, écartelé, fascé…</li>
+          <li><a href="index.html#pieces">Les pièces</a> : chef, fasce, croix, bande…</li>
+          <li><a href="index.html#meubles">Les meubles</a> : lion, aigle, fleur de lis…</li>
+          <li><a href="index.html#glossaire">Le glossaire</a> de plus de 350 termes</li>
+          <li><a href="atelier.html">L'Atelier</a> : dessiner ses propres armes</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer data-img="assets/epopee/tournoi-ecus.jpg"><div class="foot">
+  <p><b>L'Armorial</b> — page « L'Écu du jour ». Les armes mystères et les réponses sont dessinées par le moteur de l'Atelier, d'après le blasonnement des cartes de Blasons réels et de Personnages ; l'image réelle montrée à la fin vient de Wikimedia Commons, créditée sous la réponse. Par défaut rien n'est envoyé nulle part : vos essais, vos scores et votre profil sont gardés dans ce navigateur. Si vous créez un compte en ligne (facultatif), votre e-mail, votre pseudo, vos armes de joueur et vos scores sont conservés par Firebase (Google), et vous pouvez supprimer ce compte à tout moment depuis votre profil. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p class="fine">Décor du bandeau et de ce pied de page : image d'ambiance générée par IA (Higgsfield), sans écu réel. Un tournoi imaginé, pas un document historique.</p>
+</div></footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/jeu.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+rules_version = '2';
+
+// L'ARMORIAL — règles de la base Firestore (comptes en ligne).
+//
+// À coller TELLES QUELLES dans Firebase : Build → Firestore Database → onglet « Rules » → tout remplacer → « Publish ».
+// Pas à pas : tools/firebase/SETUP.md.
+//
+// Principe : la clé web que le site embarque ne donne accès qu'à ce que ces règles autorisent. Chacun ne peut écrire que ses propres
+// documents ; pseudo, armes et résultats sont publics (c'est le classement) ; le carnet de chacun est privé ; l'e-mail reste dans
+// Firebase Authentication, que ces documents ne montrent jamais.
+//
+//   profils/{uid}                   le profil public (pseudo, armes, résumé pour le classement général)
+//   profils/{uid}/carnets/{jeu}     le carnet d'un jeu (JSON) : privé
+//   pseudos/{pseudo en minuscules}  un document par pseudo, créé une seule fois : c'est ce qui rend les pseudos uniques
+//   scores/{uid}_{jeu}_{jour}       le résultat d'une partie : public, créé une fois, jamais modifié
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function connecte() { return request.auth != null; }
+    // 2 à 24 caractères : lettres, chiffres, espace, « _ », « . », « - » ; commence par une lettre ou un chiffre
+    function pseudoValide(p) { return p is string && p.matches('^[\\pL\\pN][\\pL\\pN _.\\-]{1,23}$'); }
+    function armesValides(a) {
+      return a is map && a.keys().hasAll(['champ', 'meuble', 'tm']) && a.keys().size() == 3
+        && a.champ is string && a.meuble is string && a.tm is string
+        && a.champ.size() < 12 && a.meuble.size() < 16 && a.tm.size() < 12;
+    }
+
+    match /profils/{uid} {
+      allow read: if true;
+      allow create, update: if connecte() && request.auth.uid == uid
+        && pseudoValide(request.resource.data.pseudo)
+        && armesValides(request.resource.data.armes)
+        && request.resource.data.cree is string
+        && request.resource.data.keys().size() < 40
+        // le pseudo du profil doit être un pseudo réservé par son propriétaire, dans la même écriture ou avant
+        && getAfter(/databases/$(database)/documents/pseudos/$(request.resource.data.pseudo.lower())).data.uid == uid;
+      allow delete: if connecte() && request.auth.uid == uid;
+
+      match /carnets/{jeu} {
+        allow read, delete: if connecte() && request.auth.uid == uid;
+        allow create, update: if connecte() && request.auth.uid == uid
+          && jeu.matches('^[a-z0-9_-]{1,32}$')
+          && request.resource.data.donnees is string && request.resource.data.donnees.size() < 50000;
+      }
+    }
+
+    match /pseudos/{id} {
+      allow get: if true;                      // « ce pseudo est-il libre ? » ; pas de liste
+      allow create: if connecte() && request.resource.data.uid == request.auth.uid
+        && pseudoValide(request.resource.data.pseudo)
+        && id == request.resource.data.pseudo.lower();
+      allow delete: if connecte() && resource.data.uid == request.auth.uid;
+    }
+
+    match /scores/{id} {
+      allow read: if true;
+      allow create: if connecte() && request.resource.data.uid == request.auth.uid
+        && request.resource.data.jeu is string && request.resource.data.jeu.matches('^[a-z0-9_]{1,32}$')
+        && request.resource.data.jour is int && request.resource.data.jour >= 1 && request.resource.data.jour <= 100000
+        && request.resource.data.essais is int && request.resource.data.essais >= 1 && request.resource.data.essais <= 12
+        && request.resource.data.gagne is bool && request.resource.data.cree is timestamp
+        && id == request.auth.uid + '_' + request.resource.data.jeu + '_' + string(request.resource.data.jour)
+        && (request.resource.data.gagne
+              ? request.resource.data.vic == request.resource.data.jeu + '|' + string(request.resource.data.jour)
+              : !('vic' in request.resource.data));
+      allow delete: if connecte() && resource.data.uid == request.auth.uid;      // effacer son compte efface ses résultats
+    }
+  }
+}
