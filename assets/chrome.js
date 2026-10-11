@@ -7,6 +7,10 @@
      <script src="assets/chrome.js"></script>
    data-page est l'identifiant de la page dans PAGES ; l'en-tête garde ce qui lui est propre
    (la recherche, pour l'encyclopédie). Le pied de page reçoit le sceau en tête, ses textes restent à la page. */
+/* L'ancienne adresse (GitHub Pages, i-envy-hades.github.io/armorial/) renvoie vers le site actuel, en gardant la page, la recherche et l'ancre.
+   Le dépôt est servi aux deux endroits : cette ligne ne fait rien sur le site actuel. */
+if (location.hostname === "i-envy-hades.github.io") location.replace("https://armorial.web.app" + location.pathname.replace(/^\/armorial(\/|$)/, "/") + location.search + location.hash);
+
 /* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),
    celui qui porte l'accent le garde dans son adresse (« terme-bandé ») : sans cela les deux auraient la même. */
 function termeId(terme, glossaire) {

@@ -390,7 +390,7 @@
     el.suite.hidden = true; el.fb.className = "ex-fb"; el.fb.innerHTML = "";
     const marques = J.marques.map(b => (b ? "🟩" : "🟥")).join(""), ok = J.ok;
     MEM.defi = { date: J.defi.cle, marques: J.marques.map(b => (b ? 1 : 0)).join("") }; sauve();
-    const texte = `L'Armorial · S'exercer — défi du ${J.defi.txt}\n${marques}  ${ok}/${DEFI.length}\nhttps://i-envy-hades.github.io/armorial/exercices.html#defi`;
+    const texte = `L'Armorial · S'exercer — défi du ${J.defi.txt}\n${marques}  ${ok}/${DEFI.length}\nhttps://armorial.web.app/exercices.html#defi`;
     const mot = ok === DEFI.length ? "Sans faute : un héraut n'aurait pas mieux lu." : ok >= 4 ? "Une belle lecture." : ok >= 2 ? "Le blason s'apprend : voyez les chapitres cités dans les réponses." : "Le début d'un long apprentissage — revenez demain.";
     el.q.innerHTML = `<div class="ex-final"><p class="ex-ask">Défi du ${esc(J.defi.txt)}</p><p class="ex-grille" aria-label="${ok} bonnes réponses sur ${DEFI.length}">${marques}</p><p class="ex-note-final"><b>${ok}</b> sur ${DEFI.length}. ${mot}</p>
       <div class="acts"><button type="button" class="main" id="ex-copie">Copier le résultat</button><button type="button" id="ex-menu-b">Autres exercices</button></div><p class="ex-aide">Demain, six autres questions. Le résultat est gardé dans ce navigateur, nulle part ailleurs.</p></div>`;

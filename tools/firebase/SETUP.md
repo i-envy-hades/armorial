@@ -44,7 +44,8 @@ to `data/compte.json` (step 6). Without the index everything still works, just w
 
 **Key restriction** — so nobody can reuse your key on another site: <https://console.cloud.google.com/apis/credentials>
 (same Google login, same project) → open the key named *Browser key* (auto created by Firebase) → *Application restrictions* →
-**Websites** → add `https://i-envy-hades.github.io/*` (and `http://localhost:*` if you test locally) → **Save**.
+**Websites** → add `https://armorial.web.app/*`, `https://armorial-175d5.web.app/*` and `http://localhost:*` (local tests) → **Save**.
+(Add `https://i-envy-hades.github.io/*` too only while the old GitHub address is still in use; it now redirects to `armorial.web.app`.)
 
 ## 6. Put the values in the site
 

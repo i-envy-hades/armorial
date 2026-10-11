@@ -308,7 +308,7 @@
   const imageDe = a => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(a.file)}?width=420`;
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
-    return `L'Écu du jour n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://i-envy-hades.github.io/armorial/jeu.html`;
+    return `L'Écu du jour n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/jeu.html`;
   }
   let minuteur = 0;
   async function montreResultat() {

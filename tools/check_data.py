@@ -346,7 +346,7 @@ for p in pages:
 plan = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
 for p_ in pages:
     if p_.name == "404.html": continue                        # la page d'erreur n'est ni au plan du site ni au menu
-    cible = "armorial/" if p_.name == "index.html" else f"armorial/{p_.name}"
+    cible = "web.app/" if p_.name == "index.html" else f"web.app/{p_.name}"
     if f"{cible}</loc>" not in plan: err(f"sitemap.xml: la page « {p_.name} » n'y figure pas")
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
 menu = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)"', chrome)
