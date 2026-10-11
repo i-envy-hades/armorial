@@ -4,7 +4,7 @@ Encyclopédie ouverte de l'héraldique : la grammaire du blason, les émaux, les
 meubles, illustrés de figures SVG et sourcés un à un — avec, autour, des armoiries réelles, des frises
 de lignées et un atelier pour composer les siennes.
 
-**En ligne : <https://i-envy-hades.github.io/armorial/>**
+**En ligne : <https://armorial.web.app/>**
 
 Aucun framework, aucune étape de compilation : des pages HTML, des scripts, des fichiers de données JSON.
 Pour modifier le contenu, on modifie un fichier JSON et on publie.
@@ -46,6 +46,21 @@ python3 -m http.server 8000
 ```
 
 Ouvrir `index.html` par double-clic affiche un message d'erreur, pas la page.
+
+## Publier
+
+Le site est servi par **Firebase Hosting** (projet `armorial-175d5`, site `armorial` : <https://armorial.web.app/>), offre gratuite Spark.
+`firebase.json` dit quoi publier (tout le dépôt sauf `tools/`, les fichiers cachés et le README) et quels délais de cache poser.
+
+```sh
+firebase deploy --only hosting      # depuis la racine du dépôt, une fois connecté (firebase login)
+```
+
+Le CLI Firebase demande Node.js ; il n'est pas dans le dépôt. Sur la machine du curateur, il est dans `~/.local/share/armorial-node/`
+(`~/.local/share/armorial-node/firebase deploy --only hosting`). Sur une autre machine : installer Node.js, puis `npm install -g firebase-tools`.
+Quotas gratuits : 10 Go stockés, environ 360 Mo de transfert par jour — les vidéos de `assets/epopee/` sont le plus gros poste.
+L'ancienne adresse GitHub Pages (`i-envy-hades.github.io/armorial/`) redirige vers le site actuel (première ligne de `assets/chrome.js`).
+Après un changement de domaine : mettre à jour les adresses canoniques (`<link rel="canonical">`, `og:url`, `sitemap.xml`, `robots.txt`) et les « Sites web » autorisés de la clé web (`tools/firebase/SETUP.md`, étape 5).
 
 ## Organisation du dépôt
 
