@@ -858,7 +858,9 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Wettin"
     },
     "atelier": "Écartelé : aux 1 et 4, de gueules à trois léopards d'or, armés et lampassés d'azur ; au 2, d'or au lion de gueules ; au 3, d'azur à la harpe d'or ; sur le tout, d'or semé de cœurs de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : le double trescheur d'Écosse manque ; le sur-le-tout tiercé en pairle renversé (Brunswick…) est réduit à un semé de cœurs."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le double trescheur d'Écosse manque ; le sur-le-tout tiercé en pairle renversé (Brunswick…) est réduit à un semé de cœurs.",
+    "aRefaire": "le retirer de l'atelier trop compliqué",
+    "sansAtelier": true
   },
   {
     "nom": "Léopold II de Belgique",
@@ -929,7 +931,7 @@
   {
     "nom": "Frédéric V du Palatinat",
     "meta": "1596–1632 · électeur palatin, roi de Bohême (1619–1620)",
-    "blason": "Parti d'un, coupé de deux : au 1, de gueules au lion d'argent à la queue fourchée passée en sautoir, couronné, armé et lampassé d'or (Bohême) ; au 2, d'azur à l'aigle échiquetée d'argent et de gueules, couronnée d'or (Moravie) ; au 3, d'or à l'aigle de sable portant sur son cœur un croissant d'argent surmonté d'une croix de même (Silésie) ; au 4, burelé d'argent et d'azur de dix pièces, au lion de gueules à la queue fourchée, couronné d'or (Luxembourg) ; au 5, coupé crénelé d'azur et d'or (Haute-Lusace) ; la page donne d'autres quartiers",
+    "blason": "Écartelé : aux 1 et 4, de sable au lion d'or couronné de gueules ; aux 2 et 3, fuselé en bande d'argent et d'azur ; sur le tout de gueules à l'orbe crucifère d'or",
     "desc": "Un parti de Bohême, de Moravie, de Silésie, de Luxembourg et de Haute-Lusace : l'écu d'un règne d'un hiver, après lequel son titre d'électeur passe au duc de Bavière.",
     "file": "Coat of arms Frederick V, Elector Palatine, King of Bohemia.png",
     "auteur": "Rs-nourse",
@@ -945,9 +947,7 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
-    },
-    "atelier": "Écartelé : au 1, de gueules au lion d'argent à la queue fourchée et passée en sautoir, couronné, armé et lampassé d'or ; au 2, d'azur à l'aigle échiquetée d'argent et de gueules ; au 3, d'or à l'aigle de sable becquée, membrée et couronnée d'or ; au 4, fascé d'argent et d'azur de dix pièces, au lion de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : écartelé au lieu de « parti d'un, coupé de deux » ; l'aigle de Silésie est sans son croissant ni sa croix ; le lion du quartier 4 est sans sa queue fourchée."
+    }
   },
   {
     "nom": "Charles VII de Bavière",

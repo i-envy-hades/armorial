@@ -128,8 +128,13 @@ async function chargerLecteur() {
    rien n'est écrit en dur : quand le lecteur apprend un mot, les cartes qu'il relit de plus s'ouvrent d'elles-mêmes dans l'Atelier */
 /* ce que l'Atelier lit d'une carte : son blasonnement, ou, si l'image montre autre chose que la source, le champ « atelier » (ce que dit l'image) */
 const texteAtelier = a => a.atelier || a.blason;
+/* ce que le lecteur fait d'une carte : sa lecture, sauf si la carte porte « sansAtelier: true » (le curateur l'a retirée de l'Atelier) :
+   elle est alors donnée pour non lue, sans la ligne « l'Atelier bute sur… » ; elle sort aussi du jeu du jour (assets/jeu.js) */
+function lireCarte(a) {
+  return a.sansAtelier ? { ok: false, sans: true, erreurs: [], notes: [], etat: null } : lire(texteAtelier(a));
+}
 function lectures(liste) {
-  try { return new Map(liste.filter(a => a.blason).map(a => [a, lire(texteAtelier(a))])); } catch (e) { return new Map(); }
+  try { return new Map(liste.filter(a => a.blason).map(a => [a, lireCarte(a)])); } catch (e) { return new Map(); }
 }
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
@@ -139,6 +144,7 @@ const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a
 const ecuCarte = (a, galerie, img) => `<div class="shield" title="Agrandir l'image">${img}</div>`;
 /* sous un blasonnement que l'Atelier ne relit pas : où il bute, et de quoi ouvrir quand même le texte dans l'Atelier, où il est surligné */
 function buteAtelier(a, r, galerie) {
+  if (r && r.sans) return "";
   const e = r && r.erreurs[0];
   let mot = e ? texteAtelier(a).slice(e.de, e.a).replace(/\s+/g, " ").replace(/^[\s,;:]+/, "").trim() : "";
   if (mot.length > 30) mot = mot.slice(0, 28).trim() + "…";

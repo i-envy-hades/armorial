@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Console des blasons — outil</title>
+<!--
+  CONSOLE DES BLASONS — outil du curateur (pas une page du site : tools/ n'est pas publié).
+  Se lance avec : python3 tools/editeur.py   puis   http://127.0.0.1:8140/tools/editeur.html
+  Pour chaque carte de la liste : l'image de Commons à côté du dessin de l'Atelier, le blasonnement que l'Atelier lit (modifiable, relu en direct),
+  les réglages de taille et de position, le retrait de l'Atelier, une note « à refaire ». « Enregistrer » écrit dans data/blasons.json ou
+  data/personnages.json par tools/editeur.py ; rien n'est commité.
+-->
+<style>
+  :root { --papier: #f4ecd8; --encre: #2a2418; --filet: #cdbf98; --or: #8a6d1d; --rouge: #a3321a; --vert: #2f6b2f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 Georgia, serif; background: var(--papier); color: var(--encre); }
+  header { position: sticky; top: 0; z-index: 5; background: #e8dcc0; padding: 8px 14px; border-bottom: 1px solid #b9a678; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  header b { font-size: 16px; }
+  #app { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: calc(100vh - 46px); }
+  @media (max-width: 860px) { #app { grid-template-columns: minmax(0, 1fr); } #liste { max-height: 40vh; } }
+  #liste { border-right: 1px solid var(--filet); overflow: auto; padding: 8px; background: #efe6cc; }
+  #liste button { display: flex; width: 100%; align-items: center; gap: 8px; text-align: left; font: inherit; background: none; border: 1px solid transparent; border-radius: 4px; padding: 5px 7px; cursor: pointer; }
+  #liste button:hover { background: #f8f1de; }
+  #liste button.cur { background: #fbf6e8; border-color: var(--filet); font-weight: 600; }
+  #liste .pt { flex: none; width: 10px; height: 10px; border-radius: 50%; background: #c9bd9a; }
+  #liste .pt.modif { background: #e07a1f; }
+  #liste .pt.fait { background: var(--vert); }
+  #liste .st { margin-left: auto; font: 12px monospace; color: #6b5d3a; white-space: nowrap; }
+  #liste .nom { min-width: 0; overflow-wrap: anywhere; }
+  main { padding: 14px 18px 40px; min-width: 0; }
+  h2 { margin: 0 0 2px; font-size: 22px; font-weight: 400; }
+  h2 small { font-size: 13px; color: #6b5d3a; margin-left: 8px; }
+  .bandeau { margin: 8px 0; padding: 8px 12px; border-left: 4px solid var(--rouge); background: #f7e2d6; }
+  .bandeau.sans { border-color: #6b5d3a; background: #e6dfc9; }
+  .comp { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 12px 0; }
+  figure { margin: 0; background: #fbf6e8; border: 1px solid var(--filet); padding: 10px; text-align: center; position: relative; }
+  figure .zone { height: 330px; display: grid; place-items: center; position: relative; }
+  figure img, figure svg { max-width: 100%; max-height: 320px; width: auto; height: auto; display: block; }
+  figure .zone svg { width: 100%; height: 320px; }
+  figcaption { font-size: 12.5px; color: #4b3f22; margin-top: 6px; text-align: left; overflow-wrap: anywhere; }
+  .sup img.sur { position: absolute; left: 0; right: 0; margin: auto; opacity: .5; pointer-events: none; }
+  fieldset { border: 1px solid var(--filet); margin: 12px 0; padding: 8px 12px 12px; background: #fbf6e8; }
+  legend { font-weight: 600; padding: 0 6px; }
+  label.c { display: block; font-size: 13px; color: #4b3f22; margin: 6px 0 2px; }
+  textarea, input[type=text] { width: 100%; font: 14px/1.4 Georgia, serif; padding: 5px 7px; border: 1px solid #b9a678; border-radius: 3px; background: #fffdf6; color: inherit; }
+  textarea { min-height: 76px; resize: vertical; }
+  .grille { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .grille label { font-size: 12px; color: #4b3f22; }
+  .grille input { width: 100%; padding: 3px 5px; font: 13px monospace; }
+  .lecture { font-size: 13.5px; margin-top: 6px; }
+  .lecture .ok { color: var(--vert); }
+  .lecture .ko { color: var(--rouge); }
+  .lecture mark { background: #f4c9b8; padding: 0 2px; border-radius: 2px; }
+  .lecture ul { margin: 4px 0 0 18px; padding: 0; }
+  .barre { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+  button.p { font: inherit; padding: 6px 14px; border-radius: 4px; border: 1px solid #8a6d1d; background: #e8dcc0; cursor: pointer; }
+  button.p.main { background: var(--rouge); border-color: var(--rouge); color: #fff; }
+  button.p:disabled { opacity: .45; cursor: default; }
+  .msg { font-size: 13.5px; }
+  .msg.ok { color: var(--vert); } .msg.ko { color: var(--rouge); }
+  .mots { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; max-height: 120px; overflow: auto; }
+  .mots button { font: 12.5px Georgia, serif; padding: 1px 7px; border: 1px solid #b9a678; background: #fffdf6; border-radius: 10px; cursor: pointer; }
+  code { font: 12.5px monospace; background: #efe6cc; padding: 0 3px; }
+</style>
+</head>
+<body>
+<header>
+  <b>Console des blasons</b>
+  <span id="etat" class="msg"></span>
+  <label>Ajouter une autre carte <input id="ajout" list="toutes" size="26" placeholder="nom d'une carte…"></label>
+  <datalist id="toutes"></datalist>
+  <button class="p" id="ajoute" type="button">Ajouter</button>
+</header>
+<div id="app">
+  <nav id="liste" aria-label="Cartes à reprendre"></nav>
+  <main id="carte"><p>Chargement…</p></main>
+</div>
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script>
+(async () => {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const CHAMPS = ["blason", "atelier", "atelierAjust", "atelierNote", "sansAtelier", "aRefaire"];
+  /* les cartes signalées par le curateur (2026-10-11) ; « Ajouter une autre carte » en rajoute pour la session */
+  const LISTE = [
+    ["blasons", "Royaume d'Irak"], ["blasons", "Royaume du Hedjaz"], ["blasons", "Royaume de Karthli"],
+    ["blasons", "Sultanat d'Égypte"], ["blasons", "Royaume d'Islande"], ["blasons", "Royaume de Séville"], ["blasons", "Royaume de Jérusalem"],
+    ["blasons", "Premier Empire"], ["blasons", "Seigneurie de Malines"], ["blasons", "Maison de Médicis"], ["blasons", "Maison de Hohenberg"],
+    ["blasons", "Canton de Thurgovie"], ["blasons", "Canton de Neuchâtel"], ["blasons", "Allemagne"], ["blasons", "Danemark"], ["blasons", "Serbie"],
+    ["personnages", "Léopold Ier de Belgique"], ["personnages", "Frédéric V du Palatinat"],
+  ];
+  const DEF = { sz: 100, dx: 0, dy: 0, an: 0, sz2: 100, dx2: 0, dy2: 0, an2: 0, pth: 100, pdx: 0, pdy: 0, cs: 100, ce: 100 };
+  const toutes = { blasons: [], personnages: [] }, ETAT = new Map();     // clé « galerie|nom » → { carte, orig, draft, fait }
+  let cle = null, dessinN = 0, minuteur = 0, occupe = false;
+
+  async function charge() {
+    await chargerLecteur();
+    for (const g of Object.keys(toutes)) toutes[g] = await (await fetch(`data/${g}.json`, { cache: "no-store" })).json();
+    $("#toutes").innerHTML = [...toutes.blasons, ...toutes.personnages].map(c => `<option value="${esc(c.nom)}">`).join("");
+    $("#gdefs").innerHTML = globalDefs();
+  }
+  const clef = (g, nom) => `${g}|${nom}`;
+  const lisChamps = c => ({ blason: c.blason || "", atelier: c.atelier || "", atelierAjust: c.atelierAjust || "", atelierNote: c.atelierNote || "", sansAtelier: !!c.sansAtelier, aRefaire: c.aRefaire || "" });
+  function ajouteALaListe(g, nom) {
+    const carte = toutes[g].find(c => c.nom === nom);
+    if (!carte) return null;
+    const k = clef(g, nom);
+    if (!ETAT.has(k)) ETAT.set(k, { g, nom, carte, orig: lisChamps(carte), draft: lisChamps(carte), fait: false });
+    return k;
+  }
+  const sale = e => CHAMPS.some(c => e.draft[c] !== e.orig[c]);
+  const texteLu = d => d.atelier.trim() || d.blason;
+
+  /* ---------- la lecture et le dessin ---------- */
+  const mk = e => { const S = { ...fresh(), q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
+  /* les réglages : { 1: {sz, dx…}, 2: {…} } ; dans la chaîne enregistrée, les quartiers 2 à 4 sont préfixés « q2. » à « q4. », l'écusson en abîme « q5. » ;
+     les armes uniques (ou le premier quartier) n'ont pas de préfixe : c'est le format d'avant, toujours lu */
+  const ajustDe = s => {
+    const o = {};
+    for (const [k, v] of new URLSearchParams(s || "")) {
+      const m = /^(?:q([1-5])\.)?(.+)$/.exec(k);
+      if (!m || !(m[2] in DEF) || v === "" || isNaN(+v)) continue;
+      const q = m[1] ? +m[1] : 1; (o[q] = o[q] || {})[m[2]] = +v;
+    }
+    return o;
+  };
+  const ajustVers = o => Object.keys(o).map(Number).sort().flatMap(q => Object.entries(DEF)
+    .filter(([k, dv]) => o[q][k] !== undefined && +o[q][k] !== dv).map(([k]) => `${q === 1 ? "" : "q" + q + "."}${k}=${+o[q][k]}`)).join("&");
+  const valeursDe = (o, q) => ({ ...DEF, ...(o[q] || {}) });
+  const QUARTIERS = [[1, "Armes uniques, ou 1ᵉʳ quartier"], [2, "Quartier 2"], [3, "Quartier 3"], [4, "Quartier 4"], [5, "Écusson en abîme (sur le tout)"]];
+  function lecture(d) {
+    try { return lire(texteLu(d)); } catch (e) { return { ok: false, erreurs: [{ de: 0, a: 0, msg: "le lecteur a échoué : " + e.message }], notes: [] }; }
+  }
+  async function dessine(e) {
+    const r = lecture(e.draft), zone = $("#dessin"), etat = $("#lecture");
+    if (!zone) return;
+    const texte = texteLu(e.draft);
+    let h = "";
+    if (r.ok) {
+      const notes = (r.notes || []).map(n => typeof n === "string" ? n : (n.msg || JSON.stringify(n)));
+      h = `<span class="ok">✓ L'Atelier relit ces armes</span> — ${r.exact ? "il les réécrit à la lettre" : `il les écrit : « ${esc(r.reecrit || "")} »`}`
+        + (notes.length ? `<ul>${notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul>` : "");
+      const etatArmes = JSON.parse(JSON.stringify(r.etat));
+      for (const [q, champs] of Object.entries(ajustDe(e.draft.atelierAjust))) for (const [k, v] of Object.entries(champs)) if (v !== DEF[k] && etatArmes.A && etatArmes.A[+q - 1]) etatArmes.A[+q - 1][({ cs: "m2cs", ce: "m2ce" })[k] || k] = String(v);
+      const S = mk(etatArmes);
+      try {
+        await loadAll(S);
+        const c = compose(S, "ed" + ++dessinN);
+        if (e !== ETAT.get(cle)) return;
+        zone.innerHTML = `<svg viewBox="${c.vb.join(" ")}" aria-label="Dessin de l'Atelier">${c.svg}</svg>`;
+      } catch (er) { zone.innerHTML = ""; h += `<p class="ko">Le dessin a échoué : ${esc(er.message)}</p>`; }
+    } else {
+      zone.innerHTML = `<p style="color:#6b5d3a">Pas de dessin : l'Atelier ne relit pas ce texte.</p>`;
+      const er = (r.erreurs || [])[0];
+      h = `<span class="ko">✗ L'Atelier bute</span>` + (er ? ` sur « <mark>${esc(texte.slice(er.de, er.a) || "…")}</mark> » : ${esc(er.msg)}` : "")
+        + ((r.erreurs || []).length > 1 ? `<ul>${r.erreurs.slice(1, 5).map(x => `<li>« ${esc(texte.slice(x.de, x.a))} » : ${esc(x.msg)}</li>`).join("")}</ul>` : "");
+    }
+    etat.innerHTML = h;
+    majListe();
+  }
+
+  /* ---------- la liste ---------- */
+  function statut(e) {
+    if (e.draft.sansAtelier) return "⛔ retirée";
+    const r = lecture(e.draft);
+    return r.ok ? "✓ lue" : "✗ non lue";
+  }
+  function majListe() {
+    $("#liste").innerHTML = [...ETAT.values()].map(e => {
+      const k = clef(e.g, e.nom), cls = sale(e) ? "modif" : e.fait ? "fait" : "";
+      return `<button type="button" data-k="${esc(k)}" class="${k === cle ? "cur" : ""}"><span class="pt ${cls}" title="${cls === "modif" ? "modifiée, pas enregistrée" : cls === "fait" ? "enregistrée" : "inchangée"}"></span><span class="nom">${esc(e.nom)}</span><span class="st">${statut(e)}</span></button>`;
+    }).join("");
+    const n = [...ETAT.values()].filter(sale).length;
+    $("#etat").textContent = n ? `${n} carte${n > 1 ? "s" : ""} modifiée${n > 1 ? "s" : ""}, pas encore enregistrée${n > 1 ? "s" : ""}` : "";
+    $("#etat").className = "msg" + (n ? " ko" : "");
+  }
+  $("#liste").addEventListener("click", ev => { const b = ev.target.closest("button[data-k]"); if (b) ouvre(b.dataset.k); });
+
+  /* ---------- la carte ouverte ---------- */
+  function ouvre(k) {
+    cle = k;
+    const e = ETAT.get(k), c = e.carte, d = e.draft, aj = valeursDe(ajustDe(d.atelierAjust), 1);
+    const img = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(c.file)}?width=420`;
+    const slug = slugCarte(c.nom);
+    $("#carte").innerHTML = `
+      <h2>${esc(c.nom)}<small>${esc(c.cat || (e.g === "personnages" ? "Personnages" : ""))}${c.porteur ? " · " + esc(c.porteur) : ""}</small></h2>
+      <p style="margin:2px 0"><a href="${e.g}.html#${slug}" target="_blank" rel="noopener">voir la carte sur le site ↗</a>
+        ${c.blasonSrc && c.blasonSrc.url ? ` · <a href="${esc(c.blasonSrc.url)}" target="_blank" rel="noopener">source du blasonnement ↗</a>` : ""}
+        · <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.file)}" target="_blank" rel="noopener">fichier Commons ↗</a></p>
+      <div id="b-refaire"></div>
+      <div class="comp" id="comp">
+        <figure><div class="zone"><img src="${esc(img)}" alt="Image de Commons" referrerpolicy="no-referrer"></div><figcaption>Image de Commons : ${esc(c.file)}<br>${esc(c.auteur || "")} · ${esc(c.lic || "")}</figcaption></figure>
+        <figure id="fig-dessin"><div class="zone" id="dessin"></div><figcaption id="lecture" class="lecture"></figcaption></figure>
+      </div>
+      <label><input type="checkbox" id="superpose"> Superposer l'image au dessin (50 %) pour juger la place des figures</label>
+
+      <fieldset><legend>Ce que lit l'Atelier</legend>
+        <label class="c" for="f-atelier">Blasonnement lu par l'Atelier — ce que dit l'image. Vide : l'Atelier lit le blasonnement de la carte ci-dessous.</label>
+        <textarea id="f-atelier" spellcheck="false" placeholder="(vide : même texte que le blasonnement de la carte)">${esc(d.atelier)}</textarea>
+        <label class="c" for="f-note">Phrase affichée sous la carte quand un texte ci-dessus est posé (vide : phrase habituelle)</label>
+        <textarea id="f-note" style="min-height:50px" spellcheck="true">${esc(d.atelierNote)}</textarea>
+        <label class="c">Mots que l'Atelier connaît (cliquer insère le mot dans le texte ci-dessus, à la place du curseur)</label>
+        <input type="text" id="mots-filtre" placeholder="aigle, lion, épée, croix…">
+        <div class="mots" id="mots"></div>
+      </fieldset>
+
+      <fieldset><legend>Réglages des figures (sz = taille en %, dx / dy = décalage, an = angle ; pth, pdx, pdy = la pièce ; cs, ce = taille et écart des figures d'un tourteau)</legend>
+        <label class="c" for="aj-q">Armes à régler</label>
+        <select id="aj-q">${QUARTIERS.map(([q, l]) => `<option value="${q}">${esc(l)}</option>`).join("")}</select>
+        <div class="grille" id="ajust">${Object.keys(DEF).map(k => `<label>${k}<input type="number" step="${k.startsWith("sz") || k.startsWith("an") || k === "pth" ? 5 : 2}" data-k="${k}" value="${aj[k]}"></label>`).join("")}</div>
+        <p class="lecture">Chaîne enregistrée : <code id="aj-chaine">${esc(d.atelierAjust) || "(aucun réglage)"}</code> — <code>sz</code>, <code>dx</code>, <code>dy</code>, <code>an</code> règlent le premier meuble du quartier choisi, <code>sz2</code>… le second ; <code>dy</code> négatif monte la figure (le curseur « Bas ↕ haut » de l'Atelier montre l'opposé) ; <code>q2.</code> à <code>q5.</code> : quartier 2 à 4, écusson en abîme.</p>
+      </fieldset>
+
+      <fieldset><legend>La carte</legend>
+        <label class="c" for="f-blason">Blasonnement affiché sur la carte (la source, pas forcément ce que montre l'image)</label>
+        <textarea id="f-blason" spellcheck="false">${esc(d.blason)}</textarea>
+        <label class="c"><input type="checkbox" id="f-sans" ${d.sansAtelier ? "checked" : ""}> Retirer cette carte de l'Atelier : plus de bouton « Redessiner dans l'Atelier », plus d'écu cliquable, et elle sort du jeu du jour</label>
+        <label class="c" for="f-refaire">À refaire — note privée (ne s'affiche jamais sur le site)</label>
+        <textarea id="f-refaire" style="min-height:50px" spellcheck="true">${esc(d.aRefaire)}</textarea>
+      </fieldset>
+
+      <div class="barre">
+        <button class="p main" id="enreg" type="button">Enregistrer (Ctrl+S)</button>
+        <button class="p" id="annule" type="button">Annuler les changements</button>
+        <button class="p" id="prec" type="button">← Précédente</button>
+        <button class="p" id="suiv" type="button">Suivante →</button>
+        <span class="msg" id="msg" role="status"></span>
+      </div>`;
+    liaison(e);
+    banniere(e);
+    afficheMots();
+    dessine(e);
+    majListe();
+    window.scrollTo(0, 0);
+  }
+  function banniere(e) {
+    const el = $("#b-refaire"); if (!el) return;
+    const d = e.draft;
+    const autre = d.atelier.trim() && d.atelier.trim() !== d.blason.trim();
+    el.innerHTML = (d.aRefaire ? `<div class="bandeau">À refaire : ${esc(d.aRefaire)}</div>` : "")
+      + (d.sansAtelier ? `<div class="bandeau sans">Cette carte est retirée de l'Atelier (et du jeu du jour).</div>` : "")
+      + (autre ? `<div class="bandeau sans">⚠ L'Atelier lit le texte du champ « Blasonnement lu par l'Atelier », <b>pas</b> le blasonnement de la carte : modifier celui de la carte ne change donc pas le dessin.
+          <button type="button" class="p" id="vide-atelier">Faire lire à l'Atelier le blasonnement de la carte</button></div>` : "");
+    const b = $("#vide-atelier");
+    if (b) b.addEventListener("click", () => { d.atelier = ""; d.atelierNote = ""; ouvre(clef(e.g, e.nom)); });
+  }
+  function afficheMots() {
+    const f = plie(($("#mots-filtre") || { value: "" }).value || ""), el = $("#mots"); if (!el) return;
+    const m = ATL.meubles.filter(x => !f || plie(x.sing + " " + (x.nom || "")).includes(f)).slice(0, 60);
+    el.innerHTML = m.map(x => `<button type="button" data-m="${esc(x.sing)}" title="${esc(x.nom || "")}">${esc(x.sing)}</button>`).join("");
+  }
+  function liaison(e) {
+    const d = e.draft;
+    const maj = () => { banniere(e); majBoutons(); clearTimeout(minuteur); minuteur = setTimeout(() => dessine(e), 250); majListe(); };
+    const txt = (sel, champ) => $(sel).addEventListener("input", ev => { d[champ] = ev.target.value; maj(); });
+    txt("#f-atelier", "atelier"); txt("#f-note", "atelierNote"); txt("#f-blason", "blason"); txt("#f-refaire", "aRefaire");
+    $("#f-sans").addEventListener("change", ev => { d.sansAtelier = ev.target.checked; maj(); });
+    $("#aj-q").addEventListener("change", () => {
+      const v = valeursDe(ajustDe(d.atelierAjust), +$("#aj-q").value);
+      $("#ajust").querySelectorAll("input").forEach(i => { i.value = v[i.dataset.k]; });
+    });
+    $("#ajust").addEventListener("input", () => {
+      const o = ajustDe(d.atelierAjust), q = +$("#aj-q").value, vals = {};
+      $("#ajust").querySelectorAll("input").forEach(i => { vals[i.dataset.k] = i.value === "" ? DEF[i.dataset.k] : +i.value; });
+      o[q] = vals; d.atelierAjust = ajustVers(o); $("#aj-chaine").textContent = d.atelierAjust || "(aucun réglage)"; maj();
+    });
+    $("#superpose").addEventListener("change", ev => {
+      const fig = $("#fig-dessin"), zone = $("#dessin");
+      fig.classList.toggle("sup", ev.target.checked);
+      zone.querySelectorAll("img.sur").forEach(i => i.remove());
+      if (ev.target.checked) { const i = document.createElement("img"); i.className = "sur"; i.src = $("#comp img").src; i.referrerPolicy = "no-referrer"; zone.appendChild(i); }
+    });
+    $("#mots-filtre").addEventListener("input", afficheMots);
+    $("#mots").addEventListener("click", ev => {
+      const b = ev.target.closest("button[data-m]"); if (!b) return;
+      const t = $("#f-atelier"), m = b.dataset.m;
+      if (!t.value) { t.value = d.blason; t.setSelectionRange(t.value.length, t.value.length); }       // on part du blasonnement de la carte plutôt que d'une page blanche
+      const de = t.selectionStart, a = t.selectionEnd;
+      t.value = t.value.slice(0, de) + m + t.value.slice(a);
+      t.focus(); t.setSelectionRange(de + m.length, de + m.length);
+      d.atelier = t.value; maj();
+    });
+    $("#enreg").addEventListener("click", () => enregistre(e));
+    $("#annule").addEventListener("click", () => { e.draft = { ...e.orig }; ouvre(clef(e.g, e.nom)); });
+    const ordre = () => [...ETAT.keys()];
+    $("#prec").addEventListener("click", () => { const o = ordre(), i = o.indexOf(cle); ouvre(o[(i - 1 + o.length) % o.length]); });
+    $("#suiv").addEventListener("click", () => { const o = ordre(), i = o.indexOf(cle); ouvre(o[(i + 1) % o.length]); });
+    majBoutons();
+  }
+  function majBoutons() {
+    const e = ETAT.get(cle); if (!e) return;
+    const b = $("#enreg"); if (b) b.disabled = !sale(e) || occupe;
+    const a = $("#annule"); if (a) a.disabled = !sale(e);
+  }
+  const message = (txt, ok) => { const m = $("#msg"); if (m) { m.textContent = txt; m.className = "msg " + (ok ? "ok" : "ko"); } };
+  async function enregistre(e) {
+    if (occupe || !sale(e)) return;
+    occupe = true; majBoutons(); message("Enregistrement…", true);
+    const champs = {}; CHAMPS.forEach(c => { champs[c] = e.draft[c]; });
+    try {
+      const r = await fetch("__api/carte", { method: "POST", headers: { "Content-Type": "application/json", "X-Editeur": "1" }, body: JSON.stringify({ galerie: e.g, nom: e.nom, champs }) });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.erreur || `HTTP ${r.status}`);
+      e.carte = data.carte; Object.assign(toutes[e.g].find(c => c.nom === e.nom), data.carte);
+      e.orig = lisChamps(data.carte); Object.assign(e.draft, e.orig); e.fait = true;      // le brouillon reste le même objet : les champs de la page y sont liés
+      message("Enregistré dans data/" + e.g + ".json.", true);
+    } catch (er) { message("Échec : " + er.message, false); }
+    occupe = false; majBoutons(); majListe();
+    if (cle === clef(e.g, e.nom)) { banniere(e); }
+  }
+  document.addEventListener("keydown", ev => { if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "s") { ev.preventDefault(); const e = ETAT.get(cle); if (e) enregistre(e); } });
+  addEventListener("beforeunload", ev => { if ([...ETAT.values()].some(sale)) { ev.preventDefault(); ev.returnValue = ""; } });
+  $("#ajoute").addEventListener("click", () => {
+    const nom = $("#ajout").value.trim();
+    const g = toutes.blasons.some(c => c.nom === nom) ? "blasons" : toutes.personnages.some(c => c.nom === nom) ? "personnages" : null;
+    if (!g) { $("#etat").textContent = `Aucune carte nommée « ${nom} ».`; $("#etat").className = "msg ko"; return; }
+    const k = ajouteALaListe(g, nom); $("#ajout").value = ""; majListe(); ouvre(k);
+  });
+
+  try { await charge(); } catch (er) { $("#carte").innerHTML = `<p class="msg ko">Chargement impossible : ${esc(er.message)}. Lancez <code>python3 tools/editeur.py</code> puis ouvrez <code>http://127.0.0.1:8140/tools/editeur.html</code>.</p>`; return; }
+  const manquantes = LISTE.filter(([g, n]) => !ajouteALaListe(g, n)).map(([, n]) => n);
+  majListe();
+  if (manquantes.length) $("#etat").textContent = "Cartes introuvables : " + manquantes.join(", ");
+  ouvre([...ETAT.keys()][0]);
+  window.Editeur = { ETAT, toutes, lecture };                         // pour les essais
+})();
+</script>
+</body>
+</html>
