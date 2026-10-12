@@ -101,7 +101,7 @@
     const tout = [...b.map(a => ({ ...a, gal: "blasons", cat: a.cat || "Blasons réels" })), ...p.map(a => ({ ...a, gal: "personnages", cat: "Personnages" }))];
     for (const a of tout) {
       if (!a.blason || !a.file) continue;
-      const r = lire(texteAtelier(a));
+      const r = lireCarte(a);
       if (!r.ok) continue;
       const c = { ...a, etat: r.etat, S: mk(r.etat), cle: plie(`${a.nom} ${a.porteur || ""}`) };
       c.canon = blazonAll(c.S); c.t = traits(c);
@@ -120,8 +120,12 @@
   const demande = /^#n=(\d+)$/.exec(location.hash);
   const hors = !!demande && +demande[1] >= 1 && +demande[1] < numAuj;                           // un jour passé, pour essayer : hors concours
   const N = hors ? +demande[1] : numAuj;
-  const ordre = CAL.ordre.filter(n => PAR_NOM.has(n));
-  const cible = PAR_NOM.get(ordre[(N - 1) % ordre.length]);
+  /* le jour N reprend la N-ième entrée de « ordre » ; si cette carte n'est plus dans le jeu (retirée de l'Atelier, ou plus lue), on prend la suivante :
+     les autres jours ne bougent pas (filtrer la liste les décalerait tous) */
+  const ordre = CAL.ordre;
+  let k = (N - 1) % ordre.length;
+  for (let i = 0; i < ordre.length && !PAR_NOM.has(ordre[k]); i++) k = (k + 1) % ordre.length;
+  const cible = PAR_NOM.get(ordre[k]);
   const jourDe = new Date(debut.getFullYear(), debut.getMonth(), debut.getDate() + N - 1);
   const ESSAIS = CAL.essais || 6;
 

@@ -1681,6 +1681,7 @@
   },
   {
    "kind": "briquet",
+   "cantonRot": -90,
    "nom": "Briquet",
    "sing": "briquet",
    "plur": "briquets",
@@ -3348,6 +3349,98 @@
    "main": [
     "fill:#ffffff"
    ]
+  },
+  {
+   "kind": "saint-ferdinand",
+   "nom": "Saint Ferdinand sur son trône",
+   "sing": "saint Ferdinand",
+   "plur": "saints Ferdinand",
+   "g": "m",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/saint-ferdinand.svg",
+    "commons": "Coat of Arms of the Realm of Seville.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "extrait": "saint Ferdinand assis sur son trône, avec son nimbe, sa couronne, son épée et son globe, détaché de l'écu (champ de gueules, bordure et autres figures retirés, tracés inchangés)"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ]
+  },
+  {
+   "kind": "aigle-imperiale",
+   "nom": "Aigle impériale (Premier Empire)",
+   "sing": "aigle impériale",
+   "plur": "aigles impériales",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/aigle-imperiale.svg",
+    "commons": "Napoleonic Eagle.svg",
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#f6dc60",
+    "#e7cd54",
+    "#feea76",
+    "#f9e168",
+    "#edd359",
+    "#fff3a3",
+    "#d8bf4e",
+    "#fff198",
+    "#e0c751",
+    "#f9e66b",
+    "#feed87",
+    "#f3db62"
+   ],
+   "line": [
+    "#836906",
+    "#806600",
+    "#a47400"
+   ]
+  },
+  {
+   "kind": "aigle-federale",
+   "nom": "Aigle fédérale (Allemagne)",
+   "sing": "aigle fédérale",
+   "plur": "aigles fédérales",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/aigle-federale.svg",
+    "commons": "Bundesadler rahmenlos ohne Schild.svg",
+    "auteur": "d'après Karl-Tobias Schwab (1926), fichier de Cekay",
+    "lic": "domaine public (PD-Coa-Germany)",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "accent": [
+    "fill:#dd0000"
+   ],
+   "accentMot": "becqué et membré",
+   "accentSouple": true
   },
   {
    "kind": "choucas",

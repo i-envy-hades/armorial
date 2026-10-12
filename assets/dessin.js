@@ -95,6 +95,9 @@ function ptsFor(s, m) {
     const r0 = ctxOf(s) === "sur-bande" ? 90 - B : -(90 - B);
     pts = pts.map(([x, y, sc]) => [x, y, s.nb === "1" ? (s.lrg ? .5 : .38) : sc, r0]);
   }
+  /* les figures qui se tournent dans les quatre cantons d'une croix (m.cantonRot, en degrés : les briquets de la Serbie, −90) :
+     celles de gauche tournent de cet angle, celles de droite de l'angle opposé : deux à deux, symétriquement par rapport à la croix */
+  if (m.cantonRot && ctxOf(s) === "croix" && s.pos === "autour" && pts.length === 4) pts = pts.map(([x, y, sc], i) => [x, y, sc, i % 2 ? -m.cantonRot : m.cantonRot]);
   return adjust(pts, s, 1, "");
 }
 const chaPts = s => ptsFor(s, meuble(s.m)).map(([x, y, sc]) => [x + 20 * sc, y - 22 * sc, sc * .5, 0]);      // une figure du second meuble à côté de chacune du premier
@@ -413,10 +416,10 @@ function drawBody(s, u) {
     const p2 = pts2(s);
     let g2 = placeAll(p2, m2, `chg2-${u}`, s.ct2, couronneDe(m2, s.cn2, s.cnk2));
     if (s.m2c) {
-      /* les figures portées par un tourteau (un à trois), au rapport de son rayon */
-      const n = +s.m2cn, mc = meuble(s.m2c);
+      /* les figures portées par un tourteau (un à trois), au rapport de son rayon ; trois : deux et une, comme sur le tourteau d'azur des Médicis */
+      const n = +s.m2cn, mc = meuble(s.m2c), T = +s.m2cs / 100 || 1, E = +s.m2ce / 100 || 1;      // T : taille des figures du tourteau, E : leur écart (réglages cs, ce d'une carte)
       defs += symbolFor({ ...s, m: s.m2c, tm: s.m2ct, ta: s.m2ct, cc: "", ct: "", cn: "", cnk: "", iss: "" }, `chg2c-${u}`);
-      g2 += placeAll(p2.flatMap(([X, Y, K]) => { const R = 40 * K * (m2.k || 1); return n === 1 ? [[X, Y, .9 * K]] : n === 2 ? [[X - .48 * R, Y, .56 * K], [X + .48 * R, Y, .56 * K]] : [[X, Y - .42 * R, .48 * K], [X - .45 * R, Y + .3 * R, .48 * K], [X + .45 * R, Y + .3 * R, .48 * K]]; }), mc, `chg2c-${u}`, false);
+      g2 += placeAll(p2.flatMap(([X, Y, K]) => { const R = 40 * K * (m2.k || 1); return n === 1 ? [[X, Y, .9 * K]] : n === 2 ? [[X - .48 * R, Y, .56 * K], [X + .48 * R, Y, .56 * K]] : [[X - .47 * R * E, Y - .26 * R * E, .4 * K * T], [X + .47 * R * E, Y - .26 * R * E, .4 * K * T], [X, Y + .46 * R * E, .4 * K * T]]; }), mc, `chg2c-${u}`, false);
     }
     if (s.pbro) under += g2; else over += g2;                       // la pièce chargée broche sur ce meuble : il est dessous, ses figures dessus
   }

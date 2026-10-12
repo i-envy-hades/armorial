@@ -366,7 +366,7 @@
       const e = q.cible, lien = e.gloss ? ` · <a href="index.html#${termeId(e.terme, DATA.glossaire)}">dans le glossaire</a>` : "";
       h += `<p><b>${esc(e.terme)}</b> : ${esc(e.def)}${lien}</p>`;
     } else if (q.type === "reel") {
-      const a = q.cible, lis = (() => { try { return lire(texteAtelier(a)).ok; } catch (e) { return false; } })();
+      const a = q.cible, lis = (() => { try { return lireCarte(a).ok; } catch (e) { return false; } })();
       h += `<p><b>${esc(a.nom)}</b>${a.porteur ? ` — ${esc(a.porteur)}` : ""}.</p><p>Blasonnement : <i>«&nbsp;${esc(a.blason)}&nbsp;»</i>.</p>`;
       h += retenir(a.blason) + `<p class="ex-lien"><a href="blasons.html#${sluge(a.nom)}">Voir la carte dans « Blasons réels »</a>${lis ? ` · <a href="atelier.html#lire=${encodeURIComponent(texteAtelier(a))}">Redessiner dans l'Atelier</a>` : ""}</p>`;
       h += `<p class="ex-credits">Illustration : <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(a.file)}" target="_blank" rel="noopener">« ${esc(a.file)} »</a> — ${esc(a.auteur)}, <a href="${esc(a.licurl)}" target="_blank" rel="noopener">${esc(a.lic)}</a>, via Wikimedia Commons.</p>`;

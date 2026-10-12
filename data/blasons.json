@@ -168,7 +168,10 @@
       "label": "Wikipedia (en), « House of Medici »",
       "url": "https://en.wikipedia.org/wiki/House_of_Medici",
       "note": "armes « augmentées » : le tourteau aux armes de France est concédé par Louis XI en 1465"
-    }
+    },
+    "atelierAjust": "dy=16&sz2=85&dy2=2&cs=85&ce=151",
+    "atelier": "D'or à cinq tourteaux de gueules posés 2, 2 et 1, et, en chef, un tourteau plus grand d'azur chargé de trois fleurs de lis d'or",
+    "atelierNote": "Les cinq tourteaux sont posés 2, 2 et 1 comme sur l'image ; le tourteau d'azur porte trois fleurs de lis, deux et une, réduites et écartées (réglages cs et ce)."
   },
   {
     "nom": "République de Gênes",
@@ -266,8 +269,8 @@
     "cat": "Empires",
     "porteur": "premier des deux empires français établis au profit de la dynastie des Bonaparte, de 1804 à 1814",
     "blason": "D'azur à l'aigle impériale d'or, empiétant un foudre du même",
-    "atelier": "D'azur à l'aigle d'or",
-    "atelierNote": "Le dessin ne reprend que l'aigle : l'Atelier ne dessine pas le foudre qu'elle tient dans ses serres",
+    "atelier": "D'azur à l'aigle impériale d'or",
+    "atelierNote": "L'aigle impériale est la figure de Sodacan, avec le foudre sous les serres : le texte lu par l'Atelier ne dit pas « empiétant un foudre », il fait partie de la figure.",
     "file": "Imperial Coat of Arms of France (1804-1815).svg",
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
@@ -290,7 +293,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Sultan_of_Egypt.svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "atelierAjust": "dx=-12&dx2=16&dy2=8",
+    "aRefaire": "les deux meubles sont"
   },
   {
     "nom": "Empire britannique",
@@ -357,7 +362,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armoiries de l'Islande »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_de_l%27Islande"
-    }
+    },
+    "atelierAjust": "pth=55",
+    "atelierNote": "La croix est affinée (épaisseur 55 %) pour suivre l'image ; les armes de l'écu seul, sans les supports ni la couronne."
   },
   {
     "nom": "Royaume de Tolède",
@@ -423,8 +430,9 @@
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Realm_of_Seville.svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
     },
-    "atelier": "De gueules à l'épée d'argent, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château donjonné d'or, ceux d'argent d'un lion de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : saint Ferdinand assis sur son trône, nimbé et couronné, n'est pas dessiné : une épée tient sa place."
+    "atelier": "De gueules au saint Ferdinand d'or, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château donjonné d'or, ceux d'argent d'un lion de gueules",
+    "atelierNote": "Le saint Ferdinand garde ses couleurs propres (carnation, azur, or, trône d'or) : l'émail dit après son nom n'y change rien. Les lions et les châteaux de la bordure sont ceux de l'Atelier.",
+    "atelierAjust": "dx=-4&dy=-4"
   },
   {
     "nom": "Royaume de Grenade (couronne de Castille)",
@@ -511,7 +519,9 @@
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "atelier": "D'azur à deux épées d'argent passées en sautoir",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : le paysage (confluent de l'Euphrate et du Tigre, palmiers, monts Hakkari) n'est pas dessinable ; l'épée et la lance en sautoir sont suggérées par deux épées."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le paysage (confluent de l'Euphrate et du Tigre, palmiers, monts Hakkari) n'est pas dessinable ; l'épée et la lance en sautoir sont suggérées par deux épées.",
+    "sansAtelier": true,
+    "aRefaire": "Retirer de l'Atelier (demande du curateur, 2026-10-11)."
   },
   {
     "nom": "Royaume de Karthli",
@@ -528,7 +538,9 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_the_Kingdom_of_Kartli.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "sansAtelier": true,
+    "aRefaire": "Retirer de l'Atelier (demande du curateur, 2026-10-11)."
   },
   {
     "nom": "Royaume de Saxe",
@@ -609,7 +621,9 @@
       "note": "traduit de l'anglais ; décrit d'après les billets de 1924 ; le manteau, les palmiers et les drapeaux ne sont pas blasonnés ici. Aucune source lue ne donne d'armes propres au califat de 1924"
     },
     "atelier": "De sinople à deux lances d'or passées en sautoir",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : deux lances seulement ; le bâton de commandement, les deux sabres, les fers et les houppes restent à ajouter."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : deux lances seulement ; le bâton de commandement, les deux sabres, les fers et les houppes restent à ajouter.",
+    "sansAtelier": true,
+    "aRefaire": "Retirer de l'Atelier (demande du curateur, 2026-10-11)."
   },
   {
     "nom": "Maison d'Este",
@@ -837,7 +851,9 @@
       "label": "Wikipédia, « Malines »",
       "url": "https://fr.wikipedia.org/wiki/Malines",
       "note": "armes de la ville, que l'article dit être celles « du domaine et du comté de Malines » : les pals des Berthout, et l'aigle accordée par Frédéric III en 1490 ; le dessin suit Guicciardini (1581)"
-    }
+    },
+    "atelier": "D'or à trois pals de gueules ; sur le tout, d'or à l'aigle de sable, becquée, membrée et couronnée de sable",
+    "atelierNote": "L'Atelier dessine ici son aigle éployée à une tête, entièrement de sable (la couronne qu'elle porte est donnée du même émail) ; l'écusson est plus grand que sur l'image."
   },
   {
     "nom": "Principauté d'Utrecht",
@@ -1308,7 +1324,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "atelierAjust": "an=45&q2.an=45"
   },
   {
     "nom": "Canton du Tessin",
@@ -1378,8 +1395,8 @@
     "cat": "Suisse",
     "porteur": "Canton suisse",
     "blason": "Tiercé en pal de sinople, d'argent et de gueules, le gueules, chargé en chef d'une croisette du deuxième",
-    "atelier": "Tiercé en pal de sinople, d'argent et de gueules",
-    "atelierNote": "Le dessin ne reprend pas la croisette d'argent du gueules",
+    "atelier": "Tiercé en pal de sinople, d'argent et de gueules, à la croix alésée d'argent au canton senestre du chef",
+    "atelierNote": "La croix d'argent du gueules est posée au canton senestre du chef (elle « broche sur le tout » dans l'Atelier) ; dans l'image, elle est plus haute et plus fine.",
     "file": "Wappen Neuenburg matt.svg",
     "auteur": "Sa-se",
     "lic": "domaine public",
@@ -1393,7 +1410,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "atelierAjust": "sz=75&dx=10&dy=-12"
   },
   {
     "nom": "Canton de Genève",
@@ -1466,7 +1484,10 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "atelier": "D'or à l'aigle fédérale de sable, becquée et membrée de gueules",
+    "atelierAjust": "sz=110",
+    "atelierNote": "L'aigle fédérale est la figure du Bundesadler de Schwab (domaine public) : bec et serres de gueules ; le dessin de la carte est d'un style plus ancien, à ailes moins étirées."
   },
   {
     "nom": "Andorre",
@@ -1597,8 +1618,9 @@
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
     },
-    "atelier": "Écartelé par une croix pattée d'argent bordée de gueules : au 1, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; au 2, d'or à deux lions léopardés d'azur, armés et lampassés de gueules ; au 3, d'azur à trois couronnes d'or ; au 4, d'or semé de cœurs de gueules, à trois lions léopardés d'azur couronnés d'or, armés et lampassés de gueules ; sur le tout, d'or à deux fasces de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : les cœurs sont un semé sans compte ; le troisième quartier est réduit aux trois couronnes (le bélier et l'ours manquent)."
+    "atelier": "Écartelé par une croix d'argent bordée de gueules : au 1, d'or à neuf cœurs de gueules posés 3, 3 et 3, accompagnés de trois lions passants d'azur armés et lampassés de gueules couronnés d'or posés en pal ; au 2, d'azur au bélier passant d'argent accorné et onglé d'or ; au 3, d'azur à l'ours rampant d'argent lampassé et vilené de gueules ; au 4, d'or à deux lions passants d'azur armés et lampassés de gueules ; sur le tout d'or à deux fasces de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les neuf cœurs sont rangés 3, 3 et 3 à côté des trois lions au lieu de se glisser entre eux ; le bélier et l'ours sont les figures de l'Atelier (bélier passant, ours rampant), sans les détails de l'image.",
+    "atelierAjust": "sz=90&dx=16&dy=-26&sz2=200&dx2=19&dy2=-15&q2.sz=100&q2.dx=16&q2.dy=-13&q3.sz=100&q3.dx=11&q3.dy=-7&q4.sz=80&q4.dx=11&q4.dy=-4"
   },
   {
     "nom": "Estonie",
@@ -1818,7 +1840,7 @@
     "porteur": "État souverain, armoiries actuelles",
     "blason": "De gueules, à l'aigle bicéphale d'argent, becquée, languée et membrée d'or, à deux fleurs de lys du même sous les deux pattes. Sur le tout, de gueules, à la croix d'argent, cantonnée de quatre briquets du même, adossés deux à deux",
     "atelier": "De gueules à l'aigle bicéphale d'argent, becquée, languée et membrée d'or, sur le tout de gueules à la croix d'argent cantonnée de quatre briquets d'argent",
-    "atelierNote": "Les deux fleurs de lis sous les pattes de l'aigle et le sens des briquets (adossés deux à deux) ne sont pas dessinés.",
+    "atelierNote": "Les deux fleurs de lis sous les pattes de l'aigle ne sont pas dessinées. Les quatre briquets sont tournés comme sur l'image, deux à deux de part et d'autre de la croix.",
     "file": "Coat of arms of Serbia.svg",
     "auteur": "Rokerismoravee",
     "lic": "domaine public",
@@ -1979,7 +2001,9 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial des maisons d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
-    }
+    },
+    "atelier": "Fascé d'argent et de gueules de quatre pièces",
+    "atelierNote": "L'image montre quatre pièces : le dessin les suit, alors que la source dit « burelé » (qui en suppose davantage)."
   },
   {
     "nom": "Maison de Hohenzollern",
@@ -2125,7 +2149,8 @@
         "t": "La règle des émaux",
         "href": "index.html#emaux"
       }
-    ]
+    ],
+    "atelierAjust": "sz2=50&dy2=-10"
   },
   {
     "nom": "Seigneurs de Lusignan",

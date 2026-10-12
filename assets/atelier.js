@@ -423,10 +423,19 @@ function appliqueLecture(etat) {
   render();
 }
 let lireT = 0;
-/* réglages graphiques proposés par une carte (« sz2=60&dy2=-40 ») : taille, décalages et angle du premier ou du second meuble des premières armes */
+/* réglages graphiques proposés par une carte (« sz2=60&dy2=-40&q2.an=45 ») : taille (sz, en %), décalages (dx, dy) et angle (an) du premier ou du second
+   meuble — de la première des armes, ou, préfixés « q2. » à « q4. », d'un autre quartier, « q5. » de l'écusson en abîme — et, pour la pièce
+   (une croix « affinée » : pth=55), son épaisseur en % (pth) et ses décalages (pdx, pdy) ; cs et ce : taille et écart (en %) des figures portées par
+   un tourteau plus grand (Médicis : trois fleurs de lis). Les valeurs sont celles de l'état de l'Atelier :
+   dy négatif monte la figure (le curseur « Bas ↕ haut » montre l'opposé). */
 function appliqueAjust(aj) {
   if (!aj) return;
-  for (const [k, v] of new URLSearchParams(aj)) if (/^(sz|dx|dy|an)2?$/.test(k)) S.A[0][k] = v;
+  for (const [k, v] of new URLSearchParams(aj)) {
+    const m = /^(?:q([1-5])\.)?((?:sz|dx|dy|an)2?|pth|pdx|pdy|cs|ce)$/.exec(k);
+    if (!m || !isFinite(+v) || Math.abs(+v) > 300) continue;
+    const a = S.A[m[1] ? +m[1] - 1 : 0];
+    if (a) a[{ cs: "m2cs", ce: "m2ce" }[m[2]] || m[2]] = v;
+  }
   render();
 }
 function lireLeChamp() {
@@ -461,7 +470,7 @@ async function chargeCartes() {
   const listes = await Promise.all(Object.entries(GALERIES).map(async ([gal, G]) => {
     const r = await fetch(G.fichier);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return (await r.json()).map(a => ({ gal, slug: slugCarte(a.nom), a, r: a.blason ? lire(texteAtelier(a)) : null }));
+    return (await r.json()).map(a => ({ gal, slug: slugCarte(a.nom), a, r: a.blason ? lireCarte(a) : null }));
   }));
   CARTES = listes.flat();
 }

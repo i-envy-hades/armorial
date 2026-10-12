@@ -167,7 +167,7 @@ const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", r
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", an: "0", an2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
-  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "", big2: "", m2c: "", m2cn: "3", m2ct: "Or", lrg: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
+  lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "", big2: "", m2c: "", m2cn: "3", m2ct: "Or", m2cs: "100", m2ce: "100", lrg: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
   { ...ADEF, t1: "Azur", m: "etoile", nb: "3", tm: "Argent" }, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" },
@@ -275,7 +275,9 @@ function normalize(s) {
   { let mc = s.m2c && meuble(s.m2c); if (mc) { mc = ATL.meubles.find(o => o.sing === mc.sing); s.m2c = mc.kind; }
     if (!s.big2 || s.m2 !== "roundel" || !mc || mc.seul || mc.queue) s.m2c = "";
     if (!s.m2c || !["1", "2", "3"].includes(s.m2cn)) s.m2cn = ADEF.m2cn;
-    if (!s.m2c || !own(MOT, s.m2ct)) s.m2ct = ADEF.m2ct; }
+    if (!s.m2c || !own(MOT, s.m2ct)) s.m2ct = ADEF.m2ct;
+    s.m2cs = s.m2c ? num(s.m2cs, 40, 200, 100) : ADEF.m2cs;          // taille (%) et écart (%) des figures portées par le tourteau : réglages graphiques d'une carte (cs, ce)
+    s.m2ce = s.m2c ? num(s.m2ce, 50, 250, 100) : ADEF.m2ce; }
   s.fqs = s.p === "franc-quartier" && s.fqs === "1" ? "1" : "";                // le franc-quartier senestre (Schwytz)
   s.ri = (s.p === "bande" || s.p === "barre") && own(MOT, s.ri) ? s.ri : "";                // la bande (barre) ornée d'un rinceau
   /* la bordure componée : deux émaux en alternance, et, sur les compons de chacun, une figure (cm1 sur ceux du premier émail, cm2 sur ceux du second) */
@@ -339,7 +341,7 @@ function canon(a) {
     if (a.bro2) o.bro2 = "1";
     if (a.pbro) o.pbro = "1";
     if (a.big2) o.big2 = "1";
-    if (a.m2c) Object.assign(o, { m2c: a.m2c, m2cn: a.m2cn, m2ct: a.m2ct });
+    if (a.m2c) Object.assign(o, { m2c: a.m2c, m2cn: a.m2cn, m2ct: a.m2ct }, a.m2cs !== ADEF.m2cs ? { m2cs: a.m2cs } : {}, a.m2ce !== ADEF.m2ce ? { m2ce: a.m2ce } : {});
     if (a.cha) o.cha = "1";
   }
   if (a.br) {
