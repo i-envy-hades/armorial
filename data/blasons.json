@@ -1620,7 +1620,7 @@
     },
     "atelier": "Écartelé par une croix d'argent bordée de gueules : au 1, d'or à neuf cœurs de gueules posés 3, 3 et 3, accompagnés de trois lions passants d'azur armés et lampassés de gueules couronnés d'or posés en pal ; au 2, d'azur au bélier passant d'argent accorné et onglé d'or ; au 3, d'azur à l'ours rampant d'argent lampassé et vilené de gueules ; au 4, d'or à deux lions passants d'azur armés et lampassés de gueules ; sur le tout d'or à deux fasces de gueules",
     "atelierNote": "Ébauche à ajuster dans l'Atelier : les neuf cœurs sont rangés 3, 3 et 3 à côté des trois lions au lieu de se glisser entre eux ; le bélier et l'ours sont les figures de l'Atelier (bélier passant, ours rampant), sans les détails de l'image.",
-    "atelierAjust": "sz=90&dx=16&dy=-26&sz2=200&dx2=19&dy2=-15&q2.sz=100&q2.dx=16&q2.dy=-13&q3.sz=100&q3.dx=11&q3.dy=-7&q4.sz=80&q4.dx=11&q4.dy=-4"
+    "atelierAjust": "sz=90&dx=-11&dy=-26&sz2=200&dx2=-11&dy2=-15&q2.dx=16&q2.dy=-13&q3.dx=-16&q3.dy=4&q4.sz=80&q4.dx=11&q4.dy=-4"
   },
   {
     "nom": "Estonie",
