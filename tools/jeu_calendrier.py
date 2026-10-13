@@ -1,4 +1,4 @@
-"""Écrit data/jeu.json : l'ordre des armes mystères de « L'Écu du jour » (jeu.html).
+"""Écrit data/jeu.json : l'ordre des armes mystères de « L'Écu du jour » (index.html, la page d'accueil).
 
     python3 tools/jeu_calendrier.py liste.txt            # liste.txt : un nom de carte lisible par ligne
 

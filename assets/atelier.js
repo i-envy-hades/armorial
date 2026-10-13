@@ -202,18 +202,7 @@ function readForm() {
     obj[k] = v === "" && !OPT.has(k) ? def[k] : v;
   }
 }
-function encode(St) {
-  const q = new URLSearchParams();
-  for (const k of Object.keys(ODEF)) if (St[k] !== ODEF[k]) q.set(k, St[k]);
-  for (const i of active(St)) for (const k of Object.keys(ADEF)) if (St.A[i][k] !== ADEFS[i][k]) q.set(PFX[i] + k, St.A[i][k]);
-  return q.toString();
-}
-function decode(h) {
-  const q = new URLSearchParams(h.replace(/^#/, "")), St = fresh();
-  for (const k of Object.keys(ODEF)) if (q.has(k)) St[k] = q.get(k);
-  St.A.forEach((a, i) => { for (const k of Object.keys(ADEF)) if (q.has(PFX[i] + k)) a[k] = q.get(PFX[i] + k); });
-  return St;
-}
+const encode = etatCode, decode = etatDe;                                        // assets/dessin.js
 
 /* cercle d'or autour du meuble que visent les curseurs (aperçu seulement, pas dans les exports) */
 function marker() {
@@ -254,7 +243,7 @@ async function render() {
   $("#orn").textContent = o;
   const w = ruleAll(S);
   $("#warn").hidden = !w.length;
-  $("#warn").innerHTML = w.length ? w.map(esc).join("<br>") + ` La <a href="index.html#emaux">règle des émaux</a> l'interdit, sauf armes à enquerre${active(S).some(i => S.A[i].p === "chef") ? " — ou chef dit « cousu »" : ""}.` : "";
+  $("#warn").innerHTML = w.length ? w.map(esc).join("<br>") + ` La <a href="encyclopedie.html#emaux">règle des émaux</a> l'interdit, sauf armes à enquerre${active(S).some(i => S.A[i].p === "chef") ? " — ou chef dit « cousu »" : ""}.` : "";
   const cr = creditsOf(S);
   $("#credits").innerHTML = creditsHtml(cr);
   afficheOrigine();
@@ -540,6 +529,61 @@ function afficheOrigine() {
   if (h !== afficheOrigine.h) el.innerHTML = afficheOrigine.h = h;          // render() passe ici à chaque curseur : l'image n'est refaite que si la carte ou l'état changent
 }
 
+/* ---------- vos armes : les armes de joueur (assets/compte.js) et la bibliothèque (comptes en ligne, assets/enligne.js) ---------- */
+let POUR_PROFIL = false;                                        // on vient de la fenêtre du profil (« Composer mes armes dans l'Atelier ») : un lien ramène au jeu
+const enLigneConnecte = () => !!(window.Compte && Compte.biblio && Compte.ligne && Compte.ligne.connecte());
+function dit(html) { $("#mes-armes-ret").innerHTML = html; }
+async function dessineBiblio() {
+  const det = $("#biblio");
+  if (!enLigneConnecte()) { det.hidden = true; return; }
+  let l;
+  try { l = await Compte.biblio.liste(); } catch (e) { det.hidden = false; $("#biblio-n").textContent = ""; $("#biblio-l").innerHTML = `<li>${esc(e.message)}</li>`; return; }
+  await Promise.all(l.map(x => Compte.prepare(x.armes)));
+  det.hidden = false;
+  $("#biblio-n").textContent = `(${l.length})`;
+  $("#biblio-l").innerHTML = l.length ? l.map(x => `<li><span class="bm" aria-hidden="true">${Compte.dessin(x.armes)}</span><span class="bn">${esc(x.nom)}</span>
+      <span class="ba"><button type="button" data-ouvre="${esc(x.armes)}">Ouvrir</button><button type="button" data-retire="${esc(x.id)}">Retirer</button></span></li>`).join("")
+    : `<li class="biblio-vide">Rien encore : « Enregistrer dans ma bibliothèque » garde l'écu affiché.</li>`;
+}
+function mesArmes() {
+  if (!window.Compte) { $("#mes-armes").hidden = true; return; }
+  $("#b-miennes").addEventListener("click", () => {
+    if (Compte.prendreArmes(encode(S))) dit(`Ce sont désormais vos armes de joueur.${POUR_PROFIL ? ` <a href="./">Retour au jeu</a>` : ""}`);
+    else dit("Choisissez un pseudo pour créer votre profil.");
+  });
+  const f = $("#garder-f"), nom = $("#garder-nom");
+  $("#b-garder").addEventListener("click", async () => {
+    await Compte.pret;
+    if (!enLigneConnecte()) {
+      dit(`La bibliothèque est réservée aux comptes en ligne. <button type="button" id="b-compte">Créer un compte ou me connecter</button>`);
+      $("#b-compte").addEventListener("click", () => Compte.ouvre({ armes: encode(S) }));
+      return;
+    }
+    nom.value = (ORIGINE && ORIGINE.c ? ORIGINE.c.a.nom : blazonAll(S)).slice(0, 60);
+    f.hidden = false; nom.focus(); nom.select(); dit("");
+  });
+  $("#garder-non").addEventListener("click", () => { f.hidden = true; });
+  f.addEventListener("submit", async e => {
+    e.preventDefault();
+    const bt = f.querySelector("button[type=submit]"); bt.disabled = true;
+    try { await Compte.biblio.ajoute(nom.value, encode(S)); f.hidden = true; dit("Enregistré dans votre bibliothèque."); $("#biblio").open = true; await dessineBiblio(); }
+    catch (err) { dit(esc(err.message)); }
+    finally { bt.disabled = false; }
+  });
+  $("#biblio-l").addEventListener("click", async e => {
+    const o = e.target.closest("[data-ouvre]"), r = e.target.closest("[data-retire]");
+    if (o) { S = decode(o.dataset.ouvre); ORIGINE = null; CUR = 0; KT = "1"; await render(); allerALEcu(); dit("Armes reprises de votre bibliothèque."); }
+    if (r) {
+      if (!r.dataset.sur) { r.dataset.sur = "1"; r.textContent = "Sûr ?"; return; }
+      r.disabled = true;
+      try { await Compte.biblio.retire(r.dataset.retire); await dessineBiblio(); } catch (err) { dit(esc(err.message)); r.disabled = false; }
+    }
+  });
+  /* la connexion (ou la déconnexion) change ce qu'on peut faire : la bibliothèque suit */
+  if (Compte.surSynchro) Compte.surSynchro(() => dessineBiblio());
+  Compte.pret.then(dessineBiblio);
+}
+
 /* ---------- démarrage ---------- */
 (async function init() {
   try {
@@ -555,7 +599,8 @@ function afficheOrigine() {
   $("#examples").innerHTML = EXEMPLES.map(([n], i) => `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
   $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); ORIGINE = null; CUR = 0; KT = "1"; render(); });
   ORIGINE = origineDemandee(location.hash);
-  const arrivee = /(^|[#&])(lire|de)=/.test(location.hash);
+  POUR_PROFIL = /(^|[#&])pour=profil(&|$)/.test(location.hash);
+  const arrivee = /(^|[#&])(lire|de|pour)=/.test(location.hash);
   S = decode(location.hash);
   const onInput = e => {
     const t = e.target;
@@ -596,6 +641,8 @@ function afficheOrigine() {
   });
   if (!lireDepuisAdresse()) render();
   if (arrivee) allerALEcu();
+  mesArmes();
+  if (POUR_PROFIL) dit("Composez vos armes, puis « Prendre pour mes armes de joueur ».");
   /* les galeries arrivent ensuite : le sélecteur « Partir d'un blason réel » et la carte d'où l'on part */
   try { await chargeCartes(); }
   catch (e) { $("#reel").innerHTML = `<option value="">Galeries indisponibles (${esc(e.message)})</option>`; $("#reel").disabled = true; ORIGINE = null; render(); return; }

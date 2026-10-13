@@ -93,7 +93,7 @@ cibles = {"lignees.html": {x.get("id") for x in (DATA.get("frises.json") or {}).
           "transmission.html": {n.get("id") for n in (DATA.get("transmission.json") or {}).get("noeuds", [])}}
 dd = DATA.get("data.json") or {}
 # (un encadré, « note », n'a pas d'adresse : seule la section se vise)
-cibles["index.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
+cibles["encyclopedie.html"] = {s_.get("id") for s_ in dd.get("sections", [])} | {"glossaire", "bibliotheque"} \
     | {slug(a_.get("titre")) for s_ in dd.get("sections", []) for a_ in s_.get("articles", []) if a_.get("titre") and not a_.get("note")} \
     | {terme_id(g_.get("terme"), dd.get("glossaire", [])) for g_ in dd.get("glossaire", [])}
 for nom in ("blasons.json", "personnages.json"):
@@ -334,7 +334,8 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
 # l'ordre des scripts : chaque fichier s'appuie sur des globaux que d'autres définissent, il doit venir après eux
 DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
                "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"],
-               "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"]}
+               "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"],
+               "enligne.js": ["compte.js"], "jeu.js": ["blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
     for dependant, avant in DEPENDANCES.items():
@@ -345,17 +346,17 @@ for p in pages:
 # le plan du site cite chaque page
 plan = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
 for p_ in pages:
-    if p_.name == "404.html": continue                        # la page d'erreur n'est ni au plan du site ni au menu
+    if p_.name in ("404.html", "jeu.html"): continue          # la page d'erreur n'est ni au plan du site ni au menu ; jeu.html ne fait que renvoyer à l'accueil
     cible = "web.app/" if p_.name == "index.html" else f"web.app/{p_.name}"
     if f"{cible}</loc>" not in plan: err(f"sitemap.xml: la page « {p_.name} » n'y figure pas")
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
-menu = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)"', chrome)
+menu = [(i, "index.html" if f == "./" else f) for i, f in re.findall(r'\["(\w+)",\s*"([\w.-]+\.html|\./)"', chrome)]      # « ./ » : l'accueil, index.html
 for ident, fichier in menu:
     page = ROOT / fichier
     if not page.exists(): err(f"assets/chrome.js: la page « {fichier} » du menu n'existe pas"); continue
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
-    if p.name != "404.html" and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+    if p.name not in ("404.html", "jeu.html") and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
 
 for w in warnings: print("avertissement :", w)
 print("\n".join(errors) or "OK")

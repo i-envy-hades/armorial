@@ -10,10 +10,18 @@ You do steps 1–5 yourself (they need your own Google login); step 6 is two val
 2. **Create a project** (or *Add project*). Name: `armorial`.
 3. **Google Analytics: turn it off** (not needed), then **Create project**. Wait until it is ready, then *Continue*.
 
-## 2. Turn on e-mail + password sign-in
+## 2. Turn on sign-in: Google, and e-mail + password
 
-Left menu → **Build → Authentication** → **Get started** → tab **Sign-in method** → **Email/Password**:
-switch on the **first** toggle (*Email/Password*), leave *Email link* off → **Save**.
+Left menu → **Build → Authentication** → **Get started** → tab **Sign-in method**:
+
+- **Google** → **Enable** → choose the *project support email* (your address) → **Save**. This is the main way in
+  (« Continuer avec Google »). The site loads Firebase's sign-in module from `gstatic.com` only when a player clicks that button.
+- **Email/Password**: switch on the **first** toggle (*Email/Password*), leave *Email link* off → **Save** (the fallback,
+  under « Ou avec un e-mail et un mot de passe »).
+
+Then tab **Settings** → **Authorized domains** → **Add domain** → `armorial.web.app` (the project's own `armorial-175d5.web.app`,
+`armorial-175d5.firebaseapp.com` and `localhost` are there by default). Without it, Google sign-in answers
+« Ce site n'est pas encore autorisé pour la connexion Google ».
 
 ## 3. Create the database and publish the rules
 
@@ -22,6 +30,8 @@ switch on the **first** toggle (*Email/Password*), leave *Email link* off → **
 3. Mode: **Start in production mode** → **Create**.
 4. Open the **Rules** tab. Select everything in the editor and delete it. Open [`firestore.rules`](firestore.rules) in this folder, copy **all** of it, paste it, click **Publish**.
    (If the editor shows a red error, tell Claude the exact message: it is a rule I need to adjust.)
+   Later changes to the rules can also be published from the terminal: `firebase deploy --only firestore:rules --project armorial-175d5`
+   (firebase.json points to this file).
 
 ## 4. Copy the two values
 
@@ -61,9 +71,16 @@ Paste the two values in the chat and Claude fills `data/compte.json` — or edit
 
 (`"index": true` only if you created the index of step 5.)
 
-Then commit and push, as for any change. To check it works, open `jeu.html`, click **Créer mon profil**, pick a pseudo, and at
-the bottom of the window use **Compte en ligne** to create an account; play, and your result appears in the **Classement** card.
-You can see the data in Firebase → Firestore Database → *Data* (`profils`, `pseudos`, `scores`) and the users in Authentication → *Users*.
+Then commit and push, as for any change. To check it works, open the home page (the game), click **Profil**, pick a pseudo, and at
+the bottom of the window use **Continuer avec Google** (or the e-mail form); play, and your result appears in the **Classement** window (trophy).
+You can see the data in Firebase → Firestore Database → *Data* (`profils`, `pseudos`, `scores`, `abonnes`) and the users in Authentication → *Users*.
+
+## 7. The newsletter list (« M'écrire quand l'Armorial a du nouveau »)
+
+Signed-in players can tick that box in their profile window; it creates `abonnes/{uid}` with their e-mail and the date, and
+unticking deletes it. Only the player and you (in the console) can read it. Nothing sends mail yet: to write to them, export the
+collection (Firestore → *Data* → `abonnes`) and use a mailing service — and give every message an unsubscribe link (the box
+in the profile window does the unsubscribing). Only write to people who ticked the box.
 
 ## Good to know
 
@@ -73,11 +90,12 @@ You can see the data in Firebase → Firestore Database → *Data* (`profils`, `
 - **Passwords** are handled by Firebase Authentication (hashed); the site never sees or stores them. There is no "forgot password"
   button yet; you can send a reset mail by hand from Authentication → *Users* → ⋮ → *Reset password*.
 - **Privacy.** Stored online: e-mail (visible only in your Firebase console, never shown on the site), pseudo, player arms,
-  scores. Players can delete their online account from their profile window (it asks for the password again): that erases the documents and the account.
+  scores, the personal arms library, and the newsletter box if ticked. Players can delete their online account from their profile
+  window (it asks for the password again, or Google confirms): that erases the documents and the account.
   Data is held by Google (Firebase); the privacy note in the page footer says so.
 - **Pseudos** are unique, ignoring capitals (2–24 letters/digits/space/`_`/`.`/`-`): one small document per pseudo does that.
 - **Cheating.** Scores come from the player's browser, so a determined person can fake one. For a friendly leaderboard that is
   fine; the rules at least keep each person to their own documents and make a day's result impossible to modify.
 - **Trying without a project.** `python3 tools/firebase/mock_firebase.py` starts a fake Firebase in memory
-  (then open <http://127.0.0.1:8130/jeu.html>): it proves the site's logic, not Firebase's.
+  (then open <http://127.0.0.1:8130/>; « Continuer avec Google » asks for a test e-mail instead of opening Google): it proves the site's logic, not Firebase's.
 - **Turn it off** at any time by emptying `data/compte.json` (both values `""`): the site goes back to local-only.

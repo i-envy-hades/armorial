@@ -11,7 +11,7 @@
      Pour ajouter des armes, les ajouter à la FIN de « ordre » : les jours déjà joués gardent leurs armes ;
    - les scores et les essais du jour : le carnet « ecu » de assets/compte.js (gardé dans le navigateur, facultatif).
 
-   Pour essayer un autre jour sans attendre : jeu.html#n=3 rejoue l'écu n° 3 (hors concours : ni série ni statistiques). */
+   Pour essayer un autre jour sans attendre : index.html#n=3 (ou /#n=3) rejoue l'écu n° 3 (hors concours : ni série ni statistiques). */
 (async () => {
   "use strict";
   const $ = s => document.querySelector(s);
@@ -155,24 +155,7 @@
       return `<svg class="ecu" viewBox="${r.vb.join(" ")}" aria-hidden="true">${r.svg}</svg>`;
     } finally { window.tinctPaint = op; window.tinctColor = oc; }
   }
-  /* les armes de joueur (assets/compte.js) : un blasonnement très simple, dessiné à la demande ; la fenêtre du profil se rafraîchit quand le dessin est prêt */
-  const AVATARS = new Map(), EN_COURS = new Set();
-  async function prepareAvatar(texte) {
-    if (AVATARS.has(texte) || EN_COURS.has(texte)) return;
-    EN_COURS.add(texte);
-    try {
-      const r = lire(texte);
-      if (!r.ok) return;
-      const S = mk(r.etat); await loadAll(S);
-      const c = compose(S, "av" + ++compteur);
-      AVATARS.set(texte, `<svg class="ecu" viewBox="${c.vb.join(" ")}" aria-hidden="true">${c.svg}</svg>`);
-    } finally { EN_COURS.delete(texte); }
-  }
-  Compte.dessin = texte => {
-    const v = AVATARS.get(texte);
-    if (!v) prepareAvatar(texte).then(() => Compte.actualiseEcu && Compte.actualiseEcu());
-    return v || "";
-  };
+  /* les armes des joueurs (assets/compte.js) : l'état de l'Atelier, dessiné à la demande par Compte.prepare(code) */
 
   /* ---------- l'écu mystère et les émaux ---------- */
   async function dessineMystere() {
@@ -180,6 +163,7 @@
     $("#jeu-ecu").innerHTML = await svgDe(cible, fini ? undefined : { gris: J.trouves });
     $("#jeu-mystere").style.setProperty("--flou", fini ? 0 : Math.max(0, 6 - nb * 1.5).toFixed(2) + "px");
     $("#jeu-mystere").classList.toggle("vide", !nb && !fini);
+    $("#jeu-mystere").classList.toggle("fini", fini);
     $("#jeu-ecu").setAttribute("aria-label", fini ? `Les armes : ${cible.nom}` : `Les armes mystères, ${J.trouves.size} ${J.trouves.size > 1 ? "émaux trouvés" : "émail trouvé"} sur ${cible.t.emaux.length}`);
     $("#jeu-leg").textContent = fini ? cible.nom : "Armes mystères";
   }
@@ -289,7 +273,7 @@
       if (gagne || J.essais.length >= ESSAIS) { J.fini = true; J.gagne = gagne; }
       $("#jeu-annonce").textContent = `${c.nom} : ${COLS.map(k => `${ENTETE[k]} ${VERDICT[cmp[k].cls]}`).join(", ")}.`;
       if (J.fini) termine(); else sauve();
-      majEssais(); dessinePalette();
+      majEssais(); dessinePalette(); dessinePoints();
       await dessineMystere();
       if (J.fini) await montreResultat();
       else champ.focus();
@@ -299,6 +283,7 @@
     const deja = !hors && C.jours[N] && C.jours[N].fini;
     if (!hors && !deja) applique(C.stats, N, { gagne: J.gagne, essais: J.essais });
     sauve();
+    dessineCote();
     setTimeout(() => dessineClassement(true), 1800);                            // le temps que le résultat parte en ligne
   }
   const majEssais = () => {
@@ -312,7 +297,7 @@
   const imageDe = a => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(a.file)}?width=420`;
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
-    return `L'Écu du jour n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/jeu.html`;
+    return `L'Écu du jour n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/`;
   }
   let minuteur = 0;
   async function montreResultat() {
@@ -324,11 +309,13 @@
       <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="Armoiries : ${esc(a.nom)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
         <figcaption>${a.porteur ? `${esc(a.porteur)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
-      <p class="res-actes"><button type="button" class="main" id="jeu-partage">Partager mon résultat</button><span class="res-copie" id="jeu-copie" role="status"></span></p>
+      <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">Partager mon résultat</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">Mes statistiques</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">Classement</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
       <p class="res-liens"><a href="${lien}">Voir la carte dans l'Armorial</a> · <a href="${atelier}">Redessiner dans l'Atelier</a></p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image : <i>${esc(a.file)}</i>, ${esc(a.auteur || "auteur inconnu")}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || "licence libre")}, via Wikimedia Commons.</p>`;
     r.hidden = false;
+    $("#jeu-voir-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
+    if ($("#jeu-voir-cl")) $("#jeu-voir-cl").addEventListener("click", () => ouvreDlg("dlg-classement"));
     $("#jeu-partage").addEventListener("click", async () => {
       const t = texteDePartage(), msg = $("#jeu-copie");
       try { await navigator.clipboard.writeText(t); msg.textContent = "Copié : collez-le où vous voulez."; }
@@ -338,7 +325,7 @@
     const tic = () => {
       const maintenant = new Date(), demain = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + 1), s = Math.max(0, Math.round((demain - maintenant) / 1000));
       const el = $("#jeu-prochain"); if (!el) return;
-      if (hors) { el.innerHTML = `Écu n° ${N} rejoué hors concours. <a href="jeu.html">Retour à l'écu du jour</a>`; return; }
+      if (hors) { el.innerHTML = `Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`; return; }
       el.textContent = `Prochain écu dans ${String(Math.floor(s / 3600)).padStart(2, "0")} h ${String(Math.floor(s / 60) % 60).padStart(2, "0")} min ${String(s % 60).padStart(2, "0")} s`;
       if (s === 0) location.reload();
     };
@@ -347,30 +334,56 @@
     r.focus({ preventScroll: true });
   }
 
-  /* ---------- le côté : profil, scores, autres jeux ---------- */
+  /* ---------- les fenêtres : comment jouer, statistiques, classement ---------- */
+  function ouvreDlg(id) {
+    const d = document.getElementById(id);
+    if (!d || d.open) return;
+    if (id === "dlg-classement") dessineClassement();
+    d.showModal();
+  }
+  document.querySelectorAll("dialog.jx-dlg").forEach(d => d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-fermer]")) d.close(); }));
+  $("#jx-aide").addEventListener("click", () => ouvreDlg("dlg-aide"));
+  $("#jx-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
+  $("#jx-classement").addEventListener("click", () => ouvreDlg("dlg-classement"));
+  $("#jeu-pf").addEventListener("click", () => Compte.ouvre());
+
+  /* ---------- le profil (la barre du haut) et les statistiques (leur fenêtre) ---------- */
   function dessineCote() {
     const s = C.stats, p = Compte.profil(), vivante = s.dernierGagne >= numAuj - 1 ? s.serie : 0;
     const max = Math.max(1, ...s.rep);
-    const armes = p ? Compte.dessin(Compte.armesTexte(p.armes)) : "";
-    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">Votre carnet</h2>
+    const armes = p ? Compte.dessin(p.armes) : "";
+    $("#jx-moi-ecu").innerHTML = armes || (p ? "" : `<svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" fill="currentColor"/><path d="M4 20.5c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5z" fill="currentColor"/></svg>`);
+    $("#jx-moi-nom").textContent = p ? p.pseudo : "Profil";
+    $("#jeu-pf").classList.toggle("avec", !!p);
+    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">Vos statistiques</h2>
       <div class="pf">${p ? `<span class="pf-ecu">${armes}</span><span class="pf-nom"><b>${esc(p.pseudo)}</b><small>joueur depuis le ${esc(p.cree.split("-").reverse().join("/"))}</small></span>`
         : `<span class="pf-nom"><b>Joueur anonyme</b><small>Créez un profil pour signer vos scores de vos propres armes.</small></span>`}</div>
-      <dl class="stats"><div><dt>Parties</dt><dd>${s.joues}</dd></div><div><dt>Victoires</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0} %</dd></div><div><dt>Série</dt><dd>${vivante}</dd></div><div><dt>Record</dt><dd>${s.serieMax}</dd></div></dl>
-      <ol class="rep" aria-label="Répartition des victoires par nombre d'essais">${s.rep.map((n, i) => `<li><span class="rn">${i + 1}</span><span class="rb"><i style="width:${n ? Math.max(8, Math.round(100 * n / max)) : 0}%"></i></span><span class="rv">${n}</span></li>`).join("")}</ol>
-      <p class="pf-acts"><button type="button" class="lnk" id="jeu-pf">${p ? "Modifier mon profil" : "Créer mon profil"}</button></p>`;
-    $("#jeu-pf").addEventListener("click", () => Compte.ouvre());
+      <dl class="stats"><div><dt>Parties</dt><dd>${s.joues}</dd></div><div><dt>Victoires</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0}<small>%</small></dd></div><div><dt>Série</dt><dd>${vivante}</dd></div><div><dt>Record</dt><dd>${s.serieMax}</dd></div></dl>
+      <h3 class="rep-t">Victoires par nombre d'essais</h3>
+      <ol class="rep" aria-label="Répartition des victoires par nombre d'essais">${s.rep.map((n, i) => `<li${J.fini && J.gagne && !hors && J.essais.length === i + 1 ? ' class="auj"' : ""}><span class="rn">${i + 1}</span><span class="rb"><i style="width:${n ? Math.max(9, Math.round(100 * n / max)) : 0}%">${n || ""}</i></span></li>`).join("")}</ol>
+      <p class="pf-acts"><button type="button" class="jx-go" id="jeu-pf2">${p ? "Modifier mon profil" : "Créer mon profil"}</button></p>`;
+    $("#jeu-pf2").addEventListener("click", () => { $("#dlg-stats").close(); Compte.ouvre(); });
+  }
+  /* les points du haut : un par essai, de la couleur de la réponse */
+  function dessinePoints() {
+    $("#jx-points").innerHTML = Array.from({ length: ESSAIS }, (_, i) => {
+      const c = J.essais[i];
+      const cls = !c ? "" : (c === cible || c.canon === cible.canon) ? "ok" : "no";
+      return `<i class="${cls}"></i>`;
+    }).join("");
   }
   function dessineAutres() {
     let defiFait = false;
     try { const m = JSON.parse(localStorage.getItem("armorial.exercices.v1") || "null"); defiFait = !!(m && m.defi && m.defi.date === cleDe(new Date())); } catch (e) { /* sans mémoire */ }
     const L = [
-      ["exercices.html#defi", "Défi du jour", "Six questions, les mêmes pour tous", defiFait ? "Fait aujourd'hui" : ""],
-      ["exercices.html#lire", "Lire un écu", "Le texte de ces armes", ""],
-      ["exercices.html#reel", "Armes réelles", "À qui sont ces armes ?", ""],
-      ["exercices.html#regle", "La règle des émaux", "Régulières ou non ?", ""],
+      ["exercices.html#defi", "Le défi du jour", "Six questions, les mêmes pour tous", "🗓️", "azur", defiFait ? "Fait ✓" : "Chaque jour"],
+      ["exercices.html#reel", "À qui sont ces armes ?", "Des écus réels à reconnaître", "🏰", "gueules", ""],
+      ["exercices.html#lire", "Lire un écu", "Trouvez le bon blasonnement", "📜", "pourpre", ""],
+      ["exercices.html#regle", "La règle des émaux", "Régulières, ou à enquerre ?", "⚖️", "sinople", ""],
+      ["atelier.html", "L'Atelier", "Composez vos propres armes", "🎨", "or", "Créer"],
     ];
-    $("#jeu-autres").innerHTML = L.map(([href, t, d, f]) => `<li><a href="${href}"><span class="t">${t}</span><span class="d">${d}</span>${f ? `<span class="f">${f}</span>` : ""}</a></li>`).join("")
-      + `<li class="bientot"><span class="t">Bientôt</span><span class="d">D'autres petits jeux : l'ordre des émaux, le blason express…</span></li>`;
+    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, f]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span>${f ? `<span class="f">${f}</span>` : ""}</a></li>`).join("")
+      + `<li><span class="jx-jeu bientot"><span class="ic" aria-hidden="true">✨</span><span class="t">Bientôt</span><span class="d">L'ordre des émaux, le blason express…</span></span></li>`;
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */
@@ -379,48 +392,48 @@
   async function dessineClassement(frais) {
     const el = $("#jeu-classement");
     if (!el || !Compte.enLigne) return;
-    el.hidden = false;
+    $("#jx-classement").hidden = false;
     try {
       [CL.jour, CL.general] = await Promise.all([Compte.classementJour(JEU, numAuj, { frais }), Compte.classementGeneral(JEU, { frais })]);
       CL.erreur = false;
-      const textes = new Set([...CL.jour, ...CL.general].map(x => Compte.armesTexte(x.armes)).filter(Boolean));
-      await Promise.all([...textes].map(prepareAvatar));
+      await Promise.all([...new Set([...CL.jour, ...CL.general].map(x => Compte.armesCode(x.armes)))].map(Compte.prepare));
     } catch (e) { CL.erreur = true; }
     rendClassement();
   }
   function rendClassement() {
     const el = $("#jeu-classement"), moi = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
     const liste = CL.onglet === "jour" ? CL.jour : CL.general;
-    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(Compte.armesTexte(x.armes))}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? `${x.essais} essai${x.essais > 1 ? "s" : ""}` : `${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`}</span></li>`;
+    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? `${x.essais} essai${x.essais > 1 ? "s" : ""}` : `${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`}</span></li>`;
     el.innerHTML = `<h2 id="jeu-classement-t">Classement</h2>
       <div class="onglets" role="tablist" aria-label="Classement"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">Du jour</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">Général</button></div>
       ${CL.erreur || !liste ? `<p class="cl-vide">Le classement n'est pas disponible pour l'instant.</p>`
         : liste.length ? `<ol class="cl">${liste.map(ligne).join("")}</ol>` : `<p class="cl-vide">${CL.onglet === "jour" ? "Personne n'a encore trouvé l'écu du jour : soyez le premier." : "Le classement se remplit avec les premières parties."}</p>`}
       ${connecte ? "" : `<p class="cl-aide"><button type="button" class="lnk" id="jeu-cl-compte">Créez un compte en ligne</button> pour y figurer.</p>`}`;
     el.querySelectorAll("[data-o]").forEach(b => b.addEventListener("click", () => { CL.onglet = b.dataset.o; rendClassement(); }));
-    const cc = $("#jeu-cl-compte"); if (cc) cc.addEventListener("click", () => Compte.ouvre());
+    const cc = $("#jeu-cl-compte"); if (cc) cc.addEventListener("click", () => { $("#dlg-classement").close(); Compte.ouvre(); });
   }
   if (Compte.surSynchro) { let t = 0; Compte.surSynchro(() => { clearTimeout(t); t = setTimeout(() => { dessineCote(); if (J.fini) dessineClassement(true); }, 300); }); }
-  Compte.sur(() => { C = Compte.carnet(JEU) || C; dessineCote(); });
+  Compte.sur(() => { C = Compte.carnet(JEU) || C; const p = Compte.profil(); if (p) Compte.prepare(p.armes).then(dessineCote); dessineCote(); });
 
   /* ---------- départ ---------- */
   $("#jeu-jour").innerHTML = `Écu n° ${N}<small>${quand(jourDe)}${hors ? " · hors concours" : ""}</small>`;
   const sv = jourSauve();
   const premiere = !C.stats.joues && !(sv && sv.essais.length);
-  $("#jeu-regles").open = premiere;
   dessineAutres();
-  { const p = Compte.profil(); if (p) await prepareAvatar(Compte.armesTexte(p.armes)); }      // les armes du joueur, pour son carnet
+  { const p = Compte.profil(); if (p) await Compte.prepare(p.armes); }      // les armes du joueur, pour la barre du haut et ses statistiques
   dessineCote();
-  dessinePalette(); majEssais();
+  dessinePalette(); majEssais(); dessinePoints();
   /* une partie commencée aujourd'hui reprend là où elle s'est arrêtée */
   if (sv) {
     for (const nom of sv.essais) { const c = PAR_NOM.get(nom); if (!c) continue; J.essais.push(c); c.t.emaux.forEach(n => { if (cible.t.emaux.includes(n)) J.trouves.add(n); }); }
     J.fini = !!sv.fini; J.gagne = !!sv.gagne;
     for (let i = 0; i < J.essais.length; i++) await ajouteLigne(J.essais[i], i, false);
-    dessinePalette(); majEssais();
+    dessinePalette(); majEssais(); dessinePoints();
   }
   await dessineMystere();
   $("#jeu-chargement").hidden = true; $("#jeu-grille").hidden = false;
+  if (premiere) { let vu = false; try { vu = !!localStorage.getItem("armorial.jeu.aide"); localStorage.setItem("armorial.jeu.aide", "1"); } catch (e) { /* sans mémoire */ } if (!vu) ouvreDlg("dlg-aide"); }
+  Compte.reprendSiBrouillon();                                     // retour de l'Atelier avec un profil en cours : la fenêtre se rouvre
   if (J.fini) await montreResultat();
   dessineClassement();
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */

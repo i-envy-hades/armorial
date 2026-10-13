@@ -4,17 +4,24 @@
    Pour l'activer : tools/firebase/SETUP.md (créer le projet, activer e-mail + mot de passe et Firestore, publier firestore.rules,
    recopier l'identifiant du projet et la clé web).
 
-   Pas de bibliothèque : on parle à Firebase par ses interfaces HTTP (fetch).
+   On parle à Firebase par ses interfaces HTTP (fetch). Seule exception : « Continuer avec Google » charge, au moment du clic seulement,
+   le module d'authentification de Firebase (gstatic.com) pour ouvrir la fenêtre de Google ; on en garde les jetons et tout le reste
+   passe par HTTP, comme pour un compte e-mail.
    - Authentification : Identity Toolkit (accounts:signUp, accounts:signInWithPassword, accounts:delete) et Secure Token
      (renouvellement du jeton) ; le jeton de session accompagne les requêtes Firestore (Authorization).
    - Données : Firestore (documents, commit, batchWrite, batchGet, runQuery). Ce que chacun peut lire ou écrire est réglé par la
      base elle-même (tools/firebase/firestore.rules) : la clé web, publique par nature, n'ouvre rien d'autre.
-   - Ce qui part en ligne : l'e-mail (gardé par Firebase seul, jamais montré), le pseudo, les armes de joueur, le carnet de chaque jeu
-     et, pour le classement, le résultat de chaque partie terminée. Rien d'autre.
+   - Ce qui part en ligne : l'e-mail (gardé par Firebase seul, jamais montré), le pseudo, les armes de joueur, le carnet de chaque jeu,
+     la bibliothèque d'armes et, pour le classement, le résultat de chaque partie terminée. L'e-mail n'entre dans la liste des
+     abonnés (« abonnes ») que si le joueur coche la case des nouvelles ; il se désinscrit en la décochant.
 
    Les documents :
-     profils/{uid}                  pseudo, armes, cree, et par jeu : j_<jeu> (parties), v_<jeu> (victoires), m_<jeu> (essais moyens des victoires)
+     profils/{uid}                  pseudo, armes (l'état de l'Atelier, en une ligne), cree, et par jeu : j_<jeu> (parties), v_<jeu> (victoires),
+                                    m_<jeu> (essais moyens des victoires)
      profils/{uid}/carnets/{jeu}    donnees (le carnet, en JSON), maj ; privé
+     profils/{uid}/bibliotheque/{id} nom, armes, cree : les armes gardées par le joueur ; privé
+     abonnes/{uid}                  email, depuis : qui veut recevoir les nouvelles de l'Armorial par e-mail ; privé (le curateur le lit
+                                    dans la console Firebase)
      pseudos/{pseudo en minuscules} uid, pseudo : un pseudo = un document, créé une seule fois (c'est ce qui le rend unique)
      scores/{uid}_{jeu}_{jour}      uid, jeu, jour, essais, gagne, cree, vic (« jeu|jour », seulement pour une victoire) ; non modifiable
 
@@ -96,7 +103,7 @@
     })();
     await renouvellement;
   }
-  const pose = (d, email) => ecrireS({ idToken: d.idToken, refreshToken: d.refreshToken, expires_at: Math.floor(Date.now() / 1000) + (+d.expiresIn || 3600), uid: d.localId, email });
+  const pose = (d, email, via = "mdp") => ecrireS({ idToken: d.idToken, refreshToken: d.refreshToken, expires_at: Math.floor(Date.now() / 1000) + (+d.expiresIn || 3600), uid: d.localId, email, via });
   const identite = (point, corps) => requete(`${AUTH}/accounts:${point}`, { methode: "POST", corps });
 
   /* ---------- valeurs Firestore : { stringValue }, { integerValue }, { mapValue }… ---------- */
@@ -111,7 +118,15 @@
   const idPseudo = p => p.toLowerCase();
   const fsAuth = (suite, opts) => requete(FS + suite, { ...opts, auth: true });
   const lisDoc = async (chemin, auth = true) => { try { const d = await requete(`${FS}/${chemin}`, { auth }); return decChamps(d.fields); } catch (e) { if (e.statut === 404 || e.code === "NOT_FOUND") return null; throw e; } };
-  async function liste(chemin) { const d = await fsAuth(`/${chemin}?pageSize=100`); return (d.documents || []).map(x => ({ id: x.name.split("/").pop(), ...decChamps(x.fields) })); }
+  async function liste(chemin) {                                     // une collection entière, page après page (mille documents au plus)
+    const out = []; let jeton = "";
+    do {
+      const d = await fsAuth(`/${chemin}?pageSize=100${jeton ? "&pageToken=" + encodeURIComponent(jeton) : ""}`);
+      out.push(...(d.documents || []).map(x => ({ id: x.name.split("/").pop(), ...decChamps(x.fields) })));
+      jeton = d.nextPageToken || "";
+    } while (jeton && out.length < 1000);
+    return out;
+  }
   const nettoie = (r, k) => (r || []).filter(x => x[k]);
   const parTrancheDe = (liste, n) => { const out = []; for (let i = 0; i < liste.length; i += n) out.push(liste.slice(i, i + n)); return out; };
 
@@ -122,8 +137,8 @@
     const [pf, cs] = await Promise.all([lisDoc(`profils/${seg(S.uid)}`), liste(`profils/${seg(S.uid)}/carnets`)]);
     const M = API.interne.lire(), carnets = { ...M.carnets };
     let profil = M.profil, change = false;
-    if (pf && pf.armes && API.armesTexte(pf.armes)) {
-      profil = { pseudo: pf.pseudo, armes: pf.armes, cree: String(pf.cree || "").slice(0, 10) || (M.profil && M.profil.cree) || "" };
+    if (pf && pf.pseudo) {
+      profil = { pseudo: pf.pseudo, armes: API.armesCode(pf.armes), cree: String(pf.cree || "").slice(0, 10) || (M.profil && M.profil.cree) || "" };
       change = JSON.stringify(profil) !== JSON.stringify(M.profil);
       if (!y.pseudo) y.pseudo = idPseudo(pf.pseudo);                        // ce pseudo est déjà à nous : inutile de le redemander
     }
@@ -147,7 +162,7 @@
       for (const x of sc) if (!(y.pousses[jeu] || []).includes(x.jour)) nouveauxScores.push({ jeu, ...x });
     }
     /* le profil et son pseudo : une seule écriture atomique (commit) ; un pseudo n'est créé qu'une fois, d'où le « exists: false » */
-    if (M.profil && API.armesTexte(M.profil.armes)) {
+    if (M.profil && API.pseudoValide(M.profil.pseudo)) {
       const nouveau = idPseudo(M.profil.pseudo), empreinte = JSON.stringify([M.profil, resume, y.pseudo === nouveau]);
       if (empreinte !== y.hash) {
         const writes = [{ update: doc(`profils/${uid}`, { pseudo: M.profil.pseudo, armes: M.profil.armes, cree: M.profil.cree, ...resume }) }];
@@ -194,6 +209,85 @@
   /* un enregistrement local déclenche l'envoi, après un court délai (plusieurs essais d'affilée : un seul envoi) */
   API.sur(() => { if (CFG && S && !enTire) { clearTimeout(minuteur); minuteur = setTimeout(() => synchro("pousse"), 800); } });
 
+  /* ---------- « Continuer avec Google » ---------- */
+  /* Le module d'authentification de Firebase, chargé au premier clic ; la fenêtre de Google s'ouvre sur le domaine du projet
+     (<projet>.firebaseapp.com). Il faut, dans la console Firebase : Authentication → Sign-in method → Google activé, et le site
+     (armorial.web.app) dans Authentication → Settings → Authorized domains (voir tools/firebase/SETUP.md). */
+  const SDK = "https://www.gstatic.com/firebasejs/10.12.2/";
+  let fb = null;
+  async function sdk() {
+    if (fb) return fb;
+    let A, app;
+    try {
+      const [mApp, mAuth] = await Promise.all([import(SDK + "firebase-app.js"), import(SDK + "firebase-auth.js")]);
+      A = mAuth; app = mApp.initializeApp({ apiKey: CFG.cle, authDomain: CFG.domaine || `${CFG.projet}.firebaseapp.com`, projectId: CFG.projet }, "armorial");
+    } catch (e) { throw new Error("Le module de connexion de Google n'a pas pu se charger : vérifiez votre connexion."); }
+    const auth = A.initializeAuth(app, { persistence: A.inMemoryPersistence, popupRedirectResolver: A.browserPopupRedirectResolver });
+    auth.languageCode = "fr";
+    return (fb = { A, auth });
+  }
+  const MOTIFS_GOOGLE = {
+    "auth/popup-closed-by-user": "Connexion annulée.", "auth/cancelled-popup-request": "Connexion annulée.", "auth/user-cancelled": "Connexion annulée.",
+    "auth/popup-blocked": "Le navigateur a bloqué la fenêtre de Google : autorisez les fenêtres surgissantes pour ce site, puis réessayez.",
+    "auth/unauthorized-domain": "Ce site n'est pas encore autorisé pour la connexion Google (Firebase → Authentication → Settings → Authorized domains).",
+    "auth/operation-not-allowed": "La connexion Google n'est pas activée dans Firebase (Authentication → Sign-in method).",
+    "auth/account-exists-with-different-credential": "Un compte existe déjà avec cet e-mail et un mot de passe : connectez-vous avec l'e-mail.",
+    "auth/network-request-failed": "Le service en ligne ne répond pas : vérifiez votre connexion.",
+  };
+  async function viaGoogle() {
+    if (CFG.emulateur) {                                                  // essais en local (mock_firebase.py) : pas de fenêtre Google, un e-mail de test
+      const email = (window.prompt("Essai local : l'e-mail du compte Google simulé", "joueur@example.com") || "").trim();
+      if (!email) throw new Error("Connexion annulée.");
+      const d = await identite("signInWithIdp", { postBody: `id_token=essai&providerId=google.com&email=${encodeURIComponent(email)}`, requestUri: location.origin, returnSecureToken: true });
+      return { idToken: d.idToken, refreshToken: d.refreshToken, expiresIn: d.expiresIn, localId: d.localId, email: d.email || email };
+    }
+    const { A, auth } = await sdk();
+    const fournisseur = new A.GoogleAuthProvider(); fournisseur.setCustomParameters({ prompt: "select_account" });
+    let u;
+    try { u = (await A.signInWithPopup(auth, fournisseur)).user; }
+    catch (e) { throw new Error(MOTIFS_GOOGLE[e.code] || `Connexion Google impossible (${e.code || e.message}).`); }
+    const t = await u.getIdTokenResult();
+    return { idToken: t.token, refreshToken: u.refreshToken, expiresIn: Math.max(60, Math.round((Date.parse(t.expirationTime) - Date.now()) / 1000)), localId: u.uid, email: u.email || "" };
+  }
+  async function avecGoogle() {
+    const d = await viaGoogle();
+    pose(d, d.email, "google");
+    await synchro();                                                      // un profil en ligne revient ; sinon le profil de ce navigateur part
+    if (!etatSynchro.ok) throw new Error(etatSynchro.msg);
+  }
+
+  /* ---------- la bibliothèque d'armes (comptes en ligne seulement) et les nouvelles par e-mail ---------- */
+  const idAuHasard = () => { const c = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789"; let s = ""; for (const x of crypto.getRandomValues(new Uint8Array(20))) s += c[x % c.length]; return s; };
+  const BIBLIO_MAX = 200;
+  const biblio = {
+    dispo: () => !!S,
+    async liste() {
+      if (!S) return [];
+      const l = await liste(`profils/${seg(S.uid)}/bibliotheque`);
+      return l.map(x => ({ id: x.id, nom: String(x.nom || ""), armes: API.armesCode(x.armes), cree: x.cree || "" })).sort((a, b) => (a.cree < b.cree ? 1 : -1));
+    },
+    async ajoute(nom, armes) {
+      if (!S) throw new Error("La bibliothèque est réservée aux comptes en ligne.");
+      if ((await biblio.liste()).length >= BIBLIO_MAX) throw new Error(`Votre bibliothèque est pleine (${BIBLIO_MAX} armes) : retirez-en avant d'en ajouter.`);
+      const id = idAuHasard();
+      await fsAuth(":commit", { methode: "POST", corps: { writes: [{ update: doc(`profils/${S.uid}/bibliotheque/${id}`, { nom: String(nom).trim().slice(0, 60) || "Sans nom", armes: API.armesCode(armes), cree: new Date() }), currentDocument: { exists: false } }] } });
+      return id;
+    },
+    async retire(id) {
+      if (!S || !/^[A-Za-z0-9]{8,32}$/.test(id)) return;
+      await fsAuth(":commit", { methode: "POST", corps: { writes: [{ delete: `${RACINE}/profils/${S.uid}/bibliotheque/${id}` }] } });
+    },
+  };
+  const nouvelles = {
+    async lit() { return S ? !!(await lisDoc(`abonnes/${seg(S.uid)}`)) : false; },
+    async regle(oui) {
+      if (!S) return;
+      if (!oui) return void await fsAuth(":commit", { methode: "POST", corps: { writes: [{ delete: `${RACINE}/abonnes/${S.uid}` }] } });
+      if (!S.email) throw new Error("Aucune adresse e-mail n'est liée à ce compte.");
+      await fsAuth(":commit", { methode: "POST", corps: { writes: [{ update: doc(`abonnes/${S.uid}`, { email: S.email, depuis: new Date() }) }] } });
+    },
+  };
+
   /* ---------- actions du joueur ---------- */
   const pseudoLibre = async pseudo => { try { return (await lisDoc(`pseudos/${seg(idPseudo(pseudo))}`, false)) === null; } catch (e) { return null; } };
   async function cree(email, mdp, profil) {
@@ -210,15 +304,25 @@
     if (!etatSynchro.ok) throw new Error(etatSynchro.msg);
   }
   async function deconnecte() { ecrireS(null); dit(); }                      // les jetons n'ont pas de point de sortie à appeler : on les oublie
-  /* supprimer le compte : on se reconnecte d'abord (Firebase l'exige pour cet acte), puis on efface les documents, puis le compte */
+  /* supprimer le compte : on se reconnecte d'abord (Firebase l'exige pour cet acte : mot de passe, ou à nouveau la fenêtre de Google),
+     puis on efface les documents, puis le compte */
   async function supprime(mdp) {
-    if (!S || !S.email) throw new Error("Reconnectez-vous d'abord.");
-    pose(await identite("signInWithPassword", { email: S.email, password: mdp, returnSecureToken: true }), S.email);
+    if (!S) throw new Error("Reconnectez-vous d'abord.");
+    if (S.via === "google") {
+      const d = await viaGoogle();
+      if (d.localId !== S.uid) throw new Error("Ce n'est pas le compte Google de ce profil : rien n'a été supprimé.");
+      pose(d, d.email, "google");
+    } else {
+      if (!S.email) throw new Error("Reconnectez-vous d'abord.");
+      pose(await identite("signInWithPassword", { email: S.email, password: mdp, returnSecureToken: true }), S.email);
+    }
     const uid = S.uid, y = registre(uid), dernier = [];
     const pf = await lisDoc(`profils/${seg(uid)}`), scores = await requete(FS + ":runQuery", { methode: "POST", auth: true, corps: { structuredQuery: { from: [{ collectionId: "scores" }], where: { fieldFilter: { field: { fieldPath: "uid" }, op: "EQUAL", value: { stringValue: uid } } }, limit: 2000 } } });
-    const cs = await liste(`profils/${seg(uid)}/carnets`);
+    const cs = await liste(`profils/${seg(uid)}/carnets`), bs = await liste(`profils/${seg(uid)}/bibliotheque`);
     for (const s of nettoie(scores, "document")) dernier.push(s.document.name);
     for (const c of cs) dernier.push(`${RACINE}/profils/${uid}/carnets/${c.id}`);
+    for (const b of bs) dernier.push(`${RACINE}/profils/${uid}/bibliotheque/${b.id}`);
+    dernier.push(`${RACINE}/abonnes/${uid}`);
     const pseudo = (pf && pf.pseudo ? idPseudo(pf.pseudo) : "") || y.pseudo;
     if (pseudo) dernier.push(`${RACINE}/pseudos/${pseudo}`);
     dernier.push(`${RACINE}/profils/${uid}`);
@@ -265,37 +369,47 @@
   API.classementGeneral = (jeu, { frais = false } = {}) => enCache(`g|${jeu}`, frais, async () => {
     if (!/^[a-z0-9_]+$/.test(jeu)) return [];
     const v = `v_${jeu}`, r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre(v, "GREATER_THAN", 0), orderBy: [{ field: { fieldPath: v }, direction: "DESCENDING" }], limit: 30 } } });
-    return nettoie(r, "document").map(x => decChamps(x.document.fields)).filter(p => p.pseudo && p.armes)
+    return nettoie(r, "document").map(x => decChamps(x.document.fields)).filter(p => p.pseudo)
       .map(p => ({ pseudo: p.pseudo, armes: p.armes, joues: p[`j_${jeu}`] || 0, victoires: p[v] || 0, essais_moyens: p[`m_${jeu}`] || 0 }))
       .sort((a, b) => b.victoires - a.victoires || a.essais_moyens - b.essais_moyens).slice(0, 10);
   });
 
   /* ---------- la section « Compte en ligne » de la fenêtre du profil ---------- */
-  const brouillonLigne = { email: "", mdp: "", msg: "", supprime: false };
+  const brouillonLigne = { email: "", mdp: "", msg: "", supprime: false, mdpOuvert: false };
+  const G = `<svg viewBox="0 0 48 48" aria-hidden="true" width="20" height="20"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>`;
   const ligne = {
     connecte: () => !!S,
     pseudoLibre,
     vue(profil) {
       if (S) return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">Compte en ligne</h3>
-        <p>Connecté${profil ? ` sous le pseudo <b>${esc(profil.pseudo)}</b>` : ""} : vos scores vous suivent d'un appareil à l'autre et vous figurez au classement.</p>
+        <p>Connecté${S.via === "google" ? " avec Google" : ""}${profil ? ` sous le pseudo <b>${esc(profil.pseudo)}</b>` : ""} : vos scores vous suivent d'un appareil à l'autre, vous figurez au classement, et vos armes se gardent dans votre bibliothèque.</p>
+        ${profil ? "" : `<p class="cpt-err" role="alert">Choisissez un pseudo ci-dessus, puis « Créer mon profil » : c'est lui qui vous représente au classement.</p>`}
         ${etatSynchro.ok ? "" : `<p class="cpt-err" role="alert">Synchronisation impossible : ${esc(etatSynchro.msg)}</p>`}
+        ${S.email ? `<label class="cpt-case"><input type="checkbox" id="cpt-nouvelles" disabled><span>M'écrire à <b>${esc(S.email)}</b> quand l'Armorial a du nouveau : nouveaux jeux, grandes mises à jour, quelques messages par an au plus. Décochez pour vous désinscrire.</span></label>` : ""}
         ${brouillonLigne.supprime
-          ? `<form id="cpt-supp-form" novalidate><label class="cpt-lab" for="cpt-supp-mdp">Pour supprimer, saisissez à nouveau votre mot de passe</label>
+          ? (S.via === "google"
+            ? `<div class="cpt-supp"><p>Supprimer le compte efface en ligne votre pseudo, vos scores, votre bibliothèque et votre inscription aux nouvelles. Google vous demandera de confirmer.</p>
+                <div class="cpt-acts"><button type="button" class="main" data-act="supprime-google">Confirmer avec Google et supprimer</button><button type="button" class="lnk" data-act="supprime-non">Annuler</button></div>
+                <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p></div>`
+            : `<form id="cpt-supp-form" novalidate><label class="cpt-lab" for="cpt-supp-mdp">Pour supprimer, saisissez à nouveau votre mot de passe</label>
               <input id="cpt-supp-mdp" type="password" autocomplete="current-password">
               <div class="cpt-acts"><button type="submit" class="main" data-act="supprime-ok">Supprimer définitivement</button><button type="button" class="lnk" data-act="supprime-non">Annuler</button></div>
-              <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p></form>`
-          : `<div class="cpt-acts"><button type="button" class="lnk" data-act="deco">Se déconnecter</button><button type="button" class="lnk" data-act="supprime">Supprimer mon compte en ligne</button></div>`}
+              <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p></form>`)
+          : `<div class="cpt-acts"><button type="button" class="lnk" data-act="deco">Se déconnecter</button><button type="button" class="lnk" data-act="supprime">Supprimer mon compte en ligne</button></div><p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>`}
         <p class="cpt-ret" id="cpt-ligne-msg" role="status">${esc(brouillonLigne.msg)}</p></section>`;
       return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">Compte en ligne <small>facultatif</small></h3>
-        <p>Retrouvez vos scores et votre série sur tous vos appareils, et figurez au classement. Gardés en ligne : votre e-mail (jamais montré), votre pseudo, vos armes, vos scores. Vos armes et votre pseudo sont ceux du formulaire ci-dessus.</p>
+        <p>Vos scores sur tous vos appareils, votre place au classement, et une bibliothèque pour garder les armes que vous composez dans l'Atelier.</p>
+        <button type="button" class="cpt-google" data-act="google">${G}<span>Continuer avec Google</span></button>
+        <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>
+        <details class="cpt-mdp"${brouillonLigne.mdpOuvert ? " open" : ""}><summary>Ou avec un e-mail et un mot de passe</summary>
         <form id="cpt-ligne-form" novalidate>
           <label class="cpt-lab" for="cpt-email">E-mail</label>
           <input id="cpt-email" type="email" autocomplete="email" inputmode="email" spellcheck="false" value="${esc(brouillonLigne.email)}">
           <label class="cpt-lab" for="cpt-mdp">Mot de passe <span class="cpt-regle">— 8 caractères au moins</span></label>
           <input id="cpt-mdp" type="password" autocomplete="current-password" minlength="8" value="${esc(brouillonLigne.mdp)}">
           <div class="cpt-acts"><button type="submit" class="main" data-act="cree">Créer mon compte</button><button type="button" class="lnk" data-act="connecte">J'ai déjà un compte : me connecter</button></div>
-          <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>
-        </form>
+        </form></details>
+        <p class="cpt-fine">Gardés en ligne : votre e-mail (jamais montré), votre pseudo, vos armes, vos scores, votre bibliothèque. Vous pouvez tout supprimer d'ici, à tout moment.</p>
         <p class="cpt-ret" id="cpt-ligne-msg" role="status">${esc(brouillonLigne.msg)}</p></section>`;
     },
     lie(dlg, ctx) {
@@ -304,9 +418,11 @@
       const erreur = m => { const e = dlg.querySelector("#cpt-ligne-err"); if (e) { e.textContent = m; e.hidden = !m; } };
       const msg = m => { brouillonLigne.msg = m; const e = dlg.querySelector("#cpt-ligne-msg"); if (e) e.textContent = m; };
       const travaille = async (bouton, f) => {
-        brouillonLigne.msg = ""; bouton.disabled = true; const avant = bouton.textContent; bouton.textContent = "Un instant…";
-        try { await f(); } catch (e) { erreur(e.message); } finally { bouton.disabled = false; bouton.textContent = avant; }
+        brouillonLigne.msg = ""; erreur(""); bouton.disabled = true; const avant = bouton.innerHTML; bouton.textContent = "Un instant…";
+        try { await f(); } catch (e) { erreur(e.message); } finally { bouton.disabled = false; bouton.innerHTML = avant; }
       };
+      const d = racine.querySelector(".cpt-mdp");
+      if (d) d.addEventListener("toggle", () => { brouillonLigne.mdpOuvert = d.open; });
       const form = dlg.querySelector("#cpt-ligne-form");
       if (form) {
         form.addEventListener("input", e => { if (e.target.id === "cpt-email") brouillonLigne.email = e.target.value; if (e.target.id === "cpt-mdp") brouillonLigne.mdp = e.target.value; });
@@ -340,11 +456,34 @@
         if (!mdp) { erreur("Saisissez votre mot de passe."); return; }
         await travaille(supp.querySelector('[data-act="supprime-ok"]'), async () => {
           await supprime(mdp);
-          brouillonLigne.supprime = false; brouillonLigne.msg = "Compte en ligne supprimé (e-mail, pseudo, scores). Vos scores restent sur cet appareil."; ctx.refait();
+          brouillonLigne.supprime = false; brouillonLigne.msg = "Compte en ligne supprimé (e-mail, pseudo, scores, bibliothèque). Vos scores restent sur cet appareil."; ctx.refait();
         });
       });
+      const nv = dlg.querySelector("#cpt-nouvelles");
+      if (nv) {
+        nouvelles.lit().then(oui => { nv.checked = oui; nv.disabled = false; }).catch(() => { nv.disabled = false; });
+        nv.addEventListener("change", async () => {
+          nv.disabled = true;
+          try { await nouvelles.regle(nv.checked); msg(nv.checked ? "C'est noté : vous recevrez les nouvelles de l'Armorial." : "Désinscrit : plus aucun message."); }
+          catch (e) { nv.checked = !nv.checked; erreur(e.message); }
+          finally { nv.disabled = false; }
+        });
+      }
       racine.addEventListener("click", async e => {
         const b = e.target.closest("[data-act]"); if (!b || b.type === "submit") return;
+        if (b.dataset.act === "google") {
+          /* le pseudo déjà tapé devient le profil de ce navigateur : il partira avec la connexion, si le compte n'en a pas encore */
+          const pf = ctx.profil(); if (pf && !API.profil()) ctx.enregistre(pf);
+          await travaille(b, async () => {
+            await avecGoogle();
+            if (API.profil()) { msg("Connecté : la page se recharge…"); setTimeout(() => location.reload(), 700); }
+            else { brouillonLigne.msg = "Connecté avec Google."; ctx.refait(); }
+          });
+        }
+        if (b.dataset.act === "supprime-google") await travaille(b, async () => {
+          await supprime();
+          brouillonLigne.supprime = false; brouillonLigne.msg = "Compte en ligne supprimé (pseudo, scores, bibliothèque). Vos scores restent sur cet appareil."; ctx.refait();
+        });
         if (b.dataset.act === "deco") { await deconnecte(); brouillonLigne.msg = "Déconnecté. Vos scores restent sur cet appareil."; ctx.refait(); }
         if (b.dataset.act === "supprime") { brouillonLigne.supprime = true; ctx.refait(); }
         if (b.dataset.act === "supprime-non") { brouillonLigne.supprime = false; ctx.refait(); }
@@ -358,10 +497,10 @@
       const r = await fetch("data/compte.json"), c = r.ok ? await r.json() : null;
       if (!c || !/^[a-z][a-z0-9-]{3,28}[a-z0-9]$/.test(c.projet || "") || !/^AIza[0-9A-Za-z_-]{30,50}$/.test(c.cle || "")) return;      // pas de compte en ligne : tout reste local
       const local = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
-      CFG = { projet: c.projet, cle: c.cle, index: c.index === true, emulateur: local && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(c.emulateur || "") ? c.emulateur : "" };
+      CFG = { projet: c.projet, cle: c.cle, index: c.index === true, domaine: /^[a-z0-9.-]+\.[a-z]{2,}$/.test(c.domaine || "") ? c.domaine : "", emulateur: local && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(c.emulateur || "") ? c.emulateur : "" };
     } catch (e) { return; }
     adresses();
-    API.enLigne = true; API.mode = "en ligne"; API.ligne = ligne;
+    API.enLigne = true; API.mode = "en ligne"; API.ligne = ligne; API.biblio = biblio;
     ecrireS(lireS());
     if (S) await Promise.race([synchro(), new Promise(res => setTimeout(res, 3000))]);        // le jeu n'attend pas plus de trois secondes
   })();

@@ -1,6 +1,6 @@
 /* ============================================================================
    L'ARMORIAL — page d'accueil : construit l'encyclopédie à partir de data/data.json.
-   Pour étendre le contenu, voir l'en-tête d'index.html ; pour le dessin des
+   Pour étendre le contenu, voir l'en-tête d'encyclopedie.html ; pour le dessin des
    figures, assets/blason.js.
    ============================================================================ */
 
@@ -413,7 +413,7 @@ async function init(){
   document.dispatchEvent(new Event("armorial:ready"));
 
   /* la page se construit après coup : le navigateur a déjà manqué l'ancre de l'adresse
-     (index.html#emaux), on s'y rend nous-mêmes — puis on s'y replace quand les polices ont
+     (encyclopedie.html#emaux), on s'y rend nous-mêmes — puis on s'y replace quand les polices ont
      fini de se charger, car elles changent la hauteur du texte au-dessus */
   if(location.hash.length > 1){
     let id = location.hash.slice(1);

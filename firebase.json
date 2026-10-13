@@ -18,6 +18,13 @@
       "README.md",
       "LICENSE"
     ],
+    "redirects": [
+      {
+        "source": "/jeu.html",
+        "destination": "/",
+        "type": 301
+      }
+    ],
     "headers": [
       {
         "source": "assets/fonts/**",
@@ -47,5 +54,8 @@
         ]
       }
     ]
+  },
+  "firestore": {
+    "rules": "tools/firebase/firestore.rules"
   }
 }

@@ -199,6 +199,21 @@ const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "l
 const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2", "lrg"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
+/* l'état d'un écu en une ligne (« t1=Gueules&m=lion&nb=1 ») : seules les valeurs qui diffèrent du défaut. C'est l'adresse de l'Atelier,
+   et la forme sous laquelle on garde les armes d'un joueur et sa bibliothèque (assets/compte.js). Ce qu'on lit ainsi peut venir de
+   n'importe où (une adresse, une base de données) : normalizeAll() ramène chaque valeur à une valeur permise avant tout dessin. */
+function etatCode(St) {
+  const q = new URLSearchParams();
+  for (const k of Object.keys(ODEF)) if (St[k] !== ODEF[k]) q.set(k, St[k]);
+  for (const i of active(St)) for (const k of Object.keys(ADEF)) if (St.A[i][k] !== ADEFS[i][k]) q.set(PFX[i] + k, St.A[i][k]);
+  return q.toString();
+}
+function etatDe(code) {
+  const q = new URLSearchParams(String(code || "").replace(/^#/, "")), St = fresh();
+  for (const k of Object.keys(ODEF)) if (q.has(k)) St[k] = q.get(k);
+  St.A.forEach((a, i) => { for (const k of Object.keys(ADEF)) if (q.has(PFX[i] + k)) a[k] = q.get(PFX[i] + k); });
+  return St;
+}
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4", "p", "c", "t", "l"].includes(St.q)) St.q = "";
