@@ -9,7 +9,7 @@
    passe par HTTP, comme pour un compte e-mail.
    - Authentification : Identity Toolkit (accounts:signUp, accounts:signInWithPassword, accounts:delete) et Secure Token
      (renouvellement du jeton) ; le jeton de session accompagne les requêtes Firestore (Authorization).
-   - Données : Firestore (documents, commit, batchWrite, batchGet, runQuery). Ce que chacun peut lire ou écrire est réglé par la
+   - Données : Firestore (documents, commit, batchGet, runQuery). Ce que chacun peut lire ou écrire est réglé par la
      base elle-même (tools/firebase/firestore.rules) : la clé web, publique par nature, n'ouvre rien d'autre.
    - Ce qui part en ligne : l'e-mail (gardé par Firebase seul, jamais montré), le pseudo, les armes de joueur, le carnet de chaque jeu,
      la bibliothèque d'armes et, pour le classement, le résultat de chaque partie terminée. L'e-mail n'entre dans la liste des
@@ -182,16 +182,22 @@
       await fsAuth(`/profils/${seg(uid)}/carnets/${seg(jeu)}`, { methode: "PATCH", corps: { fields: encChamps({ donnees: json, maj: new Date() }) } });
       y.carnets[jeu] = json;
     }
-    /* les résultats : créés une fois, jamais modifiés ; « déjà là » (code 6) vaut « envoyé » */
+    /* les résultats : créés une fois, jamais modifiés. Ceux qui sont déjà en ligne (envoyés d'un autre appareil) sont repérés d'abord
+       (lecture publique) : les réécrire serait une modification, que les règles refusent. Envoi par « commit », comme le profil. */
+    const note = x => (y.pousses[x.jeu] = y.pousses[x.jeu] || []).push(x.jour);
     for (const lot of parTrancheDe(nouveauxScores, 20)) {
-      const r = await fsAuth(":batchWrite", { methode: "POST", corps: { writes: lot.map(x => ({
-        update: doc(`scores/${uid}_${x.jeu}_${x.jour}`, { uid, jeu: x.jeu, jour: x.jour, essais: x.essais, gagne: !!x.gagne, cree: new Date(), ...(x.gagne ? { vic: `${x.jeu}|${x.jour}` } : {}) }), currentDocument: { exists: false } })) } });
-      let refus = null;
-      (r.status || []).forEach((st, i) => {
-        if (!st.code || st.code === 6) (y.pousses[lot[i].jeu] = y.pousses[lot[i].jeu] || []).push(lot[i].jour);
-        else refus = refus || st;
-      });
-      if (refus) { gardeRegistre(); throw erreurDe({ error: { message: refus.message, status: refus.code === 7 ? "PERMISSION_DENIED" : "" } }, 403); }
+      const nom = x => `${RACINE}/scores/${uid}_${x.jeu}_${x.jour}`;
+      const r = await requete(FS + ":batchGet", { methode: "POST", corps: { documents: lot.map(nom) } });
+      const enLigne = new Set((r || []).filter(d => d.found).map(d => d.found.name));
+      const aEcrire = lot.filter(x => !enLigne.has(nom(x)));
+      if (aEcrire.length) {
+        try {
+          await fsAuth(":commit", { methode: "POST", corps: { writes: aEcrire.map(x => ({
+            update: doc(`scores/${uid}_${x.jeu}_${x.jour}`, { uid, jeu: x.jeu, jour: x.jour, essais: x.essais, gagne: !!x.gagne, cree: new Date(), ...(x.gagne ? { vic: `${x.jeu}|${x.jour}` } : {}) }),
+            currentDocument: { exists: false } })) } });
+        } catch (e) { gardeRegistre(); throw e; }
+      }
+      lot.forEach(note);
     }
     gardeRegistre();
   }
@@ -324,13 +330,10 @@
     for (const b of bs) dernier.push(`${RACINE}/profils/${uid}/bibliotheque/${b.id}`);
     dernier.push(`${RACINE}/abonnes/${uid}`);
     const pseudo = (pf && pf.pseudo ? idPseudo(pf.pseudo) : "") || y.pseudo;
-    if (pseudo) dernier.push(`${RACINE}/pseudos/${pseudo}`);
+    const ps = pseudo ? await lisDoc(`pseudos/${seg(pseudo)}`, false) : null;          // un commit est tout ou rien : n'effacer que ce qui existe et nous appartient
+    if (ps && ps.uid === uid) dernier.push(`${RACINE}/pseudos/${pseudo}`);
     dernier.push(`${RACINE}/profils/${uid}`);
-    for (const lot of parTrancheDe(dernier, 100)) {
-      const r = await fsAuth(":batchWrite", { methode: "POST", corps: { writes: lot.map(name => ({ delete: name })) } });
-      const refus = (r.status || []).find(st => st.code);
-      if (refus) throw erreurDe({ error: { message: refus.message, status: "PERMISSION_DENIED" } }, 403);
-    }
+    for (const lot of parTrancheDe(dernier, 400)) await fsAuth(":commit", { methode: "POST", corps: { writes: lot.map(name => ({ delete: name })) } });      // 500 écritures au plus par commit
     await identite("delete", { idToken: S.idToken });
     ecrireS(null); Y = null; try { localStorage.removeItem(CLE_Y); } catch (e) { /* idem */ }
     dit();
