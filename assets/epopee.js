@@ -1,4 +1,4 @@
-/* L'ARMORIAL — mouvement de la « chronique » (index.html seulement).
+/* L'ARMORIAL — mouvement de la « chronique » (encyclopedie.html seulement).
    Sans dépendance : barre de lecture, parallaxe douce,
    chargement paresseux des bandeaux de chapitre, compteurs.
    Tout s'éteint avec prefers-reduced-motion ; la page se lit sans ce fichier. */

@@ -1,6 +1,6 @@
 """Un faux Firebase minimal (Authentication + Firestore REST), en mémoire, pour essayer assets/enligne.js sans projet réel.
 
-    python3 tools/firebase/mock_firebase.py   puis ouvrir http://127.0.0.1:8130/jeu.html
+    python3 tools/firebase/mock_firebase.py   puis ouvrir http://127.0.0.1:8130/   (« Continuer avec Google » y demande un e-mail d'essai)
 
 Il sert le site, répond aux adresses d'Identity Toolkit, de Secure Token et de Firestore, et applique à la main l'esprit de
 firestore.rules (chacun écrit chez soi, un pseudo ne se crée qu'une fois, un résultat ne se modifie pas). /data/compte.json y est
@@ -48,6 +48,18 @@ def regles(op, chemin, uid, apres=None, avant=None, store=None):
         return
     if p[0] == "profils" and len(p) == 4 and p[2] == "carnets":
         if not uid or uid != p[1]: pas()
+        return
+    if p[0] == "profils" and len(p) == 4 and p[2] == "bibliotheque":
+        if not uid or uid != p[1]: pas()
+        if op in ("create", "update"):
+            a = apres or {}
+            if set(a) - {"nom", "armes", "cree"} or not (1 <= len(a.get("nom", "")) <= 60) or not isinstance(a.get("armes"), str) or len(a["armes"]) > 2000 or "<" in a["armes"] or ">" in a["armes"]: pas()
+        return
+    if p[0] == "abonnes" and len(p) == 2:
+        if not uid or uid != p[1]: pas()
+        if op in ("create", "update"):
+            email = next((e for e, x in DB["users"].items() if x["id"] == uid), None)
+            if set(apres or {}) - {"email", "depuis"} or apres.get("email") != email: pas()
         return
     if p[0] == "pseudos" and len(p) == 2:
         if op == "get": return
@@ -133,8 +145,13 @@ class H(http.server.SimpleHTTPRequestHandler):
             return self.send(200, session(b["email"]))
         if point == "signInWithPassword":
             x = DB["users"].get(b["email"])
-            if not x or x["password"] != b["password"]: return self.erreur(400, "", "INVALID_LOGIN_CREDENTIALS")
+            if not x or not x["password"] or x["password"] != b["password"]: return self.erreur(400, "", "INVALID_LOGIN_CREDENTIALS")
             return self.send(200, session(b["email"]))
+        if point == "signInWithIdp":                    # « Continuer avec Google », simulé : l'e-mail passe dans postBody
+            email = dict(urllib.parse.parse_qsl(b.get("postBody", ""))).get("email", "")
+            if not email: return self.erreur(400, "", "INVALID_IDP_RESPONSE")
+            DB["users"].setdefault(email, {"id": uuid.uuid4().hex[:28], "password": None, "google": True})
+            return self.send(200, session(email))
         if point == "delete":
             uid = DB["tokens"].get(b.get("idToken"))
             if not uid: return self.erreur(400, "", "INVALID_ID_TOKEN")

@@ -10,6 +10,9 @@
 /* L'ancienne adresse (GitHub Pages, i-envy-hades.github.io/armorial/) renvoie vers le site actuel, en gardant la page, la recherche et l'ancre.
    Le dépôt est servi aux deux endroits : cette ligne ne fait rien sur le site actuel. */
 if (location.hostname === "i-envy-hades.github.io") location.replace("https://armorial.web.app" + location.pathname.replace(/^\/armorial(\/|$)/, "/") + location.search + location.hash);
+/* Le jeu est devenu la page d'accueil (index.html) et l'encyclopédie est passée à encyclopedie.html : un ancien lien vers un chapitre
+   (« index.html#emaux ») arrive sur le jeu, qui le renvoie au bon endroit (le jeu, lui, n'emploie que « #n=3 »). */
+if (/^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu)$/.test(location.hash)) location.replace("encyclopedie.html" + location.hash);
 
 /* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),
    celui qui porte l'accent le garde dans son adresse (« terme-bandé ») : sans cela les deux auraient la même. */
@@ -22,17 +25,17 @@ function termeId(terme, glossaire) {
 
 (function () {
   const PAGES = [
-    ["index", "index.html", "L'encyclopédie"],
+    ["jeu", "./", "Jouer"],
+    ["encyclopedie", "encyclopedie.html", "L'encyclopédie"],
     ["blasons", "blasons.html", "Blasons réels"],
     ["personnages", "personnages.html", "Personnages"],
     ["lignees", "lignees.html", "Lignées"],
     ["atelier", "atelier.html", "Atelier"],
     ["transmission", "transmission.html", "Transmission"],
-    ["jeu", "jeu.html", "Jouer"],
     ["exercices", "exercices.html", "S'exercer"],
     ["recherche", "recherche.html", "Rechercher"],
   ];
-  const BRAND = `<a class="brand" href="index.html"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>`;
+  const BRAND = `<a class="brand" href="./"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>`;
   const MENU = `<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bars" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg><span>Menu</span></button>`;
   const SEAL = `<svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
     <defs>

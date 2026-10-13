@@ -40,20 +40,20 @@
   const adresse = titre => { const base = slug(titre) || "article"; let id = base, n = 2; while (pris.has(id)) id = `${base}-${n++}`; pris.add(id); return id; };
   const ancreDe = {};                                             // titre d'un article → son adresse (pour les listes de vocabulaire)
   for (const s of D.sections) {
-    ajoute("art", s.title || s.label, s.lede || "", `index.html#${s.id}`, `Chapitre · ${s.label || ""}`);
+    ajoute("art", s.title || s.label, s.lede || "", `encyclopedie.html#${s.id}`, `Chapitre · ${s.label || ""}`);
     for (const a of s.articles) {
       if (a.note || !a.titre) continue;                           // un encadré n'a pas d'adresse
       const id = adresse(a.titre); ancreDe[a.titre] = id;
-      ajoute("art", a.titre, texteDe(a.html), `index.html#${id}`, `Article · ${s.title || s.label || ""}`);
+      ajoute("art", a.titre, texteDe(a.html), `encyclopedie.html#${id}`, `Article · ${s.title || s.label || ""}`);
     }
   }
-  for (const g of D.glossaire) ajoute("glo", g.terme, g.def, `index.html#${termeId(g.terme, D.glossaire)}`, "Glossaire");
+  for (const g of D.glossaire) ajoute("glo", g.terme, g.def, `encyclopedie.html#${termeId(g.terme, D.glossaire)}`, "Glossaire");
   const deja = new Set(D.glossaire.map(g => plie(g.terme)));
-  const vocab = (liste, article, meta) => liste.forEach(t => { if (!deja.has(plie(t.terme))) ajoute("voc", t.terme, t.def, `index.html#${ancreDe[article] || "meubles"}`, `${meta}${t.cat ? " · " + t.cat : ""}`); });
+  const vocab = (liste, article, meta) => liste.forEach(t => { if (!deja.has(plie(t.terme))) ajoute("voc", t.terme, t.def, `encyclopedie.html#${ancreDe[article] || "meubles"}`, `${meta}${t.cat ? " · " + t.cat : ""}`); });
   vocab(D.attributs, "Les attributs : nommer les parties", "Attributs");
   vocab(D.positions, "Les positions : nommer l'attitude", "Positions");
   vocab(D.repertoire, "Répertoire des meubles", "Répertoire des meubles");
-  for (const [id, s] of Object.entries(D.sources)) ajoute("src", s.titre, `${s.auteur}. ${s.note || ""}`, "index.html#bibliotheque", `${s.auteur}${s.annee ? " · " + s.annee : ""}`);
+  for (const [id, s] of Object.entries(D.sources)) ajoute("src", s.titre, `${s.auteur}. ${s.note || ""}`, "encyclopedie.html#bibliotheque", `${s.auteur}${s.annee ? " · " + s.annee : ""}`);
   for (const a of B) ajoute("bla", a.nom, [a.blason, a.porteur, a.cat].filter(Boolean).join(" · "), `blasons.html#${slug(a.nom)}`, `Blason réel · ${a.cat || ""}`);
   for (const p of P) ajoute("per", p.nom, [p.meta, p.blason, p.desc].filter(Boolean).join(" · "), `personnages.html#${slug(p.nom)}`, "Personnage");
   F.frises.forEach((f, i) => {

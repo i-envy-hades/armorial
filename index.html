@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L'Armorial — Encyclopédie du blason</title>
-<meta name="description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
-<meta name="theme-color" content="#e9e1cd">
+<title>L'Écu du jour — le jeu de l'Armorial</title>
+<meta name="description" content="Un écu mystère par jour, six essais : proposez des armes réelles, et les émaux, la partition, la pièce et les meubles en commun se révèlent. Le même pour tous, chaque jour. Et l'Armorial, l'encyclopédie du blason, pour vous aider.">
+<meta name="theme-color" content="#f7f3ea">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://armorial.web.app/">
 <meta property="og:site_name" content="L'Armorial">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="L'Armorial — Encyclopédie du blason">
-<meta property="og:description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
+<meta property="og:title" content="L'Écu du jour — le jeu de l'Armorial">
+<meta property="og:description" content="Un écu mystère par jour, six essais : les émaux, les pièces et les meubles en commun se révèlent à chaque réponse.">
 <meta property="og:url" content="https://armorial.web.app/">
 <meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -20,105 +20,137 @@
 <meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
-
 <!--
-  ============================================================================
-  L'ARMORIAL — encyclopédie ouverte de l'héraldique (page d'accueil)
-  ============================================================================
-  Fichiers : assets/index.css (mise en page), assets/index.js (construction de
-  la page), assets/blason.js (dessin des figures, partagé avec l'Atelier),
-  assets/chrome.js (menu et sceau communs), data/data.json (tout le contenu).
-  La page doit être servie par HTTP (fetch), pas ouverte depuis le disque.
-
-  POUR L'ÉTENDRE — tout le contenu vit dans data/data.json, rien à coder
-  (le détail est dans README.md) :
-
-  1) Ajouter un livre dans « sources » :
-        mabague1998: { auteur: "…", titre: "…", editeur: "…", annee: "…",
-                       isbn: "…", type: "Ouvrage d'initiation", note: "…" }
-
-  2) Enrichir un article, ou en créer un, dans « sections[].articles » :
-        { titre: "…", html: "<p>…</p>", sources: ["joubert1977", "mabague1998"] }
-     -> le tag « Source » de l'article s'actualise tout seul.
-
-  3) Ajouter un terme au « glossaire » :
-        { terme: "…", def: "…", sources: ["mabague1998"] }
-
-  4) (optionnel) Ajouter une figure dans « tinctures », « partitions »,
-     « pieces », « meubles » ou « couronnes » : elle est dessinée toute seule,
-     à condition que son « kind » existe dans assets/blason.js.
-
-  RÈGLE : on reformule toujours le savoir avec ses propres mots et on cite le
-  livre. On ne copie jamais le texte ni les illustrations d'un ouvrage protégé.
-  ============================================================================
+  L'ARMORIAL — page d'accueil : « L'Écu du jour », le jeu du jour, et les autres jeux autour.
+  (L'encyclopédie est à encyclopedie.html ; les anciens liens « index.html#chapitre » y sont renvoyés par assets/chrome.js.)
+  Fichiers : assets/jeu.js (le jeu : le tirage du jour, la comparaison des armes, les scores), assets/jeu.css ;
+  assets/compte.js et assets/compte.css (le profil du joueur, ses armes composées dans l'Atelier, son carnet de scores) ;
+  assets/enligne.js (les comptes en ligne, Firebase : Google ou e-mail, classement, bibliothèque d'armes, nouvelles par e-mail) ;
+  data/jeu.json (l'ordre des armes mystères, une par jour) ; les armes viennent de data/blasons.json et data/personnages.json ;
+  le dessin des armes mystères et des réponses est celui du moteur de l'Atelier (assets/dessin.js), après lecture du blasonnement
+  (assets/lecture.js) : une carte que le lecteur ne relit pas n'entre pas dans le jeu.
+  Seule l'image de la réponse, montrée à la fin, vient de Wikimedia Commons : son crédit s'affiche dessous.
 -->
-
 <link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/index.css">
-<link rel="stylesheet" href="assets/epopee.css">
-<link rel="preload" as="image" href="assets/epopee/tournoi-ecus.jpg">
+<link rel="stylesheet" href="assets/compte.css">
+<link rel="stylesheet" href="assets/jeu.css">
 </head>
-<body class="epic">
-<div class="progress" aria-hidden="true"><i></i></div>
-
-<!-- ============ MASTHEAD ============ -->
-<header class="mast" data-page="index">
-  <div class="search" role="search">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
-    <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sresults">
-    <div class="search-results" id="sresults" role="listbox" hidden></div>
-  </div>
-</header>
+<body class="jeu">
+<header class="mast" data-page="jeu"></header>
 <script src="assets/chrome.js"></script>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-bg" data-parallax="0.28" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/epopee/tournoi-ecus.jpg"><source src="assets/epopee/tournoi-ecus.mp4" type="video/mp4"></video></div>
-  <div class="frame">
-    <svg class="hero-shield" viewBox="0 0 200 252" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
-    <p class="hero-credit">Fleur de lis : <a href="https://commons.wikimedia.org/wiki/File:Meuble_h%C3%A9raldique_Fleur_de_lys.svg" target="_blank" rel="noopener">« Meuble héraldique Fleur de lys.svg »</a> — Yorick, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 3.0</a>, via Wikimedia Commons · couleurs et trait adaptés</p>
-    <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
-    <h1 class="display">L'Art du Blason</h1>
-    <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
-    <div class="counts" id="counts"></div>
+<main class="jx" id="jeu">
+  <div class="jx-barre">
+    <button type="button" class="jx-ic" id="jx-aide" aria-haspopup="dialog" title="Comment jouer ?"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M9.3 9.3a2.8 2.8 0 1 1 3.9 2.6c-.8.4-1.2.9-1.2 1.8v.4"/><circle cx="12" cy="17.2" r="1.3" fill="currentColor"/></svg><span class="sr">Comment jouer ?</span></button>
+    <h1 class="jx-logo"><svg class="jx-logo-ecu" viewBox="0 0 40 48" aria-hidden="true"><path d="M3 3h34v19c0 12-8 19.5-17 23C11 41.5 3 34 3 22z" fill="#c62f2a" stroke="#7d1512" stroke-width="2.4"/><path d="M3 3h34v12H3z" fill="#2457a6" stroke="#7d1512" stroke-width="2.4"/><path d="M20 19l2.6 5.4 5.9.8-4.3 4.1 1 5.9L20 32.4l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z" fill="#f3c33b" stroke="#7d1512" stroke-width="1.2" stroke-linejoin="round"/></svg><span>L'Écu <em>du jour</em></span></h1>
+    <span class="jx-droite">
+      <button type="button" class="jx-ic" id="jx-classement" aria-haspopup="dialog" title="Classement" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5M12 14v3.5M8.5 20.5h7M9.5 17.5h5v3h-5z"/></svg><span class="sr">Classement</span></button>
+      <button type="button" class="jx-ic" id="jx-stats" aria-haspopup="dialog" title="Mes statistiques"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 13h3.5v7H4zM10.25 8h3.5v12h-3.5zM16.5 4H20v16h-3.5z"/></svg><span class="sr">Mes statistiques</span></button>
+      <button type="button" class="jx-moi" id="jeu-pf" aria-haspopup="dialog" title="Mon profil"><span class="jx-moi-ecu" id="jx-moi-ecu" aria-hidden="true"></span><span class="jx-moi-nom" id="jx-moi-nom">Profil</span></button>
+    </span>
   </div>
-</section>
 
-<!-- ============ PORTES : le reste du site ============ -->
-<section class="portes" aria-labelledby="portes-t">
-  <div class="portes-in">
-    <h2 id="portes-t" class="portes-t">Le reste du site</h2>
-    <nav class="portes-g" aria-label="Autres pages">
-      <a class="porte" href="atelier.html"><span class="p-k">Composer</span><b>L'Atelier</b><span class="p-d">Composez des armes et lisez leur blasonnement — ou écrivez un blasonnement et voyez l'écu.</span></a>
-      <a class="porte" href="jeu.html"><span class="p-k">Jouer</span><b>L'Écu du jour</b><span class="p-d">Un écu mystère par jour, six essais : les émaux, les pièces et les meubles en commun se révèlent à chaque réponse.</span></a>
-      <a class="porte" href="exercices.html"><span class="p-k">Apprendre</span><b>S'exercer</b><span class="p-d">Lire un écu, juger la règle des émaux, nommer les points : et un défi chaque jour.</span></a>
-      <a class="porte" href="blasons.html"><span class="p-k">Regarder</span><b>Blasons réels</b><span class="p-d">Des royaumes, des empires, des maisons : de vraies images, créditées une à une.</span></a>
-      <a class="porte" href="personnages.html"><span class="p-k">Regarder</span><b>Personnages</b><span class="p-d">Les armes de rois, de prélats et de familles, avec ce qu'elles enseignent.</span></a>
-      <a class="porte" href="lignees.html"><span class="p-k">Parcourir</span><b>Lignées</b><span class="p-d">Neuf frises : les armes des souverains règne après règne, des rois de France aux papes.</span></a>
-      <a class="porte" href="transmission.html"><span class="p-k">Comprendre</span><b>La transmission des armes</b><span class="p-d">Pourquoi les écus changent : brisures, mariages, héritages, traités — un arbre qui se déplie, des Capétiens aux Nassau.</span></a>
-      <a class="porte" href="recherche.html"><span class="p-k">Retrouver</span><b>Rechercher</b><span class="p-d">Un mot, un nom, un blasonnement : tout le site se cherche d'un coup.</span></a>
-    </nav>
+  <noscript><p class="nojs">Le jeu se construit avec JavaScript : activez-le pour jouer.</p></noscript>
+  <p class="jeu-chargement" id="jeu-chargement" role="status"><span class="jx-roue" aria-hidden="true"></span>Les écus se préparent…</p>
+
+  <div class="jeu-grille" id="jeu-grille" hidden>
+    <section class="jeu-jeu" aria-labelledby="jeu-jour">
+      <div class="jx-tete">
+        <h2 id="jeu-jour" class="jeu-jour"></h2>
+        <p class="jx-points" id="jx-points" aria-hidden="true"></p>
+        <span class="jeu-essais" id="jeu-essais" aria-live="polite"></span>
+      </div>
+
+      <div class="jeu-scene">
+        <figure class="jeu-mystere" id="jeu-mystere">
+          <div class="jeu-ecu" id="jeu-ecu" role="img" aria-label="Les armes mystères"></div>
+          <figcaption id="jeu-leg">Armes mystères</figcaption>
+        </figure>
+        <div class="jeu-emaux" aria-labelledby="jeu-emaux-t">
+          <p class="jeu-emaux-t" id="jeu-emaux-t">Les émaux</p>
+          <p class="jeu-nb" id="jeu-nb"></p>
+          <ul class="jeu-palette" id="jeu-palette"></ul>
+        </div>
+      </div>
+
+      <form class="jeu-saisie" id="jeu-saisie" autocomplete="off" novalidate>
+        <label for="jeu-nom" class="sr">Nom des armes à proposer</label>
+        <div class="jeu-champ">
+          <input id="jeu-nom" type="text" role="combobox" aria-expanded="false" aria-controls="jeu-liste" aria-autocomplete="list" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Un État, une province, une maison…">
+          <ul id="jeu-liste" class="jeu-liste" role="listbox" aria-label="Armes proposées" hidden></ul>
+        </div>
+        <button type="submit" class="jx-go" id="jeu-ok">Deviner</button>
+      </form>
+      <p class="jeu-aide-saisie" id="jeu-aide-saisie"></p>
+
+      <ol class="jeu-essais-liste" id="jeu-liste-essais" aria-label="Vos essais"></ol>
+      <section class="jeu-resultat" id="jeu-resultat" tabindex="-1" hidden></section>
+      <p class="sr" id="jeu-annonce" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="jx-plus" aria-labelledby="jx-plus-t">
+      <h2 id="jx-plus-t">Encore une partie ?</h2>
+      <ul class="jx-jeux" id="jeu-autres"></ul>
+    </section>
+
+    <section class="jx-armorial" aria-labelledby="jx-armorial-t">
+      <div class="jx-armorial-t">
+        <p class="jx-sur">Un indice ?</p>
+        <h2 id="jx-armorial-t">L'Armorial vous souffle les réponses</h2>
+        <p>Toutes les armes du jeu sont dans <a href="blasons.html">Blasons réels</a> et <a href="personnages.html">Personnages</a>. Et pour les mots du blason, l'encyclopédie :</p>
+      </div>
+      <ul class="jx-pastilles">
+        <li><a href="encyclopedie.html#emaux"><b>Les émaux</b><span>or, argent, gueules…</span></a></li>
+        <li><a href="encyclopedie.html#partitions"><b>Les partitions</b><span>parti, coupé, écartelé…</span></a></li>
+        <li><a href="encyclopedie.html#pieces"><b>Les pièces</b><span>chef, fasce, croix…</span></a></li>
+        <li><a href="encyclopedie.html#meubles"><b>Les meubles</b><span>lion, aigle, lis…</span></a></li>
+        <li><a href="encyclopedie.html#glossaire"><b>Le glossaire</b><span>350 termes</span></a></li>
+        <li><a href="encyclopedie.html"><b>Tout l'Armorial</b><span>l'encyclopédie</span></a></li>
+      </ul>
+    </section>
   </div>
-</section>
+</main>
 
-<!-- ============ SHELL ============ -->
-<div class="shell">
-  <nav class="rail" aria-label="Sommaire">
-    <p class="eyebrow">Sommaire</p>
-    <ol id="rail-list"></ol>
-  </nav>
-  <main id="main"><noscript><p class="nojs">Cette encyclopédie se construit avec JavaScript : activez-le pour la lire.</p></noscript></main>
-</div>
+<!-- les fenêtres : comment jouer, statistiques, classement (le profil a la sienne : assets/compte.js) -->
+<dialog class="jx-dlg" id="dlg-aide" aria-labelledby="dlg-aide-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
+  <h2 id="dlg-aide-t">Comment jouer ?</h2>
+  <p>Un écu est caché : <b>trouvez à qui sont ces armes</b> en six essais. Tapez le nom d'un État, d'une province, d'une maison ou d'un personnage, et choisissez-le dans la liste.</p>
+  <p>Chaque réponse montre ses armes et les compare à l'écu mystère, case par case :</p>
+  <ul class="jx-legende">
+    <li><span class="t ok">✓</span> identique</li>
+    <li><span class="t mid">≈</span> proche : un émail ou un meuble en commun, ou de la même famille</li>
+    <li><span class="t no">✗</span> différent</li>
+  </ul>
+  <p>Les <b>émaux</b> (les couleurs du blason) que vous trouvez s'allument sur l'écu mystère ; les autres restent gris. Le dessin se précise à chaque essai.</p>
+  <p class="jx-dlg-pied">Un nouvel écu chaque jour à minuit, le même pour tous. Coincé ? <a href="encyclopedie.html">L'encyclopédie</a> est là pour ça.</p>
+  <button type="button" class="jx-go" data-fermer>C'est parti !</button>
+</dialog>
 
-<footer>
-  <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, la fleur de lis — celle de l'écu du bandeau comprise —, plusieurs croix et meubles d'objet, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
-  <p class="fine">Décors des bandeaux de chapitre, du héros et de ce pied de page : images et vidéo d'ambiance générées par IA (Higgsfield), sans écu ni personnage réels. Ce sont des paysages imaginés, pas des documents historiques.</p>
-  <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
-  <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
+<dialog class="jx-dlg" id="dlg-stats" aria-labelledby="jeu-profil-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
+  <div id="jeu-profil"></div>
+</dialog>
+
+<dialog class="jx-dlg" id="dlg-classement" aria-labelledby="jeu-classement-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
+  <div id="jeu-classement"></div>
+</dialog>
+
+<footer class="jx-pied">
+  <p><b>L'Armorial</b> — le jeu du jour et <a href="encyclopedie.html">l'encyclopédie du blason</a>. Les armes mystères et les réponses sont dessinées par le moteur de l'<a href="atelier.html">Atelier</a>, d'après le blasonnement des cartes de Blasons réels et de Personnages ; l'image réelle montrée à la fin vient de Wikimedia Commons, créditée sous la réponse.</p>
+  <p>Par défaut rien n'est envoyé nulle part : vos essais, vos scores et votre profil restent dans ce navigateur. Si vous créez un compte en ligne (facultatif, avec Google ou un e-mail), votre e-mail, votre pseudo, vos armes, vos scores et votre bibliothèque sont conservés par Firebase (Google) ; votre e-mail ne sert à vous écrire que si vous cochez la case des nouvelles, et vous pouvez tout supprimer depuis votre profil. Curateur : Arthur Benard. Composition de la page sous licence <b>CC BY-SA 4.0</b>.</p>
 </footer>
 
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
 <script src="assets/blason.js"></script>
-<script src="assets/index.js"></script>
-<script src="assets/epopee.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/jeu.js"></script>
 </body>
 </html>

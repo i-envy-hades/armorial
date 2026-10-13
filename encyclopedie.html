@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Encyclopédie du blason</title>
+<meta name="description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/encyclopedie.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L'Armorial — Encyclopédie du blason">
+<meta property="og:description" content="Encyclopédie ouverte de l'héraldique : la grammaire, les émaux, les partitions et les meubles du blason, illustrés de figures dessinées à neuf et sourcés un à un.">
+<meta property="og:url" content="https://armorial.web.app/encyclopedie.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un écu d'azur à la fasce d'argent accompagnée de trois étoiles d'or, et le titre L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+
+<!--
+  ============================================================================
+  L'ARMORIAL — encyclopédie ouverte de l'héraldique (encyclopedie.html ; la page d’accueil du site est le jeu, index.html)
+  ============================================================================
+  Fichiers : assets/index.css (mise en page), assets/index.js (construction de
+  la page), assets/blason.js (dessin des figures, partagé avec l'Atelier),
+  assets/chrome.js (menu et sceau communs), data/data.json (tout le contenu).
+  La page doit être servie par HTTP (fetch), pas ouverte depuis le disque.
+
+  POUR L'ÉTENDRE — tout le contenu vit dans data/data.json, rien à coder
+  (le détail est dans README.md) :
+
+  1) Ajouter un livre dans « sources » :
+        mabague1998: { auteur: "…", titre: "…", editeur: "…", annee: "…",
+                       isbn: "…", type: "Ouvrage d'initiation", note: "…" }
+
+  2) Enrichir un article, ou en créer un, dans « sections[].articles » :
+        { titre: "…", html: "<p>…</p>", sources: ["joubert1977", "mabague1998"] }
+     -> le tag « Source » de l'article s'actualise tout seul.
+
+  3) Ajouter un terme au « glossaire » :
+        { terme: "…", def: "…", sources: ["mabague1998"] }
+
+  4) (optionnel) Ajouter une figure dans « tinctures », « partitions »,
+     « pieces », « meubles » ou « couronnes » : elle est dessinée toute seule,
+     à condition que son « kind » existe dans assets/blason.js.
+
+  RÈGLE : on reformule toujours le savoir avec ses propres mots et on cite le
+  livre. On ne copie jamais le texte ni les illustrations d'un ouvrage protégé.
+  ============================================================================
+-->
+
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/index.css">
+<link rel="stylesheet" href="assets/epopee.css">
+<link rel="preload" as="image" href="assets/epopee/tournoi-ecus.jpg">
+</head>
+<body class="epic">
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast" data-page="encyclopedie">
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm4.5 10.5L20 20"/></svg>
+    <input id="q" type="search" placeholder="Rechercher un terme du blason…" aria-label="Rechercher un terme du blason" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sresults">
+    <div class="search-results" id="sresults" role="listbox" hidden></div>
+  </div>
+</header>
+<script src="assets/chrome.js"></script>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" data-parallax="0.28" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/epopee/tournoi-ecus.jpg"><source src="assets/epopee/tournoi-ecus.mp4" type="video/mp4"></video></div>
+  <div class="frame">
+    <svg class="hero-shield" viewBox="0 0 200 252" aria-label="Écu d'exemple : parti d'azur et de gueules à la fleur de lis d'or"></svg>
+    <p class="hero-credit">Fleur de lis : <a href="https://commons.wikimedia.org/wiki/File:Meuble_h%C3%A9raldique_Fleur_de_lys.svg" target="_blank" rel="noopener">« Meuble héraldique Fleur de lys.svg »</a> — Yorick, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 3.0</a>, via Wikimedia Commons · couleurs et trait adaptés</p>
+    <p class="eyebrow">Encyclopédie ouverte de l'héraldique</p>
+    <h1 class="display">L'Art du Blason</h1>
+    <p class="sub">La grammaire, les couleurs et les figures des armoiries — un savoir de huit siècles, rassemblé et rendu lisible, une source à la fois.</p>
+    <div class="counts" id="counts"></div>
+  </div>
+</section>
+
+<!-- ============ PORTES : le reste du site ============ -->
+<section class="portes" aria-labelledby="portes-t">
+  <div class="portes-in">
+    <h2 id="portes-t" class="portes-t">Le reste du site</h2>
+    <nav class="portes-g" aria-label="Autres pages">
+      <a class="porte" href="atelier.html"><span class="p-k">Composer</span><b>L'Atelier</b><span class="p-d">Composez des armes et lisez leur blasonnement — ou écrivez un blasonnement et voyez l'écu.</span></a>
+      <a class="porte" href="./"><span class="p-k">Jouer</span><b>L'Écu du jour</b><span class="p-d">Un écu mystère par jour, six essais : les émaux, les pièces et les meubles en commun se révèlent à chaque réponse.</span></a>
+      <a class="porte" href="exercices.html"><span class="p-k">Apprendre</span><b>S'exercer</b><span class="p-d">Lire un écu, juger la règle des émaux, nommer les points : et un défi chaque jour.</span></a>
+      <a class="porte" href="blasons.html"><span class="p-k">Regarder</span><b>Blasons réels</b><span class="p-d">Des royaumes, des empires, des maisons : de vraies images, créditées une à une.</span></a>
+      <a class="porte" href="personnages.html"><span class="p-k">Regarder</span><b>Personnages</b><span class="p-d">Les armes de rois, de prélats et de familles, avec ce qu'elles enseignent.</span></a>
+      <a class="porte" href="lignees.html"><span class="p-k">Parcourir</span><b>Lignées</b><span class="p-d">Neuf frises : les armes des souverains règne après règne, des rois de France aux papes.</span></a>
+      <a class="porte" href="transmission.html"><span class="p-k">Comprendre</span><b>La transmission des armes</b><span class="p-d">Pourquoi les écus changent : brisures, mariages, héritages, traités — un arbre qui se déplie, des Capétiens aux Nassau.</span></a>
+      <a class="porte" href="recherche.html"><span class="p-k">Retrouver</span><b>Rechercher</b><span class="p-d">Un mot, un nom, un blasonnement : tout le site se cherche d'un coup.</span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+  <nav class="rail" aria-label="Sommaire">
+    <p class="eyebrow">Sommaire</p>
+    <ol id="rail-list"></ol>
+  </nav>
+  <main id="main"><noscript><p class="nojs">Cette encyclopédie se construit avec JavaScript : activez-le pour la lire.</p></noscript></main>
+</div>
+
+<footer>
+  <p><b>Méthode.</b> Les figures sont dessinées à neuf en SVG, sauf celles qui portent un crédit sous elles : empruntées à Wikimedia Commons sous licence libre, ce sont les bêtes, les chimères, la fleur de lis — celle de l'écu du bandeau comprise —, plusieurs croix et meubles d'objet, les couronnes de rang et les ornements ecclésiastiques, dont le tracé dépassait ce que nous savions rendre. Tous les textes sont rédigés à partir des ouvrages cités, jamais recopiés d'eux. Les faits de l'héraldique appartiennent au domaine commun ; l'expression des ouvrages cités reste la propriété de leurs auteurs et éditeurs.</p>
+  <p class="fine">Décors des bandeaux de chapitre, du héros et de ce pied de page : images et vidéo d'ambiance générées par IA (Higgsfield), sans écu ni personnage réels. Ce sont des paysages imaginés, pas des documents historiques.</p>
+  <p class="fine">Réuni et rédigé par <b>Arthur Benard</b>. Chaque affirmation renvoie à sa source ; les points débattus sont signalés comme tels.</p>
+  <p class="fine">Œuvre originale (textes de synthèse et figures) mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" style="color:var(--gules)">CC BY&#8209;SA 4.0</a>. Les ouvrages cités en bibliographie n'y sont pas soumis.</p>
+</footer>
+
+<script src="assets/blason.js"></script>
+<script src="assets/index.js"></script>
+<script src="assets/epopee.js"></script>
+</body>
+</html>

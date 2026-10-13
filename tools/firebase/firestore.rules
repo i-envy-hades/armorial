@@ -6,11 +6,14 @@ rules_version = '2';
 // Pas à pas : tools/firebase/SETUP.md.
 //
 // Principe : la clé web que le site embarque ne donne accès qu'à ce que ces règles autorisent. Chacun ne peut écrire que ses propres
-// documents ; pseudo, armes et résultats sont publics (c'est le classement) ; le carnet de chacun est privé ; l'e-mail reste dans
-// Firebase Authentication, que ces documents ne montrent jamais.
+// documents ; pseudo, armes et résultats sont publics (c'est le classement) ; le carnet et la bibliothèque de chacun sont privés ;
+// l'e-mail reste dans Firebase Authentication, sauf pour qui s'inscrit aux nouvelles (abonnes/{uid}, lisible par lui seul et par
+// le curateur dans la console).
 //
 //   profils/{uid}                   le profil public (pseudo, armes, résumé pour le classement général)
 //   profils/{uid}/carnets/{jeu}     le carnet d'un jeu (JSON) : privé
+//   profils/{uid}/bibliotheque/{id} des armes gardées (nom, armes, cree) : privé
+//   abonnes/{uid}                   l'inscription aux nouvelles par e-mail (email, depuis) : privé
 //   pseudos/{pseudo en minuscules}  un document par pseudo, créé une seule fois : c'est ce qui rend les pseudos uniques
 //   scores/{uid}_{jeu}_{jour}       le résultat d'une partie : public, créé une fois, jamais modifié
 
@@ -20,10 +23,13 @@ service cloud.firestore {
     function connecte() { return request.auth != null; }
     // 2 à 24 caractères : lettres, chiffres, espace, « _ », « . », « - » ; commence par une lettre ou un chiffre
     function pseudoValide(p) { return p is string && p.matches('^[\\pL\\pN][\\pL\\pN _.\\-]{1,23}$'); }
+    // les armes : l'état de l'Atelier en une ligne (« t1=Gueules&m=lion&nb=1&tm=Or ») ; le site ramène chaque valeur à une valeur permise
+    // avant de dessiner, mais rien de balisé n'entre ; l'ancienne forme (un champ, un meuble, son émail) reste lisible
+    function codeArmes(a) { return a is string && a.size() <= 2000 && !a.matches('(?s).*[<>].*'); }
     function armesValides(a) {
-      return a is map && a.keys().hasAll(['champ', 'meuble', 'tm']) && a.keys().size() == 3
+      return codeArmes(a) || (a is map && a.keys().hasAll(['champ', 'meuble', 'tm']) && a.keys().size() == 3
         && a.champ is string && a.meuble is string && a.tm is string
-        && a.champ.size() < 12 && a.meuble.size() < 16 && a.tm.size() < 12;
+        && a.champ.size() < 12 && a.meuble.size() < 16 && a.tm.size() < 12);
     }
 
     match /profils/{uid} {
@@ -43,6 +49,25 @@ service cloud.firestore {
           && jeu.matches('^[a-z0-9_-]{1,32}$')
           && request.resource.data.donnees is string && request.resource.data.donnees.size() < 50000;
       }
+
+      match /bibliotheque/{id} {
+        allow read, delete: if connecte() && request.auth.uid == uid;
+        allow create, update: if connecte() && request.auth.uid == uid
+          && id.matches('^[A-Za-z0-9]{8,32}$')
+          && request.resource.data.keys().hasOnly(['nom', 'armes', 'cree'])
+          && request.resource.data.nom is string && request.resource.data.nom.size() >= 1 && request.resource.data.nom.size() <= 60
+          && codeArmes(request.resource.data.armes)
+          && request.resource.data.cree is timestamp;
+      }
+    }
+
+    match /abonnes/{uid} {
+      allow read, delete: if connecte() && request.auth.uid == uid;
+      allow create, update: if connecte() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['email', 'depuis'])
+        && request.auth.token.email is string
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.depuis is timestamp;
     }
 
     match /pseudos/{id} {

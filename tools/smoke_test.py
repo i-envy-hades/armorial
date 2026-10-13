@@ -74,7 +74,7 @@ MENU = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)",\s*"([^"]+)"', (ROOT / "asset
 # ------------------------------------------------------------------ pages
 def test_index(browser, base):
     D = data("data.json")
-    page, erreurs = ouvre(browser, base, "index.html", "#main .section")
+    page, erreurs = ouvre(browser, base, "encyclopedie.html", "#main .section")
     verifie(page.locator(".section").count() == len(D["sections"]) + 2, "index : un chapitre par section, plus le glossaire et les sources")
     verifie(page.locator("#main .article[id]").count() > 20, "index : les articles ont une adresse")
     ids = page.evaluate("[...document.querySelectorAll('[id]')].map(e => e.id)")
@@ -96,14 +96,14 @@ def test_index(browser, base):
     propre("index", page, erreurs)
     page.context.close()
     # ancre d'adresse : la page se construit après coup, il faut qu'elle y aille
-    page, erreurs = ouvre(browser, base, "index.html#emaux", "#main .section")
+    page, erreurs = ouvre(browser, base, "encyclopedie.html#emaux", "#main .section")
     page.wait_for_timeout(2500)          # le temps que les polices arrivent et que la page se replace
     haut = page.evaluate("document.getElementById('emaux').getBoundingClientRect().top")
     verifie(60 < haut < 80, f"index#emaux : la page se place sur le chapitre, sous le bandeau (haut à {haut:.0f} px)")
     propre("index#emaux", page, erreurs)
     page.context.close()
     # une ancre mal formée ne casse rien
-    page, erreurs = ouvre(browser, base, "index.html#%E0%A4%A", "#main .section")
+    page, erreurs = ouvre(browser, base, "encyclopedie.html#%E0%A4%A", "#main .section")
     page.fill("#q", "lampass"); page.wait_for_selector("#sresults .sr", timeout=5000)
     propre("index#ancre mal formée", page, erreurs)
     page.context.close()
@@ -743,8 +743,10 @@ def devine_au_clavier(page, nom):
 
 def test_jeu(browser, base):
     cal = data("jeu.json")
-    page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+    page, erreurs = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
     page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    verifie(page.locator("#dlg-aide[open]").count() == 1, "jeu : à la première visite, la fenêtre « Comment jouer ? » s'ouvre")
+    page.click("#dlg-aide .jx-go")
     E = page.evaluate("({ n: EcuDuJour.N, pool: EcuDuJour.CARTES.length, cible: EcuDuJour.cible.nom, noms: EcuDuJour.CARTES.map(c => c.nom) })")
     verifie(E["pool"] >= 100, f"jeu : plus de cent armes proposables (le lecteur en relit {E['pool']})")
     verifie(all(n in E["noms"] for n in cal["ordre"]), "jeu : chaque arme du calendrier est une carte que le lecteur relit en entier")
@@ -787,26 +789,27 @@ def test_jeu(browser, base):
     page.reload(); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=20000)
     st = page.evaluate("Compte.carnet('ecu').stats")
     verifie(st["joues"] == 1, "jeu : recharger une partie finie ne la recompte pas")
-    # le profil : créer, règle des émaux, sauvegarde
+    # le profil : créer, des armes au hasard, sauvegarde
     page.click("#jeu-pf"); page.wait_for_selector("dialog.cpt[open]")
     page.wait_for_selector("#cpt-ecu svg", timeout=5000)
-    page.click("label.cpt-sw:has(input[name=champ][value=Argent])")
-    tms = page.evaluate("[...document.querySelectorAll('input[name=tm]')].map(i => i.value)")
-    verifie("Or" not in tms and "Argent" not in tms and len(tms) == 5, f"jeu/profil : sur un champ d'argent, seules les couleurs sont proposées ({tms})")
+    avant = page.inner_text("#cpt-blz"); page.click("#cpt-hasard"); page.wait_for_selector("#cpt-ecu svg", timeout=5000)
+    verifie(page.inner_text("#cpt-blz") != avant and page.locator("#cpt-atelier[href^='atelier.html#']").count() == 1, "jeu/profil : « Au hasard » change les armes ; un lien les ouvre dans l'Atelier")
+    armes = page.evaluate("document.querySelector('#cpt-atelier').getAttribute('href').replace(/^atelier\\.html#/, '').replace(/&?pour=profil$/, '')")
     page.fill("#cpt-pseudo", "<b>X</b>"); page.click("#cpt-form button.main")
     verifie(page.locator("#cpt-err").is_visible() and page.evaluate("Compte.profil()") is None, "jeu/profil : un pseudo avec des chevrons est refusé")
     page.fill("#cpt-pseudo", "Héraut Test"); page.click("#cpt-form button.main")
     page.wait_for_selector("dialog.cpt:not([open])", state="attached")
     pf = page.evaluate("Compte.profil()")
-    verifie(pf and pf["pseudo"] == "Héraut Test" and pf["armes"]["champ"] == "Argent" and "Héraut Test" in page.inner_text("#jeu-profil"), "jeu/profil : le profil est créé et affiché dans le carnet")
+    verifie(pf and pf["pseudo"] == "Héraut Test" and pf["armes"] == armes and "Héraut Test" in page.inner_text("#jx-moi-nom"), "jeu/profil : le profil est créé, avec ses armes, et affiché en haut de la page")
     code = page.evaluate("Compte.exporter()")
     page.evaluate("localStorage.clear()")
     verifie(page.evaluate("(c) => Compte.importer(c)", code) and page.evaluate("Compte.carnet('ecu').stats.gagnes") == 1 and not page.evaluate("Compte.importer('pas un code')"), "jeu/profil : le code de sauvegarde rend le profil et les scores ; un code illisible est refusé")
     propre("jeu", page, erreurs)
     page.context.close()
     # la défaite : six mauvaises réponses, la série retombe, les armes sont révélées
-    page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+    page, erreurs = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
     page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    page.evaluate("document.querySelectorAll('dialog[open]').forEach(d => d.close())")
     page.evaluate("""async () => { const E = EcuDuJour; for (const c of E.CARTES.filter(c => c.canon !== E.cible.canon).slice(0, 6)) await E.devine(c); }""")
     page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
     verifie("Perdu" in page.inner_text("#jeu-resultat h2") and f"C'étaient les armes de {E['cible']}" in page.inner_text("#jeu-resultat"), "jeu : après six essais manqués, la partie est perdue et les armes sont révélées")
@@ -818,7 +821,7 @@ def test_jeu(browser, base):
     # l'écu du jour est le même pour tous : deux visiteurs, les mêmes armes
     cibles = []
     for _ in range(2):
-        page, erreurs = ouvre(browser, base, "jeu.html", "#jeu-grille:not([hidden])")
+        page, erreurs = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
         cibles.append(page.evaluate("EcuDuJour.cible.nom")); page.context.close()
     verifie(cibles[0] == cibles[1], "jeu : deux visiteurs ont les mêmes armes mystères le même jour")
 
@@ -832,8 +835,8 @@ def test_recherche(browser, base):
     liens = page.evaluate("""() => { const out = new Set(); for (const q of ["a", "e", "i", "o", "u", "er", "on", "ou", "lion", "lis", "gueules"]) Recherche.cherche(q).forEach(r => out.add(r.lien)); return [...out]; }""")
     # chaque lien doit mener à une ancre qui existe : on charge les pages visées une fois, et on lit leurs adresses
     ancres = {}
-    for cible in ("index.html", "blasons.html", "personnages.html"):
-        pg, er = ouvre(browser, base, cible, "main .section, .ar" if cible == "index.html" else ".ar")
+    for cible in ("encyclopedie.html", "blasons.html", "personnages.html"):
+        pg, er = ouvre(browser, base, cible, "main .section, .ar" if cible == "encyclopedie.html" else ".ar")
         pg.wait_for_timeout(800)
         ancres[cible] = set(pg.evaluate("[...document.querySelectorAll('[id]')].map(e => e.id)"))
         pg.context.close()

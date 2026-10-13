@@ -150,7 +150,7 @@
     trouves.sort((x, y) => (emaux.has(plie(x.terme)) - emaux.has(plie(y.terme))) || y.terme.length - x.terme.length);
     return trouves.slice(0, 6);
   }
-  const lienTerme = g => `<a href="index.html#${termeId(g.terme, DATA.glossaire)}">${esc(g.terme.toLowerCase())}</a>`;
+  const lienTerme = g => `<a href="encyclopedie.html#${termeId(g.terme, DATA.glossaire)}">${esc(g.terme.toLowerCase())}</a>`;
   const lienAtelier = St => `<a href="atelier.html#lire=${encodeURIComponent(blazonAll(St))}">Ouvrir ces armes dans l'Atelier</a>`;
 
   /* ---------- dessiner ---------- */
@@ -361,9 +361,9 @@
       const par = q.paires.map(p => `${cap(p.quoi)} ${de(p.fig)} (${classe(p.fig) === "Métal" ? "un métal" : "une couleur"}) sur ${p.lieu} ${de(p.sur)} (${classe(p.sur) === "Métal" ? "un métal" : "une couleur"})`);
       if (q.fautes.length) h += `<p>${q.fautes.map(f => esc(f.replace(/ : ([A-ZÉ])/g, (m, c) => " : " + c.toLowerCase()))).join(" ")} La règle interdit de poser métal sur métal ou couleur sur couleur : la figure se lit mal à distance.</p><p class="ex-aide">Si un blason réel enfreint la règle de propos délibéré, on dit de ses armes qu'elles sont « à enquérir » — l'exemple classique est le royaume de Jérusalem : d'argent à la croix potencée d'or.</p>`;
       else h += `<p>${esc(par.join(" ; "))} : l'un se détache de l'autre, la règle est respectée.</p>`;
-      h += `<p class="ex-lien"><a href="index.html#emaux">Relire le chapitre « Les émaux »</a> · ${lienAtelier(q.St)}</p>` + credits([q.St]);
+      h += `<p class="ex-lien"><a href="encyclopedie.html#emaux">Relire le chapitre « Les émaux »</a> · ${lienAtelier(q.St)}</p>` + credits([q.St]);
     } else if (q.type === "vocab") {
-      const e = q.cible, lien = e.gloss ? ` · <a href="index.html#${termeId(e.terme, DATA.glossaire)}">dans le glossaire</a>` : "";
+      const e = q.cible, lien = e.gloss ? ` · <a href="encyclopedie.html#${termeId(e.terme, DATA.glossaire)}">dans le glossaire</a>` : "";
       h += `<p><b>${esc(e.terme)}</b> : ${esc(e.def)}${lien}</p>`;
     } else if (q.type === "reel") {
       const a = q.cible, lis = (() => { try { return lireCarte(a).ok; } catch (e) { return false; } })();
@@ -373,7 +373,7 @@
     } else if (q.type === "points") {
       h += `<p>Le point marqué est ${POINTS_AU[q.r][q.c]} pour qui regarde l'écu : c'est le <b>${esc(q.nom.toLowerCase())}</b>.</p>`;
       if (q.c !== 1) h += `<p class="ex-aide">${q.c === 0 ? "Dextre, c'est la droite du porteur de l'écu : elle se trouve donc à gauche pour qui le regarde." : "Senestre, c'est la gauche du porteur de l'écu : elle se trouve donc à droite pour qui le regarde."} C'est l'erreur la plus commune du débutant.</p>`;
-      h += `<p class="ex-lien"><a href="index.html#ecu">Relire le chapitre « L'écu »</a></p>`;
+      h += `<p class="ex-lien"><a href="encyclopedie.html#ecu">Relire le chapitre « L'écu »</a></p>`;
     }
     return h;
   }

@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/atelier.css">
 <link rel="stylesheet" href="assets/bandeau.css">
+<link rel="stylesheet" href="assets/compte.css">
 </head>
 <body class="bandeau">
 <div class="progress" aria-hidden="true"><i></i></div>
@@ -101,7 +102,7 @@
           <label><input type="radio" name="ab" value="1"><span>Écusson en abîme</span></label>
         </span>
       </div>
-      <p class="note">La forme de l'écu est indifférente au blasonnement : elle suit la mode et le pays (voir le chapitre <a href="index.html#ecu">L'écu</a>).</p>
+      <p class="note">La forme de l'écu est indifférente au blasonnement : elle suit la mode et le pays (voir le chapitre <a href="encyclopedie.html#ecu">L'écu</a>).</p>
       <p class="note" id="q-note" hidden>Le champ, la pièce et les meubles ci-dessous sont ceux du quartier, de la moitié ou de l'écusson choisi.</p>
     </fieldset>
     <fieldset>
@@ -277,7 +278,7 @@
         <p class="note">Réglage graphique : il ne modifie pas le blasonnement. <button type="button" class="lnk" id="b-brreset">Remettre à zéro</button></p>
       </div>
       </div>
-      <p class="note" id="br-note">La brisure se pose par-dessus tout le reste (« brisé d'un bâton de gueules péri en bande »). Le chapitre <a href="index.html#brisures">Les brisures</a> dit pourquoi on brise.</p>
+      <p class="note" id="br-note">La brisure se pose par-dessus tout le reste (« brisé d'un bâton de gueules péri en bande »). Le chapitre <a href="encyclopedie.html#brisures">Les brisures</a> dit pourquoi on brise.</p>
     </fieldset>
     <fieldset>
       <legend>Les ornements</legend>
@@ -311,7 +312,7 @@
       <div class="row"><span class="lab">Collier</span><select name="co" aria-label="Collier d'ordre"></select></div>
       <div class="row"><span class="lab">Devise</span><input type="text" name="dv" maxlength="48" placeholder="Votre devise" aria-label="Devise"></div>
       <div class="row" id="r-dt"><span class="lab">Bandeau</span><select name="dt" aria-label="Forme du bandeau de la devise"></select></div>
-      <p class="note">Les ornements ne se transmettent pas comme les armes : ils marquent un rang ou une fonction (voir le chapitre <a href="index.html#ornements">Ornements</a>). <span id="hm-note"></span></p>
+      <p class="note">Les ornements ne se transmettent pas comme les armes : ils marquent un rang ou une fonction (voir le chapitre <a href="encyclopedie.html#ornements">Ornements</a>). <span id="hm-note"></span></p>
     </fieldset>
   </form>
 
@@ -327,6 +328,20 @@
       <button type="button" id="b-png">PNG</button>
       <button type="button" id="b-rand">Au hasard</button>
     </div>
+    <section class="mes-armes" id="mes-armes" aria-labelledby="mes-armes-t">
+      <h2 class="mes-armes-t" id="mes-armes-t">Vos armes</h2>
+      <div class="acts">
+        <button type="button" class="main" id="b-miennes">Prendre pour mes armes de joueur</button>
+        <button type="button" id="b-garder">Enregistrer dans ma bibliothèque</button>
+      </div>
+      <form class="garder" id="garder-f" hidden novalidate>
+        <label for="garder-nom">Nom de ces armes</label>
+        <input id="garder-nom" type="text" maxlength="60" autocomplete="off">
+        <span class="garder-acts"><button type="submit" class="main">Enregistrer</button><button type="button" id="garder-non">Annuler</button></span>
+      </form>
+      <p class="mes-armes-ret" id="mes-armes-ret" role="status"></p>
+      <details class="biblio" id="biblio" hidden><summary>Ma bibliothèque <span id="biblio-n"></span></summary><ul class="biblio-l" id="biblio-l"></ul></details>
+    </section>
     <p class="credits" id="credits"></p>
   </aside>
 </div>
@@ -334,7 +349,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <footer data-img="assets/epopee/atelier.jpg"><div class="foot">
-  <p><b>L'Armorial</b> — page « Atelier ». Champ, partitions, pièces et la plupart des meubles sont dessinés par l'encyclopédie ; les meubles empruntés viennent de Wikimedia Commons, recolorés ici, et leur crédit accompagne chaque écu et chaque export. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="index.html">l'encyclopédie</a>.</p>
+  <p><b>L'Armorial</b> — page « Atelier ». Champ, partitions, pièces et la plupart des meubles sont dessinés par l'encyclopédie ; les meubles empruntés viennent de Wikimedia Commons, recolorés ici, et leur crédit accompagne chaque écu et chaque export. Composition de la page sous licence <b>CC BY-SA 4.0</b>. Retour à <a href="encyclopedie.html">l'encyclopédie</a>.</p>
   <p class="fine">Décor du bandeau et de ce pied de page : image et vidéo d'ambiance générées par IA (Higgsfield), sans écu réel. Un atelier imaginé, pas un document historique.</p>
 </div></footer>
 
@@ -345,6 +360,8 @@
 <script src="assets/lecture.js"></script>
 <script src="assets/cartes.js"></script>
 <script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
 <script src="assets/atelier.js"></script>
 <script src="assets/epopee-pages.js"></script>
 </body>
