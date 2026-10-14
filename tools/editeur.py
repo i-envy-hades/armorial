@@ -1,6 +1,7 @@
 """La console des blasons : un petit serveur local qui sert le dépôt et enregistre les changements d'une carte.
 
     python3 tools/editeur.py            puis ouvrir http://127.0.0.1:8140/tools/editeur.html
+                                        (ou http://127.0.0.1:8140/tools/formes.html : la forme de l'écu de chaque carte)
 
 Il ne fait que deux choses : servir les fichiers du dépôt (sans cache), et recevoir de la page tools/editeur.html la
 modification d'UNE carte de data/blasons.json ou data/personnages.json. Il n'écoute que sur 127.0.0.1.
@@ -12,6 +13,7 @@ Champs que la console peut écrire, et rien d'autre :
   atelierNote   la phrase affichée sous la carte quand « atelier » est posé
   sansAtelier   vrai : la carte est retirée de l'Atelier (et du jeu du jour) ; faux : champ retiré
   aRefaire      note du curateur sur ce qui reste à refaire (privée : jamais affichée sur le site)
+  forme         la forme de l'écu, quand l'image en montre une autre que le français moderne (une clé de SHAPES, assets/dessin.js)
 
 Les fichiers sont réécrits comme le reste du dépôt (indentation de 2, accents gardés) : git diff ne montre que la carte touchée.
 Rien n'est commité : c'est à vous de relire le diff, puis de commiter et publier."""
@@ -21,6 +23,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 PORT = int(os.environ.get("PORT", 8140))
 GALERIES = {"blasons": ROOT / "data" / "blasons.json", "personnages": ROOT / "data" / "personnages.json"}
 TEXTE_MAX = 800
+FORMES = {"", "ancien", "losange", "targe", "ovale", "banniere", "anglais", "suisse", "italien", "sannitique", "iberique", "hongrois", "pl16", "pl17", "pl19"}      # les clés de SHAPES (assets/dessin.js)
 
 
 def valide(champs):
@@ -32,6 +35,9 @@ def valide(champs):
             out[k] = " ".join(v.split())                       # espaces et retours à la ligne repliés : une carte tient sur une ligne
         elif k == "atelierAjust":
             if not isinstance(v, str) or not re.fullmatch(r"[a-z0-9=&.\-]{0,400}", v): return None, "« atelierAjust » : réglages mal formés"
+            out[k] = v
+        elif k == "forme":
+            if v not in FORMES: return None, f"« forme » : forme inconnue ({v!r})"
             out[k] = v
         elif k == "sansAtelier":
             if not isinstance(v, bool): return None, "« sansAtelier » : vrai ou faux"

@@ -81,7 +81,8 @@
       "label": "Wikipedia (en), « Coats of arms of the Holy Roman Empire »",
       "url": "https://en.wikipedia.org/wiki/Coats_of_arms_of_the_Holy_Roman_Empire",
       "note": "l'article blasonne l'aigle impériale (d'or à l'aigle de sable, becquée et membrée de gueules) et précise que, depuis Albert II (1438), chaque empereur la porte avec ses armes de famille en écusson ; la figure choisie la montre bicéphale"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Archiduché d'Autriche",
@@ -102,7 +103,8 @@
       "label": "Wikipedia (en), « Coats of arms of the Holy Roman Empire »",
       "url": "https://en.wikipedia.org/wiki/Coats_of_arms_of_the_Holy_Roman_Empire",
       "note": "armes babenbergeoises de gueules à la fasce d'argent, prises par Rodolphe Iᵉʳ de Habsbourg avec les duchés d'Autriche et de Styrie"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Comté de Foix",
@@ -171,7 +173,8 @@
     },
     "atelierAjust": "dy=16&sz2=85&dy2=2&cs=85&ce=151",
     "atelier": "D'or à cinq tourteaux de gueules posés 2, 2 et 1, et, en chef, un tourteau plus grand d'azur chargé de trois fleurs de lis d'or",
-    "atelierNote": "Les cinq tourteaux sont posés 2, 2 et 1 comme sur l'image ; le tourteau d'azur porte trois fleurs de lis, deux et une, réduites et écartées (réglages cs et ce)."
+    "atelierNote": "Les cinq tourteaux sont posés 2, 2 et 1 comme sur l'image ; le tourteau d'azur porte trois fleurs de lis, deux et une, réduites et écartées (réglages cs et ce).",
+    "forme": "sannitique"
   },
   {
     "nom": "République de Gênes",
@@ -201,7 +204,8 @@
       "label": "la page Commons du fichier",
       "url": "https://commons.wikimedia.org/wiki/File:Insignia_Germany_Order_Teutonic.svg",
       "note": "blasonnement donné par la page du fichier ; Wikipedia (en), « Teutonic Order » parle du surcot blanc à croix noire"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Ordre de Saint-Jean (Hospitaliers)",
@@ -262,7 +266,8 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "forme": "losange"
   },
   {
     "nom": "Premier Empire",
@@ -295,7 +300,8 @@
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
     },
     "atelierAjust": "dx=-12&dx2=16&dy2=8",
-    "aRefaire": "les deux meubles sont"
+    "aRefaire": "les deux meubles sont",
+    "forme": "targe"
   },
   {
     "nom": "Empire britannique",
@@ -364,7 +370,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armoiries_de_l%27Islande"
     },
     "atelierAjust": "pth=55",
-    "atelierNote": "La croix est affinée (épaisseur 55 %) pour suivre l'image ; les armes de l'écu seul, sans les supports ni la couronne."
+    "atelierNote": "La croix est affinée (épaisseur 55 %) pour suivre l'image ; les armes de l'écu seul, sans les supports ni la couronne.",
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume de Tolède",
@@ -385,7 +392,8 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Kingdom_of_Toledo.svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume de Cordoue",
@@ -408,7 +416,8 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_the_Realm_of_Cordoba_(Kingdom_of_Leon_Arms_Variant).svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume de Séville",
@@ -432,7 +441,8 @@
     },
     "atelier": "De gueules au saint Ferdinand d'or, à la bordure componée de gueules et d'argent, les compons de gueules chargés d'un château donjonné d'or, ceux d'argent d'un lion de gueules",
     "atelierNote": "Le saint Ferdinand garde ses couleurs propres (carnation, azur, or, trône d'or) : l'émail dit après son nom n'y change rien. Les lions et les châteaux de la bordure sont ceux de l'Atelier.",
-    "atelierAjust": "dx=-4&dy=-4"
+    "atelierAjust": "dx=-4&dy=-4",
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume de Grenade (couronne de Castille)",
@@ -453,7 +463,8 @@
         "t": "Frise des rois d'Espagne",
         "href": "lignees.html#espagne"
       }
-    ]
+    ],
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume des Pays-Bas",
@@ -486,7 +497,8 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Kingdom_of_Bosnia.svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Province de Brandebourg",
@@ -502,7 +514,8 @@
       "label": "Wikipedia (de), « Brandenburgischer Adler »",
       "url": "https://de.wikipedia.org/wiki/Brandenburgischer_Adler",
       "note": "section sur la province (1880-1918) ; l'or du sceptre d'après l'article anglais « Coat of arms of Brandenburg »"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Royaume d'Irak",
@@ -571,7 +584,8 @@
       "label": "Wikipedia (de), « Galizien »",
       "url": "https://de.wikipedia.org/wiki/Galizien#Wappen",
       "note": "section « Wappen », traduite de l'allemand ; l'article date ces armes de 1804 (avant : deux ou trois couronnes d'or sur champ bleu), d'après Franz Gall, « Österreichische Wappenkunde »"
-    }
+    },
+    "forme": "pl17"
   },
   {
     "nom": "Empire serbe",
@@ -604,7 +618,8 @@
       "url": "https://commons.wikimedia.org/wiki/File:Lesser_CoA_of_the_Kingdom_of_Albania_(1939–1943).svg",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
     },
-    "atelierAjust": "sz=76&dy=26&sz2=60&dy2=-24"
+    "atelierAjust": "sz=76&dy=26&sz2=60&dy2=-24",
+    "forme": "hongrois"
   },
   {
     "nom": "Royaume du Hedjaz",
@@ -653,7 +668,8 @@
       "label": "Wikipédia, « Maison Farnèse »",
       "url": "https://fr.wikipedia.org/wiki/Maison_Farnèse",
       "note": "la disposition 3, 2 et 1 d'après la page Commons du fichier"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Maison Grimaldi",
@@ -667,7 +683,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Famille Grimaldi »",
       "url": "https://fr.wikipedia.org/wiki/Famille_Grimaldi"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Marquisat de Saluces",
@@ -726,7 +743,8 @@
       "label": "Wikipédia, « Comté de Flandre »",
       "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_de_Flandre",
       "note": "légende de l'écu dans l'article ; l'image suit l'armorial Gelre (XIVᵉ s.), avec heaume et cimier, que le blasonnement ne décrit pas"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Comté de Hollande",
@@ -758,7 +776,8 @@
       "label": "Wikipédia (nl), « Wapen van Zeeland (provincie) »",
       "url": "https://nl.wikipedia.org/wiki/Wapen_van_Zeeland_(provincie)",
       "note": "l'article décrit un lion issant au-dessus d'un champ de vagues, séparés par une ligne droite dans les versions anciennes (dès 1440), sans donner de blasonnement : les émaux sont lus sur l'image"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Duché de Gueldre",
@@ -821,7 +840,8 @@
       "label": "Wikipédia, « Comté de Namur »",
       "url": "https://fr.wikipedia.org/wiki/Comt%C3%A9_de_Namur",
       "note": "armes de Flandre brisées par Philippe Iᵉʳ de Namur, comte en 1196 ; la page du fichier dit « une bande de gueules », et le dessin, d'après l'armorial Gelre, ajoute heaume et cimier"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Duché de Limbourg",
@@ -923,7 +943,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Berne",
@@ -945,7 +966,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Lucerne",
@@ -965,7 +987,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton d'Uri",
@@ -987,7 +1010,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Schwytz",
@@ -1009,7 +1033,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton d'Obwald",
@@ -1029,7 +1054,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Nidwald",
@@ -1051,7 +1077,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Glaris",
@@ -1073,7 +1100,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
     "atelier": "De gueules au saint Fridolin d'or",
-    "atelierNote": "Saint Fridolin est dessiné d'après les armes du canton (nimbe, bâton et livre d'or) ; le « au naturel » du blasonnement n'est pas rendu par l'émail."
+    "atelierNote": "Saint Fridolin est dessiné d'après les armes du canton (nimbe, bâton et livre d'or) ; le « au naturel » du blasonnement n'est pas rendu par l'émail.",
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Zoug",
@@ -1093,7 +1121,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Fribourg",
@@ -1113,7 +1142,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Soleure",
@@ -1133,7 +1163,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Bâle-Ville",
@@ -1153,7 +1184,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Bâle-Campagne",
@@ -1173,7 +1205,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Schaffhouse",
@@ -1195,7 +1228,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
     "atelier": "D'or au bélier passant de sable",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : bélier passant au lieu de saillant ; couronne, onglons, cornes et vilenés du champ à régler."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : bélier passant au lieu de saillant ; couronne, onglons, cornes et vilenés du champ à régler.",
+    "forme": "iberique"
   },
   {
     "nom": "Canton d'Appenzell Rhodes-Extérieures",
@@ -1217,7 +1251,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
     "atelier": "D'argent à l'ours rampant de sable",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'ours est sans ses armes de gueules ; le V et le R du deuxième ne sont pas dessinés."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'ours est sans ses armes de gueules ; le V et le R du deuxième ne sont pas dessinés.",
+    "forme": "iberique"
   },
   {
     "nom": "Canton d'Appenzell Rhodes-Intérieures",
@@ -1239,7 +1274,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Saint-Gall",
@@ -1259,7 +1295,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton des Grisons",
@@ -1280,7 +1317,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton d'Argovie",
@@ -1302,7 +1340,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Thurgovie",
@@ -1325,7 +1364,8 @@
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
-    "atelierAjust": "an=45&q2.an=45"
+    "atelierAjust": "an=45&q2.an=45",
+    "forme": "iberique"
   },
   {
     "nom": "Canton du Tessin",
@@ -1345,7 +1385,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Vaud",
@@ -1367,7 +1408,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton du Valais",
@@ -1388,7 +1430,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Neuchâtel",
@@ -1411,7 +1454,8 @@
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
     },
-    "atelierAjust": "sz=75&dx=10&dy=-12"
+    "atelierAjust": "sz=75&dx=10&dy=-12",
+    "forme": "iberique"
   },
   {
     "nom": "Canton de Genève",
@@ -1431,7 +1475,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Canton du Jura",
@@ -1451,7 +1496,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la Suisse »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_Suisse"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Albanie",
@@ -1487,7 +1533,8 @@
     },
     "atelier": "D'or à l'aigle fédérale de sable, becquée et membrée de gueules",
     "atelierAjust": "sz=110",
-    "atelierNote": "L'aigle fédérale est la figure du Bundesadler de Schwab (domaine public) : bec et serres de gueules ; le dessin de la carte est d'un style plus ancien, à ailes moins étirées."
+    "atelierNote": "L'aigle fédérale est la figure du Bundesadler de Schwab (domaine public) : bec et serres de gueules ; le dessin de la carte est d'un style plus ancien, à ailes moins étirées.",
+    "forme": "hongrois"
   },
   {
     "nom": "Andorre",
@@ -1504,7 +1551,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Arménie",
@@ -1521,7 +1569,8 @@
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
     },
     "atelier": "Écartelé : au 1, de gueules au lion contourné d'or ; au 2, d'azur à l'aigle bicéphale d'or ; au 3, d'azur à deux aigles d'or ; au 4, de gueules au léopard couronné d'or ; sur le tout, d'or au mont à trois coupeaux d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux têtes d'aigle affrontées sont deux aigles ; le lion et le léopard ne portent pas leur croix ; l'écusson d'orangé à l'arche est un mont d'or (l'orangé et l'arche manquent)."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux têtes d'aigle affrontées sont deux aigles ; le lion et le léopard ne portent pas leur croix ; l'écusson d'orangé à l'arche est un mont d'or (l'orangé et l'arche manquent).",
+    "forme": "iberique"
   },
   {
     "nom": "Belgique",
@@ -1536,7 +1585,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Bosnie-Herzégovine",
@@ -1568,7 +1618,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "suisse"
   },
   {
     "nom": "Chypre",
@@ -1585,7 +1636,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "pl19"
   },
   {
     "nom": "Croatie",
@@ -1602,7 +1654,8 @@
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
     },
     "atelier": "Échiqueté de gueules et d'argent de cinq tires",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : seul l'échiqueté de vingt-cinq pièces est dessiné ; la couronne aux cinq écus est à ajouter."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : seul l'échiqueté de vingt-cinq pièces est dessiné ; la couronne aux cinq écus est à ajouter.",
+    "forme": "iberique"
   },
   {
     "nom": "Danemark",
@@ -1620,7 +1673,8 @@
     },
     "atelier": "Écartelé par une croix d'argent bordée de gueules : au 1, d'or à neuf cœurs de gueules posés 3, 3 et 3, accompagnés de trois lions passants d'azur armés et lampassés de gueules couronnés d'or posés en pal ; au 2, d'azur au bélier passant d'argent accorné et onglé d'or ; au 3, d'azur à l'ours rampant d'argent lampassé et vilené de gueules ; au 4, d'or à deux lions passants d'azur armés et lampassés de gueules ; sur le tout d'or à deux fasces de gueules",
     "atelierNote": "Ébauche à ajuster dans l'Atelier : les neuf cœurs sont rangés 3, 3 et 3 à côté des trois lions au lieu de se glisser entre eux ; le bélier et l'ours sont les figures de l'Atelier (bélier passant, ours rampant), sans les détails de l'image.",
-    "atelierAjust": "sz=90&dx=-11&dy=-26&sz2=200&dx2=-11&dy2=-15&q2.dx=16&q2.dy=-13&q3.dx=-16&q3.dy=4&q4.sz=80&q4.dx=11&q4.dy=-4"
+    "atelierAjust": "sz=90&dx=-11&dy=-26&sz2=200&dx2=-11&dy2=-15&q2.dx=16&q2.dy=-13&q3.dx=-16&q3.dy=4&q4.sz=80&q4.dx=11&q4.dy=-4",
+    "forme": "iberique"
   },
   {
     "nom": "Estonie",
@@ -1635,7 +1689,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "pl17"
   },
   {
     "nom": "Finlande",
@@ -1652,7 +1707,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Géorgie",
@@ -1669,7 +1725,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Grèce",
@@ -1684,7 +1741,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Hongrie",
@@ -1701,7 +1759,8 @@
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
     },
     "atelier": "Parti : au 1, fascé de gueules et d'argent de huit pièces ; au 2, de gueules à la croix de Lorraine d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : la croix patriarcale est dessinée en croix de Lorraine ; la couronne et le mont de trois coupeaux de sinople manquent."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la croix patriarcale est dessinée en croix de Lorraine ; la couronne et le mont de trois coupeaux de sinople manquent.",
+    "forme": "iberique"
   },
   {
     "nom": "Islande",
@@ -1718,7 +1777,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Liechtenstein",
@@ -1752,7 +1812,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Monaco",
@@ -1767,7 +1828,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Monténégro",
@@ -1784,7 +1846,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "pl17"
   },
   {
     "nom": "Norvège",
@@ -1800,7 +1863,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Pologne",
@@ -1815,7 +1879,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Russie",
@@ -1832,7 +1897,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Serbie",
@@ -1849,7 +1915,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Slovaquie",
@@ -1883,7 +1950,8 @@
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
     },
     "atelier": "Écartelé par une croix d'or : aux 1 et 4, d'azur à trois couronnes d'or ; aux 2 et 3, d'azur à trois barres d'argent, au lion couronné d'or brochant sur le tout ; sur le tout, parti d'azur et de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : les barres ne sont pas ondées ; le sur-le-tout est réduit à un parti d'azur et de gueules (Vasa et Bernadotte restent à ajouter)."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les barres ne sont pas ondées ; le sur-le-tout est réduit à un parti d'azur et de gueules (Vasa et Bernadotte restent à ajouter).",
+    "forme": "hongrois"
   },
   {
     "nom": "Tchéquie",
@@ -1900,7 +1968,8 @@
       "label": "Wikipédia, « Armoiries d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_d%27Europe",
       "note": "armoiries actuelles ; blasonnement lu dans le tableau des États"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Maison d'Arenberg",
@@ -1972,7 +2041,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial des maisons d'Europe »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Maison de Hohenstaufen",
@@ -2003,7 +2073,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_maisons_d%27Europe"
     },
     "atelier": "Fascé d'argent et de gueules de quatre pièces",
-    "atelierNote": "L'image montre quatre pièces : le dessin les suit, alors que la source dit « burelé » (qui en suppose davantage)."
+    "atelierNote": "L'image montre quatre pièces : le dessin les suit, alors que la source dit « burelé » (qui en suppose davantage).",
+    "forme": "iberique"
   },
   {
     "nom": "Maison de Hohenzollern",
@@ -2227,7 +2298,8 @@
       "label": "Wikipédia, « Armoiries de la Slovénie »",
       "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_Slov%C3%A9nie",
       "note": "les trois étoiles viennent des armes des comtes de Celje ; les ondes figurent l'Adriatique et les fleuves"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Moldavie",

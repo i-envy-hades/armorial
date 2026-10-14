@@ -193,7 +193,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armoiries_du_Danemark",
       "note": "armes fixées en 2024"
     },
-    "groupe": "aujourdhui"
+    "groupe": "aujourdhui",
+    "forme": "iberique"
   },
   {
     "nom": "Marguerite de Foix-Candale (1473-1536)",
@@ -244,7 +245,8 @@
       }
     ],
     "atelier": "Fascé de gueules et d'argent de six pièces, à la bande de sinople brochant sur le tout",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : la branche d'épine est une bande de sinople ; les trois fasces d'argent sont un fascé de six pièces."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la branche d'épine est une bande de sinople ; les trois fasces d'argent sont un fascé de six pièces.",
+    "forme": "sannitique"
   },
   {
     "nom": "Ferenc Fuchs",
@@ -262,7 +264,8 @@
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
     },
     "atelier": "D'azur au bras d'argent, accompagné d'un croissant d'or",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : le bras armé tenant deux branches d'olivier et le soleil figuré sont à ajouter ; un seul croissant d'or."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le bras armé tenant deux branches d'olivier et le soleil figuré sont à ajouter ; un seul croissant d'or.",
+    "forme": "iberique"
   },
   {
     "nom": "Ignác Fábry",
@@ -280,7 +283,8 @@
       "label": "Blasonné d'après l'image de la carte",
       "url": "https://commons.wikimedia.org/wiki/File:COA_bishop_SK_Fabry_Ignac2.png",
       "note": "décrit à vue sur l'image Commons, faute de source écrite lue ; à corriger si l'image est mal lue"
-    }
+    },
+    "forme": "iberique"
   },
   {
     "nom": "Justo Rodríguez Gallego",
@@ -291,7 +295,8 @@
     "auteur": "Macucal",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "forme": "iberique"
   },
   {
     "nom": "Stanisław Kiszka",
@@ -309,7 +314,8 @@
     },
     "groupe": "eglise",
     "atelier": "D'azur au fer à cheval d'argent sommé d'une croix pattée d'or",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux croix fichées aux bouts du fer, les deux croix en biais et le cimier (aile d'aigle percée d'une flèche) manquent."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux croix fichées aux bouts du fer, les deux croix en biais et le cimier (aile d'aigle percée d'une flèche) manquent.",
+    "forme": "iberique"
   },
   {
     "nom": "Jan Lubrański",
@@ -326,7 +332,8 @@
       "label": "Wikipedia (pl), « Godziemba (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Godziemba_(herb_szlachecki)"
     },
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "forme": "iberique"
   },
   {
     "nom": "Nanker",
@@ -341,7 +348,8 @@
       "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
     },
-    "groupe": "eglise"
+    "groupe": "eglise",
+    "forme": "pl17"
   },
   {
     "nom": "Zofia Radziwiłł (1716-1748)",
@@ -356,7 +364,8 @@
       "label": "Wikipedia (pl), « Oksza (herb szlachecki) »",
       "url": "https://pl.wikipedia.org/wiki/Oksza_(herb_szlachecki)"
     },
-    "groupe": "familles"
+    "groupe": "familles",
+    "forme": "pl17"
   },
   {
     "nom": "Vladislovas Tiškevičius",
@@ -372,7 +381,8 @@
       "url": "https://pl.wikipedia.org/wiki/Tyszkiewicz_Hrabia",
       "note": "version de Gajl ; d'autres versions sont sans bordure"
     },
-    "groupe": "familles"
+    "groupe": "familles",
+    "forme": "iberique"
   },
   {
     "nom": "Krister Gabrielsson Oxenstierna",
@@ -559,7 +569,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "forme": "ancien"
   },
   {
     "nom": "Pierre III de Russie",
@@ -582,7 +593,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
     },
     "atelier": "D'or à l'aigle bicéphale de sable becquée, membrée et couronnée d'or, sur le tout de gueules au saint Georges d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : sceptre, orbe, couronnes fermées et le parti de Holstein-Oldenbourg (écartelé accolé) manquent ; l'écusson de la Moscovie est posé sur le tout."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : sceptre, orbe, couronnes fermées et le parti de Holstein-Oldenbourg (écartelé accolé) manquent ; l'écusson de la Moscovie est posé sur le tout.",
+    "forme": "sannitique"
   },
   {
     "nom": "Alexandre II de Russie",
@@ -605,7 +617,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la maison d'Oldenbourg »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Constantin Nikolaïevitch de Russie",
@@ -674,7 +687,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
     },
     "atelier": "Parti : au 1, de sinople à l'épée d'argent garnie d'or ; au 2, d'or à l'aigle bicéphale de sable",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : première moitié réduite à l'épée de Leuchtenberg ; l'aigle impériale n'a ni son écusson de Moscovie ni ses écus sur les ailes."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : première moitié réduite à l'épée de Leuchtenberg ; l'aigle impériale n'a ni son écusson de Moscovie ni ses écus sur les ailes.",
+    "forme": "losange"
   },
   {
     "nom": "Adolphe-Frédéric de Suède",
@@ -697,7 +711,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
     },
     "atelier": "Écartelé par une croix d'or : aux 1 et 4, d'azur à trois couronnes d'or ; aux 2 et 3, d'azur à trois barres d'argent, au lion couronné d'or brochant sur le tout ; sur le tout, d'or à deux lions léopardés d'azur, armés et lampassés de gueules",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : barres non ondées ; le sur-le-tout est réduit à Schleswig (Norvège, Holstein, Stormarn, Dithmarse, Oldenbourg et Delmenhorst manquent)."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : barres non ondées ; le sur-le-tout est réduit à Schleswig (Norvège, Holstein, Stormarn, Dithmarse, Oldenbourg et Delmenhorst manquent).",
+    "forme": "hongrois"
   },
   {
     "nom": "Charles XIII de Suède et de Norvège",
@@ -743,7 +758,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_d%27Oldenbourg"
     },
     "atelier": "D'azur à la croix alésée d'argent, sur le tout de gueules à la croix d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écartelé de Danemark, de Schleswig, de Holstein, etc. est réduit à un écusson de gueules à la croix d'argent."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écartelé de Danemark, de Schleswig, de Holstein, etc. est réduit à un écusson de gueules à la croix d'argent.",
+    "forme": "hongrois"
   },
   {
     "nom": "Henri de Monpezat",
@@ -926,7 +942,8 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial de la famille de Wittelsbach »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
-    }
+    },
+    "forme": "sannitique"
   },
   {
     "nom": "Frédéric V du Palatinat",
@@ -970,7 +987,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_de_Wittelsbach"
     },
     "atelier": "Écartelé : aux 1 et 4, fuselé en bande d'azur et d'argent ; aux 2 et 3, de sable au lion d'or, armé et lampassé de gueules ; sur le tout, de gueules à l'orbe crucifère d'or",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'aigle de sable en champ n'est pas dessinée ; le lion n'est pas couronné."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'aigle de sable en champ n'est pas dessinée ; le lion n'est pas couronné.",
+    "forme": "pl17"
   },
   {
     "nom": "Louise de Lorraine",
@@ -993,7 +1011,8 @@
       "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_de_Lorraine"
     },
     "atelier": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, d'or à la bande de gueules chargée de trois alérions d'argent",
-    "atelierNote": "Ébauche à ajuster dans l'Atelier : la Lorraine est réduite à ses alérions : Hongrie, Anjou-Sicile, Jérusalem, Aragon, Anjou, Gueldre, Juliers et Bar manquent."
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la Lorraine est réduite à ses alérions : Hongrie, Anjou-Sicile, Jérusalem, Aragon, Anjou, Gueldre, Juliers et Bar manquent.",
+    "forme": "ovale"
   },
   {
     "nom": "René II de Lorraine",

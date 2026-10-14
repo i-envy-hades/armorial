@@ -130,15 +130,20 @@ async function chargerLecteur() {
 const texteAtelier = a => a.atelier || a.blason;
 /* ce que le lecteur fait d'une carte : sa lecture, sauf si la carte porte « sansAtelier: true » (le curateur l'a retirée de l'Atelier) :
    elle est alors donnée pour non lue, sans la ligne « l'Atelier bute sur… » ; elle sort aussi du jeu du jour (assets/jeu.js) */
+/* la forme de l'écu (« forme » : une clé de SHAPES, assets/dessin.js — suisse, iberique, losange…) n'est pas dans le blasonnement :
+   elle vient de la carte, qui la tient de l'image de Commons ; vide, c'est le français moderne */
 function lireCarte(a) {
-  return a.sansAtelier ? { ok: false, sans: true, erreurs: [], notes: [], etat: null } : lire(texteAtelier(a));
+  if (a.sansAtelier) return { ok: false, sans: true, erreurs: [], notes: [], etat: null };
+  const r = lire(texteAtelier(a));
+  if (r.ok && r.etat && typeof a.forme === "string") r.etat.sh = a.forme;
+  return r;
 }
 function lectures(liste) {
   try { return new Map(liste.filter(a => a.blason).map(a => [a, lireCarte(a)])); } catch (e) { return new Map(); }
 }
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
-const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
+const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${a.forme ? `&sh=${encodeURIComponent(a.forme)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
 const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">Redessiner dans l'Atelier</a></p>${a.atelier ? `<p class="redo-atelier">${a.atelierNote || "Le dessin suit l'image de la carte, qui montre autre chose que la source"} : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».</p>` : ""}`;
 /* l'écu d'une carte : un clic l'agrandit (assets/cartes.js) ; l'Atelier s'ouvre par le bouton « Redessiner » sous la carte */
 const ecuCarte = (a, galerie, img) => `<div class="shield" title="Agrandir l'image">${img}</div>`;

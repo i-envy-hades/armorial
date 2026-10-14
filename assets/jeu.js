@@ -40,7 +40,7 @@
   const JEU = NIVEAUX[NIV].jeu;
 
   /* ---------- ce qu'on lit d'une carte : les traits comparés ---------- */
-  const mk = e => { const S = { ...fresh(), q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
+  const mk = e => { const S = { ...fresh(), sh: e.sh || "", q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
   const actifs = e => { const n = e.q === "4" ? 4 : e.q === "" ? 1 : 2, idx = [...Array(n).keys()]; if (e.ab) idx.push(4); return idx; };    // les armes réellement posées sur l'écu
   const Q_NOM = { p: "Parti", c: "Coupé", t: "Tranché", l: "Taillé", "2": "Écartelé", "4": "Écartelé" };
   const RAY_NOM = { barry: "Fascé", barryonde: "Fascé ondé", paly: "Palé", bendy: "Bandé", bendysin: "Barré", chevronny: "Chevronné", chequy: "Échiqueté", lozengy: "Fuselé", lozengybend: "Fuselé en bande", lozengysin: "Fuselé en barre" };
