@@ -247,6 +247,7 @@ async function render() {
   const cr = creditsOf(S);
   $("#credits").innerHTML = creditsHtml(cr);
   afficheOrigine();
+  if (DEFI) return;                                               // en défi, l'adresse reste « #defi=dessin » : elle ne livre pas l'écu en cours
   const h = [encode(S), ORIGINE ? `de=${ORIGINE.gal}:${ORIGINE.slug}` : ""].filter(Boolean).join("&");
   history.replaceState(null, "", h ? "#" + h : location.pathname);
 }
@@ -531,6 +532,7 @@ function afficheOrigine() {
 
 /* ---------- vos armes : les armes de joueur (assets/compte.js) et la bibliothèque (comptes en ligne, assets/enligne.js) ---------- */
 let POUR_PROFIL = false;                                        // on vient de la fenêtre du profil (« Composer mes armes dans l'Atelier ») : un lien ramène au jeu
+let DEFI = false;                                               // « Dessine-moi », le jeu du jour (assets/dessine.js) : atelier.html#defi=dessin
 const enLigneConnecte = () => !!(window.Compte && Compte.biblio && Compte.ligne && Compte.ligne.connecte());
 function dit(html) { $("#mes-armes-ret").innerHTML = html; }
 async function dessineBiblio() {
@@ -600,6 +602,7 @@ function mesArmes() {
   $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); ORIGINE = null; CUR = 0; KT = "1"; render(); });
   ORIGINE = origineDemandee(location.hash);
   POUR_PROFIL = /(^|[#&])pour=profil(&|$)/.test(location.hash);
+  DEFI = typeof DessineMoi !== "undefined" && DessineMoi.actif();
   const arrivee = /(^|[#&])(lire|de|pour)=/.test(location.hash);
   S = decode(location.hash);
   const onInput = e => {
@@ -636,9 +639,11 @@ function mesArmes() {
     $("#lire").value = texteAtelier(ORIGINE.c.a); lireLeChamp();
   });
   addEventListener("hashchange", () => {
+    if (DEFI) return;
     ORIGINE = origineDemandee(location.hash); resoudOrigine();
     if (!lireDepuisAdresse()) { S = decode(location.hash); render(); }
   });
+  if (DEFI) { S = await DessineMoi.demarre(); CUR = 0; KT = "1"; await render(); return; }
   if (!lireDepuisAdresse()) render();
   if (arrivee) allerALEcu();
   mesArmes();

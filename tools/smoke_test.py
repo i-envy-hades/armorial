@@ -40,6 +40,18 @@ def serveur():
     threading.Thread(target=s.serve_forever, daemon=True).start()
     return s, f"http://127.0.0.1:{s.server_address[1]}"
 
+sys.path.insert(0, str(ROOT / "tools" / "firebase"))
+import mock_firebase as MF                                   # le faux Firebase : les jeux du jour lisent leur document dans la base
+
+ECUS = {"page": "Belgique", "chevalier": "Canton de Zurich", "heraut": "Maison de Médicis"}
+def serveur_en_ligne():
+    """le site servi par le faux Firebase, avec un document du jour ouvert pour hier, aujourd'hui et demain (le jour de Paris)"""
+    import datetime
+    n = (datetime.date.today() - datetime.date(2026, 10, 9)).days + 1
+    for k in range(n - 1, n + 2):
+        MF.DB["docs"][f"jours/{k}"] = {"ouvre": "2000-01-01T00:00:00Z", "ecu": dict(ECUS), "graine": 12345}
+    return MF.serve()
+
 def lance(p):
     try: return p.chromium.launch(channel="chrome", headless=True)
     except Exception: return p.chromium.launch(headless=True)
@@ -69,7 +81,7 @@ def data(nom): return json.loads((ROOT / "data" / nom).read_text(encoding="utf-8
 def slug_carte(nom):                                         # l'adresse d'une carte des galeries, comme slugCarte (assets/cartes.js)
     s = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFD", nom)).lower()
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
-MENU = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html)",\s*"([^"]+)"', (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8"))      # (identifiant, fichier, libellé) du bandeau
+MENU = re.findall(r'\["(\w+)",\s*"([\w.-]+\.html|\./)",\s*"([^"]+)"', (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8"))      # (identifiant, fichier, libellé) du bandeau
 
 # ------------------------------------------------------------------ pages
 def test_index(browser, base):
@@ -742,14 +754,15 @@ def devine_au_clavier(page, nom):
     page.keyboard.press("Enter"); page.keyboard.press("Enter")
 
 def test_jeu(browser, base):
-    cal = data("jeu.json")
     page, erreurs = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
     page.wait_for_selector("#jeu-ecu svg", timeout=10000)
     verifie(page.locator("#dlg-aide[open]").count() == 1, "jeu : à la première visite, la fenêtre « Comment jouer ? » s'ouvre")
     page.click("#dlg-aide .jx-go")
     E = page.evaluate("({ n: EcuDuJour.N, pool: EcuDuJour.CARTES.length, cible: EcuDuJour.cible.nom, noms: EcuDuJour.CARTES.map(c => c.nom) })")
     verifie(E["pool"] >= 100, f"jeu : plus de cent armes proposables (le lecteur en relit {E['pool']})")
-    verifie(all(n in E["noms"] for n in cal["ordre"]), "jeu : chaque arme du calendrier est une carte que le lecteur relit en entier")
+    verifie(E["cible"] == ECUS["chevalier"], f"jeu : l'écu du jour est celui du document du jour, niveau Chevalier par défaut ({E['cible']})")
+    verifie(page.evaluate("(() => { const M = EcuDuJour.devoile(EcuDuJour.cible.S, 0); return !M.q && M.A[0].f === 'plein' && !M.A[0].m && !M.A[0].p; })()"), "jeu : avant le premier essai, l'écu mystère ne montre que sa silhouette")
+    verifie(page.locator("#jeu-niveaux a").count() == 3 and page.locator("#jeu-niveaux a.on").count() == 1, "jeu : trois niveaux en onglets, le niveau joué marqué")
     verifie(page.locator("#jeu-palette .em").count() == 9, "jeu : la palette montre les neuf émaux")
     verifie(page.locator("#jeu-ecu > svg").count() == 1 and page.locator(".essai").count() == 0, "jeu : l'écu mystère est dessiné, aucun essai pour l'instant")
     # les traits lus : fleurs de lis d'azur d'or, trois, sur un champ plein
@@ -768,7 +781,7 @@ def test_jeu(browser, base):
     verifie(page.locator("#jeu-liste li").count() == 0 or not page.locator("#jeu-liste").is_visible(), "jeu : la liste de propositions se referme après la réponse")
     # la même armes ne se propose pas deux fois
     page.fill("#jeu-nom", perdante[:6].lower()); page.wait_for_timeout(150)
-    verifie(perdante not in page.inner_text("#jeu-liste"), "jeu : une arme déjà proposée disparaît de la liste")
+    verifie(perdante not in page.locator("#jeu-liste li b").all_inner_texts(), "jeu : une arme déjà proposée disparaît de la liste")
     page.fill("#jeu-nom", "")
     # la partie se reprend après un rechargement
     page.reload(); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000); page.wait_for_selector(".essai .case", timeout=8000)
@@ -783,7 +796,7 @@ def test_jeu(browser, base):
     verifie(page.locator("#jeu-resultat img").count() == 1 and "Wikimedia Commons" in page.inner_text(".res-credit"), "jeu : l'image réelle est montrée avec son crédit")
     verifie(not page.locator("#jeu-saisie").is_visible(), "jeu : la saisie disparaît une fois la partie finie")
     partage = page.evaluate("EcuDuJour.texteDePartage()")
-    verifie(partage.startswith(f"L'Écu du jour n° {E['n']} — 2/6") and partage.count("\n") == 3 and "🟩🟩🟩🟩🟩🟩" in partage, f"jeu : le texte de partage porte le numéro, le score et une ligne par essai ({partage!r})")
+    verifie(partage.startswith(f"L'Écu du jour n° {E['n']} · Chevalier — 2/6") and partage.count("\n") == 3 and "🟩🟩🟩🟩🟩🟩" in partage, f"jeu : le texte de partage porte le numéro, le score et une ligne par essai ({partage!r})")
     st = page.evaluate("Compte.carnet('ecu').stats")
     verifie(st["joues"] == 1 and st["gagnes"] == 1 and st["serie"] == 1 and st["rep"][1] == 1, f"jeu : les statistiques comptent la victoire en deux essais ({st})")
     page.reload(); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=20000)
@@ -815,7 +828,7 @@ def test_jeu(browser, base):
     verifie("Perdu" in page.inner_text("#jeu-resultat h2") and f"C'étaient les armes de {E['cible']}" in page.inner_text("#jeu-resultat"), "jeu : après six essais manqués, la partie est perdue et les armes sont révélées")
     st = page.evaluate("Compte.carnet('ecu').stats")
     verifie(st["joues"] == 1 and st["gagnes"] == 0 and st["serie"] == 0, f"jeu : la défaite compte une partie, aucune victoire, pas de série ({st})")
-    verifie(page.evaluate("EcuDuJour.texteDePartage()").startswith(f"L'Écu du jour n° {E['n']} — X/6"), "jeu : le partage d'une défaite porte « X/6 »")
+    verifie(page.evaluate("EcuDuJour.texteDePartage()").startswith(f"L'Écu du jour n° {E['n']} · Chevalier — X/6"), "jeu : le partage d'une défaite porte « X/6 »")
     propre("jeu (défaite)", page, erreurs)
     page.context.close()
     # l'écu du jour est le même pour tous : deux visiteurs, les mêmes armes
@@ -824,6 +837,46 @@ def test_jeu(browser, base):
         page, erreurs = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
         cibles.append(page.evaluate("EcuDuJour.cible.nom")); page.context.close()
     verifie(cibles[0] == cibles[1], "jeu : deux visiteurs ont les mêmes armes mystères le même jour")
+    # le niveau Héraut : son écu, cinq essais, pas de rubrique
+    page, erreurs = ouvre(browser, base, "index.html?niveau=heraut", "#jeu-grille:not([hidden])")
+    H = page.evaluate("({ cible: EcuDuJour.cible.nom, essais: EcuDuJour.ESSAIS })")
+    page.evaluate("document.querySelectorAll('dialog[open]').forEach(d => d.close())")
+    page.evaluate("""async () => { const E = EcuDuJour; await E.devine(E.CARTES.find(c => c.canon !== E.cible.canon)); }""")
+    page.wait_for_selector(".essai .case", timeout=8000)
+    verifie(H == {"cible": ECUS["heraut"], "essais": 5} and page.locator(".essai .case").count() == 5, f"jeu : le niveau Héraut a son écu, cinq essais, et ne dit pas la rubrique ({H})")
+    propre("jeu (Héraut)", page, erreurs)
+    page.context.close()
+
+def test_jeux_du_jour(browser, base):
+    """L'Intrus, le blasonnement à trous (jour.html) et Dessine-moi (atelier.html#defi=dessin) : tirés de la graine du jour"""
+    page, erreurs = ouvre(browser, base, "jour.html#intrus", ".jj-ecu")
+    M = page.evaluate("JeuDuJour.M.map(m => ({ n: m.ecus.length, faux: m.ecus.filter(e => e.faux).length, fautes: ruleAll(m.ecus.find(e => e.faux).St).length, bons: m.ecus.filter(e => !e.faux).every(e => !ruleAll(e.St).length) }))")
+    verifie(len(M) == 5 and all(m["n"] == 4 and m["faux"] == 1 and m["fautes"] > 0 and m["bons"] for m in M), "jeux du jour : L'Intrus a cinq manches de quatre écus, un seul enfreint la règle")
+    for i in range(5):
+        page.evaluate("async i => JeuDuJour.repond(i, JeuDuJour.M[i].ecus.findIndex(e => e.faux))", i)
+        if i < 4: page.click("#jj-suite")
+    page.wait_for_selector("#jj-resultat:not([hidden])", timeout=5000)
+    c = page.evaluate("Compte.carnet('intrus')")
+    verifie(c["stats"]["gagnes"] == 1 and c["stats"]["rep"][5] == 1, "jeux du jour : cinq intrus trouvés font une victoire « 5/5 »")
+    propre("jeux du jour (L'Intrus)", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "jour.html#trous", "select.jj-trou")
+    Q = page.evaluate("JeuDuJour.Q.trous.map(t => t.options.includes(t.juste))")
+    verifie(3 <= len(Q) <= 4 and all(Q), f"jeux du jour : le blasonnement à trous a trois ou quatre trous, la bonne réponse parmi les choix ({len(Q)})")
+    page.evaluate("() => document.querySelectorAll('select.jj-trou').forEach(s => { s.value = JeuDuJour.Q.trous[+s.dataset.k].juste; s.dispatchEvent(new Event('change')); })")
+    page.click("#jj-ok"); page.wait_for_selector("#jj-resultat:not([hidden])", timeout=5000)
+    verifie(page.evaluate("JeuDuJour.J.gagne && JeuDuJour.J.essais.length === 1"), "jeux du jour : les bons mots du premier coup gagnent en un essai")
+    propre("jeux du jour (à trous)", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "atelier.html#defi=dessin", "#defi-ok")
+    verifie(page.locator("#lire").is_hidden() and page.locator("#blz").is_hidden() and page.locator("#examples").is_hidden(), "jeux du jour : en défi, l'Atelier cache la lecture, les exemples et le blasonnement en cours")
+    page.click("#defi-ok"); page.wait_for_selector(".defi-essais li", timeout=5000)
+    verifie(page.locator(".defi-essais li").count() == 1 and "#defi=dessin" in page.url, "jeux du jour : un essai faux est dit trait par trait, et l'adresse ne livre pas l'écu")
+    page.evaluate("async () => { S = JSON.parse(JSON.stringify(DessineMoi.cible)); await render(); }")
+    page.click("#defi-ok"); page.wait_for_selector(".defi-fin.ok", timeout=5000)
+    verifie(page.evaluate("Compte.carnet('dessin').stats.gagnes") == 1, "jeux du jour : Dessine-moi gagné au deuxième essai")
+    propre("jeux du jour (Dessine-moi)", page, erreurs)
+    page.context.close()
 
 # ------------------------------------------------------------------ Rechercher
 def test_recherche(browser, base):
@@ -888,6 +941,7 @@ def main():
     random.seed(1)
     n_fuzz = int(os.environ.get("FUZZ", 60))                 # FUZZ=500 pour une vérification plus poussée
     srv, base = serveur()
+    srv2, base_en_ligne = serveur_en_ligne()
     with sync_playwright() as p:
         browser = lance(p)
         for nom, f in (("index", lambda: test_index(browser, base)),
@@ -900,7 +954,8 @@ def main():
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
-                       ("jeu", lambda: test_jeu(browser, base)),
+                       ("jeu", lambda: test_jeu(browser, base_en_ligne)),
+                       ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),
                        ("transmission", lambda: test_transmission(browser, base)),

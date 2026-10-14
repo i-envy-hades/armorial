@@ -74,6 +74,15 @@ def regles(op, chemin, uid, apres=None, avant=None, store=None):
         if op == "delete": return None if avant and avant.get("uid") == uid else pas()
         if op != "create" or apres["uid"] != uid or p[1] != f'{uid}_{apres["jeu"]}_{apres["jour"]}': pas()
         return
+    if p[0] == "jours" and len(p) == 2:                  # lisible le jour venu ; écrit par le curateur (CURATEUR=e-mail, curateur@essai.fr par défaut)
+        if op == "get":
+            d = store.get(chemin)
+            if d and str(d.get("ouvre", "")) > time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime()): pas()
+            return
+        if op == "list": pas()
+        email = next((e for e, x in DB["users"].items() if x["id"] == uid), None)
+        if not uid or email != os.environ.get("CURATEUR", "curateur@essai.fr"): pas()
+        return
     pas()
 
 def applique(writes, uid, atomique):

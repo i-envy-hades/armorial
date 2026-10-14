@@ -29,6 +29,7 @@
   L'état de la composition tient dans l'ancre de l'adresse (#…), ce qui fait le lien de partage.
   « Partir d'un blason réel » : les cartes des galeries (data/blasons.json, data/personnages.json) que le lecteur relit en entier ;
   l'adresse « #lire=…&de=blasons:<carte> » (l'écu d'une carte, ou son bouton « Redessiner ») ouvre l'Atelier sur ces armes et montre la carte d'origine.
+  « #defi=dessin » : « Dessine-moi », le jeu du jour (assets/dessine.js) ; la lecture, les exemples et le blasonnement en cours y sont cachés.
 -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/atelier.css">
@@ -52,7 +53,7 @@
 <noscript><p class="nojs">L'Atelier fonctionne avec JavaScript : activez-le pour composer des armoiries.</p></noscript>
 <div class="wrap" id="wrap">
   <form class="panel" id="panel" autocomplete="off" onsubmit="return false">
-    <fieldset>
+    <fieldset class="hors-defi">
       <legend>Écrire un blasonnement</legend>
       <label class="lab-lire" for="lire">Tapez des armes : l'écu se dessine. Ce que l'Atelier ne comprend pas est signalé, jamais deviné.</label>
       <textarea id="lire" rows="3" spellcheck="false" placeholder="D'azur à trois fleurs de lis d'or" aria-describedby="lire-etat"></textarea>
@@ -62,13 +63,13 @@
       </div>
       <div class="lire-etat" id="lire-etat" role="status" aria-live="polite"></div>
     </fieldset>
-    <fieldset>
+    <fieldset class="hors-defi">
       <legend>Partir d'un blason réel</legend>
       <label class="lab-lire" for="reel">Les armes des galeries que l'Atelier sait relire : choisissez-en une, l'écu se dessine, puis modifiez-le à votre guise.</label>
       <select id="reel" aria-describedby="reel-note"><option value="">Chargement des galeries…</option></select>
       <p class="note" id="reel-note">Un clic sur l'écu d'une carte de <a href="blasons.html">Blasons réels</a> ou de <a href="personnages.html">Personnages</a> mène ici aussi.</p>
     </fieldset>
-    <fieldset>
+    <fieldset class="hors-defi">
       <legend>Exemples</legend>
       <div class="examples" id="examples"></div>
     </fieldset>
@@ -246,7 +247,7 @@
         <p class="note">Réglage graphique : il ne modifie pas le blasonnement. Le meuble choisi est cerclé d'or dans l'aperçu. <button type="button" class="lnk" id="b-reset">Remettre à zéro</button></p>
       </div>
     </fieldset>
-    <fieldset>
+    <fieldset class="hors-defi">
       <legend>La brisure</legend>
       <p class="note" id="br-q" hidden>Sur un écu parti ou écartelé, la brisure se pose sur tout l'écu : elle se règle avec les premières armes.</p>
       <div id="br-ctl">
@@ -280,7 +281,7 @@
       </div>
       <p class="note" id="br-note">La brisure se pose par-dessus tout le reste (« brisé d'un bâton de gueules péri en bande »). Le chapitre <a href="encyclopedie.html#brisures">Les brisures</a> dit pourquoi on brise.</p>
     </fieldset>
-    <fieldset>
+    <fieldset class="hors-defi">
       <legend>Les ornements</legend>
       <div class="row"><span class="lab">Couronne</span><select name="cr" aria-label="Couronne"></select></div>
       <div class="row"><span class="lab">Manteau</span><select name="mt" aria-label="Manteau et pavillon"><option value="">Aucun</option><option value="m">Manteau</option><option value="p">Manteau et pavillon</option></select></div>
@@ -317,6 +318,7 @@
   </form>
 
   <aside class="preview" aria-live="polite">
+    <section class="defi" id="defi" hidden></section>
     <svg class="shield" id="shield" viewBox="0 0 200 252" role="img" aria-labelledby="blz"></svg>
     <p class="blz" id="blz"></p>
     <p class="ornt" id="orn" hidden></p>
@@ -363,6 +365,9 @@
 <script src="assets/compte.js"></script>
 <script src="assets/enligne.js"></script>
 <script src="assets/atelier.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/dessine.js"></script>
 <script src="assets/epopee-pages.js"></script>
 </body>
 </html>

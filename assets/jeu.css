@@ -42,7 +42,14 @@ body.jeu .jx-ic:focus-visible,body.jeu .jx-moi:focus-visible,body.jeu .jx-go:foc
 .jx-roue{width:22px;height:22px;border-radius:50%;border:3px solid var(--j-bord);border-top-color:var(--j-rouge);animation:tourne .8s linear infinite}
 @keyframes tourne{to{transform:rotate(1turn)}}
 
-/* ---------- l'en-tête de la partie : numéro, date, essais ---------- */
+/* ---------- l'en-tête de la partie : niveaux, numéro, date, essais ---------- */
+.jx-niveaux{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.3rem;margin:.9rem 0 0;padding:.3rem;border-radius:18px;background:var(--j-bord)}
+body.jeu .jx-niv{display:flex;flex-direction:column;align-items:center;padding:.35rem .3rem;border-radius:14px;color:var(--j-doux);text-decoration:none;line-height:1.15;transition:background .15s}
+body.jeu .jx-niv:hover{background:rgba(255,255,255,.55)}
+.jx-niv b{font-weight:900;font-size:1rem}
+.jx-niv small{font-size:.74rem;font-weight:600}
+body.jeu .jx-niv.on{background:#fff;color:var(--j-encre);box-shadow:0 3px 0 var(--j-or-f)}
+body.jeu .jx-niv:focus-visible{outline:3px solid var(--j-or);outline-offset:1px}
 .jx-tete{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.3rem 1rem;margin:.9rem 0 .2rem}
 .jeu-jour{margin:0;font-family:var(--jf);font-weight:800;font-size:1.1rem;line-height:1.2}
 .jeu-jour small{display:block;font-weight:500;font-size:.88rem;color:var(--j-doux)}
@@ -183,6 +190,37 @@ a.jx-jeu:active{transform:translateY(3px);box-shadow:0 2px 0 var(--c2)}
 .c-sinople{--c1:var(--j-vert);--c2:var(--j-vert-f)}.c-or{--c1:var(--j-or);--c2:var(--j-or-f)}
 .jx-jeu.bientot{--c1:transparent;--c2:transparent;color:var(--j-doux);border:2px dashed var(--j-bord);box-shadow:none}
 .jx-jeu.bientot::after{display:none}
+
+/* ---------- les jeux du jour de jour.html : L'Intrus, le blasonnement à trous ---------- */
+.jj-onglets{margin-bottom:.4rem}
+.jj-ask{margin:.6rem 0 .8rem;font-size:1.02rem}
+.jj-ecus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+@media (max-width:560px){.jj-ecus{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.jj-ecu{position:relative;display:block;padding:.6rem .5rem .4rem;border:2px solid var(--j-bord);border-radius:18px;background:var(--j-carte);cursor:pointer;box-shadow:0 4px 0 var(--j-bord);transition:transform .1s,border-color .15s,opacity .2s}
+.jj-ecu:not([disabled]):hover{border-color:var(--j-or);transform:translateY(-2px)}
+.jj-ecu:focus-visible{outline:3px solid var(--j-or);outline-offset:2px}
+.jj-ecu svg.ecu{display:block;width:100%;max-width:130px;height:auto;margin:0 auto;filter:drop-shadow(0 6px 8px rgba(60,45,20,.25))}
+.jj-k{position:absolute;left:.45rem;top:.35rem;font-weight:900;font-size:.8rem;color:var(--j-doux)}
+.jj-ecu.ok{border-color:var(--j-vert);box-shadow:0 4px 0 var(--j-vert-f);background:#eef8ee}
+.jj-ecu.ko{border-color:var(--j-rouge);box-shadow:0 4px 0 var(--j-rouge-f)}
+.jj-ecu.dim{opacity:.55}
+.jj-ecu[disabled]{cursor:default}
+.jj-fb{margin:.9rem 0 0;padding:.8rem 1rem;border-radius:16px;background:var(--j-carte);border:2px solid var(--j-bord)}
+.jj-fb.ok{border-color:var(--j-vert)}.jj-fb.ko{border-color:var(--j-rouge)}
+.jj-fb p{margin:.2rem 0 .5rem}
+.jj-blz{font-family:"EB Garamond",Georgia,serif;font-size:1.08rem;color:var(--j-doux)}
+.jj-trous{display:grid;grid-template-columns:minmax(120px,170px) minmax(0,1fr);gap:1rem 1.3rem;align-items:center;padding:1rem 1.1rem;border:2px solid var(--j-bord);border-radius:22px;background:var(--j-carte);box-shadow:var(--j-ombre)}
+@media (max-width:520px){.jj-trous{grid-template-columns:minmax(0,1fr)}.jj-un svg.ecu{max-width:150px}}
+.jj-un svg.ecu{display:block;width:100%;height:auto;margin:0 auto;filter:drop-shadow(0 10px 12px rgba(60,45,20,.3))}
+.jj-texte{margin:0;font-family:"EB Garamond",Georgia,serif;font-size:1.3rem;line-height:2}
+select.jj-trou{font:inherit;font-size:1.05rem;padding:.1rem .3rem;border:2px solid var(--j-or);border-radius:10px;background:#fffbea;color:var(--j-encre);max-width:100%}
+select.jj-trou.ko{border-color:var(--j-rouge);background:#fdecea}
+span.jj-trou{padding:0 .3rem;border-radius:8px;font-weight:600}
+span.jj-trou.ok{background:#dcefd9;color:#1f5e2a}
+span.jj-trou.ko{background:#fdecea;color:var(--j-rouge-f)}
+.jj-faux{color:var(--j-doux);font-size:.9em}
+.jj-acts{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin:.9rem 0 0}
+.jj-aide{font-weight:700;color:var(--j-rouge)}
 
 /* ---------- l'Armorial, aide de jeu ---------- */
 .jx-armorial{margin:2rem 0 0;padding:1.2rem 1.2rem 1.1rem;border-radius:22px;background:linear-gradient(135deg,#2a2620,#43392b);color:#f7f0de;box-shadow:var(--j-ombre)}

@@ -24,9 +24,11 @@
   L'ARMORIAL — page d'accueil : « L'Écu du jour », le jeu du jour, et les autres jeux autour.
   (L'encyclopédie est à encyclopedie.html ; les anciens liens « index.html#chapitre » y sont renvoyés par assets/chrome.js.)
   Fichiers : assets/jeu.js (le jeu : le tirage du jour, la comparaison des armes, les scores), assets/jeu.css ;
+  assets/jour.js (ce que les jeux du jour ont en commun : le numéro du jour, le document du jour dans la base, les carnets) ;
   assets/compte.js et assets/compte.css (le profil du joueur, ses armes composées dans l'Atelier, son carnet de scores) ;
   assets/enligne.js (les comptes en ligne, Firebase : Google ou e-mail, classement, bibliothèque d'armes, nouvelles par e-mail) ;
-  data/jeu.json (l'ordre des armes mystères, une par jour) ; les armes viennent de data/blasons.json et data/personnages.json ;
+  l'écu de chaque niveau est dans le document du jour (Firestore, jours/{n}, lisible le jour venu : tools/calendrier.html l'écrit) ;
+  les armes viennent de data/blasons.json et data/personnages.json ;
   le dessin des armes mystères et des réponses est celui du moteur de l'Atelier (assets/dessin.js), après lecture du blasonnement
   (assets/lecture.js) : une carte que le lecteur ne relit pas n'entre pas dans le jeu.
   Seule l'image de la réponse, montrée à la fin, vient de Wikimedia Commons : son crédit s'affiche dessous.
@@ -55,6 +57,7 @@
 
   <div class="jeu-grille" id="jeu-grille" hidden>
     <section class="jeu-jeu" aria-labelledby="jeu-jour">
+      <nav class="jx-niveaux" id="jeu-niveaux" aria-label="Niveau"></nav>
       <div class="jx-tete">
         <h2 id="jeu-jour" class="jeu-jour"></h2>
         <p class="jx-points" id="jx-points" aria-hidden="true"></p>
@@ -89,7 +92,7 @@
     </section>
 
     <section class="jx-plus" aria-labelledby="jx-plus-t">
-      <h2 id="jx-plus-t">Encore une partie ?</h2>
+      <h2 id="jx-plus-t">Les autres jeux du jour</h2>
       <ul class="jx-jeux" id="jeu-autres"></ul>
     </section>
 
@@ -115,15 +118,16 @@
 <dialog class="jx-dlg" id="dlg-aide" aria-labelledby="dlg-aide-t">
   <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
   <h2 id="dlg-aide-t">Comment jouer ?</h2>
-  <p>Un écu est caché : <b>trouvez à qui sont ces armes</b> en six essais. Tapez le nom d'un État, d'une province, d'une maison ou d'un personnage, et choisissez-le dans la liste.</p>
+  <p>Un écu est caché : <b>trouvez à qui sont ces armes</b>. Tapez le nom d'un État, d'une province, d'une maison ou d'un personnage, et choisissez-le dans la liste.</p>
+  <p>Trois niveaux, un écu chacun : <b>Page</b> (des armes simples et connues, huit essais), <b>Chevalier</b> (six essais), <b>Héraut</b> (les plus difficiles, cinq essais, sans la rubrique).</p>
   <p>Chaque réponse montre ses armes et les compare à l'écu mystère, case par case :</p>
   <ul class="jx-legende">
     <li><span class="t ok">✓</span> identique</li>
     <li><span class="t mid">≈</span> proche : un émail ou un meuble en commun, ou de la même famille</li>
     <li><span class="t no">✗</span> différent</li>
   </ul>
-  <p>Les <b>émaux</b> (les couleurs du blason) que vous trouvez s'allument sur l'écu mystère ; les autres restent gris. Le dessin se précise à chaque essai.</p>
-  <p class="jx-dlg-pied">Un nouvel écu chaque jour à minuit, le même pour tous. Coincé ? <a href="encyclopedie.html">L'encyclopédie</a> est là pour ça.</p>
+  <p>L'écu mystère se dévoile peu à peu : d'abord sa seule silhouette, puis ses partitions, ses pièces, et ses meubles au troisième essai. Les <b>émaux</b> (les couleurs du blason) que vous trouvez s'y allument ; les autres restent gris.</p>
+  <p class="jx-dlg-pied">De nouveaux écus chaque jour à minuit (heure de Paris), les mêmes pour tous. Coincé ? <a href="encyclopedie.html">L'encyclopédie</a> est là pour ça.</p>
   <button type="button" class="jx-go" data-fermer>C'est parti !</button>
 </dialog>
 
@@ -151,6 +155,7 @@
 <script src="assets/cartes.js"></script>
 <script src="assets/compte.js"></script>
 <script src="assets/enligne.js"></script>
+<script src="assets/jour.js"></script>
 <script src="assets/jeu.js"></script>
 </body>
 </html>

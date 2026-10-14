@@ -115,3 +115,28 @@ textarea:focus-visible{outline:2px solid var(--or);outline-offset:2px}
 .biblio-l .bn{font-size:.8rem;line-height:1.2;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .biblio-l .ba{display:flex;gap:.5rem;font-size:.78rem}
 .biblio-l .ba button{font:inherit;background:none;border:0;padding:0;color:var(--gules);text-decoration:underline;cursor:pointer}
+
+/* ---------- « Dessine-moi », le jeu du jour (assets/dessine.js) : ce qui donnerait la réponse est caché ---------- */
+body.defi .hors-defi,body.defi #blz,body.defi #orn,body.defi #origine,body.defi .preview > .acts,body.defi #mes-armes{display:none}
+.defi{width:100%;padding:.8rem .9rem;border:2px solid var(--or);border-radius:12px;background:var(--vellum)}
+.defi[hidden]{display:none}
+.defi p{margin:.3rem 0}
+.defi-sur{font-family:"Marcellus SC",serif;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;color:var(--gules)}
+.defi-sur small{letter-spacing:0;text-transform:none;font-family:inherit;color:var(--ink-soft)}
+.defi-ask{font-size:.95rem;color:var(--ink-soft)}
+.defi-blz{margin:.3rem 0 .6rem;font-family:"EB Garamond",Georgia,serif;font-size:1.15rem;line-height:1.35;color:var(--ink)}
+.defi-essais{margin:.2rem 0 .6rem;padding-left:0;list-style:none;display:grid;gap:.3rem;font-size:.86rem}
+.defi-essais li{display:flex;flex-wrap:wrap;gap:.25rem .5rem;align-items:center}
+.defi-essais span{padding:.05rem .45rem;border-radius:999px;background:#e6dfcf;color:#5a5244}
+.defi-essais span.ok{background:#3a9d4f;color:#fff}
+.defi .acts{justify-content:flex-start;align-items:center}
+.defi-n{font-size:.85rem;color:var(--ink-soft)}
+.defi-fin{text-align:center}
+.defi-verdict{font-weight:700;font-size:1.2rem}
+.defi-fin.ok .defi-verdict{color:#26763a}
+.defi-fin.ko .defi-verdict{color:var(--gules)}
+.defi-fin figure{margin:.4rem auto}
+.defi-fin figcaption{font-size:.8rem;color:var(--ink-soft)}
+.defi-ecu{display:block;width:120px;height:auto;margin:.2rem auto}
+.defi-copie{min-height:1.2em;font-size:.85rem;color:#26763a}
+.defi-prochain{font-size:.85rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
