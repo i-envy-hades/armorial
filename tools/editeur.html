@@ -121,7 +121,7 @@
   const texteLu = d => d.atelier.trim() || d.blason;
 
   /* ---------- la lecture et le dessin ---------- */
-  const mk = e => { const S = { ...fresh(), q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
+  const mk = e => { const S = { ...fresh(), sh: e.sh || "", q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
   /* les réglages : { 1: {sz, dx…}, 2: {…} } ; dans la chaîne enregistrée, les quartiers 2 à 4 sont préfixés « q2. » à « q4. », l'écusson en abîme « q5. » ;
      les armes uniques (ou le premier quartier) n'ont pas de préfixe : c'est le format d'avant, toujours lu */
   const ajustDe = s => {

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Formes des écus — outil</title>
+<!--
+  FORMES DES ÉCUS — outil du curateur (pas une page du site : tools/ n'est pas publié).
+  Se lance avec : python3 tools/editeur.py   puis   http://127.0.0.1:8140/tools/formes.html
+  Pour chaque carte de Blasons réels et de Personnages : l'image de Commons, le dessin de l'Atelier dans la forme choisie, et les quinze
+  formes de l'Atelier (SHAPES, assets/dessin.js) à essayer d'un clic. « Enregistrer » écrit le champ « forme » de la carte dans
+  data/blasons.json ou data/personnages.json par tools/editeur.py (rien n'est commité) ; « Français moderne » retire le champ.
+  « Vérifiée » ne sert qu'à suivre la relecture : gardé dans ce navigateur, rien n'est écrit dans les données.
+-->
+<style>
+  :root { --papier: #f4ecd8; --encre: #2a2418; --filet: #cdbf98; --or: #8a6d1d; --rouge: #a3321a; --vert: #2f6b2f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 Georgia, serif; background: var(--papier); color: var(--encre); }
+  header { position: sticky; top: 0; z-index: 5; background: #e8dcc0; padding: 8px 14px; border-bottom: 1px solid #b9a678; display: flex; gap: 10px 16px; align-items: center; flex-wrap: wrap; }
+  header b { font-size: 16px; }
+  header input[type=search] { font: inherit; padding: 3px 8px; width: 13rem; }
+  header select { font: inherit; }
+  .seg { display: inline-flex; border: 1px solid #b9a678; border-radius: 6px; overflow: hidden; }
+  .seg button { font: inherit; font-size: 14px; border: 0; background: #f6efdc; padding: 3px 10px; cursor: pointer; }
+  .seg button.on { background: var(--encre); color: #fff; }
+  #compte { font-size: 14px; color: #5a4d2c; }
+  button.main { font: inherit; background: var(--rouge); color: #fff; border: 0; border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+  button.main:disabled { opacity: .45; cursor: default; }
+  #msg { font-size: 14px; }
+  .ok { color: var(--vert); } .err { color: var(--rouge); font-weight: 600; }
+  main { padding: 14px; display: grid; gap: 12px; }
+  .carte { display: grid; grid-template-columns: 200px 200px minmax(0, 1fr); gap: 14px; align-items: start; background: #fbf6e8; border: 1px solid var(--filet); border-radius: 8px; padding: 10px 12px; }
+  .carte.modif { border-color: #e07a1f; box-shadow: 0 0 0 2px #f2c08d; }
+  .carte.vue { background: #f1f5ea; }
+  @media (max-width: 900px) { .carte { grid-template-columns: 1fr 1fr; } .carte .droite { grid-column: 1 / -1; } }
+  .img, .des { height: 220px; display: grid; place-items: center; background: #fff; border: 1px solid #e4d9bb; border-radius: 6px; padding: 6px; }
+  .img img { max-width: 100%; max-height: 206px; width: auto; height: auto; }
+  .des svg { max-width: 100%; max-height: 206px; width: auto; height: auto; }
+  .lab { display: block; text-align: center; font-size: 12px; color: #6b5d3a; margin-top: 3px; }
+  h2 { margin: 0; font-size: 18px; font-weight: 400; }
+  h2 small { font-size: 12px; color: #6b5d3a; margin-left: 6px; }
+  .blz { margin: 2px 0 8px; font-size: 13px; font-style: italic; color: #5a4d2c; }
+  .formes { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
+  .formes button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 5px 3px; font: 11px/1.15 Georgia, serif; text-align: center; border: 1px solid #d8cba5; border-radius: 6px; background: #fff; cursor: pointer; }
+  .formes button svg { width: 28px; height: 36px; }
+  .formes button:hover { border-color: var(--or); }
+  .formes button.on { border-color: var(--rouge); box-shadow: 0 0 0 2px var(--rouge); background: #fdf1ec; }
+  .formes button.dep::after { content: "fichier"; font-size: 9px; color: #6b5d3a; }
+  .acts { display: flex; gap: 12px; align-items: center; margin-top: 8px; flex-wrap: wrap; font-size: 14px; }
+  .acts label { display: inline-flex; gap: 5px; align-items: center; cursor: pointer; }
+  .acts .lnk { font: inherit; background: none; border: 0; color: #355; text-decoration: underline; cursor: pointer; padding: 0; }
+  .note { font-size: 13px; color: #6b5d3a; }
+  .vide { padding: 2rem; text-align: center; color: #6b5d3a; }
+</style>
+</head>
+<body>
+<header>
+  <b>Formes des écus</b>
+  <span class="seg" id="vue"><button data-v="tout" class="on">Toutes</button><button data-v="avoir">À vérifier</button><button data-v="speciales">Formes particulières</button><button data-v="modif">Modifiées</button></span>
+  <select id="rub" aria-label="Rubrique"><option value="">Toutes les rubriques</option></select>
+  <input type="search" id="q" placeholder="Chercher une carte…">
+  <span id="compte"></span>
+  <button class="main" id="tout" disabled>Tout enregistrer</button>
+  <span id="msg" role="status"></span>
+</header>
+<main id="liste"><p class="vide">Chargement des cartes…</p></main>
+<div id="gdefs" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script>
+(async () => {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const CLE_VUES = "armorial.formes.vues";
+  let vues = new Set(); try { vues = new Set(JSON.parse(localStorage.getItem(CLE_VUES) || "[]")); } catch (e) { /* sans mémoire */ }
+  const gardeVues = () => { try { localStorage.setItem(CLE_VUES, JSON.stringify([...vues])); } catch (e) { /* idem */ } };
+
+  await chargerLecteur();
+  $("#gdefs").innerHTML = globalDefs();
+  const FORMES = Object.entries(SHAPES).map(([k, v]) => ({ k, nom: v.nom, d: v.d }));
+  const silhouette = (d, cls = "") => `<svg viewBox="0 0 200 252" class="${cls}" aria-hidden="true"><path d="${d}" fill="#e9dfc4" stroke="#2a2418" stroke-width="7"/></svg>`;
+
+  /* les cartes */
+  const CARTES = [];
+  for (const g of ["blasons", "personnages"]) {
+    const l = await (await fetch(`data/${g}.json`, { cache: "no-store" })).json();
+    for (const a of l) {
+      if (!a.file) continue;
+      let r = null; try { r = a.blason ? lireCarte({ ...a, forme: "" }) : null; } catch (e) { r = null; }
+      CARTES.push({ g, a, nom: a.nom, cat: g === "personnages" ? "Personnages" : (a.cat || "Blasons réels"), orig: a.forme || "", forme: a.forme || "", etat: r && r.ok ? r.etat : null });
+    }
+  }
+  [...new Set(CARTES.map(c => c.cat))].forEach(c => $("#rub").insertAdjacentHTML("beforeend", `<option>${esc(c)}</option>`));
+
+  /* le dessin de l'Atelier, dans la forme choisie */
+  let n = 0;
+  async function dessin(c) {
+    if (!c.etat) return silhouette(SHAPES[c.forme].d) + `<span class="lab">(l'Atelier ne relit pas ces armes)</span>`;
+    const e = c.etat, S = normalizeAll({ ...fresh(), sh: c.forme, q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) });
+    appliqueAjust(S, c.a.atelierAjust);
+    try { await loadAll(S); const r = compose(S, "fo" + ++n); return `<svg viewBox="${r.vb.join(" ")}" aria-hidden="true">${r.svg}</svg>`; }
+    catch (err) { return `<span class="err">${esc(err.message)}</span>`; }
+  }
+  /* les réglages de la carte (même lecture que l'Atelier : assets/atelier.js, appliqueAjust) */
+  function appliqueAjust(S, aj) {
+    if (!aj) return;
+    for (const [k, v] of new URLSearchParams(aj)) {
+      const m = /^(?:q([1-5])\.)?((?:sz|dx|dy|an)2?|pth|pdx|pdy|cs|ce)$/.exec(k);
+      if (!m || !isFinite(+v) || Math.abs(+v) > 300) continue;
+      const a = S.A[m[1] ? +m[1] - 1 : 0];
+      if (a) a[{ cs: "m2cs", ce: "m2ce" }[m[2]] || m[2]] = v;
+    }
+  }
+
+  /* la liste */
+  let VUE = "tout";
+  const visibles = () => {
+    const q = plie($("#q").value.trim()), rub = $("#rub").value;
+    return CARTES.filter(c => (!rub || c.cat === rub) && (!q || plie(c.nom).includes(q))
+      && (VUE === "tout" || (VUE === "avoir" && !vues.has(c.nom)) || (VUE === "speciales" && c.forme) || (VUE === "modif" && c.forme !== c.orig)));
+  };
+  const imgDe = c => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(c.a.file)}?width=300`;
+  function carteHtml(c, i) {
+    return `<article class="carte${c.forme !== c.orig ? " modif" : ""}${vues.has(c.nom) ? " vue" : ""}" data-i="${i}">
+      <div><div class="img"><img src="${esc(imgDe(c))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div><span class="lab">Commons</span></div>
+      <div><div class="des" data-des></div><span class="lab" data-nomf>${esc(SHAPES[c.forme].nom)}</span></div>
+      <div class="droite">
+        <h2>${esc(c.nom)}<small>${esc(c.cat)}</small></h2>
+        <p class="blz">${esc(c.a.blason || "")}</p>
+        <div class="formes">${FORMES.map(f => `<button type="button" data-f="${f.k}" title="${esc(f.nom)}" class="${f.k === c.forme ? "on" : ""}${f.k === c.orig && c.orig ? " dep" : ""}">${silhouette(f.d)}${esc(f.nom)}</button>`).join("")}</div>
+        <div class="acts">
+          <label><input type="checkbox" data-vue${vues.has(c.nom) ? " checked" : ""}> Vérifiée</label>
+          <button type="button" class="main" data-save${c.forme === c.orig ? " disabled" : ""}>Enregistrer</button>
+          <button type="button" class="lnk" data-annule${c.forme === c.orig ? " hidden" : ""}>Revenir à « ${esc(SHAPES[c.orig].nom)} »</button>
+          <span class="note" data-msg></span>
+        </div>
+      </div></article>`;
+  }
+  async function dessineCarte(el, c) {
+    el.classList.toggle("modif", c.forme !== c.orig);
+    el.querySelectorAll("[data-f]").forEach(b => b.classList.toggle("on", b.dataset.f === c.forme));
+    el.querySelector("[data-nomf]").textContent = SHAPES[c.forme].nom;
+    el.querySelector("[data-save]").disabled = c.forme === c.orig;
+    el.querySelector("[data-annule]").hidden = c.forme === c.orig;
+    el.querySelector("[data-des]").innerHTML = await dessin(c);
+  }
+  /* les dessins se font au fil du défilement : cent quatre-vingts écus d'un coup seraient lents */
+  const vu = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { vu.unobserve(x.target); dessineCarte(x.target, CARTES[+x.target.dataset.i]); } }), { rootMargin: "600px" });
+  function rend() {
+    const l = visibles();
+    $("#liste").innerHTML = l.length ? l.map(c => carteHtml(c, CARTES.indexOf(c))).join("") : `<p class="vide">Aucune carte ici.</p>`;
+    $("#liste").querySelectorAll(".carte").forEach(el => vu.observe(el));
+    compte();
+  }
+  function compte() {
+    const modifs = CARTES.filter(c => c.forme !== c.orig).length, speciales = CARTES.filter(c => c.forme).length;
+    $("#compte").textContent = `${CARTES.length} cartes · ${speciales} de forme particulière · ${vues.size} vérifiées · ${modifs} non enregistrée${modifs > 1 ? "s" : ""}`;
+    $("#tout").disabled = !modifs; $("#tout").textContent = modifs ? `Tout enregistrer (${modifs})` : "Tout enregistrer";
+  }
+  async function enregistre(c) {
+    const r = await fetch("__api/carte", { method: "POST", headers: { "Content-Type": "application/json", "X-Editeur": "1" }, body: JSON.stringify({ galerie: c.g, nom: c.nom, champs: { forme: c.forme } }) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.erreur || `HTTP ${r.status}`);
+    c.orig = c.forme;
+  }
+
+  $("#liste").addEventListener("click", async e => {
+    const el = e.target.closest(".carte"); if (!el) return;
+    const c = CARTES[+el.dataset.i], msg = el.querySelector("[data-msg]");
+    const f = e.target.closest("[data-f]");
+    if (f) { c.forme = f.dataset.f; msg.textContent = ""; await dessineCarte(el, c); compte(); return; }
+    if (e.target.closest("[data-annule]")) { c.forme = c.orig; await dessineCarte(el, c); compte(); return; }
+    if (e.target.closest("[data-save]")) {
+      try { await enregistre(c); msg.innerHTML = `<span class="ok">Enregistré.</span>`; vues.add(c.nom); gardeVues(); el.classList.add("vue"); el.querySelector("[data-vue]").checked = true; await dessineCarte(el, c); el.querySelectorAll("[data-f]").forEach(b => b.classList.toggle("dep", b.dataset.f === c.orig && !!c.orig)); }
+      catch (err) { msg.innerHTML = `<span class="err">${esc(err.message)}</span>`; }
+      compte();
+    }
+  });
+  $("#liste").addEventListener("change", e => {
+    if (!e.target.matches("[data-vue]")) return;
+    const el = e.target.closest(".carte"), c = CARTES[+el.dataset.i];
+    if (e.target.checked) vues.add(c.nom); else vues.delete(c.nom);
+    gardeVues(); el.classList.toggle("vue", e.target.checked); compte();
+  });
+  $("#tout").addEventListener("click", async () => {
+    const l = CARTES.filter(c => c.forme !== c.orig); let ok = 0;
+    for (const c of l) { try { await enregistre(c); ok++; } catch (err) { $("#msg").innerHTML = `<span class="err">${esc(c.nom)} : ${esc(err.message)}</span>`; break; } }
+    if (ok === l.length) $("#msg").innerHTML = `<span class="ok">${ok} carte${ok > 1 ? "s" : ""} enregistrée${ok > 1 ? "s" : ""}.</span>`;
+    rend();
+  });
+  $("#vue").addEventListener("click", e => { const b = e.target.closest("[data-v]"); if (!b) return; VUE = b.dataset.v; $("#vue").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); rend(); });
+  $("#rub").addEventListener("change", rend);
+  $("#q").addEventListener("input", rend);
+  addEventListener("beforeunload", e => { if (CARTES.some(c => c.forme !== c.orig)) { e.preventDefault(); e.returnValue = ""; } });
+  rend();
+  window.Formes = { CARTES, rend };                                   // pour régler à la main depuis la console du navigateur
+})();
+</script>
+</body>
+</html>

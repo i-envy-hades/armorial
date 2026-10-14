@@ -104,6 +104,15 @@ for nom in ("blasons.json", "personnages.json"):
             elif page_ not in cibles: err(f"{nom}: « {e.get('nom')} » : renvoi vers une page inconnue « {l.get('href')} »")
             elif ancre not in cibles[page_]: err(f"{nom}: « {e.get('nom')} » : l'ancre « {l.get('href')} » n'existe pas")
 
+# --------- 3 bis. la forme de l'écu d'une carte est une forme que l'Atelier sait dessiner (SHAPES, assets/dessin.js)
+_dessin = (ROOT / "assets" / "dessin.js").read_text(encoding="utf-8")
+_bloc = _dessin[_dessin.index("const SHAPES = {"):]
+_bloc = _bloc[:_bloc.index("\n};")]
+FORMES = set(re.findall(r'^\s*"?([a-z0-9]*)"?: \{ nom:', _bloc, re.M))
+for nom in ("blasons.json", "personnages.json"):
+    for e in DATA.get(nom) or []:
+        if "forme" in e and e["forme"] not in FORMES: err(f"{nom}: « {e.get('nom')} » : forme d'écu inconnue « {e['forme']} » (formes : {', '.join(sorted(f or '« »' for f in FORMES))})")
+
 # --------- 3 ter. un blasonnement s'appuie sur une source (la page Commons du fichier ou un article)
 for nom in ("blasons.json", "personnages.json"):
     for e in DATA.get(nom) or []:

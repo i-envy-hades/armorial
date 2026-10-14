@@ -489,6 +489,7 @@ function allerALEcu() {
 }
 function partirDe(c) {
   ORIGINE = { gal: c.gal, slug: c.slug, c };
+  S.sh = c.a.forme || "";                                                        // la forme de l'écu vient de la carte (son image), pas du blasonnement
   $("#lire").value = texteAtelier(c.a);
   lireLeChamp();
   appliqueAjust(c.a.atelierAjust);
