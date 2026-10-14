@@ -77,7 +77,7 @@
       for (const k of ["page", "heraut"]) while (ecu[k] === ecu.chevalier) ecu[k] = t[k]();
       JOURS.push({ n, champs: { ouvre: Jour.ouvre(n), ecu, graine: crypto.getRandomValues(new Uint32Array(1))[0] } });
     }
-    $("#apercu").innerHTML = `<table class="${$("#voir").checked ? "" : "flou"}"><tr><th>n°</th><th>Écuyer</th><th>Chevalier</th><th>Héraut</th></tr>${JOURS.slice(0, 60).map(j => `<tr><td>${j.n} (${esc(Jour.quand(j.n))})</td>${NIV.map(k => `<td>${esc(j.champs.ecu[k])}</td>`).join("")}</tr>`).join("")}</table>${JOURS.length > 60 ? `<p>… et ${JOURS.length - 60} jours de plus.</p>` : ""}`;
+    $("#apercu").innerHTML = `<table class="${$("#voir").checked ? "" : "flou"}"><tr><th>n°</th><th>Écuyer</th><th>Chevalier</th><th>Seigneur</th></tr>${JOURS.slice(0, 60).map(j => `<tr><td>${j.n} (${esc(Jour.quand(j.n))})</td>${NIV.map(k => `<td>${esc(j.champs.ecu[k])}</td>`).join("")}</tr>`).join("")}</table>${JOURS.length > 60 ? `<p>… et ${JOURS.length - 60} jours de plus.</p>` : ""}`;
     $("#b-ecrire").disabled = !JOURS.length;
     $("#sortie").textContent = `${JOURS.length} jours prêts (n° ${de} à ${a}).`;
   });
