@@ -47,7 +47,7 @@ const Jour = (() => {
   const JEUX = {
     ecu_page: { nom: "L'Écu du jour · Écuyer", rep: 8 },
     ecu: { nom: "L'Écu du jour · Chevalier", rep: 6 },
-    ecu_heraut: { nom: "L'Écu du jour · Héraut", rep: 5 },
+    ecu_heraut: { nom: "L'Écu du jour · Seigneur", rep: 5 },
     dessin: { nom: "Dessine-moi", rep: 3 },
     intrus: { nom: "L'Intrus", rep: 6, rang: j => j.note, score: j => 6 - j.note },
     trous: { nom: "Le blasonnement à trous", rep: 2 },
