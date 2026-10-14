@@ -97,7 +97,7 @@ service cloud.firestore {
     // seul le curateur écrit le calendrier (tools/calendrier.html), son uid ci-dessous
     match /jours/{n} {
       allow get: if resource == null || resource.data.ouvre <= request.time;
-      allow write: if connecte() && request.auth.uid == 'UID_DU_CURATEUR';
+      allow write: if connecte() && request.auth.uid == 'Ee4MGvZqrHaOcMyCXWP2ZfCOZXu1';
     }
   }
 }
