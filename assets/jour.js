@@ -45,7 +45,7 @@ const Jour = (() => {
      un carnet : { stats: { joues, gagnes, serie, serieMax, dernierGagne, rep }, jours: { n: { essais: [...], fini, gagne, note? } } }
      rep : la répartition des parties (par nombre d'essais gagnants, ou par note) ; score : ce qui part au classement (le plus petit gagne) */
   const JEUX = {
-    ecu_page: { nom: "L'Écu du jour · Page", rep: 8 },
+    ecu_page: { nom: "L'Écu du jour · Écuyer", rep: 8 },
     ecu: { nom: "L'Écu du jour · Chevalier", rep: 6 },
     ecu_heraut: { nom: "L'Écu du jour · Héraut", rep: 5 },
     dessin: { nom: "Dessine-moi", rep: 3 },
