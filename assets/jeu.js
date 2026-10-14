@@ -1,4 +1,4 @@
-/* L'ARMORIAL — « L'Écu du jour » : un écu mystère par jour et par niveau (Page, Chevalier, Héraut).
+/* L'ARMORIAL — « L'Écu du jour » : un écu mystère par jour et par niveau (Écuyer, Chevalier, Héraut).
 
    Le principe : on propose le nom d'armes réelles (un État, une province, une maison, un personnage) ; la page les dessine
    et les compare à l'écu caché, case par case — émaux, partition, pièce, meubles, nombre, rubrique. L'écu mystère se dévoile
@@ -23,13 +23,13 @@
 
   /* ---------- le niveau : un écu, un carnet et un classement chacun ---------- */
   const NIVEAUX = {
-    page: { jeu: "ecu_page", nom: "Page", essais: 8, dit: "Des États et des cantons connus, aux armes simples ; huit essais." },
+    page: { jeu: "ecu_page", nom: "Écuyer", essais: 8, dit: "Des États et des cantons connus, aux armes simples ; huit essais." },
     chevalier: { jeu: "ecu", nom: "Chevalier", essais: 6, dit: "Des armes de toutes sortes ; six essais." },
     heraut: { jeu: "ecu_heraut", nom: "Héraut", essais: 5, dit: "Maisons, écartelés, figures rares ; cinq essais, et la rubrique n'est pas dite." },
   };
   const CLE_NIV = "armorial.jeu.niveau";
   const NIV = (() => {
-    const q = new URLSearchParams(location.search).get("niveau");
+    const q0 = new URLSearchParams(location.search).get("niveau"), q = q0 === "ecuyer" ? "page" : q0;      // le niveau Écuyer s'appelait Page : son identifiant reste « page »
     if (q && NIVEAUX[q]) { try { localStorage.setItem(CLE_NIV, q); } catch (e) { /* sans mémoire */ } return q; }
     try { const m = localStorage.getItem(CLE_NIV); if (m && NIVEAUX[m]) return m; } catch (e) { /* idem */ }
     return "chevalier";
