@@ -1,54 +1,40 @@
-/* L'ARMORIAL — « L'Écu du jour » : un écu mystère par jour, six essais.
+/* L'ARMORIAL — « L'Écu du jour » : un écu mystère par jour et par niveau (Page, Chevalier, Héraut).
 
    Le principe : on propose le nom d'armes réelles (un État, une province, une maison, un personnage) ; la page les dessine
-   et les compare à l'écu caché, case par case — émaux, partition, pièce, meubles, nombre, rubrique. Les émaux de l'écu mystère
-   qu'on a trouvés s'allument sur son dessin, les autres restent gris ; le dessin se précise à chaque essai.
+   et les compare à l'écu caché, case par case — émaux, partition, pièce, meubles, nombre, rubrique. L'écu mystère se dévoile
+   par étapes : d'abord sa seule silhouette, puis ses partitions, ses pièces, ses meubles ; les émaux trouvés s'y allument.
 
    D'où vient chaque chose :
    - les armes : data/blasons.json et data/personnages.json ; une carte n'entre dans le jeu que si le lecteur de blasonnement
      (assets/lecture.js) la relit en entier : on compare ce que l'Atelier a compris, et on dessine ce qu'il sait dessiner ;
-   - l'écu du jour : data/jeu.json (« ordre » : une carte par jour, à partir de « debut ») ; le même pour tous, sans serveur.
-     Pour ajouter des armes, les ajouter à la FIN de « ordre » : les jours déjà joués gardent leurs armes ;
-   - les scores et les essais du jour : le carnet « ecu » de assets/compte.js (gardé dans le navigateur, facultatif).
+   - l'écu du jour : le document du jour dans la base (assets/jour.js, champ « ecu » : un nom de carte par niveau), lisible
+     seulement le jour venu ; le calendrier s'écrit avec tools/calendrier.html, qui classe aussi les cartes par difficulté ;
+   - les scores et les essais du jour : un carnet par niveau (ecu_page, ecu, ecu_heraut ; assets/jour.js et assets/compte.js).
 
-   Pour essayer un autre jour sans attendre : index.html#n=3 (ou /#n=3) rejoue l'écu n° 3 (hors concours : ni série ni statistiques). */
+   Le niveau : index.html?niveau=page (ou chevalier, heraut) ; sans paramètre, le dernier joué.
+   Pour rejouer un jour passé : index.html#n=3 (hors concours : ni série ni statistiques). */
 (async () => {
   "use strict";
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
-  const JEU = "ecu";
   const EMAUX = ["Or", "Argent", "Gueules", "Azur", "Sable", "Sinople", "Pourpre", "Hermine", "Vair"];
   const GRIS = "#d3ccb7";                                           // un émail pas encore trouvé
 
-  /* ---------- le carnet : statistiques et fusion (avant tout await : les accroches doivent exister quand la synchronisation en ligne démarre) ---------- */
-  const carnetVide = () => ({ stats: { joues: 0, gagnes: 0, serie: 0, serieMax: 0, dernierGagne: 0, rep: [0, 0, 0, 0, 0, 0] }, jours: {} });
-  /* une partie terminée (jour n, essais, gagne) entre dans les statistiques */
-  const applique = (st, n, j) => {
-    st.joues++;
-    if (j.gagne) { st.gagnes++; st.serie = (st.dernierGagne === n - 1 ? st.serie : 0) + 1; st.dernierGagne = n; st.serieMax = Math.max(st.serieMax, st.serie); st.rep[j.essais.length - 1]++; }
-    else st.serie = 0;
+  /* ---------- le niveau : un écu, un carnet et un classement chacun ---------- */
+  const NIVEAUX = {
+    page: { jeu: "ecu_page", nom: "Page", essais: 8, dit: "Des États et des cantons connus, aux armes simples ; huit essais." },
+    chevalier: { jeu: "ecu", nom: "Chevalier", essais: 6, dit: "Des armes de toutes sortes ; six essais." },
+    heraut: { jeu: "ecu_heraut", nom: "Héraut", essais: 5, dit: "Maisons, écartelés, figures rares ; cinq essais, et la rubrique n'est pas dite." },
   };
-  /* les statistiques se refont depuis les jours joués : c'est ce qui permet de fondre deux carnets (deux appareils) sans rien compter deux fois */
-  const recalcule = jours => {
-    const st = carnetVide().stats;
-    Object.keys(jours).map(Number).sort((a, b) => a - b).forEach(n => { if (jours[n].fini) applique(st, n, jours[n]); });
-    return st;
-  };
-  const meilleur = (a, b) => !a ? b : !b ? a : a.fini !== b.fini ? (a.fini ? a : b) : (a.essais.length >= b.essais.length ? a : b);      // un jour fini l'emporte, sinon la partie la plus avancée
-  Compte.fusion[JEU] = (local, distant) => {
-    const jours = {};
-    for (const n of new Set([...Object.keys((local && local.jours) || {}), ...Object.keys((distant && distant.jours) || {})])) jours[n] = meilleur(local && local.jours && local.jours[n], distant && distant.jours && distant.jours[n]);
-    return { stats: recalcule(jours), jours };
-  };
-  Compte.scoresDe[JEU] = c => Object.entries((c && c.jours) || {}).filter(([, j]) => j && j.fini).map(([n, j]) => ({ jour: +n, essais: j.essais.length, gagne: !!j.gagne }));
-
-  /* ---------- le jour ---------- */
-  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-  const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-  const cleDe = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-  const utc = d => Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());                      // minuit local, compté en jours entiers
-  const quand = d => `${JOURS[d.getDay()]} ${d.getDate() === 1 ? "1ᵉʳ" : d.getDate()} ${MOIS[d.getMonth()]} ${d.getFullYear()}`;
+  const CLE_NIV = "armorial.jeu.niveau";
+  const NIV = (() => {
+    const q = new URLSearchParams(location.search).get("niveau");
+    if (q && NIVEAUX[q]) { try { localStorage.setItem(CLE_NIV, q); } catch (e) { /* sans mémoire */ } return q; }
+    try { const m = localStorage.getItem(CLE_NIV); if (m && NIVEAUX[m]) return m; } catch (e) { /* idem */ }
+    return "chevalier";
+  })();
+  const JEU = NIVEAUX[NIV].jeu;
 
   /* ---------- ce qu'on lit d'une carte : les traits comparés ---------- */
   const mk = e => { const S = { ...fresh(), q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
@@ -88,16 +74,15 @@
     const cat = { cls: g.cat === m.cat ? "ok" : "no", txt: g.cat };
     return { emaux, compo, pieces, meubles, nombre, cat };
   }
-  const COLS = ["emaux", "compo", "pieces", "meubles", "nombre", "cat"];
+  const COLS = NIV === "heraut" ? ["emaux", "compo", "pieces", "meubles", "nombre"] : ["emaux", "compo", "pieces", "meubles", "nombre", "cat"];
   const ENTETE = { emaux: "Émaux", compo: "Écu", pieces: "Pièce", meubles: "Meubles", nombre: "Nombre", cat: "Rubrique" };
   const SYMB = { ok: "✓", mid: "≈", no: "✗" }, EMOJI = { ok: "🟩", mid: "🟨", no: "⬜" }, VERDICT = { ok: "identique", mid: "proche", no: "différent" };
 
   /* ---------- chargement ---------- */
-  let CARTES = [], CAL = null;
+  let CARTES = [];
   try {
     await chargerLecteur();                                          // data/data.json et data/atelier.json
-    const [b, p, cal] = await Promise.all(["data/blasons.json", "data/personnages.json", "data/jeu.json"].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); })));
-    CAL = cal;
+    const [b, p] = await Promise.all(["data/blasons.json", "data/personnages.json"].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); })));
     const tout = [...b.map(a => ({ ...a, gal: "blasons", cat: a.cat || "Blasons réels" })), ...p.map(a => ({ ...a, gal: "personnages", cat: "Personnages" }))];
     for (const a of tout) {
       if (!a.blason || !a.file) continue;
@@ -114,35 +99,28 @@
   const PAR_NOM = new Map(CARTES.map(c => [c.nom, c]));
   $("#gdefs").innerHTML = globalDefs();
 
-  /* ---------- le tirage du jour ---------- */
-  const auj = new Date(), debut = (([y, m, d]) => new Date(y, m - 1, d))(CAL.debut.split("-").map(Number));
-  const numAuj = Math.max(1, Math.floor((utc(auj) - utc(debut)) / 864e5) + 1);                // n° 1 le jour de « debut »
+  /* ---------- le tirage du jour : le document du jour, dans la base ---------- */
+  const numAuj = Jour.numero();
   const demande = /^#n=(\d+)$/.exec(location.hash);
   const hors = !!demande && +demande[1] >= 1 && +demande[1] < numAuj;                           // un jour passé, pour essayer : hors concours
   const N = hors ? +demande[1] : numAuj;
-  /* le jour N reprend la N-ième entrée de « ordre » ; si cette carte n'est plus dans le jeu (retirée de l'Atelier, ou plus lue), on prend la suivante :
-     les autres jours ne bougent pas (filtrer la liste les décalerait tous) */
-  const ordre = CAL.ordre;
-  let k = (N - 1) % ordre.length;
-  for (let i = 0; i < ordre.length && !PAR_NOM.has(ordre[k]); i++) k = (k + 1) % ordre.length;
-  const cible = PAR_NOM.get(ordre[k]);
-  const jourDe = new Date(debut.getFullYear(), debut.getMonth(), debut.getDate() + N - 1);
-  const ESSAIS = CAL.essais || 6;
+  const tirage = await Jour.charge(N);
+  const cible = tirage.doc && tirage.doc.ecu ? PAR_NOM.get(tirage.doc.ecu[NIV]) : null;
+  if (!cible) {
+    $("#jeu-chargement").textContent = tirage.doc ? "L'écu de ce jour n'est plus dans le jeu : revenez demain." : tirage.msg;
+    return;
+  }
+  const ESSAIS = NIVEAUX[NIV].essais;
 
   /* ---------- le carnet (scores) : lu une fois la synchronisation en ligne faite (trois secondes au plus) ---------- */
   await Compte.pret;
-  let C = Compte.carnet(JEU) || carnetVide();
-  C.stats = { ...carnetVide().stats, ...C.stats }; C.jours = C.jours || {};
-  const sauveCarnet = () => Compte.enregistre(JEU, C);
-  const jourSauve = () => (hors ? null : C.jours[N]) || null;
+  const K = Jour.carnet(JEU);
+  const jourSauve = () => (hors ? null : K.jour(N));
 
   /* ---------- l'état de la partie ---------- */
   const J = { essais: [], fini: false, gagne: false, trouves: new Set(), hors };
-  const sauve = () => {
-    if (hors) return;
-    C.jours[N] = { essais: J.essais.map(c => c.nom), fini: J.fini, gagne: J.gagne };
-    sauveCarnet();
-  };
+  const etat = () => ({ essais: J.essais.map(c => c.nom), fini: J.fini, gagne: J.gagne });
+  const sauve = () => { if (!hors) K.garde(N, etat()); };
 
   /* ---------- le dessin ---------- */
   let compteur = 0;
@@ -157,15 +135,27 @@
   }
   /* les armes des joueurs (assets/compte.js) : l'état de l'Atelier, dessiné à la demande par Compte.prepare(code) */
 
+  /* ---------- l'écu mystère se dévoile par étapes : la silhouette, puis les partitions, les pièces, les meubles ---------- */
+  const ETAPES = ["sa silhouette", "ses partitions", "ses pièces", "ses meubles"];
+  function devoile(S, k) {
+    if (k >= 3) return S;
+    const M = JSON.parse(JSON.stringify(S));
+    if (k === 0) Object.assign(M, { q: "", ab: "", gb: "", xc: "", xb: "", xp: "", h1: "", h2: "", A: M.A.map((a, i) => (i ? a : { ...ADEF, f: "plein", t1: S.A[0].t1, p: "", m: "", m2: "" })) });
+    else M.A = M.A.map(a => ({ ...a, m: "", m2: "", ...(k === 1 ? { p: "", ln: "" } : {}) }));
+    normalizeAll(M);
+    return M;
+  }
+
   /* ---------- l'écu mystère et les émaux ---------- */
   async function dessineMystere() {
     const fini = J.fini, nb = J.essais.length;
-    $("#jeu-ecu").innerHTML = await svgDe(cible, fini ? undefined : { gris: J.trouves });
+    $("#jeu-ecu").innerHTML = await svgDe(fini ? cible : { ...cible, S: devoile(cible.S, nb) }, fini ? undefined : { gris: J.trouves });
     $("#jeu-mystere").style.setProperty("--flou", fini ? 0 : Math.max(0, 6 - nb * 1.5).toFixed(2) + "px");
     $("#jeu-mystere").classList.toggle("vide", !nb && !fini);
     $("#jeu-mystere").classList.toggle("fini", fini);
     $("#jeu-ecu").setAttribute("aria-label", fini ? `Les armes : ${cible.nom}` : `Les armes mystères, ${J.trouves.size} ${J.trouves.size > 1 ? "émaux trouvés" : "émail trouvé"} sur ${cible.t.emaux.length}`);
-    $("#jeu-leg").textContent = fini ? cible.nom : "Armes mystères";
+    $("#jeu-leg").textContent = fini ? cible.nom : ["Sa silhouette", "+ partitions", "+ pièces", "Armes mystères"][Math.min(nb, 3)];
+    $("#jeu-leg").title = fini || nb >= 3 ? "" : `Au prochain essai, l'écu montrera ${ETAPES[nb + 1]}.`;
   }
   function dessinePalette() {
     const absents = new Set(J.essais.flatMap(c => c.t.emaux).filter(n => !cible.t.emaux.includes(n)));
@@ -280,9 +270,7 @@
     } finally { occupe = false; }
   }
   function termine() {
-    const deja = !hors && C.jours[N] && C.jours[N].fini;
-    if (!hors && !deja) applique(C.stats, N, { gagne: J.gagne, essais: J.essais });
-    sauve();
+    if (!hors) K.clos(N, etat());
     dessineCote();
     setTimeout(() => dessineClassement(true), 1800);                            // le temps que le résultat parte en ligne
   }
@@ -297,7 +285,7 @@
   const imageDe = a => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(a.file)}?width=420`;
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
-    return `L'Écu du jour n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/`;
+    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
   }
   let minuteur = 0;
   async function montreResultat() {
@@ -323,11 +311,11 @@
     });
     clearInterval(minuteur);
     const tic = () => {
-      const maintenant = new Date(), demain = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + 1), s = Math.max(0, Math.round((demain - maintenant) / 1000));
       const el = $("#jeu-prochain"); if (!el) return;
       if (hors) { el.innerHTML = `Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`; return; }
-      el.textContent = `Prochain écu dans ${String(Math.floor(s / 3600)).padStart(2, "0")} h ${String(Math.floor(s / 60) % 60).padStart(2, "0")} min ${String(s % 60).padStart(2, "0")} s`;
-      if (s === 0) location.reload();
+      const autres = Object.keys(NIVEAUX).filter(k => k !== NIV && !Jour.fait(NIVEAUX[k].jeu, N));
+      el.innerHTML = `Prochain écu dans ${Jour.compteARebours()}${autres.length ? ` · Encore à jouer aujourd'hui : ${autres.map(k => `<a href="?niveau=${k}">${NIVEAUX[k].nom}</a>`).join(", ")}` : ""}`;
+      if (Jour.avantDemain() === 0) location.reload();
     };
     tic(); minuteur = setInterval(tic, 1000);
     r.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "instant" : "smooth" });
@@ -349,13 +337,13 @@
 
   /* ---------- le profil (la barre du haut) et les statistiques (leur fenêtre) ---------- */
   function dessineCote() {
-    const s = C.stats, p = Compte.profil(), vivante = s.dernierGagne >= numAuj - 1 ? s.serie : 0;
+    const s = K.C.stats, p = Compte.profil(), vivante = K.serie();
     const max = Math.max(1, ...s.rep);
     const armes = p ? Compte.dessin(p.armes) : "";
     $("#jx-moi-ecu").innerHTML = armes || (p ? "" : `<svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" fill="currentColor"/><path d="M4 20.5c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5z" fill="currentColor"/></svg>`);
     $("#jx-moi-nom").textContent = p ? p.pseudo : "Profil";
     $("#jeu-pf").classList.toggle("avec", !!p);
-    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">Vos statistiques</h2>
+    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">Vos statistiques <small>niveau ${NIVEAUX[NIV].nom}</small></h2>
       <div class="pf">${p ? `<span class="pf-ecu">${armes}</span><span class="pf-nom"><b>${esc(p.pseudo)}</b><small>joueur depuis le ${esc(p.cree.split("-").reverse().join("/"))}</small></span>`
         : `<span class="pf-nom"><b>Joueur anonyme</b><small>Créez un profil pour signer vos scores de vos propres armes.</small></span>`}</div>
       <dl class="stats"><div><dt>Parties</dt><dd>${s.joues}</dd></div><div><dt>Victoires</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0}<small>%</small></dd></div><div><dt>Série</dt><dd>${vivante}</dd></div><div><dt>Record</dt><dd>${s.serieMax}</dd></div></dl>
@@ -372,18 +360,22 @@
       return `<i class="${cls}"></i>`;
     }).join("");
   }
+  /* les niveaux de l'écu du jour, en onglets */
+  function dessineNiveaux() {
+    $("#jeu-niveaux").innerHTML = Object.entries(NIVEAUX).map(([k, v]) => {
+      const fait = Jour.fait(v.jeu, N);
+      return `<a href="?niveau=${k}${hors ? `#n=${N}` : ""}" class="jx-niv${k === NIV ? " on" : ""}"${k === NIV ? ' aria-current="page"' : ""} title="${esc(v.dit)}"><b>${v.nom}</b><small>${v.essais} essais${fait && !hors ? " · fait ✓" : ""}</small></a>`;
+    }).join("");
+  }
+  /* les autres jeux du jour ; les exercices sont dans S'exercer */
   function dessineAutres() {
-    let defiFait = false;
-    try { const m = JSON.parse(localStorage.getItem("armorial.exercices.v1") || "null"); defiFait = !!(m && m.defi && m.defi.date === cleDe(new Date())); } catch (e) { /* sans mémoire */ }
     const L = [
-      ["exercices.html#defi", "Le défi du jour", "Six questions, les mêmes pour tous", "🗓️", "azur", defiFait ? "Fait ✓" : "Chaque jour"],
-      ["exercices.html#reel", "À qui sont ces armes ?", "Des écus réels à reconnaître", "🏰", "gueules", ""],
-      ["exercices.html#lire", "Lire un écu", "Trouvez le bon blasonnement", "📜", "pourpre", ""],
-      ["exercices.html#regle", "La règle des émaux", "Régulières, ou à enquerre ?", "⚖️", "sinople", ""],
-      ["atelier.html", "L'Atelier", "Composez vos propres armes", "🎨", "or", "Créer"],
+      ["atelier.html#defi=dessin", "Dessine-moi", "Un blasonnement : composez l'écu", "🎨", "or", "dessin"],
+      ["jour.html#intrus", "L'Intrus", "Cinq manches : l'écu qui enfreint la règle", "⚖️", "sinople", "intrus"],
+      ["jour.html#trous", "Le blasonnement à trous", "Les mots qui manquent au texte", "📜", "pourpre", "trous"],
     ];
-    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, f]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span>${f ? `<span class="f">${f}</span>` : ""}</a></li>`).join("")
-      + `<li><span class="jx-jeu bientot"><span class="ic" aria-hidden="true">✨</span><span class="t">Bientôt</span><span class="d">L'ordre des émaux, le blason express…</span></span></li>`;
+    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? "Fait ✓" : "Aujourd'hui"}</span></a></li>`).join("")
+      + `<li><a class="jx-jeu c-azur" href="exercices.html"><span class="ic" aria-hidden="true">🎓</span><span class="t">S'exercer</span><span class="d">Lire, dessiner, la règle, le vocabulaire… à volonté</span><span class="f">Sans limite</span></a></li>`;
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */
@@ -413,13 +405,13 @@
     const cc = $("#jeu-cl-compte"); if (cc) cc.addEventListener("click", () => { $("#dlg-classement").close(); Compte.ouvre(); });
   }
   if (Compte.surSynchro) { let t = 0; Compte.surSynchro(() => { clearTimeout(t); t = setTimeout(() => { dessineCote(); if (J.fini) dessineClassement(true); }, 300); }); }
-  Compte.sur(() => { C = Compte.carnet(JEU) || C; const p = Compte.profil(); if (p) Compte.prepare(p.armes).then(dessineCote); dessineCote(); });
+  Compte.sur(() => { K.relit(); const p = Compte.profil(); if (p) Compte.prepare(p.armes).then(dessineCote); dessineCote(); });
 
   /* ---------- départ ---------- */
-  $("#jeu-jour").innerHTML = `Écu n° ${N}<small>${quand(jourDe)}${hors ? " · hors concours" : ""}</small>`;
+  $("#jeu-jour").innerHTML = `Écu n° ${N}<small>${Jour.quand(N)}${hors ? " · hors concours" : ""}</small>`;
   const sv = jourSauve();
-  const premiere = !C.stats.joues && !(sv && sv.essais.length);
-  dessineAutres();
+  const premiere = !K.C.stats.joues && !(sv && sv.essais.length);
+  dessineNiveaux(); dessineAutres();
   { const p = Compte.profil(); if (p) await Compte.prepare(p.armes); }      // les armes du joueur, pour la barre du haut et ses statistiques
   dessineCote();
   dessinePalette(); majEssais(); dessinePoints();
@@ -437,5 +429,5 @@
   if (J.fini) await montreResultat();
   dessineClassement();
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */
-  window.EcuDuJour = { J, cible, CARTES, N, devine, compare, traits, texteDePartage, hors };
+  window.EcuDuJour = { J, cible, CARTES, N, NIV, ESSAIS, devine, compare, traits, devoile, texteDePartage, hors };
 })();

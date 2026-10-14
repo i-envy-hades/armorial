@@ -26,6 +26,7 @@ function termeId(terme, glossaire) {
 (function () {
   const PAGES = [
     ["jeu", "./", "Jouer"],
+    ["jour", "jour.html", "Jeux du jour"],
     ["encyclopedie", "encyclopedie.html", "L'encyclopédie"],
     ["blasons", "blasons.html", "Blasons réels"],
     ["personnages", "personnages.html", "Personnages"],

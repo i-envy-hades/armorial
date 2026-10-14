@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les jeux du jour — L'Armorial</title>
+<meta name="description" content="Chaque jour, les mêmes pour tous : L'Intrus (l'écu qui enfreint la règle des émaux) et le blasonnement à trous (les mots qui manquent au texte d'un écu).">
+<meta name="theme-color" content="#f7f3ea">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/jour.html">
+<meta property="og:site_name" content="L'Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Les jeux du jour — L'Armorial">
+<meta property="og:description" content="L'Intrus et le blasonnement à trous : deux jeux par jour, les mêmes pour tous.">
+<meta property="og:url" content="https://armorial.web.app/jour.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — deux jeux du jour : « L'Intrus » (#intrus) et « Le blasonnement à trous » (#trous).
+  Fichiers : assets/jour-jeux.js (les deux jeux), assets/jour.js (le numéro du jour, le document du jour dans la base, les carnets),
+  assets/generateur.js (les armes au hasard, réglé par la graine du jour), assets/jeu.css (l'habillage des jeux).
+  Les écus sont composés et dessinés par le moteur de l'Atelier ; rien ne vient des galeries.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/compte.css">
+<link rel="stylesheet" href="assets/jeu.css">
+</head>
+<body class="jeu">
+<header class="mast" data-page="jour"></header>
+<script src="assets/chrome.js"></script>
+
+<main class="jx" id="jeu">
+  <div class="jx-barre">
+    <a class="jx-ic" href="./" title="Les jeux du jour"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg><span class="sr">Retour aux jeux du jour</span></a>
+    <h1 class="jx-logo"><span id="jj-titre">Les jeux <em>du jour</em></span></h1>
+    <span class="jx-droite">
+      <button type="button" class="jx-ic" id="jx-stats" aria-haspopup="dialog" title="Mes statistiques"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 13h3.5v7H4zM10.25 8h3.5v12h-3.5zM16.5 4H20v16h-3.5z"/></svg><span class="sr">Mes statistiques</span></button>
+    </span>
+  </div>
+
+  <nav class="jx-niveaux jj-onglets" aria-label="Jeu">
+    <a href="#intrus" class="jx-niv" data-jeu="intrus"><b>L'Intrus</b><small>la règle des émaux</small></a>
+    <a href="#trous" class="jx-niv" data-jeu="trous"><b>À trous</b><small>les mots qui manquent</small></a>
+    <a href="atelier.html#defi=dessin" class="jx-niv"><b>Dessine-moi</b><small>dans l'Atelier</small></a>
+  </nav>
+
+  <noscript><p class="nojs">Les jeux se construisent avec JavaScript : activez-le pour jouer.</p></noscript>
+  <p class="jeu-chargement" id="jj-chargement" role="status"><span class="jx-roue" aria-hidden="true"></span>Les écus se préparent…</p>
+  <section class="jj" id="jj" aria-live="polite" hidden></section>
+  <section class="jeu-resultat" id="jj-resultat" tabindex="-1" hidden></section>
+</main>
+
+<dialog class="jx-dlg" id="dlg-stats" aria-labelledby="jj-stats-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
+  <div id="jj-stats"></div>
+</dialog>
+
+<footer class="jx-pied">
+  <p><b>L'Armorial</b> — les jeux du jour. Les écus sont composés et dessinés par le moteur de l'<a href="atelier.html">Atelier</a> ; ils sont les mêmes pour tous, chaque jour, et changent à minuit (heure de Paris). Pour s'entraîner sans limite : <a href="exercices.html">S'exercer</a>.</p>
+  <p>Vos résultats restent dans ce navigateur, ou suivent votre compte en ligne si vous en avez un. Composition de la page sous licence <b>CC BY-SA 4.0</b>.</p>
+</footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/jour-jeux.js"></script>
+</body>
+</html>

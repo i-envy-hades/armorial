@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Calendrier des jeux du jour — outil du curateur</title>
+<link rel="stylesheet" href="assets/compte.css">
+<!--
+  L'ARMORIAL — outil du curateur : écrit le calendrier des jeux du jour dans la base (Firestore, jours/{n}).
+  Chaque jour : { ouvre (minuit à Paris), ecu: { page, chevalier, heraut } (un nom de carte par niveau), graine (le hasard de
+  Dessine-moi, de L'Intrus et du blasonnement à trous) }. La base ne donne un jour qu'une fois ouvert (tools/firebase/firestore.rules),
+  et seul le curateur l'écrit : son uid s'affiche ici une fois connecté, à reporter dans les règles.
+  Les niveaux viennent d'une note de difficulté calculée sur chaque carte (partitions, pièces, meubles, émaux, rubrique) : un tiers
+  des cartes par niveau. Rien n'est gardé ailleurs que dans la base : ni le dépôt ni le site ne disent les jours à venir.
+-->
+<style>
+  body { margin: 0; font: 15px/1.5 system-ui, sans-serif; background: #f7f3ea; color: #2a2620; }
+  main { max-width: 860px; margin: 0 auto; padding: 1.2rem 1rem 3rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 .4rem; }
+  section { margin: 1rem 0; padding: .9rem 1rem; background: #fffdf8; border: 1px solid #e7dec8; border-radius: 12px; }
+  label { display: inline-flex; gap: .4rem; align-items: center; margin-right: 1rem; }
+  input[type=number] { width: 6rem; }
+  button { font: inherit; padding: .35rem .9rem; cursor: pointer; }
+  button.main { background: #c62f2a; color: #fff; border: 0; border-radius: 8px; }
+  code { background: #efe7d6; padding: 0 .3rem; border-radius: 4px; }
+  .err { color: #a3221d; font-weight: 600; }
+  .ok { color: #26763a; font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+  td, th { border-bottom: 1px solid #e7dec8; padding: .2rem .4rem; text-align: left; }
+  .flou td:not(:first-child) { filter: blur(5px); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Calendrier des jeux du jour</h1>
+  <p>Outil du curateur. Il écrit dans la base les jours à venir : l'écu de chaque niveau et la graine des trois autres jeux.</p>
+
+  <section>
+    <h2>1. Connexion</h2>
+    <p id="qui">Chargement…</p>
+    <button id="b-compte" hidden>Se connecter (fenêtre du profil)</button>
+  </section>
+
+  <section>
+    <h2>2. Les niveaux</h2>
+    <p id="niveaux">Lecture des cartes…</p>
+  </section>
+
+  <section>
+    <h2>3. Écrire les jours</h2>
+    <p>Aujourd'hui : jour n° <b id="auj"></b>. Les jours déjà joués gardent, au niveau Chevalier, l'écu de l'ancien calendrier.</p>
+    <p><label>Du jour n° <input type="number" id="de" min="1"></label><label>au jour n° <input type="number" id="a" min="1"></label></p>
+    <p class="err" id="garde" hidden>Attention : réécrire un jour déjà ouvert change les écus de ceux qui ne l'ont pas encore joué.</p>
+    <p><button id="b-prevoir">Préparer</button> <label><input type="checkbox" id="voir"> montrer les réponses</label></p>
+    <div id="apercu"></div>
+    <p><button class="main" id="b-ecrire" disabled>Écrire dans la base</button> <span id="sortie" role="status"></span></p>
+  </section>
+</main>
+<div id="gdefs" hidden></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="tools/calendrier.js"></script>
+</body>
+</html>
