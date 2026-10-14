@@ -193,7 +193,7 @@
       if (aEcrire.length) {
         try {
           await fsAuth(":commit", { methode: "POST", corps: { writes: aEcrire.map(x => ({
-            update: doc(`scores/${uid}_${x.jeu}_${x.jour}`, { uid, jeu: x.jeu, jour: x.jour, essais: x.essais, gagne: !!x.gagne, cree: new Date(), ...(x.gagne ? { vic: `${x.jeu}|${x.jour}` } : {}) }),
+            update: doc(`scores/${uid}_${x.jeu}_${x.jour}`, { uid, jeu: x.jeu, jour: x.jour, essais: x.essais, details: x.details | 0, gagne: !!x.gagne, cree: new Date(), ...(x.gagne ? { vic: `${x.jeu}|${x.jour}` } : {}) }),
             currentDocument: { exists: false } })) } });
         } catch (e) { gardeRegistre(); throw e; }
       }
@@ -361,13 +361,13 @@
     const requ = sq => requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "scores" }], where: filtre("vic", "EQUAL", `${jeu}|${+jour}`), ...sq } } });
     let r = null;
     if (CFG.index) {                                              // « index »: true dans data/compte.json : l'index existe (même s'il se construit encore, on retombe sur la lecture simple)
-      try { r = await requ({ orderBy: [{ field: { fieldPath: "essais" }, direction: "ASCENDING" }, { field: { fieldPath: "cree" }, direction: "ASCENDING" }], limit: 10 }); }
+      try { r = await requ({ orderBy: [{ field: { fieldPath: "essais" }, direction: "ASCENDING" }, { field: { fieldPath: "cree" }, direction: "ASCENDING" }], limit: 30 }); }      // trente : à essais égaux, les détails départagent ici
       catch (e) { if (e.code !== "FAILED_PRECONDITION") throw e; }
     }
     if (!r) r = await requ({ limit: 100 });
-    const top = nettoie(r, "document").map(x => decChamps(x.document.fields)).sort((a, b) => a.essais - b.essais || (a.cree < b.cree ? -1 : 1)).slice(0, 10);
+    const top = nettoie(r, "document").map(x => decChamps(x.document.fields)).sort((a, b) => a.essais - b.essais || (a.details | 0) - (b.details | 0) || (a.cree < b.cree ? -1 : 1)).slice(0, 10);
     const pf = await profilsDe(top.map(x => x.uid));
-    return top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais }));
+    return top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details | 0 }));
   });
   API.classementGeneral = (jeu, { frais = false } = {}) => enCache(`g|${jeu}`, frais, async () => {
     if (!/^[a-z0-9_]+$/.test(jeu)) return [];

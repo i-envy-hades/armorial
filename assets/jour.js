@@ -70,7 +70,7 @@ const Jour = (() => {
       for (const n of new Set([...Object.keys(L), ...Object.keys(D)])) jours[n] = meilleur(L[n], D[n]);
       return { stats: recalcule(jeu, jours), jours };
     };
-    Compte.scoresDe[jeu] = c => Object.entries((c && c.jours) || {}).filter(([, j]) => j && j.fini).map(([n, j]) => ({ jour: +n, essais: Math.max(1, Math.min(12, score(jeu, j))), gagne: !!j.gagne }));
+    Compte.scoresDe[jeu] = c => Object.entries((c && c.jours) || {}).filter(([, j]) => j && j.fini).map(([n, j]) => ({ jour: +n, essais: Math.max(1, Math.min(12, score(jeu, j))), gagne: !!j.gagne, details: Array.isArray(j.details) ? Math.min(99, j.details.length) : 0 }));
   }
   /* le carnet d'un jeu, prêt à servir : lire le jour n, l'enregistrer, le clore */
   function carnet(jeu) {

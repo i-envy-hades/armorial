@@ -3,6 +3,9 @@
    Le principe : on propose le nom d'armes réelles (un État, une province, une maison, un personnage) ; la page les dessine
    et les compare à l'écu caché, case par case — émaux, partition, pièce, meubles, nombre, rubrique. L'écu mystère se dévoile
    par étapes : d'abord sa seule silhouette, puis ses partitions, ses pièces, ses meubles ; les émaux trouvés s'y allument.
+   On peut aussi demander un détail (un émail, une partition, une pièce, un meuble : « lion », « gueules », « écartelé ») : la page
+   dit s'il est dans l'écu mystère. Un détail ne coûte pas d'essai — seules les armes réelles comptent — mais il est compté :
+   il s'affiche à la fin, dans le partage, et départage le classement à essais égaux.
 
    D'où vient chaque chose :
    - les armes : data/blasons.json et data/personnages.json ; une carte n'entre dans le jeu que si le lecteur de blasonnement
@@ -97,6 +100,25 @@
     return;
   }
   const PAR_NOM = new Map(CARTES.map(c => [c.nom, c]));
+
+  /* ---------- les détails qu'on peut demander : tout ce que les cartes du jeu emploient ---------- */
+  const DETAILS = (() => {
+    const out = new Map(), meubles = {}, ajoute = (cle, nom, sorte, test) => { if (!out.has(cle)) out.set(cle, { cle, nom, sorte, test, mot: plie(nom), detail: true }); };
+    EMAUX.forEach(n => ajoute(`e:${n}`, n, "Émail", t => t.emaux.includes(n) ? "ok" : "no"));
+    for (const c of CARTES) {
+      const t = c.t;
+      if (t.compo !== "Plein") ajoute(`c:${t.compo}`, t.compo, "Partition", u => u.compo === t.compo ? "ok" : "no");
+      t.pieces.forEach(pc => ajoute(`p:${pc}`, pc, "Pièce", u => u.pieces.includes(pc) ? "ok" : "no"));
+      t.meubles.forEach(k => (meubles[nomMeuble(k)] = meubles[nomMeuble(k)] || new Set()).add(k));
+    }
+    /* un meuble par nom affiché : deux dessins qui portent le même nom (deux lions) ne font qu'un détail */
+    for (const [nom, ks] of Object.entries(meubles)) {
+      const fam = new Set([...ks].map(famille));
+      ajoute(`m:${plie(nom)}`, nom, "Meuble", u => u.meubles.some(x => ks.has(x)) ? "ok" : u.meubles.some(x => fam.has(famille(x))) ? "mid" : "no");
+    }
+    return out;
+  })();
+  const DIT_DETAIL = { ok: "dans l'écu", mid: "un proche, de la même famille", no: "absent" };
   $("#gdefs").innerHTML = globalDefs();
 
   /* ---------- le tirage du jour : le document du jour, dans la base ---------- */
@@ -118,8 +140,8 @@
   const jourSauve = () => (hors ? null : K.jour(N));
 
   /* ---------- l'état de la partie ---------- */
-  const J = { essais: [], fini: false, gagne: false, trouves: new Set(), hors };
-  const etat = () => ({ essais: J.essais.map(c => c.nom), fini: J.fini, gagne: J.gagne });
+  const J = { essais: [], details: [], fini: false, gagne: false, trouves: new Set(), absents: new Set(), hors };
+  const etat = () => ({ essais: J.essais.map(c => c.nom), details: J.details.map(d => d.cle), fini: J.fini, gagne: J.gagne });
   const sauve = () => { if (!hors) K.garde(N, etat()); };
 
   /* ---------- le dessin ---------- */
@@ -158,7 +180,7 @@
     $("#jeu-leg").title = fini || nb >= 3 ? "" : `Au prochain essai, l'écu montrera ${ETAPES[nb + 1]}.`;
   }
   function dessinePalette() {
-    const absents = new Set(J.essais.flatMap(c => c.t.emaux).filter(n => !cible.t.emaux.includes(n)));
+    const absents = new Set([...J.essais.flatMap(c => c.t.emaux).filter(n => !cible.t.emaux.includes(n)), ...J.absents]);
     const couleur = n => (DATA.tinctures.find(t => t.nom === n) || {}).color || "#888";
     $("#jeu-palette").innerHTML = EMAUX.map(n => {
       const etat = J.trouves.has(n) ? "oui" : absents.has(n) ? "non" : "";
@@ -201,17 +223,23 @@
   const champ = $("#jeu-nom"), liste = $("#jeu-liste"), aide = $("#jeu-aide-saisie");
   let sugg = [], actif = -1, choisi = null;
   const proposables = () => { const deja = new Set(J.essais.map(c => c.nom)); return CARTES.filter(c => !deja.has(c.nom)); };
+  const detailsLibres = () => { const deja = new Set(J.details.map(d => d.cle)); return [...DETAILS.values()].filter(d => !deja.has(d.cle)); };
+  /* la liste mêle les armes (un essai) et les détails (gratuits) : les détails dont le nom commence par le mot tapé passent devant */
   function filtre(q) {
     const t = plie(q.trim());
     if (!t) return [];
-    return proposables().filter(c => c.cle.includes(t)).sort((a, b) => (plie(b.nom).startsWith(t) - plie(a.nom).startsWith(t)) || a.nom.localeCompare(b.nom, "fr")).slice(0, 8);
+    const armes = proposables().filter(c => c.cle.includes(t)).sort((a, b) => (plie(b.nom).startsWith(t) - plie(a.nom).startsWith(t)) || a.nom.localeCompare(b.nom, "fr"));
+    const dets = detailsLibres().filter(d => d.mot.includes(t)).sort((a, b) => (b.mot.startsWith(t) - a.mot.startsWith(t)) || a.nom.localeCompare(b.nom, "fr")).slice(0, 3);
+    const devant = dets.filter(d => d.mot.startsWith(t));
+    return [...devant, ...armes.slice(0, 8 - dets.length), ...dets.filter(d => !d.mot.startsWith(t))].slice(0, 8);
   }
+  const filtreArmes = q => filtre(q).filter(x => !x.detail);
   function montreListe() {
     sugg = filtre(champ.value); actif = sugg.length ? 0 : -1;
-    liste.innerHTML = sugg.map((c, i) => `<li role="option" id="jeu-o${i}" data-i="${i}" aria-selected="${i === actif}"${i === actif ? ' class="on"' : ""}><b>${esc(c.nom)}</b><small>${esc(c.cat)}</small></li>`).join("");
+    liste.innerHTML = sugg.map((c, i) => `<li role="option" id="jeu-o${i}" data-i="${i}" aria-selected="${i === actif}" class="${i === actif ? "on" : ""}${c.detail ? " det" : ""}"><b>${esc(c.nom)}</b><small>${c.detail ? `Détail · ${esc(c.sorte)}` : esc(c.cat)}</small></li>`).join("");
     liste.hidden = !sugg.length; champ.setAttribute("aria-expanded", String(!!sugg.length));
     if (actif >= 0) champ.setAttribute("aria-activedescendant", "jeu-o0"); else champ.removeAttribute("aria-activedescendant");
-    if (q0().length && !sugg.length) aide.textContent = "Aucune arme de ce nom dans le jeu : essayez un autre mot."; else aide.textContent = "";
+    if (q0().length && !sugg.length) aide.textContent = "Ni arme ni détail de ce nom dans le jeu : essayez un autre mot."; else aide.textContent = "";
   }
   const q0 = () => champ.value.trim();
   function bouge(d) {
@@ -238,16 +266,40 @@
     if (J.fini) return;
     let c = choisi;
     if (!c) {                                                           // le nom tapé en entier, ou une seule proposition
-      const t = plie(q0()), exacts = proposables().filter(x => plie(x.nom) === t);
+      const t = plie(q0()), exacts = [...proposables().filter(x => plie(x.nom) === t), ...detailsLibres().filter(d => d.mot === t)];
       c = exacts.length === 1 ? exacts[0] : (filtre(champ.value).length === 1 ? filtre(champ.value)[0] : null);
     }
     if (!c) {
-      aide.textContent = !q0() ? "Tapez le nom d'un État, d'une province, d'une maison…"
-        : filtre(champ.value).length ? "Choisissez des armes dans la liste proposée." : "Aucune arme de ce nom dans le jeu : essayez un autre mot.";
+      aide.textContent = !q0() ? "Tapez le nom d'un État, d'une province, d'une maison… ou un détail : lion, gueules, croix…"
+        : filtre(champ.value).length ? "Choisissez dans la liste proposée." : "Ni arme ni détail de ce nom dans le jeu : essayez un autre mot.";
       champ.focus(); return;
     }
-    await devine(c);
+    if (c.detail) demandeDetail(c); else await devine(c);
   });
+
+  /* ---------- un détail : gratuit, mais compté ---------- */
+  function applique(d) {
+    const r = d.test(cible.t);
+    if (d.cle.startsWith("e:")) (r === "ok" ? J.trouves : J.absents).add(d.nom);
+    return r;
+  }
+  function dessineDetails() {
+    const el = $("#jeu-details");
+    el.innerHTML = J.details.map(d => { const r = d.test(cible.t); return `<li class="dt ${r}" title="${esc(d.sorte)} : ${DIT_DETAIL[r]}"><span class="dt-s" aria-hidden="true">${SYMB[r]}</span>${esc(d.nom)}<span class="sr"> : ${DIT_DETAIL[r]}</span></li>`; }).join("");
+    el.hidden = !J.details.length;
+    $("#jeu-details-t").hidden = !J.details.length;
+    $("#jeu-details-t").textContent = `${J.details.length} détail${J.details.length > 1 ? "s" : ""} demandé${J.details.length > 1 ? "s" : ""} (sans perdre d'essai)`;
+  }
+  function demandeDetail(d) {
+    if (J.fini) return;
+    champ.value = ""; choisi = null; liste.hidden = true; aide.textContent = "";
+    J.details.push(d);
+    const r = applique(d);
+    $("#jeu-annonce").textContent = `${d.nom} : ${DIT_DETAIL[r]}.`;
+    sauve(); majEssais(); dessineDetails(); dessinePalette();
+    if (d.cle.startsWith("e:") && r === "ok") dessineMystere();
+    champ.focus();
+  }
 
   /* ---------- une réponse ---------- */
   let occupe = false;
@@ -276,16 +328,18 @@
   }
   const majEssais = () => {
     const n = J.essais.length, reste = ESSAIS - n;
-    $("#jeu-essais").textContent = J.fini ? (J.gagne ? `Trouvé en ${n}` : "Perdu") : `Essai ${n + 1} sur ${ESSAIS}`;
+    const nd = J.details.length, det = nd ? ` · ${nd} détail${nd > 1 ? "s" : ""}` : "";
+    $("#jeu-essais").textContent = (J.fini ? (J.gagne ? `Trouvé en ${n}` : "Perdu") : `Essai ${n + 1} sur ${ESSAIS}`) + det;
     $("#jeu-saisie").hidden = J.fini; aide.hidden = J.fini;
-    if (!J.fini) champ.placeholder = n ? `Encore ${reste} essai${reste > 1 ? "s" : ""}…` : "Un État, une province, une maison…";
+    if (!J.fini) champ.placeholder = n ? `Encore ${reste} essai${reste > 1 ? "s" : ""}… ou un détail` : "Des armes, ou un détail : lion, gueules…";
   };
 
   /* ---------- la fin de la partie ---------- */
   const imageDe = a => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(a.file)}?width=420`;
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
-    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
+    const nd = J.details.length;
+    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${nd ? ` · 🔎 ${nd} détail${nd > 1 ? "s" : ""}` : ""}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
   }
   let minuteur = 0;
   async function montreResultat() {
@@ -294,7 +348,7 @@
     const atelier = adresseAtelier(a, a.gal);
     r.className = "jeu-resultat " + (J.gagne ? "ok" : "ko");
     r.innerHTML = `<h2>${J.gagne ? (n === 1 ? "Du premier coup !" : n <= 3 ? "Bien vu !" : "Trouvé !") : "Perdu… pour cette fois"}</h2>
-      <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
+      <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="Armoiries : ${esc(a.nom)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
         <figcaption>${a.porteur ? `${esc(a.porteur)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
       <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">Partager mon résultat</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">Mes statistiques</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">Classement</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
@@ -395,7 +449,7 @@
   function rendClassement() {
     const el = $("#jeu-classement"), moi = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
     const liste = CL.onglet === "jour" ? CL.jour : CL.general;
-    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? `${x.essais} essai${x.essais > 1 ? "s" : ""}` : `${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`}</span></li>`;
+    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? `${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}` : `${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`}</span></li>`;
     el.innerHTML = `<h2 id="jeu-classement-t">Classement</h2>
       <div class="onglets" role="tablist" aria-label="Classement"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">Du jour</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">Général</button></div>
       ${CL.erreur || !liste ? `<p class="cl-vide">Le classement n'est pas disponible pour l'instant.</p>`
@@ -418,9 +472,10 @@
   /* une partie commencée aujourd'hui reprend là où elle s'est arrêtée */
   if (sv) {
     for (const nom of sv.essais) { const c = PAR_NOM.get(nom); if (!c) continue; J.essais.push(c); c.t.emaux.forEach(n => { if (cible.t.emaux.includes(n)) J.trouves.add(n); }); }
+    for (const cle of sv.details || []) { const d = DETAILS.get(cle); if (d && !J.details.includes(d)) { J.details.push(d); applique(d); } }
     J.fini = !!sv.fini; J.gagne = !!sv.gagne;
     for (let i = 0; i < J.essais.length; i++) await ajouteLigne(J.essais[i], i, false);
-    dessinePalette(); majEssais(); dessinePoints();
+    dessinePalette(); majEssais(); dessinePoints(); dessineDetails();
   }
   await dessineMystere();
   $("#jeu-chargement").hidden = true; $("#jeu-grille").hidden = false;
@@ -429,5 +484,5 @@
   if (J.fini) await montreResultat();
   dessineClassement();
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */
-  window.EcuDuJour = { J, cible, CARTES, N, NIV, ESSAIS, devine, compare, traits, devoile, texteDePartage, hors };
+  window.EcuDuJour = { J, cible, CARTES, DETAILS, N, NIV, ESSAIS, devine, demandeDetail, compare, traits, devoile, texteDePartage, hors };
 })();
