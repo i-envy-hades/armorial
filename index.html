@@ -79,12 +79,14 @@
       <form class="jeu-saisie" id="jeu-saisie" autocomplete="off" novalidate>
         <label for="jeu-nom" class="sr">Nom des armes à proposer</label>
         <div class="jeu-champ">
-          <input id="jeu-nom" type="text" role="combobox" aria-expanded="false" aria-controls="jeu-liste" aria-autocomplete="list" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Un État, une province, une maison…">
+          <input id="jeu-nom" type="text" role="combobox" aria-expanded="false" aria-controls="jeu-liste" aria-autocomplete="list" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Des armes, ou un détail : lion, gueules…">
           <ul id="jeu-liste" class="jeu-liste" role="listbox" aria-label="Armes proposées" hidden></ul>
         </div>
         <button type="submit" class="jx-go" id="jeu-ok">Deviner</button>
       </form>
       <p class="jeu-aide-saisie" id="jeu-aide-saisie"></p>
+      <p class="jx-details-t" id="jeu-details-t" hidden></p>
+      <ul class="jx-details" id="jeu-details" aria-label="Les détails demandés" hidden></ul>
 
       <ol class="jeu-essais-liste" id="jeu-liste-essais" aria-label="Vos essais"></ol>
       <section class="jeu-resultat" id="jeu-resultat" tabindex="-1" hidden></section>
@@ -119,6 +121,7 @@
   <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
   <h2 id="dlg-aide-t">Comment jouer ?</h2>
   <p>Un écu est caché : <b>trouvez à qui sont ces armes</b>. Tapez le nom d'un État, d'une province, d'une maison ou d'un personnage, et choisissez-le dans la liste.</p>
+  <p>Pas d'idée ? <b>Demandez un détail</b> : un émail (gueules), une partition (écartelé), une pièce (croix), un meuble (lion). La page dit s'il est dans l'écu mystère, <b>sans vous coûter d'essai</b> ; seules les armes proposées comptent comme essais. Les détails sont comptés, et départagent le classement à essais égaux.</p>
   <p>Trois niveaux, un écu chacun : <b>Écuyer</b> (des armes simples et connues, huit essais), <b>Chevalier</b> (six essais), <b>Seigneur</b> (les plus difficiles, cinq essais, sans la rubrique).</p>
   <p>Chaque réponse montre ses armes et les compare à l'écu mystère, case par case :</p>
   <ul class="jx-legende">

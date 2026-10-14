@@ -86,6 +86,7 @@ service cloud.firestore {
         && request.resource.data.jour is int && request.resource.data.jour >= 1 && request.resource.data.jour <= 100000
         && request.resource.data.essais is int && request.resource.data.essais >= 1 && request.resource.data.essais <= 12
         && request.resource.data.gagne is bool && request.resource.data.cree is timestamp
+        && (!('details' in request.resource.data) || (request.resource.data.details is int && request.resource.data.details >= 0 && request.resource.data.details <= 99))
         && id == request.auth.uid + '_' + request.resource.data.jeu + '_' + string(request.resource.data.jour)
         && (request.resource.data.gagne
               ? request.resource.data.vic == request.resource.data.jeu + '|' + string(request.resource.data.jour)

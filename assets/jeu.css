@@ -106,6 +106,17 @@ body.jeu .jx-niv:focus-visible{outline:3px solid var(--j-or);outline-offset:1px}
 .jeu-liste li small{flex:none;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--j-or-f)}
 .jeu-aide-saisie{margin:.15rem 0 0;min-height:1.4em;font-size:.92rem;font-weight:600;color:var(--j-rouge)}
 
+/* les détails demandés (gratuits) : des pastilles sous la saisie */
+.jeu-liste li.det b{font-weight:600;font-style:italic}
+.jeu-liste li.det small{color:var(--j-bleu)}
+.jx-details-t{margin:.3rem 0 .3rem;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--j-doux)}
+.jx-details{list-style:none;margin:0 0 .4rem;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
+.dt{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .65rem .2rem .45rem;border-radius:999px;font-weight:700;font-size:.9rem;background:var(--no-fond);color:var(--j-doux)}
+.dt .dt-s{display:grid;place-items:center;width:1.15rem;height:1.15rem;border-radius:50%;background:rgba(255,255,255,.6);font-size:.72rem;font-weight:900}
+.dt.ok{background:var(--ok-fond);color:#fff}.dt.ok .dt-s{background:rgba(255,255,255,.25)}
+.dt.mid{background:var(--mid-fond);color:#3d2c00}
+.dt.no{text-decoration:line-through;text-decoration-thickness:1.5px}
+
 /* les boutons du jeu : pleins, arrondis, qui s'enfoncent */
 .jx-go{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;font:inherit;font-weight:800;font-size:1rem;letter-spacing:.02em;padding:.7rem 1.3rem;border:0;border-radius:14px;background:var(--j-rouge);color:#fff;cursor:pointer;box-shadow:0 4px 0 var(--j-rouge-f);transition:transform .08s,box-shadow .08s,filter .15s;text-decoration:none}
 .jx-go:hover{filter:brightness(1.07)}
