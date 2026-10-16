@@ -15,13 +15,14 @@ const sq = (s, vis) => (!MAP || !s ? s : vis
   : `<g transform="translate(${100 * (1 - MAP.px)},${126 * (1 - MAP.py)}) scale(${MAP.px},${MAP.py})">${s}</g>`);
 
 /* bordure et orle : les dispositions du champ plein, resserrées vers le cœur */
-const shrink = (pts, k) => pts.map(([x, y, s, r]) => [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
+/* un point : [x, y, échelle, angle, miroir] ; « miroir » (facultatif) retourne la figure : la seconde de deux figures passées en sautoir regarde l'autre */
+const shrink = (pts, k) => pts.map(([x, y, s, r, inv]) => inv ? [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r, inv] : [100 + (x - 100) * k, 120 + (y - 120) * k, s * k, r]);
 const SHRINK = { plein: 1, bordure: .84, orle: .74 };
 /* réglages graphiques (adMap, adStr : assets/blasonnement.js) appliqués aux positions */
 const adjust = (pts, a, grp, sfx) => {
   const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
   const rot = (grp === 1 ? +a.rot || 0 : 0) + (+a["an" + sfx] || 0);
-  return pts.map(([x, y, sc, r], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0]; return [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, (r || 0) + rot + (it[3] || 0)]; });
+  return pts.map(([x, y, sc, r, inv], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0], p = [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, (r || 0) + (inv ? -rot : rot) + (it[3] || 0)]; if (inv) p.push(inv); return p; });      // une figure en miroir tourne en sens inverse : l'angle ouvre ou ferme le sautoir
 };
 /* la hauteur, dans le repère de l'écu, d'une figure empruntée à l'échelle 1 (sa boîte la contient sans la déformer) ; null pour un dessin de l'encyclopédie */
 /* mesurée une fois dans le SVG caché #measure (les marges vides du fichier n'y comptent pas) ; à défaut, d'après le viewBox */
@@ -340,9 +341,9 @@ const SEME = (() => { const p = []; for (let r = 0; r < 8; r++) for (let c = 0; 
 const facteurMoitie = pts => MAP && MAP.half && pts.length >= 2 && pts.length <= 6 && new Set(pts.map(q => Math.round(q[0]))).size >= 2 ? .7 : 1;
 const placeAll = (pts, m, id, flip, over = "") => {
   const fx = facteurMoitie(pts);
-  return pts.map(([x, y, k, r]) => {
+  return pts.map(([x, y, k, r, inv]) => {
     const X = MAP ? 100 + (x - 100) * MAP.vpx + MAP.shx : x, Y = MAP ? 126 + (y - 126) * MAP.fpy + MAP.shy : y, K = (MAP ? k * MAP.pk * fx : k) * (m.k || 1);
-    const R = (r || 0) + (flip && m.ctRot ? 90 : 0), miroir = m.ctRot ? !!m.retourne : !flip !== !m.retourne;      // ctRot : « contourné » se dessine en tournant le meuble (le croissant ouvert à senestre)
+    const R = (r || 0) + (flip && m.ctRot ? 90 : 0), miroir = (m.ctRot ? !!m.retourne : !flip !== !m.retourne) !== !!inv;      // ctRot : « contourné » se dessine en tournant le meuble (le croissant ouvert à senestre)
     return `<g transform="translate(${X},${Y})${R ? ` rotate(${R})` : ""} scale(${miroir ? `${-K},${K}` : K}) translate(-100,-116)">${useFor(m, id)}${over}</g>`;
   }).join("");
 };

@@ -1137,5 +1137,167 @@
       "url": "https://fr.wikipedia.org/wiki/Famille_de_Gaulle"
     },
     "groupe": "esprits"
+  },
+  {
+    "nom": "Jacques-Bénigne Bossuet",
+    "meta": "1627–1704 · évêque de Meaux, prédicateur",
+    "blason": "D'azur à trois roues d'or",
+    "desc": "Les armes de l'« Aigle de Meaux », d'après un état du clergé de France de 1723.",
+    "file": "Blason Jacques Benigne Bossuet.svg",
+    "auteur": "Vddbert",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Jacques_Benigne_Bossuet.svg",
+      "note": "A. Naquet, Le clergé de France, 1723, p. 19"
+    },
+    "groupe": "eglise"
+  },
+  {
+    "nom": "Jean Racine",
+    "meta": "1639–1699 · poète tragique",
+    "blason": "D'azur au cygne d'argent, becqué et membré de sable",
+    "desc": "Les armes du dramaturge, selon d'Hozier.",
+    "file": "Blason de Jean Racine.svg",
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_Jean_Racine.svg",
+      "note": "selon d'Hozier, d'après la page Commons"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Cardinal de Richelieu",
+    "meta": "1585–1642 · cardinal, principal ministre de Louis XIII",
+    "blason": "D'argent à trois chevrons de gueules",
+    "desc": "Les armes de la famille du Plessis de Richelieu, que le cardinal portait.",
+    "file": "Blason de la famille du Plessis de Richelieu.svg",
+    "auteur": "Jean-Paul Gibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_la_famille_du_Plessis_de_Richelieu.svg"
+    },
+    "groupe": "eglise"
+  },
+  {
+    "nom": "Vauban",
+    "meta": "1633–1707 · maréchal de France, ingénieur militaire",
+    "blason": "D'azur au chevron d'or, surmonté d'un croissant d'argent et accompagné de trois trèfles du second",
+    "desc": "Les armes de Sébastien Le Prestre de Vauban.",
+    "file": "Blason fam fr Le Prestre de Vauban.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_fam_fr_Le_Prestre_de_Vauban.svg",
+      "note": "M. Popoff, Armorial de l'Ordre du Saint-Esprit, 1996"
+    },
+    "groupe": "esprits",
+    "atelier": "D'azur au chevron d'or accompagné de trois trèfles d'or et d'un croissant d'argent en chef",
+    "atelierNote": "Le croissant est posé en chef, au-dessus du chevron, réduit et remonté (réglages sz2 et dy2)",
+    "atelierAjust": "sz2=55&dy2=-16"
+  },
+  {
+    "nom": "George Washington",
+    "meta": "1732–1799 · premier président des États-Unis",
+    "blason": "D'argent à deux fasces de gueules, accompagnées en chef de trois molettes du même",
+    "desc": "Les armes de la famille Washington, d'Angleterre.",
+    "file": "Coat of Arms of George Washington.svg",
+    "auteur": "Glasshouse, d'après des éléments de Sodacan",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_George_Washington.svg",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_George_Washington.svg"
+    },
+    "groupe": "esprits",
+    "atelier": "De gueules à deux fasces d'argent, au chef d'argent chargé de trois étoiles de gueules",
+    "atelierNote": "Les trois molettes sont posées sur un chef d'argent, l'Atelier ne sachant pas les mettre en chef sans pièce"
+  },
+  {
+    "nom": "Talleyrand",
+    "meta": "1754–1838 · diplomate, prince de Bénévent",
+    "blason": "De gueules aux trois lionceaux d'or, armés, lampassés et couronnés d'azur",
+    "desc": "Les armes de Charles-Maurice de Talleyrand-Périgord sous la Restauration : celles de sa maison.",
+    "file": "Blason Charles-Maurice de Talleyrand-Périgord (1754-1838) (Restauration).svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Charles-Maurice_de_Talleyrand-P%C3%A9rigord_%281754-1838%29_%28Restauration%29.svg"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Victor Hugo",
+    "meta": "1802–1885 · écrivain",
+    "blason": "D'azur au chef d'argent chargé de deux merlettes de sable",
+    "desc": "Les armes de Victor Hugo.",
+    "file": "Blason Victor Marie Hugo (1802-1885).svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Victor_Marie_Hugo_%281802-1885%29.svg"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Gilles de Rais (avant 1429)",
+    "meta": "v. 1405–1440 · maréchal de France, compagnon de Jeanne d'Arc",
+    "blason": "D'or à la croix de sable",
+    "desc": "Ses armes avant 1429 ; il les augmente ensuite d'un orle aux fleurs de lis de France.",
+    "file": "Arms of Gilles de Rais (before 1429).svg",
+    "auteur": "Euryrel",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Arms_of_Gilles_de_Rais_%28before_1429%29.svg"
+    },
+    "groupe": "esprits"
+  },
+  {
+    "nom": "Anne de Bretagne, reine de France",
+    "meta": "1477–1514 · duchesse de Bretagne, reine de France",
+    "blason": "Parti d'azur à trois fleurs de lys d'or et d'hermine",
+    "desc": "Reine, elle porte les armes de France parties de celles de Bretagne.",
+    "file": "Blason Anne de Bretagne (1476-1514) Reine de France.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Anne_de_Bretagne_%281476-1514%29_Reine_de_France.svg"
+    },
+    "groupe": "esprits",
+    "atelier": "Parti : au 1, d'azur à trois fleurs de lis d'or ; au 2, d'hermine",
+    "atelierNote": "Le parti est dit dans la forme que l'Atelier lit ; le dessin est le même"
+  },
+  {
+    "nom": "Francis Drake",
+    "meta": "v. 1540–1596 · navigateur et corsaire anglais",
+    "blason": "De sable à la fasce ondée d'argent, accompagnée de deux étoiles du même",
+    "desc": "Blasonnement de la page Commons, en anglais (« Sable, a fess wavy argent between two mullets of the same »), traduit ici.",
+    "file": "Sir Francis Drake arms.svg",
+    "auteur": "OwenBlacker",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Sir_Francis_Drake_arms.svg",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Sir_Francis_Drake_arms.svg"
+    },
+    "groupe": "esprits",
+    "atelier": "De sable à la fasce ondée d'argent accompagnée de deux étoiles à six rais d'argent, l'une en chef et l'autre en pointe",
+    "forme": "iberique"
   }
 ]

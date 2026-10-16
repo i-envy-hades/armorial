@@ -453,6 +453,39 @@
    }
   },
   {
+   "kind": "fleurdelis-florencee",
+   "nom": "Fleur de lis florencée",
+   "sing": "fleur de lis florencée",
+   "plur": "fleurs de lis florencées",
+   "alias": [
+    [
+     "fleur de lys florencée",
+     "fleurs de lys florencées"
+    ]
+   ],
+   "g": "f",
+   "cat": "Le règne végétal",
+   "file": {
+    "path": "assets/meubles/fleurdelis-florencee.svg",
+    "commons": "Meuble héraldique Fleur de lis florencée.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ],
+   "line": [
+    "#000000"
+   ]
+  },
+  {
    "kind": "croissant",
    "nom": "Croissant",
    "sing": "croissant",
@@ -1502,12 +1535,75 @@
    "g": "f",
    "cat": "Objets et bâtiments",
    "asym": true,
-   "draw": "clef",
    "alias": [
     [
      "clé",
      "clés"
     ]
+   ],
+   "file": {
+    "path": "assets/meubles/clef.svg",
+    "commons": "Meuble-héraldique-Clef-1.svg",
+    "auteur": "Kontributor 2K, d'après ZigeunerAlt",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
+    "vb": [
+     204,
+     58,
+     192,
+     466
+    ]
+   },
+   "box": [
+    58,
+    26,
+    84,
+    204
+   ],
+   "main": [
+    "#fff"
+   ],
+   "line": [
+    "#000"
+   ]
+  },
+  {
+   "kind": "clefs-saint-pierre",
+   "nom": "Clefs de saint Pierre",
+   "sing": "clefs de saint Pierre",
+   "plur": "clefs de saint Pierre",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "seul": true,
+   "pluriel": true,
+   "alias": [
+    [
+     "clefs de Saint-Pierre",
+     "clefs de Saint-Pierre"
+    ],
+    [
+     "clés de saint Pierre",
+     "clés de saint Pierre"
+    ]
+   ],
+   "file": {
+    "path": "assets/meubles/clefs-saint-pierre.svg",
+    "commons": "Héraldique clés de Saint-Pierre.svg",
+    "auteur": "Jérôme Blum",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fff"
+   ],
+   "line": [
+    "#000"
    ]
   },
   {
