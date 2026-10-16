@@ -315,7 +315,7 @@ class Equilibre(html.parser.HTMLParser):
 
 TAGS = "a|b|i|u|em|strong|p|div|span|ul|ol|li|dl|dt|dd|h[1-6]|svg|g|path|rect|circle|ellipse|line|text|use|defs|symbol|button|input|select|option|label|section|article|header|footer|nav|main|img|table|tr|td|th|code|pre|small|sub|sup|figure|figcaption|details|summary"
 COQUILLE = re.compile(rf"<(?:{TAGS})[,;:](?=[\s\w])", re.I)   # « <div, suisse2013: … », « <p; »…
-pages = sorted(ROOT.glob("*.html"))
+pages = sorted(p for p in ROOT.glob("*.html") if not p.name.startswith("google"))      # googleXXXX.html : le fichier de vérification de la Google Search Console, pas une page
 for p in pages:
     t = p.read_text(encoding="utf-8")
     eq = Equilibre(p.name); eq.feed(t)
