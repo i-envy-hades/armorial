@@ -89,7 +89,7 @@
   "use strict";
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const CHAMPS = ["blason", "atelier", "atelierAjust", "atelierNote", "sansAtelier", "aRefaire"];
+  const CHAMPS = ["blason", "atelier", "atelierAjust", "atelierNote", "sansAtelier", "aRefaire", "forme", "aVerifier"];
   /* les cartes signalées par le curateur (2026-10-11) ; « Ajouter une autre carte » en rajoute pour la session */
   const LISTE = [
     ["blasons", "Royaume d'Irak"], ["blasons", "Royaume du Hedjaz"], ["blasons", "Royaume de Karthli"],
@@ -109,7 +109,7 @@
     $("#gdefs").innerHTML = globalDefs();
   }
   const clef = (g, nom) => `${g}|${nom}`;
-  const lisChamps = c => ({ blason: c.blason || "", atelier: c.atelier || "", atelierAjust: c.atelierAjust || "", atelierNote: c.atelierNote || "", sansAtelier: !!c.sansAtelier, aRefaire: c.aRefaire || "" });
+  const lisChamps = c => ({ blason: c.blason || "", atelier: c.atelier || "", atelierAjust: c.atelierAjust || "", atelierNote: c.atelierNote || "", sansAtelier: !!c.sansAtelier, aRefaire: c.aRefaire || "", forme: c.forme || "", aVerifier: !!c.aVerifier });
   function ajouteALaListe(g, nom) {
     const carte = toutes[g].find(c => c.nom === nom);
     if (!carte) return null;
@@ -149,7 +149,7 @@
       const notes = (r.notes || []).map(n => typeof n === "string" ? n : (n.msg || JSON.stringify(n)));
       h = `<span class="ok">✓ L'Atelier relit ces armes</span> — ${r.exact ? "il les réécrit à la lettre" : `il les écrit : « ${esc(r.reecrit || "")} »`}`
         + (notes.length ? `<ul>${notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul>` : "");
-      const etatArmes = JSON.parse(JSON.stringify(r.etat));
+      const etatArmes = JSON.parse(JSON.stringify(r.etat)); etatArmes.sh = e.draft.forme;
       for (const [q, champs] of Object.entries(ajustDe(e.draft.atelierAjust))) for (const [k, v] of Object.entries(champs)) if (v !== DEF[k] && etatArmes.A && etatArmes.A[+q - 1]) etatArmes.A[+q - 1][({ cs: "m2cs", ce: "m2ce" })[k] || k] = String(v);
       const S = mk(etatArmes);
       try {
@@ -171,6 +171,7 @@
   /* ---------- la liste ---------- */
   function statut(e) {
     if (e.draft.sansAtelier) return "⛔ retirée";
+    if (e.orig.aVerifier && !e.draft.aVerifier) return "✔ vérifiée";
     const r = lecture(e.draft);
     return r.ok ? "✓ lue" : "✗ non lue";
   }
@@ -213,6 +214,14 @@
         <div class="mots" id="mots"></div>
       </fieldset>
 
+      <fieldset><legend>Retoucher dans l'Atelier</legend>
+        <p class="lecture">Ouvrez ces armes dans l'Atelier, modifiez-les avec tous ses outils (champ, pièce, meubles, émaux, réglages, forme), cliquez sur « Copier le lien », puis collez ce lien ici : la console reprend le blasonnement, les réglages et la forme.</p>
+        <p><a class="p" id="vers-atelier" target="_blank" rel="noopener">Ouvrir ces armes dans l'Atelier ↗</a></p>
+        <label class="c" for="lien-atelier">Lien copié dans l'Atelier</label>
+        <input type="text" id="lien-atelier" placeholder="https://…/atelier.html#t1=…" spellcheck="false">
+        <button type="button" class="p" id="reprend">Reprendre ces armes</button> <span class="msg" id="reprend-msg"></span>
+      </fieldset>
+
       <fieldset><legend>Réglages des figures (sz = taille en %, dx / dy = décalage, an = angle ; pth, pdx, pdy = la pièce ; cs, ce = taille et écart des figures d'un tourteau)</legend>
         <label class="c" for="aj-q">Armes à régler</label>
         <select id="aj-q">${QUARTIERS.map(([q, l]) => `<option value="${q}">${esc(l)}</option>`).join("")}</select>
@@ -224,8 +233,11 @@
         <label class="c" for="f-blason">Blasonnement affiché sur la carte (la source, pas forcément ce que montre l'image)</label>
         <textarea id="f-blason" spellcheck="false">${esc(d.blason)}</textarea>
         <label class="c"><input type="checkbox" id="f-sans" ${d.sansAtelier ? "checked" : ""}> Retirer cette carte de l'Atelier : plus de bouton « Redessiner dans l'Atelier », plus d'écu cliquable, et elle sort du jeu du jour</label>
-        <label class="c" for="f-refaire">À refaire — note privée (ne s'affiche jamais sur le site)</label>
-        <textarea id="f-refaire" style="min-height:50px" spellcheck="true">${esc(d.aRefaire)}</textarea>
+        <label class="c" for="f-forme">Forme de l'écu (celle de l'image)</label>
+        <select id="f-forme">${Object.entries(SHAPES).map(([k, v]) => `<option value="${k}"${k === d.forme ? " selected" : ""}>${esc(v.nom)}</option>`).join("")}</select>
+        <label class="c" for="f-refaire">Commentaire pour Claude — ce qui ne va pas, ce qu'il faut changer (note privée, jamais affichée sur le site)</label>
+        <textarea id="f-refaire" style="min-height:70px" spellcheck="true">${esc(d.aRefaire)}</textarea>
+        ${e.orig.aVerifier || !d.aVerifier ? `<label class="c"><input type="checkbox" id="f-verif" ${d.aVerifier ? "" : "checked"}> Vérifiée : le dessin et la carte me conviennent</label>` : ""}
       </fieldset>
 
       <div class="barre">
@@ -264,6 +276,30 @@
     const txt = (sel, champ) => $(sel).addEventListener("input", ev => { d[champ] = ev.target.value; maj(); });
     txt("#f-atelier", "atelier"); txt("#f-note", "atelierNote"); txt("#f-blason", "blason"); txt("#f-refaire", "aRefaire");
     $("#f-sans").addEventListener("change", ev => { d.sansAtelier = ev.target.checked; maj(); });
+    $("#f-forme").addEventListener("change", ev => { d.forme = ev.target.value; maj(); });
+    const verif = $("#f-verif"); if (verif) verif.addEventListener("change", ev => { d.aVerifier = !ev.target.checked; maj(); });
+    /* vers l'Atelier : les armes telles qu'elles sont dans la console (texte lu, réglages, forme) */
+    const lienAt = () => { $("#vers-atelier").href = adresseAtelier({ ...e.carte, blason: d.blason, atelier: d.atelier, atelierAjust: d.atelierAjust, forme: d.forme }, e.g); };
+    lienAt(); $("#vers-atelier").addEventListener("mousedown", lienAt); $("#vers-atelier").addEventListener("focus", lienAt);
+    /* depuis l'Atelier : son lien porte tout l'état ; on en tire le blasonnement, les réglages et la forme */
+    $("#reprend").addEventListener("click", () => {
+      const m = $("#reprend-msg"), l = $("#lien-atelier").value.trim(), h = l.includes("#") ? l.slice(l.indexOf("#") + 1) : "";
+      if (!h) { m.textContent = "Collez le lien complet de l'Atelier (il contient « # »)."; m.className = "msg ko"; return; }
+      let S;
+      try { S = normalizeAll(etatDe(h)); } catch (er) { m.textContent = "Lien illisible : " + er.message; m.className = "msg ko"; return; }
+      const texte = blazonAll(S), r = lire(texte);
+      d.atelier = texte.trim() === d.blason.trim() ? "" : texte;
+      d.forme = S.sh || "";
+      const o = {};
+      active(S).forEach(i => {
+        const a = S.A[i], q = i + 1, v = {};
+        for (const k of Object.keys(DEF)) { const x = +a[{ cs: "m2cs", ce: "m2ce" }[k] || k]; if (isFinite(x) && x !== DEF[k]) v[k] = x; }
+        if (Object.keys(v).length && q <= 5) o[q] = v;
+      });
+      d.atelierAjust = ajustVers(o);
+      ouvre(clef(e.g, e.nom));
+      const m2 = $("#reprend-msg"); m2.textContent = r.ok ? "Armes reprises de l'Atelier : vérifiez le dessin, puis enregistrez." : "Repris, mais l'Atelier ne relit pas ce texte : " + ((r.erreurs || [])[0] || {}).msg; m2.className = "msg " + (r.ok ? "ok" : "ko");
+    });
     $("#aj-q").addEventListener("change", () => {
       const v = valeursDe(ajustDe(d.atelierAjust), +$("#aj-q").value);
       $("#ajust").querySelectorAll("input").forEach(i => { i.value = v[i.dataset.k]; });
@@ -327,7 +363,9 @@
   });
 
   try { await charge(); } catch (er) { $("#carte").innerHTML = `<p class="msg ko">Chargement impossible : ${esc(er.message)}. Lancez <code>python3 tools/editeur.py</code> puis ouvrez <code>http://127.0.0.1:8140/tools/editeur.html</code>.</p>`; return; }
-  const manquantes = LISTE.filter(([g, n]) => !ajouteALaListe(g, n)).map(([, n]) => n);
+  /* les cartes marquées « aVerifier » (les nouvelles, à comparer à leur image) passent d'abord ; sans elles, la liste du 2026-10-11 */
+  const aVerifier = Object.entries(toutes).flatMap(([g, l]) => l.filter(c => c.aVerifier).map(c => [g, c.nom]));
+  const manquantes = (aVerifier.length ? aVerifier : LISTE).filter(([g, n]) => !ajouteALaListe(g, n)).map(([, n]) => n);
   majListe();
   if (manquantes.length) $("#etat").textContent = "Cartes introuvables : " + manquantes.join(", ");
   ouvre([...ETAT.keys()][0]);

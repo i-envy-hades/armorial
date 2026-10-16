@@ -49,7 +49,7 @@ const PLEIN = {
       { id: "bande", lab: "En bande", ph: " posé en bande", pts: [[62, 74, .4], [138, 164, .4]] },
       { id: "barre", lab: "En barre", ph: " posé en barre", pts: [[138, 74, .4], [62, 164, .4]] },
       { id: "chef", lab: "En chef", ph: " rangé en chef", pts: [[64, 58, .36], [136, 58, .36]] },
-      { id: "sautoir", lab: "Passés en sautoir", ph: " passé en sautoir", alt: [" posé en sautoir"], pts: [[100, 118, .85, 40], [100, 118, .85, -40]] }],
+      { id: "sautoir", lab: "Passés en sautoir", ph: " passé en sautoir", alt: [" posé en sautoir"], pts: [[100, 118, .85, 40, 1], [100, 118, .85, -40]] }],      // les deux en miroir l'une de l'autre, tournées vers l'extérieur (le panneton des clefs, le tranchant des épées)
   3: [{ id: "", lab: "2 et 1", ph: "", alt: [" posé 2 et 1"], pts: [[62, 80, .46], [138, 80, .46], [100, 168, .46]] },
       { id: "mal", lab: "1 et 2 (mal ordonnés)", ph: " mal ordonné", pts: [[100, 66, .42], [60, 158, .42], [140, 158, .42]] },
       { id: "fasce", lab: "En fasce", ph: " rangé en fasce", pts: [[48, 116, .3], [100, 116, .3], [152, 116, .3]] },

@@ -13,6 +13,7 @@ Champs que la console peut écrire, et rien d'autre :
   atelierNote   la phrase affichée sous la carte quand « atelier » est posé
   sansAtelier   vrai : la carte est retirée de l'Atelier (et du jeu du jour) ; faux : champ retiré
   aRefaire      note du curateur sur ce qui reste à refaire (privée : jamais affichée sur le site)
+  aVerifier     carte nouvelle, à comparer à son image dans la console (privé ; faux : champ retiré)
   forme         la forme de l'écu, quand l'image en montre une autre que le français moderne (une clé de SHAPES, assets/dessin.js)
 
 Les fichiers sont réécrits comme le reste du dépôt (indentation de 2, accents gardés) : git diff ne montre que la carte touchée.
@@ -38,6 +39,9 @@ def valide(champs):
             out[k] = v
         elif k == "forme":
             if v not in FORMES: return None, f"« forme » : forme inconnue ({v!r})"
+            out[k] = v
+        elif k == "aVerifier":
+            if not isinstance(v, bool): return None, "« aVerifier » : vrai ou faux"
             out[k] = v
         elif k == "sansAtelier":
             if not isinstance(v, bool): return None, "« sansAtelier » : vrai ou faux"

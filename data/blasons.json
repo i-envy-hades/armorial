@@ -2315,5 +2315,326 @@
       "url": "https://fr.wikipedia.org/wiki/Armoiries_de_la_Moldavie",
       "note": "l'image montre aussi l'aigle qui porte l'écu, sa croix, son rameau et son sceptre, que le blasonnement de l'écu ne dit pas"
     }
+  },
+  {
+    "nom": "Marseille",
+    "cat": "Villes & États",
+    "porteur": "Ville de Marseille",
+    "blason": "D'argent à la croix d'azur",
+    "file": "Blason Marseille.svg",
+    "auteur": "Darkbob",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Marseille.svg",
+      "note": "G. de Montgrand, Armorial de la ville de Marseille, p. 93"
+    },
+    "forme": "ovale"
+  },
+  {
+    "nom": "Strasbourg",
+    "cat": "Villes & États",
+    "porteur": "Ville de Strasbourg",
+    "blason": "D'argent à la bande de gueules",
+    "file": "Blason Strasbourg.svg",
+    "auteur": "Darkbob",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Strasbourg.svg"
+    }
+  },
+  {
+    "nom": "Lille",
+    "cat": "Villes & États",
+    "porteur": "Ville de Lille",
+    "blason": "De gueules à la fleur de lys florencée d'argent",
+    "file": "Blason ville fr Lille (Nord).svg",
+    "auteur": "FoeNyx",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_ville_fr_Lille_%28Nord%29.svg",
+      "note": "« depuis 1199 », selon la page Commons"
+    }
+  },
+  {
+    "nom": "Florence",
+    "cat": "Villes & États",
+    "porteur": "Ville de Florence",
+    "blason": "D'argent à la fleur de lis florencée de gueules",
+    "file": "FlorenceCoA.svg",
+    "auteur": "Connormah",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:FlorenceCoA.svg",
+      "note": "la page Commons ne donne pas le blasonnement ; il est rangé dans la catégorie « Argent a fleur-de-lis gules »"
+    }
+  },
+  {
+    "nom": "Berlin",
+    "cat": "Villes & États",
+    "porteur": "Land et ville de Berlin",
+    "blason": "D'argent à l'ours de sable, armé et lampassé de gueules",
+    "file": "DEU Berlin COA.svg",
+    "auteur": "Ottfried Neubecker",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:DEU_Berlin_COA.svg",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:DEU_Berlin_COA.svg",
+      "note": "l'écu est timbré d'une couronne murale d'or"
+    },
+    "atelier": "D'argent à l'ours rampant de sable",
+    "atelierNote": "L'Atelier dessine l'ours rampant, sans ses attributs de gueules"
+  },
+  {
+    "nom": "Gand",
+    "cat": "Villes & États",
+    "porteur": "Ville de Gand",
+    "blason": "De sable au lion d'argent, lampassé de gueules, armé et couronné d'or, portant au cou un collier avec une croix d'or",
+    "file": "Wapen van Gent.svg",
+    "auteur": "Tom Lemmens",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Wapen_van_Gent.svg",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Wapen_van_Gent.svg",
+      "note": "Databank Heraldiek, cité par la page Commons"
+    },
+    "atelier": "De sable au lion d'argent, armé et lampassé de gueules, couronné d'or",
+    "atelierNote": "L'Atelier ne dessine pas le collier à croix"
+  },
+  {
+    "nom": "Béarn",
+    "cat": "Provinces",
+    "porteur": "Vicomtes de Béarn",
+    "blason": "D'or à deux vaches de gueules, colletées, accornées, clarinées, onglées d'azur",
+    "file": "Blason du Béarn.svg",
+    "auteur": "Peter17",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_du_B%C3%A9arn.svg",
+      "note": "Ch. d'Hozier, Armorial général de France, vol. III (Béarn), p. 21"
+    },
+    "atelier": "D'or à deux vaches passantes de gueules accornées, colletées et clarinées d'azur posées en pal",
+    "atelierAjust": "sz=75"
+  },
+  {
+    "nom": "Duché de Berry",
+    "cat": "Provinces",
+    "porteur": "Ducs de Berry",
+    "blason": "D'azur à trois fleurs de lis d'or, à la bordure engrêlée de gueules",
+    "file": "Blason duche fr Berry (moderne).svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/File:Blason_duche_fr_Berry_%28moderne%29.svg",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_duche_fr_Berry_%28moderne%29.svg"
+    }
+  },
+  {
+    "nom": "Guyenne",
+    "cat": "Provinces",
+    "porteur": "Duché de Guyenne (Aquitaine)",
+    "blason": "De gueules au léopard d'or",
+    "file": "Blason de l'Aquitaine et de la Guyenne.svg",
+    "auteur": "Peter17",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_l%27Aquitaine_et_de_la_Guyenne.svg"
+    }
+  },
+  {
+    "nom": "Maison d'Harcourt",
+    "cat": "Maisons",
+    "porteur": "Maison d'Harcourt",
+    "blason": "De gueules à deux fasces d'or",
+    "file": "Blason maison fr d'Harcourt.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_maison_fr_d%27Harcourt.svg",
+      "note": "J.-B. Rietstap, Armorial général, t. I, p. 887"
+    }
+  },
+  {
+    "nom": "Maison de Polignac",
+    "cat": "Maisons",
+    "porteur": "Maison de Polignac",
+    "blason": "Fascé d'argent et de gueules",
+    "file": "Blason famille Polignac.svg",
+    "auteur": "Bruno Vallette",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_Polignac.svg",
+      "note": "L. de La Roque, Armorial de la noblesse de Languedoc, t. II, p. 248"
+    }
+  },
+  {
+    "nom": "Maison de Crussol",
+    "cat": "Maisons",
+    "porteur": "Maison de Crussol (ducs d'Uzès)",
+    "blason": "Fascé d'or et de sinople",
+    "file": "Blason Crussol.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Crussol.svg",
+      "note": "H. Jougla de Morenas, Grand armorial de France, t. III, p. 122"
+    }
+  },
+  {
+    "nom": "Maison de Lévis",
+    "cat": "Maisons",
+    "porteur": "Maison de Lévis et Lévis-Mirepoix",
+    "blason": "D'or à trois chevrons de sable",
+    "file": "Blason famille fr Lévis.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_L%C3%A9vis.svg",
+      "note": "H. Jougla de Morenas, Grand armorial de France, t. IV, p. 455"
+    }
+  },
+  {
+    "nom": "Maison de Châtillon",
+    "cat": "Maisons",
+    "porteur": "Maison de Châtillon",
+    "blason": "De gueules à trois pals de vair, au chef d'or",
+    "file": "Blason de la maison de Châtillon.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_la_maison_de_Ch%C3%A2tillon.svg",
+      "note": "H. Jougla de Morenas, Grand armorial de France, t. II, p. 414"
+    }
+  },
+  {
+    "nom": "Maison de Clermont-Tonnerre",
+    "cat": "Maisons",
+    "porteur": "Maison de Clermont-Tonnerre",
+    "blason": "De gueules à deux clefs d'argent passées en sautoir",
+    "file": "Blason Clermont-Tonnerre.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Clermont-Tonnerre.svg",
+      "note": "A. Déy, Armorial historique de l'Yonne, p. 158"
+    },
+    "atelierAjust": "sz=85"
+  },
+  {
+    "nom": "Maison de Noailles",
+    "cat": "Maisons",
+    "porteur": "Maison de Noailles",
+    "blason": "De gueules à la bande d'or",
+    "file": "Blason fam fr Noailles.svg",
+    "auteur": "Twocats",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_fam_fr_Noailles.svg",
+      "note": "J.-B. Rietstap, Armorial général, t. II, p. 319"
+    }
+  },
+  {
+    "nom": "Maison de Coligny",
+    "cat": "Maisons",
+    "porteur": "Maison de Coligny",
+    "blason": "De gueules à l'aigle d'argent, becquée, languée, membrée, armée et couronnée d'azur",
+    "file": "Blason de Coligny.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_Coligny.svg"
+    }
+  },
+  {
+    "nom": "Maison Orsini",
+    "cat": "Maisons",
+    "porteur": "Famille Orsini (Rome)",
+    "blason": "Bandé d'argent et de gueules, au chef du premier, chargé d'une rose du second",
+    "file": "Blason fam it Orsini.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_fam_it_Orsini.svg",
+      "note": "selon l'Armorial de Gelre, folio 67v"
+    },
+    "atelier": "Bandé d'argent et de gueules, au chef d'argent chargé d'une rose de gueules",
+    "atelierNote": "Le chef et la rose sont dits en toutes lettres (« du premier », « du second » : l'argent et le gueules)"
+  },
+  {
+    "nom": "Maison de Béthune",
+    "cat": "Maisons",
+    "porteur": "Maison de Béthune (ducs de Sully)",
+    "blason": "D'argent à la fasce de gueules",
+    "file": "Blason Maison de Béthune.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Maison_de_B%C3%A9thune.svg",
+      "note": "J.-B. Rietstap, Armorial général, t. I, pp. 189-190"
+    }
+  },
+  {
+    "nom": "Maison de Salignac de Fénelon",
+    "cat": "Maisons",
+    "porteur": "Famille de Salignac de Fénelon",
+    "blason": "D'or à trois bandes de sinople",
+    "file": "Blason famille fr de Salignac de Fénelon.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_de_Salignac_de_F%C3%A9nelon.svg",
+      "note": "J.-B. Rietstap, Armorial général, t. II, p. 657"
+    }
+  },
+  {
+    "nom": "Maison de Châteaubriant",
+    "cat": "Maisons",
+    "porteur": "Famille de Châteaubriant (olim Châteaubriand)",
+    "blason": "De gueules semé de fleurs de lys d'or",
+    "file": "Blason Maison de Châteaubriant.svg",
+    "auteur": "S@m",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Maison_de_Ch%C3%A2teaubriant.svg",
+      "note": "J.-B. Rietstap, Armorial général, t. I, p. 409"
+    }
   }
 ]
