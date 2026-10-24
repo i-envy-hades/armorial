@@ -7,7 +7,8 @@ Sans dépendance (Python 3 seul). Contrôle, dans l'ordre :
   4. le moteur de rendu (assets/blason.js) : chaque « kind » des données y a son dessin ;
   5. l'Atelier (data/atelier.json) : meubles, noms (le lecteur de blasonnement les reconnaît : pas de doublon), ornements, fichiers ;
   6. les pages HTML et les scripts : balises équilibrées, pas de coquille dans les gabarits
-     (par exemple « <div, »), fichiers liés présents, menu cohérent avec assets/chrome.js.
+     (par exemple « <div, »), fichiers liés présents, menu cohérent avec assets/chrome.js ;
+  7. le prérendu (tools/prerendu.py) : le texte écrit dans les pages pour les moteurs de recherche suit leurs données.
 Code de sortie 1 s'il y a une erreur ; les avertissements n'en provoquent pas."""
 import html.parser, json, pathlib, re, sys, unicodedata
 
@@ -353,6 +354,12 @@ for ident, fichier in menu:
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
     if p.name not in ("404.html", "jeu.html") and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+
+# le prérendu : le texte écrit dans les pages pour les moteurs de recherche est-il celui des données actuelles ?
+sys.path.insert(0, str(ROOT / "tools"))
+import prerendu
+for pg in prerendu.PAGES:
+    if prerendu.empreinte_ecrite(pg) != {prerendu.empreinte(pg)}: warnings.append(f"{pg}: prérendu en retard sur ses données (lancer python3 tools/prerendu.py avant de publier)")
 
 for w in warnings: print("avertissement :", w)
 print("\n".join(errors) or "OK")

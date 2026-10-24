@@ -67,6 +67,8 @@ def ouvre(browser, base, page_url, attente):
     page.on("response", lambda r: r.url.startswith(base) and r.status >= 400 and erreurs.append(f"HTTP {r.status} : {r.url.replace(base, '')}"))
     page.goto(f"{base}/{page_url}")
     page.wait_for_selector(attente, timeout=20000)
+    # le texte prérendu (tools/prerendu.py) est déjà dans le HTML : on attend que le script l'ait remplacé par la page construite
+    page.wait_for_function("!document.documentElement.innerHTML.includes('<!--pr\\u00e9rendu:')", timeout=20000)
     page.wait_for_timeout(600)
     return page, erreurs
 
