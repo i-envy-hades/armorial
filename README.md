@@ -112,6 +112,7 @@ tools/
   check_data.py     vérifie les données, les fichiers cités, les gabarits, l'ordre des scripts et le plan du site (sans dépendance)
   smoke_test.py     charge chaque page dans un vrai navigateur et la fait travailler (Playwright)
   check_commons.py  vérifie auprès de Wikimedia Commons que les figures empruntées existent toujours, en licence libre
+  prerendu.py       écrit dans encyclopedie.html, blasons.html et personnages.html le texte que leurs scripts construisent, pour les moteurs de recherche (Google Chrome)
   calendrier.html   l'outil du curateur : classe les cartes par difficulté et écrit les jours à venir dans la base (non publié)
 
 .github/workflows/  check.yml (à chaque envoi)   commons.yml (chaque lundi)
@@ -236,6 +237,17 @@ python3 tools/check_commons.py       # interroge Commons : fichiers disparus ou 
 ```
 
 GitHub fait tourner `check_data.py` et le test de fumée à chaque envoi, et `check_commons.py` chaque lundi.
+
+**Le prérendu.** L'encyclopédie, Blasons réels et Personnages se construisent dans le navigateur à partir de leurs fichiers JSON : sans
+lui, le HTML que lit un moteur de recherche serait presque vide. `tools/prerendu.py` ouvre ces trois pages dans Google Chrome sans fenêtre et
+recopie le texte construit (sans les figures SVG, que le script redessine) dans le fichier HTML, entre `<!--prérendu:… empreinte-->` et
+`<!--/prérendu:…-->` ; au chargement, le script le remplace par le même contenu. **À relancer après toute modification de `data/data.json`,
+`data/blasons.json` ou `data/personnages.json` (ou des scripts de ces pages), avant de publier** — `check_data.py` avertit quand un
+prérendu est en retard (l'empreinte est celle des données et des scripts) :
+
+```sh
+python3 tools/prerendu.py            # une demi-minute ; --verifie dit seulement si un prérendu est en retard
+```
 
 ## Publication
 
