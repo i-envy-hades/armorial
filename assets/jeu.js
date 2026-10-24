@@ -141,7 +141,7 @@
 
   /* ---------- l'état de la partie ---------- */
   const J = { essais: [], details: [], fini: false, gagne: false, trouves: new Set(), absents: new Set(), hors };
-  const etat = () => ({ essais: J.essais.map(c => c.nom), details: J.details.map(d => d.cle), fini: J.fini, gagne: J.gagne });
+  const etat = () => ({ essais: J.essais.map(c => c.nom), details: J.details.map(d => d.cle), fini: J.fini, gagne: J.gagne, ...(J.abandon ? { abandon: true } : {}) });
   const sauve = () => { if (!hors) K.garde(N, etat()); };
 
   /* ---------- le dessin ---------- */
@@ -321,6 +321,27 @@
       else champ.focus();
     } finally { occupe = false; }
   }
+  /* ---------- abandonner : l'écu se révèle, la partie compte comme perdue (la série retombe) ---------- */
+  const btAbandon = $("#jeu-abandon");
+  let abandonT = 0;
+  btAbandon.addEventListener("click", async () => {
+    if (J.fini || occupe) return;
+    if (!btAbandon.dataset.sur) {                                       // un premier clic demande confirmation, qui retombe au bout de quelques secondes
+      btAbandon.dataset.sur = "1"; btAbandon.textContent = "Sûr ? Cliquez encore pour révéler l'écu (partie perdue)";
+      clearTimeout(abandonT); abandonT = setTimeout(() => { delete btAbandon.dataset.sur; btAbandon.textContent = "Abandonner"; }, 5000);
+      return;
+    }
+    clearTimeout(abandonT);
+    occupe = true;
+    try {
+      J.fini = true; J.gagne = false; J.abandon = true;
+      $("#jeu-annonce").textContent = `Abandon : c'étaient les armes de ${cible.nom}.`;
+      termine();
+      majEssais(); dessinePalette(); dessinePoints();
+      await dessineMystere();
+      await montreResultat();
+    } finally { occupe = false; }
+  });
   function termine() {
     if (!hors) K.clos(N, etat());
     dessineCote();
@@ -329,8 +350,8 @@
   const majEssais = () => {
     const n = J.essais.length, reste = ESSAIS - n;
     const nd = J.details.length, det = nd ? ` · ${nd} détail${nd > 1 ? "s" : ""}` : "";
-    $("#jeu-essais").textContent = (J.fini ? (J.gagne ? `Trouvé en ${n}` : "Perdu") : `Essai ${n + 1} sur ${ESSAIS}`) + det;
-    $("#jeu-saisie").hidden = J.fini; aide.hidden = J.fini;
+    $("#jeu-essais").textContent = (J.fini ? (J.gagne ? `Trouvé en ${n}` : J.abandon ? "Abandonné" : "Perdu") : `Essai ${n + 1} sur ${ESSAIS}`) + det;
+    $("#jeu-saisie").hidden = J.fini; aide.hidden = J.fini; $("#jeu-abandon").hidden = J.fini;
     if (!J.fini) champ.placeholder = n ? `Encore ${reste} essai${reste > 1 ? "s" : ""}… ou un détail` : "Des armes, ou un détail : lion, gueules…";
   };
 
@@ -339,7 +360,7 @@
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
     const nd = J.details.length;
-    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${nd ? ` · 🔎 ${nd} détail${nd > 1 ? "s" : ""}` : ""}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
+    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${J.abandon ? " (abandon)" : ""}${nd ? ` · 🔎 ${nd} détail${nd > 1 ? "s" : ""}` : ""}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
   }
   let minuteur = 0;
   async function montreResultat() {
@@ -347,7 +368,7 @@
     const lien = a.gal === "blasons" ? `blasons.html#${slugCarte(a.nom)}` : `personnages.html#${slugCarte(a.nom)}`;
     const atelier = adresseAtelier(a, a.gal);
     r.className = "jeu-resultat " + (J.gagne ? "ok" : "ko");
-    r.innerHTML = `<h2>${J.gagne ? (n === 1 ? "Du premier coup !" : n <= 3 ? "Bien vu !" : "Trouvé !") : "Perdu… pour cette fois"}</h2>
+    r.innerHTML = `<h2>${J.gagne ? (n === 1 ? "Du premier coup !" : n <= 3 ? "Bien vu !" : "Trouvé !") : J.abandon ? "Abandon" : "Perdu… pour cette fois"}</h2>
       <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="Armoiries : ${esc(a.nom)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
         <figcaption>${a.porteur ? `${esc(a.porteur)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
@@ -473,7 +494,7 @@
   if (sv) {
     for (const nom of sv.essais) { const c = PAR_NOM.get(nom); if (!c) continue; J.essais.push(c); c.t.emaux.forEach(n => { if (cible.t.emaux.includes(n)) J.trouves.add(n); }); }
     for (const cle of sv.details || []) { const d = DETAILS.get(cle); if (d && !J.details.includes(d)) { J.details.push(d); applique(d); } }
-    J.fini = !!sv.fini; J.gagne = !!sv.gagne;
+    J.fini = !!sv.fini; J.gagne = !!sv.gagne; J.abandon = !!sv.abandon;
     for (let i = 0; i < J.essais.length; i++) await ajouteLigne(J.essais[i], i, false);
     dessinePalette(); majEssais(); dessinePoints(); dessineDetails();
   }
