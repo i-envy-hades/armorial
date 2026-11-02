@@ -1299,5 +1299,21 @@
     "groupe": "esprits",
     "atelier": "De sable à la fasce ondée d'argent accompagnée de deux étoiles à six rais d'argent, l'une en chef et l'autre en pointe",
     "forme": "iberique"
+  },
+  {
+    "nom": "Jean VI d'Aumont",
+    "meta": "1522–1595 · maréchal de France",
+    "blason": "D'argent à un chevron de gueules, accompagné en chef de quatre merlettes posées 2 et 2, et en pointe de trois merlettes mal ordonnées, le tout du même",
+    "desc": "Les armes de Jean VI d'Aumont, comte de Châteauroux, dit le Franc Gaulois, mort au siège du château de Comper. L'image les entoure de leur couronne et de leurs colliers.",
+    "file": "Coat of Arms of Jean VI d'Aumont, count of Châteauroux.svg",
+    "auteur": "Euryrel",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Coat_of_Arms_of_Jean_VI_d'Aumont,_count_of_Ch%C3%A2teauroux.svg"
+    },
+    "groupe": "esprits",
+    "aVerifier": true
   }
 ]
