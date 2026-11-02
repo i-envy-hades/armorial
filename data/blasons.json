@@ -2636,5 +2636,289 @@
       "url": "https://commons.wikimedia.org/wiki/File:Blason_Maison_de_Ch%C3%A2teaubriant.svg",
       "note": "J.-B. Rietstap, Armorial général, t. I, p. 409"
     }
+  },
+  {
+    "nom": "Picardie",
+    "cat": "Provinces",
+    "porteur": "Province de Picardie",
+    "blason": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lys d'or ; aux 2 et 3, d'argent à trois lionceaux de gueules",
+    "file": "Blason région fr Picardie.svg",
+    "auteur": "Spedona",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Picardie (région culturelle) »",
+      "url": "https://fr.wikipedia.org/wiki/Picardie_(r%C3%A9gion_culturelle)",
+      "note": "Wikipédia donne aussi une autre version, à quatre quartiers différents"
+    },
+    "aRefaire": "À confirmer : Wikipédia donne deux versions des armes de la Picardie ; la carte suit la première, celle de l'image.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Auvergne",
+    "cat": "Provinces",
+    "porteur": "Province d'Auvergne",
+    "blason": "D'or au gonfanon de gueules, frangé de sinople",
+    "file": "Blason de l'Auvergne.svg",
+    "auteur": "Peter17, Kaliforniyka, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_de_l'Auvergne.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Angoumois",
+    "cat": "Provinces",
+    "porteur": "Province d'Angoumois",
+    "blason": "De vair, au chef palé d'argent et d'azur",
+    "file": "Blason province fr Angoumois (Hozier).svg",
+    "auteur": "Thom.lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_province_fr_Angoumois_(Hozier).svg",
+      "note": "le nom du fichier renvoie à d'Hozier ; les comtes d'Angoulême portaient losangé d'or et de gueules"
+    },
+    "aRefaire": "À confirmer : version d'Hozier (De vair…) ou armes des comtes d'Angoulême (Losangé d'or et de gueules, « Blason comtes d'Angoulême (ancien).svg ») ?",
+    "aVerifier": true
+  },
+  {
+    "nom": "Limousin",
+    "cat": "Provinces",
+    "porteur": "Province du Limousin",
+    "blason": "D'hermine à la bordure de gueules",
+    "file": "Blason région fr Limousin.svg",
+    "auteur": "Infofiltrage",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_r%C3%A9gion_fr_Limousin.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Comtat Venaissin",
+    "cat": "Provinces",
+    "porteur": "Comtat Venaissin, terre des papes",
+    "blason": "De gueules à deux clefs d'or passées en sautoir et liées d'azur",
+    "file": "Blason comtat Venaissin.svg",
+    "auteur": "Thom.lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_comtat_Venaissin.svg"
+    },
+    "atelier": "De gueules à deux clefs d'or passées en sautoir",
+    "atelierNote": "Le lien d'azur des clefs n'est pas dessiné",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lyon",
+    "cat": "Villes & États",
+    "porteur": "Ville de Lyon",
+    "blason": "De gueules au lion d'argent, au chef d'azur chargé de trois fleurs de lys d'or",
+    "file": "Arms of Lyon.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armoiries de Lyon »",
+      "url": "https://fr.wikipedia.org/wiki/Armoiries_de_Lyon"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Rohan",
+    "cat": "Maisons",
+    "porteur": "Maison de Rohan (Bretagne)",
+    "blason": "De gueules à neuf macles d'or, posées 3, 3 et 3",
+    "file": "Blason maison fr de Rohan 2.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison de Rohan »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_de_Rohan",
+      "note": "les armes plus anciennes en portaient sept, posées 3, 3 et 1"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Montmorency",
+    "cat": "Maisons",
+    "porteur": "Maison de Montmorency",
+    "blason": "D'or à la croix de gueules, cantonnée de seize alérions d'azur",
+    "file": "Blason maison fr de Montmorency.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison de Montmorency »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_de_Montmorency"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Montmorency-Laval",
+    "cat": "Maisons",
+    "porteur": "Maison de Montmorency-Laval",
+    "blason": "D'or à la croix de gueules, chargée de cinq coquilles d'argent et cantonnée de seize alérions d'azur",
+    "file": "Blason maison fr de Montmorency-Laval.svg",
+    "auteur": "Maclauren (Nicolas C)",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_maison_fr_de_Montmorency-Laval.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de La Trémoille",
+    "cat": "Maisons",
+    "porteur": "Maison de La Trémoille",
+    "blason": "D'or au chevron de gueules, accompagné de trois aiglettes d'azur, becquées et membrées de gueules",
+    "file": "Blason maison fr de La Trémoille.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison de La Trémoille »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_de_La_Tr%C3%A9moille"
+    },
+    "atelier": "D'or au chevron de gueules, accompagné de trois aigles d'azur, becquées et membrées de gueules",
+    "atelierNote": "L'Atelier ne connaît pas le mot « aiglette » : il dit « aigle »",
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de La Rochefoucauld",
+    "cat": "Maisons",
+    "porteur": "Maison de La Rochefoucauld (Angoumois)",
+    "blason": "Burelé d'argent et d'azur, à trois chevrons de gueules brochant sur le tout, le premier écimé",
+    "file": "Blason La Rochefoucauld.svg",
+    "auteur": "ZigeunerAlt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_La_Rochefoucauld.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Durfort",
+    "cat": "Maisons",
+    "porteur": "Maison de Durfort (ducs de Duras et de Lorges)",
+    "blason": "D'argent à la bande d'azur",
+    "file": "Blason maison fr de Durfort 1.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_maison_fr_de_Durfort_1.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Sabran",
+    "cat": "Maisons",
+    "porteur": "Maison de Sabran",
+    "blason": "De gueules au lion d'argent",
+    "file": "Blason famille fr Sabran.svg",
+    "auteur": "Tpt",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_Sabran.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Maison de Beauharnais",
+    "cat": "Maisons",
+    "porteur": "Maison de Beauharnais (Joséphine, Eugène, Hortense)",
+    "blason": "D'argent à la fasce de sable, accompagnée de trois merlettes du même rangées en chef",
+    "file": "Blason fam fr Beauharnais.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Maison de Beauharnais »",
+      "url": "https://fr.wikipedia.org/wiki/Maison_de_Beauharnais",
+      "note": "J.-B. Rietstap, Armorial général, t. I, p. 141"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Famille de Penhoët",
+    "cat": "Maisons",
+    "porteur": "Famille de Penhoët (Bretagne)",
+    "blason": "D'or à la fasce de gueules",
+    "file": "Blason Famille Penhoet.svg",
+    "auteur": "SanglierT",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_Famille_Penhoet.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Famille de Las Cases",
+    "cat": "Maisons",
+    "porteur": "Famille de Las Cases",
+    "blason": "D'or à la bande d'azur, à la bordure de gueules",
+    "file": "Blason famille fr de Las Cases.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "la page Commons du fichier",
+      "url": "https://commons.wikimedia.org/wiki/File:Blason_famille_fr_de_Las_Cases.svg"
+    },
+    "aVerifier": true
+  },
+  {
+    "nom": "Ordre de Calatrava",
+    "cat": "Ordres",
+    "porteur": "Chevaliers de Calatrava (ordre militaire espagnol)",
+    "blason": "D'argent à la croix fleurdelisée de gueules",
+    "file": "Badge of the Order of Calatrava.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Ordre de Calatrava »",
+      "url": "https://fr.wikipedia.org/wiki/Ordre_de_Calatrava",
+      "note": "Wikipédia donne la croix fleurdelisée de gueules ; le champ d'argent vient de l'habit blanc de l'ordre, l'image n'ayant pas de champ"
+    },
+    "aRefaire": "À confirmer : le champ d'argent est déduit de l'habit blanc ; Wikipédia ne blasonne que la croix.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ordre d'Alcántara",
+    "cat": "Ordres",
+    "porteur": "Chevaliers d'Alcántara (ordre militaire espagnol)",
+    "blason": "D'argent à la croix fleurdelisée de sinople",
+    "file": "Badge of the Order of Alcantara.svg",
+    "auteur": "Heralder",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Ordre d'Alcántara »",
+      "url": "https://fr.wikipedia.org/wiki/Ordre_d'Alc%C3%A1ntara",
+      "note": "Wikipédia donne la croix fleurdelisée de sinople ; le champ d'argent vient de l'habit blanc de l'ordre, l'image n'ayant pas de champ"
+    },
+    "aRefaire": "À confirmer : le champ d'argent est déduit de l'habit blanc ; Wikipédia ne blasonne que la croix.",
+    "aVerifier": true
   }
 ]
