@@ -2330,6 +2330,44 @@
    ]
   },
   {
+   "kind": "main-benissante",
+   "nom": "Main bénissante",
+   "sing": "main bénissante",
+   "plur": "mains bénissantes",
+   "g": "f",
+   "cat": "Corps et cœur",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/main-benissante.svg",
+    "commons": "Hand of Benediction sleeved.svg",
+    "auteur": "Delta-9, via Ilzolende",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
+    "vb": [
+     120,
+     56,
+     92,
+     226
+    ]
+   },
+   "box": [
+    62,
+    28,
+    76,
+    176
+   ],
+   "main": [
+    "#fca"
+   ],
+   "accent": [
+    "fill:#ffffff"
+   ],
+   "accentMot": "paré",
+   "line": [
+    "#000000"
+   ]
+  },
+  {
    "kind": "griffon",
    "nom": "Griffon",
    "sing": "griffon",
