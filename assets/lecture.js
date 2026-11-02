@@ -141,6 +141,38 @@ function lireCarte(a) {
 function lectures(liste) {
   try { return new Map(liste.filter(a => a.blason).map(a => [a, lireCarte(a)])); } catch (e) { return new Map(); }
 }
+/* les mots d'un blasonnement qui ont leur définition dans l'encyclopédie : le glossaire, plus les bêtes qui y ont un article plutôt qu'une entrée.
+   La comparaison garde les accents (« fasce » n'est pas « fascé », « armes » n'est pas « armé ») ; chaque mot d'un terme peut prendre sa marque de genre et de nombre (« fleurs de lis ») ;
+   le terme le plus long l'emporte (« croix pattée » ne dit pas aussi « croix »). */
+const ARTICLES_TERMES = [
+  { terme: "Lion", formes: ["lion", "lionceau"], article: "le-lion-l-attitude-fait-le-blason" },
+  { terme: "Aigle", formes: ["aigle"], article: "l-aigle-l-oiseau-du-pouvoir" },
+];
+const motsTerme = s => String(s).toLowerCase().normalize("NFC").replace(/[^\p{L}0-9]+/gu, " ").trim();
+let MOTIFS_TERMES = null;
+function motifsTermes() {
+  if (MOTIFS_TERMES) return MOTIFS_TERMES;
+  const LIES = new Set(["au", "aux", "de", "des", "du", "en", "et", "l", "la", "le", "les", "sur", "un", "une"]);
+  const emaux = new Set(Object.values(MOT));
+  const motif = forme => new RegExp(`(?<=\\s)${motsTerme(forme).split(" ").map(w => LIES.has(w) ? w : `${w}(?:e|s|es|x)?`).join("\\s")}(?=\\s)`, "g");
+  const liste = DATA.glossaire.flatMap(g => g.terme.replace(/\(.*?\)/g, "").split(",").map(f => ({ terme: g.terme, forme: f.trim().toLowerCase() })));
+  liste.push(...ARTICLES_TERMES.flatMap(a => a.formes.map(forme => ({ terme: a.terme, forme, article: a.article }))));
+  const FORMES_LYS = liste.filter(x => /\blis\b/.test(x.forme)).map(x => ({ ...x, forme: x.forme.replace(/\blis\b/, "lys") }));
+  MOTIFS_TERMES = [...liste, ...FORMES_LYS].filter(x => motsTerme(x.forme).length > 2)
+    .map(x => ({ ...x, re: motif(x.forme), email: emaux.has(motsTerme(x.terme)) }))
+    .sort((a, b) => b.forme.length - a.forme.length);
+  return MOTIFS_TERMES;
+}
+function termesDe(texte, combien = 6) {
+  let reste = ` ${motsTerme(texte)} `;
+  const vus = new Map();
+  for (const x of motifsTermes()) reste = reste.replace(x.re, (m, i) => {
+    if (!vus.has(x.terme)) vus.set(x.terme, { ...x, i });
+    return " ".repeat(m.length);
+  });
+  return [...vus.values()].sort((a, b) => a.email - b.email || a.i - b.i).slice(0, combien);      // dans l'ordre du texte, les émaux après les autres mots
+}
+const lienTerme = x => `<a href="encyclopedie.html#${x.article || termeId(x.terme, DATA.glossaire)}">${x.forme}</a>`;
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
 const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${a.forme ? `&sh=${encodeURIComponent(a.forme)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;

@@ -367,16 +367,22 @@
     const r = $("#jeu-resultat"), a = cible, n = J.essais.length;
     const lien = a.gal === "blasons" ? `blasons.html#${slugCarte(a.nom)}` : `personnages.html#${slugCarte(a.nom)}`;
     const atelier = adresseAtelier(a, a.gal);
+    const termes = termesDe(a.blason), renvois = (a.liens || []).map(l => `<a href="${esc(l.href)}">${esc(l.t)}</a>`);
     r.className = "jeu-resultat " + (J.gagne ? "ok" : "ko");
     r.innerHTML = `<h2>${J.gagne ? (n === 1 ? "Du premier coup !" : n <= 3 ? "Bien vu !" : "Trouvé !") : J.abandon ? "Abandon" : "Perdu… pour cette fois"}</h2>
       <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="Armoiries : ${esc(a.nom)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
-        <figcaption>${a.porteur ? `${esc(a.porteur)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
+        <figcaption>${a.porteur || a.meta ? `${esc(a.porteur || a.meta)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
+      ${termes.length ? `<p class="res-retenir"><span>À retenir</span> ${termes.map(lienTerme).join(" · ")}</p>` : ""}
+      ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
       <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">Partager mon résultat</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">Mes statistiques</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">Classement</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens"><a href="${lien}">Voir la carte dans l'Armorial</a> · <a href="${atelier}">Redessiner dans l'Atelier</a></p>
+      <p class="res-liens">${[...renvois, `<a href="${lien}">Voir la carte dans l'Armorial</a>`, `<a href="${atelier}">Redessiner dans l'Atelier</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image : <i>${esc(a.file)}</i>, ${esc(a.auteur || "auteur inconnu")}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || "licence libre")}, via Wikimedia Commons.</p>`;
     r.hidden = false;
+    /* la partie finie, l'encyclopédie n'est plus une aide : c'est la suite */
+    $(".jx-armorial .jx-sur").textContent = "Pour aller plus loin";
+    $("#jx-armorial-t").textContent = "L'Armorial vous raconte le reste";
     $("#jeu-voir-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
     if ($("#jeu-voir-cl")) $("#jeu-voir-cl").addEventListener("click", () => ouvreDlg("dlg-classement"));
     $("#jeu-partage").addEventListener("click", async () => {

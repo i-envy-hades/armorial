@@ -10,6 +10,10 @@ function allerCarte(remetsAZero) {
   if (!carte && remetsAZero) { remetsAZero(); carte = document.getElementById(id); }
   if (!carte || !carte.classList.contains("ar")) return;
   carte.scrollIntoView({ block: "center", behavior: "instant" });
+  /* sur un petit écran, les filtres collés en haut couvriraient le haut d'une carte haute */
+  const barres = Math.max(0, ...[...document.querySelectorAll(".mast,.tools")].map(b => b.getBoundingClientRect().bottom));
+  const haut = carte.getBoundingClientRect().top;
+  if (haut < barres + 10) window.scrollBy({ top: haut - barres - 10, behavior: "instant" });
   carte.classList.add("flash");
   setTimeout(() => carte.classList.remove("flash"), 2400);
 }

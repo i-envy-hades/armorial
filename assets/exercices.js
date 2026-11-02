@@ -28,15 +28,7 @@
     } else return null;
     return out.length > 1 ? out : null;
   }
-  /* quels termes du glossaire figurent dans ce blasonnement : des liens vers l'encyclopédie */
   const sluge = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-  function termesDe(texte) {
-    const t = " " + plie(texte).replace(/[^a-z0-9]+/g, " ") + " ", emaux = new Set(Object.values(MOT).map(plie));
-    const trouves = DATA.glossaire.filter(g => { const w = plie(g.terme).replace(/[^a-z0-9]+/g, " ").trim(); return w.length > 2 && new RegExp(`\\s${w}(e|s|es)?\\s`).test(t); });
-    trouves.sort((x, y) => (emaux.has(plie(x.terme)) - emaux.has(plie(y.terme))) || y.terme.length - x.terme.length);
-    return trouves.slice(0, 6);
-  }
-  const lienTerme = g => `<a href="encyclopedie.html#${termeId(g.terme, DATA.glossaire)}">${esc(g.terme.toLowerCase())}</a>`;
   const lienAtelier = St => `<a href="atelier.html#lire=${encodeURIComponent(blazonAll(St))}">Ouvrir ces armes dans l'Atelier</a>`;
 
   /* ---------- dessiner ---------- */
