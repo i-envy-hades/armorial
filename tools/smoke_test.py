@@ -199,7 +199,8 @@ CONNUES = [
     ({"A0": {"t1": "Azur", "m": "lion", "nb": "1", "tm": "Or", "ta": "Gueules", "ct": "1"}}, "D'azur au lion contourné d'or armé et lampassé de gueules"),
     ({"A0": {"t1": "Gueules", "m": "lion", "nb": "3", "tm": "Or", "ta": "Azur", "ct": "1"}}, "De gueules à trois lions contournés d'or armés et lampassés d'azur"),
     ({"A0": {"t1": "Or", "m": "aigle", "nb": "1", "tm": "Sable", "ta": "Gueules", "ct": "1"}}, "D'or à l'aigle contournée de sable becquée, membrée et couronnée de gueules"),
-    ({"A0": {"t1": "Azur", "m": "croissant", "nb": "1", "tm": "Or", "ct": "1"}}, "D'azur au croissant d'or"),   # un croissant ne se contourne pas par simple retournement : le réglage est ignoré
+    ({"A0": {"t1": "Azur", "m": "croissant", "nb": "1", "tm": "Or", "ct": "1"}}, "D'azur au croissant contourné d'or"),   # le croissant se contourne en tournant (ctRot)
+    ({"A0": {"t1": "Azur", "m": "etoile", "nb": "1", "tm": "Or", "ct": "1"}}, "D'azur à l'étoile d'or"),   # une étoile retournée ne change pas : le réglage est ignoré
     # les bêtes de Commons : léopard, lion passant, aigle à deux têtes, cerf, cheval (dont l'accord au pluriel : « chevaux cabrés »)
     ({"A0": {"t1": "Gueules", "m": "leopard", "nb": "3", "d": "pal", "tm": "Or", "ta": "Azur", "sz": "190"}}, "De gueules à trois léopards d'or armés et lampassés d'azur"),       # trois léopards : en pal sans qu'on le dise
     ({"A0": {"t1": "Azur", "m": "lion-passant", "nb": "1", "tm": "Or", "ta": "Gueules"}}, "D'azur au lion passant d'or armé et lampassé de gueules"),
@@ -216,7 +217,7 @@ CONNUES = [
     ({"A0": {"t1": "Or", "m": "arbre", "nb": "1", "tm": "Sinople", "ta": "Sable"}}, "D'or à l'arbre de sinople fûté de sable"),
     # pièces propres à l'Atelier
     ({"A0": {"t1": "Argent", "m": "", "p": "canton", "tp": "Gueules"}}, "D'argent au canton de gueules"),
-    ({"A0": {"t1": "Or", "m": "epee", "nb": "1", "tm": "Argent", "p": "franc-quartier", "tp": "Azur", "pos": "sur"}}, "D'or au franc-quartier d'azur chargé d'une épée d'argent"),
+    ({"A0": {"t1": "Or", "m": "epee", "nb": "1", "tm": "Argent", "p": "franc-quartier", "tp": "Azur", "pos": "sur"}}, "D'or au franc-quartier d'azur chargé d'une épée d'argent garnie de gueules"),
     ({"A0": {"t1": "Argent", "m": "etoile", "nb": "3", "tm": "Azur", "p": "pairle", "tp": "Gueules"}}, "D'argent au pairle de gueules accompagné de trois étoiles d'azur"),
     # champs rayés : burelé, vergeté, coticé, chevronné, échiqueté, fuselé (les noms que prennent les rayures à partir de dix pièces)
     ({"A0": {"f": "ray", "ray": "barry", "n": "10", "t1": "Argent", "t2": "Gueules", "m": ""}}, "Burelé d'argent et de gueules"),
@@ -349,6 +350,11 @@ LUS = [
     ("D'azur à deux étoiles d'or", "D'azur à deux étoiles d'or posées en fasce", "disposition non précisée"),
     ("D'azur à trois étoiles d'or en fasce", "D'azur à trois étoiles d'or rangées en fasce", ""),
     ("D'azur au chevron d'or accompagné de trois croissants du même", "D'azur au chevron d'or accompagné de trois croissants d'or", ""),
+    # sur un champ divisé, « brochant sur le tout » dit qu'une pièce chargée passe sur le meuble seul du champ (pbro) ; sinon on ne le dit pas : les deux armes ne s'écrivent pas pareil
+    ("Coupé d'or et d'azur, à l'étoile de gueules, à la fasce d'argent brochant sur le tout, chargée de trois roses de sable", "Coupé d'or et d'azur, à l'étoile de gueules, à la fasce d'argent brochant sur le tout, chargée de trois roses de sable", ""),
+    ("Coupé d'or et d'azur, à l'étoile de gueules, à la fasce d'argent chargée de trois roses de sable", "Coupé d'or et d'azur, à l'étoile de gueules, à la fasce d'argent chargée de trois roses de sable", ""),
+    # le « et » qui suit l'aigle échiquetée amène le groupe suivant quand aucun émail ne vient
+    ("D'argent au chevron d'azur accompagné de trois aigles échiquetées de gueules et d'une étoile d'or", "D'argent au chevron d'azur accompagné de trois aigles échiquetées de gueules et d'une étoile d'or", ""),
     ("De gueules à la croix vidée, cléchée et pommetée d'or", "De gueules à la croix cléchée, vidée et pommetée d'or", ""),
     ("D'azur à la fasce d'or chargée de trois coquilles de sable, accompagnée de trois cœurs de gueules", "D'azur à trois cœurs de gueules, à la fasce d'or chargée de trois coquilles de sable", ""),
     ("D'or à cinq tourteaux de gueules et, en chef, un tourteau d'azur", "D'or à cinq tourteaux de gueules posés en sautoir, accompagnés d'un tourteau d'azur en chef", "en sautoir"),
@@ -428,8 +434,8 @@ REFUSES = [
     ("D'azur à la panthère d'or armée et lampassée de gueules", "en entier"),   # les aigles et la vache acceptent un attribut partiel, pas la panthère
     ("D'azur à la bande d'or brochant sur le tout", "champ divisé"),
     ("D'azur au canton d'or accompagné de deux étoiles d'argent", "autour du canton"),
-    ("D'azur au croissant contourné d'or", "ne se contourne pas"),
-    ("D'azur à trois croissants d'or contournés", "ne se contourne pas"),
+    ("D'azur à l'étoile contournée d'or", "ne se contourne pas"),
+    ("D'azur à trois étoiles d'or contournées", "ne se contourne pas"),
     ("D'azur au lion d'or armé de gueules", "armé et lampassé"),
     ("Écartelé : aux 1 et 4, d'azur ; aux 2 et 3, de gueules ; au 5, d'or", "quartier 5"),
     ("Écartelé : au 1, d'azur ; au 2, de gueules", "Il manque"),
@@ -541,6 +547,8 @@ def test_lecture(browser, base, n_fuzz):
         r = page.evaluate("t => { const r = lire(t); return { ok: r.ok, erreurs: r.erreurs.map(e => e.msg) }; }", texte)
         bon = not r["ok"] and any(raison in e for e in r["erreurs"])
         verifie(bon, f"lecture refusée : « {texte[:60]} » ({raison})" + ("" if bon else f" — obtenu {r}"))
+    pbro = page.evaluate("t => [t, t.replace(' brochant sur le tout,', '')].map(x => lire(x).etat.A[0].pbro)", "Coupé d'or et d'azur, à l'étoile de gueules, à la fasce d'argent brochant sur le tout, chargée de trois roses de sable")
+    verifie(pbro == ["1", ""], f"lecture : sur un champ divisé, seule la pièce dite « brochant sur le tout » passe sur le meuble ({pbro})")
     vide = page.evaluate("() => { const r = lire('   '); return r.vide && !r.ok && !r.erreurs.length; }")
     verifie(vide, "lecture : un texte vide n'est ni compris ni une erreur")
     n = max(300, n_fuzz * 10)
@@ -590,8 +598,10 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     sans = [a["nom"] for a in data(fichier) if not a.get("blason")]
     verifie(not any(cartes[n]["redo"] or cartes[n]["ecu"] or cartes[n]["non"] for n in sans), f"{nom} : rien sous une carte sans blasonnement, et son écu ne mène nulle part")
     verifie(all(c["ecu"] is None and c["ecuNu"] for c in cartes.values()), f"{nom} : l'écu d'une carte n'est pas un lien (il s'agrandit ; l'Atelier s'ouvre par le bouton)")
-    avec = [a["nom"] for a in data(fichier) if a.get("blason")]
+    avec = [a["nom"] for a in data(fichier) if a.get("blason") and not a.get("sansAtelier")]
     verifie(all(bool(cartes[n]["redo"]) != bool(cartes[n]["non"]) for n in avec), f"{nom} : sous chaque blasonnement, le bouton ou la ligne qui dit où l'Atelier bute, jamais les deux")
+    retirees = [a["nom"] for a in data(fichier) if a.get("blason") and a.get("sansAtelier")]
+    verifie(not any(cartes[n]["redo"] or cartes[n]["non"] for n in retirees), f"{nom} : rien sous une carte retirée de l'Atelier (sansAtelier)")
     verifie(all("bute sur « " in (cartes[n]["non"] or "") for n in refuses), f"{nom} : sous un blasonnement refusé, l'endroit où l'Atelier bute est cité")
     params = lambda h: page.evaluate("h => Object.fromEntries(new URLSearchParams(h.split('#')[1]))", h)
     avec_bouton = [c for c in cartes.values() if c["redo"]]
@@ -620,7 +630,7 @@ def test_partir(browser, base):
     """« Partir d'un blason réel » : le sélecteur propose les cartes relues, et elles seules ; la carte d'origine suit les modifications ; on y revient"""
     page, erreurs = ouvre(browser, base, "atelier.html", "#reel")
     page.wait_for_function("document.querySelectorAll('#reel optgroup').length > 0")
-    relues = page.evaluate("""async () => { const t = []; for (const f of ['blasons', 'personnages']) for (const a of await (await fetch('data/' + f + '.json')).json()) if (a.blason && lire(a.atelier || a.blason).ok) t.push(a.nom); return t; }""")
+    relues = page.evaluate("""async () => { const t = []; for (const f of ['blasons', 'personnages']) for (const a of await (await fetch('data/' + f + '.json')).json()) if (a.blason && !a.sansAtelier && lire(a.atelier || a.blason).ok) t.push(a.nom); return t; }""")
     options = page.evaluate("[...document.querySelectorAll('#reel option')].filter(o => o.value).map(o => o.textContent)")
     verifie(sorted(options) == sorted(relues) and len(relues) >= len(BLASONS_LISIBLES) + len(PERSONNAGES_LISIBLES),
             f"partir : le sélecteur propose les {len(relues)} cartes des galeries que le lecteur relit, et elles seules")
@@ -774,7 +784,7 @@ def test_jeu(browser, base):
     verifie(memes, "jeu : des armes comparées à elles-mêmes sont identiques partout")
     # un essai perdant, au clavier
     perdante = page.evaluate("EcuDuJour.CARTES.find(c => c.canon !== EcuDuJour.cible.canon && c.t.emaux.some(e => EcuDuJour.cible.t.emaux.includes(e)) && c.t.emaux.some(e => !EcuDuJour.cible.t.emaux.includes(e))).nom")
-    devine_au_clavier(page, perdante[:6].lower())
+    devine_au_clavier(page, perdante.lower())
     page.wait_for_selector(".essai .case", timeout=8000); page.wait_for_timeout(500)
     verifie(page.locator(".essai").count() == 1 and page.locator(".essai .case").count() == 6, "jeu : une réponse ajoute une ligne de six cases")
     attendu = page.evaluate("(() => { const c = EcuDuJour.J.essais[0], m = EcuDuJour.cible.t.emaux; return [c.t.emaux.filter(e => m.includes(e)).length, c.t.emaux.filter(e => !m.includes(e)).length]; })()")
@@ -782,7 +792,7 @@ def test_jeu(browser, base):
     verifie("essai 2 sur 6" in page.text_content("#jeu-essais").lower(), "jeu : le compteur d'essais avance")
     verifie(page.locator("#jeu-liste li").count() == 0 or not page.locator("#jeu-liste").is_visible(), "jeu : la liste de propositions se referme après la réponse")
     # la même armes ne se propose pas deux fois
-    page.fill("#jeu-nom", perdante[:6].lower()); page.wait_for_timeout(150)
+    page.fill("#jeu-nom", perdante.lower()); page.wait_for_timeout(150)
     verifie(perdante not in page.locator("#jeu-liste li b").all_inner_texts(), "jeu : une arme déjà proposée disparaît de la liste")
     page.fill("#jeu-nom", "")
     # la partie se reprend après un rechargement
@@ -790,14 +800,14 @@ def test_jeu(browser, base):
     verifie(page.locator(".essai").count() == 1 and page.locator(".em.oui").count() == attendu[0], "jeu : après un rechargement, la partie reprend où elle s'était arrêtée")
     # un nom qui n'existe pas n'est pas un essai
     page.fill("#jeu-nom", "zzzzqq"); page.keyboard.press("Enter"); page.wait_for_timeout(200)
-    verifie(page.locator(".essai").count() == 1 and "Aucune arme" in page.inner_text("#jeu-aide-saisie"), "jeu : un nom inconnu n'est pas un essai, et la page le dit")
+    verifie(page.locator(".essai").count() == 1 and "Ni arme ni détail" in page.inner_text("#jeu-aide-saisie"), "jeu : un nom inconnu n'est pas un essai, et la page le dit")
     # la victoire : résultat, partage, statistiques
     devine_au_clavier(page, E["cible"])
     page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
     verifie("Ces armes sont celles de" in page.inner_text("#jeu-resultat") and E["cible"] in page.inner_text("#jeu-resultat"), "jeu : la victoire donne le nom des armes")
     verifie(page.locator("#jeu-resultat img").count() == 1 and "Wikimedia Commons" in page.inner_text(".res-credit"), "jeu : l'image réelle est montrée avec son crédit")
     verifie(not page.locator("#jeu-saisie").is_visible(), "jeu : la saisie disparaît une fois la partie finie")
-    verifie("Pour aller plus loin" in page.inner_text(".jx-armorial"), "jeu : la partie finie, le bloc de l'encyclopédie n'est plus un indice")
+    verifie("Pour aller plus loin" in page.text_content(".jx-armorial"), "jeu : la partie finie, le bloc de l'encyclopédie n'est plus un indice")
     termes = page.evaluate("""() => Object.fromEntries(["D'azur à trois fleurs de lis d'or", "Écartelé d'or et de gueules, à quatre lionceaux de l'un à l'autre, armés et lampassés d'azur", "De gueules à la croix pattée d'argent", "De gueules à la fasce d'or", "Fascé d'or et de gueules"].map(t => [t, termesDe(t).map(x => x.terme)]))""")
     verifie(termes["D'azur à trois fleurs de lis d'or"][0] == "Fleur de lis", f"jeu : un terme au pluriel est reconnu ({termes})")
     verifie({"Écartelé", "Lion", "Armé", "Lampassé"} <= set(termes["Écartelé d'or et de gueules, à quatre lionceaux de l'un à l'autre, armés et lampassés d'azur"]), f"jeu : les mots du blasonnement sont reconnus ({termes})")

@@ -431,7 +431,8 @@ function blazonCore(s) {
   const lead = x2 && (seme || s.pos === "sur") ? `${parti || seme ? "," : ""} ${x2.alone}, ` : sep;
   if (c && !seme && s.pos === "sur") {
     const charge = agree("chargé", P.g, false);
-    return `${champ}${lead}${pieceTxt}${s.pbro ? " brochant sur le tout," : broche ? broche + "," : ""} ${charge} ${grpObj}`;
+    /* avec un seul meuble du champ, « brochant sur le tout » veut dire que la pièce passe sur lui (pbro) : on ne le dit pas s'il reste dessus, même sur un champ divisé */
+    return `${champ}${lead}${pieceTxt}${s.pbro ? " brochant sur le tout," : broche && !(x2 && s.nb2 === "1") ? broche + "," : ""} ${charge} ${grpObj}`;
   }
   if (c && !seme && (s.p === "chef" || s.p === "bordure" || s.p === "orle"))
     return `${champ}${parti ? "," : ""} ${groupe}${s.p === "chef" ? "" : dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt}`;

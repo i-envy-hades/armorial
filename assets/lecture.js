@@ -250,6 +250,7 @@ function pAccent0(P, i, m, tm) {
   if ((cle(P, k) === "du" || cle(P, k) === "de") && cle(P, k + 1) === "meme") { noter(); return { ta: tm, i: k + 2, cn: cnAttr ? tm : "" }; }
   const t = pEmail(P, k);
   if (t) noter();
+  if (!t && m.accentMot === "et") return { ta: null, i };       // « trois aigles échiquetées de gueules et d'une roue d'or » : ce « et » amène le groupe suivant, pas un second émail
   return t ? { ta: t.t, i: t.i, cn: cnAttr ? t.t : "" } : null;
 }
 /* NOM [contourné] ÉMAIL [contourné] [attribut] */
