@@ -465,13 +465,13 @@
   /* les autres jeux du jour ; les exercices sont dans S'exercer */
   function dessineAutres() {
     const L = [
-      ["atelier.html#defi=dessin", "Dessine-moi", Tr("Un blasonnement : composez l'écu", "A blazon: draw the shield"), "🎨", "or", "dessin"],
-      ["jour.html#intrus", "L'Intrus", Tr("Cinq manches : l'écu qui enfreint la règle", "Five rounds: the shield that breaks the rule"), "⚖️", "sinople", "intrus"],
-      ["jour.html#trous", "Le blasonnement à trous", Tr("Les mots qui manquent au texte", "The words missing from the blazon"), "📜", "pourpre", "trous"],
+      ["atelier.html#defi=dessin", Tr("Dessine-moi", "Draw It for Me (in French)"), Tr("Un blasonnement : composez l'écu", "A blazon: draw the shield"), "🎨", "or", "dessin"],
+      [versLangue("jour.html#intrus"), Tr("L'Intrus", "The Odd One Out"), Tr("Cinq manches : l'écu qui enfreint la règle", "Five rounds: the shield that breaks the rule"), "⚖️", "sinople", "intrus"],
+      [versLangue("jour.html#trous"), Tr("Le blasonnement à trous", "Fill in the Blazon"), Tr("Les mots qui manquent au texte", "The words missing from the blazon"), "📜", "pourpre", "trous"],
     ];
-    const fr = EN ? ' hreflang="fr"' : "";              // ces jeux ne sont qu'en français : leur nom reste le leur, le lien le signale
-    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"${fr}><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
-      + `<li><a class="jx-jeu c-azur" href="exercices.html"${fr}><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
+    const fr = EN ? ' hreflang="fr"' : "";              // ce qui n'est encore qu'en français : le lien le signale
+    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
+      + `<li><a class="jx-jeu c-azur" href="exercices.html"${fr}><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice (in French)")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */

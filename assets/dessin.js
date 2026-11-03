@@ -888,6 +888,7 @@ const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)} : <a href="ht
   if (count2(s) && s.f === "plein") check(s.tm2, s.t1, s.nb2 === "1" ? "Le second meuble" : "Les seconds meubles", "un champ");
   return out;
 }
+const ruleLue = St => (typeof ruleAllEn === "function" && LANGUE === "en" ? ruleAllEn(St) : ruleAll(St));
 function ruleAll(St) {
   const out = !St.q ? rule(St.A[0]) : cellNames(St).flatMap(([i, nom]) => rule(St.A[i]).map(w => `${nom} : ${w}`));
   return St.ab ? [...out, ...rule(St.A[4]).map(w => `Écusson : ${w}`)] : out;

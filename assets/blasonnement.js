@@ -480,6 +480,8 @@ function cellNames(St) {
       : m === "4" ? a.map((i, n) => [i, `Moitié ${nom} : quartier ${n + 1}`]) : [[a[0], `Moitié ${nom} (${h + 1})`]];
   });
 }
+/* le texte qu'on montre au lecteur : l'anglais sur les pages anglaises (assets/blasonnement-en.js) ; blazonAll, lui, reste la référence pour le lecteur de blasonnement */
+const blazonLu = St => (typeof blazonAllEn === "function" && LANGUE === "en" ? blazonAllEn(St) : blazonAll(St));
 function blazonAll(St) {
   const lo = b => b.charAt(0).toLowerCase() + b.slice(1);
   const bz = i => (i === 0 && St.q && St.gb === "1" ? blazonCore(St.A[0]) : blazon(St.A[i]));      // la brisure de tout l'écu se dit à la fin

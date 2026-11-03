@@ -332,7 +332,7 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
 DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
                "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"],
                "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"],
-               "compte.js": ["chrome.js"], "enligne.js": ["compte.js"], "jeu.js": ["chrome.js", "blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
+               "compte.js": ["chrome.js"], "blasonnement-en.js": ["blasonnement.js"], "enligne.js": ["compte.js"], "jeu.js": ["chrome.js", "blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
     for dependant, avant in DEPENDANCES.items():

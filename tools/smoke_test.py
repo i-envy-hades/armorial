@@ -955,6 +955,56 @@ def test_encyclopedie_en(browser, base):
     propre("encyclopédie en anglais", page, erreurs)
     page.context.close()
 
+def test_blason_en(browser, base):
+    """le blasonnement anglais : chaque meuble a son nom, et aucun mot français ne reste sur des écus tirés au hasard, dans toutes les poses"""
+    page, erreurs = ouvre(browser, base, "en-daily.html", "#jj .jj-ecu")
+    r = page.evaluate("""() => {
+      const textes = [], rng = Gen.mulberry(4242);
+      for (let i = 0; i < 900; i++) textes.push(blazonAllEn(Gen.tireArmes(rng, 1 + i % 3)));
+      for (const m of ATL.meubles) for (const nb of ["1", "3", "seme"]) { const St = fresh(); St.A[0] = { ...ADEF, t1: "Azur", m: m.kind, nb, tm: "Or", ta: "Gueules" }; normalizeAll(St); textes.push(blazonAllEn(St)); }
+      for (const p of Object.keys(PIECES)) for (const ln of ["", "onde"]) for (const pos of ["autour", "sur", "sous"]) { const St = fresh(); St.A[0] = { ...ADEF, t1: "Argent", p, tp: "Gueules", ln, m: "lion", nb: "1", pos, tm: "Or", ta: "Azur" }; normalizeAll(St); textes.push(blazonAllEn(St)); }
+      for (const q of ["2", "4", "p", "c", "t", "l"]) { const St = fresh(); St.q = q; St.ab = "1"; normalizeAll(St); textes.push(blazonAllEn(St)); }
+      for (const ray of RAYS) for (const n of rayNs(ray)) { const St = fresh(); St.A[0] = { ...ADEF, f: "ray", ray, n, t1: "Or", t2: "Gueules", m: "" }; normalizeAll(St); textes.push(blazonAllEn(St)); }
+      for (const pt of DATA.partitions) { const St = fresh(); St.A[0] = { ...ADEF, f: "part", part: pt.kind, t1: "Or", t2: "Gueules", t3: "Azur", m: "" }; normalizeAll(St); textes.push(blazonAllEn(St)); }
+      return { manque: ATL.meubles.filter(m => !MEUBLE_EN[m.kind]).map(m => m.kind), textes };
+    }""")
+    verifie(not r["manque"], f"blasonnement anglais : chaque meuble a son nom anglais ({r['manque'][:6]})")
+    francais = re.compile(r"\\b(de|du|des|le|la|les|au|aux|un|une|et|à|chargé|accompagné|sur|brochant|plein|mouvant|armé|lampassé|couronné|undefined|NaN)\\b|\\bd'|\\bl'", re.I)
+    faux = [t for t in r["textes"] if francais.search(t.replace("fleur-de-lis", "").replace("fleurs-de-lis", ""))]
+    verifie(not faux, f"blasonnement anglais : aucun mot français sur {len(r['textes'])} écus ({faux[:3]})")
+    propre("blasonnement anglais", page, erreurs)
+    page.context.close()
+
+def test_jeux_du_jour_en(browser, base):
+    """L'Intrus et le blasonnement à trous en anglais : les mêmes écus que la page française, le texte en anglais"""
+    fr, e0 = ouvre(browser, base, "jour.html#intrus", "#jj .jj-ecu")
+    ecus_fr = fr.evaluate("JeuDuJour.M[0].ecus.map(e => blazonAll(e.St))")
+    fr.goto(f"{base}/jour.html#trous"); fr.wait_for_selector("#jj select.jj-trou", timeout=20000)      # changer de jeu recharge la page (hashchange)
+    trou_fr = fr.evaluate("blazonAll(JeuDuJour.Q.St)")
+    fr.context.close()
+    page, erreurs = ouvre(browser, base, "en-daily.html#intrus", "#jj .jj-ecu")
+    verifie(page.evaluate("JeuDuJour.M[0].ecus.map(e => blazonAll(e.St))") == ecus_fr, "jeux du jour en anglais : L'Intrus tire les mêmes écus")
+    verifie("Round 1 of 5" in page.inner_text("#jj") and "rule of tincture" in page.inner_text(".jj-ask"), "jeux du jour en anglais : L'Intrus est en anglais")
+    page.click(".jj-ecu[data-k='0']"); page.wait_for_selector(".jj-fb")
+    faute = page.inner_text(".jj-fb")
+    verifie(("Metal on metal" in faute or "Colour on colour" in faute or "same tincture" in faute) and " sur " not in faute, f"jeux du jour en anglais : la faute est dite en anglais ({faute[:120]})")
+    verifie(page.locator("#jx-langue[data-langue='fr']").count() == 1, "jeux du jour en anglais : le bouton FR est là")
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "en-daily.html#trous", "#jj select.jj-trou")
+    verifie(page.evaluate("blazonAll(JeuDuJour.Q.St)") == trou_fr, "jeux du jour en anglais : à trous tire le même écu")
+    verifie(page.evaluate("JeuDuJour.Q.trous.length") >= 3 and page.evaluate("JeuDuJour.Q.trous.every(c => c.options.includes(c.juste))"), "jeux du jour en anglais : les trous ont leur réponse parmi les choix")
+    # sur 200 tirages : les trous français se retrouvent tous dans le texte anglais, au bon endroit
+    r = page.evaluate("""() => { const pb = []; for (let g = 1; g <= 200; g++) { const q = JeuDuJour.essaiTrous(g); if (!q) continue; if (q.trous.length < 3) pb.push([g, q.texte, q.trous.length]); for (const c of q.trous) if (q.texte.slice(c.i, c.j) !== c.juste || !c.options.includes(c.juste) || new Set(c.options).size < 3) pb.push([g, q.texte, c.juste, c.options]); } return pb; }""")
+    verifie(not r, f"jeux du jour en anglais : 200 tirages de trous corrects ({r[:3]})")
+    # une partie : tout juste du premier coup
+    for k, juste in enumerate(page.evaluate("JeuDuJour.Q.trous.map(c => c.juste)")):
+        page.select_option(f"select.jj-trou[data-k='{k}']", juste)
+    page.click("#jj-ok"); page.wait_for_selector("#jj-resultat:not([hidden])", timeout=8000)
+    verifie("First try" in page.inner_text("#jj-resultat"), "jeux du jour en anglais : la partie se termine en anglais")
+    verifie("Fill in the Blazon" in page.evaluate("document.title"), "jeux du jour en anglais : le titre est traduit")
+    propre("jeux du jour en anglais", page, erreurs)
+    page.context.close()
+
 def test_recherche_en(browser, base):
     """la recherche en anglais : on trouve par l'anglais et par le français, et les résultats mènent aux pages anglaises"""
     page, erreurs = ouvre(browser, base, "en-search.html", "#aide")
@@ -1090,6 +1140,8 @@ def main():
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
                        ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),
+                       ("blasonnement anglais", lambda: test_blason_en(browser, base_en_ligne)),
+                       ("jeux du jour en anglais", lambda: test_jeux_du_jour_en(browser, base_en_ligne)),
                        ("recherche en anglais", lambda: test_recherche_en(browser, base)),
                        ("404 en anglais", lambda: test_404_en(browser, base)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),

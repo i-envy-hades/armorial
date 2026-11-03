@@ -12,7 +12,8 @@
   <url><loc>https://armorial.web.app/atelier.html</loc></url>
   <url><loc>https://armorial.web.app/transmission.html</loc></url>
   <url><loc>https://armorial.web.app/exercices.html</loc></url>
-  <url><loc>https://armorial.web.app/jour.html</loc></url>
+  <url><loc>https://armorial.web.app/jour.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/jour.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-daily.html"/></url>
+  <url><loc>https://armorial.web.app/en-daily.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/jour.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-daily.html"/></url>
   <url><loc>https://armorial.web.app/recherche.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/recherche.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-search.html"/></url>
   <url><loc>https://armorial.web.app/en-search.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/recherche.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-search.html"/></url>
 </urlset>

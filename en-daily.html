@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The daily games — The Armorial</title>
+<meta name="description" content="Every day, the same for everyone: The Odd One Out (the shield that breaks the rule of tincture) and Fill in the Blazon (the words missing from a shield's text).">
+<meta name="theme-color" content="#f7f3ea">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-daily.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/jour.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-daily.html">
+<meta property="og:site_name" content="The Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="The daily games — The Armorial">
+<meta property="og:description" content="The Odd One Out and Fill in the Blazon: two games a day, the same for everyone.">
+<meta property="og:url" content="https://armorial.web.app/en-daily.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — la page anglaise de jour.html : mêmes écus, mêmes scripts et mêmes id (tools/check_data.py les compare). Textes : Tr(), blazonLu() (assets/blasonnement-en.js).
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/compte.css">
+<link rel="stylesheet" href="assets/jeu.css">
+</head>
+<body class="jeu">
+<header class="mast" data-page="jour"></header>
+<script src="assets/chrome.js"></script>
+
+<main class="jx" id="jeu">
+  <div class="jx-barre">
+    <a class="jx-ic" href="en.html" title="Shield of the Day"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg><span class="sr">Back to Shield of the Day</span></a>
+    <h1 class="jx-logo"><span id="jj-titre">The daily <em>games</em></span></h1>
+    <span class="jx-droite">
+      <a class="jx-ic jx-langue" id="jx-langue" href="jour.html" hreflang="fr" lang="fr" data-langue="fr" title="Jouer en français">FR</a>
+      <button type="button" class="jx-ic" id="jx-stats" aria-haspopup="dialog" title="My statistics"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 13h3.5v7H4zM10.25 8h3.5v12h-3.5zM16.5 4H20v16h-3.5z"/></svg><span class="sr">My statistics</span></button>
+    </span>
+  </div>
+
+  <nav class="jx-niveaux jj-onglets" aria-label="Game">
+    <a href="#intrus" class="jx-niv" data-jeu="intrus"><b>The Odd One Out</b><small>the rule of tincture</small></a>
+    <a href="#trous" class="jx-niv" data-jeu="trous"><b>Fill in the Blazon</b><small>the missing words</small></a>
+    <a href="atelier.html#defi=dessin" class="jx-niv" hreflang="fr"><b>Draw It for Me</b><small>in the Atelier, in French</small></a>
+  </nav>
+
+  <noscript><p class="nojs">The games run on JavaScript: please enable it to play.</p></noscript>
+  <p class="jeu-chargement" id="jj-chargement" role="status"><span class="jx-roue" aria-hidden="true"></span>The shields are being prepared…</p>
+  <section class="jj" id="jj" aria-live="polite" hidden></section>
+  <section class="jeu-resultat" id="jj-resultat" tabindex="-1" hidden></section>
+</main>
+
+<dialog class="jx-dlg" id="dlg-stats" aria-labelledby="jj-stats-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Close">×</button>
+  <div id="jj-stats"></div>
+</dialog>
+
+<footer class="jx-pied">
+  <p><b>The Armorial</b> — the daily games. In French they are called <i lang="fr">L'Intrus</i> and <i lang="fr">Le blasonnement à trous</i>. The shields are composed and drawn by the <a href="atelier.html" hreflang="fr">Atelier</a> engine; they are the same for everyone, every day, and change at midnight (Paris time). To practise without limit: <a href="exercices.html" hreflang="fr">Practice</a>, in French for now.</p>
+  <p>Your results stay in this browser, or follow your online account if you have one. Page layout under a <b>CC BY-SA 4.0</b> licence.</p>
+</footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/blasonnement-en.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/jour-jeux.js"></script>
+</body>
+</html>
