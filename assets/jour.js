@@ -77,7 +77,15 @@ const Jour = (() => {
   /* le barème de l'Écu du jour (ci-dessus) : 100 points pour un écu trouvé du premier coup, 15 de moins par essai en plus, 3 de moins par détail,
      10 au moins, le tout multiplié selon le niveau ; une défaite ne rapporte rien. Rien de tout cela n'est enregistré : les points se recalculent
      à partir des essais et des détails, si bien que les parties déjà jouées comptent et que le barème peut changer. */
-  const totalPoints = () => Object.keys(Compte.points).reduce((t, jeu) => t + Compte.scoresDe[jeu](Compte.carnet(jeu)).filter(x => x.gagne).reduce((a, x) => a + Compte.points[jeu](x.essais, x.details), 0), 0);
+  const somme = garde => Object.keys(Compte.points).reduce((t, jeu) => t + Compte.scoresDe[jeu](Compte.carnet(jeu)).filter(x => x.gagne && garde(x)).reduce((a, x) => a + Compte.points[jeu](x.essais, x.details), 0), 0);
+  const totalPoints = () => somme(() => true);
+  /* la semaine va du lundi au dimanche, à l'heure de Paris : le n° 4, le lundi 12 octobre 2026, ouvre la semaine 1 */
+  const semaine = (n = numero()) => Math.floor((n + 3) / 7);
+  const pointsSemaine = (w = semaine()) => somme(x => semaine(x.jour) === w);
+  /* les titres : les quatre grades des officiers d'armes (le glossaire, à « Héraut »), selon le total des points */
+  const TITRES = [[250, Tr("Poursuivant d'armes", "Pursuivant")], [1000, Tr("Héraut", "Herald")], [5000, Tr("Maréchal d'armes", "Marshal of Arms")], [20000, Tr("Roi d'armes", "King of Arms")]].map(([seuil, nom]) => ({ seuil, nom }));
+  const titre = points => [...TITRES].reverse().find(t => points >= t.seuil) || null;
+  const titreSuivant = points => TITRES.find(t => points < t.seuil) || null;
   /* le carnet d'un jeu, prêt à servir : lire le jour n, l'enregistrer, le clore */
   function carnet(jeu) {
     let C = Compte.carnet(jeu) || vide(jeu);
@@ -101,5 +109,5 @@ const Jour = (() => {
     catch (e) { window.prompt("Copiez votre résultat :", texte); }
   }
 
-  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, partage };
+  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, partage };
 })();

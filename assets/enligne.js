@@ -153,8 +153,10 @@
   async function pousse() {
     if (!S) return;
     const M = API.interne.lire(), uid = S.uid, y = registre(uid);
-    /* ce qu'on dit de soi pour le classement général : parties, victoires, essais moyens de chaque jeu, et le total des points */
+    /* ce qu'on dit de soi pour les classements : parties, victoires, essais moyens de chaque jeu, le total des points et ceux de la semaine,
+       « s_<semaine> » (celle-ci et la précédente, pour le tableau d'honneur ; les plus anciennes disparaissent d'elles-mêmes) */
     const resume = { points: Jour.totalPoints() }, nouveauxScores = [];
+    for (const w of [Jour.semaine(), Jour.semaine() - 1]) { const p = Jour.pointsSemaine(w); if (p) resume[`s_${w}`] = p; }
     for (const [jeu, c] of Object.entries(M.carnets)) {
       const sc = API.scoresDe[jeu] ? API.scoresDe[jeu](c) : [], vic = sc.filter(x => x.gagne);
       resume[`j_${jeu}`] = sc.length; resume[`v_${jeu}`] = vic.length;
@@ -349,11 +351,19 @@
     return out;
   }
   /* un classement se garde trente secondes dans l'onglet : chaque lecture de document compte dans le quota gratuit de Firebase */
-  const enCache = async (cle, frais, charge) => {
-    try { const c = JSON.parse(sessionStorage.getItem("armorial.cl." + cle) || "null"); if (!frais && c && Date.now() - c.t < 30000) return c.v; } catch (e) { /* sans cache */ }
+  const enCache = async (cle, frais, charge, duree = 30000) => {
+    try { const c = JSON.parse(sessionStorage.getItem("armorial.cl." + cle) || "null"); if (!frais && c && Date.now() - c.t < duree) return c.v; } catch (e) { /* sans cache */ }
     const v = await charge();
     try { sessionStorage.setItem("armorial.cl." + cle, JSON.stringify({ t: Date.now(), v })); } catch (e) { /* idem */ }
     return v;
+  };
+  /* combien de documents répondent à ce filtre : une lecture, sans les lire tous ; sans réponse, le classement s'affiche quand même, sans ce nombre */
+  const compte = async (collectionId, where) => {
+    try {
+      const r = await requete(FS + ":runAggregationQuery", { methode: "POST", corps: { structuredAggregationQuery: { structuredQuery: { from: [{ collectionId }], where }, aggregations: [{ alias: "n", count: {} }] } } });
+      const x = (r || []).find(y => y.result);
+      return x ? +x.result.aggregateFields.n.integerValue : null;
+    } catch (e) { return null; }
   };
   /* Les meilleurs du jour : on lit jusqu'à cent victoires et on les classe ici par points, qui ne sont pas enregistrés. Avec l'index composite
      de SETUP.md (étape 5) et « "index": true » dans data/compte.json, ces cent-là sont celles qui ont demandé le moins d'essais. */
@@ -365,16 +375,29 @@
       catch (e) { if (e.code !== "FAILED_PRECONDITION") throw e; }
     }
     if (!r) r = await requ({ limit: 100 });
-    const top = nettoie(r, "document").map(x => decChamps(x.document.fields)).map(x => ({ ...x, details: x.details | 0, points: API.points[jeu](x.essais, x.details | 0) })).sort((a, b) => b.points - a.points || (a.cree < b.cree ? -1 : 1)).slice(0, 10);
-    const pf = await profilsDe(top.map(x => x.uid));
-    return top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details, points: x.points }));
+    const tous = nettoie(r, "document").map(x => decChamps(x.document.fields)).map(x => ({ ...x, details: x.details | 0, points: API.points[jeu](x.essais, x.details | 0) })).sort((a, b) => b.points - a.points || (a.cree < b.cree ? -1 : 1));
+    const top = tous.slice(0, 10), pf = await profilsDe(top.map(x => x.uid));
+    const [gagnants, joueurs] = await Promise.all([compte("scores", filtre("vic", "EQUAL", `${jeu}|${+jour}`)), compte("scores", { compositeFilter: { op: "AND", filters: [filtre("jeu", "EQUAL", jeu), filtre("jour", "EQUAL", +jour)] } })]);
+    return { top: top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details, points: x.points, cumul: pf[x.uid].points || 0 })),
+      points: tous.map(x => x.points), gagnants: gagnants === null ? tous.length : gagnants, joueurs };
   });
-  /* Le classement général : les points de tous les niveaux, tels que chacun les a envoyés avec son profil à sa dernière visite */
-  API.classementGeneral = ({ frais = false } = {}) => enCache("g", frais, async () => {
-    const r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre("points", "GREATER_THAN", 0), orderBy: [{ field: { fieldPath: "points" }, direction: "DESCENDING" }], limit: 10 } } });
+  /* Les meilleurs selon un champ du profil, tel que chacun l'a envoyé à sa dernière visite ; « moi » : mes points, pour dire ma place */
+  const meilleursPar = async (champ, limit) => {
+    const r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre(champ, "GREATER_THAN", 0), orderBy: [{ field: { fieldPath: champ }, direction: "DESCENDING" }], limit } } });
     return nettoie(r, "document").map(x => decChamps(x.document.fields)).filter(p => p.pseudo)
-      .map(p => ({ pseudo: p.pseudo, armes: p.armes, points: p.points, victoires: Object.keys(API.points).reduce((t, jeu) => t + (p[`v_${jeu}`] || 0), 0) }));
+      .map(p => ({ pseudo: p.pseudo, armes: p.armes, points: p[champ], cumul: p.points || 0, victoires: Object.keys(API.points).reduce((t, jeu) => t + (p[`v_${jeu}`] || 0), 0) }));
+  };
+  const classementPar = (champ, frais, moi) => enCache(`p|${champ}|${moi}`, frais, async () => {
+    const [top, total, devant] = await Promise.all([meilleursPar(champ, 10), compte("profils", filtre(champ, "GREATER_THAN", 0)), moi ? compte("profils", filtre(champ, "GREATER_THAN", moi)) : null]);
+    return { top, total, devant };
   });
+  API.classementGeneral = ({ frais = false, moi = 0 } = {}) => classementPar("points", frais, moi);
+  API.classementSemaine = (w, { frais = false, moi = 0 } = {}) => classementPar(`s_${w}`, frais, moi);
+  /* Le tableau d'honneur : le ou les premiers d'une semaine finie ; il ne change plus guère, d'où le cache d'une heure */
+  API.honneur = w => enCache(`h|${w}`, false, async () => {
+    const l = await meilleursPar(`s_${w}`, 3);
+    return l.filter(x => x.points === l[0].points);
+  }, 3600000);
 
   /* ---------- les jeux du jour : jours/{n}, lisible seulement une fois le jour venu (heure du serveur, voir firestore.rules) ---------- */
   API.jour = async n => {

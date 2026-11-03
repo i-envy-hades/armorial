@@ -202,20 +202,29 @@ class H(http.server.SimpleHTTPRequestHandler):
                 ch = court(n)
                 out.append({"found": {"name": n, "fields": v_enc(DB["docs"][ch])}} if ch in DB["docs"] else {"missing": n})
             return self.send(200, out)
+        if op == "runAggregationQuery":
+            q = b["structuredAggregationQuery"]["structuredQuery"]
+            return self.send(200, [{"result": {"aggregateFields": {"n": {"integerValue": str(len(lignes(q)))}}}, "readTime": "2026-10-10T00:00:00Z"}])
         if op == "runQuery":
-            q = b["structuredQuery"]; col = q["from"][0]["collectionId"]
-            rows = [(k, v) for k, v in DB["docs"].items() if k.startswith(col + "/") and k.count("/") == 1]
+            q = b["structuredQuery"]
             f = (q.get("where") or {}).get("fieldFilter")
             if f and q.get("orderBy") and not AVEC_INDEX and q["orderBy"][0]["field"]["fieldPath"] != f["field"]["fieldPath"]:
                 raise Refus(400, "FAILED_PRECONDITION", "The query requires an index.")
-            if f:
-                champ, op2, cible = f["field"]["fieldPath"], f["op"], val(f["value"])
-                rows = [(k, v) for k, v in rows if champ in v and (v[champ] == cible if op2 == "EQUAL" else v[champ] > cible)]
+            rows = lignes(q)
             for o in reversed(q.get("orderBy") or []):
                 rows.sort(key=lambda kv: kv[1].get(o["field"]["fieldPath"], 0), reverse=o.get("direction") == "DESCENDING")
             rows = rows[: q.get("limit", 1000)]
             return self.send(200, [{"document": {"name": f"{BASE}/{k}", "fields": v_enc(v)}} for k, v in rows] or [{"readTime": "2026-10-10T00:00:00Z"}])
         self.send(404, {})
+
+def lignes(q):                                          # les documents d'une requête : un filtre, ou plusieurs (composite, ET)
+    col = q["from"][0]["collectionId"]
+    rows = [(k, v) for k, v in DB["docs"].items() if k.startswith(col + "/") and k.count("/") == 1]
+    w = q.get("where") or {}
+    for f in ([x["fieldFilter"] for x in w["compositeFilter"]["filters"]] if "compositeFilter" in w else [w["fieldFilter"]] if "fieldFilter" in w else []):
+        champ, op, cible = f["field"]["fieldPath"], f["op"], val(f["value"])
+        rows = [(k, v) for k, v in rows if champ in v and (v[champ] == cible if op == "EQUAL" else v[champ] > cible)]
+    return rows
 
 def v_enc(d):                                           # python -> valeurs Firestore
     def e(v):
