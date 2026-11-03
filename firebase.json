@@ -23,6 +23,16 @@
         "source": "/jeu.html",
         "destination": "/",
         "type": 301
+      },
+      {
+        "source": "/en",
+        "destination": "/en.html",
+        "type": 301
+      },
+      {
+        "source": "/en/",
+        "destination": "/en.html",
+        "type": 301
       }
     ],
     "headers": [

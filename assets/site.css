@@ -250,3 +250,7 @@ main:focus,#wrap:focus{outline:none}
 #agrandi img{display:block;margin:0 auto;max-width:100%;max-height:76vh;width:auto;height:auto;filter:drop-shadow(0 10px 14px rgba(26,23,18,.26))}
 #agrandi .ag-t{margin:.8rem 0 0;font-size:.95rem}
 #agrandi .ag-x{position:absolute;top:.3rem;right:.6rem;border:0;background:none;font-size:1.8rem;line-height:1;color:var(--ink);cursor:pointer}
+
+/* la langue : les liens d'une page anglaise vers une page française sont marqués ; qui joue en anglais est prévenu sur les pages françaises */
+html[lang="en"] #nav-pages a[hreflang="fr"]::after,html[lang="en"] .res-liens a[hreflang="fr"]::after{content:" FR";font-size:.68em;letter-spacing:.04em;opacity:.7;vertical-align:.08em}
+.bandeau-langue{margin:0;padding:.45rem 1rem;background:var(--vellum);border-bottom:1px solid rgba(0,0,0,.14);font-size:.9rem;text-align:center}

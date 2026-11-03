@@ -14,6 +14,19 @@ if (location.hostname === "i-envy-hades.github.io") location.replace("https://ar
    (« index.html#emaux ») arrive sur le jeu, qui le renvoie au bon endroit (le jeu, lui, n'emploie que « #n=3 »). */
 if (/^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu)$/.test(location.hash)) location.replace("encyclopedie.html" + location.hash);
 
+/* La langue. Le jeu existe en français (index.html) et en anglais (en.html) ; le reste du site n'est qu'en français pour l'instant.
+   Une page dit sa langue par <html lang> ; Tr(fr, en) choisit le texte, pour tous les scripts qui servent aux deux pages.
+   Le choix du joueur est gardé : celui qui joue en anglais revient à en.html quand un lien le ramène à l'accueil, et chaque page
+   qui n'est qu'en français le lui dit. Le lien qui change de langue porte data-langue. */
+const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
+const Tr = (fr, en) => (LANGUE === "en" ? en : fr);
+const CLE_LANGUE = "armorial.langue";
+const langueChoisie = () => { try { return localStorage.getItem(CLE_LANGUE); } catch (e) { return null; } };
+const choisitLangue = l => { try { localStorage.setItem(CLE_LANGUE, l); } catch (e) { /* sans mémoire : la langue de la page suffit */ } };
+if (LANGUE === "en") choisitLangue("en");
+else if (langueChoisie() === "en" && /^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, ""))) location.replace("en.html" + location.search + location.hash);
+document.addEventListener("click", e => { const a = e.target.closest && e.target.closest("a[data-langue]"); if (a) choisitLangue(a.dataset.langue); });
+
 /* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),
    celui qui porte l'accent le garde dans son adresse (« terme-bandé ») : sans cela les deux auraient la même. */
 function termeId(terme, glossaire) {
@@ -36,9 +49,11 @@ function termeId(terme, glossaire) {
     ["exercices", "exercices.html", "S'exercer"],
     ["recherche", "recherche.html", "Rechercher"],
   ];
-  const BRAND = `<a class="brand" href="./"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>L'Armorial</a>`;
+  const NOMS_EN = { jeu: "Play", jour: "Daily games", encyclopedie: "Encyclopedia", blasons: "Real arms", personnages: "People", lignees: "Lineages", atelier: "Atelier", transmission: "Transmission", exercices: "Practice", recherche: "Search" };
+  const ACCUEIL = Tr("./", "en.html");
+  const BRAND = `<a class="brand" href="${ACCUEIL}"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>${Tr("L'Armorial", "The Armorial")}</a>`;
   const MENU = `<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bars" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg><span>Menu</span></button>`;
-  const SEAL = `<svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau de cire">
+  const SEAL = `<svg class="seal" viewBox="0 0 100 100" role="img" aria-label="${Tr("Sceau de cire", "Wax seal")}">
     <defs>
       <radialGradient id="wax" cx="38%" cy="32%" r="72%">
         <stop offset="0%" stop-color="#c0362f"/>
@@ -55,11 +70,15 @@ function termeId(terme, glossaire) {
   const head = document.querySelector("header.mast[data-page]");
   if (head) {
     const here = head.dataset.page;
-    head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="Pages du site">` + PAGES.map(([id, href, label]) =>
-      `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + MENU);
+    /* en anglais, seul le jeu est traduit : les autres liens du menu sont marqués « FR » (site.css, a[hreflang]) */
+    head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="${Tr("Pages du site", "Site pages")}">` + PAGES.map(([id, href, label]) =>
+      LANGUE === "en" ? `<a href="${id === "jeu" ? ACCUEIL : href}"${id === "jeu" ? "" : ' hreflang="fr"'}${id === here ? ' class="here" aria-current="page"' : ""}>${NOMS_EN[id]}</a>`
+        : `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + MENU);
+    /* qui joue en anglais et arrive sur une page qui n'est qu'en français le lit tout de suite, et sait comment revenir */
+    if (LANGUE === "fr" && langueChoisie() === "en" && here !== "jeu") head.insertAdjacentHTML("afterend", `<p class="bandeau-langue" lang="en">This page is only available in French for now. <a href="en.html">Back to the game in English</a></p>`);
     /* menu repliable (écrans étroits : voir site.css) : s'ouvre au bouton, se ferme à Échap, à un clic ailleurs, ou en suivant un lien */
     const btn = head.querySelector(".menu-btn");
-    const ouvre = on => { head.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); btn.querySelector("span").textContent = on ? "Fermer" : "Menu"; };
+    const ouvre = on => { head.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); btn.querySelector("span").textContent = on ? Tr("Fermer", "Close") : "Menu"; };
     btn.addEventListener("click", () => ouvre(!head.classList.contains("open")));
     head.querySelector("nav").addEventListener("click", e => { if (e.target.closest("a")) ouvre(false); });
     document.addEventListener("keydown", e => { if (e.key === "Escape" && head.classList.contains("open")) { ouvre(false); btn.focus(); } });
@@ -73,7 +92,7 @@ function termeId(terme, glossaire) {
     if (!cible || !head) return;
     if (!cible.id) cible.id = "contenu";
     cible.setAttribute("tabindex", "-1");
-    head.insertAdjacentHTML("beforebegin", `<a class="skip" href="#${cible.id}">Aller au contenu</a>`);
+    head.insertAdjacentHTML("beforebegin", `<a class="skip" href="#${cible.id}">${Tr("Aller au contenu", "Skip to content")}</a>`);
   });
 
   /* le sceau : le pied de page n'existe pas encore à cet instant */

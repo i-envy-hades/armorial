@@ -26,6 +26,7 @@ body.jeu a{color:var(--j-bleu)}
 .jx-droite{display:flex;align-items:center;gap:.35rem}
 .jx-ic{display:grid;place-items:center;width:40px;height:40px;padding:0;border:2px solid var(--j-bord);border-radius:12px;background:var(--j-carte);color:var(--j-encre);cursor:pointer;box-shadow:0 2px 0 var(--j-bord);transition:transform .1s,box-shadow .1s}
 .jx-ic svg{width:22px;height:22px}
+.jx-langue{font-size:.8rem;font-weight:800;text-decoration:none;letter-spacing:.03em}
 .jx-ic:hover{border-color:var(--j-or)}
 .jx-ic:active{transform:translateY(2px);box-shadow:none}
 .jx-moi{display:flex;align-items:center;gap:.4rem;height:40px;max-width:11rem;padding:0 .7rem 0 .35rem;border:2px solid var(--j-bord);border-radius:12px;background:var(--j-carte);font:inherit;font-weight:700;font-size:.92rem;color:var(--j-encre);cursor:pointer;box-shadow:0 2px 0 var(--j-bord)}

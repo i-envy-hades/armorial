@@ -15,7 +15,11 @@
    - les scores et les essais du jour : un carnet par niveau (ecu_page, ecu, ecu_heraut ; assets/jour.js et assets/compte.js).
 
    Le niveau : index.html?niveau=page (ou chevalier, heraut) ; sans paramètre, le dernier joué.
-   Pour rejouer un jour passé : index.html#n=3 (hors concours : ni série ni statistiques). */
+   Pour rejouer un jour passé : index.html#n=3 (hors concours : ni série ni statistiques).
+
+   Deux langues : la même page de jeu sert index.html et en.html (« Shield of the Day »), avec les mêmes écus, carnets et classements.
+   Le français reste la clé de tout (les noms de cartes du document du jour et du carnet, les traits comparés) ; l'anglais ne sert qu'à
+   l'affichage et à la saisie : data/en.json donne le nom, la description des cartes et le vocabulaire (voc), Tr(fr, en) le reste. */
 (async () => {
   "use strict";
   const $ = s => document.querySelector(s);
@@ -23,12 +27,16 @@
   const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
   const EMAUX = ["Or", "Argent", "Gueules", "Azur", "Sable", "Sinople", "Pourpre", "Hermine", "Vair"];
   const GRIS = "#d3ccb7";                                           // un émail pas encore trouvé
+  const EN = LANGUE === "en";
+  let TRAD = { cartes: {} };                                        // data/en.json, en anglais seulement
+  const voc = (table, s) => (EN && TRAD[table] && TRAD[table][s]) || s;
+  const nomEmail = n => voc("emaux", n).toLowerCase();
 
   /* ---------- le niveau : un écu, un carnet et un classement chacun ---------- */
   const NIVEAUX = {
-    page: { jeu: "ecu_page", nom: "Écuyer", essais: 8, dit: "Des États et des cantons connus, aux armes simples ; huit essais." },
-    chevalier: { jeu: "ecu", nom: "Chevalier", essais: 6, dit: "Des armes de toutes sortes ; six essais." },
-    heraut: { jeu: "ecu_heraut", nom: "Seigneur", essais: 5, dit: "Maisons, écartelés, figures rares ; cinq essais, et la rubrique n'est pas dite." },
+    page: { jeu: "ecu_page", nom: Tr("Écuyer", "Squire"), essais: 8, dit: Tr("Des États et des cantons connus, aux armes simples ; huit essais.", "Well-known states and cantons, with simple arms; eight guesses.") },
+    chevalier: { jeu: "ecu", nom: Tr("Chevalier", "Knight"), essais: 6, dit: Tr("Des armes de toutes sortes ; six essais.", "Arms of all kinds; six guesses.") },
+    heraut: { jeu: "ecu_heraut", nom: Tr("Seigneur", "Lord"), essais: 5, dit: Tr("Maisons, écartelés, figures rares ; cinq essais, et la rubrique n'est pas dite.", "Noble houses, quartered arms, rare charges; five guesses, and the category isn't shown.") },
   };
   const CLE_NIV = "armorial.jeu.niveau";
   const NIV = (() => {
@@ -44,12 +52,13 @@
   const actifs = e => { const n = e.q === "4" ? 4 : e.q === "" ? 1 : 2, idx = [...Array(n).keys()]; if (e.ab) idx.push(4); return idx; };    // les armes réellement posées sur l'écu
   const Q_NOM = { p: "Parti", c: "Coupé", t: "Tranché", l: "Taillé", "2": "Écartelé", "4": "Écartelé" };
   const RAY_NOM = { barry: "Fascé", barryonde: "Fascé ondé", paly: "Palé", bendy: "Bandé", bendysin: "Barré", chevronny: "Chevronné", chequy: "Échiqueté", lozengy: "Fuselé", lozengybend: "Fuselé en bande", lozengysin: "Fuselé en barre" };
-  const PART_NOM = { parti: "Parti", coupe: "Coupé", tranche: "Tranché", taille: "Taillé", tierce: "Tiercé", gironne: "Gironné" };
+  const PART_NOM = { parti: "Parti", coupe: "Coupé", tranche: "Tranché", taille: "Taillé", tierce: "Tiercé", "tierce-pal": "Tiercé en pal", ecartele: "Écartelé", gironne: "Gironné" };
   /* des meubles « de la même famille » : toutes les aigles, tous les lions (léopards compris), toutes les croix… */
   const FAMILLE_A_PART = { leopard: "lion", croisette: "croix", "rencontre-boeuf": "boeuf" };
   const famille = k => FAMILLE_A_PART[k] || k.split("-")[0].replace(/\d+$/, "");
   const nomMeuble = k => { const m = ATL.meubles.find(x => x.kind === k); return cap1((m && (m.sing || m.nom)) || k); };
   const nomPiece = p => cap1(String(p).replace(/-/g, " "));
+  const affMeuble = k => voc("meubles", nomMeuble(k));
 
   function traits(c) {
     const e = c.etat, A = e.A, idx = actifs(e), A0 = A[0];
@@ -68,57 +77,63 @@
     const inter = (a, b) => a.filter(x => b.includes(x));
     const memes = (a, b) => a.length === b.length && inter(a, b).length === a.length;
     const emaux = { cls: memes(g.emaux, m.emaux) ? "ok" : inter(g.emaux, m.emaux).length ? "mid" : "no", pts: g.emaux.map(n => ({ n, dans: m.emaux.includes(n) })) };
-    const compo = { cls: g.compo === m.compo ? "ok" : "no", txt: g.compo };
-    const pieces = { cls: !g.pieces.length && !m.pieces.length ? "ok" : memes(g.pieces, m.pieces) ? "ok" : inter(g.pieces, m.pieces).length ? "mid" : "no", txt: g.pieces.length ? g.pieces.join(", ") : "Aucune" };
+    const compo = { cls: g.compo === m.compo ? "ok" : "no", txt: voc("compo", g.compo) };
+    const pieces = { cls: !g.pieces.length && !m.pieces.length ? "ok" : memes(g.pieces, m.pieces) ? "ok" : inter(g.pieces, m.pieces).length ? "mid" : "no", txt: g.pieces.length ? g.pieces.map(x => voc("pieces", x)).join(", ") : Tr("Aucune", "None") };
     const mf = m.meubles.map(famille);
     const puces = g.meubles.map(k => ({ k, cls: m.meubles.includes(k) ? "ok" : mf.includes(famille(k)) ? "mid" : "no" }));
     const meubles = { puces, cls: !g.meubles.length && !m.meubles.length ? "ok" : puces.length && memes(g.meubles, m.meubles) ? "ok" : puces.some(p => p.cls !== "no") ? "mid" : "no" };
     const nombre = { n: g.nombre, cls: g.nombre === m.nombre ? "ok" : "no", fl: g.nombre && m.nombre && g.nombre !== m.nombre ? (m.nombre > g.nombre ? "↑" : "↓") : "" };
-    const cat = { cls: g.cat === m.cat ? "ok" : "no", txt: g.cat };
+    const cat = { cls: g.cat === m.cat ? "ok" : "no", txt: voc("rubriques", g.cat) };
     return { emaux, compo, pieces, meubles, nombre, cat };
   }
   const COLS = NIV === "heraut" ? ["emaux", "compo", "pieces", "meubles", "nombre"] : ["emaux", "compo", "pieces", "meubles", "nombre", "cat"];
-  const ENTETE = { emaux: "Émaux", compo: "Écu", pieces: "Pièce", meubles: "Meubles", nombre: "Nombre", cat: "Rubrique" };
-  const SYMB = { ok: "✓", mid: "≈", no: "✗" }, EMOJI = { ok: "🟩", mid: "🟨", no: "⬜" }, VERDICT = { ok: "identique", mid: "proche", no: "différent" };
+  const ENTETE = Tr({ emaux: "Émaux", compo: "Écu", pieces: "Pièce", meubles: "Meubles", nombre: "Nombre", cat: "Rubrique" }, { emaux: "Tinctures", compo: "Field", pieces: "Ordinary", meubles: "Charges", nombre: "Number", cat: "Category" });
+  const SYMB = { ok: "✓", mid: "≈", no: "✗" }, EMOJI = { ok: "🟩", mid: "🟨", no: "⬜" }, VERDICT = Tr({ ok: "identique", mid: "proche", no: "différent" }, { ok: "identical", mid: "close", no: "different" });
 
   /* ---------- chargement ---------- */
   let CARTES = [];
   try {
     await chargerLecteur();                                          // data/data.json et data/atelier.json
-    const [b, p] = await Promise.all(["data/blasons.json", "data/personnages.json"].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); })));
+    const lit = u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); });
+    const [b, p] = await Promise.all(["data/blasons.json", "data/personnages.json"].map(lit));
+    if (EN) TRAD = await lit("data/en.json");
     const tout = [...b.map(a => ({ ...a, gal: "blasons", cat: a.cat || "Blasons réels" })), ...p.map(a => ({ ...a, gal: "personnages", cat: "Personnages" }))];
     for (const a of tout) {
       if (!a.blason || !a.file) continue;
       const r = lireCarte(a);
       if (!r.ok) continue;
-      const c = { ...a, etat: r.etat, S: mk(r.etat), cle: plie(`${a.nom} ${a.porteur || ""}`) };
+      /* aff : le nom affiché, dit et hist : ce qu'on dit de la carte à la fin ; en anglais, on cherche aussi par le nom français */
+      const tr = TRAD.cartes[a.nom] || {};
+      const c = { ...a, etat: r.etat, S: mk(r.etat), aff: tr.nom || a.nom, dit: tr.porteur || tr.meta || a.porteur || a.meta || "", hist: EN ? tr.desc || "" : a.desc || "",
+        cle: plie(`${tr.nom || ""} ${a.nom} ${tr.porteur || a.porteur || ""}`) };
       c.canon = blazonAll(c.S); c.t = traits(c);
       CARTES.push(c);
     }
   } catch (e) {
-    $("#jeu-chargement").textContent = `Le jeu n'a pas pu se charger (${e.message}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.`;
+    $("#jeu-chargement").textContent = Tr(`Le jeu n'a pas pu se charger (${e.message}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.`, `The game couldn't load (${e.message}). This page must be served over HTTP, not opened from disk.`);
     return;
   }
   const PAR_NOM = new Map(CARTES.map(c => [c.nom, c]));
 
   /* ---------- les détails qu'on peut demander : tout ce que les cartes du jeu emploient ---------- */
   const DETAILS = (() => {
-    const out = new Map(), meubles = {}, ajoute = (cle, nom, sorte, test) => { if (!out.has(cle)) out.set(cle, { cle, nom, sorte, test, mot: plie(nom), detail: true }); };
-    EMAUX.forEach(n => ajoute(`e:${n}`, n, "Émail", t => t.emaux.includes(n) ? "ok" : "no"));
+    /* nom : la clé française (carnet, émaux trouvés) ; aff : ce qu'on lit et ce qu'on tape */
+    const out = new Map(), meubles = {}, ajoute = (cle, nom, aff, sorte, test) => { if (!out.has(cle)) out.set(cle, { cle, nom, aff, sorte, test, mot: plie(aff), detail: true }); };
+    EMAUX.forEach(n => ajoute(`e:${n}`, n, voc("emaux", n), Tr("Émail", "Tincture"), t => t.emaux.includes(n) ? "ok" : "no"));
     for (const c of CARTES) {
       const t = c.t;
-      if (t.compo !== "Plein") ajoute(`c:${t.compo}`, t.compo, "Partition", u => u.compo === t.compo ? "ok" : "no");
-      t.pieces.forEach(pc => ajoute(`p:${pc}`, pc, "Pièce", u => u.pieces.includes(pc) ? "ok" : "no"));
+      if (t.compo !== "Plein") ajoute(`c:${t.compo}`, t.compo, voc("compo", t.compo), Tr("Partition", "Division"), u => u.compo === t.compo ? "ok" : "no");
+      t.pieces.forEach(pc => ajoute(`p:${pc}`, pc, voc("pieces", pc), Tr("Pièce", "Ordinary"), u => u.pieces.includes(pc) ? "ok" : "no"));
       t.meubles.forEach(k => (meubles[nomMeuble(k)] = meubles[nomMeuble(k)] || new Set()).add(k));
     }
     /* un meuble par nom affiché : deux dessins qui portent le même nom (deux lions) ne font qu'un détail */
     for (const [nom, ks] of Object.entries(meubles)) {
       const fam = new Set([...ks].map(famille));
-      ajoute(`m:${plie(nom)}`, nom, "Meuble", u => u.meubles.some(x => ks.has(x)) ? "ok" : u.meubles.some(x => fam.has(famille(x))) ? "mid" : "no");
+      ajoute(`m:${plie(nom)}`, nom, voc("meubles", nom), Tr("Meuble", "Charge"), u => u.meubles.some(x => ks.has(x)) ? "ok" : u.meubles.some(x => fam.has(famille(x))) ? "mid" : "no");
     }
     return out;
   })();
-  const DIT_DETAIL = { ok: "dans l'écu", mid: "un proche, de la même famille", no: "absent" };
+  const DIT_DETAIL = Tr({ ok: "dans l'écu", mid: "un proche, de la même famille", no: "absent" }, { ok: "on the shield", mid: "a close relative, of the same family", no: "absent" });
   $("#gdefs").innerHTML = globalDefs();
 
   /* ---------- le tirage du jour : le document du jour, dans la base ---------- */
@@ -129,7 +144,7 @@
   const tirage = await Jour.charge(N);
   const cible = tirage.doc && tirage.doc.ecu ? PAR_NOM.get(tirage.doc.ecu[NIV]) : null;
   if (!cible) {
-    $("#jeu-chargement").textContent = tirage.doc ? "L'écu de ce jour n'est plus dans le jeu : revenez demain." : tirage.msg;
+    $("#jeu-chargement").textContent = tirage.doc ? Tr("L'écu de ce jour n'est plus dans le jeu : revenez demain.", "Today's shield is no longer in the game: please come back tomorrow.") : tirage.msg;
     return;
   }
   const ESSAIS = NIVEAUX[NIV].essais;
@@ -158,7 +173,7 @@
   /* les armes des joueurs (assets/compte.js) : l'état de l'Atelier, dessiné à la demande par Compte.prepare(code) */
 
   /* ---------- l'écu mystère se dévoile par étapes : la silhouette, puis les partitions, les pièces, les meubles ---------- */
-  const ETAPES = ["sa silhouette", "ses partitions", "ses pièces", "ses meubles"];
+  const ETAPES = Tr(["sa silhouette", "ses partitions", "ses pièces", "ses meubles"], ["its outline", "its divisions", "its ordinaries", "its charges"]);
   function devoile(S, k) {
     if (k >= 3) return S;
     const M = JSON.parse(JSON.stringify(S));
@@ -175,20 +190,20 @@
     $("#jeu-mystere").style.setProperty("--flou", fini ? 0 : Math.max(0, 6 - nb * 1.5).toFixed(2) + "px");
     $("#jeu-mystere").classList.toggle("vide", !nb && !fini);
     $("#jeu-mystere").classList.toggle("fini", fini);
-    $("#jeu-ecu").setAttribute("aria-label", fini ? `Les armes : ${cible.nom}` : `Les armes mystères, ${J.trouves.size} ${J.trouves.size > 1 ? "émaux trouvés" : "émail trouvé"} sur ${cible.t.emaux.length}`);
-    $("#jeu-leg").textContent = fini ? cible.nom : ["Sa silhouette", "+ partitions", "+ pièces", "Armes mystères"][Math.min(nb, 3)];
-    $("#jeu-leg").title = fini || nb >= 3 ? "" : `Au prochain essai, l'écu montrera ${ETAPES[nb + 1]}.`;
+    $("#jeu-ecu").setAttribute("aria-label", fini ? Tr(`Les armes : ${cible.aff}`, `The arms: ${cible.aff}`) : Tr(`Les armes mystères, ${J.trouves.size} ${J.trouves.size > 1 ? "émaux trouvés" : "émail trouvé"} sur ${cible.t.emaux.length}`, `The mystery arms, ${J.trouves.size} of ${cible.t.emaux.length} tinctures found`));
+    $("#jeu-leg").textContent = fini ? cible.aff : Tr(["Sa silhouette", "+ partitions", "+ pièces", "Armes mystères"], ["Its outline", "+ divisions", "+ ordinaries", "Mystery arms"])[Math.min(nb, 3)];
+    $("#jeu-leg").title = fini || nb >= 3 ? "" : Tr(`Au prochain essai, l'écu montrera ${ETAPES[nb + 1]}.`, `On the next guess, the shield will show ${ETAPES[nb + 1]}.`);
   }
   function dessinePalette() {
     const absents = new Set([...J.essais.flatMap(c => c.t.emaux).filter(n => !cible.t.emaux.includes(n)), ...J.absents]);
     const couleur = n => (DATA.tinctures.find(t => t.nom === n) || {}).color || "#888";
     $("#jeu-palette").innerHTML = EMAUX.map(n => {
       const etat = J.trouves.has(n) ? "oui" : absents.has(n) ? "non" : "";
-      const dit = etat === "oui" ? "dans l'écu mystère" : etat === "non" ? "pas dans l'écu mystère" : "pas encore essayé";
-      return `<li class="em ${etat}" data-e="${n}" style="--c:${couleur(n)}"><span class="pastille" aria-hidden="true">${etat === "oui" ? "✓" : etat === "non" ? "✗" : ""}</span><span class="nom">${n.toLowerCase()}<b class="sr"> : ${dit}</b></span></li>`;
+      const dit = etat === "oui" ? Tr("dans l'écu mystère", "on the mystery shield") : etat === "non" ? Tr("pas dans l'écu mystère", "not on the mystery shield") : Tr("pas encore essayé", "not tried yet");
+      return `<li class="em ${etat}" data-e="${n}" style="--c:${couleur(n)}"><span class="pastille" aria-hidden="true">${etat === "oui" ? "✓" : etat === "non" ? "✗" : ""}</span><span class="nom">${nomEmail(n)}<b class="sr">${Tr(" : ", ": ")}${dit}</b></span></li>`;
     }).join("");
     const total = cible.t.emaux.length;
-    $("#jeu-nb").innerHTML = `L'écu mystère compte <b>${total} ${total > 1 ? "émaux" : "émail"}</b> : ${J.trouves.size} trouvé${J.trouves.size > 1 ? "s" : ""}.`;
+    $("#jeu-nb").innerHTML = Tr(`L'écu mystère compte <b>${total} ${total > 1 ? "émaux" : "émail"}</b> : ${J.trouves.size} trouvé${J.trouves.size > 1 ? "s" : ""}.`, `The mystery shield has <b>${total} ${total > 1 ? "tinctures" : "tincture"}</b>: ${J.trouves.size} found.`);
   }
 
   /* ---------- une réponse : une ligne ---------- */
@@ -197,16 +212,16 @@
       const x = cmp[col];
       let contenu = "", dit = "";
       if (col === "emaux") {
-        contenu = x.pts.map(p => `<span class="pt ${p.dans ? "oui" : "non"}" style="--c:${(DATA.tinctures.find(t => t.nom === p.n) || {}).color}" title="${p.n.toLowerCase()}${p.dans ? " : dans l'écu mystère" : " : absent"}"></span>`).join("");
-        dit = x.pts.map(p => `${p.n.toLowerCase()} ${p.dans ? "présent" : "absent"}`).join(", ");
+        contenu = x.pts.map(p => `<span class="pt ${p.dans ? "oui" : "non"}" style="--c:${(DATA.tinctures.find(t => t.nom === p.n) || {}).color}" title="${nomEmail(p.n)}${p.dans ? Tr(" : dans l'écu mystère", ": on the mystery shield") : Tr(" : absent", ": absent")}"></span>`).join("");
+        dit = x.pts.map(p => `${nomEmail(p.n)} ${p.dans ? Tr("présent", "present") : "absent"}`).join(", ");
       } else if (col === "meubles") {
-        contenu = x.puces.length ? x.puces.map(p => `<span class="mb ${p.cls}">${esc(nomMeuble(p.k))}</span>`).join("") : "Aucun";
-        dit = x.puces.length ? x.puces.map(p => `${nomMeuble(p.k)} ${VERDICT[p.cls]}`).join(", ") : "aucun meuble";
+        contenu = x.puces.length ? x.puces.map(p => `<span class="mb ${p.cls}">${esc(affMeuble(p.k))}</span>`).join("") : Tr("Aucun", "None");
+        dit = x.puces.length ? x.puces.map(p => `${affMeuble(p.k)} ${VERDICT[p.cls]}`).join(", ") : Tr("aucun meuble", "no charge");
       } else if (col === "nombre") {
-        contenu = x.n ? `${x.n}${x.fl ? `<span class="fl" title="${x.fl === "↑" ? "plus" : "moins"}">${x.fl}</span>` : ""}` : "—";
-        dit = x.n ? `${x.n}${x.fl ? (x.fl === "↑" ? ", l'écu mystère en a plus" : ", l'écu mystère en a moins") : ""}` : "aucun meuble";
+        contenu = x.n ? `${x.n}${x.fl ? `<span class="fl" title="${x.fl === "↑" ? Tr("plus", "more") : Tr("moins", "fewer")}">${x.fl}</span>` : ""}` : "—";
+        dit = x.n ? `${x.n}${x.fl ? (x.fl === "↑" ? Tr(", l'écu mystère en a plus", ", the mystery shield has more") : Tr(", l'écu mystère en a moins", ", the mystery shield has fewer")) : ""}` : Tr("aucun meuble", "no charge");
       } else { contenu = esc(x.txt); dit = x.txt; }
-      return `<li class="case ${x.cls}" style="--i:${i * COLS.length + COLS.indexOf(col)}"><span class="ent">${ENTETE[col]}</span><span class="val">${contenu}</span><span class="sym" aria-hidden="true">${SYMB[x.cls]}</span><span class="sr">${ENTETE[col]} : ${esc(dit)} — ${VERDICT[x.cls]}</span></li>`;
+      return `<li class="case ${x.cls}" style="--i:${i * COLS.length + COLS.indexOf(col)}"><span class="ent">${ENTETE[col]}</span><span class="val">${contenu}</span><span class="sym" aria-hidden="true">${SYMB[x.cls]}</span><span class="sr">${ENTETE[col]}${Tr(" : ", ": ")}${esc(dit)} — ${VERDICT[x.cls]}</span></li>`;
     }).join("");
     return cases;
   }
@@ -214,7 +229,7 @@
     const cmp = compare(c.t, cible.t);
     const li = document.createElement("li");
     li.className = "essai" + (anime ? " neuf" : "");
-    li.innerHTML = `<div class="essai-tete"><span class="mini">${await svgDe(c)}</span><span class="essai-nom"><b>${esc(c.nom)}</b></span><span class="essai-n">${i + 1}/${ESSAIS}</span></div><ul class="cases">${ligne(c, cmp, i)}</ul>`;
+    li.innerHTML = `<div class="essai-tete"><span class="mini">${await svgDe(c)}</span><span class="essai-nom"><b>${esc(c.aff)}</b></span><span class="essai-n">${i + 1}/${ESSAIS}</span></div><ul class="cases">${ligne(c, cmp, i)}</ul>`;
     $("#jeu-liste-essais").appendChild(li);
     return cmp;
   }
@@ -228,18 +243,18 @@
   function filtre(q) {
     const t = plie(q.trim());
     if (!t) return [];
-    const armes = proposables().filter(c => c.cle.includes(t)).sort((a, b) => (plie(b.nom).startsWith(t) - plie(a.nom).startsWith(t)) || a.nom.localeCompare(b.nom, "fr"));
-    const dets = detailsLibres().filter(d => d.mot.includes(t)).sort((a, b) => (b.mot.startsWith(t) - a.mot.startsWith(t)) || a.nom.localeCompare(b.nom, "fr")).slice(0, 3);
+    const armes = proposables().filter(c => c.cle.includes(t)).sort((a, b) => (plie(b.aff).startsWith(t) - plie(a.aff).startsWith(t)) || a.aff.localeCompare(b.aff, LANGUE));
+    const dets = detailsLibres().filter(d => d.mot.includes(t)).sort((a, b) => (b.mot.startsWith(t) - a.mot.startsWith(t)) || a.aff.localeCompare(b.aff, LANGUE)).slice(0, 3);
     const devant = dets.filter(d => d.mot.startsWith(t));
     return [...devant, ...armes.slice(0, 8 - dets.length), ...dets.filter(d => !d.mot.startsWith(t))].slice(0, 8);
   }
   const filtreArmes = q => filtre(q).filter(x => !x.detail);
   function montreListe() {
     sugg = filtre(champ.value); actif = sugg.length ? 0 : -1;
-    liste.innerHTML = sugg.map((c, i) => `<li role="option" id="jeu-o${i}" data-i="${i}" aria-selected="${i === actif}" class="${i === actif ? "on" : ""}${c.detail ? " det" : ""}"><b>${esc(c.nom)}</b><small>${c.detail ? `Détail · ${esc(c.sorte)}` : esc(c.cat)}</small></li>`).join("");
+    liste.innerHTML = sugg.map((c, i) => `<li role="option" id="jeu-o${i}" data-i="${i}" aria-selected="${i === actif}" class="${i === actif ? "on" : ""}${c.detail ? " det" : ""}"><b>${esc(c.aff)}</b><small>${c.detail ? `${Tr("Détail", "Clue")} · ${esc(c.sorte)}` : esc(voc("rubriques", c.cat))}</small></li>`).join("");
     liste.hidden = !sugg.length; champ.setAttribute("aria-expanded", String(!!sugg.length));
     if (actif >= 0) champ.setAttribute("aria-activedescendant", "jeu-o0"); else champ.removeAttribute("aria-activedescendant");
-    if (q0().length && !sugg.length) aide.textContent = "Ni arme ni détail de ce nom dans le jeu : essayez un autre mot."; else aide.textContent = "";
+    if (q0().length && !sugg.length) aide.textContent = Tr("Ni arme ni détail de ce nom dans le jeu : essayez un autre mot.", "No arms or clue by that name in the game: try another word."); else aide.textContent = "";
   }
   const q0 = () => champ.value.trim();
   function bouge(d) {
@@ -249,7 +264,7 @@
     champ.setAttribute("aria-activedescendant", `jeu-o${actif}`);
     liste.children[actif].scrollIntoView({ block: "nearest" });
   }
-  function choisit(c) { choisi = c; champ.value = c.nom; liste.hidden = true; champ.setAttribute("aria-expanded", "false"); aide.textContent = ""; }
+  function choisit(c) { choisi = c; champ.value = c.aff; liste.hidden = true; champ.setAttribute("aria-expanded", "false"); aide.textContent = ""; }
   champ.addEventListener("input", () => { choisi = null; montreListe(); });
   champ.addEventListener("keydown", e => {
     if (e.key === "ArrowDown") { e.preventDefault(); if (liste.hidden) montreListe(); else bouge(1); }
@@ -266,12 +281,12 @@
     if (J.fini) return;
     let c = choisi;
     if (!c) {                                                           // le nom tapé en entier, ou une seule proposition
-      const t = plie(q0()), exacts = [...proposables().filter(x => plie(x.nom) === t), ...detailsLibres().filter(d => d.mot === t)];
+      const t = plie(q0()), exacts = [...proposables().filter(x => plie(x.aff) === t), ...detailsLibres().filter(d => d.mot === t)];
       c = exacts.length === 1 ? exacts[0] : (filtre(champ.value).length === 1 ? filtre(champ.value)[0] : null);
     }
     if (!c) {
-      aide.textContent = !q0() ? "Tapez le nom d'un État, d'une province, d'une maison… ou un détail : lion, gueules, croix…"
-        : filtre(champ.value).length ? "Choisissez dans la liste proposée." : "Ni arme ni détail de ce nom dans le jeu : essayez un autre mot.";
+      aide.textContent = !q0() ? Tr("Tapez le nom d'un État, d'une province, d'une maison… ou un détail : lion, gueules, croix…", "Type the name of a state, a province, a noble house… or a clue: lion, gules, cross…")
+        : filtre(champ.value).length ? Tr("Choisissez dans la liste proposée.", "Choose from the list.") : Tr("Ni arme ni détail de ce nom dans le jeu : essayez un autre mot.", "No arms or clue by that name in the game: try another word.");
       champ.focus(); return;
     }
     if (c.detail) demandeDetail(c); else await devine(c);
@@ -285,17 +300,17 @@
   }
   function dessineDetails() {
     const el = $("#jeu-details");
-    el.innerHTML = J.details.map(d => { const r = d.test(cible.t); return `<li class="dt ${r}" title="${esc(d.sorte)} : ${DIT_DETAIL[r]}"><span class="dt-s" aria-hidden="true">${SYMB[r]}</span>${esc(d.nom)}<span class="sr"> : ${DIT_DETAIL[r]}</span></li>`; }).join("");
+    el.innerHTML = J.details.map(d => { const r = d.test(cible.t); return `<li class="dt ${r}" title="${esc(d.sorte)}${Tr(" : ", ": ")}${DIT_DETAIL[r]}"><span class="dt-s" aria-hidden="true">${SYMB[r]}</span>${esc(d.aff)}<span class="sr">${Tr(" : ", ": ")}${DIT_DETAIL[r]}</span></li>`; }).join("");
     el.hidden = !J.details.length;
     $("#jeu-details-t").hidden = !J.details.length;
-    $("#jeu-details-t").textContent = `${J.details.length} détail${J.details.length > 1 ? "s" : ""} demandé${J.details.length > 1 ? "s" : ""} (sans perdre d'essai)`;
+    $("#jeu-details-t").textContent = Tr(`${J.details.length} détail${J.details.length > 1 ? "s" : ""} demandé${J.details.length > 1 ? "s" : ""} (sans perdre d'essai)`, `${J.details.length} clue${J.details.length > 1 ? "s" : ""} requested (no guess lost)`);
   }
   function demandeDetail(d) {
     if (J.fini) return;
     champ.value = ""; choisi = null; liste.hidden = true; aide.textContent = "";
     J.details.push(d);
     const r = applique(d);
-    $("#jeu-annonce").textContent = `${d.nom} : ${DIT_DETAIL[r]}.`;
+    $("#jeu-annonce").textContent = `${d.aff}${Tr(" : ", ": ")}${DIT_DETAIL[r]}.`;
     sauve(); majEssais(); dessineDetails(); dessinePalette();
     if (d.cle.startsWith("e:") && r === "ok") dessineMystere();
     champ.focus();
@@ -313,7 +328,7 @@
       const i = J.essais.length - 1, cmp = await ajouteLigne(c, i, true);
       const gagne = c === cible || c.canon === cible.canon;             // les mêmes armes sous un autre nom (deux cartes pour un même écu) comptent
       if (gagne || J.essais.length >= ESSAIS) { J.fini = true; J.gagne = gagne; }
-      $("#jeu-annonce").textContent = `${c.nom} : ${COLS.map(k => `${ENTETE[k]} ${VERDICT[cmp[k].cls]}`).join(", ")}.`;
+      $("#jeu-annonce").textContent = `${c.aff}${Tr(" : ", ": ")}${COLS.map(k => `${ENTETE[k]} ${VERDICT[cmp[k].cls]}`).join(", ")}.`;
       if (J.fini) termine(); else sauve();
       majEssais(); dessinePalette(); dessinePoints();
       await dessineMystere();
@@ -327,15 +342,15 @@
   btAbandon.addEventListener("click", async () => {
     if (J.fini || occupe) return;
     if (!btAbandon.dataset.sur) {                                       // un premier clic demande confirmation, qui retombe au bout de quelques secondes
-      btAbandon.dataset.sur = "1"; btAbandon.textContent = "Sûr ? Cliquez encore pour révéler l'écu (partie perdue)";
-      clearTimeout(abandonT); abandonT = setTimeout(() => { delete btAbandon.dataset.sur; btAbandon.textContent = "Abandonner"; }, 5000);
+      btAbandon.dataset.sur = "1"; btAbandon.textContent = Tr("Sûr ? Cliquez encore pour révéler l'écu (partie perdue)", "Sure? Click again to reveal the shield (counts as a loss)");
+      clearTimeout(abandonT); abandonT = setTimeout(() => { delete btAbandon.dataset.sur; btAbandon.textContent = Tr("Abandonner", "Give up"); }, 5000);
       return;
     }
     clearTimeout(abandonT);
     occupe = true;
     try {
       J.fini = true; J.gagne = false; J.abandon = true;
-      $("#jeu-annonce").textContent = `Abandon : c'étaient les armes de ${cible.nom}.`;
+      $("#jeu-annonce").textContent = Tr(`Abandon : c'étaient les armes de ${cible.aff}.`, `Gave up: these were the arms of ${cible.aff}.`);
       termine();
       majEssais(); dessinePalette(); dessinePoints();
       await dessineMystere();
@@ -349,10 +364,10 @@
   }
   const majEssais = () => {
     const n = J.essais.length, reste = ESSAIS - n;
-    const nd = J.details.length, det = nd ? ` · ${nd} détail${nd > 1 ? "s" : ""}` : "";
-    $("#jeu-essais").textContent = (J.fini ? (J.gagne ? `Trouvé en ${n}` : J.abandon ? "Abandonné" : "Perdu") : `Essai ${n + 1} sur ${ESSAIS}`) + det;
+    const nd = J.details.length, det = nd ? ` · ${nd} ${Tr("détail", "clue")}${nd > 1 ? "s" : ""}` : "";
+    $("#jeu-essais").textContent = (J.fini ? (J.gagne ? Tr(`Trouvé en ${n}`, `Found in ${n}`) : J.abandon ? Tr("Abandonné", "Gave up") : Tr("Perdu", "Lost")) : Tr(`Essai ${n + 1} sur ${ESSAIS}`, `Guess ${n + 1} of ${ESSAIS}`)) + det;
     $("#jeu-saisie").hidden = J.fini; aide.hidden = J.fini; $("#jeu-abandon").hidden = J.fini;
-    if (!J.fini) champ.placeholder = n ? `Encore ${reste} essai${reste > 1 ? "s" : ""}… ou un détail` : "Des armes, ou un détail : lion, gueules…";
+    if (!J.fini) champ.placeholder = n ? Tr(`Encore ${reste} essai${reste > 1 ? "s" : ""}… ou un détail`, `${reste} guess${reste > 1 ? "es" : ""} left… or a clue`) : Tr("Des armes, ou un détail : lion, gueules…", "A coat of arms, or a clue: lion, gules…");
   };
 
   /* ---------- la fin de la partie ---------- */
@@ -360,42 +375,44 @@
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
     const nd = J.details.length;
-    return `L'Écu du jour n° ${N} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${J.abandon ? " (abandon)" : ""}${nd ? ` · 🔎 ${nd} détail${nd > 1 ? "s" : ""}` : ""}${hors ? " (hors concours)" : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/?niveau=${NIV}`;
+    return `${Tr(`L'Écu du jour n° ${N}`, `Shield of the Day #${N}`)} · ${NIVEAUX[NIV].nom} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}${J.abandon ? Tr(" (abandon)", " (gave up)") : ""}${nd ? ` · 🔎 ${nd} ${Tr("détail", "clue")}${nd > 1 ? "s" : ""}` : ""}${hors ? Tr(" (hors concours)", " (unranked)") : ""}\n${lignes.join("\n")}\nhttps://armorial.web.app/${Tr("", "en.html")}?niveau=${NIV}`;
   }
   let minuteur = 0;
   async function montreResultat() {
     const r = $("#jeu-resultat"), a = cible, n = J.essais.length;
     const lien = a.gal === "blasons" ? `blasons.html#${slugCarte(a.nom)}` : `personnages.html#${slugCarte(a.nom)}`;
     const atelier = adresseAtelier(a, a.gal);
-    const termes = termesDe(a.blason), renvois = (a.liens || []).map(l => `<a href="${esc(l.href)}">${esc(l.t)}</a>`);
+    /* en anglais : le blasonnement reste en français, dit comme tel, et les renvois des cartes (des pages françaises) sont laissés de côté */
+    const termes = termesDe(a.blason), renvois = EN ? [] : (a.liens || []).map(l => `<a href="${esc(l.href)}">${esc(l.t)}</a>`);
     r.className = "jeu-resultat " + (J.gagne ? "ok" : "ko");
-    r.innerHTML = `<h2>${J.gagne ? (n === 1 ? "Du premier coup !" : n <= 3 ? "Bien vu !" : "Trouvé !") : J.abandon ? "Abandon" : "Perdu… pour cette fois"}</h2>
-      <p class="res-dit">${J.gagne ? `Ces armes sont celles de <b>${esc(a.nom)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.nom)}</b>.`}</p>
-      <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="Armoiries : ${esc(a.nom)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
-        <figcaption>${a.porteur || a.meta ? `${esc(a.porteur || a.meta)}<br>` : ""}<i>${esc(a.blason)}</i></figcaption></figure>
-      ${termes.length ? `<p class="res-retenir"><span>À retenir</span> ${termes.map(lienTerme).join(" · ")}</p>` : ""}
-      ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
-      <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">Partager mon résultat</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">Mes statistiques</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">Classement</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens">${[...renvois, `<a href="${lien}">Voir la carte dans l'Armorial</a>`, `<a href="${atelier}">Redessiner dans l'Atelier</a>`].join(" · ")}</p>
+    r.innerHTML = `<h2>${J.gagne ? (n === 1 ? Tr("Du premier coup !", "First try!") : n <= 3 ? Tr("Bien vu !", "Well spotted!") : Tr("Trouvé !", "Found it!")) : J.abandon ? Tr("Abandon", "You gave up") : Tr("Perdu… pour cette fois", "Lost… this time")}</h2>
+      <p class="res-dit">${Tr(J.gagne ? `Ces armes sont celles de <b>${esc(a.aff)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.aff)}</b>.`,
+        J.gagne ? `These are the arms of <b>${esc(a.aff)}</b>${n === 1 ? "" : `, found in ${n} guesses`}${J.details.length ? `${n === 1 ? ", found" : ""} with ${J.details.length} clue${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", without a single clue" : ""}.` : `These were the arms of <b>${esc(a.aff)}</b>.`)}</p>
+      <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="${Tr("Armoiries", "Coat of arms")}${Tr(" : ", ": ")}${esc(a.aff)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
+        <figcaption>${a.dit ? `${esc(a.dit)}<br>` : ""}${EN ? "Blazon, in French: " : ""}<i lang="fr">${esc(a.blason)}</i></figcaption></figure>
+      ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).join(" · ")}</span></p>` : ""}
+      ${a.hist ? `<p class="res-histoire">${esc(a.hist)}</p>` : ""}
+      <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
+      <p class="res-liens">${[...renvois, `<a href="${lien}"${EN ? ' hreflang="fr"' : ""}>${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}"${EN ? ' hreflang="fr"' : ""}>${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
-      <p class="res-credit">Image : <i>${esc(a.file)}</i>, ${esc(a.auteur || "auteur inconnu")}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || "licence libre")}, via Wikimedia Commons.</p>`;
+      <p class="res-credit">Image${Tr(" : ", ": ")}<i>${esc(a.file)}</i>, ${esc(a.auteur || Tr("auteur inconnu", "unknown author"))}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || Tr("licence libre", "free licence"))}, via Wikimedia Commons.</p>`;
     r.hidden = false;
     /* la partie finie, l'encyclopédie n'est plus une aide : c'est la suite */
-    $(".jx-armorial .jx-sur").textContent = "Pour aller plus loin";
-    $("#jx-armorial-t").textContent = "L'Armorial vous raconte le reste";
+    $(".jx-armorial .jx-sur").textContent = Tr("Pour aller plus loin", "To go further");
+    $("#jx-armorial-t").textContent = Tr("L'Armorial vous raconte le reste", "The Armorial tells you the rest");
     $("#jeu-voir-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
     if ($("#jeu-voir-cl")) $("#jeu-voir-cl").addEventListener("click", () => ouvreDlg("dlg-classement"));
     $("#jeu-partage").addEventListener("click", async () => {
       const t = texteDePartage(), msg = $("#jeu-copie");
-      try { await navigator.clipboard.writeText(t); msg.textContent = "Copié : collez-le où vous voulez."; }
-      catch (e) { window.prompt("Copiez votre résultat :", t); }
+      try { await navigator.clipboard.writeText(t); msg.textContent = Tr("Copié : collez-le où vous voulez.", "Copied: paste it anywhere you like."); }
+      catch (e) { window.prompt(Tr("Copiez votre résultat :", "Copy your result:"), t); }
     });
     clearInterval(minuteur);
     const tic = () => {
       const el = $("#jeu-prochain"); if (!el) return;
-      if (hors) { el.innerHTML = `Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`; return; }
+      if (hors) { el.innerHTML = Tr(`Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`, `Shield #${N} replayed, unranked. <a href="en.html">Back to today's shield</a>`); return; }
       const autres = Object.keys(NIVEAUX).filter(k => k !== NIV && !Jour.fait(NIVEAUX[k].jeu, N));
-      el.innerHTML = `Prochain écu dans ${Jour.compteARebours()}${autres.length ? ` · Encore à jouer aujourd'hui : ${autres.map(k => `<a href="?niveau=${k}">${NIVEAUX[k].nom}</a>`).join(", ")}` : ""}`;
+      el.innerHTML = `${Tr("Prochain écu dans", "Next shield in")} ${Jour.compteARebours()}${autres.length ? ` · ${Tr("Encore à jouer aujourd'hui :", "Still to play today:")} ${autres.map(k => `<a href="?niveau=${k}">${NIVEAUX[k].nom}</a>`).join(", ")}` : ""}`;
       if (Jour.avantDemain() === 0) location.reload();
     };
     tic(); minuteur = setInterval(tic, 1000);
@@ -422,15 +439,15 @@
     const max = Math.max(1, ...s.rep);
     const armes = p ? Compte.dessin(p.armes) : "";
     $("#jx-moi-ecu").innerHTML = armes || (p ? "" : `<svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" fill="currentColor"/><path d="M4 20.5c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5z" fill="currentColor"/></svg>`);
-    $("#jx-moi-nom").textContent = p ? p.pseudo : "Profil";
+    $("#jx-moi-nom").textContent = p ? p.pseudo : Tr("Profil", "Profile");
     $("#jeu-pf").classList.toggle("avec", !!p);
-    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">Vos statistiques <small>niveau ${NIVEAUX[NIV].nom}</small></h2>
-      <div class="pf">${p ? `<span class="pf-ecu">${armes}</span><span class="pf-nom"><b>${esc(p.pseudo)}</b><small>joueur depuis le ${esc(p.cree.split("-").reverse().join("/"))}</small></span>`
-        : `<span class="pf-nom"><b>Joueur anonyme</b><small>Créez un profil pour signer vos scores de vos propres armes.</small></span>`}</div>
-      <dl class="stats"><div><dt>Parties</dt><dd>${s.joues}</dd></div><div><dt>Victoires</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0}<small>%</small></dd></div><div><dt>Série</dt><dd>${vivante}</dd></div><div><dt>Record</dt><dd>${s.serieMax}</dd></div></dl>
-      <h3 class="rep-t">Victoires par nombre d'essais</h3>
-      <ol class="rep" aria-label="Répartition des victoires par nombre d'essais">${s.rep.map((n, i) => `<li${J.fini && J.gagne && !hors && J.essais.length === i + 1 ? ' class="auj"' : ""}><span class="rn">${i + 1}</span><span class="rb"><i style="width:${n ? Math.max(9, Math.round(100 * n / max)) : 0}%">${n || ""}</i></span></li>`).join("")}</ol>
-      <p class="pf-acts"><button type="button" class="jx-go" id="jeu-pf2">${p ? "Modifier mon profil" : "Créer mon profil"}</button></p>`;
+    $("#jeu-profil").innerHTML = `<h2 id="jeu-profil-t">${Tr("Vos statistiques", "Your statistics")} <small>${Tr(`niveau ${NIVEAUX[NIV].nom}`, `${NIVEAUX[NIV].nom} level`)}</small></h2>
+      <div class="pf">${p ? `<span class="pf-ecu">${armes}</span><span class="pf-nom"><b>${esc(p.pseudo)}</b><small>${Tr("joueur depuis le", "playing since")} ${esc(p.cree.split("-").reverse().join("/"))}</small></span>`
+        : `<span class="pf-nom"><b>${Tr("Joueur anonyme", "Anonymous player")}</b><small>${Tr("Créez un profil pour signer vos scores de vos propres armes.", "Create a profile to sign your scores with your own arms.")}</small></span>`}</div>
+      <dl class="stats"><div><dt>${Tr("Parties", "Played")}</dt><dd>${s.joues}</dd></div><div><dt>${Tr("Victoires", "Wins")}</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0}<small>%</small></dd></div><div><dt>${Tr("Série", "Streak")}</dt><dd>${vivante}</dd></div><div><dt>${Tr("Record", "Best")}</dt><dd>${s.serieMax}</dd></div></dl>
+      <h3 class="rep-t">${Tr("Victoires par nombre d'essais", "Wins by number of guesses")}</h3>
+      <ol class="rep" aria-label="${Tr("Répartition des victoires par nombre d'essais", "Distribution of wins by number of guesses")}">${s.rep.map((n, i) => `<li${J.fini && J.gagne && !hors && J.essais.length === i + 1 ? ' class="auj"' : ""}><span class="rn">${i + 1}</span><span class="rb"><i style="width:${n ? Math.max(9, Math.round(100 * n / max)) : 0}%">${n || ""}</i></span></li>`).join("")}</ol>
+      <p class="pf-acts"><button type="button" class="jx-go" id="jeu-pf2">${p ? Tr("Modifier mon profil", "Edit my profile") : Tr("Créer mon profil", "Create my profile")}</button></p>`;
     $("#jeu-pf2").addEventListener("click", () => { $("#dlg-stats").close(); Compte.ouvre(); });
   }
   /* les points du haut : un par essai, de la couleur de la réponse */
@@ -445,18 +462,19 @@
   function dessineNiveaux() {
     $("#jeu-niveaux").innerHTML = Object.entries(NIVEAUX).map(([k, v]) => {
       const fait = Jour.fait(v.jeu, N);
-      return `<a href="?niveau=${k}${hors ? `#n=${N}` : ""}" class="jx-niv${k === NIV ? " on" : ""}"${k === NIV ? ' aria-current="page"' : ""} title="${esc(v.dit)}"><b>${v.nom}</b><small>${v.essais} essais${fait && !hors ? " · fait ✓" : ""}</small></a>`;
+      return `<a href="?niveau=${k}${hors ? `#n=${N}` : ""}" class="jx-niv${k === NIV ? " on" : ""}"${k === NIV ? ' aria-current="page"' : ""} title="${esc(v.dit)}"><b>${v.nom}</b><small>${v.essais} ${Tr("essais", "guesses")}${fait && !hors ? Tr(" · fait ✓", " · done ✓") : ""}</small></a>`;
     }).join("");
   }
   /* les autres jeux du jour ; les exercices sont dans S'exercer */
   function dessineAutres() {
     const L = [
-      ["atelier.html#defi=dessin", "Dessine-moi", "Un blasonnement : composez l'écu", "🎨", "or", "dessin"],
-      ["jour.html#intrus", "L'Intrus", "Cinq manches : l'écu qui enfreint la règle", "⚖️", "sinople", "intrus"],
-      ["jour.html#trous", "Le blasonnement à trous", "Les mots qui manquent au texte", "📜", "pourpre", "trous"],
+      ["atelier.html#defi=dessin", "Dessine-moi", Tr("Un blasonnement : composez l'écu", "A blazon: draw the shield"), "🎨", "or", "dessin"],
+      ["jour.html#intrus", "L'Intrus", Tr("Cinq manches : l'écu qui enfreint la règle", "Five rounds: the shield that breaks the rule"), "⚖️", "sinople", "intrus"],
+      ["jour.html#trous", "Le blasonnement à trous", Tr("Les mots qui manquent au texte", "The words missing from the blazon"), "📜", "pourpre", "trous"],
     ];
-    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? "Fait ✓" : "Aujourd'hui"}</span></a></li>`).join("")
-      + `<li><a class="jx-jeu c-azur" href="exercices.html"><span class="ic" aria-hidden="true">🎓</span><span class="t">S'exercer</span><span class="d">Lire, dessiner, la règle, le vocabulaire… à volonté</span><span class="f">Sans limite</span></a></li>`;
+    const fr = EN ? ' hreflang="fr"' : "";              // ces jeux ne sont qu'en français : leur nom reste le leur, le lien le signale
+    $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"${fr}><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
+      + `<li><a class="jx-jeu c-azur" href="exercices.html"${fr}><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */
@@ -476,12 +494,12 @@
   function rendClassement() {
     const el = $("#jeu-classement"), moi = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
     const liste = CL.onglet === "jour" ? CL.jour : CL.general;
-    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? `${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}` : `${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`}</span></li>`;
-    el.innerHTML = `<h2 id="jeu-classement-t">Classement</h2>
-      <div class="onglets" role="tablist" aria-label="Classement"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">Du jour</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">Général</button></div>
-      ${CL.erreur || !liste ? `<p class="cl-vide">Le classement n'est pas disponible pour l'instant.</p>`
-        : liste.length ? `<ol class="cl">${liste.map(ligne).join("")}</ol>` : `<p class="cl-vide">${CL.onglet === "jour" ? "Personne n'a encore trouvé l'écu du jour : soyez le premier." : "Le classement se remplit avec les premières parties."}</p>`}
-      ${connecte ? "" : `<p class="cl-aide"><button type="button" class="lnk" id="jeu-cl-compte">Créez un compte en ligne</button> pour y figurer.</p>`}`;
+    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? Tr(`${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}`, `${x.essais} guess${x.essais > 1 ? "es" : ""}${x.details ? ` · ${x.details} clue${x.details > 1 ? "s" : ""}` : ""}`) : Tr(`${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`, `${x.victoires} win${x.victoires > 1 ? "s" : ""}`)}</span></li>`;
+    el.innerHTML = `<h2 id="jeu-classement-t">${Tr("Classement", "Leaderboard")}</h2>
+      <div class="onglets" role="tablist" aria-label="${Tr("Classement", "Leaderboard")}"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">${Tr("Du jour", "Today")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">${Tr("Général", "All time")}</button></div>
+      ${CL.erreur || !liste ? `<p class="cl-vide">${Tr("Le classement n'est pas disponible pour l'instant.", "The leaderboard isn't available right now.")}</p>`
+        : liste.length ? `<ol class="cl">${liste.map(ligne).join("")}</ol>` : `<p class="cl-vide">${CL.onglet === "jour" ? Tr("Personne n'a encore trouvé l'écu du jour : soyez le premier.", "Nobody has found today's shield yet: be the first.") : Tr("Le classement se remplit avec les premières parties.", "The leaderboard fills up with the first games.")}</p>`}
+      ${connecte ? "" : `<p class="cl-aide">${Tr(`<button type="button" class="lnk" id="jeu-cl-compte">Créez un compte en ligne</button> pour y figurer.`, `<button type="button" class="lnk" id="jeu-cl-compte">Create an online account</button> to appear on it.`)}</p>`}`;
     el.querySelectorAll("[data-o]").forEach(b => b.addEventListener("click", () => { CL.onglet = b.dataset.o; rendClassement(); }));
     const cc = $("#jeu-cl-compte"); if (cc) cc.addEventListener("click", () => { $("#dlg-classement").close(); Compte.ouvre(); });
   }
@@ -489,7 +507,7 @@
   Compte.sur(() => { K.relit(); const p = Compte.profil(); if (p) Compte.prepare(p.armes).then(dessineCote); dessineCote(); });
 
   /* ---------- départ ---------- */
-  $("#jeu-jour").innerHTML = `Écu n° ${N}<small>${Jour.quand(N)}${hors ? " · hors concours" : ""}</small>`;
+  $("#jeu-jour").innerHTML = `${Tr(`Écu n° ${N}`, `Shield #${N}`)}<small>${Jour.quand(N)}${hors ? Tr(" · hors concours", " · unranked") : ""}</small>`;
   const sv = jourSauve();
   const premiere = !K.C.stats.joues && !(sv && sv.essais.length);
   dessineNiveaux(); dessineAutres();

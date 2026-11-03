@@ -332,7 +332,7 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
 DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
                "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"],
                "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"],
-               "enligne.js": ["compte.js"], "jeu.js": ["blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
+               "compte.js": ["chrome.js"], "enligne.js": ["compte.js"], "jeu.js": ["chrome.js", "blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
     for dependant, avant in DEPENDANCES.items():
@@ -353,7 +353,23 @@ for ident, fichier in menu:
     if not page.exists(): err(f"assets/chrome.js: la page « {fichier} » du menu n'existe pas"); continue
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
-    if p.name not in ("404.html", "jeu.html") and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+    if p.name not in ("404.html", "jeu.html", "en.html") and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+
+# le jeu en anglais : en.html a la même structure qu'index.html, et data/en.json traduit toutes les cartes du jeu, rien de plus
+ids_de = lambda n: set(re.findall(r'\bid="([\w-]+)"', (ROOT / n).read_text(encoding="utf-8")))
+if ids_de("en.html") != ids_de("index.html"): err(f"en.html et index.html n'ont pas les mêmes id : {sorted(ids_de('en.html') ^ ids_de('index.html'))}")
+trad = json.loads((ROOT / "data" / "en.json").read_text(encoding="utf-8"))
+for fichier, champs in (("blasons.json", ("porteur",)), ("personnages.json", ("meta", "desc"))):
+    cartes = json.loads((ROOT / "data" / fichier).read_text(encoding="utf-8"))
+    for c in cartes:
+        t_ = trad["cartes"].get(c["nom"])
+        if not t_: err(f"data/en.json: pas de traduction pour la carte « {c['nom']} » ({fichier})"); continue
+        if not t_.get("nom"): err(f"data/en.json: « {c['nom']} » sans nom anglais")
+        for ch in champs:
+            if bool(c.get(ch)) != bool(t_.get(ch)): err(f"data/en.json: « {c['nom']} » : le champ {ch} manque d'un côté")
+noms_fr = {c["nom"] for f in ("blasons.json", "personnages.json") for c in json.loads((ROOT / "data" / f).read_text(encoding="utf-8"))}
+for n_ in trad["cartes"]:
+    if n_ not in noms_fr: err(f"data/en.json: la carte « {n_} » n'existe plus (renommée ?)")
 
 # le prérendu : le texte écrit dans les pages pour les moteurs de recherche est-il celui des données actuelles ?
 sys.path.insert(0, str(ROOT / "tools"))

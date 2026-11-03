@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://armorial.web.app/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://armorial.web.app/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en.html"/></url>
+  <url><loc>https://armorial.web.app/en.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en.html"/></url>
   <url><loc>https://armorial.web.app/encyclopedie.html</loc></url>
   <url><loc>https://armorial.web.app/blasons.html</loc></url>
   <url><loc>https://armorial.web.app/personnages.html</loc></url>

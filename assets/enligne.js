@@ -62,20 +62,20 @@
 
   /* ---------- HTTP ---------- */
   const MOTIFS = {
-    EMAIL_EXISTS: "Un compte existe déjà avec cet e-mail : utilisez « me connecter ».",
-    INVALID_LOGIN_CREDENTIALS: "E-mail ou mot de passe incorrect.", INVALID_PASSWORD: "E-mail ou mot de passe incorrect.", EMAIL_NOT_FOUND: "E-mail ou mot de passe incorrect.",
-    WEAK_PASSWORD: "Mot de passe trop faible : 8 caractères au moins, mieux avec des chiffres et des lettres.", INVALID_EMAIL: "Adresse e-mail invalide.", MISSING_PASSWORD: "Saisissez un mot de passe.",
-    TOO_MANY_ATTEMPTS_TRY_LATER: "Trop de tentatives : réessayez dans quelques minutes.", USER_DISABLED: "Ce compte est désactivé.",
-    OPERATION_NOT_ALLOWED: "L'inscription par e-mail n'est pas activée dans Firebase (voir tools/firebase/SETUP.md, étape 2).",
-    CREDENTIAL_TOO_OLD_LOGIN_AGAIN: "Session trop ancienne : reconnectez-vous, puis réessayez.",
-    PERMISSION_DENIED: "Accès refusé par la base : les règles de tools/firebase/firestore.rules ne sont pas publiées, ou ne correspondent pas (voir SETUP.md, étape 3).",
-    API_KEY_INVALID: "La clé web de data/compte.json n'est pas valable.", API_KEY_HTTP_REFERRER_BLOCKED: "Cette clé web est limitée à d'autres adresses de site (Google Cloud → Identifiants).",
+    EMAIL_EXISTS: Tr("Un compte existe déjà avec cet e-mail : utilisez « me connecter ».", "An account already exists with this e-mail: choose “log in”."),
+    INVALID_LOGIN_CREDENTIALS: Tr("E-mail ou mot de passe incorrect.", "Incorrect e-mail or password."), INVALID_PASSWORD: Tr("E-mail ou mot de passe incorrect.", "Incorrect e-mail or password."), EMAIL_NOT_FOUND: Tr("E-mail ou mot de passe incorrect.", "Incorrect e-mail or password."),
+    WEAK_PASSWORD: Tr("Mot de passe trop faible : 8 caractères au moins, mieux avec des chiffres et des lettres.", "Password too weak: at least 8 characters, ideally with digits and letters."), INVALID_EMAIL: Tr("Adresse e-mail invalide.", "Invalid e-mail address."), MISSING_PASSWORD: Tr("Saisissez un mot de passe.", "Please enter a password."),
+    TOO_MANY_ATTEMPTS_TRY_LATER: Tr("Trop de tentatives : réessayez dans quelques minutes.", "Too many attempts: try again in a few minutes."), USER_DISABLED: Tr("Ce compte est désactivé.", "This account is disabled."),
+    OPERATION_NOT_ALLOWED: Tr("L'inscription par e-mail n'est pas activée dans Firebase (voir tools/firebase/SETUP.md, étape 2).", "E-mail sign-up isn't enabled in Firebase (see tools/firebase/SETUP.md, step 2)."),
+    CREDENTIAL_TOO_OLD_LOGIN_AGAIN: Tr("Session trop ancienne : reconnectez-vous, puis réessayez.", "Your session is too old: log in again, then retry."),
+    PERMISSION_DENIED: Tr("Accès refusé par la base : les règles de tools/firebase/firestore.rules ne sont pas publiées, ou ne correspondent pas (voir SETUP.md, étape 3).", "Access denied by the database: the rules in tools/firebase/firestore.rules aren't published, or don't match (see SETUP.md, step 3)."),
+    API_KEY_INVALID: Tr("La clé web de data/compte.json n'est pas valable.", "The web key in data/compte.json isn't valid."), API_KEY_HTTP_REFERRER_BLOCKED: Tr("Cette clé web est limitée à d'autres adresses de site (Google Cloud → Identifiants).", "This web key is restricted to other site addresses (Google Cloud → Credentials)."),
   };
   function erreurDe(data, statut) {
     const corps = Array.isArray(data) ? data[0] : data;                   // runQuery et batchGet répondent leurs erreurs dans un tableau
     const e = corps && corps.error, brut = e && e.message ? String(e.message) : "";
     const code = (e && e.status && e.status !== "UNKNOWN" ? e.status : brut.split(/[\s:]/)[0]) || String(statut);
-    const out = new Error(MOTIFS[code] || MOTIFS[brut.split(/[\s:]/)[0]] || brut || `Erreur ${statut}`);
+    const out = new Error(MOTIFS[code] || MOTIFS[brut.split(/[\s:]/)[0]] || brut || `${Tr("Erreur", "Error")} ${statut}`);
     out.statut = statut; out.code = code; return out;
   }
   async function requete(url, { methode = "GET", corps, form, auth = false } = {}) {
@@ -86,7 +86,7 @@
     else if (corps !== undefined) { h["Content-Type"] = "application/json"; body = JSON.stringify(corps); }
     let r;
     try { r = await fetch(url + (url.includes("?") ? "&" : "?") + "key=" + encodeURIComponent(CFG.cle), { method: methode, headers: h, body }); }
-    catch (e) { const err = new Error("Le service en ligne ne répond pas : vérifiez votre connexion."); err.reseau = true; throw err; }
+    catch (e) { const err = new Error(Tr("Le service en ligne ne répond pas : vérifiez votre connexion.", "The online service isn't responding: check your connection.")); err.reseau = true; throw err; }
     let data = null; try { data = await r.json(); } catch (e) { /* réponse vide */ }
     if (!r.ok) throw erreurDe(data, r.status);
     return data;
@@ -171,7 +171,7 @@
           writes.push({ update: doc(`pseudos/${nouveau}`, { uid, pseudo: M.profil.pseudo }), currentDocument: { exists: false } });
         }
         try { await fsAuth(":commit", { methode: "POST", corps: { writes } }); }
-        catch (e) { if (e.code === "ALREADY_EXISTS" || e.statut === 409) { const p = new Error("Ce pseudo est déjà pris : modifiez-le dans votre profil."); p.code = "pseudo"; throw p; } throw e; }
+        catch (e) { if (e.code === "ALREADY_EXISTS" || e.statut === 409) { const p = new Error(Tr("Ce pseudo est déjà pris : modifiez-le dans votre profil.", "This username is taken: change it in your profile.")); p.code = "pseudo"; throw p; } throw e; }
         y.pseudo = nouveau; y.hash = JSON.stringify([M.profil, resume, true]);
       }
     }
@@ -227,23 +227,23 @@
     try {
       const [mApp, mAuth] = await Promise.all([import(SDK + "firebase-app.js"), import(SDK + "firebase-auth.js")]);
       A = mAuth; app = mApp.initializeApp({ apiKey: CFG.cle, authDomain: CFG.domaine || `${CFG.projet}.firebaseapp.com`, projectId: CFG.projet }, "armorial");
-    } catch (e) { throw new Error("Le module de connexion de Google n'a pas pu se charger : vérifiez votre connexion."); }
+    } catch (e) { throw new Error(Tr("Le module de connexion de Google n'a pas pu se charger : vérifiez votre connexion.", "Google's sign-in module couldn't load: check your connection.")); }
     const auth = A.initializeAuth(app, { persistence: A.inMemoryPersistence, popupRedirectResolver: A.browserPopupRedirectResolver });
-    auth.languageCode = "fr";
+    auth.languageCode = LANGUE;
     return (fb = { A, auth });
   }
   const MOTIFS_GOOGLE = {
-    "auth/popup-closed-by-user": "Connexion annulée.", "auth/cancelled-popup-request": "Connexion annulée.", "auth/user-cancelled": "Connexion annulée.",
-    "auth/popup-blocked": "Le navigateur a bloqué la fenêtre de Google : autorisez les fenêtres surgissantes pour ce site, puis réessayez.",
-    "auth/unauthorized-domain": "Ce site n'est pas encore autorisé pour la connexion Google (Firebase → Authentication → Settings → Authorized domains).",
-    "auth/operation-not-allowed": "La connexion Google n'est pas activée dans Firebase (Authentication → Sign-in method).",
-    "auth/account-exists-with-different-credential": "Un compte existe déjà avec cet e-mail et un mot de passe : connectez-vous avec l'e-mail.",
-    "auth/network-request-failed": "Le service en ligne ne répond pas : vérifiez votre connexion.",
+    "auth/popup-closed-by-user": Tr("Connexion annulée.", "Sign-in cancelled."), "auth/cancelled-popup-request": Tr("Connexion annulée.", "Sign-in cancelled."), "auth/user-cancelled": Tr("Connexion annulée.", "Sign-in cancelled."),
+    "auth/popup-blocked": Tr("Le navigateur a bloqué la fenêtre de Google : autorisez les fenêtres surgissantes pour ce site, puis réessayez.", "The browser blocked Google's window: allow pop-ups for this site, then try again."),
+    "auth/unauthorized-domain": Tr("Ce site n'est pas encore autorisé pour la connexion Google (Firebase → Authentication → Settings → Authorized domains).", "This site isn't yet authorized for Google sign-in (Firebase → Authentication → Settings → Authorized domains)."),
+    "auth/operation-not-allowed": Tr("La connexion Google n'est pas activée dans Firebase (Authentication → Sign-in method).", "Google sign-in isn't enabled in Firebase (Authentication → Sign-in method)."),
+    "auth/account-exists-with-different-credential": Tr("Un compte existe déjà avec cet e-mail et un mot de passe : connectez-vous avec l'e-mail.", "An account already exists with this e-mail and a password: log in with the e-mail."),
+    "auth/network-request-failed": Tr("Le service en ligne ne répond pas : vérifiez votre connexion.", "The online service isn't responding: check your connection."),
   };
   async function viaGoogle() {
     if (CFG.emulateur) {                                                  // essais en local (mock_firebase.py) : pas de fenêtre Google, un e-mail de test
       const email = (window.prompt("Essai local : l'e-mail du compte Google simulé", "joueur@example.com") || "").trim();
-      if (!email) throw new Error("Connexion annulée.");
+      if (!email) throw new Error(Tr("Connexion annulée.", "Sign-in cancelled."));
       const d = await identite("signInWithIdp", { postBody: `id_token=essai&providerId=google.com&email=${encodeURIComponent(email)}`, requestUri: location.origin, returnSecureToken: true });
       return { idToken: d.idToken, refreshToken: d.refreshToken, expiresIn: d.expiresIn, localId: d.localId, email: d.email || email };
     }
@@ -273,8 +273,8 @@
       return l.map(x => ({ id: x.id, nom: String(x.nom || ""), armes: API.armesCode(x.armes), cree: x.cree || "" })).sort((a, b) => (a.cree < b.cree ? 1 : -1));
     },
     async ajoute(nom, armes) {
-      if (!S) throw new Error("La bibliothèque est réservée aux comptes en ligne.");
-      if ((await biblio.liste()).length >= BIBLIO_MAX) throw new Error(`Votre bibliothèque est pleine (${BIBLIO_MAX} armes) : retirez-en avant d'en ajouter.`);
+      if (!S) throw new Error(Tr("La bibliothèque est réservée aux comptes en ligne.", "The library is for online accounts only."));
+      if ((await biblio.liste()).length >= BIBLIO_MAX) throw new Error(Tr(`Votre bibliothèque est pleine (${BIBLIO_MAX} armes) : retirez-en avant d'en ajouter.`, `Your library is full (${BIBLIO_MAX} arms): remove some before adding more.`));
       const id = idAuHasard();
       await fsAuth(":commit", { methode: "POST", corps: { writes: [{ update: doc(`profils/${S.uid}/bibliotheque/${id}`, { nom: String(nom).trim().slice(0, 60) || "Sans nom", armes: API.armesCode(armes), cree: new Date() }), currentDocument: { exists: false } }] } });
       return id;
@@ -289,7 +289,7 @@
     async regle(oui) {
       if (!S) return;
       if (!oui) return void await fsAuth(":commit", { methode: "POST", corps: { writes: [{ delete: `${RACINE}/abonnes/${S.uid}` }] } });
-      if (!S.email) throw new Error("Aucune adresse e-mail n'est liée à ce compte.");
+      if (!S.email) throw new Error(Tr("Aucune adresse e-mail n'est liée à ce compte.", "No e-mail address is linked to this account."));
       await fsAuth(":commit", { methode: "POST", corps: { writes: [{ update: doc(`abonnes/${S.uid}`, { email: S.email, depuis: new Date() }) }] } });
     },
   };
@@ -297,7 +297,7 @@
   /* ---------- actions du joueur ---------- */
   const pseudoLibre = async pseudo => { try { return (await lisDoc(`pseudos/${seg(idPseudo(pseudo))}`, false)) === null; } catch (e) { return null; } };
   async function cree(email, mdp, profil) {
-    if ((await pseudoLibre(profil.pseudo)) === false) throw new Error("Ce pseudo est déjà pris : choisissez-en un autre.");
+    if ((await pseudoLibre(profil.pseudo)) === false) throw new Error(Tr("Ce pseudo est déjà pris : choisissez-en un autre.", "This username is taken: please choose another."));
     pose(await identite("signUp", { email, password: mdp, returnSecureToken: true }), email);
     registre(S.uid); Y.pseudo = ""; Y.hash = ""; Y.carnets = {}; Y.pousses = {};
     API.interne.ecrire({ ...API.interne.lire(), profil }, true);
@@ -316,7 +316,7 @@
     if (!S) throw new Error("Reconnectez-vous d'abord.");
     if (S.via === "google") {
       const d = await viaGoogle();
-      if (d.localId !== S.uid) throw new Error("Ce n'est pas le compte Google de ce profil : rien n'a été supprimé.");
+      if (d.localId !== S.uid) throw new Error(Tr("Ce n'est pas le compte Google de ce profil : rien n'a été supprimé.", "This isn't the Google account of this profile: nothing was deleted."));
       pose(d, d.email, "google");
     } else {
       if (!S.email) throw new Error("Reconnectez-vous d'abord.");
@@ -396,35 +396,35 @@
     connecte: () => !!S,
     pseudoLibre,
     vue(profil) {
-      if (S) return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">Compte en ligne</h3>
-        <p>Connecté${S.via === "google" ? " avec Google" : ""}${profil ? ` sous le pseudo <b>${esc(profil.pseudo)}</b>` : ""} : vos scores vous suivent d'un appareil à l'autre, vous figurez au classement, et vos armes se gardent dans votre bibliothèque.</p>
-        ${profil ? "" : `<p class="cpt-err" role="alert">Choisissez un pseudo ci-dessus, puis « Créer mon profil » : c'est lui qui vous représente au classement.</p>`}
-        ${etatSynchro.ok ? "" : `<p class="cpt-err" role="alert">Synchronisation impossible : ${esc(etatSynchro.msg)}</p>`}
-        ${S.email ? `<label class="cpt-case"><input type="checkbox" id="cpt-nouvelles" disabled><span>M'écrire à <b>${esc(S.email)}</b> quand l'Armorial a du nouveau : nouveaux jeux, grandes mises à jour, quelques messages par an au plus. Décochez pour vous désinscrire.</span></label>` : ""}
+      if (S) return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">${Tr("Compte en ligne", "Online account")}</h3>
+        <p>${Tr(`Connecté${S.via === "google" ? " avec Google" : ""}${profil ? ` sous le pseudo <b>${esc(profil.pseudo)}</b>` : ""} : vos scores vous suivent d'un appareil à l'autre, vous figurez au classement, et vos armes se gardent dans votre bibliothèque.`, `Logged in${S.via === "google" ? " with Google" : ""}${profil ? ` as <b>${esc(profil.pseudo)}</b>` : ""}: your scores follow you from one device to another, you appear on the leaderboard, and your arms are kept in your library.`)}</p>
+        ${profil ? "" : `<p class="cpt-err" role="alert">${Tr("Choisissez un pseudo ci-dessus, puis « Créer mon profil » : c'est lui qui vous représente au classement.", "Choose a username above, then “Create my profile”: it represents you on the leaderboard.")}</p>`}
+        ${etatSynchro.ok ? "" : `<p class="cpt-err" role="alert">${Tr("Synchronisation impossible :", "Sync failed:")} ${esc(etatSynchro.msg)}</p>`}
+        ${S.email ? `<label class="cpt-case"><input type="checkbox" id="cpt-nouvelles" disabled><span>${Tr(`M'écrire à <b>${esc(S.email)}</b> quand l'Armorial a du nouveau : nouveaux jeux, grandes mises à jour, quelques messages par an au plus. Décochez pour vous désinscrire.`, `Write to me at <b>${esc(S.email)}</b> when the Armorial has news: new games, major updates, a few messages a year at most. Untick to unsubscribe.`)}</span></label>` : ""}
         ${brouillonLigne.supprime
           ? (S.via === "google"
-            ? `<div class="cpt-supp"><p>Supprimer le compte efface en ligne votre pseudo, vos scores, votre bibliothèque et votre inscription aux nouvelles. Google vous demandera de confirmer.</p>
-                <div class="cpt-acts"><button type="button" class="main" data-act="supprime-google">Confirmer avec Google et supprimer</button><button type="button" class="lnk" data-act="supprime-non">Annuler</button></div>
+            ? `<div class="cpt-supp"><p>${Tr("Supprimer le compte efface en ligne votre pseudo, vos scores, votre bibliothèque et votre inscription aux nouvelles. Google vous demandera de confirmer.", "Deleting the account erases your username, scores, library and news subscription online. Google will ask you to confirm.")}</p>
+                <div class="cpt-acts"><button type="button" class="main" data-act="supprime-google">${Tr("Confirmer avec Google et supprimer", "Confirm with Google and delete")}</button><button type="button" class="lnk" data-act="supprime-non">${Tr("Annuler", "Cancel")}</button></div>
                 <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p></div>`
-            : `<form id="cpt-supp-form" novalidate><label class="cpt-lab" for="cpt-supp-mdp">Pour supprimer, saisissez à nouveau votre mot de passe</label>
+            : `<form id="cpt-supp-form" novalidate><label class="cpt-lab" for="cpt-supp-mdp">${Tr("Pour supprimer, saisissez à nouveau votre mot de passe", "To delete, enter your password again")}</label>
               <input id="cpt-supp-mdp" type="password" autocomplete="current-password">
-              <div class="cpt-acts"><button type="submit" class="main" data-act="supprime-ok">Supprimer définitivement</button><button type="button" class="lnk" data-act="supprime-non">Annuler</button></div>
+              <div class="cpt-acts"><button type="submit" class="main" data-act="supprime-ok">${Tr("Supprimer définitivement", "Delete permanently")}</button><button type="button" class="lnk" data-act="supprime-non">${Tr("Annuler", "Cancel")}</button></div>
               <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p></form>`)
-          : `<div class="cpt-acts"><button type="button" class="lnk" data-act="deco">Se déconnecter</button><button type="button" class="lnk" data-act="supprime">Supprimer mon compte en ligne</button></div><p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>`}
+          : `<div class="cpt-acts"><button type="button" class="lnk" data-act="deco">${Tr("Se déconnecter", "Log out")}</button><button type="button" class="lnk" data-act="supprime">${Tr("Supprimer mon compte en ligne", "Delete my online account")}</button></div><p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>`}
         <p class="cpt-ret" id="cpt-ligne-msg" role="status">${esc(brouillonLigne.msg)}</p></section>`;
-      return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">Compte en ligne <small>facultatif</small></h3>
-        <p>Vos scores sur tous vos appareils, votre place au classement, et une bibliothèque pour garder les armes que vous composez dans l'Atelier.</p>
-        <button type="button" class="cpt-google" data-act="google">${G}<span>Continuer avec Google</span></button>
+      return `<section class="cpt-ligne" aria-labelledby="cpt-ligne-t"><h3 id="cpt-ligne-t">${Tr("Compte en ligne <small>facultatif</small>", "Online account <small>optional</small>")}</h3>
+        <p>${Tr("Vos scores sur tous vos appareils, votre place au classement, et une bibliothèque pour garder les armes que vous composez dans l'Atelier.", "Your scores on all your devices, your place on the leaderboard, and a library for the arms you design in the Atelier.")}</p>
+        <button type="button" class="cpt-google" data-act="google">${G}<span>${Tr("Continuer avec Google", "Continue with Google")}</span></button>
         <p class="cpt-err" id="cpt-ligne-err" role="alert" hidden></p>
-        <details class="cpt-mdp"${brouillonLigne.mdpOuvert ? " open" : ""}><summary>Ou avec un e-mail et un mot de passe</summary>
+        <details class="cpt-mdp"${brouillonLigne.mdpOuvert ? " open" : ""}><summary>${Tr("Ou avec un e-mail et un mot de passe", "Or with an e-mail and a password")}</summary>
         <form id="cpt-ligne-form" novalidate>
           <label class="cpt-lab" for="cpt-email">E-mail</label>
           <input id="cpt-email" type="email" autocomplete="email" inputmode="email" spellcheck="false" value="${esc(brouillonLigne.email)}">
-          <label class="cpt-lab" for="cpt-mdp">Mot de passe <span class="cpt-regle">— 8 caractères au moins</span></label>
+          <label class="cpt-lab" for="cpt-mdp">${Tr("Mot de passe <span class=\"cpt-regle\">— 8 caractères au moins</span>", "Password <span class=\"cpt-regle\">— at least 8 characters</span>")}</label>
           <input id="cpt-mdp" type="password" autocomplete="current-password" minlength="8" value="${esc(brouillonLigne.mdp)}">
-          <div class="cpt-acts"><button type="submit" class="main" data-act="cree">Créer mon compte</button><button type="button" class="lnk" data-act="connecte">J'ai déjà un compte : me connecter</button></div>
+          <div class="cpt-acts"><button type="submit" class="main" data-act="cree">${Tr("Créer mon compte", "Create my account")}</button><button type="button" class="lnk" data-act="connecte">${Tr("J'ai déjà un compte : me connecter", "I already have an account: log in")}</button></div>
         </form></details>
-        <p class="cpt-fine">Gardés en ligne : votre e-mail (jamais montré), votre pseudo, vos armes, vos scores, votre bibliothèque. Vous pouvez tout supprimer d'ici, à tout moment.</p>
+        <p class="cpt-fine">${Tr("Gardés en ligne : votre e-mail (jamais montré), votre pseudo, vos armes, vos scores, votre bibliothèque. Vous pouvez tout supprimer d'ici, à tout moment.", "Kept online: your e-mail (never shown), username, arms, scores and library. You can delete everything from here at any time.")}</p>
         <p class="cpt-ret" id="cpt-ligne-msg" role="status">${esc(brouillonLigne.msg)}</p></section>`;
     },
     lie(dlg, ctx) {
@@ -433,7 +433,7 @@
       const erreur = m => { const e = dlg.querySelector("#cpt-ligne-err"); if (e) { e.textContent = m; e.hidden = !m; } };
       const msg = m => { brouillonLigne.msg = m; const e = dlg.querySelector("#cpt-ligne-msg"); if (e) e.textContent = m; };
       const travaille = async (bouton, f) => {
-        brouillonLigne.msg = ""; erreur(""); bouton.disabled = true; const avant = bouton.innerHTML; bouton.textContent = "Un instant…";
+        brouillonLigne.msg = ""; erreur(""); bouton.disabled = true; const avant = bouton.innerHTML; bouton.textContent = Tr("Un instant…", "One moment…");
         try { await f(); } catch (e) { erreur(e.message); } finally { bouton.disabled = false; bouton.innerHTML = avant; }
       };
       const d = racine.querySelector(".cpt-mdp");
@@ -443,8 +443,8 @@
         form.addEventListener("input", e => { if (e.target.id === "cpt-email") brouillonLigne.email = e.target.value; if (e.target.id === "cpt-mdp") brouillonLigne.mdp = e.target.value; });
         const lit = () => {
           const email = form.querySelector("#cpt-email").value.trim(), mdp = form.querySelector("#cpt-mdp").value;
-          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { erreur("Saisissez une adresse e-mail valide."); return null; }
-          if (mdp.length < 8) { erreur("Le mot de passe compte 8 caractères au moins."); return null; }
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { erreur(Tr("Saisissez une adresse e-mail valide.", "Please enter a valid e-mail address.")); return null; }
+          if (mdp.length < 8) { erreur(Tr("Le mot de passe compte 8 caractères au moins.", "The password must have at least 8 characters.")); return null; }
           erreur(""); return { email, mdp };
         };
         form.addEventListener("submit", async e => {
@@ -453,14 +453,14 @@
           const profil = ctx.profil(); if (!profil) { ctx.pseudoManquant(); return; }
           await travaille(form.querySelector('[data-act="cree"]'), async () => {
             await cree(id.email, id.mdp, profil);
-            brouillonLigne.mdp = ""; brouillonLigne.msg = "Compte créé : vous êtes connecté."; ctx.refait();
+            brouillonLigne.mdp = ""; brouillonLigne.msg = Tr("Compte créé : vous êtes connecté.", "Account created: you're logged in."); ctx.refait();
           });
         });
         form.querySelector('[data-act="connecte"]').addEventListener("click", async e => {
           const id = lit(); if (!id) return;
           await travaille(e.currentTarget, async () => {
             await connecte(id.email, id.mdp);
-            brouillonLigne.mdp = ""; msg("Connecté : la page se recharge…"); setTimeout(() => location.reload(), 700);      // le jeu repart des carnets fondus
+            brouillonLigne.mdp = ""; msg(Tr("Connecté : la page se recharge…", "Logged in: the page is reloading…")); setTimeout(() => location.reload(), 700);      // le jeu repart des carnets fondus
           });
         });
       }
@@ -468,10 +468,10 @@
       if (supp) supp.addEventListener("submit", async e => {
         e.preventDefault();
         const mdp = supp.querySelector("#cpt-supp-mdp").value;
-        if (!mdp) { erreur("Saisissez votre mot de passe."); return; }
+        if (!mdp) { erreur(Tr("Saisissez votre mot de passe.", "Please enter your password.")); return; }
         await travaille(supp.querySelector('[data-act="supprime-ok"]'), async () => {
           await supprime(mdp);
-          brouillonLigne.supprime = false; brouillonLigne.msg = "Compte en ligne supprimé (e-mail, pseudo, scores, bibliothèque). Vos scores restent sur cet appareil."; ctx.refait();
+          brouillonLigne.supprime = false; brouillonLigne.msg = Tr("Compte en ligne supprimé (e-mail, pseudo, scores, bibliothèque). Vos scores restent sur cet appareil.", "Online account deleted (e-mail, username, scores, library). Your scores remain on this device."); ctx.refait();
         });
       });
       const nv = dlg.querySelector("#cpt-nouvelles");
@@ -479,7 +479,7 @@
         nouvelles.lit().then(oui => { nv.checked = oui; nv.disabled = false; }).catch(() => { nv.disabled = false; });
         nv.addEventListener("change", async () => {
           nv.disabled = true;
-          try { await nouvelles.regle(nv.checked); msg(nv.checked ? "C'est noté : vous recevrez les nouvelles de l'Armorial." : "Désinscrit : plus aucun message."); }
+          try { await nouvelles.regle(nv.checked); msg(nv.checked ? Tr("C'est noté : vous recevrez les nouvelles de l'Armorial.", "Noted: you'll receive news from the Armorial.") : Tr("Désinscrit : plus aucun message.", "Unsubscribed: no more messages.")); }
           catch (e) { nv.checked = !nv.checked; erreur(e.message); }
           finally { nv.disabled = false; }
         });
@@ -491,15 +491,15 @@
           const pf = ctx.profil(); if (pf && !API.profil()) ctx.enregistre(pf);
           await travaille(b, async () => {
             await avecGoogle();
-            if (API.profil()) { msg("Connecté : la page se recharge…"); setTimeout(() => location.reload(), 700); }
-            else { brouillonLigne.msg = "Connecté avec Google."; ctx.refait(); }
+            if (API.profil()) { msg(Tr("Connecté : la page se recharge…", "Logged in: the page is reloading…")); setTimeout(() => location.reload(), 700); }
+            else { brouillonLigne.msg = Tr("Connecté avec Google.", "Logged in with Google."); ctx.refait(); }
           });
         }
         if (b.dataset.act === "supprime-google") await travaille(b, async () => {
           await supprime();
-          brouillonLigne.supprime = false; brouillonLigne.msg = "Compte en ligne supprimé (pseudo, scores, bibliothèque). Vos scores restent sur cet appareil."; ctx.refait();
+          brouillonLigne.supprime = false; brouillonLigne.msg = Tr("Compte en ligne supprimé (pseudo, scores, bibliothèque). Vos scores restent sur cet appareil.", "Online account deleted (username, scores, library). Your scores remain on this device."); ctx.refait();
         });
-        if (b.dataset.act === "deco") { await deconnecte(); brouillonLigne.msg = "Déconnecté. Vos scores restent sur cet appareil."; ctx.refait(); }
+        if (b.dataset.act === "deco") { await deconnecte(); brouillonLigne.msg = Tr("Déconnecté. Vos scores restent sur cet appareil.", "Logged out. Your scores remain on this device."); ctx.refait(); }
         if (b.dataset.act === "supprime") { brouillonLigne.supprime = true; ctx.refait(); }
         if (b.dataset.act === "supprime-non") { brouillonLigne.supprime = false; ctx.refait(); }
       });

@@ -135,28 +135,28 @@
     const p = M.profil, b = brouillon, connecte = API.ligne && API.ligne.connecte();
     const versAtelier = surAtelier() ? "" : `atelier.html#${b.armes ? b.armes + "&" : ""}pour=profil`;
     const biblio = !API.biblio || !connecte ? ""
-      : `<div class="cpt-biblio"><p class="cpt-lab">Ma bibliothèque</p>${biblioErr ? `<p class="cpt-err">${esc(biblioErr)}</p>`
-        : !biblioListe ? `<p class="cpt-regle">Chargement…</p>`
+      : `<div class="cpt-biblio"><p class="cpt-lab">${Tr("Ma bibliothèque", "My library")}</p>${biblioErr ? `<p class="cpt-err">${esc(biblioErr)}</p>`
+        : !biblioListe ? `<p class="cpt-regle">${Tr("Chargement…", "Loading…")}</p>`
         : biblioListe.length ? `<ul class="cpt-biblio-l">${biblioListe.map(x => `<li><button type="button" data-armes="${esc(x.armes)}" title="${esc(x.nom)}"${x.armes === b.armes ? ' aria-pressed="true"' : ""}><span class="cpt-mini">${dessin(x.armes)}</span><span>${esc(x.nom)}</span></button></li>`).join("")}</ul>`
-        : `<p class="cpt-regle">Vide pour l'instant : dans l'Atelier, « Enregistrer dans ma bibliothèque ».</p>`}</div>`;
+        : `<p class="cpt-regle">${Tr("Vide pour l'instant : dans l'Atelier, « Enregistrer dans ma bibliothèque ».", "Empty for now: in the Atelier, use « Enregistrer dans ma bibliothèque » (save to my library).")}</p>`}</div>`;
     return `<form method="dialog" class="cpt-f" id="cpt-form" novalidate>
-      <button type="button" class="cpt-x" data-fermer aria-label="Fermer">×</button>
-      <h2 id="cpt-titre">${p ? "Votre profil" : "Créer mon profil"}</h2>
-      <p class="cpt-intro">${p ? "Votre pseudo et vos armes accompagnent vos scores." : "Un pseudo et des armes à vous : elles s'affichent à côté de vos scores."}</p>
+      <button type="button" class="cpt-x" data-fermer aria-label="${Tr("Fermer", "Close")}">×</button>
+      <h2 id="cpt-titre">${p ? Tr("Votre profil", "Your profile") : Tr("Créer mon profil", "Create my profile")}</h2>
+      <p class="cpt-intro">${p ? Tr("Votre pseudo et vos armes accompagnent vos scores.", "Your username and arms appear with your scores.") : Tr("Un pseudo et des armes à vous : elles s'affichent à côté de vos scores.", "A username and arms of your own, shown next to your scores.")}</p>
       <div class="cpt-armes"><div class="cpt-ecu" id="cpt-ecu" aria-hidden="true">${dessin(b.armes)}</div>
-        <div class="cpt-armes-t"><p class="cpt-blz" id="cpt-blz">${esc(blasonDe(b.armes))}</p>
-          <p class="cpt-armes-acts">${versAtelier ? `<a class="cpt-btn" id="cpt-atelier" href="${esc(versAtelier)}">Composer mes armes dans l'Atelier</a>` : `<span class="cpt-regle">Composez vos armes ici même, puis « Prendre pour mes armes ».</span>`}
-            <button type="button" class="cpt-btn cpt-btn-2" id="cpt-hasard">Au hasard</button></p></div></div>
+        <div class="cpt-armes-t"><p class="cpt-blz" id="cpt-blz" lang="fr">${esc(blasonDe(b.armes))}</p>
+          <p class="cpt-armes-acts">${versAtelier ? `<a class="cpt-btn" id="cpt-atelier" href="${esc(versAtelier)}">${Tr("Composer mes armes dans l'Atelier", "Design my arms in the Atelier (in French)")}</a>` : `<span class="cpt-regle">${Tr("Composez vos armes ici même, puis « Prendre pour mes armes ».", "Design your arms right here, then choose « Prendre pour mes armes » (use as my arms).")}</span>`}
+            <button type="button" class="cpt-btn cpt-btn-2" id="cpt-hasard">${Tr("Au hasard", "Random")}</button></p></div></div>
       ${biblio}
-      <label class="cpt-lab" for="cpt-pseudo">Pseudo</label>
-      <input id="cpt-pseudo" name="pseudo" type="text" maxlength="24" autocomplete="nickname" spellcheck="false" value="${esc(b.pseudo)}" placeholder="Votre nom de héraut">
+      <label class="cpt-lab" for="cpt-pseudo">${Tr("Pseudo", "Username")}</label>
+      <input id="cpt-pseudo" name="pseudo" type="text" maxlength="24" autocomplete="nickname" spellcheck="false" value="${esc(b.pseudo)}" placeholder="${Tr("Votre nom de héraut", "Your herald's name")}">
       <p class="cpt-err" id="cpt-err" role="alert" hidden></p>
-      <div class="cpt-acts"><button type="submit" class="main">${p ? "Enregistrer" : "Créer mon profil"}</button>${p ? `<button type="button" id="cpt-efface" class="lnk">Effacer le profil</button>` : ""}</div>
-      ${API.ligne ? "" : `<p class="cpt-note"><b>Où sont gardés vos scores ?</b> Dans ce navigateur, sur cet appareil, et nulle part ailleurs. Le code ci-dessous passe vos scores d'un appareil à l'autre.</p>`}
-      <details class="cpt-sauve"><summary>Sauvegarde : exporter ou importer</summary>
-        <label class="cpt-lab" for="cpt-code">Code de sauvegarde</label>
+      <div class="cpt-acts"><button type="submit" class="main">${p ? Tr("Enregistrer", "Save") : Tr("Créer mon profil", "Create my profile")}</button>${p ? `<button type="button" id="cpt-efface" class="lnk">${Tr("Effacer le profil", "Delete the profile")}</button>` : ""}</div>
+      ${API.ligne ? "" : `<p class="cpt-note">${Tr("<b>Où sont gardés vos scores ?</b> Dans ce navigateur, sur cet appareil, et nulle part ailleurs. Le code ci-dessous passe vos scores d'un appareil à l'autre.", "<b>Where are your scores kept?</b> In this browser, on this device, and nowhere else. The code below moves your scores from one device to another.")}</p>`}
+      <details class="cpt-sauve"><summary>${Tr("Sauvegarde : exporter ou importer", "Backup: export or import")}</summary>
+        <label class="cpt-lab" for="cpt-code">${Tr("Code de sauvegarde", "Backup code")}</label>
         <textarea id="cpt-code" rows="3" spellcheck="false" readonly>${esc(API.exporter())}</textarea>
-        <div class="cpt-acts"><button type="button" id="cpt-copie" class="lnk">Copier le code</button><button type="button" id="cpt-import" class="lnk">Importer un code (remplace les scores de ce navigateur)</button></div>
+        <div class="cpt-acts"><button type="button" id="cpt-copie" class="lnk">${Tr("Copier le code", "Copy the code")}</button><button type="button" id="cpt-import" class="lnk">${Tr("Importer un code (remplace les scores de ce navigateur)", "Import a code (replaces the scores in this browser)")}</button></div>
         <p class="cpt-ret" id="cpt-ret" role="status"></p>
       </details>
     </form>${API.ligne ? API.ligne.vue(M.profil) : ""}`;
@@ -177,29 +177,29 @@
     f.addEventListener("submit", async e => {
       e.preventDefault();
       const pf = profilDuFormulaire();
-      if (!pf) { montre("Le pseudo compte de 2 à 24 caractères : lettres, chiffres, espace, _ . -"); f.pseudo.focus(); return; }
-      if (API.ligne && API.ligne.connecte() && (!M.profil || M.profil.pseudo.toLowerCase() !== pf.pseudo.toLowerCase()) && (await API.ligne.pseudoLibre(pf.pseudo)) === false) { montre("Ce pseudo est déjà pris : choisissez-en un autre."); f.pseudo.focus(); return; }
+      if (!pf) { montre(Tr("Le pseudo compte de 2 à 24 caractères : lettres, chiffres, espace, _ . -", "A username has 2 to 24 characters: letters, digits, space, _ . -")); f.pseudo.focus(); return; }
+      if (API.ligne && API.ligne.connecte() && (!M.profil || M.profil.pseudo.toLowerCase() !== pf.pseudo.toLowerCase()) && (await API.ligne.pseudoLibre(pf.pseudo)) === false) { montre(Tr("Ce pseudo est déjà pris : choisissez-en un autre.", "This username is taken: please choose another.")); f.pseudo.focus(); return; }
       M.profil = pf; ecrire(); dlg.close();
     });
     const efface = dlg.querySelector("#cpt-efface");
     if (efface) efface.addEventListener("click", () => {
-      if (!efface.dataset.sur) { efface.dataset.sur = "1"; efface.textContent = "Confirmer : effacer le profil (les scores restent)"; return; }
+      if (!efface.dataset.sur) { efface.dataset.sur = "1"; efface.textContent = Tr("Confirmer : effacer le profil (les scores restent)", "Confirm: delete the profile (scores are kept)"); return; }
       M.profil = null; ecrire(); dlg.close();
     });
     dlg.querySelector("#cpt-copie").addEventListener("click", async () => {
       code.select();
-      try { await navigator.clipboard.writeText(code.value); ret.textContent = "Code copié."; } catch (e) { ret.textContent = "Sélectionné : copiez-le avec le clavier."; }
+      try { await navigator.clipboard.writeText(code.value); ret.textContent = Tr("Code copié.", "Code copied."); } catch (e) { ret.textContent = Tr("Sélectionné : copiez-le avec le clavier.", "Selected: copy it with the keyboard."); }
     });
     if (API.ligne) API.ligne.lie(dlg, {
       profil: profilDuFormulaire,
       enregistre: pf => { M.profil = pf; ecrire(); },
       refait: () => { refait(); chargeBiblio(); },
       ferme: () => dlg.close(),
-      pseudoManquant: () => { montre("Choisissez d'abord un pseudo (2 à 24 caractères : lettres, chiffres, espace, _ . -) : il vous représentera au classement."); f.pseudo.focus(); },
+      pseudoManquant: () => { montre(Tr("Choisissez d'abord un pseudo (2 à 24 caractères : lettres, chiffres, espace, _ . -) : il vous représentera au classement.", "First choose a username (2 to 24 characters: letters, digits, space, _ . -): it represents you on the leaderboard.")); f.pseudo.focus(); },
     });
     dlg.querySelector("#cpt-import").addEventListener("click", () => {
-      if (code.readOnly) { code.readOnly = false; code.value = ""; code.placeholder = "Collez ici le code d'un autre appareil, puis recliquez sur « Importer »."; code.focus(); return; }
-      if (API.importer(code.value)) { ret.textContent = "Importé."; setTimeout(() => dlg.close(), 500); } else ret.textContent = "Ce code n'est pas lisible.";
+      if (code.readOnly) { code.readOnly = false; code.value = ""; code.placeholder = Tr("Collez ici le code d'un autre appareil, puis recliquez sur « Importer ».", "Paste the code from another device here, then click Import again."); code.focus(); return; }
+      if (API.importer(code.value)) { ret.textContent = Tr("Importé.", "Imported."); setTimeout(() => dlg.close(), 500); } else ret.textContent = Tr("Ce code n'est pas lisible.", "This code can't be read.");
     });
   }
 

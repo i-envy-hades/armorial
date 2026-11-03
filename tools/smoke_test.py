@@ -865,6 +865,51 @@ def test_jeu(browser, base):
     propre("jeu (Héraut)", page, erreurs)
     page.context.close()
 
+def test_jeu_en(browser, base):
+    """le jeu en anglais (en.html) : même partie, mêmes carnets ; le français reste la clé, l'anglais ne sert qu'à l'affichage et à la saisie"""
+    page, erreurs = ouvre(browser, base, "en.html", "#jeu-grille:not([hidden])")
+    page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    page.click("#dlg-aide .jx-go")
+    verifie(page.evaluate("document.documentElement.lang") == "en" and page.inner_text(".jx-logo span") == "Shield of the Day", "jeu en anglais : la page s'appelle Shield of the Day")
+    E = page.evaluate("({ n: EcuDuJour.N, cible: EcuDuJour.cible.nom, aff: EcuDuJour.cible.aff })")
+    verifie(E["cible"] == ECUS["chevalier"], f"jeu en anglais : le même écu du jour que la page française ({E['cible']})")
+    verifie(page.inner_text("#jeu-jour").startswith(f"Shield #{E['n']}") and "Knight" in page.inner_text("#jeu-niveaux"), "jeu en anglais : le numéro du jour et les niveaux sont traduits")
+    manque = page.evaluate("""async () => { const T = await fetch("data/en.json").then(r => r.json()), table = { e: "emaux", c: "compo", p: "pieces", m: "meubles" };
+      return [...[...EcuDuJour.DETAILS.values()].filter(d => !T[table[d.cle[0]]][d.nom]).map(d => d.nom), ...EcuDuJour.CARTES.filter(c => !T.cartes[c.nom] || !T.rubriques[c.cat]).map(c => c.nom)]; }""")
+    verifie(not manque, f"jeu en anglais : tout le vocabulaire et toutes les cartes du jeu sont dans data/en.json ({manque[:8]})")
+    # la saisie : le nom anglais, le nom français, le mot du blason anglais
+    liste = lambda q: (page.fill("#jeu-nom", q), page.wait_for_timeout(50), page.inner_text("#jeu-liste") if page.locator("#jeu-liste li").count() else "")[2]
+    verifie("Germany" in liste("germany") and "Germany" in liste("allemagne"), "jeu en anglais : une carte se trouve par son nom anglais ou français")
+    verifie("Gules" in liste("gules") and "CLUE" in liste("gules").upper(), "jeu en anglais : un détail se demande avec le mot anglais")
+    page.fill("#jeu-nom", "")
+    # une réponse perdante au clavier : l'anglais à l'écran, le français dans le carnet
+    c = page.evaluate("""(() => { const L = EcuDuJour.CARTES, c = L.find(x => x.nom !== x.aff && x.canon !== EcuDuJour.cible.canon && !L.some(y => y !== x && y.aff.toLowerCase().startsWith(x.aff.toLowerCase()))); return { nom: c.nom, aff: c.aff }; })()""")
+    devine_au_clavier(page, c["aff"].lower())
+    page.wait_for_selector(".essai .case", timeout=8000); page.wait_for_timeout(500)
+    ligne = page.inner_text(".essai")
+    verifie(c["aff"] in ligne and "TINCTURES" in ligne.upper() and "Émaux" not in ligne, f"jeu en anglais : la réponse s'affiche en anglais ({c['aff']})")
+    verifie("Guess 2 of 6" in page.inner_text("#jeu-essais"), "jeu en anglais : le compteur d'essais est traduit")
+    garde = page.evaluate(f"Compte.carnet('ecu').jours[{E['n']}].essais")
+    verifie(garde == [c["nom"]], f"jeu en anglais : le carnet garde le nom français de la carte ({garde})")
+    # la fin de la partie
+    page.evaluate(PARTIE_JEU, E["cible"]); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
+    res = page.inner_text("#jeu-resultat")
+    verifie(f"These are the arms of {E['aff']}" in res and "Blazon, in French" in res, "jeu en anglais : le résultat est en anglais, le blasonnement annoncé en français")
+    partage = page.evaluate("EcuDuJour.texteDePartage()")
+    verifie(partage.startswith(f"Shield of the Day #{E['n']} · Knight — 2/6") and f"armorial.web.app/en.html?niveau=chevalier" in partage, "jeu en anglais : le partage est en anglais et mène à en.html")
+    # changer de langue : la même partie, et le choix est gardé
+    page.click("#jx-langue"); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
+    verifie(page.evaluate("document.documentElement.lang") == "fr" and "Trouvé en 2" in page.inner_text("#jeu-essais"), "jeu en anglais : le bouton FR montre la même partie en français")
+    page.goto(f"{base}/recherche.html"); page.wait_for_selector("header.mast a")
+    verifie(page.locator(".bandeau-langue").count() == 0, "jeu en anglais : qui a choisi le français ne voit pas de bandeau")
+    page.goto(f"{base}/index.html"); page.wait_for_selector("#jx-langue", state="attached"); page.click("#jx-langue"); page.wait_for_url("**/en.html*", timeout=10000)
+    page.goto(f"{base}/"); page.wait_for_url("**/en.html*", timeout=10000)
+    verifie(True, "jeu en anglais : qui a choisi l'anglais revient à en.html depuis l'accueil")
+    page.goto(f"{base}/recherche.html"); page.wait_for_selector("header.mast a")
+    verifie(page.locator(".bandeau-langue a[href='en.html']").count() == 1, "jeu en anglais : une page encore en français le dit, avec un lien de retour")
+    propre("jeu en anglais", page, erreurs)
+    page.context.close()
+
 def test_jeux_du_jour(browser, base):
     """L'Intrus, le blasonnement à trous (jour.html) et Dessine-moi (atelier.html#defi=dessin) : tirés de la graine du jour"""
     page, erreurs = ouvre(browser, base, "jour.html#intrus", ".jj-ecu")
@@ -973,6 +1018,7 @@ def main():
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
+                       ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),

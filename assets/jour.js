@@ -10,8 +10,8 @@
 const Jour = (() => {
   "use strict";
   const DEBUT = Date.UTC(2026, 9, 9), ZONE = "Europe/Paris";
-  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-  const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+  const MOIS = Tr(["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"], ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
+  const JOURS = Tr(["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"], ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]);
   const FMT = new Intl.DateTimeFormat("en-GB", { timeZone: ZONE, year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hourCycle: "h23" });
   const aParis = t => Object.fromEntries(FMT.formatToParts(t).filter(p => p.type !== "literal").map(p => [p.type, +p.value]));
 
@@ -19,7 +19,7 @@ const Jour = (() => {
   const numero = (t = new Date()) => { const p = aParis(t); return Math.round((Date.UTC(p.year, p.month - 1, p.day) - DEBUT) / 864e5) + 1; };
   /* minuit à Paris, le jour n : l'instant où son document s'ouvre */
   const ouvre = n => { const u = DEBUT + (n - 1) * 864e5, p = aParis(new Date(u)); return new Date(u - (p.hour * 60 + p.minute) * 6e4); };
-  const quand = n => { const d = new Date(DEBUT + (n - 1) * 864e5 + 432e5); return `${JOURS[d.getUTCDay()]} ${d.getUTCDate() === 1 ? "1ᵉʳ" : d.getUTCDate()} ${MOIS[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
+  const quand = n => { const d = new Date(DEBUT + (n - 1) * 864e5 + 432e5); return `${JOURS[d.getUTCDay()]} ${d.getUTCDate() === 1 ? Tr("1ᵉʳ", "1") : d.getUTCDate()} ${MOIS[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
   const avantDemain = () => Math.max(0, Math.round((ouvre(numero() + 1) - Date.now()) / 1000));
   const compteARebours = () => { const s = avantDemain(); return `${String(Math.floor(s / 3600)).padStart(2, "0")} h ${String(Math.floor(s / 60) % 60).padStart(2, "0")} min ${String(s % 60).padStart(2, "0")} s`; };
 
@@ -30,10 +30,10 @@ const Jour = (() => {
     if (docs.has(n)) return docs.get(n);
     await Compte.pret;
     let r;
-    if (!Compte.enLigne || !Compte.jour) r = { manque: "hors-ligne", msg: "Les jeux du jour se tirent de la base en ligne de l'Armorial, qui n'est pas configurée ici." };
+    if (!Compte.enLigne || !Compte.jour) r = { manque: "hors-ligne", msg: Tr("Les jeux du jour se tirent de la base en ligne de l'Armorial, qui n'est pas configurée ici.", "The daily games come from the Armorial's online database, which isn't set up here.") };
     else {
-      try { const d = await Compte.jour(n); r = d ? { doc: d } : { manque: "ferme", msg: "Les jeux de ce jour ne sont pas encore prêts : revenez un peu plus tard." }; }
-      catch (e) { r = { manque: "erreur", msg: `Les jeux du jour n'ont pas pu se charger (${e.message}).` }; }
+      try { const d = await Compte.jour(n); r = d ? { doc: d } : { manque: "ferme", msg: Tr("Les jeux de ce jour ne sont pas encore prêts : revenez un peu plus tard.", "Today's games aren't ready yet: please come back a little later.") }; }
+      catch (e) { r = { manque: "erreur", msg: Tr(`Les jeux du jour n'ont pas pu se charger (${e.message}).`, `The daily games couldn't load (${e.message}).`) }; }
     }
     if (r.doc) docs.set(n, r);
     return r;
