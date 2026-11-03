@@ -77,7 +77,7 @@
   /* ---------- l'interface publique ---------- */
   const API = {
     mode: "local",
-    enLigne: false, ligne: null, biblio: null, pret: Promise.resolve(), fusion: {}, scoresDe: {},      // remplis par assets/enligne.js et par chaque jeu
+    enLigne: false, ligne: null, biblio: null, pret: Promise.resolve(), fusion: {}, scoresDe: {}, points: {},      // remplis par assets/enligne.js et par chaque jeu
     interne: { lire: () => M, ecrire(m, silencieux) { M = { profil: propre(m.profil), carnets: m.carnets || {} }; ecrire(silencieux); } },
     profil: () => M.profil,
     carnet: jeu => M.carnets[jeu] || null,

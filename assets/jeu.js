@@ -5,7 +5,7 @@
    par étapes : d'abord sa seule silhouette, puis ses partitions, ses pièces, ses meubles ; les émaux trouvés s'y allument.
    On peut aussi demander un détail (un émail, une partition, une pièce, un meuble : « lion », « gueules », « écartelé ») : la page
    dit s'il est dans l'écu mystère. Un détail ne coûte pas d'essai — seules les armes réelles comptent — mais il est compté :
-   il s'affiche à la fin, dans le partage, et départage le classement à essais égaux.
+   il s'affiche à la fin, dans le partage, et retire des points (le barème : assets/jour.js).
 
    D'où vient chaque chose :
    - les armes : data/blasons.json et data/personnages.json ; une carte n'entre dans le jeu que si le lecteur de blasonnement
@@ -368,6 +368,7 @@
   };
 
   /* ---------- la fin de la partie ---------- */
+  const nb = x => x.toLocaleString(Tr("fr-FR", "en-GB"));
   const imageDe = a => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(a.file)}?width=420`;
   function texteDePartage() {
     const lignes = J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => EMOJI[m[k].cls]).join(""); });
@@ -385,6 +386,7 @@
     r.innerHTML = `<h2>${J.gagne ? (n === 1 ? Tr("Du premier coup !", "First try!") : n <= 3 ? Tr("Bien vu !", "Well spotted!") : Tr("Trouvé !", "Found it!")) : J.abandon ? Tr("Abandon", "You gave up") : Tr("Perdu… pour cette fois", "Lost… this time")}</h2>
       <p class="res-dit">${Tr(J.gagne ? `Ces armes sont celles de <b>${esc(a.aff)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.aff)}</b>.`,
         J.gagne ? `These are the arms of <b>${esc(a.aff)}</b>${n === 1 ? "" : `, found in ${n} guesses`}${J.details.length ? `${n === 1 ? ", found" : ""} with ${J.details.length} clue${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", without a single clue" : ""}.` : `These were the arms of <b>${esc(a.aff)}</b>.`)}</p>
+      ${J.gagne && !hors ? `<p class="res-points"><b>+${nb(Compte.points[JEU](n, J.details.length))}</b> points</p>` : ""}
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="${Tr("Armoiries", "Coat of arms")}${Tr(" : ", ": ")}${esc(a.aff)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
         <figcaption>${a.porteur || a.meta ? `${esc(a.porteur || a.meta)}<br>` : ""}<i>${esc(blasonCarte(a))}</i></figcaption></figure>
       ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).map(versLangue).join(" · ")}</span></p>` : ""}
@@ -442,6 +444,7 @@
       <div class="pf">${p ? `<span class="pf-ecu">${armes}</span><span class="pf-nom"><b>${esc(p.pseudo)}</b><small>${Tr("joueur depuis le", "playing since")} ${esc(p.cree.split("-").reverse().join("/"))}</small></span>`
         : `<span class="pf-nom"><b>${Tr("Joueur anonyme", "Anonymous player")}</b><small>${Tr("Créez un profil pour signer vos scores de vos propres armes.", "Create a profile to sign your scores with your own arms.")}</small></span>`}</div>
       <dl class="stats"><div><dt>${Tr("Parties", "Played")}</dt><dd>${s.joues}</dd></div><div><dt>${Tr("Victoires", "Wins")}</dt><dd>${s.joues ? Math.round(100 * s.gagnes / s.joues) : 0}<small>%</small></dd></div><div><dt>${Tr("Série", "Streak")}</dt><dd>${vivante}</dd></div><div><dt>${Tr("Record", "Best")}</dt><dd>${s.serieMax}</dd></div></dl>
+      <p class="pf-points"><b>${nb(Jour.totalPoints())}</b> ${Tr("points, tous niveaux confondus", "points across all levels")}</p>
       <h3 class="rep-t">${Tr("Victoires par nombre d'essais", "Wins by number of guesses")}</h3>
       <ol class="rep" aria-label="${Tr("Répartition des victoires par nombre d'essais", "Distribution of wins by number of guesses")}">${s.rep.map((n, i) => `<li${J.fini && J.gagne && !hors && J.essais.length === i + 1 ? ' class="auj"' : ""}><span class="rn">${i + 1}</span><span class="rb"><i style="width:${n ? Math.max(9, Math.round(100 * n / max)) : 0}%">${n || ""}</i></span></li>`).join("")}</ol>
       <p class="pf-acts"><button type="button" class="jx-go" id="jeu-pf2">${p ? Tr("Modifier mon profil", "Edit my profile") : Tr("Créer mon profil", "Create my profile")}</button></p>`;
@@ -481,7 +484,7 @@
     if (!el || !Compte.enLigne) return;
     $("#jx-classement").hidden = false;
     try {
-      [CL.jour, CL.general] = await Promise.all([Compte.classementJour(JEU, numAuj, { frais }), Compte.classementGeneral(JEU, { frais })]);
+      [CL.jour, CL.general] = await Promise.all([Compte.classementJour(JEU, numAuj, { frais }), Compte.classementGeneral({ frais })]);
       CL.erreur = false;
       await Promise.all([...new Set([...CL.jour, ...CL.general].map(x => Compte.armesCode(x.armes)))].map(Compte.prepare));
     } catch (e) { CL.erreur = true; }
@@ -490,9 +493,11 @@
   function rendClassement() {
     const el = $("#jeu-classement"), moi = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
     const liste = CL.onglet === "jour" ? CL.jour : CL.general;
-    const ligne = (x, i) => `<li${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${i + 1}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${CL.onglet === "jour" ? Tr(`${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}`, `${x.essais} guess${x.essais > 1 ? "es" : ""}${x.details ? ` · ${x.details} clue${x.details > 1 ? "s" : ""}` : ""}`) : Tr(`${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`, `${x.victoires} win${x.victoires > 1 ? "s" : ""}`)}</span></li>`;
+    const rangDe = x => liste.findIndex(y => y.points === x.points) + 1;      // à points égaux, même rang : 1, 2, 2, 4
+    const ligne = x => `<li data-r="${rangDe(x)}"${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${rangDe(x)}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}</b><span class="sc">${nb(x.points)} pts<small>${CL.onglet === "jour" ? Tr(`${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}`, `${x.essais} guess${x.essais > 1 ? "es" : ""}${x.details ? ` · ${x.details} clue${x.details > 1 ? "s" : ""}` : ""}`) : Tr(`${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`, `${x.victoires} win${x.victoires > 1 ? "s" : ""}`)}</small></span></li>`;
     el.innerHTML = `<h2 id="jeu-classement-t">${Tr("Classement", "Leaderboard")}</h2>
       <div class="onglets" role="tablist" aria-label="${Tr("Classement", "Leaderboard")}"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">${Tr("Du jour", "Today")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">${Tr("Général", "All time")}</button></div>
+      <p class="cl-note">${CL.onglet === "jour" ? Tr(`Niveau ${NIVEAUX[NIV].nom}`, `${NIVEAUX[NIV].nom} level`) : Tr("Tous niveaux confondus", "All levels combined")}</p>
       ${CL.erreur || !liste ? `<p class="cl-vide">${Tr("Le classement n'est pas disponible pour l'instant.", "The leaderboard isn't available right now.")}</p>`
         : liste.length ? `<ol class="cl">${liste.map(ligne).join("")}</ol>` : `<p class="cl-vide">${CL.onglet === "jour" ? Tr("Personne n'a encore trouvé l'écu du jour : soyez le premier.", "Nobody has found today's shield yet: be the first.") : Tr("Le classement se remplit avec les premières parties.", "The leaderboard fills up with the first games.")}</p>`}
       ${connecte ? "" : `<p class="cl-aide">${Tr(`<button type="button" class="lnk" id="jeu-cl-compte">Créez un compte en ligne</button> pour y figurer.`, `<button type="button" class="lnk" id="jeu-cl-compte">Create an online account</button> to appear on it.`)}</p>`}`;

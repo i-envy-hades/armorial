@@ -153,8 +153,8 @@
   async function pousse() {
     if (!S) return;
     const M = API.interne.lire(), uid = S.uid, y = registre(uid);
-    /* ce qu'on dit de soi pour le classement général : parties, victoires, essais moyens de chaque jeu */
-    const resume = {}, nouveauxScores = [];
+    /* ce qu'on dit de soi pour le classement général : parties, victoires, essais moyens de chaque jeu, et le total des points */
+    const resume = { points: Jour.totalPoints() }, nouveauxScores = [];
     for (const [jeu, c] of Object.entries(M.carnets)) {
       const sc = API.scoresDe[jeu] ? API.scoresDe[jeu](c) : [], vic = sc.filter(x => x.gagne);
       resume[`j_${jeu}`] = sc.length; resume[`v_${jeu}`] = vic.length;
@@ -355,26 +355,25 @@
     try { sessionStorage.setItem("armorial.cl." + cle, JSON.stringify({ t: Date.now(), v })); } catch (e) { /* idem */ }
     return v;
   };
-  /* Les meilleurs du jour. Avec l'index composite de SETUP.md (étape 5) et « "index": true » dans data/compte.json, Firestore trie
-     et ne renvoie que dix résultats ; sans lui, on lit jusqu'à cent résultats et on trie ici : même classement, plus de lectures. */
+  /* Les meilleurs du jour : on lit jusqu'à cent victoires et on les classe ici par points, qui ne sont pas enregistrés. Avec l'index composite
+     de SETUP.md (étape 5) et « "index": true » dans data/compte.json, ces cent-là sont celles qui ont demandé le moins d'essais. */
   API.classementJour = (jeu, jour, { frais = false } = {}) => enCache(`j|${jeu}|${jour}`, frais, async () => {
     const requ = sq => requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "scores" }], where: filtre("vic", "EQUAL", `${jeu}|${+jour}`), ...sq } } });
     let r = null;
     if (CFG.index) {                                              // « index »: true dans data/compte.json : l'index existe (même s'il se construit encore, on retombe sur la lecture simple)
-      try { r = await requ({ orderBy: [{ field: { fieldPath: "essais" }, direction: "ASCENDING" }, { field: { fieldPath: "cree" }, direction: "ASCENDING" }], limit: 30 }); }      // trente : à essais égaux, les détails départagent ici
+      try { r = await requ({ orderBy: [{ field: { fieldPath: "essais" }, direction: "ASCENDING" }, { field: { fieldPath: "cree" }, direction: "ASCENDING" }], limit: 100 }); }
       catch (e) { if (e.code !== "FAILED_PRECONDITION") throw e; }
     }
     if (!r) r = await requ({ limit: 100 });
-    const top = nettoie(r, "document").map(x => decChamps(x.document.fields)).sort((a, b) => a.essais - b.essais || (a.details | 0) - (b.details | 0) || (a.cree < b.cree ? -1 : 1)).slice(0, 10);
+    const top = nettoie(r, "document").map(x => decChamps(x.document.fields)).map(x => ({ ...x, details: x.details | 0, points: API.points[jeu](x.essais, x.details | 0) })).sort((a, b) => b.points - a.points || (a.cree < b.cree ? -1 : 1)).slice(0, 10);
     const pf = await profilsDe(top.map(x => x.uid));
-    return top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details | 0 }));
+    return top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details, points: x.points }));
   });
-  API.classementGeneral = (jeu, { frais = false } = {}) => enCache(`g|${jeu}`, frais, async () => {
-    if (!/^[a-z0-9_]+$/.test(jeu)) return [];
-    const v = `v_${jeu}`, r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre(v, "GREATER_THAN", 0), orderBy: [{ field: { fieldPath: v }, direction: "DESCENDING" }], limit: 30 } } });
+  /* Le classement général : les points de tous les niveaux, tels que chacun les a envoyés avec son profil à sa dernière visite */
+  API.classementGeneral = ({ frais = false } = {}) => enCache("g", frais, async () => {
+    const r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre("points", "GREATER_THAN", 0), orderBy: [{ field: { fieldPath: "points" }, direction: "DESCENDING" }], limit: 10 } } });
     return nettoie(r, "document").map(x => decChamps(x.document.fields)).filter(p => p.pseudo)
-      .map(p => ({ pseudo: p.pseudo, armes: p.armes, joues: p[`j_${jeu}`] || 0, victoires: p[v] || 0, essais_moyens: p[`m_${jeu}`] || 0 }))
-      .sort((a, b) => b.victoires - a.victoires || a.essais_moyens - b.essais_moyens).slice(0, 10);
+      .map(p => ({ pseudo: p.pseudo, armes: p.armes, points: p.points, victoires: Object.keys(API.points).reduce((t, jeu) => t + (p[`v_${jeu}`] || 0), 0) }));
   });
 
   /* ---------- les jeux du jour : jours/{n}, lisible seulement une fois le jour venu (heure du serveur, voir firestore.rules) ---------- */

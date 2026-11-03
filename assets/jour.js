@@ -43,11 +43,12 @@ const Jour = (() => {
 
   /* ---------- les carnets ----------
      un carnet : { stats: { joues, gagnes, serie, serieMax, dernierGagne, rep }, jours: { n: { essais: [...], fini, gagne, note? } } }
-     rep : la répartition des parties (par nombre d'essais gagnants, ou par note) ; score : ce qui part au classement (le plus petit gagne) */
+     rep : la répartition des parties (par nombre d'essais gagnants, ou par note) ; score : ce qui part au classement (le plus petit gagne) ;
+     coef : ce que vaut une victoire à ce niveau (voir le barème) */
   const JEUX = {
-    ecu_page: { nom: "L'Écu du jour · Écuyer", rep: 8 },
-    ecu: { nom: "L'Écu du jour · Chevalier", rep: 6 },
-    ecu_heraut: { nom: "L'Écu du jour · Seigneur", rep: 5 },
+    ecu_page: { nom: "L'Écu du jour · Écuyer", rep: 8, coef: 1 },
+    ecu: { nom: "L'Écu du jour · Chevalier", rep: 6, coef: 1.5 },
+    ecu_heraut: { nom: "L'Écu du jour · Seigneur", rep: 5, coef: 2 },
     dessin: { nom: "Dessine-moi", rep: 3 },
     intrus: { nom: "L'Intrus", rep: 6, rang: j => j.note, score: j => 6 - j.note },
     trous: { nom: "Le blasonnement à trous", rep: 2 },
@@ -71,7 +72,12 @@ const Jour = (() => {
       return { stats: recalcule(jeu, jours), jours };
     };
     Compte.scoresDe[jeu] = c => Object.entries((c && c.jours) || {}).filter(([, j]) => j && j.fini).map(([n, j]) => ({ jour: +n, essais: Math.max(1, Math.min(12, score(jeu, j))), gagne: !!j.gagne, details: Array.isArray(j.details) ? Math.min(99, j.details.length) : 0 }));
+    if (JEUX[jeu].coef) Compte.points[jeu] = (essais, details) => Math.round(JEUX[jeu].coef * Math.max(10, 100 - 15 * (essais - 1) - 3 * details));
   }
+  /* le barème de l'Écu du jour (ci-dessus) : 100 points pour un écu trouvé du premier coup, 15 de moins par essai en plus, 3 de moins par détail,
+     10 au moins, le tout multiplié selon le niveau ; une défaite ne rapporte rien. Rien de tout cela n'est enregistré : les points se recalculent
+     à partir des essais et des détails, si bien que les parties déjà jouées comptent et que le barème peut changer. */
+  const totalPoints = () => Object.keys(Compte.points).reduce((t, jeu) => t + Compte.scoresDe[jeu](Compte.carnet(jeu)).filter(x => x.gagne).reduce((a, x) => a + Compte.points[jeu](x.essais, x.details), 0), 0);
   /* le carnet d'un jeu, prêt à servir : lire le jour n, l'enregistrer, le clore */
   function carnet(jeu) {
     let C = Compte.carnet(jeu) || vide(jeu);
@@ -95,5 +101,5 @@ const Jour = (() => {
     catch (e) { window.prompt("Copiez votre résultat :", texte); }
   }
 
-  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, partage };
+  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, partage };
 })();

@@ -47,10 +47,10 @@ Both values are *meant* to be public: they ship inside the web page, and the rul
 
 ## 5. (Recommended) Add the leaderboard index, and lock the key to your site
 
-**Index** — makes the daily leaderboard read 10 documents instead of up to 100 (the free plan has a daily reading quota):
+**Index** — when more than 100 players win on the same day, makes the daily leaderboard read the 100 with the fewest guesses rather than any 100:
 Firestore Database → tab **Indexes** → **Composite** → **Add index**: collection ID `scores`; fields `vic` Ascending,
 `essais` Ascending, `cree` Ascending; query scope *Collection* → **Create**. It takes a few minutes. Then add `"index": true`
-to `data/compte.json` (step 6). Without the index everything still works, just with more reads.
+to `data/compte.json` (step 6). Without the index everything still works.
 
 **Key restriction** — so nobody can reuse your key on another site: <https://console.cloud.google.com/apis/credentials>
 (same Google login, same project) → open the key named *Browser key* (auto created by Firebase) → *Application restrictions* →
