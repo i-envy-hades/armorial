@@ -1,6 +1,9 @@
 /* L'ARMORIAL — adresses des cartes des galeries (Blasons réels, Personnages).
    Chaque carte a une adresse : blasons.html#royaume-de-france-moderne. On peut la citer, et la recherche du site y mène.
    Si le filtre en cours cache la carte visée, on le remet à zéro avant de s'y rendre. */
+/* ce qu'on affiche d'une carte : l'anglais si lireDonnees (assets/chrome.js) l'a posé ; nom et blason restent les clés françaises */
+const nomCarte = a => a.nomEn || a.nom;
+const blasonCarte = a => a.blasonEn || a.blason;
 const slugCarte = nom => String(nom).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 function allerCarte(remetsAZero) {
   let id;
@@ -46,7 +49,7 @@ document.addEventListener("click", e => {
     document.body.appendChild(d);
   }
   const grand = img.currentSrc.replace(/([?&])width=\d+/, "$1width=1000") || img.src;
-  d.innerHTML = `<button type="button" class="ag-x" aria-label="Fermer">×</button>
+  d.innerHTML = `<button type="button" class="ag-x" aria-label="${Tr("Fermer", "Close")}">×</button>
     <img src="${grand.replace(/"/g, "&quot;")}" alt="${(img.alt || "").replace(/"/g, "&quot;")}"${img.getAttribute("style") ? ` style="${img.getAttribute("style")}"` : ""}>
     <p class="ag-t">${titre ? titre.innerHTML : ""}</p>`;
   d.showModal();

@@ -19,7 +19,7 @@
 
    Deux langues : la même page de jeu sert index.html et en.html (« Shield of the Day »), avec les mêmes écus, carnets et classements.
    Le français reste la clé de tout (les noms de cartes du document du jour et du carnet, les traits comparés) ; l'anglais ne sert qu'à
-   l'affichage et à la saisie : data/en.json donne le nom, la description des cartes et le vocabulaire (voc), Tr(fr, en) le reste. */
+   l'affichage et à la saisie : lireDonnees (assets/chrome.js) donne les textes des cartes, data/en/vocabulaire.json le vocabulaire (voc), Tr(fr, en) le reste. */
 (async () => {
   "use strict";
   const $ = s => document.querySelector(s);
@@ -28,7 +28,7 @@
   const EMAUX = ["Or", "Argent", "Gueules", "Azur", "Sable", "Sinople", "Pourpre", "Hermine", "Vair"];
   const GRIS = "#d3ccb7";                                           // un émail pas encore trouvé
   const EN = LANGUE === "en";
-  let TRAD = { cartes: {} };                                        // data/en.json, en anglais seulement
+  let TRAD = {};                                                    // data/en/vocabulaire.json, en anglais seulement
   const voc = (table, s) => (EN && TRAD[table] && TRAD[table][s]) || s;
   const nomEmail = n => voc("emaux", n).toLowerCase();
 
@@ -94,18 +94,15 @@
   let CARTES = [];
   try {
     await chargerLecteur();                                          // data/data.json et data/atelier.json
-    const lit = u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); });
-    const [b, p] = await Promise.all(["data/blasons.json", "data/personnages.json"].map(lit));
-    if (EN) TRAD = await lit("data/en.json");
+    const [b, p] = await Promise.all(["data/blasons.json", "data/personnages.json"].map(lireDonnees));
+    if (EN) TRAD = await lisJson("data/en/vocabulaire.json");
     const tout = [...b.map(a => ({ ...a, gal: "blasons", cat: a.cat || "Blasons réels" })), ...p.map(a => ({ ...a, gal: "personnages", cat: "Personnages" }))];
     for (const a of tout) {
       if (!a.blason || !a.file) continue;
       const r = lireCarte(a);
       if (!r.ok) continue;
-      /* aff : le nom affiché, dit et hist : ce qu'on dit de la carte à la fin ; en anglais, on cherche aussi par le nom français */
-      const tr = TRAD.cartes[a.nom] || {};
-      const c = { ...a, etat: r.etat, S: mk(r.etat), aff: tr.nom || a.nom, dit: tr.porteur || tr.meta || a.porteur || a.meta || "", hist: EN ? tr.desc || "" : a.desc || "",
-        cle: plie(`${tr.nom || ""} ${a.nom} ${tr.porteur || a.porteur || ""}`) };
+      /* aff : le nom affiché ; en anglais, on cherche aussi par le nom français */
+      const c = { ...a, etat: r.etat, S: mk(r.etat), aff: nomCarte(a), cle: plie(`${a.nomEn || ""} ${a.nom} ${a.porteur || ""}`) };
       c.canon = blazonAll(c.S); c.t = traits(c);
       CARTES.push(c);
     }
@@ -382,18 +379,18 @@
     const r = $("#jeu-resultat"), a = cible, n = J.essais.length;
     const lien = a.gal === "blasons" ? `blasons.html#${slugCarte(a.nom)}` : `personnages.html#${slugCarte(a.nom)}`;
     const atelier = adresseAtelier(a, a.gal);
-    /* en anglais : le blasonnement reste en français, dit comme tel, et les renvois des cartes (des pages françaises) sont laissés de côté */
+    /* en anglais : les renvois des cartes mènent à des pages encore en français, ils sont laissés de côté */
     const termes = termesDe(a.blason), renvois = EN ? [] : (a.liens || []).map(l => `<a href="${esc(l.href)}">${esc(l.t)}</a>`);
     r.className = "jeu-resultat " + (J.gagne ? "ok" : "ko");
     r.innerHTML = `<h2>${J.gagne ? (n === 1 ? Tr("Du premier coup !", "First try!") : n <= 3 ? Tr("Bien vu !", "Well spotted!") : Tr("Trouvé !", "Found it!")) : J.abandon ? Tr("Abandon", "You gave up") : Tr("Perdu… pour cette fois", "Lost… this time")}</h2>
       <p class="res-dit">${Tr(J.gagne ? `Ces armes sont celles de <b>${esc(a.aff)}</b>${n === 1 ? "" : `, trouvées en ${n} essais`}${J.details.length ? `${n === 1 ? ", trouvées" : ""} avec ${J.details.length} détail${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", sans aucun détail" : ""}.` : `C'étaient les armes de <b>${esc(a.aff)}</b>.`,
         J.gagne ? `These are the arms of <b>${esc(a.aff)}</b>${n === 1 ? "" : `, found in ${n} guesses`}${J.details.length ? `${n === 1 ? ", found" : ""} with ${J.details.length} clue${J.details.length > 1 ? "s" : ""}` : n === 1 ? ", without a single clue" : ""}.` : `These were the arms of <b>${esc(a.aff)}</b>.`)}</p>
       <figure class="res-fig"><img src="${esc(imageDe(a))}" alt="${Tr("Armoiries", "Coat of arms")}${Tr(" : ", ": ")}${esc(a.aff)}" width="220" referrerpolicy="no-referrer"${styleFiltre(a)}>
-        <figcaption>${a.dit ? `${esc(a.dit)}<br>` : ""}${EN ? "Blazon, in French: " : ""}<i lang="fr">${esc(a.blason)}</i></figcaption></figure>
+        <figcaption>${a.porteur || a.meta ? `${esc(a.porteur || a.meta)}<br>` : ""}<i>${esc(blasonCarte(a))}</i></figcaption></figure>
       ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).join(" · ")}</span></p>` : ""}
-      ${a.hist ? `<p class="res-histoire">${esc(a.hist)}</p>` : ""}
+      ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
       <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens">${[...renvois, `<a href="${lien}"${EN ? ' hreflang="fr"' : ""}>${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}"${EN ? ' hreflang="fr"' : ""}>${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
+      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}"${EN ? ' hreflang="fr"' : ""}>${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image${Tr(" : ", ": ")}<i>${esc(a.file)}</i>, ${esc(a.auteur || Tr("auteur inconnu", "unknown author"))}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || Tr("licence libre", "free licence"))}, via Wikimedia Commons.</p>`;
     r.hidden = false;

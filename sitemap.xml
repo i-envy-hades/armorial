@@ -3,8 +3,10 @@
   <url><loc>https://armorial.web.app/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en.html"/></url>
   <url><loc>https://armorial.web.app/en.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en.html"/></url>
   <url><loc>https://armorial.web.app/encyclopedie.html</loc></url>
-  <url><loc>https://armorial.web.app/blasons.html</loc></url>
-  <url><loc>https://armorial.web.app/personnages.html</loc></url>
+  <url><loc>https://armorial.web.app/blasons.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/blasons.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-arms.html"/></url>
+  <url><loc>https://armorial.web.app/en-arms.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/blasons.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-arms.html"/></url>
+  <url><loc>https://armorial.web.app/personnages.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/personnages.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-people.html"/></url>
+  <url><loc>https://armorial.web.app/en-people.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/personnages.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-people.html"/></url>
   <url><loc>https://armorial.web.app/lignees.html</loc></url>
   <url><loc>https://armorial.web.app/atelier.html</loc></url>
   <url><loc>https://armorial.web.app/transmission.html</loc></url>

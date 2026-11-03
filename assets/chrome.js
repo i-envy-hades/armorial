@@ -12,20 +12,55 @@
 if (location.hostname === "i-envy-hades.github.io") location.replace("https://armorial.web.app" + location.pathname.replace(/^\/armorial(\/|$)/, "/") + location.search + location.hash);
 /* Le jeu est devenu la page d'accueil (index.html) et l'encyclopédie est passée à encyclopedie.html : un ancien lien vers un chapitre
    (« index.html#emaux ») arrive sur le jeu, qui le renvoie au bon endroit (le jeu, lui, n'emploie que « #n=3 »). */
-if (/^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu)$/.test(location.hash)) location.replace("encyclopedie.html" + location.hash);
+const ANCIEN_LIEN = /^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu)$/.test(location.hash);
+if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
 
-/* La langue. Le jeu existe en français (index.html) et en anglais (en.html) ; le reste du site n'est qu'en français pour l'instant.
-   Une page dit sa langue par <html lang> ; Tr(fr, en) choisit le texte, pour tous les scripts qui servent aux deux pages.
-   Le choix du joueur est gardé : celui qui joue en anglais revient à en.html quand un lien le ramène à l'accueil, et chaque page
-   qui n'est qu'en français le lui dit. Le lien qui change de langue porte data-langue. */
+/* La langue. Une page dit sa langue par <html lang> ; Tr(fr, en) choisit le texte, pour tous les scripts qui servent aux deux versions.
+   JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
+   Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
+   disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
+const JUMELLES = { "index.html": "en.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html" };
+const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
+const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
 const Tr = (fr, en) => (LANGUE === "en" ? en : fr);
 const CLE_LANGUE = "armorial.langue";
 const langueChoisie = () => { try { return localStorage.getItem(CLE_LANGUE); } catch (e) { return null; } };
 const choisitLangue = l => { try { localStorage.setItem(CLE_LANGUE, l); } catch (e) { /* sans mémoire : la langue de la page suffit */ } };
 if (LANGUE === "en") choisitLangue("en");
-else if (langueChoisie() === "en" && /^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, ""))) location.replace("en.html" + location.search + location.hash);
-document.addEventListener("click", e => { const a = e.target.closest && e.target.closest("a[data-langue]"); if (a) choisitLangue(a.dataset.langue); });
+else if (langueChoisie() === "en" && JUMELLES[PAGE_ICI] && !ANCIEN_LIEN) location.replace(JUMELLES[PAGE_ICI] + location.search + location.hash);
+/* en anglais, une adresse de page française devient celle de sa jumelle, si elle existe (« blasons.html#x » → « en-arms.html#x ») */
+const versLangue = s => (LANGUE === "en" ? String(s).replace(/\b[\w-]+\.html\b/g, m => JUMELLES[m] || m) : s);
+const renvoiLangue = a => { const h = a.getAttribute("href"), n = h && !a.dataset.langue ? versLangue(h) : h; if (n !== h) { a.setAttribute("href", n); a.removeAttribute("hreflang"); } };
+document.addEventListener("click", e => { const a = e.target.closest && e.target.closest("a[href]"); if (!a) return; if (a.dataset.langue) choisitLangue(a.dataset.langue); else if (LANGUE === "en") renvoiLangue(a); });
+if (LANGUE === "en") document.addEventListener("DOMContentLoaded", () => document.querySelectorAll("a[href]").forEach(renvoiLangue));
+
+/* Les données en anglais : le français reste la clé. data/en/*.json dit, pour chaque fichier traduit, l'anglais de chaque texte français
+   (« noms », « blasons », « textes »). Le nom et le blasonnement gardent leur valeur française (le moteur de dessin et les adresses des cartes
+   s'y lisent), l'anglais s'ajoute à côté (nomEn, blasonEn) ; les autres textes sont remplacés. Un texte sans traduction reste en français :
+   tools/check_data.py le signale. Mêmes règles dans tools/check_data.py. */
+const TABLES_EN = { "data/blasons.json": "data/en/cartes.json", "data/personnages.json": "data/en/cartes.json" };
+const CHAMPS_BRUTS = new Set(["file", "licurl", "url", "label", "atelier", "atelierAjust", "aRefaire", "forme", "filtre", "groupe"]);
+const CHAMPS_FACULTATIFS = new Set(["auteur", "lic"]);                // des noms propres, le plus souvent : traduits seulement quand la table les connaît
+function traduit(o, T) {
+  if (Array.isArray(o)) return o.map(x => traduit(x, T));
+  if (!o || typeof o !== "object") return o;
+  const out = {};
+  for (const [k, v] of Object.entries(o)) {
+    if (typeof v !== "string") out[k] = traduit(v, T);
+    else if (CHAMPS_BRUTS.has(k)) out[k] = v;
+    else if (k === "href") out[k] = versLangue(v);
+    else if (k === "nom") { out[k] = v; if (T.noms[v]) out.nomEn = T.noms[v]; }
+    else if (k === "blason") { out[k] = v; if (T.blasons[v]) out.blasonEn = T.blasons[v]; }
+    else out[k] = T.textes[v] || v;
+  }
+  return out;
+}
+const lisJson = async u => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); };
+async function lireDonnees(chemin) {
+  const d = await lisJson(chemin);
+  return LANGUE === "en" && TABLES_EN[chemin] ? traduit(d, await lisJson(TABLES_EN[chemin])) : d;
+}
 
 /* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),
    celui qui porte l'accent le garde dans son adresse (« terme-bandé ») : sans cela les deux auraient la même. */
@@ -66,16 +101,22 @@ function termeId(terme, glossaire) {
     <path fill="#e3c579" opacity=".92" d="M44 28h12v16h16v12H56v16H44V56H28V44h16z"/>
   </svg>`;
 
+  /* le lien vers l'autre langue (le jeu a le sien, dans sa barre) */
+  function choixLangue() {
+    if (document.body.classList.contains("jeu")) return "";
+    if (LANGUE === "en") return JUMELLE_FR[PAGE_ICI] ? `<a class="mast-langue" href="${JUMELLE_FR[PAGE_ICI]}" hreflang="fr" lang="fr" data-langue="fr" title="Lire en français">FR</a>` : "";
+    return JUMELLES[PAGE_ICI] ? `<a class="mast-langue" href="${JUMELLES[PAGE_ICI]}" hreflang="en" lang="en" data-langue="en" title="Read in English">EN</a>` : "";
+  }
   /* le bandeau : posé tout de suite, avant que le reste de la page ne s'affiche, pour que rien ne saute */
   const head = document.querySelector("header.mast[data-page]");
   if (head) {
     const here = head.dataset.page;
     /* en anglais, seul le jeu est traduit : les autres liens du menu sont marqués « FR » (site.css, a[hreflang]) */
     head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="${Tr("Pages du site", "Site pages")}">` + PAGES.map(([id, href, label]) =>
-      LANGUE === "en" ? `<a href="${id === "jeu" ? ACCUEIL : href}"${id === "jeu" ? "" : ' hreflang="fr"'}${id === here ? ' class="here" aria-current="page"' : ""}>${NOMS_EN[id]}</a>`
-        : `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + MENU);
-    /* qui joue en anglais et arrive sur une page qui n'est qu'en français le lit tout de suite, et sait comment revenir */
-    if (LANGUE === "fr" && langueChoisie() === "en" && here !== "jeu") head.insertAdjacentHTML("afterend", `<p class="bandeau-langue" lang="en">This page is only available in French for now. <a href="en.html">Back to the game in English</a></p>`);
+      LANGUE === "en" ? `<a href="${id === "jeu" ? ACCUEIL : versLangue(href)}"${id === "jeu" || JUMELLES[href] ? "" : ' hreflang="fr"'}${id === here ? ' class="here" aria-current="page"' : ""}>${NOMS_EN[id]}</a>`
+        : `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + choixLangue() + MENU);
+    /* qui lit en anglais et arrive sur une page qui n'est qu'en français le lit tout de suite, et sait comment revenir */
+    if (LANGUE === "fr" && langueChoisie() === "en" && !JUMELLES[PAGE_ICI]) head.insertAdjacentHTML("afterend", `<p class="bandeau-langue" lang="en">This page is only available in French for now. <a href="en.html">Back to the game in English</a></p>`);
     /* menu repliable (écrans étroits : voir site.css) : s'ouvre au bouton, se ferme à Échap, à un clic ailleurs, ou en suivant un lien */
     const btn = head.querySelector(".menu-btn");
     const ouvre = on => { head.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); btn.querySelector("span").textContent = on ? Tr("Fermer", "Close") : "Menu"; };

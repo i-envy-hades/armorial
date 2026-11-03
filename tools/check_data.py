@@ -353,23 +353,38 @@ for ident, fichier in menu:
     if not page.exists(): err(f"assets/chrome.js: la page « {fichier} » du menu n'existe pas"); continue
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
-    if p.name not in ("404.html", "jeu.html", "en.html") and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+    if p.name not in ("404.html", "jeu.html") and not re.match(r"en[.-]", p.name) and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
 
-# le jeu en anglais : en.html a la même structure qu'index.html, et data/en.json traduit toutes les cartes du jeu, rien de plus
-ids_de = lambda n: set(re.findall(r'\bid="([\w-]+)"', (ROOT / n).read_text(encoding="utf-8")))
-if ids_de("en.html") != ids_de("index.html"): err(f"en.html et index.html n'ont pas les mêmes id : {sorted(ids_de('en.html') ^ ids_de('index.html'))}")
-trad = json.loads((ROOT / "data" / "en.json").read_text(encoding="utf-8"))
-for fichier, champs in (("blasons.json", ("porteur",)), ("personnages.json", ("meta", "desc"))):
-    cartes = json.loads((ROOT / "data" / fichier).read_text(encoding="utf-8"))
-    for c in cartes:
-        t_ = trad["cartes"].get(c["nom"])
-        if not t_: err(f"data/en.json: pas de traduction pour la carte « {c['nom']} » ({fichier})"); continue
-        if not t_.get("nom"): err(f"data/en.json: « {c['nom']} » sans nom anglais")
-        for ch in champs:
-            if bool(c.get(ch)) != bool(t_.get(ch)): err(f"data/en.json: « {c['nom']} » : le champ {ch} manque d'un côté")
-noms_fr = {c["nom"] for f in ("blasons.json", "personnages.json") for c in json.loads((ROOT / "data" / f).read_text(encoding="utf-8"))}
-for n_ in trad["cartes"]:
-    if n_ not in noms_fr: err(f"data/en.json: la carte « {n_} » n'existe plus (renommée ?)")
+# l'anglais : chaque page traduite a les mêmes id que sa jumelle (hors prérendu), et chaque texte des données traduites a sa traduction
+JUMELLES = dict(re.findall(r'"([\w-]+\.html)": "([\w-]+\.html)"', re.search(r"const JUMELLES = \{(.*?)\}", chrome).group(1)))
+BRUTS = set(re.findall(r'"(\w+)"', re.search(r"const CHAMPS_BRUTS = new Set\(\[(.*?)\]\)", chrome).group(1)))
+FACULTATIFS = set(re.findall(r'"(\w+)"', re.search(r"const CHAMPS_FACULTATIFS = new Set\(\[(.*?)\]\)", chrome).group(1)))
+TABLES_EN = dict(re.findall(r'"(data/[\w./-]+)": "(data/[\w./-]+)"', re.search(r"const TABLES_EN = \{(.*?)\}", chrome).group(1)))
+def ids_de(n):
+    t_ = re.sub(r"(?s)<!--prérendu:(\S+).*?<!--/prérendu:\1-->", "", (ROOT / n).read_text(encoding="utf-8"))
+    return set(re.findall(r'\bid="([\w-]+)"', t_))
+for fr_, en_ in JUMELLES.items():
+    if not (ROOT / en_).exists(): err(f"assets/chrome.js: la page anglaise « {en_} » n'existe pas"); continue
+    if ids_de(fr_) != ids_de(en_): err(f"{en_} et {fr_} n'ont pas les mêmes id : {sorted(ids_de(fr_) ^ ids_de(en_))}")
+    hf = f'hreflang="en" href="https://armorial.web.app/{en_}"'
+    if hf not in (ROOT / fr_).read_text(encoding="utf-8") or hf not in (ROOT / en_).read_text(encoding="utf-8"): err(f"{fr_}, {en_} : le lien hreflang vers {en_} manque")
+def textes_a_traduire(o, k=None):
+    """(table, texte) pour chaque texte d'un fichier traduit : les mêmes règles que traduit() dans assets/chrome.js"""
+    if isinstance(o, list):
+        for x in o: yield from textes_a_traduire(x, k)
+    elif isinstance(o, dict):
+        for k2, v in o.items(): yield from textes_a_traduire(v, k2)
+    elif isinstance(o, str) and o and k not in BRUTS and k not in FACULTATIFS and k != "href":
+        yield ({"nom": "noms", "blason": "blasons"}.get(k, "textes"), o)
+for table_ in sorted(set(TABLES_EN.values())):
+    T_ = json.loads((ROOT / table_).read_text(encoding="utf-8")); vus = {"noms": set(), "blasons": set(), "textes": set()}
+    for source_ in [s for s, t2 in TABLES_EN.items() if t2 == table_]:
+        for sorte, texte in textes_a_traduire(json.loads((ROOT / source_).read_text(encoding="utf-8"))):
+            vus[sorte].add(texte)
+            if texte not in T_[sorte]: err(f"{table_}: pas de traduction ({sorte}) pour « {texte[:70]} » ({source_})")
+    facultatifs = {c[k] for s in TABLES_EN if TABLES_EN[s] == table_ for c in json.loads((ROOT / s).read_text(encoding="utf-8")) for k in FACULTATIFS if k in c}
+    for sorte in vus:
+        for texte in set(T_[sorte]) - vus[sorte] - facultatifs: warnings.append(f"{table_}: traduction sans objet ({sorte}) : « {texte[:70]} »")
 
 # le prérendu : le texte écrit dans les pages pour les moteurs de recherche est-il celui des données actuelles ?
 sys.path.insert(0, str(ROOT / "tools"))

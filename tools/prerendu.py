@@ -27,6 +27,10 @@ PAGES = {
                      "sources": ["data/blasons.json", "assets/blasons.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
     "personnages.html": {"blocs": {"grid": "#grid .ar"},
                          "sources": ["data/personnages.json", "assets/personnages.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
+    "en-arms.html": {"blocs": {"grid": "#grid .ar"},
+                     "sources": ["data/blasons.json", "data/en/cartes.json", "assets/chrome.js", "assets/blasons.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
+    "en-people.html": {"blocs": {"grid": "#grid .ar"},
+                       "sources": ["data/personnages.json", "data/en/cartes.json", "assets/chrome.js", "assets/personnages.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
 }
 
 # la page qui ouvre la page à prérendre dans un cadre, attend qu'elle soit construite et rend le contenu des blocs
