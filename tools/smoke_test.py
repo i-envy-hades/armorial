@@ -900,12 +900,12 @@ def test_jeu_en(browser, base):
     # changer de langue : la même partie, et le choix est gardé
     page.click("#jx-langue"); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
     verifie(page.evaluate("document.documentElement.lang") == "fr" and "Trouvé en 2" in page.inner_text("#jeu-essais"), "jeu en anglais : le bouton FR montre la même partie en français")
-    page.goto(f"{base}/recherche.html"); page.wait_for_selector("header.mast a")
+    page.goto(f"{base}/atelier.html"); page.wait_for_selector("header.mast a")                  # une page qui n'a pas encore sa jumelle anglaise
     verifie(page.locator(".bandeau-langue").count() == 0, "jeu en anglais : qui a choisi le français ne voit pas de bandeau")
     page.goto(f"{base}/index.html"); page.wait_for_selector("#jx-langue", state="attached"); page.click("#jx-langue"); page.wait_for_url("**/en.html*", timeout=10000)
     page.goto(f"{base}/"); page.wait_for_url("**/en.html*", timeout=10000)
     verifie(True, "jeu en anglais : qui a choisi l'anglais revient à en.html depuis l'accueil")
-    page.goto(f"{base}/recherche.html"); page.wait_for_selector("header.mast a")
+    page.goto(f"{base}/atelier.html"); page.wait_for_selector("header.mast a")
     verifie(page.locator(".bandeau-langue a[href='en.html']").count() == 1, "jeu en anglais : une page encore en français le dit, avec un lien de retour")
     propre("jeu en anglais", page, erreurs)
     page.context.close()
@@ -953,6 +953,30 @@ def test_encyclopedie_en(browser, base):
     verifie(page.locator(".gal.tinct .fig").first.locator(".nom").inner_text() == "Or" and "Azure" in page.locator(".gal.tinct").inner_text(), "encyclopédie en anglais : les émaux ont leur nom anglais")
     verifie(page.locator(".mast-langue[data-langue='fr']").get_attribute("href") == "encyclopedie.html", "encyclopédie en anglais : le lien FR mène à la page française")
     propre("encyclopédie en anglais", page, erreurs)
+    page.context.close()
+
+def test_recherche_en(browser, base):
+    """la recherche en anglais : on trouve par l'anglais et par le français, et les résultats mènent aux pages anglaises"""
+    page, erreurs = ouvre(browser, base, "en-search.html", "#aide")
+    page.wait_for_function("window.Recherche", timeout=20000)
+    r = page.evaluate("Recherche.cherche('gules')[0]")
+    verifie(r["titre"] == "Gules (gueules)" and r["lien"].startswith("en-encyclopedia.html#terme-gueules"), f"recherche en anglais : un mot anglais mène au glossaire anglais ({r})")
+    r = page.evaluate("Recherche.cherche('allemagne').find(x => x.type === 'bla')")
+    verifie(r and r["titre"] == "Germany" and r["lien"] == "en-arms.html#allemagne", f"recherche en anglais : un nom français trouve la carte, affichée en anglais ({r})")
+    page.fill("#q", "germany"); page.wait_for_selector("#res .r", timeout=5000)
+    verifie("result" in page.inner_text("#cpt") and page.locator("#types .chip").first.inner_text().startswith("All"), "recherche en anglais : le résultat s'affiche en anglais")
+    page.click("#res .r-t"); page.wait_for_url("**/en-*.html#*", timeout=10000)
+    verifie("en-" in page.url, f"recherche en anglais : un résultat ouvre une page anglaise ({page.url})")
+    propre("recherche en anglais", page, erreurs)
+    page.context.close()
+
+def test_404_en(browser, base):
+    """la page 404 suit le choix du lecteur"""
+    page, erreurs = ouvre(browser, base, "404.html", "h1")
+    verifie(page.inner_text("h1").lower() == "page introuvable", "404 : en français par défaut")
+    page.evaluate("localStorage.setItem('armorial.langue', 'en')"); page.reload(); page.wait_for_selector("h1")
+    verifie(page.inner_text("h1").lower() == "page not found" and page.evaluate("document.documentElement.lang") == "en" and page.locator(".bandeau-langue").count() == 0, "404 : en anglais pour qui lit en anglais")
+    verifie(page.locator(".perdu .liens a[href='en.html']").count() == 1, "404 : les liens mènent aux pages anglaises")
     page.context.close()
 
 def test_jeux_du_jour(browser, base):
@@ -1066,6 +1090,8 @@ def main():
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
                        ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),
+                       ("recherche en anglais", lambda: test_recherche_en(browser, base)),
+                       ("404 en anglais", lambda: test_404_en(browser, base)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),

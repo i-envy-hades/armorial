@@ -5,7 +5,9 @@
    dedans : sans accent ni majuscule, tous les mots demandés devant figurer dans la même entrée ; un mot dans le titre compte
    plus qu'un mot dans le texte. Chaque résultat mène à l'endroit où l'entrée se lit (chapitre, terme du glossaire, carte
    d'une galerie, frise).
-   Adresse : recherche.html#q=lambel&t=glo (la requête, et la rubrique si on en a choisi une). */
+   Adresse : recherche.html#q=lambel&t=glo (la requête, et la rubrique si on en a choisi une).
+   En anglais (en-search.html) : les fichiers déjà traduits arrivent traduits (lireDonnees, assets/chrome.js) ; on cherche dans les deux langues, on affiche l'anglais
+   quand il existe. Les adresses restent celles du français : nom, titre et terme y gardent leur valeur. */
 (async () => {
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -18,59 +20,63 @@
   const texteDe = html => String(html || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
   /* les rubriques, dans l'ordre où elles départagent deux résultats de même poids */
-  const TYPES = [["glo", "Glossaire"], ["art", "Encyclopédie"], ["voc", "Vocabulaire"], ["bla", "Blasons réels"], ["per", "Personnages"], ["lig", "Lignées"], ["src", "Sources"]];
+  const TYPES = Tr([["glo", "Glossaire"], ["art", "Encyclopédie"], ["voc", "Vocabulaire"], ["bla", "Blasons réels"], ["per", "Personnages"], ["lig", "Lignées"], ["src", "Sources"]],
+    [["glo", "Glossary"], ["art", "Encyclopedia"], ["voc", "Vocabulary"], ["bla", "Real arms"], ["per", "People"], ["lig", "Lineages"], ["src", "Sources"]]);
   const NOM = Object.fromEntries(TYPES);
   const RANG = Object.fromEntries(TYPES.map(([id], i) => [id, i]));
 
   let D, B, P, F, CAP, TR, L;
   try {
-    [D, B, P, F, CAP, TR] = await Promise.all([get("data/data.json"), get("data/blasons.json"), get("data/personnages.json"), get("data/frises.json"), get("data/capetiens.json"), get("data/transmission.json")]);
-    L = await Promise.all(F.frises.map(f => get(f.file)));
+    [D, B, P, F, CAP, TR] = await Promise.all(["data/data.json", "data/blasons.json", "data/personnages.json", "data/frises.json", "data/capetiens.json", "data/transmission.json"].map(lireDonnees));
+    L = await Promise.all(F.frises.map(f => lireDonnees(f.file)));
   } catch (e) {
-    $("#chargement").textContent = `Les données n'ont pas pu être chargées (${e.message}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.`;
+    $("#chargement").textContent = Tr(`Les données n'ont pas pu être chargées (${e.message}). Cette page doit être servie par HTTP, et non ouverte depuis le disque.`, `The data couldn't load (${e.message}). This page must be served over HTTP, not opened from disk.`);
     return;
   }
 
   /* ---------- la liste des entrées ---------- */
   const DOCS = [];
-  const ajoute = (type, titre, texte, lien, meta = "") => DOCS.push({ type, titre, texte, lien, meta, t: plie(titre), x: plie(`${texte} ${meta}`) });
+  /* titre : ce qu'on affiche ; aussi : ce qui se cherche sans s'afficher (le nom et le blasonnement français, en anglais) */
+  const ajoute = (type, titre, texte, lien, meta = "", aussi = "") => DOCS.push({ type, titre, texte, lien: versLangue(lien), meta, t: plie(titre), x: plie(`${texte} ${meta} ${aussi}`) });
+  const aff = (o, k) => o[k + "En"] || o[k];
+  const blasonAff = a => a.blasonEn || a.blason;
 
   /* adresses des articles de l'encyclopédie : la même suite que assets/index.js (adresse() de buildMain) */
   const pris = new Set([...D.sections.map(s => s.id), "glossaire", "bibliotheque"]);
   const adresse = titre => { const base = slug(titre) || "article"; let id = base, n = 2; while (pris.has(id)) id = `${base}-${n++}`; pris.add(id); return id; };
   const ancreDe = {};                                             // titre d'un article → son adresse (pour les listes de vocabulaire)
   for (const s of D.sections) {
-    ajoute("art", s.title || s.label, s.lede || "", `encyclopedie.html#${s.id}`, `Chapitre · ${s.label || ""}`);
+    ajoute("art", s.title || s.label, s.lede || "", `encyclopedie.html#${s.id}`, `${Tr("Chapitre", "Chapter")} · ${s.label || ""}`);
     for (const a of s.articles) {
       if (a.note || !a.titre) continue;                           // un encadré n'a pas d'adresse
       const id = adresse(a.titre); ancreDe[a.titre] = id;
-      ajoute("art", a.titre, texteDe(a.html), `encyclopedie.html#${id}`, `Article · ${s.title || s.label || ""}`);
+      ajoute("art", aff(a, "titre"), texteDe(a.html), `encyclopedie.html#${id}`, `Article · ${s.title || s.label || ""}`, a.titreEn ? a.titre : "");
     }
   }
-  for (const g of D.glossaire) ajoute("glo", g.terme, g.def, `encyclopedie.html#${termeId(g.terme, D.glossaire)}`, "Glossaire");
+  for (const g of D.glossaire) ajoute("glo", aff(g, "terme"), texteDe(g.def), `encyclopedie.html#${termeId(g.terme, D.glossaire)}`, Tr("Glossaire", "Glossary"));
   const deja = new Set(D.glossaire.map(g => plie(g.terme)));
-  const vocab = (liste, article, meta) => liste.forEach(t => { if (!deja.has(plie(t.terme))) ajoute("voc", t.terme, t.def, `encyclopedie.html#${ancreDe[article] || "meubles"}`, `${meta}${t.cat ? " · " + t.cat : ""}`); });
-  vocab(D.attributs, "Les attributs : nommer les parties", "Attributs");
+  const vocab = (liste, article, meta) => liste.forEach(t => { if (!deja.has(plie(t.terme))) ajoute("voc", aff(t, "terme"), texteDe(t.def), `encyclopedie.html#${ancreDe[article] || "meubles"}`, `${meta}${t.cat ? " · " + t.cat : ""}`); });
+  vocab(D.attributs, "Les attributs : nommer les parties", Tr("Attributs", "Attributes"));
   vocab(D.positions, "Les positions : nommer l'attitude", "Positions");
-  vocab(D.repertoire, "Répertoire des meubles", "Répertoire des meubles");
-  for (const [id, s] of Object.entries(D.sources)) ajoute("src", s.titre, `${s.auteur}. ${s.note || ""}`, "encyclopedie.html#bibliotheque", `${s.auteur}${s.annee ? " · " + s.annee : ""}`);
-  for (const a of B) ajoute("bla", a.nom, [a.blason, a.porteur, a.cat].filter(Boolean).join(" · "), `blasons.html#${slug(a.nom)}`, `Blason réel · ${a.cat || ""}`);
-  for (const p of P) ajoute("per", p.nom, [p.meta, p.blason, p.desc].filter(Boolean).join(" · "), `personnages.html#${slug(p.nom)}`, "Personnage");
+  vocab(D.repertoire, "Répertoire des meubles", Tr("Répertoire des meubles", "Directory of charges"));
+  for (const [id, s] of Object.entries(D.sources)) ajoute("src", aff(s, "titre"), `${s.auteur}. ${texteDe(s.note)}`, "encyclopedie.html#bibliotheque", `${s.auteur}${s.annee ? " · " + s.annee : ""}`);
+  for (const a of B) ajoute("bla", aff(a, "nom"), [blasonAff(a), a.porteur, a.cat].filter(Boolean).join(" · "), `blasons.html#${slug(a.nom)}`, `${Tr("Blason réel", "Real arms")} · ${a.cat || ""}`, a.nomEn ? `${a.nom} ${a.blason}` : "");
+  for (const p of P) ajoute("per", aff(p, "nom"), [p.meta, blasonAff(p), p.desc].filter(Boolean).join(" · "), `personnages.html#${slug(p.nom)}`, Tr("Personnage", "Person"), p.nomEn ? `${p.nom} ${p.blason}` : "");
   F.frises.forEach((f, i) => {
     const X = L[i];
-    ajoute("lig", f.nom, [f.dates, f.groupe, f.mots].filter(Boolean).join(" · "), `lignees.html#${f.id}`, "Frise");
-    for (const R of X.royaumes || []) if (R.titre) ajoute("lig", R.titre, [R.nom, R.lede].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `Frise · ${f.nom}`);
-    for (const [cle, a] of Object.entries(X.armes || {})) if (a.blason) ajoute("lig", a.nom, [a.blason, a.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `Armes · ${f.nom}`);
+    ajoute("lig", f.nom, [f.dates, f.groupe, f.mots].filter(Boolean).join(" · "), `lignees.html#${f.id}`, Tr("Frise", "Timeline"));
+    for (const R of X.royaumes || []) if (R.titre) ajoute("lig", R.titre, [R.nom, R.lede].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Frise", "Timeline")} · ${f.nom}`);
+    for (const [cle, a] of Object.entries(X.armes || {})) if (a.blason) ajoute("lig", a.nom, [a.blason, a.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Armes", "Arms")} · ${f.nom}`);
     for (const R of X.royaumes || []) {
       for (const r of R.regnes || []) {
         const ar = (X.armes || {})[r.armes];
-        ajoute("lig", r.nom, [r.approx || `${r.debut} – ${r.fin ?? ""}`, ar && ar.blason, r.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `Règne · ${R.titre || f.nom}`);
+        ajoute("lig", r.nom, [r.approx || `${r.debut} – ${r.fin ?? ""}`, ar && ar.blason, r.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Règne", "Reign")} · ${R.titre || f.nom}`);
       }
     }
   });
   const CAPN = Object.fromEntries(CAP.noeuds.map(n => [n.id, n])), LIGN = Object.fromEntries(F.frises.map((f, i) => [f.id, L[i]]));
   const blasonDe = ref => { const [k, i] = ref.split(":"); const a = k === "cap" ? (CAPN[i] ? { blason: CAPN[i].armes.map(x => x.blason).join(" · ") } : null) : k === "tr" ? TR.armes[i] : (LIGN[k].armes || {})[i]; return (a && a.blason) || ""; };
-  for (const n of TR.noeuds) ajoute("lig", n.nom, [n.dates, blasonDe(n.ref), ...TR.liens.filter(l => l.vers === n.id).map(l => [l.effet, l.pourquoi].filter(Boolean).join(" "))].filter(Boolean).join(" · "), `transmission.html#${n.id}`, "Transmission des armes");
+  for (const n of TR.noeuds) ajoute("lig", n.nom, [n.dates, blasonDe(n.ref), ...TR.liens.filter(l => l.vers === n.id).map(l => [l.effet, l.pourquoi].filter(Boolean).join(" "))].filter(Boolean).join(" · "), `transmission.html#${n.id}`, Tr("Transmission des armes", "Transmission of arms"));
   const nbType = {}; DOCS.forEach(d => { nbType[d.type] = (nbType[d.type] || 0) + 1; });
 
   /* ---------- chercher ---------- */
@@ -93,7 +99,7 @@
       if (d.t === phrase) s += 30;
       out.push({ d, s });
     }
-    return out.sort((a, b) => b.s - a.s || RANG[a.d.type] - RANG[b.d.type] || a.d.titre.localeCompare(b.d.titre, "fr")).map(r => r.d);
+    return out.sort((a, b) => b.s - a.s || RANG[a.d.type] - RANG[b.d.type] || a.d.titre.localeCompare(b.d.titre, LANGUE)).map(r => r.d);
   }
   /* souligne dans le texte d'origine ce qu'on a trouvé (longueur conservée par plieCar) */
   function surligne(texte, ms) {
@@ -123,11 +129,11 @@
     const liste = ET.t ? tous.filter(d => d.type === ET.t) : tous;
     $("#idees").hidden = ms.length > 0;
     $("#types").hidden = !ms.length;
-    $("#types").innerHTML = ms.length ? `<button type="button" class="chip${ET.t ? "" : " on"}" data-t="" aria-pressed="${!ET.t}">Tout <span class="n">${tous.length}</span></button>` + TYPES.filter(([id]) => n[id]).map(([id, nom]) => `<button type="button" class="chip${ET.t === id ? " on" : ""}" data-t="${id}" aria-pressed="${ET.t === id}">${nom} <span class="n">${n[id]}</span></button>`).join("") : "";
-    if (!ms.length) { $("#res").innerHTML = ""; $("#cpt").textContent = `${DOCS.length} entrées en mémoire, dans ${TYPES.length} rubriques.`; $("#plus-p").hidden = true; return; }
-    $("#cpt").textContent = liste.length ? `${liste.length} résultat${liste.length > 1 ? "s" : ""}` : "";
+    $("#types").innerHTML = ms.length ? `<button type="button" class="chip${ET.t ? "" : " on"}" data-t="" aria-pressed="${!ET.t}">${Tr("Tout", "All")} <span class="n">${tous.length}</span></button>` + TYPES.filter(([id]) => n[id]).map(([id, nom]) => `<button type="button" class="chip${ET.t === id ? " on" : ""}" data-t="${id}" aria-pressed="${ET.t === id}">${nom} <span class="n">${n[id]}</span></button>`).join("") : "";
+    if (!ms.length) { $("#res").innerHTML = ""; $("#cpt").textContent = Tr(`${DOCS.length} entrées en mémoire, dans ${TYPES.length} rubriques.`, `${DOCS.length} entries in memory, in ${TYPES.length} categories.`); $("#plus-p").hidden = true; return; }
+    $("#cpt").textContent = liste.length ? Tr(`${liste.length} résultat${liste.length > 1 ? "s" : ""}`, `${liste.length} result${liste.length > 1 ? "s" : ""}`) : "";
     $("#res").innerHTML = liste.length ? liste.slice(0, ET.n).map(d => `<li class="r"><a class="r-t" href="${esc(d.lien)}">${surligne(d.titre, ms)}</a><span class="r-ty" data-t="${d.type}">${esc(NOM[d.type])}</span><p class="r-x">${extrait(d.texte || d.meta, ms)}</p><p class="r-m">${esc(d.meta)}</p></li>`).join("")
-      : `<li class="r-vide">Rien ne correspond à « ${esc(ET.q)} ». Essayez un seul mot, ou sans accord (« lion » plutôt que « lions rampants »).</li>`;
+      : `<li class="r-vide">${Tr(`Rien ne correspond à « ${esc(ET.q)} ». Essayez un seul mot, ou sans accord (« lion » plutôt que « lions rampants »).`, `Nothing matches “${esc(ET.q)}”. Try a single word, or the singular (“lion” rather than “lions rampant”).`)}</li>`;
     $("#plus-p").hidden = liste.length <= ET.n;
   }
   const maj = () => { ecrire(); affiche(); };
@@ -137,7 +143,7 @@
   $("#q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { ET.q = e.target.value.trim(); ET.n = 40; maj(); }, 140); });
   $("#types").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; ET.t = b.dataset.t; ET.n = 40; maj(); });
   $("#plus").addEventListener("click", () => { ET.n += 60; affiche(); });
-  const IDEES = ["lion", "fleur de lis", "lambel", "chevron accompagné", "règle des émaux", "écartelé", "bordure", "Savoie", "Napoléon", "pape", "hermine", "cimier"];
+  const IDEES = Tr(["lion", "fleur de lis", "lambel", "chevron accompagné", "règle des émaux", "écartelé", "bordure", "Savoie", "Napoléon", "pape", "hermine", "cimier"], ["lion", "fleur-de-lis", "label", "chevron between", "rule of tincture", "quarterly", "bordure", "Savoy", "Napoleon", "pope", "ermine", "crest"]);
   $("#sug").innerHTML = IDEES.map(x => `<button type="button" class="chip" data-q="${esc(x)}">${esc(x)}</button>`).join("");
   $("#sug").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; $("#q").value = b.dataset.q; ET.q = b.dataset.q; ET.t = ""; ET.n = 40; maj(); $("#q").focus(); });
 
@@ -147,7 +153,7 @@
   if (dem && !ET.q) ET.q = dem.trim();
   $("#q").value = ET.q;
   $("#chargement").hidden = true;
-  $("#aide").textContent = `${DOCS.length} entrées : articles, glossaire, blasons, personnages, lignées, sources.`;
+  $("#aide").textContent = Tr(`${DOCS.length} entrées : articles, glossaire, blasons, personnages, lignées, sources.`, `${DOCS.length} entries: articles, glossary, arms, people, lineages, sources. Lineages and transmission are in French for now.`);
   affiche();
   addEventListener("hashchange", () => { lire(); $("#q").value = ET.q; affiche(); });
   if (!ET.q) $("#q").focus({ preventScroll: true });

@@ -9,6 +9,8 @@
 <!-- GitHub Pages sert cette page pour toute adresse inconnue, à n'importe quelle profondeur : on fixe donc la base des liens relatifs
      (« /armorial/ » sur le site publié, « / » en local) avant de charger quoi que ce soit. -->
 <script>document.write('<base href="' + (location.pathname.indexOf("/armorial/") === 0 ? "/armorial/" : "/") + '">')</script>
+<!-- une seule page 404 pour toutes les adresses : qui lit en anglais la voit en anglais (le choix est gardé par assets/chrome.js) -->
+<script>try { if (localStorage.getItem("armorial.langue") === "en") document.documentElement.lang = "en"; } catch (e) { /* sans mémoire : en français */ }</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/bandeau.css">
@@ -34,7 +36,7 @@
   </div>
 </section>
 <main class="perdu" id="main">
-  <form action="recherche.html" method="get" role="search" onsubmit="location.href='recherche.html#q='+encodeURIComponent(this.q.value);return false">
+  <form action="recherche.html" method="get" role="search" onsubmit="location.href=versLangue('recherche.html')+'#q='+encodeURIComponent(this.q.value);return false">
     <input name="q" type="search" placeholder="Chercher dans tout le site…" aria-label="Chercher dans tout le site" autocomplete="off">
     <button type="submit">Chercher</button>
   </form>
@@ -42,6 +44,19 @@
 </main>
 <footer data-img="assets/epopee/perdu.jpg"><div class="foot"><p class="fine">L'Armorial — encyclopédie ouverte de l'héraldique.</p>
   <p class="fine">Décor du bandeau et de ce pied de page : image et vidéo d'ambiance générées par IA (Higgsfield), sans écu réel. Un carrefour imaginé, pas un document historique.</p></div></footer>
+<script>
+if (LANGUE === "en") {
+  document.title = "The Armorial — Page not found";
+  const $ = s => document.querySelector(s);
+  $(".eyebrow").textContent = "Error 404"; $("h1").textContent = "Page not found";
+  $(".frame > p:not(.eyebrow)").textContent = "This address leads to no shield: the page has moved, or never existed.";
+  $(".perdu input").placeholder = "Search the whole site…"; $(".perdu input").setAttribute("aria-label", "Search the whole site"); $(".perdu button").textContent = "Search";
+  $(".perdu .liens").innerHTML = '<a href="en-encyclopedia.html">The encyclopedia</a><a href="atelier.html" hreflang="fr">The Atelier</a><a href="exercices.html" hreflang="fr">Practice</a><a href="en.html">Shield of the Day</a><a href="en-arms.html">Real arms</a>';
+  const f = document.querySelectorAll("footer .fine");
+  f[0].textContent = "The Armorial — an open encyclopedia of heraldry.";
+  f[1].textContent = "Backdrop of the banner and this footer: an AI-generated mood image and video (Higgsfield), with no real shield. An imagined crossroads, not a historical document.";
+}
+</script>
 <script src="assets/epopee-pages.js"></script>
 </body>
 </html>

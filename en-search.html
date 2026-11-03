@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Armorial — Search</title>
+<meta name="description" content="Search the whole Armorial: encyclopedia articles and glossary, real arms, people, reigns and arms of the lineages, and sources.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-search.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/recherche.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-search.html">
+<meta property="og:site_name" content="The Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="The Armorial — Search">
+<meta property="og:description" content="Search the whole Armorial: encyclopedia, real arms, people, lineages and sources.">
+<meta property="og:url" content="https://armorial.web.app/en-search.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A blue shield with a silver fess between three gold stars, and the title L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — la page anglaise de recherche.html : mêmes scripts et mêmes id (tools/check_data.py les compare).
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/recherche.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 rch">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="recherche"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/glossaire.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Across the whole Armorial</p>
+  <h1>Search</h1>
+  <form class="rch-form" id="form" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="a word, a name, a blazon…" aria-label="Search the whole site" autocomplete="off" enterkeyhint="search">
+  </form>
+  <p class="rch-aide" id="aide">Articles, glossary, arms, people, lineages, sources: search it all at once.</p>
+  </div>
+</section>
+<noscript><p class="nojs">Search runs on JavaScript: please enable it to search the site.</p></noscript>
+<main class="rch-main" id="main">
+  <p class="rch-chargement" id="chargement" role="status">The site is being indexed in memory…</p>
+  <div class="rch-types" id="types" role="group" aria-label="Filter by category" hidden></div>
+  <p class="rch-cpt" id="cpt" role="status" aria-live="polite"></p>
+  <ol class="rch-res" id="res"></ol>
+  <p class="rch-plus" id="plus-p" hidden><button type="button" class="main" id="plus">Show more</button></p>
+  <section class="rch-idees" id="idees" hidden>
+    <h2>Where to start?</h2>
+    <div class="rch-sug" id="sug"></div>
+  </section>
+</main>
+<footer data-img="assets/epopee/glossaire.jpg"><div class="foot">
+  <p><b>The Armorial</b> — “Search” page. Search reads the site's data when you open the page; nothing is sent anywhere. Curator: i-envy-hades. Page layout under a <b>CC BY-SA 4.0</b> licence. Back to <a href="en-encyclopedia.html">the encyclopedia</a>.</p>
+  <p class="fine">Backdrop of the banner and this footer: an AI-generated mood image (Higgsfield), with no real shield. An imagined landscape, not a historical document.</p>
+</div></footer>
+<script src="assets/recherche.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>
