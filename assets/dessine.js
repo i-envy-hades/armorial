@@ -8,8 +8,8 @@
    Demande, chargés avant lui : assets/atelier.js, assets/generateur.js, assets/jour.js. */
 const DessineMoi = (() => {
   "use strict";
-  const JEU = "dessin", ESSAIS = 3;
-  const GROUPES = [["Le champ", ["f", "t1", "t2", "t3", "part", "ray", "n"]], ["La pièce", ["p", "tp", "ln", "pf", "pcc", "ri", "lrg", "fqs", "cmp"]], ["Les meubles", ["m", "nb", "tm", "cc"]]];
+  const JEU = "dessin", ESSAIS = 3, NOM = Tr("Dessine-moi", "Draw It for Me");
+  const GROUPES = [[Tr("Le champ", "The field"), ["f", "t1", "t2", "t3", "part", "ray", "n"]], [Tr("La pièce", "The ordinary"), ["p", "tp", "ln", "pf", "pcc", "ri", "lrg", "fqs", "cmp"]], [Tr("Les meubles", "The charges"), ["m", "nb", "tm", "cc"]]];
   const SYMB = { ok: "✓", no: "✗" }, EMOJI = { ok: "🟩", no: "⬜" };
   let N = 0, cible = null, texte = "", K = null, J = null, minuteur = 0;
   const box = () => document.getElementById("defi");
@@ -27,33 +27,33 @@ const DessineMoi = (() => {
   async function ecuDe(St, id) {
     await loadAll(St);
     const c = compose(St, id);
-    return `<svg class="defi-ecu" viewBox="${c.vb.join(" ")}" role="img" aria-label="${esc(blazonAll(St))}">${c.svg}</svg>`;
+    return `<svg class="defi-ecu" viewBox="${c.vb.join(" ")}" role="img" aria-label="${esc(blazonLu(St))}">${c.svg}</svg>`;
   }
   function texteDePartage() {
     const l = J.essais.map(v => cases(v).map(c => EMOJI[c]).join(""));
-    return `Dessine-moi n° ${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}\n${l.join("\n")}\nhttps://armorial.web.app/atelier.html#defi=dessin`;
+    return `${NOM} ${Tr("n°", "#")}${Tr(" ", "")}${N} — ${J.gagne ? J.essais.length : "X"}/${ESSAIS}\n${l.join("\n")}\nhttps://armorial.web.app/${Tr("atelier.html", "en-atelier.html")}#defi=dessin`;
   }
 
   async function dessine() {
     const b = box(), n = J.essais.length;
-    const lignes = J.essais.map((v, i) => `<li class="${v === "gagne" ? "ok" : ""}"><b>Essai ${i + 1}</b> ${v === "gagne" ? "<span class=\"ok\">Les armes sont justes.</span>"
-      : cases(v).map((c, k) => `<span class="${c}">${GROUPES[k][0]} ${SYMB[c]}</span>`).join("")}${v !== "gagne" && cases(v).every(c => c === "ok") ? `<span class="no">un détail diffère : la place, la disposition ou un attribut (armé, lampassé…)</span>` : ""}</li>`).join("");
+    const lignes = J.essais.map((v, i) => `<li class="${v === "gagne" ? "ok" : ""}"><b>${Tr("Essai", "Attempt")} ${i + 1}</b> ${v === "gagne" ? `<span class="ok">${Tr("Les armes sont justes.", "The arms are right.")}</span>`
+      : cases(v).map((c, k) => `<span class="${c}">${GROUPES[k][0]} ${SYMB[c]}</span>`).join("")}${v !== "gagne" && cases(v).every(c => c === "ok") ? `<span class="no">${Tr("un détail diffère : la place, la disposition ou un attribut (armé, lampassé…)", "a detail differs: the position, the arrangement or an attribute (armed, langued…)")}</span>` : ""}</li>`).join("");
     let fin = "";
     if (J.fini) {
-      fin = `<div class="defi-fin ${J.gagne ? "ok" : "ko"}"><p class="defi-verdict">${J.gagne ? (n === 1 ? "Du premier coup !" : "Bien dessiné !") : "Pas cette fois…"}</p>
-        <figure><figcaption>Les armes attendues</figcaption>${await ecuDe(cible, "dfc")}</figure>
-        <p class="acts"><button type="button" class="main" id="defi-partage">Partager mon résultat</button><a href="./">Les autres jeux du jour</a></p>
+      fin = `<div class="defi-fin ${J.gagne ? "ok" : "ko"}"><p class="defi-verdict">${J.gagne ? (n === 1 ? Tr("Du premier coup !", "First try!") : Tr("Bien dessiné !", "Well drawn!")) : Tr("Pas cette fois…", "Not this time…")}</p>
+        <figure><figcaption>${Tr("Les armes attendues", "The expected arms")}</figcaption>${await ecuDe(cible, "dfc")}</figure>
+        <p class="acts"><button type="button" class="main" id="defi-partage">${Tr("Partager mon résultat", "Share my result")}</button><a href="${Tr("./", "en-daily.html")}">${Tr("Les autres jeux du jour", "The other daily games")}</a></p>
         <p class="defi-copie" id="defi-copie" role="status"></p>
         <p class="defi-prochain" id="defi-prochain"></p></div>`;
     }
-    b.innerHTML = `<p class="defi-sur">Dessine-moi · n° ${N} <small>${Jour.quand(N)}</small></p>
-      <p class="defi-ask">Composez ces armes avec le formulaire, puis validez :</p>
-      <blockquote class="defi-blz">«&nbsp;${esc(texte)}&nbsp;»</blockquote>
+    b.innerHTML = `<p class="defi-sur">${NOM} · ${Tr("n° ", "#")}${N} <small>${Jour.quand(N)}</small></p>
+      <p class="defi-ask">${Tr("Composez ces armes avec le formulaire, puis validez :", "Draw these arms with the form, then check them:")}</p>
+      <blockquote class="defi-blz">${Tr(`«&nbsp;${esc(texte)}&nbsp;»`, `“${esc(texte)}”`)}</blockquote>
       ${lignes ? `<ol class="defi-essais">${lignes}</ol>` : ""}
-      ${J.fini ? fin : `<p class="acts"><button type="button" class="main" id="defi-ok">Valider mon dessin</button><span class="defi-n">Essai ${n + 1} sur ${ESSAIS}</span></p>`}`;
+      ${J.fini ? fin : `<p class="acts"><button type="button" class="main" id="defi-ok">${Tr("Valider mon dessin", "Check my drawing")}</button><span class="defi-n">${Tr(`Essai ${n + 1} sur ${ESSAIS}`, `Attempt ${n + 1} of ${ESSAIS}`)}</span></p>`}`;
     if (J.fini) {
       $("#defi-partage").addEventListener("click", () => Jour.partage(texteDePartage(), $("#defi-copie")));
-      const tic = () => { const el = $("#defi-prochain"); if (!el) return clearInterval(minuteur); el.textContent = `Prochain blasonnement dans ${Jour.compteARebours()}`; if (Jour.avantDemain() === 0) location.reload(); };
+      const tic = () => { const el = $("#defi-prochain"); if (!el) return clearInterval(minuteur); el.textContent = `${Tr("Prochain blasonnement dans", "Next blazon in")} ${Jour.compteARebours()}`; if (Jour.avantDemain() === 0) location.reload(); };
       clearInterval(minuteur); tic(); minuteur = setInterval(tic, 1000);
     } else $("#defi-ok").addEventListener("click", valide);
   }
@@ -70,16 +70,17 @@ const DessineMoi = (() => {
   /* l'Atelier appelle ceci au démarrage, en mode défi ; renvoie l'état de départ de l'écu */
   async function demarre() {
     document.body.classList.add("defi");
-    document.title = "Dessine-moi — le jeu du jour de l'Atelier";
+    document.title = Tr("Dessine-moi — le jeu du jour de l'Atelier", "Draw It for Me — the Atelier's daily game");
     const h = document.querySelector(".hero .frame");
-    if (h) h.innerHTML = `<p class="eyebrow">Le jeu du jour de l'Atelier</p><h1>Dessine-moi</h1><p>Un blasonnement par jour, le même pour tous : composez l'écu qu'il décrit, en trois essais. Chaque essai dit si le champ, la pièce et les meubles sont justes.</p>`;
+    if (h) h.innerHTML = Tr(`<p class="eyebrow">Le jeu du jour de l'Atelier</p><h1>Dessine-moi</h1><p>Un blasonnement par jour, le même pour tous : composez l'écu qu'il décrit, en trois essais. Chaque essai dit si le champ, la pièce et les meubles sont justes.</p>`,
+      `<p class="eyebrow">The Atelier's daily game</p><h1>Draw It for Me</h1><p>One blazon a day, the same for everyone: draw the shield it describes, in three attempts. Each attempt tells you whether the field, the ordinary and the charges are right.</p>`);
     const b = box(); b.hidden = false;
-    b.innerHTML = `<p class="defi-sur">Dessine-moi</p><p>Le blasonnement du jour se prépare…</p>`;
+    b.innerHTML = `<p class="defi-sur">${NOM}</p><p>${Tr("Le blasonnement du jour se prépare…", "Today's blazon is being prepared…")}</p>`;
     N = Jour.numero();
     const t = await Jour.charge(N);
-    if (!t.doc) { b.innerHTML = `<p class="defi-sur">Dessine-moi</p><p>${esc(t.msg)}</p><p><a href="atelier.html">Composer librement dans l'Atelier</a></p>`; return vierge(); }
+    if (!t.doc) { b.innerHTML = `<p class="defi-sur">${NOM}</p><p>${esc(t.msg)}</p><p><a href="${versLangue("atelier.html")}">${Tr("Composer librement dans l'Atelier", "Compose freely in the Atelier")}</a></p>`; return vierge(); }
     cible = Gen.tireArmes(Jour.hasard(t.doc, JEU), 2);
-    texte = blazonAll(cible);
+    texte = blazonLu(cible);
     await Compte.pret;
     K = Jour.carnet(JEU);
     const sv = K.jour(N);

@@ -145,8 +145,8 @@ function lectures(liste) {
    La comparaison garde les accents (« fasce » n'est pas « fascé », « armes » n'est pas « armé ») ; chaque mot d'un terme peut prendre sa marque de genre et de nombre (« fleurs de lis ») ;
    le terme le plus long l'emporte (« croix pattée » ne dit pas aussi « croix »). */
 const ARTICLES_TERMES = [
-  { terme: "Lion", formes: ["lion", "lionceau"], article: "le-lion-l-attitude-fait-le-blason" },
-  { terme: "Aigle", formes: ["aigle"], article: "l-aigle-l-oiseau-du-pouvoir" },
+  { terme: "Lion", en: "Lion", formes: ["lion", "lionceau"], article: "le-lion-l-attitude-fait-le-blason" },
+  { terme: "Aigle", en: "Eagle", formes: ["aigle"], article: "l-aigle-l-oiseau-du-pouvoir" },
 ];
 const motsTerme = s => String(s).toLowerCase().normalize("NFC").replace(/[^\p{L}0-9]+/gu, " ").trim();
 let MOTIFS_TERMES = null;
@@ -173,10 +173,16 @@ function termesDe(texte, combien = 6) {
   return [...vus.values()].sort((a, b) => a.email - b.email || a.i - b.i).slice(0, combien);      // dans l'ordre du texte, les émaux après les autres mots
 }
 const lienTerme = x => `<a href="encyclopedie.html#${x.article || termeId(x.terme, DATA.glossaire)}">${x.forme}</a>`;
+/* le même lien en anglais : le mot se cherche dans le blasonnement français, et se montre sous son nom anglais (S'exercer, DATA.glossaire[…].termeEn) */
+const lienTermeLu = x => {
+  if (LANGUE !== "en") return lienTerme(x);
+  const g = DATA.glossaire.find(e => e.terme === x.terme), nom = (ARTICLES_TERMES.find(a => a.terme === x.terme) || {}).en || (g && g.termeEn) || x.forme;
+  return `<a href="${versLangue("encyclopedie.html")}#${x.article || termeId(x.terme, DATA.glossaire)}">${nom}</a>`;
+};
 /* l'adresse qui ouvre l'Atelier sur ces armes : c'est lui qui relit le blasonnement (« #lire=… ») et dit ses réserves ;
    « de=blasons:royaume-de-france-moderne » dit de quelle carte on part (l'Atelier la montre à côté de son dessin) */
-const adresseAtelier = (a, galerie) => `atelier.html#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${a.forme ? `&sh=${encodeURIComponent(a.forme)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
-const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}"${LANGUE === "en" ? ' hreflang="fr"' : ""}>${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a></p>${a.atelier ? `<p class="redo-atelier">${Tr(`${a.atelierNote || "Le dessin suit l'image de la carte, qui montre autre chose que la source"} : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».`, `${a.atelierNote || "The drawing follows the card's image, which shows something other than the source"}.`).replace(/\.\.$/, ".")}</p>` : ""}`;
+const adresseAtelier = (a, galerie) => `${versLangue("atelier.html")}#lire=${encodeURIComponent(texteAtelier(a))}${a.atelierAjust ? `&aj=${encodeURIComponent(a.atelierAjust)}` : ""}${a.forme ? `&sh=${encodeURIComponent(a.forme)}` : ""}${galerie ? `&de=${galerie}:${slugCarte(a.nom)}` : ""}`;
+const lienAtelier = (a, galerie) => `<p class="redo"><a href="${adresseAtelier(a, galerie)}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a></p>${a.atelier ? `<p class="redo-atelier">${Tr(`${a.atelierNote || "Le dessin suit l'image de la carte, qui montre autre chose que la source"} : « ${a.atelier.replace(/&/g, "&amp;").replace(/</g, "&lt;")} ».`, `${a.atelierNote || "The drawing follows the card's image, which shows something other than the source"}.`).replace(/\.\.$/, ".")}</p>` : ""}`;
 /* l'écu d'une carte : un clic l'agrandit (assets/cartes.js) ; l'Atelier s'ouvre par le bouton « Redessiner » sous la carte */
 const ecuCarte = (a, galerie, img) => `<div class="shield" title="${Tr("Agrandir l'image", "Enlarge the image")}">${img}</div>`;
 /* sous un blasonnement que l'Atelier ne relit pas : où il bute, et de quoi ouvrir quand même le texte dans l'Atelier, où il est surligné */
@@ -187,7 +193,7 @@ function buteAtelier(a, r, galerie) {
   if (mot.length > 30) mot = mot.slice(0, 28).trim() + "…";
   mot = mot.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   return Tr(`<p class="redo-non">L'Atelier ne relit pas encore ces armes${mot ? ` : il bute sur « ${mot} »` : ""}. <a href="${adresseAtelier(a, galerie)}">Voir où dans l'Atelier</a></p>`,
-    `<p class="redo-non">The Atelier can't read these arms yet${mot ? `: in the French blazon, it stops at <span lang="fr">“${mot}”</span>` : ""}. <a href="${adresseAtelier(a, galerie)}" hreflang="fr">See where in the Atelier</a></p>`);
+    `<p class="redo-non">The Atelier can't read these arms yet${mot ? `: in the French blazon, it stops at <span lang="fr">“${mot}”</span>` : ""}. <a href="${adresseAtelier(a, galerie)}">See where in the Atelier</a></p>`);
 }
 
 /* ---------- l'analyse d'un seul blason (champ, pièce, meubles) : descente récursive sur les jetons ---------- */

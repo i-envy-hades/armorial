@@ -9,9 +9,11 @@
   <url><loc>https://armorial.web.app/personnages.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/personnages.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-people.html"/></url>
   <url><loc>https://armorial.web.app/en-people.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/personnages.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-people.html"/></url>
   <url><loc>https://armorial.web.app/lignees.html</loc></url>
-  <url><loc>https://armorial.web.app/atelier.html</loc></url>
+  <url><loc>https://armorial.web.app/atelier.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/atelier.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-atelier.html"/></url>
+  <url><loc>https://armorial.web.app/en-atelier.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/atelier.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-atelier.html"/></url>
   <url><loc>https://armorial.web.app/transmission.html</loc></url>
-  <url><loc>https://armorial.web.app/exercices.html</loc></url>
+  <url><loc>https://armorial.web.app/exercices.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/exercices.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-practice.html"/></url>
+  <url><loc>https://armorial.web.app/en-practice.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/exercices.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-practice.html"/></url>
   <url><loc>https://armorial.web.app/jour.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/jour.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-daily.html"/></url>
   <url><loc>https://armorial.web.app/en-daily.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/jour.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-daily.html"/></url>
   <url><loc>https://armorial.web.app/recherche.html</loc><xhtml:link rel="alternate" hreflang="fr" href="https://armorial.web.app/recherche.html"/><xhtml:link rel="alternate" hreflang="en" href="https://armorial.web.app/en-search.html"/></url>

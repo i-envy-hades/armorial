@@ -193,3 +193,55 @@ function ruleAllEn(St) {
   const out = !St.q ? ruleEn(St.A[0]) : cellNames(St).flatMap(([i, nom]) => ruleEn(St.A[i]).map(w => `${nomCelluleEn(nom)}: ${w}`));
   return St.ab ? [...out, ...ruleEn(St.A[4]).map(w => `Escutcheon: ${w}`)] : out;
 }
+
+/* ---------- ce que l'Atelier et S'exercer montrent autour du blasonnement ---------- */
+/* le nom d'un meuble dans les menus, quand son nom de blasonnement ne suffit pas à le distinguer */
+const NOM_MEUBLE_EN = { lion: "Lion rampant", "lion-queue-fourchee": "Lion with a forked tail", "lion-hache": "Crowned lion holding an axe (Norway)", "aigle-sans-couronne": "Eagle", aigle: "Crowned eagle",
+  "aigle-brandebourg": "Eagle of Brandenburg (coiffed, with sceptre and sword)", roundel: "Bezant / torteau", soleil: "Sun without a face", roue: "Wheel of Mainz", "aigle-moravie": "Chequy eagle (Moravia)",
+  "saint-georges": "Saint George slaying the dragon", "saint-ferdinand": "Saint Ferdinand enthroned", wyverne: "Wyvern (two-legged dragon)", guivre: "Guivre (serpent)", panthere: "Heraldic panther", "ours-rampant": "Bear rampant (dancing)",
+  "colombe-rameau": "Dove holding an olive branch", "aigle-imperiale": "Imperial eagle (First Empire)", "aigle-federale": "Federal eagle (Germany)", "crosse-bale": "Crozier of Basel" };
+const nomMeubleEn = m => NOM_MEUBLE_EN[m.kind] || cap((MEUBLE_EN[m.kind] || [m.nom])[0].replace(/^the /, ""));
+const LIBELLES_EN = {
+  /* les rubriques de meubles */
+  "Astres et éléments": "Stars and elements", "Bêtes et chimères": "Beasts and monsters", "Corps et cœur": "Body and heart", "La famille de la croix": "The cross family", "Le règne végétal": "The plant kingdom", "Objets et bâtiments": "Objects and buildings", "Propres au blason": "Purely heraldic figures",
+  /* les pièces de l'Atelier et de la brisure */
+  "Franc-quartier": "Quarter", Pairle: "Pall", Cotice: "Cotise", "Bâton": "Baton", Filet: "Fillet", Lambel: "Label",
+  /* les dispositions */
+  "Au centre": "In the centre", "En chef": "In chief", "En pointe": "In base", "Au canton dextre du chef": "In the dexter chief", "Au canton senestre du chef": "In the sinister chief", "En barre": "In bend sinister", "En bande": "In bend", "En fasce": "In fess", "En pal": "In pale", "En croix": "In cross", "En sautoir": "In saltire", "En orle": "In orle", "Passés en sautoir": "Crossed in saltire", "1 et 2 (mal ordonnés)": "1 and 2 (disordered)", "En trois pals, 4, 5 et 4": "In three pales, 4, 5 and 4",
+  /* les couronnes, les heaumes, les colliers */
+  "Couronne royale": "Royal crown", "Couronne ducale": "Ducal coronet", "Couronne de marquis": "Marquess's coronet", "Couronne de comte": "Count's coronet", "Couronne de vicomte": "Viscount's coronet", "Couronne de baron": "Baron's coronet", "Couronne murale": "Mural crown",
+  "Heaume à grilles": "Barred helm", "Grand heaume": "Great helm", "De face": "Facing forward", "De trois quarts": "Three-quarter view", "De profil": "In profile",
+  "Collier de l'ordre de la Toison d'or": "Collar of the Order of the Golden Fleece", "Collier de l'ordre de Saint-Michel": "Collar of the Order of Saint Michael", "Collier de l'ordre du Saint-Esprit": "Collar of the Order of the Holy Spirit", "Collier de l'ordre de la Jarretière": "Collar of the Order of the Garter", "Collier de l'ordre du Chardon": "Collar of the Order of the Thistle", "Collier de l'ordre de Saint-Patrick": "Collar of the Order of Saint Patrick", "Collier de l'ordre de l'Éléphant": "Collar of the Order of the Elephant", "Collier de l'ordre du Dannebrog": "Collar of the Order of the Dannebrog", "Collier de l'ordre des Séraphins": "Collar of the Order of the Seraphim", "Collier de l'ordre de l'Aigle noir": "Collar of the Order of the Black Eagle", "Collier de l'ordre de Charles III": "Collar of the Order of Charles III", "Collier de l'ordre de Saint-Janvier": "Collar of the Order of Saint Januarius", "Collier de l'ordre de la Très Sainte Annonciade": "Collar of the Order of the Most Holy Annunciation", "Collier de l'ordre de Saint-Olaf": "Collar of the Order of Saint Olaf", "Collier de l'ordre de Léopold": "Collar of the Order of Leopold",
+  /* les bandeaux de devise */
+  "Ruban à queues d'aronde": "Swallow-tailed ribbon", "Ruban cintré": "Arched ribbon", "Ruban ondulé": "Wavy ribbon", "Bandeau droit, bouts fendus": "Straight band, split ends", "Banderole à plis": "Folded banner", "Parchemin enroulé": "Rolled parchment", "Cartouche à filet": "Cartouche with a fillet",
+  /* les formes d'écu */
+  "Français moderne": "Modern French", "Triangulaire ancien": "Old triangular", "En losange": "Lozenge", "Targe échancrée": "Notched targe", "Cartouche ovale": "Oval cartouche", "Bannière (tournoi)": "Banner (tournament)", "Anglais à cornes": "English, horned", "Suisse à trois pointes": "Swiss, three points", "Italien, tête de cheval": "Italian, horse-head", "Italien, sannitique": "Italian, Samnite", "Talon arrondi (ibérique)": "Rounded base (Iberian)", "Hongrois, talon pointu": "Hungarian, pointed base", "Polonais, à oreilles": "Polish, with ears", "Polonais, à échancrures": "Polish, notched", "Polonais, sommet en coin": "Polish, wedge top",
+  /* les attributs nommés */
+  Flammes: "Flames", "Immortalité": "Immortality",
+};
+const auteurEn = a => String(a ?? "").replace("auteur non indiqué sur la page Commons ; figure seule, sans l'écu", "author not given on the Commons page; the figure alone, without the shield").replace("travail personnel du téléverseur (auteur non nommé)", "the uploader's own work (author not named)")
+  .replace("(d'après les armes de la Géorgie)", "(after the arms of Georgia)").replace("(le ciboire est extrait des armes de Galice)", "(the ciborium is taken from the arms of Galicia)").replace("(dessin)", "(drawing)").replace("(vectorisation)", "(vector version)").replace("(tracé)", "(outline)")
+  .replace(/d'après l'/g, "after the ").replace(/d'après /g, "after ").replace(/, fichier de /g, ", file by ").replace(/ et /g, " and ");
+const licenceEn = l => String(l ?? "").replace("domaine public", "public domain");
+/* les ornements, comme ornText() */
+function ornTextEn(St) {
+  const { cr, co, su } = ornOf(St), out = [], O = ATL.ornements;
+  if (St.hm) {
+    let t = `${LIBELLES_EN[O.heaumeTypes[St.ht]]}, ${LIBELLES_EN[O.heaumePos[St.hp]].toLowerCase()}${St.hp !== "face" ? (St.hs === "s" ? ", turned to sinister" : ", turned to dexter") : ""}` + (St.hm === "hl" ? `, mantling ${em(St.tl1)} lined ${em(St.tl2)}` : "");
+    if (St.pa) t += `, panache of ${NB_EN[+St.pa]} ostrich feathers ${St.pa1 === St.pa2 ? em(St.pa1) : em(St.pa1) + " and " + em(St.pa2)}`;
+    out.push(t);
+  }
+  if (St.hm && St.ci) {
+    const c = chargesEn({ m: St.ci, nb: "1", tm: St.cit, ta: St.cia, ct: "" });
+    out.push(`Crest: ${un(c.nom)}${St.cim ? " issuant" : ""} ${c.tinct}${c.acc}`);
+  }
+  if (St.mt) out.push(`${St.mt === "p" ? "Mantle under a pavilion" : "Mantle"} ${em(St.mc)} lined ${em(St.ml)}`);
+  if (cr) out.push(LIBELLES_EN[cr.nom] || cr.nom);
+  if (su) {
+    const m = meuble(su.kind);
+    out.push(`Supporters: two ${MEUBLE_EN[su.kind][1]} ${em(St.ts)}${m.accent && m.accentMot ? ", " + (ACCENT_EN[m.accentMot] || m.accentMot) + " " + em(suppAccent(St)) : ""}`);
+  }
+  if (co) out.push(LIBELLES_EN[co.nom] || co.nom);
+  if (St.dv.trim()) out.push(`Motto: “${St.dv.trim()}”`);
+  return out.join(" · ");
+}

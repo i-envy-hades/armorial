@@ -44,6 +44,7 @@ details[hidden]{display:none}
 .ornt[hidden]{display:none}
 .blz{font-family:"EB Garamond",serif;font-style:italic;font-size:1.22rem;line-height:1.35;text-align:center;color:var(--ink);margin:0}
 .blz::before{content:"« "}.blz::after{content:" »"}
+html[lang="en"] .blz::before{content:"“"}html[lang="en"] .blz::after{content:"”"}
 .warn{width:100%;margin:0;padding:.55rem .75rem;border-radius:8px;background:#f6e3d4;border:1px solid #d9a98a;color:#5a2a10;font-size:.9rem}
 .warn[hidden]{display:none}
 .warn a{color:var(--gules);text-decoration:underline}

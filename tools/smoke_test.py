@@ -900,12 +900,12 @@ def test_jeu_en(browser, base):
     # changer de langue : la même partie, et le choix est gardé
     page.click("#jx-langue"); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
     verifie(page.evaluate("document.documentElement.lang") == "fr" and "Trouvé en 2" in page.inner_text("#jeu-essais"), "jeu en anglais : le bouton FR montre la même partie en français")
-    page.goto(f"{base}/atelier.html"); page.wait_for_selector("header.mast a")                  # une page qui n'a pas encore sa jumelle anglaise
+    page.goto(f"{base}/lignees.html"); page.wait_for_selector("header.mast a")                  # une page qui n'a pas encore sa jumelle anglaise
     verifie(page.locator(".bandeau-langue").count() == 0, "jeu en anglais : qui a choisi le français ne voit pas de bandeau")
     page.goto(f"{base}/index.html"); page.wait_for_selector("#jx-langue", state="attached"); page.click("#jx-langue"); page.wait_for_url("**/en.html*", timeout=10000)
     page.goto(f"{base}/"); page.wait_for_url("**/en.html*", timeout=10000)
     verifie(True, "jeu en anglais : qui a choisi l'anglais revient à en.html depuis l'accueil")
-    page.goto(f"{base}/atelier.html"); page.wait_for_selector("header.mast a")
+    page.goto(f"{base}/lignees.html"); page.wait_for_selector("header.mast a")
     verifie(page.locator(".bandeau-langue a[href='en.html']").count() == 1, "jeu en anglais : une page encore en français le dit, avec un lien de retour")
     propre("jeu en anglais", page, erreurs)
     page.context.close()
@@ -1003,6 +1003,96 @@ def test_jeux_du_jour_en(browser, base):
     verifie("First try" in page.inner_text("#jj-resultat"), "jeux du jour en anglais : la partie se termine en anglais")
     verifie("Fill in the Blazon" in page.evaluate("document.title"), "jeux du jour en anglais : le titre est traduit")
     propre("jeux du jour en anglais", page, erreurs)
+    page.context.close()
+
+FRANCAIS_EN = re.compile(r"\b(de|du|des|le|la|les|au|aux|une|et|sur|chargé|accompagné|brochant|mouvant|armé|lampassé|couronné|meuble|meubles|émail|écu|pièce|undefined|NaN)\b|\bd'|\bl'|\[object", re.I)
+
+def test_exercices_en(browser, base):
+    """S'exercer en anglais : les mêmes tirages que la page française (le défi du jour reste commun), tout le texte montré en anglais"""
+    graines = "[...Array(60).keys()].map(i => i + 1)"
+    tirage = f"""async () => {{ const out = []; for (const seed of {graines}) {{ const a = await Exercices.fabrique("lire", 1 + seed % 3, seed), b = await Exercices.fabrique("vocab", 2, seed), c = await Exercices.fabrique("regle", 2, seed), d = await Exercices.fabrique("points", 1, seed);
+      out.push([Gen.empreinte(a.St), a.choix.map(x => x.ok), b.cible.terme, b.choix.map(x => x.ok), Gen.empreinte(c.St), d.r, d.c]); }} return out; }}"""
+    fr, e0 = ouvre(browser, base, "exercices.html", ".ex-carte")
+    attendu = fr.evaluate(tirage); fr.context.close()
+    page, erreurs = ouvre(browser, base, "en-practice.html", ".ex-carte")
+    verifie(page.evaluate(tirage) == attendu, "exercices en anglais : les tirages sont ceux de la page française")
+    verifie(page.locator(".ex-carte").count() == 7 and "Read a shield" in page.inner_text("#ex-cartes"), "exercices en anglais : le menu est en anglais")
+    r = page.evaluate("""async () => {
+      const faux = [], textes = [], doublons = [];
+      for (let seed = 1; seed <= 90; seed++) {
+        const a = await Exercices.fabrique("lire", 1 + seed % 3, seed), b = await Exercices.fabrique("vocab", 1 + seed % 3, seed), c = await Exercices.fabrique("regle", 1 + seed % 3, seed), d = await Exercices.fabrique("reel", 1, seed);
+        textes.push(...a.choix.map(x => x.texte), ...(c.fautes || []), c.texte, b.def, ...c.paires.map(p => p.quoi + " " + p.lieu));
+        if (new Set(a.choix.map(x => x.texte)).size < a.choix.length) doublons.push(a.choix.map(x => x.texte));
+        if (new Set(b.choix.map(x => x.texte)).size < b.choix.length) doublons.push(b.choix.map(x => x.texte));
+        if (new Set(d.choix.map(x => x.texte)).size < d.choix.length) doublons.push(d.choix.map(x => x.texte));
+        if (!b.cible.defEn || !b.cible.termeEn || /[<>]/.test(b.def)) faux.push(b.cible.terme);
+        const nu = b.cible.termeEn.replace(/\\(.*?\\)/g, "").trim().toLowerCase();
+        if (nu.length > 3 && b.def.toLowerCase().includes(nu)) faux.push("visible : " + nu);
+      }
+      return { faux, textes, doublons };
+    }""")
+    verifie(not r["faux"], f"exercices en anglais : chaque terme a son anglais, et la définition ne le donne pas ({r['faux'][:4]})")
+    verifie(not r["doublons"], f"exercices en anglais : quatre réponses distinctes en anglais ({r['doublons'][:2]})")
+    faux = [t for t in r["textes"] if FRANCAIS_EN.search(t.replace("fleur-de-lis", "").replace("fleurs-de-lis", "").replace("▁▁▁▁", ""))]
+    print(f"    (exercices en anglais : {len(faux)} textes à relire sur {len(r['textes'])} : {faux[:4]})")
+    # une série de chaque exercice : la réponse et l'explication sont en anglais
+    for ident, attendu_txt in (("lire", "The blazon of this shield"), ("dessiner", "The blazon"), ("regle", "Reread the chapter"), ("vocab", "glossary"), ("points", "marked point")):
+        page.goto(f"{base}/en-practice.html#{ident}"); page.reload(); page.wait_for_selector(".ex-q .ex-c", timeout=20000)
+        page.locator(".ex-q .ex-c").first.click(); page.wait_for_selector(".ex-fb.ok, .ex-fb.ko")
+        fb = page.inner_text("#ex-fb")
+        verifie(attendu_txt in fb and ("Well spotted" in fb or "Not quite" in fb), f"exercices en anglais : {ident}, l'explication est en anglais ({fb[:100]!r})")
+        verifie(page.locator("#ex-fb a[href*='encyclopedie.html'], #ex-fb a[href^='atelier.html'], #ex-fb a[href^='blasons.html']").count() == 0, f"exercices en anglais : {ident}, les liens mènent aux pages anglaises")
+    verifie(page.evaluate("document.documentElement.lang") == "en" and page.locator(".mast-langue[data-langue='fr']").count() == 1, "exercices en anglais : le lien FR est là")
+    propre("exercices en anglais", page, erreurs)
+    page.context.close()
+
+def test_atelier_en(browser, base):
+    """l'Atelier en anglais : les libellés et le blasonnement en anglais, l'état et le champ de saisie en français"""
+    page, erreurs = ouvre(browser, base, "en-atelier.html", "#blz:not(:empty)")
+    r = page.evaluate("""() => {
+      const lib = [...document.querySelectorAll("#panel legend, #panel .lab, #panel label, #panel option:not(#reel option), #panel .note, #panel optgroup:not(#reel optgroup)")].map(e => e.label || e.textContent.trim()).filter(Boolean);
+      lib.push(...Object.values(PLEIN).flat().map(d => libelle(d.lab)), ...Object.values(SHAPES).map(v => libelle(v.nom)), ...Object.values(DEVISES).map(v => libelle(v.nom)), ...ATL.ornements.couronnes.map(c => libelle(c.nom)), ...ATL.ornements.colliers.map(c => libelle(c.nom)), ...Object.values(BRIS_PIECES).map(v => libelle(v.nom)));
+      const noms = ATL.meubles.map(nomMeubleLu);
+      return { lib: [...new Set(lib)], noms, doublons: noms.filter((n, i) => noms.indexOf(n) !== i), attributs: ATL.meubles.filter(m => m.accentMot && !m.accentLabel && !ACCENT_EN[m.accentMot] && m.accentMot !== "et").map(m => m.accentMot) };
+    }""")
+    faux = [t for t in r["lib"] if FRANCAIS_EN.search(re.sub(r"fleurs?-de-lis", "", t, flags=re.I).replace("(de l'un en l'autre)", "").replace("(de l'un à l'autre)", "").replace("D'azur à trois fleurs de lis d'or", "")) or re.search(r"[éèêàç]", t.replace("Contourné", "").replace("semé", "").replace("(de l'un à l'autre)", "").replace("Semé", ""))]
+    verifie(not faux, f"atelier en anglais : aucun libellé français ({len(r['lib'])} libellés ; {faux[:8]})")
+    verifie(not r["doublons"], f"atelier en anglais : chaque meuble a un nom distinct ({r['doublons'][:5]})")
+    verifie(not r["attributs"], f"atelier en anglais : chaque attribut a son mot ({r['attributs'][:5]})")
+    # les exemples : blasonnement, ornements et crédits en anglais ; l'état reste français
+    textes = page.evaluate("""async () => { const out = []; const bs = [...document.querySelectorAll("#examples button")];
+      for (const b of bs) { b.click(); await new Promise(r => setTimeout(r, 120)); out.push($("#blz").textContent, $("#orn").textContent, $("#warn").textContent, $("#credits").textContent.replace(/“[^”]*”/g, "")); } return out; }""")
+    faux = [t for t in textes if t and FRANCAIS_EN.search(re.sub(r"fleurs?-de-lis", "", t, flags=re.I))]
+    verifie(not faux, f"atelier en anglais : les {len(textes) // 4} exemples s'écrivent en anglais ({faux[:3]})")
+    # le champ de saisie lit le français, et le blasonnement s'écrit en anglais
+    page.fill("#lire", "D'azur à trois fleurs de lis d'or"); page.click("#b-lire"); page.wait_for_selector("#lire-etat.ok")
+    verifie("Understood" in page.inner_text("#lire-etat") and page.inner_text("#blz") == "Azure, three fleurs-de-lis or", f"atelier en anglais : un blasonnement français tapé donne l'écu ({page.inner_text('#blz')!r})")
+    page.fill("#lire", "Azure, three stars or"); page.click("#b-lire"); page.wait_for_selector("#lire-etat.ko")
+    verifie("Not understood" in page.inner_text("#lire-etat"), "atelier en anglais : un texte anglais est signalé, sans rien deviner")
+    page.click("#b-recopier"); page.wait_for_selector("#lire-etat.ok")
+    verifie(page.input_value("#lire") == "D'azur à trois fleurs de lis d'or", f"atelier en anglais : on reprend le blasonnement en français ({page.input_value('#lire')!r})")
+    # le lien de partage ne dépend pas de la langue
+    page.locator("#examples button").nth(1).click(); page.wait_for_function("location.hash.includes('Gueules')")
+    verifie("Gules" not in page.url, f"atelier en anglais : l'adresse garde l'état français ({page.url[-60:]})")
+    # une carte : son nom est en anglais
+    page.goto(f"{base}/en-atelier.html#lire=" + urllib.parse.quote("D'azur à trois fleurs de lis d'or") + "&de=blasons:royaume-de-france-moderne"); page.reload(); page.wait_for_selector("#origine:not([hidden]) .or-etat", timeout=20000)
+    origine = page.inner_text("#origine")
+    verifie("These are the arms on the card" in origine and "real arms" in origine.lower(), f"atelier en anglais : la carte d'origine est en anglais ({origine[:100]!r})")
+    # les galeries y mènent
+    g, e2 = ouvre(browser, base, "en-arms.html", ".redo a")
+    verifie(g.locator(".redo a[href^='atelier.html']").count() == 0 and g.locator(".redo a[href^='en-atelier.html']").count() > 0, "atelier en anglais : les cartes anglaises mènent à l'Atelier anglais")
+    g.context.close()
+    # le jeu du jour : la même cible que la page française, le texte en anglais
+    fr, e0 = ouvre(browser, base, "atelier.html#defi=dessin", "#defi-ok")
+    cible = fr.evaluate("Gen.empreinte(DessineMoi.cible)"); fr.context.close()
+    d, e1 = ouvre(browser, base, "en-atelier.html#defi=dessin", "#defi-ok")
+    verifie(d.evaluate("Gen.empreinte(DessineMoi.cible)") == cible, "Draw It for Me : la même cible que Dessine-moi")
+    verifie("draw it for me" in d.inner_text("#defi").lower() and d.inner_text("h1").lower() == "draw it for me" and "attempt 1 of 3" in d.inner_text("#defi").lower(), f"Draw It for Me : la page est en anglais ({d.inner_text('#defi')[:120]!r})")
+    d.click("#defi-ok"); d.wait_for_selector(".defi-essais li")
+    verifie("attempt 1" in d.inner_text(".defi-essais").lower() and "the field" in d.inner_text(".defi-essais").lower(), f"Draw It for Me : l'essai se lit en anglais ({d.inner_text('.defi-essais')[:80]!r})")
+    propre("Draw It for Me", d, e1)
+    d.context.close()
+    propre("atelier en anglais", page, erreurs)
     page.context.close()
 
 def test_recherche_en(browser, base):
@@ -1142,6 +1232,8 @@ def main():
                        ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),
                        ("blasonnement anglais", lambda: test_blason_en(browser, base_en_ligne)),
                        ("jeux du jour en anglais", lambda: test_jeux_du_jour_en(browser, base_en_ligne)),
+                       ("exercices en anglais", lambda: test_exercices_en(browser, base_en_ligne)),
+                       ("atelier en anglais", lambda: test_atelier_en(browser, base_en_ligne)),
                        ("recherche en anglais", lambda: test_recherche_en(browser, base)),
                        ("404 en anglais", lambda: test_404_en(browser, base)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),

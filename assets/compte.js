@@ -133,19 +133,19 @@
 
   function vue() {
     const p = M.profil, b = brouillon, connecte = API.ligne && API.ligne.connecte();
-    const versAtelier = surAtelier() ? "" : `atelier.html#${b.armes ? b.armes + "&" : ""}pour=profil`;
+    const versAtelier = surAtelier() ? "" : `${versLangue("atelier.html")}#${b.armes ? b.armes + "&" : ""}pour=profil`;
     const biblio = !API.biblio || !connecte ? ""
       : `<div class="cpt-biblio"><p class="cpt-lab">${Tr("Ma bibliothèque", "My library")}</p>${biblioErr ? `<p class="cpt-err">${esc(biblioErr)}</p>`
         : !biblioListe ? `<p class="cpt-regle">${Tr("Chargement…", "Loading…")}</p>`
         : biblioListe.length ? `<ul class="cpt-biblio-l">${biblioListe.map(x => `<li><button type="button" data-armes="${esc(x.armes)}" title="${esc(x.nom)}"${x.armes === b.armes ? ' aria-pressed="true"' : ""}><span class="cpt-mini">${dessin(x.armes)}</span><span>${esc(x.nom)}</span></button></li>`).join("")}</ul>`
-        : `<p class="cpt-regle">${Tr("Vide pour l'instant : dans l'Atelier, « Enregistrer dans ma bibliothèque ».", "Empty for now: in the Atelier, use « Enregistrer dans ma bibliothèque » (save to my library).")}</p>`}</div>`;
+        : `<p class="cpt-regle">${Tr("Vide pour l'instant : dans l'Atelier, « Enregistrer dans ma bibliothèque ».", "Empty for now: in the Atelier, use “Save to my library”.")}</p>`}</div>`;
     return `<form method="dialog" class="cpt-f" id="cpt-form" novalidate>
       <button type="button" class="cpt-x" data-fermer aria-label="${Tr("Fermer", "Close")}">×</button>
       <h2 id="cpt-titre">${p ? Tr("Votre profil", "Your profile") : Tr("Créer mon profil", "Create my profile")}</h2>
       <p class="cpt-intro">${p ? Tr("Votre pseudo et vos armes accompagnent vos scores.", "Your username and arms appear with your scores.") : Tr("Un pseudo et des armes à vous : elles s'affichent à côté de vos scores.", "A username and arms of your own, shown next to your scores.")}</p>
       <div class="cpt-armes"><div class="cpt-ecu" id="cpt-ecu" aria-hidden="true">${dessin(b.armes)}</div>
         <div class="cpt-armes-t"><p class="cpt-blz" id="cpt-blz">${esc(blasonDe(b.armes))}</p>
-          <p class="cpt-armes-acts">${versAtelier ? `<a class="cpt-btn" id="cpt-atelier" href="${esc(versAtelier)}">${Tr("Composer mes armes dans l'Atelier", "Design my arms in the Atelier (in French)")}</a>` : `<span class="cpt-regle">${Tr("Composez vos armes ici même, puis « Prendre pour mes armes ».", "Design your arms right here, then choose « Prendre pour mes armes » (use as my arms).")}</span>`}
+          <p class="cpt-armes-acts">${versAtelier ? `<a class="cpt-btn" id="cpt-atelier" href="${esc(versAtelier)}">${Tr("Composer mes armes dans l'Atelier", "Design my arms in the Atelier")}</a>` : `<span class="cpt-regle">${Tr("Composez vos armes ici même, puis « Prendre pour mes armes ».", "Design your arms right here, then choose « Prendre pour mes armes » (use as my arms).")}</span>`}
             <button type="button" class="cpt-btn cpt-btn-2" id="cpt-hasard">${Tr("Au hasard", "Random")}</button></p></div></div>
       ${biblio}
       <label class="cpt-lab" for="cpt-pseudo">${Tr("Pseudo", "Username")}</label>

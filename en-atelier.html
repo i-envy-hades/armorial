@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Atelier — The Armorial</title>
+<meta name="description" content="Compose coats of arms (field, ordinary, charges, ornaments) and read their blazon, written as a herald would write it; or type a blazon in French and watch the shield appear; or start from the real arms in the galleries and change them. Export as SVG and PNG, with a sharing link.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-atelier.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/atelier.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-atelier.html">
+<meta property="og:site_name" content="The Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="The Atelier — The Armorial">
+<meta property="og:description" content="Compose coats of arms (field, ordinary, charges, ornaments) and read their blazon, written as a herald would write it; or type a blazon in French and watch the shield appear; or start from the real arms in the galleries and change them. Export as SVG and PNG, with a sharing link.">
+<meta property="og:url" content="https://armorial.web.app/en-atelier.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A shield azure with a fess argent between three stars or, and the title L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — la page anglaise de atelier.html : mêmes scripts et mêmes id (tools/check_data.py les compare). Les valeurs du formulaire restent françaises ; seuls les libellés changent (libelle(), assets/blasonnement-en.js).
+  Le champ « Écrire un blasonnement » reste français : le lecteur (assets/lecture.js) ne lit que le français.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/atelier.css">
+<link rel="stylesheet" href="assets/bandeau.css">
+<link rel="stylesheet" href="assets/compte.css">
+</head>
+<body class="bandeau">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="atelier"></header>
+<script src="assets/chrome.js"></script>
+
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/atelier.jpg" data-video="assets/epopee/atelier.mp4" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Design your arms</p>
+  <h1>The Atelier</h1>
+  <p>Choose a field, an ordinary, charges and their tinctures: the shield draws itself, and the blazon is written in the order a herald would read it. Or do the reverse: type a blazon in French, and the shield appears. Or start from real arms (a kingdom, a canton, a king from the galleries) and change them.</p>
+  </div>
+</section>
+
+<noscript><p class="nojs">The Atelier runs on JavaScript: please enable it to compose arms.</p></noscript>
+<div class="wrap" id="wrap">
+  <form class="panel" id="panel" autocomplete="off" onsubmit="return false">
+    <fieldset class="hors-defi">
+      <legend>Type a blazon, in French</legend>
+      <label class="lab-lire" for="lire">For now the Atelier only reads French blazons: type arms in French, as in the example, and the shield is drawn. What it doesn't understand is flagged, never guessed. The blazon it writes under the shield is in English.</label>
+      <textarea id="lire" lang="fr" rows="3" spellcheck="false" placeholder="D'azur à trois fleurs de lis d'or" aria-describedby="lire-etat"></textarea>
+      <div class="acts lire-acts">
+        <button type="button" class="main" id="b-lire">Draw</button>
+        <button type="button" id="b-recopier">Copy the current blazon, in French</button>
+      </div>
+      <div class="lire-etat" id="lire-etat" role="status" aria-live="polite"></div>
+    </fieldset>
+    <fieldset class="hors-defi">
+      <legend>Start from real arms</legend>
+      <label class="lab-lire" for="reel">Arms from the galleries that the Atelier can read: choose one, the shield is drawn, then change it as you like.</label>
+      <select id="reel" aria-describedby="reel-note"><option value="">Loading the galleries…</option></select>
+      <p class="note" id="reel-note">The “Redraw it in the Atelier” button under a card in <a href="en-arms.html">Real arms</a> or <a href="en-people.html">People</a> leads here too.</p>
+    </fieldset>
+    <fieldset class="hors-defi">
+      <legend>Examples</legend>
+      <div class="examples" id="examples"></div>
+    </fieldset>
+    <fieldset>
+      <legend>The shield</legend>
+      <div class="row"><span class="lab">Composition</span>
+        <span class="seg seg-large" role="radiogroup" aria-label="Composition of the shield">
+          <label><input type="radio" name="q" value=""><span>Plain</span></label>
+          <label><input type="radio" name="q" value="p"><span>Per pale (two halves)</span></label>
+          <label><input type="radio" name="q" value="c"><span>Per fess (two halves)</span></label>
+          <label><input type="radio" name="q" value="t"><span>Per bend (two parts)</span></label>
+          <label><input type="radio" name="q" value="l"><span>Per bend sinister (two parts)</span></label>
+          <label><input type="radio" name="q" value="2"><span>Quarterly 1-4 / 2-3</span></label>
+          <label><input type="radio" name="q" value="4"><span>Quarterly, four different</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-cur"><span class="lab">Edit</span><span class="seg" id="cur-seg" role="radiogroup" aria-label="Quarter being edited"></span></div>
+      <div class="row" id="r-halves"><span class="lab">Halves</span>
+        <select name="h1" aria-label="Dexter half of the per pale division"><option value="">Dexter: plain</option><option value="2">Dexter: quarterly 1-4 / 2-3</option><option value="4">Dexter: quarterly, four different</option></select>
+        <select name="h2" aria-label="Sinister half of the per pale division"><option value="">Sinister: plain</option><option value="2">Sinister: quarterly 1-4 / 2-3</option><option value="4">Sinister: quarterly, four different</option></select>
+      </div>
+      <div class="row"><span class="lab">Shape</span><select name="sh" aria-label="Shape of the shield"></select></div>
+      <div class="row" id="r-x" hidden><span class="lab">Cross</span>
+        <select name="xc" aria-label="Cross over the four quarters: tincture"><option value="">None</option><option value="Or">Or</option><option value="Argent">Argent</option><option value="Gueules">Gules</option><option value="Azur">Azure</option><option value="Sable">Sable</option><option value="Sinople">Vert</option><option value="Pourpre">Purpure</option></select>
+        <select name="xb" aria-label="Edge of the cross"><option value="">No edge</option><option value="Or">Fimbriated or</option><option value="Argent">Fimbriated argent</option><option value="Gueules">Fimbriated gules</option><option value="Azur">Fimbriated azure</option><option value="Sable">Fimbriated sable</option><option value="Sinople">Fimbriated vert</option><option value="Pourpre">Fimbriated purpure</option></select>
+        <select name="xp" aria-label="Shape of the cross"><option value="">Straight</option><option value="1">Formy</option></select>
+      </div>
+      <div class="row"><span class="lab">Over all</span>
+        <span class="seg" role="radiogroup" aria-label="Escutcheon at the centre">
+          <label><input type="radio" name="ab" value=""><span>No escutcheon</span></label>
+          <label><input type="radio" name="ab" value="1"><span>Escutcheon at the centre</span></label>
+        </span>
+      </div>
+      <p class="note">The shape of the shield doesn't affect the blazon: it follows fashion and country (see the chapter <a href="en-encyclopedia.html#ecu">The shield</a>).</p>
+      <p class="note" id="q-note" hidden>The field, ordinary and charges below belong to the chosen quarter, half or escutcheon.</p>
+    </fieldset>
+    <fieldset>
+      <legend>The field</legend>
+      <div class="row"><span class="lab">Type</span>
+        <span class="seg" role="radiogroup" aria-label="Type of field">
+          <label><input type="radio" name="f" value="plein"><span>Plain</span></label>
+          <label><input type="radio" name="f" value="part"><span>Division</span></label>
+          <label><input type="radio" name="f" value="ray"><span>Striped</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-part"><span class="lab">Division</span><select name="part" aria-label="Division"></select></div>
+      <div class="row" id="r-ray"><span class="lab">Stripes</span>
+        <select name="ray" aria-label="Stripes"><option value="barry">Barry</option><option value="barryonde">Barry wavy</option><option value="paly">Paly</option><option value="bendy">Bendy</option><option value="bendysin">Bendy sinister</option><option value="chevronny">Chevronny</option><option value="chequy">Chequy</option><option value="lozengy">Fusily</option><option value="lozengybend">Fusily in bend</option><option value="lozengysin">Fusily in bend sinister</option></select>
+        <select name="n" aria-label="Number of pieces"></select>
+      </div>
+      <div class="row"><span class="lab" id="l-t1">Tincture</span><div class="chips" data-name="t1"></div></div>
+      <div class="row" id="r-t2"><span class="lab">Second tincture</span><div class="chips" data-name="t2"></div></div>
+      <div class="row" id="r-t3"><span class="lab">Third</span><div class="chips" data-name="t3"></div></div>
+    </fieldset>
+    <fieldset>
+      <legend>The ordinary</legend>
+      <div class="row"><span class="lab">Ordinary</span><select name="p" aria-label="Ordinary"></select></div>
+      <div class="row" id="r-tp"><span class="lab">Tincture</span><div class="chips" data-name="tp"></div></div>
+      <div class="row" id="r-big2"><span class="lab">Size</span><select name="big2" aria-label="Second charge alone in chief: larger than the others"><option value="">Same as the others</option><option value="1">Larger (the figures it bears: through the blazon)</option></select></div>
+      <div class="row" id="r-lrg"><span class="lab">Width</span><select name="lrg" aria-label="Widened bend"><option value="">Ordinary</option><option value="1">Widened</option></select></div>
+      <div class="row" id="r-fqs"><span class="lab">Side</span><select name="fqs" aria-label="Quarter to dexter or to sinister"><option value="">To dexter</option><option value="1">To sinister</option></select></div>
+      <div class="row" id="r-ri"><span class="lab">Scrollwork</span><select name="ri" aria-label="Ornamental scrollwork on the bend"><option value="">None</option><option value="Or">Or</option><option value="Argent">Argent</option><option value="Gueules">Gules</option><option value="Azur">Azure</option><option value="Sable">Sable</option><option value="Sinople">Vert</option><option value="Pourpre">Purpure</option></select></div>
+      <div class="row" id="r-cmp"><span class="lab">Compony</span><select name="cmp" aria-label="Bordure compony: sixteen segments of two tinctures"><option value="">No: plain bordure</option><option value="1">Compony (second tincture: argent; figures: through the blazon)</option></select></div>
+      <div class="row" id="r-pcc"><span class="lab">Counterchanged</span><select name="pcc" aria-label="Tincture of the ordinary: counterchanged"><option value="">No: one tincture</option><option value="en">Counterchanged (de l'un en l'autre)</option><option value="a">Counterchanged (de l'un à l'autre)</option></select></div>
+      <div class="row" id="r-ln"><span class="lab">Line</span><select name="ln" aria-label="Line of the ordinary"></select></div>
+      <div class="row" id="r-pf"><span class="lab">Fimbriation</span><select name="pf" aria-label="Ordinary edged in another tincture"></select></div>
+      <div class="sub" id="r-pj">
+        <div class="row"><span class="lab">Left ↔ right</span><input type="range" id="k-pdx" min="-80" max="80" step="1" aria-label="Horizontal offset of the ordinary"><output id="o-pdx"></output></div>
+        <div class="row"><span class="lab">Down ↕ up</span><input type="range" id="k-pdy" min="-80" max="80" step="1" aria-label="Vertical offset of the ordinary"><output id="o-pdy"></output></div>
+        <div class="row" id="r-pth"><span class="lab">Thickness</span><input type="range" id="k-pth" min="50" max="250" step="5" aria-label="Thickness of the cross"><output id="o-pth"></output></div>
+        <p class="note">A drawing setting: it doesn't change the blazon. <button type="button" class="lnk" id="b-preset">Reset</button></p>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>The charges</legend>
+      <div class="row"><span class="lab">Charge</span><select name="m" aria-label="Charge"></select></div>
+      <div class="row" id="r-nb"><span class="lab">Number</span><select name="nb" aria-label="Number of charges"></select></div>
+      <div class="row" id="r-d"><span class="lab">Arrangement</span><select name="d" aria-label="Arrangement of the charges"></select></div>
+      <div class="row" id="r-pos"><span class="lab">Position</span>
+        <span class="seg" role="radiogroup" aria-label="Position of the charges">
+          <label><input type="radio" name="pos" value="autour"><span>Around the ordinary</span></label>
+          <label><input type="radio" name="pos" value="sur"><span>On the ordinary</span></label>
+          <label><input type="radio" name="pos" value="sous"><span>Under the ordinary (it lies over them)</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-ct"><span class="lab">Facing</span>
+        <span class="seg" role="radiogroup" aria-label="Direction of the charge">
+          <label><input type="radio" name="ct" value=""><span>To dexter</span></label>
+          <label><input type="radio" name="ct" value="1"><span>Contourné (to sinister)</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-rot"><span class="lab">Tilt</span>
+        <span class="seg" role="radiogroup" aria-label="Tilt of the charge (drawing only: the blazon doesn't state it)">
+          <label><input type="radio" name="rot" value="0"><span>Upright</span></label>
+          <label><input type="radio" name="rot" value="-45"><span>45° to dexter</span></label>
+          <label><input type="radio" name="rot" value="45"><span>45° to sinister</span></label>
+          <label><input type="radio" name="rot" value="-90"><span>Lying to dexter</span></label>
+          <label><input type="radio" name="rot" value="90"><span>Lying to sinister</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-iss"><span class="lab">Form</span>
+        <span class="seg" role="radiogroup" aria-label="The whole charge or issuant">
+          <label><input type="radio" name="iss" value=""><span>Whole</span></label>
+          <label><input type="radio" name="iss" value="1"><span>Issuant (from the base)</span></label>
+          <label><input type="radio" name="iss" value="t"><span>Demi, issuing from the line of division</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-tm"><span class="lab">Tincture</span><div class="chips" data-name="tm"></div></div>
+      <div class="row" id="r-cc"><span class="lab">Counterchanged</span><select name="cc" aria-label="Tincture of the charge: counterchanged"><option value="">No: one tincture</option><option value="en">Counterchanged (de l'un en l'autre)</option><option value="a">Counterchanged (de l'un à l'autre)</option></select></div>
+      <div class="row" id="r-ta"><span class="lab" id="l-ta">Armed</span><div class="chips" data-name="ta"></div></div>
+      <div class="row" id="r-cn"><span class="lab">Crown</span><select name="cn" aria-label="Crown worn by the charge"></select></div>
+      <div class="row" id="r-cnk"><span class="lab">Shape</span>
+        <span class="seg" role="radiogroup" aria-label="Shape of the crown (drawing only)">
+          <label><input type="radio" name="cnk" value=""><span>With fleurons</span></label>
+          <label><input type="radio" name="cnk" value="antique"><span>Antique</span></label>
+        </span>
+      </div>
+      <p class="note" id="m-note" hidden></p>
+      <div class="sub" id="r-m2">
+        <div class="row"><span class="lab">Second charge</span><select name="m2" aria-label="Second charge"></select></div>
+        <div class="row" id="r-nb2"><span class="lab">Number</span><select name="nb2" aria-label="Number of second charges"></select></div>
+        <div class="row" id="r-d2"><span class="lab">Arrangement</span><select name="d2" aria-label="Arrangement of the second charges"></select></div>
+        <div class="row" id="r-cp"><span class="lab">Position</span>
+          <span class="seg" role="radiogroup" aria-label="Position of the second charges">
+            <label><input type="radio" name="cp" value=""><span>With the first</span></label>
+            <label><input type="radio" name="cp" value="1"><span>In base, the first in chief</span></label>
+          </span>
+        </div>
+        <div class="row" id="r-ct2"><span class="lab">Facing</span>
+          <span class="seg" role="radiogroup" aria-label="Direction of the second charge">
+            <label><input type="radio" name="ct2" value=""><span>To dexter</span></label>
+            <label><input type="radio" name="ct2" value="1"><span>Contourné (to sinister)</span></label>
+          </span>
+        </div>
+        <div class="row" id="r-tm2"><span class="lab">Tincture</span><div class="chips" data-name="tm2"></div></div>
+        <div class="row" id="r-ta2"><span class="lab" id="l-ta2">Armed</span><div class="chips" data-name="ta2"></div></div>
+        <div class="row" id="r-pbro"><span class="lab">Ordinary</span>
+        <span class="seg" role="radiogroup" aria-label="The charged ordinary is beside the charge on the field, or lies over it">
+          <label><input type="radio" name="pbro" value=""><span>Beside</span></label>
+          <label><input type="radio" name="pbro" value="1"><span>Over the charge</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-bro2"><span class="lab">Position</span>
+        <span class="seg" role="radiogroup" aria-label="The second charge accompanies the first or lies over all">
+          <label><input type="radio" name="bro2" value=""><span>Accompanies</span></label>
+          <label><input type="radio" name="bro2" value="1"><span>Over all</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-rc"><span class="lab">On</span>
+        <span class="seg" role="radiogroup" aria-label="The charges are on the field or on the pieces of the first tincture">
+          <label><input type="radio" name="rc" value=""><span>The field</span></label>
+          <label><input type="radio" name="rc" value="1"><span>The pieces of the first tincture</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-cha"><span class="lab">Each</span>
+        <span class="seg" role="radiogroup" aria-label="The second charge accompanies the group or each figure of the first">
+          <label><input type="radio" name="cha" value=""><span>The group</span></label>
+          <label><input type="radio" name="cha" value="1"><span>Each accompanied</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-cn2"><span class="lab">Crown</span><select name="cn2" aria-label="Crown worn by the second charge"></select></div>
+      <div class="row" id="r-cnk2"><span class="lab">Shape</span>
+        <span class="seg" role="radiogroup" aria-label="Shape of the second charge's crown (drawing only)">
+          <label><input type="radio" name="cnk2" value=""><span>With fleurons</span></label>
+          <label><input type="radio" name="cnk2" value="antique"><span>Antique</span></label>
+        </span>
+      </div>
+      </div>
+      <div class="sub" id="r-adj">
+        <div class="row"><span class="lab">Adjust</span><select id="k-t" aria-label="Charge to adjust"></select></div>
+        <div class="row"><span class="lab">Size</span><input type="range" id="k-sz" min="30" max="200" step="5" aria-label="Size as a percentage"><output id="o-sz"></output></div>
+        <div class="row"><span class="lab">Left ↔ right</span><input type="range" id="k-dx" min="-60" max="60" step="1" aria-label="Horizontal offset"><output id="o-dx"></output></div>
+        <div class="row"><span class="lab">Down ↕ up</span><input type="range" id="k-dy" min="-60" max="60" step="1" aria-label="Vertical offset"><output id="o-dy"></output></div>
+        <div class="row"><span class="lab">Angle</span><input type="range" id="k-an" min="-180" max="180" step="15" aria-label="Rotation angle in degrees"><output id="o-an"></output></div>
+        <p class="note">A drawing setting: it doesn't change the blazon. The chosen charge is circled in gold in the preview. <button type="button" class="lnk" id="b-reset">Reset</button></p>
+      </div>
+    </fieldset>
+    <fieldset class="hors-defi">
+      <legend>The difference</legend>
+      <p class="note" id="br-q" hidden>On a shield per pale or quarterly, the mark of difference goes over the whole shield: set it with the first arms.</p>
+      <div id="br-ctl">
+      <div class="row"><span class="lab">Difference</span><select name="br" aria-label="Difference: what sets a cadet apart from the elder line"></select></div>
+      <div class="row" id="r-tbr"><span class="lab">Tincture</span><div class="chips" data-name="tbr"></div></div>
+      <div class="row" id="r-sbr"><span class="lab">Direction</span>
+        <span class="seg" role="radiogroup" aria-label="Direction of the baton or fillet">
+          <label><input type="radio" name="sbr" value="bande"><span>In bend</span></label>
+          <label><input type="radio" name="sbr" value="barre"><span>In bend sinister</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-lbr"><span class="lab">Line</span><select name="lbr" aria-label="Line of the difference"></select></div>
+      <div class="row" id="r-brn"><span class="lab">Number</span><select name="brn" aria-label="Number of figures of difference"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+      <div class="row" id="r-brd"><span class="lab">Position</span><select name="brd" aria-label="Position of the difference"></select></div>
+      <div class="row" id="r-lpn"><span class="lab">Points</span><select name="lpn" aria-label="Number of points on the label"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+      <div class="row" id="r-lpc"><span class="lab">Charged with</span><select name="lpc" aria-label="Figure borne by the points"></select></div>
+      <div class="row" id="r-lpt"><span class="lab">Tincture of the figures</span><div class="chips" data-name="lpt"></div></div>
+      <div class="row" id="r-lpk"><span class="lab">Per point</span><select name="lpk" aria-label="Number of figures per point"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+      <div class="row" id="r-lpw"><span class="lab">On</span>
+        <span class="seg" role="radiogroup" aria-label="Charged points">
+          <label><input type="radio" name="lpw" value=""><span>Each point</span></label>
+          <label><input type="radio" name="lpw" value="milieu"><span>Middle point</span></label>
+        </span>
+      </div>
+      <div class="sub" id="r-brj">
+        <div class="row"><span class="lab">Size</span><input type="range" id="k-brsz" min="30" max="250" step="5" aria-label="Size of the difference as a percentage"><output id="o-brsz"></output></div>
+        <div class="row"><span class="lab">Left ↔ right</span><input type="range" id="k-brdx" min="-80" max="80" step="1" aria-label="Horizontal offset of the difference"><output id="o-brdx"></output></div>
+        <div class="row"><span class="lab">Down ↕ up</span><input type="range" id="k-brdy" min="-80" max="80" step="1" aria-label="Vertical offset of the difference"><output id="o-brdy"></output></div>
+        <p class="note">A drawing setting: it doesn't change the blazon. <button type="button" class="lnk" id="b-brreset">Reset</button></p>
+      </div>
+      </div>
+      <p class="note" id="br-note">The mark of difference goes over everything else (“differenced by a baton gules”). The chapter <a href="en-encyclopedia.html#brisures">Marks of difference</a> explains why arms are differenced.</p>
+    </fieldset>
+    <fieldset class="hors-defi">
+      <legend>The ornaments</legend>
+      <div class="row"><span class="lab">Crown</span><select name="cr" aria-label="Crown"></select></div>
+      <div class="row"><span class="lab">Mantle</span><select name="mt" aria-label="Mantle and pavilion"><option value="">None</option><option value="m">Mantle</option><option value="p">Mantle and pavilion</option></select></div>
+      <div class="row" id="r-mc"><span class="lab">Tincture</span><div class="chips" data-name="mc"></div></div>
+      <div class="row" id="r-ml"><span class="lab">Lined</span><div class="chips" data-name="ml"></div></div>
+      <div class="row"><span class="lab">Helm</span><select name="hm" aria-label="Helm and mantling"><option value="">None</option><option value="h">Helm</option><option value="hl">Helm and mantling</option></select></div>
+      <div class="row" id="r-hp"><span class="lab">Model</span><select name="ht" aria-label="Model of helm"></select><select name="hp" aria-label="Position of the helm"></select>
+        <span class="seg" id="r-hs" role="radiogroup" aria-label="Direction of the helm">
+          <label><input type="radio" name="hs" value=""><span>To dexter</span></label>
+          <label><input type="radio" name="hs" value="s"><span>To sinister</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-tl1"><span class="lab">Mantling</span><div class="chips" data-name="tl1"></div></div>
+      <div class="row" id="r-tl2"><span class="lab">Lined</span><div class="chips" data-name="tl2"></div></div>
+      <div class="row" id="r-pa"><span class="lab">Panache</span><select name="pa" aria-label="Panache"><option value="">None</option><option value="3">Three feathers</option><option value="5">Five feathers</option></select></div>
+      <div class="row" id="r-pa1"><span class="lab">Feathers</span><div class="chips" data-name="pa1"></div></div>
+      <div class="row" id="r-pa2"><span class="lab">Alternating</span><div class="chips" data-name="pa2"></div></div>
+      <div class="row" id="r-ci"><span class="lab">Crest</span><select name="ci" aria-label="Crest: a charge set on the helm"></select></div>
+      <div class="row" id="r-cim"><span class="lab">Form</span>
+        <span class="seg" role="radiogroup" aria-label="The whole crest or issuant">
+          <label><input type="radio" name="cim" value=""><span>Whole</span></label>
+          <label><input type="radio" name="cim" value="issant"><span>Issuant</span></label>
+        </span>
+      </div>
+      <div class="row" id="r-cit"><span class="lab">Tincture of the crest</span><div class="chips" data-name="cit"></div></div>
+      <div class="row" id="r-cia"><span class="lab" id="l-cia">Armed</span><div class="chips" data-name="cia"></div></div>
+      <div class="row"><span class="lab">Supporters</span><select name="su" aria-label="Supporters"></select></div>
+      <div class="row" id="r-ts"><span class="lab">Tincture</span><div class="chips" data-name="ts"></div></div>
+      <div class="row"><span class="lab">Collar</span><select name="co" aria-label="Collar of an order"></select></div>
+      <div class="row"><span class="lab">Motto</span><input type="text" name="dv" maxlength="48" placeholder="Your motto" aria-label="Motto"></div>
+      <div class="row" id="r-dt"><span class="lab">Scroll</span><select name="dt" aria-label="Shape of the motto scroll"></select></div>
+      <p class="note">Ornaments aren't inherited the way arms are: they mark a rank or an office (see the chapter <a href="en-encyclopedia.html#ornements">Ornaments</a>). <span id="hm-note"></span></p>
+    </fieldset>
+  </form>
+
+  <aside class="preview" aria-live="polite">
+    <section class="defi" id="defi" hidden></section>
+    <svg class="shield" id="shield" viewBox="0 0 200 252" role="img" aria-labelledby="blz"></svg>
+    <p class="blz" id="blz"></p>
+    <p class="ornt" id="orn" hidden></p>
+    <p class="warn" id="warn" hidden></p>
+    <div class="origine" id="origine" hidden></div>
+    <div class="acts">
+      <button type="button" class="main" id="b-link">Copy the link</button>
+      <button type="button" id="b-svg">SVG</button>
+      <button type="button" id="b-png">PNG</button>
+      <button type="button" id="b-rand">At random</button>
+    </div>
+    <section class="mes-armes" id="mes-armes" aria-labelledby="mes-armes-t">
+      <h2 class="mes-armes-t" id="mes-armes-t">Your arms</h2>
+      <div class="acts">
+        <button type="button" class="main" id="b-miennes">Use as my player arms</button>
+        <button type="button" id="b-garder">Save to my library</button>
+      </div>
+      <form class="garder" id="garder-f" hidden novalidate>
+        <label for="garder-nom">Name of these arms</label>
+        <input id="garder-nom" type="text" maxlength="60" autocomplete="off">
+        <span class="garder-acts"><button type="submit" class="main">Save</button><button type="button" id="garder-non">Cancel</button></span>
+      </form>
+      <p class="mes-armes-ret" id="mes-armes-ret" role="status"></p>
+      <details class="biblio" id="biblio" hidden><summary>My library <span id="biblio-n"></span></summary><ul class="biblio-l" id="biblio-l"></ul></details>
+    </section>
+    <p class="credits" id="credits"></p>
+  </aside>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<footer data-img="assets/epopee/atelier.jpg"><div class="foot">
+  <p><b>The Armorial</b> — “Atelier” page. The field, divisions, ordinaries and most charges are drawn by the encyclopedia; borrowed charges come from Wikimedia Commons, recoloured here, and their credit accompanies every shield and every export. Page composition under <b>CC BY-SA 4.0</b>. Back to <a href="en-encyclopedia.html">the encyclopedia</a>.</p>
+  <p class="fine">Banner and footer background: an AI-generated mood image and video (Higgsfield), with no real arms. An imagined workshop, not a historical document.</p>
+</div></footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/blasonnement-en.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/cartes.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/atelier.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/dessine.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

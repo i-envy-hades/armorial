@@ -390,7 +390,7 @@
       ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).map(versLangue).join(" · ")}</span></p>` : ""}
       ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
       <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}"${EN ? ' hreflang="fr"' : ""}>${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
+      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image${Tr(" : ", ": ")}<i>${esc(a.file)}</i>, ${esc(a.auteur || Tr("auteur inconnu", "unknown author"))}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || Tr("licence libre", "free licence"))}, via Wikimedia Commons.</p>`;
     r.hidden = false;
@@ -465,13 +465,12 @@
   /* les autres jeux du jour ; les exercices sont dans S'exercer */
   function dessineAutres() {
     const L = [
-      ["atelier.html#defi=dessin", Tr("Dessine-moi", "Draw It for Me (in French)"), Tr("Un blasonnement : composez l'écu", "A blazon: draw the shield"), "🎨", "or", "dessin"],
+      [versLangue("atelier.html#defi=dessin"), Tr("Dessine-moi", "Draw It for Me"), Tr("Un blasonnement : composez l'écu", "A blazon: draw the shield"), "🎨", "or", "dessin"],
       [versLangue("jour.html#intrus"), Tr("L'Intrus", "The Odd One Out"), Tr("Cinq manches : l'écu qui enfreint la règle", "Five rounds: the shield that breaks the rule"), "⚖️", "sinople", "intrus"],
       [versLangue("jour.html#trous"), Tr("Le blasonnement à trous", "Fill in the Blazon"), Tr("Les mots qui manquent au texte", "The words missing from the blazon"), "📜", "pourpre", "trous"],
     ];
-    const fr = EN ? ' hreflang="fr"' : "";              // ce qui n'est encore qu'en français : le lien le signale
     $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
-      + `<li><a class="jx-jeu c-azur" href="exercices.html"${fr}><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice (in French)")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
+      + `<li><a class="jx-jeu c-azur" href="${versLangue("exercices.html")}"><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */

@@ -19,7 +19,7 @@ if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
    JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
    Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
    disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
-const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html" };
+const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html" };
 const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
 const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";

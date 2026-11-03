@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice — The Armorial</title>
+<meta name="description" content="Learn to read a coat of arms by practising: find a shield's blazon, picture arms from their text, judge the rule of tincture, name the points of the shield, review the vocabulary, with a new challenge every day.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-practice.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/exercices.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-practice.html">
+<meta property="og:site_name" content="The Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Practice — The Armorial">
+<meta property="og:description" content="Learn to read a coat of arms by practising: find a shield's blazon, judge the rule of tincture, name the points of the shield, with a new challenge every day.">
+<meta property="og:url" content="https://armorial.web.app/en-practice.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A shield azure with a fess argent between three stars or, and the title L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — la page anglaise de exercices.html : mêmes scripts et mêmes id (tools/check_data.py les compare). Textes : Tr(), blazonLu() (assets/blasonnement-en.js).
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/exercices.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 ex">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="exercices"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/glossaire.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Learn by playing</p>
+  <h1>Practice</h1>
+  <p>Read a shield, picture its arms, judge the rule of tincture, name the points of the shield: freshly drawn questions every time, with the answer explained, and a daily challenge that is the same for everyone.</p>
+  </div>
+</section>
+<div class="note"><details>
+  <summary><span class="k">Method</span><span class="r">where the shields, the texts and the answers come from</span></summary>
+  <div class="box-in">
+  <p>Each shield is <b>composed at random by the engine of <a href="en-atelier.html">the Atelier</a></b>, and each blazon is the one the Atelier writes for it. A question is only asked if the <b>blazon reader</b> rereads the French text and finds exactly the same arms, so what you are asked to read is unambiguous and contains nothing invented. That check runs on the French blazon, which remains the reference; the English text you see is written from the same arms by a separate writer.</p>
+  <p>The wrong answers are neighbouring shields, which differ from the right one by a single feature: the tincture of the field, the number of charges, the ordinary, the direction. After each answer, the words that make the difference are underlined.</p>
+  <p>The vocabulary definitions come from the encyclopedia's <a href="en-encyclopedia.html#glossaire">glossary</a>, hence the link to each term; the names of the points of the shield follow the chapter “<a href="en-encyclopedia.html#ecu">The shield</a>”, and the rule of tincture the chapter “<a href="en-encyclopedia.html#emaux">Tinctures</a>”.</p>
+  <p>Nothing is sent anywhere: your best streaks and the result of the daily challenge stay in this browser and nowhere else.</p>
+  </div>
+</details></div>
+
+<main class="ex-main" id="ex">
+  <noscript><p class="nojs">The exercises run on JavaScript: please enable it to practise.</p></noscript>
+  <p class="ex-chargement" id="ex-chargement" role="status">The shields are being prepared…</p>
+  <section id="ex-menu" hidden>
+    <div class="ex-niveau">
+      <span class="lab" id="ex-niv-lab">Level</span>
+      <span class="seg" role="radiogroup" aria-labelledby="ex-niv-lab" id="ex-niv">
+        <label><input type="radio" name="niv" value="1"><span>Easy</span></label>
+        <label><input type="radio" name="niv" value="2"><span>Medium</span></label>
+        <label><input type="radio" name="niv" value="3"><span>Hard</span></label>
+      </span>
+      <span class="ex-niv-aide" id="ex-niv-aide"></span>
+    </div>
+    <div class="ex-cartes" id="ex-cartes"></div>
+  </section>
+  <section id="ex-arene" hidden aria-label="Question">
+    <div class="ex-barre">
+      <button type="button" class="lnk" id="ex-retour">← The exercises</button>
+      <span class="ex-titre" id="ex-titre"></span>
+      <span class="ex-score" id="ex-score" aria-live="off"></span>
+    </div>
+    <article class="ex-q" id="ex-q" tabindex="-1"></article>
+    <div class="ex-fb" id="ex-fb" role="status" aria-live="polite"></div>
+    <div class="ex-suite"><button type="button" class="main" id="ex-suite" hidden>Next question →</button></div>
+  </section>
+</main>
+
+<footer data-img="assets/epopee/glossaire.jpg"><div class="foot">
+  <p><b>The Armorial</b> — “Practice” page. Shields composed by the Atelier's engine; the beasts, some charges and the arms of the “Real arms” exercise come from Wikimedia Commons, with their credit shown under each answer. Vocabulary: the encyclopedia's glossary. Curator: i-envy-hades. Page composition under <b>CC BY-SA 4.0</b>. Back to <a href="en-encyclopedia.html">the encyclopedia</a>.</p>
+  <p class="fine">Banner and footer background: an AI-generated mood image (Higgsfield), with no real arms. An imagined landscape, not a historical document.</p>
+</div></footer>
+
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/blasonnement-en.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/exercices.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

@@ -6,6 +6,16 @@
    On s'en sert ainsi : normalizeAll(St), puis await loadAll(St) (charge les figures empruntées), puis compose(St, id).svg. */
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* ce qu'on montre au lecteur : le français, ou l'anglais sur les pages qui chargent assets/blasonnement-en.js. Les valeurs de l'état restent françaises. */
+const enAnglais = () => LANGUE === "en" && typeof blazonAllEn === "function";
+const libelle = s => (enAnglais() && LIBELLES_EN[s]) || (enAnglais() ? String(s).replace(/^([\d, ]+) et (\d+)$/, "$1 and $2") : s);
+const emailLu = t => (enAnglais() ? cap(MOT_EN[t] || t) : t);
+const nomMeubleLu = m => (enAnglais() ? nomMeubleEn(m) : m.nom);
+const singLu = m => (enAnglais() ? (MEUBLE_EN[m.kind] || [m.sing])[0] : m.sing);
+const plurLu = m => (enAnglais() ? (MEUBLE_EN[m.kind] || [m.sing, m.plur])[1] : m.plur);
+const auteurLu = a => (enAnglais() ? auteurEn(a) : a);
+const licenceLue = l => (enAnglais() ? licenceEn(l) : l);
+const ornTextLu = St => (enAnglais() ? ornTextEn(St) : ornText(St));
 
 /* une case du parti (drawParti) : MAP resserre le champ et la pièce à la taille de la case ; les figures se repositionnent (px, py, décalage) et se réduisent de pk sans se déformer ; HSIDE : 0 dextre, 1 senestre */
 let MAP = null, HSIDE = 0;
@@ -856,21 +866,21 @@ function creditsOf(St) {
   };
   for (const i of active(St)) {
     const a = St.A[i];
-    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : "", a.br === "lambel" ? a.lpc : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(m.nom), m.file || m.credit, true); }
+    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : "", a.br === "lambel" ? a.lpc : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(nomMeubleLu(m)), m.file || m.credit, true); }
   }
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
-  if (su) add("Supports", meuble(su.kind).file, true);
-  if (cr) add(cr.nom, cr, false);
-  if (St.hm) add("Heaume", ornOf(St).hm, false);
-  if (St.hm === "hl") add("Lambrequins", O.lambrequins, true);
-  if (St.hm && St.ci) { const m = meuble(St.ci); if (m && (m.file || m.credit)) add("Cimier", m.file || m.credit, true); }
+  if (su) add(Tr("Supports", "Supporters"), meuble(su.kind).file, true);
+  if (cr) add(libelle(cr.nom), cr, false);
+  if (St.hm) add(Tr("Heaume", "Helm"), ornOf(St).hm, false);
+  if (St.hm === "hl") add(Tr("Lambrequins", "Mantling"), O.lambrequins, true);
+  if (St.hm && St.ci) { const m = meuble(St.ci); if (m && (m.file || m.credit)) add(Tr("Cimier", "Crest"), m.file || m.credit, true); }
   if (St.hm && St.pa) add("Panache", O.plume, true);
-  if (co) add(co.nom, co, false);
+  if (co) add(libelle(co.nom), co, false);
   return out;
 }
-const creditTxt = c => `${c.label} : ${c.commons} — ${c.auteur}, ${c.lic}, via Wikimedia Commons${c.adapt ? ", couleurs adaptées" : ""}`;
+const creditTxt = c => `${c.label}${Tr(" :", ":")} ${c.commons} — ${auteurLu(c.auteur)}, ${licenceLue(c.lic)}, via Wikimedia Commons${c.adapt ? Tr(", couleurs adaptées", ", colours adapted") : ""}`;
 /* les mêmes crédits, en HTML, avec liens vers la page du fichier et vers la licence */
-const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)} : <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">« ${esc(c.commons)} »</a> — ${esc(c.auteur)}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(c.lic)}</a>, via Wikimedia Commons${c.adapt ? " · couleurs adaptées" : ""}`).join("<br>") : "Toutes les figures de cet écu sont dessinées par l'encyclopédie.";
+const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)}${Tr(" :", ":")} <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">${Tr("« ", "“")}${esc(c.commons)}${Tr(" »", "”")}</a> — ${esc(auteurLu(c.auteur))}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(licenceLue(c.lic))}</a>, via Wikimedia Commons${c.adapt ? Tr(" · couleurs adaptées", " · colours adapted") : ""}`).join("<br>") : Tr("Toutes les figures de cet écu sont dessinées par l'encyclopédie.", "Every figure on this shield is drawn by the encyclopedia.");
 
 /* ---------- la règle des émaux ---------- */function rule(s) {
   const out = [], word = t => MOT[t];
