@@ -19,7 +19,7 @@ if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
    JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
    Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
    disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
-const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html" };
+const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html", "lignees.html": "en-lineages.html", "transmission.html": "en-transmission.html" };
 const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
 const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
@@ -39,15 +39,17 @@ if (LANGUE === "en") document.addEventListener("DOMContentLoaded", () => documen
    traduit, et ses propres règles : _sauts, les champs laissés tels quels ; _facultatifs, ceux traduits seulement si la table les connaît (des noms
    propres, le plus souvent) ; _gardes, ceux qui gardent leur valeur française (le moteur de dessin et les adresses s'y lisent), l'anglais s'ajoutant
    à côté (nom → nomEn) depuis la partie de la table qu'ils désignent. Les autres textes sont remplacés. Une chaîne seule dans une liste n'est pas un texte
-   (un identifiant de source). Un texte sans traduction reste en français : tools/check_data.py le signale, avec les mêmes règles. */
-const TABLES_EN = { "data/blasons.json": "data/en/cartes.json", "data/personnages.json": "data/en/cartes.json", "data/data.json": "data/en/encyclopedie.json" };
-function traduit(o, T) {
-  if (Array.isArray(o)) return o.map(x => traduit(x, T));
+   (un identifiant de source), sauf sous une clé de _listes ; une chaîne sous une clé de _ids reste telle quelle (armes : une table ailleurs, un identifiant ici).
+   Un texte sans traduction reste en français : tools/check_data.py le signale, avec les mêmes règles. */
+const TABLES_EN = { "data/blasons.json": "data/en/cartes.json", "data/personnages.json": "data/en/cartes.json", "data/data.json": "data/en/encyclopedie.json", "data/frises.json": "data/en/lignees.json", "data/lignees.json": "data/en/lignees.json", "data/angleterre.json": "data/en/lignees.json", "data/bourgogne.json": "data/en/lignees.json", "data/ecosse.json": "data/en/lignees.json", "data/espagne.json": "data/en/lignees.json", "data/habsbourg.json": "data/en/lignees.json", "data/papaute.json": "data/en/lignees.json", "data/portugal.json": "data/en/lignees.json", "data/savoie.json": "data/en/lignees.json", "data/capetiens.json": "data/en/lignees.json", "data/transmission.json": "data/en/transmission.json" };
+function traduit(o, T, cle) {
+  if (Array.isArray(o)) return o.map(x => (typeof x === "string" && (T._listes || []).includes(cle) ? T.textes[x] || x : traduit(x, T, cle)));
   if (!o || typeof o !== "object") return o;
   const out = {};
   for (const [k, v] of Object.entries(o)) {
     if (T._sauts.includes(k)) out[k] = v;
-    else if (typeof v !== "string") out[k] = traduit(v, T);
+    else if (typeof v !== "string") out[k] = traduit(v, T, k);
+    else if ((T._ids || []).includes(k)) out[k] = v;
     else if (k === "href") out[k] = versLangue(v);
     else if (T._gardes[k]) { out[k] = v; const e = T[T._gardes[k]][v]; if (e) out[k + "En"] = e; }
     else out[k] = versLangue(T.textes[v] || v);
@@ -55,9 +57,13 @@ function traduit(o, T) {
   return out;
 }
 const lisJson = async u => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); };
+/* le titre d'une source reste celui de la page citée ; en anglais, seuls ses guillemets changent, et « Wikipédia » dit la langue de l'article */
+const sourceLue = l => (LANGUE === "en" ? String(l).replace(/«\s*/g, "“").replace(/\s*»/g, "”").replace(/Wikipédia/g, "French Wikipedia") : l);
+const TABLES_LUES = {};                            // une table sert à plusieurs fichiers : on ne la lit qu'une fois
 async function lireDonnees(chemin) {
   const d = await lisJson(chemin);
-  return LANGUE === "en" && TABLES_EN[chemin] ? traduit(d, await lisJson(TABLES_EN[chemin])) : d;
+  const table = LANGUE === "en" && TABLES_EN[chemin];
+  return table ? traduit(d, await (TABLES_LUES[table] ||= lisJson(table))) : d;
 }
 
 /* Adresse d'un terme du glossaire : « terme-bande ». Quand deux termes ne diffèrent que par l'accent (Bande, Bandé),

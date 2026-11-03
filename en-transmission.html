@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The transmission of arms — The Armorial</title>
+<meta name="description" content="How and why arms pass from one house to another: a cadet's difference, marriage, inheritance, union or treaty, claim. A tree you unfold, with for each passage what changes in the shield, the reason, and the sources.">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-transmission.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/transmission.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-transmission.html">
+<meta property="og:site_name" content="The Armorial">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="The transmission of arms — The Armorial">
+<meta property="og:description" content="How and why arms pass from one house to another: difference, marriage, inheritance, treaty, claim.">
+<meta property="og:url" content="https://armorial.web.app/en-transmission.html">
+<meta property="og:image" content="https://armorial.web.app/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A shield azure with a fess argent between three stars or, and the title L'Armorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://armorial.web.app/assets/og.jpg">
+<!--
+  L'ARMORIAL — la page anglaise de transmission.html : mêmes scripts et mêmes id (tools/check_data.py les compare). Textes : Tr() et data/en/ (lireDonnees).
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/transmission.css">
+<link rel="stylesheet" href="assets/epopee-pages.css">
+</head>
+<body class="epic2 trans">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="mast" data-page="transmission"></header>
+<script src="assets/chrome.js"></script>
+<section class="hero">
+  <div class="hero-bg2" data-img="assets/epopee/brisures.jpg" aria-hidden="true"></div>
+  <div class="frame">
+  <p class="eyebrow">Why shields change</p>
+  <h1>The transmission of arms</h1>
+  <p>Arms do not change at random: a cadet adds a mark, a marriage brings in an heiress's quarters, a treaty adds a crown. Unfold the tree — each passage says what changes in the shield, and why.</p>
+  <div class="hero-facts" id="facts"></div>
+  </div>
+</section>
+<div class="note"><details>
+  <summary><span class="k">Method &amp; state of knowledge</span><span class="r">what this page asserts, and what it leaves open</span></summary>
+  <div class="box-in">
+  <p>The tree starts from <b>eleven families</b> (Capetians, Habsburg, Castile, England, Scotland, Savoy, Nassau, Oldenburg, Wettin, Wittelsbach, Lorraine), chosen because they carry a real line of descent; it is growing little by little. A node is a state of arms, not a person; a link is a passage of arms. Blazons, figures and credits come from the <a href="en-lineages.html">Lineages</a> pages, the “Armorial des Capétiens” (French Wikipedia) or, for the Nassaus, Oldenburgs, Wettins, Wittelsbachs and Lorraines, their own armorial: nothing is copied here. A house with no branch of its own — Aragon, Delmenhorst — has no card: it appears as a “with” chip under the arms it fed, where its marriage or union changes them.</p>
+  <p>The <b>reasons</b> (“Why”) are reworded from what was read: the milestones of the timelines, the presentation of each branch in the “Armorial des Capétiens” and several Wikipedia articles (cited under each link), mostly in French; “the page read” below means one of these. When the sources read give the fact but not the reason, the link says so — “reason not established” — instead of guessing. When they contradict each other, the disagreement is flagged.</p>
+  <p>The tree follows one <b>main line</b> per node (that of the house the arms come from); other contributions — a marriage, an inheritance from elsewhere — are secondary links, listed under “How these arms came about” and clickable. This is <b>not a genealogy</b>: it follows not people, only the path of shields.</p>
+  </div>
+</details></div>
+<div class="tools" id="tools">
+  <div class="chips-g" id="chips" role="group" aria-label="Highlight a type of passage"></div>
+  <div class="rech">
+    <input id="q" type="search" placeholder="Search a house, a king, a date…" aria-label="Search the tree" autocomplete="off">
+    <ul id="res" hidden></ul>
+  </div>
+  <span class="cpt" id="cpt" role="status" aria-live="polite"></span>
+  <button type="button" class="lnk" id="deplie">Unfold all</button>
+</div>
+<noscript><p class="nojs">This page is built with JavaScript: turn it on to see the tree.</p></noscript>
+<main class="tr-main" id="main">
+  <p class="tr-chargement" id="chargement" role="status">The tree is growing…</p>
+  <div class="scene" id="scene" hidden>
+    <div class="vue" id="vue" tabindex="0" aria-label="The tree of houses: drag it, or browse it with the keyboard"><ul class="rac" id="arbre"></ul></div>
+    <aside class="panneau" id="panneau" aria-live="polite"></aside>
+  </div>
+  <details class="credits" id="credits" hidden>
+    <summary>Figure credits</summary>
+    <ul id="credits-l"></ul>
+  </details>
+</main>
+<footer data-img="assets/epopee/brisures.jpg"><div class="foot">
+  <p><b>The Armorial</b> — the page “The transmission of arms”. Blazons, dates and figures: Wikipedia (“Armorial des Capétiens” and the articles of the timelines), Wikimedia Commons under free licences, credited individually. Reasons: milestones of the timelines and Wikipedia articles cited under each link; the English here is our translation. Curator: i-envy-hades. Page composition under <b>CC BY-SA 4.0</b>. Back to <a href="en-encyclopedia.html">the encyclopedia</a>.</p>
+  <p class="fine">Backdrop of the banner and this footer: AI-generated mood image (Higgsfield), with no real shield. An imagined landscape, not a historical document.</p>
+</div></footer>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/transmission.js"></script>
+<script src="assets/epopee-pages.js"></script>
+</body>
+</html>

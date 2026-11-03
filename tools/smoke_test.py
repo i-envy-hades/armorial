@@ -900,14 +900,91 @@ def test_jeu_en(browser, base):
     # changer de langue : la même partie, et le choix est gardé
     page.click("#jx-langue"); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
     verifie(page.evaluate("document.documentElement.lang") == "fr" and "Trouvé en 2" in page.inner_text("#jeu-essais"), "jeu en anglais : le bouton FR montre la même partie en français")
-    page.goto(f"{base}/lignees.html"); page.wait_for_selector("header.mast a")                  # une page qui n'a pas encore sa jumelle anglaise
-    verifie(page.locator(".bandeau-langue").count() == 0, "jeu en anglais : qui a choisi le français ne voit pas de bandeau")
+    page.goto(f"{base}/lignees.html"); page.wait_for_selector("header.mast a")
+    verifie(page.evaluate("document.documentElement.lang") == "fr" and page.locator(".bandeau-langue").count() == 0, "jeu en anglais : qui a choisi le français reste sur la page française, sans bandeau")
     page.goto(f"{base}/index.html"); page.wait_for_selector("#jx-langue", state="attached"); page.click("#jx-langue"); page.wait_for_url("**/en.html*", timeout=10000)
     page.goto(f"{base}/"); page.wait_for_url("**/en.html*", timeout=10000)
     verifie(True, "jeu en anglais : qui a choisi l'anglais revient à en.html depuis l'accueil")
-    page.goto(f"{base}/lignees.html"); page.wait_for_selector("header.mast a")
-    verifie(page.locator(".bandeau-langue a[href='en.html']").count() == 1, "jeu en anglais : une page encore en français le dit, avec un lien de retour")
+    page.goto(f"{base}/lignees.html"); page.wait_for_url("**/en-lineages.html*", timeout=10000)
+    verifie(True, "jeu en anglais : qui a choisi l'anglais est renvoyé vers la page anglaise")
     propre("jeu en anglais", page, erreurs)
+    page.context.close()
+
+FRANCAIS_FRISE = re.compile(r"\b(puis|règnes?|armes|écus?|jalon|sans|avec|depuis|devise|fils|mort|roi|reine|duc|blasonnement|couronne|collier|désaccord|figure dessinée|undefined|NaN)\b|\[object", re.I)
+def francais_restant(textes, sources=()):
+    """Les titres de pages citées (sources, entre guillemets) restent en français ; le reste ne doit plus l'être"""
+    faux = []
+    for t in textes:
+        for s_ in sources: t = t.replace(s_, "")
+        t = re.sub(r"“[^”]*”", "", t)
+        m = FRANCAIS_FRISE.search(t)
+        if m: faux.append(t[max(0, m.start() - 50):m.end() + 40])
+    return faux
+
+def test_lignees_en(browser, base):
+    F = data("frises.json")
+    for fr in F["frises"]:
+        X = data(fr["file"].split("/")[-1])
+        page, erreurs = ouvre(browser, base, f"en-lineages.html#{fr['id']}", "#royaumes .stage")
+        page.wait_for_timeout(900)
+        verifie(page.title().startswith("Lineages · ") and fr["nom"] not in page.title() or fr["nom"] in ("Portugal",), f"lignées en anglais/{fr['id']} : titre « {page.title()} »")
+        jetons = sum(1 for R in X["royaumes"] for r in R["regnes"] if not r.get("suite"))
+        verifie(page.locator("#royaumes .reign").count() == jetons, f"lignées en anglais/{fr['id']} : les {jetons} règnes sont sur la frise (même nombre qu'en français)")
+        r = page.evaluate("""() => {
+          const brut = h => { const d = document.createElement("div"); d.innerHTML = h; return d.textContent; };
+          const out = [];
+          for (const R of DATA.royaumes) {
+            out.push(R.nom, R.titre, R.lede);
+            for (const r of R.regnes) { out.push(tipReign(R, r)); if (r.devise) out.push(tipDevise(r)); for (const a of r.avant || []) out.push(tipAvant(a)); }
+            for (const j of R.jalons) out.push(tipJalon(j));
+            for (const r of R.rivaux || []) out.push(tipRival(r));
+            for (const row of R.ornements || []) for (const s of row.segs) out.push(tipOrn(row, s));
+            for (const s of R.segs) if (s.st) out.push(tipSeg(R, s));
+            for (const g of R.grandesArmes || []) out.push(g.titre, ...g.ornements, g.note || "");
+          }
+          return { textes: out.map(brut), sources: Object.values(DATA.sources).map(s => s.label), interface: [...document.querySelectorAll(".stage .hint, .stage .controls, .stage .vtabs, .stage .panel .p-dates, .stage .side, .lp-bar")].map(e => e.textContent),
+            blasons: Object.values(DATA.armes).filter(a => a.blason && !a.blasonEn).length, wiki: [...document.querySelectorAll(".rn")].every(a => a.href.startsWith("https://fr.wikipedia.org/wiki/")) };
+        }""")
+        faux = francais_restant(r["textes"] + r["interface"], r["sources"])
+        verifie(not faux, f"lignées en anglais/{fr['id']} : plus de français dans les {len(r['textes'])} bulles ({len(faux)} ; {faux[:3]})")
+        verifie(r["blasons"] == 0, f"lignées en anglais/{fr['id']} : chaque blasonnement a son anglais")
+        verifie(r["wiki"], f"lignées en anglais/{fr['id']} : les noms mènent toujours à l'article français")
+        propre(f"lignées en anglais/{fr['id']}", page, erreurs)
+        page.context.close()
+    page, erreurs = ouvre(browser, base, "en-lineages.html#papaute", "#royaumes .stage")
+    page.wait_for_timeout(900)
+    r = page.evaluate("""() => { const R = DATA.royaumes[0]; const p = R.regnes.find(x => x.num === 2); return { m: houseLine(R, p), date: fmt("1789-07-14"), siecle: document.querySelector(".wm").textContent, ob: obed("Pise"), court: R.regnes[265].court }; }""")
+    verifie(r["m"].startswith("2nd pope") and r["date"] == "14 July 1789" and r["siecle"] == "1st" and r["ob"] == "Pisa obedience", f"lignées en anglais : rang, date et siècle s'écrivent en anglais ({r})")
+    page.click("#lp-btn"); page.fill("#lp-q", "Burgundy")
+    verifie(page.locator(".lp-it:not([hidden])").count() >= 1, "lignées en anglais : le sélecteur cherche en anglais")
+    propre("lignées en anglais (papauté)", page, erreurs)
+    page.context.close()
+
+def test_transmission_en(browser, base):
+    D = data("transmission.json")
+    page, erreurs = ouvre(browser, base, "en-transmission.html", ".carte")
+    cartes = sum(1 for n in D["noeuds"] if not n.get("apport"))
+    verifie(page.locator(".carte").count() == cartes, f"transmission en anglais : une carte par état d'armes ({cartes}), comme en français")
+    verifie("reading the tree" in page.inner_text("#panneau").lower() and "states of arms" in page.inner_text("#facts").lower(), "transmission en anglais : l'accueil du panneau et les chiffres sont en anglais")
+    faux = page.evaluate("""async () => {
+      const lus = [];
+      for (const n of Transmission.noeuds) { location.hash = n.id; await new Promise(r => setTimeout(r, 12)); const c = document.querySelector("#panneau").cloneNode(true); c.querySelectorAll("a[target=_blank], .sr, .cr").forEach(x => x.remove()); lus.push(c.textContent); }
+      return lus;
+    }""")
+    verifie(len(faux) == len(D["noeuds"]) and not francais_restant(faux), f"transmission en anglais : plus de français dans les {len(faux)} panneaux ({francais_restant(faux)[:3]})")
+    liens = page.evaluate("""() => [...document.querySelectorAll("#panneau a[href]")].map(a => a.getAttribute("href")).filter(h => !h.startsWith("http"))""")
+    verifie(not [h for h in liens if re.match(r"(lignees|atelier|encyclopedie)\.html", h)], f"transmission en anglais : les liens mènent aux pages anglaises ({liens[:4]})")
+    page.goto(f"{base}/en-transmission.html#fr1"); page.wait_for_timeout(300)
+    page.goto(f"{base}/en-transmission.html"); page.wait_for_selector(".carte")
+    page.fill("#q", "Castile"); page.wait_for_selector("#res li button")
+    verifie(page.locator("#res li button").count() >= 1, "transmission en anglais : on y cherche en anglais")
+    propre("transmission en anglais", page, erreurs)
+    page.context.close()
+    page, erreurs = ouvre(browser, base, "en-search.html", "#q")
+    page.wait_for_function("document.querySelector('#aide').textContent.includes('entries')", timeout=30000)
+    r = page.evaluate("""() => Recherche.cherche("Castile").map(d => d.lien)""")
+    verifie(any(h.startswith("en-lineages.html#") for h in r) and not any(h.startswith(("lignees.html", "transmission.html")) for h in r), f"recherche en anglais : les lignées se trouvent en anglais et mènent à leur page anglaise ({r[:3]})")
+    propre("recherche en anglais (lignées)", page, erreurs)
     page.context.close()
 
 def test_galeries_en(browser, base):
@@ -1234,6 +1311,8 @@ def main():
                        ("jeux du jour en anglais", lambda: test_jeux_du_jour_en(browser, base_en_ligne)),
                        ("exercices en anglais", lambda: test_exercices_en(browser, base_en_ligne)),
                        ("atelier en anglais", lambda: test_atelier_en(browser, base_en_ligne)),
+                       ("lignées en anglais", lambda: test_lignees_en(browser, base)),
+                       ("transmission en anglais", lambda: test_transmission_en(browser, base)),
                        ("recherche en anglais", lambda: test_recherche_en(browser, base)),
                        ("404 en anglais", lambda: test_404_en(browser, base)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),

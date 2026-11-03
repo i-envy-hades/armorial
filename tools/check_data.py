@@ -371,10 +371,11 @@ def textes_a_traduire(o, T, k=None):
     if isinstance(o, list):
         for x in o:
             if not isinstance(x, str): yield from textes_a_traduire(x, T, k)
+            elif k in T.get("_listes", []): yield ("textes", x)
     elif isinstance(o, dict):
         for k2, v in o.items():
             if k2 not in T["_sauts"]: yield from textes_a_traduire(v, T, k2)
-    elif isinstance(o, str) and o and k != "href":
+    elif isinstance(o, str) and re.search(r"[^\W\d_]", o) and k != "href" and k not in T.get("_ids", []):        # sans lettre, ce n'est pas un texte
         yield (None if k in T["_facultatifs"] else T["_gardes"].get(k, "textes"), o)
 for table_ in sorted(set(TABLES_EN.values())):
     T_ = json.loads((ROOT / table_).read_text(encoding="utf-8")); vus = {}

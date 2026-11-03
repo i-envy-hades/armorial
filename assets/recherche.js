@@ -66,16 +66,16 @@
     const X = L[i];
     ajoute("lig", f.nom, [f.dates, f.groupe, f.mots].filter(Boolean).join(" · "), `lignees.html#${f.id}`, Tr("Frise", "Timeline"));
     for (const R of X.royaumes || []) if (R.titre) ajoute("lig", R.titre, [R.nom, R.lede].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Frise", "Timeline")} · ${f.nom}`);
-    for (const [cle, a] of Object.entries(X.armes || {})) if (a.blason) ajoute("lig", a.nom, [a.blason, a.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Armes", "Arms")} · ${f.nom}`);
+    for (const [cle, a] of Object.entries(X.armes || {})) if (a.blason) ajoute("lig", a.nom, [blasonAff(a), a.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Armes", "Arms")} · ${f.nom}`);
     for (const R of X.royaumes || []) {
       for (const r of R.regnes || []) {
         const ar = (X.armes || {})[r.armes];
-        ajoute("lig", r.nom, [r.approx || `${r.debut} – ${r.fin ?? ""}`, ar && ar.blason, r.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Règne", "Reign")} · ${R.titre || f.nom}`);
+        ajoute("lig", r.nom, [r.approx || `${r.debut} – ${r.fin ?? ""}`, ar && blasonAff(ar), r.note].filter(Boolean).join(" · "), `lignees.html#${f.id}`, `${Tr("Règne", "Reign")} · ${R.titre || f.nom}`);
       }
     }
   });
   const CAPN = Object.fromEntries(CAP.noeuds.map(n => [n.id, n])), LIGN = Object.fromEntries(F.frises.map((f, i) => [f.id, L[i]]));
-  const blasonDe = ref => { const [k, i] = ref.split(":"); const a = k === "cap" ? (CAPN[i] ? { blason: CAPN[i].armes.map(x => x.blason).join(" · ") } : null) : k === "tr" ? TR.armes[i] : (LIGN[k].armes || {})[i]; return (a && a.blason) || ""; };
+  const blasonDe = ref => { const [k, i] = ref.split(":"); const a = k === "cap" ? (CAPN[i] ? { blason: CAPN[i].armes.map(blasonAff).join(" · ") } : null) : k === "tr" ? TR.armes[i] : (LIGN[k].armes || {})[i]; return (a && a.blason) || ""; };
   for (const n of TR.noeuds) ajoute("lig", n.nom, [n.dates, blasonDe(n.ref), ...TR.liens.filter(l => l.vers === n.id).map(l => [l.effet, l.pourquoi].filter(Boolean).join(" "))].filter(Boolean).join(" · "), `transmission.html#${n.id}`, Tr("Transmission des armes", "Transmission of arms"));
   const nbType = {}; DOCS.forEach(d => { nbType[d.type] = (nbType[d.type] || 0) + 1; });
 

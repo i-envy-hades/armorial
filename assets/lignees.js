@@ -7,16 +7,24 @@ const WIKI = "https://fr.wikipedia.org/wiki/";
 const SHIELD = "M1.4,1.4 H599.4 V520.9 C594.8,566.5 567.8,582.6 533.2,588.6 H368.1 C327.8,590 304.6,620.1 300.4,658.3 C296.2,620.1 273,590 232.7,588.6 H67.6 C33,582.6 6,566.5 1.3,520.9 Z";
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ZOOMS = [1.3, 2.2, 3, 4.2, 6, 8.5, 12, 17, 24, 34, 48];
-const MOIS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const MOIS = Tr(["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"], ["January","February","March","April","May","June","July","August","September","October","November","December"]);
 const TW = 78, TIER_H = 72, RULER_H = 42, BAND_H = 34, OROW_H = 17;
 /* les frises disponibles : data/frises.json (une par fichier de données ; l'emblème est un fichier Commons déjà crédité dans la lignée) */
 let LIGNEES = [], GROUPES = [];
 /* vocabulaire par défaut ; une lignée le surcharge par R.mots */
-const MOTS = { regne: "règne", sans: "Sans souverain", bande: "Armes du royaume", maisons: "Maisons", devises: "Devises", rivaux: "Rivaux", souverain: "souverain", armesDe: "Armes du royaume" };
+const MOTS = Tr({ regne: "règne", sans: "Sans souverain", bande: "Armes du royaume", maisons: "Maisons", devises: "Devises", rivaux: "Rivaux", souverain: "souverain", armesDe: "Armes du royaume" },
+  { regne: "reign", sans: "No sovereign", bande: "Arms of the kingdom", maisons: "Houses", devises: "Mottoes", rivaux: "Rivals", souverain: "sovereign", armesDe: "Arms of the kingdom" });
 const W = (R, k) => R.mots?.[k] ?? MOTS[k];
 /* visionneuse « images » : écus Commons et sceaux numérotés, au lieu des lis animés */
 const isImg = R => R.viewer === "img";
 const deOf = s => (/^[AEIOUYÉÈH]/i.test(s) ? "d'" : "de ") + s;
+/* en anglais : le blasonnement lu (le français reste dans a.blason), les guillemets, les rangs ; la clé d'obédience reste française */
+const blz = a => a.blasonEn || a.blason;
+const gu = s => Tr(`« ${s} »`, `“${s}”`);
+const ordEn = n => n + (n % 100 >= 11 && n % 100 <= 13 ? "th" : { 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
+const obed = s => Tr("obédience " + deOf(s), (s === "Pise" ? "Pisa" : s) + " obedience");
+const DESACCORD = Tr("Désaccord :", "Disagreement:");
+const AP_LABEL = Tr("Pape éphémère", "Ephemeral pope"), ANTI_LABEL = Tr("Antipape", "Antipope");
 /* émaux du champ, pour la bande des armes */
 const TINC = { or: "#d9b556", argent: "#e9e5da", gueules: "#b3261e", azur: "#2a56a5", sable: "#1d1d1f", sinople: "#2f8a4a", pourpre: "#7a3d7a" };
 function champCss(a){
@@ -70,7 +78,7 @@ const endAct = v => typeof v === "number" ? v + 1 : yr(v);
 function fmt(v){
   if(typeof v === "number") return String(v);
   const [y, m, d] = v.split("-").map(Number);
-  return `${d === 1 ? "1ᵉʳ" : d} ${MOIS[m - 1]} ${y}`;
+  return Tr(`${d === 1 ? "1ᵉʳ" : d} ${MOIS[m - 1]} ${y}`, `${d} ${MOIS[m - 1]} ${y}`);
 }
 function spanTxt(o){
   const a = typeof o.debut === "number" ? o.debut : +o.debut.slice(0, 4);
@@ -79,14 +87,14 @@ function spanTxt(o){
 }
 function spanLong(o){
   if(o.approx) return o.approx;
-  if(o.encours) return `depuis le ${fmt(o.debut)}`;
+  if(o.encours) return Tr(`depuis le ${fmt(o.debut)}`, `since ${fmt(o.debut)}`);
   return fmt(o.debut) === fmt(o.fin) ? fmt(o.debut) : `${fmt(o.debut)} – ${fmt(o.fin)}`;
 }
 function duree(o){
   const d = yr(o.fin) - yr(o.debut);
-  if(d < 1){ const j = Math.round(d * 365.25); return j <= 1 ? "un jour" : `${j} jours`; }
+  if(d < 1){ const j = Math.round(d * 365.25); return j <= 1 ? Tr("un jour", "one day") : Tr(`${j} jours`, `${j} days`); }
   const n = Math.round(d);
-  return n <= 1 ? "un an" : `${n} ans`;
+  return n <= 1 ? Tr("un an", "one year") : Tr(`${n} ans`, `${n} years`);
 }
 
 /* ---------- tracés ---------- */
@@ -275,7 +283,7 @@ function bigSvg(){
   const image = ([id, a]) => `<image class="b-img" data-k="${id}" href="${commonsImg(a.file, 600)}" width="600" height="660" preserveAspectRatio="${a.free ? "xMidYMid meet" : "none"}"/>`;
   const imgs = files.filter(([, a]) => !a.free).map(image).join("");
   const free = files.filter(([, a]) => a.free).map(image).join("");
-  return `<svg class="big" viewBox="-14 -14 628 688" role="img" aria-label="Armoiries du règne sous la ligne de lecture">
+  return `<svg class="big" viewBox="-14 -14 628 688" role="img" aria-label="${Tr("Armoiries du règne sous la ligne de lecture", "Arms of the reign under the reading line")}">
     <g clip-path="url(#clip-shield)">
       <rect class="b-field" width="600" height="660"/>
       <g class="b-semis" fill="url(#g-or)" stroke="#3a2608">${semis}</g>
@@ -383,9 +391,9 @@ function bandSegments(R){
   return segs;
 }
 const srcLinks = ids => (ids || []).map(id => DATA.sources[id]).filter(Boolean)
-  .map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(s.label)}</a>`).join(" · ");
-const srcLabels = ids => (ids || []).map(id => DATA.sources[id]?.label).filter(Boolean).map(esc).join(" · ");
-const credit = f => `<a href="${commonsPage(f.file)}" target="_blank" rel="noopener">« ${txt(f.file)} »</a> — ${txt(f.auteur)}, ${f.licurl ? `<a href="${esc(f.licurl)}" target="_blank" rel="noopener">${txt(f.lic)}</a>` : txt(f.lic)}`;
+  .map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(sourceLue(s.label))}</a>`).join(" · ");
+const srcLabels = ids => (ids || []).map(id => DATA.sources[id]?.label).filter(Boolean).map(sourceLue).map(esc).join(" · ");
+const credit = f => `<a href="${commonsPage(f.file)}" target="_blank" rel="noopener">${gu(txt(f.file))}</a> — ${txt(f.auteur)}, ${f.licurl ? `<a href="${esc(f.licurl)}" target="_blank" rel="noopener">${txt(f.lic)}</a>` : txt(f.lic)}`;
 
 /* ---------- infobulle ---------- */
 const tip = $("#tip");
@@ -405,53 +413,53 @@ function hideTip(){ tip.classList.remove("on"); }
 
 function houseLine(R, r){
   const m = R.maisonsById[r.maison], parts = [];
-  if(R.ordinal && r.num) parts.push(`${r.num === 1 ? "1ᵉʳ" : r.num + "ᵉ"} ${W(R, "souverain")}`);
+  if(R.ordinal && r.num) parts.push(Tr(`${r.num === 1 ? "1ᵉʳ" : r.num + "ᵉ"} ${W(R, "souverain")}`, `${ordEn(r.num)} ${W(R, "souverain")}`));
   if(m?.nom) parts.push(m.nom);
   if(r.branche) parts.push(r.branche);
   return parts.map(txt).join(" · ");
 }
-const APOST = "A posteriori : armes prêtées après coup, que ce pape n'a pas portées.";
+const APOST = Tr("A posteriori : armes prêtées après coup, que ce pape n'a pas portées.", "A posteriori: arms credited after the fact, which this pope did not bear.");
 function tipReign(R, r){
   const parts = r.ph.map(p => {
     const a = DATA.armes[p.armes];
     const when = r.ph.length > 1 ? `${spanTxt(p)} · ` : "";
     return `<div class="t-arms">${when}${txt(a.nom)}${a.apost ? " · a posteriori" : ""}</div>` +
-      (a.blason ? `<div class="t-bl${a.blason.length > 180 ? " long" : ""}">« ${txt(a.blason)} »</div>` : `<div class="t-bl dim">${a.apost ? "Armes inventées après coup, non blasonnées par les sources lues" : "Pas d'armoiries attestées"}</div>`);
+      (a.blason ? `<div class="t-bl${blz(a).length > 180 ? " long" : ""}">${gu(txt(blz(a)))}</div>` : `<div class="t-bl dim">${a.apost ? Tr("Armes inventées après coup, non blasonnées par les sources lues", "Arms invented after the fact, not blazoned by the sources read") : Tr("Pas d'armoiries attestées", "No attested arms")}</div>`);
   }).join("");
   const mid = (r.s + r.e) / 2;
   const orn = isImg(R)
     ? (R.ornements || []).map(row => ornAt(R, row.id, mid)?.label).filter(Boolean)
-    : [["couronne", "couronne "], ["tenants", ""], ["supports", ""], ["colliers", "collier "]]
+    : [["couronne", Tr("couronne ", "crown: ")], ["tenants", ""], ["supports", ""], ["colliers", Tr("collier ", "collar: ")]]
       .map(([id, pre]) => { const s = ornAt(R, id, mid); return s ? pre + s.label : ""; }).filter(Boolean);
   const d = r.devise;
   return `<div class="t-house">${houseLine(R, r)}</div>
     <div class="t-name">${txt(r.nom)}</div>
-    <div class="t-dates">${txt(spanLong(r))} · ${duree(r)}${r.encours ? " (en cours)" : ""}</div>
+    <div class="t-dates">${txt(spanLong(r))} · ${duree(r)}${r.encours ? Tr(" (en cours)", " (ongoing)") : ""}</div>
     ${parts}
-    ${orn.length ? `<div class="t-orn">${isImg(R) ? "Ornements" : "Autour de l'écu"} : ${txt(orn.join(" · "))}</div>` : ""}
-    ${d ? `<div class="t-orn">${d.embleme ? "Emblème : " + txt(d.embleme) : ""}${d.embleme && d.mot ? " · " : ""}${d.mot ? `devise « ${txt(d.mot)} »` : ""}</div>` : ""}
-    ${r.avant ? `<div class="t-orn">Avant le trône : ${txt(r.avant.map(a => a.titre).join(", puis "))}</div>` : ""}
+    ${orn.length ? `<div class="t-orn">${isImg(R) ? Tr("Ornements", "Ornaments") : Tr("Autour de l'écu", "Around the shield")}${Tr(" :", ":")} ${txt(orn.join(" · "))}</div>` : ""}
+    ${d ? `<div class="t-orn">${d.embleme ? Tr("Emblème : ", "Emblem: ") + txt(d.embleme) : ""}${d.embleme && d.mot ? " · " : ""}${d.mot ? `${Tr("devise", "motto")} ${gu(txt(d.mot))}` : ""}</div>` : ""}
+    ${r.avant ? `<div class="t-orn">${Tr("Avant le trône :", "Before the throne:")} ${txt(r.avant.map(a => a.titre).join(Tr(", puis ", ", then ")))}</div>` : ""}
     ${r.note ? `<div class="t-note">${txt(r.note)}</div>` : ""}
-    <div class="t-hint">Écu : centrer · nom : Wikipédia ↗</div>`;
+    <div class="t-hint">${Tr("Écu : centrer · nom : Wikipédia ↗", "Shield: centre · name: French Wikipedia ↗")}</div>`;
 }
 function tipOrn(row, s){
   return `<div class="t-house">${txt(row.nom)}</div><div class="t-name">${txt(s.label)}</div>
-    <div class="t-dates">${txt(spanTxt(s))}${s.flou ? " · début sans date précise" : ""}</div>
+    <div class="t-dates">${txt(spanTxt(s))}${s.flou ? Tr(" · début sans date précise", " · start with no precise date") : ""}</div>
     <div class="t-bl" style="font-style:normal;font-size:.92rem">${txt(s.texte)}</div>
     <div class="t-note">${srcLabels(s.sources)}</div>`;
 }
 function tipDevise(r){
   const d = r.devise;
-  return `<div class="t-house">Devise · ${txt(r.court)}</div>
+  return `<div class="t-house">${Tr("Devise", "Motto")} · ${txt(r.court)}</div>
     ${d.embleme ? `<div class="t-arms">${txt(d.embleme)}</div>` : ""}
-    ${d.mot ? `<div class="t-bl">« ${txt(d.mot)} »</div>` : ""}
+    ${d.mot ? `<div class="t-bl">${gu(txt(d.mot))}</div>` : ""}
     ${d.trad ? `<div class="t-dates">${txt(d.trad)}</div>` : ""}
     ${d.texte ? `<div class="t-note">${txt(d.texte)}</div>` : ""}`;
 }
 function tipAvant(a){
-  return `<div class="t-house">Avant le trône</div><div class="t-name">${txt(a.titre)}</div>
+  return `<div class="t-house">${Tr("Avant le trône", "Before the throne")}</div><div class="t-name">${txt(a.titre)}</div>
     ${a.dates ? `<div class="t-dates">${txt(a.dates)}</div>` : ""}
-    <div class="t-bl">« ${txt(a.blason)} »</div>
+    <div class="t-bl">${gu(txt(blz(a)))}</div>
     ${a.note ? `<div class="t-note">${txt(a.note)}</div>` : ""}`;
 }
 function tipSeg(R, seg){
@@ -462,21 +470,21 @@ function tipSeg(R, seg){
   }
   const a = DATA.armes[seg.key];
   return `<div class="t-house">${txt(W(R, "armesDe"))}${a.apost ? " · a posteriori" : ""}</div><div class="t-name">${txt(a.nom)}</div><div class="t-dates">${span}</div>
-    ${a.blason ? `<div class="t-bl">« ${txt(a.blason)} »</div>` : ""}
+    ${a.blason ? `<div class="t-bl">${gu(txt(blz(a)))}</div>` : ""}
     ${a.note && !isImg(R) ? `<div class="t-note">${txt(a.note)}</div>` : ""}`;
 }
 function tipRival(r){
   const a = r.armes ? DATA.armes[r.armes] : null;
-  return `<div class="t-house">${txt(r.label || (r.type === "éphémère" ? "Pape éphémère" : "Antipape"))}${r.obedience ? " · obédience " + txt(deOf(r.obedience)) : ""}</div>
+  return `<div class="t-house">${txt(r.label || (r.type === "éphémère" ? AP_LABEL : ANTI_LABEL))}${r.obedience ? " · " + txt(obed(r.obedience)) : ""}</div>
     <div class="t-name">${txt(r.nom)}</div><div class="t-dates">${txt(spanLong(r))}</div>
-    ${a ? `<div class="t-arms">${txt(a.nom)}</div>${a.blason ? `<div class="t-bl">« ${txt(a.blason)} »</div>` : ""}${a.desaccord ? `<div class="t-note"><b>Désaccord :</b> ${txt(a.desaccord)}</div>` : ""}` : ""}
-    ${r.type === "éphémère" ? `<div class="t-note">Élu mais jamais consacré : la liste ne le compte pas parmi les papes.</div>` : ""}
+    ${a ? `<div class="t-arms">${txt(a.nom)}</div>${a.blason ? `<div class="t-bl">${gu(txt(blz(a)))}</div>` : ""}${a.desaccord ? `<div class="t-note"><b>${DESACCORD}</b> ${txt(a.desaccord)}</div>` : ""}` : ""}
+    ${r.type === "éphémère" ? `<div class="t-note">${Tr("Élu mais jamais consacré : la liste ne le compte pas parmi les papes.", "Elected but never consecrated: the list does not count him among the popes.")}</div>` : ""}
     ${r.note ? `<div class="t-note">${txt(r.note)}</div>` : ""}`;
 }
 function tipJalon(j){
-  return `<div class="t-house">Jalon · ${txt(j.label || Math.floor(j.y))}</div><div class="t-name">${txt(j.titre)}</div>
+  return `<div class="t-house">${Tr("Jalon", "Milestone")} · ${txt(j.label || Math.floor(j.y))}</div><div class="t-name">${txt(j.titre)}</div>
     <div class="t-bl" style="font-style:normal;font-size:.92rem">${txt(j.texte)}</div>
-    ${j.desaccord ? `<div class="t-note"><b>Désaccord :</b> ${txt(j.desaccord)}</div>` : ""}
+    ${j.desaccord ? `<div class="t-note"><b>${DESACCORD}</b> ${txt(j.desaccord)}</div>` : ""}
     <div class="t-note">${srcLabels(j.sources)}</div>`;
 }
 
@@ -486,11 +494,13 @@ function buildRealm(R){
   sec.className = "stage" + (R.theme ? " theme-" + R.theme : ""); sec.id = "r-" + R.id;
   const img = isImg(R), hasGA = !!R.grandesArmes?.length;
   const viewerHTML = img
-    ? `<div class="pv" role="img" aria-label="Armoiries du pontificat sous la ligne de lecture"><img alt=""><img alt=""><div class="pv-seal"></div><span class="pv-stamp">a posteriori</span></div>`
+    ? `<div class="pv" role="img" aria-label="${Tr("Armoiries du pontificat sous la ligne de lecture", "Arms of the pontificate under the reading line")}"><img alt=""><img alt=""><div class="pv-seal"></div><span class="pv-stamp">a posteriori</span></div>`
     : bigSvg();
   const hint = img
-    ? "La ligne d'or est le présent de la frise : l'écu et le cartouche suivent le pontificat qu'elle traverse. Les écus tramés ou sablés sont a posteriori ; les sceaux de plomb numérotés marquent les papes sans armoiries. Sous les papes, les antipapes ; en rouge et or, les vacances du Siège."
-    : "La ligne d'or est le présent de la frise : l'écu et le cartouche suivent le règne qu'elle traverse. Sous la bande des armes, les ornements ; sous les règnes, les devises.";
+    ? Tr("La ligne d'or est le présent de la frise : l'écu et le cartouche suivent le pontificat qu'elle traverse. Les écus tramés ou sablés sont a posteriori ; les sceaux de plomb numérotés marquent les papes sans armoiries. Sous les papes, les antipapes ; en rouge et or, les vacances du Siège.",
+      "The golden line is the timeline's present: the shield and panel follow the pontificate it crosses. Hatched or sable-toned shields are a posteriori; numbered lead seals mark popes without arms. Under the popes, the antipopes; in red and gold, the vacancies of the See.")
+    : Tr("La ligne d'or est le présent de la frise : l'écu et le cartouche suivent le règne qu'elle traverse. Sous la bande des armes, les ornements ; sous les règnes, les devises.",
+      "The golden line is the timeline's present: the shield and panel follow the reign it crosses. Under the band of arms, the ornaments; under the reigns, the mottoes.");
   sec.innerHTML = `
     <div class="stage-in">
       <header class="stage-head">
@@ -501,26 +511,26 @@ function buildRealm(R){
       <div class="viewer">
         <div class="big-wrap">
           <div class="big-stage">${viewerHTML}<div class="ga-view"><img alt=""><img alt=""><p class="ga-empty" hidden></p></div></div>
-          <div class="vtabs" role="group" aria-label="Affichage"${hasGA ? "" : " hidden"}><button type="button" data-m="ecu" class="on" aria-pressed="true">Écu</button><button type="button" data-m="ga" aria-pressed="false">Grandes armes</button></div>
+          <div class="vtabs" role="group" aria-label="${Tr("Affichage", "Display")}"${hasGA ? "" : " hidden"}><button type="button" data-m="ecu" class="on" aria-pressed="true">${Tr("Écu", "Shield")}</button><button type="button" data-m="ga" aria-pressed="false">${Tr("Grandes armes", "Great arms")}</button></div>
         </div>
         <div class="panel" aria-live="polite"></div>
-        <aside class="side" aria-label="Ornements, armes d'avant le trône et devise"></aside>
+        <aside class="side" aria-label="${Tr("Ornements, armes d'avant le trône et devise", "Ornaments, arms before the throne and motto")}"></aside>
       </div>
       <div class="toast" aria-live="polite"></div>
     </div>
     <div class="frise">
-      <div class="track" tabindex="0" aria-label="Frise des règnes : flèches gauche et droite pour passer d'un règne à l'autre, plus et moins pour zoomer"><div class="canvas"></div></div>
+      <div class="track" tabindex="0" aria-label="${Tr("Frise des règnes : flèches gauche et droite pour passer d'un règne à l'autre, plus et moins pour zoomer", "Timeline of reigns: left and right arrows to move from one reign to the next, plus and minus to zoom")}"><div class="canvas"></div></div>
       <div class="reader"><span class="r-year"></span></div>
     </div>
     <div class="stage-in">
       <div class="controls">
-        <button class="cbtn c-play invite" type="button"><span class="ic">▶</span><span class="lb">Parcourir</span></button>
-        <button class="cbtn sq c-prev" type="button" aria-label="Règne précédent">‹</button>
-        <button class="cbtn sq c-next" type="button" aria-label="Règne suivant">›</button>
-        <div class="minimap" role="slider" aria-label="Position dans le temps" tabindex="-1"><div class="mm-in"></div><div class="mm-win"></div></div>
-        <button class="cbtn sq c-out" type="button" aria-label="Dézoomer">−</button>
-        <button class="cbtn sq c-in" type="button" aria-label="Zoomer">+</button>
-        <button class="cbtn c-fit" type="button">Tout voir</button>
+        <button class="cbtn c-play invite" type="button"><span class="ic">▶</span><span class="lb">${Tr("Parcourir", "Play")}</span></button>
+        <button class="cbtn sq c-prev" type="button" aria-label="${Tr("Règne précédent", "Previous reign")}">‹</button>
+        <button class="cbtn sq c-next" type="button" aria-label="${Tr("Règne suivant", "Next reign")}">›</button>
+        <div class="minimap" role="slider" aria-label="${Tr("Position dans le temps", "Position in time")}" tabindex="-1"><div class="mm-in"></div><div class="mm-win"></div></div>
+        <button class="cbtn sq c-out" type="button" aria-label="${Tr("Dézoomer", "Zoom out")}">−</button>
+        <button class="cbtn sq c-in" type="button" aria-label="${Tr("Zoomer", "Zoom in")}">+</button>
+        <button class="cbtn c-fit" type="button">${Tr("Tout voir", "Fit all")}</button>
       </div>
       <p class="hint">${hint}</p>
     </div>`;
@@ -568,7 +578,7 @@ function layout(T){
   }
   for(let c = Math.floor(R.debut / 100); c * 100 <= R.fin; c++){
     const mid = clamp(c * 100 + 50, R.debut, R.fin);
-    wm += `<div class="wm" style="left:${X(mid)}px">${roman(c + 1)}<small style="font-size:.3em;vertical-align:top">e</small></div>`;
+    wm += `<div class="wm" style="left:${X(mid)}px">${Tr(roman(c + 1), c + 1)}<small style="font-size:.3em;vertical-align:top">${Tr("e", ordEn(c + 1).replace(/\d+/, ""))}</small></div>`;
   }
   h += `<div class="ruler">${ruler}</div>`;
 
@@ -622,7 +632,7 @@ function layout(T){
     const icons = r.ph.filter(p => !seen.has(p.armes) && seen.add(p.armes))
       .map(p => tokenIcon(R, p.armes, (p.s + Math.min(p.e, r.e)) / 2, r)).join("");
     const a0 = DATA.armes[r.ph[0].armes];
-    const aria = `${r.nom}, ${spanTxt(r)}, ${a0.nom}${a0.apost ? " (a posteriori)" : ""}${a0.blason ? " : " + a0.blason : ""}`;
+    const aria = `${r.nom}, ${spanTxt(r)}, ${a0.nom}${a0.apost ? " (a posteriori)" : ""}${a0.blason ? Tr(" : ", ": ") + blz(a0) : ""}`;
     lane += `<div class="reign${img && a0.apost ? " apost" : ""}" data-i="${r.i}" data-a="${esc(r.ph[0].armes)}" style="left:${cx}px;bottom:${22 + tier * th}px;--stem:${5 + tier * th}px">
       <button class="rb" type="button" aria-label="${esc(aria)}">${icons}</button>
       <a class="rn" href="${wikiUrl(r.wiki)}" target="_blank" rel="noopener" draggable="false">${txt(r.court)}</a>
@@ -643,7 +653,7 @@ function layout(T){
   /* devises et emblèmes personnels : un médaillon par roi qui en a une de sourcée */
   const dms = R.regnes.filter(r => r.devise && !r.suite).map(r => {
     const d = r.devise, cx = (X(r.s) + X(r.e)) / 2;
-    const aria = `Devise ${deOf(r.nom)}${d.mot ? " : " + d.mot : ""}${d.embleme ? ", emblème " + d.embleme : ""}`;
+    const aria = Tr(`Devise ${deOf(r.nom)}${d.mot ? " : " + d.mot : ""}${d.embleme ? ", emblème " + d.embleme : ""}`, `Motto of ${r.nom}${d.mot ? ": " + d.mot : ""}${d.embleme ? ", emblem " + d.embleme : ""}`);
     return `<button class="dm" type="button" data-i="${r.i}" style="left:${cx}px" aria-label="${esc(aria)}">${d.file ? `<img src="${commonsImg(d.file, 80)}" alt="" loading="lazy" draggable="false">` : "✦"}</button>`;
   }).join("");
   if(dms) h += `<div class="devrow"><div class="row-label">${txt(W(R, "devises"))}</div>${dms}</div>`;
@@ -761,7 +771,7 @@ function update(T, force){
     T.marks.forEach(m => m.classList.toggle("near", +m.dataset.j === T.nearK));
     if(near){
       T.toast.innerHTML = `<span class="ty">${txt(near.label || Math.floor(near.y))}</span><div><span class="tt">${txt(near.titre)}</span>${txt(near.texte)}
-        ${near.desaccord ? `<span class="dz"><b>Désaccord :</b> ${txt(near.desaccord)}</span>` : ""}
+        ${near.desaccord ? `<span class="dz"><b>${DESACCORD}</b> ${txt(near.desaccord)}</span>` : ""}
         <span class="src">${srcLinks(near.sources)}</span></div>`;
       T.toast.classList.add("on");
     } else T.toast.classList.remove("on");
@@ -782,34 +792,34 @@ function renderPanel(T, st, ga){
     const va = it.armes ? DATA.armes[it.armes] : null;
     html = `<p class="p-house">${txt(W(R, "sans"))}</p><h3 class="p-name">${txt(it.nom)}</h3>
       <p class="p-dates"><b>${txt(spanLong(it))}</b>${img ? " · " + duree(it) : ""}</p>
-      ${va ? `<p class="p-arms">${txt(va.nom)}</p>` : `<p class="p-bl dim">Pas d'armes du souverain.</p>`}
+      ${va ? `<p class="p-arms">${txt(va.nom)}</p>` : `<p class="p-bl dim">${Tr("Pas d'armes du souverain.", "No sovereign's arms.")}</p>`}
       ${it.note ? `<p class="p-note">${txt(it.note)}<span class="src">${srcLinks(it.sources)}</span></p>` : ""}
-      ${it.wiki ? `<p class="p-links"><a class="btn-wiki" href="${wikiUrl(it.wiki)}" target="_blank" rel="noopener">Lire sur Wikipédia ↗</a></p>` : ""}
-      ${va?.file ? `<p class="p-credit">Figure : ${credit(va)}, via Wikimedia Commons.</p>` : ""}`;
+      ${it.wiki ? `<p class="p-links"><a class="btn-wiki" href="${wikiUrl(it.wiki)}" target="_blank" rel="noopener">${Tr("Lire sur Wikipédia ↗", "Read on French Wikipedia ↗")}</a></p>` : ""}
+      ${va?.file ? `<p class="p-credit">${Tr("Figure :", "Figure:")} ${credit(va)}, via Wikimedia Commons.</p>` : ""}`;
   } else {
     const a = DATA.armes[st.armes];
     const phaseTxt = it.ph.length > 1 ? ` <span style="opacity:.7">(${txt(spanTxt(st.ph))})</span>` : "";
     const L = DATA.lis;
     const credit = a.file
-      ? `Figure : <a href="${commonsPage(a.file)}" target="_blank" rel="noopener">« ${txt(a.file)} »</a> — ${txt(a.auteur)}, ${a.licurl ? `<a href="${esc(a.licurl)}" target="_blank" rel="noopener">${txt(a.lic)}</a>` : txt(a.lic)}, via Wikimedia Commons.`
+      ? `${Tr("Figure :", "Figure:")} <a href="${commonsPage(a.file)}" target="_blank" rel="noopener">${gu(txt(a.file))}</a> — ${txt(a.auteur)}, ${a.licurl ? `<a href="${esc(a.licurl)}" target="_blank" rel="noopener">${txt(a.lic)}</a>` : txt(a.lic)}, via Wikimedia Commons.`
       : a.draw !== "aucune" && L
-        ? `Figure dessinée par l'encyclopédie ; fleur de lis : <a href="${commonsPage(L.file)}" target="_blank" rel="noopener">« ${txt(L.file)} »</a> — ${txt(L.auteur)}, <a href="${esc(L.licurl)}" target="_blank" rel="noopener">${txt(L.lic)}</a>.`
-        : img ? "Sceau de plomb numéroté dessiné par l'encyclopédie : il marque le rang du pape dans la liste, pas un objet réel." : "";
-    const trad = img && typeof it.debut === "number" && !it.approx ? ` <span style="opacity:.7">(dates traditionnelles)</span>` : "";
+        ? `${Tr("Figure dessinée par l'encyclopédie ; fleur de lis :", "Figure drawn by the encyclopedia; fleur-de-lis:")} <a href="${commonsPage(L.file)}" target="_blank" rel="noopener">${gu(txt(L.file))}</a> — ${txt(L.auteur)}, <a href="${esc(L.licurl)}" target="_blank" rel="noopener">${txt(L.lic)}</a>.`
+        : img ? Tr("Sceau de plomb numéroté dessiné par l'encyclopédie : il marque le rang du pape dans la liste, pas un objet réel.", "Numbered lead seal drawn by the encyclopedia: it marks the pope's rank in the list, not a real object.") : "";
+    const trad = img && typeof it.debut === "number" && !it.approx ? ` <span style="opacity:.7">${Tr("(dates traditionnelles)", "(traditional dates)")}</span>` : "";
     const kin = img && R.kinOf?.[st.armes]?.filter(r => r !== it) || [];
     const aNote = a.note && (img || stateAt(R, st.ph.s - 1e-3)?.armes !== st.armes);
     html = `<p class="p-house">${houseLine(R, it)}</p>
       <h3 class="p-name">${txt(it.nom)}</h3>
-      <p class="p-dates"><b>${txt(spanLong(it))}</b>${trad} · ${duree(it)} de ${txt(W(R, "regne"))}${it.encours ? " (en cours)" : ""}</p>
-      ${img && it.naissance ? `<p class="p-born">Né <i>${txt(it.naissance)}</i></p>` : ""}
+      <p class="p-dates"><b>${txt(spanLong(it))}</b>${trad} · ${duree(it)} ${Tr("de", "of")} ${txt(W(R, "regne"))}${it.encours ? Tr(" (en cours)", " (ongoing)") : ""}</p>
+      ${img && it.naissance ? `<p class="p-born">${Tr("Né", "Born")} <i>${txt(it.naissance)}</i></p>` : ""}
       <p class="p-arms">${txt(a.nom)}${phaseTxt}${img && a.apost ? ` <span class="ap">a posteriori</span>` : ""}</p>
-      ${a.blason ? `<p class="p-bl${a.blason.length > 180 ? " long" : ""}">« ${txt(a.blason)} »</p>` : `<p class="p-bl dim">${a.apost ? "Armes inventées après coup ; les sources lues ne les blasonnent pas." : "Pas d'armoiries attestées."}</p>`}
+      ${a.blason ? `<p class="p-bl${blz(a).length > 180 ? " long" : ""}">${gu(txt(blz(a)))}</p>` : `<p class="p-bl dim">${a.apost ? Tr("Armes inventées après coup ; les sources lues ne les blasonnent pas.", "Arms invented after the fact; the sources read do not blazon them.") : Tr("Pas d'armoiries attestées.", "No attested arms.")}</p>`}
       ${img && a.apost && !a.gravure ? `<p class="p-note">${txt(APOST)}</p>` : ""}
       ${it.note ? `<p class="p-note">${txt(it.note)}<span class="src">${srcLinks(it.sources)}</span></p>` : ""}
-      ${aNote ? `<p class="p-note">${txt(a.note)}<span class="src">${srcLinks(a.sources)}</span></p>` : `<p class="p-note"><span class="src">${a.blason ? "Blasonnement d'après " : ""}${srcLinks(a.sources)}</span></p>`}
-      ${img && a.desaccord ? `<p class="p-note"><b class="dz">Désaccord :</b> ${txt(a.desaccord)}</p>` : ""}
-      ${kin.length ? `<p class="p-note">Mêmes armes : ${kin.map(r => txt(r.court)).join(", ")}.</p>` : ""}
-      <p class="p-links"><a class="btn-wiki" href="${wikiUrl(it.wiki)}" target="_blank" rel="noopener">${txt(it.court)} sur Wikipédia ↗</a></p>
+      ${aNote ? `<p class="p-note">${txt(a.note)}<span class="src">${srcLinks(a.sources)}</span></p>` : `<p class="p-note"><span class="src">${a.blason ? Tr("Blasonnement d'après ", "Blazon after ") : ""}${srcLinks(a.sources)}</span></p>`}
+      ${img && a.desaccord ? `<p class="p-note"><b class="dz">${DESACCORD}</b> ${txt(a.desaccord)}</p>` : ""}
+      ${kin.length ? `<p class="p-note">${Tr("Mêmes armes :", "Same arms:")} ${kin.map(r => txt(r.court)).join(", ")}.</p>` : ""}
+      <p class="p-links"><a class="btn-wiki" href="${wikiUrl(it.wiki)}" target="_blank" rel="noopener">${txt(it.court)} ${Tr("sur Wikipédia", "on French Wikipedia")} ↗</a></p>
       ${credit ? `<p class="p-credit">${credit}</p>` : ""}`;
   }
   P.innerHTML = html;
@@ -840,52 +850,52 @@ function setPV(T, st){
 /* trois cartouches à onglets : grandes armes de la période, armes d'avant le trône, devise */
 function cardsHTML(T, it, ga){
   const out = [];
-  if(ga) out.push(["ga", "Grandes armes", `<h4>Grandes armes <small>${txt(spanTxt(ga))}</small></h4>
-    <img class="c-img" src="${commonsImg(ga.file, 360)}" alt="Grandes armes — ${esc(ga.titre)}" loading="lazy" title="Afficher en grand">
+  if(ga) out.push(["ga", Tr("Grandes armes", "Great arms"), `<h4>${Tr("Grandes armes", "Great arms")} <small>${txt(spanTxt(ga))}</small></h4>
+    <img class="c-img" src="${commonsImg(ga.file, 360)}" alt="${Tr("Grandes armes", "Great arms")} — ${esc(ga.titre)}" loading="lazy" title="${Tr("Afficher en grand", "Show large")}">
     <p class="c-t">${txt(ga.titre)}</p>
     <ul>${ga.ornements.map(o => `<li>${txt(o)}</li>`).join("")}</ul>
     ${ga.note ? `<p class="c-note">${txt(ga.note)}</p>` : ""}
     <p class="c-cr">${credit(ga)} · ${srcLinks(ga.sources)}</p>`]);
   if(it.avant?.length){
     const files = [...new Map(it.avant.map(a => [a.file, a])).values()];
-    out.push(["avant", "Avant le trône", `<h4>Avant le trône</h4>
-      ${it.avant.map((a, k) => `<div class="av"><img class="av-i" data-k="${k}" src="${commonsImg(a.file, 120)}" alt="${esc(a.titre + " : " + a.blason)}" loading="lazy"><div><b>${txt(a.titre)}</b><span>${txt(a.dates || "")}</span></div></div>`).join("")}
+    out.push(["avant", Tr("Avant le trône", "Before the throne"), `<h4>${Tr("Avant le trône", "Before the throne")}</h4>
+      ${it.avant.map((a, k) => `<div class="av"><img class="av-i" data-k="${k}" src="${commonsImg(a.file, 120)}" alt="${esc(a.titre + Tr(" : ", ": ") + blz(a))}" loading="lazy"><div><b>${txt(a.titre)}</b><span>${txt(a.dates || "")}</span></div></div>`).join("")}
       ${it.avant.filter(a => a.note).map(a => `<p class="c-note">${txt(a.note)}</p>`).join("")}
       <p class="c-cr">${files.map(credit).join(" · ")} · ${srcLinks([...new Set(it.avant.flatMap(a => a.sources))])}</p>`]);
   }
   if(it.devise){
     const d = it.devise;
-    out.push(["devise", "Devise", `<h4>Devise et emblème</h4>
+    out.push(["devise", Tr("Devise", "Motto"), `<h4>${Tr("Devise et emblème", "Motto and emblem")}</h4>
       <div class="dv">${d.file ? `<img src="${commonsImg(d.file, 160)}" alt="${esc(d.legende || d.embleme || "")}" loading="lazy">` : ""}<div>
         ${d.embleme ? `<div class="em">${txt(d.embleme)}</div>` : ""}
-        ${d.mot ? `<div class="mot">« ${txt(d.mot)} »</div>` : ""}
+        ${d.mot ? `<div class="mot">${gu(txt(d.mot))}</div>` : ""}
         ${d.trad ? `<div class="tr">${txt(d.trad)}</div>` : ""}</div></div>
       ${d.texte ? `<p class="c-note">${txt(d.texte)}</p>` : ""}
-      ${isImg(T.R) && d.desaccord ? `<p class="c-note"><b class="dz">Désaccord :</b> ${txt(d.desaccord)}</p>` : ""}
+      ${isImg(T.R) && d.desaccord ? `<p class="c-note"><b class="dz">${DESACCORD}</b> ${txt(d.desaccord)}</p>` : ""}
       <p class="c-cr">${d.file ? credit(d) + (d.legende ? ` (${txt(d.legende)})` : "") + " · " : ""}${srcLinks(d.sources)}</p>`]);
   }
   if(isImg(T.R)){
     const rv = rivalsAt(T.R, centerYear(T));
     if(rv.length){
       const files = rv.map(r => r.armes && DATA.armes[r.armes]).filter(a => a?.file);
-      const lab = rv.every(r => r.type === "éphémère") ? "Pape éphémère" : "Antipape";
-      out.unshift(["rival", lab, `<h4>${lab}${rv.length > 1 ? "s" : ""} <small>face à ${txt(it.court || it.nom)}</small></h4>
+      const lab = rv.every(r => r.type === "éphémère") ? AP_LABEL : ANTI_LABEL;
+      out.unshift(["rival", lab, `<h4>${lab}${rv.length > 1 ? "s" : ""} <small>${Tr("face à", "against")} ${txt(it.court || it.nom)}</small></h4>
         ${rv.map(r => { const a = r.armes ? DATA.armes[r.armes] : null;
-          return `<div class="av">${a?.file ? `<img src="${commonsImg(a.file, 120)}" alt="${esc(a.nom)}" loading="lazy">` : sealSvg({ court: r.court, num: "" }, false)}<div><b>${txt(r.nom)}</b><span>${txt(spanLong(r))}${r.obedience ? " · obédience " + txt(deOf(r.obedience)) : ""}</span></div></div>
-            ${a?.blason ? `<p class="c-note">« ${txt(a.blason)} »</p>` : ""}
+          return `<div class="av">${a?.file ? `<img src="${commonsImg(a.file, 120)}" alt="${esc(a.nom)}" loading="lazy">` : sealSvg({ court: r.court, num: "" }, false)}<div><b>${txt(r.nom)}</b><span>${txt(spanLong(r))}${r.obedience ? " · " + txt(obed(r.obedience)) : ""}</span></div></div>
+            ${a?.blason ? `<p class="c-note">${gu(txt(blz(a)))}</p>` : ""}
             ${a?.note ? `<p class="c-note">${txt(a.note)}</p>` : ""}
-            ${a?.desaccord ? `<p class="c-note"><b class="dz">Désaccord :</b> ${txt(a.desaccord)}</p>` : ""}
+            ${a?.desaccord ? `<p class="c-note"><b class="dz">${DESACCORD}</b> ${txt(a.desaccord)}</p>` : ""}
             ${r.note ? `<p class="c-note">${txt(r.note)}</p>` : ""}`; }).join("")}
         <p class="c-cr">${files.map(credit).join(" · ")}${files.length ? " · " : ""}${srcLinks(["liste_papes", "armoiries_papales"])}</p>`]);
     }
     const S = T.R.sceau;
     const Y = centerYear(T);
     const orn = (T.R.ornements || []).map(row => [row, ornAt(T.R, row.id, Y)]).filter(([, s]) => s);
-    if(orn.length) out.push(["orn", "Ornements", `<h4>Autour de l'écu <small>${Math.floor(Y)}</small></h4>
+    if(orn.length) out.push(["orn", Tr("Ornements", "Ornaments"), `<h4>${Tr("Autour de l'écu", "Around the shield")} <small>${Math.floor(Y)}</small></h4>
       <ul>${orn.map(([row, s]) => `<li><b style="color:var(--parch);font-weight:500">${txt(row.nom)}</b> — ${txt(s.label)}</li>`).join("")}</ul>
       ${orn.map(([, s]) => `<p class="c-note">${txt(s.texte)}</p>`).join("")}
       <p class="c-cr">${srcLinks([...new Set(orn.flatMap(([, s]) => s.sources))])}</p>`]);
-    if(S && !it.vide && !DATA.armes[it.armes]?.file) out.push(["sceau", "Sceau", `<h4>Le sceau du pape</h4>
+    if(S && !it.vide && !DATA.armes[it.armes]?.file) out.push(["sceau", Tr("Sceau", "Seal"), `<h4>${Tr("Le sceau du pape", "The pope's seal")}</h4>
       <img class="c-img" src="${commonsImg(S.file, 360)}" alt="${esc(S.legende)}" loading="lazy" style="cursor:default">
       <p class="c-t">${txt(S.legende)}</p><p class="c-note">${txt(S.texte)}</p>
       <p class="c-cr">${credit(S)} · ${srcLinks(S.sources)}</p>`]);
@@ -900,13 +910,13 @@ function setGA(T, ga){
   const [a, b] = T.gaView.querySelectorAll("img"), empty = T.gaView.querySelector(".ga-empty");
   if(!ga){
     a.classList.remove("on"); b.classList.remove("on");
-    empty.hidden = false; empty.textContent = "Pas de grandes armes attestées pour cette période.";
+    empty.hidden = false; empty.textContent = Tr("Pas de grandes armes attestées pour cette période.", "No great arms attested for this period.");
     return;
   }
   empty.hidden = true;
   const cur = a.classList.contains("on") ? a : b, nxt = cur === a ? b : a, key = T.gaKey;
   nxt.onload = () => { if(T.gaKey !== key) return; nxt.classList.add("on"); cur.classList.remove("on"); };
-  nxt.alt = `Grandes armes — ${ga.titre}`;
+  nxt.alt = `${Tr("Grandes armes", "Great arms")} — ${ga.titre}`;
   nxt.src = commonsImg(ga.file, 700);
 }
 function setMode(T, m){
@@ -922,7 +932,7 @@ function setPlay(T, on){
   b.classList.remove("invite");
   b.classList.toggle("on", on);
   $(".ic", b).textContent = on ? "❚❚" : "▶";
-  $(".lb", b).textContent = on ? "Pause" : "Parcourir";
+  $(".lb", b).textContent = on ? "Pause" : Tr("Parcourir", "Play");
   if(!on) return;
   const max = T.track.scrollWidth - T.track.clientWidth;
   if(T.track.scrollLeft >= max - 2) jumpTo(T, T.R.first);
@@ -1118,27 +1128,29 @@ function buildMethod(){
   const R0 = DATA.royaumes[0];
   if(R0.methode){
     $("#method").innerHTML = `
-      <div class="box"><span class="k">Méthode</span>${R0.methode.map(p => `<p>${txt(p)}</p>`).join("")}</div>
+      <div class="box"><span class="k">${Tr("Méthode", "Method")}</span>${R0.methode.map(p => `<p>${txt(p)}</p>`).join("")}</div>
       <div class="box"><span class="k">Figures</span>
-        <p>${txt(R0.figures || "Les sceaux de plomb numérotés et les bandes d'émaux sont dessinés par l'encyclopédie. Écus, gravures, emblème de la sede vacante et bulle viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :")}</p>
+        <p>${txt(R0.figures || Tr("Les sceaux de plomb numérotés et les bandes d'émaux sont dessinés par l'encyclopédie. Écus, gravures, emblème de la sede vacante et bulle viennent de Wikimedia Commons, chacun avec son auteur et sa licence vérifiés sur sa page :", "The numbered lead seals and bands of tincture are drawn by the encyclopedia. Shields, engravings, the sede vacante emblem and the bulla come from Wikimedia Commons, each with its author and licence checked on its page:"))}</p>
         <ul>${uniq.map(a => `<li>${credit(a)}</li>`).join("")}</ul>
       </div>
       <div class="box"><span class="k">Sources</span>
-        <ul>${Object.values(DATA.sources).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(s.label)}</a></li>`).join("")}</ul>
+        <ul>${Object.values(DATA.sources).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(sourceLue(s.label))}</a></li>`).join("")}</ul>
       </div>`;
     return;
   }
   $("#method").innerHTML = `
-    <div class="box"><span class="k">Méthode</span>
-      <p>Chaque blasonnement, chaque ornement, chaque devise et chaque jalon renvoie aux pages lues pour l'établir. Quand elles divergent — date du premier semé, passage aux trois lis, armes de la Restauration, charge de 1831, traduction d'une devise — la frise donne les versions en présence sans trancher. Les dates d'apparition sans source précise (anges tenants, manteau et pavillon) sont montrées en fondu.</p>
-      <p>Les dates de règne suivent la <a href="${esc(DATA.sources.liste_monarques.url)}" target="_blank" rel="noopener">Liste des monarques de France</a>. Les noms renvoient à l'article Wikipédia du souverain.</p>
+    <div class="box"><span class="k">${Tr("Méthode", "Method")}</span>
+      ${Tr(`<p>Chaque blasonnement, chaque ornement, chaque devise et chaque jalon renvoie aux pages lues pour l'établir. Quand elles divergent — date du premier semé, passage aux trois lis, armes de la Restauration, charge de 1831, traduction d'une devise — la frise donne les versions en présence sans trancher. Les dates d'apparition sans source précise (anges tenants, manteau et pavillon) sont montrées en fondu.</p>
+      <p>Les dates de règne suivent la <a href="${esc(DATA.sources.liste_monarques.url)}" target="_blank" rel="noopener">Liste des monarques de France</a>. Les noms renvoient à l'article Wikipédia du souverain.</p>`,
+      `<p>Each blazon, ornament, motto and milestone refers to the pages read to establish it. When they differ — date of the first semé, move to three lilies, arms of the Restoration, charge of 1831, translation of a motto — the timeline gives the versions side by side without deciding. Dates of appearance with no precise source (angel supporters, mantle and pavilion) are shown fading in.</p>
+      <p>Dates of reigns follow the <a href="${esc(DATA.sources.liste_monarques.url)}" target="_blank" rel="noopener">Liste des monarques de France</a>. Names link to the French Wikipedia article on the sovereign.</p>`)}
     </div>
     <div class="box"><span class="k">Figures</span>
-      <p>Semé, trois lis, mi-parti de Navarre et lambel d'Orléans sont dessinés par l'encyclopédie, avec la fleur de lis de ${txt(DATA.lis.auteur)} (<a href="${commonsPage(DATA.lis.file)}" target="_blank" rel="noopener">« ${txt(DATA.lis.file)} »</a>, <a href="${esc(DATA.lis.licurl)}" target="_blank" rel="noopener">${txt(DATA.lis.lic)}</a>) ; couronnes et colliers des jetons aussi. Les autres écus, les grandes armes, les armes d'avant le trône et les emblèmes viennent de Wikimedia Commons :</p>
+      <p>${Tr("Semé, trois lis, mi-parti de Navarre et lambel d'Orléans sont dessinés par l'encyclopédie, avec la fleur de lis de", "The semé, the three lilies, the dimidiation of Navarre and the label of Orléans are drawn by the encyclopedia, with the fleur-de-lis by")} ${txt(DATA.lis.auteur)} (<a href="${commonsPage(DATA.lis.file)}" target="_blank" rel="noopener">${gu(txt(DATA.lis.file))}</a>, <a href="${esc(DATA.lis.licurl)}" target="_blank" rel="noopener">${txt(DATA.lis.lic)}</a>)${Tr(" ; couronnes et colliers des jetons aussi. Les autres écus, les grandes armes, les armes d'avant le trône et les emblèmes viennent de Wikimedia Commons :", "; so are the crowns and collars on the tokens. The other shields, the great arms, the arms from before the throne and the emblems come from Wikimedia Commons:")}</p>
       <ul>${uniq.map(a => `<li>${credit(a)}</li>`).join("")}</ul>
     </div>
     <div class="box"><span class="k">Sources</span>
-      <ul>${Object.values(DATA.sources).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(s.label)}</a></li>`).join("")}</ul>
+      <ul>${Object.values(DATA.sources).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${txt(sourceLue(s.label))}</a></li>`).join("")}</ul>
     </div>`;
 }
 
@@ -1147,12 +1159,12 @@ let LIVE = [], GEN = 0;
 const fold = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const lpLabel = (l, tag) => `<img class="lp-em" src="${commonsImg(l.embleme, 80)}" alt="" loading="lazy"><span class="lp-t">${tag ? `<small>${tag}</small>` : ""}<b>${txt(l.nom)}</b><em>${txt(l.dates)}</em></span>`;
 function renderPicker(L){
-  $("#lp-btn").innerHTML = lpLabel(L, "Lignée") + `<svg class="lp-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
-  $("#lp-btn").setAttribute("aria-label", `Lignée affichée : ${L.nom}. Changer de lignée`);
+  $("#lp-btn").innerHTML = lpLabel(L, Tr("Lignée", "Lineage")) + `<svg class="lp-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
+  $("#lp-btn").setAttribute("aria-label", Tr(`Lignée affichée : ${L.nom}. Changer de lignée`, `Lineage shown: ${L.nom}. Change lineage`));
   $("#lp-list").innerHTML = GROUPES.map(g => {
     const ls = LIGNEES.filter(l => l.groupe === g);
     return ls.length ? `<p class="lp-g">${txt(g)}</p>` + ls.map(l => `<a class="lp-it${l === L ? " on" : ""}" href="#${l.id}" data-k="${esc(fold([l.nom, l.groupe, l.dates, l.mots || ""].join(" ")))}"${l === L ? ` aria-current="page"` : ""}>${lpLabel(l)}</a>`).join("") : "";
-  }).join("") + `<p class="lp-none" hidden>Aucune lignée ne correspond.</p>`;
+  }).join("") + `<p class="lp-none" hidden>${Tr("Aucune lignée ne correspond.", "No lineage matches.")}</p>`;
 }
 function pickerOpen(open){
   const btn = $("#lp-btn"), panel = $("#lp-panel");
@@ -1190,19 +1202,17 @@ async function load(id){
   LIVE = []; hideTip();
   let data;
   try{
-    const res = await fetch(L.file);
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    data = await res.json();
+    data = await lireDonnees(L.file);
   }catch(err){
     if(g !== GEN) return;
-    $("#royaumes").innerHTML = `<p class="err">Les données n'ont pas pu être chargées (${txt(err.message || err)}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;
+    $("#royaumes").innerHTML = Tr(`<p class="err">Les données n'ont pas pu être chargées (${txt(err.message || err)}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`, `<p class="err">The data couldn't load (${txt(err.message || err)}). This page must be served over HTTP — for example <code>python -m http.server</code> — and not opened from disk.</p>`);
     $("#method").innerHTML = "";
     return;
   }
   if(g !== GEN) return;
   DATA = data; FRISE = L;
   $("#royaumes").innerHTML = "";
-  document.title = `L'Armorial — Lignées · ${L.nom}`;
+  document.title = Tr(`L'Armorial — Lignées · ${L.nom}`, `Lineages · ${L.nom} — The Armorial`);
   buildDefs();
   LIVE = DATA.royaumes.map(R => { prepare(R); return buildRealm(R); });
   buildMethod();
@@ -1210,11 +1220,9 @@ async function load(id){
 /* la liste des frises d'abord, puis la frise demandée par l'ancre de l'adresse (#france, #papaute…) */
 async function start(){
   try{
-    const res = await fetch("data/frises.json");
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    ({ groupes: GROUPES, frises: LIGNEES } = await res.json());
+    ({ groupes: GROUPES, frises: LIGNEES } = await lireDonnees("data/frises.json"));
   }catch(err){
-    $("#royaumes").innerHTML = `<p class="err">La liste des frises n'a pas pu être chargée (${txt(err.message || err)}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`;
+    $("#royaumes").innerHTML = Tr(`<p class="err">La liste des frises n'a pas pu être chargée (${txt(err.message || err)}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`, `<p class="err">The list of timelines couldn't load (${txt(err.message || err)}). This page must be served over HTTP — for example <code>python -m http.server</code> — and not opened from disk.</p>`);
     return;
   }
   addEventListener("hashchange", () => load(location.hash.slice(1)));
