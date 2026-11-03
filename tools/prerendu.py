@@ -23,6 +23,8 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PAGES = {
     "encyclopedie.html": {"blocs": {"main": "#main .section", "rail-list": "#rail-list li", "counts": "#counts *"},
                           "sources": ["data/data.json", "assets/index.js", "assets/blason.js"]},
+    "en-encyclopedia.html": {"blocs": {"main": "#main .section", "rail-list": "#rail-list li", "counts": "#counts *"},
+                             "sources": ["data/data.json", "data/en/encyclopedie.json", "assets/chrome.js", "assets/index.js", "assets/blason.js"]},
     "blasons.html": {"blocs": {"grid": "#grid .ar"},
                      "sources": ["data/blasons.json", "assets/blasons.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
     "personnages.html": {"blocs": {"grid": "#grid .ar"},

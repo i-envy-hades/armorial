@@ -19,7 +19,7 @@ if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
    JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
    Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
    disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
-const JUMELLES = { "index.html": "en.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html" };
+const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html" };
 const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
 const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
@@ -35,24 +35,22 @@ const renvoiLangue = a => { const h = a.getAttribute("href"), n = h && !a.datase
 document.addEventListener("click", e => { const a = e.target.closest && e.target.closest("a[href]"); if (!a) return; if (a.dataset.langue) choisitLangue(a.dataset.langue); else if (LANGUE === "en") renvoiLangue(a); });
 if (LANGUE === "en") document.addEventListener("DOMContentLoaded", () => document.querySelectorAll("a[href]").forEach(renvoiLangue));
 
-/* Les données en anglais : le français reste la clé. data/en/*.json dit, pour chaque fichier traduit, l'anglais de chaque texte français
-   (« noms », « blasons », « textes »). Le nom et le blasonnement gardent leur valeur française (le moteur de dessin et les adresses des cartes
-   s'y lisent), l'anglais s'ajoute à côté (nomEn, blasonEn) ; les autres textes sont remplacés. Un texte sans traduction reste en français :
-   tools/check_data.py le signale. Mêmes règles dans tools/check_data.py. */
-const TABLES_EN = { "data/blasons.json": "data/en/cartes.json", "data/personnages.json": "data/en/cartes.json" };
-const CHAMPS_BRUTS = new Set(["file", "licurl", "url", "label", "atelier", "atelierAjust", "aRefaire", "forme", "filtre", "groupe"]);
-const CHAMPS_FACULTATIFS = new Set(["auteur", "lic"]);                // des noms propres, le plus souvent : traduits seulement quand la table les connaît
+/* Les données en anglais : le français reste la clé. Chaque table data/en/*.json donne l'anglais de chaque texte français du fichier qu'elle
+   traduit, et ses propres règles : _sauts, les champs laissés tels quels ; _facultatifs, ceux traduits seulement si la table les connaît (des noms
+   propres, le plus souvent) ; _gardes, ceux qui gardent leur valeur française (le moteur de dessin et les adresses s'y lisent), l'anglais s'ajoutant
+   à côté (nom → nomEn) depuis la partie de la table qu'ils désignent. Les autres textes sont remplacés. Une chaîne seule dans une liste n'est pas un texte
+   (un identifiant de source). Un texte sans traduction reste en français : tools/check_data.py le signale, avec les mêmes règles. */
+const TABLES_EN = { "data/blasons.json": "data/en/cartes.json", "data/personnages.json": "data/en/cartes.json", "data/data.json": "data/en/encyclopedie.json" };
 function traduit(o, T) {
   if (Array.isArray(o)) return o.map(x => traduit(x, T));
   if (!o || typeof o !== "object") return o;
   const out = {};
   for (const [k, v] of Object.entries(o)) {
-    if (typeof v !== "string") out[k] = traduit(v, T);
-    else if (CHAMPS_BRUTS.has(k)) out[k] = v;
+    if (T._sauts.includes(k)) out[k] = v;
+    else if (typeof v !== "string") out[k] = traduit(v, T);
     else if (k === "href") out[k] = versLangue(v);
-    else if (k === "nom") { out[k] = v; if (T.noms[v]) out.nomEn = T.noms[v]; }
-    else if (k === "blason") { out[k] = v; if (T.blasons[v]) out.blasonEn = T.blasons[v]; }
-    else out[k] = T.textes[v] || v;
+    else if (T._gardes[k]) { out[k] = v; const e = T[T._gardes[k]][v]; if (e) out[k + "En"] = e; }
+    else out[k] = versLangue(T.textes[v] || v);
   }
   return out;
 }

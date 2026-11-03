@@ -1,4 +1,24 @@
 {
+ "_sauts": [
+  "file",
+  "licurl",
+  "url",
+  "label",
+  "atelier",
+  "atelierAjust",
+  "aRefaire",
+  "forme",
+  "filtre",
+  "groupe"
+ ],
+ "_facultatifs": [
+  "auteur",
+  "lic"
+ ],
+ "_gardes": {
+  "nom": "noms",
+  "blason": "blasons"
+ },
  "noms": {
   "Royaume de France (moderne)": "Kingdom of France (modern)",
   "Royaume d'Angleterre": "Kingdom of England",

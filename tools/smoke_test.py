@@ -930,6 +930,31 @@ def test_galeries_en(browser, base):
         propre(page_en, page, erreurs)
         page.context.close()
 
+def test_encyclopedie_en(browser, base):
+    """l'encyclopédie en anglais : mêmes chapitres et mêmes adresses que la française, le texte traduit, le glossaire et la recherche en anglais"""
+    page, erreurs = ouvre(browser, base, "en-encyclopedia.html", "#main .section")
+    page.wait_for_selector("#glist .gloss-item", timeout=20000)
+    fr = data("data.json")
+    ids = page.evaluate("[...document.querySelectorAll('#main > .section')].map(s => s.id)")
+    verifie(ids == [s["id"] for s in fr["sections"]] + ["glossaire", "bibliotheque"], f"encyclopédie en anglais : les mêmes chapitres, aux mêmes adresses ({len(ids)})")
+    verifie(page.evaluate("document.documentElement.lang") == "en" and page.inner_text("h1.display") == "THE ART OF HERALDRY" or page.inner_text("h1.display").lower() == "the art of heraldry", "encyclopédie en anglais : le titre est traduit")
+    verifie(page.locator("#un-signe-pour-reconnaitre-le-chevalier h3").inner_text() == "A sign to recognise the knight", "encyclopédie en anglais : un article garde son adresse française, son titre est anglais")
+    verifie(page.locator("#origines .plate h2").inner_text().lower() == "where heraldry comes from", "encyclopédie en anglais : le titre du chapitre est traduit")
+    verifie(page.locator(f"#{json.dumps('terme-gueules')[1:-1]} dt").inner_text() == "Gules (gueules)", "encyclopédie en anglais : un terme du glossaire garde son adresse, avec l'anglais et le français")
+    # la recherche, en anglais et en français ; un mot pris dans une balise ne casse pas la définition
+    page.fill("#q", "gules"); page.wait_for_timeout(150)
+    verifie("Gules (gueules)" in page.inner_text("#sresults"), "encyclopédie en anglais : la recherche trouve le mot anglais")
+    page.fill("#q", "gueules"); page.wait_for_timeout(150)
+    verifie("Gules (gueules)" in page.inner_text("#sresults"), "encyclopédie en anglais : la recherche trouve le mot français")
+    page.fill("#q", "lang"); page.wait_for_timeout(150)
+    verifie(page.locator("#glist mark").count() >= 0 and 'lang="fr"' not in page.inner_text("#glist"), "encyclopédie en anglais : surligner ne casse pas les balises des définitions")
+    page.fill("#q", ""); page.wait_for_timeout(150)
+    # une figure : le nom anglais, le français dessous
+    verifie(page.locator(".gal.tinct .fig").first.locator(".nom").inner_text() == "Or" and "Azure" in page.locator(".gal.tinct").inner_text(), "encyclopédie en anglais : les émaux ont leur nom anglais")
+    verifie(page.locator(".mast-langue[data-langue='fr']").get_attribute("href") == "encyclopedie.html", "encyclopédie en anglais : le lien FR mène à la page française")
+    propre("encyclopédie en anglais", page, erreurs)
+    page.context.close()
+
 def test_jeux_du_jour(browser, base):
     """L'Intrus, le blasonnement à trous (jour.html) et Dessine-moi (atelier.html#defi=dessin) : tirés de la graine du jour"""
     page, erreurs = ouvre(browser, base, "jour.html#intrus", ".jj-ecu")
@@ -1040,6 +1065,7 @@ def main():
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
+                       ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),
                        ("jeux du jour", lambda: test_jeux_du_jour(browser, base_en_ligne)),
                        ("exercices", lambda: test_exercices(browser, base)),
                        ("recherche", lambda: test_recherche(browser, base)),

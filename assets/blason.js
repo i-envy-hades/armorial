@@ -227,29 +227,29 @@ function fleurDeLisPaths(){
    libres du Projet:Blasons, créditées sous elles, comme pour le lion et l'aigle. */
 const ECCL_FIGURES = [
   {
-    titre: "Rome, depuis 1969",
-    desc: "chapeau vert à six houppes de chaque côté et croix de procession — ni mitre ni crosse",
+    titre: Tr("Rome, depuis 1969", "Rome, since 1969"),
+    desc: Tr("chapeau vert à six houppes de chaque côté et croix de procession — ni mitre ni crosse", "green hat with six tassels on each side and processional cross — neither mitre nor crozier"),
     file: "Template-Bishop.svg",
     auteur: "Alejandro Rojas (SajoR)",
     lic: "CC BY-SA 2.5",
     licurl: "https://creativecommons.org/licenses/by-sa/2.5/deed.fr"
   },
   {
-    titre: "Cantorbéry, non concernée",
-    desc: "l'Église d'Angleterre a gardé la mitre que l'instruction retirait à Rome",
+    titre: Tr("Cantorbéry, non concernée", "Canterbury, not concerned"),
+    desc: Tr("l'Église d'Angleterre a gardé la mitre que l'instruction retirait à Rome", "the Church of England kept the mitre that the instruction took away in Rome"),
     file: "External Ornaments of an Anglican Bishop.svg",
     auteur: "Tom Lemmens",
     lic: "CC BY-SA 3.0",
     licurl: "https://creativecommons.org/licenses/by-sa/3.0/deed.fr",
-    note: "Le fichier est nommé « Bishop » mais sa page Commons le décrit comme les ornements d'un archevêque anglican."
+    note: Tr("Le fichier est nommé « Bishop » mais sa page Commons le décrit comme les ornements d'un archevêque anglican.", "The file is named “Bishop” but its Commons page describes it as the ornaments of an Anglican archbishop.")
   }
 ];
 function ecclDiagram(){
   return `<div class="diagram-row">${ECCL_FIGURES.map(f => `
     <figure>
-      <div class="figimg"><img loading="lazy" src="${commonsSrc(f.file)}" alt="Ornements extérieurs — ${f.titre}"></div>
+      <div class="figimg"><img loading="lazy" src="${commonsSrc(f.file)}" alt="${Tr("Ornements extérieurs", "External ornaments")} — ${f.titre}"></div>
       <figcaption><b>${f.titre}</b><span>${f.desc}</span></figcaption>
-      <div class="credit"><a href="${commonsPage(f.file)}" target="_blank" rel="noopener">« ${f.file} »</a> — ${f.auteur}, <a href="${f.licurl}" target="_blank" rel="noopener">${f.lic}</a>, via Wikimedia Commons${f.note ? " · " + f.note : ""}</div>
+      <div class="credit"><a href="${commonsPage(f.file)}" target="_blank" rel="noopener">${Tr(`« ${f.file} »`, `“${f.file}”`)}</a> — ${f.auteur}, <a href="${f.licurl}" target="_blank" rel="noopener">${f.lic}</a>, via Wikimedia Commons${f.note ? " · " + f.note : ""}</div>
     </figure>`).join("")}</div>`;
 }
 
@@ -281,22 +281,22 @@ function empireShield(kind){
   const semeAt = [[36, 17], [78, 17], [120, 17], [162, 17], [57, 42], [99, 42], [141, 42]];
   let ins = "", lab = "";
   if(kind === "prince"){
-    lab = "chef d'azur semé d'abeilles d'or";
+    lab = Tr("chef d'azur semé d'abeilles d'or", "a chief azure semé of bees or");
     ins = `<rect x="0" y="0" width="200" height="58" fill="${tinctPaint('Azur')}"/>`
       + semeAt.map(([x, y]) => abeille(x, y, 0.62)).join("");
   }
   if(kind === "duc"){
-    lab = "chef de gueules semé d'étoiles d'argent";
+    lab = Tr("chef de gueules semé d'étoiles d'argent", "a chief gules semé of stars argent");
     ins = `<rect x="0" y="0" width="200" height="58" fill="${tinctPaint('Gueules')}"/>`
       + semeAt.map(([x, y]) => etoilePetite(x, y, 0.42, tinctPaint('Argent'), chgStroke('Argent'))).join("");
   }
   if(kind === "comte" || kind === "baron"){
     const t = kind === "comte" ? "Azur" : "Gueules";
-    lab = `franc-quartier ${kind === "comte" ? "d'azur" : "de gueules"} à l'épée d'argent`;
+    lab = Tr(`franc-quartier ${kind === "comte" ? "d'azur" : "de gueules"} à l'épée d'argent`, `a quarter ${kind === "comte" ? "azure" : "gules"}, a sword argent`);
     ins = `<rect x="0" y="0" width="84" height="74" fill="${tinctPaint(t)}"/>`
       + epeeGraphic(42, 37, 0.82, tinctPaint('Argent'), chgStroke('Argent'));
   }
-  return `<svg viewBox="${VB}" width="108" role="img" aria-label="Écu d'or au ${lab}">
+  return `<svg viewBox="${VB}" width="108" role="img" aria-label="${Tr(`Écu d'or au ${lab}`, `Shield or, ${lab}`)}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="${tinctPaint('Or')}"/>
     <g clip-path="url(#${cid})">${ins}</g>
@@ -305,10 +305,10 @@ function empireShield(kind){
 }
 function empireDiagram(){
   const rows = [
-    ["prince", "Prince", "chef d'azur semé d'abeilles d'or"],
-    ["duc", "Duc", "chef de gueules semé d'étoiles d'argent"],
-    ["comte", "Comte militaire", "franc-quartier d'azur à l'épée d'argent"],
-    ["baron", "Baron militaire", "franc-quartier de gueules à l'épée d'argent"]
+    ["prince", "Prince", Tr("chef d'azur semé d'abeilles d'or", "chief azure semé of bees or")],
+    ["duc", Tr("Duc", "Duke"), Tr("chef de gueules semé d'étoiles d'argent", "chief gules semé of stars argent")],
+    ["comte", Tr("Comte militaire", "Military count"), Tr("franc-quartier d'azur à l'épée d'argent", "quarter azure, a sword argent")],
+    ["baron", Tr("Baron militaire", "Military baron"), Tr("franc-quartier de gueules à l'épée d'argent", "quarter gules, a sword argent")]
   ];
   return `<div class="diagram-row">${rows.map(([k, t, d]) =>
     `<figure>${empireShield(k)}<figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join("")}</div>`;
@@ -321,12 +321,12 @@ function swissCross(){
 }
 function suisseDiagram(){
   const lab = (x, y, s) => `<text x="${x}" y="${y}" text-anchor="middle" font-family="Marcellus SC,serif" font-size="17" fill="#8e1b18">${s}</text>`;
-  const legal = `<svg viewBox="${VB}" width="120" role="img" aria-label="Croix blanche alésée sur fond rouge #FF0000">
+  const legal = `<svg viewBox="${VB}" width="120" role="img" aria-label="${Tr("Croix blanche alésée sur fond rouge #FF0000", "White couped cross on a red ground #FF0000")}">
     <path d="${SHIELD_D}" fill="#FF0000"/>
     <path d="${swissCross()}" fill="#fff"/>
     ${shieldFinish(2.4, true)}
   </svg>`;
-  const ratio = `<svg viewBox="${VB}" width="120" role="img" aria-label="Proportions de la croix : branches de 7 pour 6 de large">
+  const ratio = `<svg viewBox="${VB}" width="120" role="img" aria-label="${Tr("Proportions de la croix : branches de 7 pour 6 de large", "Proportions of the cross: arms 7 long by 6 wide")}">
     <path d="${SHIELD_D}" fill="#f3eee0"/>
     <path d="${swissCross()}" fill="#fff" stroke="#1a1712" stroke-width="1.4"/>
     <g stroke="#cabf9f" stroke-width="1" stroke-dasharray="3 3">
@@ -338,9 +338,9 @@ function suisseDiagram(){
     ${shieldFinish(2.4, true)}
   </svg>`;
   return `<div class="diagram-row">
-    <figure>${legal}<figcaption><b>Art. 1 et annexe 1</b><span>croix blanche alésée sur fond rouge ; le rouge est fixé à #FF0000</span></figcaption>
-      <div class="credit">Dessin de l'encyclopédie d'après le texte de l'art. 1 ; la forme de l'écu est la nôtre, non celle de l'annexe 1.</div></figure>
-    <figure>${ratio}<figcaption><b>La proportion</b><span>branches égales, « d'un sixième plus longues que larges » : 7 pour 6</span></figcaption></figure>
+    <figure>${legal}<figcaption><b>${Tr("Art. 1 et annexe 1", "Art. 1 and annex 1")}</b><span>${Tr("croix blanche alésée sur fond rouge ; le rouge est fixé à #FF0000", "a white couped cross on a red ground; the red is fixed at #FF0000")}</span></figcaption>
+      <div class="credit">${Tr("Dessin de l'encyclopédie d'après le texte de l'art. 1 ; la forme de l'écu est la nôtre, non celle de l'annexe 1.", "The encyclopedia's drawing from the text of art. 1; the shape of the shield is ours, not that of annex 1.")}</div></figure>
+    <figure>${ratio}<figcaption><b>${Tr("La proportion", "The proportion")}</b><span>${Tr("branches égales, « d'un sixième plus longues que larges » : 7 pour 6", "equal arms, “a sixth longer than they are wide”: 7 by 6")}</span></figcaption></figure>
   </div>`;
 }
 
@@ -358,16 +358,16 @@ function clefDiagram(){
   const key = (t, tr) => `<g transform="${tr}">${chargeInner("clef", tinctPaint(t), chgStroke(t), "")}</g>`;
   const around = (k, tr, mir) => `translate(100 116) ${tr} scale(${mir ? -k : k} ${k}) translate(-100 -116)`;
   const figs = [
-    ["En pal", "l'anneau en pointe, le panneton en chef vers dextre", mini("Gueules", key("Or", ""), "Clef d'or en pal")],
-    ["Contournée", "le panneton vers senestre", mini("Gueules", key("Or", "translate(200 0) scale(-1 1)"), "Clef d'or contournée")],
-    ["En bande", "le panneton vers la pointe", mini("Gueules", key("Or", around(.85, "rotate(-45)")), "Clef d'or posée en bande")],
-    ["Adossées, entretenues", "dos à dos, les anneaux entrelacés", mini("Azur",
-      key("Or", around(.8, "translate(-19 0)")) + key("Or", around(.8, "translate(19 0)", true)), "Deux clefs d'or adossées en pal")],
-    ["Passées en sautoir", "croisées, l'une d'or, l'autre d'argent", mini("Gueules",
-      key("Or", around(.74, "rotate(45)")) + key("Argent", around(.74, "rotate(-45)", true)), "Deux clefs passées en sautoir, l'une d'or, l'autre d'argent")]
+    [Tr("En pal", "Palewise"), Tr("l'anneau en pointe, le panneton en chef vers dextre", "the ring in base, the ward in chief to dexter"), mini("Gueules", key("Or", ""), Tr("Clef d'or en pal", "A key or palewise"))],
+    [Tr("Contournée", "Contourné"), Tr("le panneton vers senestre", "the ward to sinister"), mini("Gueules", key("Or", "translate(200 0) scale(-1 1)"), Tr("Clef d'or contournée", "A key or contourné"))],
+    [Tr("En bande", "Bendwise"), Tr("le panneton vers la pointe", "the ward towards the base"), mini("Gueules", key("Or", around(.85, "rotate(-45)")), Tr("Clef d'or posée en bande", "A key or bendwise"))],
+    [Tr("Adossées, entretenues", "Addorsed, interlaced"), Tr("dos à dos, les anneaux entrelacés", "back to back, the rings intertwined"), mini("Azur",
+      key("Or", around(.8, "translate(-19 0)")) + key("Or", around(.8, "translate(19 0)", true)), Tr("Deux clefs d'or adossées en pal", "Two keys or addorsed palewise"))],
+    [Tr("Passées en sautoir", "In saltire"), Tr("croisées, l'une d'or, l'autre d'argent", "crossed, one or, the other argent"), mini("Gueules",
+      key("Or", around(.74, "rotate(45)")) + key("Argent", around(.74, "rotate(-45)", true)), Tr("Deux clefs passées en sautoir, l'une d'or, l'autre d'argent", "Two keys in saltire, one or, the other argent"))]
   ];
   return `<div class="diagram-row">${figs.map(([t, d, s]) => `<figure>${s}<figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join("")}
-    <div class="credit">Dessins de l'encyclopédie ; la source ne dit pas comment se tournent les pannetons d'un sautoir, ce choix est le nôtre.</div></div>`;
+    <div class="credit">${Tr("Dessins de l'encyclopédie ; la source ne dit pas comment se tournent les pannetons d'un sautoir, ce choix est le nôtre.", "The encyclopedia's drawings; the source doesn't say how the wards of a saltire turn, this choice is ours.")}</div></div>`;
 }
 
 /* recoupements : traits multipliés (burelé/palé/bandé/barré), tiercés, écartelé, gironné */
@@ -781,18 +781,22 @@ function heroShieldInner(){
 function ecuPoints(){
   const id=++uid, cid="clpts"+id;
   const gx=[59,100,141], gy=[46,126,200];
-  const labels=[
+  const labels=Tr([
     ["Canton\ndextre","Chef","Canton\nsenestre"],
     ["Flanc\ndextre","Cœur","Flanc\nsenestre"],
     ["Canton\ndextre","Pointe","Canton\nsenestre"]
-  ];
+  ],[
+    ["Dexter\ncanton","Chief","Sinister\ncanton"],
+    ["Dexter\nflank","Heart","Sinister\nflank"],
+    ["Dexter\ncanton","Base","Sinister\ncanton"]
+  ]);
   let pts="";
   for(let r=0;r<3;r++)for(let c=0;c<3;c++){
     const t=labels[r][c].split("\n");
     pts+=`<circle cx="${gx[c]}" cy="${gy[r]}" r="3.4" fill="#8e1b18"/>`+
       t.map((ln,i)=>`<text x="${gx[c]}" y="${gy[r]+16+i*11}" text-anchor="middle" font-family="EB Garamond,serif" font-size="10" fill="#5c5446">${ln}</text>`).join("");
   }
-  return `<svg viewBox="0 0 200 300" width="230" role="img" aria-label="Les points de l'écu">
+  return `<svg viewBox="0 0 200 300" width="230" role="img" aria-label="${Tr("Les points de l'écu", "The points of the shield")}">
     <defs><clipPath id="${cid}"><path d="${SHIELD_D}"/></clipPath></defs>
     <path d="${SHIELD_D}" fill="#f3eee0"/>
     <g clip-path="url(#${cid})" stroke="#d8cfb4" stroke-width="1">
@@ -801,9 +805,9 @@ function ecuPoints(){
     </g>
     ${pts}
     <path d="${SHIELD_D}" fill="none" stroke="#1a1712" stroke-width="2.4"/>
-    <text x="30" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">← Dextre</text>
-    <text x="170" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">Senestre →</text>
-    <text x="100" y="280" text-anchor="middle" font-family="EB Garamond,serif" font-style="italic" font-size="10.5" fill="#5c5446">côtés vus du porteur, non du spectateur</text>
+    <text x="30" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">← ${Tr("Dextre", "Dexter")}</text>
+    <text x="170" y="264" text-anchor="middle" font-family="Marcellus SC,serif" font-size="10" letter-spacing="1.5" fill="#20406e">${Tr("Senestre", "Sinister")} →</text>
+    <text x="100" y="280" text-anchor="middle" font-family="EB Garamond,serif" font-style="italic" font-size="10.5" fill="#5c5446">${Tr("côtés vus du porteur, non du spectateur", "sides as seen by the bearer, not the viewer")}</text>
   </svg>`;
 }
 
