@@ -1315,5 +1315,1605 @@
     },
     "groupe": "esprits",
     "aVerifier": true
+  },
+  {
+    "nom": "La Fayette",
+    "meta": "1757–1834 · général et homme d'État",
+    "blason": "De gueules à la bande d'or, à la bordure de vair",
+    "desc": "Le héros des deux mondes porte les armes de sa famille, les Motier de La Fayette, connues depuis les croisades.",
+    "file": "Blason famille fr Motier de La Fayette.svg",
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Famille Motier de La Fayette »",
+      "url": "https://fr.wikipedia.org/wiki/Famille_Motier_de_La_Fayette"
+    },
+    "groupe": "esprits",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean-Dominique Cassini",
+    "meta": "1625–1712 · astronome",
+    "blason": "D'or à la fasce d'azur, accompagnée de six étoiles du même",
+    "desc": "Le premier des Cassini, appelé d'Italie par Louis XIV pour diriger l'Observatoire de Paris. Ses armes sont celles de sa famille ; leurs étoiles ont six branches.",
+    "file": "Blason famille fr Cassini.svg",
+    "auteur": "Ovoid",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Famille Cassini »",
+      "url": "https://fr.wikipedia.org/wiki/Famille_Cassini"
+    },
+    "groupe": "esprits",
+    "aVerifier": true
+  },
+  {
+    "nom": "Geoffroy Plantagenêt",
+    "meta": "1113–1151 · comte d'Anjou",
+    "blason": "D'azur à six lionceaux d'or",
+    "desc": "Son émail funéraire du Mans montre l'un des plus anciens écus armoriés connus. Le nombre de ses lionceaux est supposé : le bouclier n'est vu qu'en partie.",
+    "file": "Blason Geoffroy V d'Anjou.svg",
+    "auteur": "Thom.Lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des blasons personnels »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_blasons_personnels"
+    },
+    "groupe": "esprits",
+    "aVerifier": true
+  },
+  {
+    "nom": "Boucicaut (Jean Ier Le Meingre)",
+    "blason": "D'argent, à l'aigle bicéphale de gueules, becquée, languée et membrée d'azur",
+    "file": "Blason famille fr Le Meingre.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "XIVᵉ siècle · maréchal de France",
+    "desc": "Père d'un autre Boucicaut, maréchal lui aussi.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jacques de Montberon",
+    "blason": "Écartelé: aux 1 et 4, burelé d'argent et d'azur; aux 2 et 3, de gueules plein",
+    "file": "Blason Jacques de Montberon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "v. 1350–1422 · maréchal de France",
+    "desc": "Seigneur de Montbron en Angoumois et chambellan du duc de Berry.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Joachim Rouault de Gamaches",
+    "blason": "De sable, à deux léopards couronnés d'or, l'un sur l'autre",
+    "file": "Blason fam fr Rouhault de Gamaches.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "v. 1409–1478 · maréchal de France",
+    "desc": "Il combat à la fin de la guerre de Cent Ans.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Baudricourt",
+    "blason": "D'or au lion de sable, couronné, lampassé et armé de gueules",
+    "file": "Blason baudricourt.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Manassas",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "groupe": "marechaux",
+    "meta": "v. 1435–1499 · maréchal de France",
+    "desc": "Fils de Robert de Baudricourt, le capitaine de Vaucouleurs qui envoya Jeanne d'Arc au roi.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean Caraccioli",
+    "blason": "De gueules, à trois bandes d'or, au chef d'azur",
+    "file": "Blason fam it Caraccioli.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1487–1550 · maréchal de France",
+    "desc": "Prince de Melfi, ce Napolitain passe au service de François Ier.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Louis de Contades",
+    "blason": "D'or, à l'aigle d'azur, becquée, languée et membrée de gueules",
+    "file": "Blason Louis Georges Érasme de Contades.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1704–1795 · maréchal de France",
+    "desc": "Battu à Minden en 1759, il meurt à plus de quatre-vingt-dix ans.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Rochambeau",
+    "blason": "D'azur, au chevron d'or, accompagné de trois molettes du même",
+    "file": "Blason famille fr de Vimeur.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "1725–1807 · maréchal de France",
+    "desc": "Il commande le corps français à Yorktown, aux côtés de George Washington.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Brosse",
+    "blason": "D'azur, à trois brosses d'or, liées de gueules",
+    "file": "Blason maison fr de Brosse.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "1375–1433 · maréchal de France",
+    "desc": "Le maréchal de Boussac, compagnon de Jeanne d'Arc. Ses brosses sont des armes parlantes.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Blaise de Monluc",
+    "blason": "Écartelé : aux 1 et 4 d'azur au loup ravissant d'or ; aux 2 et 3 d'or au tourteau de gueules",
+    "file": "Blason fam fr de Montluc.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "v. 1500–1577 · maréchal de France",
+    "desc": "Ce capitaine gascon raconte sa vie de soldat dans ses célèbres Commentaires.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Alphonse d'Ornano",
+    "blason": "Écartelé: aux 1 et 4, de gueules, à la tour donjonnée d'or maçonnée de sable; aux 2 et 3, d'or au lion de gueules, au chef d'azur chargé d'une fleur-de-lis d'or",
+    "file": "Blason Alphonse d'Ornano.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1548–1610 · maréchal de France",
+    "desc": "Ce Corse se distingue pendant les guerres de Religion.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lesdiguières",
+    "blason": "De gueules, au lion d'or ; au chef d'azur, chargé de trois roses d'argent",
+    "file": "Blason Famille fr de-Bonne.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "ByacC",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1543–1626 · dernier connétable de France",
+    "desc": "Chef protestant du Dauphiné, il finit connétable de France.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Concino Concini",
+    "blason": "Parti de deux, coupé d'un : 1 et 6, d'azur, à un rocher d'or, de trois coupeaux, surmonté de trois panaches d'argent ; 2 et 4, d'or, à l'aigle bicéphale de sable; 3 et 5; d'argent, à quatre chaînes de sable, passées en sautoir",
+    "file": "Blason Concino Concini.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1569–1617 · maréchal de France",
+    "desc": "Favori de la régente Marie de Médicis, il est assassiné sur ordre de Louis XIII.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Henri de Schomberg",
+    "blason": "D'or, au lion coupé de gueules et de sinople",
+    "file": "Blason Charles de Schomberg (1601-1656).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1575–1632 · maréchal de France",
+    "desc": "Il combat les protestants sous Louis XIII et meurt à Bordeaux.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Turenne",
+    "blason": "Écartelé : aux 1 et 4 de La Tour ; au 2, de Boulogne ; au 3, de Turenne. Sur le tout : parti d'Auvergne et de Bouillon",
+    "file": "Armoiries de la Tour d'Auvergne-Turenne.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1611–1675 · maréchal général des camps et armées",
+    "desc": "L'un des plus grands capitaines de Louis XIV, tué d'un boulet à Sasbach.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Nicolas de Catinat",
+    "blason": "D'argent, à une croix de gueules chargée de neuf coquilles d'or",
+    "file": "Blason ville fr Saint-Gratien (Val-d'Oise).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Bruno Vallette",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1637–1712 · maréchal de France",
+    "desc": "Vainqueur à Staffarde et à La Marsaille, il est célèbre pour sa modestie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean-Baptiste Jourdan",
+    "blason": "D'azur, aux lettres JBJ enlacées d'or; à la bordure d'argent, besantée de sable",
+    "file": "Blason Jean Baptiste Jourdan (1762-1833).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1762–1833 · maréchal d'Empire",
+    "desc": "Le vainqueur de Fleurus, en 1794, porte ses initiales entrelacées sur son écu.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Thomas Robert Bugeaud",
+    "blason": "Parti: au 1, d'azur, au chevron d'or, acc. en pointe d'une étoile du même, au chef de gueules, ch. de trois étoiles également d'or (Bugeaud de la Piconnerie) ; au 2, coupé : a. d'or à l'épée de sable, en pal; b. de sable au soc de charrue d'or, posé en bande",
+    "file": "Blason fam fr Bugeaud de la Piconnerie, duc d'Isly.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1784–1849 · maréchal de France",
+    "desc": "Le soc de charrue et l'épée résument sa devise de soldat laboureur en Algérie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "François Canrobert",
+    "blason": "D'azur, à une main dextre ouverte et appaumée d'argent",
+    "file": "Blason François Certain Canrobert.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1809–1895 · maréchal de France",
+    "desc": "Il commande en Crimée et combat à Saint-Privat en 1870.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ferdinand Foch",
+    "blason": "D'or à deux palmes posées en sautoir de sinople, nouées en pointe de gueules, accompagnées en cœur d'un écusson de gueules chargé de trois épées hautes d'argent, montées d'or, posées deux en sautoir, une en pal et chargées d'un globe, cerclé et croiseté d'or ; au chef d'azur chargé de sept étoiles d'or ordonnées 2, 3 et 2",
+    "file": "Blason fam fr Foch (attribué).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1851–1929 · maréchal de France",
+    "desc": "Le généralissime des armées alliées en 1918. Ces armes lui sont attribuées.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Hubert Lyautey",
+    "blason": "D'azur à une foi d'or sommée d'un soleil du second et soutenus de trois cinquefeuilles d'argent",
+    "file": "Blason fam fr Lyautey.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1854–1934 · maréchal de France",
+    "desc": "Résident général au Maroc et membre de l'Académie française.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Louis Franchet d'Espèrey",
+    "blason": "D'azur à un pélican dans son aire d'argent, surmonté en chef d'un soleil rayonnant d'or",
+    "file": "Blason famille fr Franchet d'Esperey.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jpgibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0",
+    "groupe": "marechaux",
+    "meta": "1856–1942 · maréchal de France",
+    "desc": "Il commande les armées alliées d'Orient en 1918.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Lattre de Tassigny",
+    "blason": "D'azur à la fasce d'or accompagnée en chef de trois étoiles et en pointe de trois canes toutes d'argent et posées en fasce",
+    "file": "Blason fam FRA Lattre de Tassigny (de).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1889–1952 · maréchal de France",
+    "desc": "Il signe pour la France la capitulation allemande à Berlin en 1945.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Honoré Reille",
+    "blason": "De sinople au centaure passant d'argent, l'arc tendu du même et décochant une flèche d'or",
+    "file": "Blason Honoré Charles Reille 2.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1775–1860 · maréchal de France",
+    "desc": "Général de la Révolution et de l'Empire, fait maréchal en 1847.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Georges Cadoudal",
+    "blason": "D'azur au dextrochère de carnation, armé d'or, mouvant du flanc dextre, tenant une épée d'argent garnie aussi d'or, à l'écusson d'hermine chargé d'une fleur de lys de gueules, brochant en bouclier sur le dextrochère",
+    "file": "Blason de Georges Cadoudal.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Spedona",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "esprits",
+    "meta": "1771–1804 · général chouan",
+    "desc": "Chef de l'armée catholique et royale de Bretagne, guillotiné à Paris.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Tourville",
+    "blason": "De gueules, à un senestrochère d'argent, tenant une épée du même, surmonté d'un casque taré de profil, aussi d'argent",
+    "file": "Blason fam fr Costentin de Tourville.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1642–1701 · vice-amiral et maréchal de France",
+    "desc": "Le vainqueur de Béveziers, en 1690, est l'un des grands marins de Louis XIV.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Louis de Marillac",
+    "blason": "D'argent, à un écusson d'azur en abîme, ch. d'un croissant figuré d'or et acc. de six canettes démembrées de sable, posées en orle",
+    "file": "Blason fam fr de Marillac.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1572–1632 · maréchal de France",
+    "desc": "Il est décapité en place de Grève sur ordre de Richelieu.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ulrich de Lowendal",
+    "blason": "Écartelé : aux 1 et 4, de gueules, au léopard lionné d'argent, couronné d'or, tenant un guidon d'argent à la croix de gueules ; aux 2 et 3, coupé: a. d'azur à un château sommé d'une tourelle, le tout d'or ; b. d'or à trois cœurs de gueules",
+    "file": "Blason famille fr Lowendal.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Tpt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1700–1755 · maréchal de France",
+    "desc": "Ce général d'origine danoise sert plusieurs pays avant de passer à la France.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ladislas de Bercheny",
+    "blason": "Parti: au 1, de gueules, à la croix pattée d'argent, cantonnée de quatre croisettes du même; au 2, d'azur, à une licorne d'argent, issante d'une couronne d'or posée sur deux montagnes d'argent, mouv. de la pointe de l'écu",
+    "file": "Blason Ladislas Ignace de Bercheny.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1689–1778 · maréchal de France",
+    "desc": "Ce noble hongrois fonde en France un célèbre régiment de hussards.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Aimable Pélissier",
+    "blason": "Écartelé : au 1, d'azur, à une épée d'or; au 2, d'or, à un palmier de sinople; au 3, d'or, au lion de gueules, couronné du même; au 4, d'azur, à la croix alésée d'argent. Au chef de gueules, brochant sur l'écartelé et semé d'étoiles d'argent. Sur le tout d'argent à une couronne murale de sable, ch. sur le cercle du mot SEVASTOPOL en lettres d'or, et sommée de trois drapeaux flottants, anglais, français et piémontais",
+    "file": "Blason Aimable Pélissier (1794–1864) duc de Malakoff (Second Empire).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1794–1864 · maréchal de France",
+    "desc": "Le duc de Malakoff : son écu rappelle Sébastopol, prise en 1855.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Adolphe Niel",
+    "blason": "D'azur, à un L d'or, surmonté d'un nid renfermant trois oiseaux d'argent",
+    "file": "Blason Adolphe Niel.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1802–1869 · maréchal de France",
+    "desc": "Ministre de la Guerre de Napoléon III. Ses armes font jeu de mots : un L et un nid.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Boniface de Castellane",
+    "blason": "De gueules, à la tour donjonnée de trois pièces d'or, maçonnée de sable, celle du milieu plus élevée",
+    "file": "Blason maison fr de Castellane.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Thom.Lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "1788–1862 · maréchal de France",
+    "desc": "Grand soldat de l'Empire, connu pour la discipline qu'il impose à Lyon.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Armand de Saint-Arnaud",
+    "blason": "D'argent, au chevron de gueules, acc. en chef de deux étoiles d'azur et en pointe d'une merlette de sable",
+    "file": "Blason fam fr Leroy de Saint-Arnaud 1.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1798–1854 · maréchal de France",
+    "desc": "Ministre de la Guerre, il meurt en mer Noire pendant la guerre de Crimée.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Odet de Foix, vicomte de Lautrec",
+    "blason": "Écartelé : aux I et IV d'or aux trois pals de gueules (Foix) ; au II d'or aux deux vaches de gueules, accornées, colletées et clarinées d'azur passant l'une sur l'autre (Béarn), au III, d'argent à une croix pattée de gueules (Comminges)",
+    "file": "Blason de Foix-Lautrec.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1485–1528 · maréchal de France",
+    "desc": "Capitaine des guerres d'Italie, il meurt devant Naples.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Villiers de L'Isle-Adam",
+    "blason": "D'or au chef d'azur chargé d'un dextrochère d'hermine, vêtu d'un manipule du même brochant sur le tout",
+    "file": "Blason ville fr Villiers-Adam (Val-d'Oise).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Spedona",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1384–1437 · maréchal de France",
+    "desc": "Gouverneur de Paris, il est tué par la foule à Bruges.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Charles de La Porte",
+    "blason": "De gueules au croissant d'argent chargé de cinq mouchetures d'hermine",
+    "file": "Blason famille fr de La Porte 1.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "1602–1664 · maréchal de France",
+    "desc": "Le duc de La Meilleraye, cousin de Richelieu, excelle dans l'artillerie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Louis de Sancerre",
+    "blason": "D'azur, à la bande d'argent, cotoyée de deux cotices d'or, potencées et contre-potencées, au lambel de gueules, brochant sur le tout",
+    "file": "Blason Maison de Sancerre.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1341–1402 · connétable de France",
+    "desc": "Ce chef de guerre sert Charles V et Charles VI pendant la guerre de Cent Ans.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Philippe de Crèvecœur",
+    "blason": "De gueules à trois chevrons d'or",
+    "file": "Blason Maison de Crèvecœur.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1494 · maréchal de France",
+    "desc": "Seigneur d'Esquerdes, il passe du service de Bourgogne à celui du roi.",
+    "aVerifier": true
+  },
+  {
+    "nom": "René de Montjean",
+    "blason": "D'or fretté de gueules",
+    "file": "Ecu d'or fretté de gueules.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1539 · maréchal de France",
+    "desc": "François Ier l'élève à la dignité de maréchal en 1538.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Albéric Clément",
+    "blason": "D'azur à la croix recercelée d'argent ; à la cotice de gueules brochante",
+    "file": "Blason fam fr Clément du Mez.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1191 · premier maréchal de France",
+    "desc": "Le premier à porter le titre, en 1190, mort à la troisième croisade.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Corbeil",
+    "blason": "D'or, au dragon volant de sinople, lampassé de gueules",
+    "file": "Blason fr Jean de Corbeil.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1318 · maréchal de France",
+    "desc": "Seigneur de Grez, parent d'Enguerrand de Marigny, conseiller de Philippe le Bel.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Robert de Wavrin",
+    "blason": "D'azur, à l'écusson d'argent, au lambel de gueules, brochant sur-le-tout",
+    "file": "Blason Robert de Wavrin, Seigneur de Saint-Venant (selon Gelre).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "XIVᵉ siècle · maréchal de France",
+    "desc": "Seigneur de Saint-Venant, issu d'une vieille maison du comté de Flandre.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Joseph Fesch",
+    "blason": "D'azur à l'aigle d'or empiétant un foudre du même, le foudre chargé d'un médaillon ovale d'argent, surchargé d'une F de sable",
+    "file": "Blason Joseph Fesch.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "Tpt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise",
+    "meta": "1763–1839 · cardinal, archevêque de Lyon",
+    "desc": "L'oncle de Napoléon Ier. Son écu porte l'aigle impériale et un F.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Pierre de Foix",
+    "blason": "Écartelé de Foix et de Béarn",
+    "file": "COA Cardinal Pierre Ier de Foix.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise",
+    "meta": "1386–1464 · cardinal",
+    "desc": "Légat du pape à Avignon, archevêque d'Arles.",
+    "aVerifier": true
+  },
+  {
+    "nom": "François de Joyeuse",
+    "blason": "Écartelé en 1 et 4 palé d'or et d'azur de six pièces, au chef de gueules chargé de trois hydres à sept têtes aussi d'or et en 2 et 3 d'azur au lion d'argent à la bordure de gueules chargée de fleurs de lys d'or",
+    "file": "Coat of arms of Mgr François de Joyeuse.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "Mathieu CHAINE",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "eglise",
+    "meta": "1562–1615 · cardinal",
+    "desc": "Cardinal et homme politique, l'un des membres éminents de la maison de Joyeuse.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Godfried Danneels",
+    "blason": "D'azur, à la fasce d'argent, accompagnée en chef d'une étoile (6) d'or et en pointe d'un dauphin d'argent",
+    "file": "Coat of arms of Godfried Danneels.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "SajoR",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "groupe": "eglise",
+    "meta": "1933–2019 · cardinal belge",
+    "desc": "Archevêque de Malines-Bruxelles de 1979 à 2010.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Marc Ouellet",
+    "blason": "D'azur à la croix ancrée d'or sur une montagne de trois coupeaux d'argent accostées d'une fleur de lys d'or à dextre et d'une fleur de lys d'argent à senestre",
+    "file": "Coat of arms of Marc Ouellet.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "SajoR",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "groupe": "eglise",
+    "meta": "né en 1944 · cardinal québécois",
+    "desc": "Archevêque de Québec, puis préfet du dicastère pour les évêques.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Carlo Maria Martini",
+    "blason": "D'azur, à l'arbre au naturel, dont le feuillage s'écarte en chef sur un soleil d'or, chargé d'un delta de sable, à la bande d'argent, chargée de trois cœurs de gueules, brochante sur-le-tout",
+    "file": "Cardenal Martini.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "Ivan03",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "eglise",
+    "meta": "1927–2012 · cardinal, archevêque de Milan",
+    "desc": "Jésuite et bibliste, grande figure de l'Église italienne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Giacomo Biffi",
+    "blason": "De gueules, à l'étoile ondoyante (10) d'or",
+    "file": "Coat of arms of Giacomo Biffi.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des cardinaux »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_cardinaux"
+    },
+    "auteur": "SajoR",
+    "lic": "CC BY-SA 2.5",
+    "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "groupe": "eglise",
+    "meta": "1928–2015 · cardinal, archevêque de Bologne",
+    "desc": "Cardinal italien, archevêque de Bologne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Catherine de Médicis",
+    "blason": "Parti de mi-parti de France, qui est d'azur aux trois fleurs de lys d'or et écartelé au I et IV de Médicis, qui est d'or à six boules en orles, la supérieure de France, les autres de gueules, au II et III contre écartelé au 1 et 4 de la Tour qui est d'azur semé de fleurs de lys d'or et à la tour d'argent maçonnée et ouverte de sable, au 2 et 3 d'Auvergne, qui est d'or au gonfanon de gueules frangé de sinople avec sur le tout de Boulogne, qui est d'or à trois tourteaux de gueules",
+    "file": "Arms of Catherina de' Medici.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des reines de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_reines_de_France"
+    },
+    "auteur": "Euryrel",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "reines",
+    "meta": "1519–1589 · reine de France",
+    "desc": "Veuve d'Henri II et mère de trois rois. Ses armes accolent France, Médicis, La Tour, Auvergne et Boulogne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Isabeau de Bavière",
+    "blason": "Parti, de France ancien, qui est d'azur semé de fleurs de lys d'or et de Bavière qui est fuselé en bande d'azur et d'argent",
+    "file": "Coat of Arms of Isabeau of Bavaria (rhombus).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des reines de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_reines_de_France"
+    },
+    "auteur": "Тѳм277",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "reines",
+    "meta": "v. 1370–1435 · reine de France",
+    "desc": "Épouse de Charles VI. Son écu accole France ancien et les fuseaux de Bavière.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Marie de Brabant",
+    "blason": "Parti d'azur semé de fleurs de lys d'or, qui est de France, et de sable, au lion d'or, armé et lampassé de gueules, qui est de Brabant",
+    "file": "COA french queen Marie de Brabant.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des reines de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_reines_de_France"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "reines",
+    "meta": "1254–1322 · reine de France",
+    "desc": "Seconde épouse de Philippe III le Hardi.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Marie-Louise d'Autriche",
+    "blason": "Parti de deux traits ; au premier d'or au lion de gueules armé, lampassé et couronné d'azur ; au deuxième de gueules a la fasce d'argent ; au troisième d'or à la bande de gueules, chargée de trois alérions d'argent",
+    "file": "Blason de Marie-Louise d'Autriche, Impératrice des Français.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial du Premier Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_du_Premier_Empire"
+    },
+    "auteur": "Tretinville",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1791–1847 · impératrice des Français",
+    "desc": "Seconde épouse de Napoléon Ier et mère du roi de Rome.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Joséphine de Beauharnais",
+    "blason": "Écartelé : au premier d'azur à l'aigle impériale d'or, empiétant un foudre du même, au deuxième et troisième d'argent à la fasce de sable surmontée de trois merlettes du même et au quatrième d'or à trois pals de sinople",
+    "file": "Coat of arms of Josephine de Beauharnais.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des ducs de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ducs_de_l%27Empire"
+    },
+    "auteur": "Nanin7",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1763–1814 · impératrice des Français",
+    "desc": "Première épouse de Napoléon Ier, née à la Martinique.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Cambacérès",
+    "blason": "D'or dextrochère au naturel, paré de gueules, rebrassé d'hermine, mouvant de sénestre, chargé des tables de la loi de sable ; le tout accompagné de trois losanges du même ; au chef des Princes Grands Dignitaires",
+    "file": "Coat of Arms of Jean-Jacques-Régis de Cambacérès, Duke of Parma.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des princes de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_princes_de_l%27Empire"
+    },
+    "auteur": "MostEpic",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "empire",
+    "meta": "1753–1824 · archichancelier de l'Empire",
+    "desc": "Juriste du Code civil : son écu montre un bras tenant les tables de la loi.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Charles-François Lebrun",
+    "blason": "De sable, à une louve arrêtée d'or, soutenue du même, surmontée de deux billettes d'argent ; au chef des Princes Grands Dignitaires",
+    "file": "Coat of Arms of Charles-François Lebrun, Duke of Piacenza.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des princes de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_princes_de_l%27Empire"
+    },
+    "auteur": "MostEpic",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "empire",
+    "meta": "1739–1824 · architrésorier de l'Empire",
+    "desc": "Le duc de Plaisance, troisième consul sous le Consulat.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Camille Borghèse",
+    "blason": "Parti : au I, d'azur, à un dragon ailé d'or (Borghesi), au chef du même, chargé d'une aigle de sable, becquée, membrée et couronnée d'or (Saint-Empire) ; au II, de gueules à l'ombrelle à galons de gueules et d'or, sommée d'un globe crucifère d'or, la tige en forme de lance chargée de deux clefs en sautoir avec les pannetons tournés vers l'extérieur et vers le haut, l'une d'or et l'autre d'argent, liées de gueules (gonfalonnier de l'Église) ; au chef de prince souverain brochant",
+    "file": "Coat of Arms of Camillo Borghese, 6th Prince of Sulmona.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des princes de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_princes_de_l%27Empire"
+    },
+    "auteur": "MostEpic",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "empire",
+    "meta": "1775–1832 · prince de l'Empire",
+    "desc": "Prince romain, époux de Pauline Bonaparte et donc beau-frère de Napoléon Ier.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Félix Baciocchi",
+    "blason": "Coupé d'argent sur gueules (Lucca) ; au chef de prince souverain brochant",
+    "file": "Coat of Arms of Félix Baciocchi.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des princes de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_princes_de_l%27Empire"
+    },
+    "auteur": "Adelbrecht",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1762–1841 · prince de Lucques et de Piombino",
+    "desc": "Général corse, époux d'Élisa Bonaparte.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Eugène de Beauharnais",
+    "blason": "D'azur à l'aigle d'or empiétant un foudre du même, le foudre chargé d'un médaillon ovale d'argent surchargé d'un E de sable",
+    "file": "Grand coat of arms of Eugène de Beauharnais.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des princes de l'Empire »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_princes_de_l%27Empire"
+    },
+    "auteur": "Avalokitesvara",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "empire",
+    "meta": "1781–1824 · vice-roi d'Italie",
+    "desc": "Fils adoptif de Napoléon Ier. Son écu porte l'aigle impériale et un E.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jacques de Molay",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur à la bande d'or",
+    "file": "Blason Jacques de Molay.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "mort en 1314 · dernier maître du Temple",
+    "desc": "Brûlé à Paris sur ordre de Philippe le Bel. Il écartèle la croix du Temple et les armes de sa famille.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Robert de Sablé",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'or à l'aigle d'azur",
+    "file": "Blason Robert de Sablé.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud, Kontributor 2K",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "mort en 1193 · maître du Temple",
+    "desc": "Baron du Maine, onzième maître de l'ordre.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Gérard de Ridefort",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'or au lion de sable armé et lampassé de gueules",
+    "file": "Blason Gérard de Ridefort.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "mort en 1189 · maître du Temple",
+    "desc": "Dixième maître de l'ordre, mort devant Acre.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guillaume de Beaujeu",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'or, au lion de sable, au lambel de cinq pendants de gueules, brochant sur le tout",
+    "file": "Blason Guillaume de Beaujeu.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Fauntleroy, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "v. 1233–1291 · maître du Temple",
+    "desc": "Le dernier maître en Terre sainte, mort à la chute de Saint-Jean-d'Acre.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bertrand de Blanquefort",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 coupé en 3 et parti, en 1, 4, 5 et 8 d'or et en 2, 3 7 et 6 de gueules",
+    "file": "Blason Bertrand de Blanquefort.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "1109–1169 · maître du Temple",
+    "desc": "Sixième maître de l'ordre, originaire de Guyenne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Philippe de Milly",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 de sable au chef d'argent",
+    "file": "Blason Philippe de Milly.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "1120–1171 · maître du Temple",
+    "desc": "Seigneur de Naplouse puis d'Outre-Jourdain avant d'entrer au Temple.",
+    "aVerifier": true
+  },
+  {
+    "nom": "André de Montbard",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur aux deux bars d'argent",
+    "file": "Blason André de Montbard.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "1103–1156 · maître du Temple",
+    "desc": "L'un des neuf premiers chevaliers de l'ordre. Ses deux bars disent son nom.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Robert de Craon",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 losangé d'or et de gueules",
+    "file": "Blason Robert de Craon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "temple",
+    "meta": "mort en 1149 · maître du Temple",
+    "desc": "Le deuxième maître de l'ordre.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Richard de Cornouailles",
+    "blason": "D'argent, au lion de gueules armé, lampassé et couronné d'or, et à la bordure de sable besantée aussi d'or",
+    "file": "Arms of Richard of Cornwall, Earl of Cornwall.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des blasons personnels »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_blasons_personnels"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "reines",
+    "meta": "1209–1272 · roi des Romains",
+    "desc": "Fils de Jean sans Terre, élu roi des Romains en 1257.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean III Sobieski",
+    "blason": "Écartelé en 1 et 4 de Pologne, qui est de gueules, à l'aigle d'argent, becquée, languée, membrée, liée et couronnée d'or et en 2 et 3 de Lithuanie qui est de gueules, à un chevalier, armé de toutes pièces d'argent, monté sur un cheval galopant du même, bridé d'or, caparaçonné d'azur, tenant de sa main dextre une épée et de sa senextre un bouclier ovale d'azur chargé d'une croix de Lorraine d'or, sur le tout de Sobieski, qui est d'azur, à un bouclier d'or, orné d'un foudre du même",
+    "file": "POL COA under the rule of John III.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des rois de Pologne »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_rois_de_Pologne"
+    },
+    "auteur": "Stanisław May",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "reines",
+    "meta": "1629–1696 · roi de Pologne",
+    "desc": "Le vainqueur des Ottomans devant Vienne, en 1683.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Stanislas Leszczyński",
+    "blason": "Écartelé en 1 et 4 de Pologne, qui est de gueules, à l'aigle d'argent, becquée, languée, membrée, liée et couronnée d'or et en 2 et 3 de Lithuanie qui est de gueules, à un chevalier, armé de toutes pièces d'argent, monté sur un cheval galopant du même, bridé d'or, caparaçonné d'azur, tenant de sa main dextre une épée et de sa senextre un bouclier ovale d'azur chargé d'une croix de Lorraine d'or, sur le tout de Leszczyński, qui est d'argent à la tête de buffle de sable accorné et annelé d'or",
+    "file": "COA polish king Stanislas Leszczynski.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des rois de Pologne »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_rois_de_Pologne"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "reines",
+    "meta": "1677–1766 · roi de Pologne, duc de Lorraine",
+    "desc": "Beau-père de Louis XV, il finit sa vie à Lunéville.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ferry Pasté",
+    "blason": "D'hermine à trois chevrons de gueules",
+    "file": "Blason Ferry Pasté.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "XIIIᵉ siècle · maréchal de France",
+    "desc": "Seigneur de Challerange et de Saint-Pierre-à-Arnes.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean Guillaume de Beaumont",
+    "blason": "Gironné d'argent et de gueules",
+    "file": "Blason Guillaume de Beaumont.fr.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "ByacC",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1257 · maréchal de France",
+    "desc": "Seigneur de Beaumont-du-Gâtinais, fils d'Adam II de Beaumont.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lancelot de Saint-Maard",
+    "blason": "De sable à une bande de fusées d'argent",
+    "file": "Blason famille fr de Saint-Maard.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "XIIIᵉ siècle · maréchal de France",
+    "desc": "L'un des maréchaux du temps de Saint Louis et de Philippe III.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Raoul Le Flamenc",
+    "blason": "De sable à dix losanges d'argent, 3, 3, 3 et 1",
+    "file": "Blason famille fr Le Flamenc de Cany.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Horadd",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "XIIIᵉ siècle · maréchal de France",
+    "desc": "Seigneur de Cany, maréchal à la fin du XIIIᵉ siècle.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Foulques du Merle",
+    "blason": "De gueules, à trois quintefeuilles d'argent, posés 2 & 1",
+    "file": "Blason famille fr du Merle.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Tretinville",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "XIVᵉ siècle · maréchal de France",
+    "desc": "Seigneur du Merle-Raoul, maréchal normand.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de La Baume",
+    "blason": "D'or, à la bande vivrée d'azur",
+    "file": "Blason famille fr de La Baume de Montrevel.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Manassas",
+    "lic": "CC BY 2.5",
+    "licurl": "https://creativecommons.org/licenses/by/2.5",
+    "groupe": "marechaux",
+    "meta": "mort en 1435 · maréchal de France",
+    "desc": "Il sert le roi de France, les ducs de Bourgogne et les comtes de Savoie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Philippe de Culant",
+    "blason": "D'azur semé d'étoiles d'or au lion du même brochant",
+    "file": "Blason fam fr de Culant 2.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1454 · maréchal de France",
+    "desc": "Sénéchal du Limousin, maréchal sous Charles VII.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Claude de Beauvoir",
+    "blason": "D'azur, à la bande d'or, acc. de sept billettes du même, trois de chaque côté de la bande et la septième au canton senestre du chef",
+    "file": "Blason fam fr de Beauvoir-Chastellux.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1453 · maréchal de France",
+    "desc": "Seigneur de Chastellux en Bourgogne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Louis Prévost de Sansac",
+    "blason": "D'argent, à deux fasces de sable, acc. de six merlettes du même, posées 3, 2 et 1",
+    "file": "Blason fam fr Prévost de Sansac.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "XVIᵉ siècle · maréchal de France",
+    "desc": "Grand fauconnier de France et lieutenant du roi en Guyenne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jacques Rouxel de Grancey",
+    "blason": "D'argent, à trois coqs de gueules, becqués, membrés et crêtés d'or",
+    "file": "Blason fam fr Rouxel de Grancey.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1603–1680 · maréchal de France",
+    "desc": "Comte de Grancey et de Médavy.",
+    "aVerifier": true
+  },
+  {
+    "nom": "René de Froulay de Tessé",
+    "blason": "D'argent, au sautoir de gueules, bordé-denché de sable",
+    "file": "Blason Ambrieres-les-Vallees.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Flying jacket",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+    "groupe": "marechaux",
+    "meta": "1648–1725 · maréchal de France",
+    "desc": "Il sert Louis XIV comme soldat et comme diplomate.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean-Baptiste Budes de Guébriant",
+    "blason": "D'argent, au pin arraché de sinople, fruité de trois pièces d'or, le tronc accosté de 2 fleurdelys de gueules",
+    "file": "Blason famille bzh Budes 1.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Thom.Lanaud",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "groupe": "marechaux",
+    "meta": "1602–1643 · maréchal de France",
+    "desc": "Ce Breton meurt de sa blessure au siège de Rottweil, peu après son bâton.",
+    "aVerifier": true
+  },
+  {
+    "nom": "François de La Grange d'Arquian",
+    "blason": "D'azur, à trois ranchiers (cerfs) d'or",
+    "file": "Blason fam fr La Grange d'Arquian.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "v. 1554–1617 · maréchal de France",
+    "desc": "Le maréchal de Montigny, seigneur de Montigny et de Séry.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Antoine de Nicolaï",
+    "blason": "D'azur au lévrier courant d'argent, colleté d'un collier de gueules, bordé, bouclé et cloué d'or",
+    "file": "Blason de la Maison de Nicolaï.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Maclauren",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1712–1777 · maréchal de France",
+    "desc": "Il meurt à Paris, où il était né.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Noël de Vaux",
+    "blason": "D'or, à la bande de gueules, chargée de trois croissants d'argent, les cornes dirigées vers le canton dextre du chef",
+    "file": "Blason fam fr Jourda de Vaux.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1705–1788 · maréchal de France",
+    "desc": "Le vainqueur de la Corse, en 1769.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean de Schulemberg",
+    "blason": "De sable, au chef d'azur, ch. de quatre épées rangées d'argent, garnies d'or, posées en pals, les pointes en haut",
+    "file": "Blason Jean de Schulemberg.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1597–1671 · maréchal de France",
+    "desc": "Comte de Montdejeu, militaire d'origine prussienne.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Auguste Regnaud de Saint-Jean d'Angély",
+    "blason": "D'azur chargé en abîme d'un coq d'argent ayant la patte droite posée sur un 4 de sable, surmonté en chef d'une étoile d'argent ; bordure componée d'or et de sable de seize pièces",
+    "file": "Blason fam fr Regnaud de Saint-Jean d'Angély.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1794–1870 · maréchal de France",
+    "desc": "Il commande la garde impériale de Napoléon III à Magenta.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Antoine de Lettes",
+    "blason": "D'or à trois bandes de gueules au chef d'azur chargé de trois étoiles d'or",
+    "file": "Blason Antoine de Lettes-Desprez de Montpezat.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1490–1544 · maréchal de France",
+    "desc": "Seigneur de Montpezat en Quercy.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Pierre de Rieux",
+    "blason": "D'azur, à dix besants d'or, 3, 3, 3 et 1",
+    "file": "Blason maison fr de Rieux.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1389–1439 · maréchal de France",
+    "desc": "Seigneur de Rochefort, il combat aux côtés de Jeanne d'Arc.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Héric de Beaujeu",
+    "blason": "D'or billeté de sable, au lion du second armée et lampassé de gueules, le tout dans une bordure engrêlée du même",
+    "file": "Blason Héric de Beaujeu.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "mort en 1270 · maréchal de France",
+    "desc": "Seigneur d'Herment, il suit Saint Louis à Tunis.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Léonor du Maine du Bourg",
+    "blason": "De gueules, à la fleur de lys d'or",
+    "file": "Blason ville fr oise marquéglise.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Chatsam",
+    "lic": "domaine public",
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+    "groupe": "marechaux",
+    "meta": "1655–1739 · maréchal de France",
+    "desc": "Comte du Bourg, maréchal en 1724, mort à Strasbourg.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Charles O'Brien de Thomond",
+    "blason": "Écartelé: aux 1 et 4, de gueules, à trois léopards partis d'or et d'argent, l'un sur l'autre (O'Bryen) ; au 2, d'argent, à trois piles de gueules, dirigées vers la pointe; au 3, d'or, à un phéon d'azur",
+    "file": "Blason Charles O'Brien de Thomond.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1699–1761 · maréchal de France",
+    "desc": "Ce noble irlandais jacobite commande la brigade irlandaise à Fontenoy.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Achille Baraguey d'Hilliers",
+    "blason": "D'argent, à la bande de gueules, acc. en chef d'une merlette de sable, au chef d'azur, ch. de trois chausse-trapes d'argent",
+    "file": "Blason fam fr Baraguey d’Hilliers.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1795–1878 · maréchal de France",
+    "desc": "Il prend Bomarsund en 1854, pendant la guerre de Crimée.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Horace Sébastiani",
+    "blason": "De gueules à la porte de ville flanquée de deux tours (parfois donjonnées) crénelées et soutenues d'or, à la herse de sable, surmontée d'un comble, parti de deux traits, formant trois quartiers, le premier des comtes militaires de l'Empire, le deuxième de gueules au lion d'or, le troisième de sinople au croissant d'argent, les pointes à dextre embrassant une étoile du même",
+    "file": "Blason Horace Sébastiani.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "empire",
+    "meta": "1772–1851 · maréchal de France",
+    "desc": "Général d'Empire corse, diplomate et homme politique.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bertrand Clauzel",
+    "blason": "Écartelé : au 1, d'azur, à trois étoiles mal-ordonnées d'argent; aux 2 et 3, d'azur, à deux chevrons d'or, acc. de trois mains dextres appaumées d'argent; au 4, d'or, à trois crabes de gueules, les tenailles en haut",
+    "file": "Blason Bertrand Clauzel (Restauration).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "empire",
+    "meta": "1772–1842 · maréchal de France",
+    "desc": "Général de la Révolution et de l'Empire, gouverneur de l'Algérie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean-Baptiste Vaillant",
+    "blason": "Écartelé: au 1, d'azur, à une épée d'argent, garnie d'or; au 2, de gueules, à une tour d'argent, ouverte et ajourée de sable; au 3, de gueules, à un croissant d'argent, surmonté d'une étoile du même; au 4, d'azur, à deux clés d'or, passées en sautoir",
+    "file": "Blason Jean Baptiste Philibert Vaillant.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "marechaux",
+    "meta": "1790–1872 · maréchal de France",
+    "desc": "Ingénieur militaire, ministre de la Guerre de Napoléon III.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Robert Stuart d'Aubigny",
+    "blason": "Écartelé : aux I et IV d'azur à trois fleurs de lys d'or, à la bordure de gueules chargée de huit fermaux d'or ; aux II et III d'or, à la fasce échiquetée d'argent et d'azur de trois tires (de Stuart) à la cotice de gueules",
+    "file": "Blason-John-Stuart-of-Darnley.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "groupe": "marechaux",
+    "meta": "1470–1544 · maréchal de France",
+    "desc": "Ce Français d'origine écossaise, seigneur d'Aubigny, commande dans les guerres d'Italie.",
+    "aVerifier": true
+  },
+  {
+    "nom": "Rémy Exelmans",
+    "blason": "Écartelé : au I, du quartier des Comtes militaires de l'Empire ; au II, d'argent, au cheval effaré de sable ; au III, parti d'azur, à la ruche d'or et d'azur à la croix d'or (La Croix de Ravignan) ; au IV, d'argent, à trois merlettes de sable",
+    "file": "Blason Rémy Joseph Isidore Exelmans (1775-1852) (Seconde République).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "groupe": "empire",
+    "meta": "1775–1852 · maréchal de France",
+    "desc": "Général de cavalerie de Napoléon, maréchal sous la Seconde République.",
+    "aVerifier": true
   }
 ]

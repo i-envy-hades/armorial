@@ -29,7 +29,8 @@
   "Échiqueté": "Chequy",
   "Fuselé": "Fusily",
   "Fuselé en bande": "Fusily in bend",
-  "Fuselé en barre": "Fusily in bend sinister"
+  "Fuselé en barre": "Fusily in bend sinister",
+  "Coupé crénelé": "Per fess embattled"
  },
  "pieces": {
   "Fasce": "Fess",
@@ -122,7 +123,29 @@
   "Roue": "Wheel",
   "Cygne": "Swan",
   "Trèfle": "Trefoil",
-  "Merlette": "Martlet"
+  "Merlette": "Martlet",
+  "Quintefeuille": "Cinquefoil",
+  "Croix ancrée": "Cross moline",
+  "Soleil": "Sun",
+  "Fermail": "Buckle",
+  "Vire": "Annulet (vire)",
+  "Losange": "Lozenge",
+  "Molette": "Mullet",
+  "Léopard lionné": "Lion rampant guardant",
+  "Rencontre de cerf": "Stag's head caboshed",
+  "Moucheture d'hermine": "Ermine spot",
+  "Croix tréflée": "Cross bottony",
+  "Tau": "Tau cross",
+  "Tour": "Tower",
+  "Flanchis": "Flanchis",
+  "Annelet": "Annulet",
+  "Croix de Malte": "Maltese cross",
+  "Gerbe": "Garb",
+  "Soleil figuré": "Sun in splendour",
+  "Cheval cabré": "Horse rampant",
+  "Couronne antique": "Antique crown",
+  "Croix de Jérusalem": "Jerusalem cross",
+  "Loup ravissant": "Wolf rampant"
  },
  "rubriques": {
   "Personnages": "People",
