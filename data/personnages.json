@@ -2915,5 +2915,1674 @@
     "meta": "1775–1852 · maréchal de France",
     "desc": "Général de cavalerie de Napoléon, maréchal sous la Seconde République.",
     "aVerifier": true
+  },
+  {
+    "nom": "Roi Arthur",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Bretagne",
+    "desc": "Le souverain de la Table ronde. Les armoriaux lui donnent treize couronnes, une par royaume conquis selon la tradition.",
+    "blason": "D'azur à treize couronnes d'or, 4, 4, 4 et 1",
+    "file": "Blason imaginaire d'Arthur.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ban de Bénoïc",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Bénoïc",
+    "desc": "Le père de Lancelot du Lac.",
+    "blason": "D'argent à trois bandes de gueules",
+    "file": "Blason Lancelot.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Gauvain",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Neveu d'Arthur et l'un des principaux héros de la légende. Ses frères reprennent son aigle en la brisant.",
+    "blason": "De pourpre à l'aigle bicéphale d'or becquée et membrée d'azur",
+    "file": "Blason imaginaire de Gauvain.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Perceval",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le chevalier du Graal chez Chrétien de Troyes.",
+    "blason": "De pourpre semé de croisettes d'or",
+    "file": "Blason Perceval.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Tristan",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "L'amant d'Iseut. Sa devise dans l'armorial : « C'est pour Yseut ».",
+    "blason": "De sinople au lion d'or, armé et lampassé de gueules",
+    "file": "Blason imaginaire de Tristan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bohort",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Cousin de Lancelot et l'un des trois élus de la quête du Graal.",
+    "blason": "D'hermine à trois bandes de gueules",
+    "file": "Blason imaginaire Bohort.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Ssire",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Hector des Mares",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Demi-frère de Lancelot. Son soleil brise les bandes de la famille.",
+    "blason": "D'argent à trois bandes de gueules, un soleil d'azur brochant",
+    "file": "Blason Hector des mares.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Keu",
+    "groupe": "table",
+    "meta": "légende arthurienne · sénéchal d'Arthur",
+    "desc": "Frère nourricier et sénéchal du roi, d'où les clefs de son écu.",
+    "blason": "D'azur à deux clefs d'argent adossées en pal",
+    "file": "Blason Keu table ronde.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bédivère",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "L'un des plus anciens compagnons d'Arthur dans la tradition galloise.",
+    "blason": "D'or au gonfanon de gueules",
+    "file": "Blason imaginaire de Bédoier.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Sagramor",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Chevalier des romans de Chrétien de Troyes.",
+    "blason": "De gueules à trois étoiles d'or, au franc-quartier d'argent chargé d'une étoile de sable",
+    "file": "Blason Sagremor le Desreez.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lionel",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Fils aîné du roi Bohort de Gaunes et cousin de Lancelot.",
+    "blason": "D'argent semé d'étoiles de sable, à trois bandes de gueules brochant",
+    "file": "Blason Lionel table ronde.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Mordred",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Fils d'Arthur et de sa demi-sœur Morgause, il cause la chute du royaume.",
+    "blason": "De pourpre à l'aigle bicéphale d'or, au chef d'argent",
+    "file": "Blason Mordret.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Palamède",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le rival puis le compagnon de Tristan.",
+    "blason": "Échiqueté d'argent et de sable",
+    "file": "Blason Palamède.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Dinadan",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le chevalier railleur du Tristan en prose.",
+    "blason": "D'argent au lion de sable, armé et lampassé de sinople",
+    "file": "Blason imaginaire de Dinadan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Galehaut",
+    "groupe": "table",
+    "meta": "légende arthurienne · seigneur des Îles Lointaines",
+    "desc": "Le grand ami de Lancelot, d'abord ennemi d'Arthur.",
+    "blason": "D'argent semé d'étoiles d'azur, au lion de gueules armé et lampassé de sinople brochant",
+    "file": "Blason Galehaut.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Agravain",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Frère de Gauvain. Il brise l'aigle familiale d'une fasce.",
+    "blason": "De pourpre à l'aigle bicéphale d'or membrée et becquée de gueules, à la fasce de sinople brochant",
+    "file": "Blason Agravain.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Gareth",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Frère de Gauvain. Il brise l'aigle familiale d'une cotice.",
+    "blason": "De pourpre à l'aigle bicéphale d'or becquée et membrée de gueules, à la cotice en bande du même brochant",
+    "file": "Blason imaginaire de Gaheriet.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Pellinore",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi",
+    "desc": "Le roi qui poursuit la Bête Glatissante, père de Perceval dans certaines versions.",
+    "blason": "D'or semé de croisettes d'azur",
+    "file": "Blason Pellinor.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Girflet",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "L'un des derniers compagnons d'Arthur dans certaines versions.",
+    "blason": "D'or semé de chardons de sable",
+    "file": "Blason Girflet.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Yder",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Héros d'un roman en vers du début du XIIIᵉ siècle.",
+    "blason": "De gueules à trois têtes de lion d'or, lampassées de sable",
+    "file": "Blason imaginaire d'Yder.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Calogrenant",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le cousin d'Yvain, dont le récit ouvre le Chevalier au lion.",
+    "blason": "De gueules à une guivre d'or",
+    "file": "Blason Calogrenant.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Méliadus de Léonois",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Léonois",
+    "desc": "Le père de Tristan. Sa devise : « À la verdure ».",
+    "blason": "De sinople plain",
+    "file": "Blason Méliadus de Léonois.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lamorat de Listenois",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Fils du roi Pellinore.",
+    "blason": "De pourpre au léopard d'argent armé de gueules",
+    "file": "Blason imaginaire d'Agloval de Listenois.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Léodagan",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Carmélide",
+    "desc": "Le père de Guenièvre et le beau-père d'Arthur.",
+    "blason": "De sable au léopard d'or, armé et lampassé de gueules",
+    "file": "Blason imaginaire de Léodegan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Baudemagus",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Gorre",
+    "desc": "Souverain du royaume de Gorre et chevalier de la Table ronde.",
+    "blason": "De gueules aux trois gants d'argent",
+    "file": "Blason imaginaire de Baudemagu.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guiron le Courtois",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Héros d'un vaste roman du XIIIᵉ siècle. Son écu est d'un seul métal, sans aucune figure.",
+    "blason": "D'or plain",
+    "file": "Blason imaginaire de Guiron le Courtois.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Geraint",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le héros gallois que les romans français appellent Érec.",
+    "blason": "D'or à trois têtes de serpent de gueules languées de sinople",
+    "file": "Blason Érec.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Mador de la Porte",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à sept pommes d'argent ombrées de gueules",
+    "file": "Blason imaginaire de Maldor de la Porte.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Sénèque",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guivret le Petit",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le petit roi, ami d'Érec chez Chrétien de Troyes.",
+    "blason": "Coupé-émanché d'argent et de gueules",
+    "file": "Blason Guivret le Petit.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Kahedin",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le frère d'Iseut aux Blanches Mains.",
+    "blason": "De gueules à trois macles d'or",
+    "file": "Blason Kahedin.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guinglain",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le fils de Gauvain, héros du Bel Inconnu.",
+    "blason": "D'argent à un bâton noueux de gueules",
+    "file": "Blason imaginaire de Guinglan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Tor",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Un fils du roi Pellinore, fait chevalier par Arthur.",
+    "blason": "D'or semé de croisettes de sable",
+    "file": "Blason Tor.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Karados",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le héros au bras court du Livre de Caradoc.",
+    "blason": "D'azur à une couronne d'argent",
+    "file": "Blason Karados.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Dodinel le Sauvage",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "D'argent à l'aigle d'azur becquée et membrée d'or",
+    "file": "Blason imaginaire de Dodinel le Sauvage.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Brandelis",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De gueules à trois épées d'argent mal ordonnées, garnies et pommetées d'azur",
+    "file": "Blason imaginaire de Brandelis.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lambègue le Galois",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "D'argent à trois annelets de gueules",
+    "file": "Blason imaginaire de Lambègue le Galois.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Sadoc de Vencon",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "Fascé-ondé d'argent et d'azur",
+    "file": "Blason Sadoc de Vencon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Brun sans Pitié",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le félon des romans arthuriens, ennemi des chevaliers errants.",
+    "blason": "De sable à un dragon d'argent",
+    "file": "Blason imaginaire de Brun sans Pitié.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Alixandre l'Orphelin",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Neveu du roi Marc, héros du Tristan en prose.",
+    "blason": "De sinople au lion d'argent",
+    "file": "Blason imaginaire d'Alixandre l'Orphelin.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Melian de Lis",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De gueules à un renard d'or, armé et lampassé d'azur",
+    "file": "Blason Melian de Lis.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ségurant le Brun",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le « chevalier au dragon », héros d'un roman du XIIIᵉ siècle.",
+    "blason": "D'or à un dragon de sable armé et langué de sinople",
+    "file": "Blason Seguran le Brun.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ferrant du Tertre",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De gueules à un ours d'or armé de sable",
+    "file": "Blason Ferrant du Tertre.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Le Laid Hardi",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "Losangé d'argent et de sable",
+    "file": "Blason imaginaire de Le Lais Hardi.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Patrides au Cercle d'Or",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De gueules au chef d'or, au lion de sable armé et lampassé de sinople brochant",
+    "file": "Blason Patrides au Cercle d’Or.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Claudas",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de la Terre Déserte",
+    "desc": "L'ennemi du roi Ban, qui s'empare de son royaume de Bénoïc.",
+    "blason": "D'azur à un pin d'or",
+    "file": "Blason Claudas.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Pharamond",
+    "groupe": "table",
+    "meta": "légende arthurienne · roi de Gaule",
+    "desc": "Le roi franc légendaire, passé dans les romans arthuriens. Ses crapauds rappellent les anciennes armes prêtées aux Francs.",
+    "blason": "De sable à trois crapauds d'or",
+    "file": "Blason Pharamon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Arthur le Petit",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à l'arbre d'or",
+    "file": "Blason imaginaire d'Arthur le Petit.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ariohan",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "D'argent à un dragon de sable armé et lampassé de gueules",
+    "file": "Blason imaginaire d'Ariohan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Lanborc du Chatel",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De pourpre au léopard lionné d'argent, armé et lampassé d'azur",
+    "file": "Blason imaginaire de Lanborc du Chatel.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Abilan du Désert",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à un rais d'escarboucle d'or",
+    "file": "Blason imaginaire d'Abilan du Désert.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Balaan",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Le frère de Balin, tué par lui sans le reconnaître.",
+    "blason": "D'argent à un sanglier de sable onglé et défendu de gueules",
+    "file": "Blason imaginaire de Balaan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Blanor",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Un parent de Lancelot : ses bandes reprennent celles de la famille.",
+    "blason": "D'argent semé de croissants de sable, à trois bandes de gueules brochant",
+    "file": "Blason imaginaire de Blanor et de Blioberis.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Mandin l'Envoisié",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De gueules à une sirène d'argent se peignant, écaillée de pourpre",
+    "file": "Blason Imaginaire Mandin l Envoisie.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Bibar",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Mirandon de la Tamise",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à un moulin à vent d'or",
+    "file": "Blason Mirandon de la Tamise.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Courant de Roche Dure",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à trois lapins d'argent, onglés de gueules",
+    "file": "Blason Courant de Roche Dure.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Broadas l'Espagnol",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable à l'écrevisse d'or posée en pal",
+    "file": "Blason imaginaire de Broadas l'Espagnol.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Sibilias aux Dures Mains",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "D'or à un feu de gueules",
+    "file": "Blason Sibilias aux Dures Mains.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Amant le Bel Jouteur",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De sable au visage de femme de carnation chevelée d'or",
+    "file": "Blason imaginaire Amant le Bel Jouteur.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Ssire",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Desier le Fier",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "D'argent à une hydre à sept têtes de gueules, languée de sinople",
+    "file": "Blason imaginaire de Desier le Fier.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Yves LG",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Galegantin de Norgalles",
+    "groupe": "table",
+    "meta": "légende arthurienne · Table ronde",
+    "desc": "Compagnon mineur du cycle arthurien, connu surtout par les armoriaux de la Table ronde.",
+    "blason": "De pourpre au lion d'argent armé et lampassé de sinople",
+    "file": "Blason Galegantin de Norgalles.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des chevaliers de la Table ronde »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_chevaliers_de_la_Table_ronde",
+      "note": "Armes imaginaires : les armoriaux de la fin du Moyen Âge prêtent un écu aux héros des romans."
+    },
+    "auteur": "Chatsam",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Anne Boleyn",
+    "groupe": "reines",
+    "meta": "v. 1501–1536 · reine d'Angleterre",
+    "desc": "Deuxième épouse d'Henri VIII et mère d'Élisabeth Iʳᵉ, exécutée à la Tour de Londres.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 écartelé de six quartiers, dont deux concessions royales",
+    "file": "Coat of Arms of Anne Boleyn.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jeanne Seymour",
+    "groupe": "reines",
+    "meta": "v. 1508–1537 · reine d'Angleterre",
+    "desc": "Troisième épouse d'Henri VIII. Son écu porte une concession royale aux léopards.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 écartelé de six quartiers, dont une concession d'or à la pile de gueules chargée de trois léopards d'or",
+    "file": "Coat of Arms of Jane Seymour.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Catherine d'Aragon",
+    "groupe": "reines",
+    "meta": "1485–1536 · reine d'Angleterre",
+    "desc": "Fille des Rois catholiques, première épouse d'Henri VIII. Le refus de l'annulation mène à la rupture avec Rome.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 les armes de ses parents, Castille, León, Aragon et Sicile",
+    "file": "Coat of Arms of Catherine of Aragon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Anne de Clèves",
+    "groupe": "reines",
+    "meta": "1515–1557 · reine d'Angleterre",
+    "desc": "Quatrième épouse d'Henri VIII, mariage annulé au bout de six mois.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 écartelé de sept quartiers, quatre en chef et trois en pointe",
+    "file": "Coat of Arms of Anne of Cleves.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Catherine Howard",
+    "groupe": "reines",
+    "meta": "v. 1523–1542 · reine d'Angleterre",
+    "desc": "Cinquième épouse d'Henri VIII, exécutée à Londres.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 écartelé de quatre quartiers, dont deux concessions royales",
+    "file": "Coat of Arms of Catherine Howard.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Catherine Parr",
+    "groupe": "reines",
+    "meta": "1512–1548 · reine d'Angleterre",
+    "desc": "Sixième et dernière épouse d'Henri VIII, qui lui survit.",
+    "blason": "Parti : au 1 écartelé de France moderne et d'Angleterre ; au 2 écartelé de six quartiers, dont une concession d'argent à la pile de gueules entre six roses",
+    "file": "Coat of Arms of Catherine Parr.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Anne de Danemark",
+    "groupe": "reines",
+    "meta": "1574–1619 · reine d'Angleterre et d'Écosse",
+    "desc": "Épouse de Jacques Iᵉʳ, à qui elle apporte les armes danoises.",
+    "blason": "Parti : au 1 les armes royales des Stuart ; au 2 les armes de Danemark",
+    "file": "Coat of Arms of Anne of Denmark.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison Stuart »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_Stuart",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Henriette-Marie de France",
+    "groupe": "reines",
+    "meta": "1609–1669 · reine d'Angleterre",
+    "desc": "Fille d'Henri IV et épouse de Charles Iᵉʳ : les lis de sa famille côtoient ceux que revendique l'Angleterre.",
+    "blason": "Parti : au 1 les armes royales des Stuart ; au 2 d'azur à trois fleurs de lys d'or",
+    "file": "Coat of Arms of Henrietta Maria of France.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison Stuart »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_Stuart",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bérangère de Navarre",
+    "groupe": "reines",
+    "meta": "v. 1165–1230 · reine d'Angleterre",
+    "desc": "L'épouse de Richard Cœur de Lion, mariée à Chypre pendant la troisième croisade.",
+    "blason": "D'azur à la croix pommetée d'argent",
+    "file": "Arms of Berengaria of Navarre.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Plantagenêts »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Plantagen%C3%AAts"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jeanne Grey",
+    "groupe": "reines",
+    "meta": "1537–1554 · reine d'Angleterre pour neuf jours",
+    "desc": "Proclamée reine en juillet 1553, renversée par Marie Iʳᵉ et exécutée.",
+    "blason": "Fascé d'argent et d'azur de six pièces, trois torteaux en chef, au lambel à trois pendants d'hermine",
+    "file": "Blason de Sir Thomas Grey.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor"
+    },
+    "auteur": "Bear17",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Marguerite Beaufort",
+    "groupe": "reines",
+    "meta": "1443–1509 · mère d'Henri VII",
+    "desc": "Mère du premier roi Tudor. La bordure componée marque la branche bâtarde des Beaufort.",
+    "blason": "Écartelé de France et d'Angleterre, à une bordure componée d'argent et d'azur (Beaufort)",
+    "file": "Beaufort Arms (France modern).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guy de Lusignan",
+    "groupe": "reines",
+    "meta": "mort en 1194 · roi de Jérusalem",
+    "desc": "Noble poitevin, roi de Jérusalem puis seigneur de Chypre. Il perd Jérusalem à Hattin en 1187.",
+    "blason": "Écartelé d'azur à la croix d'argent et d'un burelé d'argent et d'azur de huit pièces, au lion de gueules armé, lampassé et couronné d'or brochant sur le tout",
+    "file": "Blason Guy de Lusignan.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial d'Orient »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_d%27Orient"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Owen Tudor",
+    "groupe": "brisures",
+    "meta": "v. 1400–1461 · noble gallois",
+    "desc": "Le grand-père d'Henri VII, époux secret de Catherine de Valois. Il est à l'origine du nom des Tudor.",
+    "blason": "De gueules, au chevron d'hermine, accompagné de trois casques fermés d'argent, tarés de profil",
+    "file": "Armoiries Owen Tudor.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor"
+    },
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jasper Tudor",
+    "groupe": "brisures",
+    "meta": "1431–1495 · comte de Pembroke",
+    "desc": "Oncle d'Henri VII : la bordure aux martinets distingue ses armes de celles du roi.",
+    "blason": "Écartelé de France et d'Angleterre, à une bordure d'azur chargée de quatorze martinets d'or",
+    "file": "Arms of Jasper Tudor, Duke of Bedford.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Tudor »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Tudor"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Roger de Clarendon",
+    "groupe": "brisures",
+    "meta": "mort en 1402 · fils naturel du Prince Noir",
+    "desc": "Les plumes d'autruche rappellent l'insigne de son père, le Prince Noir.",
+    "blason": "D'or, à la bande de sable chargée de trois plumes d'autruche d'argent traversant un phylactère du même",
+    "file": "Arms of Sir Roger de Clarendon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Plantagenêts »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Plantagen%C3%AAts"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jean Beaufort",
+    "groupe": "brisures",
+    "meta": "v. 1373–1410 · comte de Somerset",
+    "desc": "Fils de Jean de Gand, né hors mariage et légitimé : une brisure de bâtard, en bande sur le parti.",
+    "blason": "Parti, d'argent et d'azur à la bande de gueules brochant sur le parti et chargée de trois léopards d'or au lambel d'azur en chef semé de lys d'or",
+    "file": "Arms of John Beaufort, 1st Earl of Somerset (Bastard).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des Plantagenêts »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_Plantagen%C3%AAts"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Birger Jarl",
+    "groupe": "nord",
+    "meta": "1210–1266 · régent de Suède",
+    "desc": "L'homme d'État suédois à qui l'on attribue la fondation de Stockholm.",
+    "blason": "D'azur semé de cœurs de gueules à trois barres d'argent, au lion d'or brochant sur le tout",
+    "file": "Blason Birger jarl.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial scandinave »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_scandinave"
+    },
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Knut II de Suède",
+    "groupe": "nord",
+    "meta": "mort en 1234 · roi de Suède",
+    "desc": "Roi de Suède de 1229 à 1234, surnommé Knut le Long.",
+    "blason": "D'azur, à une fasce d'argent, accompagnée de deux fasces d'or",
+    "file": "Blason Knut II de Suède.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial scandinave »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_scandinave"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Albert de Mecklembourg",
+    "groupe": "nord",
+    "meta": "1340–1412 · roi de Suède",
+    "desc": "Prince allemand devenu roi de Suède. La tête de buffle est celle du Mecklembourg.",
+    "blason": "Écartelé : 1, d'azur à trois couronnes d'or ; 2, d'or à la tête de buffle de sable, lampassé de gueules et couronné d'or ; 3, coupé de gueules et d'or ; 4, d'azur au griffon d'or, lampassé de gueules",
+    "file": "Armoiries du Roi Albert de Suède de 1363-1389.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial scandinave »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_scandinave"
+    },
+    "auteur": "F5JMH",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Charles VIII de Suède",
+    "groupe": "nord",
+    "meta": "1408–1470 · roi de Suède",
+    "desc": "Karl Knutsson Bonde : le bateau en écusson est celui de sa famille.",
+    "blason": "Écartelé à la croix pattée d'or, cantonnée en 1 et 4 d'azur à trois couronnes d'or, en 2 et 3 d'azur à trois barres d'argent au lion d'or couronné de même ; sur le tout d'or à la coque de bateau de gueules",
+    "file": "Armoiries de Karl Knutson de Suède.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial scandinave »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_scandinave"
+    },
+    "auteur": "F5JMH",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Christian Iᵉʳ de Danemark",
+    "groupe": "nord",
+    "meta": "1426–1481 · roi de Danemark, de Norvège et de Suède",
+    "desc": "Le premier roi de la maison d'Oldenbourg, dont il pose les armes en écusson au cœur de l'écu royal.",
+    "blason": "Écartelé par la croix du Danebrog : Danemark, Suède, Norvège et le dragon des Vandales ; sur le tout, Schleswig, Holstein, Oldenbourg et Delmenhorst",
+    "file": "Armoiries Kristian I de Danemark 1426-1481.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial scandinave »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_scandinave",
+      "note": "Blasonnement abrégé d'après l'armorial cité ; seuls les quartiers principaux sont nommés."
+    },
+    "auteur": "Jacques63",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Évrard des Barres",
+    "groupe": "temple",
+    "meta": "1113–1174 · maître du Temple",
+    "desc": "Troisième maître de l'ordre, qui finit ses jours moine à Clairvaux.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur, au chevron d'or, accompagné de trois coquilles du même",
+    "file": "Blason Évrard des Barres.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Bernard de Tramelay",
+    "groupe": "temple",
+    "meta": "mort en 1153 · maître du Temple",
+    "desc": "Quatrième maître de l'ordre, tué au siège d'Ascalon.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'or au chef de gueules",
+    "file": "Blason Bernard de Tramelay.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Eudes de Saint-Amand",
+    "groupe": "temple",
+    "meta": "mort en 1179 · maître du Temple",
+    "desc": "Capturé par Saladin à la bataille du gué de Jacob, il meurt en captivité.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 de sinople à trois fasces d'argent, au chef engrêlé de même",
+    "file": "Blason Eudes de Saint-Amand.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Kontributor 2K",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Arnaud de Toroge",
+    "groupe": "temple",
+    "meta": "v. 1122–1184 · maître du Temple",
+    "desc": "Catalan, mort à Vérone au cours d'un voyage en Europe.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'argent à la tour de gueules crénelée de trois pièces ouverte d'argent et ajourée et maçonnée de sable",
+    "file": "Blason Arnaud de Toroge.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Gilbert Hérail",
+    "groupe": "temple",
+    "meta": "mort en 1200 · maître du Temple",
+    "desc": "Douzième maître de l'ordre.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'argent à la croix d'azur",
+    "file": "Blason Gilbert Hérail.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guillaume de Chartres",
+    "groupe": "temple",
+    "meta": "mort en 1219 · maître du Temple",
+    "desc": "Quatorzième maître de l'ordre, mort pendant le siège de Damiette.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur à trois bars d'or, posés l'un sur l'autre en demi-cercle, à la bordure componée d'or et de sable de huit pièces",
+    "file": "Blason Guillaume de Chartres (Salles des Croisades).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Edouard-rainaut",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Pierre de Montaigu",
+    "groupe": "temple",
+    "meta": "mort en 1232 · maître du Temple",
+    "desc": "Quinzième maître de l'ordre, de 1219 à 1232.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 de gueules, à une tour d'argent, portillée de sable, mouvant de la pointe et sommée de deux tourtelles d'argent, l'une sur l'autre, le tout maçonné de sable",
+    "file": "Blason Pierre de Montaigu.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Armand de Périgord",
+    "groupe": "temple",
+    "meta": "1178–1247 ? · maître du Temple",
+    "desc": "Seizième maître de l'ordre, de la famille des comtes de Périgord.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 de gueules, à trois lions d'or, armés et couronnés d'azur",
+    "file": "Blason Armand de Périgord.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guillaume de Sonnac",
+    "groupe": "temple",
+    "meta": "mort en 1250 · maître du Temple",
+    "desc": "Mort à Mansourah pendant la croisade de Saint Louis.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'or au lion de sable armée et lampassé de gueules, accompagné de quatorze losanges de gueules rangées en orle",
+    "file": "Blason Guillaume de Sonnac.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Renaud de Vichiers",
+    "groupe": "temple",
+    "meta": "mort en 1256 · maître du Temple",
+    "desc": "Dix-neuvième maître de l'ordre.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 vairé d'argent et d'azur",
+    "file": "Blason Renaud de Vichy.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Kontributor 2K",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Thomas Béraud",
+    "groupe": "temple",
+    "meta": "mort en 1273 · maître du Temple",
+    "desc": "Maître de l'ordre pendant les conquêtes du sultan Baybars.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur aux cinq chevrons d'or",
+    "file": "Blason Thomas Bérard.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Genuensium praesidium",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Thibaud Gaudin",
+    "groupe": "temple",
+    "meta": "1229–1292 · maître du Temple",
+    "desc": "Vingt-deuxième maître de l'ordre, élu après la chute d'Acre en 1291.",
+    "blason": "Écartelé, au 1 et 4 d'argent à la croix pattée de gueules et au 2 et 3 d'azur au lion d'argent",
+    "file": "Blason Thibaud Gaudin.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maîtres de l'ordre du Temple »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_ma%C3%AEtres_de_l%27ordre_du_Temple"
+    },
+    "auteur": "Odejea, Thom.lanaud",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Maurice de Saxe",
+    "groupe": "marechaux",
+    "meta": "1696–1750 · maréchal de France",
+    "desc": "Le vainqueur de Fontenoy (1745), fils naturel du roi de Pologne. Ses armes reprennent le burelé de Saxe, la bande à l'envers en signe de bâtardise.",
+    "blason": "Burelé de dix pièces d'or et de sable au crancelin de sinople, brochant en barre sur le tout",
+    "file": "Blason Hermann-Maurice de Saxe (1696-1750) Maréchal de France.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Patrice de Mac Mahon",
+    "groupe": "marechaux",
+    "meta": "1808–1893 · maréchal de France",
+    "desc": "Duc de Magenta et président de la République de 1873 à 1879, d'une famille d'origine irlandaise.",
+    "blason": "D'argent, à trois lions léopardés de gueules, la tête contournée, armés et lampassés d'azur, l'un sur l'autre ; au chef de gueules semé d'étoiles d'argent",
+    "file": "Blason Patrice de Mac Mahon (1808–1893) duc de Magenta (Second Empire).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Jimmy44",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Guillaume de Joyeuse",
+    "groupe": "marechaux",
+    "meta": "1520–1592 · maréchal de France",
+    "desc": "Vicomte de Joyeuse, chef catholique du Languedoc pendant les guerres de Religion.",
+    "blason": "Écartelé en 1 et 3 d'or à trois pals d'azur, au chef de gueules, chargé de trois hydres d'or (Chateauneuf-Randon de Joyeuse), en 2 et 4 d'azur au lion d'argent à la bordure de gueules chargé de huit fleurs de lis d'or (Saint-Didier)",
+    "file": "Blason de la famille de Chateauneuf-Randon (de Joyeuse Saint-Didier).svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Zardoz91",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Jacques d'Albon de Saint-André",
+    "groupe": "marechaux",
+    "meta": "1512–1562 · maréchal de France",
+    "desc": "Favori d'Henri II, tué à la bataille de Dreux.",
+    "blason": "De sable à la croix d'or, au lambel de trois pendants de gueules brochant sur le tout",
+    "file": "Blason Famille d'Albon de Saint-André.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des maréchaux de France »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_mar%C3%A9chaux_de_France"
+    },
+    "auteur": "Zorlot",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Ferdinand de Serpa",
+    "groupe": "familles",
+    "meta": "1218–1246 · infant de Portugal",
+    "desc": "Fils d'Alphonse II, seigneur de Serpa. La bordure mêle les armes de ses parents, Portugal et Castille.",
+    "blason": "D'argent au vouivre de sinople, à la bordure componée, d'argent chargé d'un écusson d'azur semé de besants d'argent, et de gueules chargé d'un château d'or ouvert et ajouré d'azur",
+    "file": "Blason Ferdinand de Portugal.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial des blasons personnels »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_des_blasons_personnels"
+    },
+    "auteur": "Tpt",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "John Stuart de Bute",
+    "groupe": "familles",
+    "meta": "1713–1792 · Premier ministre britannique",
+    "desc": "Comte de Bute et Premier ministre de George III. Il porte l'échiqueté des Stuart.",
+    "blason": "D'or, à la fasce échiquetée d'azur et d'argent de trois tires, au double trescheur fleuronné et contre-fleuronné de gueules",
+    "file": "Arms of Stuart of Bute.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la maison Stuart »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_maison_Stuart"
+    },
+    "auteur": "Kaliforniyka",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
+  },
+  {
+    "nom": "Antony Armstrong-Jones",
+    "groupe": "esprits",
+    "meta": "1930–2017 · photographe",
+    "desc": "Photographe, comte de Snowdon et époux de la princesse Margaret.",
+    "blason": "De sable au chevron d'argent chargé de quatre pals de gueules, accompagné en chef de deux fleurs de lis d'or et en pointe d'un aigle d'or",
+    "file": "Coat of Arms of Antony, Earl of Snowdon.svg",
+    "blasonSrc": {
+      "label": "Wikipédia, « Armorial de la famille royale britannique »",
+      "url": "https://fr.wikipedia.org/wiki/Armorial_de_la_famille_royale_britannique"
+    },
+    "auteur": "Sodacan",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "aVerifier": true
   }
 ]
