@@ -440,6 +440,8 @@ async function init(){
       void document.body.offsetHeight;                                                   // la mise en page déclenche le chargement des polices
       document.fonts.ready.then(replace);
       addEventListener("load", replace);
+      /* la mise en page peut bouger encore après cela : on se replace tant que la hauteur de la page change */
+      if(window.ResizeObserver){ const suivi = new ResizeObserver(replace); suivi.observe(document.body); setTimeout(() => suivi.disconnect(), 5000); }
     }
   }
 

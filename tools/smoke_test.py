@@ -113,9 +113,10 @@ def test_index(browser, base):
     page.context.close()
     # ancre d'adresse : la page se construit après coup, il faut qu'elle y aille
     page, erreurs = ouvre(browser, base, "encyclopedie.html#emaux", "#main .section")
-    page.wait_for_timeout(2500)          # le temps que les polices arrivent et que la page se replace
-    haut = page.evaluate("document.getElementById('emaux').getBoundingClientRect().top")
-    verifie(60 < haut < 80, f"index#emaux : la page se place sur le chapitre, sous le bandeau (haut à {haut:.0f} px)")
+    try: page.wait_for_function("(h => h > 60 && h < 80)(document.getElementById('emaux').getBoundingClientRect().top)", timeout=7000)      # le temps que les polices arrivent et que la page se replace (cinq secondes au plus)
+    except Exception: pass               # le contrôle ci-dessous dit ce qu'il en est
+    haut, bandeau, marge, y = page.evaluate("[document.getElementById('emaux').getBoundingClientRect().top, document.querySelector('header.mast').offsetHeight, getComputedStyle(document.getElementById('emaux')).scrollMarginTop, scrollY]")
+    verifie(60 < haut < 80, f"index#emaux : la page se place sur le chapitre, sous le bandeau (haut à {haut:.0f} px ; bandeau {bandeau} px, marge {marge}, défilement {y:.0f} px)")
     propre("index#emaux", page, erreurs)
     page.context.close()
     # une ancre mal formée ne casse rien
