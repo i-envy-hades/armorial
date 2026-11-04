@@ -479,7 +479,8 @@
   }
 
   /* ---------- le classement (comptes en ligne seulement) ---------- */
-  const CL = { onglet: "jour", jour: null, semaine: null, general: null, moi: {}, erreur: false };
+  const CL = { onglet: "jour", jour: null, semaine: null, general: null, maison: null, invite: null, moi: {}, erreur: false };
+  const CODE_INVITE = (c => (/^[A-Z2-9]{6}$/.test(c) ? c : ""))((new URLSearchParams(location.search).get("maison") || "").toUpperCase());      // ?maison=K7QF2M : le lien d'invitation d'une maison
   const sameNom = (a, b) => a && b && a.toLowerCase() === b.toLowerCase();
   async function dessineClassement(frais) {
     const el = $("#jeu-classement");
@@ -490,20 +491,41 @@
       CL.moi = { jour: auj && auj.gagne ? Compte.points[JEU](auj.essais.length, (auj.details || []).length) : 0, semaine: Jour.pointsSemaine(w), general: Jour.totalPoints() };
       [CL.jour, CL.semaine, CL.general] = await Promise.all([Compte.classementJour(JEU, numAuj, { frais }), Compte.classementSemaine(w, { frais, moi: CL.moi.semaine }), Compte.classementGeneral({ frais, moi: CL.moi.general })]);
       CL.erreur = false;
-      await Promise.all([...new Set([...CL.jour.top, ...CL.semaine.top, ...CL.general.top].map(x => Compte.armesCode(x.armes)))].map(Compte.prepare));
+      /* ma maison, et celle où l'on m'invite ; sans elles, les autres onglets restent justes */
+      const code = (Compte.profil() || {}).maison;
+      try {
+        CL.maison = null;
+        if (code && Compte.ligne.connecte()) { const [d, top] = await Promise.all([Compte.maison.lis(code), Compte.maison.membres(code, w)]); if (d) CL.maison = { code, nom: d.nom, top }; }
+        CL.invite = null;
+        if (CODE_INVITE && CODE_INVITE !== code) { const d = await Compte.maison.lis(CODE_INVITE); if (d) CL.invite = { code: CODE_INVITE, nom: d.nom }; }
+      } catch (e) { /* idem */ }
+      await Promise.all([...new Set([...CL.jour.top, ...CL.semaine.top, ...CL.general.top, ...(CL.maison ? CL.maison.top : [])].map(x => Compte.armesCode(x.armes)))].map(Compte.prepare));
     } catch (e) { CL.erreur = true; }
     rendClassement();
   }
   function rendClassement() {
     const el = $("#jeu-classement"), moi = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
+    if (CL.onglet === "maison" && document.activeElement && document.activeElement.tagName === "INPUT" && el.contains(document.activeElement)) return;      // on ne vide pas un champ où l'on écrit
     const c = CL[CL.onglet], liste = c && c.top;
     const rangDe = x => liste.findIndex(y => y.points === x.points) + 1;      // à points égaux, même rang : 1, 2, 2, 4
     const detail = x => CL.onglet === "jour" ? Tr(`${x.essais} essai${x.essais > 1 ? "s" : ""}${x.details ? ` · ${x.details} dét.` : ""}`, `${x.essais} guess${x.essais > 1 ? "es" : ""}${x.details ? ` · ${x.details} clue${x.details > 1 ? "s" : ""}` : ""}`)
       : CL.onglet === "general" ? Tr(`${x.victoires} victoire${x.victoires > 1 ? "s" : ""}`, `${x.victoires} win${x.victoires > 1 ? "s" : ""}`) : "";
     const ligne = x => { const t = Jour.titre(x.cumul), d = detail(x); return `<li data-r="${rangDe(x)}"${sameNom(x.pseudo, moi) ? ' class="moi"' : ""}><span class="rg">${rangDe(x)}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}${t ? `<small>${t.nom}</small>` : ""}</b><span class="sc">${nb(x.points)} pts${d ? `<small>${d}</small>` : ""}</span></li>`; };
-    const NOTES = { jour: Tr(`Niveau ${NIVEAUX[NIV].nom}`, `${NIVEAUX[NIV].nom} level`), semaine: Tr("Tous niveaux · repart de zéro lundi", "All levels · starts again on Monday"), general: Tr("Tous niveaux confondus", "All levels combined") };
+    const NOTES = { jour: Tr(`Niveau ${NIVEAUX[NIV].nom}`, `${NIVEAUX[NIV].nom} level`), semaine: Tr("Tous niveaux · repart de zéro lundi", "All levels · starts again on Monday"), general: Tr("Tous niveaux confondus", "All levels combined"),
+      maison: CL.maison ? Tr(`${esc(CL.maison.nom)} · les points de la semaine`, `${esc(CL.maison.nom)} · this week's points`) : Tr("Un petit classement entre amis, sur les points de la semaine", "A small leaderboard among friends, on this week's points") };
+    const panneauMaison = () => {
+      const inv = CL.invite ? Tr(`Vous êtes invité à la maison <b>${esc(CL.invite.nom)}</b>.`, `You're invited to the house <b>${esc(CL.invite.nom)}</b>.`) : "";
+      if (!connecte) return inv ? `<p class="cl-place">${inv}</p>` : "";
+      if (!moi) return `<p class="cl-vide">${Tr("Choisissez d'abord un pseudo, dans votre profil.", "First choose a username, in your profile.")}</p>`;
+      return `${inv ? `<p class="cl-place">${inv} <button type="button" class="jx-go" data-m="accepte">${Tr("Rejoindre", "Join")}</button></p>` : ""}
+        <form class="cl-form" id="cl-fonde"><label for="cl-nom">${Tr("Fonder une maison", "Found a house")}</label><span><input id="cl-nom" maxlength="40" autocomplete="off" placeholder="${Tr("Son nom", "Its name")}"><button type="submit" class="jx-go">${Tr("Fonder", "Found")}</button></span></form>
+        <form class="cl-form" id="cl-rejoint"><label for="cl-code">${Tr("Rejoindre avec un code", "Join with a code")}</label><span><input id="cl-code" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="K7QF2M"><button type="submit" class="jx-go jx-go-2">${Tr("Rejoindre", "Join")}</button></span></form>
+        <p class="cpt-err" id="cl-err" role="alert"></p>`;
+    };
+    const piedMaison = () => `<p class="cl-place">${Tr("Code de la maison", "House code")}${Tr(" : ", ": ")}<b>${CL.maison.code}</b> · <button type="button" class="lnk" data-m="copie">${Tr("Copier l'invitation", "Copy the invitation")}</button><span class="res-copie" id="cl-copie" role="status"></span></p>
+      <p class="cl-aide"><button type="button" class="lnk" data-m="quitte">${Tr("Quitter la maison", "Leave the house")}</button></p><p class="cpt-err" id="cl-err" role="alert"></p>`;
     /* ma place, même hors des dix premiers ; sans compte, celle que j'aurais. Le jour, les points ne sont pas en base : on compte parmi les victoires lues. */
-    const ordinal = n => Tr(n === 1 ? "1ʳᵉ" : `${n}ᵉ`, `${n}${[, "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"}`);
+    const ordinal = Jour.ordinal;
     const place = () => {
       const mes = CL.moi[CL.onglet];
       if (!c || !mes) return "";
@@ -517,15 +539,37 @@
       return `<p class="cl-note">${Tr(`${c.joueurs} joueur${c.joueurs > 1 ? "s" : ""} en ligne : ${Math.min(100, Math.round(100 * c.gagnants / c.joueurs))} % ont trouvé`, `${c.joueurs} player${c.joueurs > 1 ? "s" : ""} online: ${Math.min(100, Math.round(100 * c.gagnants / c.joueurs))}% found it`)}</p>`;
     };
     el.innerHTML = `<h2 id="jeu-classement-t">${Tr("Classement", "Leaderboard")}</h2>
-      <div class="onglets" role="tablist" aria-label="${Tr("Classement", "Leaderboard")}"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">${Tr("Du jour", "Today")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "semaine"}" data-o="semaine">${Tr("Semaine", "This week")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">${Tr("Général", "All time")}</button></div>
+      <div class="onglets" role="tablist" aria-label="${Tr("Classement", "Leaderboard")}"><button type="button" role="tab" aria-selected="${CL.onglet === "jour"}" data-o="jour">${Tr("Du jour", "Today")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "semaine"}" data-o="semaine">${Tr("Semaine", "This week")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "general"}" data-o="general">${Tr("Général", "All time")}</button><button type="button" role="tab" aria-selected="${CL.onglet === "maison"}" data-o="maison">${Tr("Maison", "House")}</button></div>
       <p class="cl-note">${NOTES[CL.onglet]}</p>
       ${reussite()}
-      ${CL.erreur || !liste ? `<p class="cl-vide">${Tr("Le classement n'est pas disponible pour l'instant.", "The leaderboard isn't available right now.")}</p>`
+      ${CL.onglet === "maison" && !CL.maison ? panneauMaison() : CL.erreur || !liste ? `<p class="cl-vide">${Tr("Le classement n'est pas disponible pour l'instant.", "The leaderboard isn't available right now.")}</p>`
         : liste.length ? `<ol class="cl">${liste.map(ligne).join("")}</ol>` : `<p class="cl-vide">${CL.onglet === "jour" ? Tr("Personne n'a encore trouvé l'écu du jour : soyez le premier.", "Nobody has found today's shield yet: be the first.") : Tr("Le classement se remplit avec les premières parties.", "The leaderboard fills up with the first games.")}</p>`}
       ${CL.erreur ? "" : place()}
+      ${CL.onglet === "maison" && CL.maison ? piedMaison() : ""}
       ${connecte ? "" : `<p class="cl-aide">${Tr(`<button type="button" class="lnk" id="jeu-cl-compte">Créez un compte en ligne</button> pour y figurer.`, `<button type="button" class="lnk" id="jeu-cl-compte">Create an online account</button> to appear on it.`)}</p>`}`;
     el.querySelectorAll("[data-o]").forEach(b => b.addEventListener("click", () => { CL.onglet = b.dataset.o; rendClassement(); }));
     const cc = $("#jeu-cl-compte"); if (cc) cc.addEventListener("click", () => { $("#dlg-classement").close(); Compte.ouvre(); });
+    /* fonder, rejoindre, quitter : on redessine ensuite, et une erreur se dit sur place ; l'invitation servie, l'adresse la perd */
+    const agit = async action => {
+      try {
+        await action();
+        if (location.search.includes("maison=")) { const q = new URLSearchParams(location.search); q.delete("maison"); history.replaceState(null, "", location.pathname + (q.size ? `?${q}` : "") + location.hash); }
+        document.activeElement && document.activeElement.blur();
+        await dessineClassement(true);
+      } catch (e) { const m = $("#cl-err"); if (m) m.textContent = e.message; }
+    };
+    const fonde = $("#cl-fonde"), rejoint = $("#cl-rejoint");
+    if (fonde) fonde.addEventListener("submit", e => { e.preventDefault(); agit(() => Compte.maison.fonde($("#cl-nom").value)); });
+    if (rejoint) rejoint.addEventListener("submit", e => { e.preventDefault(); agit(() => Compte.maison.rejoint($("#cl-code").value)); });
+    el.querySelectorAll("[data-m]").forEach(b => b.addEventListener("click", async () => {
+      if (b.dataset.m === "accepte") agit(() => Compte.maison.rejoint(CL.invite.code));
+      if (b.dataset.m === "quitte" && confirm(Tr("Quitter cette maison ? Pour y revenir, il faudra son code.", "Leave this house? You'll need its code to come back."))) agit(() => Compte.maison.quitte());
+      if (b.dataset.m === "copie") {
+        const t = `${location.origin}${location.pathname}?maison=${CL.maison.code}`;
+        try { await navigator.clipboard.writeText(t); $("#cl-copie").textContent = Tr(" Copié.", " Copied."); }
+        catch (e) { window.prompt(Tr("Copiez le lien d'invitation :", "Copy the invitation link:"), t); }
+      }
+    }));
   }
   /* le tableau d'honneur : les armes du premier de la semaine passée, sur l'accueil */
   async function dessineHonneur() {
@@ -564,6 +608,7 @@
   if (J.fini) await montreResultat();
   dessineClassement();
   dessineHonneur();
+  if (CODE_INVITE && Compte.enLigne) { CL.onglet = "maison"; ouvreDlg("dlg-classement"); }
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */
   window.EcuDuJour = { J, cible, CARTES, DETAILS, N, NIV, ESSAIS, devine, demandeDetail, compare, traits, devoile, texteDePartage, hors };
 })();

@@ -41,7 +41,7 @@
   const auHasard = (sauf = "") => { const l = DEPARTS.filter(x => x !== sauf); return l[Math.floor(Math.random() * l.length)]; };
 
   /* ---------- stockage ---------- */
-  const propre = p => p && typeof p === "object" ? { pseudo: String(p.pseudo || ""), armes: armesCode(p.armes), cree: String(p.cree || "") } : null;
+  const propre = p => p && typeof p === "object" ? { pseudo: String(p.pseudo || ""), armes: armesCode(p.armes), cree: String(p.cree || ""), ...(/^[A-Z2-9]{6}$/.test(p.maison) ? { maison: p.maison } : {}) } : null;
   const lire = () => { try { const m = JSON.parse(localStorage.getItem(CLE) || "null"); if (m && typeof m === "object") M = { profil: propre(m.profil), carnets: m.carnets || {} }; } catch (e) { /* navigation privée : on joue sans mémoire */ } };
   const ecrire = silencieux => { try { localStorage.setItem(CLE, JSON.stringify(M)); } catch (e) { /* idem */ } if (!silencieux) abonnes.forEach(f => { try { f(); } catch (e) { /* un abonné fautif ne gêne pas les autres */ } }); };
   lire();
@@ -164,7 +164,7 @@
 
   const profilDuFormulaire = () => {
     const pseudo = pseudoValide(dlg.querySelector("#cpt-pseudo").value);
-    return pseudo ? { pseudo, armes: brouillon.armes, cree: (M.profil && M.profil.cree) || aujourdhui() } : null;
+    return pseudo ? { ...M.profil, pseudo, armes: brouillon.armes, cree: (M.profil && M.profil.cree) || aujourdhui() } : null;
   };
   function lie() {
     const f = dlg.querySelector("#cpt-form"), err = dlg.querySelector("#cpt-err"), ret = dlg.querySelector("#cpt-ret"), code = dlg.querySelector("#cpt-code");

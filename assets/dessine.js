@@ -44,6 +44,7 @@ const DessineMoi = (() => {
         <figure><figcaption>${Tr("Les armes attendues", "The expected arms")}</figcaption>${await ecuDe(cible, "dfc")}</figure>
         <p class="acts"><button type="button" class="main" id="defi-partage">${Tr("Partager mon résultat", "Share my result")}</button><a href="${Tr("./", "en-daily.html")}">${Tr("Les autres jeux du jour", "The other daily games")}</a></p>
         <p class="defi-copie" id="defi-copie" role="status"></p>
+        <div class="cl-bloc" id="defi-classement"></div>
         <p class="defi-prochain" id="defi-prochain"></p></div>`;
     }
     b.innerHTML = `<p class="defi-sur">${NOM} · ${Tr("n° ", "#")}${N} <small>${Jour.quand(N)}</small></p>
@@ -53,6 +54,7 @@ const DessineMoi = (() => {
       ${J.fini ? fin : `<p class="acts"><button type="button" class="main" id="defi-ok">${Tr("Valider mon dessin", "Check my drawing")}</button><span class="defi-n">${Tr(`Essai ${n + 1} sur ${ESSAIS}`, `Attempt ${n + 1} of ${ESSAIS}`)}</span></p>`}`;
     if (J.fini) {
       $("#defi-partage").addEventListener("click", () => Jour.partage(texteDePartage(), $("#defi-copie")));
+      setTimeout(() => Jour.classement($("#defi-classement"), JEU, N), 1800);   // le temps que le résultat parte en ligne
       const tic = () => { const el = $("#defi-prochain"); if (!el) return clearInterval(minuteur); el.textContent = `${Tr("Prochain blasonnement dans", "Next blazon in")} ${Jour.compteARebours()}`; if (Jour.avantDemain() === 0) location.reload(); };
       clearInterval(minuteur); tic(); minuteur = setInterval(tic, 1000);
     } else $("#defi-ok").addEventListener("click", valide);

@@ -46,11 +46,13 @@
     r.className = "jeu-resultat " + (gagne ? "ok" : "ko");
     r.innerHTML = `<h2>${titre}</h2><p class="res-dit">${dit}</p>
       <p class="res-actes"><button type="button" class="jx-go" id="jj-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jj-voir-stats">${Tr("Mes statistiques", "My statistics")}</button><span class="res-copie" id="jj-copie" role="status"></span></p>
+      <div class="cl-bloc" id="jj-classement"></div>
       <p class="res-liens"><a href="${Tr("./", "en.html")}">${Tr("L'écu du jour", "Shield of the Day")}</a> · <a href="#${JEU === "intrus" ? "trous" : "intrus"}">${JEUX[JEU === "intrus" ? "trous" : "intrus"].nom}</a> · <a href="${versLangue("atelier.html")}#defi=dessin">${Tr("Dessine-moi", "Draw It for Me")}</a></p>
       <p class="res-prochain" id="jj-prochain"></p>`;
     r.hidden = false;
     $("#jj-partage").addEventListener("click", () => Jour.partage(partage, $("#jj-copie")));
     $("#jj-voir-stats").addEventListener("click", () => ouvreStats());
+    setTimeout(() => Jour.classement($("#jj-classement"), JEU, N), 1800);       // le temps que le résultat parte en ligne
     prochain($("#jj-prochain"), quoi);
     r.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth" });
   }

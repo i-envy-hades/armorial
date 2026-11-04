@@ -61,6 +61,10 @@ def regles(op, chemin, uid, apres=None, avant=None, store=None):
             email = next((e for e, x in DB["users"].items() if x["id"] == uid), None)
             if set(apres or {}) - {"email", "depuis"} or apres.get("email") != email: pas()
         return
+    if p[0] == "maisons" and len(p) == 2:
+        if op == "get": return
+        if op != "create" or not uid or set(apres or {}) - {"nom", "cree"} or not (2 <= len(apres.get("nom", "")) <= 40): pas()
+        return
     if p[0] == "pseudos" and len(p) == 2:
         if op == "get": return
         if op == "list": pas()

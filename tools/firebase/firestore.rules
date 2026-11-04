@@ -17,6 +17,8 @@ rules_version = '2';
 //   pseudos/{pseudo en minuscules}  un document par pseudo, créé une seule fois : c'est ce qui rend les pseudos uniques
 //   scores/{uid}_{jeu}_{jour}       le résultat d'une partie : public, créé une fois, jamais modifié
 //   jours/{n}                       les jeux du jour n (ouvre, ecu, graine) : lisible le jour venu, pas avant ; écrit par le curateur
+//   maisons/{code}                  un classement entre amis (nom, cree) : se lit avec son code, ne se liste pas, ne se modifie pas ;
+//                                   aucune donnée personnelle. Un nom déplacé s'efface à la main, dans la console.
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -40,6 +42,7 @@ service cloud.firestore {
         && armesValides(request.resource.data.armes)
         && request.resource.data.cree is string
         && request.resource.data.keys().size() < 40
+        && (!('maison' in request.resource.data) || (request.resource.data.maison is string && request.resource.data.maison.matches('^[A-Z2-9]{6}$')))
         // le pseudo du profil doit être un pseudo réservé par son propriétaire, dans la même écriture ou avant
         && getAfter(/databases/$(database)/documents/pseudos/$(request.resource.data.pseudo.lower())).data.uid == uid;
       allow delete: if connecte() && request.auth.uid == uid;
@@ -77,6 +80,15 @@ service cloud.firestore {
         && pseudoValide(request.resource.data.pseudo)
         && id == request.resource.data.pseudo.lower();
       allow delete: if connecte() && resource.data.uid == request.auth.uid;
+    }
+
+    match /maisons/{code} {
+      allow get: if true;
+      allow create: if connecte() && code.matches('^[A-Z2-9]{6}$')
+        && request.resource.data.keys().hasOnly(['nom', 'cree'])
+        && request.resource.data.nom is string && request.resource.data.nom.size() >= 2 && request.resource.data.nom.size() <= 40
+        && !request.resource.data.nom.matches('(?s).*[<>].*')
+        && request.resource.data.cree is timestamp;
     }
 
     match /scores/{id} {

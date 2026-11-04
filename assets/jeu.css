@@ -19,7 +19,7 @@ body.jeu a{color:var(--j-bleu)}
 .nojs{text-align:center}
 
 /* ---------- la barre du jeu : aide, titre, classement, statistiques, profil ---------- */
-.jx-barre{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.5rem;padding:.4rem 0 .7rem;border-bottom:2px solid var(--j-bord)}
+.jx-barre{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.5rem;padding:.4rem 0 .7rem;border-bottom:2px solid var(--j-bord)}
 .jx-logo{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:0;font-family:"Marcellus",serif;font-size:clamp(1.55rem,6vw,2.2rem);line-height:1;letter-spacing:.01em;color:var(--j-encre);text-align:center}
 .jx-logo em{font-style:normal;color:var(--j-rouge)}
 .jx-logo-ecu{flex:none;width:clamp(26px,7vw,34px);height:auto;filter:drop-shadow(0 3px 3px rgba(60,45,20,.25))}
@@ -35,7 +35,7 @@ body.jeu a{color:var(--j-bleu)}
 .jx-moi-ecu svg{width:22px;height:auto;display:block}
 .jx-moi.avec .jx-moi-ecu svg{width:26px}
 .jx-moi-nom{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-@media (max-width:440px){.jx-logo{font-size:1.4rem;white-space:nowrap}.jx-logo-ecu{display:none}}
+@media (max-width:440px){.jx-logo{font-size:1.4rem;line-height:1.05;text-wrap:balance}.jx-logo-ecu{display:none}}
 @media (max-width:520px){.jx-moi-nom{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.jx-moi{padding:0 .35rem;width:40px;justify-content:center}.jx-ic{width:36px;height:36px}.jx-droite{gap:.25rem}}
 body.jeu .jx-ic:focus-visible,body.jeu .jx-moi:focus-visible,body.jeu .jx-go:focus-visible,body.jeu .lnk:focus-visible,.jx-jeu:focus-visible,.jx-pastilles a:focus-visible{outline:3px solid var(--j-or);outline-offset:2px}
 
@@ -304,27 +304,16 @@ dialog.jx-dlg p{margin:.45rem 0}
 .rep li.auj .rb i{background:var(--j-vert)}
 .pf-acts{margin:0;text-align:center}
 
-/* le classement */
+/* le classement (sa liste est dans compte.css : l'Atelier la montre aussi, pour Dessine-moi) */
+.cl-form{margin:0 0 .8rem}
+.cl-form label{display:block;margin:0 0 .25rem;font-weight:800;font-size:.92rem}
+.cl-form span{display:flex;gap:.4rem}
+.cl-form input{flex:1;min-width:0;font:inherit;padding:.45rem .6rem;border:2px solid var(--j-bord);border-radius:12px;background:#fff}
+.cl-form .jx-go{flex:none;margin:0}
 .onglets{display:flex;gap:.3rem;margin:0 0 .7rem;padding:.25rem;border-radius:999px;background:var(--j-fond)}
-.onglets button{flex:1;font:inherit;font-weight:800;font-size:.92rem;padding:.4rem .5rem;border:0;border-radius:999px;background:transparent;color:var(--j-doux);cursor:pointer}
+.onglets button{flex:1 1 auto;font:inherit;font-weight:800;font-size:.86rem;white-space:nowrap;padding:.4rem .35rem;border:0;border-radius:999px;background:transparent;color:var(--j-doux);cursor:pointer}
 .onglets button[aria-selected="true"]{background:#fff;color:var(--j-encre);box-shadow:0 2px 6px -2px rgba(60,45,20,.35)}
 .onglets button:focus-visible{outline:3px solid var(--j-or);outline-offset:1px}
-.cl{list-style:none;margin:0;padding:0;display:grid;gap:.25rem}
-.cl li{display:grid;grid-template-columns:1.6rem 30px minmax(0,1fr) auto;gap:.5rem;align-items:center;padding:.3rem .5rem;border-radius:12px;font-size:.98rem}
-.cl li[data-r="1"] .rg{background:#f3c33b;color:#5a4100}.cl li[data-r="2"] .rg{background:#d5d2c9;color:#3c3a33}.cl li[data-r="3"] .rg{background:#e2a774;color:#5a2f08}
-.cl li.moi{background:#fff5d6;outline:2px solid var(--j-or)}
-.cl .rg{display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;font-weight:800;font-size:.85rem;color:var(--j-doux);font-variant-numeric:tabular-nums}
-.cl .mini svg.ecu{display:block;width:26px;height:auto}
-.cl .mini:empty{width:26px;height:32px}
-.cl b{font-weight:800;overflow-wrap:anywhere}
-.cl b small{display:block;font-size:.76rem;font-weight:600;color:var(--j-doux)}
-.cl .sc{font-size:.95rem;font-weight:800;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.cl .sc small{display:block;font-size:.76rem;font-weight:600;color:var(--j-doux)}
-.cl-note{margin:0 0 .5rem;text-align:center;font-size:.85rem;color:var(--j-doux)}
-.cl-place{margin:.7rem 0 0;padding:.45rem .6rem;border-radius:12px;background:#fff5d6;text-align:center;font-size:.95rem}
-.cl-place b{font-weight:900}
-.cl-vide,.cl-aide{margin:.3rem 0;font-size:.95rem;color:var(--j-doux)}
-.cl-aide{margin-top:.8rem}
 
 /* la fenêtre du profil (assets/compte.css) prend ici l'habillage du jeu */
 body.jeu dialog.cpt{font-family:var(--jf);border:0;border-radius:22px;background:var(--j-carte);font-size:1rem}

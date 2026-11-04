@@ -50,7 +50,7 @@ const Jour = (() => {
     ecu: { nom: "L'Écu du jour · Chevalier", rep: 6, coef: 1.5 },
     ecu_heraut: { nom: "L'Écu du jour · Seigneur", rep: 5, coef: 2 },
     dessin: { nom: "Dessine-moi", rep: 3 },
-    intrus: { nom: "L'Intrus", rep: 6, rang: j => j.note, score: j => 6 - j.note },
+    intrus: { nom: "L'Intrus", rep: 6, rang: j => j.note, score: j => 6 - j.note, marque: e => `${6 - e}/5` },
     trous: { nom: "Le blasonnement à trous", rep: 2 },
   };
   const rang = (jeu, j) => (JEUX[jeu].rang ? JEUX[jeu].rang(j) : j.gagne ? j.essais.length - 1 : -1);
@@ -86,6 +86,22 @@ const Jour = (() => {
   const TITRES = [[250, Tr("Poursuivant d'armes", "Pursuivant")], [1000, Tr("Héraut", "Herald")], [5000, Tr("Maréchal d'armes", "Marshal of Arms")], [20000, Tr("Roi d'armes", "King of Arms")]].map(([seuil, nom]) => ({ seuil, nom }));
   const titre = points => [...TITRES].reverse().find(t => points >= t.seuil) || null;
   const titreSuivant = points => TITRES.find(t => points < t.seuil) || null;
+  const ordinal = n => Tr(n === 1 ? "1ʳᵉ" : `${n}ᵉ`, `${n}${[, "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"}`);
+  /* le classement du jour d'un autre jeu (Dessine-moi, L'Intrus, les trous) : les dix meilleurs, ma place, la part de joueurs qui ont trouvé ;
+     il se pose dans `el` à la fin de la partie, et rien ne s'affiche sans comptes en ligne */
+  async function classement(el, jeu, n) {
+    if (!el || !Compte.enLigne) return;
+    let c;
+    try { c = await Compte.classementJour(jeu, n, { frais: true }); await Promise.all(c.top.map(x => Compte.prepare(Compte.armesCode(x.armes)))); } catch (e) { return; }
+    const esc = s => String(s).replace(/[&<>"]/g, x => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[x]));
+    const moi = Compte.scoresDe[jeu](Compte.carnet(jeu)).find(x => x.jour === n && x.gagne), nom = (Compte.profil() || {}).pseudo, connecte = Compte.ligne && Compte.ligne.connecte();
+    const marque = JEUX[jeu].marque || (e => Tr(`${e} essai${e > 1 ? "s" : ""}`, `${e} ${e > 1 ? "tries" : "try"}`));
+    const rangDe = x => c.top.findIndex(y => y.points === x.points) + 1, r = moi ? c.points.filter(p => p > -moi.essais).length + 1 : 0;
+    el.innerHTML = `<h3 class="cl-t">${Tr("Les meilleurs du jour", "Today's best")}</h3>
+      ${c.joueurs ? `<p class="cl-note">${Tr(`${c.joueurs} joueur${c.joueurs > 1 ? "s" : ""} en ligne : ${Math.min(100, Math.round(100 * c.gagnants / c.joueurs))} % ont réussi`, `${c.joueurs} player${c.joueurs > 1 ? "s" : ""} online: ${Math.min(100, Math.round(100 * c.gagnants / c.joueurs))}% succeeded`)}</p>` : ""}
+      ${c.top.length ? `<ol class="cl">${c.top.map(x => { const t = titre(x.cumul); return `<li data-r="${rangDe(x)}"${nom && x.pseudo.toLowerCase() === nom.toLowerCase() ? ' class="moi"' : ""}><span class="rg">${rangDe(x)}</span><span class="mini">${Compte.dessin(x.armes)}</span><b>${esc(x.pseudo)}${t ? `<small>${t.nom}</small>` : ""}</b><span class="sc">${marque(x.essais)}</span></li>`; }).join("")}</ol>` : `<p class="cl-vide">${Tr("Personne n'a encore réussi aujourd'hui.", "Nobody has succeeded today yet.")}</p>`}
+      ${r ? `<p class="cl-place">${connecte ? Tr(`Votre place : <b>${ordinal(r)}</b> sur ${Math.max(c.gagnants, r)}`, `Your place: <b>${ordinal(r)}</b> of ${Math.max(c.gagnants, r)}`) : Tr(`Vous seriez à la <b>${ordinal(r)}</b> place sur ${c.gagnants + 1}`, `You'd be <b>${ordinal(r)}</b> of ${c.gagnants + 1}`)}</p>` : ""}`;
+  }
   /* le carnet d'un jeu, prêt à servir : lire le jour n, l'enregistrer, le clore */
   function carnet(jeu) {
     let C = Compte.carnet(jeu) || vide(jeu);
@@ -109,5 +125,5 @@ const Jour = (() => {
     catch (e) { window.prompt("Copiez votre résultat :", texte); }
   }
 
-  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, partage };
+  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, ordinal, classement, partage };
 })();

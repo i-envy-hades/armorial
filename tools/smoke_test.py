@@ -824,7 +824,7 @@ def test_jeu(browser, base):
     temps = page.evaluate("[Jour.semaine(3), Jour.semaine(4), Jour.semaine(10), Jour.semaine(11), Jour.titre(249), Jour.titre(250).nom, Jour.titre(20000).nom, Jour.titreSuivant(20000)]")
     verifie(temps == [0, 1, 1, 2, None, "Poursuivant d'armes", "Roi d'armes", None], f"jeu : la semaine commence le lundi et les titres suivent les seuils ({temps})")
     page.wait_for_selector("#jeu-classement .onglets", state="attached", timeout=8000)
-    verifie(page.locator("#jeu-classement .onglets button").count() == 3, "jeu : le classement a trois onglets (jour, semaine, général)")
+    verifie(page.locator("#jeu-classement .onglets button").count() == 4, "jeu : le classement a quatre onglets (jour, semaine, général, maison)")
     page.reload(); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=20000)
     st = page.evaluate("Compte.carnet('ecu').stats")
     verifie(st["joues"] == 1, "jeu : recharger une partie finie ne la recompte pas")
@@ -872,6 +872,77 @@ def test_jeu(browser, base):
     verifie(H == {"cible": ECUS["heraut"], "essais": 5} and page.locator(".essai .case").count() == 5, f"jeu : le niveau Héraut a son écu, cinq essais, et ne dit pas la rubrique ({H})")
     propre("jeu (Héraut)", page, erreurs)
     page.context.close()
+
+def inscrit_au_jeu(page, pseudo, email):
+    """un compte sur le faux Firebase, par la fenêtre du profil"""
+    page.evaluate("document.querySelectorAll('dialog[open]').forEach(d => d.close())")
+    page.evaluate(f"Compte.interne.ecrire({{ ...Compte.interne.lire(), profil: {{ pseudo: {pseudo!r}, armes: 't1=Azur&m=lion&nb=1&tm=Or', cree: '2026-11-04' }} }}, false); Compte.ouvre()")
+    page.click("dialog[open] details.cpt-mdp summary")
+    page.fill("#cpt-email", email); page.fill("#cpt-mdp", "mot-de-passe-d-essai")
+    page.click("dialog[open] button:has-text('Créer mon compte')")
+    page.wait_for_function("Compte.ligne.connecte()", timeout=8000)
+    page.evaluate("document.querySelectorAll('dialog[open]').forEach(d => d.close())")
+
+def onglet_maison(page):
+    page.evaluate("document.querySelector('#dlg-classement').open || document.querySelector('#jx-classement').click()")
+    page.wait_for_selector("#jeu-classement [data-o=maison]", timeout=8000)
+    page.click("#jeu-classement [data-o=maison]")
+
+def test_maisons(browser, base):
+    page, _ = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
+    page.on("dialog", lambda d: d.accept())
+    inscrit_au_jeu(page, "Alix", "alix@essai.fr")
+    onglet_maison(page)
+    page.wait_for_selector("#cl-fonde", timeout=8000)
+    page.fill("#cl-nom", "x"); page.click("#cl-fonde button")
+    page.wait_for_function("document.querySelector('#cl-err').textContent.includes('2 à 40')", timeout=5000)
+    verifie(not [k for k in MF.DB["docs"] if k.startswith("maisons/")], "maisons : un nom trop court ne fonde rien, et la page le dit")
+    page.fill("#cl-code", "ZZZZZZ"); page.click("#cl-rejoint button")
+    page.wait_for_function("document.querySelector('#cl-err').textContent.includes('Aucune maison')", timeout=5000)
+    verifie(True, "maisons : un code inconnu est refusé, et la page le dit")
+    page.fill("#cl-nom", "Les <b>Amis</b>"); page.click("#cl-fonde button")
+    page.wait_for_function("document.querySelector('#cl-err').textContent.includes('<')", timeout=5000)
+    page.fill("#cl-nom", "Les Amis du Lion"); page.click("#cl-fonde button")
+    page.wait_for_selector("#jeu-classement .cl li", timeout=8000)
+    code = page.inner_text("#jeu-classement .cl-place b")
+    profil = lambda nom: next(v for k, v in MF.DB["docs"].items() if k.startswith("profils/") and k.count("/") == 1 and v.get("pseudo") == nom)
+    verifie(MF.DB["docs"].get(f"maisons/{code}", {}).get("nom") == "Les Amis du Lion" and profil("Alix").get("maison") == code, f"maisons : fonder crée la maison et y inscrit son fondateur ({code})")
+    # le second joueur arrive par le lien d'invitation, sans compte
+    p2, _ = ouvre(browser, base, f"index.html?maison={code}", "#jeu-grille:not([hidden])")
+    p2.on("dialog", lambda d: d.accept())
+    p2.wait_for_function("document.querySelector('#jeu-classement .cl-place') && document.querySelector('#jeu-classement .cl-place').textContent.includes('Les Amis du Lion')", timeout=8000)
+    verifie(p2.locator("#dlg-classement[open]").count() == 1, "maisons : le lien d'invitation ouvre la maison et dit son nom")
+    inscrit_au_jeu(p2, "Berenice", "berenice@essai.fr")
+    onglet_maison(p2)
+    p2.wait_for_selector("#jeu-classement [data-m=accepte]", timeout=8000)
+    p2.click("#jeu-classement [data-m=accepte]")
+    p2.wait_for_function("document.querySelectorAll('#jeu-classement .cl li').length === 2", timeout=8000)
+    verifie("maison=" not in p2.url and profil("Berenice").get("maison") == code, f"maisons : l'invitation acceptée, les deux membres figurent et l'adresse perd le code ({p2.url})")
+    verifie(p2.locator("#jeu-classement .cl li[data-r='1']").count() == 2, "maisons : à points égaux, les deux membres partagent le premier rang")
+    # enregistrer son profil ne fait pas quitter la maison
+    p2.evaluate("document.querySelectorAll('dialog[open]').forEach(d => d.close()); Compte.ouvre()")
+    p2.click("dialog[open] button:has-text('Enregistrer')")
+    p2.wait_for_timeout(1500)
+    verifie(profil("Berenice").get("maison") == code and p2.evaluate("Compte.profil().maison") == code, "maisons : modifier son profil garde la maison")
+    # après un rechargement, sur un appareil neuf comme sur celui-ci, la maison revient de la base
+    p2.goto(f"{base}/index.html"); p2.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
+    p2.wait_for_function("Compte.ligne && Compte.ligne.connecte() && Compte.profil() && Compte.profil().maison", timeout=8000)
+    onglet_maison(p2)
+    p2.wait_for_function("document.querySelectorAll('#jeu-classement .cl li').length === 2", timeout=8000)
+    p2.click("#jeu-classement [data-m=quitte]")
+    p2.wait_for_selector("#cl-fonde", timeout=8000)
+    p2.wait_for_timeout(800)
+    verifie("maison" not in profil("Berenice") and not p2.evaluate("Compte.profil().maison"), "maisons : quitter retire la maison du profil, en ligne et ici")
+    p2.context.close(); page.context.close()
+    # à 375 pixels, avec un profil : ni la barre ni les quatre onglets ne débordent, en français comme en anglais
+    for adresse in ("index.html", "en.html"):
+        ctx = browser.new_context(viewport={"width": 375, "height": 812}, locale="fr-FR", is_mobile=True, has_touch=True)
+        ctx.add_init_script("try { localStorage.setItem('armorial.compte.v1', JSON.stringify({ profil: { pseudo: 'Testeur', armes: 't1=Azur&m=lion&nb=1&tm=Or', cree: '2026-11-04' }, carnets: {} })); localStorage.setItem('armorial.jeu.aide', '1'); } catch (e) {}")
+        m = ctx.new_page(); m.goto(f"{base}/{adresse}"); m.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000); m.wait_for_selector("#jeu-classement .onglets", state="attached", timeout=8000)
+        m.click("#jx-classement"); m.wait_for_timeout(500)
+        mes = m.evaluate("({ page: document.documentElement.scrollWidth, droite: document.querySelector('.jx-droite').getBoundingClientRect().right, onglets: [...document.querySelectorAll('#jeu-classement .onglets button')].every(b => b.scrollWidth <= b.clientWidth + 1) })")
+        verifie(mes["page"] <= 375 and mes["droite"] <= 375 and mes["onglets"], f"téléphone/{adresse} : la barre et les onglets du classement tiennent ({mes})")
+        ctx.close()
 
 def test_jeu_en(browser, base):
     """le jeu en anglais (en.html) : même partie, mêmes carnets ; le français reste la clé, l'anglais ne sert qu'à l'affichage et à la saisie"""
@@ -1215,6 +1286,8 @@ def test_jeux_du_jour(browser, base):
     page.wait_for_selector("#jj-resultat:not([hidden])", timeout=5000)
     c = page.evaluate("Compte.carnet('intrus')")
     verifie(c["stats"]["gagnes"] == 1 and c["stats"]["rep"][5] == 1, "jeux du jour : cinq intrus trouvés font une victoire « 5/5 »")
+    page.wait_for_selector("#jj-classement .cl-t", timeout=8000)
+    verifie("1ʳᵉ" in page.inner_text("#jj-classement"), "jeux du jour : la fin de partie montre le classement du jour et la place du joueur")
     propre("jeux du jour (L'Intrus)", page, erreurs)
     page.context.close()
     page, erreurs = ouvre(browser, base, "jour.html#trous", "select.jj-trou")
@@ -1312,6 +1385,7 @@ def main():
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
+                       ("maisons", lambda: test_maisons(browser, base_en_ligne)),
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
                        ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),

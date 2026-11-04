@@ -24,6 +24,8 @@
                                     dans la console Firebase)
      pseudos/{pseudo en minuscules} uid, pseudo : un pseudo = un document, créé une seule fois (c'est ce qui le rend unique)
      scores/{uid}_{jeu}_{jour}      uid, jeu, jour, essais, gagne, cree, vic (« jeu|jour », seulement pour une victoire) ; non modifiable
+     maisons/{code}                 nom, cree : un petit classement entre amis ; se lit avec son code, ne se liste pas ; ses membres sont
+                                    les profils dont le champ « maison » porte ce code
 
    Synchronisation : à chaque chargement, on tire le profil et les carnets distants et on les fond avec les locaux (Compte.fusion[jeu],
    fourni par chaque jeu) ; à chaque enregistrement, on pousse ce qui a changé après un court délai (profil, carnets, nouveaux résultats :
@@ -138,7 +140,7 @@
     const M = API.interne.lire(), carnets = { ...M.carnets };
     let profil = M.profil, change = false;
     if (pf && pf.pseudo) {
-      profil = { pseudo: pf.pseudo, armes: API.armesCode(pf.armes), cree: String(pf.cree || "").slice(0, 10) || (M.profil && M.profil.cree) || "" };
+      profil = { pseudo: pf.pseudo, armes: API.armesCode(pf.armes), cree: String(pf.cree || "").slice(0, 10) || (M.profil && M.profil.cree) || "", ...(pf.maison ? { maison: pf.maison } : {}) };
       change = JSON.stringify(profil) !== JSON.stringify(M.profil);
       if (!y.pseudo) y.pseudo = idPseudo(pf.pseudo);                        // ce pseudo est déjà à nous : inutile de le redemander
     }
@@ -167,7 +169,7 @@
     if (M.profil && API.pseudoValide(M.profil.pseudo)) {
       const nouveau = idPseudo(M.profil.pseudo), empreinte = JSON.stringify([M.profil, resume, y.pseudo === nouveau]);
       if (empreinte !== y.hash) {
-        const writes = [{ update: doc(`profils/${uid}`, { pseudo: M.profil.pseudo, armes: M.profil.armes, cree: M.profil.cree, ...resume }) }];
+        const writes = [{ update: doc(`profils/${uid}`, { pseudo: M.profil.pseudo, armes: M.profil.armes, cree: M.profil.cree, ...(M.profil.maison ? { maison: M.profil.maison } : {}), ...resume }) }];
         if (y.pseudo !== nouveau) {
           if (y.pseudo) writes.push({ delete: `${RACINE}/pseudos/${y.pseudo}` });
           writes.push({ update: doc(`pseudos/${nouveau}`, { uid, pseudo: M.profil.pseudo }), currentDocument: { exists: false } });
@@ -365,7 +367,8 @@
       return x ? +x.result.aggregateFields.n.integerValue : null;
     } catch (e) { return null; }
   };
-  /* Les meilleurs du jour : on lit jusqu'à cent victoires et on les classe ici par points, qui ne sont pas enregistrés. Avec l'index composite
+  /* Les meilleurs du jour : on lit jusqu'à cent victoires et on les classe ici par points, qui ne sont pas enregistrés (les jeux sans points : par le
+     moins d'essais). Avec l'index composite
      de SETUP.md (étape 5) et « "index": true » dans data/compte.json, ces cent-là sont celles qui ont demandé le moins d'essais. */
   API.classementJour = (jeu, jour, { frais = false } = {}) => enCache(`j|${jeu}|${jour}`, frais, async () => {
     const requ = sq => requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "scores" }], where: filtre("vic", "EQUAL", `${jeu}|${+jour}`), ...sq } } });
@@ -375,7 +378,7 @@
       catch (e) { if (e.code !== "FAILED_PRECONDITION") throw e; }
     }
     if (!r) r = await requ({ limit: 100 });
-    const tous = nettoie(r, "document").map(x => decChamps(x.document.fields)).map(x => ({ ...x, details: x.details | 0, points: API.points[jeu](x.essais, x.details | 0) })).sort((a, b) => b.points - a.points || (a.cree < b.cree ? -1 : 1));
+    const tous = nettoie(r, "document").map(x => decChamps(x.document.fields)).map(x => ({ ...x, details: x.details | 0, points: API.points[jeu] ? API.points[jeu](x.essais, x.details | 0) : -x.essais })).sort((a, b) => b.points - a.points || (a.cree < b.cree ? -1 : 1));
     const top = tous.slice(0, 10), pf = await profilsDe(top.map(x => x.uid));
     const [gagnants, joueurs] = await Promise.all([compte("scores", filtre("vic", "EQUAL", `${jeu}|${+jour}`)), compte("scores", { compositeFilter: { op: "AND", filters: [filtre("jeu", "EQUAL", jeu), filtre("jour", "EQUAL", +jour)] } })]);
     return { top: top.filter(x => pf[x.uid]).map(x => ({ pseudo: pf[x.uid].pseudo, armes: pf[x.uid].armes, essais: x.essais, details: x.details, points: x.points, cumul: pf[x.uid].points || 0 })),
@@ -398,6 +401,38 @@
     const l = await meilleursPar(`s_${w}`, 3);
     return l.filter(x => x.points === l[0].points);
   }, 3600000);
+  /* ---------- les maisons : un petit classement entre amis, pour qui a le code ---------- */
+  const SIGNES_MAISON = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";     // sans 0, O, 1 ni I : le code se recopie sans erreur ; le même alphabet dans firestore.rules
+  const poseMaison = async maison => {
+    const M = API.interne.lire(), { maison: ancienne, ...profil } = M.profil;
+    API.interne.ecrire({ ...M, profil: maison ? { ...profil, maison } : profil }, true);
+    await synchro("pousse");
+    if (!etatSynchro.ok) throw new Error(etatSynchro.msg);
+  };
+  API.maison = {
+    lis: code => lisDoc(`maisons/${seg(code)}`, false),
+    async fonde(nom) {
+      nom = String(nom).trim().replace(/\s+/g, " ");
+      if (nom.length < 2 || nom.length > 40 || /[<>]/.test(nom)) throw new Error(Tr("Le nom d'une maison compte de 2 à 40 caractères, sans < ni >.", "A house name has 2 to 40 characters, without < or >."));
+      for (let essai = 0; ; essai++) {                          // un code peut déjà être pris : on en tire un autre
+        const code = Array.from(crypto.getRandomValues(new Uint8Array(6)), o => SIGNES_MAISON[o % SIGNES_MAISON.length]).join("");
+        try { await fsAuth(":commit", { methode: "POST", corps: { writes: [{ update: doc(`maisons/${code}`, { nom, cree: new Date() }), currentDocument: { exists: false } }] } }); await poseMaison(code); return code; }
+        catch (e) { if (essai >= 2 || (e.code !== "ALREADY_EXISTS" && e.statut !== 409)) throw e; }
+      }
+    },
+    async rejoint(code) {
+      code = String(code).trim().toUpperCase();
+      if (!/^[A-Z2-9]{6}$/.test(code) || !(await API.maison.lis(code))) throw new Error(Tr("Aucune maison ne porte ce code.", "No house has this code."));
+      await poseMaison(code);
+    },
+    quitte: () => poseMaison(null),
+    /* ses membres, classés sur la semaine w */
+    async membres(code, w) {
+      const r = await requete(FS + ":runQuery", { methode: "POST", corps: { structuredQuery: { from: [{ collectionId: "profils" }], where: filtre("maison", "EQUAL", code), limit: 100 } } });
+      return nettoie(r, "document").map(x => decChamps(x.document.fields)).filter(p => p.pseudo)
+        .map(p => ({ pseudo: p.pseudo, armes: p.armes, points: p[`s_${w}`] || 0, cumul: p.points || 0 })).sort((a, b) => b.points - a.points || (a.pseudo < b.pseudo ? -1 : 1));
+    },
+  };
 
   /* ---------- les jeux du jour : jours/{n}, lisible seulement une fois le jour venu (heure du serveur, voir firestore.rules) ---------- */
   API.jour = async n => {

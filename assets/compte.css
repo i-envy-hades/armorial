@@ -75,3 +75,23 @@ dialog.cpt a.cpt-btn{color:#fff}
 .cpt-case{display:flex;gap:.6rem;align-items:flex-start;margin:.7rem 0;padding:.6rem .7rem;border:1px solid var(--rule);border-radius:10px;background:rgba(255,255,255,.5);font-size:.95rem;line-height:1.4;cursor:pointer}
 .cpt-case input{flex:none;width:1.15rem;height:1.15rem;margin-top:.15rem;accent-color:var(--gules)}
 .cpt-supp p{margin:.4rem 0}
+
+/* un classement : la fenêtre de l'accueil, et la fin des autres jeux du jour */
+.cl{list-style:none;margin:0;padding:0;display:grid;gap:.25rem}
+.cl li{display:grid;grid-template-columns:1.6rem 30px minmax(0,1fr) auto;gap:.5rem;align-items:center;padding:.3rem .5rem;border-radius:12px;font-size:.98rem}
+.cl li[data-r="1"] .rg{background:#f3c33b;color:#5a4100}.cl li[data-r="2"] .rg{background:#d5d2c9;color:#3c3a33}.cl li[data-r="3"] .rg{background:#e2a774;color:#5a2f08}
+.cl li.moi{background:#fff5d6;outline:2px solid var(--j-or,#f3c33b)}
+.cl .rg{display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;font-weight:800;font-size:.85rem;color:var(--j-doux,#6f665a);font-variant-numeric:tabular-nums}
+.cl .mini svg.ecu{display:block;width:26px;height:auto}
+.cl .mini:empty{width:26px;height:32px}
+.cl b{font-weight:800;overflow-wrap:anywhere}
+.cl b small{display:block;font-size:.76rem;font-weight:600;color:var(--j-doux,#6f665a)}
+.cl .sc{font-size:.95rem;font-weight:800;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cl .sc small{display:block;font-size:.76rem;font-weight:600;color:var(--j-doux,#6f665a)}
+.cl-note{margin:0 0 .5rem;text-align:center;font-size:.85rem;color:var(--j-doux,#6f665a)}
+.cl-place{margin:.7rem 0 0;padding:.45rem .6rem;border-radius:12px;background:#fff5d6;text-align:center;font-size:.95rem}
+.cl-place b{font-weight:900}
+.cl-vide,.cl-aide{margin:.3rem 0;font-size:.95rem;color:var(--j-doux,#6f665a)}
+.cl-aide{margin-top:.8rem}
+.cl-bloc{margin:1rem auto;max-width:30rem;text-align:left}
+.cl-t{margin:0 0 .3rem;text-align:center;font-weight:800;font-size:1.05rem}
