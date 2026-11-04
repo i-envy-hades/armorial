@@ -19,7 +19,7 @@ if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
    JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
    Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
    disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
-const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html", "lignees.html": "en-lineages.html", "transmission.html": "en-transmission.html", "retour.html": "en-feedback.html" };
+const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html", "lignees.html": "en-lineages.html", "transmission.html": "en-transmission.html", "retour.html": "en-feedback.html", "mon-armorial.html": "en-my-armorial.html" };
 const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
 const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
@@ -79,6 +79,7 @@ function termeId(terme, glossaire) {
   const PAGES = [
     ["jeu", "./", "L'Écu du jour"],
     ["jour", "jour.html", "Jeux du jour"],
+    ["armorial", "mon-armorial.html", "Mon armorial"],
     ["encyclopedie", "encyclopedie.html", "L'encyclopédie"],
     ["blasons", "blasons.html", "Blasons réels"],
     ["personnages", "personnages.html", "Personnages"],
@@ -89,8 +90,8 @@ function termeId(terme, glossaire) {
     ["recherche", "recherche.html", "Rechercher"],
   ];
   /* les rubriques du menu, toujours visibles ; une page qui n'y figure pas est un lien direct (l'Atelier, et Rechercher, en icône) */
-  const RUBRIQUES = [[Tr("Jouer", "Play"), ["jeu", "jour", "exercices"]], [Tr("Apprendre", "Learn"), ["encyclopedie", "transmission"]], [Tr("Armoiries", "Arms"), ["blasons", "personnages", "lignees"]]];
-  const NOMS_EN = { jeu: "Shield of the Day", jour: "Daily games", encyclopedie: "Encyclopedia", blasons: "Real arms", personnages: "People", lignees: "Lineages", atelier: "Atelier", transmission: "Transmission", exercices: "Practice", recherche: "Search" };
+  const RUBRIQUES = [[Tr("Jouer", "Play"), ["jeu", "jour", "armorial", "exercices"]], [Tr("Apprendre", "Learn"), ["encyclopedie", "transmission"]], [Tr("Armoiries", "Arms"), ["blasons", "personnages", "lignees"]]];
+  const NOMS_EN = { jeu: "Shield of the Day", jour: "Daily games", armorial: "My armorial", encyclopedie: "Encyclopedia", blasons: "Real arms", personnages: "People", lignees: "Lineages", atelier: "Atelier", transmission: "Transmission", exercices: "Practice", recherche: "Search" };
   const ACCUEIL = Tr("./", "en.html");
   const BRAND = `<a class="brand" href="${ACCUEIL}"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>${Tr("L'Armorial", "The Armorial")}</a>`;
   const CHEVRON = `<svg class="chevron" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2.5 4.5 6 8l3.5-3.5"/></svg>`;

@@ -48,7 +48,7 @@
   const JEU = NIVEAUX[NIV].jeu;
 
   /* ---------- ce qu'on lit d'une carte : les traits comparés ---------- */
-  const mk = e => { const S = { ...fresh(), sh: e.sh || "", q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; };
+  const mk = armesDeCarte;
   const actifs = e => { const n = e.q === "4" ? 4 : e.q === "" ? 1 : 2, idx = [...Array(n).keys()]; if (e.ab) idx.push(4); return idx; };    // les armes réellement posées sur l'écu
   const Q_NOM = { p: "Parti", c: "Coupé", t: "Tranché", l: "Taillé", "2": "Écartelé", "4": "Écartelé" };
   const RAY_NOM = { barry: "Fascé", barryonde: "Fascé ondé", paly: "Palé", bendy: "Bandé", bendysin: "Barré", chevronny: "Chevronné", chequy: "Échiqueté", lozengy: "Fuselé", lozengybend: "Fuselé en bande", lozengysin: "Fuselé en barre" };
@@ -396,8 +396,8 @@
         <figcaption>${a.porteur || a.meta ? `${esc(a.porteur || a.meta)}<br>` : ""}<i>${esc(blasonCarte(a))}</i></figcaption></figure>
       ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).map(versLangue).join(" · ")}</span></p>` : ""}
       ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
-      <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`, `<a href="#archives" data-archives>${Tr("Jouer un écu passé", "Play a past shield")}</a>`].join(" · ")}</p>
+      <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-image">${Tr("Créer une image", "Create an image")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
+      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`, `<a href="${versLangue("mon-armorial.html")}">${J.gagne ? Tr("Voir cet écu dans mon armorial", "See this shield in my armorial") : Tr("Mon armorial", "My armorial")}</a>`, `<a href="#archives" data-archives>${Tr("Jouer un écu passé", "Play a past shield")}</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image${Tr(" : ", ": ")}<i>${esc(a.file)}</i>, ${esc(a.auteur || Tr("auteur inconnu", "unknown author"))}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || Tr("licence libre", "free licence"))}, via Wikimedia Commons.</p>`;
     r.hidden = false;
@@ -405,6 +405,7 @@
     $(".jx-armorial .jx-sur").textContent = Tr("Pour aller plus loin", "To go further");
     $("#jx-armorial-t").textContent = Tr("L'Armorial vous raconte le reste", "The Armorial tells you the rest");
     $("#jeu-voir-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
+    $("#jeu-image").addEventListener("click", () => ouvreDlg("dlg-image"));
     if ($("#jeu-voir-cl")) $("#jeu-voir-cl").addEventListener("click", () => ouvreDlg("dlg-classement"));
     $("#jeu-partage").addEventListener("click", async () => {
       const t = texteDePartage(), msg = $("#jeu-copie");
@@ -430,8 +431,55 @@
     if (!d || d.open) return;
     if (id === "dlg-classement") dessineClassement();
     if (id === "dlg-archives") dessineArchives();
+    if (id === "dlg-image") preparerImage();
     d.showModal();
   }
+  /* ---------- l'image à partager (assets/image-resultat.js) ; le jour même, l'écu reste caché, sauf si le joueur en décide autrement ---------- */
+  async function canvasDuResultat(montrer) {
+    const n = J.essais.length, nd = J.details.length, p = Compte.profil(), vue = hors || montrer, total = Jour.totalPoints(), t = Jour.titre(total);
+    const ecu = await svgDe(vue ? cible : { ...cible, S: devoile(cible.S, 0) }, vue ? undefined : { gris: new Set() });
+    let armes = "";
+    if (p) { try { const code = Compte.armesCode(p.armes); await Compte.prepare(code); armes = Compte.dessin(code); } catch (e) { /* sans ses armes */ } }
+    return ImageResultat.dessine({
+      titre: Tr("L'Écu du jour", "Shield of the Day"),
+      sousTitre: `${Tr(`n° ${N}`, `#${N}`)} · ${NIVEAUX[NIV].nom} · ${Jour.quand(N)}${hors ? Tr(" · hors concours", " · unranked") : ""}`,
+      score: `${J.gagne ? n : "X"}/${ESSAIS}`, gagne: J.gagne,
+      points: J.gagne && !hors ? `+${nb(Compte.points[JEU](n, nd))} points` : "",
+      detail: nd ? `${nd} ${Tr("détail", "clue")}${nd > 1 ? "s" : ""}` : "",
+      lignes: J.essais.map(c => { const m = compare(c.t, cible.t); return COLS.map(k => m[k].cls); }),
+      ecu, masque: !vue,
+      armes, pseudo: p ? p.pseudo : "", titreJoueur: p && t ? t.nom : "",
+      invite: Tr("À vous de trouver l'écu du jour :", "Your turn to find today's shield:"),
+      adresse: `armorial.web.app${EN ? "/en.html" : ""}`,
+    });
+  }
+  let imageBlob = null;
+  async function preparerImage() {
+    const img = $("#img-apercu"), msg = $("#img-msg"), dl = $("#img-telecharge"), part = $("#img-partage"), copie = $("#img-copie"), voir = $("#img-montre");
+    $("#img-choix").hidden = hors; msg.textContent = ""; img.removeAttribute("src");
+    part.disabled = copie.disabled = true; dl.removeAttribute("href");
+    try {
+      const cv = await canvasDuResultat(voir.checked);
+      imageBlob = await new Promise(ok => cv.toBlob(ok, "image/png"));
+      const url = URL.createObjectURL(imageBlob);
+      img.src = url; img.alt = Tr(`Votre résultat : ${J.gagne ? J.essais.length : "X"} sur ${ESSAIS}`, `Your result: ${J.gagne ? J.essais.length : "X"} out of ${ESSAIS}`);
+      dl.href = url; dl.download = `armorial-ecu-${N}.png`;
+      const fichier = new File([imageBlob], dl.download, { type: "image/png" });
+      part.hidden = !(navigator.canShare && navigator.canShare({ files: [fichier] }));
+      copie.hidden = !(window.ClipboardItem && navigator.clipboard && navigator.clipboard.write);
+      part.disabled = copie.disabled = false;
+    } catch (e) { msg.textContent = Tr("L'image n'a pas pu se dessiner. Le texte à partager reste disponible.", "The image couldn't be drawn. The text to share is still available."); }
+  }
+  $("#img-montre").addEventListener("change", preparerImage);
+  $("#img-partage").addEventListener("click", async () => {
+    try { await navigator.share({ files: [new File([imageBlob], `armorial-ecu-${N}.png`, { type: "image/png" })], text: texteDePartage().split("\n").pop() }); }
+    catch (e) { if (e.name !== "AbortError") $("#img-msg").textContent = Tr("Le partage n'a pas abouti : essayez de télécharger l'image.", "Sharing didn't work: try downloading the image."); }
+  });
+  $("#img-copie").addEventListener("click", async () => {
+    try { await navigator.clipboard.write([new ClipboardItem({ "image/png": imageBlob })]); $("#img-msg").textContent = Tr("Image copiée : collez-la où vous voulez.", "Image copied: paste it anywhere you like."); }
+    catch (e) { $("#img-msg").textContent = Tr("La copie n'a pas abouti : essayez de télécharger l'image.", "Copying didn't work: try downloading the image."); }
+  });
+
   /* ---------- les archives : tous les écus passés, mois par mois ; ils se rejouent hors concours ---------- */
   const ARC = { niv: NIV, a: 0, m: 0 };
   { const d = Jour.dateDu(hors ? N : Math.max(1, numAuj - 1)); ARC.a = d.getUTCFullYear(); ARC.m = d.getUTCMonth(); }
@@ -514,6 +562,7 @@
     ];
     $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
       + `<li><a class="jx-jeu c-gueules" href="#archives" data-archives><span class="ic" aria-hidden="true">🗓️</span><span class="t">${Tr("Les écus passés", "Past shields")}</span><span class="d">${Tr("Tous les jours déjà ouverts, à rejouer", "Every day so far, to play again")}</span><span class="f">${numAuj - 1} ${Tr("écus", "shields")}</span></a></li>`
+      + `<li><a class="jx-jeu c-or" href="${versLangue("mon-armorial.html")}"><span class="ic" aria-hidden="true">🛡️</span><span class="t">${Tr("Mon armorial", "My armorial")}</span><span class="d">${Tr("Tous les écus que vous avez trouvés", "Every shield you've found")}</span><span class="f">${Tr("Votre collection", "Your collection")}</span></a></li>`
       + `<li><a class="jx-jeu c-azur" href="${versLangue("exercices.html")}"><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
   }
 
@@ -650,5 +699,5 @@
   if (CODE_INVITE && Compte.enLigne) { CL.onglet = "maison"; ouvreDlg("dlg-classement"); }
   if (location.hash === "#archives") ouvreDlg("dlg-archives");
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */
-  window.EcuDuJour = { J, cible, CARTES, DETAILS, N, NIV, ESSAIS, devine, demandeDetail, compare, traits, devoile, texteDePartage, hors };
+  window.EcuDuJour = { J, cible, CARTES, DETAILS, N, NIV, ESSAIS, devine, demandeDetail, compare, traits, devoile, texteDePartage, hors, canvasDuResultat };
 })();

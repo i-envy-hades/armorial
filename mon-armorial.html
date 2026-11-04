@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Armorial — Mon armorial</title>
+<meta name="description" content="Votre collection personnelle : chaque écu trouvé dans L'Écu du jour rejoint votre armorial.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/mon-armorial.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/mon-armorial.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-my-armorial.html">
+<!--
+  L'ARMORIAL — « Mon armorial » : la collection du joueur. Chaque écu trouvé, le jour même ou en le rejouant, y prend sa place ;
+  chaque écu déjà ouvert et pas encore trouvé y garde une case vide, qui mène à sa partie. Tout se déduit des carnets : rien de plus n'est enregistré.
+  Fichiers : assets/mon-armorial.js, assets/mon-armorial.css. Page jumelle : en-my-armorial.html.
+-->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/compte.css">
+<link rel="stylesheet" href="assets/mon-armorial.css">
+</head>
+<body class="mon-armorial">
+<header class="mast" data-page="armorial"></header>
+<script src="assets/chrome.js"></script>
+<main class="ma" id="main">
+  <h1>Mon armorial</h1>
+  <p class="ma-intro">Chaque écu que vous trouvez dans <a href="./">L'Écu du jour</a> prend sa place ici. Les cases vides sont les écus déjà ouverts que vous n'avez pas encore trouvés : touchez-en une pour tenter votre chance.</p>
+  <noscript><p class="nojs">Votre armorial se construit avec JavaScript : activez-le pour le voir.</p></noscript>
+  <p class="ma-etat" id="ma-etat" role="status">Votre armorial s'ouvre…</p>
+  <div class="ma-bilan" id="ma-bilan" hidden></div>
+  <div id="ma-livre"></div>
+</main>
+<dialog class="ma-dlg" id="ma-detail" aria-labelledby="ma-detail-t">
+  <button type="button" class="ma-x" data-fermer aria-label="Fermer">×</button>
+  <div id="ma-detail-c"></div>
+</dialog>
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<footer><div class="foot">
+  <p><b>L'Armorial</b> — page « Mon armorial ». Elle se lit dans vos parties, gardées dans ce navigateur et, si vous avez un compte, avec lui. Les écus sont dessinés par le moteur de l'Atelier.</p>
+</div></footer>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/mon-armorial.js"></script>
+</body>
+</html>

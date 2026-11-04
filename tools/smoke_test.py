@@ -26,7 +26,9 @@ PIXEL = bytes.fromhex("89504e470d0a1a0a0000000d494844520000000100000001080600000
 echecs, lignes = [], []
 
 def ok(msg): lignes.append(f"  ok   {msg}")
-def ko(msg): lignes.append(f"  ECHEC {msg}"); echecs.append(msg)
+def ko(msg):
+    lignes.append(f"  ECHEC {msg}"); echecs.append(msg)
+    if os.environ.get("GITHUB_ACTIONS"): print("::error title=Test de fumée::" + str(msg).replace("%", "%25").replace("\r", " ").replace("\n", " ")[:900], flush=True)      # une annotation : lisible sans compte, contrairement au journal
 def verifie(cond, msg):
     (ok if cond else ko)(msg)
     return cond
@@ -880,6 +882,41 @@ def test_jeu(browser, base):
     propre("jeu (Héraut)", page, erreurs)
     page.context.close()
 
+def test_mon_armorial_et_image(browser, base):
+    ctx = browser.new_context(viewport={"width": 375, "height": 812}, locale="fr-FR", is_mobile=True, has_touch=True)
+    ctx.add_init_script("try { localStorage.setItem('armorial.jeu.aide', '1'); } catch (e) {}")
+    page = ctx.new_page(); erreurs = []
+    page.on("pageerror", lambda e: erreurs.append(str(e)))
+    page.goto(f"{base}/mon-armorial.html"); page.wait_for_selector(".ma-vide", timeout=30000)
+    verifie(page.locator(".ma-case").count() == 0 and page.locator(".ma-vide").count() == 3 and "0" in page.inner_text(".ma-compte"), f"mon armorial : sans partie, trois cases vides, une par écu ouvert ({page.locator('.ma-vide').count()})")
+    texte = page.inner_text("#ma-livre")
+    verifie(all(v not in texte for v in ECUS.values()), "mon armorial : une case vide ne dit pas quel écu elle attend")
+    verifie(page.evaluate("document.documentElement.scrollWidth") <= 376, "mon armorial : tient à 375 pixels")
+    # trouver l'écu du jour au niveau Chevalier : il rejoint l'armorial, et l'image se dessine
+    page.goto(f"{base}/index.html"); page.wait_for_selector("#jeu-ecu svg", timeout=20000)
+    page.evaluate("EcuDuJour.devine(EcuDuJour.cible)"); page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
+    page.click("#jeu-image"); page.wait_for_function("document.querySelector('#img-apercu').naturalWidth === 1080", timeout=20000)
+    verifie(page.locator("#dlg-image[open]").count() == 1 and page.locator("#img-telecharge").get_attribute("download") == f"armorial-ecu-{page.evaluate('EcuDuJour.N')}.png", "image : le bouton dessine l'image, prête à télécharger")
+    verifie(page.locator("#img-choix").is_visible() and not page.locator("#img-montre").is_checked(), "image : le jour même, l'écu reste caché par défaut")
+    pixels = page.evaluate("""async () => { const lit = async m => { const c = await EcuDuJour.canvasDuResultat(m), x = c.getContext('2d'), d = x.getImageData(70, 215, 420, 520).data; let col = 0; for (let i = 0; i < d.length; i += 40) { if (Math.abs(d[i] - d[i + 1]) > 40 || Math.abs(d[i + 1] - d[i + 2]) > 40) col++; } return col; }; return [await lit(false), await lit(true)]; }""")
+    verifie(pixels[1] > pixels[0] * 3 and pixels[1] > 50, f"image : la case à cocher montre l'écu, en couleurs ; sinon, une silhouette grise ({pixels})")
+    page.evaluate("document.querySelector('#dlg-image').close()")
+    page.goto(f"{base}/mon-armorial.html"); page.wait_for_selector(".ma-case", timeout=30000)
+    verifie(page.locator(".ma-case").count() == 1 and ECUS["chevalier"] in page.inner_text(".ma-case") and page.locator(".ma-case svg.ecu path").count() > 0, "mon armorial : l'écu trouvé y prend sa place, dessiné")
+    png = page.locator(".ma-case svg.ecu").screenshot()
+    couleurs = page.evaluate("""async b64 => { const i = new Image(); i.src = 'data:image/png;base64,' + b64; await i.decode(); const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const x = c.getContext('2d'); x.drawImage(i, 0, 0); const d = x.getImageData(0, 0, i.width, i.height).data; let bleu = 0, clair = 0; for (let k = 0; k < d.length; k += 4) { if (d[k + 2] > d[k] + 30) bleu++; else if (d[k] > 190 && d[k + 1] > 190 && d[k + 2] > 180) clair++; } return [bleu, clair]; }""", __import__("base64").b64encode(png).decode())
+    verifie(couleurs[0] > 100 and couleurs[1] > 100, f"mon armorial : l'écu garde ses émaux, tranché d'argent et d'azur, et ses dégradés ({couleurs})")
+    page.click(".ma-case"); page.wait_for_selector("#ma-detail[open] .ma-blason", timeout=5000)
+    verifie(ECUS["chevalier"] in page.inner_text("#ma-detail") and page.locator("#ma-detail a").count() == 2, "mon armorial : un écu trouvé dit son blasonnement et renvoie à sa carte")
+    page.click("#ma-detail [data-fermer]")
+    href = page.locator(".ma-vide").first.get_attribute("href")
+    verifie(href.startswith("./?niveau=") , f"mon armorial : une case vide mène à sa partie ({href})")
+    # en anglais, et le jour n'est pas relu une seconde fois
+    page.goto(f"{base}/en-my-armorial.html"); page.wait_for_selector(".ma-case", timeout=30000)
+    verifie("My armorial" in page.inner_text("h1") and "shields opened" in page.inner_text(".ma-compte"), "mon armorial en anglais : la page est traduite")
+    verifie(not erreurs, f"mon armorial et image : aucune erreur JavaScript ({erreurs[:2]})")
+    ctx.close()
+
 def test_archives(browser, base):
     ctx = browser.new_context(viewport={"width": 375, "height": 812}, locale="fr-FR", is_mobile=True, has_touch=True)
     ctx.add_init_script("try { localStorage.setItem('armorial.jeu.aide', '1'); } catch (e) {}")
@@ -1486,6 +1523,7 @@ def main():
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
                        ("maisons", lambda: test_maisons(browser, base_en_ligne)),
                        ("archives", lambda: test_archives(browser, base_en_ligne)),
+                       ("mon armorial et image", lambda: test_mon_armorial_et_image(browser, base_en_ligne)),
                        ("retour", lambda: test_retour(browser, base_en_ligne)),
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),

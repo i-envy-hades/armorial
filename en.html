@@ -149,6 +149,15 @@
   <div id="jeu-profil"></div>
 </dialog>
 
+<dialog class="jx-dlg" id="dlg-image" aria-labelledby="dlg-image-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Close">×</button>
+  <h2 id="dlg-image-t">Your image</h2>
+  <img class="img-apercu" id="img-apercu" alt="" width="1080" height="1080">
+  <label class="img-choix" id="img-choix"><input type="checkbox" id="img-montre"> <span>Show the shield on the image (this gives today's answer to anyone who sees it)</span></label>
+  <p class="img-actes"><button type="button" class="jx-go" id="img-partage">Share</button><button type="button" class="jx-go jx-go-2" id="img-copie">Copy</button><a class="jx-go jx-go-2" id="img-telecharge">Download</a></p>
+  <p class="img-msg" id="img-msg" role="status"></p>
+</dialog>
+
 <dialog class="jx-dlg" id="dlg-archives" aria-labelledby="jeu-archives-t">
   <button type="button" class="jx-x" data-fermer aria-label="Close">×</button>
   <div id="jeu-archives"></div>
@@ -175,6 +184,7 @@
 <script src="assets/compte.js"></script>
 <script src="assets/enligne.js"></script>
 <script src="assets/jour.js"></script>
+<script src="assets/image-resultat.js"></script>
 <script src="assets/jeu.js"></script>
 </body>
 </html>

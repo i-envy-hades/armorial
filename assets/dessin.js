@@ -747,6 +747,8 @@ function manteauSvg(St, u) {
   return { svg, bb };
 }
 const PLAIN_VB = [0, 0, 200, 252];
+/* les armes qu'une carte relue (lireCarte, assets/lecture.js) permet de dessiner */
+function armesDeCarte(e) { const S = { ...fresh(), sh: e.sh || "", q: e.q, ab: e.ab, gb: e.gb || "", xc: e.xc || "", xb: e.xb || "", xp: e.xp || "", h1: e.h1, h2: e.h2, A: e.A.map(x => ({ ...x })) }; normalizeAll(S); return S; }
 function compose(St, u = "a") {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), dv = St.dv.trim(), shield = drawShield(St, u);
   if (!cr && !St.hm && !co && !su && !dv && !St.mt) return { vb: PLAIN_VB, svg: shield };

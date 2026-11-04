@@ -1,0 +1,38 @@
+/* L'ARMORIAL — « Mon armorial » : un livre d'armes, avec ses cases vides */
+.ma{max-width:62rem;margin:0 auto;padding:clamp(1.5rem,5vw,3rem) clamp(1rem,4vw,2rem) 3rem}
+.ma h1{margin:0 0 .5rem;font-family:"Marcellus",serif;font-weight:400;font-size:clamp(2.2rem,7vw,3.2rem);line-height:1.1}
+.ma-intro{max-width:44rem;margin:0 0 1.4rem;font-size:1.08rem}
+.ma-etat{color:var(--ink-soft);font-style:italic}
+.ma-etat[hidden]{display:none}
+.ma-bilan{margin:0 0 2rem;padding:1rem 1.2rem;background:rgba(255,251,238,.75);border:1px solid var(--rule);border-radius:12px}
+.ma-bilan[hidden]{display:none}
+.ma-compte{margin:0 0 .5rem;font-size:1.1rem}
+.ma-compte b{font-family:"Marcellus",serif;font-weight:400;font-size:2.2rem;line-height:1;color:var(--gules)}
+.ma-barre{height:.7rem;overflow:hidden;border-radius:999px;background:rgba(26,23,18,.1)}
+.ma-barre i{display:block;height:100%;min-width:.4rem;border-radius:999px;background:linear-gradient(90deg,#a9812e,#dcba6b)}
+.ma-suite{margin:.6rem 0 0;font-size:.95rem;color:var(--ink-soft)}
+.ma-rub{margin:0 0 2.2rem}
+.ma-rub h2{margin:0 0 .8rem;padding-bottom:.35rem;font-family:"Marcellus",serif;font-weight:400;font-size:1.5rem;border-bottom:1px solid var(--rule)}
+.ma-rub h2 small{font-size:.95rem;color:var(--ink-soft)}
+.ma-grille{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:.7rem}
+.ma-case,.ma-vide{display:flex;flex-direction:column;align-items:center;gap:.35rem;width:100%;height:100%;box-sizing:border-box;padding:.6rem .4rem;border-radius:10px;font:inherit;font-size:.85rem;line-height:1.25;text-align:center;text-decoration:none;color:var(--ink)}
+.ma-case{background:#fffdf6;border:1px solid var(--rule);cursor:pointer}
+.ma-case:hover{border-color:var(--gules)}
+.ma-case svg{display:block;width:72px;height:90px}
+.ma-case:focus-visible,.ma-vide:focus-visible,.ma-x:focus-visible{outline:2px solid var(--gules);outline-offset:2px}
+.ma-vide{justify-content:flex-start;border:1px dashed var(--rule);color:var(--ink-soft)}
+.ma-vide:hover{border-color:var(--gules);border-style:solid;color:var(--gules)}
+.ma-vide svg{display:block;width:72px;height:90px;fill:rgba(26,23,18,.1)}
+.ma-vide.manque svg{fill:rgba(142,27,24,.14)}
+.ma-dlg{width:min(30rem,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);box-sizing:border-box;padding:1.4rem;background:#f7f0de;color:var(--ink);border:1px solid var(--rule);border-radius:14px;box-shadow:0 30px 60px -20px rgba(26,23,18,.6);overflow:auto}
+.ma-dlg::backdrop{background:rgba(26,23,18,.5)}
+.ma-x{position:absolute;top:.5rem;right:.6rem;width:2.2rem;height:2.2rem;font-size:1.5rem;line-height:1;color:var(--ink-soft);background:none;border:0;cursor:pointer}
+.ma-dlg svg.grand{display:block;width:150px;height:auto;max-height:190px;margin:0 auto .8rem}
+.ma-dlg h2{margin:0 0 .3rem;font-family:"Marcellus",serif;font-weight:400;font-size:1.6rem;line-height:1.2;text-align:center}
+.ma-dlg p{margin:0 0 .7rem}
+.ma-porteur{text-align:center;color:var(--ink-soft)}
+.ma-blason{text-align:center;font-size:1.08rem}
+.ma-trouve{font-size:.9rem;color:var(--ink-soft)}
+.ma-liens{margin-bottom:0;font-size:.95rem}
+body.mon-armorial footer{padding:1.5rem clamp(1rem,4vw,2rem) 2rem;font-size:.92rem;text-align:center}
+body.mon-armorial footer .foot{max-width:44rem;margin:0 auto}

@@ -148,6 +148,15 @@
   <div id="jeu-profil"></div>
 </dialog>
 
+<dialog class="jx-dlg" id="dlg-image" aria-labelledby="dlg-image-t">
+  <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
+  <h2 id="dlg-image-t">Votre image</h2>
+  <img class="img-apercu" id="img-apercu" alt="" width="1080" height="1080">
+  <label class="img-choix" id="img-choix"><input type="checkbox" id="img-montre"> <span>Montrer l'écu sur l'image (cela donne la réponse du jour à ceux qui la verront)</span></label>
+  <p class="img-actes"><button type="button" class="jx-go" id="img-partage">Partager</button><button type="button" class="jx-go jx-go-2" id="img-copie">Copier</button><a class="jx-go jx-go-2" id="img-telecharge">Télécharger</a></p>
+  <p class="img-msg" id="img-msg" role="status"></p>
+</dialog>
+
 <dialog class="jx-dlg" id="dlg-archives" aria-labelledby="jeu-archives-t">
   <button type="button" class="jx-x" data-fermer aria-label="Fermer">×</button>
   <div id="jeu-archives"></div>
@@ -173,6 +182,7 @@
 <script src="assets/compte.js"></script>
 <script src="assets/enligne.js"></script>
 <script src="assets/jour.js"></script>
+<script src="assets/image-resultat.js"></script>
 <script src="assets/jeu.js"></script>
 </body>
 </html>

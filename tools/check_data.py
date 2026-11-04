@@ -345,7 +345,7 @@ plan = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xm
 for p_ in pages:
     if p_.name in ("404.html", "jeu.html"): continue          # la page d'erreur n'est ni au plan du site ni au menu ; jeu.html ne fait que renvoyer à l'accueil
     cible = "web.app/" if p_.name == "index.html" else f"web.app/{p_.name}"
-    if p_.name in ("retour.html", "en-feedback.html"): continue          # le formulaire de retour n'a rien à faire dans les moteurs de recherche (noindex)
+    if p_.name in ("retour.html", "en-feedback.html", "mon-armorial.html", "en-my-armorial.html"): continue          # le formulaire de retour et la collection du joueur n'ont rien à faire dans les moteurs de recherche (noindex)
     if f"{cible}</loc>" not in plan: err(f"sitemap.xml: la page « {p_.name} » n'y figure pas")
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
 menu = [(i, "index.html" if f == "./" else f) for i, f in re.findall(r'\["(\w+)",\s*"([\w.-]+\.html|\./)"', chrome)]      # « ./ » : l'accueil, index.html

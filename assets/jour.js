@@ -105,6 +105,18 @@ const Jour = (() => {
     return (j && j.fini) || a ? "perdu" : "";
   };
   const dateDu = n => new Date(DEBUT + (n - 1) * 864e5 + 432e5);
+  /* les écus des jours déjà ouverts : { n: { page, chevalier, heraut } }. Un jour passé ne change plus : il se garde une fois lu, et n'est lu qu'une fois (le quota gratuit de la base) */
+  async function ecusOuverts() {
+    const CLE = "armorial.jours.v1", auj = numero();
+    let m = {};
+    try { m = JSON.parse(localStorage.getItem(CLE) || "{}") || {}; } catch (e) { /* sans mémoire : on relit tout */ }
+    if (!Compte.enLigne) return m;
+    const manquent = [];
+    for (let n = 1; n <= auj; n++) if (!m[n] || n === auj) manquent.push(n);
+    for (let i = 0; i < manquent.length; i += 10) await Promise.all(manquent.slice(i, i + 10).map(n => Compte.jour(n).then(d => { if (d && d.ecu) m[n] = d.ecu; }).catch(() => {})));
+    try { localStorage.setItem(CLE, JSON.stringify(m)); } catch (e) { /* idem */ }
+    return m;
+  }
   const ordinal = n => Tr(n === 1 ? "1ʳᵉ" : `${n}ᵉ`, `${n}${[, "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"}`);
   /* le classement du jour d'un autre jeu (Dessine-moi, L'Intrus, les trous) : les dix meilleurs, ma place, la part de joueurs qui ont trouvé ;
      il se pose dans `el` à la fin de la partie, et rien ne s'affiche sans comptes en ligne */
@@ -144,5 +156,5 @@ const Jour = (() => {
     catch (e) { window.prompt("Copiez votre résultat :", texte); }
   }
 
-  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, ordinal, classement, noteArchive, etatDuJour, dateDu, nomDuMois: m => MOIS[m], partage };
+  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, ordinal, classement, noteArchive, etatDuJour, dateDu, ecusOuverts, nomDuMois: m => MOIS[m], partage };
 })();

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Armorial — My armorial</title>
+<meta name="description" content="Your personal collection: every shield you find in Shield of the Day joins your armorial.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-my-armorial.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/mon-armorial.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-my-armorial.html">
+<!-- THE ARMORIAL — "My armorial": the English twin of mon-armorial.html; the same scripts and the same saved games. -->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/compte.css">
+<link rel="stylesheet" href="assets/mon-armorial.css">
+</head>
+<body class="mon-armorial">
+<header class="mast" data-page="armorial"></header>
+<script src="assets/chrome.js"></script>
+<main class="ma" id="main">
+  <h1>My armorial</h1>
+  <p class="ma-intro">Every shield you find in <a href="en.html">Shield of the Day</a> takes its place here. Empty slots are shields already opened that you haven't found yet: tap one to try your luck.</p>
+  <noscript><p class="nojs">Your armorial is built with JavaScript: please turn it on to see it.</p></noscript>
+  <p class="ma-etat" id="ma-etat" role="status">Opening your armorial…</p>
+  <div class="ma-bilan" id="ma-bilan" hidden></div>
+  <div id="ma-livre"></div>
+</main>
+<dialog class="ma-dlg" id="ma-detail" aria-labelledby="ma-detail-t">
+  <button type="button" class="ma-x" data-fermer aria-label="Close">×</button>
+  <div id="ma-detail-c"></div>
+</dialog>
+<div id="gdefs"></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<footer><div class="foot">
+  <p><b>The Armorial</b> — "My armorial" page. It reads your games, kept in this browser and, if you have an account, with it. The shields are drawn by the Atelier's engine.</p>
+</div></footer>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/blasonnement-en.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/cartes.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/jour.js"></script>
+<script src="assets/mon-armorial.js"></script>
+</body>
+</html>
