@@ -112,7 +112,7 @@ L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).
   L.brisPieces = table(Object.entries(BRIS_PIECES).map(([k, v]) => [v.nom.toLowerCase(), { b: k }]));
   for (const T of [L.noms, L.semeAdj, L.pieces, L.contours, L.parts, L.raye, ...Object.values(L.accent), ...Object.values(L.queue), ...Object.values(L.fixe), ...Object.values(L.dispos), L.ctr, L.borde, L.coure, L.issant, L.charge, L.verbe, L.sommet, L.surmontant, L.fasceDispo, L.brisPieces])
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
-  for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
+  for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "cotoyee", "doubles", "cotices", "potencees", "franc", "quartier", "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   for (const m of ATL.meubles) if (m.accentPlus) for (const w of cles(m.accentPlus)) L.vocab.add(w);
   return L;
 }
@@ -484,6 +484,13 @@ function pPiece(P, i) {
   /* « la croix de gueules bordée d'argent » : un filet d'un autre émail */
   const jb = cle(P, it.i) === "," ? it.i + 1 : it.i, bd = suites(LEX.borde, P, jb)[0];
   if (bd) { const tf = pEmail(P, jb + bd.n); if (!tf) return null; it.pf = tf.t; it.i = tf.i; }
+  /* « la bande d'argent côtoyée de deux doubles cotices potencées d'or » */
+  const jc = cle(P, it.i) === "," ? it.i + 1 : it.i;
+  if (ps.val.p === "bande" && ["cotoyee", "de", "deux", "doubles", "cotices", "potencees"].every((w, x) => cle(P, jc + x) === w)) {
+    const tc = pEmail(P, jc + 6);
+    if (!tc) return null;
+    it.cot = tc.t; it.i = tc.i;
+  }
   /* « la bande d'argent ornée d'un rinceau de sable » */
   const jr = cle(P, it.i) === "," ? it.i + 1 : it.i;
   if ((ps.val.p === "bande" || ps.val.p === "barre") && cle(P, jr) === "ornee" && cle(P, jr + 1) === "de" && cle(P, jr + 2) === "un" && cle(P, jr + 3) === "rinceau") {
@@ -495,6 +502,17 @@ function pPiece(P, i) {
     const q = cle(P, it.i) === "," ? it.i + 1 : it.i, br = pBrochant(P, q);
     if (br) { it.broche = true; it.i = br; continue; }
     const ch = !it.charge && suites(LEX.charge, P, q)[0];
+    /* « chargée en cœur d'une croix de Malte d'argent » · « chargée au franc quartier d'un lion d'argent » : une seule figure, posée là, en plus des autres meubles */
+    if (ch && !it.xo) {
+      const j0 = q + ch.n, lieu = cle(P, j0) === "en" && cle(P, j0 + 1) === "coeur" ? { d: "", n: 2 } : cle(P, j0) === "au" && cle(P, j0 + 1) === "franc" && cle(P, j0 + 2) === "quartier" ? { d: "canton", n: 3 } : null;
+      if (lieu) {
+        const o = pObjet(P, j0 + lieu.n, it.tp);
+        if (!o) return null;
+        if (o.n !== 1 || o.seme) return erreur(P, o.de, o.fin, "En cœur ou au franc quartier, l'Atelier ne pose qu'une figure.");
+        it.xo = { o, d: lieu.d }; it.i = o.i;
+        continue;
+      }
+    }
     if (ch) { const o = pObjet(P, q + ch.n, it.tp); if (!o) return null; it.charge = o; it.i = o.i; continue; }
     const vb = !it.verbe && suites(LEX.verbe, P, q)[0];
     if (vb) {
@@ -728,7 +746,7 @@ function pArmes(P) {
 const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
 const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.cc ? o.ta || "" : o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", cc: o.cc || "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { big2: o.big ? "1" : "", m2c: o.ch ? o.ch.m.kind : "", m2cn: o.ch ? String(o.ch.n) : ADEF.m2cn, m2ct: o.ch ? o.ch.tm : ADEF.m2ct, m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
-const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, lrg: it.lrg || "", fqs: it.fqs || "", ri: it.ri || "", pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" }, it.cmp ? {
+const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, lrg: it.lrg || "", fqs: it.fqs || "", ri: it.ri || "", cot: it.cot || "", xm: it.xo ? it.xo.o.m.kind : "", xt: it.xo ? it.xo.o.tm : ADEF.xt, xd: it.xo ? it.xo.d : "", pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" }, it.cmp ? {
   cmp: "1", tpc: it.cmp.t2, cm1: it.cmp.c[1] ? it.cmp.c[1].m.kind : "", cm1t: it.cmp.c[1] ? it.cmp.c[1].tm : ADEF.cm1t, cm2: it.cmp.c[2] ? it.cmp.c[2].m.kind : "", cm2t: it.cmp.c[2] ? it.cmp.c[2].tm : ADEF.cm2t } : {});
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */
@@ -958,7 +976,7 @@ function ramenerMouvant(toks) {
     return;
   }
 }
-function lire(texte) {
+function lireSimple(texte) {
   const L = lexique(), brut = decouper(texte), { toks, comm, erreurs } = sansCommentaires(texte, brut);
   ramenerMouvant(toks);
   const res = { ok: false, etat: null, notes: comm.map(c => `Commentaire ignoré : ${c}`), erreurs: [...erreurs], exact: false, reecrit: "" };
@@ -979,6 +997,9 @@ function lire(texte) {
   } else if (toks[0].w === "sur" && toks[1] && toks[1].w === "le" && toks[2] && toks[2].w === "tout") {
     res.erreurs.push({ de: toks[0].de, a: toks[2].a, msg: "« sur le tout » vient après les armes de l'écu, pas avant." });
   }
+  /* « Coupé en chef : au 1, … ; au 2, … » : un coupé dont la partie haute n'a que la hauteur d'un chef (voir lire()) */
+  let enChef = false;
+  if (main[0] && main[0].w === "coupe" && main[1] && main[1].w === "en" && main[2] && main[2].w === "chef" && main[3] && main[3].w === ":") { main = [main[0], ...main.slice(3)]; enChef = true; }
   const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
   /* « Écartelé par une croix [pattée] d'argent [bordée de gueules] : aux 1 et 4, … » : la croix passe sur les quatre quartiers */
   let croix = null;
@@ -1016,7 +1037,7 @@ function lire(texte) {
       const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && etiq)) || (parti && t.w === "et" && etiq);
       if (coupe) segs.push([]); else segs[segs.length - 1].push(t);
     });
-    if (parti) lireParti(texte, segs, res, etat, main);
+    if (parti) { lireParti(texte, segs, res, etat, main); if (enChef && !etat.h1) etat.h1 = "ch"; }
     else {
       const quarts = {}, groupes = [];
       segs.forEach(seg => {
@@ -1056,4 +1077,16 @@ function lire(texte) {
   const sans = s => cles(s).filter(c => ![",", ";", ":"].includes(c)).join(" ");
   res.exact = sans(res.reecrit) === sans(texte.replace(/\([^)]*\)/g, " "));
   return res;
+}
+/* « D'azur à la bande d'argent, au chef d'azur à trois fleurs de lis d'or » : ce chef porte ce qu'une pièce seule ne porte pas (une croix, un fascé, sous d'autres armes qui ont déjà leur pièce).
+   Quand la lecture simple échoue, on le relit comme des armes entières dans une bande de la hauteur d'un chef : un coupé (h1 = « ch »). Une lecture qui réussit déjà ne change jamais. */
+function lire(texte) {
+  const r = lireSimple(texte);
+  if (r.ok || r.vide) return r;
+  const m = /^([^;]+),\s*au chef\s+([^;]+)$/su.exec(String(texte).trim());
+  if (!m) return r;
+  const r2 = lireSimple(`Coupé en chef : au 1, ${m[2]} ; au 2, ${m[1]}`);
+  if (!r2.ok) return r;
+  r2.exact = String(texte).replace(/\s+/g, " ").trim() === r2.reecrit;
+  return r2;
 }

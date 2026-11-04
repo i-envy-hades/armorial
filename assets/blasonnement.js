@@ -163,7 +163,7 @@ const count1 = s => { const m = s.m && meuble(s.m); return !m || s.nb === "seme"
 const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
-const ADEF = { f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
+const ADEF = { cot: "", xm: "", xt: "Or", xd: "", f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", an: "0", an2: "0", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
@@ -279,6 +279,8 @@ function normalize(s) {
     s.m2cs = s.m2c ? num(s.m2cs, 40, 200, 100) : ADEF.m2cs;          // taille (%) et écart (%) des figures portées par le tourteau : réglages graphiques d'une carte (cs, ce)
     s.m2ce = s.m2c ? num(s.m2ce, 50, 250, 100) : ADEF.m2ce; }
   s.fqs = s.p === "franc-quartier" && s.fqs === "1" ? "1" : "";                // le franc-quartier senestre (Schwytz)
+  s.cot = s.p === "bande" && own(MOT, s.cot) ? s.cot : "";                                    // la bande côtoyée de deux doubles cotices potencées
+  { const mx = s.p && s.xm && meuble(s.xm); s.xm = mx ? s.xm : ""; if (!s.xm || !own(MOT, s.xt)) s.xt = ADEF.xt; s.xd = s.xm && s.xd === "canton" ? "canton" : ""; }      // une figure de plus, en cœur ou au franc quartier
   s.ri = (s.p === "bande" || s.p === "barre") && own(MOT, s.ri) ? s.ri : "";                // la bande (barre) ornée d'un rinceau
   /* la bordure componée : deux émaux en alternance, et, sur les compons de chacun, une figure (cm1 sur ceux du premier émail, cm2 sur ceux du second) */
   if (!own(MOT, s.tpc)) s.tpc = ADEF.tpc;
@@ -320,6 +322,8 @@ function canon(a) {
   else Object.assign(o, { ray: a.ray, ...(a.ray.startsWith("lozengy") ? {} : { n: a.n }), t1: a.t1, t2: a.t2 });
   if (a.p) Object.assign(o, a.pcc ? { p: a.p, pcc: a.pcc, ln: a.ln, pf: a.pf } : { p: a.p, tp: a.tp, ln: a.ln, pf: a.pf });
   if (a.ri) o.ri = a.ri;
+  if (a.cot) o.cot = a.cot;
+  if (a.xm) Object.assign(o, { xm: a.xm, xt: a.xt, xd: a.xd });
   if (a.lrg) o.lrg = "1";
   if (a.fqs) o.fqs = "1";
   if (a.cmp) Object.assign(o, { cmp: "1", tpc: a.tpc, cm1: a.cm1, cm2: a.cm2, ...(a.cm1 ? { cm1t: a.cm1t } : {}), ...(a.cm2 ? { cm2t: a.cm2t } : {}) });
@@ -424,7 +428,7 @@ function blazonCore(s) {
   const cmObj = (k, t) => { const mm = meuble(k); return `${mm.g === "f" ? "d'une" : "d'un"} ${mm.sing} ${de(t)}`; };
   const cmTxt = !s.cmp ? "" : s.cm1 ? `, les compons ${de(s.tp)} chargés ${cmObj(s.cm1, s.cm1t)}` + (s.cm2 ? `, ceux ${de(s.tpc)} ${cmObj(s.cm2, s.cm2t)}` : "")
     : s.cm2 ? `, les compons ${de(s.tpc)} chargés ${cmObj(s.cm2, s.cm2t)}` : "";
-  const pieceTxt = s.cmp ? `${aArt(pnom, P.g)}${pnom} componée ${de(s.tp)} et ${de(s.tpc)}${cmTxt}` : `${aArt(pnom, P.g)}${pnom}${s.fqs ? " senestre" : ""}${s.lrg ? " élargie" : ""}${bord} ${s.pcc ? ccTexte(s.pcc) : de(s.tp)}${filet}${s.ri ? ` ornée d'un rinceau ${de(s.ri)}` : ""}`;
+  const pieceTxt = s.cmp ? `${aArt(pnom, P.g)}${pnom} componée ${de(s.tp)} et ${de(s.tpc)}${cmTxt}` : `${aArt(pnom, P.g)}${pnom}${s.fqs ? " senestre" : ""}${s.lrg ? " élargie" : ""}${bord} ${s.pcc ? ccTexte(s.pcc) : de(s.tp)}${filet}${s.cot ? ` côtoyée de deux doubles cotices potencées ${de(s.cot)}` : ""}${s.xm ? ` ${agree("chargé", P.g, false)} ${s.xd === "canton" ? "au franc quartier" : "en cœur"} ${cmObj(s.xm, s.xt)}` : ""}${s.ri ? ` ornée d'un rinceau ${de(s.ri)}` : ""}`;
   const broche = parti && !["chef", "bordure", "orle", "canton", "franc-quartier"].includes(s.p) ? " brochant sur le tout" : "";
   if (c && !seme && s.pos === "sous") return `${champ}${parti ? "," : ""} ${groupe}${dph(s, c)}${x2 ? x2.acc : ""}, ${pieceTxt} brochant sur le tout`;
   const sep = parti || seme ? ", " : " ";
@@ -497,6 +501,7 @@ function blazonAll(St) {
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
   } else if (chefParti(St)) b = `Coupé : au 1, parti : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(2))} ; au 2, ${lo(bz(1))}`;      // le chef d'un coupé, partie en deux : le chef à dextre, à senestre, puis la pointe
+  else if (St.q === "c" && St.h1 === "ch") b = `${bz(1)}, au chef ${lo(bz(0))}`;                                 // des armes entières dans une bande de la hauteur d'un chef
   else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
   else b = "Écartelé" + (St.xc ? ` par une croix${St.xp ? " pattée" : ""} ${de(St.xc)}${St.xb ? ` bordée ${de(St.xb)}` : ""}` : "") + " : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");
   if (St.q && St.gb === "1" && St.A[0].br) b += " ; le tout brisé " + brisTxt(St.A[0]);

@@ -4515,7 +4515,9 @@
     "auteur": "Jean-Paul GIBERT",
     "lic": "CC BY 4.0",
     "licurl": "https://creativecommons.org/licenses/by/4.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'argent à trois vaches passantes de gueules accornées, colletées et clarinées d'azur posées en pal",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Famille d'Orlier",
@@ -4830,7 +4832,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Laon (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz2=65&dx2=4&dy2=34&pth=95"
   },
   {
     "nom": "Forbach",
@@ -5145,7 +5148,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville d'Ardres (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz2=92&dy2=38",
+    "atelier": "D'argent à l'aigle bicéphale sans couronne de sable, au chef d'azur chargé de trois fleurs de lys d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Bouchain",
@@ -5460,7 +5466,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-AustrianGov",
     "porteur": "Ville de Vienne (Autriche)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules à la croix d'argent bordée d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "pth=75"
   },
   {
     "nom": "Barcelone",
@@ -5775,7 +5784,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville de Caen (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules à la tour d'or ouverte et ajourée de sable",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=108"
   },
   {
     "nom": "Orléans",
@@ -6095,7 +6107,6 @@
     "auteur": "Fred de Siebenthal, vectorisé par Delta-9, révisé par ARK",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
-    "forme": "iberique",
     "porteur": "Commune du canton de Genève",
     "aVerifier": true
   },
@@ -6433,7 +6444,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton d'Argovie",
-    "aVerifier": true
+    "aVerifier": true,
+    "sansAtelier": true
   },
   {
     "nom": "Lenzbourg",
@@ -6769,7 +6781,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Schwytz",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz=105"
   },
   {
     "nom": "Einsiedeln",
@@ -7103,9 +7116,10 @@
     "auteur": "ARK",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "forme": "iberique",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "Parti de gueules et de sinople à la fleur de lys d'or brochant sur le tout",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Pully",
@@ -7439,7 +7453,6 @@
     "auteur": "Espandero",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
-    "forme": "iberique",
     "porteur": "Commune du canton du Valais",
     "aVerifier": true
   },
@@ -7761,7 +7774,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz2=85&dx2=-14&pdx=44"
   },
   {
     "nom": "Seigneurie de Montpellier",
@@ -8076,7 +8090,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur à trois fleurs de lys d'or, brisé d'un bâton de gueules péri en bande",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Comté de Genève",
@@ -8391,7 +8407,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De sinople à la panthère d'argent, armée, lampassée et incensée de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Comté de Tyrol",
@@ -8706,7 +8724,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur au lion couronné d'or, armé et lampassé de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le lion n'est pas léopardé, la tête reste de profil"
   },
   {
     "nom": "Comté de Waldbourg",
@@ -9023,7 +9043,9 @@
     "auteur": "AlexD",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules au lion d'or, à la bordure engrêlée d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Munster",
@@ -9677,7 +9699,9 @@
     "auteur": "Fenn-O-maniC, Feitidede",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur au pal d'or chargé d'une croix du Christ de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Gibraltar",
@@ -9993,7 +10017,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville de Dunkerque (France)",
-    "aVerifier": true
+    "atelier": "Coupé : au 1, d'or au léopard de sable armé et lampassé de gueules ; au 2, d'argent au dauphin d'azur crêté, barbé, lorré, peautré et oreillé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=170&q2.sz=115&q2.an=-90"
   },
   {
     "nom": "Limoges",
@@ -10308,7 +10334,10 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Briançon (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur au château donjonné d'argent ouvert et ajouré de sable",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=80"
   },
   {
     "nom": "Gap",
@@ -10623,7 +10652,10 @@
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "porteur": "Ville de Troyes (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur à la bande d'argent côtoyée de deux doubles cotices potencées d'or, au chef d'azur à trois fleurs de lis d'or rangées en fasce",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=135"
   },
   {
     "nom": "Dijon",
@@ -10938,7 +10970,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Ville de Newcastle upon Tyne (Royaume-Uni)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules à trois châteaux donjonnés d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Norwich",
@@ -11253,7 +11287,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville d'Aurillac (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules à trois coquilles d'argent, au chef d'azur chargé de trois fleurs de lis d'or",
+    "atelierNote": "Le même blasonnement : l'Atelier dit en entier le chef de France",
+    "atelierAjust": "sz2=80&dy2=36"
   },
   {
     "nom": "Province d'Anvers",
@@ -11568,7 +11605,10 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Territoire français d'outre-mer",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'azur à la fasce de gueules chargée en cœur d'une croix de Malte d'argent, accompagnée en chef de trois fleurs de lys d'or et en pointe de trois couronnes d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz2=125"
   },
   {
     "nom": "Saint-Pierre-et-Miquelon",
@@ -12198,7 +12238,10 @@
     "lic": "CC BY 2.5",
     "licurl": "https://creativecommons.org/licenses/by/2.5",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "Parti : au 1, d'or au lion de gueules ; au 2, d'azur à la fleur de lys d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le lion ne tient pas son dard",
+    "atelierAjust": "sz=80&sz2=65"
   },
   {
     "nom": "Thiérache",
@@ -12833,7 +12876,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'or au château donjonné de sable, surmonté de deux étoiles de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les trois coupeaux de sinople manquent",
+    "atelierAjust": "sz=78&dy=30"
   },
   {
     "nom": "Rüti",
@@ -13169,7 +13215,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Soleure",
-    "aVerifier": true
+    "aVerifier": true,
+    "sansAtelier": true
   },
   {
     "nom": "Birsfelden",
@@ -13505,7 +13552,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "aVerifier": true,
+    "sansAtelier": true
   },
   {
     "nom": "Chavannes-près-Renens",
@@ -13841,7 +13889,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'argent à l'arbre de sinople, au chef fascé ondé d'azur et d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un arbre pour le chêne, sans ses fruits ni son mont"
   },
   {
     "nom": "Bellwald",
@@ -14177,7 +14227,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "Palé d'argent et de gueules de huit pièces, au chef de sable à la croix d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Bellevue",
@@ -15448,7 +15500,8 @@
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz=190"
   },
   {
     "nom": "Famille d'Abbeville",

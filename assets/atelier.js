@@ -53,7 +53,7 @@ function syncForm() {
   const modeH1 = S.q === "c" ? "c" : "p";
   if (F.h1.dataset.mode !== modeH1) {
     H1_PARTI = H1_PARTI || F.h1.innerHTML;
-    F.h1.innerHTML = modeH1 === "c" ? Tr(`<option value="">Chef : simple</option><option value="p">Chef : parti</option>`, `<option value="">Chief: plain</option><option value="p">Chief: per pale</option>`) : H1_PARTI;
+    F.h1.innerHTML = modeH1 === "c" ? Tr(`<option value="">Chef : simple</option><option value="p">Chef : parti</option><option value="ch">Chef : étroit</option>`, `<option value="">Chief: plain</option><option value="ch">Chief: narrow</option><option value="p">Chief: per pale</option>`) : H1_PARTI;
     F.h1.dataset.mode = modeH1;
     F.h1.setAttribute("aria-label", modeH1 === "c" ? Tr("Chef du coupé", "Chief of the per fess division") : Tr("Moitié dextre du parti", "Dexter half of the per pale division"));
   }

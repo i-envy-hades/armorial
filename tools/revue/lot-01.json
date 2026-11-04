@@ -1,0 +1,307 @@
+{
+ "lot": 1,
+ "titre": "Lot 1 : 50 cartes sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, pour que toutes les catégories y soient. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Maison d'Amboise",
+   "verdict": "fidele",
+   "avis": "Même palé, mêmes émaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison de Villehardouin",
+   "verdict": "fidele",
+   "avis": "Même croix ancrée, mêmes émaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Feydeau",
+   "verdict": "fidele",
+   "avis": "Chevron et coquilles en place, 2 et 1."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Kersauson",
+   "verdict": "fidele",
+   "avis": "Même fermail, posé pareil."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Dramelay",
+   "verdict": "fidele",
+   "avis": "Identique : or, chef de gueules."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Brettes",
+   "verdict": "fidele",
+   "avis": "Colliers, clarines et cornes d'azur sont dessinés. Dans l'Atelier, le choix « armé, accorné… » change leur couleur, d'un seul émail pour les trois."
+  },
+  {
+   "g": "blasons",
+   "nom": "Laon",
+   "verdict": "essai",
+   "avis": "Les merlettes mordaient sur le chef : je les ai réduites et descendues."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ardres",
+   "verdict": "fidele",
+   "avis": "Nouvelle aigle bicéphale sans couronne, réduite et descendue sous le chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vienne (Autriche)",
+   "verdict": "fidele",
+   "avis": "Le filet d'argent de l'image entoure maintenant la croix, séparé par un trait sombre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Caen",
+   "verdict": "fidele",
+   "avis": "Une tour, comme vous le demandiez : maçonnée, ouverture et fenêtres de sable."
+  },
+  {
+   "g": "blasons",
+   "nom": "Puplinge",
+   "verdict": "fidele",
+   "avis": "Mêmes fasces ondées, pal en place."
+  },
+  {
+   "g": "blasons",
+   "nom": "Brugg",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier, comme vous l'acceptiez : pas de figure de pont."
+  },
+  {
+   "g": "blasons",
+   "nom": "Küssnacht",
+   "verdict": "essai",
+   "avis": "Nouvelle figure de coussin, à quatre glands, dessinée pour l'Atelier. Les glands sont de l'émail du coussin ; l'image les a d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Prilly",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Saint-Maurice",
+   "verdict": "fidele",
+   "avis": "Même croix tréflée sur le parti."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté du Maine",
+   "verdict": "fidele",
+   "avis": "Le lion d'argent est descendu au canton dextre du chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dombes",
+   "verdict": "fidele",
+   "avis": "Le bâton s'arrête avant les bords, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Duché de Styrie",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Schwarzbourg",
+   "verdict": "essai",
+   "avis": "le lion n'est pas léopardé, la tête reste de profil."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume de Deheubarth",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ordre de Saint-Lazare",
+   "verdict": "fidele",
+   "avis": "Même croix ; l'image montre la croix seule, sans écu, et l'Atelier la pose sur un écu d'argent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Madère",
+   "verdict": "fidele",
+   "avis": "Nouvelle croix du Christ, de gueules à croix blanche, comme l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dunkerque",
+   "verdict": "fidele",
+   "avis": "Le dauphin pâmé, tourné d'un quart de tour vers la gauche, comme vous le demandiez."
+  },
+  {
+   "g": "blasons",
+   "nom": "Briançon",
+   "verdict": "fidele",
+   "avis": "Nouveau château à trois tours, ouverture et fenêtres de sable, comme l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Troyes",
+   "verdict": "fidele",
+   "avis": "Le chef aux fleurs de lis et les cotices potencées et contre-potencées sont dessinés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Newcastle upon Tyne",
+   "verdict": "fidele",
+   "avis": "Nouveau château donjonné de trois tours. L'image montre aussi les ornements extérieurs, qui ne sont pas repris."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aurillac",
+   "verdict": "essai",
+   "avis": "Le même blasonnement : l'Atelier dit en entier le chef de France."
+  },
+  {
+   "g": "blasons",
+   "nom": "Saint-Barthélemy",
+   "verdict": "fidele",
+   "avis": "La croix de Malte est descendue au milieu de la fasce."
+  },
+  {
+   "g": "blasons",
+   "nom": "Archevêché de Cambrai",
+   "verdict": "fidele",
+   "avis": "Trois lions posés 2 et 1, comme l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Labourd",
+   "verdict": "essai",
+   "avis": "le lion ne tient pas son dard."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Jametz",
+   "verdict": "fidele",
+   "avis": "Même fascé, franc quartier en place."
+  },
+  {
+   "g": "blasons",
+   "nom": "Meilen",
+   "verdict": "essai",
+   "avis": "Nouveau château ; il manque encore les trois coupeaux de sinople, et les deux donjons de l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Biberist",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bavois",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Tannay",
+   "verdict": "essai",
+   "avis": "Le chef porte ses ondes d'argent. Reste un arbre pour le chêne, sans ses fruits ni son mont."
+  },
+  {
+   "g": "blasons",
+   "nom": "Corsier",
+   "verdict": "fidele",
+   "avis": "La croix du chef va jusqu'aux bords, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison d'Adhémar",
+   "verdict": "fidele",
+   "avis": "Mêmes bandes, mêmes émaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Pracomtal",
+   "verdict": "fidele",
+   "avis": "Même chef et mêmes fleurs de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Audren de Kerdrel",
+   "verdict": "fidele",
+   "avis": "Nouvelle tour maçonnée, posée 2 et 1. La figure « tour couverte » est aussi disponible."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Voisins",
+   "verdict": "essai",
+   "avis": "Les fusées étaient trop petites : je les ai agrandies."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Daillon",
+   "verdict": "fidele",
+   "avis": "Même croix engrêlée."
+  },
+  {
+   "g": "personnages",
+   "nom": "Concino Concini",
+   "verdict": "sans-dessin",
+   "avis": "L'Atelier ne sait pas partager un écu en six quartiers, et n'a ni rocher à panaches ni chaînes passées en sautoir. Un écartelé en quatre trahirait ces armes : je préfère ne pas le dessiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Odet de Foix, vicomte de Lautrec",
+   "verdict": "essai",
+   "avis": "les vaches sont sans leurs accornures, colliers et clarines d'azur."
+  },
+  {
+   "g": "personnages",
+   "nom": "Cambacérès",
+   "verdict": "sans-dessin",
+   "avis": "Le dextrochère, les tables de la loi et le chef des Princes Grands Dignitaires sont hors de portée de l'Atelier : mon essai ne ressemblait pas à l'image, je l'ai retiré."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean de La Baume",
+   "verdict": "essai",
+   "avis": "la bande vivrée est dessinée denchée."
+  },
+  {
+   "g": "personnages",
+   "nom": "Robert Stuart d'Aubigny",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "personnages",
+   "nom": "Yder",
+   "verdict": "essai",
+   "avis": "La langue est de sable. Les têtes restent celles de la figure « rencontre »."
+  },
+  {
+   "g": "personnages",
+   "nom": "Ségurant le Brun",
+   "verdict": "fidele",
+   "avis": "Griffes et langue sont de sinople, mais très fines : elles se voient à peine à cette taille."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jeanne Seymour",
+   "verdict": "sans-dessin",
+   "avis": "Six quartiers dans la seconde moitié, et une pile que l'Atelier ne connaît pas. Dessiner seulement la moitié gauche laisserait croire à d'autres armes : je préfère ne pas le dessiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Bernard de Tramelay",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier."
+  }
+ ]
+}

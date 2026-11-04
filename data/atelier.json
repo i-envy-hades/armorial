@@ -359,6 +359,35 @@
    "accentSouple": true
   },
   {
+   "kind": "aigle-bicephale-sans-couronne",
+   "nom": "Aigle bicéphale sans couronne",
+   "sing": "aigle bicéphale sans couronne",
+   "plur": "aigles bicéphales sans couronne",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "file": {
+    "path": "assets/meubles/aigle-bicephale-sans-couronne.svg",
+    "commons": "Meuble héraldique Aigle bicéphale compacte.svg",
+    "auteur": "Jean-Paul Gibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "accent": [
+    "#eac102",
+    "#e20909",
+    "#eb001a"
+   ],
+   "accentMot": "becqué et membré",
+   "accentSouple": true
+  },
+  {
    "kind": "aigle-vol-abaisse",
    "nom": "Aigle au vol abaissé",
    "sing": "aigle au vol abaissé",
@@ -597,6 +626,15 @@
    "g": "m",
    "cat": "Propres au blason",
    "draw": "rustre"
+  },
+  {
+   "kind": "coussin",
+   "nom": "Coussin",
+   "sing": "coussin",
+   "plur": "coussins",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "draw": "coussin"
   },
   {
    "kind": "losange",
@@ -1094,6 +1132,30 @@
    "outline": true,
    "drop": [
     "#ffffff"
+   ]
+  },
+  {
+   "kind": "croix-christ",
+   "nom": "Croix du Christ",
+   "sing": "croix du Christ",
+   "plur": "croix du Christ",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "file": {
+    "path": "assets/meubles/croix-christ.svg",
+    "commons": "Cross of the Military Order of Christ.svg",
+    "auteur": "Nuno Tavares",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#d62c26"
    ]
   },
   {
@@ -2064,7 +2126,58 @@
    "plur": "tours",
    "g": "f",
    "cat": "Objets et bâtiments",
-   "draw": "tour"
+   "file": {
+    "path": "assets/meubles/tour.svg",
+    "commons": "Meuble héraldique Tour ouverte, ajourée et crénelée.svg",
+    "auteur": "Jean-Paul Gibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#e20909",
+    "#2b5df2"
+   ],
+   "accentMot": "ouvert et ajouré",
+   "accentSouple": true,
+   "line": [
+    "#000"
+   ]
+  },
+  {
+   "kind": "tour-couverte",
+   "nom": "Tour couverte",
+   "sing": "tour couverte",
+   "plur": "tours couvertes",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/tour-couverte.svg",
+    "commons": "Meuble héraldique Tour maçonnée.svg",
+    "auteur": "Etxeko",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "line": [
+    "#000000"
+   ]
   },
   {
    "kind": "couronne",
@@ -2125,7 +2238,90 @@
    "plur": "châteaux donjonnés",
    "g": "m",
    "cat": "Objets et bâtiments",
-   "draw": "chateau"
+   "file": {
+    "path": "assets/meubles/chateau.svg",
+    "commons": "Meuble héraldique château donjonné de trois tours.svg",
+    "auteur": "Jean-Paul Gibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fff"
+   ],
+   "accent": [
+    "#e20909",
+    "#2b5df2"
+   ],
+   "accentMot": "ouvert et ajouré",
+   "accentSouple": true,
+   "line": [
+    "#000"
+   ]
+  },
+  {
+   "kind": "chateau-deux-tours",
+   "nom": "Château à deux tours",
+   "sing": "château à deux tours",
+   "plur": "châteaux à deux tours",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/chateau-deux-tours.svg",
+    "commons": "Meuble héraldique château à deux tours.svg",
+    "auteur": "Jean-Paul Gibert",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fff"
+   ],
+   "line": [
+    "#000"
+   ]
+  },
+  {
+   "kind": "chateau-castille",
+   "nom": "Château de Castille",
+   "sing": "château de Castille",
+   "plur": "châteaux de Castille",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "file": {
+    "path": "assets/meubles/chateau-castille.svg",
+    "commons": "Meuble héraldique Chateau Castille.svg",
+    "auteur": "Vijinn",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#2b5df2"
+   ],
+   "accentMot": "ouvert et ajouré",
+   "accentSouple": true,
+   "line": [
+    "#000000"
+   ]
   },
   {
    "kind": "cor",
@@ -3227,6 +3423,49 @@
     48,
     101,
     24
+   ]
+  },
+  {
+   "kind": "dauphin",
+   "nom": "Dauphin",
+   "sing": "dauphin",
+   "plur": "dauphins",
+   "alias": [
+    [
+     "dauphin pâmé",
+     "dauphins pâmés"
+    ],
+    [
+     "dauphin couché",
+     "dauphins couchés"
+    ]
+   ],
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/dauphin.svg",
+    "commons": "Meuble héraldique Dauphin pâmé.svg",
+    "auteur": "Syryatsu",
+    "lic": "CC0",
+    "licurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "crêté, barbé, lorré, peautré et oreillé",
+   "accentSouple": true,
+   "line": [
+    "#000000"
    ]
   },
   {

@@ -895,6 +895,11 @@ function chargeInner(kind, fill, stroke, field){
     /* ---------- meubles propres au blason ---------- */
     case "macle": return `<path fill-rule="evenodd" d="M100,44 L148,116 L100,188 L52,116 Z M100,74 L128,116 L100,158 L72,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "rustre": return `<path fill-rule="evenodd" d="M100,44 L148,116 L100,188 L52,116 Z M124,116 A24,24 0 1 0 76,116 A24,24 0 1 0 124,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+    /* le coussin : quatre côtés creusés, un gland à chaque angle */
+    case "coussin": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round">
+      ${[0, 90, 180, 270].map(a => `<g transform="rotate(${a} 100 116)"><rect x="95" y="55" width="10" height="7" rx="1"/><path d="M93,55 L91,34 L109,34 L107,55 Z"/><path d="M96,34V55M100,34V55M104,34V55" fill="none"/></g>`).join("")}
+      <path d="M100,62 Q112,97 154,116 Q112,135 100,170 Q88,135 46,116 Q88,97 100,62 Z"/>
+      <path d="M100,62 Q98,88 66,106 M100,62 Q102,88 134,106 M100,170 Q98,144 66,126 M100,170 Q102,144 134,126" fill="none"/></g>`;
     case "losange": return `<path d="M100,44 L148,116 L100,188 L52,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "fusee": return `<path d="M100,30 L136,116 L100,202 L64,116 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "billette": return `<g fill="${fill}" stroke="${stroke}" stroke-width="1.3">

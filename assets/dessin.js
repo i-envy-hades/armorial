@@ -207,7 +207,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "fqs", "big2", "lrg"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "cot", "xm", "xd", "fqs", "big2", "lrg"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 /* l'état d'un écu en une ligne (« t1=Gueules&m=lion&nb=1 ») : seules les valeurs qui diffèrent du défaut. C'est l'adresse de l'Atelier,
@@ -228,7 +228,7 @@ function etatDe(code) {
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4", "p", "c", "t", "l"].includes(St.q)) St.q = "";
-  for (const k of ["h1", "h2"]) if (!(St.q === "p" ? ["", "2", "4"] : St.q === "c" && k === "h1" ? ["", "p"] : [""]).includes(St[k])) St[k] = "";
+  for (const k of ["h1", "h2"]) if (!(St.q === "p" ? ["", "2", "4"] : St.q === "c" && k === "h1" ? ["", "p", "ch"] : [""]).includes(St[k])) St[k] = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
@@ -367,7 +367,7 @@ function couronneDe(m, tinct, forme) {
   return `<svg x="${(x - w / 2).toFixed(1)}" y="${(y - h / 2).toFixed(1)}" width="${w}" height="${h.toFixed(1)}" viewBox="${vb.join(" ")}" overflow="visible"><g fill="#000" stroke-linejoin="round">${fileInner(recolor(txt, cm, tinct, tinct), `cn${++CNID}`)}</g></svg>`;
 }
 const croixDeCase = (pf, th, line) => {
-  const t = 40 * MAP.px * (+th || 100) / 100, x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
+  const t = 40 * MAP.px * (+th || 100) / 100 * (MAP.rect && MAP.rect[3] < 100 ? .42 : 1), x = 100 + MAP.shx, y = 126 - 14 * MAP.vpy + MAP.shy;
   let d = null;
   if (CONTOURS[line]) { try { d = pieceDecoree("croix", line, +th || 100, MAP.px, { c: [x, y], ext: 500 }); } catch (err) { /* la mesure demande un navigateur complet */ } }
   if (d) return `<path d="${d}" fill="${pf}" fill-rule="evenodd"/>`;
@@ -455,9 +455,13 @@ function drawBody(s, u) {
   const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case, la bordure reste unie
   const dress = paint => {
     let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.lrg ? 145 : s.pth);
-    if (p && s.pf) p = filetDe(p, flat(s.pf), croixCase ? 6 * MAP.vpx : 6) + p;            // le filet : la pièce cernée d'un liseré de l'émail dit
+    if (p && s.pf) {                                                                       // le filet : la pièce cernée d'un liseré de l'émail dit
+      const g = croixCase ? 6 * MAP.vpx : 6, meme = s.pf === s.tp;                         // du même émail que la pièce, un trait sombre les sépare (la croix de Vienne)
+      p = (meme ? filetDe(p, "#1a1712", g + .9) : "") + filetDe(p, flat(s.pf), g) + (meme ? filetDe(p, "#1a1712", .9) : "") + p;
+    }
     if (p && (+s.pdx || +s.pdy)) p = `<g transform="translate(${croixCase ? +s.pdx * MAP.vpx : +s.pdx},${croixCase ? +s.pdy * MAP.vpy : +s.pdy})">${p}</g>`;
     if (s.ri && (s.p === "bande" || s.p === "barre")) p += rinceau(s);
+    if (s.cot && s.p === "bande") p = cotices(s) + p;
     if (s.fqs) p = `<g transform="translate(200,0) scale(-1,1)">${p}</g>`;
     return croixCase ? p : sq(p, 1);
   };
@@ -506,9 +510,24 @@ function componee(s, u, defs) {
   });
   return out;
 }
+/* deux doubles cotices potencées et contre-potencées, de part et d'autre de la bande : deux filets, et entre eux des T tête-bêche */
+function cotices(s) {
+  const ang = Math.atan2(246, 194) * 180 / Math.PI, a = 31, b = 43, pas = 13;
+  let d = "";
+  for (const sg of [1, -1]) {
+    const y = v => (v * sg).toFixed(1);
+    d += `M-190,${y(a)}H190M-190,${y(b)}H190`;
+    for (let x = -187, n = 0; x < 190; x += pas, n++) d += n % 2 ? `M${x},${y(b)}V${y(a + 3)}M${x - 4.5},${y(a + 3)}H${x + 4.5}` : `M${x},${y(a)}V${y(b - 3)}M${x - 4.5},${y(b - 3)}H${x + 4.5}`;
+  }
+  return `<path transform="translate(103,129) rotate(${ang.toFixed(2)})" d="${d}" fill="none" stroke="${tinctPaint(s.cot)}" stroke-width="1.7"/>`;
+}
 /* la brisure, par-dessus tout le reste (une pièce de brisure, ou des figures), puis l'assemblage des couches */
 function brisLayer(s, u) {
   let defs = "", bris = "";
+  if (s.xm) {         // une figure de plus, en cœur ou au franc quartier
+    defs += symbolFor({ ...s, m: s.xm, tm: s.xt, ta: s.xt, cc: "", ct: "", cn: "", cnk: "", iss: "" }, `xm-${u}`);
+    bris += placeAll([s.xd === "canton" ? [40, 52, .34] : [100, s.p === "fasce" ? 130 : 116, .36]], meuble(s.xm), `xm-${u}`, false);
+  }
   if (s.br) {
     if (s.br === "lambel") {
       const l = lambelDraw(s, u); defs += l.defs;
@@ -581,7 +600,7 @@ const SHAPES = {
 };
 /* les cases d'un parti : chaque moitié, ou, si elle s'écartèle, ses quatre quartiers */
 function partiCells(St) {
-  const split = quarterGeom().split, out = [];
+  const split = St.h1 === "ch" ? 73 : quarterGeom().split, out = [];
   /* tranché, taillé : deux triangles de part et d'autre de la diagonale (les armes de chacun se resserrent sur ce qu'on en voit) */
   if (St.q === "t") return [{ arm: 0, half: 0, poly: [[0, 0], [200, 0], [200, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "bande", n: [.78, -.62] } },
     { arm: 1, half: 1, poly: [[0, 0], [200, 252], [0, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "bande", n: [-.78, .62] } }];
@@ -627,7 +646,7 @@ function partiMap(c) {
   const [rx, ry, rw, rh] = c.rect, cx = rx + rw / 2, cy = ry + rh / 2, m = { px: rw / 200, py: rh / 252, vpx: rw / 200, vpy: rh / 252, fpy: Math.min(rh / 252, 1.4 * rw / 200), cell: true, half: true, pk: HALF_PK, shx: 0, shy: 0, cx, cy };
   m.rect = c.rect; m.edges = c.edges;
   if (c.poly) { const g = polyGeom(c.poly); return Object.assign(m, { ligne: c.ligne, px: 1, py: 1, vpx: DIAG_K, vpy: DIAG_K, fpy: DIAG_K, pk: DIAG_K, half: false, cx: 100, cy: 126, shx: g.cx - 100, shy: g.cy - 126, gx: g.cx, gy: g.cy }); }
-  if (c.coupe) { const g = cellGeom(c.rect); return Object.assign(m, { half: false, coupe: true, shy: g.cy - cy, gx: g.cx, gy: g.cy, pk: Math.min(HALF_PK, COUPE_PK * g.h / 252) }); }      // une moitié de coupé : les figures se règlent sur sa hauteur visible
+  if (c.coupe) { const g = cellGeom(c.rect); return Object.assign(m, { half: false, coupe: true, shy: g.cy - cy, gx: g.cx, gy: g.cy, pk: c.rect[3] < 100 ? .62 : Math.min(HALF_PK, COUPE_PK * g.h / 252) }); }      // une moitié de coupé : les figures se règlent sur sa hauteur visible
   if (c.q === undefined) { const g = cellGeom(c.rect); return Object.assign(m, { shx: g.cx - cx, gx: g.cx, gy: g.cy }); }      // une moitié se centre en largeur sur ce qu'on en voit
   const g = cellGeom(c.rect), ratio = Math.min(...c.rects.map(r => Math.min(cellGeom(r).w / r[2], 1)));      // les quatre quartiers gardent la même taille de figure : celle que le plus étroit tolère
   return Object.assign(m, { gx: g.cx, gy: g.cy, half: false, vpx: g.w / 200, vpy: g.h / 252, fpy: Math.min(g.h / 252, 1.4 * g.w / 200), pk: SUB_PK * (rw / 50) * ratio, shx: g.cx - cx, shy: g.cy - cy });
@@ -638,13 +657,14 @@ function drawParti(St, u, ab) {
   const cells = partiCells(St);
   cells.forEach((c, ci) => {
     const m = partiMap(c), id = `${u}h${ci}`, [rx, ry, rw, rh] = c.rect;
+    if (St.h1 === "ch" && c.arm === 0 && St.A[0].nb === "1") m.pk = .3;      // une figure seule dans un chef étroit : à sa mesure, sans mordre sur le reste de l'écu
     MAP = m; HSIDE = c.half;
     let r;
     try { r = drawBody(armsCell(St, c.arm), id); } finally { MAP = null; HSIDE = 0; }
     defs += r.defs + `<clipPath id="qr-${id}">${c.poly ? `<path d="M${c.poly.map(p => p.join(",")).join("L")}Z"/>` : `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}"/>`}</clipPath>`;
     body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
-  const split = quarterGeom().split;
+  const split = St.h1 === "ch" ? 73 : quarterGeom().split;
   let lignes = St.q === "c" ? `M0,${split}H200${chefParti(St) ? `M100,0V${split}` : ""}` : St.q === "t" ? "M0,0L200,252" : St.q === "l" ? "M200,0L0,252" : "M100,0V252";
   cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
@@ -709,7 +729,7 @@ function bboxOf(key, inner) {
 }
 async function loadAll(St) {
   const O = ATL.ornements, { cr, co, su, hm } = ornOf(St), jobs = [];
-  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.m && a.m2 && a.m2c) jobs.push(loadSvg(meuble(a.m2c))); if (a.cmp) for (const k of [a.cm1, a.cm2]) if (k) jobs.push(loadSvg(meuble(k)));
+  for (const i of active(St)) { const a = St.A[i]; if (a.m) jobs.push(loadSvg(meuble(a.m))); if (a.m && a.m2) jobs.push(loadSvg(meuble(a.m2))); if (a.m && a.m2 && a.m2c) jobs.push(loadSvg(meuble(a.m2c))); if (a.xm) jobs.push(loadSvg(meuble(a.xm))); if (a.cmp) for (const k of [a.cm1, a.cm2]) if (k) jobs.push(loadSvg(meuble(k)));
     if (a.m && a.cn) jobs.push(loadSvg(meuble(a.cnk === "antique" ? "couronne-antique" : "couronne"))); if (a.m && a.m2 && a.cn2) jobs.push(loadSvg(meuble(a.cnk2 === "antique" ? "couronne-antique" : "couronne"))); if (BRIS_FIGS.includes(a.br)) jobs.push(loadSvg(meuble(a.br))); if (a.br === "lambel" && a.lpc) jobs.push(loadSvg(meuble(a.lpc))); }
   if (su) jobs.push(loadSvg(meuble(su.kind)));
   if (St.hm && St.ci) jobs.push(loadSvg(meuble(St.ci)));
@@ -868,7 +888,7 @@ function creditsOf(St) {
   };
   for (const i of active(St)) {
     const a = St.A[i];
-    for (const k of [a.m, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : "", a.br === "lambel" ? a.lpc : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(nomMeubleLu(m)), m.file || m.credit, true); }
+    for (const k of [a.m, a.xm, count2(a) ? a.m2 : "", BRIS_FIGS.includes(a.br) ? a.br : "", a.br === "lambel" ? a.lpc : ""]) { const m = k && meuble(k); if (m && (m.file || m.credit)) add(cap(nomMeubleLu(m)), m.file || m.credit, true); }
   }
   const O = ATL.ornements, { cr, co, su } = ornOf(St);
   if (su) add(Tr("Supports", "Supporters"), meuble(su.kind).file, true);

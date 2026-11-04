@@ -1890,7 +1890,9 @@
     "groupe": "marechaux",
     "meta": "1485–1528 · maréchal de France",
     "desc": "Capitaine des guerres d'Italie, il meurt devant Naples.",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "Écartelé : aux 1 et 4 d'or à trois pals de gueules ; au 2 d'or à deux vaches de gueules, l'une sur l'autre ; au 3 d'argent à la croix pattée de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les vaches sont sans leurs accornures, colliers et clarines d'azur"
   },
   {
     "nom": "Jean de Villiers de L'Isle-Adam",
@@ -2562,7 +2564,9 @@
     "groupe": "marechaux",
     "meta": "mort en 1435 · maréchal de France",
     "desc": "Il sert le roi de France, les ducs de Bourgogne et les comtes de Savoie.",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'or à la bande denchée d'azur",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la bande vivrée est dessinée denchée"
   },
   {
     "nom": "Philippe de Culant",
@@ -2898,7 +2902,8 @@
     "groupe": "marechaux",
     "meta": "1470–1544 · maréchal de France",
     "desc": "Ce Français d'origine écossaise, seigneur d'Aubigny, commande dans les guerres d'Italie.",
-    "aVerifier": true
+    "aVerifier": true,
+    "sansAtelier": true
   },
   {
     "nom": "Rémy Exelmans",
@@ -3254,7 +3259,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "De gueules à trois rencontres de lion d'or lampassées de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les têtes de lion sont dessinées avec la figure de la rencontre"
   },
   {
     "nom": "Calogrenant",
@@ -3611,7 +3618,9 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "D'or au dragon de sable armé et lampassé de sinople",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Ferrant du Tertre",
@@ -4311,7 +4320,9 @@
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelier": "Écartelé : aux 1 et 4 d'argent à la croix pattée de gueules ; aux 2 et 3 d'or au chef de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Eudes de Saint-Amand",
