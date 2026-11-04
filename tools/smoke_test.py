@@ -140,6 +140,8 @@ def test_lignees(browser, base):
         page.wait_for_timeout(1200)
         verifie(fr["nom"] in page.title(), f"lignées/{fr['id']} : titre « {page.title()} »")
         verifie(page.locator("#royaumes svg").count() > 5, f"lignées/{fr['id']} : la frise est dessinée")
+        cote = page.evaluate("(e => e ? e.getBoundingClientRect().width : 0)(document.querySelector('#royaumes .reign .rb svg:not(.tk-seal), #royaumes .reign .rb img'))")
+        verifie(cote >= 44, f"lignées/{fr['id']} : les écus de la frise se voient ({cote:.0f} px de large)")
         propre(f"lignées/{fr['id']}", page, erreurs)
         page.context.close()
 

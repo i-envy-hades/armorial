@@ -25,8 +25,8 @@ body.epic .mast{
   border-bottom-color:transparent;box-shadow:none;backdrop-filter:none;
   transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;
 }
-body.epic .mast .brand,body.epic .mast nav a{color:#efe2bf;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-body.epic .mast nav a:hover,body.epic .mast nav a.here{color:var(--or-light)}
+body.epic .mast .brand,body.epic .mast nav a,body.epic .mast nav button.nav-t{color:#efe2bf;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+body.epic .mast nav a:hover,body.epic .mast nav button.nav-t:hover,body.epic .mast nav a.here,body.epic .mast nav button.nav-t.here{color:var(--or-light)}
 body.epic .mast .cross{color:var(--or-light)}
 body.epic .mast .search input{background:rgba(13,9,6,.55);border-color:rgba(227,197,121,.35);color:#f3e6c4}
 body.epic .mast .search input::placeholder{color:rgba(243,230,196,.6)}
@@ -35,9 +35,9 @@ body.epic .mast.solid{
   background:rgba(233,225,205,.92);backdrop-filter:blur(8px);
   border-bottom-color:var(--rule);box-shadow:0 1px 0 rgba(169,129,46,.35),0 10px 30px -22px rgba(26,23,18,.6);
 }
-body.epic .mast.solid .brand,body.epic .mast.solid nav a{color:var(--ink-soft);text-shadow:none}
+body.epic .mast.solid .brand,body.epic .mast.solid nav a,body.epic .mast.solid nav button.nav-t{color:var(--ink-soft);text-shadow:none}
 body.epic .mast.solid .brand{color:var(--ink)}
-body.epic .mast.solid nav a:hover,body.epic .mast.solid nav a.here{color:var(--gules)}
+body.epic .mast.solid nav a:hover,body.epic .mast.solid nav button.nav-t:hover,body.epic .mast.solid nav a.here,body.epic .mast.solid nav button.nav-t.here{color:var(--gules)}
 body.epic .mast.solid .cross{color:var(--gules)}
 body.epic .mast.solid .search input{background:var(--vellum-2);border-color:var(--rule);color:var(--ink)}
 body.epic .mast.solid .search input::placeholder{color:var(--ink-soft)}
@@ -249,8 +249,8 @@ body.epic .hero .counts .l{color:#3a2d18;text-shadow:0 0 10px rgba(255,251,238,.
 .scroll-cue i::after{background:#8e1b18}
 /* menu sur le héros clair : encre sur voile de parchemin */
 body.epic .mast{background:linear-gradient(180deg,rgba(247,240,222,.88),rgba(247,240,222,0))}
-body.epic .mast .brand,body.epic .mast nav a{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
-body.epic .mast nav a:hover,body.epic .mast nav a.here{color:#8e1b18}
+body.epic .mast .brand,body.epic .mast nav a,body.epic .mast nav button.nav-t{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
+body.epic .mast nav a:hover,body.epic .mast nav button.nav-t:hover,body.epic .mast nav a.here,body.epic .mast nav button.nav-t.here{color:#8e1b18}
 body.epic .mast .cross{color:#8e1b18}
 body.epic .mast .search input{background:rgba(255,251,238,.78);border-color:rgba(142,27,24,.3);color:#1d140b}
 body.epic .mast .search input::placeholder{color:#5c5446}

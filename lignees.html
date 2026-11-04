@@ -347,11 +347,11 @@ a:hover{text-decoration:underline}
 .bar .ph{position:absolute;top:-3px;bottom:-3px;width:2px;background:#fff;border-radius:2px;box-shadow:0 0 6px #fff}
 .gapzone{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 10px);pointer-events:none}
 
-.reign{position:absolute;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);z-index:2}
+.reign{--k:.075;position:absolute;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);z-index:2}
 .reign::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:var(--stem);background:linear-gradient(rgba(227,197,121,.55),rgba(227,197,121,.1));pointer-events:none}
-.reign .rb{display:flex;gap:2px;padding:0;margin:0;border:0;background:none;cursor:pointer;border-radius:6px;outline:none}
-.reign .rb svg{width:36px;height:53px;display:block;overflow:visible;filter:drop-shadow(0 4px 6px rgba(0,0,0,.55));transition:transform .25s cubic-bezier(.3,1.5,.5,1),filter .25s}
-.reign .rb svg + svg{margin-left:-14px}
+.reign .rb{display:flex;align-items:flex-end;gap:2px;padding:0;margin:0;border:0;background:none;cursor:pointer;border-radius:6px;outline:none}
+.reign .rb svg{width:calc(var(--l,632)*var(--k)*1px);height:calc(var(--h,692)*var(--k)*1px);display:block;overflow:visible;filter:drop-shadow(0 4px 6px rgba(0,0,0,.55));transition:transform .25s cubic-bezier(.3,1.5,.5,1),filter .25s}
+.reign .rb svg + svg{margin-left:-20px}
 .reign .rb:hover svg,.reign .rb:focus-visible svg{transform:translateY(-4px) scale(1.14);filter:drop-shadow(0 8px 10px rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(227,197,121,.5))}
 .reign .rn{margin-top:3px;font-family:"Marcellus",serif;font-size:.74rem;line-height:1.1;color:var(--parch);white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.9);border-bottom:1px solid transparent}
 .reign .rn:hover{color:var(--gold);text-decoration:none;border-bottom-color:rgba(227,197,121,.6)}
@@ -361,7 +361,8 @@ a:hover{text-decoration:underline}
 .reign.current .rb svg{transform:translateY(-3px) scale(1.18);filter:drop-shadow(0 0 10px rgba(227,197,121,.85)) drop-shadow(0 6px 8px rgba(0,0,0,.6))}
 .reign.current .rn{color:var(--gold)}
 .compact .reign .rn{display:none}
-.compact .reign .rb svg{width:28px;height:41px}
+.compact .reign{--k:.056}
+.compact .reign .rb img{width:36px;height:40px}
 
 .jl{position:absolute;top:42px;bottom:0;width:0;border-left:1px dashed rgba(227,197,121,.28);pointer-events:none;z-index:1}
 .jm{position:absolute;bottom:-7px;transform:translateX(-50%);z-index:3;border:0;background:none;padding:0;cursor:help}
@@ -433,8 +434,8 @@ footer{background:var(--vellum-3)}
 .pv-stamp{position:absolute;right:-6%;bottom:6%;transform:rotate(-11deg) scale(1.3);font-family:"Marcellus SC",serif;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;color:#f5b3a8;border:2px solid currentColor;border-radius:5px;padding:.18rem .55rem;background:rgba(var(--bg),.72);box-shadow:0 0 0 3px rgba(var(--bg),.72);opacity:0;transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
 .pv.apost .pv-stamp{opacity:1;transform:rotate(-11deg)}
 .sl-n{font-family:"Marcellus",serif;letter-spacing:.08em;fill:#1f2226}
-.reign .rb img{width:36px;height:40px;display:block;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.55));transition:transform .25s cubic-bezier(.3,1.5,.5,1),filter .25s}
-.reign .rb svg.tk-seal{width:31px;height:31px;margin:5px 2px 4px}
+.reign .rb img{width:50px;height:56px;display:block;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.55));transition:transform .25s cubic-bezier(.3,1.5,.5,1),filter .25s}
+.reign .rb svg.tk-seal{width:44px;height:44px;margin:6px 3px}
 .reign .rb:hover img,.reign .rb:focus-visible img{transform:translateY(-4px) scale(1.14);filter:drop-shadow(0 8px 10px rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(227,197,121,.5))}
 .reign.current .rb img{transform:translateY(-3px) scale(1.2);filter:drop-shadow(0 0 10px rgba(227,197,121,.85)) drop-shadow(0 6px 8px rgba(0,0,0,.6))}
 .reign.apost .rb img{filter:sepia(.35) saturate(.7) drop-shadow(0 4px 6px rgba(0,0,0,.55))}

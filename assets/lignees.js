@@ -8,7 +8,7 @@ const SHIELD = "M1.4,1.4 H599.4 V520.9 C594.8,566.5 567.8,582.6 533.2,588.6 H368
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ZOOMS = [1.3, 2.2, 3, 4.2, 6, 8.5, 12, 17, 24, 34, 48];
 const MOIS = Tr(["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"], ["January","February","March","April","May","June","July","August","September","October","November","December"]);
-const TW = 78, TIER_H = 72, RULER_H = 42, BAND_H = 34, OROW_H = 17;
+const TW = 78, TIER_H = 98, RULER_H = 42, BAND_H = 34, OROW_H = 17;
 /* les frises disponibles : data/frises.json (une par fichier de données ; l'emblème est un fichier Commons déjà crédité dans la lignée) */
 let LIGNEES = [], GROUPES = [];
 /* vocabulaire par défaut ; une lignée le surcharge par R.mots */
@@ -273,7 +273,9 @@ function tokenIcon(R, id, y, r){
     return a.file ? `<img src="${commonsImg(a.file, 90)}" alt="" loading="lazy" draggable="false">` : sealSvg(r, false);
   }
   const cr = ornAt(R, "couronne", y), co = ornAt(R, "colliers", y);
-  return `<svg viewBox="-110 -380 820 1220" aria-hidden="true">${co ? `<use href="#collar-${co.type}"/>` : ""}<use href="#arms-${id}" x="-8" y="-8" width="616" height="676"/>${cr ? `<use href="#crown-${cr.type}"/>` : ""}</svg>`;
+  /* le cadre serre l'écu : la place d'une couronne ou d'un collier n'est prise que s'il y en a un (ce qui dépasse sur les côtés reste visible) */
+  const x = co ? -110 : -16, l = co ? 820 : 632, h0 = cr ? -380 : -16, h1 = co ? 840 : 676;
+  return `<svg viewBox="${x} ${h0} ${l} ${h1 - h0}" style="--l:${l};--h:${h1 - h0}" aria-hidden="true">${co ? `<use href="#collar-${co.type}"/>` : ""}<use href="#arms-${id}" x="-8" y="-8" width="616" height="676"/>${cr ? `<use href="#crown-${cr.type}"/>` : ""}</svg>`;
 }
 
 /* écu central, animé */
@@ -610,14 +612,15 @@ function layout(T){
   /* les règnes sur une seule ligne (ils se succèdent sans se chevaucher) ; les écus s'étagent
      pour ne pas se couvrir ; en vue d'ensemble, ils perdent leur nom pour se serrer */
   const compact = T.ppy < 3.4;
-  const tw = compact ? 40 : TW, th = compact ? 46 : TIER_H;
+  const tw = compact ? 44 : TW, th = compact ? 62 : isImg(R) ? 78 : TIER_H;
   T.canvas.classList.toggle("compact", compact);
   const rs = R.regnes.filter(r => !r.suite).map(r => ({ r, cx: (X(r.s) + X(r.e)) / 2 })).sort((a, b) => a.cx - b.cx);
-  const right = [], MAXT = img ? 5 : 4;
+  const right = [], MAXT = compact ? 7 : img ? 5 : 4;
   rs.forEach(t => {
-    let tier = right.findIndex(v => v + 4 <= t.cx - tw / 2);
+    const w = tw + (new Set(t.r.ph.map(p => p.armes)).size - 1) * (compact ? 18 : 28);          // un règne à plusieurs armes prend plus de place
+    let tier = right.findIndex(v => v + 4 <= t.cx - w / 2);
     if(tier < 0){ if(right.length < MAXT){ tier = right.length; right.push(0); } else tier = right.indexOf(Math.min(...right)); }
-    right[tier] = t.cx + tw / 2; t.tier = tier;
+    right[tier] = t.cx + w / 2; t.tier = tier;
   });
   const laneH = 30 + Math.max(1, right.length) * th;
   let lane = "";

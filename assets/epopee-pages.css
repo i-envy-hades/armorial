@@ -16,16 +16,16 @@ body.epic2 .mast{
   border-bottom-color:transparent;box-shadow:none;backdrop-filter:none;
   transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;
 }
-body.epic2 .mast .brand,body.epic2 .mast nav a{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
-body.epic2 .mast nav a:hover,body.epic2 .mast nav a.here{color:#8e1b18}
+body.epic2 .mast .brand,body.epic2 .mast nav a,body.epic2 .mast nav button.nav-t{color:#2c2113;text-shadow:0 0 10px rgba(255,251,238,.9)}
+body.epic2 .mast nav a:hover,body.epic2 .mast nav button.nav-t:hover,body.epic2 .mast nav a.here,body.epic2 .mast nav button.nav-t.here{color:#8e1b18}
 body.epic2 .mast .cross{color:#8e1b18}
 body.epic2 .mast.solid{
   background:rgba(233,225,205,.92);backdrop-filter:blur(8px);
   border-bottom-color:var(--rule);box-shadow:0 1px 0 rgba(169,129,46,.35),0 10px 30px -22px rgba(26,23,18,.6);
 }
 body.epic2 .mast.solid .brand{color:var(--ink)}
-body.epic2 .mast.solid nav a{color:var(--ink-soft);text-shadow:none}
-body.epic2 .mast.solid nav a:hover,body.epic2 .mast.solid nav a.here{color:var(--gules)}
+body.epic2 .mast.solid nav a,body.epic2 .mast.solid nav button.nav-t{color:var(--ink-soft);text-shadow:none}
+body.epic2 .mast.solid nav a:hover,body.epic2 .mast.solid nav button.nav-t:hover,body.epic2 .mast.solid nav a.here,body.epic2 .mast.solid nav button.nav-t.here{color:var(--gules)}
 @media (max-width:640px){body.epic2 .mast{background:linear-gradient(180deg,rgba(247,240,222,.95),rgba(247,240,222,.5))}}
 
 /* ---------- bandeau d'entrée ---------- */
