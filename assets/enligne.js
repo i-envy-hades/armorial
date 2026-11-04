@@ -161,7 +161,8 @@
     const resume = { points: Jour.totalPoints() }, nouveauxScores = [];
     for (const w of [Jour.semaine(), Jour.semaine() - 1]) { const p = Jour.pointsSemaine(w); if (p) resume[`s_${w}`] = p; }
     for (const [jeu, c] of Object.entries(M.carnets)) {
-      const sc = API.scoresDe[jeu] ? API.scoresDe[jeu](c) : [], vic = sc.filter(x => x.gagne);
+      if (!API.scoresDe[jeu]) continue;                          // un carnet sans résultats à classer : les écus rejoués (assets/jour.js)
+      const sc = API.scoresDe[jeu](c), vic = sc.filter(x => x.gagne);
       resume[`j_${jeu}`] = sc.length; resume[`v_${jeu}`] = vic.length;
       if (vic.length) resume[`m_${jeu}`] = Math.round(100 * vic.reduce((a, x) => a + x.essais, 0) / vic.length) / 100;
       for (const x of sc) if (!(y.pousses[jeu] || []).includes(x.jour)) nouveauxScores.push({ jeu, ...x });

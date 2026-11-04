@@ -86,6 +86,25 @@ const Jour = (() => {
   const TITRES = [[250, Tr("Poursuivant d'armes", "Pursuivant")], [1000, Tr("Héraut", "Herald")], [5000, Tr("Maréchal d'armes", "Marshal of Arms")], [20000, Tr("Roi d'armes", "King of Arms")]].map(([seuil, nom]) => ({ seuil, nom }));
   const titre = points => [...TITRES].reverse().find(t => points >= t.seuil) || null;
   const titreSuivant = points => TITRES.find(t => points < t.seuil) || null;
+  /* les écus rejoués (les archives) : hors concours, ni série ni points ; on n'en garde que l'issue, par jeu et par jour, dans un carnet à part qui suit le compte */
+  const archives = () => Compte.carnet("archives") || {};
+  const noteArchive = (jeu, n, gagne, essais) => {
+    const a = archives(), c = (a[jeu] = a[jeu] || {});
+    if (!(c[n] && c[n].g && !gagne)) c[n] = { g: gagne ? 1 : 0, e: essais };          // une victoire reste acquise
+    Compte.enregistre("archives", a);
+  };
+  Compte.fusion.archives = (local, distant) => {
+    const out = {}, L = local || {}, D = distant || {};
+    for (const jeu of new Set([...Object.keys(L), ...Object.keys(D)])) out[jeu] = { ...(D[jeu] || {}), ...Object.fromEntries(Object.entries(L[jeu] || {}).filter(([n, x]) => x.g || !(D[jeu] && D[jeu][n] && D[jeu][n].g))) };
+    return out;
+  };
+  /* l'issue d'un jour pour un jeu : "gagne", "perdu" ou "" ; une victoire, le jour même ou rejouée, l'emporte */
+  const etatDuJour = (jeu, n) => {
+    const c = Compte.carnet(jeu), j = c && c.jours && c.jours[n], a = (archives()[jeu] || {})[n];
+    if ((j && j.fini && j.gagne) || (a && a.g)) return "gagne";
+    return (j && j.fini) || a ? "perdu" : "";
+  };
+  const dateDu = n => new Date(DEBUT + (n - 1) * 864e5 + 432e5);
   const ordinal = n => Tr(n === 1 ? "1ʳᵉ" : `${n}ᵉ`, `${n}${[, "st", "nd", "rd"][n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th"}`);
   /* le classement du jour d'un autre jeu (Dessine-moi, L'Intrus, les trous) : les dix meilleurs, ma place, la part de joueurs qui ont trouvé ;
      il se pose dans `el` à la fin de la partie, et rien ne s'affiche sans comptes en ligne */
@@ -125,5 +144,5 @@ const Jour = (() => {
     catch (e) { window.prompt("Copiez votre résultat :", texte); }
   }
 
-  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, ordinal, classement, partage };
+  return { numero, ouvre, quand, compteARebours, avantDemain, charge, hasard, JEUX, carnet, fait, totalPoints, semaine, pointsSemaine, titre, titreSuivant, ordinal, classement, noteArchive, etatDuJour, dateDu, nomDuMois: m => MOIS[m], partage };
 })();

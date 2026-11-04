@@ -12,7 +12,7 @@
 if (location.hostname === "i-envy-hades.github.io") location.replace("https://armorial.web.app" + location.pathname.replace(/^\/armorial(\/|$)/, "/") + location.search + location.hash);
 /* Le jeu est devenu la page d'accueil (index.html) et l'encyclopédie est passée à encyclopedie.html : un ancien lien vers un chapitre
    (« index.html#emaux ») arrive sur le jeu, qui le renvoie au bon endroit (le jeu, lui, n'emploie que « #n=3 »). */
-const ANCIEN_LIEN = /^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu)$/.test(location.hash);
+const ANCIEN_LIEN = /^\/(index\.html)?$/.test(location.pathname.replace(/^\/armorial/, "")) && location.hash && !/^#(n=\d+|jeu|contenu|archives)$/.test(location.hash);
 if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
 
 /* La langue. Une page dit sa langue par <html lang> ; Tr(fr, en) choisit le texte, pour tous les scripts qui servent aux deux versions.

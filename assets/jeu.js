@@ -15,7 +15,7 @@
    - les scores et les essais du jour : un carnet par niveau (ecu_page, ecu, ecu_heraut ; assets/jour.js et assets/compte.js).
 
    Le niveau : index.html?niveau=page (ou chevalier, heraut) ; sans paramètre, le dernier joué.
-   Pour rejouer un jour passé : index.html#n=3 (hors concours : ni série ni statistiques).
+   Pour rejouer un jour passé : index.html#n=3 (hors concours : ni série ni statistiques), depuis le calendrier des archives (index.html#archives).
 
    Deux langues : la même page de jeu sert index.html et en.html (« Shield of the Day »), avec les mêmes écus, carnets et classements.
    Le français reste la clé de tout (les noms de cartes du document du jour et du carnet, les traits comparés) ; l'anglais ne sert qu'à
@@ -138,10 +138,12 @@
   const demande = /^#n=(\d+)$/.exec(location.hash);
   const hors = !!demande && +demande[1] >= 1 && +demande[1] < numAuj;                           // un jour passé, pour essayer : hors concours
   const N = hors ? +demande[1] : numAuj;
+  addEventListener("hashchange", () => { const h = /^#n=(\d+)$/.exec(location.hash); if (h && +h[1] !== N) location.reload(); });      // un autre écu passé, au même niveau : seule l'ancre change
   const tirage = await Jour.charge(N);
   const cible = tirage.doc && tirage.doc.ecu ? PAR_NOM.get(tirage.doc.ecu[NIV]) : null;
   if (!cible) {
-    $("#jeu-chargement").textContent = tirage.doc ? Tr("L'écu de ce jour n'est plus dans le jeu : revenez demain.", "Today's shield is no longer in the game: please come back tomorrow.") : tirage.msg;
+    if (hors && tirage.doc) $("#jeu-chargement").innerHTML = Tr(`L'écu n° ${N} n'est plus dans le jeu. <a href="./">Retour à l'écu du jour</a>`, `Shield #${N} is no longer in the game. <a href="en.html">Back to today's shield</a>`);
+    else $("#jeu-chargement").textContent = tirage.doc ? Tr("L'écu de ce jour n'est plus dans le jeu : revenez demain.", "Today's shield is no longer in the game: please come back tomorrow.") : tirage.msg;
     return;
   }
   const ESSAIS = NIVEAUX[NIV].essais;
@@ -355,7 +357,8 @@
     } finally { occupe = false; }
   });
   function termine() {
-    if (!hors) K.clos(N, etat());
+    if (hors) Jour.noteArchive(JEU, N, J.gagne, J.essais.length);
+    else K.clos(N, etat());
     dessineCote();
     setTimeout(() => dessineClassement(true), 1800);                            // le temps que le résultat parte en ligne
   }
@@ -394,7 +397,7 @@
       ${termes.length ? `<p class="res-retenir"><span>${Tr("À retenir", "French terms to remember")}</span> <span lang="fr">${termes.map(lienTerme).map(versLangue).join(" · ")}</span></p>` : ""}
       ${a.desc ? `<p class="res-histoire">${esc(a.desc)}</p>` : ""}
       <p class="res-actes"><button type="button" class="jx-go" id="jeu-partage">${Tr("Partager mon résultat", "Share my result")}</button><button type="button" class="jx-go jx-go-2" id="jeu-voir-stats">${Tr("Mes statistiques", "My statistics")}</button>${Compte.enLigne ? `<button type="button" class="jx-go jx-go-2" id="jeu-voir-cl">${Tr("Classement", "Leaderboard")}</button>` : ""}<span class="res-copie" id="jeu-copie" role="status"></span></p>
-      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`].join(" · ")}</p>
+      <p class="res-liens">${[...renvois, `<a href="${versLangue(lien)}">${Tr("Voir la carte dans l'Armorial", "See the card in the Armorial")}</a>`, `<a href="${atelier}">${Tr("Redessiner dans l'Atelier", "Redraw it in the Atelier")}</a>`, `<a href="#archives" data-archives>${Tr("Jouer un écu passé", "Play a past shield")}</a>`].join(" · ")}</p>
       <p class="res-prochain" id="jeu-prochain"></p>
       <p class="res-credit">Image${Tr(" : ", ": ")}<i>${esc(a.file)}</i>, ${esc(a.auteur || Tr("auteur inconnu", "unknown author"))}, ${a.licurl ? `<a href="${esc(a.licurl)}" rel="noopener">${esc(a.lic)}</a>` : esc(a.lic || Tr("licence libre", "free licence"))}, via Wikimedia Commons.</p>`;
     r.hidden = false;
@@ -411,7 +414,7 @@
     clearInterval(minuteur);
     const tic = () => {
       const el = $("#jeu-prochain"); if (!el) return;
-      if (hors) { el.innerHTML = Tr(`Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`, `Shield #${N} replayed, unranked. <a href="en.html">Back to today's shield</a>`); return; }
+      if (hors) { if (!el.childElementCount) el.innerHTML = Tr(`Écu n° ${N} rejoué hors concours. <a href="./">Retour à l'écu du jour</a>`, `Shield #${N} replayed, unranked. <a href="en.html">Back to today's shield</a>`); return; }
       const autres = Object.keys(NIVEAUX).filter(k => k !== NIV && !Jour.fait(NIVEAUX[k].jeu, N));
       el.innerHTML = `${Tr("Prochain écu dans", "Next shield in")} ${Jour.compteARebours()}${autres.length ? ` · ${Tr("Encore à jouer aujourd'hui :", "Still to play today:")} ${autres.map(k => `<a href="?niveau=${k}">${NIVEAUX[k].nom}</a>`).join(", ")}` : ""}`;
       if (Jour.avantDemain() === 0) location.reload();
@@ -426,8 +429,43 @@
     const d = document.getElementById(id);
     if (!d || d.open) return;
     if (id === "dlg-classement") dessineClassement();
+    if (id === "dlg-archives") dessineArchives();
     d.showModal();
   }
+  /* ---------- les archives : tous les écus passés, mois par mois ; ils se rejouent hors concours ---------- */
+  const ARC = { niv: NIV, a: 0, m: 0 };
+  { const d = Jour.dateDu(hors ? N : Math.max(1, numAuj - 1)); ARC.a = d.getUTCFullYear(); ARC.m = d.getUTCMonth(); }
+  const moisClef = (a, m) => a * 12 + m, moisDu = n => { const d = Jour.dateDu(n); return moisClef(d.getUTCFullYear(), d.getUTCMonth()); };
+  function dessineArchives() {
+    const { a, m, niv } = ARC, jeu = NIVEAUX[niv].jeu, ici = moisClef(a, m);
+    const numeroDe = j => Math.round((Date.UTC(a, m, j, 12) - Jour.dateDu(1).getTime()) / 864e5) + 1;
+    const nbJours = new Date(Date.UTC(a, m + 1, 0)).getUTCDate(), avant = (new Date(Date.UTC(a, m, 1)).getUTCDay() + 6) % 7;
+    const DIT = { gagne: Tr("trouvé", "found"), perdu: Tr("manqué", "missed"), "": Tr("pas encore joué", "not played yet") };
+    const SYMB = { gagne: "✓", perdu: "✗", "": "" };
+    const cases = Array.from({ length: nbJours }, (_, i) => {
+      const j = i + 1, n = numeroDe(j);
+      if (n < 1 || n > numAuj) return `<li class="ar-hors">${j}</li>`;
+      const e = Jour.etatDuJour(jeu, n), auj = n === numAuj;
+      return `<li><a class="ar-j${e ? ` ${e}` : ""}${auj ? " auj" : ""}" data-n="${n}" href="?niveau=${niv}${auj ? "" : `#n=${n}`}" aria-label="${esc(`${Jour.quand(n)}${auj ? Tr(", aujourd'hui", ", today") : ""}${Tr(" : ", ": ")}${DIT[e]}`)}"><span>${j}</span><i aria-hidden="true">${SYMB[e]}</i></a></li>`;
+    }).join("");
+    let trouves = 0;
+    for (let n = 1; n <= numAuj; n++) if (Jour.etatDuJour(jeu, n) === "gagne") trouves++;
+    $("#jeu-archives").innerHTML = `<h2 id="jeu-archives-t">${Tr("Les écus passés", "Past shields")}</h2>
+      <div class="onglets" role="tablist" aria-label="${Tr("Niveau", "Level")}">${Object.entries(NIVEAUX).map(([k, v]) => `<button type="button" role="tab" aria-selected="${k === niv}" data-niv="${k}">${v.nom}</button>`).join("")}</div>
+      <p class="cl-note">${Tr(`${trouves} écu${trouves > 1 ? "s" : ""} trouvé${trouves > 1 ? "s" : ""} sur ${numAuj}`, `${trouves} shield${trouves > 1 ? "s" : ""} found out of ${numAuj}`)}</p>
+      <div class="ar-mois"><button type="button" data-pas="-1" aria-label="${Tr("Mois précédent", "Previous month")}"${ici <= moisDu(1) ? " disabled" : ""}>‹</button><b>${Jour.nomDuMois(m)} ${a}</b><button type="button" data-pas="1" aria-label="${Tr("Mois suivant", "Next month")}"${ici >= moisDu(numAuj) ? " disabled" : ""}>›</button></div>
+      <ol class="ar-sem" aria-hidden="true">${Tr(["L", "M", "M", "J", "V", "S", "D"], ["M", "T", "W", "T", "F", "S", "S"]).map(x => `<li>${x}</li>`).join("")}</ol>
+      <ol class="ar-grille">${'<li class="ar-rien"></li>'.repeat(avant)}${cases}</ol>
+      <p class="ar-note">${Tr("Rejouer un écu ne change ni votre série, ni vos points, ni les classements.", "Replaying a shield doesn't change your streak, your points or the leaderboards.")}</p>`;
+  }
+  $("#jeu-archives").addEventListener("click", e => {
+    const niv = e.target.closest("[data-niv]"), pas = e.target.closest("[data-pas]");
+    if (niv) { ARC.niv = niv.dataset.niv; dessineArchives(); }
+    if (pas) { const t = moisClef(ARC.a, ARC.m) + +pas.dataset.pas; ARC.a = Math.floor(t / 12); ARC.m = t % 12; dessineArchives(); }
+    if (e.target.closest("a")) $("#dlg-archives").close();
+  });
+  /* les liens vers les archives : la carte des autres jeux, la fin de partie */
+  document.addEventListener("click", e => { if (e.target.closest("[data-archives]")) { e.preventDefault(); ouvreDlg("dlg-archives"); } });
   document.querySelectorAll("dialog.jx-dlg").forEach(d => d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-fermer]")) d.close(); }));
   $("#jx-aide").addEventListener("click", () => ouvreDlg("dlg-aide"));
   $("#jx-stats").addEventListener("click", () => ouvreDlg("dlg-stats"));
@@ -475,6 +513,7 @@
       [versLangue("jour.html#trous"), Tr("Le blasonnement à trous", "Fill in the Blazon"), Tr("Les mots qui manquent au texte", "The words missing from the blazon"), "📜", "pourpre", "trous"],
     ];
     $("#jeu-autres").innerHTML = L.map(([href, t, d, ic, c, jeu]) => `<li><a class="jx-jeu c-${c}" href="${href}"><span class="ic" aria-hidden="true">${ic}</span><span class="t">${t}</span><span class="d">${d}</span><span class="f">${Jour.fait(jeu, numAuj) ? Tr("Fait ✓", "Done ✓") : Tr("Aujourd'hui", "Today")}</span></a></li>`).join("")
+      + `<li><a class="jx-jeu c-gueules" href="#archives" data-archives><span class="ic" aria-hidden="true">🗓️</span><span class="t">${Tr("Les écus passés", "Past shields")}</span><span class="d">${Tr("Tous les jours déjà ouverts, à rejouer", "Every day so far, to play again")}</span><span class="f">${numAuj - 1} ${Tr("écus", "shields")}</span></a></li>`
       + `<li><a class="jx-jeu c-azur" href="${versLangue("exercices.html")}"><span class="ic" aria-hidden="true">🎓</span><span class="t">${Tr("S'exercer", "Practice")}</span><span class="d">${Tr("Lire, dessiner, la règle, le vocabulaire… à volonté", "Reading, drawing, the rule, vocabulary… as much as you like")}</span><span class="f">${Tr("Sans limite", "Unlimited")}</span></a></li>`;
   }
 
@@ -609,6 +648,7 @@
   dessineClassement();
   dessineHonneur();
   if (CODE_INVITE && Compte.enLigne) { CL.onglet = "maison"; ouvreDlg("dlg-classement"); }
+  if (location.hash === "#archives") ouvreDlg("dlg-archives");
   /* pour les tests (tools/smoke_test.py) : l'état et les fonctions, sans rien changer à la page */
   window.EcuDuJour = { J, cible, CARTES, DETAILS, N, NIV, ESSAIS, devine, demandeDetail, compare, traits, devoile, texteDePartage, hors };
 })();

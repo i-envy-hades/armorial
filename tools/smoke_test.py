@@ -880,6 +880,44 @@ def test_jeu(browser, base):
     propre("jeu (Héraut)", page, erreurs)
     page.context.close()
 
+def test_archives(browser, base):
+    ctx = browser.new_context(viewport={"width": 375, "height": 812}, locale="fr-FR", is_mobile=True, has_touch=True)
+    ctx.add_init_script("try { localStorage.setItem('armorial.jeu.aide', '1'); } catch (e) {}")
+    page = ctx.new_page(); erreurs = []
+    page.on("pageerror", lambda e: erreurs.append(str(e)))
+    page.goto(f"{base}/index.html"); page.wait_for_selector("#jeu-grille:not([hidden])", timeout=20000)
+    page.wait_for_selector("#jeu-autres [data-archives]", timeout=8000)
+    page.click("#jeu-autres [data-archives]"); page.wait_for_selector("#dlg-archives[open] .ar-grille", timeout=5000)
+    n = page.evaluate("EcuDuJour.N")
+    verifie(page.locator("#dlg-archives[open]").count() == 1, "archives : la carte ouvre le calendrier")
+    verifie(page.locator(f".ar-j[data-n='{n - 1}']").count() == 1 and page.locator(f".ar-j[data-n='{n + 1}']").count() == 0, "archives : hier se joue, demain n'est pas ouvert")
+    verifie(page.locator("#jeu-archives [data-pas='1']").is_disabled() or page.evaluate("Jour.dateDu(EcuDuJour.N).getUTCMonth() !== Jour.dateDu(EcuDuJour.N - 1).getUTCMonth()"), "archives : pas de mois à venir")
+    largeur = page.evaluate("document.querySelector('#dlg-archives').scrollWidth <= document.querySelector('#dlg-archives').clientWidth + 1")
+    verifie(largeur, "archives : le calendrier tient à 375 pixels")
+    # rejouer un écu d'hier : hors concours, et l'issue reste dans le calendrier
+    avant = page.evaluate("JSON.stringify((Compte.carnet('ecu') || {}).stats || null)")
+    page.click(f".ar-j[data-n='{n - 1}']")
+    page.wait_for_function(f"window.EcuDuJour && EcuDuJour.N === {n - 1} && EcuDuJour.hors", timeout=20000)
+    verifie("hors concours" in page.inner_text("#jeu-jour"), "archives : le même niveau recharge bien la page, annoncée hors concours")
+    page.wait_for_selector("#jeu-ecu svg", timeout=10000)
+    page.evaluate("EcuDuJour.devine(EcuDuJour.cible)")
+    page.wait_for_selector("#jeu-resultat:not([hidden])", timeout=8000)
+    verifie(page.locator(".res-points").count() == 0, "archives : un écu rejoué ne rapporte pas de points")
+    verifie(page.evaluate("JSON.stringify((Compte.carnet('ecu') || {}).stats || null)") == avant and page.evaluate("Jour.totalPoints()") == 0, "archives : ni statistiques ni points changés")
+    verifie(page.evaluate(f"Compte.carnet('archives').ecu[{n - 1}].g") == 1, "archives : l'issue est gardée à part")
+    page.click("#jeu-resultat [data-archives]"); page.wait_for_selector(f".ar-j.gagne[data-n='{n - 1}']", timeout=5000)
+    verifie("1 écu trouvé" in page.inner_text("#jeu-archives"), "archives : le calendrier marque l'écu trouvé et le compte")
+    # un autre niveau a ses propres cases ; l'adresse directe ouvre le calendrier
+    page.click("#jeu-archives [data-niv=heraut]"); page.wait_for_selector("#jeu-archives [data-niv=heraut][aria-selected=true]")
+    verifie(page.locator(".ar-j.gagne").count() == 0, "archives : chaque niveau a ses propres cases")
+    page.goto(f"{base}/index.html#archives"); page.wait_for_selector("#dlg-archives[open] .ar-grille", timeout=20000)
+    verifie("index.html#archives" in page.url, "archives : l'adresse directe ouvre le calendrier, sans partir vers l'encyclopédie")
+    # le retour à l'écu du jour, depuis le calendrier
+    page.click(f".ar-j[data-n='{n}']"); page.wait_for_function(f"window.EcuDuJour && EcuDuJour.N === {n} && !EcuDuJour.hors", timeout=20000)
+    verifie(True, "archives : la case d'aujourd'hui ramène à l'écu du jour")
+    verifie(not erreurs, f"archives : aucune erreur JavaScript ({erreurs[:2]})")
+    ctx.close()
+
 def test_retour(browser, base):
     retours = lambda: [v for k, v in MF.DB["docs"].items() if k.startswith("retours/")]
     # depuis le pied d'une page : le formulaire sait d'où l'on vient
@@ -1447,6 +1485,7 @@ def main():
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
                        ("maisons", lambda: test_maisons(browser, base_en_ligne)),
+                       ("archives", lambda: test_archives(browser, base_en_ligne)),
                        ("retour", lambda: test_retour(browser, base_en_ligne)),
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
