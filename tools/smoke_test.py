@@ -1219,6 +1219,7 @@ def test_galeries_en(browser, base):
         verifie(page.evaluate("[...document.querySelectorAll('#grid .ar .bl')].every(x => !/^(D'|De |Écartelé|Parti|Coupé)/.test(x.textContent))"), f"{page_en} : les blasonnements sont en anglais")
         fr = page.evaluate("[...document.querySelectorAll('#grid .ar .redo a')].filter(a => !a.getAttribute('href').includes('lire=')).length")
         verifie(fr == 0, f"{page_en} : « Redraw it in the Atelier » lit toujours le blasonnement français")
+        verifie("page Commons du fichier" not in page.inner_text("#grid") and "Blasonné d'après" not in page.inner_text("#grid"), f"{page_en} : les sources des blasons sont en anglais")
         verifie(page.locator(".mast-langue[data-langue='fr']").count() == 1, f"{page_en} : le lien FR est dans le bandeau")
         page.click(".mast-langue"); page.wait_for_url(f"**/{page_fr}*", timeout=10000); page.wait_for_selector("#grid .ar .bl", timeout=20000)
         verifie(page.evaluate("document.documentElement.lang") == "fr", f"{page_en} : le lien FR mène à {page_fr}")
@@ -1247,6 +1248,8 @@ def test_encyclopedie_en(browser, base):
     # une figure : le nom anglais, le français dessous
     verifie(page.locator(".gal.tinct .fig").first.locator(".nom").inner_text() == "Or" and "Azure" in page.locator(".gal.tinct").inner_text(), "encyclopédie en anglais : les émaux ont leur nom anglais")
     verifie(page.locator(".mast-langue[data-langue='fr']").get_attribute("href") == "encyclopedie.html", "encyclopédie en anglais : le lien FR mène à la page française")
+    legendes = page.evaluate("[...document.querySelectorAll('.credit')].map(e => e.textContent).join(' ')")
+    verifie("· A griffin passant" in legendes and "· Griffon passant" not in legendes and "travail personnel" not in legendes, "encyclopédie en anglais : les commentaires des images sont en anglais")
     propre("encyclopédie en anglais", page, erreurs)
     page.context.close()
 

@@ -34,7 +34,7 @@ function blLine(p){
   const s = p.blasonSrc;
   if (!p.blason) return Tr("Blasonnement non établi : les pages lues ne le donnent pas.", "Blazon not established: the pages read don't give it.");
   if (!s) return Tr("Blasonnement : domaine public.", "Blazon: public domain.");
-  return `${Tr("Blasonnement d'après", "Blazon translated from the French, after")} <a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>${s.note ? ` (${s.note})` : ""} — ${Tr("domaine public", "public domain")}.`;
+  return `${Tr("Blasonnement d'après", "Blazon translated from the French, after")} <a href="${s.url}" target="_blank" rel="noopener">${sourceLue(s.label)}</a>${s.note ? ` (${s.note})` : ""} — ${Tr("domaine public", "public domain")}.`;
 }
 const fold = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 function visibles(){

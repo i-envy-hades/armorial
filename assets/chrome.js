@@ -57,8 +57,8 @@ function traduit(o, T, cle) {
   return out;
 }
 const lisJson = async u => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} : HTTP ${r.status}`); return r.json(); };
-/* le titre d'une source reste celui de la page citée ; en anglais, seuls ses guillemets changent, et « Wikipédia » dit la langue de l'article */
-const sourceLue = l => (LANGUE === "en" ? String(l).replace(/«\s*/g, "“").replace(/\s*»/g, "”").replace(/Wikipédia/g, "French Wikipedia") : l);
+/* le titre d'une source reste celui de la page citée ; en anglais, ses guillemets changent, « Wikipédia » dit la langue de l'article, et ce que le site écrit lui-même se traduit */
+const sourceLue = l => (LANGUE === "en" ? String(l).replace(/«\s*/g, "“").replace(/\s*»/g, "”").replace(/Wikipédia/g, "French Wikipedia").replace(/^la page Commons du fichier/, "the file's Commons page").replace(/^la page Commons/, "the Commons page").replace(/^l'image de la carte$/, "the card's image").replace(/, citant /, ", citing ") : l);
 const TABLES_LUES = {};                            // une table sert à plusieurs fichiers : on ne la lit qu'une fois
 async function lireDonnees(chemin) {
   const d = await lisJson(chemin);
