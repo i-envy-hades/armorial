@@ -83,6 +83,9 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 }
 
 /* ---------- masthead ---------- */
+/* sa hauteur : ce que les barres collantes et les ancres doivent laisser libre */
+:root{--mast:57px}
+@media (max-width:860px){:root{--mast:92px}}
 .mast{
   position:sticky;top:0;z-index:40;
   display:flex;align-items:center;gap:1rem;
@@ -98,39 +101,48 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
   display:flex;align-items:center;gap:.6rem;flex:none;
 }
 .mast .brand .cross{flex:none;width:13px;height:13px;color:var(--gules)}
+/* le menu : quatre rubriques toujours visibles, et la recherche en icône (le bandeau de l'encyclopédie a déjà son champ) */
 .mast nav{
-  margin-left:auto;display:flex;gap:1.3rem;
-  font-family:"Marcellus SC",serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  margin-left:auto;display:flex;align-items:center;gap:1.2rem;
+  font-family:"Marcellus SC",serif;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
 }
 .mast nav a{color:var(--ink-soft);text-decoration:none;white-space:nowrap}
 .mast nav a:hover{color:var(--gules)}
 .mast nav a.here{color:var(--gules)}
-/* ---------- menu repliable : téléphone et petites tablettes ---------- */
-.mast .menu-btn{display:none}
-@media (max-width:1120px){
-  .mast{gap:.7rem}
-  .mast .menu-btn{
-    display:inline-flex;align-items:center;gap:.5rem;order:3;margin-left:auto;padding:.38rem .85rem;
-    font-family:"Marcellus SC",serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
-    background:rgba(255,251,238,.75);border:1px solid var(--rule);border-radius:999px;cursor:pointer;text-shadow:none;
-  }
-  .mast .menu-btn svg{width:15px;height:15px}
-  .mast .menu-btn .x{display:none}
-  .mast.open .menu-btn .x{display:block}.mast.open .menu-btn .bars{display:none}
-  .mast nav{
-    display:none;position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;
-    padding:.3rem clamp(1rem,4vw,2.2rem) .9rem;background:rgba(247,240,222,.98);
-    border-bottom:1px solid var(--rule);box-shadow:0 22px 34px -22px rgba(26,23,18,.55);
-  }
-  .mast.open nav{display:flex}
-  .mast nav a{padding:.8rem 0;font-size:.82rem;letter-spacing:.14em;border-bottom:1px solid var(--rule-soft)}
-  .mast nav a:last-child{border-bottom:0}
+.mast .nav-t,.mast nav a.nav-t{
+  display:inline-flex;align-items:center;gap:.3rem;padding:.3rem 0;border:0;background:none;cursor:pointer;white-space:nowrap;
+  font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink);text-shadow:none;
+}
+.mast .nav-t:hover,.mast nav a.nav-t:hover,.mast .nav-t.here,.mast nav a.nav-t.here{color:var(--gules)}
+.mast .nav-t:focus-visible,.rub-sous a:focus-visible{outline:2px solid var(--gules);outline-offset:2px}
+.mast .chevron{flex:none;width:10px;height:10px;transition:transform .15s}
+.mast .nav-t[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.nav-rech svg{display:block;width:17px;height:17px}
+.nav-rech span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mast:has(.search) .nav-rech{display:none}
+.rub{position:relative}
+.rub-sous{
+  position:absolute;top:calc(100% + .55rem);left:-.8rem;z-index:50;min-width:12rem;display:flex;flex-direction:column;padding:.3rem 0;
+  background:#f7f0de;border:1px solid var(--rule);border-radius:8px;box-shadow:0 18px 30px -16px rgba(26,23,18,.55);
+}
+.rub-sous[hidden]{display:none}
+.mast nav .rub-sous a{padding:.6rem .95rem;font-size:.78rem;color:#2c2113;text-shadow:none}
+.mast nav .rub-sous a:hover,.mast nav .rub-sous a.here{color:var(--gules);background:rgba(142,27,24,.06)}
+/* les écrans étroits : le menu passe sur sa propre ligne, sans rien cacher ; une rubrique ouverte prend toute la largeur */
+@media (max-width:860px){
+  .mast{flex-wrap:wrap;gap:.1rem .7rem;padding-top:.45rem;padding-bottom:.25rem}
+  .mast .mast-langue{margin-left:auto}
+  .mast nav{order:5;flex:0 0 100%;margin:0;justify-content:space-between;gap:.3rem}
+  .mast .nav-t,.mast nav a.nav-t{padding:.5rem .1rem}
+  .rub{position:static}
+  .rub-sous{top:100%;left:0;right:0;border-width:0 0 1px;border-radius:0}
+  .mast nav .rub-sous a{padding:.8rem clamp(1rem,4vw,2.2rem);font-size:.82rem}
 }
 @media (max-width:480px){
   .mast .brand{letter-spacing:.14em;font-size:.78rem}
-  .mast .menu-btn{padding:.45rem .6rem}
-  .mast .menu-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* l'icône seule, le mot reste lu */
+  .mast nav{letter-spacing:.05em;font-size:.72rem}
 }
+@media (max-width:350px){.mast .chevron{display:none}}
 
 /* ---------- ornement de séparation ---------- */
 .ornament{
@@ -178,6 +190,7 @@ h1,h2,h3{font-weight:400;color:var(--ink);margin:0}
 /* ---------- pied de page ---------- */
 footer{border-top:1px solid var(--rule)}
 footer .fine{font-size:.78rem;opacity:.85}
+footer .pied-retour{margin-top:.6rem;font-weight:700}
 
 /* ---------- révélation au défilement ---------- */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}

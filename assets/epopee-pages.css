@@ -87,7 +87,7 @@ body.epic2 .note .box-in{padding:.2rem 1.3rem 1.1rem;border-top:1px solid var(--
 body.epic2 .note .box-in p{max-width:78ch}
 
 /* ---------- filtres et compteur ---------- */
-body.epic2 .tools{position:sticky;top:56px;z-index:8;margin:1rem auto .4rem;padding-top:.55rem;padding-bottom:.55rem;
+body.epic2 .tools{position:sticky;top:var(--mast);z-index:8;margin:1rem auto .4rem;padding-top:.55rem;padding-bottom:.55rem;
   background:rgba(233,225,205,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule-soft)}
 body.epic2 .chip{transition:border-color .2s,color .2s,background .2s}
 body.epic2 .chip:hover{color:var(--gules)}
@@ -134,7 +134,7 @@ body.epic2 .tools .srch input:focus{outline:2px solid var(--azure);outline-offse
 body.epic2 .tools .chips-g{display:flex;flex-wrap:wrap;gap:.4rem;flex:1 1 100%}
 @media (min-width:1000px){body.epic2 .tools .chips-g{flex:2 1 520px}}
 body.epic2 #grid.groups{display:block;max-width:var(--maxw);padding-bottom:1rem}
-body.epic2 .gp{margin:2rem 0 2.6rem;scroll-margin-top:110px}
+body.epic2 .gp{margin:2rem 0 2.6rem;scroll-margin-top:calc(var(--mast) + 53px)}
 body.epic2 .gp:first-child{margin-top:.6rem}
 .gp-head{margin:0 0 1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,var(--or),transparent) left bottom/220px 2px no-repeat}
 .gp-head h2{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(1.4rem,3.4vw,2rem);margin:0;color:var(--ink)}

@@ -686,11 +686,18 @@ def test_telephone(browser, base):
         page.wait_for_timeout(2500)
         sw = page.evaluate("document.documentElement.scrollWidth")
         verifie(sw <= 376, f"téléphone/{ident} : la page ne déborde pas en largeur ({sw} px pour 375)")
-        verifie(page.locator(".menu-btn").is_visible() and not page.locator("header.mast nav").is_visible(), f"téléphone/{ident} : le menu est replié derrière un bouton")
-        page.click(".menu-btn")
-        verifie(page.locator("header.mast nav").is_visible() and page.locator("header.mast nav a").count() == len(MENU), f"téléphone/{ident} : le bouton ouvre le menu complet")
+        verifie(page.locator("header.mast .rub button").count() == 3 and page.locator("header.mast .rub button").first.is_visible() and page.locator("header.mast nav a.nav-t").first.is_visible(), f"téléphone/{ident} : les rubriques du menu restent visibles")
+        droite = page.evaluate("Math.max(...[...document.querySelectorAll('header.mast nav > *, header.mast > *')].filter(e => e.getBoundingClientRect().width).map(e => e.getBoundingClientRect().right))")
+        verifie(droite <= 376, f"téléphone/{ident} : le bandeau tient dans la largeur ({droite})")
+        hauteur = page.evaluate("[document.querySelector('header.mast').getBoundingClientRect().height, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--mast'))]")
+        verifie(abs(hauteur[0] - hauteur[1]) <= 8, f"téléphone/{ident} : --mast suit la hauteur du bandeau ({hauteur})")
+        page.locator("header.mast .rub button").nth(2).click()
+        sous = page.locator("header.mast .rub-sous").nth(2)
+        verifie(sous.is_visible() and sous.locator("a").count() == 3 and page.evaluate("document.querySelector('#rub-2').getBoundingClientRect().right") <= 376, f"téléphone/{ident} : une rubrique s'ouvre dans la largeur")
+        page.locator("header.mast .rub button").nth(0).click()
+        verifie(not sous.is_visible() and page.locator("header.mast .rub-sous").nth(0).is_visible(), f"téléphone/{ident} : une seule rubrique à la fois")
         page.keyboard.press("Escape")
-        verifie(not page.locator("header.mast nav").is_visible(), f"téléphone/{ident} : Échap referme le menu")
+        verifie(not page.locator("header.mast .rub-sous").nth(0).is_visible(), f"téléphone/{ident} : Échap referme la rubrique")
         verifie(not erreurs, f"téléphone/{ident} : aucune erreur" + ("" if not erreurs else f" — {erreurs[:2]}"))
         ctx.close()
 
@@ -872,6 +879,60 @@ def test_jeu(browser, base):
     verifie(H == {"cible": ECUS["heraut"], "essais": 5} and page.locator(".essai .case").count() == 5, f"jeu : le niveau Héraut a son écu, cinq essais, et ne dit pas la rubrique ({H})")
     propre("jeu (Héraut)", page, erreurs)
     page.context.close()
+
+def test_retour(browser, base):
+    retours = lambda: [v for k, v in MF.DB["docs"].items() if k.startswith("retours/")]
+    # depuis le pied d'une page : le formulaire sait d'où l'on vient
+    page, erreurs = ouvre(browser, base, "blasons.html#x", "#grid .ar")
+    verifie(page.locator("footer #lien-retour").count() == 1, "retour : le lien est au pied de la page")
+    page.click("footer #lien-retour"); page.wait_for_selector("#ret-form", timeout=8000)
+    verifie("blasons.html#x" in page.inner_text("#ret-depuis") and "depuis=blasons.html" in page.url, f"retour : le formulaire dit la page d'où l'on vient ({page.url})")
+    verifie(page.locator("footer #lien-retour").count() == 0, "retour : le formulaire ne renvoie pas vers lui-même")
+    page.click("#ret-ok")
+    verifie("message" in page.inner_text("#ret-err") and not retours(), "retour : un message vide n'est pas envoyé, et la page le dit")
+    page.fill("#ret-message", "<img src=x onerror=alert(1)> Le lion regarde du mauvais côté")
+    page.fill("#ret-email", "pas-une-adresse"); page.click("#ret-ok")
+    verifie("e-mail" in page.inner_text("#ret-err") and not retours(), "retour : une adresse fausse est refusée")
+    page.fill("#ret-email", "lecteur@essai.fr"); page.click("#ret-ok")
+    page.wait_for_selector("#ret-merci:not([hidden])", timeout=8000)
+    r = retours()
+    verifie(len(r) == 1 and r[0]["type"] == "erreur" and r[0]["page"] == "blasons.html#x" and r[0]["email"] == "lecteur@essai.fr" and r[0]["langue"] == "fr", f"retour : le message part, avec sa page et son e-mail ({r})")
+    verifie(page.locator("#ret-retour").get_attribute("href") == "blasons.html#x", "retour : le lien de retour ramène à la page d'où l'on vient")
+    # une minute entre deux messages, et le champ invisible
+    page.goto(f"{base}/retour.html"); page.wait_for_selector("#ret-form")
+    page.fill("#ret-message", "Un second message"); page.click("#ret-ok")
+    page.wait_for_function("document.querySelector('#ret-err').textContent.includes('patientez')", timeout=5000)
+    verifie(len(retours()) == 1, "retour : une minute entre deux messages")
+    page.evaluate("localStorage.removeItem('armorial.retour.dernier'); document.querySelector('#ret-site').value = 'robot'")
+    page.click("#ret-ok"); page.wait_for_selector("#ret-merci:not([hidden])", timeout=8000)
+    verifie(len(retours()) == 1, "retour : un robot qui remplit le champ invisible croit avoir réussi, rien ne part")
+    # une adresse d'origine étrangère ne devient pas un lien
+    page.goto(f"{base}/retour.html?depuis=https://mechant.example/"); page.wait_for_selector("#ret-form")
+    verifie(page.locator("#ret-retour").get_attribute("href") == "./", "retour : le lien de retour ne quitte jamais le site")
+    # en anglais
+    en, _ = ouvre(browser, base, "en-feedback.html", "#ret-form")
+    verifie("Report or suggest" in en.inner_text("h1"), "retour en anglais : la page est traduite")
+    en.fill("#ret-message", "The lion faces the wrong way"); en.check("input[value=idee]"); en.click("#ret-ok")
+    en.wait_for_selector("#ret-merci:not([hidden])", timeout=8000)
+    verifie(any(x["langue"] == "en" and x["type"] == "idee" and "email" not in x for x in retours()), "retour en anglais : le message part, sans e-mail")
+    en.context.close()
+    # la lecture : refusée à un joueur, permise au curateur ; un message n'est jamais pris pour du HTML
+    verifie(page.evaluate("fetch(`${location.origin}/firestore/v1/projects/armorial-test/databases/(default)/documents/retours?key=AIza${'B'.repeat(35)}`).then(r => r.status)") == 403, "retour : sans compte, on ne lit pas les messages")
+    page.context.close()
+    joueur, _ = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
+    inscrit_au_jeu(joueur, "Quidam", "quidam@essai.fr")
+    joueur.goto(f"{base}/tools/retours.html"); joueur.wait_for_selector("#qui .err", timeout=15000)
+    verifie(joueur.locator("#messages li").count() == 0, "retour : un autre compte ne lit pas les messages")
+    joueur.context.close()
+    cur, _ = ouvre(browser, base, "index.html", "#jeu-grille:not([hidden])")
+    cur.on("dialog", lambda d: d.accept())
+    inscrit_au_jeu(cur, "Curateur", "curateur@essai.fr")
+    cur.goto(f"{base}/tools/retours.html"); cur.wait_for_selector("#messages li", timeout=15000)
+    verifie(cur.locator("#messages li").count() == 2 and cur.locator("#messages img").count() == 0 and "<img src=x" in cur.inner_text("#messages"), "retour : le curateur lit les messages, sans que leur HTML s'exécute")
+    cur.locator("#messages .efface").first.click()
+    cur.wait_for_function("document.querySelectorAll('#messages li').length === 1", timeout=8000)
+    verifie(len(retours()) == 1, "retour : le curateur efface un message")
+    cur.context.close()
 
 def inscrit_au_jeu(page, pseudo, email):
     """un compte sur le faux Firebase, par la fenêtre du profil"""
@@ -1386,6 +1447,7 @@ def main():
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),
                        ("jeu", lambda: test_jeu(browser, base_en_ligne)),
                        ("maisons", lambda: test_maisons(browser, base_en_ligne)),
+                       ("retour", lambda: test_retour(browser, base_en_ligne)),
                        ("jeu en anglais", lambda: test_jeu_en(browser, base_en_ligne)),
                        ("galeries en anglais", lambda: test_galeries_en(browser, base)),
                        ("encyclopédie en anglais", lambda: test_encyclopedie_en(browser, base)),

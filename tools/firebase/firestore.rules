@@ -17,6 +17,8 @@ rules_version = '2';
 //   pseudos/{pseudo en minuscules}  un document par pseudo, créé une seule fois : c'est ce qui rend les pseudos uniques
 //   scores/{uid}_{jeu}_{jour}       le résultat d'une partie : public, créé une fois, jamais modifié
 //   jours/{n}                       les jeux du jour n (ouvre, ecu, graine) : lisible le jour venu, pas avant ; écrit par le curateur
+//   retours/{id}                    le formulaire de retour (type, message, page, langue, email, cree) : tout le monde peut en créer un,
+//                                   sans compte ; seul le curateur le lit et l'efface
 //   maisons/{code}                  un classement entre amis (nom, cree) : se lit avec son code, ne se liste pas, ne se modifie pas ;
 //                                   aucune donnée personnelle. Un nom déplacé s'efface à la main, dans la console.
 
@@ -80,6 +82,19 @@ service cloud.firestore {
         && pseudoValide(request.resource.data.pseudo)
         && id == request.resource.data.pseudo.lower();
       allow delete: if connecte() && resource.data.uid == request.auth.uid;
+    }
+
+    match /retours/{id} {
+      allow read, delete: if connecte() && request.auth.uid == 'Ee4MGvZqrHaOcMyCXWP2ZfCOZXu1';
+      allow create: if id.matches('^[A-Za-z0-9]{24}$')
+        && request.resource.data.keys().hasAll(['type', 'message', 'page', 'langue', 'cree'])
+        && request.resource.data.keys().hasOnly(['type', 'message', 'page', 'langue', 'cree', 'email'])
+        && request.resource.data.type in ['erreur', 'bug', 'idee']
+        && request.resource.data.message is string && request.resource.data.message.size() >= 3 && request.resource.data.message.size() <= 2000
+        && request.resource.data.page is string && request.resource.data.page.size() <= 200
+        && request.resource.data.langue in ['fr', 'en']
+        && (!('email' in request.resource.data) || (request.resource.data.email is string && request.resource.data.email.size() <= 120))
+        && request.resource.data.cree is timestamp;
     }
 
     match /maisons/{code} {

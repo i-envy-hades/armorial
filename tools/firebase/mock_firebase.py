@@ -61,6 +61,14 @@ def regles(op, chemin, uid, apres=None, avant=None, store=None):
             email = next((e for e, x in DB["users"].items() if x["id"] == uid), None)
             if set(apres or {}) - {"email", "depuis"} or apres.get("email") != email: pas()
         return
+    if p[0] == "retours" and len(p) == 2:                # tout le monde en crée un ; seul le curateur lit et efface
+        if op == "create":
+            a = apres or {}
+            if set(a) - {"type", "message", "page", "langue", "cree", "email"} or a.get("type") not in ("erreur", "bug", "idee") or not (3 <= len(a.get("message", "")) <= 2000) or len(a.get("page", "x" * 201)) > 200 or a.get("langue") not in ("fr", "en"): pas()
+            return
+        email = next((e for e, x in DB["users"].items() if x["id"] == uid), None)
+        if not uid or email != os.environ.get("CURATEUR", "curateur@essai.fr"): pas()
+        return
     if p[0] == "maisons" and len(p) == 2:
         if op == "get": return
         if op != "create" or not uid or set(apres or {}) - {"nom", "cree"} or not (2 <= len(apres.get("nom", "")) <= 40): pas()

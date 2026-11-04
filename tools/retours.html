@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Les messages reçus — outil du curateur</title>
+<link rel="stylesheet" href="assets/compte.css">
+<!--
+  L'ARMORIAL — outil du curateur : lit et efface les messages du formulaire de retour (Firestore, retours/{id}).
+  Cet outil n'est pas publié (firebase.json ignore tools/) : il s'ouvre en local, http://localhost:8123/tools/retours.html.
+  Seul le compte du curateur peut lire ces messages (tools/firebase/firestore.rules). Fichier : tools/retours.js.
+-->
+<style>
+  body{max-width:46rem;margin:0 auto;padding:1.2rem;font:16px/1.5 system-ui,sans-serif;color:#2a2620;background:#f7f3ea}
+  h1{margin:0 0 .3rem;font-size:1.5rem}
+  #messages{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.7rem}
+  #messages li{padding:.8rem 1rem;background:#fffdf8;border:1px solid #e7dec8;border-radius:10px}
+  .tete{display:flex;flex-wrap:wrap;gap:.3rem .7rem;align-items:center;font-size:.85rem;color:#6f665a}
+  .type{padding:.05rem .5rem;border-radius:999px;font-weight:700;color:#fff;background:#6f665a}
+  .type.erreur{background:#c62f2a}.type.bug{background:#2457a6}.type.idee{background:#26763a}
+  .texte{margin:.5rem 0;white-space:pre-wrap;overflow-wrap:anywhere}
+  button{font:inherit;cursor:pointer}
+  .err{color:#c62f2a;font-weight:600}
+</style>
+</head>
+<body>
+<h1>Les messages reçus</h1>
+<p id="qui">Chargement…</p>
+<button id="b-compte" hidden>Se connecter (fenêtre du profil)</button>
+<button id="b-relire" hidden>Relire</button>
+<ol id="messages"></ol>
+<div id="gdefs" hidden></div>
+<svg id="measure" width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true"><g></g></svg>
+<script>const LANGUE = "fr", Tr = fr => fr;   /* ce que assets/chrome.js donne aux pages du site : cet outil ne le charge pas */</script>
+<script src="assets/blason.js"></script>
+<script src="assets/blasonnement.js"></script>
+<script src="assets/lecture.js"></script>
+<script src="assets/dessin.js"></script>
+<script src="assets/compte.js"></script>
+<script src="assets/enligne.js"></script>
+<script src="assets/generateur.js"></script>
+<script src="assets/jour.js"></script>
+<script src="tools/retours.js"></script>
+</body>
+</html>

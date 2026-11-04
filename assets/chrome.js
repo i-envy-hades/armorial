@@ -1,6 +1,6 @@
 /* L'ARMORIAL — éléments communs à toutes les pages : bandeau de navigation et sceau du pied de page.
 
-   Pour ajouter une page au menu, il suffit d'ajouter une ligne à PAGES ci-dessous.
+   Pour ajouter une page au menu : une ligne à PAGES ci-dessous, et son identifiant dans une rubrique de RUBRIQUES.
 
    Chaque page pose, tout en haut de son <body>, l'en-tête vide suivi de ce script :
      <header class="mast" data-page="atelier"></header>
@@ -19,7 +19,7 @@ if (ANCIEN_LIEN) location.replace("encyclopedie.html" + location.hash);
    JUMELLES : les pages traduites et leur nom anglais (à compléter à chaque page traduite ; tools/check_data.py compare leurs id).
    Le choix du lecteur est gardé : qui lit en anglais est renvoyé vers la page anglaise quand elle existe, et les autres pages lui
    disent qu'elles ne sont qu'en français. Le lien qui change de langue porte data-langue. */
-const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html", "lignees.html": "en-lineages.html", "transmission.html": "en-transmission.html" };
+const JUMELLES = { "index.html": "en.html", "encyclopedie.html": "en-encyclopedia.html", "blasons.html": "en-arms.html", "personnages.html": "en-people.html", "recherche.html": "en-search.html", "jour.html": "en-daily.html", "exercices.html": "en-practice.html", "atelier.html": "en-atelier.html", "lignees.html": "en-lineages.html", "transmission.html": "en-transmission.html", "retour.html": "en-feedback.html" };
 const JUMELLE_FR = Object.fromEntries(Object.entries(JUMELLES).map(([fr, en]) => [en, fr]));
 const PAGE_ICI = location.pathname.split("/").pop() || "index.html";
 const LANGUE = document.documentElement.lang === "en" ? "en" : "fr";
@@ -77,7 +77,7 @@ function termeId(terme, glossaire) {
 
 (function () {
   const PAGES = [
-    ["jeu", "./", "Jouer"],
+    ["jeu", "./", "L'Écu du jour"],
     ["jour", "jour.html", "Jeux du jour"],
     ["encyclopedie", "encyclopedie.html", "L'encyclopédie"],
     ["blasons", "blasons.html", "Blasons réels"],
@@ -88,10 +88,13 @@ function termeId(terme, glossaire) {
     ["exercices", "exercices.html", "S'exercer"],
     ["recherche", "recherche.html", "Rechercher"],
   ];
-  const NOMS_EN = { jeu: "Play", jour: "Daily games", encyclopedie: "Encyclopedia", blasons: "Real arms", personnages: "People", lignees: "Lineages", atelier: "Atelier", transmission: "Transmission", exercices: "Practice", recherche: "Search" };
+  /* les rubriques du menu, toujours visibles ; une page qui n'y figure pas est un lien direct (l'Atelier, et Rechercher, en icône) */
+  const RUBRIQUES = [[Tr("Jouer", "Play"), ["jeu", "jour", "exercices"]], [Tr("Apprendre", "Learn"), ["encyclopedie", "transmission"]], [Tr("Armoiries", "Arms"), ["blasons", "personnages", "lignees"]]];
+  const NOMS_EN = { jeu: "Shield of the Day", jour: "Daily games", encyclopedie: "Encyclopedia", blasons: "Real arms", personnages: "People", lignees: "Lineages", atelier: "Atelier", transmission: "Transmission", exercices: "Practice", recherche: "Search" };
   const ACCUEIL = Tr("./", "en.html");
   const BRAND = `<a class="brand" href="${ACCUEIL}"><svg class="cross" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8z"/></svg>${Tr("L'Armorial", "The Armorial")}</a>`;
-  const MENU = `<button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bars" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg><span>Menu</span></button>`;
+  const CHEVRON = `<svg class="chevron" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2.5 4.5 6 8l3.5-3.5"/></svg>`;
+  const LOUPE = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m15.5 15.5 5 5"/></svg>`;
   const SEAL = `<svg class="seal" viewBox="0 0 100 100" role="img" aria-label="${Tr("Sceau de cire", "Wax seal")}">
     <defs>
       <radialGradient id="wax" cx="38%" cy="32%" r="72%">
@@ -115,20 +118,27 @@ function termeId(terme, glossaire) {
   const head = document.querySelector("header.mast[data-page]");
   if (head) {
     const here = head.dataset.page;
-    /* en anglais, seul le jeu est traduit : les autres liens du menu sont marqués « FR » (site.css, a[hreflang]) */
-    head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="${Tr("Pages du site", "Site pages")}">` + PAGES.map(([id, href, label]) =>
-      LANGUE === "en" ? `<a href="${id === "jeu" ? ACCUEIL : versLangue(href)}"${id === "jeu" || JUMELLES[href] ? "" : ' hreflang="fr"'}${id === here ? ' class="here" aria-current="page"' : ""}>${NOMS_EN[id]}</a>`
-        : `<a href="${href}"${id === here ? ' class="here" aria-current="page"' : ""}>${label}</a>`).join("") + "</nav>" + choixLangue() + MENU);
+    const lien = (id, classe = "", contenu = null) => {
+      const [, href, label] = PAGES.find(p => p[0] === id), classes = [classe, id === here && "here"].filter(Boolean).join(" ");
+      return `<a href="${id === "jeu" ? ACCUEIL : versLangue(href)}"${classes ? ` class="${classes}"` : ""}${id === here ? ' aria-current="page"' : ""}>${contenu || (LANGUE === "en" ? NOMS_EN[id] : label)}</a>`;
+    };
+    const rubrique = ([nom, ids], i) => `<div class="rub"><button type="button" class="nav-t${ids.includes(here) ? " here" : ""}" aria-expanded="false" aria-controls="rub-${i}">${nom}${CHEVRON}</button><div class="rub-sous" id="rub-${i}" hidden>${ids.map(id => lien(id)).join("")}</div></div>`;
+    head.insertAdjacentHTML("afterbegin", BRAND + `<nav id="nav-pages" aria-label="${Tr("Pages du site", "Site pages")}">` + RUBRIQUES.map(rubrique).join("") + lien("atelier", "nav-t")
+      + lien("recherche", "nav-t nav-rech", `${LOUPE}<span>${LANGUE === "en" ? NOMS_EN.recherche : "Rechercher"}</span>`) + "</nav>" + choixLangue());
     /* qui lit en anglais et arrive sur une page qui n'est qu'en français le lit tout de suite, et sait comment revenir */
     if (LANGUE === "fr" && langueChoisie() === "en" && !JUMELLES[PAGE_ICI]) head.insertAdjacentHTML("afterend", `<p class="bandeau-langue" lang="en">This page is only available in French for now. <a href="en.html">Back to the game in English</a></p>`);
-    /* menu repliable (écrans étroits : voir site.css) : s'ouvre au bouton, se ferme à Échap, à un clic ailleurs, ou en suivant un lien */
-    const btn = head.querySelector(".menu-btn");
-    const ouvre = on => { head.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); btn.querySelector("span").textContent = on ? Tr("Fermer", "Close") : "Menu"; };
-    btn.addEventListener("click", () => ouvre(!head.classList.contains("open")));
-    head.querySelector("nav").addEventListener("click", e => { if (e.target.closest("a")) ouvre(false); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && head.classList.contains("open")) { ouvre(false); btn.focus(); } });
-    document.addEventListener("click", e => { if (!head.contains(e.target)) ouvre(false); });
-    matchMedia("(min-width:1121px)").addEventListener("change", e => { if (e.matches) ouvre(false); });
+    /* une rubrique s'ouvre au clic ou au toucher, la même partout ; une seule à la fois. Elle se ferme à Échap, à un clic ailleurs, en suivant un lien, ou quand le clavier en sort. */
+    const nav = head.querySelector("nav"), boutons = [...nav.querySelectorAll(".rub button")];
+    const pose = (b, on) => { b.setAttribute("aria-expanded", on); document.getElementById(b.getAttribute("aria-controls")).hidden = !on; };
+    const ferme = () => boutons.forEach(b => pose(b, false));
+    boutons.forEach(b => b.addEventListener("click", () => { const on = b.getAttribute("aria-expanded") !== "true"; ferme(); pose(b, on); }));
+    nav.addEventListener("click", e => { if (e.target.closest("a")) ferme(); });
+    nav.addEventListener("focusout", e => { if (e.relatedTarget && !nav.contains(e.relatedTarget)) ferme(); });
+    document.addEventListener("keydown", e => { if (e.key !== "Escape") return; const b = boutons.find(x => x.getAttribute("aria-expanded") === "true"); if (b) { ferme(); b.focus(); } });
+    document.addEventListener("click", e => { if (!nav.contains(e.target)) ferme(); });
+    addEventListener("pageshow", ferme);                          // au retour arrière, la page revient telle qu'on l'a quittée : le menu ne reste pas ouvert
+    /* la hauteur du bandeau dépend de la page et de la largeur : les barres collantes et les ancres la lisent dans --mast */
+    if (window.ResizeObserver) new ResizeObserver(() => document.documentElement.style.setProperty("--mast", `${head.offsetHeight}px`)).observe(head);
   }
 
   /* lien d'évitement : au clavier, un premier Tab propose de passer le menu (la page n'a pas de <main> unique partout : on prend le premier) */
@@ -143,6 +153,12 @@ function termeId(terme, glossaire) {
   /* le sceau : le pied de page n'existe pas encore à cet instant */
   document.addEventListener("DOMContentLoaded", () => {
     const foot = document.querySelector("footer");
-    if (foot) (foot.querySelector(".foot") || foot).insertAdjacentHTML("afterbegin", SEAL);
+    if (!foot) return;
+    const pied = foot.querySelector(".foot") || foot;
+    pied.insertAdjacentHTML("afterbegin", SEAL);
+    /* signaler un problème, depuis toute page : le formulaire sait d'où l'on vient, ancre comprise */
+    if (PAGE_ICI === "retour.html" || PAGE_ICI === "en-feedback.html") return;
+    pied.insertAdjacentHTML("beforeend", `<p class="pied-retour"><a id="lien-retour" href="${Tr("retour.html", "en-feedback.html")}">${Tr("Signaler un problème ou suggérer une idée", "Report a problem or suggest an idea")}</a></p>`);
+    document.getElementById("lien-retour").addEventListener("click", e => { e.currentTarget.href = `${Tr("retour.html", "en-feedback.html")}?depuis=${encodeURIComponent(PAGE_ICI + location.hash)}`; });
   });
 })();

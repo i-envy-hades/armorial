@@ -24,6 +24,7 @@
                                     dans la console Firebase)
      pseudos/{pseudo en minuscules} uid, pseudo : un pseudo = un document, créé une seule fois (c'est ce qui le rend unique)
      scores/{uid}_{jeu}_{jour}      uid, jeu, jour, essais, gagne, cree, vic (« jeu|jour », seulement pour une victoire) ; non modifiable
+     retours/{id}                   type, message, page, langue, email, cree : le formulaire de retour (assets/retour.js) ; lu par le curateur seul
      maisons/{code}                 nom, cree : un petit classement entre amis ; se lit avec son code, ne se liste pas ; ses membres sont
                                     les profils dont le champ « maison » porte ce code
 
@@ -401,6 +402,11 @@
     const l = await meilleursPar(`s_${w}`, 3);
     return l.filter(x => x.points === l[0].points);
   }, 3600000);
+  /* les messages du formulaire de retour : pour le curateur seul (tools/retours.html) ; les règles refusent tout autre compte */
+  API.retours = {
+    liste: async () => (await liste("retours")).sort((a, b) => (a.cree < b.cree ? 1 : -1)),
+    efface: id => fsAuth(":commit", { methode: "POST", corps: { writes: [{ delete: `${RACINE}/retours/${id}` }] } }),
+  };
   /* ---------- les maisons : un petit classement entre amis, pour qui a le code ---------- */
   const SIGNES_MAISON = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";     // sans 0, O, 1 ni I : le code se recopie sans erreur ; le même alphabet dans firestore.rules
   const poseMaison = async maison => {

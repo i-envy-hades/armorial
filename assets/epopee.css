@@ -286,7 +286,7 @@ body.epic .mast.solid .brand{color:var(--ink)}
 .art{
   margin:.85rem 0;background:linear-gradient(180deg,#faf6ea,#f2ebd8);
   border:1px solid var(--rule);border-left:3px solid var(--or);border-radius:3px;
-  box-shadow:var(--shadow);scroll-margin-top:80px;transition:border-color .3s,box-shadow .3s;
+  box-shadow:var(--shadow);scroll-margin-top:calc(var(--mast) + 23px);transition:border-color .3s,box-shadow .3s;
 }
 .art:hover{border-left-color:var(--gules)}
 .art[open]{box-shadow:var(--shadow-lift)}
@@ -341,7 +341,7 @@ body.epic .rail .sub a:hover{color:var(--gules)}
 @media (max-width:860px){.rail .sub{display:none !important}}
 
 /* ---------- glossaire : lettres, deux colonnes ---------- */
-.gnav{display:flex;flex-wrap:wrap;gap:.3rem;position:sticky;top:60px;z-index:6;padding:.5rem .6rem;margin:0 0 1rem;
+.gnav{display:flex;flex-wrap:wrap;gap:.3rem;position:sticky;top:calc(var(--mast) + 3px);z-index:6;padding:.5rem .6rem;margin:0 0 1rem;
   background:rgba(244,237,218,.94);backdrop-filter:blur(6px);border:1px solid var(--rule-soft);border-radius:3px}
 .gnav:empty{display:none}
 .gnav a{min-width:1.9rem;text-align:center;padding:.2rem .35rem;font-family:"Marcellus",serif;font-size:.95rem;color:var(--gules);text-decoration:none;border:1px solid transparent;border-radius:3px}
@@ -351,7 +351,7 @@ body.epic .rail .sub a:hover{color:var(--gules)}
 @media (max-width:980px){.glossary{column-count:1}}
 .gl-group{margin:0 0 1.2rem;break-inside:auto}
 .gl-letter{font-family:"Marcellus",serif;font-size:2.1rem;line-height:1;color:var(--gules);padding-bottom:.25rem;margin-bottom:.35rem;
-  border-bottom:1px solid var(--rule);break-after:avoid;scroll-margin-top:110px}
+  border-bottom:1px solid var(--rule);break-after:avoid;scroll-margin-top:calc(var(--mast) + 53px)}
 .gloss-item{break-inside:avoid;padding:.5rem 0}
 .gloss-item dt{font-size:1.04rem}
 .gloss-item dd{font-size:.95rem;line-height:1.5}
@@ -373,4 +373,4 @@ body.epic .rail .sub a:hover{color:var(--gules)}
 .book-note .note{margin:.45rem 0 0}
 
 @media (prefers-reduced-motion:reduce){.art,.art > summary::after{transition:none}}
-.gloss-item{scroll-margin-top:90px}
+.gloss-item{scroll-margin-top:calc(var(--mast) + 33px)}

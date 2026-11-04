@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Armorial — Report or suggest</title>
+<meta name="description" content="Report an error or a problem in the Armorial, or suggest an idea.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e9e1cd">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://armorial.web.app/en-feedback.html">
+<link rel="alternate" hreflang="fr" href="https://armorial.web.app/retour.html">
+<link rel="alternate" hreflang="en" href="https://armorial.web.app/en-feedback.html">
+<!-- THE ARMORIAL — the feedback form: the English twin of retour.html; the same scripts and the same database. -->
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/retour.css">
+</head>
+<body class="retour">
+<header class="mast" data-page="retour"></header>
+<script src="assets/chrome.js"></script>
+<main class="ret" id="main">
+  <h1>Report or suggest</h1>
+  <p class="ret-intro">An error in a coat of arms, something that doesn't work, an idea? This message isn't public: only the site's curator reads it.</p>
+  <noscript><p class="nojs">This form needs JavaScript: please turn it on to send a message.</p></noscript>
+  <form id="ret-form" novalidate>
+    <fieldset class="ret-types">
+      <legend>This is mostly…</legend>
+      <label><input type="radio" name="type" value="erreur" checked> an error in the content</label>
+      <label><input type="radio" name="type" value="bug"> something that doesn't work</label>
+      <label><input type="radio" name="type" value="idee"> an idea</label>
+    </fieldset>
+    <label class="ret-lab" for="ret-message">Your message</label>
+    <textarea id="ret-message" rows="7" maxlength="2000" required></textarea>
+    <label class="ret-lab" for="ret-email">Your e-mail <small>(optional, only if you'd like a reply)</small></label>
+    <input id="ret-email" type="email" maxlength="120" autocomplete="email" spellcheck="false">
+    <div class="ret-piege" aria-hidden="true"><label for="ret-site">Leave this field empty</label><input id="ret-site" type="text" tabindex="-1" autocomplete="off"></div>
+    <p class="ret-depuis" id="ret-depuis" hidden></p>
+    <p class="ret-acts"><button type="submit" id="ret-ok">Send</button></p>
+    <p class="ret-err" id="ret-err" role="alert"></p>
+  </form>
+  <div class="ret-merci" id="ret-merci" tabindex="-1" hidden>
+    <h2>Thank you!</h2>
+    <p>Your message has arrived.</p>
+    <p><a id="ret-retour" href="en.html">Back to the Armorial</a></p>
+  </div>
+</main>
+<footer><div class="foot">
+  <p><b>The Armorial</b> — what you write here, the page you came from and your e-mail if you give it are sent to the site's database (Firebase, Google) and are only used to deal with your message; the curator can delete them. Nothing else is sent.</p>
+</div></footer>
+<script src="assets/retour.js"></script>
+</body>
+</html>

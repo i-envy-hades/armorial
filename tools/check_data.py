@@ -345,6 +345,7 @@ plan = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xm
 for p_ in pages:
     if p_.name in ("404.html", "jeu.html"): continue          # la page d'erreur n'est ni au plan du site ni au menu ; jeu.html ne fait que renvoyer à l'accueil
     cible = "web.app/" if p_.name == "index.html" else f"web.app/{p_.name}"
+    if p_.name in ("retour.html", "en-feedback.html"): continue          # le formulaire de retour n'a rien à faire dans les moteurs de recherche (noindex)
     if f"{cible}</loc>" not in plan: err(f"sitemap.xml: la page « {p_.name} » n'y figure pas")
 chrome = (ROOT / "assets" / "chrome.js").read_text(encoding="utf-8")
 menu = [(i, "index.html" if f == "./" else f) for i, f in re.findall(r'\["(\w+)",\s*"([\w.-]+\.html|\./)"', chrome)]      # « ./ » : l'accueil, index.html
@@ -353,7 +354,7 @@ for ident, fichier in menu:
     if not page.exists(): err(f"assets/chrome.js: la page « {fichier} » du menu n'existe pas"); continue
     if f'data-page="{ident}"' not in page.read_text(encoding="utf-8"): err(f"{fichier}: <header class=\"mast\" data-page=\"{ident}\"> manquant")
 for p in pages:
-    if p.name not in ("404.html", "jeu.html") and not re.match(r"en[.-]", p.name) and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
+    if p.name not in ("404.html", "jeu.html", "retour.html") and not re.match(r"en[.-]", p.name) and p.name not in {f for _, f in menu}: warnings.append(f"{p.name}: absente du menu (assets/chrome.js)")
 
 # l'anglais : chaque page traduite a les mêmes id que sa jumelle (hors prérendu), et chaque texte des données traduites a sa traduction
 JUMELLES = dict(re.findall(r'"([\w-]+\.html)": "([\w-]+\.html)"', re.search(r"const JUMELLES = \{(.*?)\}", chrome).group(1)))

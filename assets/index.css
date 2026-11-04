@@ -1,6 +1,6 @@
 /* CSS propre à l'encyclopédie ; le socle commun est dans assets/site.css */
 .mast .search{margin-left:1.2rem;position:relative;flex:0 1 340px;min-width:150px}
-@media (max-width:1120px){.mast .search{order:2;margin-left:auto;flex:0 1 230px;min-width:90px}}
+@media (max-width:860px){.mast .search{order:2;margin-left:0;flex:1 1 90px;min-width:80px}}
 .mast .search input{
   width:100%;padding:.5rem .8rem .5rem 2rem;
   font-family:"EB Garamond",serif;font-size:.95rem;color:var(--ink);
@@ -52,7 +52,7 @@
 @media (max-width:860px){.shell{grid-template-columns:minmax(0,1fr)}.rail{min-width:0}}
 
 /* ---------- index rail ---------- */
-.rail{position:sticky;top:70px;padding:1.8rem 0}
+.rail{position:sticky;top:calc(var(--mast) + 13px);padding:1.8rem 0}
 @media (max-width:860px){
   .rail{position:static;padding:1rem 0 0;border-bottom:1px solid var(--rule)}
   .rail ol{display:flex;overflow-x:auto;gap:.4rem;padding-bottom:.6rem}
@@ -73,12 +73,12 @@
 
 /* ---------- main ---------- */
 main{padding:2rem 0 4rem;min-width:0}
-.section{padding:2.4rem 0;scroll-margin-top:70px}
+.section{padding:2.4rem 0;scroll-margin-top:calc(var(--mast) + 13px)}
 .section > .eyebrow{margin-bottom:.3rem}
 .section > h2{font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.4rem}
 .section .lede{font-size:1.12rem;color:var(--ink-soft);font-style:italic;max-width:60ch;margin:0 0 1.6rem}
 
-.article{margin:1.6rem 0;scroll-margin-top:70px}
+.article{margin:1.6rem 0;scroll-margin-top:calc(var(--mast) + 13px)}
 .article h3{font-family:"EB Garamond",serif;font-weight:600;font-size:1.28rem;margin:0 0 .35rem;color:var(--ink)}
 .article p{margin:.55rem 0}
 .article ul{margin:.5rem 0 .5rem 1.1rem;padding:0}
