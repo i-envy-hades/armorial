@@ -69,8 +69,9 @@ def ouvre(browser, base, page_url, attente):
     page.on("response", lambda r: r.url.startswith(base) and r.status >= 400 and erreurs.append(f"HTTP {r.status} : {r.url.replace(base, '')}"))
     page.goto(f"{base}/{page_url}")
     page.wait_for_selector(attente, timeout=20000)
-    # le texte prérendu (tools/prerendu.py) est déjà dans le HTML : on attend que le script l'ait remplacé par la page construite
-    page.wait_for_function("!document.documentElement.innerHTML.includes('<!--pr\\u00e9rendu:')", timeout=20000)
+    # le texte prérendu (tools/prerendu.py) est déjà dans le HTML : on attend que le script l'ait remplacé par la page construite ;
+    # Blasons réels le garde, et sa page est prête quand le compteur de ses filtres est rempli
+    page.wait_for_function("!document.documentElement.innerHTML.includes('<!--pr\\u00e9rendu:') || document.querySelector('#count')?.textContent", timeout=20000)
     page.wait_for_timeout(600)
     return page, erreurs
 
@@ -132,6 +133,32 @@ def test_galerie(browser, base, page_url, fichier, nom):
     verifie(page.locator("footer .seal").count() == 1, f"{nom} : sceau du pied de page")
     propre(nom, page, erreurs)
     page.context.close()
+
+def test_blasons_sur_place(browser, base):
+    """Blasons réels garde les cartes écrites dans le HTML : ce sont celles que les données construisent, et ses filtres les cachent pour de bon"""
+    fiche = """[...document.querySelectorAll('#grid .ar')].map(a => a.outerHTML.replace(/\\s+/g, ' ').trim())"""
+    for page_url, suisse, tous in (("blasons.html", "Suisse", "Tous"), ("en-arms.html", "Switzerland", "All")):
+        cartes = data("blasons.json")
+        page, erreurs = ouvre(browser, base, page_url, "#tools .chip")
+        verifie(page.evaluate("typeof lire === 'undefined'"), f"{page_url} : le lecteur n'est pas chargé à l'ouverture")
+        verifie(page.locator("#facts .c").count() == 3 and str(len(cartes)) in page.inner_text("#facts"), f"{page_url} : les chiffres du bandeau sont là")
+        ecrites = page.evaluate(fiche)
+        visibles = "[...document.querySelectorAll('#grid .ar')].filter(a => a.offsetHeight > 0).length"
+        verifie(page.evaluate(visibles) == len(cartes), f"{page_url} : toutes les cartes se voient au départ")
+        n = sum(1 for c in cartes if c.get("cat") == "Suisse")
+        page.click(f"#tools .chip[data-c='{suisse}']"); page.wait_for_timeout(200)
+        verifie(page.evaluate(visibles) == n and str(n) in page.inner_text("#count"), f"{page_url} : le filtre ne laisse voir que ses {n} cartes ({page.evaluate(visibles)})")
+        # une adresse vers une carte cachée lève le filtre et y mène
+        cachee = slug_carte(next(c["nom"] for c in cartes if c.get("cat") != "Suisse"))
+        page.evaluate("id => { location.hash = id; }", cachee); page.wait_for_selector(".ar.flash", timeout=5000); page.wait_for_timeout(600)
+        haut = page.evaluate("id => document.getElementById(id).getBoundingClientRect().top", cachee)
+        verifie(page.evaluate(visibles) == len(cartes) and 0 <= haut < page.viewport_size["height"], f"{page_url} : une adresse vers une carte cachée lève le filtre et y mène (haut à {haut:.0f} px)")
+        propre(page_url + " (sur place)", page, erreurs)
+        page.context.close()
+        page, erreurs = ouvre(browser, base, page_url + "?construire", "#tools .chip")
+        verifie(page.evaluate(fiche) == ecrites, f"{page_url} : les cartes écrites dans le HTML sont celles que les données construisent")
+        propre(page_url + " (construite)", page, erreurs)
+        page.context.close()
 
 def test_lignees(browser, base):
     F = data("frises.json")
@@ -609,6 +636,8 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     verifie(not any(cartes[n]["redo"] or cartes[n]["non"] for n in retirees), f"{nom} : rien sous une carte retirée de l'Atelier (sansAtelier)")
     verifie(all("bute sur « " in (cartes[n]["non"] or "") for n in refuses), f"{nom} : sous un blasonnement refusé, l'endroit où l'Atelier bute est cité")
     params = lambda h: page.evaluate("h => Object.fromEntries(new URLSearchParams(h.split('#')[1]))", h)
+    if page.evaluate("typeof lire === 'undefined'"):       # Blasons réels ne charge pas le lecteur : ses boutons sont déjà écrits ; on l'apporte pour les contrôler
+        page.add_script_tag(url="assets/blasonnement.js"); page.add_script_tag(url="assets/lecture.js"); page.evaluate("chargerLecteur()")
     avec_bouton = [c for c in cartes.values() if c["redo"]]
     verifie(all(page.evaluate("t => lire(t).ok", params(c["redo"])["lire"]) for c in avec_bouton), f"{nom} : chaque bouton porte un blasonnement que le lecteur comprend")
     verifie(all(params(c["redo"]).get("de") == f"{gal}:{c['id']}" == f"{gal}:{slug_carte(c['nom'])}" for c in avec_bouton), f"{nom} : chaque lien vers l'Atelier dit de quelle carte il part")
@@ -618,6 +647,7 @@ def test_boutons(browser, base, page_url, fichier, lisibles, refuses, nom):
     # un clic sur l'écu l'agrandit, sans quitter la page ; Échap le referme ; le bouton « Redessiner » ouvre l'Atelier sur les armes, et y montre la carte d'où l'on part
     cible = lisibles[-1]
     carte = page.locator(".ar", has=page.locator("h3", has_text=cible))
+    carte.scroll_into_view_if_needed()                     # loin de l'écran, l'intérieur d'une carte n'est pas encore mis en page (assets/blasons.css) : on y va, comme un lecteur
     carte.locator(".shield").click()
     page.wait_for_selector("#agrandi[open]")
     verifie(page.locator("#agrandi img").count() == 1 and cible in page.inner_text("#agrandi .ag-t") and page.locator("#agrandi a").count() == 0 and page.url.endswith(page_url), f"{nom} : un clic sur l'écu l'agrandit (nom de la carte, pas de lien vers l'Atelier), sans quitter la page")
@@ -1523,6 +1553,7 @@ def main():
                        ("atelier", lambda: test_atelier(browser, base, n_fuzz)),
                        ("atelier (lien truqué)", lambda: test_atelier_adresse_truquee(browser, base)),
                        ("lecture", lambda: test_lecture(browser, base, n_fuzz)),
+                       ("blasons sur place", lambda: test_blasons_sur_place(browser, base)),
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),
                        ("partir d'un blason réel", lambda: test_partir(browser, base)),

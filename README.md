@@ -245,7 +245,8 @@ GitHub fait tourner `check_data.py` et le test de fumée à chaque envoi, et `ch
 **Le prérendu.** L'encyclopédie, Blasons réels et Personnages se construisent dans le navigateur à partir de leurs fichiers JSON : sans
 lui, le HTML que lit un moteur de recherche serait presque vide. `tools/prerendu.py` ouvre ces trois pages dans Google Chrome sans fenêtre et
 recopie le texte construit (sans les figures SVG, que le script redessine) dans le fichier HTML, entre `<!--prérendu:… empreinte-->` et
-`<!--/prérendu:…-->` ; au chargement, le script le remplace par le même contenu. **À relancer après toute modification de `data/data.json`,
+`<!--/prérendu:…-->` ; au chargement, le script le remplace par le même contenu, sauf sur Blasons réels (`blasons.html`, `en-arms.html`), qui le garde
+pour ne pas mettre ses 1 000 cartes en page deux fois sur un téléphone : ce texte y est alors ce que voient les visiteurs, et `check_data.py` refuse un retard sur ces deux pages. **À relancer après toute modification de `data/data.json`,
 `data/blasons.json` ou `data/personnages.json` (ou des scripts de ces pages), avant de publier** — `check_data.py` avertit quand un
 prérendu est en retard (l'empreinte est celle des données et des scripts) :
 

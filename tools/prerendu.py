@@ -20,16 +20,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 # page → les blocs à recopier (id de l'élément, ce qui prouve qu'il est construit) et ce dont dépend son contenu
+# « adresse » : ces pages gardent au chargement ce qu'on écrit ici, sans le reconstruire ; « ?construire » les force à repartir des données
 PAGES = {
     "encyclopedie.html": {"blocs": {"main": "#main .section", "rail-list": "#rail-list li", "counts": "#counts *"},
                           "sources": ["data/data.json", "assets/index.js", "assets/blason.js"]},
     "en-encyclopedia.html": {"blocs": {"main": "#main .section", "rail-list": "#rail-list li", "counts": "#counts *"},
                              "sources": ["data/data.json", "data/en/encyclopedie.json", "assets/chrome.js", "assets/index.js", "assets/blason.js"]},
-    "blasons.html": {"blocs": {"grid": "#grid .ar"},
+    "blasons.html": {"blocs": {"grid": "#grid .ar"}, "adresse": "?construire",
                      "sources": ["data/blasons.json", "assets/blasons.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
     "personnages.html": {"blocs": {"grid": "#grid .ar"},
                          "sources": ["data/personnages.json", "assets/personnages.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
-    "en-arms.html": {"blocs": {"grid": "#grid .ar"},
+    "en-arms.html": {"blocs": {"grid": "#grid .ar"}, "adresse": "?construire",
                      "sources": ["data/blasons.json", "data/en/cartes.json", "assets/chrome.js", "assets/blasons.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
     "en-people.html": {"blocs": {"grid": "#grid .ar"},
                        "sources": ["data/personnages.json", "data/en/cartes.json", "assets/chrome.js", "assets/personnages.js", "assets/cartes.js", "assets/lecture.js", "assets/blasonnement.js"]},
@@ -114,7 +115,7 @@ class H(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path.startswith("/__sonde/"):
             page = self.path.split("/__sonde/", 1)[1]
-            corps = (SONDE % {"page": "/" + page, "blocs": json.dumps(PAGES[page]["blocs"])}).encode()
+            corps = (SONDE % {"page": "/" + page + PAGES[page].get("adresse", ""), "blocs": json.dumps(PAGES[page]["blocs"])}).encode()
             self.send_response(200); self.send_header("Content-Type", "text/html; charset=utf-8"); self.send_header("Content-Length", str(len(corps))); self.end_headers(); self.wfile.write(corps)
             return
         super().do_GET()

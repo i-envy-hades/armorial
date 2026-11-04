@@ -10,13 +10,21 @@ function allerCarte(remetsAZero) {
   try { id = decodeURIComponent(location.hash.slice(1)); } catch (e) { return; }                       // adresse mal formée : rien à faire
   if (!id) return;
   let carte = document.getElementById(id);
-  if (!carte && remetsAZero) { remetsAZero(); carte = document.getElementById(id); }
+  if ((!carte || carte.hidden) && remetsAZero) { remetsAZero(); carte = document.getElementById(id); }
   if (!carte || !carte.classList.contains("ar")) return;
-  carte.scrollIntoView({ block: "center", behavior: "instant" });
-  /* sur un petit écran, les filtres collés en haut couvriraient le haut d'une carte haute */
-  const barres = Math.max(0, ...[...document.querySelectorAll(".mast,.tools")].map(b => b.getBoundingClientRect().bottom));
-  const haut = carte.getBoundingClientRect().top;
-  if (haut < barres + 10) window.scrollBy({ top: haut - barres - 10, behavior: "instant" });
+  const place = () => {
+    carte.scrollIntoView({ block: "center", behavior: "instant" });
+    /* sur un petit écran, les filtres collés en haut couvriraient le haut d'une carte haute */
+    const barres = Math.max(0, ...[...document.querySelectorAll(".mast,.tools")].map(b => b.getBoundingClientRect().bottom));
+    const haut = carte.getBoundingClientRect().top;
+    if (haut < barres + 10) window.scrollBy({ top: haut - barres - 10, behavior: "instant" });
+  };
+  /* les cartes voisines ne sont mises en page qu'en arrivant à l'écran (assets/blasons.css) : la page bouge encore, on replace la carte, sauf si le lecteur a déjà fait défiler */
+  let lacheTout = false;
+  const lache = () => { lacheTout = true; };
+  for (const ev of ["wheel", "touchstart", "keydown"]) addEventListener(ev, lache, { once: true, passive: true });
+  const replace = () => { if (!lacheTout) place(); };
+  place(); requestAnimationFrame(() => requestAnimationFrame(replace)); setTimeout(replace, 400);
   carte.classList.add("flash");
   setTimeout(() => carte.classList.remove("flash"), 2400);
 }

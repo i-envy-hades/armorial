@@ -331,7 +331,7 @@ for f in pages + sorted((ROOT / "assets").glob("*.js")):
 # l'ordre des scripts : chaque fichier s'appuie sur des globaux que d'autres définissent, il doit venir après eux
 DEPENDANCES = {"lecture.js": ["blasonnement.js"], "dessin.js": ["blason.js", "blasonnement.js"], "atelier.js": ["blasonnement.js", "lecture.js", "dessin.js"],
                "exercices.js": ["blason.js", "blasonnement.js", "lecture.js", "dessin.js"],
-               "blasons.js": ["lecture.js", "cartes.js"], "personnages.js": ["lecture.js", "cartes.js"],
+               "blasons.js": ["cartes.js"], "personnages.js": ["lecture.js", "cartes.js"],
                "compte.js": ["chrome.js"], "blasonnement-en.js": ["blasonnement.js"], "enligne.js": ["compte.js"], "jeu.js": ["chrome.js", "blasonnement.js", "lecture.js", "dessin.js", "compte.js", "enligne.js"]}
 for p in pages:
     scripts = re.findall(r'<script src="assets/([\w.-]+)"', p.read_text(encoding="utf-8"))
@@ -391,7 +391,9 @@ for table_ in sorted(set(TABLES_EN.values())):
 sys.path.insert(0, str(ROOT / "tools"))
 import prerendu
 for pg in prerendu.PAGES:
-    if prerendu.empreinte_ecrite(pg) != {prerendu.empreinte(pg)}: warnings.append(f"{pg}: prérendu en retard sur ses données (lancer python3 tools/prerendu.py avant de publier)")
+    if prerendu.empreinte_ecrite(pg) != {prerendu.empreinte(pg)}:
+        # Blasons réels garde ce texte au chargement : en retard, ce sont les visiteurs, et pas seulement les moteurs, qui verraient d'anciennes cartes
+        (err if "adresse" in prerendu.PAGES[pg] else warnings.append)(f"{pg}: prérendu en retard sur ses données (lancer python3 tools/prerendu.py avant de publier)")
 
 for w in warnings: print("avertissement :", w)
 print("\n".join(errors) or "OK")

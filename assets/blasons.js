@@ -36,45 +36,54 @@ function card(a){
     <p class="src">${srcLine(a)}</p>
   </article>`;
 }
-let CURRENT="Tous";
-function render(){
-  const list = CURRENT==="Tous" ? ARMS : ARMS.filter(a=>a.cat===CURRENT);
-  document.getElementById("grid").innerHTML = list.map(card).join("");
-  const c=document.getElementById("count");
-  if(c) c.textContent = Tr(`${list.length} blason${list.length>1?"s":""}`, `${list.length} coat${list.length>1?"s":""} of arms`);
-}
-function buildTools(){
-  const cats=["Tous",...new Set(ARMS.map(a=>a.cat).filter(Boolean))];
-  const tools=document.getElementById("tools");
+/* Les filtres et les chiffres se lisent sur les cartes de la page : ils servent aussi bien aux cartes écrites dans le HTML qu'à celles qu'on vient de construire. */
+function surPlace(){
+  const cartes=[...document.querySelectorAll("#grid .ar")], tools=document.getElementById("tools");
+  const cats=[...new Set(cartes.map(c=>c.dataset.cat).filter(Boolean))];
   tools.innerHTML = `<span class="lab">${Tr("Filtrer", "Filter")}</span>`+
-    cats.map(c=>`<button class="chip${c==="Tous"?" on":""}" data-c="${c}">${c==="Tous"?Tr("Tous","All"):c}</button>`).join("")+
+    ["Tous",...cats].map(c=>`<button class="chip${c==="Tous"?" on":""}" data-c="${c}">${c==="Tous"?Tr("Tous","All"):c}</button>`).join("")+
     `<span class="count" id="count"></span>`;
-  tools.addEventListener("click",e=>{
-    const b=e.target.closest(".chip"); if(!b) return;
-    CURRENT=b.dataset.c;
-    [...tools.querySelectorAll(".chip")].forEach(x=>x.classList.toggle("on",x===b));
-    render();
-  });
+  const count=document.getElementById("count");
+  const compte=n=>{ count.textContent = Tr(`${n} blason${n>1?"s":""}`, `${n} coat${n>1?"s":""} of arms`); };
+  const montre=cat=>{
+    let n=0;
+    for(const a of cartes){ const on=cat==="Tous"||a.dataset.cat===cat; a.hidden=!on; if(on) n++; }
+    compte(n);
+    tools.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x.dataset.c===cat));
+  };
+  tools.addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(b) montre(b.dataset.c); });
+  compte(cartes.length);
+  /* une carte a son adresse (assets/cartes.js) : si un filtre la cache, on le lève */
+  const toutes=()=>montre("Tous");
+  const fin=()=>{
+    const f=document.getElementById("facts");
+    if(f) f.innerHTML = `<div class="c"><span class="n">${cartes.length}</span><span class="l">${Tr("Blasons", "Coats of arms")}</span></div>
+    <div class="c"><span class="n">${cats.length}</span><span class="l">${Tr("Catégories", "Categories")}</span></div>
+    <div class="c"><span class="n">${document.querySelectorAll("#grid .redo").length}</span><span class="l">${Tr("Relus par l'Atelier", "Read by the Atelier")}</span></div>`;
+    allerCarte(toutes); addEventListener("hashchange",()=>allerCarte(toutes));
+  };
+  /* le bandeau se remplit après les autres scripts, comme lorsque les données arrivaient du réseau : ses chiffres ne s'animent pas */
+  if(document.readyState==="loading") addEventListener("DOMContentLoaded",fin); else fin();
 }
-async function init(){
+const chargeScript=s=>new Promise((ok,non)=>{ const e=document.createElement("script"); e.src=s; e.onload=ok; e.onerror=()=>non(new Error(`${s} : introuvable`)); document.head.appendChild(e); });
+/* construit les cartes depuis les données : avec le lecteur, pour savoir lesquelles s'ouvrent dans l'Atelier */
+async function construire(){
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
   try{
+    await chargeScript("assets/blasonnement.js"); await chargeScript("assets/lecture.js");
     // les données du lecteur de blasonnement arrivent en même temps ; si elles manquent, la page se passe du bouton
     [ARMS] = await Promise.all([lireDonnees('data/blasons.json'), chargerLecteur().catch(() => {})]);
     LECTURES = lectures(ARMS);
     LISIBLES = new Set([...LECTURES].filter(([, r]) => r.ok).map(([a]) => a));
   }catch(err){
-    document.getElementById("grid").innerHTML =
+    grid.innerHTML =
       Tr(`<p>Les données n'ont pas pu être chargées (${err.message||err}). Cette page doit être servie par HTTP — par exemple <code>python -m http.server</code> — et non ouverte depuis le disque.</p>`, `<p>The data couldn't load (${err.message||err}). This page must be served over HTTP — for example with <code>python -m http.server</code> — not opened from disk.</p>`);
     return;
   }
-  buildTools();
-  render();
-  /* une carte a son adresse (assets/cartes.js) : si un filtre la cache, on le lève */
-  const toutes = () => { CURRENT = "Tous"; document.querySelectorAll("#tools .chip").forEach(x => x.classList.toggle("on", x.dataset.c === "Tous")); render(); };
-  allerCarte(toutes); addEventListener("hashchange", () => allerCarte(toutes));
-  const f = document.getElementById("facts");
-  if(f) f.innerHTML = `<div class="c"><span class="n">${ARMS.length}</span><span class="l">${Tr("Blasons", "Coats of arms")}</span></div>
-    <div class="c"><span class="n">${new Set(ARMS.map(a => a.cat).filter(Boolean)).size}</span><span class="l">${Tr("Catégories", "Categories")}</span></div>
-    <div class="c"><span class="n">${LISIBLES.size}</span><span class="l">${Tr("Relus par l'Atelier", "Read by the Atelier")}</span></div>`;
+  grid.innerHTML = ARMS.map(card).join("");
+  surPlace();
 }
-init();
+/* Les cartes sont déjà dans le HTML (tools/prerendu.py) : on ne les reconstruit pas et le lecteur n'est pas chargé. Sur un téléphone, mettre 1 000 cartes en page deux fois prenait plusieurs secondes.
+   « ?construire », ou un HTML sans cartes, les construit depuis les données : c'est ainsi que tools/prerendu.py obtient ce qu'il écrit. */
+if(new URLSearchParams(location.search).has("construire") || !document.querySelector("#grid .ar")) construire(); else surPlace();
