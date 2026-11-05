@@ -1602,7 +1602,9 @@
     "groupe": "marechaux",
     "meta": "1637–1712 · maréchal de France",
     "desc": "Vainqueur à Staffarde et à La Marsaille, il est célèbre pour sa modestie.",
-    "aVerifier": true
+    "atelier": "D'argent à la croix de gueules chargée de neuf coquilles d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=175&pth=165"
   },
   {
     "nom": "Jean-Baptiste Jourdan",
@@ -1944,7 +1946,8 @@
     "groupe": "marechaux",
     "meta": "1341–1402 · connétable de France",
     "desc": "Ce chef de guerre sert Charles V et Charles VI pendant la guerre de Cent Ans.",
-    "aVerifier": true
+    "atelier": "D'azur à la bande d'argent côtoyée de deux doubles cotices potencées d'or, au lambel de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Philippe de Crèvecœur",
@@ -2282,6 +2285,8 @@
     "groupe": "empire",
     "meta": "1762–1841 · prince de Lucques et de Piombino",
     "desc": "Général corse, époux d'Élisa Bonaparte.",
+    "atelier": "Coupé d'argent et de gueules, au chef d'azur chargé d'une aigle impériale d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
     "aVerifier": true
   },
   {
@@ -2624,7 +2629,9 @@
     "groupe": "marechaux",
     "meta": "XVIᵉ siècle · maréchal de France",
     "desc": "Grand fauconnier de France et lieutenant du roi en Guyenne.",
-    "aVerifier": true
+    "atelier": "D'argent à deux fasces de sable, à six merlettes de sable posées 3, 2 et 1",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=58&dy=2&ec=118&dx2=10&ec2=175"
   },
   {
     "nom": "Jacques Rouxel de Grancey",
@@ -2966,8 +2973,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Gauvain",
@@ -3324,7 +3330,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "De pourpre au léopard d'argent armé et lampassé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=105"
   },
   {
     "nom": "Léodagan",
@@ -3683,7 +3691,8 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Coupé d'or et de gueules, au lion de sable armé et lampassé de sinople brochant sur le tout",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un coupé au milieu de l'écu, pas un chef"
   },
   {
     "nom": "Claudas",
@@ -4038,8 +4047,7 @@
     },
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Catherine Parr",
@@ -4382,8 +4390,7 @@
     },
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Guillaume de Chartres",

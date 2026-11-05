@@ -462,6 +462,7 @@ function drawBody(s, u) {
   const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case : componsLocaux
   const dress = paint => {
     let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.lrg ? 145 : s.pth);
+    if (p && MAP && MAP.ligne && !s.ln && (s.p === "bande" || s.p === "barre")) p = p.replace("<line ", '<line stroke-linecap="square" ');      // resserrée dans un tranché, la pièce doit encore atteindre le bord de l'écu
     if (p && s.pf) {                                                                       // le filet : la pièce cernée d'un liseré de l'émail dit
       const g = croixCase ? 6 * MAP.vpx : 6, meme = s.pf === s.tp;                         // du même émail que la pièce, un trait sombre les sépare (la croix de Vienne)
       p = (meme ? filetDe(p, "#1a1712", g + .9) : "") + filetDe(p, flat(s.pf), g) + (meme ? filetDe(p, "#1a1712", .9) : "") + p;

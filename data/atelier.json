@@ -7208,6 +7208,168 @@
    ]
   },
   {
+   "kind": "aigle-vol-deploye",
+   "nom": "Aigle au vol déployé",
+   "sing": "aigle au vol déployé",
+   "plur": "aigles au vol déployé",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/aigle-vol-deploye.svg",
+    "commons": "Meuble héraldique Aigle éployée.svg",
+    "auteur": "Syryatsu et Thom.lanaud, couronne retirée par L'Armorial",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#2b5df2"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "becqué et membré",
+   "accentTrait": true,
+   "accentSouple": true
+  },
+  {
+   "kind": "soc-charrue",
+   "nom": "Soc de charrue",
+   "sing": "soc de charrue",
+   "plur": "socs de charrue",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/soc-charrue.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "saule-etete",
+   "nom": "Saule étêté",
+   "sing": "saule étêté",
+   "plur": "saules étêtés",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/saule-etete.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "fougere",
+   "nom": "Branche de fougère",
+   "sing": "branche de fougère",
+   "plur": "branches de fougère",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/fougere.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ],
+   "accent": [
+    "fill:#ff0000"
+   ],
+   "accentMot": "noué"
+  },
+  {
+   "kind": "croix-trinite",
+   "nom": "Croix de la Trinité",
+   "sing": "croix de la Trinité",
+   "plur": "croix de la Trinité",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "rub": "Croix",
+   "file": {
+    "path": "assets/meubles/croix-trinite.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ],
+   "accent": [
+    "fill:#ff0000"
+   ],
+   "accentMot": "traversé"
+  },
+  {
+   "kind": "etai",
+   "nom": "Étai",
+   "sing": "étai",
+   "plur": "étais",
+   "g": "m",
+   "cat": "Propres au blason",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/etai.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
    "kind": "croix-malte-fine",
    "nom": "Croix de Malte fine",
    "sing": "croix de Malte fine",

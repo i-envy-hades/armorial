@@ -1,0 +1,307 @@
+{
+ "lot": 4,
+ "titre": "Lot 4 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Maison de Montesquiou",
+   "verdict": "fidele",
+   "avis": "Les deux tourteaux, l'un sur l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison de Vintimille",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Annebault",
+   "verdict": "fidele",
+   "avis": "Croix de vair. Le vair de l'image est plus fin."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Pardieu",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison d'Ochsenstein",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Monts de Savasse",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bernay",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bort-les-Orgues",
+   "verdict": "fidele",
+   "avis": "Mêmes flanchis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dublin",
+   "verdict": "essai",
+   "avis": "Trois châteaux, sans les flammes d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Besançon",
+   "verdict": "essai",
+   "avis": "Nouvelle aigle aux ailes déployées, sans couronne, tirée de l'aigle couronnée. L'aigle ne tient toujours pas les colonnes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Cartigny",
+   "verdict": "essai",
+   "avis": "Croix élargie, coquilles agrandies."
+  },
+  {
+   "g": "blasons",
+   "nom": "Wettingen",
+   "verdict": "essai",
+   "avis": "Étoile à six rais, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Granges",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : le soc de charrue."
+  },
+  {
+   "g": "blasons",
+   "nom": "Yverdon-les-Bains",
+   "verdict": "essai",
+   "avis": "La lettre gothique Y de notre alphabet."
+  },
+  {
+   "g": "blasons",
+   "nom": "Losone",
+   "verdict": "essai",
+   "avis": "Le lion broche sur la tour, sans sa langue de gueules."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Poitiers",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vicomté de Léon",
+   "verdict": "essai",
+   "avis": "Lion tout de sable : griffes et langue ne se voient plus. Sa silhouette les a encore."
+  },
+  {
+   "g": "blasons",
+   "nom": "Duché de Poméranie",
+   "verdict": "essai",
+   "avis": "« Armé et lampassé » pour « armé et becqué »."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté de Lunebourg",
+   "verdict": "fidele",
+   "avis": "Même semé, même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Connacht",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ordre de la Très-Sainte-Trinité",
+   "verdict": "essai",
+   "avis": "Traverse centrée sur le pal."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté d'Antioche",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : la fougère et son nœud."
+  },
+  {
+   "g": "blasons",
+   "nom": "Montauban",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : le saule étêté."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bourges",
+   "verdict": "essai",
+   "avis": "Fleurs de lis alignées. Des béliers pour les moutons, sans leurs terrasses."
+  },
+  {
+   "g": "blasons",
+   "nom": "Karlsruhe",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sheffield",
+   "verdict": "essai",
+   "avis": "Gerbes posées 2 et 1, comme sur l'image. Deux flèches pour les huit."
+  },
+  {
+   "g": "blasons",
+   "nom": "Flandre-Occidentale",
+   "verdict": "essai",
+   "avis": "Gironné de huit pièces, pas douze. Les ornements extérieurs ne sont pas dessinés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Wallis-et-Futuna",
+   "verdict": "sans-dessin",
+   "avis": "Un canton aux trois couleurs du drapeau français et un carreau chargé d'un sautoir : l'Atelier ne sait faire ni l'un ni l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale d'Osnabrück",
+   "verdict": "fidele",
+   "avis": "Même roue, avec huit rayons au lieu de six."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Belvaux",
+   "verdict": "essai",
+   "avis": "Merlettes réduites pour qu'elles ne se touchent plus."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Lutzelbourg",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Zollikon",
+   "verdict": "essai",
+   "avis": "Étoile à six rais, bande prolongée jusqu'au bord."
+  },
+  {
+   "g": "blasons",
+   "nom": "Pratteln",
+   "verdict": "essai",
+   "avis": "Aigle tournée d'un quart de tour, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Champtauroz",
+   "verdict": "essai",
+   "avis": "Le château de l'Atelier est un peu différent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Boudry",
+   "verdict": "essai",
+   "avis": "Nouvelle figure : l'étai, un petit chevron qu'un pal peut porter. Un poisson pour la truite."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vandœuvres",
+   "verdict": "fidele",
+   "avis": "Même écu, réglage repris du lot 2."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Jouan de Kervenoaël",
+   "verdict": "essai",
+   "avis": "« De même » dit l'argent, comme sur l'image. Lion réduit, annelets écartés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille du Breil de Pontbriand",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Amphernet",
+   "verdict": "essai",
+   "avis": "L'aigle sans couronne, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Bachasson",
+   "verdict": "essai",
+   "avis": "Griffon agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Malvin de Montazet",
+   "verdict": "fidele",
+   "avis": "Mêmes étoiles."
+  },
+  {
+   "g": "personnages",
+   "nom": "Nicolas de Catinat",
+   "verdict": "essai",
+   "avis": "L'Atelier sait maintenant poser neuf figures sur une croix."
+  },
+  {
+   "g": "personnages",
+   "nom": "Louis de Sancerre",
+   "verdict": "essai",
+   "avis": "Même écu que Champagne, avec le lambel."
+  },
+  {
+   "g": "personnages",
+   "nom": "Félix Baciocchi",
+   "verdict": "essai",
+   "avis": "L'aigle impériale dans le chef. Les ornements extérieurs ne sont pas dessinés."
+  },
+  {
+   "g": "personnages",
+   "nom": "Louis Prévost de Sansac",
+   "verdict": "essai",
+   "avis": "Merlettes réduites et écartées pour tomber entre les fasces."
+  },
+  {
+   "g": "personnages",
+   "nom": "Ban de Bénoïc",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "personnages",
+   "nom": "Lamorat de Listenois",
+   "verdict": "essai",
+   "avis": "« Armé et lampassé » pour « armé »."
+  },
+  {
+   "g": "personnages",
+   "nom": "Patrides au Cercle d'Or",
+   "verdict": "essai",
+   "avis": "Le lion broche, comme sur l'image, mais la ligne descend au milieu de l'écu : le chef de l'image est plus étroit."
+  },
+  {
+   "g": "personnages",
+   "nom": "Catherine Howard",
+   "verdict": "sans-dessin",
+   "avis": "Trop de quartiers pour un dessin honnête, comme Anne de Clèves."
+  },
+  {
+   "g": "personnages",
+   "nom": "Gilbert Hérail",
+   "verdict": "fidele",
+   "avis": "Mêmes croix."
+  }
+ ]
+}

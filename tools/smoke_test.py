@@ -271,6 +271,7 @@ CONNUES = [
     ({"A0": {"t1": "Azur", "m": "etoile12", "nb": "3", "tm": "Or"}}, "D'azur à trois étoiles à douze rais d'or"),
     ({"A0": {"t1": "Gueules", "m": "etoile3", "nb": "1", "tm": "Or"}}, "De gueules à l'étoile à trois rais d'or"),
     ({"A0": {"t1": "Azur", "m": "grenade-unie", "nb": "3", "tm": "Argent"}}, "D'azur à trois grenades unies d'argent"),
+    ({"A0": {"t1": "Gueules", "m": "soc-charrue", "nb": "1", "tm": "Argent"}}, "De gueules au soc de charrue d'argent"),
     # les attitudes ajoutées ensuite (figures de Commons) : ours rampant, loup ravissant, cerf courant ou couché, cheval passant, licorne assise, léopard lionné, taureau,
     # colombe essorante, aigle au vol abaissé, wyvern, bélier passant
     ({"A0": {"t1": "Argent", "m": "ours-rampant", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'argent à l'ours rampant de sable lampassé et vilené de gueules"),
