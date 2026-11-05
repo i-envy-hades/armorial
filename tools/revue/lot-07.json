@@ -1,0 +1,307 @@
+{
+ "lot": 7,
+ "titre": "Lot 7 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Brême",
+   "verdict": "essai",
+   "avis": "La clef en bande ; celle de l'image a un panneton plus ouvragé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison de Rochechouart",
+   "verdict": "fidele",
+   "avis": "Même fascé ondé ; celui de l'image ondule plus serré."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de La Châtre",
+   "verdict": "fidele",
+   "avis": "Même croix ancrée de vair."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Seyssel",
+   "verdict": "fidele",
+   "avis": "Même gironné."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Duprat",
+   "verdict": "essai",
+   "avis": "Trèfles agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Quimper",
+   "verdict": "fidele",
+   "avis": "Même bélier, même chef d'hermine."
+  },
+  {
+   "g": "blasons",
+   "nom": "Issoudun",
+   "verdict": "fidele",
+   "avis": "Même pairle."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ferney-Voltaire",
+   "verdict": "fidele",
+   "avis": "Mêmes lions de l'un en l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "York",
+   "verdict": "essai",
+   "avis": "Les cinq léopards sur la croix."
+  },
+  {
+   "g": "blasons",
+   "nom": "Colmar",
+   "verdict": "essai",
+   "avis": "Notre sceptre pour la masse d'armes : à regarder."
+  },
+  {
+   "g": "blasons",
+   "nom": "Choulex",
+   "verdict": "essai",
+   "avis": "Griffon agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Morat",
+   "verdict": "essai",
+   "avis": "Le lion sur son mont."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ascona",
+   "verdict": "essai",
+   "avis": "Nouvelle figure de Commons choisie par le curateur : la tiare d'Odejea, au-dessus des clefs. Ses couronnes restent d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dietikon",
+   "verdict": "sans-dessin",
+   "avis": "Un bâton fleurdelisé aux deux bouts : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté d'Alençon",
+   "verdict": "essai",
+   "avis": "Le même écu dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Rodez",
+   "verdict": "essai",
+   "avis": "Léopard lionné agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Trégor",
+   "verdict": "essai",
+   "avis": "Notre navire est plus simple que celui de l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Basse-Lusace",
+   "verdict": "essai",
+   "avis": "La terrasse en champagne de sinople."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bade-Wurtemberg",
+   "verdict": "essai",
+   "avis": "« Armés et lampassés » pour « lampassés ». L'image montre aussi les supports."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume de Tonga",
+   "verdict": "sans-dessin",
+   "avis": "Couronne de Tonga, colombe, épées et étoile sur le tout : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Empire de Trébizonde",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dinan",
+   "verdict": "essai",
+   "avis": "Le château de l'Atelier pour celui de l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Compiègne",
+   "verdict": "essai",
+   "avis": "Le lion seul : les fleurs de lis semées sur son corps manquent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Verdun",
+   "verdict": "sans-dessin",
+   "avis": "Une cathédrale, un beffroi et des murailles : l'Atelier ne sait pas les dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Nuremberg",
+   "verdict": "essai",
+   "avis": "La demi-aigle et le bandé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Belfast",
+   "verdict": "sans-dessin",
+   "avis": "Pile de vair, nef sur la mer et canton à la cloche : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Province de Namur",
+   "verdict": "essai",
+   "avis": "Une cotice pour le bâton : elle va d'un bord à l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale de Bressanone",
+   "verdict": "essai",
+   "avis": "Nouvelle figure de Commons : l'agneau pascal de Zozoens. « Au naturel » se dit ici d'argent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Solms",
+   "verdict": "essai",
+   "avis": "Le lion sans couronne, comme vous l'avez demandé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Bettendorf",
+   "verdict": "fidele",
+   "avis": "Même croix ancrée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Distroff",
+   "verdict": "fidele",
+   "avis": "Mêmes fermaux, ronds au lieu de losangés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Wallisellen",
+   "verdict": "sans-dessin",
+   "avis": "Un bras qui tient une clef : l'Atelier pose les deux figures côte à côte sans que le bras la tienne, comme à Connacht et Bischofszell que vous avez retirées."
+  },
+  {
+   "g": "blasons",
+   "nom": "Thayngen",
+   "verdict": "sans-dessin",
+   "avis": "Une faucille : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Écublens",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Onex",
+   "verdict": "sans-dessin",
+   "avis": "Deux fasces ondées inégales et un aulne brochant : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Courtételle",
+   "verdict": "essai",
+   "avis": "Trois coupeaux pour les six de l'image, sans leur bord d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Chissé",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille des Acres",
+   "verdict": "essai",
+   "avis": "Les aigles au vol déployé, plus proches de l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Monnier de Noironte",
+   "verdict": "fidele",
+   "avis": "Même bande, mêmes besants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Orglandes",
+   "verdict": "essai",
+   "avis": "Losanges agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Goësbriand",
+   "verdict": "fidele",
+   "avis": "Même fasce."
+  },
+  {
+   "g": "personnages",
+   "nom": "François Canrobert",
+   "verdict": "essai",
+   "avis": "La main de l'Atelier."
+  },
+  {
+   "g": "personnages",
+   "nom": "Albéric Clément",
+   "verdict": "essai",
+   "avis": "Croix ancrée pour la croix recercelée."
+  },
+  {
+   "g": "personnages",
+   "nom": "Robert de Sablé",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean-Baptiste Budes de Guébriant",
+   "verdict": "essai",
+   "avis": "Le pin et les deux fleurs de lis."
+  },
+  {
+   "g": "personnages",
+   "nom": "Tristan",
+   "verdict": "essai",
+   "avis": "Lion agrandi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guiron le Courtois",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "personnages",
+   "nom": "Arthur le Petit",
+   "verdict": "essai",
+   "avis": "Arbre agrandi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Henriette-Marie de France",
+   "verdict": "sans-dessin",
+   "avis": "Trop de quartiers pour un dessin honnête, comme les autres reines."
+  },
+  {
+   "g": "personnages",
+   "nom": "Armand de Périgord",
+   "verdict": "essai",
+   "avis": "Les lions couronnés ; leurs couronnes restent d'or."
+  }
+ ]
+}

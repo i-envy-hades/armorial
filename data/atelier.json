@@ -7403,6 +7403,57 @@
    "accentSouple": true
   },
   {
+   "kind": "tiare",
+   "nom": "Tiare",
+   "sing": "tiare",
+   "plur": "tiares",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
+   "file": {
+    "path": "assets/meubles/tiare.svg",
+    "commons": "Papal tiara (Heraldic).svg",
+    "auteur": "Odejea",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e6e6e6"
+   ]
+  },
+  {
+   "kind": "agneau-pascal",
+   "nom": "Agneau pascal",
+   "sing": "agneau pascal",
+   "plur": "agneaux pascals",
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/agneau-pascal.svg",
+    "commons": "Agneau pascal.svg",
+    "auteur": "Zozoens",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#ffffff"
+   ]
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

@@ -1652,7 +1652,9 @@
     "groupe": "marechaux",
     "meta": "1809–1895 · maréchal de France",
     "desc": "Il commande en Crimée et combat à Saint-Privat en 1870.",
-    "aVerifier": true
+    "atelier": "D'azur à la main appaumée d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=125"
   },
   {
     "nom": "Ferdinand Foch",
@@ -1993,7 +1995,8 @@
     "groupe": "marechaux",
     "meta": "mort en 1191 · premier maréchal de France",
     "desc": "Le premier à porter le titre, en 1190, mort à la troisième croisade.",
-    "aVerifier": true
+    "atelier": "D'azur à la croix ancrée d'argent, à la cotice de gueules brochant sur le tout",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : une croix ancrée pour la croix recercelée"
   },
   {
     "nom": "Jean de Corbeil",
@@ -2333,8 +2336,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "temple",
     "meta": "mort en 1193 · maître du Temple",
-    "desc": "Baron du Maine, onzième maître de l'ordre.",
-    "aVerifier": true
+    "desc": "Baron du Maine, onzième maître de l'ordre."
   },
   {
     "nom": "Gérard de Ridefort",
@@ -2683,7 +2685,9 @@
     "groupe": "marechaux",
     "meta": "1602–1643 · maréchal de France",
     "desc": "Ce Breton meurt de sa blessure au siège de Rottweil, peu après son bâton.",
-    "aVerifier": true
+    "atelier": "D'argent au pin de sinople, accompagné de deux fleurs de lis de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le pin n'est pas arraché ni fruité d'or",
+    "atelierAjust": "dy=4&dy2=28"
   },
   {
     "nom": "François de La Grange d'Arquian",
@@ -3028,7 +3032,7 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Bohort",
@@ -3388,8 +3392,7 @@
     },
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Geraint",
@@ -3748,7 +3751,7 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Ariohan",
@@ -4100,8 +4103,7 @@
     },
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Bérangère de Navarre",
@@ -4443,7 +4445,8 @@
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, de gueules à trois lions couronnés d'or armés et lampassés d'azur",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les couronnes sont d'or, et non d'azur"
   },
   {
     "nom": "Guillaume de Sonnac",
