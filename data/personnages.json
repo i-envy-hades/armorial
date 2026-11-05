@@ -1569,8 +1569,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1575–1632 · maréchal de France",
-    "desc": "Il combat les protestants sous Louis XIII et meurt à Bordeaux.",
-    "aVerifier": true
+    "desc": "Il combat les protestants sous Louis XIII et meurt à Bordeaux."
   },
   {
     "nom": "Turenne",
@@ -1908,7 +1907,9 @@
     "groupe": "marechaux",
     "meta": "1384–1437 · maréchal de France",
     "desc": "Gouverneur de Paris, il est tué par la foule à Bruges.",
-    "aVerifier": true
+    "atelier": "D'or au chef d'azur chargé d'un bras d'hermine",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le dextrochère est sans son manipule",
+    "atelierAjust": "sz=105"
   },
   {
     "nom": "Charles de La Porte",
@@ -2244,7 +2245,10 @@
     "groupe": "empire",
     "meta": "1739–1824 · architrésorier de l'Empire",
     "desc": "Le duc de Plaisance, troisième consul sous le Consulat.",
-    "aVerifier": true
+    "atelier": "De sable au loup passant d'or, accompagné de deux billettes d'argent en chef, au chef d'azur semé d'abeilles d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un loup pour la louve, et la terrasse manque",
+    "atelierAjust": "q2.sz=88&q2.dy=22&q2.sz2=70&q2.dy2=4",
+    "forme": "sannitique"
   },
   {
     "nom": "Camille Borghèse",
@@ -2582,7 +2586,9 @@
     "groupe": "marechaux",
     "meta": "mort en 1454 · maréchal de France",
     "desc": "Sénéchal du Limousin, maréchal sous Charles VII.",
-    "aVerifier": true
+    "atelier": "D'azur semé d'étoiles d'or au lion d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=85"
   },
   {
     "nom": "Claude de Beauvoir",
@@ -2919,7 +2925,9 @@
     "groupe": "empire",
     "meta": "1775–1852 · maréchal de France",
     "desc": "Général de cavalerie de Napoléon, maréchal sous la Seconde République.",
-    "aVerifier": true
+    "atelier": "Écartelé : au 1, d'azur à l'épée d'argent ; au 2, d'argent au cheval effaré de sable ; au 3, d'azur à la ruche d'or, à la croix latine d'or brochant sur le tout ; au 4, d'argent à trois merlettes de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la ruche et la croix sont côte à côte sur le quartier d'azur, sans le trait du parti",
+    "atelierAjust": "q3.sz=62&q3.dx=-24&q3.sz2=62&q3.dx2=24"
   },
   {
     "nom": "Roi Arthur",
@@ -3277,8 +3285,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Méliadus de Léonois",
@@ -3637,7 +3644,8 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "De gueules à l'ours passant d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les griffes ne sont pas de sable"
   },
   {
     "nom": "Le Laid Hardi",
@@ -3994,7 +4002,7 @@
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Anne de Clèves",
@@ -4338,7 +4346,8 @@
     "auteur": "Odejea, Kontributor 2K",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, de sinople à trois fasces d'argent, au chef engrêlé d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Arnaud de Toroge",

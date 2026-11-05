@@ -17,6 +17,7 @@
    ],
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "file": {
     "path": "assets/meubles/lion.svg",
@@ -61,6 +62,7 @@
    },
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "file": {
     "path": "assets/meubles/lion-queue-fourchee.svg",
@@ -102,6 +104,7 @@
    },
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "file": {
     "path": "assets/meubles/lion-hache.svg",
@@ -145,6 +148,7 @@
    ],
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "allongee": true,
    "file": {
@@ -181,6 +185,7 @@
    "plur": "léopards",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "allongee": true,
    "file": {
@@ -216,6 +221,7 @@
    "plur": "léopards lionnés",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "file": {
     "path": "assets/meubles/leopard-lionne.svg",
@@ -257,6 +263,7 @@
    "homonyme": "aigle",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/aigle-sans-couronne.svg",
@@ -293,6 +300,7 @@
    ],
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/aigle.svg",
@@ -335,6 +343,7 @@
    ],
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "file": {
     "path": "assets/meubles/aigle-bicephale.svg",
     "commons": "Meuble héraldique Aigle bicéphale éployée.svg",
@@ -365,6 +374,7 @@
    "plur": "aigles bicéphales sans couronne",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "file": {
     "path": "assets/meubles/aigle-bicephale-sans-couronne.svg",
     "commons": "Meuble héraldique Aigle bicéphale compacte.svg",
@@ -394,6 +404,7 @@
    "plur": "aigles au vol abaissé",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "file": {
     "path": "assets/meubles/aigle-vol-abaisse.svg",
     "commons": "Meuble héraldique Aigle vol abaissé.svg",
@@ -424,6 +435,7 @@
    "plur": "aigles de Brandebourg",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/aigle-brandebourg.svg",
@@ -449,6 +461,7 @@
    "plur": "croix alésées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix.svg",
     "commons": "Coa Illustration Cross Greek in Red.svg",
@@ -473,6 +486,7 @@
    "plur": "fleurs de lis",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "draw": "lis",
    "credit": {
     "commons": "Meuble héraldique Fleur de lys.svg",
@@ -494,6 +508,7 @@
    ],
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/fleurdelis-florencee.svg",
     "commons": "Meuble héraldique Fleur de lis florencée.svg",
@@ -592,6 +607,7 @@
    "plur": "roses",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/rose.svg",
     "commons": "Heraldique Rose.svg",
@@ -634,6 +650,7 @@
    "plur": "coussins",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "draw": "coussin"
   },
   {
@@ -962,6 +979,7 @@
    "plur": "croix pattées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "draw": "croix-pattee"
   },
   {
@@ -971,6 +989,7 @@
    "plur": "croix potencées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-potencee.svg",
     "commons": "Croix-potencee.svg",
@@ -995,6 +1014,7 @@
    "plur": "croix recroisettées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "draw": "croix-recroisettee",
    "alias": [
     [
@@ -1018,6 +1038,7 @@
    "plur": "croix ancrées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-ancree.svg",
     "commons": "Meuble héraldique Croisette ancrée.svg",
@@ -1042,6 +1063,7 @@
    "plur": "croix de Lorraine",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-lorraine.svg",
     "commons": "Croix de Lorraine.svg",
@@ -1066,6 +1088,7 @@
    "plur": "croix latines",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-latine.svg",
     "commons": "Latin Cross.svg",
@@ -1092,6 +1115,7 @@
    "plur": "croix de Jérusalem",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-jerusalem.svg",
     "commons": "Cross-Jerusalem-Potent-Heraldry.svg",
@@ -1115,6 +1139,7 @@
    "plur": "croix de Malte",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-malte.svg",
     "commons": "Maltese-Cross-Heraldry.svg",
@@ -1141,6 +1166,7 @@
    "plur": "croix du Christ",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-christ.svg",
     "commons": "Cross of the Military Order of Christ.svg",
@@ -1165,6 +1191,7 @@
    "plur": "croix de saint André",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-saint-andre.svg",
     "commons": "Saint Andrew's cross black.svg",
@@ -1191,6 +1218,7 @@
    "plur": "croix orthodoxes",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-orthodoxe.svg",
     "commons": "Symbol of Orthodoxy.svg",
@@ -1217,6 +1245,7 @@
    "plur": "croix celtiques",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-celtique.svg",
     "commons": "Celtic-style crossed circle.svg",
@@ -1243,6 +1272,7 @@
    "plur": "croix huguenotes",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-huguenote.svg",
     "commons": "Huguenot cross.svg",
@@ -1278,6 +1308,7 @@
    ],
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-toulouse.svg",
     "commons": "Creu occitana black.svg",
@@ -1303,6 +1334,7 @@
    "plur": "croix fleurdelisées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-fleurdelisee.svg",
     "commons": "Cross-Flory-Heraldry.svg",
@@ -1326,6 +1358,7 @@
    "plur": "croix tréflées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-treflee.svg",
     "commons": "Cross-Bottony-Heraldry.svg",
@@ -1349,6 +1382,7 @@
    "plur": "croix pommées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-pommee.svg",
     "commons": "Cross-Pommee-Heraldry.svg",
@@ -1374,6 +1408,7 @@
    "plur": "croix patonnées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-patonnee.svg",
     "commons": "Cross-Patonce-Heraldry.svg",
@@ -1399,6 +1434,7 @@
    "plur": "croix fourchées",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-fourchee.svg",
     "commons": "Cross-Fourchee-Heraldry.svg",
@@ -1422,6 +1458,7 @@
    "plur": "croix recroisettées au pied fiché",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-recroisettee-fichee.svg",
     "commons": "Croix recroisetée au pied fiché.svg",
@@ -1445,6 +1482,7 @@
    "plur": "croix de saint Jacques",
    "g": "f",
    "cat": "La famille de la croix",
+   "rub": "Croix",
    "file": {
     "path": "assets/meubles/croix-saint-jacques.svg",
     "commons": "St James Cross.svg",
@@ -1536,6 +1574,7 @@
    "plur": "coquilles",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "file": {
     "path": "assets/meubles/coquille.svg",
     "commons": "Meuble héraldique Coquille 2.svg",
@@ -1563,6 +1602,7 @@
    "plur": "fers à cheval",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "file": {
     "path": "assets/meubles/fercheval.svg",
     "commons": "Héraldique meuble Fer à cheval.svg",
@@ -1587,6 +1627,7 @@
    "plur": "cloches",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "draw": "cloche"
   },
   {
@@ -1596,6 +1637,7 @@
    "plur": "clefs",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "alias": [
     [
@@ -1636,6 +1678,7 @@
    "plur": "clefs de saint Pierre",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "seul": true,
    "pluriel": true,
    "alias": [
@@ -1675,6 +1718,7 @@
    "plur": "épées",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "file": {
     "path": "assets/meubles/epee.svg",
@@ -1704,6 +1748,7 @@
    "plur": "lances",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "file": {
     "path": "assets/meubles/lance.svg",
@@ -1729,6 +1774,7 @@
    "plur": "sabres",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "file": {
     "path": "assets/meubles/sabre.svg",
@@ -1758,6 +1804,7 @@
    "plur": "rameaux d'olivier",
    "g": "m",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "asym": true,
    "file": {
     "path": "assets/meubles/rameau-olivier.svg",
@@ -1783,6 +1830,7 @@
    "plur": "sceptres",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "asym": false,
    "file": {
     "path": "assets/meubles/sceptre.svg",
@@ -1808,6 +1856,7 @@
    "plur": "mitres",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "asym": false,
    "file": {
     "path": "assets/meubles/mitre.svg",
@@ -1845,6 +1894,7 @@
    "plur": "briquets",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": false,
    "file": {
     "path": "assets/meubles/briquet.svg",
@@ -1870,6 +1920,7 @@
    "plur": "crosses",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "asym": false,
    "file": {
     "path": "assets/meubles/crosse.svg",
@@ -1901,6 +1952,7 @@
    "plur": "aigles échiquetées",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": false,
    "file": {
     "path": "assets/meubles/aigle-moravie.svg",
@@ -1936,6 +1988,7 @@
    "plur": "ânes",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -1962,6 +2015,7 @@
    "plur": "chevaliers montés",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/chevalier.svg",
@@ -2000,6 +2054,7 @@
    "plur": "saints Georges",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/saint-georges.svg",
@@ -2026,6 +2081,7 @@
    "plur": "saints Fridolin",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/saint-fridolin.svg",
@@ -2057,6 +2113,7 @@
    "plur": "casques de Skanderbeg",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "file": {
     "path": "assets/meubles/casque-skanderbeg.svg",
@@ -2087,6 +2144,7 @@
    "plur": "lions couchés",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2117,15 +2175,24 @@
    "plur": "ancres",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "draw": "ancre"
   },
   {
    "kind": "tour",
+   "maconne": true,
+   "alias": [
+    [
+     "tour crénelée",
+     "tours crénelées"
+    ]
+   ],
    "nom": "Tour",
    "sing": "tour",
    "plur": "tours",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/tour.svg",
     "commons": "Meuble héraldique Tour ouverte, ajourée et crénelée.svg",
@@ -2154,11 +2221,13 @@
   },
   {
    "kind": "tour-couverte",
+   "maconne": true,
    "nom": "Tour couverte",
    "sing": "tour couverte",
    "plur": "tours couvertes",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/tour-couverte.svg",
     "commons": "Meuble héraldique Tour maçonnée.svg",
@@ -2192,6 +2261,7 @@
    ],
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "file": {
     "path": "assets/meubles/couronne.svg",
     "commons": "Meuble héraldique Couronne royale simplifiée.svg",
@@ -2228,16 +2298,25 @@
    ],
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "draw": "hache"
   },
   {
    "kind": "chateau",
+   "maconne": true,
+   "alias": [
+    [
+     "château à trois tours",
+     "châteaux à trois tours"
+    ]
+   ],
    "nom": "Château donjonné",
    "sing": "château donjonné",
    "plur": "châteaux donjonnés",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/chateau.svg",
     "commons": "Meuble héraldique château donjonné de trois tours.svg",
@@ -2266,11 +2345,13 @@
   },
   {
    "kind": "chateau-deux-tours",
+   "maconne": true,
    "nom": "Château à deux tours",
    "sing": "château à deux tours",
    "plur": "châteaux à deux tours",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/chateau-deux-tours.svg",
     "commons": "Meuble héraldique château à deux tours.svg",
@@ -2293,11 +2374,13 @@
   },
   {
    "kind": "chateau-castille",
+   "maconne": true,
    "nom": "Château de Castille",
    "sing": "château de Castille",
    "plur": "châteaux de Castille",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/chateau-castille.svg",
     "commons": "Meuble héraldique Chateau Castille.svg",
@@ -2330,6 +2413,7 @@
    "plur": "cors",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "file": {
     "path": "assets/meubles/cor.svg",
@@ -2359,6 +2443,7 @@
    "plur": "roues",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "draw": "roue"
   },
   {
@@ -2368,6 +2453,7 @@
    "plur": "feuilles d'ortie",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/feuille-ortie.svg",
     "commons": "Héraldique meuble Feuille d'ortie.svg",
@@ -2392,6 +2478,7 @@
    "plur": "glands",
    "g": "m",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/gland.svg",
     "commons": "Meuble héraldique Gland tigé et feuillé.svg",
@@ -2423,6 +2510,7 @@
    "plur": "épis",
    "g": "m",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/epi.svg",
     "commons": "Meuble héraldique Epi.svg",
@@ -2447,6 +2535,7 @@
    "plur": "gerbes",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/gerbe.svg",
     "commons": "Héraldique meuble Gerbe de blé.svg",
@@ -2471,6 +2560,7 @@
    "plur": "arbres",
    "g": "m",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/arbre.svg",
     "commons": "Meuble héraldique Arbre.svg",
@@ -2499,6 +2589,7 @@
    "plur": "cœurs",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "draw": "coeur"
   },
   {
@@ -2508,6 +2599,7 @@
    "plur": "mains appaumées",
    "g": "f",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "file": {
     "path": "assets/meubles/main.svg",
     "commons": "Meuble héraldique Main.svg",
@@ -2532,6 +2624,7 @@
    "plur": "mains bénissantes",
    "g": "f",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/main-benissante.svg",
@@ -2570,6 +2663,7 @@
    "plur": "griffons",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2605,6 +2699,7 @@
    "plur": "dragons",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/dragon.svg",
@@ -2639,6 +2734,7 @@
    "plur": "wyverns",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/wyverne.svg",
@@ -2681,6 +2777,7 @@
    "plur": "licornes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/licorne.svg",
@@ -2711,6 +2808,7 @@
    "plur": "licornes assises",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/licorne-assise.svg",
@@ -2741,6 +2839,7 @@
    "plur": "panthères",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "asym": true,
    "file": {
     "path": "assets/meubles/panthere.svg",
@@ -2776,6 +2875,7 @@
    "plur": "cerfs passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2813,6 +2913,7 @@
    "plur": "cerfs courants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2844,6 +2945,7 @@
    "plur": "cerfs couchés",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2875,6 +2977,7 @@
    "plur": "biches saillantes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/biche-saillante.svg",
@@ -2916,6 +3019,7 @@
    ],
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/cheval.svg",
@@ -2946,6 +3050,7 @@
    "plur": "chevaux passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -2977,6 +3082,7 @@
    "plur": "ours passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -3024,6 +3130,7 @@
    ],
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/ours-rampant.svg",
@@ -3060,6 +3167,7 @@
    "plur": "sangliers passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -3103,6 +3211,7 @@
    "plur": "taureaux",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/taureau.svg",
@@ -3133,6 +3242,7 @@
    "plur": "loups passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -3170,6 +3280,7 @@
    "plur": "loups ravissants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/loup-ravissant.svg",
@@ -3200,6 +3311,7 @@
    "plur": "béliers passants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/belier.svg",
@@ -3235,6 +3347,7 @@
    "plur": "bouquetins saillants",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/bouquetin-saillant.svg",
@@ -3273,6 +3386,7 @@
    "plur": "chèvres saillantes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/chevre-saillante.svg",
@@ -3308,6 +3422,7 @@
    "plur": "cygnes",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/cygne.svg",
@@ -3342,6 +3457,7 @@
    "plur": "colombes essorantes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/colombe-essorante.svg",
@@ -3376,6 +3492,7 @@
    "plur": "colombes tenant un rameau",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/colombe-rameau.svg",
@@ -3402,6 +3519,7 @@
    "plur": "poissons",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Poissons et serpents",
    "asym": true,
    "file": {
     "path": "assets/meubles/poisson.svg",
@@ -3442,6 +3560,7 @@
    ],
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Poissons et serpents",
    "asym": true,
    "file": {
     "path": "assets/meubles/dauphin.svg",
@@ -3475,6 +3594,7 @@
    "plur": "sirènes",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/sirene.svg",
@@ -3506,6 +3626,7 @@
    "plur": "mélusines",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/melusine.svg",
@@ -3536,6 +3657,7 @@
    "plur": "basilics",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/basilic.svg",
@@ -3566,6 +3688,7 @@
    "plur": "phénix",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/phenix.svg",
@@ -3602,6 +3725,7 @@
    "plur": "salamandres",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/salamandre.svg",
@@ -3639,6 +3763,7 @@
    "plur": "guivres",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Chimères",
    "asym": true,
    "file": {
     "path": "assets/meubles/guivre.svg",
@@ -3654,7 +3779,8 @@
     172
    ],
    "main": [
-    "#2b5df2"
+    "#2b5df2",
+    "#f8c0c0"
    ],
    "couronne": [
     102.7,
@@ -3675,6 +3801,7 @@
    ],
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Poissons et serpents",
    "asym": true,
    "file": {
     "path": "assets/meubles/couleuvre.svg",
@@ -3705,6 +3832,7 @@
    "plur": "alérions",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/alerion.svg",
@@ -3730,6 +3858,7 @@
    "plur": "saints Ferdinand",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/saint-ferdinand.svg",
@@ -3753,6 +3882,7 @@
    "plur": "aigles impériales",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/aigle-imperiale.svg",
@@ -3794,6 +3924,7 @@
    "plur": "aigles fédérales",
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/aigle-federale.svg",
@@ -3822,6 +3953,7 @@
    "plur": "choucas",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
    "asym": true,
    "file": {
     "path": "assets/meubles/choucas.svg",
@@ -3858,6 +3990,7 @@
    "plur": "faisceaux de licteur",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "asym": true,
    "file": {
     "path": "assets/meubles/faisceau.svg",
@@ -3889,6 +4022,7 @@
    "plur": "grenades",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/grenade.svg",
     "commons": "Héraldique meuble Grenade.svg",
@@ -3924,6 +4058,7 @@
    "plur": "fleurs de néflier",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/neflier.svg",
     "commons": "Meuble héraldique Fleur de néflier.svg",
@@ -3959,6 +4094,7 @@
    ],
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "asym": true,
    "file": {
     "path": "assets/meubles/crosse-bale.svg",
@@ -3995,6 +4131,7 @@
    ],
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "allongee": true,
    "file": {
@@ -4031,6 +4168,7 @@
    "plur": "navires",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "file": {
     "path": "assets/meubles/navire.svg",
@@ -4056,6 +4194,7 @@
    "plur": "pins",
    "g": "m",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/pin.svg",
     "commons": "Meuble héraldique Pin maritime.svg",
@@ -4090,6 +4229,7 @@
    "plur": "casques",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "asym": true,
    "file": {
     "path": "assets/meubles/casque.svg",
@@ -4127,6 +4267,7 @@
    ],
    "g": "f",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "asym": true,
    "file": {
     "path": "assets/meubles/tete-de-loup.svg",
@@ -4152,6 +4293,7 @@
    "plur": "colonnes",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
    "file": {
     "path": "assets/meubles/colonne.svg",
     "commons": "Colonne.svg",
@@ -4182,6 +4324,7 @@
    "plur": "flèches",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Armes et armures",
    "file": {
     "path": "assets/meubles/fleche.svg",
     "commons": "Héraldique meuble Flèche.svg",
@@ -4217,6 +4360,7 @@
    "plur": "rencontres de cerf",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-cerf.svg",
     "commons": "Meuble héraldique Rencontre de cerf.svg",
@@ -4255,6 +4399,7 @@
    ],
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "file": {
     "path": "assets/meubles/orbe.svg",
     "commons": "Coa Illustration Elements Globus cruciger 1.svg",
@@ -4279,6 +4424,7 @@
    "plur": "bras",
    "g": "m",
    "cat": "Corps et cœur",
+   "rub": "Corps et personnages",
    "asym": true,
    "file": {
     "path": "assets/meubles/bras.svg",
@@ -4305,6 +4451,7 @@
    "plur": "navires à voile carguée",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "file": {
     "path": "assets/meubles/navire-cargue.svg",
@@ -4332,6 +4479,7 @@
    "plur": "vaisseaux",
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "file": {
     "path": "assets/meubles/vaisseau.svg",
@@ -4357,6 +4505,7 @@
    "plur": "harpes",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Objets",
    "asym": true,
    "file": {
     "path": "assets/meubles/harpe.svg",
@@ -4392,6 +4541,7 @@
    ],
    "g": "m",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "file": {
     "path": "assets/meubles/ciboire.svg",
     "commons": "COA Kingdom of Galice.svg",
@@ -4422,6 +4572,7 @@
    "plur": "rencontres d'ours",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-ours.svg",
     "commons": "Meuble héraldique rencontre-ours.svg",
@@ -4456,6 +4607,7 @@
    "plur": "rencontres de sanglier",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-sanglier.svg",
     "commons": "Meuble héraldique Rencontre de sanglier.svg",
@@ -4484,6 +4636,7 @@
    "plur": "rencontres de loup",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-loup.svg",
     "commons": "Meuble rencontre loup.svg",
@@ -4508,6 +4661,7 @@
    "plur": "rencontres de lion",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "file": {
     "path": "assets/meubles/rencontre-lion.svg",
     "commons": "Meuble héraldique Tête (lion).svg",
@@ -4536,6 +4690,7 @@
    "plur": "rencontres de léopard",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Lions et léopards",
    "file": {
     "path": "assets/meubles/rencontre-leopard.svg",
     "commons": "Meuble héraldique Tête (léopard).svg",
@@ -4564,6 +4719,7 @@
    "plur": "rencontres de bœuf",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-boeuf.svg",
     "commons": "Heraldique rencontre boeuf.svg",
@@ -4594,6 +4750,7 @@
    "plur": "rencontres de bélier",
    "g": "m",
    "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
    "file": {
     "path": "assets/meubles/rencontre-belier.svg",
     "commons": "Meuble héraldique tête de bélier.svg",
@@ -4622,6 +4779,7 @@
    "plur": "couronnes antiques",
    "g": "f",
    "cat": "Objets et bâtiments",
+   "rub": "Couronnes et insignes",
    "file": {
     "path": "assets/meubles/couronne-antique.svg",
     "commons": "Meuble héraldique couronne antique.svg",
@@ -4652,6 +4810,7 @@
    "plur": "couronnes de laurier",
    "g": "f",
    "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
    "file": {
     "path": "assets/meubles/couronne-laurier.svg",
     "commons": "Héraldique meuble Couronne.svg",
@@ -4684,6 +4843,2342 @@
    "cat": "Propres au blason",
    "draw": "ecusson",
    "k": 0.55
+  },
+  {
+   "kind": "arche-pont",
+   "nom": "Arche de pont",
+   "sing": "arche de pont",
+   "plur": "arches de pont",
+   "alias": [
+    [
+     "pont",
+     "ponts"
+    ]
+   ],
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
+   "file": {
+    "path": "assets/meubles/arche-pont.svg",
+    "commons": "Héraldique meuble pont en dos d âne d une arche ogivale.svg",
+    "auteur": "Chokotoff",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#000000"
+   ],
+   "epais": 45,
+   "base": false
+  },
+  {
+   "kind": "ruche",
+   "nom": "Ruche",
+   "sing": "ruche",
+   "plur": "ruches",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/ruche.svg",
+    "commons": "Meuble héraldique Ruche traditionnelle.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "ouvert",
+   "line": [
+    "#000"
+   ]
+  },
+  {
+   "kind": "sapin",
+   "nom": "Sapin",
+   "sing": "sapin",
+   "plur": "sapins",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/sapin.svg",
+    "commons": "Meuble héraldique sapin arraché.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#5ab532"
+   ],
+   "line": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "grappe",
+   "nom": "Grappe de raisin",
+   "sing": "grappe de raisin",
+   "plur": "grappes de raisin",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/grappe.svg",
+    "commons": "Grappe.svg",
+    "auteur": "Aiwe",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "line": [
+    "#000000"
+   ]
+  },
+  {
+   "kind": "cerises",
+   "nom": "Trochet de cerises",
+   "sing": "trochet de cerises",
+   "plur": "trochets de cerises",
+   "alias": [
+    [
+     "trochet de trois cerises",
+     "trochets de trois cerises"
+    ]
+   ],
+   "g": "m",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/cerises.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#d3141c"
+   ],
+   "line": [
+    "#111111"
+   ],
+   "fixe": {
+    "mot": "tigé et feuillé",
+    "t": "Sinople",
+    "c": [
+     "#2c8a34"
+    ]
+   }
+  },
+  {
+   "kind": "hirondelle",
+   "nom": "Hirondelle",
+   "sing": "hirondelle",
+   "plur": "hirondelles",
+   "alias": [
+    [
+     "hirondelle volante",
+     "hirondelles volantes"
+    ]
+   ],
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
+   "file": {
+    "path": "assets/meubles/hirondelle.svg",
+    "commons": "Hirondelle.svg",
+    "auteur": "Jimmy44",
+    "lic": "CC BY 3.0",
+    "licurl": "https://creativecommons.org/licenses/by/3.0/deed.fr",
+    "vb": [
+     180,
+     408,
+     368,
+     342
+    ]
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#000000"
+   ],
+   "line": [
+    "stroke:#000000"
+   ]
+  },
+  {
+   "kind": "lettre-a",
+   "nom": "Lettre A",
+   "sing": "lettre A",
+   "plur": "lettres A",
+   "alias": [
+    [
+     "lettre A majuscule",
+     "lettres A majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-A.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-a",
+   "nom": "Lettre gothique A",
+   "sing": "lettre gothique A",
+   "plur": "lettres gothiques A",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-A.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-b",
+   "nom": "Lettre B",
+   "sing": "lettre B",
+   "plur": "lettres B",
+   "alias": [
+    [
+     "lettre B majuscule",
+     "lettres B majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-B.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-b",
+   "nom": "Lettre gothique B",
+   "sing": "lettre gothique B",
+   "plur": "lettres gothiques B",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-B.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-c",
+   "nom": "Lettre C",
+   "sing": "lettre C",
+   "plur": "lettres C",
+   "alias": [
+    [
+     "lettre C majuscule",
+     "lettres C majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-C.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-c",
+   "nom": "Lettre gothique C",
+   "sing": "lettre gothique C",
+   "plur": "lettres gothiques C",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-C.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-d",
+   "nom": "Lettre D",
+   "sing": "lettre D",
+   "plur": "lettres D",
+   "alias": [
+    [
+     "lettre D majuscule",
+     "lettres D majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-D.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-d",
+   "nom": "Lettre gothique D",
+   "sing": "lettre gothique D",
+   "plur": "lettres gothiques D",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-D.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-e",
+   "nom": "Lettre E",
+   "sing": "lettre E",
+   "plur": "lettres E",
+   "alias": [
+    [
+     "lettre E majuscule",
+     "lettres E majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-E.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-e",
+   "nom": "Lettre gothique E",
+   "sing": "lettre gothique E",
+   "plur": "lettres gothiques E",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-E.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-f",
+   "nom": "Lettre F",
+   "sing": "lettre F",
+   "plur": "lettres F",
+   "alias": [
+    [
+     "lettre F majuscule",
+     "lettres F majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-F.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-f",
+   "nom": "Lettre gothique F",
+   "sing": "lettre gothique F",
+   "plur": "lettres gothiques F",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-F.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-g",
+   "nom": "Lettre G",
+   "sing": "lettre G",
+   "plur": "lettres G",
+   "alias": [
+    [
+     "lettre G majuscule",
+     "lettres G majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-G.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-g",
+   "nom": "Lettre gothique G",
+   "sing": "lettre gothique G",
+   "plur": "lettres gothiques G",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-G.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-h",
+   "nom": "Lettre H",
+   "sing": "lettre H",
+   "plur": "lettres H",
+   "alias": [
+    [
+     "lettre H majuscule",
+     "lettres H majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-H.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-h",
+   "nom": "Lettre gothique H",
+   "sing": "lettre gothique H",
+   "plur": "lettres gothiques H",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-H.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-i",
+   "nom": "Lettre I",
+   "sing": "lettre I",
+   "plur": "lettres I",
+   "alias": [
+    [
+     "lettre I majuscule",
+     "lettres I majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-I.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-i",
+   "nom": "Lettre gothique I",
+   "sing": "lettre gothique I",
+   "plur": "lettres gothiques I",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-I.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-j",
+   "nom": "Lettre J",
+   "sing": "lettre J",
+   "plur": "lettres J",
+   "alias": [
+    [
+     "lettre J majuscule",
+     "lettres J majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-J.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-j",
+   "nom": "Lettre gothique J",
+   "sing": "lettre gothique J",
+   "plur": "lettres gothiques J",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-J.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-k",
+   "nom": "Lettre K",
+   "sing": "lettre K",
+   "plur": "lettres K",
+   "alias": [
+    [
+     "lettre K majuscule",
+     "lettres K majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-K.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-k",
+   "nom": "Lettre gothique K",
+   "sing": "lettre gothique K",
+   "plur": "lettres gothiques K",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-K.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-l",
+   "nom": "Lettre L",
+   "sing": "lettre L",
+   "plur": "lettres L",
+   "alias": [
+    [
+     "lettre L majuscule",
+     "lettres L majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-L.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-l",
+   "nom": "Lettre gothique L",
+   "sing": "lettre gothique L",
+   "plur": "lettres gothiques L",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-L.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-m",
+   "nom": "Lettre M",
+   "sing": "lettre M",
+   "plur": "lettres M",
+   "alias": [
+    [
+     "lettre M majuscule",
+     "lettres M majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-M.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-m",
+   "nom": "Lettre gothique M",
+   "sing": "lettre gothique M",
+   "plur": "lettres gothiques M",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-M.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-n",
+   "nom": "Lettre N",
+   "sing": "lettre N",
+   "plur": "lettres N",
+   "alias": [
+    [
+     "lettre N majuscule",
+     "lettres N majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-N.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-n",
+   "nom": "Lettre gothique N",
+   "sing": "lettre gothique N",
+   "plur": "lettres gothiques N",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-N.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-o",
+   "nom": "Lettre O",
+   "sing": "lettre O",
+   "plur": "lettres O",
+   "alias": [
+    [
+     "lettre O majuscule",
+     "lettres O majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-O.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-o",
+   "nom": "Lettre gothique O",
+   "sing": "lettre gothique O",
+   "plur": "lettres gothiques O",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-O.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-p",
+   "nom": "Lettre P",
+   "sing": "lettre P",
+   "plur": "lettres P",
+   "alias": [
+    [
+     "lettre P majuscule",
+     "lettres P majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-P.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-p",
+   "nom": "Lettre gothique P",
+   "sing": "lettre gothique P",
+   "plur": "lettres gothiques P",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-P.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-q",
+   "nom": "Lettre Q",
+   "sing": "lettre Q",
+   "plur": "lettres Q",
+   "alias": [
+    [
+     "lettre Q majuscule",
+     "lettres Q majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-Q.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-q",
+   "nom": "Lettre gothique Q",
+   "sing": "lettre gothique Q",
+   "plur": "lettres gothiques Q",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-Q.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-r",
+   "nom": "Lettre R",
+   "sing": "lettre R",
+   "plur": "lettres R",
+   "alias": [
+    [
+     "lettre R majuscule",
+     "lettres R majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-R.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-r",
+   "nom": "Lettre gothique R",
+   "sing": "lettre gothique R",
+   "plur": "lettres gothiques R",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-R.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-s",
+   "nom": "Lettre S",
+   "sing": "lettre S",
+   "plur": "lettres S",
+   "alias": [
+    [
+     "lettre S majuscule",
+     "lettres S majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-S.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-s",
+   "nom": "Lettre gothique S",
+   "sing": "lettre gothique S",
+   "plur": "lettres gothiques S",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-S.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-t",
+   "nom": "Lettre T",
+   "sing": "lettre T",
+   "plur": "lettres T",
+   "alias": [
+    [
+     "lettre T majuscule",
+     "lettres T majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-T.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-t",
+   "nom": "Lettre gothique T",
+   "sing": "lettre gothique T",
+   "plur": "lettres gothiques T",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-T.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-u",
+   "nom": "Lettre U",
+   "sing": "lettre U",
+   "plur": "lettres U",
+   "alias": [
+    [
+     "lettre U majuscule",
+     "lettres U majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-U.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-u",
+   "nom": "Lettre gothique U",
+   "sing": "lettre gothique U",
+   "plur": "lettres gothiques U",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-U.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-v",
+   "nom": "Lettre V",
+   "sing": "lettre V",
+   "plur": "lettres V",
+   "alias": [
+    [
+     "lettre V majuscule",
+     "lettres V majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-V.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-v",
+   "nom": "Lettre gothique V",
+   "sing": "lettre gothique V",
+   "plur": "lettres gothiques V",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-V.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-w",
+   "nom": "Lettre W",
+   "sing": "lettre W",
+   "plur": "lettres W",
+   "alias": [
+    [
+     "lettre W majuscule",
+     "lettres W majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-W.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-w",
+   "nom": "Lettre gothique W",
+   "sing": "lettre gothique W",
+   "plur": "lettres gothiques W",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-W.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-x",
+   "nom": "Lettre X",
+   "sing": "lettre X",
+   "plur": "lettres X",
+   "alias": [
+    [
+     "lettre X majuscule",
+     "lettres X majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-X.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-x",
+   "nom": "Lettre gothique X",
+   "sing": "lettre gothique X",
+   "plur": "lettres gothiques X",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-X.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-y",
+   "nom": "Lettre Y",
+   "sing": "lettre Y",
+   "plur": "lettres Y",
+   "alias": [
+    [
+     "lettre Y majuscule",
+     "lettres Y majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-Y.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-y",
+   "nom": "Lettre gothique Y",
+   "sing": "lettre gothique Y",
+   "plur": "lettres gothiques Y",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-Y.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-z",
+   "nom": "Lettre Z",
+   "sing": "lettre Z",
+   "plur": "lettres Z",
+   "alias": [
+    [
+     "lettre Z majuscule",
+     "lettres Z majuscules"
+    ]
+   ],
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/latin-Z.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gothique-z",
+   "nom": "Lettre gothique Z",
+   "sing": "lettre gothique Z",
+   "plur": "lettres gothiques Z",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres gothiques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/gothique-Z.svg",
+    "origine": "police UnifrakturMaguntia",
+    "auteur": "Peter Wiegel et j. « mach » wust",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-alpha",
+   "nom": "Lettre alpha",
+   "sing": "lettre alpha",
+   "plur": "lettres alpha",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-alpha.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-beta",
+   "nom": "Lettre bêta",
+   "sing": "lettre bêta",
+   "plur": "lettres bêta",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-beta.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-gamma",
+   "nom": "Lettre gamma",
+   "sing": "lettre gamma",
+   "plur": "lettres gamma",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-gamma.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-delta",
+   "nom": "Lettre delta",
+   "sing": "lettre delta",
+   "plur": "lettres delta",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-delta.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-epsilon",
+   "nom": "Lettre epsilon",
+   "sing": "lettre epsilon",
+   "plur": "lettres epsilon",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-epsilon.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-zeta",
+   "nom": "Lettre zêta",
+   "sing": "lettre zêta",
+   "plur": "lettres zêta",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-zeta.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-eta",
+   "nom": "Lettre êta",
+   "sing": "lettre êta",
+   "plur": "lettres êta",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-eta.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-theta",
+   "nom": "Lettre thêta",
+   "sing": "lettre thêta",
+   "plur": "lettres thêta",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-theta.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-iota",
+   "nom": "Lettre iota",
+   "sing": "lettre iota",
+   "plur": "lettres iota",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-iota.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-kappa",
+   "nom": "Lettre kappa",
+   "sing": "lettre kappa",
+   "plur": "lettres kappa",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-kappa.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-lambda",
+   "nom": "Lettre lambda",
+   "sing": "lettre lambda",
+   "plur": "lettres lambda",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-lambda.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-mu",
+   "nom": "Lettre mu",
+   "sing": "lettre mu",
+   "plur": "lettres mu",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-mu.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-nu",
+   "nom": "Lettre nu",
+   "sing": "lettre nu",
+   "plur": "lettres nu",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-nu.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-xi",
+   "nom": "Lettre xi",
+   "sing": "lettre xi",
+   "plur": "lettres xi",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-xi.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-omicron",
+   "nom": "Lettre omicron",
+   "sing": "lettre omicron",
+   "plur": "lettres omicron",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-omicron.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-pi",
+   "nom": "Lettre pi",
+   "sing": "lettre pi",
+   "plur": "lettres pi",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-pi.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-rho",
+   "nom": "Lettre rhô",
+   "sing": "lettre rhô",
+   "plur": "lettres rhô",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-rho.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-sigma",
+   "nom": "Lettre sigma",
+   "sing": "lettre sigma",
+   "plur": "lettres sigma",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-sigma.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-tau",
+   "nom": "Lettre tau",
+   "sing": "lettre tau",
+   "plur": "lettres tau",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-tau.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-upsilon",
+   "nom": "Lettre upsilon",
+   "sing": "lettre upsilon",
+   "plur": "lettres upsilon",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-upsilon.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-phi",
+   "nom": "Lettre phi",
+   "sing": "lettre phi",
+   "plur": "lettres phi",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-phi.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-chi",
+   "nom": "Lettre khi",
+   "sing": "lettre khi",
+   "plur": "lettres khi",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-chi.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-psi",
+   "nom": "Lettre psi",
+   "sing": "lettre psi",
+   "plur": "lettres psi",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-psi.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettre-omega",
+   "nom": "Lettre oméga",
+   "sing": "lettre oméga",
+   "plur": "lettres oméga",
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres grecques",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/grec-omega.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "croix-malte-fine",
+   "nom": "Croix de Malte fine",
+   "sing": "croix de Malte fine",
+   "plur": "croix de Malte fines",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "rub": "Croix",
+   "file": {
+    "path": "assets/meubles/croix-malte-fine.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "lettres-l-g",
+   "nom": "Lettres L et G",
+   "sing": "lettres L et G",
+   "plur": "lettres L et G",
+   "pluriel": true,
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/lettres-l-g.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "abeille",
+   "nom": "Abeille",
+   "sing": "abeille",
+   "plur": "abeilles",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "rub": "Autres bêtes",
+   "file": {
+    "path": "assets/meubles/abeille.svg",
+    "commons": "Meuble héraldique Abeille 2.svg",
+    "auteur": "Henry Salomé",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "line": [
+    "#000000"
+   ]
   }
  ],
  "pieces": [

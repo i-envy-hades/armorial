@@ -501,6 +501,7 @@ function blazonAll(St) {
     };
     b = `Parti : au 1, ${moitie(0)} ; au 2, ${moitie(1)}`;
   } else if (chefParti(St)) b = `Coupé : au 1, parti : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(2))} ; au 2, ${lo(bz(1))}`;      // le chef d'un coupé, partie en deux : le chef à dextre, à senestre, puis la pointe
+  else if (St.q === "c" && St.h1 === "pa") b = `${bz(0)}, à la champagne ${lo(bz(1))}`;                         // la même bande, en pointe
   else if (St.q === "c" && St.h1 === "ch") b = `${bz(1)}, au chef ${lo(bz(0))}`;                                 // des armes entières dans une bande de la hauteur d'un chef
   else if (QDEUX[St.q]) b = `${QDEUX[St.q][0]} : au 1, ${lo(bz(0))} ; au 2, ${lo(bz(1))}`;           // un coupé : deux moitiés, en chef et en pointe (elles ne s'écartèlent pas)
   else b = "Écartelé" + (St.xc ? ` par une croix${St.xp ? " pattée" : ""} ${de(St.xc)}${St.xb ? ` bordée ${de(St.xb)}` : ""}` : "") + " : " + active(St).filter(i => i < 4).map(i => `${QLAB[St.q][i]}, ${lo(bz(i))}`).join(" ; ");

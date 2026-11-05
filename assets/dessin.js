@@ -228,7 +228,7 @@ function etatDe(code) {
 let CUR = 0;   // le quartier modifié dans l'Atelier ; normalizeAll() le ramène à un quartier actif
 function normalizeAll(St) {
   if (!["", "2", "4", "p", "c", "t", "l"].includes(St.q)) St.q = "";
-  for (const k of ["h1", "h2"]) if (!(St.q === "p" ? ["", "2", "4"] : St.q === "c" && k === "h1" ? ["", "p", "ch"] : [""]).includes(St[k])) St[k] = "";
+  for (const k of ["h1", "h2"]) if (!(St.q === "p" ? ["", "2", "4"] : St.q === "c" && k === "h1" ? ["", "p", "ch", "pa"] : [""]).includes(St[k])) St[k] = "";
   for (const k of ["tl1", "tl2", "pa1", "pa2", "ts", "cit", "cia", "mc", "ml"]) if (!own(MOT, St[k])) St[k] = ODEF[k];
   if (!["", "m", "p"].includes(St.mt)) St.mt = "";
   const mci = St.ci && meuble(St.ci);
@@ -318,7 +318,7 @@ function symbolFor(s, id) {
   if (m.custom === "billette") return `<rect id="${id}" x="76" y="62" width="48" height="108" rx="2" fill="${tinctPaint(tm)}" stroke="${chgStroke(tm)}" stroke-width="1.4"/>`;
   /* base : le fichier n'a pas de couleur propre, son dessin prend directement l'émail ; outline : contour fin pour les silhouettes */
   const txt = recolor(SVGTXT[m.kind], m, tm, s.ta);
-  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null, m.file.vb);
+  return fileSymbol(txt, id, m.base ? tinctPaint(tm) : line, m.epais ? { stroke: tinctPaint(tm), width: vbOf(txt)[0] / m.epais } : m.outline ? { stroke: line, width: vbOf(txt)[0] / 70 } : null, m.file.vb);
 }
 /* un fichier SVG emprunté devient un <symbol> ; ses id internes sont préfixés pour ne pas heurter ceux de la page */
 /* vbo : la boîte du dessin, quand le fichier n'a pas de viewBox et que sa page est plus grande que la figure (« file.vb » dans atelier.json) */
@@ -416,6 +416,12 @@ function bandeDeCase(kind, pf, rect, f, edges, line) {
   return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500"><path d="${d}" fill="none" stroke="#fff" stroke-width="${54.4 * f}"/><path d="${d}" fill="none" stroke="#000" stroke-width="${30.8 * f}"/></mask></defs>`
     + `<rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
 }
+/* la bordure componée d'une case : le second émail, en tirets carrés, sur la bande unie du premier (sans figures sur les compons) */
+const componsLocaux = s => {
+  const [x, y, w, h] = MAP.rect, f = MAP.pk, E = (26 * f).toFixed(2), L = (18 * f).toFixed(2);
+  const trace = SHIELD_D + [...MAP.edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
+  return `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})"><path d="${trace}" fill="none" stroke="${tinctPaint(s.tpc)}" stroke-width="${E}" stroke-dasharray="${L} ${L}"/></g>`;
+};
 const bandeLocale = (kind, pf, line) => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${bandeDeCase(kind, pf, MAP.rect, MAP.pk, MAP.edges, line)}</g>`;
 function drawBody(s, u) {
   let field;
@@ -451,8 +457,8 @@ function drawBody(s, u) {
   }
   const croixCase = MAP && s.p === "croix";      // dans une case du parti, la croix se dessine à sa taille : une mise à l'échelle inégale épaissirait une barre
   const bandeCase = enBande(s.p) && (MAP || NOBORD);
-  if (bandeCase) return corps(s, u, defs, field, under, over, !s.p || !MAP ? "" : bandeLocale(s.p, tinctPaint(s.tp), s.ln));
-  const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case, la bordure reste unie
+  if (bandeCase) return corps(s, u, defs, field, under, over, !s.p || !MAP ? "" : bandeLocale(s.p, tinctPaint(s.tp), s.ln) + (s.p === "bordure" && s.cmp ? componsLocaux(s) : ""));
+  const cmpOn = s.p === "bordure" && s.cmp && !MAP;          // dans une case : componsLocaux
   const dress = paint => {
     let p = cmpOn ? componee(s, u, d => { defs += d; }) : croixCase ? croixDeCase(paint, s.pth, s.ln) : pieceInner(s.p, paint, s.ln, s.lrg ? 145 : s.pth);
     if (p && s.pf) {                                                                       // le filet : la pièce cernée d'un liseré de l'émail dit
@@ -598,9 +604,11 @@ const SHAPES = {
   pl17: { nom: "Polonais, à échancrures", d: "M100,22 C84,26 48,24 22,12 C26,34 42,50 42,62 C34,70 32,84 42,94 C26,102 16,120 18,140 C20,190 62,222 100,240 C138,222 180,190 182,140 C184,120 174,102 158,94 C168,84 166,70 158,62 C158,50 174,34 178,12 C152,24 116,26 100,22 Z" },
   pl19: { nom: "Polonais, sommet en coin", d: "M18,12 C50,28 150,28 182,12 C186,96 150,192 100,242 C50,192 14,96 18,12 Z" },
 };
+/* où passe le trait d'un coupé : un chef étroit (h1 « ch ») ou une champagne (h1 « pa ») ne prennent qu'une bande de l'écu */
+const hauteurCoupe = St => (St.h1 === "ch" ? 73 : St.h1 === "pa" ? 176 : quarterGeom().split);
 /* les cases d'un parti : chaque moitié, ou, si elle s'écartèle, ses quatre quartiers */
 function partiCells(St) {
-  const split = St.h1 === "ch" ? 73 : quarterGeom().split, out = [];
+  const split = hauteurCoupe(St), out = [];
   /* tranché, taillé : deux triangles de part et d'autre de la diagonale (les armes de chacun se resserrent sur ce qu'on en voit) */
   if (St.q === "t") return [{ arm: 0, half: 0, poly: [[0, 0], [200, 0], [200, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "bande", n: [.78, -.62] } },
     { arm: 1, half: 1, poly: [[0, 0], [200, 252], [0, 252]], rect: [0, 0, 200, 252], edges: "", ligne: { sens: "bande", n: [-.78, .62] } }];
@@ -664,7 +672,7 @@ function drawParti(St, u, ab) {
     defs += r.defs + `<clipPath id="qr-${id}">${c.poly ? `<path d="M${c.poly.map(p => p.join(",")).join("L")}Z"/>` : `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}"/>`}</clipPath>`;
     body += `<g clip-path="url(#qr-${id})"><g transform="translate(${m.cx - 100},${m.cy - 126})">${r.body}</g></g>`;
   });
-  const split = St.h1 === "ch" ? 73 : quarterGeom().split;
+  const split = hauteurCoupe(St);
   let lignes = St.q === "c" ? `M0,${split}H200${chefParti(St) ? `M100,0V${split}` : ""}` : St.q === "t" ? "M0,0L200,252" : St.q === "l" ? "M200,0L0,252" : "M100,0V252";
   cells.filter(c => c.q === 0).forEach(c => { lignes += `M${c.mid},0V252M${c.a},${split}H${c.b}`; });
   body += `<path d="${lignes}" fill="none" stroke="#1a1712" stroke-width=".8" opacity=".55"/>`;
@@ -882,9 +890,9 @@ function ornText(St) {
 /* ---------- les crédits des figures empruntées à Wikimedia Commons ---------- */
 function creditsOf(St) {
   const out = [], add = (label, c, adapt) => {
-    const prev = out.find(x => x.commons === c.commons);
+    const prev = out.find(x => x.commons === c.commons && x.origine === c.origine);
     if (prev) { if (!prev.label.toLowerCase().includes(label.toLowerCase())) prev.label += ", " + label.toLowerCase(); }
-    else out.push({ label, adapt, commons: c.commons, auteur: c.auteur, lic: c.lic, licurl: c.licurl });
+    else out.push({ label, adapt, commons: c.commons, origine: c.origine, auteur: c.auteur, lic: c.lic, licurl: c.licurl });
   };
   for (const i of active(St)) {
     const a = St.A[i];
@@ -900,9 +908,9 @@ function creditsOf(St) {
   if (co) add(libelle(co.nom), co, false);
   return out;
 }
-const creditTxt = c => `${c.label}${Tr(" :", ":")} ${c.commons} — ${auteurLu(c.auteur)}, ${licenceLue(c.lic)}, via Wikimedia Commons${c.adapt ? Tr(", couleurs adaptées", ", colours adapted") : ""}`;
+const creditTxt = c => c.origine ? `${c.label}${Tr(" :", ":")} ${c.origine} — ${auteurLu(c.auteur)}, ${licenceLue(c.lic)}` : `${c.label}${Tr(" :", ":")} ${c.commons} — ${auteurLu(c.auteur)}, ${licenceLue(c.lic)}, via Wikimedia Commons${c.adapt ? Tr(", couleurs adaptées", ", colours adapted") : ""}`;
 /* les mêmes crédits, en HTML, avec liens vers la page du fichier et vers la licence */
-const creditsHtml = cr => cr.length ? cr.map(c => `${esc(c.label)}${Tr(" :", ":")} <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">${Tr("« ", "“")}${esc(c.commons)}${Tr(" »", "”")}</a> — ${esc(auteurLu(c.auteur))}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(licenceLue(c.lic))}</a>, via Wikimedia Commons${c.adapt ? Tr(" · couleurs adaptées", " · colours adapted") : ""}`).join("<br>") : Tr("Toutes les figures de cet écu sont dessinées par l'encyclopédie.", "Every figure on this shield is drawn by the encyclopedia.");
+const creditsHtml = cr => cr.length ? cr.map(c => c.origine ? `${esc(c.label)}${Tr(" :", ":")} ${esc(c.origine)} — ${esc(auteurLu(c.auteur))}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(licenceLue(c.lic))}</a>` : `${esc(c.label)}${Tr(" :", ":")} <a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c.commons.replace(/ /g, "_"))}" target="_blank" rel="noopener">${Tr("« ", "“")}${esc(c.commons)}${Tr(" »", "”")}</a> — ${esc(auteurLu(c.auteur))}, <a href="${esc(c.licurl)}" target="_blank" rel="noopener">${esc(licenceLue(c.lic))}</a>, via Wikimedia Commons${c.adapt ? Tr(" · couleurs adaptées", " · colours adapted") : ""}`).join("<br>") : Tr("Toutes les figures de cet écu sont dessinées par l'encyclopédie.", "Every figure on this shield is drawn by the encyclopedia.");
 
 /* ---------- la règle des émaux ---------- */function rule(s) {
   const out = [], word = t => MOT[t];

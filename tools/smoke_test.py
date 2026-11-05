@@ -422,6 +422,15 @@ LUS = [
     ("Burelé d'or et de sable de huit pièces", "Fascé d'or et de sable de huit pièces", ""),
     ("Chevronné d'or et de gueules, de douze pièces", "Chevronné d'or et de gueules de douze pièces", ""),
     ("Échiqueté d'argent et de gueules de quatre tires", "Échiqueté d'argent et de gueules de quatre tires", ""),
+    ("De gueules à la tour d'or ouverte, ajourée et maçonnée de sable", "De gueules à la tour d'or ouverte et ajourée de sable", ""),      # « maçonné de sable » : le trait noir que la figure a déjà
+    ("De gueules à la tour couverte d'argent maçonnée de sable", "De gueules à la tour couverte d'argent", ""),
+    ("De gueules au château à trois tours d'argent, maçonné d'azur, ouvert de sable", "De gueules au château donjonné d'argent ouvert et ajouré de sable", "trace la maçonnerie en noir"),
+    ("D'azur à la tour crénelée d'or", "D'azur à la tour d'or", ""),
+    ("D'or à la lettre R majuscule de gueules", "D'or à la lettre R de gueules", ""),
+    ("D'or à la lettre gothique R de gueules", "D'or à la lettre gothique R de gueules", ""),
+    ("D'azur à trois lettres oméga d'or", "D'azur à trois lettres oméga d'or", ""),
+    ("Écartelé, au 1 et 4 d'or et au 2 et 3 de gueules", "Écartelé : aux 1 et 4, d'or plein ; aux 2 et 3, de gueules plein", ""),
+    ("D'argent au château donjonné de gueules, à la champagne de gueules à la clef d'or", "D'argent au château donjonné de gueules, à la champagne de gueules à la clef d'or", ""),
     ("D'or à trois chevrons de gueules", "D'or à trois chevrons de gueules", ""),
     ("D'azur à la croix de gueules bordée d'argent", "D'azur à la croix de gueules bordée d'argent", ""),
     ("D'argent à la fasce alésée de gueules", "D'argent à la fasce alésée de gueules", ""),
@@ -1113,6 +1122,22 @@ def test_maisons(browser, base):
         verifie(mes["page"] <= 375 and mes["droite"] <= 375 and mes["onglets"], f"téléphone/{adresse} : la barre et les onglets du classement tiennent ({mes})")
         ctx.close()
 
+def test_deroulant(browser, base):
+    """l'Atelier : les figures se choisissent dans des rubriques à dérouler, le <select> caché tient la valeur"""
+    page, erreurs = ouvre(browser, base, "atelier.html", "#blz:not(:empty)")
+    bouton = page.locator("select[name=m] ~ .dr .dr-bouton")
+    bouton.click()
+    noms = page.locator(".dr-panneau:not([hidden]) summary").all_inner_texts()
+    verifie(len(noms) > 5 and noms == sorted(noms, key=lambda s: s.lower().replace("â", "a").replace("ê", "e")), f"déroulant : les rubriques sont rangées par ordre alphabétique ({noms})")
+    fermees = page.locator(".dr-panneau:not([hidden]) details:not([open])").count()
+    verifie(fermees == len(noms) - 1, f"déroulant : seule la rubrique de la figure choisie est ouverte ({fermees} fermées sur {len(noms)})")
+    page.locator(".dr-panneau:not([hidden]) summary", has_text="Bâtiments").click()
+    page.locator(".dr-panneau:not([hidden]) .dr-choix[data-v=tour]").click(); page.wait_for_timeout(300)
+    verifie(page.input_value("select[name=m]") == "tour" and "tour" in page.inner_text("#blz") and bouton.inner_text().strip() == "Tour", "déroulant : choisir une figure change l'écu et le bouton")
+    verifie(page.locator(".dr-panneau:not([hidden])").count() == 0, "déroulant : le choix referme le panneau")
+    verifie(not erreurs, f"déroulant : aucune erreur ({erreurs[:3]})")
+    page.context.close()
+
 def test_jeu_en(browser, base):
     """le jeu en anglais (en.html) : même partie, mêmes carnets ; le français reste la clé, l'anglais ne sert qu'à l'affichage et à la saisie"""
     page, erreurs = ouvre(browser, base, "en.html", "#jeu-grille:not([hidden])")
@@ -1553,6 +1578,7 @@ def main():
                        ("atelier", lambda: test_atelier(browser, base, n_fuzz)),
                        ("atelier (lien truqué)", lambda: test_atelier_adresse_truquee(browser, base)),
                        ("lecture", lambda: test_lecture(browser, base, n_fuzz)),
+                       ("déroulant", lambda: test_deroulant(browser, base)),
                        ("blasons sur place", lambda: test_blasons_sur_place(browser, base)),
                        ("boutons blasons", lambda: test_boutons(browser, base, "blasons.html", "blasons.json", BLASONS_LISIBLES, BLASONS_REFUSES, "blasons")),
                        ("boutons personnages", lambda: test_boutons(browser, base, "personnages.html", "personnages.json", PERSONNAGES_LISIBLES, PERSONNAGES_REFUSES, "personnages")),

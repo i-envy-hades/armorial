@@ -19,7 +19,7 @@
 /* ---------- jetons ---------- */
 const LETTRES = "A-Za-zÀ-ÖØ-öø-ÿŒœÆæ";
 const ELISIONS = { d: "de", l: "le", qu: "que" };
-const SYNONYMES = { plain: "plein", lys: "lis", bequee: "becquee", bequees: "becquees", beque: "becque", beques: "becques" };
+const SYNONYMES = { plain: "plein", lys: "lis", bequee: "becquee", bequees: "becquees", beque: "becque", beques: "becques", brochante: "brochant", brochants: "brochant", brochantes: "brochant" };
 /* « au premier, au deuxième… » disent la place d'un quartier comme « au 1, au 2… » */
 const ORDINAUX = { premier: "1", deuxieme: "2", second: "2", seconde: "2", troisieme: "3", quatrieme: "4" };
 const plie = s => String(s).toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -114,6 +114,8 @@ L.verbe = table(["accompagné", "cantonné", "accosté"].flatMap(w => quatre(w).
     for (const l of T.values()) for (const e of l) for (const w of e.k) if (/^[a-z]/.test(w)) L.vocab.add(w);
   for (const w of [...L.emaux.keys(), ...L.compte.keys(), ...L.attr.keys(), "cotoyee", "doubles", "cotices", "potencees", "franc", "quartier", "tire", "tires", "brise", "peri", "pendant", "pendants", "milieu", "coeur", "centre", "chaque", "celui", "demi", "mouvant", "trait"]) L.vocab.add(w);
   for (const m of ATL.meubles) if (m.accentPlus) for (const w of cles(m.accentPlus)) L.vocab.add(w);
+  L.macon = new Map();                                       // les mots d'un bâtiment : « ouvert » et « ajouré » colorent les baies, « maçonné » est le trait
+  for (const [mot, cl] of [["ouvert", "baie"], ["ajouré", "baie"], ["maçonné", "trait"]]) for (const f of quatre(mot)) { L.macon.set(cles(f)[0], cl); L.vocab.add(cles(f)[0]); }
   return L;
 }
 /* pour les pages qui n'ont pas l'Atelier (galeries) : va chercher les données dont le lecteur a besoin */
@@ -223,8 +225,34 @@ function pEmail(P, i, ref) {                                 // « d'azur » · 
   if (ref && (cle(P, i) === "du" || cle(P, i) === "de") && cle(P, i + 1) === "meme") return { t: ref, i: i + 2 };
   return rate(P, i, "un émail (« d'azur », « de gueules »…)");
 }
+/* un bâtiment : « ouvert et ajouré de sable », « maçonné de sable », « ouvert, ajouré et maçonné de sable », « ouvert d'azur, maçonné de sable »…
+   « maçonné de sable » est le trait noir que la figure a déjà ; d'un autre émail, on le signale, car le trait reste noir.
+   Rend null si aucun de ces mots ne suit, ou si un mot n'a pas son émail : pAccent0 décide alors. */
+function pBatiment(P, i, m, tm) {
+  let ta = null, j = i, lu = false;
+  for (let tour = 0; tour < 2; tour++) {
+    let q = cle(P, j) === "," ? j + 1 : j, baie = false, trait = false, un = false;
+    for (;;) {
+      const cl = LEX.macon.get(cle(P, q));
+      if (!cl) break;
+      un = true; if (cl === "baie") baie = true; else trait = true;
+      q++;
+      if ((cle(P, q) === "," || cle(P, q) === "et") && LEX.macon.has(cle(P, q + 1))) q++; else break;
+    }
+    if (!un) break;
+    if (baie && !m.accent) return null;                       // cette figure n'a pas de baies à colorer : on ne dit rien de plus
+    const meme = (cle(P, q) === "du" || cle(P, q) === "de") && cle(P, q + 1) === "meme";
+    const t = meme ? { t: tm, i: q + 2 } : pEmail(P, q);
+    if (!t) return lu ? { ta, i: j } : null;
+    if (baie) ta = t.t;
+    if (trait && t.t !== "Sable") P.notes.push(`« maçonné ${de(t.t)} » : l'Atelier trace la maçonnerie en noir.`);
+    j = t.i; lu = true;
+  }
+  return lu ? { ta, i: j } : null;
+}
 /* [,] « armé et lampassé d'azur » · « … du même » : { ta, i } ; ta null s'il n'y en a pas ; null si l'attribut est dit sans émail */
 function pAccent0(P, i, m, tm) {
+  if (m.maconne) { const r = pBatiment(P, i, m, tm); if (r) return r; }
   const T = LEX.accent[m.kind];
   if (!T) return { ta: null, i };
   const j = cle(P, i) === "," ? i + 1 : i;
@@ -347,7 +375,8 @@ function pAccent(P, i, m, tm) {
 }
 function pBrochant(P, i) {                                   // [,] « brochant sur le tout » → fin, ou 0
   const j = cle(P, i) === "," ? i + 1 : i;
-  return cle(P, j) === "brochant" && cle(P, j + 1) === "sur" && cle(P, j + 2) === "le" && cle(P, j + 3) === "tout" ? j + 4 : 0;
+  if (cle(P, j) !== "brochant") return 0;
+  return cle(P, j + 1) === "sur" && cle(P, j + 2) === "le" && cle(P, j + 3) === "tout" ? j + 4 : j + 1;            // « brochant » seul dit la même chose
 }
 /* après « chargé » ou « accompagné » : « de trois étoiles d'or » · « d'un lion d'or armé et lampassé d'azur » */
 function pObjet(P, i, ref) {
@@ -998,8 +1027,8 @@ function lireSimple(texte) {
     res.erreurs.push({ de: toks[0].de, a: toks[2].a, msg: "« sur le tout » vient après les armes de l'écu, pas avant." });
   }
   /* « Coupé en chef : au 1, … ; au 2, … » : un coupé dont la partie haute n'a que la hauteur d'un chef (voir lire()) */
-  let enChef = false;
-  if (main[0] && main[0].w === "coupe" && main[1] && main[1].w === "en" && main[2] && main[2].w === "chef" && main[3] && main[3].w === ":") { main = [main[0], ...main.slice(3)]; enChef = true; }
+  let enChef = "";
+  if (main[0] && main[0].w === "coupe" && main[1] && main[1].w === "en" && main[2] && ["chef", "pointe"].includes(main[2].w) && main[3] && main[3].w === ":") { enChef = main[2].w === "chef" ? "ch" : "pa"; main = [main[0], ...main.slice(3)]; }
   const estLabel = x => main[x] && ["au", "aux", "en"].includes(main[x].w) && main[x + 1] && main[x + 1].k === "n";
   /* « Écartelé par une croix [pattée] d'argent [bordée de gueules] : aux 1 et 4, … » : la croix passe sur les quatre quartiers */
   let croix = null;
@@ -1019,7 +1048,8 @@ function lireSimple(texte) {
   }
   /* « Parti : au 1, … ; au 2, … » · « Parti, en 1 … et en 2 … » ; « Parti d'azur et de gueules » reste un champ à deux émaux */
   const parti = !!(main[0] && ["parti", "coupe", "tranche", "taille"].includes(main[0].w) && main[1] && (main[1].w === ":" || estLabel(1) || (main[1].w === "," && estLabel(2))));
-  const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && main[1].w === ":");
+  /* « Écartelé : aux 1 et 4 » ; on lit aussi « Écartelé, au 1 et 4 … et au 2 et 3 … » */
+  const quartele = parti || (main[0] && main[0].w === "ecartele" && main[1] && (main[1].w === ":" || (main[1].w === "," && main[2] && ["au", "aux", "en"].includes(main[2].w) && main[3] && main[3].k === "n")));
   const etat = { q: "", ab: "", gb: "", h1: "", h2: "", xc: "", xb: "", xp: "", A: ADEFS.map(a => ({ ...a })) };
   if (croix) Object.assign(etat, croix);
   /* « ; le tout brisé d'un lambel d'argent » : la brisure de tout l'écu, dite après les quartiers ou les moitiés */
@@ -1034,10 +1064,10 @@ function lireSimple(texte) {
     const reste = main.slice(parti && estLabel(1) ? 1 : 2);
     reste.forEach((t, x) => {
       const sui = reste[x + 1], etiq = sui && ["au", "aux", "en"].includes(sui.w) && reste[x + 2] && reste[x + 2].k === "n";
-      const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && etiq)) || (parti && t.w === "et" && etiq);
+      const coupe = t.k === "p" && (t.w === ";" || (t.w === "," && etiq)) || (t.w === "et" && etiq);
       if (coupe) segs.push([]); else segs[segs.length - 1].push(t);
     });
-    if (parti) { lireParti(texte, segs, res, etat, main); if (enChef && !etat.h1) etat.h1 = "ch"; }
+    if (parti) { lireParti(texte, segs, res, etat, main); if (enChef && !etat.h1) etat.h1 = enChef; }
     else {
       const quarts = {}, groupes = [];
       segs.forEach(seg => {
@@ -1078,15 +1108,18 @@ function lireSimple(texte) {
   res.exact = sans(res.reecrit) === sans(texte.replace(/\([^)]*\)/g, " "));
   return res;
 }
-/* « D'azur à la bande d'argent, au chef d'azur à trois fleurs de lis d'or » : ce chef porte ce qu'une pièce seule ne porte pas (une croix, un fascé, sous d'autres armes qui ont déjà leur pièce).
+/* « D'argent au château de gueules, à la champagne de gueules à la clef d'or » : de même, une bande en pointe (h1 = « pa »).
+   « D'azur à la bande d'argent, au chef d'azur à trois fleurs de lis d'or » : ce chef porte ce qu'une pièce seule ne porte pas (une croix, un fascé, sous d'autres armes qui ont déjà leur pièce).
    Quand la lecture simple échoue, on le relit comme des armes entières dans une bande de la hauteur d'un chef : un coupé (h1 = « ch »). Une lecture qui réussit déjà ne change jamais. */
 function lire(texte) {
   const r = lireSimple(texte);
   if (r.ok || r.vide) return r;
-  const m = /^([^;]+),\s*au chef\s+([^;]+)$/su.exec(String(texte).trim());
-  if (!m) return r;
-  const r2 = lireSimple(`Coupé en chef : au 1, ${m[2]} ; au 2, ${m[1]}`);
+  /* « ; sur le tout … » ou « ; le tout brisé … » : ce qui suit concerne tout l'écu, et reste à la fin */
+  const brut = String(texte).trim(), k = brut.search(/\s*;\s*(?:sur le tout|le tout brisé)/u), corps = k < 0 ? brut : brut.slice(0, k), fin = k < 0 ? "" : brut.slice(k);
+  const m = /^([^;]+),\s*au chef\s+([^;]+)$/su.exec(corps), mp = /^([^;]+),\s*à la champagne\s+([^;]+)$/su.exec(corps);
+  if (!m && !mp) return r;
+  const r2 = lireSimple((m ? `Coupé en chef : au 1, ${m[2]} ; au 2, ${m[1]}` : `Coupé en pointe : au 1, ${mp[1]} ; au 2, ${mp[2]}`) + fin);
   if (!r2.ok) return r;
-  r2.exact = String(texte).replace(/\s+/g, " ").trim() === r2.reecrit;
+  r2.exact = brut.replace(/\s+/g, " ") === r2.reecrit;
   return r2;
 }

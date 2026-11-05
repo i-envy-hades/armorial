@@ -2948,8 +2948,7 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial des familles de France »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_familles_de_France"
-    },
-    "aVerifier": true
+    }
   },
   {
     "nom": "Maison de Vergy",
@@ -3269,8 +3268,7 @@
     },
     "auteur": "AlexD",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Maison de Grailly",
@@ -3585,7 +3583,7 @@
     "auteur": "Spedona",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=47&dy=30&sz2=105"
   },
   {
     "nom": "Famille Pot",
@@ -3899,8 +3897,7 @@
     },
     "auteur": "Jimmy44",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Sévérac",
@@ -4214,8 +4211,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Maison de Rosmadec",
@@ -4531,8 +4527,7 @@
     },
     "auteur": "Jean-Paul GIBERT",
     "lic": "CC BY 4.0",
-    "licurl": "https://creativecommons.org/licenses/by/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by/4.0"
   },
   {
     "nom": "Famille de Cornulier",
@@ -4847,8 +4842,7 @@
     "auteur": "Alex erson",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Forbach (France)",
-    "aVerifier": true
+    "porteur": "Ville de Forbach (France)"
   },
   {
     "nom": "Nanterre",
@@ -5165,8 +5159,7 @@
     "auteur": "J.-Lys",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Bouchain (France)",
-    "aVerifier": true
+    "porteur": "Ville de Bouchain (France)"
   },
   {
     "nom": "Thérouanne",
@@ -5484,7 +5477,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Barcelone (Espagne)",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix de gueules ; aux 2 et 3, d'or à quatre pals de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "forme": "losange"
   },
   {
     "nom": "Turin",
@@ -5802,7 +5797,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville d'Orléans (France)",
-    "aVerifier": true
+    "atelier": "De gueules à trois tiercefeuilles d'argent, au chef d'azur chargé de trois fleurs de lis d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'Atelier n'a pas de cœur de lis, il dessine des tiercefeuilles",
+    "atelierAjust": "sz2=75&dy2=36"
   },
   {
     "nom": "Brest",
@@ -6124,7 +6121,7 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelierAjust": "sz=130"
   },
   {
     "nom": "Collonge-Bellerive",
@@ -6461,7 +6458,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton d'Argovie",
-    "aVerifier": true
+    "atelier": "D'argent au tourteau d'azur",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=70"
   },
   {
     "nom": "Zofingue",
@@ -6798,7 +6797,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Schwytz",
-    "aVerifier": true
+    "atelier": "De gueules à deux hirondelles de sable posées en pal",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : des hirondelles pour les corbeaux",
+    "atelierAjust": "sz=155"
   },
   {
     "nom": "Arth",
@@ -7135,7 +7136,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "atelier": "Parti d'argent et de gueules à la grappe de raisin de l'un en l'autre",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la grappe est sans ses feuilles de sinople"
   },
   {
     "nom": "Renens",
@@ -7469,8 +7471,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton du Valais",
-    "aVerifier": true
+    "porteur": "Commune du canton du Valais"
   },
   {
     "nom": "Salgesch",
@@ -7790,7 +7791,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz=70"
   },
   {
     "nom": "Comté de Pardiac",
@@ -8107,7 +8109,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "Échiqueté d'or et d'azur de trois tires",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Pays de Gex",
@@ -8423,8 +8426,7 @@
     "auteur": "Jimmy44",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Basse-Autriche",
@@ -8740,8 +8742,7 @@
     "auteur": "Nomadic1",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Comté d'Oettingen",
@@ -9061,7 +9062,7 @@
     "auteur": "Ssolbergj",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelierAjust": "sz=118"
   },
   {
     "nom": "Leinster",
@@ -9391,7 +9392,9 @@
     "auteur": "RootOfAllLight",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelier": "De gueules à la croix de Malte fine de sinople, à la croix tréflée d'argent brochant sur le tout",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=70&an=-45"
   },
   {
     "nom": "Ordre de Dobrzyń",
@@ -9717,7 +9720,10 @@
     "auteur": "Fry1989",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-old-",
-    "aVerifier": true
+    "atelier": "D'argent au château donjonné de gueules ouvert et ajouré de sable, à la champagne de gueules à la clef d'or ; le tout brisé d'une bordure d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la corde qui relie la clef à la porte manque",
+    "atelierAjust": "q2.sz=42&q2.dy=-8",
+    "forme": "iberique"
   },
   {
     "nom": "Comté de Tripoli",
@@ -10034,7 +10040,7 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Ville de Limoges (France)",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Morlaix",
@@ -10244,7 +10250,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Chinon (France)",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz=66&sz2=62"
   },
   {
     "nom": "Tours",
@@ -10352,7 +10359,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Gap (France)",
-    "aVerifier": true
+    "atelier": "D'azur au château donjonné d'or ouvert et ajouré d'azur, maçonné de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'Atelier n'a pas de portail de ville, il dessine un château"
   },
   {
     "nom": "Haguenau",
@@ -10670,7 +10678,7 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Dijon (France)",
-    "aVerifier": true
+    "atelierAjust": "sz=65"
   },
   {
     "nom": "Saint-Quentin",
@@ -10987,7 +10995,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Ville de Norwich (Royaume-Uni)",
-    "aVerifier": true
+    "atelier": "De gueules au château donjonné d'argent ouvert et ajouré de sable, accompagné d'un léopard d'or en pointe",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le château est sans ses coupoles",
+    "atelierAjust": "sz=92&dy=-24&sz2=165&dy2=8"
   },
   {
     "nom": "Portsmouth",
@@ -11305,7 +11315,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province de Belgique",
-    "aVerifier": true
+    "aVerifier": true,
+    "sansAtelier": true
   },
   {
     "nom": "Brabant flamand",
@@ -11622,8 +11633,7 @@
     "auteur": "Superbenjamin",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire français d'outre-mer",
-    "aVerifier": true
+    "porteur": "Territoire français d'outre-mer"
   },
   {
     "nom": "Terres australes et antarctiques françaises",
@@ -11938,7 +11948,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "Écartelé : au 1, de gueules à la fasce d'argent ; au 2, d'argent à trois lions de sinople couronnés d'or, armés et lampassés de gueules ; au 3, burelé d'or et de gueules ; au 4, d'or à trois cors de gueules ; sur le tout, de gueules à la colonne d'or, aux lettres L et G d'or brochant sur le tout",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le perron est dessiné en colonne, sans ses lions ni sa pomme de pin",
+    "forme": "sannitique"
   },
   {
     "nom": "Principauté épiscopale de Minden",
@@ -12256,7 +12268,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "Écartelé : au 1, fascé d'argent et de gueules de huit pièces ; aux 2 et 4, d'azur semé de fleurs de lis d'or ; au 3, d'azur à trois fleurs de lis d'or ; sur le tout, d'or au lion de gueules",
+    "atelierNote": "Le même dessin : l'Atelier écrit en écartelé ce que le texte dit en parti"
   },
   {
     "nom": "Principauté d'Orange",
@@ -12570,8 +12583,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Mont-Saint-Jean",
@@ -12894,8 +12906,7 @@
     "auteur": "Walter Käch, Fritz Brunner, vectorisé par Gerhard Bräunlich",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
-    "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "porteur": "Commune du canton de Zurich"
   },
   {
     "nom": "Opfikon",
@@ -13232,7 +13243,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Bâle-Campagne",
-    "aVerifier": true
+    "atelier": "De gueules à trois étoiles d'or, au chef ondé d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la devise ondée est dessinée en chef ondé",
+    "atelierAjust": "sz=118&dy=6"
   },
   {
     "nom": "Liestal",
@@ -13569,7 +13582,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "atelier": "Coupé d'argent et de gueules, à l'arche de pont de sable, accompagnée d'un trochet de cerises de gueules tigé et feuillé de sinople en chef",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'arche est ogivale, celle de l'image est en plein cintre et plus épaisse",
+    "atelierAjust": "sz=80&dy=-8&sz2=105&dy2=-12"
   },
   {
     "nom": "Chavannes-sur-Moudon",
@@ -13907,7 +13922,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton du Valais",
-    "aVerifier": true
+    "atelier": "D'azur au sapin de sinople, accompagné d'un mont à trois coupeaux de sinople en pointe",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le sapin garde les racines de sa figure, et le mont n'est pas posé comme sur l'image",
+    "atelierAjust": "sz=105&dy=-6&sz2=125&dy2=24"
   },
   {
     "nom": "Lax",
@@ -14245,7 +14262,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelier": "D'or à trois aigles fédérales de sable becquées et membrées de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=108"
   },
   {
     "nom": "Vernier",
@@ -14277,7 +14296,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "aVerifier": true,
+    "atelierAjust": "sz=78"
   },
   {
     "nom": "Courgenay",
@@ -14569,8 +14589,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de La Gorgue de Rosny",
@@ -14884,8 +14903,7 @@
     },
     "auteur": "Maclauren",
     "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "aVerifier": true
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self"
   },
   {
     "nom": "Famille de Kerouartz",
@@ -15199,8 +15217,7 @@
     },
     "auteur": "Spedona",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Dieuleveult",
@@ -15516,7 +15533,7 @@
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=145"
   },
   {
     "nom": "Famille Préveraud de Laubépierre de Vaumas",
@@ -15830,8 +15847,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Rivoire",

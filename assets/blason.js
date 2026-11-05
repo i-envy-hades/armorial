@@ -376,7 +376,8 @@ function boiteEcu(){
   try { const m = contourMesure().getBBox(); if(m.width) return [m.x, m.y, m.x + m.width, m.y + m.height]; } catch(err) { /* pas de mesure possible hors navigateur */ }
   return [18, 16, 182, 236];
 }
-function stripesH(n,a,b){ let s=""; const [, y0, , y1] = boiteEcu(), h=(y1-y0)/n; for(let i=0;i<n;i++){ const top = i ? y0+i*h : 0, bot = i===n-1 ? 252 : y0+(i+1)*h+0.6; s+=`<rect x="0" y="${top.toFixed(2)}" width="200" height="${(bot-top).toFixed(2)}" fill="${i%2?b:a}"/>`; } return s; }
+/* les rayures débordent largement la boîte : réduites dans un quartier, elles atteignent quand même ses pointes (l'écu en losange) */
+function stripesH(n,a,b){ let s=""; const [, y0, , y1] = boiteEcu(), h=(y1-y0)/n; for(let i=0;i<n;i++){ const top = i ? y0+i*h : -200, bot = i===n-1 ? 452 : y0+(i+1)*h+0.6; s+=`<rect x="-200" y="${top.toFixed(2)}" width="600" height="${(bot-top).toFixed(2)}" fill="${i%2?b:a}"/>`; } return s; }
 /* fascé ondé : les traits entre les pièces sont des ondes (deux ondes et demie sur la largeur de l'écu) ; chaque pièce du second émail est un tracé fermé */
 function stripesHOnde(n,a,b){
   const [, y0, , y1] = boiteEcu(), h=(y1-y0)/n, amp=Math.min(5, h/4), per=66;
@@ -385,7 +386,7 @@ function stripesHOnde(n,a,b){
   for(let i=1;i<n;i+=2){ const top=y0+i*h, bot=i===n-1 ? null : y0+(i+1)*h; s+=`<path d="M${onde(top,1)} L${bot===null ? "210,262 L-10,262" : onde(bot,-1)} Z" fill="${b}"/>`; }
   return s;
 }
-function stripesV(n,a,b){ let s=""; const [x0, , x1] = boiteEcu(), w=(x1-x0)/n; for(let i=0;i<n;i++){ const left = i ? x0+i*w : 0, right = i===n-1 ? 200 : x0+(i+1)*w+0.6; s+=`<rect x="${left.toFixed(2)}" y="0" width="${(right-left).toFixed(2)}" height="252" fill="${i%2?b:a}"/>`; } return s; }
+function stripesV(n,a,b){ let s=""; const [x0, , x1] = boiteEcu(), w=(x1-x0)/n; for(let i=0;i<n;i++){ const left = i ? x0+i*w : -200, right = i===n-1 ? 400 : x0+(i+1)*w+0.6; s+=`<rect x="${left.toFixed(2)}" y="-200" width="${(right-left).toFixed(2)}" height="652" fill="${i%2?b:a}"/>`; } return s; }
 /* bandé / barré : n bandes égales, parallèles à la diagonale de l'écu (de l'angle dextre du chef à l'angle senestre de la pointe), de sorte que
    la première touche l'angle senestre du chef — et la dernière l'angle dextre de la pointe. Chaque bande est un polygone : pas de motif répété,
    donc pas de couture, et le nombre de bandes est celui qu'on demande. Le barré est le miroir du bandé. */
@@ -414,7 +415,7 @@ function chevronne(n, a, b){
 }
 /* échiqueté de n tires : n rangées de carrés, autant de colonnes que le permet un carré à peu près carré ; l'angle dextre du chef est de l'émail a */
 function echiquete(n, a, b){
-  const h = 252 / n, cols = Math.max(2, Math.round(200 / h)), w = 200 / cols;
+  const h = 252 / n, cols = +n === 3 ? 3 : Math.max(2, Math.round(200 / h)), w = 200 / cols;          // trois tires : trois carreaux sur trois, les neuf points équipolés
   let s = `<rect width="200" height="252" fill="${a}"/>`;
   for(let r = 0; r < n; r++) for(let c = 0; c < cols; c++) if((r + c) % 2) s += `<rect x="${(c * w).toFixed(2)}" y="${(r * h).toFixed(2)}" width="${(w + .4).toFixed(2)}" height="${(h + .4).toFixed(2)}" fill="${b}"/>`;
   return s;

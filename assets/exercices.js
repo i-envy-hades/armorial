@@ -238,7 +238,7 @@
 
   /* les figures empruntées à Commons dans les écus montrés : leurs crédits, comme sous chaque écu de l'Atelier */
   function credits(sts) {
-    const vus = new Map(); sts.forEach(St => creditsOf(St).forEach(c => vus.set(c.commons, c)));
+    const vus = new Map(); sts.forEach(St => creditsOf(St).forEach(c => vus.set(c.commons || c.origine, c)));
     return vus.size ? `<p class="ex-credits">${creditsHtml([...vus.values()])}</p>` : "";
   }
   function explication(q, juste, choisi) {

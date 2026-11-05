@@ -11,13 +11,56 @@ function chipRow(el) {
 const AUCUN = Tr("Aucun", "None"), AUCUNE = Tr("Aucune", "None");
 const nomOuEn = p => Tr(p.nom, p.en ? cap(p.en) : libelle(p.nom));      // partitions et pièces : data.json donne le nom anglais
 const email1 = t => emailLu(t).toLowerCase();
+/* le déroulant à catégories : un long <select> se présente comme un bouton qui ouvre ses rubriques, par ordre alphabétique, chacune fermée
+   jusqu'à ce qu'on la déroule. Le <select> reste en place, invisible : c'est lui qui tient la valeur, le formulaire ne change pas.
+   vignette(valeur) : une petite image devant chaque choix (facultatif). */
+const DEROULANTS = [];
+const parNom = (a, b, cle) => cle(a).localeCompare(cle(b), LANGUE);
+function deroulant(sel, vignette) {
+  const dr = document.createElement("div");
+  dr.className = "dr";
+  dr.innerHTML = `<button type="button" class="dr-bouton" aria-expanded="false"><span></span></button><div class="dr-panneau" hidden></div>`;
+  sel.classList.add("dr-natif"); sel.tabIndex = -1; sel.setAttribute("aria-hidden", "true");
+  sel.after(dr);
+  const [bouton, panneau] = dr.children;
+  const maj = () => { const o = sel.selectedOptions[0]; bouton.firstChild.textContent = o ? o.textContent : ""; };
+  const ferme = () => { panneau.hidden = true; panneau.innerHTML = ""; bouton.setAttribute("aria-expanded", "false"); };
+  const ligne = o => `<button type="button" class="dr-choix${o.selected ? " on" : ""}" data-v="${esc(o.value)}">${vignette && o.value ? vignette(o.value) : ""}<span>${esc(o.textContent)}</span></button>`;
+  const ouvre = () => {
+    const seules = [...sel.children].filter(x => x.tagName === "OPTION"), groupes = [...sel.querySelectorAll("optgroup")].sort((a, b) => parNom(a, b, g => g.label));
+    panneau.innerHTML = seules.map(ligne).join("") + groupes.map(g => {
+      const os = [...g.children].sort((a, b) => parNom(a, b, o => o.textContent));
+      return `<details${os.some(o => o.selected) ? " open" : ""}><summary>${esc(g.label)} <small>${os.length}</small></summary><div class="dr-liste">${os.map(ligne).join("")}</div></details>`;
+    }).join("");
+    panneau.hidden = false; bouton.setAttribute("aria-expanded", "true");
+  };
+  bouton.addEventListener("click", () => { if (panneau.hidden) { DEROULANTS.forEach(d => d.ferme()); ouvre(); } else ferme(); });
+  panneau.addEventListener("click", e => {
+    const b = e.target.closest(".dr-choix");
+    if (!b) return;
+    sel.value = b.dataset.v; ferme(); maj();
+    sel.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  document.addEventListener("click", e => { if (!panneau.hidden && !dr.contains(e.target)) ferme(); });
+  dr.addEventListener("keydown", e => { if (e.key === "Escape" && !panneau.hidden) { ferme(); bouton.focus(); } });
+  DEROULANTS.push({ maj, ferme });
+  maj();
+}
+/* la petite image d'une figure, telle qu'elle est dessinée par défaut : le fichier de Commons, ou le dessin de l'Atelier */
+function vignetteMeuble(kind) {
+  const m = meuble(kind);
+  if (!m) return "";
+  if (m.file) return `<img class="dr-vi" src="${esc(m.file.path)}" alt="" loading="lazy">`;
+  try { const dessin = m.draw === "lis" ? fleurDeLisPaths() : chargeInner(m.draw || kind, "#c9a227", "#1a1712", "#fff"); return dessin ? `<svg class="dr-vi" viewBox="0 0 200 200" fill="#c9a227" stroke="#1a1712" aria-hidden="true">${dessin}</svg>` : ""; } catch { return ""; }
+}
 function fillSelects() {
   F.part.innerHTML = DATA.partitions.map(p => `<option value="${esc(p.kind)}">${esc(nomOuEn(p))}</option>`).join("");
   F.p.innerHTML = `<option value="">${AUCUNE}</option>` + [...DATA.pieces, ...(ATL.pieces || [])].filter(p => PIECES[p.kind]).map(p => `<option value="${esc(p.kind)}">${esc(nomOuEn(p))}</option>`).join("");
   F.cn.innerHTML = F.cn2.innerHTML = `<option value="">${AUCUNE}</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">${Tr(`Couronné ${de(t.nom)}`, `Crowned ${email1(t.nom)}`)}</option>`).join("");
   F.pf.innerHTML = `<option value="">${AUCUN}</option>` + DATA.tinctures.filter(t => t.type !== "Fourrure").map(t => `<option value="${esc(t.nom)}">${Tr(`Bordée ${de(t.nom)}`, `Fimbriated ${email1(t.nom)}`)}</option>`).join("");
-  const cats = [...new Set(ATL.meubles.map(m => m.cat))];
-  F.m.innerHTML = `<option value="">${AUCUN}</option>` + cats.map(c => `<optgroup label="${esc(libelle(c))}">${ATL.meubles.filter(m => m.cat === c).sort((a, b) => nomMeubleLu(a).localeCompare(nomMeubleLu(b), LANGUE)).map(m => `<option value="${esc(m.kind)}">${esc(nomMeubleLu(m))}</option>`).join("")}</optgroup>`).join("");
+  const rubrique = m => m.rub || m.cat;                                                            // « cat » reste la famille d'une figure (exercices) ; « rub » est son rayon dans le menu
+  const cats = [...new Set(ATL.meubles.map(rubrique))];
+  F.m.innerHTML = `<option value="">${AUCUN}</option>` + cats.map(c => `<optgroup label="${esc(libelle(c))}">${ATL.meubles.filter(m => rubrique(m) === c).sort((a, b) => nomMeubleLu(a).localeCompare(nomMeubleLu(b), LANGUE)).map(m => `<option value="${esc(m.kind)}">${esc(nomMeubleLu(m))}</option>`).join("")}</optgroup>`).join("");
   F.m2.innerHTML = F.m.innerHTML;
   F.ci.innerHTML = F.m.innerHTML.replace("Aucun", "Aucun");                                        // le cimier se prend dans les mêmes meubles
   F.br.innerHTML = `<option value="">${AUCUNE}</option><optgroup label="${Tr("Pièces de brisure", "Ordinaries of difference")}">${Object.entries(BRIS_PIECES).map(([k, v]) => `<option value="${k}">${esc(libelle(v.nom))}</option>`).join("")}</optgroup>`
@@ -53,7 +96,7 @@ function syncForm() {
   const modeH1 = S.q === "c" ? "c" : "p";
   if (F.h1.dataset.mode !== modeH1) {
     H1_PARTI = H1_PARTI || F.h1.innerHTML;
-    F.h1.innerHTML = modeH1 === "c" ? Tr(`<option value="">Chef : simple</option><option value="p">Chef : parti</option><option value="ch">Chef : étroit</option>`, `<option value="">Chief: plain</option><option value="ch">Chief: narrow</option><option value="p">Chief: per pale</option>`) : H1_PARTI;
+    F.h1.innerHTML = modeH1 === "c" ? Tr(`<option value="">Chef : simple</option><option value="p">Chef : parti</option><option value="ch">Chef : étroit</option><option value="pa">Champagne</option>`, `<option value="">Chief: plain</option><option value="ch">Chief: narrow</option><option value="p">Chief: per pale</option><option value="pa">Base</option>`) : H1_PARTI;
     F.h1.dataset.mode = modeH1;
     F.h1.setAttribute("aria-label", modeH1 === "c" ? Tr("Chef du coupé", "Chief of the per fess division") : Tr("Moitié dextre du parti", "Dexter half of the per pale division"));
   }
@@ -240,6 +283,7 @@ async function render() {
   catch (e) { $("#blz").textContent = Tr("Une figure n'a pas pu être chargée (", "A figure could not be loaded (") + e.message + ")."; return; }
   if (tok !== render.n) return;
   syncForm();
+  DEROULANTS.forEach(d => d.maj());
   const c = compose(S), sh = $("#shield");
   sh.setAttribute("viewBox", c.vb.join(" "));
   sh.classList.toggle("orn", c.vb !== PLAIN_VB);
@@ -373,7 +417,7 @@ function randomArms() {
   if (s.f === "plein" && Math.random() < .12) { s.f = "ray"; s.ray = pick(RAYS); s.n = pick(rayNs(s.ray)); }                  // de temps en temps, un champ rayé ou un pavage
   s.p = Math.random() < .6 ? pick(Object.keys(PIECES)) : "";
   s.tp = pick(metalChamp ? couleurs : metaux);
-  s.m = Math.random() < .8 ? pick(ATL.meubles).kind : "";
+  s.m = Math.random() < .8 ? pick(ATL.meubles.filter(x => !x.lettre)).kind : "";
   s.pos = Math.random() < .4 ? "sur" : "autour";
   s.tm = s.p && s.pos === "sur" ? pick(metalChamp ? metaux : couleurs) : pick(metalChamp ? couleurs : metaux);
   s.ta = pick(["Gueules", "Azur", "Or"].filter(t => t !== s.tm));
@@ -607,6 +651,8 @@ function mesArmes() {
   }
   $("#gdefs").innerHTML = globalDefs();
   fillSelects();
+  for (const s of [F.m, F.m2, F.ci]) deroulant(s, vignetteMeuble);
+  deroulant($("#reel"));
   $("#examples").innerHTML = EXEMPLES.map(([n], i) => `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
   $("#examples").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S = example(EXEMPLES[+b.dataset.i][1]); ORIGINE = null; CUR = 0; KT = "1"; render(); });
   ORIGINE = origineDemandee(location.hash);

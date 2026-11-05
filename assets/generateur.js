@@ -19,7 +19,7 @@ const Gen = (() => {
   const MOYEN = ["leopard", "griffon", "dragon", "licorne", "ours", "loup", "sanglier", "cheval", "poisson", "panthere", "merlette", "quintefeuille", "macle", "losange", "annelet", "croisette", "cloche", "roue", "chateau", "main", "gerbe", "epi", "gland", "molette", "aigle-bicephale", "comete", "eclair", "fercheval", "tau", "goutte", "rustre", "fusee", "quartefeuille", "tiercefeuille"];
   const PIECES_1 = ["chef", "fasce", "pal", "bande", "barre", "croix", "sautoir", "chevron"];
   const PIECES_N = { 1: PIECES_1, 2: [...PIECES_1, "bordure", "orle", "canton"], 3: [...PIECES_1, "bordure", "orle", "canton", "franc-quartier", "pairle"] };
-  const poolMeubles = niv => (niv === 1 ? FACILE : niv === 2 ? [...FACILE, ...MOYEN] : ATL.meubles.map(m => m.kind).filter(k => k !== "billette" && k !== "croix")).filter(meuble);
+  const poolMeubles = niv => (niv === 1 ? FACILE : niv === 2 ? [...FACILE, ...MOYEN] : ATL.meubles.filter(m => !m.lettre).map(m => m.kind).filter(k => k !== "billette" && k !== "croix")).filter(meuble);
   const SEMES = ["fleurdelis", "etoile", "croisette", "roundel", "coquille", "trefle", "rose", "croissant"];
 
   const sameClass = (rng, t, pool = COULEURS_P) => pick(rng, (classe(t) === "Métal" ? METAUX : pool).filter(x => x !== t));

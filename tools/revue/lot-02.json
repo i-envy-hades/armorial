@@ -1,0 +1,307 @@
+{
+ "lot": 2,
+ "titre": "Lot 2 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme le lot 1. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Maison de Croÿ",
+   "verdict": "fidele",
+   "avis": "Mêmes fasces, mêmes émaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Clare",
+   "verdict": "fidele",
+   "avis": "Mêmes chevrons, mêmes émaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Amelot",
+   "verdict": "essai",
+   "avis": "Les cœurs serraient le soleil : je les ai réduits et descendus. Le soleil reste petit et touche encore un peu les cœurs."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Talaru",
+   "verdict": "fidele",
+   "avis": "Même parti, même cotice ; elle est un peu plus fine que sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Montboissier",
+   "verdict": "fidele",
+   "avis": "Même semé, même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Orlier",
+   "verdict": "fidele",
+   "avis": "Même ours, dressé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Forbach",
+   "verdict": "fidele",
+   "avis": "Même lion, griffes et langue de gueules."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bouchain",
+   "verdict": "fidele",
+   "avis": "Nouvelle tour ; l'image la montre un peu plus large."
+  },
+  {
+   "g": "blasons",
+   "nom": "Barcelone",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier, et l'écu en losange de l'image. Les pals vont maintenant jusqu'aux pointes du losange. La couronne n'est pas dessinée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Orléans",
+   "verdict": "essai",
+   "avis": "L'Atelier n'a pas de cœur de lis : il dessine des tiercefeuilles, la figure la plus proche. À vous de dire si ça va."
+  },
+  {
+   "g": "blasons",
+   "nom": "Céligny",
+   "verdict": "essai",
+   "avis": "Les coquilles étaient trop petites : je les ai agrandies."
+  },
+  {
+   "g": "blasons",
+   "nom": "Lenzbourg",
+   "verdict": "essai",
+   "avis": "Une boule d'azur s'écrit « tourteau d'azur » dans l'Atelier : même dessin."
+  },
+  {
+   "g": "blasons",
+   "nom": "Einsiedeln",
+   "verdict": "essai",
+   "avis": "Hirondelles A : la bonne allure en vol, pas le bon oiseau."
+  },
+  {
+   "g": "blasons",
+   "nom": "Pully",
+   "verdict": "essai",
+   "avis": "Grappe A, nouvelle figure, partagée de l'un en l'autre comme sur l'image. Elle est sans feuilles, comme vous l'avez choisie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Savièse",
+   "verdict": "fidele",
+   "avis": "Même épée, garde et pommeau d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Montpellier",
+   "verdict": "fidele",
+   "avis": "Même tourteau."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Genève",
+   "verdict": "essai",
+   "avis": "Les neuf points équipolés : « de trois tires » dessine maintenant trois carreaux sur trois."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Tyrol",
+   "verdict": "ecart",
+   "avis": "Bec et pattes d'or, comme le texte. L'image ajoute une couronne et des ailes barrées d'or, que le texte ne dit pas et que le dessin n'a pas."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Waldbourg",
+   "verdict": "fidele",
+   "avis": "Mêmes léopards, même chef à l'orbe. Le chef est un peu plus étroit sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Munster",
+   "verdict": "essai",
+   "avis": "Les couronnes étaient trop petites : je les ai agrandies. Elles restent plus plates que sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ordre des Saints-Maurice-et-Lazare",
+   "verdict": "essai",
+   "avis": "Nouvelle croix de Malte fine, dessinée pour cette carte, avec vos réglages de taille et d'angle."
+  },
+  {
+   "g": "blasons",
+   "nom": "Gibraltar",
+   "verdict": "essai",
+   "avis": "Clef réduite et bordure d'or ajoutée. Il manque la corde ; la devise de l'image ne fait pas partie du blasonnement."
+  },
+  {
+   "g": "blasons",
+   "nom": "Limoges",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Gap",
+   "verdict": "essai",
+   "avis": "Un château pour le portail de ville : trois tours au lieu de quatre tourelles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dijon",
+   "verdict": "ecart",
+   "avis": "La bordure est maintenant componée. Le chef reste plus haut que sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Norwich",
+   "verdict": "essai",
+   "avis": "Château agrandi, léopard agrandi en pointe. Il manque les coupoles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Province d'Anvers",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Saint-Pierre-et-Miquelon",
+   "verdict": "sans-dessin",
+   "avis": "Le chef porte trois quartiers, dont le drapeau basque. Dessiner le navire seul trahirait ces armes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté de Liège",
+   "verdict": "essai",
+   "avis": "Les quatre quartiers sont justes, et les lettres L et G d'or sont ajoutées. Le perron reste une colonne, sans ses lions ni sa pomme de pin."
+  },
+  {
+   "g": "blasons",
+   "nom": "Thiérache",
+   "verdict": "essai",
+   "avis": "Même dessin : l'Atelier l'écrit en écartelé. Le semé de droite est coupé en deux à mi-hauteur, presque sans que ça se voie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Mengen",
+   "verdict": "fidele",
+   "avis": "Mêmes chevrons, lambel à quatre pendants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Rüti",
+   "verdict": "fidele",
+   "avis": "Nouvelle lettre R, police Cardo. L'Atelier lit le blasonnement tel quel. La lettre gothique existe aussi, si vous la préférez."
+  },
+  {
+   "g": "blasons",
+   "nom": "Birsfelden",
+   "verdict": "essai",
+   "avis": "La devise ondée est dessinée en chef ondé, un peu plus haut que sur l'image. Étoiles agrandies."
+  },
+  {
+   "g": "blasons",
+   "nom": "Chavannes-près-Renens",
+   "verdict": "essai",
+   "avis": "Arche C et cerises dessinées pour l'Atelier. Le pont est épaissi pour bien se lire en sable ; il reste ogival, alors que l'image a un plein cintre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bellwald",
+   "verdict": "essai",
+   "avis": "Votre sapin A, nouvelle figure. Il garde ses racines ; le mont n'est pas posé comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bellevue",
+   "verdict": "essai",
+   "avis": "Aigle fédérale, la plus proche de l'image parmi nos aigles à une tête : bec et pattes de gueules."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Rarécourt de La Vallée de Pimodan",
+   "verdict": "fidele",
+   "avis": "Mêmes annelets, mêmes mouchetures ; celles-ci sont plus petites que sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Sallenove",
+   "verdict": "fidele",
+   "avis": "Même palé, même bande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Gilbert de Voisins",
+   "verdict": "fidele",
+   "avis": "Même croix engrêlée, mêmes croissants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Abbeville",
+   "verdict": "essai",
+   "avis": "Les écussons étaient trop petits : je les ai agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Bigorie",
+   "verdict": "fidele",
+   "avis": "Mêmes pals, mêmes émaux."
+  },
+  {
+   "g": "personnages",
+   "nom": "Henri de Schomberg",
+   "verdict": "sans-dessin",
+   "avis": "Le lion est mi-gueules, mi-sinople : l'Atelier ne colore pas une figure de deux émaux, et un lion d'une seule couleur donnerait d'autres armes."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean de Villiers de L'Isle-Adam",
+   "verdict": "essai",
+   "avis": "Le bras reste dans le chef, sans son manipule. Sur l'image, ils descendent sur tout l'écu."
+  },
+  {
+   "g": "personnages",
+   "nom": "Charles-François Lebrun",
+   "verdict": "essai",
+   "avis": "Chef d'azur semé d'abeilles d'or, nouvelle figure. Un loup pour la louve ; la terrasse manque, et les ornements extérieurs ne sont pas dessinés."
+  },
+  {
+   "g": "personnages",
+   "nom": "Philippe de Culant",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier. Lion un peu agrandi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Rémy Exelmans",
+   "verdict": "essai",
+   "avis": "La ruche et la croix d'or sont côte à côte dans le troisième quartier, sans le trait du parti, invisible puisque les deux moitiés sont d'azur."
+  },
+  {
+   "g": "personnages",
+   "nom": "Calogrenant",
+   "verdict": "fidele",
+   "avis": "La guivre et l'enfant sont maintenant tout d'or."
+  },
+  {
+   "g": "personnages",
+   "nom": "Ferrant du Tertre",
+   "verdict": "essai",
+   "avis": "Même ours passant. Ses griffes ne sont pas de sable : l'Atelier ne colore pas celles de l'ours."
+  },
+  {
+   "g": "personnages",
+   "nom": "Catherine d'Aragon",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à votre demande."
+  },
+  {
+   "g": "personnages",
+   "nom": "Eudes de Saint-Amand",
+   "verdict": "essai",
+   "avis": "Le même blasonnement, dans les mots de l'Atelier."
+  }
+ ]
+}

@@ -238,7 +238,7 @@ if isinstance(a, dict):
         if m.get("g") not in ("m", "f"): err(f"atelier.json: meuble « {k} » : genre « {m.get('g')} » (m ou f attendu)")
         if m.get("file"):
             if not m.get("box"): err(f"atelier.json: meuble « {k} » : figure sans « box »")
-            for c in ("commons", "auteur", "lic", "licurl"):
+            for c in ("commons" if not m["file"].get("origine") else "origine", "auteur", "lic", "licurl"):      # « origine » : une figure qui ne vient pas de Commons (nos dessins, une police)
                 if not m["file"].get(c): err(f"atelier.json: meuble « {k} » : figure sans {c}")
         elif m.get("draw"):
             if m["draw"] != "lis" and m["draw"] not in dessins["chargeInner"]:
