@@ -268,6 +268,9 @@ CONNUES = [
     ({"A0": {"t1": "Azur", "m": "etoile", "nb": "9", "tm": "Or"}}, "D'azur à neuf étoiles d'or posées 3, 3 et 3"),
     ({"A0": {"t1": "Azur", "m": "roundel", "nb": "12", "tm": "Argent"}}, "D'azur à douze besants d'argent posés 4, 4 et 4"),
     ({"A0": {"t1": "Azur", "m": "etoile6", "nb": "3", "tm": "Or"}}, "D'azur à trois étoiles à six rais d'or"),
+    ({"A0": {"t1": "Azur", "m": "etoile12", "nb": "3", "tm": "Or"}}, "D'azur à trois étoiles à douze rais d'or"),
+    ({"A0": {"t1": "Gueules", "m": "etoile3", "nb": "1", "tm": "Or"}}, "De gueules à l'étoile à trois rais d'or"),
+    ({"A0": {"t1": "Azur", "m": "grenade-unie", "nb": "3", "tm": "Argent"}}, "D'azur à trois grenades unies d'argent"),
     # les attitudes ajoutées ensuite (figures de Commons) : ours rampant, loup ravissant, cerf courant ou couché, cheval passant, licorne assise, léopard lionné, taureau,
     # colombe essorante, aigle au vol abaissé, wyvern, bélier passant
     ({"A0": {"t1": "Argent", "m": "ours-rampant", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'argent à l'ours rampant de sable lampassé et vilené de gueules"),
@@ -483,7 +486,7 @@ REFUSES = [
     ("D'azur à la croix", "s'arrête trop tôt"),
     ("D'azur à trois", "s'arrête trop tôt"),
     ("Fascé d'argent et d'azur de sept pièces", "six, huit"),
-    ("D'azur à l'étoile à neuf rais d'or", "à neuf rais"),
+    ("D'azur à l'étoile à onze rais d'or", "à onze rais"),
     ("D'azur plein à la croix d'or", "plein"),
     ("D'azur à la croix d'or (", "Parenthèse"),
     ("sur le tout d'argent à la croix de gueules", "après les armes"),

@@ -583,6 +583,60 @@
    "draw": "etoile8"
   },
   {
+   "kind": "etoile3",
+   "nom": "Étoile à trois rais",
+   "sing": "étoile à trois rais",
+   "plur": "étoiles à trois rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile3"
+  },
+  {
+   "kind": "etoile4",
+   "nom": "Étoile à quatre rais",
+   "sing": "étoile à quatre rais",
+   "plur": "étoiles à quatre rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile4"
+  },
+  {
+   "kind": "etoile9",
+   "nom": "Étoile à neuf rais",
+   "sing": "étoile à neuf rais",
+   "plur": "étoiles à neuf rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile9"
+  },
+  {
+   "kind": "etoile10",
+   "nom": "Étoile à dix rais",
+   "sing": "étoile à dix rais",
+   "plur": "étoiles à dix rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile10"
+  },
+  {
+   "kind": "etoile12",
+   "nom": "Étoile à douze rais",
+   "sing": "étoile à douze rais",
+   "plur": "étoiles à douze rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile12"
+  },
+  {
+   "kind": "etoile16",
+   "nom": "Étoile à seize rais",
+   "sing": "étoile à seize rais",
+   "plur": "étoiles à seize rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "etoile16"
+  },
+  {
    "kind": "molette",
    "nom": "Molette",
    "sing": "molette",
@@ -7103,6 +7157,57 @@
    "outline": true
   },
   {
+   "kind": "croix-ancree-fine",
+   "nom": "Croix ancrée fine",
+   "sing": "croix ancrée fine",
+   "plur": "croix ancrées fines",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "rub": "Croix",
+   "file": {
+    "path": "assets/meubles/croix-ancree-fine.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
+   "kind": "grenade-unie",
+   "nom": "Grenade unie",
+   "sing": "grenade unie",
+   "plur": "grenades unies",
+   "g": "f",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/grenade.svg",
+    "commons": "Héraldique meuble Grenade.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00",
+    "fill:#ff0000",
+    "fill:#00ff00"
+   ]
+  },
+  {
    "kind": "croix-malte-fine",
    "nom": "Croix de Malte fine",
    "sing": "croix de Malte fine",
@@ -7179,6 +7284,30 @@
    "line": [
     "#000000"
    ]
+  },
+  {
+   "kind": "croix-alesee-videe",
+   "nom": "Croix alésée et vidée",
+   "sing": "croix alésée et vidée",
+   "plur": "croix alésées et vidées",
+   "g": "f",
+   "cat": "La famille de la croix",
+   "rub": "Croix",
+   "file": {
+    "path": "assets/meubles/croix-alesee-videe.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
   }
  ],
  "pieces": [

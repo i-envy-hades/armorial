@@ -386,6 +386,14 @@ function stripesHOnde(n,a,b){
   for(let i=1;i<n;i+=2){ const top=y0+i*h, bot=i===n-1 ? null : y0+(i+1)*h; s+=`<path d="M${onde(top,1)} L${bot===null ? "210,262 L-10,262" : onde(bot,-1)} Z" fill="${b}"/>`; }
   return s;
 }
+/* palé ondé : le fascé ondé, debout */
+function stripesVOnde(n,a,b){
+  const [x0, , x1] = boiteEcu(), w=(x1-x0)/n, amp=Math.min(5, w/4), per=66;
+  const onde = (x, sens) => { const ys=[]; for(let y=-10;y<=262;y+=4) ys.push(y); if(sens<0) ys.reverse(); return ys.map(y => `${(x+amp*Math.sin(2*Math.PI*y/per)).toFixed(2)},${y}`).join(" L"); };
+  let s=`<rect x="-100" y="-100" width="400" height="460" fill="${a}"/>`;
+  for(let i=1;i<n;i+=2){ const g=x0+i*w, d=i===n-1 ? null : x0+(i+1)*w; s+=`<path d="M${onde(g,1)} L${d===null ? "400,262 L400,-10" : onde(d,-1)} Z" fill="${b}"/>`; }
+  return s;
+}
 function stripesV(n,a,b){ let s=""; const [x0, , x1] = boiteEcu(), w=(x1-x0)/n; for(let i=0;i<n;i++){ const left = i ? x0+i*w : -200, right = i===n-1 ? 400 : x0+(i+1)*w+0.6; s+=`<rect x="${left.toFixed(2)}" y="-200" width="${(right-left).toFixed(2)}" height="652" fill="${i%2?b:a}"/>`; } return s; }
 /* bandé / barré : n bandes égales, parallèles à la diagonale de l'écu (de l'angle dextre du chef à l'angle senestre de la pointe), de sorte que
    la première touche l'angle senestre du chef — et la dernière l'angle dextre de la pointe. Chaque bande est un polygone : pas de motif répété,
@@ -423,14 +431,24 @@ function echiquete(n, a, b){
 /* fuselé : des fusées (losanges allongés) qui se touchent par la pointe sur une rangée, les rangées alternant les émaux ; en bande ou en barre,
    tout le réseau tourne de l'angle de la diagonale de l'écu (les fusées sont posées en bande, chaque rang dessine une barre) */
 function fusele(kind, a, b){
-  const w = 40, h = 70, ang = Math.atan(200 / 252) * 180 / Math.PI, rot = { lozengy: 0, lozengybend: -ang, lozengysin: ang }[kind];
-  const cx = { lozengy: 0, lozengybend: 200, lozengysin: 0 }[kind];            // le coin dont l'émail est le premier : dextre du chef (sénestre pour le bandé)
+  const large = kind === "lozengyl", w = large ? 56 : 40, h = large ? 66 : 70, ang = Math.atan(200 / 252) * 180 / Math.PI, rot = { lozengy: 0, lozengyl: 0, lozengybend: -ang, lozengysin: ang }[kind];
+  const cx = { lozengy: 0, lozengyl: 0, lozengybend: 200, lozengysin: 0 }[kind];            // le coin dont l'émail est le premier : dextre du chef (sénestre pour le bandé)
   let s = "";
   for(let j = -16; j <= 16; j++) for(let i = -12; i <= 12; i++){
     const x = i * w + j * w / 2, y = j * h / 2;
     s += `<path d="M${x},${y - h / 2} L${x + w / 2},${y} L${x},${y + h / 2} L${x - w / 2},${y} Z" fill="${(j % 2 + 2) % 2 ? b : a}" stroke="${(j % 2 + 2) % 2 ? b : a}" stroke-width=".5"/>`;
   }
   return `<rect width="200" height="252" fill="${a}"/><g transform="translate(${cx},0) rotate(${rot.toFixed(2)})">${s}</g>`;
+}
+/* vairé : les cloches du vair, de deux émaux choisis, tête-bêche d'un rang à l'autre */
+function vaire(a, b){
+  const w = 44, h = 40;
+  let s = `<rect x="-100" y="-100" width="400" height="460" fill="${a}"/>`;
+  for(let j = -2; j < 9; j++) for(let i = -3; i < 8; i++){
+    const x = i * w + (j % 2 ? w / 2 : 0), y = j * h;
+    s += `<path d="M${x},${y + h} L${x + w * .25},${y + h * .75} V${y + h * .25} L${x + w / 2},${y} L${x + w * .75},${y + h * .25} V${y + h * .75} L${x + w},${y + h} Z" fill="${b}"/>`;
+  }
+  return s;
 }
 function shieldRecoupement(kind, n, a, b){
   const inner = recoupementInner(kind, n, a, b);
@@ -465,8 +483,14 @@ function recoupementInner(kind, n, a, b){
     case "chequy":
       inner = echiquete(n, a, b);
       break;
-    case "lozengy": case "lozengybend": case "lozengysin":
+    case "lozengy": case "lozengybend": case "lozengysin": case "lozengyl":
       inner = fusele(kind, a, b);
+      break;
+    case "vaire":
+      inner = vaire(a, b);
+      break;
+    case "palyonde":
+      inner = stripesVOnde(n, a, b);
       break;
     case "quarterly":
       inner = `<rect width="100" height="126" fill="${a}"/><rect x="100" width="100" height="126" fill="${b}"/><rect y="126" width="100" height="126" fill="${b}"/><rect x="100" y="126" width="100" height="126" fill="${a}"/>`;
@@ -743,7 +767,7 @@ function pieceInner(kind, pf, line, th){
     case "cotice": inner = `<line x1="6" y1="6" x2="200" y2="252" stroke="${pf}" stroke-width="23"/>`; break;
     case "barre": inner = `<line x1="194" y1="6" x2="0" y2="252" stroke="${pf}" stroke-width="${(55 * th / 100).toFixed(1)}"/>`; break;
     case "croix": { const t = 40 * th / 100; inner = `<path d="${croixTrace(100, 112, t / 2, 0, 200, 0, 252)}" fill="${pf}"/>`; break; }
-    case "sautoir": inner = `<path d="M14,16 L186,230 M186,16 L14,230" fill="none" stroke="${pf}" stroke-width="40"/>`; break;
+    case "sautoir": inner = `<path d="M14,16 L186,230 M186,16 L14,230" fill="none" stroke="${pf}" stroke-width="${40 * th / 100}"/>`; break;
     case "chevron": inner = `<path d="M30,196 L100,96 L170,196" fill="none" stroke="${pf}" stroke-width="34"/>`; break;
     case "bordure": inner = `<path d="${SHIELD_D}" fill="none" stroke="${pf}" stroke-width="26"/>`; break;
     case "orle": inner = `<path d="${SHIELD_D}" transform="translate(100,122) scale(.74) translate(-100,-122)" fill="none" stroke="${pf}" stroke-width="16"/>`; break;
@@ -815,7 +839,7 @@ function ecuPoints(){
 /* ---- meubles : figures originales dessinées à neuf ---- */
 /* étoile à n rais (6, 7 ou 8) : même taille et même épaisseur de trait que l'étoile à cinq rais */
 function etoileRais(n, fill, stroke){
-  const R = 26, r = R * (n === 6 ? .5 : .42), pts = [];
+  const R = 26, r = R * (n <= 4 ? .3 : n === 6 ? .5 : n >= 10 ? .6 : .42), pts = [];
   for(let i = 0; i < 2 * n; i++){
     const a = Math.PI * i / n, rr = i % 2 ? r : R;
     pts.push((rr * Math.sin(a)).toFixed(2) + "," + (-rr * Math.cos(a)).toFixed(2));
@@ -870,7 +894,7 @@ function chargeInner(kind, fill, stroke, field){
       </g>`;
     case "croissant": return `<path d="M64,108 A42,42 0 1 0 136,108 A34,34 0 1 1 64,108 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "etoile": return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
-    case "etoile6": case "etoile7": case "etoile8": return etoileRais(+kind.slice(6), fill, stroke);
+    case "etoile3": case "etoile4": case "etoile6": case "etoile7": case "etoile8": case "etoile9": case "etoile10": case "etoile12": case "etoile16": return etoileRais(+kind.slice(6), fill, stroke);
     case "molette": return `<g transform="translate(100,116) scale(1.7)"><path d="M0,-26 L6,-7 L26,-6 L10,5 L16,24 L0,13 L-16,24 L-10,5 L-26,-6 L-6,-7 Z" fill="${fill}" stroke="${stroke}" stroke-width="0.8"/><circle cx="0" cy="2" r="4.5" fill="${field}"/></g>`;
     case "roundel": return `<circle cx="100" cy="116" r="40" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "rose": return `

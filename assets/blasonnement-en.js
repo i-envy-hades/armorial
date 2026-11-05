@@ -11,12 +11,12 @@ const CONTOUR_EN = { onde: "wavy", nebule: "nebuly", dancette: "dancetty", engre
 const ACCENT_EN = { "ouvert et ajouré": "port and windows", "ouvert": "entrance", "crêté, barbé, lorré, peautré et oreillé": "crested, barbed, finned, tailed and eared", "accorné et onglé": "horned and unguled", "accorné": "horned", "accorné, colleté et clariné": "horned, collared and belled", "armé et lampassé": "armed and langued", "armé, lampassé et incensé": "armed, langued and incensed", "becqué et membré": "beaked and membered", "becqué, membré et couronné": "beaked, membered and crowned", "cordé": "stringed", "dans des flammes": "in flames", "défendu": "tusked", "empenné": "flighted", "fûté": "with a trunk", "garni": "hilted", "lampassé et vilené": "langued and pizzled", "lampassé": "langued", "lié": "bound", "onglé et lampassé": "unguled and langued", "ouvert": "open", "paré": "vested", "percé": "pierced", "perfilé": "outlined", "ramé": "attired", "sur son immortalité": "on its immortality", "virolé": "banded" };
 /* le nom de chaque meuble, au singulier et au pluriel ; un nom commençant par « the » n'a pas d'article (« the keys of Saint Peter ») */
 const MEUBLE_EN = {
-  "croix-malte-fine": ["slender Maltese cross", "slender Maltese crosses"], "lettres-l-g": ["the letters L and G", "the letters L and G"], abeille: ["bee", "bees"], grappe: ["bunch of grapes", "bunches of grapes"], cerises: ["sprig of cherries", "sprigs of cherries"], hirondelle: ["swallow", "swallows"],
+  "croix-malte-fine": ["slender Maltese cross", "slender Maltese crosses"], "croix-ancree-fine": ["slender cross moline", "slender crosses moline"], "grenade-unie": ["plain pomegranate", "plain pomegranates"], "lettres-l-g": ["the letters L and G", "the letters L and G"], abeille: ["bee", "bees"], "croix-alesee-videe": ["voided cross couped", "voided crosses couped"], grappe: ["bunch of grapes", "bunches of grapes"], cerises: ["sprig of cherries", "sprigs of cherries"], hirondelle: ["swallow", "swallows"],
   "arche-pont": ["bridge arch", "bridge arches"], ruche: ["beehive", "beehives"], sapin: ["fir tree", "fir trees"],
   lion: ["lion", "lions"], "lion-queue-fourchee": ["lion", "lions"], "lion-hache": ["crowned lion", "crowned lions"], "lion-passant": ["lion passant", "lions passant"], leopard: ["lion passant guardant", "lions passant guardant"], "leopard-lionne": ["lion rampant guardant", "lions rampant guardant"],
   "aigle-sans-couronne": ["eagle", "eagles"], aigle: ["eagle", "eagles"], "aigle-bicephale": ["double-headed eagle", "double-headed eagles"], "aigle-vol-abaisse": ["eagle with wings lowered", "eagles with wings lowered"], "aigle-brandebourg": ["eagle of Brandenburg", "eagles of Brandenburg"],
   croix: ["cross couped", "crosses couped"], fleurdelis: ["fleur-de-lis", "fleurs-de-lis"], "fleurdelis-florencee": ["Florentine fleur-de-lis", "Florentine fleurs-de-lis"], croissant: ["crescent", "crescents"],
-  etoile: ["star", "stars"], etoile6: ["six-pointed star", "six-pointed stars"], etoile7: ["seven-pointed star", "seven-pointed stars"], etoile8: ["eight-pointed star", "eight-pointed stars"], molette: ["spur rowel", "spur rowels"], roundel: ["bezant", "bezants"],
+  etoile: ["star", "stars"], etoile3: ["three-pointed star", "three-pointed stars"], etoile4: ["four-pointed star", "four-pointed stars"], etoile6: ["six-pointed star", "six-pointed stars"], etoile7: ["seven-pointed star", "seven-pointed stars"], etoile8: ["eight-pointed star", "eight-pointed stars"], etoile9: ["nine-pointed star", "nine-pointed stars"], etoile10: ["ten-pointed star", "ten-pointed stars"], etoile12: ["twelve-pointed star", "twelve-pointed stars"], etoile16: ["sixteen-pointed star", "sixteen-pointed stars"], molette: ["spur rowel", "spur rowels"], roundel: ["bezant", "bezants"],
   rose: ["rose", "roses"], macle: ["mascle", "mascles"], rustre: ["rustre", "rustres"], losange: ["lozenge", "lozenges"], coussin: ["cushion", "cushions"], "chateau-deux-tours": ["castle with two towers", "castles with two towers"], "chateau-castille": ["castle of Castile", "castles of Castile"], "tour-couverte": ["roofed tower", "roofed towers"], dauphin: ["dolphin", "dolphins"], "aigle-bicephale-sans-couronne": ["uncrowned double-headed eagle", "uncrowned double-headed eagles"], "croix-christ": ["Cross of Christ", "Crosses of Christ"], fusee: ["fusil", "fusils"], billette: ["billet", "billets"], annelet: ["annulet", "annulets"], vire: ["vire", "vires"],
   escarboucle: ["escarbuncle", "escarbuncles"], "mont-trois-coupeaux": ["triple mount", "triple mounts"], crancelin: ["crancelin", "crancelins"], flanchis: ["flanchis", "flanchis"], croisette: ["small cross", "small crosses"], goutte: ["drop", "drops"],
   quartefeuille: ["quatrefoil", "quatrefoils"], quintefeuille: ["cinquefoil", "cinquefoils"], tiercefeuille: ["tiercefoil", "tiercefoils"], trefle: ["trefoil", "trefoils"], "fer-moulin": ["millrind", "millrinds"], roc: ["chess rook", "chess rooks"], fermail: ["buckle", "buckles"],
@@ -72,13 +72,15 @@ function semePhraseEn(c, s) {
   if (c.m.semeAdj) return ({ "billeté": "billety", "goutté": "gutty" }[c.m.semeAdj] || c.m.semeAdj) + " " + em(s.tm);
   return `semé of ${c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;
 }
-const RAY_PIECE_EN = { barry: "bars", barryonde: "bars wavy", paly: "pales", bendy: "bends", bendysin: "bends sinister", chevronny: "chevrons" };
+const RAY_PIECE_EN = { barry: "bars", barryonde: "bars wavy", paly: "pales", palyonde: "pales wavy", bendy: "bends", bendysin: "bends sinister", chevronny: "chevrons" };
 function rayTexteEn(s) {
   const n = +s.n, ems = `${em(s.t1)} and ${em(s.t2)}`;
   if (s.ray === "chequy") return `Chequy ${ems}${n === 6 ? "" : ` of ${NB_EN[n]} rows`}`;
+  if (s.ray === "vaire") return `Vairy ${ems}`;
+  if (s.ray === "lozengyl") return `Lozengy ${ems}`;
   if (s.ray.startsWith("lozengy")) return `Fusily${{ lozengybend: " in bend", lozengysin: " in bend sinister" }[s.ray] || ""} ${ems}`;
   if (n % 2) return `${cap(em(s.t1))}, ${NB_EN[(n - 1) / 2]} ${RAY_PIECE_EN[s.ray]} ${em(s.t2)}`;
-  const nom = { barry: n >= 10 ? "Barruly" : "Barry", barryonde: "Barry wavy", paly: "Paly", bendy: "Bendy", bendysin: "Bendy sinister", chevronny: "Chevronny" }[s.ray];
+  const nom = { barry: n >= 10 ? "Barruly" : "Barry", barryonde: "Barry wavy", paly: "Paly", palyonde: "Paly wavy", bendy: "Bendy", bendysin: "Bendy sinister", chevronny: "Chevronny" }[s.ray];
   return `${nom}${n === 6 || (n === 10 && s.ray === "barry") ? "" : ` of ${NB_EN[n]}`} ${ems}`;
 }
 function dispoEn(ctx, n) {

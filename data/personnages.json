@@ -1585,7 +1585,8 @@
     "groupe": "marechaux",
     "meta": "1611–1675 · maréchal général des camps et armées",
     "desc": "L'un des plus grands capitaines de Louis XIV, tué d'un boulet à Sasbach.",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'azur semé de fleurs de lis d'or, à la tour d'argent ; au 2, d'or à trois tourteaux de gueules ; au 3, coticé d'or et de gueules ; sur le tout, de gueules à la fasce d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écusson n'a que Bouillon, sans la moitié d'Auvergne"
   },
   {
     "nom": "Nicolas de Catinat",
@@ -1925,7 +1926,9 @@
     "groupe": "marechaux",
     "meta": "1602–1664 · maréchal de France",
     "desc": "Le duc de La Meilleraye, cousin de Richelieu, excelle dans l'artillerie.",
-    "aVerifier": true
+    "atelier": "De gueules au croissant d'hermine",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=70"
   },
   {
     "nom": "Louis de Sancerre",
@@ -2263,8 +2266,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "groupe": "empire",
     "meta": "1775–1832 · prince de l'Empire",
-    "desc": "Prince romain, époux de Pauline Bonaparte et donc beau-frère de Napoléon Ier.",
-    "aVerifier": true
+    "desc": "Prince romain, époux de Pauline Bonaparte et donc beau-frère de Napoléon Ier."
   },
   {
     "nom": "Félix Baciocchi",
@@ -2604,7 +2606,9 @@
     "groupe": "marechaux",
     "meta": "mort en 1453 · maréchal de France",
     "desc": "Seigneur de Chastellux en Bourgogne.",
-    "aVerifier": true
+    "atelier": "D'azur à la bande d'or accompagnée de six billettes d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : six billettes, la septième du canton manque",
+    "atelierAjust": "sz=150"
   },
   {
     "nom": "Louis Prévost de Sansac",
@@ -2944,7 +2948,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'azur à treize couronnes d'or posées 4, 4, 4 et 1",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=145"
   },
   {
     "nom": "Ban de Bénoïc",
@@ -3301,8 +3307,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Lamorat de Listenois",
@@ -3661,8 +3666,7 @@
     },
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Patrides au Cercle d'Or",
@@ -4018,8 +4022,7 @@
     },
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Catherine Howard",
@@ -4363,7 +4366,8 @@
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, d'argent à la tour de gueules ouverte et ajourée de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la porte n'est pas d'argent, l'Atelier colore d'un seul émail porte et fenêtres"
   },
   {
     "nom": "Gilbert Hérail",

@@ -2173,7 +2173,7 @@
   "Coupé : en 1 d'argent à la croix de sable, et en 2 de gueules au léopard d'or": "Per fess: 1, argent, a cross sable; 2, gules, a lion passant guardant or",
   "De gueules à trois coquilles d'argent, au chef de France": "Gules, three scallops argent, a chief of France",
   "Parti : au 1 de gueules au château à trois tours ouvertes crénelées d'argent, ajourées et maçonnées de sable, la tour du milieu accompagnée de deux mains appaumées d'argent, au chef d'or à l'aigle bicéphale de sable ; au 2 d'or à trois pals de gueules, à l'écusson d'or à l'aigle de sable sur le tout": "Per pale: first, gules, a castle with three open crenellated towers argent, pierced and masoned sable, the middle tower between two open hands argent, a chief or with a double-headed eagle sable; second, or, three pallets gules, over all an escutcheon or with an eagle sable",
-  "D'or au lion de sable armé et lampassé de gueules (qui est de Brabant) ; de gueules à la fasce d'argent (qui est de Louvain) sur le tout": "Or, a lion sable, armed and langued gules (Brabant); over all gules, a fess argent (Leuven)",
+  "De sable au lion d'or armé et lampassé de gueules (qui est de Brabant) ; de gueules à la fasce d'argent (qui est de Louvain) sur le tout": "Sable, a lion or, armed and langued gules (Brabant); over all gules, a fess argent (Leuven)",
   "Parti : en 1 gironné d'azur et d'or de 12 pièces, un écu de gueules en cœur (qui est de Flandre ancien) ; en 2 d'or au lion de sable armé et lampassé de gueules (qui est de Flandre moderne)": "Per pale: first, gyronny of twelve azure and or, an escutcheon gules at the centre (old Flanders); second, or, a lion sable, armed and langued gules (modern Flanders)",
   "D'or au lion de sable armé et lampassé de gueules, sous une couronne comtale": "Or, a lion sable, armed and langued gules, under a count's coronet",
   "Écartelé : en 1, de gueules au perron d'or (qui est de la ville de Liège) ; en 2, de gueules à la fasce d'argent (qui est de Bouillon) ; en 3, d'argent à trois lions de sinople, armés et lampassés de gueules, et couronnés d'or (qui est de Franchimont) ; en 4, burelé d'or et de gueules (qui est de Looz) ; enté en pointe d'or à trois cors de chasse de gueules (qui est de Horne)": "Quarterly: first, gules, a perron or (city of Liège); second, gules, a fess argent (Bouillon); third, argent, three lions vert, armed and langued gules, crowned or (Franchimont); fourth, barruly or and gules (Looz); enté en point or, three hunting horns gules (Horne)",
@@ -3390,6 +3390,7 @@
   "la source décrit l'insigne : croix tréflée blanche et croix verte ; le champ se lit sur l'image": "the source describes the badge: a white cross bottony and a green cross; the field is read from the image",
   "Ordre militaire polonais du XIIIᵉ siècle": "13th-century Polish military order",
   "d'après le manteau blanc de l'ordre, décrit par la source": "after the order's white cloak, as described by the source",
+  "Wikipédia écrit « D'or au lion de sable » ; l'image montre un lion d'or sur champ de sable": "Wikipedia writes \"Or, a lion sable\"; the image shows a gold lion on a sable field",
   "Les Trinitaires, ordre religieux": "The Trinitarians, a religious order",
   "d'après l'habit blanc à croix rouge et bleue décrit par la source": "after the white habit with a red and blue cross described by the source",
   "Empire des Romanov (1721-1917)": "Empire of the Romanovs (1721–1917)",
@@ -3699,6 +3700,17 @@
     "Ébauche à ajuster dans l'Atelier : l'arche est ogivale, celle de l'image est en plein cintre et plus épaisse": "Draft to adjust in the Atelier: the arch is pointed, the one in the image is round and heavier",
     "Ébauche à ajuster dans l'Atelier : le perron est dessiné en colonne, sans ses lions ni sa pomme de pin": "Draft to adjust in the Atelier: the perron is drawn as a column, without its lions or pine cone",
     "Ébauche à ajuster dans l'Atelier : la ruche et la croix sont côte à côte sur le quartier d'azur, sans le trait du parti": "Draft to adjust in the Atelier: the beehive and the cross stand side by side on the azure quarter, without the line of the partition",
-    "Ébauche à ajuster dans l'Atelier : un loup pour la louve, et la terrasse manque": "Draft to adjust in the Atelier: a wolf for the she-wolf, and the mound is missing"
+    "Ébauche à ajuster dans l'Atelier : un loup pour la louve, et la terrasse manque": "Draft to adjust in the Atelier: a wolf for the she-wolf, and the mound is missing",
+    "Ébauche à ajuster dans l'Atelier : le taureau est passant, celui de l'image est dressé": "Draft to adjust in the Atelier: the bull is passant, the one in the image is rampant",
+    "Le même blasonnement, dans les mots de l'Atelier : des aigles pour les aiglettes": "The same blazon, in the Atelier's words: eagles for the eaglets",
+      "Ébauche à ajuster dans l'Atelier : le bouton n'est pas de gueules": "Draft to adjust in the Atelier: the seed is not gules",
+    "Ébauche à ajuster dans l'Atelier : des besants pour les oranges, sans leur branche": "Draft to adjust in the Atelier: bezants for the oranges, without their branch",
+    "Ébauche à ajuster dans l'Atelier : la crosse n'a pas ses perles": "Draft to adjust in the Atelier: the crozier has no pearls",
+    "Ébauche à ajuster dans l'Atelier : le bras ne tient pas la clef, et la nuée manque": "Draft to adjust in the Atelier: the arm does not hold the key, and the cloud is missing",
+    "Ébauche à ajuster dans l'Atelier : un seul mont pour les trois": "Draft to adjust in the Atelier: one mound for the three",
+    "Ébauche à ajuster dans l'Atelier : un poisson d'argent pour la truite au naturel": "Draft to adjust in the Atelier: a silver fish for the natural trout",
+    "Ébauche à ajuster dans l'Atelier : l'écusson n'a que Bouillon, sans la moitié d'Auvergne": "Draft to adjust in the Atelier: the inescutcheon only has Bouillon, without the half of Auvergne",
+    "Ébauche à ajuster dans l'Atelier : six billettes, la septième du canton manque": "Draft to adjust in the Atelier: six billets, the seventh in the canton is missing",
+    "Ébauche à ajuster dans l'Atelier : la porte n'est pas d'argent, l'Atelier colore d'un seul émail porte et fenêtres": "Draft to adjust in the Atelier: the door is not silver, the Atelier uses one tincture for door and windows"
  }
 }

@@ -64,7 +64,7 @@ function table(paires) {
 }
 function lexique() {
   if (LEX && LEX.d === DATA && LEX.a === ATL) return LEX;
-  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "par", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie", "ondees"]) };
+  const L = LEX = { d: DATA, a: ATL, vocab: new Set(["a", "au", "aux", "le", "la", "de", "du", "un", "une", "et", "en", "sur", "tout", "brochant", "par", "plein", "seme", "meme", "champ", "aussi", "pieces", "vert", "chacun", "les", "componee", "compons", "ceux", "ornee", "rinceau", "plus", "grand", "grands", "grande", "grandes", "elargie", "ondees", "ondes"]) };
   L.emaux = new Map(Object.entries(MOT).map(([k, v]) => [plie(v), k])); L.emaux.set("vert", "Sinople");
   L.compte = new Map(NB.map((w, i) => [w, i]).filter(([w]) => w)); L.compte.set("une", 1);
   const noms = [];
@@ -83,7 +83,7 @@ function lexique() {
   L.parts = table(DATA.partitions.map(p => [p.nom, { kind: p.kind, tierce: p.kind.startsWith("tierce") }]));
   /* champs rayés : { ray, n } ; les noms des petites pièces (burelé, vergeté, coticé) valent dix pièces sauf mention */
   L.raye = table([["fascé", { ray: "barry" }], ["fascé ondé", { ray: "barryonde" }], ["ondé", { ray: "barryonde" }],          // « ondé d'argent et d'azur » : un fascé ondé (Zélande)
-    ["palé", { ray: "paly" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
+    ["palé", { ray: "paly" }], ["palé ondé", { ray: "palyonde" }], ["losangé", { ray: "lozengyl" }], ["vairé", { ray: "vaire" }], ["bandé", { ray: "bendy" }], ["barré", { ray: "bendysin" }], ["chevronné", { ray: "chevronny" }],
     ["burelé", { ray: "barry", n: "10" }], ["vergeté", { ray: "paly", n: "10" }], ["vergetté", { ray: "paly", n: "10" }], ["coticé", { ray: "bendy", n: "10" }], ["coticé en barre", { ray: "bendysin", n: "10" }],
     ["échiqueté", { ray: "chequy" }], ["fuselé", { ray: "lozengy" }], ["fuselé en bande", { ray: "lozengybend" }], ["fuselé en barre", { ray: "lozengysin" }]]);
   L.queue = {};
@@ -580,9 +580,9 @@ function pChamp(P) {
     if (!plein && cle(P, v) === "a" && LEX.compte.has(cle(P, v + 1))) {
       const k = LEX.compte.get(cle(P, v + 1)), pl = suites(LEX.pieces, P, v + 2)[0], RAYE = { pal: "paly", fasce: "barry", bande: "bendy", barre: "bendysin", chevron: "chevronny" };
       if (pl && pl.val.plur && RAYE[pl.val.p] && k >= 2 && k <= 6) {
-        const onde = pl.val.p === "fasce" && cle(P, v + 2 + pl.n) === "ondees";          // « de sable à trois fasces ondées d'argent »
+        const onde = (pl.val.p === "fasce" && cle(P, v + 2 + pl.n) === "ondees") || (pl.val.p === "pal" && cle(P, v + 2 + pl.n) === "ondes");          // « de sable à trois fasces ondées d'argent »
         const t2 = pEmail(P, v + 2 + pl.n + (onde ? 1 : 0));
-        if (t2) return { ch: { f: "ray", ray: onde ? "barryonde" : RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
+        if (t2) return { ch: { f: "ray", ray: onde ? (pl.val.p === "pal" ? "palyonde" : "barryonde") : RAYE[pl.val.p], t1: t.t, t2: t2.t, n: String(2 * k + 1) }, i: t2.i };
       }
     }
     return { ch: { f: "plein", t1: t.t }, i: t.i + (plein ? 1 : 0), plein };
@@ -611,7 +611,7 @@ function pChamp(P) {
     if (cle(P, t1.i) !== "et") return rate(P, t1.i, "« et » (deux émaux)");
     const t2 = pEmail(P, t1.i + 1);
     if (!t2) return null;
-    const ray = r.val.ray, losange = ray.startsWith("lozengy");
+    const ray = r.val.ray, losange = ray.startsWith("lozengy") || ray === "vaire";
     let i = t2.i, nn = r.val.n || "6";
     if (cle(P, i) === "," && cle(P, i + 1) === "de" && LEX.compte.has(cle(P, i + 2))) i++;                // « Chevronné d'or et de gueules, de douze pièces »
     if (cle(P, i) === "de" && LEX.compte.has(cle(P, i + 1)) && (cle(P, i + 2) === "pieces" || cle(P, i + 2) === "tires" || cle(P, i + 2) === "tire")) {

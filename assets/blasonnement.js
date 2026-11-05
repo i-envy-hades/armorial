@@ -80,22 +80,25 @@ const PLEIN = {
   12: [{ id: "", lab: "4, 4 et 4", ph: " posé 4, 4 et 4", pts: [[40, 62, .17], [80, 62, .17], [120, 62, .17], [160, 62, .17], [40, 120, .17], [80, 120, .17], [120, 120, .17], [160, 120, .17], [58, 178, .17], [86, 178, .17], [114, 178, .17], [142, 178, .17]] },
        { id: "orle", lab: "En orle", ph: " en orle", plein: true, pts: [[46, 46, .15], [100, 38, .15], [154, 46, .15], [34, 86, .15], [166, 86, .15], [32, 126, .15], [168, 126, .15], [40, 166, .15], [160, 166, .15], [64, 198, .15], [136, 198, .15], [100, 222, .15]] }],
   /* les treize étoiles du Valais : trois pals, celui du milieu sur le trait du parti */
-  13: [{ id: "", lab: "En trois pals, 4, 5 et 4", ph: " posé en trois pals 4, 5 et 4", alt: [" posé 4, 5 et 4"], pts: [[52, 50, .21], [52, 96, .21], [52, 142, .21], [58, 188, .21], [100, 42, .19], [100, 86, .19], [100, 130, .19], [100, 174, .19], [100, 216, .19], [148, 50, .21], [148, 96, .21], [148, 142, .21], [142, 188, .21]] }],
+  13: [{ id: "", lab: "En trois pals, 4, 5 et 4", ph: " posé en trois pals 4, 5 et 4", alt: [" posé 4, 5 et 4"], pts: [[52, 50, .21], [52, 96, .21], [52, 142, .21], [58, 188, .21], [100, 42, .19], [100, 86, .19], [100, 130, .19], [100, 174, .19], [100, 216, .19], [148, 50, .21], [148, 96, .21], [148, 142, .21], [142, 188, .21]] },
+      { id: "4441", lab: "4, 4, 4 et 1", ph: " posé 4, 4, 4 et 1", pts: [[40, 52, .17], [80, 52, .17], [120, 52, .17], [160, 52, .17], [40, 102, .17], [80, 102, .17], [120, 102, .17], [160, 102, .17], [52, 152, .17], [84, 152, .17], [116, 152, .17], [148, 152, .17], [100, 202, .17]] }],
 };
 /* la pièce que répètent les rayures (palé → pal…), pour dire « à trois pals » quand le nombre de zones est impair */
-const RAY_PIECE = { barry: "fasce", barryonde: "fasce", paly: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
+const RAY_PIECE = { barry: "fasce", barryonde: "fasce", paly: "pal", palyonde: "pal", bendy: "bande", bendysin: "barre", chevronny: "chevron" };
 /* les champs rayés : les quatre sens du trait, les chevrons, l'échiqueté (n = nombre de tires) et le fuselé (trois sens) */
-const RAYS = ["barry", "barryonde", "paly", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin"];
+const RAYS = ["barry", "barryonde", "paly", "palyonde", "bendy", "bendysin", "chevronny", "chequy", "lozengy", "lozengybend", "lozengysin", "lozengyl", "vaire"];
 const RAY_BANDES = ["4", "5", "6", "7", "8", "9", "10", "11", "12", "13"], RAY_TIRES = ["3", "4", "5", "6", "7", "8"];
-const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") ? ["6"] : ray === "barryonde" ? ["4", "5", "6", "7", "8", "9"] : RAY_BANDES;          // le fascé ondé : un nombre pair de pièces
+const rayNs = ray => ray === "chequy" ? RAY_TIRES : ray.startsWith("lozengy") || ray === "vaire" ? ["6"] : ray === "barryonde" || ray === "palyonde" ? ["4", "5", "6", "7", "8", "9"] : RAY_BANDES;          // le fascé ondé : un nombre pair de pièces
 /* à partir de dix pièces, les pièces diminuées changent de nom (burelé, vergeté, coticé) ; le nombre par défaut est six, ou dix pour ces noms-là */
-const RAY_NOM = { barry: ["Fascé", "Burelé"], barryonde: ["Fascé ondé", "Fascé ondé"], paly: ["Palé", "Vergeté"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
+const RAY_NOM = { barry: ["Fascé", "Burelé"], barryonde: ["Fascé ondé", "Fascé ondé"], paly: ["Palé", "Vergeté"], palyonde: ["Palé ondé", "Palé ondé"], bendy: ["Bandé", "Coticé"], bendysin: ["Barré", "Coticé en barre"], chevronny: ["Chevronné", "Chevronné"] };
 function rayTexte(s) {
   const n = +s.n, ems = `${de(s.t1)} et ${de(s.t2)}`;
   if (s.ray === "chequy") return `Échiqueté ${ems}${n === 6 ? "" : ` de ${NB[n]} tires`}`;
+  if (s.ray === "vaire") return `Vairé ${ems}`;
+  if (s.ray === "lozengyl") return `Losangé ${ems}`;
   if (s.ray.startsWith("lozengy")) return `Fuselé${{ lozengybend: " en bande", lozengysin: " en barre" }[s.ray] || ""} ${ems}`;
   /* un nombre impair de zones laisse aux deux bords l'émail du champ : ce sont des pièces rebattues, « d'or à trois pals de gueules » */
-  if (n % 2) return `${cap(de(s.t1))} à ${NB[(n - 1) / 2]} ${RAY_PIECE[s.ray]}s${s.ray === "barryonde" ? " ondées" : ""} ${de(s.t2)}`;
+  if (n % 2) return `${cap(de(s.t1))} à ${NB[(n - 1) / 2]} ${RAY_PIECE[s.ray]}s${s.ray === "barryonde" ? " ondées" : s.ray === "palyonde" ? " ondés" : ""} ${de(s.t2)}`;
   const [petit, grand] = RAY_NOM[s.ray];
   return `${n >= 10 ? grand : petit} ${ems}${n === 6 || (n === 10 && s.ray !== "chevronny") ? "" : ` de ${NB[n]} pièces`}`;
 }
@@ -164,7 +167,7 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 
 /* ---------- état : les ornements, jusqu'à quatre armes pour l'écartelé, et un écusson en abîme ---------- */
 const ADEF = { cot: "", xm: "", xt: "Or", xd: "", f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
-  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", an: "0", an2: "0", ad: "",
+  d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", an: "0", an2: "0", ec: "100", ec2: "100", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
   br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
   lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "", big2: "", m2c: "", m2cn: "3", m2ct: "Or", m2cs: "100", m2ce: "100", lrg: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
@@ -257,7 +260,7 @@ function normalize(s) {
   if (!s.lpc || !own(MOT, s.lpt)) s.lpt = ADEF.lpt;
   s.brsz = num(s.brsz, 30, 250, 100); s.brdx = num(s.brdx, -80, 80, 0); s.brdy = num(s.brdy, -80, 80, 0);
   s.pdx = s.p && s.p !== "bordure" && s.p !== "orle" ? num(s.pdx, -80, 80, 0) : "0"; s.pdy = s.p && s.p !== "bordure" && s.p !== "orle" ? num(s.pdy, -80, 80, 0) : "0";      // la bordure et l'orle longent toujours les bords
-  s.pth = s.p === "croix" ? num(s.pth, 50, 250, 100) : "100";
+  s.pth = s.p === "croix" || s.p === "sautoir" ? num(s.pth, 30, 250, 100) : "100";
   s.rot = s.m && (meuble(s.m) || {}).incline && ["-90", "-45", "45", "90"].includes(String(s.rot)) ? String(s.rot) : "0";             // l'inclinaison du dessin, pour les meubles qui s'inclinent (le bras) ; le blasonnement ne la dit pas
   if (!own(PLEIN, s.nb2)) s.nb2 = "3";
   if (!PLEIN[s.nb2].some(d => d.id === s.d2)) s.d2 = "";
@@ -292,7 +295,7 @@ function normalize(s) {
     if (!s.cmp || !mm || mm.seul || mm.queue) s[k] = "";
     if (!s[k] || !own(MOT, s[kt])) s[kt] = ADEF[kt];
   }
-  for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); s["an" + x] = num(s["an" + x], -180, 180, 0); }
+  for (const x of ["", "2"]) { s["sz" + x] = num(s["sz" + x], 30, 200, 100); s["dx" + x] = num(s["dx" + x], -60, 60, 0); s["dy" + x] = num(s["dy" + x], -60, 60, 0); s["an" + x] = num(s["an" + x], -180, 180, 0); s["ec" + x] = num(s["ec" + x], 50, 250, 100); }
   const map = adMap(s), n1 = count1(s), n2 = count2(s);
   for (const [k, v] of map) {
     const [g, i] = k.split(".").map(Number);

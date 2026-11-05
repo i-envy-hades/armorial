@@ -32,7 +32,8 @@ const SHRINK = { plein: 1, bordure: .84, orle: .74 };
 const adjust = (pts, a, grp, sfx) => {
   const map = adMap(a), k = +a["sz" + sfx] / 100, dx = +a["dx" + sfx], dy = +a["dy" + sfx];
   const rot = (grp === 1 ? +a.rot || 0 : 0) + (+a["an" + sfx] || 0);
-  return pts.map(([x, y, sc, r, inv], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0], p = [x + dx + it[1], y + dy + it[2], sc * k * it[0] / 100, (r || 0) + (inv ? -rot : rot) + (it[3] || 0)]; if (inv) p.push(inv); return p; });      // une figure en miroir tourne en sens inverse : l'angle ouvre ou ferme le sautoir
+  const e = (+a["ec" + sfx] || 100) / 100, cx = pts.reduce((t, q) => t + q[0], 0) / (pts.length || 1), cy = pts.reduce((t, q) => t + q[1], 0) / (pts.length || 1);      // l'écart : les figures s'éloignent du milieu de leur groupe
+  return pts.map(([x, y, sc, r, inv], i) => { const it = map.get(`${grp}.${i}`) || [100, 0, 0], p = [cx + (x - cx) * e + dx + it[1], cy + (y - cy) * e + dy + it[2], sc * k * it[0] / 100, (r || 0) + (inv ? -rot : rot) + (it[3] || 0)]; if (inv) p.push(inv); return p; });      // une figure en miroir tourne en sens inverse : l'angle ouvre ou ferme le sautoir
 };
 /* la hauteur, dans le repère de l'écu, d'une figure empruntée à l'échelle 1 (sa boîte la contient sans la déformer) ; null pour un dessin de l'encyclopédie */
 /* mesurée une fois dans le SVG caché #measure (les marges vides du fichier n'y comptent pas) ; à défaut, d'après le viewBox */
