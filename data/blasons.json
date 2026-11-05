@@ -2992,7 +2992,8 @@
       "label": "Wikipédia, « Armorial des familles de France »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_familles_de_France"
     },
-    "aVerifier": true
+    "atelierAjust": "sz=105",
+    "forme": "sannitique"
   },
   {
     "nom": "Naples",
@@ -3310,8 +3311,7 @@
     },
     "auteur": "ByacC",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Maison de Maillé",
@@ -3623,8 +3623,7 @@
     },
     "auteur": "Bluebear2",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Damas",
@@ -3935,8 +3934,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Grolée",
@@ -4248,7 +4246,7 @@
     "auteur": "Bear17",
     "lic": "CC0",
     "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Famille de Solages",
@@ -4562,7 +4560,8 @@
     "auteur": "Thom.lanaud",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelier": "D'or à l'aigle au vol déployé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Metz",
@@ -4874,8 +4873,7 @@
     "auteur": "Anno16",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "porteur": "Ville de Thonon-les-Bains (France)",
-    "aVerifier": true
+    "porteur": "Ville de Thonon-les-Bains (France)"
   },
   {
     "nom": "Aire-sur-la-Lys",
@@ -5191,7 +5189,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Ganges (France)",
-    "aVerifier": true
+    "atelierAjust": "sz=115&dy=10&dy2=20",
+    "forme": "sannitique"
   },
   {
     "nom": "Eauze",
@@ -5514,7 +5513,7 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Ville d'Édimbourg (Écosse)",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Cité de Londres",
@@ -5838,7 +5837,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de La Rochelle (France)",
-    "aVerifier": true
+    "atelier": "De gueules au vaisseau d'or, au chef d'azur chargé de trois fleurs de lis d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la mer manque, et la coque n'est pas posée dessus",
+    "atelierAjust": "sz=85&ec=90&sz2=85&dy2=28"
   },
   {
     "nom": "Versailles",
@@ -6161,8 +6162,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "porteur": "Commune du canton de Genève"
   },
   {
     "nom": "Genthod",
@@ -6504,7 +6504,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/File%3ACHE_Allschwil_COA.svg",
     "forme": "iberique",
     "porteur": "Commune du canton de Bâle-Campagne",
-    "aVerifier": true
+    "atelier": "D'azur à l'épée d'argent, accompagnée d'une clef d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la clef est la nôtre, pas celle de l'image",
+    "atelierAjust": "sz=120&an=-45&sz2=85&an2=45"
   },
   {
     "nom": "Arlesheim",
@@ -6845,7 +6847,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Soleure",
-    "aVerifier": true
+    "atelier": "D'argent à trois sapins de sinople rangés en fasce, accompagnés d'un mont à trois coupeaux de sinople en pointe",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le fût reste brun, et non de gueules",
+    "atelierAjust": "sz=185&sz2=110&dy2=20"
   },
   {
     "nom": "Bellinzone",
@@ -7185,7 +7189,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Zoug",
-    "aVerifier": true
+    "atelier": "Parti : au 1, d'or à la tour de sable ; au 2, d'azur à la croix de Lorraine d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la croix n'est pas pommetée",
+    "atelierAjust": "sz=90&sz2=55"
   },
   {
     "nom": "Bülach",
@@ -7523,7 +7529,7 @@
     "licurl": "https://commons.wikimedia.org/wiki/File%3ABischofszell-blazon.svg",
     "forme": "iberique",
     "porteur": "Commune du canton de Thurgovie",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Sachseln",
@@ -7839,7 +7845,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "D'or à quatre bandes d'azur, à la bordure de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : quatre bandes pour que trois se voient dans la bordure"
   },
   {
     "nom": "Comté de Rethel",
@@ -8158,7 +8165,8 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "D'or au lion de gueules, à la bordure de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Tarentaise",
@@ -8477,7 +8485,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "D'azur à l'aigle échiquetée d'argent et de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Haute-Lusace",
@@ -8795,7 +8805,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Land d'Allemagne",
-    "aVerifier": true
+    "atelierAjust": "sz=95",
+    "forme": "iberique"
   },
   {
     "nom": "Land de Salzbourg",
@@ -9117,7 +9128,8 @@
     "auteur": "Ssolbergj",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelier": "D'or à la croix de gueules ; sur le tout d'argent à la main appaumée de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Royaume d'Hawaï",
@@ -9453,7 +9465,7 @@
     "auteur": "Bernhard Karl von Koehne",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-RU-exempt",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Empire allemand",
@@ -9782,7 +9794,9 @@
     "auteur": "Ville de Cologne",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "aVerifier": true
+    "atelier": "D'argent à onze gouttes de sable, au chef de gueules chargé de trois tours d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : des tours à la place des couronnes du texte",
+    "atelierAjust": "sz2=75&ec2=85&dy2=34"
   },
   {
     "nom": "Famille de Romilley",
@@ -10101,7 +10115,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Saumur (France)",
-    "aVerifier": true
+    "atelier": "Coupé en chef : au 1, d'azur à trois fleurs de lis d'or rangées en fasce ; au 2, de gueules à la lettre S d'or, au chef d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : une bande d'argent pour la fasce bretessée et maçonnée"
   },
   {
     "nom": "Cahors",
@@ -10425,7 +10440,8 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Ville d'Arras (France)",
-    "aVerifier": true
+    "atelier": "De gueules au lion d'or armé et lampassé d'azur ; sur le tout d'azur semé de fleurs de lis d'or, au lambel de gueules, chaque pendant chargé de trois châteaux donjonnés d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Calais",
@@ -10742,7 +10758,10 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Ville de Hanovre (Allemagne)",
-    "aVerifier": true
+    "atelier": "De gueules à la porte de ville d'argent, accompagnée d'un lion passant d'or en chef",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écu au trèfle manque",
+    "atelierAjust": "sz=115&dy=-10&sz2=75&dy2=12",
+    "forme": "iberique"
   },
   {
     "nom": "Augsbourg",
@@ -11066,7 +11085,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville d'Aberdeen (Royaume-Uni)",
-    "aVerifier": true
+    "atelier": "De gueules à trois tours d'argent, à l'orle d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : des tours pour les châteaux, et un orle simple pour le double trescheur fleuronné"
   },
   {
     "nom": "Glasgow",
@@ -11388,7 +11408,8 @@
     "lic": "CC0",
     "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "porteur": "Province de Belgique",
-    "aVerifier": true
+    "atelier": "D'or au lion de sable armé et lampassé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Province de Liège",
@@ -11702,8 +11723,7 @@
     "auteur": "Superbenjamin",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Territoire français d'outre-mer",
-    "aVerifier": true
+    "porteur": "Territoire français d'outre-mer"
   },
   {
     "nom": "Voblast de Hrodna",
@@ -12019,8 +12039,7 @@
     "auteur": "Nomadic1",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Principauté épiscopale de Bâle",
@@ -12341,7 +12360,7 @@
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelierAjust": "sz=85&ec=112"
   },
   {
     "nom": "Seigneurie de Bettembourg",
@@ -12653,8 +12672,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Heddesdorf",
@@ -12982,7 +13000,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "atelier": "Coupé : au 1, échiqueté de sable et d'argent de quatre tires ; au 2, d'or à l'étoile à six rais de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Thalwil",
@@ -13324,8 +13343,7 @@
     "auteur": "Bratwurst mit Sauerkraut",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/File%3ACHE_M%C3%BCnchenstein_COA.svg",
-    "porteur": "Commune du canton de Bâle-Campagne",
-    "aVerifier": true
+    "porteur": "Commune du canton de Bâle-Campagne"
   },
   {
     "nom": "Reinach",
@@ -13668,7 +13686,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "atelier": "D'argent à la chèvre saillante contournée de sable lampassée de gueules, accompagnée d'un mont à trois coupeaux de sable en pointe",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=105&dy=-16&sz2=75&dy2=22"
   },
   {
     "nom": "Corcelles-le-Jorat",
@@ -14013,7 +14033,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelier": "Parti : au 1, de sinople à l'épée d'or, accompagnée de deux croissants d'argent ; au 2, de gueules à trois bandes d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : trois bandes pour la bande et ses cotices, et les croissants ne sont pas adossés",
+    "atelierAjust": "q1.sz2=75&q1.ec2=135&q1.dy2=-22"
   },
   {
     "nom": "Satigny",
@@ -14355,7 +14377,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton du Jura",
-    "aVerifier": true
+    "atelier": "D'argent au cygne de gueules becqué et membré d'or, accompagné de trois étoiles de gueules en chef",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un cygne pour l'oie, et le mont manque",
+    "atelierAjust": "sz=85&dy=30&ec2=125"
   },
   {
     "nom": "Pregny-Chambésy",
@@ -14676,8 +14700,7 @@
     },
     "auteur": "Thom.Lanaud",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille du Cheyron",
@@ -14990,7 +15013,7 @@
     "auteur": "Tretinville",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=46&dy=-6&sz2=80&ec2=118"
   },
   {
     "nom": "Famille Bahezre de Lanlay",
@@ -15305,7 +15328,7 @@
     "auteur": "Koro",
     "lic": "CC BY 2.5",
     "licurl": "https://creativecommons.org/licenses/by/2.5",
-    "aVerifier": true
+    "atelierAjust": "pth=118"
   },
   {
     "nom": "Famille d'Ancenis",
@@ -15622,8 +15645,7 @@
     },
     "auteur": "SanglierT",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Poligny",
@@ -15935,7 +15957,9 @@
     "auteur": "Thom.lanaud",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelier": "D'azur à trois glands sans feuilles d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=125"
   },
   {
     "nom": "Famille d'Arpajon",

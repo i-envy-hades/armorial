@@ -272,6 +272,7 @@ CONNUES = [
     ({"A0": {"t1": "Gueules", "m": "etoile3", "nb": "1", "tm": "Or"}}, "De gueules à l'étoile à trois rais d'or"),
     ({"A0": {"t1": "Azur", "m": "grenade-unie", "nb": "3", "tm": "Argent"}}, "D'azur à trois grenades unies d'argent"),
     ({"A0": {"t1": "Gueules", "m": "soc-charrue", "nb": "1", "tm": "Argent"}}, "De gueules au soc de charrue d'argent"),
+    ({"A0": {"t1": "Gueules", "m": "porte-ville", "nb": "1", "tm": "Argent"}}, "De gueules à la porte de ville d'argent"),
     # les attitudes ajoutées ensuite (figures de Commons) : ours rampant, loup ravissant, cerf courant ou couché, cheval passant, licorne assise, léopard lionné, taureau,
     # colombe essorante, aigle au vol abaissé, wyvern, bélier passant
     ({"A0": {"t1": "Argent", "m": "ours-rampant", "nb": "1", "tm": "Sable", "ta": "Gueules"}}, "D'argent à l'ours rampant de sable lampassé et vilené de gueules"),
@@ -471,7 +472,7 @@ REFUSES = [
     ("D'azur à la rose d'argent couronnée d'or", "couronnée"),                 # seules les bêtes portent une couronne
     ("D'azur à la croix d'or chargée d'un lion issant de gueules", "issant"),
     ("D'azur à deux lions issants d'or", "issants"),
-    ("D'azur à onze étoiles d'or", "onze étoiles"),
+    ("D'azur à la fasce d'or, accompagnée de quatre étoiles d'or", "quatre étoiles autour de la fasce"),
     ("D'azur à la fasce d'or ondée", "avant son émail"),
     ("D'azur à l'ours d'or", "« ours » seul"),                               # le nom de l'Atelier est « ours passant » : on le propose
     ("D'azur au cheval d'argent", "cheval cabré"),

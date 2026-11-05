@@ -1620,7 +1620,8 @@
     "groupe": "empire",
     "meta": "1762–1833 · maréchal d'Empire",
     "desc": "Le vainqueur de Fleurus, en 1794, porte ses initiales entrelacées sur son écu.",
-    "aVerifier": true
+    "atelier": "D'azur aux lettres J, B et J d'or, à la bordure d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les lettres ne sont pas enlacées, et la bordure n'a pas ses besants"
   },
   {
     "nom": "Thomas Robert Bugeaud",
@@ -1962,8 +1963,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "marechaux",
     "meta": "mort en 1494 · maréchal de France",
-    "desc": "Seigneur d'Esquerdes, il passe du service de Bourgogne à celui du roi.",
-    "aVerifier": true
+    "desc": "Seigneur d'Esquerdes, il passe du service de Bourgogne à celui du roi."
   },
   {
     "nom": "René de Montjean",
@@ -2303,7 +2303,9 @@
     "groupe": "empire",
     "meta": "1781–1824 · vice-roi d'Italie",
     "desc": "Fils adoptif de Napoléon Ier. Son écu porte l'aigle impériale et un E.",
-    "aVerifier": true
+    "atelier": "D'azur à l'aigle impériale d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le foudre ne porte pas le médaillon",
+    "atelierAjust": "sz=95"
   },
   {
     "nom": "Jacques de Molay",
@@ -2646,8 +2648,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1603–1680 · maréchal de France",
-    "desc": "Comte de Grancey et de Médavy.",
-    "aVerifier": true
+    "desc": "Comte de Grancey et de Médavy."
   },
   {
     "nom": "René de Froulay de Tessé",
@@ -2990,7 +2991,8 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "De pourpre à l'aigle bicéphale sans couronne d'or becquée et membrée d'azur",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Perceval",
@@ -3349,7 +3351,7 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Baudemagus",
@@ -3709,7 +3711,7 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Pharamond",
@@ -4063,8 +4065,7 @@
     },
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Anne de Danemark",
@@ -4406,7 +4407,8 @@
     "auteur": "Edouard-rainaut",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, d'azur à trois poissons d'or posés en pal, à la bordure componée d'or et de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : des poissons pour les bars, droits et non en demi-cercle"
   },
   {
     "nom": "Pierre de Montaigu",

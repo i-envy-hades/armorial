@@ -7240,6 +7240,82 @@
    "accentSouple": true
   },
   {
+   "kind": "gland-seul",
+   "nom": "Gland sans feuilles",
+   "sing": "gland sans feuilles",
+   "plur": "glands sans feuilles",
+   "g": "m",
+   "cat": "Le règne végétal",
+   "rub": "Plantes et fleurs",
+   "file": {
+    "path": "assets/meubles/gland-seul.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ]
+  },
+  {
+   "kind": "porte-ville",
+   "nom": "Porte de ville",
+   "sing": "porte de ville",
+   "plur": "portes de ville",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "rub": "Bâtiments",
+   "file": {
+    "path": "assets/meubles/porte-ville.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ]
+  },
+  {
+   "kind": "lettres-j-b-j",
+   "nom": "Lettres J, B et J",
+   "sing": "lettres J, B et J",
+   "plur": "lettres J, B et J",
+   "pluriel": true,
+   "g": "f",
+   "cat": "Lettres",
+   "rub": "Lettres latines",
+   "lettre": true,
+   "file": {
+    "path": "assets/meubles/lettres/lettres-j-b-j.svg",
+    "origine": "police Cardo",
+    "auteur": "David J. Perry",
+    "lic": "OFL 1.1",
+    "licurl": "https://openfontlicense.org/"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "base": true,
+   "outline": true
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

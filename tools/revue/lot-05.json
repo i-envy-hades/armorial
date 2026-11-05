@@ -1,0 +1,307 @@
+{
+ "lot": 5,
+ "titre": "Lot 5 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Famille de Mac Mahon",
+   "verdict": "essai",
+   "avis": "Lions un peu agrandis. Les vilenies ne sont pas dessinées."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison d'Anduze",
+   "verdict": "fidele",
+   "avis": "Mêmes étoiles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Escoubleau de Sourdis",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Andlau",
+   "verdict": "fidele",
+   "avis": "Même croix."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Dampierre (Picardie)",
+   "verdict": "essai",
+   "avis": "Losanges agrandis ; ceux de l'image sont un peu plus larges."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Cusance",
+   "verdict": "essai",
+   "avis": "L'aigle aux ailes déployées, comme à Besançon."
+  },
+  {
+   "g": "blasons",
+   "nom": "Thonon-les-Bains",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ganges",
+   "verdict": "essai",
+   "avis": "Lions agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Édimbourg",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "La Rochelle",
+   "verdict": "essai",
+   "avis": "Voiles blanches, comme sur l'image, mais pas de mer."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bardonnex",
+   "verdict": "essai",
+   "avis": "Croix agrandie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Allschwil",
+   "verdict": "essai",
+   "avis": "Épée et clef croisées avec les réglages : à regarder."
+  },
+  {
+   "g": "blasons",
+   "nom": "Olten",
+   "verdict": "essai",
+   "avis": "Les fûts restent bruns, et non de gueules. Notre sapin est plus large que ceux de l'image, et le mont plus pointu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Baar",
+   "verdict": "essai",
+   "avis": "Parti, comme sur l'image, alors que le texte de la carte dit « coupé ». Croix de Lorraine pour la croix patriarcale pommetée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bischofszell",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Ponthieu",
+   "verdict": "essai",
+   "avis": "Quatre bandes dans le texte de l'Atelier : la bordure en cache une, et l'on en voit trois, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Soissonnais",
+   "verdict": "essai",
+   "avis": "Le même écu dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Margraviat de Moravie",
+   "verdict": "essai",
+   "avis": "La même aigle, dont le bec et la couronne restent ceux du dessin."
+  },
+  {
+   "g": "blasons",
+   "nom": "Basse-Saxe",
+   "verdict": "essai",
+   "avis": "Cheval agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ulster",
+   "verdict": "essai",
+   "avis": "L'écusson à la main, sur le tout."
+  },
+  {
+   "g": "blasons",
+   "nom": "Empire russe",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Cologne",
+   "verdict": "essai",
+   "avis": "Des tours dans le chef, au choix du curateur ; le texte de la carte dit des couronnes. Onze figures posées 5, 4 et 2, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Saumur",
+   "verdict": "essai",
+   "avis": "Le chef et la lettre S. Une bande unie à la place de la fasce bretessée et maçonnée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Arras",
+   "verdict": "essai",
+   "avis": "Lion et écusson, avec le lambel chargé de ses châteaux."
+  },
+  {
+   "g": "blasons",
+   "nom": "Hanovre",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : la porte de ville. L'écu au trèfle manque."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aberdeen",
+   "verdict": "essai",
+   "avis": "Tours et orle simple, à la place du double trescheur fleuronné."
+  },
+  {
+   "g": "blasons",
+   "nom": "Flandre-Orientale",
+   "verdict": "essai",
+   "avis": "Le lion seul : la couronne comtale et les supports de l'image ne sont pas dessinés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Guyane",
+   "verdict": "sans-dessin",
+   "avis": "Une barque, un fleuve à nénuphars et la date 1643 : l'Atelier ne sait faire ni l'un ni l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale de Paderborn",
+   "verdict": "fidele",
+   "avis": "Même croix."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Bereldange",
+   "verdict": "essai",
+   "avis": "Étoiles écartées, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Fénétrange",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Volketswil",
+   "verdict": "essai",
+   "avis": "Étoile à six rais, comme sur l'image. L'échiqueté a un rang de carreaux de plus."
+  },
+  {
+   "g": "blasons",
+   "nom": "Münchenstein",
+   "verdict": "sans-dessin",
+   "avis": "Un moine : l'Atelier n'a pas cette figure, et je n'en ai pas trouvé sur Commons."
+  },
+  {
+   "g": "blasons",
+   "nom": "Chevroux",
+   "verdict": "essai",
+   "avis": "Le bouc tourné, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Meyrin",
+   "verdict": "essai",
+   "avis": "Trois bandes pour la bande et ses deux cotices."
+  },
+  {
+   "g": "blasons",
+   "nom": "Courgenay",
+   "verdict": "essai",
+   "avis": "Un cygne pour l'oie, sans le mont. Une oie existe sur Commons."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Champlitte-Pontailler",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Espivent de La Villesboisnet",
+   "verdict": "essai",
+   "avis": "Molette réduite pour qu'elle ne touche plus les croissants. Celle de l'image a six rais."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Hostun",
+   "verdict": "essai",
+   "avis": "Croix un peu élargie, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de La Poëze",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Thoisy",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : le gland seul, sans feuilles."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean-Baptiste Jourdan",
+   "verdict": "essai",
+   "avis": "Les trois lettres côte à côte, sans les besants de la bordure."
+  },
+  {
+   "g": "personnages",
+   "nom": "Philippe de Crèvecœur",
+   "verdict": "fidele",
+   "avis": "Mêmes chevrons."
+  },
+  {
+   "g": "personnages",
+   "nom": "Eugène de Beauharnais",
+   "verdict": "essai",
+   "avis": "L'aigle impériale et son foudre, sans le médaillon. Les ornements extérieurs ne sont pas dessinés."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jacques Rouxel de Grancey",
+   "verdict": "sans-dessin",
+   "avis": "Des coqs : l'Atelier n'en a pas, mais Commons en propose. À vous de choisir."
+  },
+  {
+   "g": "personnages",
+   "nom": "Gauvain",
+   "verdict": "essai",
+   "avis": "L'aigle sans couronne, comme sur l'image. Ses ailes sont moins découpées."
+  },
+  {
+   "g": "personnages",
+   "nom": "Léodagan",
+   "verdict": "essai",
+   "avis": "Léopard agrandi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Claudas",
+   "verdict": "essai",
+   "avis": "Pin agrandi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Catherine Parr",
+   "verdict": "sans-dessin",
+   "avis": "Trop de quartiers pour un dessin honnête, comme les autres reines de ce genre."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guillaume de Chartres",
+   "verdict": "essai",
+   "avis": "Bordure componée d'or et de sable. Poissons droits pour les bars en demi-cercle."
+  }
+ ]
+}

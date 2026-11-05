@@ -418,11 +418,12 @@ function bandeDeCase(kind, pf, rect, f, edges, line) {
     + `<rect x="-100" y="-100" width="500" height="500" fill="${pf}" mask="url(#${id})"/>`;
 }
 /* la bordure componée d'une case : le second émail, en tirets carrés, sur la bande unie du premier (sans figures sur les compons) */
-const componsLocaux = s => {
-  const [x, y, w, h] = MAP.rect, f = MAP.pk, E = (26 * f).toFixed(2), L = (18 * f).toFixed(2);
-  const trace = SHIELD_D + [...MAP.edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
-  return `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})"><path d="${trace}" fill="none" stroke="${tinctPaint(s.tpc)}" stroke-width="${E}" stroke-dasharray="${L} ${L}"/></g>`;
+const componsDeCase = (tpc, [x, y, w, h], f, edges, pas = 18 * f) => {
+  const E = (26 * f).toFixed(2), L = pas.toFixed(2);
+  const trace = SHIELD_D + [...edges].map(e => ({ l: `M${x},${y}V${y + h}`, r: `M${x + w},${y}V${y + h}`, t: `M${x},${y}H${x + w}`, b: `M${x},${y + h}H${x + w}` })[e]).join("");
+  return `<path d="${trace}" fill="none" stroke="${tinctPaint(tpc)}" stroke-width="${E}" stroke-dasharray="${L} ${L}"/>`;
 };
+const componsLocaux = s => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${componsDeCase(s.tpc, MAP.rect, MAP.pk, MAP.edges)}</g>`;
 const bandeLocale = (kind, pf, line) => `<g transform="translate(${100 - MAP.cx},${126 - MAP.cy})">${bandeDeCase(kind, pf, MAP.rect, MAP.pk, MAP.edges, line)}</g>`;
 function drawBody(s, u) {
   let field;
@@ -703,7 +704,7 @@ function drawShield(St, u) {
     let r, under;
     NOBORD = true;
     try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
-    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
+    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) + (a.p === "bordure" && a.cmp ? componsDeCase(a.tpc, g.rect, .5, ed, 22) : "") : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
     const [, , s0] = qOrigin(g), [cx, cy, cs] = qCover(g);
     const kx = St.xc && a.nb !== "seme" ? .78 : 1, s = s0 * kx, ox = g.cx - 100 * s, oy = g.cy - 118 * s;      // sous une croix, les figures se resserrent (sauf un semé, qui remplit son quartier)
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;
