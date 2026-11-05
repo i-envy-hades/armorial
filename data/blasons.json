@@ -3023,7 +3023,6 @@
       "label": "Wikipédia, « Armorial des villes européennes »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_villes_europ%C3%A9ennes"
     },
-    "aVerifier": true,
     "atelierAjust": "sz=75",
     "forme": "iberique"
   },
@@ -11761,8 +11760,7 @@
     "porteur": "Territoire du Saint-Empire",
     "atelier": "De gueules à l'agneau pascal d'argent",
     "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
-    "atelierAjust": "sz=125",
-    "aVerifier": true
+    "atelierAjust": "sz=95"
   },
   {
     "nom": "Duché de Carniole",
@@ -15052,8 +15050,7 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "atelier": "D'argent à trois aigles au vol déployé de sable",
-    "atelierNote": "Les aigles aux ailes déployées, comme sur l'image",
-    "aVerifier": true
+    "atelierNote": "Les aigles aux ailes déployées, comme sur l'image"
   },
   {
     "nom": "Famille de La Marthonie",
