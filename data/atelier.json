@@ -7316,6 +7316,93 @@
    "outline": true
   },
   {
+   "kind": "gril",
+   "nom": "Gril",
+   "sing": "gril",
+   "plur": "grils",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/gril.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ]
+  },
+  {
+   "kind": "tete-rateau",
+   "nom": "Tête de râteau",
+   "sing": "tête de râteau",
+   "plur": "têtes de râteau",
+   "g": "f",
+   "cat": "Objets et bâtiments",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/tete-rateau.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#ffff00"
+   ]
+  },
+  {
+   "kind": "coq",
+   "nom": "Coq hardi",
+   "sing": "coq",
+   "plur": "coqs",
+   "alias": [
+    [
+     "coq hardi",
+     "coqs hardis"
+    ]
+   ],
+   "g": "m",
+   "cat": "Bêtes et chimères",
+   "rub": "Aigles et oiseaux",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/coq.svg",
+    "commons": "Meuble héraldique coq hardi.svg",
+    "auteur": "Jean-Paul GIBERT",
+    "lic": "CC BY 4.0",
+    "licurl": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#e20909"
+   ],
+   "accent": [
+    "#fcef3c"
+   ],
+   "accentMot": "becqué, crêté et membré",
+   "accentSouple": true
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

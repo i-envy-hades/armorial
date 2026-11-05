@@ -33,7 +33,8 @@
   "Vairé": "Vairy",
   "Fuselé en bande": "Fusily in bend",
   "Fuselé en barre": "Fusily in bend sinister",
-  "Coupé crénelé": "Per fess embattled"
+  "Coupé crénelé": "Per fess embattled",
+  "Écartelé en sautoir": "Per saltire"
  },
  "pieces": {
   "Fasce": "Fess",
@@ -125,6 +126,10 @@
   "Main appaumée": "Open hand",
   "Goutte": "Drop",
   "Chèvre saillante": "Goat salient",
+  "Gril": "Gridiron",
+  "Tête de râteau": "Rake head",
+  "Coq hardi": "Cock",
+  "Coq": "Cock",
   "Soc de charrue": "Ploughshare",
   "Flèche": "Arrow",
   "Saule étêté": "Pollarded willow",

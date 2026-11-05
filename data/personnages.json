@@ -1636,8 +1636,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1784–1849 · maréchal de France",
-    "desc": "Le soc de charrue et l'épée résument sa devise de soldat laboureur en Algérie.",
-    "aVerifier": true
+    "desc": "Le soc de charrue et l'épée résument sa devise de soldat laboureur en Algérie."
   },
   {
     "nom": "François Canrobert",
@@ -1978,8 +1977,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "mort en 1539 · maréchal de France",
-    "desc": "François Ier l'élève à la dignité de maréchal en 1538.",
-    "aVerifier": true
+    "desc": "François Ier l'élève à la dignité de maréchal en 1538."
   },
   {
     "nom": "Albéric Clément",
@@ -2320,8 +2318,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "temple",
     "meta": "mort en 1314 · dernier maître du Temple",
-    "desc": "Brûlé à Paris sur ordre de Philippe le Bel. Il écartèle la croix du Temple et les armes de sa famille.",
-    "aVerifier": true
+    "desc": "Brûlé à Paris sur ordre de Philippe le Bel. Il écartèle la croix du Temple et les armes de sa famille."
   },
   {
     "nom": "Robert de Sablé",
@@ -2648,7 +2645,11 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1603–1680 · maréchal de France",
-    "desc": "Comte de Grancey et de Médavy."
+    "desc": "Comte de Grancey et de Médavy.",
+    "atelier": "D'argent à trois coqs de gueules becqués, crêtés et membrés d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "aVerifier": true,
+    "atelierAjust": "sz=85"
   },
   {
     "nom": "René de Froulay de Tessé",
@@ -2664,6 +2665,8 @@
     "groupe": "marechaux",
     "meta": "1648–1725 · maréchal de France",
     "desc": "Il sert Louis XIV comme soldat et comme diplomate.",
+    "atelier": "D'argent au sautoir de gueules bordé de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le bord est droit, et non denché",
     "aVerifier": true
   },
   {
@@ -3008,8 +3011,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Tristan",
@@ -3368,7 +3370,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "De gueules à trois mains appaumées d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : des mains pour les gants",
+    "atelierAjust": "sz=125"
   },
   {
     "nom": "Guiron le Courtois",
@@ -3727,8 +3731,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Arthur le Petit",
@@ -4081,8 +4084,7 @@
     },
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Henriette-Marie de France",
@@ -4424,7 +4426,8 @@
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, de gueules à la tour d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la tour n'a pas ses tourelles"
   },
   {
     "nom": "Armand de Périgord",

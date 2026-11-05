@@ -1,0 +1,307 @@
+{
+ "lot": 6,
+ "titre": "Lot 6 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Naples",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison de Maillé",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Damas",
+   "verdict": "fidele",
+   "avis": "Même croix ancrée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Grolée",
+   "verdict": "fidele",
+   "avis": "Même gironné."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Solages",
+   "verdict": "essai",
+   "avis": "Le soleil figuré, avec son visage, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Metz",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aire-sur-la-Lys",
+   "verdict": "essai",
+   "avis": "L'aigle aux ailes déployées, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Eauze",
+   "verdict": "fidele",
+   "avis": "Même burelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Cité de Londres",
+   "verdict": "essai",
+   "avis": "L'épée au premier canton, comme sur l'image ; le texte de l'Atelier dit « chargée »."
+  },
+  {
+   "g": "blasons",
+   "nom": "Versailles",
+   "verdict": "essai",
+   "avis": "Le coq de Commons, avec une seule tête et entier : l'image a un coq à deux têtes, issant."
+  },
+  {
+   "g": "blasons",
+   "nom": "Genthod",
+   "verdict": "fidele",
+   "avis": "Même sautoir engrêlé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Arlesheim",
+   "verdict": "sans-dessin",
+   "avis": "Un demi-vol : l'Atelier n'a pas cette figure, et je n'en ai pas trouvé sur Commons."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bellinzone",
+   "verdict": "essai",
+   "avis": "Notre couleuvre ondoyante à la place de la guivre, plus simple que le serpent de l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bülach",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sachseln",
+   "verdict": "essai",
+   "avis": "Le bouquetin est dressé (saillant) alors qu'il marche sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Rethel",
+   "verdict": "essai",
+   "avis": "Nouvelle figure dessinée d'après l'image : la tête de râteau."
+  },
+  {
+   "g": "blasons",
+   "nom": "Tarentaise",
+   "verdict": "essai",
+   "avis": "L'aigle aux ailes déployées, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Haute-Lusace",
+   "verdict": "fidele",
+   "avis": "Même coupé crénelé ; le mur de l'image est maçonné."
+  },
+  {
+   "g": "blasons",
+   "nom": "Land de Salzbourg",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume d'Hawaï",
+   "verdict": "sans-dessin",
+   "avis": "Le puloulou et le burelé de trois émaux : l'Atelier ne sait faire ni l'un ni l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Empire allemand",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Romilley",
+   "verdict": "fidele",
+   "avis": "Mêmes léopards."
+  },
+  {
+   "g": "blasons",
+   "nom": "Cahors",
+   "verdict": "sans-dessin",
+   "avis": "Un pont à cinq tours sur des ondes : l'Atelier ne sait pas le dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Calais",
+   "verdict": "sans-dessin",
+   "avis": "Trop de figures superposées : écusson couronné, croix de Lorraine, besant chargé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Augsbourg",
+   "verdict": "sans-dessin",
+   "avis": "La pomme de pin sur son chapiteau : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Glasgow",
+   "verdict": "sans-dessin",
+   "avis": "Chêne, oiseau, cloche et saumon : trop de figures que l'Atelier n'a pas."
+  },
+  {
+   "g": "blasons",
+   "nom": "Province de Liège",
+   "verdict": "sans-dessin",
+   "avis": "Quatre quartiers et une pointe entée, avec un perron : trop pour un dessin honnête."
+  },
+  {
+   "g": "blasons",
+   "nom": "Voblast de Hrodna",
+   "verdict": "essai",
+   "avis": "Notre taureau pour le bison : à regarder."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale de Bâle",
+   "verdict": "essai",
+   "avis": "La crosse de Bâle, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Bettembourg",
+   "verdict": "essai",
+   "avis": "Griffon agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Heddesdorf",
+   "verdict": "fidele",
+   "avis": "Même bande."
+  },
+  {
+   "g": "blasons",
+   "nom": "Thalwil",
+   "verdict": "sans-dessin",
+   "avis": "Des spadices de roseaux : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Reinach",
+   "verdict": "essai",
+   "avis": "La crosse de Bâle et les trois besants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Corcelles-le-Jorat",
+   "verdict": "essai",
+   "avis": "Nouvelle figure de Commons : le coq hardi de Jean-Paul Gibert. Sa barbe reste de sable."
+  },
+  {
+   "g": "blasons",
+   "nom": "Satigny",
+   "verdict": "sans-dessin",
+   "avis": "Une clef à double panneton entre un croissant et un soleil : l'Atelier ne pose pas deux figures différentes de part et d'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Pregny-Chambésy",
+   "verdict": "essai",
+   "avis": "Écartelé en sautoir, aux traits droits au lieu d'ondés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille du Cheyron",
+   "verdict": "fidele",
+   "avis": "Mêmes rocs."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Bahezre de Lanlay",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Ancenis",
+   "verdict": "fidele",
+   "avis": "Mêmes quintefeuilles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Poligny",
+   "verdict": "fidele",
+   "avis": "Même chevron."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Arpajon",
+   "verdict": "essai",
+   "avis": "Notre harpe a une colonne, celle de l'image n'en a pas."
+  },
+  {
+   "g": "personnages",
+   "nom": "Thomas Robert Bugeaud",
+   "verdict": "sans-dessin",
+   "avis": "Un chef dans une moitié de parti, et l'autre moitié coupée : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "René de Montjean",
+   "verdict": "sans-dessin",
+   "avis": "Le fretté : l'Atelier ne sait pas encore le dessiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jacques de Molay",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "René de Froulay de Tessé",
+   "verdict": "essai",
+   "avis": "Le sautoir bordé de sable. Sur l'image, ce bord est denché : ce sont les petites dents noires."
+  },
+  {
+   "g": "personnages",
+   "nom": "Perceval",
+   "verdict": "fidele",
+   "avis": "Même semé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Baudemagus",
+   "verdict": "essai",
+   "avis": "Des mains pour les gants : ceux de l'image leur ressemblent beaucoup."
+  },
+  {
+   "g": "personnages",
+   "nom": "Pharamond",
+   "verdict": "sans-dessin",
+   "avis": "Des crapauds : l'Atelier n'en a pas, et je n'en ai pas trouvé sur Commons."
+  },
+  {
+   "g": "personnages",
+   "nom": "Anne de Danemark",
+   "verdict": "sans-dessin",
+   "avis": "Trop de quartiers pour un dessin honnête, comme les autres reines."
+  },
+  {
+   "g": "personnages",
+   "nom": "Pierre de Montaigu",
+   "verdict": "essai",
+   "avis": "La tour seule, sans les deux tourelles."
+  }
+ ]
+}
