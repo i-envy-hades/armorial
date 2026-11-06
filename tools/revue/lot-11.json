@@ -1,0 +1,307 @@
+{
+ "lot": 11,
+ "titre": "Lot 11 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Lausanne",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille du Châtelet",
+   "verdict": "fidele",
+   "avis": "Même bande, mêmes fleurs de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Caumont",
+   "verdict": "fidele",
+   "avis": "Mêmes léopards couronnés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Fontanges",
+   "verdict": "fidele",
+   "avis": "Même chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Acigné",
+   "verdict": "fidele",
+   "avis": "Même hermine, même fasce."
+  },
+  {
+   "g": "blasons",
+   "nom": "Tarbes",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Istres",
+   "verdict": "fidele",
+   "avis": "Même étoile."
+  },
+  {
+   "g": "blasons",
+   "nom": "Osnabrück",
+   "verdict": "fidele",
+   "avis": "Même roue ; celle de l'image a huit rayons."
+  },
+  {
+   "g": "blasons",
+   "nom": "Heidelberg",
+   "verdict": "essai",
+   "avis": "Le lion sur son mont."
+  },
+  {
+   "g": "blasons",
+   "nom": "Illiers-Combray",
+   "verdict": "fidele",
+   "avis": "Mêmes annelets."
+  },
+  {
+   "g": "blasons",
+   "nom": "Freienbach",
+   "verdict": "essai",
+   "avis": "Des léopards, qui regardent de face comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Versoix",
+   "verdict": "sans-dessin",
+   "avis": "Des burelles ondées en chef sous une croix brochante : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Amriswil",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Wetzikon",
+   "verdict": "sans-dessin",
+   "avis": "Des flambeaux : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Beaujolais",
+   "verdict": "essai",
+   "avis": "Le lion et son lambel à cinq pendants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vexin français",
+   "verdict": "fidele",
+   "avis": "Même semé, même lambel."
+  },
+  {
+   "g": "blasons",
+   "nom": "Laonnois",
+   "verdict": "essai",
+   "avis": "La crosse agrandie et tournée, comme sur l'image (nouveau réglage xz : la taille de la figure posée en cœur)."
+  },
+  {
+   "g": "blasons",
+   "nom": "Holstein",
+   "verdict": "essai",
+   "avis": "Feuille d'ortie agrandie, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté de Ratzebourg",
+   "verdict": "essai",
+   "avis": "La couronne au-dessus de la croix, comme demandé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume de Wurtemberg",
+   "verdict": "sans-dessin",
+   "avis": "Des ramures de cerf : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Herm",
+   "verdict": "sans-dessin",
+   "avis": "Des moines : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bastia",
+   "verdict": "sans-dessin",
+   "avis": "Une forteresse sur une terrasse : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Biarritz",
+   "verdict": "sans-dessin",
+   "avis": "Une barque de baleiniers : l'Atelier ne sait pas la dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dieppe",
+   "verdict": "essai",
+   "avis": "Notre vaisseau brochant sur le parti."
+  },
+  {
+   "g": "blasons",
+   "nom": "Mayence",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bielefeld",
+   "verdict": "essai",
+   "avis": "L'écusson chevronné sur le tout : il cache le bas de la porte, alors que sur l'image il est en pointe, sous l'arche."
+  },
+  {
+   "g": "blasons",
+   "nom": "Mecklembourg-Poméranie-Occidentale",
+   "verdict": "sans-dessin",
+   "avis": "Quatre quartiers et un écusson, avec le rencontre de taureau couronné : trop pour un dessin honnête."
+  },
+  {
+   "g": "blasons",
+   "nom": "Prévôté de Berchtesgaden",
+   "verdict": "essai",
+   "avis": "Les clefs d'or, comme sur l'image ; le texte de la carte ne dit pas leur émail."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Schwerin",
+   "verdict": "fidele",
+   "avis": "Même coupé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Clervaux",
+   "verdict": "fidele",
+   "avis": "Même chef, mêmes merlettes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Jemeppe",
+   "verdict": "fidele",
+   "avis": "Mêmes lions passants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bürglen",
+   "verdict": "sans-dessin",
+   "avis": "Une muraille à quatre tourelles : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Uzwil",
+   "verdict": "sans-dessin",
+   "avis": "Une demi-roue surmontée de trois épis : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Founex",
+   "verdict": "sans-dessin",
+   "avis": "Une balance : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Avusy",
+   "verdict": "essai",
+   "avis": "L'Atelier sait maintenant échiqueter une bande, une barre, une fasce ou un pal."
+  },
+  {
+   "g": "blasons",
+   "nom": "Martigny",
+   "verdict": "sans-dessin",
+   "avis": "Un lion qui tient un marteau : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Croismare",
+   "verdict": "fidele",
+   "avis": "Même léopard."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Faivre d'Arcier",
+   "verdict": "fidele",
+   "avis": "Mêmes bandes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Richoufftz de Manin",
+   "verdict": "essai",
+   "avis": "Rencontres agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Ogier",
+   "verdict": "fidele",
+   "avis": "Mêmes trèfles."
+  },
+  {
+   "g": "personnages",
+   "nom": "Boucicaut (Jean Ier Le Meingre)",
+   "verdict": "essai",
+   "avis": "L'aigle sans couronne, comme sur l'image."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean de Lattre de Tassigny",
+   "verdict": "sans-dessin",
+   "avis": "Des canes : l'Atelier n'en a pas, et je n'ai pas mis d'autre oiseau."
+  },
+  {
+   "g": "personnages",
+   "nom": "Pierre de Foix",
+   "verdict": "essai",
+   "avis": "Foix et Béarn, sans le chapeau de cardinal."
+  },
+  {
+   "g": "personnages",
+   "nom": "Philippe de Milly",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean de Schulemberg",
+   "verdict": "essai",
+   "avis": "L'Atelier sait maintenant poser quatre figures sur un chef. Nos épées ont la pointe en bas ; sur l'image, elle est en haut."
+  },
+  {
+   "g": "personnages",
+   "nom": "Bédivère",
+   "verdict": "essai",
+   "avis": "Le gonfanon de Syryatsu (Commons), choisi par le curateur."
+  },
+  {
+   "g": "personnages",
+   "nom": "Kahedin",
+   "verdict": "fidele",
+   "avis": "Mêmes macles."
+  },
+  {
+   "g": "personnages",
+   "nom": "Balaan",
+   "verdict": "essai",
+   "avis": "Notre sanglier passant."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guy de Lusignan",
+   "verdict": "essai",
+   "avis": "Le lion dans les quartiers burelés, comme sur l'image."
+  },
+  {
+   "g": "personnages",
+   "nom": "Thibaud Gaudin",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  }
+ ]
+}

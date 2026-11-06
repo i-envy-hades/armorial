@@ -474,7 +474,7 @@ let lireT = 0;
 function appliqueAjust(aj) {
   if (!aj) return;
   for (const [k, v] of new URLSearchParams(aj)) {
-    const m = /^(?:q([1-5])\.)?((?:sz|dx|dy|an|ec)2?|pth|pdx|pdy|cs|ce)$/.exec(k);
+    const m = /^(?:q([1-5])\.)?((?:sz|dx|dy|an|ec)2?|pth|pdx|pdy|cs|ce|xz)$/.exec(k);
     if (!m || !isFinite(+v) || Math.abs(+v) > 300) continue;
     const a = S.A[m[1] ? +m[1] - 1 : 0];
     if (a) a[{ cs: "m2cs", ce: "m2ce" }[m[2]] || m[2]] = v;

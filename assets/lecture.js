@@ -507,9 +507,20 @@ function pPiece(P, i) {
       }
     }
   }
-  const cc = pContre(P, e), t = cmp ? { t: cmp.t1, i: cmp.i } : cc ? { t: ADEF.tp, i: cc.i } : pEmail(P, e);       // « à la croix de l'un en l'autre »
+  let ech = null;
+  if (["bande", "barre", "fasce", "pal"].includes(ps.val.p) && !ln && /^echiquetee?$/.test(cle(P, e))) {      // « la bande échiquetée d'argent et de gueules [de deux tires] »
+    const a1 = pEmail(P, e + 1);
+    if (!a1) return null;
+    if (cle(P, a1.i) !== "et") return rate(P, a1.i, "« et » (deux émaux de la pièce échiquetée)");
+    const a2 = pEmail(P, a1.i + 1);
+    if (!a2) return null;
+    let q = a2.i;
+    if (cle(P, q) === "de" && cle(P, q + 1) === "deux" && /^tires?$/.test(cle(P, q + 2))) q += 3;
+    ech = { t1: a1.t, t2: a2.t, i: q };
+  }
+  const cc = pContre(P, e), t = cmp ? { t: cmp.t1, i: cmp.i } : ech ? { t: ech.t1, i: ech.i } : cc ? { t: ADEF.tp, i: cc.i } : pEmail(P, e);       // « à la croix de l'un en l'autre »
   if (!t) return null;
-  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, fqs, lrg, cmp, pcc: cc && !cmp ? cc.cc : "", pf: "", broche: false, charge: null, verbe: null, i: t.i };
+  const it = { t: "piece", p: ps.val.p, ln, tp: t.t, pech: ech ? ech.t2 : "", fqs, lrg, cmp, pcc: cc && !cmp ? cc.cc : "", pf: "", broche: false, charge: null, verbe: null, i: t.i };
   /* « la croix de gueules bordée d'argent » : un filet d'un autre émail */
   const jb = cle(P, it.i) === "," ? it.i + 1 : it.i, bd = suites(LEX.borde, P, jb)[0];
   if (bd) { const tf = pEmail(P, jb + bd.n); if (!tf) return null; it.pf = tf.t; it.i = tf.i; }
@@ -783,7 +794,7 @@ function pArmes(P) {
 const dispoLue = o => palParDefaut({ m: o.m.kind, nb: String(o.n) }) ? (o.d === "pal" ? "" : o.dit && !o.d ? "base" : o.d || "") : o.d || "";
 const poseM = (a, o) => Object.assign(a, { m: o.m.kind, nb: o.seme ? "seme" : String(o.n), tm: o.tm, ta: o.cc ? o.ta || "" : o.ta || o.tm, ct: o.ct ? "1" : "", cn: o.cn || "", iss: o.trait ? "t" : o.iss ? "1" : "", cc: o.cc || "", d: dispoLue(o) });
 const poseM2 = (a, o) => Object.assign(a, { big2: o.big ? "1" : "", m2c: o.ch ? o.ch.m.kind : "", m2cn: o.ch ? String(o.ch.n) : ADEF.m2cn, m2ct: o.ch ? o.ch.tm : ADEF.m2ct, m2: o.m.kind, nb2: String(o.n), tm2: o.tm, ta2: o.ta || o.tm, ct2: o.ct ? "1" : "", cn2: o.cn || "", d2: o.d || "" });
-const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, lrg: it.lrg || "", fqs: it.fqs || "", ri: it.ri || "", cot: it.cot || "", xm: it.xo ? it.xo.o.m.kind : "", xt: it.xo ? it.xo.o.tm : ADEF.xt, xd: it.xo ? it.xo.d : "", pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" }, it.cmp ? {
+const posePiece = (a, it) => Object.assign(a, { p: it.p, tp: it.tp, pech: it.pech || "", lrg: it.lrg || "", fqs: it.fqs || "", ri: it.ri || "", cot: it.cot || "", xm: it.xo ? it.xo.o.m.kind : "", xt: it.xo ? it.xo.o.tm : ADEF.xt, xd: it.xo ? it.xo.d : "", xct: it.xo && it.xo.o.ct ? "1" : "", pcc: it.pcc || "", ln: it.ln, pf: it.pf || "" }, it.cmp ? {
   cmp: "1", tpc: it.cmp.t2, cm1: it.cmp.c[1] ? it.cmp.c[1].m.kind : "", cm1t: it.cmp.c[1] ? it.cmp.c[1].tm : ADEF.cm1t, cm2: it.cmp.c[2] ? it.cmp.c[2].m.kind : "", cm2t: it.cmp.c[2] ? it.cmp.c[2].tm : ADEF.cm2t } : {});
 const ORDRE = "L'Atelier lit : le champ, puis soit des meubles (« à trois étoiles d'or »), soit une pièce (« à la fasce d'azur ») avec ses meubles (« chargée de… », « accompagnée de… »)";
 /* range les éléments lus dans les armes de l'Atelier — dans les seuls ordres que blazon() écrit, plus « chargée de…, accompagnée de… » */

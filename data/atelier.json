@@ -1975,7 +1975,7 @@
    "g": "f",
    "cat": "Objets et bâtiments",
    "rub": "Couronnes et insignes",
-   "asym": false,
+   "asym": true,
    "file": {
     "path": "assets/meubles/crosse.svg",
     "commons": "Meuble héraldique Crosse.svg",
@@ -7490,6 +7490,31 @@
    "g": "f",
    "cat": "Astres et éléments",
    "draw": "molette6"
+  },
+  {
+   "kind": "gonfanon",
+   "nom": "Gonfanon",
+   "sing": "gonfanon",
+   "plur": "gonfanons",
+   "g": "m",
+   "cat": "Objets et bâtiments",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/gonfanon.svg",
+    "commons": "Héraldique meuble Gonfanon.svg",
+    "auteur": "Syryatsu",
+    "lic": "domaine public",
+    "licurl": "https://creativecommons.org/publicdomain/mark/1.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "fill:#e20909"
+   ]
   },
   {
    "kind": "soc-charrue",

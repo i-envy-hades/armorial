@@ -1379,7 +1379,8 @@
     "groupe": "marechaux",
     "meta": "XIVᵉ siècle · maréchal de France",
     "desc": "Père d'un autre Boucicaut, maréchal lui aussi.",
-    "aVerifier": true
+    "atelier": "D'argent à l'aigle bicéphale sans couronne de gueules becquée et membrée d'azur",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Jacques de Montberon",
@@ -1715,8 +1716,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1889–1952 · maréchal de France",
-    "desc": "Il signe pour la France la capitulation allemande à Berlin en 1945.",
-    "aVerifier": true
+    "desc": "Il signe pour la France la capitulation allemande à Berlin en 1945."
   },
   {
     "nom": "Honoré Reille",
@@ -2060,7 +2060,8 @@
     "groupe": "eglise",
     "meta": "1386–1464 · cardinal",
     "desc": "Légat du pape à Avignon, archevêque d'Arles.",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'or à trois pals de gueules ; aux 2 et 3, d'or à deux vaches passantes de gueules posées en pal",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les vaches ne sont pas accornées ni clarinées d'azur"
   },
   {
     "nom": "François de Joyeuse",
@@ -2400,8 +2401,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "temple",
     "meta": "1120–1171 · maître du Temple",
-    "desc": "Seigneur de Naplouse puis d'Outre-Jourdain avant d'entrer au Temple.",
-    "aVerifier": true
+    "desc": "Seigneur de Naplouse puis d'Outre-Jourdain avant d'entrer au Temple."
   },
   {
     "nom": "André de Montbard",
@@ -2753,7 +2753,8 @@
     "groupe": "marechaux",
     "meta": "1597–1671 · maréchal de France",
     "desc": "Comte de Montdejeu, militaire d'origine prussienne.",
-    "aVerifier": true
+    "atelier": "De sable, au chef d'azur chargé de quatre épées d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les épées ont la pointe en bas, et non en haut"
   },
   {
     "nom": "Auguste Regnaud de Saint-Jean d'Angély",
@@ -3105,7 +3106,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'or au gonfanon de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=90"
   },
   {
     "nom": "Sagramor",
@@ -3463,8 +3466,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Guinglain",
@@ -3820,7 +3822,9 @@
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'argent au sanglier passant de sable",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les défenses et les ongles ne sont pas de gueules",
+    "atelierAjust": "sz=110"
   },
   {
     "nom": "Blanor",
@@ -4170,7 +4174,8 @@
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'azur à la croix d'argent ; aux 2 et 3, burelé d'argent et d'azur, au lion couronné de gueules armé et lampassé d'or brochant sur le tout",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Owen Tudor",
@@ -4513,8 +4518,7 @@
     },
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Maurice de Saxe",

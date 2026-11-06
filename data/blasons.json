@@ -3082,9 +3082,7 @@
     "blasonSrc": {
       "label": "Wikipédia, « Lausanne »",
       "url": "https://fr.wikipedia.org/wiki/Lausanne"
-    },
-    "aVerifier": true,
-    "forme": "iberique"
+    }
   },
   {
     "nom": "Locarno",
@@ -3396,8 +3394,7 @@
     },
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Ségur",
@@ -3704,8 +3701,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Chasteigner",
@@ -4011,8 +4007,7 @@
     },
     "auteur": "ByacC",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille Chapt de Rastignac",
@@ -4325,8 +4320,7 @@
     },
     "auteur": "Jimmy44",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Sérent",
@@ -4638,8 +4632,7 @@
     "auteur": "Rinaldum",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Tarbes (France)",
-    "aVerifier": true
+    "porteur": "Ville de Tarbes (France)"
   },
   {
     "nom": "Sélestat",
@@ -4951,8 +4944,7 @@
     "auteur": "Anno16",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "porteur": "Ville d'Istres (France)",
-    "aVerifier": true
+    "porteur": "Ville d'Istres (France)"
   },
   {
     "nom": "Clamart",
@@ -5265,8 +5257,7 @@
     "auteur": "Ville d'Osnabrück",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "porteur": "Ville d'Osnabrück (Allemagne)",
-    "aVerifier": true
+    "porteur": "Ville d'Osnabrück (Allemagne)"
   },
   {
     "nom": "Fürth",
@@ -5590,7 +5581,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Ville de Heidelberg (Allemagne)",
-    "aVerifier": true
+    "atelier": "De sable au lion couronné d'or armé et lampassé de gueules, accompagné d'un mont à trois coupeaux de sinople en pointe",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=85&dy=-14&sz2=115&dy2=26"
   },
   {
     "nom": "Oxford",
@@ -5916,8 +5909,7 @@
     "auteur": "Bruno Vallette",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville d'Illiers-Combray (France)",
-    "aVerifier": true
+    "porteur": "Ville d'Illiers-Combray (France)"
   },
   {
     "nom": "Châteaugiron",
@@ -6243,7 +6235,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Schwytz",
-    "aVerifier": true
+    "atelier": "De gueules à trois léopards d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Diessenhofen",
@@ -6586,8 +6579,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "porteur": "Commune du canton de Genève"
   },
   {
     "nom": "Thônex",
@@ -6933,7 +6925,7 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Thurgovie",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Weinfelden",
@@ -7275,8 +7267,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "porteur": "Commune du canton de Zurich"
   },
   {
     "nom": "Viège",
@@ -7609,7 +7600,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "D'or au lion de sable armé et lampassé de gueules, brisé d'un lambel de gueules à cinq pendants",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Comté de Bigorre",
@@ -7933,8 +7925,7 @@
     "auteur": "Zigeuner",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Aunis",
@@ -8254,7 +8245,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "D'azur semé de fleurs de lis d'or, à la croix d'argent chargée en cœur d'une crosse contournée de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "xz=300"
   },
   {
     "nom": "Noyonnais",
@@ -8574,7 +8567,7 @@
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Duché de Schleswig",
@@ -8895,7 +8888,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "De gueules à la croix latine d'argent, accompagnée d'une couronne d'or en chef",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : une croix latine, comme sur l'image",
+    "atelierAjust": "sz=85&dy=24&sz2=85&dy2=-4"
   },
   {
     "nom": "Burgraviat de Rheineck",
@@ -9215,8 +9210,7 @@
     },
     "auteur": "Spedona",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Royaume de Sicile",
@@ -9547,8 +9541,7 @@
     },
     "auteur": "Aroche",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Îles Féroé",
@@ -9877,8 +9870,7 @@
     "auteur": "F5JMH",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Bastia (France)",
-    "aVerifier": true
+    "porteur": "Ville de Bastia (France)"
   },
   {
     "nom": "Ajaccio",
@@ -10197,8 +10189,7 @@
     "auteur": "SanchoPanzaXXI",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Biarritz (France)",
-    "aVerifier": true
+    "porteur": "Ville de Biarritz (France)"
   },
   {
     "nom": "Pau",
@@ -10519,7 +10510,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Dieppe (France)",
-    "aVerifier": true
+    "atelier": "Parti d'azur et de gueules, au vaisseau d'argent brochant sur le tout",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Le Havre",
@@ -10842,7 +10834,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Ville de Mayence (Allemagne)",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Kiel",
@@ -11162,7 +11154,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Ville de Bielefeld (Allemagne)",
-    "aVerifier": true
+    "atelier": "D'or à la porte de ville de gueules ; sur le tout chevronné d'argent et de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'écusson chevronné sur le tout, et non en pointe",
+    "atelierAjust": "sz=110&dy=-14"
   },
   {
     "nom": "Düsseldorf",
@@ -11484,8 +11478,7 @@
     "auteur": "Bundesland Mecklenburg-Vorpommern",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "porteur": "Land d'Allemagne",
-    "aVerifier": true
+    "porteur": "Land d'Allemagne"
   },
   {
     "nom": "Rhénanie-Palatinat",
@@ -11803,7 +11796,8 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, de gueules aux clefs de saint Pierre d'or ; aux 2 et 3, d'azur à six fleurs de lis d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les clefs d'or, comme sur l'image"
   },
   {
     "nom": "Abbaye d'Obermünster",
@@ -12122,8 +12116,7 @@
     "auteur": "Nomadic1",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Abbaye de Quedlinbourg",
@@ -12439,8 +12432,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Colpach",
@@ -12746,8 +12738,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Wellin",
@@ -13084,8 +13075,7 @@
     "auteur": "original by Emil Huber; SVG export Perhelion",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton d'Uri",
-    "aVerifier": true
+    "porteur": "Commune du canton d'Uri"
   },
   {
     "nom": "Erstfeld",
@@ -13430,8 +13420,7 @@
     "auteur": "SpinnerLaserzthe2nd",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton de Saint-Gall",
-    "aVerifier": true
+    "porteur": "Commune du canton de Saint-Gall"
   },
   {
     "nom": "Sankt Margrethen",
@@ -13774,8 +13763,7 @@
     "auteur": "Delta-9, révisé par ARK",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "porteur": "Commune du canton de Vaud"
   },
   {
     "nom": "Hermenches",
@@ -14121,7 +14109,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelier": "D'or à la bande élargie échiquetée d'argent et de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Bernex",
@@ -14469,8 +14458,7 @@
     "auteur": "Bratwurst mit Sauerkraut",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/File%3ACHE_Martigny_COA.svg",
-    "porteur": "Commune du canton du Valais",
-    "aVerifier": true
+    "porteur": "Commune du canton du Valais"
   },
   {
     "nom": "Zermatt",
@@ -14782,8 +14770,7 @@
     },
     "auteur": "Thom.Lanaud",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Muzillac",
@@ -15095,8 +15082,7 @@
     },
     "auteur": "Thom.lanaud",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille Loppin de Montmort",
@@ -15407,7 +15393,7 @@
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Famille de Vassé",
@@ -15719,8 +15705,7 @@
     },
     "auteur": "Etxeko",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Lannion",

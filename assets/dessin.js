@@ -208,7 +208,7 @@ const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", t
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
 const BRKEYS = ["br", "tbr", "sbr", "lbr", "bcm", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "cot", "xm", "xd", "fqs", "big2", "lrg", "bcm"]);
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "cot", "xm", "xd", "fqs", "big2", "lrg", "bcm", "pech", "xct"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 /* l'état d'un écu en une ligne (« t1=Gueules&m=lion&nb=1 ») : seules les valeurs qui diffèrent du défaut. C'est l'adresse de l'Atelier,
@@ -480,6 +480,13 @@ function drawBody(s, u) {
     const part = k => sq(partitionInner(s.part, k ? ["#000", "#fff"] : ["#fff", "#000"], true));
     defs += [0, 1].map(k => `<mask id="pc${k}-${u}" maskUnits="userSpaceOnUse" x="-100" y="-100" width="500" height="500">${part(k)}</mask>`).join("");
     piece = `<g mask="url(#pc0-${u})">${dress(tinctPaint(s.t2))}</g><g mask="url(#pc1-${u})">${dress(tinctPaint(s.t1))}</g>`;
+  } else if (s.p && s.pech) {
+    /* la pièce échiquetée de deux tires : un damier de deux rangs, aligné sur l'axe de la pièce */
+    const th = s.p === "fasce" ? 73 : 55 * (s.p === "bande" || s.p === "barre" ? (s.lrg ? 145 : +s.pth || 100) : 100) / 100, c = th / 2;
+    const [ox, oy, ang] = { bande: [6, 6, Math.atan2(246, 194) * 180 / Math.PI], barre: [194, 6, Math.atan2(246, -194) * 180 / Math.PI], fasce: [0, 130, 0], pal: [100, 0, 90] }[s.p];
+    const a = tinctPaint(s.tp), b = tinctPaint(s.pech);
+    defs += `<pattern id="ech-${u}" patternUnits="userSpaceOnUse" width="${2 * c}" height="${2 * c}" patternTransform="translate(${ox},${oy}) rotate(${ang.toFixed(3)})"><rect width="${2 * c}" height="${2 * c}" fill="${b}"/><rect width="${c}" height="${c}" fill="${a}"/><rect x="${c}" y="${c}" width="${c}" height="${c}" fill="${a}"/></pattern>`;
+    piece = dress(`url(#ech-${u})`);
   } else if (s.p) piece = dress(tinctPaint(s.tp));
   return corps(s, u, defs, field, under, over, piece);
 }
@@ -535,7 +542,8 @@ function brisLayer(s, u) {
   let defs = "", bris = "";
   if (s.xm) {         // une figure de plus, en cœur ou au franc quartier
     defs += symbolFor({ ...s, m: s.xm, tm: s.xt, ta: s.xt, cc: "", ct: "", cn: "", cnk: "", iss: "" }, `xm-${u}`);
-    bris += placeAll([s.xd === "canton" ? [40, 52, .34] : [100, s.p === "fasce" ? 130 : 116, .36]], meuble(s.xm), `xm-${u}`, false);
+    const xk = (+s.xz || 100) / 100;      // xz : la taille (%) de cette figure, réglage d'une carte (Laonnois)
+    bris += placeAll([s.xd === "canton" ? [40, 52, .34 * xk] : [100, s.p === "fasce" ? 130 : 116, .36 * xk]], meuble(s.xm), `xm-${u}`, s.xct === "1");
   }
   if (s.br) {
     if (s.br === "lambel") {
