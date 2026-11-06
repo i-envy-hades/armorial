@@ -1410,8 +1410,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "v. 1409–1478 · maréchal de France",
-    "desc": "Il combat à la fin de la guerre de Cent Ans.",
-    "aVerifier": true
+    "desc": "Il combat à la fin de la guerre de Cent Ans."
   },
   {
     "nom": "Jean de Baudricourt",
@@ -1745,8 +1744,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "esprits",
     "meta": "1771–1804 · général chouan",
-    "desc": "Chef de l'armée catholique et royale de Bretagne, guillotiné à Paris.",
-    "aVerifier": true
+    "desc": "Chef de l'armée catholique et royale de Bretagne, guillotiné à Paris."
   },
   {
     "nom": "Tourville",
@@ -2090,7 +2088,9 @@
     "groupe": "eglise",
     "meta": "1933–2019 · cardinal belge",
     "desc": "Archevêque de Malines-Bruxelles de 1979 à 2010.",
-    "aVerifier": true
+    "atelierAjust": "sz=85&sz2=80&dy2=4",
+    "atelier": "D'azur à la fasce d'argent, accompagnée en chef d'une étoile à six rais d'or et en pointe d'un dauphin d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Marc Ouellet",
@@ -2430,8 +2430,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "temple",
     "meta": "mort en 1149 · maître du Temple",
-    "desc": "Le deuxième maître de l'ordre.",
-    "aVerifier": true
+    "desc": "Le deuxième maître de l'ordre."
   },
   {
     "nom": "Richard de Cornouailles",
@@ -2782,8 +2781,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1490–1544 · maréchal de France",
-    "desc": "Seigneur de Montpezat en Quercy.",
-    "aVerifier": true
+    "desc": "Seigneur de Montpezat en Quercy."
   },
   {
     "nom": "Pierre de Rieux",
@@ -3138,8 +3136,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Mordred",
@@ -3495,8 +3492,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Karados",
@@ -3853,7 +3849,9 @@
     "auteur": "Bibar",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelier": "De gueules à la sirène de pourpre",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la sirène toute de pourpre ; elle ne se peigne pas",
+    "atelierAjust": "sz=120"
   },
   {
     "nom": "Mirandon de la Tamise",
@@ -4203,7 +4201,8 @@
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or ; le tout brisé d'une bordure d'azur",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la bordure n'a pas ses martinets d'or"
   },
   {
     "nom": "Roger de Clarendon",
@@ -4548,7 +4547,9 @@
     "auteur": "Jimmy44",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'argent à trois léopards contournés de gueules armés et lampassés d'azur posés en pal, au chef de gueules semé d'étoiles d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les léopards entiers sont contournés, et non leur seule tête",
+    "atelierAjust": "dy=6&dy2=-6"
   },
   {
     "nom": "Guillaume de Joyeuse",

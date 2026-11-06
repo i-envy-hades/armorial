@@ -7517,6 +7517,32 @@
    ]
   },
   {
+   "kind": "tete-maure",
+   "nom": "Tête de Maure",
+   "sing": "tête de Maure",
+   "plur": "têtes de Maure",
+   "g": "f",
+   "cat": "Bêtes et chimères",
+   "rub": "Corps et personnages",
+   "asym": true,
+   "file": {
+    "path": "assets/meubles/tete-maure.svg",
+    "commons": "Meuble héraldique tête de Maure.svg",
+    "auteur": "Yorick",
+    "lic": "CC BY-SA 3.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#313131"
+   ]
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

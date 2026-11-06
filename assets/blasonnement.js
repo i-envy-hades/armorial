@@ -392,7 +392,7 @@ function semePhrase(c, s) {
   const m = c.m;
   if (m.kind === "roundel") return (classe(s.tm) === "Métal" ? "besanté " : "tourteauté ") + de(s.tm);
   if (m.semeAdj) return m.semeAdj + " " + de(s.tm);
-  return `semé de ${c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;                       // « semé de lions d'or armés et lampassés de gueules »
+  return `semé ${/^[aeiouyhéèêâîôûœ]/i.test(c.nomPl) ? "d'" : "de "}${c.nomPl}${c.ctr} ${c.tinct}${c.acc}`;                       // « semé de lions d'or armés et lampassés de gueules »
 }
 function blazonCore(s) {
   let champ;

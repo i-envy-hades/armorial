@@ -1,0 +1,307 @@
+{
+ "lot": 13,
+ "titre": "Lot 13 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Bienne",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Lenoncourt",
+   "verdict": "fidele",
+   "avis": "Même croix engrêlée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de La Palud",
+   "verdict": "fidele",
+   "avis": "Même croix d'hermine."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille du Quélennec",
+   "verdict": "fidele",
+   "avis": "Même hermine, même chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Cacqueray",
+   "verdict": "fidele",
+   "avis": "Mêmes roses."
+  },
+  {
+   "g": "blasons",
+   "nom": "Beauvais",
+   "verdict": "fidele",
+   "avis": "Même pal."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bressuire",
+   "verdict": "essai",
+   "avis": "L'aigle sans couronne, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Potsdam",
+   "verdict": "essai",
+   "avis": "Aigle agrandie ; la couronne murale de l'image n'est pas dessinée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Manchester",
+   "verdict": "sans-dessin",
+   "avis": "Un chef chargé d'un navire sur la mer, avec des supports : l'Atelier ne sait pas poser le navire sur le chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sassenage",
+   "verdict": "fidele",
+   "avis": "Même burelé, même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vuarrens",
+   "verdict": "fidele",
+   "avis": "Mêmes ciboires, même gerbe."
+  },
+  {
+   "g": "blasons",
+   "nom": "Arosa",
+   "verdict": "essai",
+   "avis": "Le soleil au-dessus d'un mont : l'image a deux pointes, plus hautes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Romanshorn",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Goms",
+   "verdict": "essai",
+   "avis": "Les deux croix de l'un en l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Bourbon",
+   "verdict": "essai",
+   "avis": "Le lion et ses huit coquilles en orle."
+  },
+  {
+   "g": "blasons",
+   "nom": "Gascogne",
+   "verdict": "essai",
+   "avis": "Les lions et les gerbes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Corse",
+   "verdict": "essai",
+   "avis": "Nouvelle figure de Commons : la tête de Maure de Yorick, avec son bandeau."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Mansfeld",
+   "verdict": "essai",
+   "avis": "Le même fuselé, aux fusées plus petites."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Basse-Isenbourg",
+   "verdict": "fidele",
+   "avis": "Mêmes fasces."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume de Hollande",
+   "verdict": "essai",
+   "avis": "Le lion couronné et l'aigle impériale, sans les flèches, l'épée ni le foudre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Groenland",
+   "verdict": "essai",
+   "avis": "L'ours dressé ; celui de l'image est un ours polaire."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bonifacio",
+   "verdict": "sans-dessin",
+   "avis": "Une forteresse et le mot LIBERTAS : l'Atelier ne sait pas les dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Épinal",
+   "verdict": "essai",
+   "avis": "La tour entre les deux fleurs de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Rouen",
+   "verdict": "essai",
+   "avis": "L'agneau pascal, comme à Bressanone, sous le chef de France."
+  },
+  {
+   "g": "blasons",
+   "nom": "Weimar",
+   "verdict": "essai",
+   "avis": "Le lion sur un semé de cœurs, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Uzès",
+   "verdict": "essai",
+   "avis": "Le fascé et le chef de France."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sarre",
+   "verdict": "essai",
+   "avis": "Les quatre armes : Sarrebruck, Trèves, Lorraine et Palatinat."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale de Passau",
+   "verdict": "essai",
+   "avis": "Le loup dressé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Abbaye de Walkenried",
+   "verdict": "essai",
+   "avis": "La crosse passe derrière la mitre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Crupet",
+   "verdict": "fidele",
+   "avis": "Mêmes lions couronnés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Dudelange",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Schattdorf",
+   "verdict": "sans-dessin",
+   "avis": "Une branche de pommier : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Wattwil",
+   "verdict": "sans-dessin",
+   "avis": "Des têtes de licorne : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Goumoëns",
+   "verdict": "essai",
+   "avis": "Le même écu dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Chancy",
+   "verdict": "essai",
+   "avis": "Nos fleurs de lis pour les lis de jardin : à regarder."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Courcelles",
+   "verdict": "fidele",
+   "avis": "Mêmes croissants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Brac de La Perrière",
+   "verdict": "fidele",
+   "avis": "Mêmes bandes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Boissieu",
+   "verdict": "fidele",
+   "avis": "Même chevron, même trèfle."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Coëtlogon",
+   "verdict": "essai",
+   "avis": "Écussons agrandis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille du Bot",
+   "verdict": "fidele",
+   "avis": "Mêmes quintefeuilles."
+  },
+  {
+   "g": "personnages",
+   "nom": "Joachim Rouault de Gamaches",
+   "verdict": "fidele",
+   "avis": "Mêmes léopards couronnés."
+  },
+  {
+   "g": "personnages",
+   "nom": "Georges Cadoudal",
+   "verdict": "sans-dessin",
+   "avis": "Un bras armé tenant une épée, sous un écusson : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Godfried Danneels",
+   "verdict": "essai",
+   "avis": "Étoile à six rais."
+  },
+  {
+   "g": "personnages",
+   "nom": "Robert de Craon",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Antoine de Lettes",
+   "verdict": "fidele",
+   "avis": "Mêmes bandes, même chef."
+  },
+  {
+   "g": "personnages",
+   "nom": "Lionel",
+   "verdict": "sans-dessin",
+   "avis": "Un semé d'étoiles sous trois bandes : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Tor",
+   "verdict": "fidele",
+   "avis": "Même semé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Mandin l'Envoisié",
+   "verdict": "essai",
+   "avis": "La sirène toute de pourpre."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jasper Tudor",
+   "verdict": "essai",
+   "avis": "France et Angleterre, avec la bordure ; ses martinets manquent."
+  },
+  {
+   "g": "personnages",
+   "nom": "Patrice de Mac Mahon",
+   "verdict": "essai",
+   "avis": "Les léopards contournés et le chef semé d'étoiles."
+  }
+ ]
+}
