@@ -52,7 +52,7 @@
   const actifs = e => { const n = e.q === "4" ? 4 : e.q === "" ? 1 : 2, idx = [...Array(n).keys()]; if (e.ab) idx.push(4); return idx; };    // les armes réellement posées sur l'écu
   const Q_NOM = { p: "Parti", c: "Coupé", t: "Tranché", l: "Taillé", "2": "Écartelé", "4": "Écartelé" };
   const RAY_NOM = { barry: "Fascé", barryonde: "Fascé ondé", paly: "Palé", bendy: "Bandé", bendysin: "Barré", chevronny: "Chevronné", chequy: "Échiqueté", lozengy: "Fuselé", lozengybend: "Fuselé en bande", lozengysin: "Fuselé en barre", palyonde: "Palé ondé", lozengyl: "Losangé", vaire: "Vairé" };
-  const PART_NOM = { "coupe-crenele": "Coupé crénelé", parti: "Parti", coupe: "Coupé", tranche: "Tranché", taille: "Taillé", tierce: "Tiercé", "tierce-pal": "Tiercé en pal", ecartele: "Écartelé", gironne: "Gironné", sautoirpart: "Écartelé en sautoir" };
+  const PART_NOM = { "coupe-crenele": "Coupé crénelé", "coupe-denche": "Coupé denché", parti: "Parti", coupe: "Coupé", tranche: "Tranché", taille: "Taillé", tierce: "Tiercé", "tierce-pal": "Tiercé en pal", ecartele: "Écartelé", gironne: "Gironné", sautoirpart: "Écartelé en sautoir" };
   /* des meubles « de la même famille » : toutes les aigles, tous les lions (léopards compris), toutes les croix… */
   const FAMILLE_A_PART = { leopard: "lion", croisette: "croix", "rencontre-boeuf": "boeuf" };
   const famille = k => FAMILLE_A_PART[k] || k.split("-")[0].replace(/\d+$/, "");

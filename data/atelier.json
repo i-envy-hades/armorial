@@ -7483,6 +7483,15 @@
    "accentMot": "chargé d'une croix"
   },
   {
+   "kind": "molette6",
+   "nom": "Molette à six rais",
+   "sing": "molette à six rais",
+   "plur": "molettes à six rais",
+   "g": "f",
+   "cat": "Astres et éléments",
+   "draw": "molette6"
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

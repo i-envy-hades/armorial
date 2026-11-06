@@ -170,7 +170,7 @@ const count2 = s => s.m && s.m2 ? +s.nb2 : 0;
 const ADEF = { cot: "", xm: "", xt: "Or", xd: "", f: "plein", t1: "Azur", t2: "Gueules", t3: "Or", part: "parti", ray: "barry", n: "6", p: "", tp: "Or", m: "fleurdelis", nb: "3", pos: "autour", tm: "Or", ta: "Gueules",
   d: "", sz: "100", dx: "0", dy: "0", m2: "", nb2: "3", d2: "chef", cp: "", tm2: "Argent", ta2: "Gueules", sz2: "100", dx2: "0", dy2: "0", an: "0", an2: "0", ec: "100", ec2: "100", ad: "",
   ct: "", ct2: "", ln: "", pf: "", cn: "", cn2: "", iss: "", cc: "",
-  br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0",
+  br: "", tbr: "Argent", sbr: "bande", lbr: "", brn: "1", brd: "", brsz: "100", brdx: "0", brdy: "0", bcm: "",
   lpn: "3", lpc: "", lpt: "Gueules", lpk: "1", lpw: "", pdx: "0", pdy: "0", pth: "100", rot: "0", cnk: "", cnk2: "", bro2: "", pbro: "", pcc: "", cha: "", rc: "", cmp: "", tpc: "Argent", cm1: "", cm1t: "Or", cm2: "", cm2t: "Gueules", ri: "", fqs: "", big2: "", m2c: "", m2cn: "3", m2ct: "Or", m2cs: "100", m2ce: "100", lrg: "" };       // pdx, pdy : le décalage graphique de la pièce ; le lambel : son nombre de pendants, la figure qu'ils portent, son émail, combien par pendant, et sur lesquels ("" : chacun, « milieu »)       // la brisure : sa sorte, son émail, son sens (bâton, filet), son bord, le nombre et la place de ses figures, et leurs réglages graphiques       // iss : « issant », la moitié haute du meuble sortant de la pointe de l'écu               // cn : l'émail de la couronne que porte le meuble (« lion couronné d'or »), s'il peut en porter une
 const ADEFS = [ADEF, { ...ADEF, t1: "Gueules", m: "", p: "croix", tp: "Argent" }, { ...ADEF, t1: "Or", m: "lion", nb: "1", tm: "Gueules", ta: "Azur" }, { ...ADEF, t1: "Argent", m: "", p: "fasce", tp: "Gueules" },
   { ...ADEF, t1: "Or", m: "aigle", nb: "1", tm: "Sable", ta: "Gueules" },       // la cinquième : l'écusson en abîme (« sur le tout »)
@@ -248,6 +248,7 @@ function normalize(s) {
   const bp = brisPiece(s);
   s.sbr = bp && bp.sens && s.sbr === "barre" ? "barre" : "bande";
   s.lbr = bp && bp.bord && own(CONTOUR_NOM, s.lbr) && s.lbr !== "alesee" ? s.lbr : "";
+  s.bcm = s.br === "bordure" && !s.lbr && own(MOT, s.bcm) && s.bcm !== s.tbr ? s.bcm : "";      // « brisé d'une bordure componée d'argent et d'azur » : le second émail des compons
   if (!BRIS_FIGS.includes(s.br)) { s.brn = "1"; s.brd = ""; }
   else {
     if (!["1", "2", "3"].includes(s.brn)) s.brn = "1";
@@ -357,6 +358,7 @@ function canon(a) {
     const bp = brisPiece(a);
     if (bp && bp.sens) o.sbr = a.sbr;
     if (bp && bp.bord) o.lbr = a.lbr;
+    if (a.bcm) o.bcm = a.bcm;
     if (bp && bp.pend) { Object.assign(o, { lpn: a.lpn, lpc: a.lpc }); if (a.lpc) Object.assign(o, { lpt: a.lpt, lpk: a.lpk, lpw: a.lpw }); }
     if (!bp) Object.assign(o, { brn: a.brn, brd: a.brd });
   }
@@ -469,6 +471,7 @@ function brisTxt(s) {
   if (bp && bp.pend) return lambelTxt(s);
   if (bp) {
     const bord = s.lbr ? " " + agree(CONTOUR_NOM[s.lbr], bp.g, false) : "";
+    if (s.bcm) return `d'une bordure componée ${t} et ${de(s.bcm)}`;
     return `${bp.g === "f" ? "d'une" : "d'un"} ${s.br === "baton" ? "bâton" : s.br}${bord} ${t}` + (s.br === "baton" ? ` péri en ${s.sbr}` : s.br === "filet" ? ` en ${s.sbr}` : "");
   }
   const arms = brisArms(s), c = charges(arms);

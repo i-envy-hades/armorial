@@ -207,8 +207,8 @@ const DEVISES = {
 const ODEF = { q: "", sh: "", cr: "", hm: "", ht: "grilles", hp: "34", hs: "", tl1: "Gueules", tl2: "Or", pa: "", pa1: "Argent", pa2: "Gueules", su: "", ts: "Or", co: "", dv: "", dt: "", ab: "", gb: "", xc: "", xb: "", xp: "",
   ci: "", cim: "", cit: "Or", cia: "Gueules", h1: "", h2: "",
   mt: "", mc: "Gueules", ml: "Hermine" };          // le manteau (« m ») ou le manteau sous un pavillon (« p »), son émail et sa doublure          // le cimier : un meuble posé sur le heaume (entier ou issant), son émail et celui de son attribut
-const BRKEYS = ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
-const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "cot", "xm", "xd", "fqs", "big2", "lrg"]);
+const BRKEYS = ["br", "tbr", "sbr", "lbr", "bcm", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw", "brsz", "brdx", "brdy"];
+const OPT = new Set(["p", "m", "m2", "d", "d2", "q", "sh", "cr", "hm", "hs", "pa", "su", "co", "dv", "dt", "ab", "gb", "xc", "xb", "xp", "ct", "ct2", "ln", "pf", "ci", "cim", "mt", "cc", "ta", "br", "lbr", "brd", "lpc", "lpw", "h1", "h2", "pcc", "cha", "rc", "cmp", "cm1", "cm2", "ri", "cot", "xm", "xd", "fqs", "big2", "lrg", "bcm"]);
 const PFX = ["", "b_", "c_", "d_", "e_", "f_", "g_", "h_", "i_"];
 const fresh = () => ({ ...ODEF, A: ADEFS.map(a => ({ ...a })) });
 /* l'état d'un écu en une ligne (« t1=Gueules&m=lion&nb=1 ») : seules les valeurs qui diffèrent du défaut. C'est l'adresse de l'Atelier,
@@ -543,7 +543,8 @@ function brisLayer(s, u) {
       /* dans une case, le lambel reste à sa place (en chef) mais se réduit sans se déformer : pendants et filet gardent leurs proportions */
       bris = MAP ? `<g transform="translate(${100 + MAP.shx},${126 + (50 - 126) * MAP.vpy + MAP.shy}) scale(${MAP.vpx}) translate(-100,-50)">${l.body}</g>` : l.body;
     }
-    else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr), s.lbr) : "";
+    else if (s.br === "bordure" && (MAP || NOBORD)) bris = MAP ? bandeLocale("bordure", tinctPaint(s.tbr), s.lbr) + (s.bcm ? componsLocaux({ ...s, tpc: s.bcm }) : "") : "";
+    else if (s.br === "bordure" && s.bcm) bris = componee({ ...s, tp: s.tbr, tpc: s.bcm, cm1: "", cm2: "" }, u, d => { defs += d; });
     else if (brisPiece(s)) bris = sq(pieceInner(s.br === "baton" || s.br === "filet" ? `${s.br}-${s.sbr}` : s.br, tinctPaint(s.tbr), s.lbr), 1);
     else { defs += symbolFor(brisArms(s), `br-${u}`); bris = placeAll(brisPts(s), meuble(s.br), `br-${u}`, false); }
   }
@@ -704,7 +705,7 @@ function drawShield(St, u) {
     let r, under;
     NOBORD = true;
     try { r = drawBody(a, `${u}q${qi}`); under = drawBody({ ...a, m: "", br: "" }, `${u}u${qi}`); } finally { NOBORD = false; }
-    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) + (a.p === "bordure" && a.cmp ? componsDeCase(a.tpc, g.rect, .5, ed, 22) : "") : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
+    const ed = ["rb", "lb", "rt", "lt"][qi], bande = (enBande(a.p) ? bandeDeCase(a.p, tinctPaint(a.tp), g.rect, .5, ed, a.ln) + (a.p === "bordure" && a.cmp ? componsDeCase(a.tpc, g.rect, .5, ed, 22) : "") : "") + (a.br === "bordure" && a.bcm ? componsDeCase(a.bcm, g.rect, .5, ed, 22) : "") + (a.br === "bordure" ? bandeDeCase("bordure", tinctPaint(a.tbr), g.rect, .5, ed, a.lbr) : "");
     const [, , s0] = qOrigin(g), [cx, cy, cs] = qCover(g);
     const kx = St.xc && a.nb !== "seme" ? .78 : 1, s = s0 * kx, ox = g.cx - 100 * s, oy = g.cy - 118 * s;      // sous une croix, les figures se resserrent (sauf un semé, qui remplit son quartier)
     defs += r.defs + under.defs + `<clipPath id="qr-${u}${qi}"><rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]}" height="${g.rect[3]}"/></clipPath>`;

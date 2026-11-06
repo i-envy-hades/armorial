@@ -1363,8 +1363,7 @@
       "label": "Wikipédia, « Armorial des blasons personnels »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_blasons_personnels"
     },
-    "groupe": "esprits",
-    "aVerifier": true
+    "groupe": "esprits"
   },
   {
     "nom": "Boucicaut (Jean Ier Le Meingre)",
@@ -1701,8 +1700,7 @@
     "licurl": "https://creativecommons.org/licenses/by/4.0",
     "groupe": "marechaux",
     "meta": "1856–1942 · maréchal de France",
-    "desc": "Il commande les armées alliées d'Orient en 1918.",
-    "aVerifier": true
+    "desc": "Il commande les armées alliées d'Orient en 1918."
   },
   {
     "nom": "Jean de Lattre de Tassigny",
@@ -2046,8 +2044,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "eglise",
     "meta": "1763–1839 · cardinal, archevêque de Lyon",
-    "desc": "L'oncle de Napoléon Ier. Son écu porte l'aigle impériale et un F.",
-    "aVerifier": true
+    "desc": "L'oncle de Napoléon Ier. Son écu porte l'aigle impériale et un F."
   },
   {
     "nom": "Pierre de Foix",
@@ -2387,7 +2384,8 @@
     "groupe": "temple",
     "meta": "1109–1169 · maître du Temple",
     "desc": "Sixième maître de l'ordre, originaire de Guyenne.",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, échiqueté d'or et de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un échiqueté pour le coupé en trois et parti"
   },
   {
     "nom": "Philippe de Milly",
@@ -2738,7 +2736,8 @@
     "groupe": "marechaux",
     "meta": "1705–1788 · maréchal de France",
     "desc": "Le vainqueur de la Corse, en 1769.",
-    "aVerifier": true
+    "atelier": "D'or à la bande de gueules chargée de trois croissants d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les cornes des croissants ne sont pas tournées vers le chef"
   },
   {
     "nom": "Jean de Schulemberg",
@@ -3087,7 +3086,9 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'azur à deux clefs contournées d'argent posées en fasce",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=140"
   },
   {
     "nom": "Bédivère",
@@ -3445,7 +3446,8 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Coupé denché d'argent et de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un coupé denché pour le coupé émanché"
   },
   {
     "nom": "Kahedin",
@@ -3801,8 +3803,7 @@
     },
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Balaan",
@@ -4152,7 +4153,8 @@
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'azur à trois fleurs de lis d'or ; aux 2 et 3, de gueules à trois léopards d'or ; le tout brisé d'une bordure componée d'argent et d'azur",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Guy de Lusignan",
@@ -4495,7 +4497,8 @@
     "auteur": "Genuensium praesidium",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, d'azur à cinq chevrons d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Thibaud Gaudin",

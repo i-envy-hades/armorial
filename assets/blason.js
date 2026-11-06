@@ -895,6 +895,7 @@ function chargeInner(kind, fill, stroke, field){
     case "croissant": return `<path d="M64,108 A42,42 0 1 0 136,108 A34,34 0 1 1 64,108 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "etoile": return `<g transform="translate(100,116) scale(1.7)" fill="${fill}" stroke="${stroke}" stroke-width="0.8"><path d="M0,-26 L7,-8 L26,-8 L11,4 L17,24 L0,12 L-17,24 L-11,4 L-26,-8 L-7,-8 Z"/></g>`;
     case "etoile3": case "etoile4": case "etoile6": case "etoile7": case "etoile8": case "etoile9": case "etoile10": case "etoile12": case "etoile16": return etoileRais(+kind.slice(6), fill, stroke);
+    case "molette6": return etoileRais(6, fill, stroke).replace("</g>", `<circle cx="0" cy="0" r="5.5" fill="${field}"/></g>`);
     case "molette": return `<g transform="translate(100,116) scale(1.7)"><path d="M0,-26 L6,-7 L26,-6 L10,5 L16,24 L0,13 L-16,24 L-10,5 L-26,-6 L-6,-7 Z" fill="${fill}" stroke="${stroke}" stroke-width="0.8"/><circle cx="0" cy="2" r="4.5" fill="${field}"/></g>`;
     case "roundel": return `<circle cx="100" cy="116" r="40" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
     case "rose": return `

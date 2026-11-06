@@ -640,6 +640,14 @@ function pBrisure(P, i) {
   let e = j + bp.n, lbr = "";
   const cn = suites(LEX.contours, P, e).find(c => c.val !== "alesee");
   if (cn) { lbr = cn.val; e += cn.n; }
+  if (bp.val.b === "bordure" && !lbr && cle(P, e) === "componee") {      // « brisé d'une bordure componée d'argent et d'azur » (Beaufort)
+    const a1 = pEmail(P, e + 1);
+    if (!a1) return null;
+    if (cle(P, a1.i) !== "et") return rate(P, a1.i, "« et » (deux émaux de la bordure componée)");
+    const a2 = pEmail(P, a1.i + 1);
+    if (!a2) return null;
+    return bornes(P, { t: "bris", b: "bordure", tbr: a1.t, bcm: a2.t, sbr: "bande", lbr: "", i: a2.i }, i);
+  }
   const t = pEmail(P, e);
   if (!t) return null;
   let sbr = "bande", q = t.i;
@@ -840,7 +848,7 @@ function assembler(P, r) {
   if (bris) {
     src.bris = bris;
     if (bris.fig) Object.assign(a, { br: bris.m.kind, tbr: bris.tm, brn: String(bris.n), brd: bris.d || "" });
-    else Object.assign(a, { br: bris.b, tbr: bris.tbr, sbr: bris.sbr, lbr: bris.lbr }, bris.b === "lambel" ? { lpn: bris.lpn, lpc: bris.lpc, lpt: bris.lpt, lpk: bris.lpk, lpw: bris.lpw } : {});
+    else Object.assign(a, { br: bris.b, tbr: bris.tbr, sbr: bris.sbr, lbr: bris.lbr, bcm: bris.bcm || "" }, bris.b === "lambel" ? { lpn: bris.lpn, lpc: bris.lpc, lpt: bris.lpt, lpk: bris.lpk, lpw: bris.lpw } : {});
   }
   return { a, src };
 }
@@ -1098,7 +1106,7 @@ function lireSimple(texte) {
     const d0 = gbToks[0].de, f = w => ({ k: "w", w, de: d0, a: d0, r: "" });
     const g = lireArmes(texte, [f("de"), f("or"), { k: "p", w: ",", de: d0, a: d0, r: "" }, ...gbToks], "Brisure de l'écu", res);
     if (g && etat.A[0].br) res.erreurs.push({ de: gbToks[0].de, a: gbToks[gbToks.length - 1].a, msg: "La brisure de tout l'écu ne s'ajoute pas à celle des premières armes : l'Atelier n'en pose qu'une." });
-    else if (g) { for (const k of ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) if (k in g) etat.A[0][k] = g[k]; etat.gb = "1"; }
+    else if (g) { for (const k of ["br", "tbr", "sbr", "lbr", "bcm", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) if (k in g) etat.A[0][k] = g[k]; etat.gb = "1"; }
   }
   /* « aux 2 et 3, …, brisé d'un lambel » : dite dans les quartiers, la brisure y reste (Guillaume de Beaujeu) ; « ; le tout brisé … » la met sur tout l'écu */
   if (!res.erreurs.length && !gbToks && etat.q && active(etat).some(i => etat.A[i].br)) etat.gb = "0";
