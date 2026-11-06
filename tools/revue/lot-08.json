@@ -1,0 +1,307 @@
+{
+ "lot": 8,
+ "titre": "Lot 8 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Sienne",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Harlay",
+   "verdict": "fidele",
+   "avis": "Mêmes pals."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Rougé",
+   "verdict": "fidele",
+   "avis": "Même croix pattée ; celle de l'image s'évase davantage."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Faucogney",
+   "verdict": "fidele",
+   "avis": "Mêmes bandes."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Le Clerc de Juigné",
+   "verdict": "fidele",
+   "avis": "Même croix engrêlée, mêmes alérions."
+  },
+  {
+   "g": "blasons",
+   "nom": "Clermont-Ferrand",
+   "verdict": "essai",
+   "avis": "Les fleurs de lis d'or, comme sur l'image : l'Atelier lisait « du même » comme de gueules."
+  },
+  {
+   "g": "blasons",
+   "nom": "Millau",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "blasons",
+   "nom": "Montignac-Lascaux",
+   "verdict": "fidele",
+   "avis": "Mêmes lions couronnés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Stockholm",
+   "verdict": "sans-dessin",
+   "avis": "La tête couronnée du roi saint Éric : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Mulhouse",
+   "verdict": "essai",
+   "avis": "Notre roue pour la roue de moulin : ses aubes manquent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Gy",
+   "verdict": "essai",
+   "avis": "Gerbe agrandie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Gruyères",
+   "verdict": "sans-dessin",
+   "avis": "Une grue au vol dressé : l'Atelier n'en a pas. Je n'ai pas mis le cygne, comme pour les autres oiseaux remplacés que vous avez refusés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Chiasso",
+   "verdict": "sans-dessin",
+   "avis": "Un piédestal surmonté d'un lion qui tient une lettre : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Dübendorf",
+   "verdict": "sans-dessin",
+   "avis": "Une licorne issante au-dessus d'un palé : l'Atelier ne dessine pas la licorne issante."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté d'Angoulême",
+   "verdict": "fidele",
+   "avis": "Même losangé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Saint-Pol",
+   "verdict": "essai",
+   "avis": "Notre gerbe pour la gerbe d'avoine."
+  },
+  {
+   "g": "blasons",
+   "nom": "Valromey",
+   "verdict": "fidele",
+   "avis": "Même palé, même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Looz",
+   "verdict": "fidele",
+   "avis": "Même burelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté d'Ansbach",
+   "verdict": "essai",
+   "avis": "La couronne de gueules, comme demandé ; la queue n'est pas fourchée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume du Maroc",
+   "verdict": "sans-dessin",
+   "avis": "Étoile chérifienne, soleil naissant et fasce voûtée fuselée : trop de figures que l'Atelier n'a pas."
+  },
+  {
+   "g": "blasons",
+   "nom": "Empire latin de Constantinople",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Saint-Brieuc",
+   "verdict": "essai",
+   "avis": "Le griffon, « rampant » étant sa pose habituelle."
+  },
+  {
+   "g": "blasons",
+   "nom": "Chambéry",
+   "verdict": "essai",
+   "avis": "L'étoile au premier canton, comme sur l'image, comme pour la Cité de Londres."
+  },
+  {
+   "g": "blasons",
+   "nom": "Nancy",
+   "verdict": "sans-dessin",
+   "avis": "Un chardon et un chef de huit quartiers : trop pour un dessin honnête."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ratisbonne",
+   "verdict": "essai",
+   "avis": "Les clefs en sautoir."
+  },
+  {
+   "g": "blasons",
+   "nom": "Cardiff",
+   "verdict": "sans-dessin",
+   "avis": "Un dragon qui tient une bannière, un poireau et une terrasse : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Îles Baléares",
+   "verdict": "fidele",
+   "avis": "Même écu, sans les ornements."
+  },
+  {
+   "g": "blasons",
+   "nom": "Duché de Carniole",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Sponheim",
+   "verdict": "fidele",
+   "avis": "Même échiqueté."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Brandenbourg",
+   "verdict": "fidele",
+   "avis": "Même écusson."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Lombut",
+   "verdict": "fidele",
+   "avis": "Même semé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Hochdorf",
+   "verdict": "essai",
+   "avis": "Champ d'argent, comme sur l'image ; le texte de la carte dit d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Teufen",
+   "verdict": "essai",
+   "avis": "L'ours et le T, comme sur l'image. La langue de l'ours reste de sable."
+  },
+  {
+   "g": "blasons",
+   "nom": "Faoug",
+   "verdict": "sans-dessin",
+   "avis": "Un paon rouant et un hêtre arraché : l'Atelier n'a pas ces figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Lancy",
+   "verdict": "essai",
+   "avis": "La bande seule, sans ses étoiles ni ses cotices."
+  },
+  {
+   "g": "blasons",
+   "nom": "Albinen",
+   "verdict": "essai",
+   "avis": "La croix sur son mont."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Cremoux",
+   "verdict": "essai",
+   "avis": "Les grenades toutes d'or."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de La Marthonie",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Cadier",
+   "verdict": "essai",
+   "avis": "Rencontre de cerf agrandi."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Gournay",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "personnages",
+   "nom": "La Fayette",
+   "verdict": "essai",
+   "avis": "La bande et la bordure de vair."
+  },
+  {
+   "g": "personnages",
+   "nom": "Ferdinand Foch",
+   "verdict": "sans-dessin",
+   "avis": "Palmes, écusson aux trois épées et chef aux sept étoiles : trop de figures."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean de Corbeil",
+   "verdict": "essai",
+   "avis": "« Armé et lampassé » pour « lampassé »."
+  },
+  {
+   "g": "personnages",
+   "nom": "Gérard de Ridefort",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "François de La Grange d'Arquian",
+   "verdict": "essai",
+   "avis": "Des cerfs passants pour les « ranchiers »."
+  },
+  {
+   "g": "personnages",
+   "nom": "Bohort",
+   "verdict": "fidele",
+   "avis": "Même écu."
+  },
+  {
+   "g": "personnages",
+   "nom": "Geraint",
+   "verdict": "sans-dessin",
+   "avis": "Des têtes de serpent : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "personnages",
+   "nom": "Ariohan",
+   "verdict": "fidele",
+   "avis": "Même dragon."
+  },
+  {
+   "g": "personnages",
+   "nom": "Bérangère de Navarre",
+   "verdict": "essai",
+   "avis": "La croix pommée de l'Atelier."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guillaume de Sonnac",
+   "verdict": "essai",
+   "avis": "Un semé de losanges, comme sur l'image."
+  }
+ ]
+}

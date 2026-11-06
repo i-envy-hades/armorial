@@ -3038,8 +3038,7 @@
     "blasonSrc": {
       "label": "Wikipédia, « Armorial des villes européennes »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_villes_europ%C3%A9ennes"
-    },
-    "aVerifier": true
+    }
   },
   {
     "nom": "Lincoln",
@@ -3355,8 +3354,7 @@
     },
     "auteur": "Spedona",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Sévigné",
@@ -3666,7 +3664,7 @@
     "auteur": "Heraldic49",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelierAjust": "sz=175"
   },
   {
     "nom": "Maison de La Croix de Castries",
@@ -4287,8 +4285,7 @@
     },
     "auteur": "Yricordel",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille Doujat",
@@ -4601,7 +4598,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Clermont-Ferrand (France)",
-    "aVerifier": true
+    "atelier": "D'azur à la croix de gueules bordée d'or, cantonnée de quatre fleurs de lis d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : « du même » se dit ici d'or, comme sur l'image"
   },
   {
     "nom": "Senlis",
@@ -4913,8 +4911,7 @@
     "auteur": "Mortadelo2005",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Millau (France)",
-    "aVerifier": true
+    "porteur": "Ville de Millau (France)"
   },
   {
     "nom": "Lunel",
@@ -5228,8 +5225,7 @@
     "auteur": "Jacques63",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Montignac-Lascaux (France)",
-    "aVerifier": true
+    "porteur": "Ville de Montignac-Lascaux (France)"
   },
   {
     "nom": "Le Croisic",
@@ -5553,8 +5549,7 @@
     "auteur": "Koyos",
     "lic": "CC BY-SA 2.5",
     "licurl": "https://creativecommons.org/licenses/by-sa/2.5",
-    "porteur": "Ville de Stockholm (Suède)",
-    "aVerifier": true
+    "porteur": "Ville de Stockholm (Suède)"
   },
   {
     "nom": "Munich",
@@ -5881,7 +5876,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Mulhouse (France)",
-    "aVerifier": true
+    "atelier": "D'argent à la roue de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : notre roue pour la roue de moulin à aubes",
+    "atelierAjust": "sz=95"
   },
   {
     "nom": "Bordeaux",
@@ -6205,7 +6202,7 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelierAjust": "sz=105"
   },
   {
     "nom": "Sursee",
@@ -6549,8 +6546,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Fribourg",
-    "aVerifier": true
+    "porteur": "Commune du canton de Fribourg"
   },
   {
     "nom": "Villars-sur-Glâne",
@@ -6896,8 +6892,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton du Tessin",
-    "aVerifier": true
+    "porteur": "Commune du canton du Tessin"
   },
   {
     "nom": "Lugano",
@@ -7237,8 +7232,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "porteur": "Commune du canton de Zurich"
   },
   {
     "nom": "Kloten",
@@ -7576,8 +7570,7 @@
     "auteur": "Thom.Lanaud",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "porteur": "Province ou fief de l'ancienne France"
   },
   {
     "nom": "Comté d'Aumale",
@@ -7895,7 +7888,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "D'azur à la gerbe d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : une gerbe de blé pour la gerbe d'avoine",
+    "atelierAjust": "sz=105"
   },
   {
     "nom": "Valentinois",
@@ -8215,8 +8210,7 @@
     "auteur": "VateGV",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "porteur": "Province ou fief de l'ancienne France"
   },
   {
     "nom": "Vimeu",
@@ -8538,8 +8532,7 @@
     "auteur": "Nomadic1",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Hesse",
@@ -8861,7 +8854,8 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "D'or au lion de sable armé et lampassé de gueules couronné de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la queue n'est pas fourchée"
   },
   {
     "nom": "Comté de Vaudémont",
@@ -9182,8 +9176,7 @@
     },
     "auteur": "Flad, d'après SanchoPanzaXXI",
     "lic": "domaine public",
-    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "aVerifier": true
+    "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self"
   },
   {
     "nom": "Raj de Sarawak",
@@ -9519,7 +9512,7 @@
     "auteur": "Jimmy44",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Açores",
@@ -9849,7 +9842,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Saint-Brieuc (France)",
-    "aVerifier": true
+    "atelier": "D'azur au griffon d'or armé et lampassé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "forme": "sannitique"
   },
   {
     "nom": "Aix-en-Provence",
@@ -10169,7 +10164,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Chambéry (France)",
-    "aVerifier": true
+    "atelier": "De gueules à la croix d'argent chargée au franc quartier d'une étoile d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : l'Atelier dit la croix « chargée », mais l'étoile est posée au premier canton",
+    "forme": "sannitique"
   },
   {
     "nom": "Nîmes",
@@ -10812,7 +10809,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
     "porteur": "Ville de Ratisbonne (Allemagne)",
-    "aVerifier": true
+    "atelier": "De gueules aux clefs de saint Pierre d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "forme": "iberique"
   },
   {
     "nom": "Hambourg",
@@ -11134,8 +11133,7 @@
     "auteur": "Panageotean Graphics",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Ville de Cardiff (Royaume-Uni)",
-    "aVerifier": true
+    "porteur": "Ville de Cardiff (Royaume-Uni)"
   },
   {
     "nom": "Göteborg",
@@ -11457,8 +11455,7 @@
     "auteur": "Heralder",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Communauté autonome d'Espagne",
-    "aVerifier": true
+    "porteur": "Communauté autonome d'Espagne"
   },
   {
     "nom": "Castille-La Manche",
@@ -11775,7 +11772,7 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Principauté épiscopale de Coire",
@@ -12094,8 +12091,7 @@
     "auteur": "Nomadic1",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Principauté archiépiscopale de Brême",
@@ -12413,8 +12409,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Chambley",
@@ -12723,8 +12718,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Differdange",
@@ -13054,7 +13048,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Lucerne",
-    "aVerifier": true
+    "atelier": "D'argent au chevron de gueules accompagné de trois trèfles de sinople",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un champ d'argent, comme sur l'image ; le texte de la carte dit d'or",
+    "atelierAjust": "sz2=130"
   },
   {
     "nom": "Entlebuch",
@@ -13397,7 +13393,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton d'Appenzell Rhodes-Extérieures",
-    "aVerifier": true
+    "atelier": "Coupé : au 1, d'argent à l'ours passant de sable ; au 2, d'azur à la lettre T d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : la langue de l'ours reste de sable",
+    "atelierAjust": "q1.sz=150"
   },
   {
     "nom": "Buchs",
@@ -13743,8 +13741,7 @@
     "auteur": "Louis F. Nicollier, vectorisé par ARK",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "porteur": "Commune du canton de Vaud"
   },
   {
     "nom": "Étagnières",
@@ -14089,7 +14086,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelier": "Coupé : au 1, de sinople à la bande d'or ; au 2, de gueules aux clefs de saint Pierre d'or",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : les deux étoiles et les cotices de la bande manquent"
   },
   {
     "nom": "Aire-la-Ville",
@@ -14436,7 +14434,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton du Valais",
-    "aVerifier": true
+    "atelier": "D'argent à la croix latine de sable, accompagnée d'un mont à trois coupeaux de sinople en pointe",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=80&sz2=120&dy2=26"
   },
   {
     "nom": "Ernen",
@@ -14752,6 +14752,8 @@
     "auteur": "Adelac",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
+    "atelier": "D'azur à trois grenades unies d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
     "aVerifier": true
   },
   {
@@ -15064,8 +15066,7 @@
     },
     "auteur": "Thom.Lanaud",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Marbré",
@@ -15378,8 +15379,7 @@
     },
     "auteur": "Elolo15",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Chevalier de Sinard",
@@ -15694,8 +15694,7 @@
     },
     "auteur": "Zardoz91",
     "lic": "CC BY-SA 3.0",
-    "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "http://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille d'Angennes",

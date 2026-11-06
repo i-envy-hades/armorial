@@ -7454,6 +7454,35 @@
    ]
   },
   {
+   "kind": "besant-croix",
+   "nom": "Besant croiseté",
+   "sing": "besant croiseté",
+   "plur": "besants croisetés",
+   "g": "m",
+   "cat": "Propres au blason",
+   "rub": "Objets",
+   "file": {
+    "path": "assets/meubles/besant-croix.svg",
+    "origine": "dessin de L'Armorial",
+    "auteur": "L'Armorial",
+    "lic": "CC BY-SA 4.0",
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+   },
+   "box": [
+    24,
+    30,
+    152,
+    172
+   ],
+   "main": [
+    "#fcef3c"
+   ],
+   "accent": [
+    "#e20909"
+   ],
+   "accentMot": "chargé d'une croix"
+  },
+  {
    "kind": "soc-charrue",
    "nom": "Soc de charrue",
    "sing": "soc de charrue",

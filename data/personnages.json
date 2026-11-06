@@ -1330,7 +1330,8 @@
       "url": "https://fr.wikipedia.org/wiki/Famille_Motier_de_La_Fayette"
     },
     "groupe": "esprits",
-    "aVerifier": true
+    "atelier": "De gueules à la bande d'or, brisé d'une bordure de vair",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Jean-Dominique Cassini",
@@ -1669,8 +1670,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1851–1929 · maréchal de France",
-    "desc": "Le généralissime des armées alliées en 1918. Ces armes lui sont attribuées.",
-    "aVerifier": true
+    "desc": "Le généralissime des armées alliées en 1918. Ces armes lui sont attribuées."
   },
   {
     "nom": "Hubert Lyautey",
@@ -2012,7 +2012,9 @@
     "groupe": "marechaux",
     "meta": "mort en 1318 · maréchal de France",
     "desc": "Seigneur de Grez, parent d'Enguerrand de Marigny, conseiller de Philippe le Bel.",
-    "aVerifier": true
+    "atelier": "D'or au dragon de sinople armé et lampassé de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Robert de Wavrin",
@@ -2351,8 +2353,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "temple",
     "meta": "mort en 1189 · maître du Temple",
-    "desc": "Dixième maître de l'ordre, mort devant Acre.",
-    "aVerifier": true
+    "desc": "Dixième maître de l'ordre, mort devant Acre."
   },
   {
     "nom": "Guillaume de Beaujeu",
@@ -2703,7 +2704,8 @@
     "groupe": "marechaux",
     "meta": "v. 1554–1617 · maréchal de France",
     "desc": "Le maréchal de Montigny, seigneur de Montigny et de Séry.",
-    "aVerifier": true
+    "atelier": "D'azur à trois cerfs passants d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Antoine de Nicolaï",
@@ -3048,8 +3050,7 @@
     },
     "auteur": "Ssire",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Hector des Mares",
@@ -3408,8 +3409,7 @@
     },
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Mador de la Porte",
@@ -3767,8 +3767,7 @@
     },
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Lanborc du Chatel",
@@ -4119,7 +4118,8 @@
     "auteur": "Sodacan",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'azur à la croix pommée d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Jeanne Grey",
@@ -4462,7 +4462,8 @@
     "auteur": "Odejea, Thom.lanaud",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, d'or semé de losanges de gueules, au lion de sable armé et lampassé de gueules",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un semé de losanges pour les quatorze losanges en orle"
   },
   {
     "nom": "Renaud de Vichiers",
