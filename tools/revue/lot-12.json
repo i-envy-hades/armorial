@@ -1,0 +1,307 @@
+{
+ "lot": 12,
+ "titre": "Lot 12 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Locarno",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Ségur",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Chasteigner",
+   "verdict": "fidele",
+   "avis": "Même lion passant."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Chapt de Rastignac",
+   "verdict": "fidele",
+   "avis": "Même lion couronné."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Sérent",
+   "verdict": "fidele",
+   "avis": "Mêmes quintefeuilles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sélestat",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Clamart",
+   "verdict": "fidele",
+   "avis": "Même chevron, mêmes roses."
+  },
+  {
+   "g": "blasons",
+   "nom": "Fürth",
+   "verdict": "essai",
+   "avis": "Notre trèfle ; celui de l'image porte une petite croix et un cadre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Oxford",
+   "verdict": "essai",
+   "avis": "Une champagne d'azur à deux fasces ondées d'argent, comme demandé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Châteaugiron",
+   "verdict": "fidele",
+   "avis": "Même chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Diessenhofen",
+   "verdict": "essai",
+   "avis": "Les lions passants, inclinés le long de la bande, comme à Thurgovie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Thônex",
+   "verdict": "sans-dessin",
+   "avis": "Des feuilles de chêne : l'Atelier n'en a pas, et je n'ai pas mis d'autre feuille."
+  },
+  {
+   "g": "blasons",
+   "nom": "Weinfelden",
+   "verdict": "sans-dessin",
+   "avis": "Un sarment autour d'un échalas : l'Atelier n'a pas ces figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Viège",
+   "verdict": "essai",
+   "avis": "Les deux lions de l'un en l'autre ; ils regardent du même côté, au lieu de se faire face."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Bigorre",
+   "verdict": "essai",
+   "avis": "Les deux léopards l'un sur l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aunis",
+   "verdict": "sans-dessin",
+   "avis": "Une perdrix : l'Atelier n'en a pas, et je n'ai pas mis d'autre oiseau."
+  },
+  {
+   "g": "blasons",
+   "nom": "Noyonnais",
+   "verdict": "essai",
+   "avis": "Les deux crosses sur le semé ; elles regardent du même côté au lieu d'être adossées."
+  },
+  {
+   "g": "blasons",
+   "nom": "Duché de Schleswig",
+   "verdict": "fidele",
+   "avis": "Mêmes lions léopardés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Burgraviat de Rheineck",
+   "verdict": "essai",
+   "avis": "Le même écu dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Royaume de Sicile",
+   "verdict": "sans-dessin",
+   "avis": "Un écartelé en sautoir de deux armes : l'Atelier ne sait pas le dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Îles Féroé",
+   "verdict": "essai",
+   "avis": "Notre bélier passant."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ajaccio",
+   "verdict": "sans-dessin",
+   "avis": "Une colonne couronnée entre deux lions affrontés : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Pau",
+   "verdict": "sans-dessin",
+   "avis": "Barrière, paon, vaches et chef chargé : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Le Havre",
+   "verdict": "sans-dessin",
+   "avis": "Salamandre sur un brasier, chef et franc-canton : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Kiel",
+   "verdict": "sans-dessin",
+   "avis": "La feuille d'ortie chargée d'une barque : l'Atelier n'a pas la barque."
+  },
+  {
+   "g": "blasons",
+   "nom": "Düsseldorf",
+   "verdict": "sans-dessin",
+   "avis": "Un lion qui tient une ancre : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Rhénanie-Palatinat",
+   "verdict": "sans-dessin",
+   "avis": "Un chapé parti arqué, avec la roue de Mayence : l'Atelier ne sait pas le dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Abbaye d'Obermünster",
+   "verdict": "fidele",
+   "avis": "Mêmes fleurs de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Abbaye de Quedlinbourg",
+   "verdict": "essai",
+   "avis": "Des épées pour les couteaux : à regarder."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Colpach",
+   "verdict": "fidele",
+   "avis": "Même écusson."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Wellin",
+   "verdict": "fidele",
+   "avis": "Mêmes léopards."
+  },
+  {
+   "g": "blasons",
+   "nom": "Erstfeld",
+   "verdict": "essai",
+   "avis": "Le cerf sur sa terrasse, sans le suaire."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sankt Margrethen",
+   "verdict": "essai",
+   "avis": "La grappe, sans ses quatre feuilles."
+  },
+  {
+   "g": "blasons",
+   "nom": "Hermenches",
+   "verdict": "essai",
+   "avis": "La gerbe brochant, sans la colombe."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bernex",
+   "verdict": "sans-dessin",
+   "avis": "Une montagne sommée d'une flamme : l'Atelier n'a pas ces figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Zermatt",
+   "verdict": "essai",
+   "avis": "Le lion sur son mont ; les deux étoiles manquent."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Muzillac",
+   "verdict": "fidele",
+   "avis": "Même léopard lionné d'hermine."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Loppin de Montmort",
+   "verdict": "fidele",
+   "avis": "Même croix ancrée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Vassé",
+   "verdict": "fidele",
+   "avis": "Mêmes fasces."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Lannion",
+   "verdict": "fidele",
+   "avis": "Mêmes merlettes, même chef."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jacques de Montberon",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "personnages",
+   "nom": "Honoré Reille",
+   "verdict": "sans-dessin",
+   "avis": "Un centaure : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "personnages",
+   "nom": "François de Joyeuse",
+   "verdict": "sans-dessin",
+   "avis": "Des hydres et une bordure semée : trop pour un dessin honnête."
+  },
+  {
+   "g": "personnages",
+   "nom": "André de Montbard",
+   "verdict": "essai",
+   "avis": "Des poissons pour les bars, comme pour Guillaume de Chartres."
+  },
+  {
+   "g": "personnages",
+   "nom": "Auguste Regnaud de Saint-Jean d'Angély",
+   "verdict": "sans-dessin",
+   "avis": "Un coq sur un chiffre 4 et une bordure componée de seize pièces : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Sagramor",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guinglain",
+   "verdict": "sans-dessin",
+   "avis": "Un bâton noueux : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "personnages",
+   "nom": "Blanor",
+   "verdict": "sans-dessin",
+   "avis": "Un semé de croissants sous trois bandes : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "personnages",
+   "nom": "Owen Tudor",
+   "verdict": "essai",
+   "avis": "Le chevron et trois casques."
+  },
+  {
+   "g": "personnages",
+   "nom": "Maurice de Saxe",
+   "verdict": "essai",
+   "avis": "Le crancelin dans l'autre sens, d'un bord à l'autre."
+  }
+ ]
+}
