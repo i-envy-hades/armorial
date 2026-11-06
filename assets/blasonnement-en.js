@@ -133,7 +133,7 @@ function blazonCoreEn(s) {
     const c2 = chargesEn(arms2(s));
     return `${champ}, ${pieceTxt}${broche ? broche + "," : s.ri ? "," : ""} between in chief ${grpObj} and in base ${groupeEn(c2)}`;
   }
-  if (c && !seme) return `${champ}, ${pieceTxt}${broche ? broche + "," : s.ri ? "," : ""} between ${grpObj}${dispoEn(s.p, c.n)}${x2 ? " and " + x2.obj : ""}`;
+  if (c && !seme) return `${champ}, ${pieceTxt}${broche ? broche + "," : s.ri ? "," : ""} ${s.p === "sautoir" && c.n === 1 ? "in chief" : "between"} ${grpObj}${dispoEn(s.p, c.n)}${x2 ? " and " + x2.obj : ""}`;
   return `${champ}${lead}${pieceTxt}${broche}`;
 }
 function lambelTxtEn(s) {

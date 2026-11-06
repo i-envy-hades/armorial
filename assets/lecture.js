@@ -1100,6 +1100,8 @@ function lireSimple(texte) {
     if (g && etat.A[0].br) res.erreurs.push({ de: gbToks[0].de, a: gbToks[gbToks.length - 1].a, msg: "La brisure de tout l'écu ne s'ajoute pas à celle des premières armes : l'Atelier n'en pose qu'une." });
     else if (g) { for (const k of ["br", "tbr", "sbr", "lbr", "brn", "brd", "lpn", "lpc", "lpt", "lpk", "lpw"]) if (k in g) etat.A[0][k] = g[k]; etat.gb = "1"; }
   }
+  /* « aux 2 et 3, …, brisé d'un lambel » : dite dans les quartiers, la brisure y reste (Guillaume de Beaujeu) ; « ; le tout brisé … » la met sur tout l'écu */
+  if (!res.erreurs.length && !gbToks && etat.q && active(etat).some(i => etat.A[i].br)) etat.gb = "0";
   if (!res.erreurs.length) for (const i of active(etat)) if (etat.A[i].iss === "t" && (etat.q !== "p" || i > 1 || halfMode(etat, i))) res.erreurs.push({ de: 0, a: texte.length, msg: "« demi-… mouvant du trait du parti » ne se dit que d'une moitié d'un parti : « Parti : au 1, … ; au 2, … »." });
   if (res.erreurs.length) return res;
   res.ok = true; res.etat = etat;

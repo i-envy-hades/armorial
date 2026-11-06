@@ -1,0 +1,307 @@
+{
+ "lot": 9,
+ "titre": "Lot 9 : 50 cartes de plus sur les 1 047 nouvelles",
+ "texte": "Prises à intervalles réguliers, comme les lots précédents. « Me convient » la marque vérifiée ; « Modifier » ouvre tout : texte, réglages, forme, retrait de l'Atelier, commentaire pour Claude.",
+ "cartes": [
+  {
+   "g": "blasons",
+   "nom": "Lincoln",
+   "verdict": "essai",
+   "avis": "Fleur de lis agrandie."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Sévigné",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Maison de La Croix de Castries",
+   "verdict": "fidele",
+   "avis": "Même croix."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Tilly",
+   "verdict": "fidele",
+   "avis": "Même fleur de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille Doujat",
+   "verdict": "essai",
+   "avis": "La couronne du griffon décalée vers la gauche."
+  },
+  {
+   "g": "blasons",
+   "nom": "Senlis",
+   "verdict": "fidele",
+   "avis": "Même pal."
+  },
+  {
+   "g": "blasons",
+   "nom": "Lunel",
+   "verdict": "essai",
+   "avis": "Le croissant et l'étoile, l'un au-dessus de l'autre."
+  },
+  {
+   "g": "blasons",
+   "nom": "Le Croisic",
+   "verdict": "fidele",
+   "avis": "Même croix, mêmes mouchetures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Munich",
+   "verdict": "sans-dessin",
+   "avis": "Le moine de Munich : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Bordeaux",
+   "verdict": "sans-dessin",
+   "avis": "La Grosse Cloche, le léopard, les ondes et le chef de France : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Sursee",
+   "verdict": "fidele",
+   "avis": "Même parti."
+  },
+  {
+   "g": "blasons",
+   "nom": "Villars-sur-Glâne",
+   "verdict": "essai",
+   "avis": "L'Atelier sait maintenant poser une figure seule en chef d'un sautoir."
+  },
+  {
+   "g": "blasons",
+   "nom": "Lugano",
+   "verdict": "essai",
+   "avis": "Un écartelé par une croix, une lettre par quartier, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Kloten",
+   "verdict": "essai",
+   "avis": "Un lion issant, sortant du bas de l'écu, pour le lion naissant."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté d'Aumale",
+   "verdict": "fidele",
+   "avis": "Même bande, mêmes besants."
+  },
+  {
+   "g": "blasons",
+   "nom": "Valentinois",
+   "verdict": "essai",
+   "avis": "Le même écu dans les mots de l'Atelier."
+  },
+  {
+   "g": "blasons",
+   "nom": "Vimeu",
+   "verdict": "fidele",
+   "avis": "Même fascé, même bordure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Hesse",
+   "verdict": "sans-dessin",
+   "avis": "Un lion burelé d'argent et de gueules : l'Atelier ne sait pas rayer un meuble."
+  },
+  {
+   "g": "blasons",
+   "nom": "Comté de Vaudémont",
+   "verdict": "fidele",
+   "avis": "Même burelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Raj de Sarawak",
+   "verdict": "sans-dessin",
+   "avis": "Une croix partie de deux émaux : l'Atelier ne sait pas la dessiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Açores",
+   "verdict": "sans-dessin",
+   "avis": "L'autour des palombes et la bordure étoilée, sous de grands ornements : trop de figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aix-en-Provence",
+   "verdict": "sans-dessin",
+   "avis": "Un chef tiercé de trois armes : trop pour un dessin honnête."
+  },
+  {
+   "g": "blasons",
+   "nom": "Nîmes",
+   "verdict": "sans-dessin",
+   "avis": "Palmier, crocodile enchaîné et inscriptions : l'Atelier n'a pas ces figures."
+  },
+  {
+   "g": "blasons",
+   "nom": "Blois",
+   "verdict": "sans-dessin",
+   "avis": "Un écusson tenu par un porc-épic et un loup : l'Atelier ne dessine pas ces supports."
+  },
+  {
+   "g": "blasons",
+   "nom": "Hambourg",
+   "verdict": "sans-dessin",
+   "avis": "Une porte de ville à trois tours et étoiles : notre porte n'a que deux tours."
+  },
+  {
+   "g": "blasons",
+   "nom": "Göteborg",
+   "verdict": "sans-dessin",
+   "avis": "Un lion qui tient une épée et un écu : l'Atelier ne sait pas les combiner."
+  },
+  {
+   "g": "blasons",
+   "nom": "Castille-La Manche",
+   "verdict": "essai",
+   "avis": "Le château de Castille dans la moitié de gueules. La couronne au-dessus de l'écu n'est pas dessinée."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté épiscopale de Coire",
+   "verdict": "essai",
+   "avis": "Le bouquetin dressé, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Principauté archiépiscopale de Brême",
+   "verdict": "essai",
+   "avis": "Les clefs en sautoir et la croisette en chef."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Chambley",
+   "verdict": "fidele",
+   "avis": "Même croix, mêmes fleurs de lis."
+  },
+  {
+   "g": "blasons",
+   "nom": "Seigneurie de Differdange",
+   "verdict": "fidele",
+   "avis": "Même lion."
+  },
+  {
+   "g": "blasons",
+   "nom": "Entlebuch",
+   "verdict": "essai",
+   "avis": "Notre arbre pour le hêtre : ses feuilles restent d'argent au lieu de sinople."
+  },
+  {
+   "g": "blasons",
+   "nom": "Buchs",
+   "verdict": "sans-dessin",
+   "avis": "Un gonfanon : l'Atelier n'a pas cette figure."
+  },
+  {
+   "g": "blasons",
+   "nom": "Étagnières",
+   "verdict": "sans-dessin",
+   "avis": "Un corbeau : l'Atelier n'en a pas, et je n'ai pas mis le choucas, comme pour les autres oiseaux remplacés que vous avez refusés."
+  },
+  {
+   "g": "blasons",
+   "nom": "Aire-la-Ville",
+   "verdict": "essai",
+   "avis": "L'arche de pont et la fleur de lis, sans les deux tours."
+  },
+  {
+   "g": "blasons",
+   "nom": "Ernen",
+   "verdict": "essai",
+   "avis": "Les deux croix posées en fasce, comme demandé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Cordon",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Marbré",
+   "verdict": "essai",
+   "avis": "L'aigle éployée aux ailes déployées, comme sur l'image."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille de Chevalier de Sinard",
+   "verdict": "fidele",
+   "avis": "Même chevron."
+  },
+  {
+   "g": "blasons",
+   "nom": "Famille d'Angennes",
+   "verdict": "fidele",
+   "avis": "Même sautoir."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jean-Dominique Cassini",
+   "verdict": "essai",
+   "avis": "Les six étoiles d'azur : l'Atelier lisait « du même » comme d'or."
+  },
+  {
+   "g": "personnages",
+   "nom": "Hubert Lyautey",
+   "verdict": "sans-dessin",
+   "avis": "Une foi (deux mains jointes) et un soleil : l'Atelier n'a pas la foi."
+  },
+  {
+   "g": "personnages",
+   "nom": "Robert de Wavrin",
+   "verdict": "essai",
+   "avis": "L'écusson et le lambel."
+  },
+  {
+   "g": "personnages",
+   "nom": "Guillaume de Beaujeu",
+   "verdict": "essai",
+   "avis": "Le lambel dans les quartiers 2 et 3, comme sur l'image : l'Atelier sait maintenant garder une brisure dans ses quartiers."
+  },
+  {
+   "g": "personnages",
+   "nom": "Antoine de Nicolaï",
+   "verdict": "sans-dessin",
+   "avis": "Un lévrier : l'Atelier n'en a pas, et un loup le remplacerait mal."
+  },
+  {
+   "g": "personnages",
+   "nom": "Hector des Mares",
+   "verdict": "essai",
+   "avis": "Le soleil figuré, avec son visage."
+  },
+  {
+   "g": "personnages",
+   "nom": "Mador de la Porte",
+   "verdict": "sans-dessin",
+   "avis": "Des pommes : l'Atelier n'en a pas."
+  },
+  {
+   "g": "personnages",
+   "nom": "Lanborc du Chatel",
+   "verdict": "fidele",
+   "avis": "Même léopard lionné."
+  },
+  {
+   "g": "personnages",
+   "nom": "Jeanne Grey",
+   "verdict": "sans-dessin",
+   "avis": "Retirée de l'Atelier à la demande du curateur."
+  },
+  {
+   "g": "personnages",
+   "nom": "Renaud de Vichiers",
+   "verdict": "fidele",
+   "avis": "Même écartelé."
+  }
+ ]
+}

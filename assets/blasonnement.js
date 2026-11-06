@@ -114,7 +114,7 @@ const LAYOUT = {
   barre: { 2: [[54, 66, .36], [144, 178, .34]], 6: [[107, 38, .22], [75, 79, .22], [43, 120, .22], [87, 220, .22], [119, 179, .22], [151, 139, .22]] },
   chevron: { 3: [[58, 70, .36], [142, 70, .36], [100, 200, .3]] },
   croix: { 4: [[49, 54, .28], [151, 54, .28], [54, 166, .26], [146, 166, .26]] },
-  sautoir: { 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
+  sautoir: { 1: [[100, 44, .38]], 4: [[100, 48, .28], [42, 124, .28], [158, 124, .28], [100, 210, .22]] },
   "fasce-cp": { 1: [[100, 62, .4]], 2: [[64, 62, .32], [136, 62, .32]], 3: [[50, 62, .26], [100, 62, .26], [150, 62, .26]] },     // « accompagnée en chef de …» (cp) : les premiers meubles au-dessus de la fasce
   "sur-chef": { 1: [[100, 52, .36]], 2: [[66, 52, .33], [134, 52, .33]], 3: [[50, 52, .3], [100, 52, .3], [150, 52, .3]] },
   "sur-fasce": { 1: [[100, 130, .38]], 3: [[50, 130, .3], [100, 130, .3], [150, 130, .3]] },
@@ -449,7 +449,7 @@ function blazonCore(s) {
     return `${champ}${sep}${pieceTxt}${broche ? broche + "," : s.ri ? "," : ""} ${agree("accompagné", P.g, false)} en chef ${grpObj} et en pointe ${obj2}`;
   }
   if (c && !seme) {
-    const v = agree(VERBE[s.p] || "accompagné", P.g, false);
+    const v = agree((s.p === "sautoir" && s.nb === "1" ? "" : VERBE[s.p]) || "accompagné", P.g, false);      // une seule figure près du sautoir l'accompagne (en chef) : elle ne le cantonne pas
     return `${champ}${sep}${pieceTxt}${broche ? broche + "," : s.ri ? "," : ""} ${v} ${grpObj}${dispo(s.p, c.n, c.g)}${x2 ? " et " + x2.obj : ""}`;
   }
   return `${champ}${lead}${pieceTxt}${broche}`;

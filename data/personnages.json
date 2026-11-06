@@ -1347,7 +1347,8 @@
       "url": "https://fr.wikipedia.org/wiki/Famille_Cassini"
     },
     "groupe": "esprits",
-    "aVerifier": true
+    "atelier": "D'or à la fasce d'azur, accompagnée de six étoiles d'azur",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Geoffroy Plantagenêt",
@@ -1685,8 +1686,7 @@
     "licurl": "https://creativecommons.org/licenses/by/3.0",
     "groupe": "marechaux",
     "meta": "1854–1934 · maréchal de France",
-    "desc": "Résident général au Maroc et membre de l'Académie française.",
-    "aVerifier": true
+    "desc": "Résident général au Maroc et membre de l'Académie française."
   },
   {
     "nom": "Louis Franchet d'Espèrey",
@@ -2030,7 +2030,8 @@
     "groupe": "marechaux",
     "meta": "XIVᵉ siècle · maréchal de France",
     "desc": "Seigneur de Saint-Venant, issu d'une vieille maison du comté de Flandre.",
-    "aVerifier": true
+    "atelier": "D'azur à l'écusson d'argent, brisé d'un lambel de gueules",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Joseph Fesch",
@@ -2369,7 +2370,8 @@
     "groupe": "temple",
     "meta": "v. 1233–1291 · maître du Temple",
     "desc": "Le dernier maître en Terre sainte, mort à la chute de Saint-Jean-d'Acre.",
-    "aVerifier": true
+    "atelier": "Écartelé : aux 1 et 4, d'argent à la croix pattée de gueules ; aux 2 et 3, d'or au lion de sable, brisé d'un lambel de gueules à cinq pendants",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Bertrand de Blanquefort",
@@ -2720,8 +2722,7 @@
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "groupe": "marechaux",
     "meta": "1712–1777 · maréchal de France",
-    "desc": "Il meurt à Paris, où il était né.",
-    "aVerifier": true
+    "desc": "Il meurt à Paris, où il était né."
   },
   {
     "nom": "Noël de Vaux",
@@ -3067,7 +3068,9 @@
     "auteur": "Chatsam",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'argent à trois bandes de gueules, au soleil figuré d'azur brochant sur le tout",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz2=130"
   },
   {
     "nom": "Keu",
@@ -3425,8 +3428,7 @@
     },
     "auteur": "Sénèque",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Guivret le Petit",
@@ -3783,8 +3785,7 @@
     },
     "auteur": "Yves LG",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Abilan du Désert",
@@ -4135,7 +4136,7 @@
     "auteur": "Bear17",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "sansAtelier": true
   },
   {
     "nom": "Marguerite Beaufort",
@@ -4478,8 +4479,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Thomas Béraud",

@@ -255,13 +255,13 @@ function normalizeAll(St) {
   St.dv = String(St.dv || "").slice(0, 48);
   if (!own(DEVISES, St.dt)) St.dt = "";
   St.A.forEach(normalize);
-  if (St.q) {                                                                                                  // la brisure est à tout l'écu : elle se range dans les premières armes
+  if (St.q && St.gb !== "0") {                                                                                 // la brisure est à tout l'écu : elle se range dans les premières armes (gb « 0 » : chaque brisure reste dans ses quartiers)
     const j = St.A[0].br ? 0 : active(St).find(i => St.A[i].br);
     if (j > 0) for (const k of BRKEYS) St.A[0][k] = St.A[j][k];
     St.A.forEach((a, i) => { if (i) for (const k of BRKEYS) a[k] = ADEF[k] ?? ""; });
     normalize(St.A[0]);
   }
-  St.gb = St.q && St.A[0].br ? "1" : "";
+  St.gb = !St.q ? "" : St.gb === "0" ? (active(St).some(i => St.A[i].br) ? "0" : "") : St.A[0].br ? "1" : "";
   St.A.forEach((a, i) => { if (a.iss === "t" && (St.q !== "p" || i > 1 || halfMode(St, i))) a.iss = ""; });                    // un demi-meuble ne se dit que d'une moitié du parti
   if (!active(St).includes(CUR)) CUR = 0;
   return St;

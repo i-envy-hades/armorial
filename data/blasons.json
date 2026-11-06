@@ -3053,7 +3053,7 @@
       "label": "Wikipédia, « Armorial des villes européennes »",
       "url": "https://fr.wikipedia.org/wiki/Armorial_des_villes_europ%C3%A9ennes"
     },
-    "aVerifier": true
+    "atelierAjust": "sz=120&ec=60&sz2=125"
   },
   {
     "nom": "Erfurt",
@@ -3368,8 +3368,7 @@
     },
     "auteur": "Yuma",
     "lic": "CC BY 3.0",
-    "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by/3.0"
   },
   {
     "nom": "Famille d'Urfé",
@@ -3678,8 +3677,7 @@
     },
     "auteur": "ByacC",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de Montalembert",
@@ -3987,8 +3985,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Bréhan",
@@ -4300,7 +4297,7 @@
     "auteur": "Ster3oPro",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "atelierAjust": "dx2=-22&dy2=22&pdx=16&pdy=-20"
   },
   {
     "nom": "Famille de Boisgelin",
@@ -4926,7 +4923,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Ville de Lunel (France)",
-    "aVerifier": true
+    "atelier": "D'azur au croissant d'argent, accompagné d'une étoile d'or en chef",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=80&sz2=90"
   },
   {
     "nom": "Lunéville",
@@ -5239,8 +5238,7 @@
     "auteur": "Bruno Vallette",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Le Croisic (France)",
-    "aVerifier": true
+    "porteur": "Ville de Le Croisic (France)"
   },
   {
     "nom": "Leipzig",
@@ -5563,8 +5561,7 @@
     "auteur": "MUC",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "porteur": "Ville de Munich (Allemagne)",
-    "aVerifier": true
+    "porteur": "Ville de Munich (Allemagne)"
   },
   {
     "nom": "Stuttgart",
@@ -5892,8 +5889,7 @@
     "auteur": "Syryatsu",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "porteur": "Ville de Bordeaux (France)",
-    "aVerifier": true
+    "porteur": "Ville de Bordeaux (France)"
   },
   {
     "nom": "Moncontour",
@@ -6217,8 +6213,7 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
-    "porteur": "Commune du canton de Lucerne",
-    "aVerifier": true
+    "porteur": "Commune du canton de Lucerne"
   },
   {
     "nom": "Altstätten",
@@ -6562,7 +6557,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Fribourg",
-    "aVerifier": true
+    "atelier": "D'azur au sautoir d'argent, accompagné d'une fleur de lis d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Carouge",
@@ -6908,7 +6904,8 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton du Tessin",
-    "aVerifier": true
+    "atelier": "Écartelé par une croix d'argent : au 1, de gueules à la lettre L d'argent ; au 2, de gueules à la lettre V d'argent ; au 3, de gueules à la lettre G d'argent ; au 4, de gueules à la lettre A d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Frauenfeld",
@@ -7248,7 +7245,9 @@
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-COA-Switzerland",
     "forme": "iberique",
     "porteur": "Commune du canton de Zurich",
-    "aVerifier": true
+    "atelier": "De gueules au lion issant d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : un lion issant pour le lion naissant",
+    "atelierAjust": "sz=170"
   },
   {
     "nom": "Uster",
@@ -7584,8 +7583,7 @@
     "auteur": "Syryatsu",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "porteur": "Province ou fief de l'ancienne France"
   },
   {
     "nom": "Duché de Bar",
@@ -7811,7 +7809,10 @@
     "auteur": "Odejea",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Province ou fief de l'ancienne France"
+    "porteur": "Province ou fief de l'ancienne France",
+    "aVerifier": true,
+    "atelier": "Écartelé : aux 1 et 4, d'argent au lion de gueules ; aux 2 et 3, de gueules au léopard lionné d'or ; le tout brisé d'un lambel d'azur",
+    "atelierNote": "Le lambel broche sur tout l'écu, comme sur l'image"
   },
   {
     "nom": "Comté de Poitiers",
@@ -7905,7 +7906,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
     "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "atelier": "D'azur à six besants d'argent posés 3, 2 et 1, au chef d'or",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Comté de Vendôme",
@@ -8224,8 +8226,7 @@
     "auteur": "Thom.Lanaud",
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "porteur": "Province ou fief de l'ancienne France",
-    "aVerifier": true
+    "porteur": "Province ou fief de l'ancienne France"
   },
   {
     "nom": "Vivarais",
@@ -8546,8 +8547,7 @@
     "auteur": "Gerhard Matzat (1921–1994)",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "porteur": "Land d'Allemagne",
-    "aVerifier": true
+    "porteur": "Land d'Allemagne"
   },
   {
     "nom": "Palatinat du Rhin",
@@ -8869,8 +8869,7 @@
     "auteur": "Ipankonin",
     "lic": "CC BY-SA 3.0",
     "licurl": "http://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "porteur": "Territoire du Saint-Empire"
   },
   {
     "nom": "Principauté de Tour et Taxis",
@@ -9191,8 +9190,7 @@
     },
     "auteur": "Samhanin",
     "lic": "CC0",
-    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "aVerifier": true
+    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
   },
   {
     "nom": "Royaume de Prusse",
@@ -9526,8 +9524,7 @@
     },
     "auteur": "Fenn-O-maniC",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Aurigny",
@@ -9858,8 +9855,7 @@
     "auteur": "Pierre Audité",
     "lic": "CC BY 3.0",
     "licurl": "https://creativecommons.org/licenses/by/3.0",
-    "porteur": "Ville d'Aix-en-Provence (France)",
-    "aVerifier": true
+    "porteur": "Ville d'Aix-en-Provence (France)"
   },
   {
     "nom": "Arles",
@@ -10180,8 +10176,7 @@
     "auteur": "Henrysalome",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "porteur": "Ville de Nîmes (France)",
-    "aVerifier": true
+    "porteur": "Ville de Nîmes (France)"
   },
   {
     "nom": "Bayonne",
@@ -10503,8 +10498,7 @@
     "auteur": "Syryatsu",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-self",
-    "porteur": "Ville de Blois (France)",
-    "aVerifier": true
+    "porteur": "Ville de Blois (France)"
   },
   {
     "nom": "Chartres",
@@ -10825,8 +10819,7 @@
     "auteur": "Freie und Hansestadt Hamburg",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Germany",
-    "porteur": "Ville de Hambourg (Allemagne)",
-    "aVerifier": true
+    "porteur": "Ville de Hambourg (Allemagne)"
   },
   {
     "nom": "Rostock",
@@ -11147,8 +11140,7 @@
     "auteur": "Erik G",
     "lic": "CC0",
     "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "porteur": "Ville de Göteborg (Suède)",
-    "aVerifier": true
+    "porteur": "Ville de Göteborg (Suède)"
   },
   {
     "nom": "Minsk",
@@ -11470,7 +11462,9 @@
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
     "porteur": "Communauté autonome d'Espagne",
-    "aVerifier": true
+    "atelier": "Parti : au 1, de gueules au château de Castille d'or ; au 2, d'argent",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=65"
   },
   {
     "nom": "Communauté de Madrid",
@@ -11787,7 +11781,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/File%3ACoA_Chur_Diocese.svg",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "D'argent au bouquetin saillant de sable",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Principauté épiscopale de Frisingue",
@@ -12106,7 +12102,9 @@
     "lic": "CC BY-SA 4.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
     "porteur": "Territoire du Saint-Empire",
-    "aVerifier": true
+    "atelier": "De gueules aux clefs de saint Pierre d'argent, accompagnées d'une croisette d'argent en chef",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=90&dy=12&sz2=60"
   },
   {
     "nom": "Duché de Mecklembourg",
@@ -12423,8 +12421,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie du Chesne",
@@ -12732,8 +12729,7 @@
     "porteur": "Seigneurie de l'ancien duché de Luxembourg",
     "auteur": "Caranorn",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Seigneurie de Dudeldorf",
@@ -13066,7 +13062,9 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Lucerne",
-    "aVerifier": true
+    "atelier": "De gueules à l'arbre d'argent",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : notre arbre, d'argent tout entier, sans les feuilles de sinople",
+    "atelierAjust": "sz=125"
   },
   {
     "nom": "Altdorf",
@@ -13410,8 +13408,7 @@
     "auteur": "Schriste",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton de Saint-Gall",
-    "aVerifier": true
+    "porteur": "Commune du canton de Saint-Gall"
   },
   {
     "nom": "Saint-Gall",
@@ -13756,8 +13753,7 @@
     "auteur": "ARK",
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
-    "porteur": "Commune du canton de Vaud",
-    "aVerifier": true
+    "porteur": "Commune du canton de Vaud"
   },
   {
     "nom": "Curtilles",
@@ -14103,7 +14099,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton de Genève",
-    "aVerifier": true
+    "atelier": "D'azur à l'arche de pont d'argent, accompagnée d'une fleur de lis d'or en chef",
+    "atelierNote": "Ébauche à ajuster dans l'Atelier : le pont n'a ni ses tours ni sa maçonnerie"
   },
   {
     "nom": "Avully",
@@ -14452,7 +14449,8 @@
     "lic": "domaine public",
     "licurl": "https://commons.wikimedia.org/wiki/Template:PD-Coa-Switzerland",
     "porteur": "Commune du canton du Valais",
-    "aVerifier": true
+    "atelier": "Parti de gueules et d'argent, à deux croix alésées de l'un en l'autre posées en fasce",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier"
   },
   {
     "nom": "Fiesch",
@@ -14768,8 +14766,7 @@
     },
     "auteur": "Le Bornin",
     "lic": "CC BY-SA 3.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "nom": "Famille de La Cropte",
@@ -15081,7 +15078,9 @@
     "auteur": "Yricordel",
     "lic": "CC BY-SA 3.0",
     "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "aVerifier": true
+    "atelier": "D'argent à l'aigle au vol déployé de sable",
+    "atelierNote": "Le même blasonnement, dans les mots de l'Atelier",
+    "atelierAjust": "sz=115"
   },
   {
     "nom": "Famille Caillard d'Aillières",
@@ -15393,8 +15392,7 @@
     },
     "auteur": "Elolo15",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille de Méjanès",
@@ -15708,8 +15706,7 @@
     },
     "auteur": "Kontributor 2K",
     "lic": "CC BY-SA 4.0",
-    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "aVerifier": true
+    "licurl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "nom": "Famille Mauvoisin",
